@@ -12212,10 +12212,12 @@
                 "description": "The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com\n"
             },
             "maxRetries": {
-                "type": "integer"
+                "type": "integer",
+                "description": "Maximum number of retries in case of network failure\n"
             },
             "maxRetryWaitSeconds": {
-                "type": "integer"
+                "type": "integer",
+                "description": "Maximum time to wait in case of network failure\n"
             },
             "requestTimeout": {
                 "type": "integer",
