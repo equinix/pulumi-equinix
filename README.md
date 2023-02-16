@@ -67,7 +67,7 @@ The following configuration points are available for the `equinix` provider:
 - `equinix:clientId` (environment: `EQUINIX_API_CLIENTID`) - (Optional) API Consumer Key available under My Apps section in Equinix developer portal.
 - `equinix:clientSecret` (environment: `EQUINIX_API_CLIENTSECRET`) - (Optional) API Consumer secret available under My Apps section in Equinix developer portal.
 
-Advanced onfiguration points:
+Advanced configuration points:
 
 - `equinix:token` (environment: `EQUINIX_API_TOKEN`) - (Optional) API token from the developer sandbox. Token's can be generated for the API Client using the OAuth2 Token features described in the [OAuth2 API](https://developer.equinix.com/catalog/accesstokenv1#operation/GetOAuth2AccessToken) documentation. The `client_id` and `client_secret` arguments will be ignored in the presence of a token argument.
 - `equinix:endpoint` (environment: `EQUINIX_API_ENDPOINT`) - (Optional) the Equinix API base URL to point out desired environmen. Defaults to `https://api.equinix.com`.
