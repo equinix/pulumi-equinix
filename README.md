@@ -2,7 +2,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fequinix.svg)](https://www.npmjs.com/package/@equinix/equinix)
 [![Python version](https://badge.fury.io/py/pulumi-equinix.svg)](https://pypi.org/project/pulumi-equinix)
 [![NuGet version](https://badge.fury.io/nu/pulumi.equinix.svg)](https://badge.fury.io/nu/equinix.equinix)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/equinix/pulumi-equinix/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-equinix/sdk/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/equinix/pulumi-equinix/sdk/go)](https://pkg.go.dev/github.com/equinix/pulumi-equinix/sdk/go)
 [![License](https://img.shields.io/github/license/equinix/pulumi-equinix)](https://github.com/equinix/pulumi-equinix/blob/main/LICENSE)
 
 # Equinix Resource Provider
@@ -20,13 +20,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/equinix
+npm install @equinix/pulumi-equinix
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/equinix
+yarn add @equinix/pulumi-equinix
 ```
 
 ### Python
@@ -42,7 +42,7 @@ pip install pulumi_equinix
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-equinix/sdk/go/...
+go get github.com/equinix/pulumi-equinix/sdk/go/...
 ```
 
 ### .NET
