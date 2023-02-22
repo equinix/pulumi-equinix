@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * // Create a spot market request
  * const req = new equinix.metal.SpotMarketRequest("req", {

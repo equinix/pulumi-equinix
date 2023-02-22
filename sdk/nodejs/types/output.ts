@@ -28,11 +28,11 @@ export namespace fabric {
         authenticationKey?: string;
         gateways?: outputs.fabric.ConnectionASideAccessPointGateway[];
         interfaces?: outputs.fabric.ConnectionASideAccessPointInterface[];
-        linkProtocols?: outputs.fabric.ConnectionASideAccessPointLinkProtocol[];
+        linkProtocols?: any;
         locations: outputs.fabric.ConnectionASideAccessPointLocation[];
         peeringType?: string;
         ports?: outputs.fabric.ConnectionASideAccessPointPort[];
-        profiles?: outputs.fabric.ConnectionASideAccessPointProfile[];
+        profiles?: any;
         providerConnectionId?: string;
         routingProtocols?: outputs.fabric.ConnectionASideAccessPointRoutingProtocol[];
         sellerRegion?: string;
@@ -73,16 +73,6 @@ export namespace fabric {
         uuid?: string;
     }
 
-    export interface ConnectionASideAccessPointLinkProtocol {
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
-        type?: string;
-        vlanCTag: number;
-        vlanSTag: number;
-        vlanTag: number;
-    }
-
     export interface ConnectionASideAccessPointLocation {
         ibx: string;
         metroCode: string;
@@ -111,32 +101,6 @@ export namespace fabric {
          * Priority type- PRIMARY, SECONDARY
          */
         priority: string;
-    }
-
-    export interface ConnectionASideAccessPointProfile {
-        accessPointTypeConfigs: outputs.fabric.ConnectionASideAccessPointProfileAccessPointTypeConfig[];
-        description: string;
-        /**
-         * Connection URI information
-         */
-        href: string;
-        /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-         */
-        name: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
-        type: string;
-        uuid: string;
-    }
-
-    export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
-        type: string;
-        uuid: string;
     }
 
     export interface ConnectionASideAccessPointRoutingProtocol {
@@ -325,11 +289,11 @@ export namespace fabric {
         authenticationKey?: string;
         gateways?: outputs.fabric.ConnectionZSideAccessPointGateway[];
         interfaces?: outputs.fabric.ConnectionZSideAccessPointInterface[];
-        linkProtocols?: outputs.fabric.ConnectionZSideAccessPointLinkProtocol[];
+        linkProtocols?: any;
         locations: outputs.fabric.ConnectionZSideAccessPointLocation[];
         peeringType?: string;
         ports?: outputs.fabric.ConnectionZSideAccessPointPort[];
-        profiles?: outputs.fabric.ConnectionZSideAccessPointProfile[];
+        profiles?: any;
         providerConnectionId?: string;
         routingProtocols?: outputs.fabric.ConnectionZSideAccessPointRoutingProtocol[];
         sellerRegion?: string;
@@ -370,16 +334,6 @@ export namespace fabric {
         uuid?: string;
     }
 
-    export interface ConnectionZSideAccessPointLinkProtocol {
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
-        type?: string;
-        vlanCTag: number;
-        vlanSTag: number;
-        vlanTag: number;
-    }
-
     export interface ConnectionZSideAccessPointLocation {
         ibx: string;
         metroCode: string;
@@ -408,32 +362,6 @@ export namespace fabric {
          * Priority type- PRIMARY, SECONDARY
          */
         priority: string;
-    }
-
-    export interface ConnectionZSideAccessPointProfile {
-        accessPointTypeConfigs: outputs.fabric.ConnectionZSideAccessPointProfileAccessPointTypeConfig[];
-        description: string;
-        /**
-         * Connection URI information
-         */
-        href: string;
-        /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-         */
-        name: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
-        type: string;
-        uuid: string;
-    }
-
-    export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
-        type: string;
-        uuid: string;
     }
 
     export interface ConnectionZSideAccessPointRoutingProtocol {

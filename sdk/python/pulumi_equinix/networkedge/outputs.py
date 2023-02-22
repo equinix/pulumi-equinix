@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = [
     'AclTemplateDeviceDetail',
@@ -136,7 +137,7 @@ class AclTemplateInboundRule(dict):
         """
         :param str dst_port: Inbound traffic destination ports. Allowed values are a comma separated
                list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
-        :param str protocol: Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
+        :param Union[str, 'AclProtocolType'] protocol: Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
         :param str src_port: Inbound traffic source ports. Allowed values are a comma separated list
                of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param str description: Inbound rule description, up to 200 characters.

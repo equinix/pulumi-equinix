@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from ._enums import *
 
 __all__ = [
     'AclTemplateDeviceDetailArgs',
@@ -87,7 +88,7 @@ class AclTemplateDeviceDetailArgs:
 class AclTemplateInboundRuleArgs:
     def __init__(__self__, *,
                  dst_port: pulumi.Input[str],
-                 protocol: pulumi.Input[str],
+                 protocol: pulumi.Input[Union[str, 'AclProtocolType']],
                  src_port: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  sequence_number: Optional[pulumi.Input[int]] = None,
@@ -97,7 +98,7 @@ class AclTemplateInboundRuleArgs:
         """
         :param pulumi.Input[str] dst_port: Inbound traffic destination ports. Allowed values are a comma separated
                list of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
-        :param pulumi.Input[str] protocol: Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
+        :param pulumi.Input[Union[str, 'AclProtocolType']] protocol: Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
         :param pulumi.Input[str] src_port: Inbound traffic source ports. Allowed values are a comma separated list
                of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
@@ -139,14 +140,14 @@ class AclTemplateInboundRuleArgs:
 
     @property
     @pulumi.getter
-    def protocol(self) -> pulumi.Input[str]:
+    def protocol(self) -> pulumi.Input[Union[str, 'AclProtocolType']]:
         """
         Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: pulumi.Input[str]):
+    def protocol(self, value: pulumi.Input[Union[str, 'AclProtocolType']]):
         pulumi.set(self, "protocol", value)
 
     @property

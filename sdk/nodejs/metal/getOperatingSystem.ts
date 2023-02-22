@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const example = equinix.metal.getOperatingSystem({
  *     distro: "ubuntu",
@@ -22,7 +23,7 @@ import * as utilities from "../utilities";
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
  *     facilities: ["ny5"],
- *     operatingSystem: example.then(example => example.id).apply((x) => @pulumi/equinix.metal.operatingsystem.OperatingSystem[x]),
+ *     operatingSystem: example.then(example => example.id).apply((x) => @equinix/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,
  * });

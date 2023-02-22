@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const testVlan = new equinix.metal.Vlan("testVlan", {
  *     description: "VLAN in New Jersey",
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const testDevice = new equinix.metal.Device("testDevice", {
  *     hostname: "test",

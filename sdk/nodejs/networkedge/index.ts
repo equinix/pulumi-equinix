@@ -17,6 +17,9 @@ export * from "./getDeviceType";
 export * from "./sshKey";
 export * from "./sshUser";
 
+// Export enums:
+export * from "../types/enums/networkedge";
+
 // Import resources to register:
 import { AclTemplate } from "./aclTemplate";
 import { Bgp } from "./bgp";

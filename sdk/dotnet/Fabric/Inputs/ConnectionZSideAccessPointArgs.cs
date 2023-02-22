@@ -44,12 +44,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         }
 
         [Input("linkProtocols")]
-        private InputList<Inputs.ConnectionZSideAccessPointLinkProtocolArgs>? _linkProtocols;
-        public InputList<Inputs.ConnectionZSideAccessPointLinkProtocolArgs> LinkProtocols
-        {
-            get => _linkProtocols ?? (_linkProtocols = new InputList<Inputs.ConnectionZSideAccessPointLinkProtocolArgs>());
-            set => _linkProtocols = value;
-        }
+        public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointLinkProtocolType>? LinkProtocols { get; set; }
 
         [Input("locations")]
         private InputList<Inputs.ConnectionZSideAccessPointLocationArgs>? _locations;
@@ -60,7 +55,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         }
 
         [Input("peeringType")]
-        public Input<string>? PeeringType { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointPeeringType>? PeeringType { get; set; }
 
         [Input("ports")]
         private InputList<Inputs.ConnectionZSideAccessPointPortArgs>? _ports;
@@ -71,12 +66,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         }
 
         [Input("profiles")]
-        private InputList<Inputs.ConnectionZSideAccessPointProfileArgs>? _profiles;
-        public InputList<Inputs.ConnectionZSideAccessPointProfileArgs> Profiles
-        {
-            get => _profiles ?? (_profiles = new InputList<Inputs.ConnectionZSideAccessPointProfileArgs>());
-            set => _profiles = value;
-        }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Profiles { get; set; }
 
         [Input("providerConnectionId")]
         public Input<string>? ProviderConnectionId { get; set; }
@@ -96,7 +86,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointType>? Type { get; set; }
 
         [Input("virtualDevices")]
         private InputList<Inputs.ConnectionZSideAccessPointVirtualDeviceArgs>? _virtualDevices;

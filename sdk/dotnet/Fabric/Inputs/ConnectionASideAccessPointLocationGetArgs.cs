@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Ibx { get; set; }
 
         [Input("metroCode")]
-        public Input<string>? MetroCode { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Metro>? MetroCode { get; set; }
 
         [Input("metroName")]
         public Input<string>? MetroName { get; set; }

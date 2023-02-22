@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
 from .acl_template import *
 from .bgp import *
 from .device import *

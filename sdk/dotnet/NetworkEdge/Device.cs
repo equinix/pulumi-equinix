@@ -608,7 +608,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// License throughput unit. One of `Mbps` or `Gbps`.
         /// </summary>
         [Input("throughputUnit")]
-        public Input<string>? ThroughputUnit { get; set; }
+        public InputUnion<string, Pulumi.Equinix.NetworkEdge.ThroughputUnit>? ThroughputUnit { get; set; }
 
         /// <summary>
         /// Device type code.
@@ -876,7 +876,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// License throughput unit. One of `Mbps` or `Gbps`.
         /// </summary>
         [Input("throughputUnit")]
-        public Input<string>? ThroughputUnit { get; set; }
+        public InputUnion<string, Pulumi.Equinix.NetworkEdge.ThroughputUnit>? ThroughputUnit { get; set; }
 
         /// <summary>
         /// Device type code.

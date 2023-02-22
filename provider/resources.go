@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"strings"
+	"unicode"
 
 	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	"github.com/equinix/terraform-provider-equinix/equinix"
@@ -61,13 +62,14 @@ func makeEquinixDataSource(moduleTitle, mem string) tokens.ModuleMember {
 }
 
 // makeEquinixType
-func makeEquinixType(moduleTitle, typ string) tokens.Type {
-	return tfbridge.MakeType(equinixPkg, strings.ToLower(moduleTitle) + "/" + typ, typ)
+func makeEquinixType(moduleTitle, res string) tokens.Type {
+	return tokens.Type(tokens.ModuleMember(makeEquinixToken(moduleTitle, res)))
 }
 
 // makeEquinixToken
-func makeEquinixToken(moduleTitle, typ string) string {
-	return strings.Join([]string{equinixPkg, strings.ToLower(moduleTitle) + "/" + typ, typ}, ":")
+func makeEquinixToken(moduleTitle, res string) string {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return strings.Join([]string{equinixPkg, strings.ToLower(moduleTitle) + "/" + fn, res}, ":")
 }
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -120,25 +122,158 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		Resources:            map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_connection":      {Tok: makeEquinixResource(fabricMod, "Connection")},
-			// TODO add equinix_fabric_connection enum fileds
-			// 	type //VG_VC, EVPL_VC, EPL_VC, EC_VC, GW_VC, ACCESS_EPL_VC
-			// 	a_side/zside.access_point.peering_type --> PRIVATE,MICROSOFT,PUBLIC, MANUAL
-			// 	a_side/zside.access_point.type --> COLO, VD, VG, SP, IGW, SUBNET, GW
-			// 	a_side/zside.access_point.location.metro_code -->  https://developer.equinix.com/dev-docs/ecp/getting-started/appendix/country-codes
-			// 	a_side/zside.access_point.link_protocol.type --> UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
-			// 	a_side/zside.access_point.profile.type --> L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
-			// 	a_side.service_token.type --> VC_TOKEN
-			// 	notifications.type --> ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
-			// 
-			"equinix_fabric_service_profile": {Tok: makeEquinixResource(fabricMod, "ServiceProfile")},
-			// TODO add equinix_fabric_service_profile enum fileds
-			// 	type --> L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
-			//	state --> ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-			// 	visibility --> PUBLIC, PRIVATE
-			// 	access_point_type_configs.type --> VD, COLO
-			// 	notifications.type --> ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
-			// 
+			"equinix_fabric_connection":      {
+				Tok: makeEquinixResource(fabricMod, "Connection"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"type": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ConnectionType")},
+					},
+					"a_side": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"access_point": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"peering_type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+											},
+											"type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
+											},
+											"location": {
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"metro_code": {
+															Type:     "string",
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+														},
+													},
+												},
+											},
+											"link_protocol": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+											},
+											"profile": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+											},
+										},
+									},
+								},
+								"service_token": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ServiceTokenType")},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+					"z_side": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"access_point": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"peering_type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+											},
+											"type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
+											},
+											"location": {
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"metro_code": {
+															Type:     "string",
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+														},
+													},
+												},
+											},
+											"link_protocol": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+											},
+											"profile": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+											},
+										},
+									},
+								},
+								"service_token": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ServiceTokenType")},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+					"notifications": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"type": {
+									Type:     "string",
+									AltTypes: []tokens.Type{makeEquinixType(fabricMod, "NotificationsType")},
+								},
+							},
+						},
+					},
+				},
+			},
+			"equinix_fabric_service_profile": {
+				Tok: makeEquinixResource(fabricMod, "ServiceProfile"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"type": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+					},
+					"state": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileState")},
+					},
+					"visibility": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileVisibility")},
+					},
+					"access_point_type_configs": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"type": {
+									Type:     "string",
+									AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileAccessPointType")},
+								},
+							},
+						},
+					},
+					"notifications": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"type": {
+									Type:     "string",
+									AltTypes: []tokens.Type{makeEquinixType(fabricMod, "NotificationsType")},
+								},
+							},
+						},
+					},
+				},
+			},
 			// Equinix Metal v1
 			"equinix_metal_bgp_session":          {Tok: makeEquinixResource(metalMod, "BgpSession")},
 			"equinix_metal_connection":           {Tok: makeEquinixResource(metalMod, "Connection")},
@@ -207,25 +342,227 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_metal_vrf":      			  {Tok: makeEquinixResource(metalMod, "Vrf")},
 			// Network Edge v1
-			"equinix_network_acl_template": {Tok: makeEquinixResource(networkEdgeMod, "AclTemplate")},
-			// TODO add equinix_network_acl_template enum fileds
-			// 	inbound_rule.protocol --> IP, TCP, UDP
+			"equinix_network_acl_template": {
+				Tok: makeEquinixResource(networkEdgeMod, "AclTemplate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"inbound_rule": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"protocol": {
+									Type:     "string",
+									AltTypes: []tokens.Type{makeEquinixType(networkEdgeMod, "AclProtocolType")},
+								},
+							},
+						},
+					},
+				},
+			},
 			"equinix_network_bgp":     	 	{Tok: makeEquinixResource(networkEdgeMod, "Bgp")},
-			"equinix_network_device":       {Tok: makeEquinixResource(networkEdgeMod, "Device")},
-			// TODO add equinix_network_device enum fileds
-			// 	throughput_unit --> Mbps or Gbps
+			"equinix_network_device":       {
+				Tok: makeEquinixResource(networkEdgeMod, "Device"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"throughput_unit": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(networkEdgeMod, "ThroughputUnit")},
+					},
+				},
+			},
 			"equinix_network_device_link":  {Tok: makeEquinixResource(networkEdgeMod, "DeviceLink")},
 			"equinix_network_ssh_key":      {Tok: makeEquinixResource(networkEdgeMod, "SshKey")},
 			"equinix_network_ssh_user":     {Tok: makeEquinixResource(networkEdgeMod, "SshUser")},
 		},
 		ExtraTypes: map[string]pulumiSchema.ComplexTypeSpec{
+			makeEquinixToken(equinixMod, "Metro"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Amsterdam", Value: "AM"},
+					{Name: "Ashburn", Value: "DC"},
+					{Name: "Atlanta", Value: "AT"},
+					{Name: "Barcelona", Value: "BA"},
+					{Name: "Bogota", Value: "BG"},
+					{Name: "Bordeaux", Value: "BX"},
+					{Name: "Boston", Value: "BO"},
+					{Name: "Brussels", Value: "BL"},
+					{Name: "Calgary", Value: "CL"},
+					{Name: "Canberra", Value: "CA"},
+					{Name: "Chicago", Value: "CH"},
+					{Name: "Dallas", Value: "DA"},
+					{Name: "Denver", Value: "DE"},
+					{Name: "Dubai", Value: "DX"},
+					{Name: "Dublin", Value: "DB"},
+					{Name: "Frankfurt", Value: "FR"},
+					{Name: "Geneva", Value: "GV"},
+					{Name: "Hamburg", Value: "HH"},
+					{Name: "Helsinki", Value: "HE"},
+					{Name: "HongKong", Value: "HK"},
+					{Name: "Istanbul", Value: "IL"},
+					{Name: "Kamloops", Value: "KA"},
+					{Name: "Lisbon", Value: "LS"},
+					{Name: "London", Value: "LD"},
+					{Name: "LosAngeles", Value: "LA"},
+					{Name: "Madrid", Value: "MD"},
+					{Name: "Manchester", Value: "MA"},
+					{Name: "Melbourne", Value: "ME"},
+					{Name: "MexicoCity", Value: "MX"},
+					{Name: "Miami", Value: "MI"},
+					{Name: "Milan", Value: "ML"},
+					{Name: "Montreal", Value: "MT"},
+					{Name: "Mumbai", Value: "MB"},
+					{Name: "Munich", Value: "MU"},
+					{Name: "NewYork", Value: "NY"},
+					{Name: "Osaka", Value: "OS"},
+					{Name: "Paris", Value: "PA"},
+					{Name: "Perth", Value: "PE"},
+					{Name: "Philadelphia", Value: "PH"},
+					{Name: "RioDeJaneiro", Value: "RJ"},
+					{Name: "SaoPaulo", Value: "SP"},
+					{Name: "Seattle", Value: "SE"},
+					{Name: "Seoul", Value: "SL"},
+					{Name: "SiliconValley", Value: "SV"},
+					{Name: "Singapore", Value: "SG"},
+					{Name: "Sofia", Value: "SO"},
+					{Name: "Stockholm", Value: "SK"},
+					{Name: "Sydney", Value: "SY"},
+					{Name: "Tokyo", Value: "TY"},
+					{Name: "Toronto", Value: "TR"},
+					{Name: "Vancouver", Value: "VA"},
+					{Name: "Warsaw", Value: "WA"},
+					{Name: "Winnipeg", Value: "WI"},
+					{Name: "Zurich", Value: "ZH"},
+				},
+			},
+			makeEquinixToken(fabricMod, "ServiceTokenType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "VCToken", Value: "VC_TOKEN"},
+				},
+			},
+			makeEquinixToken(fabricMod, "AccessPointLinkProtocolType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Untagged", Value: "UNTAGGED"},
+					{Name: "Dot1q", Value: "DOT1Q"},
+					{Name: "QinQ", Value: "QINQ"},
+					{Name: "EVPN_VXLAN", Value: "EVPN_VXLAN"},
+				},
+			},
+			makeEquinixToken(fabricMod, "AccessPointType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Colo", Value: "COLO", Description: "Colocation"},
+					{Name: "VD", Value: "VD", Description: "Virtual Device"},
+					{Name: "SP", Value: "SP", Description: "Service Profile"},
+					{Name: "IGW", Value: "IGW", Description: "Internet Gateway"},
+					{Name: "Subnet", Value: "SUBNET", Description: "Subnet"},
+					{Name: "GW", Value: "GW", Description: "Gateway"},
+					{Name: "Network", Value: "NETWORK", Description: "Network"},
+				},
+			},
+			makeEquinixToken(fabricMod, "AccessPointPeeringType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Private", Value: "PRIVATE"},
+					{Name: "Microsoft", Value: "MICROSOFT"},
+					{Name: "Public", Value: "PUBLIC"},
+				},
+			},
+			makeEquinixToken(fabricMod, "ConnectionType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "VG", Value: "VG_VC", Description: "Virtual Gateway"},
+					{Name: "EVPL", Value: "EVPL_VC", Description: "Ethernet Virtual Private Line"},
+					{Name: "EPL", Value: "EPL_VC", Description: "Ethernet Private Line"},
+					{Name: "GW", Value: "GW_VC", Description: "Fabric Gateway virtual connection"},
+					{Name: "AccessEPL", Value: "ACCESS_EPL_VC", Description: "E-access, layer 2 connection between a QINQ port and an EPL port."},
+				},
+			},
+			makeEquinixToken(fabricMod, "NotificationsType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "All", Value: "ALL"},
+					{Name: "ConnectionApproval", Value: "CONNECTION_APPROVAL"},
+					{Name: "SalesNotifications", Value: "SALES_REP_NOTIFICATIONS"},
+					{Name: "Notifications", Value: "NOTIFICATIONS"},
+				},
+			},
+			makeEquinixToken(fabricMod, "ProfileType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "L2Profile", Value: "L2_PROFILE"},
+					{Name: "L3Profile", Value: "L3_PROFILE"},
+				},
+			},
+			makeEquinixToken(fabricMod, "ProfileState"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Active", Value: "ACTIVE"},
+					{Name: "PendingApproval", Value: "PENDING_APPROVAL"},
+					{Name: "Deleted", Value: "DELETED"},
+					{Name: "Rejected", Value: "REJECTED"},
+				},
+			},
+			makeEquinixToken(fabricMod, "ProfileVisibility"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Public", Value: "PUBLIC"},
+					{Name: "Private", Value: "PRIVATE"},
+				},
+			},
+			makeEquinixToken(fabricMod, "ProfileAccessPointType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Colo", Value: "COLO", Description: "Colocation"},
+					{Name: "VD", Value: "VD", Description: "Virtual Device"},
+				},
+			},
+			makeEquinixToken(networkEdgeMod, "AclProtocolType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "IP", Value: "IP"},
+					{Name: "TCP", Value: "TCP"},
+					{Name: "UDP", Value: "UDP"},
+				},
+			},
+			makeEquinixToken(networkEdgeMod, "ThroughputUnit"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Mbps", Value: "Mbps"},
+					{Name: "Gbps", Value: "Gbps"},
+				},
+			},
 			makeEquinixToken(metalMod, "BillingCycle"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
-					{Value: "hourly", Name: "Hourly"},
-					{Value: "monthly", Name: "Monthly"},
+					{Name: "Hourly", Value: "hourly"},
+					{Name: "Monthly", Value: "monthly"},
 				},
 			},
 			makeEquinixToken(metalMod, "IpBlockType"): {
@@ -233,8 +570,8 @@ func Provider() tfbridge.ProviderInfo {
 					Type: "string",
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
-					{Value: "global_ipv4", Name: "GlobalIPv4"},
-					{Value: "public_ipv4", Name: "PublicIPv4"},
+					{Name: "GlobalIPv4", Value: "global_ipv4"},
+					{Name: "PublicIPv4", Value: "public_ipv4"},
 				},
 			},
 			makeEquinixToken(metalMod, "NetworkType"): {
@@ -242,43 +579,46 @@ func Provider() tfbridge.ProviderInfo {
 					Type: "string",
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
-					{Value: "layer3", Name: "Layer3"},
-					{Value: "layer2-individual", Name: "Layer2Individual"},
-					{Value: "layer2-bonded", Name: "Layer2Bonded"},
-					{Value: "hybrid", Name: "Hybrid"},
+					{Name: "Layer3", Value: "layer3"},
+					{Name: "Layer2Individual", Value: "layer2-individual"},
+					{Name: "Layer2Bonded", Value: "layer2-bonded"},
+					{Name: "Hybrid", Value: "hybrid"},
 				},
 			},
 			makeEquinixToken(metalMod, "Plan"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
+					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/Plans/operation/findPlans",
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "A3LargeX86", Value: "a3.large.x86"},
 					{Name: "C2LargeARM", Value: "c2.large.arm"},
 					{Name: "C2MediumX86", Value: "c2.medium.x86"},
-					{Name: "C1SmallX86", Value: "baremetal_1"},
-					{Name: "C1LargeARM", Value: "baremetal_2a"},
-					{Name: "C1XLargeX86", Value: "baremetal_3"},
-					{Name: "X2XLargeX86", Value: "x2.xlarge.x86"},
-					{Name: "X1SmallX86", Value: "baremetal_1e"},
+					{Name: "C3LargeARM", Value: "c3.large.arm64"},
+					{Name: "C3MediumX86", Value: "c3.medium.x86"},
+					{Name: "C3SmallX86", Value: "c3.small.x86"},
+					{Name: "F3LargeX86", Value: "f3.large.x86"},
+					{Name: "F3MediumX86", Value: "f3.medium.x86"},
 					{Name: "G2LargeX86", Value: "g2.large.x86"},
 					{Name: "M2XLargeX86", Value: "m2.xlarge.x86"},
-					{Name: "M1XLargeX86", Value: "baremetal_2"},
-					{Name: "T1SmallX86", Value: "baremetal_0"},
-					{Name: "S1LargeX86", Value: "baremetal_s"},
-					{Name: "C3SmallX86", Value: "c3.small.x86"},
-					{Name: "C3MediumX86", Value: "c3.medium.x86"},
-					{Name: "F3MediumX86", Value: "f3.medium.x86"},
-					{Name: "F3LargeX86", Value: "f3.large.x86"},
 					{Name: "M3LargeX86", Value: "m3.large.x86"},
-					{Name: "S3XLargeX86", Value: "s3.xlarge.x86"},
+					{Name: "M3SmallX86", Value: "m3.small.x86"},
 					{Name: "N2XLargeX86", Value: "n2.xlarge.x86"},
+					{Name: "N3XLargeX86", Value: "n3.xlarge.x86"},
+					{Name: "S3XLargeX86", Value: "s3.xlarge.x86"},
+					{Name: "T3SmallX86", Value: "t3.small.x86"},
+					{Name: "X2XLargeX86", Value: "x2.xlarge.x86"},
+					{Name: "X3XLargeX86", Value: "x3.xlarge.x86"},
 				},
 			},
 			makeEquinixToken(metalMod, "OperatingSystem"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
+					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/OperatingSystems/operation/findOperatingSystems",
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "Alma8", Value: "alma_8"},
+					{Name: "Alma9", Value: "alma_9"},
 					{Name: "Alpine3", Value: "alpine_3"},
 					{Name: "CentOS6", Value: "centos_6"},
 					{Name: "CentOS7", Value: "centos_7"},
@@ -287,70 +627,126 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "CoreOSBeta", Value: "coreos_beta"},
 					{Name: "CoreOSStable", Value: "coreos_stable"},
 					{Name: "CustomIPXE", Value: "custom_ipxe"},
+					{Name: "Debian10", Value: "debian_10"},
+					{Name: "Debian11", Value: "debian_11"},
+					{Name: "Debian7", Value: "debian_7"},
 					{Name: "Debian8", Value: "debian_8"},
 					{Name: "Debian9", Value: "debian_9"},
-					{Name: "Debian10", Value: "debian_10"},
+					{Name: "Fedora31", Value: "fedora_31"},
+					{Name: "Fedora34", Value: "fedora_34"},
 					{Name: "FlatcarAlpha", Value: "flatcar_alpha"},
 					{Name: "FlatcarBeta", Value: "flatcar_beta"},
 					{Name: "FlatcarEdge", Value: "flatcar_edge"},
+					{Name: "FlatcarLTS", Value: "flatcar_lts"},
 					{Name: "FlatcarStable", Value: "flatcar_stable"},
+					{Name: "FreeBSD10_3", Value: "freebsd_10_3" },
 					{Name: "FreeBSD10_4", Value: "freebsd_10_4"},
+					{Name: "FreeBSD11_0", Value: "freebsd_11_0"},
 					{Name: "FreeBSD11_1", Value: "freebsd_11_1"},
 					{Name: "FreeBSD11_2", Value: "freebsd_11_2"},
+					{Name: "FreeBSD11_3", Value: "freebsd_11_3"},
+					{Name: "FreeBSD11_4", Value: "freebsd_11_4"},
 					{Name: "FreeBSD12Testing", Value: "freebsd_12_testing"},
+					{Name: "FreeBSD12_1", Value: "freebsd_12_1"},
+					{Name: "FreeBSD13_0", Value: "freebsd_13_0"},
+					{Name: "FreeBSD13_1", Value: "freebsd_13_1"},
+					{Name: "FreeBSD13_testing", Value: "freebsd_13_testing"},
+					{Name: "HookEsxi7", Value: "hook_esxi7"},
+					{Name: "NixOS17_03", Value: "nixos_17_03"},
 					{Name: "NixOS18_03", Value: "nixos_18_03"},
 					{Name: "NixOS19_03", Value: "nixos_19_03"},
+					{Name: "NixOS20_09", Value: "nixos_20_09"},
+					{Name: "NixOS21_11", Value: "nixos_21_11"},
+					{Name: "NixOS22_05", Value: "nixos_22_05"},
+					{Name: "NixOS22_11", Value: "nixos_22_11"},
+					{Name: "Nixos21_05", Value: "nixos_21_05"},
+					{Name: "NutanixCentos", Value: "nutanix_centos"},
+					{Name: "NutanixLTS5_19_1", Value: "nutanix_lts_5_19_1"},
+					{Name: "NutanixLTS5_20", Value: "nutanix_lts_5_20"},
 					{Name: "OpenSUSE42_3", Value: "opensuse_42_3"},
-					{Name: "RancherOS", Value: "rancher"},
 					{Name: "RHEL7", Value: "rhel_7"},
 					{Name: "RHEL8", Value: "rhel_8"},
-					{Name: "ScientificLinux6", Value: "scientific_6"},
+					{Name: "RHEL9", Value: "rhel_9"},
+					{Name: "RancherOS", Value: "rancher"},
+					{Name: "Rocky8", Value: "rocky_8"},
+					{Name: "Rocky9", Value: "rocky_9"},
 					{Name: "SLES12SP3", Value: "suse_sles12_sp3"},
-					{Name: "Ubuntu1404", Value: "ubuntu_14_04"},
-					{Name: "Ubuntu1604", Value: "ubuntu_16_04"},
+					{Name: "ScientificLinux6", Value: "scientific_6"},
+					{Name: "TalosV1", Value: "talos_v1"},
 					{Name: "Ubuntu1710", Value: "ubuntu_17_10"},
-					{Name: "Ubuntu1804", Value: "ubuntu_18_04"},
-					{Name: "Ubuntu2004", Value: "ubuntu_20_04"},
-					{Name: "Ubuntu2010", Value: "ubuntu_20_10"},
+					{Name: "Ubuntu18_04", Value: "ubuntu_18_04"},
+					{Name: "Ubuntu1904", Value: "ubuntu_19_04"},
+					{Name: "Ubuntu19_10", Value: "ubuntu_19_10"},
+					{Name: "Ubuntu20_04", Value: "ubuntu_20_04"},
+					{Name: "Ubuntu20_04_legacy", Value: "ubuntu_20_04_legacy"},
+					{Name: "Ubuntu20_10", Value: "ubuntu_20_10"},
+					{Name: "Ubuntu2204", Value: "ubuntu_22_04"},
+					{Name: "VMWareAlloyVcf", Value: "vmware_alloy_vcf"},
+					{Name: "VMWareEsxi5_5", Value: "vmware_esxi_5_5"},
+					{Name: "VMWareEsxi6_0", Value: "vmware_esxi_6_0"},
 					{Name: "VMWareEsxi6_5", Value: "vmware_esxi_6_5"},
 					{Name: "VMWareEsxi6_7", Value: "vmware_esxi_6_7"},
+					{Name: "VMWareEsxi6_7_vcf", Value: "vmware_esxi_6_7_vcf"},
 					{Name: "VMWareEsxi7_0", Value: "vmware_esxi_7_0"},
+					{Name: "VMWareEsxi7_0U2a", Value: "vmware_esxi_7_0U2a"},
+					{Name: "VMWareEsxi7_0_vcf", Value: "vmware_esxi_7_0_vcf"},
+					{Name: "VMWareNsx2_5_0", Value: "vmware_nsx_2_5_0"},
+					{Name: "VMWareNsx3_0_0", Value: "vmware_nsx_3_0_0"},
+					{Name: "Virtuozzo7", Value: "virtuozzo_7"},
 					{Name: "Windows2012R2", Value: "windows_2012_r2"},
 					{Name: "Windows2016", Value: "windows_2016"},
 					{Name: "Windows2019", Value: "windows_2019"},
+					{Name: "Windows2022", Value: "windows_2022"},
 				},
 			},
 			makeEquinixToken(metalMod, "Facility"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
+					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/Facilities/operation/findFacilities",
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
-					{Value: "ewr1", Name: "EWR1"},
-					{Value: "sjc1", Name: "SJC1"},
-					{Value: "dfw1", Name: "DFW1"},
-					{Value: "dfw2", Name: "DFW2"},
-					{Value: "ams1", Name: "AMS1"},
-					{Value: "nrt1", Name: "NRT1"},
-					{Value: "sea1", Name: "SEA1"},
-					{Value: "lax1", Name: "LAX1"},
-					{Value: "ord1", Name: "ORD1"},
-					{Value: "atl1", Name: "ATL1"},
-					{Value: "iad1", Name: "IAD1"},
-					{Value: "sin1", Name: "SIN1"},
-					{Value: "hkg1", Name: "HKG1"},
-					{Value: "syd1", Name: "SYD1"},
-					{Value: "mrs1", Name: "MRS1"},
-					{Value: "yyz1", Name: "YYZ1"},
-					{Value: "fra2", Name: "FRA2"},
-					{Value: "am6", Name: "AM6"},
-					{Value: "dc13", Name: "DC13"},
-					{Value: "ch3", Name: "CH3"},
-					{Value: "da3", Name: "DA3"},
-					{Value: "da11", Name: "DA11"},
-					{Value: "la4", Name: "LA4"},
-					{Value: "ny5", Name: "NY5"},
-					{Value: "sg1", Name: "SG1"},
-					{Value: "sv15", Name: "SV15"},
+					{Name: "AM2", Value: "am2", Description: "Amsterdam 2"},
+					{Name: "AM6", Value: "am6", Description: "Amsterdam 6"},
+					{Name: "MA5", Value: "ma5", Description: "Manchester 5"},
+					{Name: "NRT1", Value: "nrt1", Description: "Tokio 1"},
+					{Name: "PA4", Value: "pa4", Description: "Paris 4"},
+					{Name: "SK2", Value: "sk2", Description: "Stockholm 2"},
+					{Name: "ME2", Value: "me2", Description: "Melbourne 2"},
+					{Name: "HK2", Value: "hk2", Description: "Hong Kong 2"},
+					{Name: "TY11", Value: "ty11", Description: "Tokyo 11"},
+					{Name: "LA4", Value: "la4", Description: "Los Angeles 4"},
+					{Name: "DA6", Value: "da6", Description: "Dallas 6"},
+					{Name: "DA11", Value: "da11", Description: "Dallas 11"},
+					{Name: "DA3", Value: "da3", Description: "Dallas 3"},
+					{Name: "SP4", Value: "sp4", Description: "Sao Paulo 4"},
+					{Name: "MT1", Value: "mt1", Description: "Montreal 1"},
+					{Name: "SV16", Value: "sv16", Description: "Silicon Valley 16"},
+					{Name: "SJC1", Value: "sjc1", Description: "Sunnyvale, CA 1"},
+					{Name: "FRA2", Value: "fra2", Description: "Frankfurt 2"},
+					{Name: "FRA8", Value: "fr8", Description: "Frankfurt 8"},
+					{Name: "NY5", Value: "ny5", Description: "New York 5"},
+					{Name: "NY6", Value: "ny6", Description: "New York 6"},
+					{Name: "NY7", Value: "ny7", Description: "New York 7"},
+					{Name: "CH3", Value: "ch3", Description: "Chicago 3"},
+					{Name: "SL1", Value: "sl1", Description: "Seoul 1"},
+					{Name: "SY5", Value: "sy5", Description: "Sydney 5"},
+					{Name: "OS3", Value: "os3", Description: "Osaka 3"},
+					{Name: "LD7", Value: "ld7", Description: "London 7"},
+					{Name: "DC10", Value: "dc10", Description: "Washington DC 10"},
+					{Name: "AMS1", Value: "ams1", Description: "Amsterdam 1"},
+					{Name: "SG4", Value: "sg4", Description: "Singapore 4"},
+					{Name: "SE4", Value: "se4", Description: "Seattle 4"},
+					{Name: "SY4", Value: "sy4", Description: "Sydney 4"},
+					{Name: "AT4", Value: "at4", Description: "Atlanta 4"},
+					{Name: "DFW2", Value: "dfw2", Description: "Dallas 2"},
+					{Name: "TR2", Value: "tr2", Description: "Toronto"},
+					{Name: "DC13", Value: "dc13", Description: "Washington DC"},
+					{Name: "HE7", Value: "he7", Description: "Helsinki"},
+					{Name: "EWR1", Value: "ewr1", Description: "Parsippany, NJ 1"},
+					{Name: "SG5", Value: "sg5", Description: "Singapore 5"},
+					{Name: "SG1", Value: "sg1", Description: "Singapore 1"},
+					{Name: "MD2", Value: "md2", Description: "Madrid 2"},
+					{Name: "SV15", Value: "sv15", Description: "Silicon Valley 15"},
 				},
 			},
 		},
@@ -390,7 +786,7 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_network_device_type":     {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceType")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			PackageName: "@pulumi/equinix",
+			PackageName: "@equinix/pulumi-equinix",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",

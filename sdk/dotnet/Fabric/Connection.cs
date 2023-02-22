@@ -249,7 +249,7 @@ namespace Pulumi.Equinix.Fabric
         /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         /// </summary>
         [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType> Type { get; set; } = null!;
 
         [Input("zSides", required: true)]
         private InputList<Inputs.ConnectionZSideArgs>? _zSides;
@@ -419,7 +419,7 @@ namespace Pulumi.Equinix.Fabric
         /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType>? Type { get; set; }
 
         [Input("zSides")]
         private InputList<Inputs.ConnectionZSideGetArgs>? _zSides;

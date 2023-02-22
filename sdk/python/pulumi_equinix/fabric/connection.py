@@ -9,6 +9,8 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from .. import _enums as _root_enums
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -19,7 +21,7 @@ class ConnectionArgs:
                  a_sides: pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]],
                  bandwidth: pulumi.Input[int],
                  notifications: pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]],
-                 type: pulumi.Input[str],
+                 type: pulumi.Input[Union[str, 'ConnectionType']],
                  z_sides: pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]],
                  additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,7 +33,7 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]] a_sides: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[str] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]] additional_infos: Connection additional information
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -93,14 +95,14 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
+    def type(self) -> pulumi.Input[Union[str, 'ConnectionType']]:
         """
         Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: pulumi.Input[str]):
+    def type(self, value: pulumi.Input[Union[str, 'ConnectionType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -194,7 +196,7 @@ class _ConnectionState:
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]] = None,
                  redundancies: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
                  z_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
@@ -213,7 +215,7 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]] projects: Project information
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]] redundancies: Redundancy Information
         :param pulumi.Input[str] state: Connection overall state
-        :param pulumi.Input[str] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
         """
         if a_sides is not None:
@@ -433,14 +435,14 @@ class _ConnectionState:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input[Union[str, 'ConnectionType']]]:
         """
         Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input[Union[str, 'ConnectionType']]]):
         pulumi.set(self, "type", value)
 
     @property
@@ -469,7 +471,7 @@ class Connection(pulumi.CustomResource):
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]]] = None,
                  redundancies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
                  z_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]]] = None,
                  __props__=None):
         """
@@ -484,7 +486,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]] orders: Order related to this connection information
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]] projects: Project information
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]] redundancies: Redundancy Information
-        :param pulumi.Input[str] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
         """
         ...
@@ -518,7 +520,7 @@ class Connection(pulumi.CustomResource):
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]]] = None,
                  redundancies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
                  z_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -581,7 +583,7 @@ class Connection(pulumi.CustomResource):
             projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]]] = None,
             redundancies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
             z_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
@@ -605,7 +607,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]] projects: Project information
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]] redundancies: Redundancy Information
         :param pulumi.Input[str] state: Connection overall state
-        :param pulumi.Input[str] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

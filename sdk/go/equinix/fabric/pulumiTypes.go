@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -131,11 +132,11 @@ type ConnectionASideAccessPoint struct {
 	AuthenticationKey    *string                                     `pulumi:"authenticationKey"`
 	Gateways             []ConnectionASideAccessPointGateway         `pulumi:"gateways"`
 	Interfaces           []ConnectionASideAccessPointInterface       `pulumi:"interfaces"`
-	LinkProtocols        []ConnectionASideAccessPointLinkProtocol    `pulumi:"linkProtocols"`
+	LinkProtocols        *string                                     `pulumi:"linkProtocols"`
 	Locations            []ConnectionASideAccessPointLocation        `pulumi:"locations"`
 	PeeringType          *string                                     `pulumi:"peeringType"`
 	Ports                []ConnectionASideAccessPointPort            `pulumi:"ports"`
-	Profiles             []ConnectionASideAccessPointProfile         `pulumi:"profiles"`
+	Profiles             *string                                     `pulumi:"profiles"`
 	ProviderConnectionId *string                                     `pulumi:"providerConnectionId"`
 	RoutingProtocols     []ConnectionASideAccessPointRoutingProtocol `pulumi:"routingProtocols"`
 	SellerRegion         *string                                     `pulumi:"sellerRegion"`
@@ -161,11 +162,11 @@ type ConnectionASideAccessPointArgs struct {
 	AuthenticationKey    pulumi.StringPtrInput                               `pulumi:"authenticationKey"`
 	Gateways             ConnectionASideAccessPointGatewayArrayInput         `pulumi:"gateways"`
 	Interfaces           ConnectionASideAccessPointInterfaceArrayInput       `pulumi:"interfaces"`
-	LinkProtocols        ConnectionASideAccessPointLinkProtocolArrayInput    `pulumi:"linkProtocols"`
+	LinkProtocols        pulumi.StringPtrInput                               `pulumi:"linkProtocols"`
 	Locations            ConnectionASideAccessPointLocationArrayInput        `pulumi:"locations"`
 	PeeringType          pulumi.StringPtrInput                               `pulumi:"peeringType"`
 	Ports                ConnectionASideAccessPointPortArrayInput            `pulumi:"ports"`
-	Profiles             ConnectionASideAccessPointProfileArrayInput         `pulumi:"profiles"`
+	Profiles             pulumi.StringPtrInput                               `pulumi:"profiles"`
 	ProviderConnectionId pulumi.StringPtrInput                               `pulumi:"providerConnectionId"`
 	RoutingProtocols     ConnectionASideAccessPointRoutingProtocolArrayInput `pulumi:"routingProtocols"`
 	SellerRegion         pulumi.StringPtrInput                               `pulumi:"sellerRegion"`
@@ -242,8 +243,8 @@ func (o ConnectionASideAccessPointOutput) Interfaces() ConnectionASideAccessPoin
 	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointInterface { return v.Interfaces }).(ConnectionASideAccessPointInterfaceArrayOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) LinkProtocols() ConnectionASideAccessPointLinkProtocolArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointLinkProtocol { return v.LinkProtocols }).(ConnectionASideAccessPointLinkProtocolArrayOutput)
+func (o ConnectionASideAccessPointOutput) LinkProtocols() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.LinkProtocols }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionASideAccessPointOutput) Locations() ConnectionASideAccessPointLocationArrayOutput {
@@ -258,8 +259,8 @@ func (o ConnectionASideAccessPointOutput) Ports() ConnectionASideAccessPointPort
 	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointPort { return v.Ports }).(ConnectionASideAccessPointPortArrayOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) Profiles() ConnectionASideAccessPointProfileArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointProfile { return v.Profiles }).(ConnectionASideAccessPointProfileArrayOutput)
+func (o ConnectionASideAccessPointOutput) Profiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Profiles }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
@@ -689,31 +690,6 @@ func (i ConnectionASideAccessPointLinkProtocolArgs) ToConnectionASideAccessPoint
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLinkProtocolOutput)
 }
 
-// ConnectionASideAccessPointLinkProtocolArrayInput is an input type that accepts ConnectionASideAccessPointLinkProtocolArray and ConnectionASideAccessPointLinkProtocolArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointLinkProtocolArrayInput` via:
-//
-//	ConnectionASideAccessPointLinkProtocolArray{ ConnectionASideAccessPointLinkProtocolArgs{...} }
-type ConnectionASideAccessPointLinkProtocolArrayInput interface {
-	pulumi.Input
-
-	ToConnectionASideAccessPointLinkProtocolArrayOutput() ConnectionASideAccessPointLinkProtocolArrayOutput
-	ToConnectionASideAccessPointLinkProtocolArrayOutputWithContext(context.Context) ConnectionASideAccessPointLinkProtocolArrayOutput
-}
-
-type ConnectionASideAccessPointLinkProtocolArray []ConnectionASideAccessPointLinkProtocolInput
-
-func (ConnectionASideAccessPointLinkProtocolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointLinkProtocol)(nil)).Elem()
-}
-
-func (i ConnectionASideAccessPointLinkProtocolArray) ToConnectionASideAccessPointLinkProtocolArrayOutput() ConnectionASideAccessPointLinkProtocolArrayOutput {
-	return i.ToConnectionASideAccessPointLinkProtocolArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionASideAccessPointLinkProtocolArray) ToConnectionASideAccessPointLinkProtocolArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLinkProtocolArrayOutput)
-}
-
 type ConnectionASideAccessPointLinkProtocolOutput struct{ *pulumi.OutputState }
 
 func (ConnectionASideAccessPointLinkProtocolOutput) ElementType() reflect.Type {
@@ -743,26 +719,6 @@ func (o ConnectionASideAccessPointLinkProtocolOutput) VlanSTag() pulumi.IntPtrOu
 
 func (o ConnectionASideAccessPointLinkProtocolOutput) VlanTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointLinkProtocol) *int { return v.VlanTag }).(pulumi.IntPtrOutput)
-}
-
-type ConnectionASideAccessPointLinkProtocolArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionASideAccessPointLinkProtocolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointLinkProtocol)(nil)).Elem()
-}
-
-func (o ConnectionASideAccessPointLinkProtocolArrayOutput) ToConnectionASideAccessPointLinkProtocolArrayOutput() ConnectionASideAccessPointLinkProtocolArrayOutput {
-	return o
-}
-
-func (o ConnectionASideAccessPointLinkProtocolArrayOutput) ToConnectionASideAccessPointLinkProtocolArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolArrayOutput {
-	return o
-}
-
-func (o ConnectionASideAccessPointLinkProtocolArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointLinkProtocolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointLinkProtocol {
-		return vs[0].([]ConnectionASideAccessPointLinkProtocol)[vs[1].(int)]
-	}).(ConnectionASideAccessPointLinkProtocolOutput)
 }
 
 type ConnectionASideAccessPointLocation struct {
@@ -1144,31 +1100,6 @@ func (i ConnectionASideAccessPointProfileArgs) ToConnectionASideAccessPointProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointProfileOutput)
 }
 
-// ConnectionASideAccessPointProfileArrayInput is an input type that accepts ConnectionASideAccessPointProfileArray and ConnectionASideAccessPointProfileArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointProfileArrayInput` via:
-//
-//	ConnectionASideAccessPointProfileArray{ ConnectionASideAccessPointProfileArgs{...} }
-type ConnectionASideAccessPointProfileArrayInput interface {
-	pulumi.Input
-
-	ToConnectionASideAccessPointProfileArrayOutput() ConnectionASideAccessPointProfileArrayOutput
-	ToConnectionASideAccessPointProfileArrayOutputWithContext(context.Context) ConnectionASideAccessPointProfileArrayOutput
-}
-
-type ConnectionASideAccessPointProfileArray []ConnectionASideAccessPointProfileInput
-
-func (ConnectionASideAccessPointProfileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointProfile)(nil)).Elem()
-}
-
-func (i ConnectionASideAccessPointProfileArray) ToConnectionASideAccessPointProfileArrayOutput() ConnectionASideAccessPointProfileArrayOutput {
-	return i.ToConnectionASideAccessPointProfileArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionASideAccessPointProfileArray) ToConnectionASideAccessPointProfileArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointProfileArrayOutput)
-}
-
 type ConnectionASideAccessPointProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionASideAccessPointProfileOutput) ElementType() reflect.Type {
@@ -1210,26 +1141,6 @@ func (o ConnectionASideAccessPointProfileOutput) Type() pulumi.StringOutput {
 
 func (o ConnectionASideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type ConnectionASideAccessPointProfileArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionASideAccessPointProfileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointProfile)(nil)).Elem()
-}
-
-func (o ConnectionASideAccessPointProfileArrayOutput) ToConnectionASideAccessPointProfileArrayOutput() ConnectionASideAccessPointProfileArrayOutput {
-	return o
-}
-
-func (o ConnectionASideAccessPointProfileArrayOutput) ToConnectionASideAccessPointProfileArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfileArrayOutput {
-	return o
-}
-
-func (o ConnectionASideAccessPointProfileArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointProfileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointProfile {
-		return vs[0].([]ConnectionASideAccessPointProfile)[vs[1].(int)]
-	}).(ConnectionASideAccessPointProfileOutput)
 }
 
 type ConnectionASideAccessPointProfileAccessPointTypeConfig struct {
@@ -3084,11 +2995,11 @@ type ConnectionZSideAccessPoint struct {
 	AuthenticationKey    *string                                     `pulumi:"authenticationKey"`
 	Gateways             []ConnectionZSideAccessPointGateway         `pulumi:"gateways"`
 	Interfaces           []ConnectionZSideAccessPointInterface       `pulumi:"interfaces"`
-	LinkProtocols        []ConnectionZSideAccessPointLinkProtocol    `pulumi:"linkProtocols"`
+	LinkProtocols        *string                                     `pulumi:"linkProtocols"`
 	Locations            []ConnectionZSideAccessPointLocation        `pulumi:"locations"`
 	PeeringType          *string                                     `pulumi:"peeringType"`
 	Ports                []ConnectionZSideAccessPointPort            `pulumi:"ports"`
-	Profiles             []ConnectionZSideAccessPointProfile         `pulumi:"profiles"`
+	Profiles             *string                                     `pulumi:"profiles"`
 	ProviderConnectionId *string                                     `pulumi:"providerConnectionId"`
 	RoutingProtocols     []ConnectionZSideAccessPointRoutingProtocol `pulumi:"routingProtocols"`
 	SellerRegion         *string                                     `pulumi:"sellerRegion"`
@@ -3114,11 +3025,11 @@ type ConnectionZSideAccessPointArgs struct {
 	AuthenticationKey    pulumi.StringPtrInput                               `pulumi:"authenticationKey"`
 	Gateways             ConnectionZSideAccessPointGatewayArrayInput         `pulumi:"gateways"`
 	Interfaces           ConnectionZSideAccessPointInterfaceArrayInput       `pulumi:"interfaces"`
-	LinkProtocols        ConnectionZSideAccessPointLinkProtocolArrayInput    `pulumi:"linkProtocols"`
+	LinkProtocols        pulumi.StringPtrInput                               `pulumi:"linkProtocols"`
 	Locations            ConnectionZSideAccessPointLocationArrayInput        `pulumi:"locations"`
 	PeeringType          pulumi.StringPtrInput                               `pulumi:"peeringType"`
 	Ports                ConnectionZSideAccessPointPortArrayInput            `pulumi:"ports"`
-	Profiles             ConnectionZSideAccessPointProfileArrayInput         `pulumi:"profiles"`
+	Profiles             pulumi.StringPtrInput                               `pulumi:"profiles"`
 	ProviderConnectionId pulumi.StringPtrInput                               `pulumi:"providerConnectionId"`
 	RoutingProtocols     ConnectionZSideAccessPointRoutingProtocolArrayInput `pulumi:"routingProtocols"`
 	SellerRegion         pulumi.StringPtrInput                               `pulumi:"sellerRegion"`
@@ -3195,8 +3106,8 @@ func (o ConnectionZSideAccessPointOutput) Interfaces() ConnectionZSideAccessPoin
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointInterface { return v.Interfaces }).(ConnectionZSideAccessPointInterfaceArrayOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) LinkProtocols() ConnectionZSideAccessPointLinkProtocolArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointLinkProtocol { return v.LinkProtocols }).(ConnectionZSideAccessPointLinkProtocolArrayOutput)
+func (o ConnectionZSideAccessPointOutput) LinkProtocols() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.LinkProtocols }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionZSideAccessPointOutput) Locations() ConnectionZSideAccessPointLocationArrayOutput {
@@ -3211,8 +3122,8 @@ func (o ConnectionZSideAccessPointOutput) Ports() ConnectionZSideAccessPointPort
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointPort { return v.Ports }).(ConnectionZSideAccessPointPortArrayOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) Profiles() ConnectionZSideAccessPointProfileArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointProfile { return v.Profiles }).(ConnectionZSideAccessPointProfileArrayOutput)
+func (o ConnectionZSideAccessPointOutput) Profiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Profiles }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
@@ -3642,31 +3553,6 @@ func (i ConnectionZSideAccessPointLinkProtocolArgs) ToConnectionZSideAccessPoint
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLinkProtocolOutput)
 }
 
-// ConnectionZSideAccessPointLinkProtocolArrayInput is an input type that accepts ConnectionZSideAccessPointLinkProtocolArray and ConnectionZSideAccessPointLinkProtocolArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointLinkProtocolArrayInput` via:
-//
-//	ConnectionZSideAccessPointLinkProtocolArray{ ConnectionZSideAccessPointLinkProtocolArgs{...} }
-type ConnectionZSideAccessPointLinkProtocolArrayInput interface {
-	pulumi.Input
-
-	ToConnectionZSideAccessPointLinkProtocolArrayOutput() ConnectionZSideAccessPointLinkProtocolArrayOutput
-	ToConnectionZSideAccessPointLinkProtocolArrayOutputWithContext(context.Context) ConnectionZSideAccessPointLinkProtocolArrayOutput
-}
-
-type ConnectionZSideAccessPointLinkProtocolArray []ConnectionZSideAccessPointLinkProtocolInput
-
-func (ConnectionZSideAccessPointLinkProtocolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointLinkProtocol)(nil)).Elem()
-}
-
-func (i ConnectionZSideAccessPointLinkProtocolArray) ToConnectionZSideAccessPointLinkProtocolArrayOutput() ConnectionZSideAccessPointLinkProtocolArrayOutput {
-	return i.ToConnectionZSideAccessPointLinkProtocolArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionZSideAccessPointLinkProtocolArray) ToConnectionZSideAccessPointLinkProtocolArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLinkProtocolArrayOutput)
-}
-
 type ConnectionZSideAccessPointLinkProtocolOutput struct{ *pulumi.OutputState }
 
 func (ConnectionZSideAccessPointLinkProtocolOutput) ElementType() reflect.Type {
@@ -3696,26 +3582,6 @@ func (o ConnectionZSideAccessPointLinkProtocolOutput) VlanSTag() pulumi.IntPtrOu
 
 func (o ConnectionZSideAccessPointLinkProtocolOutput) VlanTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointLinkProtocol) *int { return v.VlanTag }).(pulumi.IntPtrOutput)
-}
-
-type ConnectionZSideAccessPointLinkProtocolArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionZSideAccessPointLinkProtocolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointLinkProtocol)(nil)).Elem()
-}
-
-func (o ConnectionZSideAccessPointLinkProtocolArrayOutput) ToConnectionZSideAccessPointLinkProtocolArrayOutput() ConnectionZSideAccessPointLinkProtocolArrayOutput {
-	return o
-}
-
-func (o ConnectionZSideAccessPointLinkProtocolArrayOutput) ToConnectionZSideAccessPointLinkProtocolArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolArrayOutput {
-	return o
-}
-
-func (o ConnectionZSideAccessPointLinkProtocolArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointLinkProtocolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointLinkProtocol {
-		return vs[0].([]ConnectionZSideAccessPointLinkProtocol)[vs[1].(int)]
-	}).(ConnectionZSideAccessPointLinkProtocolOutput)
 }
 
 type ConnectionZSideAccessPointLocation struct {
@@ -4097,31 +3963,6 @@ func (i ConnectionZSideAccessPointProfileArgs) ToConnectionZSideAccessPointProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointProfileOutput)
 }
 
-// ConnectionZSideAccessPointProfileArrayInput is an input type that accepts ConnectionZSideAccessPointProfileArray and ConnectionZSideAccessPointProfileArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointProfileArrayInput` via:
-//
-//	ConnectionZSideAccessPointProfileArray{ ConnectionZSideAccessPointProfileArgs{...} }
-type ConnectionZSideAccessPointProfileArrayInput interface {
-	pulumi.Input
-
-	ToConnectionZSideAccessPointProfileArrayOutput() ConnectionZSideAccessPointProfileArrayOutput
-	ToConnectionZSideAccessPointProfileArrayOutputWithContext(context.Context) ConnectionZSideAccessPointProfileArrayOutput
-}
-
-type ConnectionZSideAccessPointProfileArray []ConnectionZSideAccessPointProfileInput
-
-func (ConnectionZSideAccessPointProfileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointProfile)(nil)).Elem()
-}
-
-func (i ConnectionZSideAccessPointProfileArray) ToConnectionZSideAccessPointProfileArrayOutput() ConnectionZSideAccessPointProfileArrayOutput {
-	return i.ToConnectionZSideAccessPointProfileArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionZSideAccessPointProfileArray) ToConnectionZSideAccessPointProfileArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointProfileArrayOutput)
-}
-
 type ConnectionZSideAccessPointProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionZSideAccessPointProfileOutput) ElementType() reflect.Type {
@@ -4163,26 +4004,6 @@ func (o ConnectionZSideAccessPointProfileOutput) Type() pulumi.StringOutput {
 
 func (o ConnectionZSideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type ConnectionZSideAccessPointProfileArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionZSideAccessPointProfileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointProfile)(nil)).Elem()
-}
-
-func (o ConnectionZSideAccessPointProfileArrayOutput) ToConnectionZSideAccessPointProfileArrayOutput() ConnectionZSideAccessPointProfileArrayOutput {
-	return o
-}
-
-func (o ConnectionZSideAccessPointProfileArrayOutput) ToConnectionZSideAccessPointProfileArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfileArrayOutput {
-	return o
-}
-
-func (o ConnectionZSideAccessPointProfileArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointProfileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointProfile {
-		return vs[0].([]ConnectionZSideAccessPointProfile)[vs[1].(int)]
-	}).(ConnectionZSideAccessPointProfileOutput)
 }
 
 type ConnectionZSideAccessPointProfileAccessPointTypeConfig struct {
@@ -17301,7 +17122,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInterfaceInput)(nil)).Elem(), ConnectionASideAccessPointInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInterfaceArrayInput)(nil)).Elem(), ConnectionASideAccessPointInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLinkProtocolInput)(nil)).Elem(), ConnectionASideAccessPointLinkProtocolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLinkProtocolArrayInput)(nil)).Elem(), ConnectionASideAccessPointLinkProtocolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLocationInput)(nil)).Elem(), ConnectionASideAccessPointLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLocationArrayInput)(nil)).Elem(), ConnectionASideAccessPointLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortInput)(nil)).Elem(), ConnectionASideAccessPointPortArgs{})
@@ -17309,7 +17129,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyArrayInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileInput)(nil)).Elem(), ConnectionASideAccessPointProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileArrayInput)(nil)).Elem(), ConnectionASideAccessPointProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), ConnectionASideAccessPointProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), ConnectionASideAccessPointProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointRoutingProtocolInput)(nil)).Elem(), ConnectionASideAccessPointRoutingProtocolArgs{})
@@ -17351,7 +17170,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInterfaceInput)(nil)).Elem(), ConnectionZSideAccessPointInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInterfaceArrayInput)(nil)).Elem(), ConnectionZSideAccessPointInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLinkProtocolInput)(nil)).Elem(), ConnectionZSideAccessPointLinkProtocolArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLinkProtocolArrayInput)(nil)).Elem(), ConnectionZSideAccessPointLinkProtocolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLocationInput)(nil)).Elem(), ConnectionZSideAccessPointLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLocationArrayInput)(nil)).Elem(), ConnectionZSideAccessPointLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortInput)(nil)).Elem(), ConnectionZSideAccessPointPortArgs{})
@@ -17359,7 +17177,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyArrayInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileInput)(nil)).Elem(), ConnectionZSideAccessPointProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileArrayInput)(nil)).Elem(), ConnectionZSideAccessPointProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), ConnectionZSideAccessPointProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointRoutingProtocolInput)(nil)).Elem(), ConnectionZSideAccessPointRoutingProtocolArgs{})
@@ -17581,7 +17398,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionASideAccessPointInterfaceOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointLinkProtocolOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointLinkProtocolArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointLocationOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointLocationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortOutput{})
@@ -17589,7 +17405,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointRoutingProtocolOutput{})
@@ -17631,7 +17446,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointInterfaceOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointLinkProtocolOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointLinkProtocolArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointLocationOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointLocationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortOutput{})
@@ -17639,7 +17453,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointRoutingProtocolOutput{})

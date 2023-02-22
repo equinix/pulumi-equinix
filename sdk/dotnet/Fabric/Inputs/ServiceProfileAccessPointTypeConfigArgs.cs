@@ -112,7 +112,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Type of access point type config - VD, COLO
         /// </summary>
         [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileAccessPointType> Type { get; set; } = null!;
 
         /// <summary>
         /// Colo/Port Uuid

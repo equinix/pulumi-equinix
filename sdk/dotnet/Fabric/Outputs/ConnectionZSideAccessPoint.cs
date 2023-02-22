@@ -20,11 +20,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly string? AuthenticationKey;
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointGateway> Gateways;
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointInterface> Interfaces;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointLinkProtocol> LinkProtocols;
+        public readonly string? LinkProtocols;
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointLocation> Locations;
         public readonly string? PeeringType;
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointPort> Ports;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointProfile> Profiles;
+        public readonly string? Profiles;
         public readonly string? ProviderConnectionId;
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointRoutingProtocol> RoutingProtocols;
         public readonly string? SellerRegion;
@@ -44,7 +44,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             ImmutableArray<Outputs.ConnectionZSideAccessPointInterface> interfaces,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointLinkProtocol> linkProtocols,
+            string? linkProtocols,
 
             ImmutableArray<Outputs.ConnectionZSideAccessPointLocation> locations,
 
@@ -52,7 +52,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             ImmutableArray<Outputs.ConnectionZSideAccessPointPort> ports,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointProfile> profiles,
+            string? profiles,
 
             string? providerConnectionId,
 

@@ -34,7 +34,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         /// </summary>
         [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        public InputUnion<string, Pulumi.Equinix.Fabric.NotificationsType> Type { get; set; } = null!;
 
         public ConnectionNotificationArgs()
         {

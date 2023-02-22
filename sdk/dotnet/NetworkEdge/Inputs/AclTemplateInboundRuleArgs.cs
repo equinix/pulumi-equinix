@@ -29,7 +29,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         /// Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
         /// </summary>
         [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
+        public InputUnion<string, Pulumi.Equinix.NetworkEdge.AclProtocolType> Protocol { get; set; } = null!;
 
         [Input("sequenceNumber")]
         public Input<int>? SequenceNumber { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ServiceTokenType>? Type { get; set; }
 
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

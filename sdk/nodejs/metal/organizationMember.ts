@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const member = new equinix.metal.OrganizationMember("member", {
  *     invitee: "member@example.com",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const owner = new equinix.metal.OrganizationMember("owner", {
  *     invitee: "admin@example.com",

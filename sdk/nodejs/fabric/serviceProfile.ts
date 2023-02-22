@@ -244,7 +244,7 @@ export interface ServiceProfileState {
     /**
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | enums.fabric.ProfileState>;
     /**
      * Tags attached to the connection
      */
@@ -252,7 +252,7 @@ export interface ServiceProfileState {
     /**
      * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | enums.fabric.ProfileType>;
     /**
      * Equinix assigned service profile identifier
      */
@@ -264,7 +264,7 @@ export interface ServiceProfileState {
     /**
      * Service profile visibility - PUBLIC, PRIVATE
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | enums.fabric.ProfileVisibility>;
 }
 
 /**
@@ -322,7 +322,7 @@ export interface ServiceProfileArgs {
     /**
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | enums.fabric.ProfileState>;
     /**
      * Tags attached to the connection
      */
@@ -330,7 +330,7 @@ export interface ServiceProfileArgs {
     /**
      * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      */
-    type: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.fabric.ProfileType>;
     /**
      * Virtual Devices
      */
@@ -338,5 +338,5 @@ export interface ServiceProfileArgs {
     /**
      * Service profile visibility - PUBLIC, PRIVATE
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | enums.fabric.ProfileVisibility>;
 }

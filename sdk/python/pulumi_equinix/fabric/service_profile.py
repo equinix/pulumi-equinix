@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ServiceProfileArgs', 'ServiceProfile']
@@ -17,7 +18,7 @@ __all__ = ['ServiceProfileArgs', 'ServiceProfile']
 class ServiceProfileArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
-                 type: pulumi.Input[str],
+                 type: pulumi.Input[Union[str, 'ProfileType']],
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
                  accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29,14 +30,14 @@ class ServiceProfileArgs:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None):
+                 visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None):
         """
         The set of arguments for constructing a ServiceProfile resource.
         :param pulumi.Input[str] description: User-provided service description
-        :param pulumi.Input[str] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]] accounts: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
@@ -48,10 +49,10 @@ class ServiceProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]] projects: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
-        :param pulumi.Input[str] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
-        :param pulumi.Input[str] visibility: Service profile visibility - PUBLIC, PRIVATE
+        :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "type", type)
@@ -100,14 +101,14 @@ class ServiceProfileArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
+    def type(self) -> pulumi.Input[Union[str, 'ProfileType']]:
         """
         Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: pulumi.Input[str]):
+    def type(self, value: pulumi.Input[Union[str, 'ProfileType']]):
         pulumi.set(self, "type", value)
 
     @property
@@ -244,14 +245,14 @@ class ServiceProfileArgs:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input[Union[str, 'ProfileState']]]:
         """
         Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input[Union[str, 'ProfileState']]]):
         pulumi.set(self, "state", value)
 
     @property
@@ -280,14 +281,14 @@ class ServiceProfileArgs:
 
     @property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[str]]:
+    def visibility(self) -> Optional[pulumi.Input[Union[str, 'ProfileVisibility']]]:
         """
         Service profile visibility - PUBLIC, PRIVATE
         """
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[str]]):
+    def visibility(self, value: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]]):
         pulumi.set(self, "visibility", value)
 
 
@@ -308,12 +309,12 @@ class _ServiceProfileState:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None):
+                 visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None):
         """
         Input properties used for looking up and filtering ServiceProfile resources.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
@@ -330,12 +331,12 @@ class _ServiceProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]] projects: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
-        :param pulumi.Input[str] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[str] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
-        :param pulumi.Input[str] visibility: Service profile visibility - PUBLIC, PRIVATE
+        :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
         if access_point_type_configs is not None:
             pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
@@ -548,14 +549,14 @@ class _ServiceProfileState:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
+    def state(self) -> Optional[pulumi.Input[Union[str, 'ProfileState']]]:
         """
         Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
+    def state(self, value: Optional[pulumi.Input[Union[str, 'ProfileState']]]):
         pulumi.set(self, "state", value)
 
     @property
@@ -572,14 +573,14 @@ class _ServiceProfileState:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> Optional[pulumi.Input[Union[str, 'ProfileType']]]:
         """
         Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: Optional[pulumi.Input[Union[str, 'ProfileType']]]):
         pulumi.set(self, "type", value)
 
     @property
@@ -608,14 +609,14 @@ class _ServiceProfileState:
 
     @property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[str]]:
+    def visibility(self) -> Optional[pulumi.Input[Union[str, 'ProfileVisibility']]]:
         """
         Service profile visibility - PUBLIC, PRIVATE
         """
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[str]]):
+    def visibility(self, value: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]]):
         pulumi.set(self, "visibility", value)
 
 
@@ -636,11 +637,11 @@ class ServiceProfile(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
         """
         Create a ServiceProfile resource with the given unique name, props, and options.
@@ -658,11 +659,11 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]] projects: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
-        :param pulumi.Input[str] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[str] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]] virtual_devices: Virtual Devices
-        :param pulumi.Input[str] visibility: Service profile visibility - PUBLIC, PRIVATE
+        :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
         ...
     @overload
@@ -699,11 +700,11 @@ class ServiceProfile(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -761,12 +762,12 @@ class ServiceProfile(pulumi.CustomResource):
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
             projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]]] = None,
             self_profile: Optional[pulumi.Input[bool]] = None,
-            state: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            type: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
             virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
-            visibility: Optional[pulumi.Input[str]] = None) -> 'ServiceProfile':
+            visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None) -> 'ServiceProfile':
         """
         Get an existing ServiceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -788,12 +789,12 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]] projects: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
-        :param pulumi.Input[str] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[str] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]] virtual_devices: Virtual Devices
-        :param pulumi.Input[str] visibility: Service profile visibility - PUBLIC, PRIVATE
+        :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

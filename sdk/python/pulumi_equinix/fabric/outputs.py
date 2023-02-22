@@ -9,6 +9,8 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from .. import _enums as _root_enums
+from ._enums import *
 
 __all__ = [
     'ConnectionASide',
@@ -16,12 +18,9 @@ __all__ = [
     'ConnectionASideAccessPointAccount',
     'ConnectionASideAccessPointGateway',
     'ConnectionASideAccessPointInterface',
-    'ConnectionASideAccessPointLinkProtocol',
     'ConnectionASideAccessPointLocation',
     'ConnectionASideAccessPointPort',
     'ConnectionASideAccessPointPortRedundancy',
-    'ConnectionASideAccessPointProfile',
-    'ConnectionASideAccessPointProfileAccessPointTypeConfig',
     'ConnectionASideAccessPointRoutingProtocol',
     'ConnectionASideAccessPointVirtualDevice',
     'ConnectionASideAdditionalInfo',
@@ -41,12 +40,9 @@ __all__ = [
     'ConnectionZSideAccessPointAccount',
     'ConnectionZSideAccessPointGateway',
     'ConnectionZSideAccessPointInterface',
-    'ConnectionZSideAccessPointLinkProtocol',
     'ConnectionZSideAccessPointLocation',
     'ConnectionZSideAccessPointPort',
     'ConnectionZSideAccessPointPortRedundancy',
-    'ConnectionZSideAccessPointProfile',
-    'ConnectionZSideAccessPointProfileAccessPointTypeConfig',
     'ConnectionZSideAccessPointRoutingProtocol',
     'ConnectionZSideAccessPointVirtualDevice',
     'ConnectionZSideAdditionalInfo',
@@ -253,11 +249,11 @@ class ConnectionASideAccessPoint(dict):
                  authentication_key: Optional[str] = None,
                  gateways: Optional[Sequence['outputs.ConnectionASideAccessPointGateway']] = None,
                  interfaces: Optional[Sequence['outputs.ConnectionASideAccessPointInterface']] = None,
-                 link_protocols: Optional[Sequence['outputs.ConnectionASideAccessPointLinkProtocol']] = None,
+                 link_protocols: Optional[str] = None,
                  locations: Optional[Sequence['outputs.ConnectionASideAccessPointLocation']] = None,
                  peering_type: Optional[str] = None,
                  ports: Optional[Sequence['outputs.ConnectionASideAccessPointPort']] = None,
-                 profiles: Optional[Sequence['outputs.ConnectionASideAccessPointProfile']] = None,
+                 profiles: Optional[str] = None,
                  provider_connection_id: Optional[str] = None,
                  routing_protocols: Optional[Sequence['outputs.ConnectionASideAccessPointRoutingProtocol']] = None,
                  seller_region: Optional[str] = None,
@@ -265,7 +261,7 @@ class ConnectionASideAccessPoint(dict):
                  virtual_devices: Optional[Sequence['outputs.ConnectionASideAccessPointVirtualDevice']] = None):
         """
         :param Sequence['ConnectionASideAccessPointAccountArgs'] accounts: Customer account information that is associated with this connection
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param Union[str, 'AccessPointType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
         if accounts is not None:
             pulumi.set(__self__, "accounts", accounts)
@@ -321,7 +317,7 @@ class ConnectionASideAccessPoint(dict):
 
     @property
     @pulumi.getter(name="linkProtocols")
-    def link_protocols(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointLinkProtocol']]:
+    def link_protocols(self) -> Optional[str]:
         return pulumi.get(self, "link_protocols")
 
     @property
@@ -341,7 +337,7 @@ class ConnectionASideAccessPoint(dict):
 
     @property
     @pulumi.getter
-    def profiles(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointProfile']]:
+    def profiles(self) -> Optional[str]:
         return pulumi.get(self, "profiles")
 
     @property
@@ -530,70 +526,6 @@ class ConnectionASideAccessPointInterface(dict):
 
 
 @pulumi.output_type
-class ConnectionASideAccessPointLinkProtocol(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vlanCTag":
-            suggest = "vlan_c_tag"
-        elif key == "vlanSTag":
-            suggest = "vlan_s_tag"
-        elif key == "vlanTag":
-            suggest = "vlan_tag"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionASideAccessPointLinkProtocol. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionASideAccessPointLinkProtocol.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionASideAccessPointLinkProtocol.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 vlan_c_tag: Optional[int] = None,
-                 vlan_s_tag: Optional[int] = None,
-                 vlan_tag: Optional[int] = None):
-        """
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if vlan_c_tag is not None:
-            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
-        if vlan_s_tag is not None:
-            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
-        if vlan_tag is not None:
-            pulumi.set(__self__, "vlan_tag", vlan_tag)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="vlanCTag")
-    def vlan_c_tag(self) -> Optional[int]:
-        return pulumi.get(self, "vlan_c_tag")
-
-    @property
-    @pulumi.getter(name="vlanSTag")
-    def vlan_s_tag(self) -> Optional[int]:
-        return pulumi.get(self, "vlan_s_tag")
-
-    @property
-    @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> Optional[int]:
-        return pulumi.get(self, "vlan_tag")
-
-
-@pulumi.output_type
 class ConnectionASideAccessPointLocation(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -720,115 +652,6 @@ class ConnectionASideAccessPointPortRedundancy(dict):
 
 
 @pulumi.output_type
-class ConnectionASideAccessPointProfile(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessPointTypeConfigs":
-            suggest = "access_point_type_configs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionASideAccessPointProfile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionASideAccessPointProfile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionASideAccessPointProfile.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: str,
-                 uuid: str,
-                 access_point_type_configs: Optional[Sequence['outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig']] = None,
-                 description: Optional[str] = None,
-                 href: Optional[str] = None,
-                 name: Optional[str] = None):
-        """
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        :param str href: Connection URI information
-        :param str name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        """
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
-        if access_point_type_configs is not None:
-            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if href is not None:
-            pulumi.set(__self__, "href", href)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> str:
-        return pulumi.get(self, "uuid")
-
-    @property
-    @pulumi.getter(name="accessPointTypeConfigs")
-    def access_point_type_configs(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig']]:
-        return pulumi.get(self, "access_point_type_configs")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def href(self) -> Optional[str]:
-        """
-        Connection URI information
-        """
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
-        """
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
 class ConnectionASideAccessPointRoutingProtocol(dict):
     def __init__(__self__, *,
                  state: Optional[str] = None,
@@ -946,7 +769,7 @@ class ConnectionASideServiceToken(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Connection URI information
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param Union[str, 'ServiceTokenType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1270,7 +1093,7 @@ class ConnectionNotification(dict):
                  send_interval: Optional[str] = None):
         """
         :param Sequence[str] emails: Array of contact emails
-        :param str type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param Union[str, 'NotificationsType'] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         :param str send_interval: Send interval
         """
         pulumi.set(__self__, "emails", emails)
@@ -1711,11 +1534,11 @@ class ConnectionZSideAccessPoint(dict):
                  authentication_key: Optional[str] = None,
                  gateways: Optional[Sequence['outputs.ConnectionZSideAccessPointGateway']] = None,
                  interfaces: Optional[Sequence['outputs.ConnectionZSideAccessPointInterface']] = None,
-                 link_protocols: Optional[Sequence['outputs.ConnectionZSideAccessPointLinkProtocol']] = None,
+                 link_protocols: Optional[str] = None,
                  locations: Optional[Sequence['outputs.ConnectionZSideAccessPointLocation']] = None,
                  peering_type: Optional[str] = None,
                  ports: Optional[Sequence['outputs.ConnectionZSideAccessPointPort']] = None,
-                 profiles: Optional[Sequence['outputs.ConnectionZSideAccessPointProfile']] = None,
+                 profiles: Optional[str] = None,
                  provider_connection_id: Optional[str] = None,
                  routing_protocols: Optional[Sequence['outputs.ConnectionZSideAccessPointRoutingProtocol']] = None,
                  seller_region: Optional[str] = None,
@@ -1723,7 +1546,7 @@ class ConnectionZSideAccessPoint(dict):
                  virtual_devices: Optional[Sequence['outputs.ConnectionZSideAccessPointVirtualDevice']] = None):
         """
         :param Sequence['ConnectionZSideAccessPointAccountArgs'] accounts: Customer account information that is associated with this connection
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param Union[str, 'AccessPointType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
         if accounts is not None:
             pulumi.set(__self__, "accounts", accounts)
@@ -1779,7 +1602,7 @@ class ConnectionZSideAccessPoint(dict):
 
     @property
     @pulumi.getter(name="linkProtocols")
-    def link_protocols(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointLinkProtocol']]:
+    def link_protocols(self) -> Optional[str]:
         return pulumi.get(self, "link_protocols")
 
     @property
@@ -1799,7 +1622,7 @@ class ConnectionZSideAccessPoint(dict):
 
     @property
     @pulumi.getter
-    def profiles(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointProfile']]:
+    def profiles(self) -> Optional[str]:
         return pulumi.get(self, "profiles")
 
     @property
@@ -1988,70 +1811,6 @@ class ConnectionZSideAccessPointInterface(dict):
 
 
 @pulumi.output_type
-class ConnectionZSideAccessPointLinkProtocol(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "vlanCTag":
-            suggest = "vlan_c_tag"
-        elif key == "vlanSTag":
-            suggest = "vlan_s_tag"
-        elif key == "vlanTag":
-            suggest = "vlan_tag"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionZSideAccessPointLinkProtocol. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionZSideAccessPointLinkProtocol.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionZSideAccessPointLinkProtocol.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 vlan_c_tag: Optional[int] = None,
-                 vlan_s_tag: Optional[int] = None,
-                 vlan_tag: Optional[int] = None):
-        """
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if vlan_c_tag is not None:
-            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
-        if vlan_s_tag is not None:
-            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
-        if vlan_tag is not None:
-            pulumi.set(__self__, "vlan_tag", vlan_tag)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="vlanCTag")
-    def vlan_c_tag(self) -> Optional[int]:
-        return pulumi.get(self, "vlan_c_tag")
-
-    @property
-    @pulumi.getter(name="vlanSTag")
-    def vlan_s_tag(self) -> Optional[int]:
-        return pulumi.get(self, "vlan_s_tag")
-
-    @property
-    @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> Optional[int]:
-        return pulumi.get(self, "vlan_tag")
-
-
-@pulumi.output_type
 class ConnectionZSideAccessPointLocation(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2178,115 +1937,6 @@ class ConnectionZSideAccessPointPortRedundancy(dict):
 
 
 @pulumi.output_type
-class ConnectionZSideAccessPointProfile(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessPointTypeConfigs":
-            suggest = "access_point_type_configs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionZSideAccessPointProfile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionZSideAccessPointProfile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionZSideAccessPointProfile.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 type: str,
-                 uuid: str,
-                 access_point_type_configs: Optional[Sequence['outputs.ConnectionZSideAccessPointProfileAccessPointTypeConfig']] = None,
-                 description: Optional[str] = None,
-                 href: Optional[str] = None,
-                 name: Optional[str] = None):
-        """
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        :param str href: Connection URI information
-        :param str name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        """
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
-        if access_point_type_configs is not None:
-            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if href is not None:
-            pulumi.set(__self__, "href", href)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> str:
-        return pulumi.get(self, "uuid")
-
-    @property
-    @pulumi.getter(name="accessPointTypeConfigs")
-    def access_point_type_configs(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointProfileAccessPointTypeConfig']]:
-        return pulumi.get(self, "access_point_type_configs")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def href(self) -> Optional[str]:
-        """
-        Connection URI information
-        """
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
-    def __init__(__self__, *,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
-        """
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
 class ConnectionZSideAccessPointRoutingProtocol(dict):
     def __init__(__self__, *,
                  state: Optional[str] = None,
@@ -2404,7 +2054,7 @@ class ConnectionZSideServiceToken(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Connection URI information
-        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param Union[str, 'ServiceTokenType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -2499,7 +2149,7 @@ class ServiceProfileAccessPointTypeConfig(dict):
                  supported_bandwidths: Optional[Sequence[int]] = None,
                  uuid: Optional[str] = None):
         """
-        :param str type: Type of access point type config - VD, COLO
+        :param Union[str, 'ProfileAccessPointType'] type: Type of access point type config - VD, COLO
         :param bool allow_bandwidth_auto_approval: Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
         :param bool allow_bandwidth_upgrade: Availability of a bandwidth upgrade. The default is false
         :param bool allow_custom_bandwidth: Setting to enable or disable the ability of the buyer to customize the bandwidth
@@ -3434,7 +3084,7 @@ class ServiceProfileNotification(dict):
                  send_interval: Optional[str] = None):
         """
         :param Sequence[str] emails: Array of contact emails
-        :param str type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param Union[str, 'NotificationsType'] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         :param str send_interval: Send interval
         """
         pulumi.set(__self__, "emails", emails)

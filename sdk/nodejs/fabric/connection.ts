@@ -239,7 +239,7 @@ export interface ConnectionState {
     /**
      * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | enums.fabric.ConnectionType>;
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
@@ -285,7 +285,7 @@ export interface ConnectionArgs {
     /**
      * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
      */
-    type: pulumi.Input<string>;
+    type: pulumi.Input<string | enums.fabric.ConnectionType>;
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */

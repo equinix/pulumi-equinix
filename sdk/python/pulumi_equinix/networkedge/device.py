@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DeviceArgs', 'Device']
@@ -40,7 +41,7 @@ class DeviceArgs:
                  self_managed: Optional[pulumi.Input[bool]] = None,
                  ssh_key: Optional[pulumi.Input['DeviceSshKeyArgs']] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
-                 throughput_unit: Optional[pulumi.Input[str]] = None,
+                 throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  wan_interface_id: Optional[pulumi.Input[str]] = None):
         """
@@ -78,7 +79,7 @@ class DeviceArgs:
                `self-managed` or `Equinix managed` (default).
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] throughput: Device license throughput.
-        :param pulumi.Input[str] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
                cluster device. See Cluster Details - Nodes - Vendor Configuration
                below for more details.
@@ -430,14 +431,14 @@ class DeviceArgs:
 
     @property
     @pulumi.getter(name="throughputUnit")
-    def throughput_unit(self) -> Optional[pulumi.Input[str]]:
+    def throughput_unit(self) -> Optional[pulumi.Input[Union[str, 'ThroughputUnit']]]:
         """
         License throughput unit. One of `Mbps` or `Gbps`.
         """
         return pulumi.get(self, "throughput_unit")
 
     @throughput_unit.setter
-    def throughput_unit(self, value: Optional[pulumi.Input[str]]):
+    def throughput_unit(self, value: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]]):
         pulumi.set(self, "throughput_unit", value)
 
     @property
@@ -503,7 +504,7 @@ class _DeviceState:
                  status: Optional[pulumi.Input[str]] = None,
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
-                 throughput_unit: Optional[pulumi.Input[str]] = None,
+                 throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
                  type_code: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -557,7 +558,7 @@ class _DeviceState:
         :param pulumi.Input[str] status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
-        :param pulumi.Input[str] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
@@ -1058,14 +1059,14 @@ class _DeviceState:
 
     @property
     @pulumi.getter(name="throughputUnit")
-    def throughput_unit(self) -> Optional[pulumi.Input[str]]:
+    def throughput_unit(self) -> Optional[pulumi.Input[Union[str, 'ThroughputUnit']]]:
         """
         License throughput unit. One of `Mbps` or `Gbps`.
         """
         return pulumi.get(self, "throughput_unit")
 
     @throughput_unit.setter
-    def throughput_unit(self, value: Optional[pulumi.Input[str]]):
+    def throughput_unit(self, value: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]]):
         pulumi.set(self, "throughput_unit", value)
 
     @property
@@ -1170,7 +1171,7 @@ class Device(pulumi.CustomResource):
                  ssh_key: Optional[pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']]] = None,
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
-                 throughput_unit: Optional[pulumi.Input[str]] = None,
+                 throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
                  type_code: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -1317,7 +1318,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
-        :param pulumi.Input[str] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
                cluster device. See Cluster Details - Nodes - Vendor Configuration
@@ -1476,7 +1477,7 @@ class Device(pulumi.CustomResource):
                  ssh_key: Optional[pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']]] = None,
                  term_length: Optional[pulumi.Input[int]] = None,
                  throughput: Optional[pulumi.Input[int]] = None,
-                 throughput_unit: Optional[pulumi.Input[str]] = None,
+                 throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
                  type_code: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -1589,7 +1590,7 @@ class Device(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             term_length: Optional[pulumi.Input[int]] = None,
             throughput: Optional[pulumi.Input[int]] = None,
-            throughput_unit: Optional[pulumi.Input[str]] = None,
+            throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
             type_code: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
             vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1648,7 +1649,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
-        :param pulumi.Input[str] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
+        :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the

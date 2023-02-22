@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
  * const testVlan = new equinix.metal.Vlan("testVlan", {

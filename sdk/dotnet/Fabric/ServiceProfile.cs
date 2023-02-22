@@ -309,7 +309,7 @@ namespace Pulumi.Equinix.Fabric
         /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileState>? State { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -327,7 +327,7 @@ namespace Pulumi.Equinix.Fabric
         /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         /// </summary>
         [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
 
         [Input("virtualDevices")]
         private InputList<Inputs.ServiceProfileVirtualDeviceArgs>? _virtualDevices;
@@ -345,7 +345,7 @@ namespace Pulumi.Equinix.Fabric
         /// Service profile visibility - PUBLIC, PRIVATE
         /// </summary>
         [Input("visibility")]
-        public Input<string>? Visibility { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileVisibility>? Visibility { get; set; }
 
         public ServiceProfileArgs()
         {
@@ -503,7 +503,7 @@ namespace Pulumi.Equinix.Fabric
         /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         /// </summary>
         [Input("state")]
-        public Input<string>? State { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileState>? State { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -521,7 +521,7 @@ namespace Pulumi.Equinix.Fabric
         /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         /// </summary>
         [Input("type")]
-        public Input<string>? Type { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Type { get; set; }
 
         /// <summary>
         /// Equinix assigned service profile identifier
@@ -545,7 +545,7 @@ namespace Pulumi.Equinix.Fabric
         /// Service profile visibility - PUBLIC, PRIVATE
         /// </summary>
         [Input("visibility")]
-        public Input<string>? Visibility { get; set; }
+        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileVisibility>? Visibility { get; set; }
 
         public ServiceProfileState()
         {

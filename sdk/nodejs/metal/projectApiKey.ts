@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * // Create a new read-only API key in existing project
  * const test = new equinix.metal.ProjectApiKey("test", {

@@ -174,34 +174,93 @@ func (in *billingCyclePtr) ToBillingCyclePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(BillingCyclePtrOutput)
 }
 
+// See https://deploy.equinix.com/developers/api/metal/#tag/Facilities/operation/findFacilities
 type Facility string
 
 const (
-	FacilityEWR1 = Facility("ewr1")
-	FacilitySJC1 = Facility("sjc1")
-	FacilityDFW1 = Facility("dfw1")
-	FacilityDFW2 = Facility("dfw2")
-	FacilityAMS1 = Facility("ams1")
+	// Amsterdam 2
+	FacilityAM2 = Facility("am2")
+	// Amsterdam 6
+	FacilityAM6 = Facility("am6")
+	// Manchester 5
+	FacilityMA5 = Facility("ma5")
+	// Tokio 1
 	FacilityNRT1 = Facility("nrt1")
-	FacilitySEA1 = Facility("sea1")
-	FacilityLAX1 = Facility("lax1")
-	FacilityORD1 = Facility("ord1")
-	FacilityATL1 = Facility("atl1")
-	FacilityIAD1 = Facility("iad1")
-	FacilitySIN1 = Facility("sin1")
-	FacilityHKG1 = Facility("hkg1")
-	FacilitySYD1 = Facility("syd1")
-	FacilityMRS1 = Facility("mrs1")
-	FacilityYYZ1 = Facility("yyz1")
-	FacilityFRA2 = Facility("fra2")
-	FacilityAM6  = Facility("am6")
-	FacilityDC13 = Facility("dc13")
-	FacilityCH3  = Facility("ch3")
-	FacilityDA3  = Facility("da3")
+	// Paris 4
+	FacilityPA4 = Facility("pa4")
+	// Stockholm 2
+	FacilitySK2 = Facility("sk2")
+	// Melbourne 2
+	FacilityME2 = Facility("me2")
+	// Hong Kong 2
+	FacilityHK2 = Facility("hk2")
+	// Tokyo 11
+	FacilityTY11 = Facility("ty11")
+	// Los Angeles 4
+	FacilityLA4 = Facility("la4")
+	// Dallas 6
+	FacilityDA6 = Facility("da6")
+	// Dallas 11
 	FacilityDA11 = Facility("da11")
-	FacilityLA4  = Facility("la4")
-	FacilityNY5  = Facility("ny5")
-	FacilitySG1  = Facility("sg1")
+	// Dallas 3
+	FacilityDA3 = Facility("da3")
+	// Sao Paulo 4
+	FacilitySP4 = Facility("sp4")
+	// Montreal 1
+	FacilityMT1 = Facility("mt1")
+	// Silicon Valley 16
+	FacilitySV16 = Facility("sv16")
+	// Sunnyvale, CA 1
+	FacilitySJC1 = Facility("sjc1")
+	// Frankfurt 2
+	FacilityFRA2 = Facility("fra2")
+	// Frankfurt 8
+	FacilityFRA8 = Facility("fr8")
+	// New York 5
+	FacilityNY5 = Facility("ny5")
+	// New York 6
+	FacilityNY6 = Facility("ny6")
+	// New York 7
+	FacilityNY7 = Facility("ny7")
+	// Chicago 3
+	FacilityCH3 = Facility("ch3")
+	// Seoul 1
+	FacilitySL1 = Facility("sl1")
+	// Sydney 5
+	FacilitySY5 = Facility("sy5")
+	// Osaka 3
+	FacilityOS3 = Facility("os3")
+	// London 7
+	FacilityLD7 = Facility("ld7")
+	// Washington DC 10
+	FacilityDC10 = Facility("dc10")
+	// Amsterdam 1
+	FacilityAMS1 = Facility("ams1")
+	// Singapore 4
+	FacilitySG4 = Facility("sg4")
+	// Seattle 4
+	FacilitySE4 = Facility("se4")
+	// Sydney 4
+	FacilitySY4 = Facility("sy4")
+	// Atlanta 4
+	FacilityAT4 = Facility("at4")
+	// Dallas 2
+	FacilityDFW2 = Facility("dfw2")
+	// Toronto
+	FacilityTR2 = Facility("tr2")
+	// Washington DC
+	FacilityDC13 = Facility("dc13")
+	// Helsinki
+	FacilityHE7 = Facility("he7")
+	// Parsippany, NJ 1
+	FacilityEWR1 = Facility("ewr1")
+	// Singapore 5
+	FacilitySG5 = Facility("sg5")
+	// Singapore 1
+	FacilitySG1 = Facility("sg1")
+	// Madrid 2
+	FacilityMD2 = Facility("md2")
+	// Silicon Valley 15
 	FacilitySV15 = Facility("sv15")
 )
 
@@ -692,48 +751,90 @@ func (in *networkTypePtr) ToNetworkTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkTypePtrOutput)
 }
 
+// See https://deploy.equinix.com/developers/api/metal/#tag/OperatingSystems/operation/findOperatingSystems
 type OperatingSystem string
 
 const (
-	OperatingSystemAlpine3          = OperatingSystem("alpine_3")
-	OperatingSystemCentOS6          = OperatingSystem("centos_6")
-	OperatingSystemCentOS7          = OperatingSystem("centos_7")
-	OperatingSystemCentOS8          = OperatingSystem("centos_8")
-	OperatingSystemCoreOSAlpha      = OperatingSystem("coreos_alpha")
-	OperatingSystemCoreOSBeta       = OperatingSystem("coreos_beta")
-	OperatingSystemCoreOSStable     = OperatingSystem("coreos_stable")
-	OperatingSystemCustomIPXE       = OperatingSystem("custom_ipxe")
-	OperatingSystemDebian8          = OperatingSystem("debian_8")
-	OperatingSystemDebian9          = OperatingSystem("debian_9")
-	OperatingSystemDebian10         = OperatingSystem("debian_10")
-	OperatingSystemFlatcarAlpha     = OperatingSystem("flatcar_alpha")
-	OperatingSystemFlatcarBeta      = OperatingSystem("flatcar_beta")
-	OperatingSystemFlatcarEdge      = OperatingSystem("flatcar_edge")
-	OperatingSystemFlatcarStable    = OperatingSystem("flatcar_stable")
-	OperatingSystem_FreeBSD10_4     = OperatingSystem("freebsd_10_4")
-	OperatingSystem_FreeBSD11_1     = OperatingSystem("freebsd_11_1")
-	OperatingSystem_FreeBSD11_2     = OperatingSystem("freebsd_11_2")
-	OperatingSystemFreeBSD12Testing = OperatingSystem("freebsd_12_testing")
-	OperatingSystem_NixOS18_03      = OperatingSystem("nixos_18_03")
-	OperatingSystem_NixOS19_03      = OperatingSystem("nixos_19_03")
-	OperatingSystem_OpenSUSE42_3    = OperatingSystem("opensuse_42_3")
-	OperatingSystemRancherOS        = OperatingSystem("rancher")
-	OperatingSystemRHEL7            = OperatingSystem("rhel_7")
-	OperatingSystemRHEL8            = OperatingSystem("rhel_8")
-	OperatingSystemScientificLinux6 = OperatingSystem("scientific_6")
-	OperatingSystemSLES12SP3        = OperatingSystem("suse_sles12_sp3")
-	OperatingSystemUbuntu1404       = OperatingSystem("ubuntu_14_04")
-	OperatingSystemUbuntu1604       = OperatingSystem("ubuntu_16_04")
-	OperatingSystemUbuntu1710       = OperatingSystem("ubuntu_17_10")
-	OperatingSystemUbuntu1804       = OperatingSystem("ubuntu_18_04")
-	OperatingSystemUbuntu2004       = OperatingSystem("ubuntu_20_04")
-	OperatingSystemUbuntu2010       = OperatingSystem("ubuntu_20_10")
-	OperatingSystem_VMWareEsxi6_5   = OperatingSystem("vmware_esxi_6_5")
-	OperatingSystem_VMWareEsxi6_7   = OperatingSystem("vmware_esxi_6_7")
-	OperatingSystem_VMWareEsxi7_0   = OperatingSystem("vmware_esxi_7_0")
-	OperatingSystemWindows2012R2    = OperatingSystem("windows_2012_r2")
-	OperatingSystemWindows2016      = OperatingSystem("windows_2016")
-	OperatingSystemWindows2019      = OperatingSystem("windows_2019")
+	OperatingSystemAlma8               = OperatingSystem("alma_8")
+	OperatingSystemAlma9               = OperatingSystem("alma_9")
+	OperatingSystemAlpine3             = OperatingSystem("alpine_3")
+	OperatingSystemCentOS6             = OperatingSystem("centos_6")
+	OperatingSystemCentOS7             = OperatingSystem("centos_7")
+	OperatingSystemCentOS8             = OperatingSystem("centos_8")
+	OperatingSystemCoreOSAlpha         = OperatingSystem("coreos_alpha")
+	OperatingSystemCoreOSBeta          = OperatingSystem("coreos_beta")
+	OperatingSystemCoreOSStable        = OperatingSystem("coreos_stable")
+	OperatingSystemCustomIPXE          = OperatingSystem("custom_ipxe")
+	OperatingSystemDebian10            = OperatingSystem("debian_10")
+	OperatingSystemDebian11            = OperatingSystem("debian_11")
+	OperatingSystemDebian7             = OperatingSystem("debian_7")
+	OperatingSystemDebian8             = OperatingSystem("debian_8")
+	OperatingSystemDebian9             = OperatingSystem("debian_9")
+	OperatingSystemFedora31            = OperatingSystem("fedora_31")
+	OperatingSystemFedora34            = OperatingSystem("fedora_34")
+	OperatingSystemFlatcarAlpha        = OperatingSystem("flatcar_alpha")
+	OperatingSystemFlatcarBeta         = OperatingSystem("flatcar_beta")
+	OperatingSystemFlatcarEdge         = OperatingSystem("flatcar_edge")
+	OperatingSystemFlatcarLTS          = OperatingSystem("flatcar_lts")
+	OperatingSystemFlatcarStable       = OperatingSystem("flatcar_stable")
+	OperatingSystem_FreeBSD10_3        = OperatingSystem("freebsd_10_3")
+	OperatingSystem_FreeBSD10_4        = OperatingSystem("freebsd_10_4")
+	OperatingSystem_FreeBSD11_0        = OperatingSystem("freebsd_11_0")
+	OperatingSystem_FreeBSD11_1        = OperatingSystem("freebsd_11_1")
+	OperatingSystem_FreeBSD11_2        = OperatingSystem("freebsd_11_2")
+	OperatingSystem_FreeBSD11_3        = OperatingSystem("freebsd_11_3")
+	OperatingSystem_FreeBSD11_4        = OperatingSystem("freebsd_11_4")
+	OperatingSystemFreeBSD12Testing    = OperatingSystem("freebsd_12_testing")
+	OperatingSystem_FreeBSD12_1        = OperatingSystem("freebsd_12_1")
+	OperatingSystem_FreeBSD13_0        = OperatingSystem("freebsd_13_0")
+	OperatingSystem_FreeBSD13_1        = OperatingSystem("freebsd_13_1")
+	OperatingSystem_FreeBSD13_testing  = OperatingSystem("freebsd_13_testing")
+	OperatingSystemHookEsxi7           = OperatingSystem("hook_esxi7")
+	OperatingSystem_NixOS17_03         = OperatingSystem("nixos_17_03")
+	OperatingSystem_NixOS18_03         = OperatingSystem("nixos_18_03")
+	OperatingSystem_NixOS19_03         = OperatingSystem("nixos_19_03")
+	OperatingSystem_NixOS20_09         = OperatingSystem("nixos_20_09")
+	OperatingSystem_NixOS21_11         = OperatingSystem("nixos_21_11")
+	OperatingSystem_NixOS22_05         = OperatingSystem("nixos_22_05")
+	OperatingSystem_NixOS22_11         = OperatingSystem("nixos_22_11")
+	OperatingSystem_Nixos21_05         = OperatingSystem("nixos_21_05")
+	OperatingSystemNutanixCentos       = OperatingSystem("nutanix_centos")
+	OperatingSystem_NutanixLTS5_19_1   = OperatingSystem("nutanix_lts_5_19_1")
+	OperatingSystem_NutanixLTS5_20     = OperatingSystem("nutanix_lts_5_20")
+	OperatingSystem_OpenSUSE42_3       = OperatingSystem("opensuse_42_3")
+	OperatingSystemRHEL7               = OperatingSystem("rhel_7")
+	OperatingSystemRHEL8               = OperatingSystem("rhel_8")
+	OperatingSystemRHEL9               = OperatingSystem("rhel_9")
+	OperatingSystemRancherOS           = OperatingSystem("rancher")
+	OperatingSystemRocky8              = OperatingSystem("rocky_8")
+	OperatingSystemRocky9              = OperatingSystem("rocky_9")
+	OperatingSystemSLES12SP3           = OperatingSystem("suse_sles12_sp3")
+	OperatingSystemScientificLinux6    = OperatingSystem("scientific_6")
+	OperatingSystemTalosV1             = OperatingSystem("talos_v1")
+	OperatingSystemUbuntu1710          = OperatingSystem("ubuntu_17_10")
+	OperatingSystem_Ubuntu18_04        = OperatingSystem("ubuntu_18_04")
+	OperatingSystemUbuntu1904          = OperatingSystem("ubuntu_19_04")
+	OperatingSystem_Ubuntu19_10        = OperatingSystem("ubuntu_19_10")
+	OperatingSystem_Ubuntu20_04        = OperatingSystem("ubuntu_20_04")
+	OperatingSystem_Ubuntu20_04_legacy = OperatingSystem("ubuntu_20_04_legacy")
+	OperatingSystem_Ubuntu20_10        = OperatingSystem("ubuntu_20_10")
+	OperatingSystemUbuntu2204          = OperatingSystem("ubuntu_22_04")
+	OperatingSystemVMWareAlloyVcf      = OperatingSystem("vmware_alloy_vcf")
+	OperatingSystem_VMWareEsxi5_5      = OperatingSystem("vmware_esxi_5_5")
+	OperatingSystem_VMWareEsxi6_0      = OperatingSystem("vmware_esxi_6_0")
+	OperatingSystem_VMWareEsxi6_5      = OperatingSystem("vmware_esxi_6_5")
+	OperatingSystem_VMWareEsxi6_7      = OperatingSystem("vmware_esxi_6_7")
+	OperatingSystem_VMWareEsxi6_7_vcf  = OperatingSystem("vmware_esxi_6_7_vcf")
+	OperatingSystem_VMWareEsxi7_0      = OperatingSystem("vmware_esxi_7_0")
+	OperatingSystem_VMWareEsxi7_0U2a   = OperatingSystem("vmware_esxi_7_0U2a")
+	OperatingSystem_VMWareEsxi7_0_vcf  = OperatingSystem("vmware_esxi_7_0_vcf")
+	OperatingSystem_VMWareNsx2_5_0     = OperatingSystem("vmware_nsx_2_5_0")
+	OperatingSystem_VMWareNsx3_0_0     = OperatingSystem("vmware_nsx_3_0_0")
+	OperatingSystemVirtuozzo7          = OperatingSystem("virtuozzo_7")
+	OperatingSystemWindows2012R2       = OperatingSystem("windows_2012_r2")
+	OperatingSystemWindows2016         = OperatingSystem("windows_2016")
+	OperatingSystemWindows2019         = OperatingSystem("windows_2019")
+	OperatingSystemWindows2022         = OperatingSystem("windows_2022")
 )
 
 func (OperatingSystem) ElementType() reflect.Type {
@@ -893,28 +994,28 @@ func (in *operatingSystemPtr) ToOperatingSystemPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemPtrOutput)
 }
 
+// See https://deploy.equinix.com/developers/api/metal/#tag/Plans/operation/findPlans
 type Plan string
 
 const (
+	PlanA3LargeX86  = Plan("a3.large.x86")
 	PlanC2LargeARM  = Plan("c2.large.arm")
 	PlanC2MediumX86 = Plan("c2.medium.x86")
-	PlanC1SmallX86  = Plan("baremetal_1")
-	PlanC1LargeARM  = Plan("baremetal_2a")
-	PlanC1XLargeX86 = Plan("baremetal_3")
-	PlanX2XLargeX86 = Plan("x2.xlarge.x86")
-	PlanX1SmallX86  = Plan("baremetal_1e")
+	PlanC3LargeARM  = Plan("c3.large.arm64")
+	PlanC3MediumX86 = Plan("c3.medium.x86")
+	PlanC3SmallX86  = Plan("c3.small.x86")
+	PlanF3LargeX86  = Plan("f3.large.x86")
+	PlanF3MediumX86 = Plan("f3.medium.x86")
 	PlanG2LargeX86  = Plan("g2.large.x86")
 	PlanM2XLargeX86 = Plan("m2.xlarge.x86")
-	PlanM1XLargeX86 = Plan("baremetal_2")
-	PlanT1SmallX86  = Plan("baremetal_0")
-	PlanS1LargeX86  = Plan("baremetal_s")
-	PlanC3SmallX86  = Plan("c3.small.x86")
-	PlanC3MediumX86 = Plan("c3.medium.x86")
-	PlanF3MediumX86 = Plan("f3.medium.x86")
-	PlanF3LargeX86  = Plan("f3.large.x86")
 	PlanM3LargeX86  = Plan("m3.large.x86")
-	PlanS3XLargeX86 = Plan("s3.xlarge.x86")
+	PlanM3SmallX86  = Plan("m3.small.x86")
 	PlanN2XLargeX86 = Plan("n2.xlarge.x86")
+	PlanN3XLargeX86 = Plan("n3.xlarge.x86")
+	PlanS3XLargeX86 = Plan("s3.xlarge.x86")
+	PlanT3SmallX86  = Plan("t3.small.x86")
+	PlanX2XLargeX86 = Plan("x2.xlarge.x86")
+	PlanX3XLargeX86 = Plan("x3.xlarge.x86")
 )
 
 func (Plan) ElementType() reflect.Type {
@@ -1077,16 +1178,16 @@ func (in *planPtr) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingCycleInput)(nil)).Elem(), BillingCycle("hourly"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingCyclePtrInput)(nil)).Elem(), BillingCycle("hourly"))
-	pulumi.RegisterInputType(reflect.TypeOf((*FacilityInput)(nil)).Elem(), Facility("ewr1"))
-	pulumi.RegisterInputType(reflect.TypeOf((*FacilityPtrInput)(nil)).Elem(), Facility("ewr1"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FacilityInput)(nil)).Elem(), Facility("am2"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FacilityPtrInput)(nil)).Elem(), Facility("am2"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockTypeInput)(nil)).Elem(), IpBlockType("global_ipv4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IpBlockTypePtrInput)(nil)).Elem(), IpBlockType("global_ipv4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTypeInput)(nil)).Elem(), NetworkType("layer3"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTypePtrInput)(nil)).Elem(), NetworkType("layer3"))
-	pulumi.RegisterInputType(reflect.TypeOf((*OperatingSystemInput)(nil)).Elem(), OperatingSystem("alpine_3"))
-	pulumi.RegisterInputType(reflect.TypeOf((*OperatingSystemPtrInput)(nil)).Elem(), OperatingSystem("alpine_3"))
-	pulumi.RegisterInputType(reflect.TypeOf((*PlanInput)(nil)).Elem(), Plan("c2.large.arm"))
-	pulumi.RegisterInputType(reflect.TypeOf((*PlanPtrInput)(nil)).Elem(), Plan("c2.large.arm"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OperatingSystemInput)(nil)).Elem(), OperatingSystem("alma_8"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OperatingSystemPtrInput)(nil)).Elem(), OperatingSystem("alma_8"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PlanInput)(nil)).Elem(), Plan("a3.large.x86"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PlanPtrInput)(nil)).Elem(), Plan("a3.large.x86"))
 	pulumi.RegisterOutputType(BillingCycleOutput{})
 	pulumi.RegisterOutputType(BillingCyclePtrOutput{})
 	pulumi.RegisterOutputType(FacilityOutput{})

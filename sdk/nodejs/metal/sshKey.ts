@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
  * import * as fs from "fs";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * // Create a new SSH key
  * const key1 = new equinix.metal.SshKey("key1", {publicKey: fs.readFileSync("/home/terraform/.ssh/id_rsa.pub")});

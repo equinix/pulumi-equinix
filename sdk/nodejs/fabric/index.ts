@@ -12,6 +12,9 @@ export * from "./getServiceProfile";
 export * from "./getServiceProfiles";
 export * from "./serviceProfile";
 
+// Export enums:
+export * from "../types/enums/fabric";
+
 // Import resources to register:
 import { Connection } from "./connection";
 import { ServiceProfile } from "./serviceProfile";

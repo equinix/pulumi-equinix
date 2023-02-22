@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const dc = equinix.networkedge.getAccount({
  *     metroCode: "DC",
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@pulumi/equinix";
+ * import * as pulumi_equinix from "@equinix/pulumi-equinix";
  *
  * const sv = equinix.networkedge.getAccount({
  *     metroCode: "SV",
@@ -600,7 +602,7 @@ export interface DeviceState {
     /**
      * License throughput unit. One of `Mbps` or `Gbps`.
      */
-    throughputUnit?: pulumi.Input<string>;
+    throughputUnit?: pulumi.Input<string | enums.networkedge.ThroughputUnit>;
     /**
      * Device type code.
      */
@@ -733,7 +735,7 @@ export interface DeviceArgs {
     /**
      * License throughput unit. One of `Mbps` or `Gbps`.
      */
-    throughputUnit?: pulumi.Input<string>;
+    throughputUnit?: pulumi.Input<string | enums.networkedge.ThroughputUnit>;
     /**
      * Device type code.
      */
