@@ -9,11 +9,12 @@ TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
-TFGEN           := pulumi-tfgen-${PACK}
-PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell pulumictl get version)
-
-TESTPARALLELISM := 4
+TFGEN            := pulumi-tfgen-${PACK}
+PROVIDER         := pulumi-resource-${PACK}
+VERSION          := $(shell pulumictl get version)
+JAVA_GEN         := pulumi-java-gen
+JAVA_GEN_VERSION := v0.7.1
+TESTPARALLELISM  := 4
 
 WORKING_DIR     := $(shell pwd)
 
@@ -52,10 +53,13 @@ tfgen:: install_plugins
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
 
+bin/pulumi-java-gen:
+	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java
+
 provider:: tfgen install_plugins # build the provider binary
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
-build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet # build all the sdks
+build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs:: install_plugins tfgen # build the node sdk
@@ -89,6 +93,13 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
+build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+build_java: bin/pulumi-java-gen
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
+	cd sdk/java/ && \
+		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
+		gradle --console=plain build --debug
+
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
@@ -116,10 +127,12 @@ install_python_sdk::
 
 install_go_sdk::
 
+install_java_sdk:
+
 install_nodejs_sdk::
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
-install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
+install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_java_sdk
 
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
