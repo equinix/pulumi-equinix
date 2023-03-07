@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const exampleConnection = equinix.metal.getConnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",

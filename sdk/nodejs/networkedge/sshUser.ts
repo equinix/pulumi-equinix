@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * // Create SSH user with password auth method and associate it with
  * // two virtual network devices

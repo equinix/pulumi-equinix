@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const exampleProject = new equinix.metal.Project("exampleProject", {});
  * const exampleVrf = new equinix.metal.Vrf("exampleVrf", {
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const exampleReservedIpBlock = new equinix.metal.ReservedIpBlock("exampleReservedIpBlock", {
  *     description: "Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.",
@@ -61,8 +61,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
- * import * as pulumi_equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const exampleConnection = equinix.metal.getConnection({
  *     connectionId: _var.metal_dedicated_connection_id,

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * // Creates ACL template and assigns it to the network device
  * const myacl = new equinix.networkedge.AclTemplate("myacl", {

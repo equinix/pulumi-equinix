@@ -4,7 +4,9 @@ SHELL            := /bin/bash
 PACK             := equinix
 ORG              := equinix
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
-NODE_MODULE_NAME := @equinix/pulumi-${PACK}
+NODE_PACK        := pulumi-${PACK}
+NODE_PACK_ALIAS  := pulumi_${PACK}
+NODE_MODULE_NAME := @${ORG}/${NODE_PACK}
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
@@ -70,6 +72,15 @@ build_nodejs:: install_plugins tfgen # build the node sdk
 		cp -R scripts/ bin && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
+build_nodejs:: patch_nodejs # fix generated files
+
+patch_nodejs::
+	echo "patch_nodejs: find and replace wrong imports in examples" && \
+		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}\/${NODE_PACK}"/g' {} \;
+	echo "patch_nodejs: delete duplicate imports in examples" && \
+		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i.bak '/@${ORG}\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
+	echo "patch_nodejs: remove backup files" && \
+		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 
 build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
 build_python:: install_plugins tfgen # build the python sdk
@@ -113,7 +124,7 @@ help::
  	expand -t20
 
 clean::
-	rm -rf sdk/{dotnet,nodejs,go,python}
+	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh

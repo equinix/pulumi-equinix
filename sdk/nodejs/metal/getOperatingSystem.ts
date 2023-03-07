@@ -11,8 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
- * import * as pulumi_equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const example = equinix.metal.getOperatingSystem({
  *     distro: "ubuntu",
