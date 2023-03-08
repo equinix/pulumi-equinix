@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const exampleVrf = pulumi.output(equinix.metal.getVrf({
  *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",

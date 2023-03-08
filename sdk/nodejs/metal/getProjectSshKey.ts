@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const myKey = equinix.metal.getProjectSshKey({
  *     search: "username@hostname",

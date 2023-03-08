@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * const tfProject1 = equinix.metal.getProject({
  *     name: "Terraform Fun",

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * // Retrieve data for an existing Equinix Network Edge device with UUID "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee"
  * const byUuid = pulumi.output(equinix.networkedge.getDevice({

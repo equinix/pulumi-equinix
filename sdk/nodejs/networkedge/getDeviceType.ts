@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@pulumi/equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * // Retrieve device type details of a Cisco router
  * // Device type has to be available in DC and SV metros

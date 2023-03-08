@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
  * // Example of device link with HA device pair
  * // where each device is in different metro
