@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -15,9 +17,7 @@ import * as utilities from "../utilities";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
  * // Create a new Organization
- * const tfOrganization1 = new equinix.metal.Organization("tf_organization_1", {
- *     description: "quux",
- * });
+ * const tfOrganization1 = new equinix.metal.Organization("tfOrganization1", {description: "quux"});
  * ```
  *
  * ## Import
@@ -57,7 +57,8 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
-     * Postal address.
+     * An object that has the address information. See Address
+     * below for more details.
      */
     public readonly address!: pulumi.Output<outputs.metal.OrganizationAddress>;
     /**
@@ -134,7 +135,8 @@ export class Organization extends pulumi.CustomResource {
  */
 export interface OrganizationState {
     /**
-     * Postal address.
+     * An object that has the address information. See Address
+     * below for more details.
      */
     address?: pulumi.Input<inputs.metal.OrganizationAddress>;
     /**
@@ -172,7 +174,8 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     /**
-     * Postal address.
+     * An object that has the address information. See Address
+     * below for more details.
      */
     address: pulumi.Input<inputs.metal.OrganizationAddress>;
     /**

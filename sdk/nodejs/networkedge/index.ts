@@ -5,28 +5,64 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./aclTemplate";
-export * from "./bgp";
-export * from "./device";
-export * from "./deviceLink";
-export * from "./getAccount";
-export * from "./getDevice";
-export * from "./getDevicePlatform";
-export * from "./getDeviceSoftware";
-export * from "./getDeviceType";
-export * from "./sshKey";
-export * from "./sshUser";
+export { AclTemplateArgs, AclTemplateState } from "./aclTemplate";
+export type AclTemplate = import("./aclTemplate").AclTemplate;
+export const AclTemplate: typeof import("./aclTemplate").AclTemplate = null as any;
+utilities.lazyLoad(exports, ["AclTemplate"], () => require("./aclTemplate"));
+
+export { BgpArgs, BgpState } from "./bgp";
+export type Bgp = import("./bgp").Bgp;
+export const Bgp: typeof import("./bgp").Bgp = null as any;
+utilities.lazyLoad(exports, ["Bgp"], () => require("./bgp"));
+
+export { DeviceArgs, DeviceState } from "./device";
+export type Device = import("./device").Device;
+export const Device: typeof import("./device").Device = null as any;
+utilities.lazyLoad(exports, ["Device"], () => require("./device"));
+
+export { DeviceLinkArgs, DeviceLinkState } from "./deviceLink";
+export type DeviceLink = import("./deviceLink").DeviceLink;
+export const DeviceLink: typeof import("./deviceLink").DeviceLink = null as any;
+utilities.lazyLoad(exports, ["DeviceLink"], () => require("./deviceLink"));
+
+export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
+export const getAccount: typeof import("./getAccount").getAccount = null as any;
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
+
+export { GetDeviceArgs, GetDeviceResult, GetDeviceOutputArgs } from "./getDevice";
+export const getDevice: typeof import("./getDevice").getDevice = null as any;
+export const getDeviceOutput: typeof import("./getDevice").getDeviceOutput = null as any;
+utilities.lazyLoad(exports, ["getDevice","getDeviceOutput"], () => require("./getDevice"));
+
+export { GetDevicePlatformArgs, GetDevicePlatformResult, GetDevicePlatformOutputArgs } from "./getDevicePlatform";
+export const getDevicePlatform: typeof import("./getDevicePlatform").getDevicePlatform = null as any;
+export const getDevicePlatformOutput: typeof import("./getDevicePlatform").getDevicePlatformOutput = null as any;
+utilities.lazyLoad(exports, ["getDevicePlatform","getDevicePlatformOutput"], () => require("./getDevicePlatform"));
+
+export { GetDeviceSoftwareArgs, GetDeviceSoftwareResult, GetDeviceSoftwareOutputArgs } from "./getDeviceSoftware";
+export const getDeviceSoftware: typeof import("./getDeviceSoftware").getDeviceSoftware = null as any;
+export const getDeviceSoftwareOutput: typeof import("./getDeviceSoftware").getDeviceSoftwareOutput = null as any;
+utilities.lazyLoad(exports, ["getDeviceSoftware","getDeviceSoftwareOutput"], () => require("./getDeviceSoftware"));
+
+export { GetDeviceTypeArgs, GetDeviceTypeResult, GetDeviceTypeOutputArgs } from "./getDeviceType";
+export const getDeviceType: typeof import("./getDeviceType").getDeviceType = null as any;
+export const getDeviceTypeOutput: typeof import("./getDeviceType").getDeviceTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getDeviceType","getDeviceTypeOutput"], () => require("./getDeviceType"));
+
+export { SshKeyArgs, SshKeyState } from "./sshKey";
+export type SshKey = import("./sshKey").SshKey;
+export const SshKey: typeof import("./sshKey").SshKey = null as any;
+utilities.lazyLoad(exports, ["SshKey"], () => require("./sshKey"));
+
+export { SshUserArgs, SshUserState } from "./sshUser";
+export type SshUser = import("./sshUser").SshUser;
+export const SshUser: typeof import("./sshUser").SshUser = null as any;
+utilities.lazyLoad(exports, ["SshUser"], () => require("./sshUser"));
+
 
 // Export enums:
 export * from "../types/enums/networkedge";
-
-// Import resources to register:
-import { AclTemplate } from "./aclTemplate";
-import { Bgp } from "./bgp";
-import { Device } from "./device";
-import { DeviceLink } from "./deviceLink";
-import { SshKey } from "./sshKey";
-import { SshUser } from "./sshUser";
 
 const _module = {
     version: utilities.getVersion(),

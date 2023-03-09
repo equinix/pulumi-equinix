@@ -15,23 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // lookup by ID
- * const example = pulumi.output(equinix.metal.getHardwareReservation({
+ * const example = equinix.metal.getHardwareReservation({
  *     id: "4347e805-eb46-4699-9eb9-5c116e6a0172",
- * }));
- * // lookup by device ID
- * const exampleByDeviceId = pulumi.output(equinix.metal.getHardwareReservation({
+ * });
+ * const exampleByDeviceId = equinix.metal.getHardwareReservation({
  *     deviceId: "ff85aa58-c106-4624-8f1c-7c64554047ea",
- * }));
+ * });
  * ```
  */
 export function getHardwareReservation(args?: GetHardwareReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetHardwareReservationResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getHardwareReservation:getHardwareReservation", {
         "deviceId": args.deviceId,
         "id": args.id,
@@ -96,9 +91,27 @@ export interface GetHardwareReservationResult {
      */
     readonly switchUuid: string;
 }
-
+/**
+ * Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
+ *
+ * You can look up hardware reservation by its ID or by ID of device which occupies it.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const example = equinix.metal.getHardwareReservation({
+ *     id: "4347e805-eb46-4699-9eb9-5c116e6a0172",
+ * });
+ * const exampleByDeviceId = equinix.metal.getHardwareReservation({
+ *     deviceId: "ff85aa58-c106-4624-8f1c-7c64554047ea",
+ * });
+ * ```
+ */
 export function getHardwareReservationOutput(args?: GetHardwareReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHardwareReservationResult> {
-    return pulumi.output(args).apply(a => getHardwareReservation(a, opts))
+    return pulumi.output(args).apply((a: any) => getHardwareReservation(a, opts))
 }
 
 /**

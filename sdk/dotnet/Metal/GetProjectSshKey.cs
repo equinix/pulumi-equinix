@@ -37,7 +37,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectSshKeyResult> InvokeAsync(GetProjectSshKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this datasource to retrieve attributes of a Project SSH Key API resource.
@@ -65,7 +65,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectSshKeyResult> Invoke(GetProjectSshKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -28,121 +28,6 @@ namespace Pulumi.Equinix.NetworkEdge
     ///   software license. There are no charges associated with such license. It is the only licensing mode
     ///   for `self-configured` devices.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dc = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "DC",
-    ///     });
-    /// 
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var csr1000v_ha = new Equinix.NetworkEdge.Device("csr1000v-ha", new()
-    ///     {
-    ///         Throughput = 500,
-    ///         ThroughputUnit = "Mbps",
-    ///         MetroCode = dc.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "CSR1000V",
-    ///         PackageCode = "SEC",
-    ///         Notifications = new[]
-    ///         {
-    ///             "john@equinix.com",
-    ///             "marry@equinix.com",
-    ///             "fred@equinix.com",
-    ///         },
-    ///         Hostname = "csr1000v-p",
-    ///         TermLength = 6,
-    ///         AccountNumber = dc.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "16.09.05",
-    ///         CoreCount = 2,
-    ///         SecondaryDevice = new Equinix.NetworkEdge.Inputs.DeviceSecondaryDeviceArgs
-    ///         {
-    ///             Name = "tf-csr1000v-s",
-    ///             MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///             Hostname = "csr1000v-s",
-    ///             Notifications = new[]
-    ///             {
-    ///                 "john@equinix.com",
-    ///                 "marry@equinix.com",
-    ///             },
-    ///             AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sv = Equinix.NetworkEdge.GetAccount.Invoke(new()
-    ///     {
-    ///         MetroCode = "SV",
-    ///     });
-    /// 
-    ///     var panw_cluster = new Equinix.NetworkEdge.Device("panw-cluster", new()
-    ///     {
-    ///         MetroCode = sv.Apply(getAccountResult =&gt; getAccountResult.MetroCode),
-    ///         TypeCode = "PA-VM",
-    ///         SelfManaged = true,
-    ///         Byol = true,
-    ///         PackageCode = "VM100",
-    ///         Notifications = new[]
-    ///         {
-    ///             "john@equinix.com",
-    ///             "marry@equinix.com",
-    ///             "fred@equinix.com",
-    ///         },
-    ///         TermLength = 6,
-    ///         AccountNumber = sv.Apply(getAccountResult =&gt; getAccountResult.Number),
-    ///         Version = "10.1.3",
-    ///         InterfaceCount = 10,
-    ///         CoreCount = 2,
-    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
-    ///         {
-    ///             Username = "test",
-    ///             KeyName = "test-key",
-    ///         },
-    ///         AclTemplateId = "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-    ///         ClusterDetails = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsArgs
-    ///         {
-    ///             ClusterName = "tf-panw-cluster",
-    ///             Node0 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0Args
-    ///             {
-    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode0VendorConfigurationArgs
-    ///                 {
-    ///                     Hostname = "panw-node0",
-    ///                 },
-    ///                 LicenseToken = "licenseToken",
-    ///             },
-    ///             Node1 = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1Args
-    ///             {
-    ///                 VendorConfiguration = new Equinix.NetworkEdge.Inputs.DeviceClusterDetailsNode1VendorConfigurationArgs
-    ///                 {
-    ///                     Hostname = "panw-node1",
-    ///                 },
-    ///                 LicenseToken = "licenseToken",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported using an existing ID
@@ -151,7 +36,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///  $ pulumi import equinix:networkedge/device:Device example {existing_id}
     /// ```
     /// 
-    ///  The `license_token` and `mgtm_acl_template_uuid` fields can not be imported.
+    ///  The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
     /// </summary>
     [EquinixResourceType("equinix:networkedge/device:Device")]
     public partial class Device : global::Pulumi.CustomResource
@@ -163,7 +48,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> AccountNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of an ACL template that will be applied on the device.
+        /// Identifier of a WAN interface ACL template that will be applied on the device.
         /// </summary>
         [Output("aclTemplateId")]
         public Output<string?> AclTemplateId { get; private set; } = null!;
@@ -187,6 +72,12 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("byol")]
         public Output<bool?> Byol { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier of a cloud init file that will be applied on the device.
+        /// </summary>
+        [Output("cloudInitFileId")]
+        public Output<string?> CloudInitFileId { get; private set; } = null!;
 
         /// <summary>
         /// An object that has the cluster details. See
@@ -229,13 +120,13 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Path to the license file that will be uploaded and applied on a
-        /// device. Applicable for some devices types in BYOL licensing mode.
+        /// device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Output("licenseFile")]
         public Output<string?> LicenseFile { get; private set; } = null!;
 
         /// <summary>
-        /// License file id. This is necessary for Fortinet and Juniper clusters.
+        /// Identifier of a license file that will be applied on the device.
         /// </summary>
         [Output("licenseFileId")]
         public Output<string> LicenseFileId { get; private set; } = null!;
@@ -248,7 +139,8 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> LicenseStatus { get; private set; } = null!;
 
         /// <summary>
-        /// License token. This is necessary for Palo Alto clusters.
+        /// License Token applicable for some device types in BYOL licensing
+        /// mode.
         /// </summary>
         [Output("licenseToken")]
         public Output<string?> LicenseToken { get; private set; } = null!;
@@ -325,7 +217,7 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix managed` (default).
+        /// `self-managed` or `Equinix-managed` (default).
         /// </summary>
         [Output("selfManaged")]
         public Output<bool?> SelfManaged { get; private set; } = null!;
@@ -385,9 +277,10 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// An object that has fields relevant to the vendor of the
-        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
-        /// below for more details.
+        /// Map of vendor specific configuration parameters for a device
+        /// (controller1, activationKey, managementType, siteId, systemIpAddress)
+        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        /// on a device (max one key).  See SSH Key below for more details.
         /// </summary>
         [Output("vendorConfiguration")]
         public Output<ImmutableDictionary<string, string>> VendorConfiguration { get; private set; } = null!;
@@ -464,7 +357,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string> AccountNumber { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of an ACL template that will be applied on the device.
+        /// Identifier of a WAN interface ACL template that will be applied on the device.
         /// </summary>
         [Input("aclTemplateId")]
         public Input<string>? AclTemplateId { get; set; }
@@ -482,6 +375,12 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("byol")]
         public Input<bool>? Byol { get; set; }
+
+        /// <summary>
+        /// Identifier of a cloud init file that will be applied on the device.
+        /// </summary>
+        [Input("cloudInitFileId")]
+        public Input<string>? CloudInitFileId { get; set; }
 
         /// <summary>
         /// An object that has the cluster details. See
@@ -511,13 +410,20 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Path to the license file that will be uploaded and applied on a
-        /// device. Applicable for some devices types in BYOL licensing mode.
+        /// device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseFile")]
         public Input<string>? LicenseFile { get; set; }
 
         /// <summary>
-        /// License token. This is necessary for Palo Alto clusters.
+        /// Identifier of a license file that will be applied on the device.
+        /// </summary>
+        [Input("licenseFileId")]
+        public Input<string>? LicenseFileId { get; set; }
+
+        /// <summary>
+        /// License Token applicable for some device types in BYOL licensing
+        /// mode.
         /// </summary>
         [Input("licenseToken")]
         public Input<string>? LicenseToken { get; set; }
@@ -581,7 +487,7 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix managed` (default).
+        /// `self-managed` or `Equinix-managed` (default).
         /// </summary>
         [Input("selfManaged")]
         public Input<bool>? SelfManaged { get; set; }
@@ -620,9 +526,10 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputMap<string>? _vendorConfiguration;
 
         /// <summary>
-        /// An object that has fields relevant to the vendor of the
-        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
-        /// below for more details.
+        /// Map of vendor specific configuration parameters for a device
+        /// (controller1, activationKey, managementType, siteId, systemIpAddress)
+        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        /// on a device (max one key).  See SSH Key below for more details.
         /// </summary>
         public InputMap<string> VendorConfiguration
         {
@@ -657,7 +564,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? AccountNumber { get; set; }
 
         /// <summary>
-        /// Identifier of an ACL template that will be applied on the device.
+        /// Identifier of a WAN interface ACL template that will be applied on the device.
         /// </summary>
         [Input("aclTemplateId")]
         public Input<string>? AclTemplateId { get; set; }
@@ -681,6 +588,12 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("byol")]
         public Input<bool>? Byol { get; set; }
+
+        /// <summary>
+        /// Identifier of a cloud init file that will be applied on the device.
+        /// </summary>
+        [Input("cloudInitFileId")]
+        public Input<string>? CloudInitFileId { get; set; }
 
         /// <summary>
         /// An object that has the cluster details. See
@@ -729,13 +642,13 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Path to the license file that will be uploaded and applied on a
-        /// device. Applicable for some devices types in BYOL licensing mode.
+        /// device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseFile")]
         public Input<string>? LicenseFile { get; set; }
 
         /// <summary>
-        /// License file id. This is necessary for Fortinet and Juniper clusters.
+        /// Identifier of a license file that will be applied on the device.
         /// </summary>
         [Input("licenseFileId")]
         public Input<string>? LicenseFileId { get; set; }
@@ -748,7 +661,8 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? LicenseStatus { get; set; }
 
         /// <summary>
-        /// License token. This is necessary for Palo Alto clusters.
+        /// License Token applicable for some device types in BYOL licensing
+        /// mode.
         /// </summary>
         [Input("licenseToken")]
         public Input<string>? LicenseToken { get; set; }
@@ -831,7 +745,7 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Boolean value that determines device management mode, i.e.,
-        /// `self-managed` or `Equinix managed` (default).
+        /// `self-managed` or `Equinix-managed` (default).
         /// </summary>
         [Input("selfManaged")]
         public Input<bool>? SelfManaged { get; set; }
@@ -894,9 +808,10 @@ namespace Pulumi.Equinix.NetworkEdge
         private InputMap<string>? _vendorConfiguration;
 
         /// <summary>
-        /// An object that has fields relevant to the vendor of the
-        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
-        /// below for more details.
+        /// Map of vendor specific configuration parameters for a device
+        /// (controller1, activationKey, managementType, siteId, systemIpAddress)
+        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        /// on a device (max one key).  See SSH Key below for more details.
         /// </summary>
         public InputMap<string> VendorConfiguration
         {

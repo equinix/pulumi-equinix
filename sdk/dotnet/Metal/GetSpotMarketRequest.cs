@@ -12,10 +12,10 @@ namespace Pulumi.Equinix.Metal
     public static class GetSpotMarketRequest
     {
         public static Task<GetSpotMarketRequestResult> InvokeAsync(GetSpotMarketRequestArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpotMarketRequestResult>("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args ?? new GetSpotMarketRequestArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpotMarketRequestResult>("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args ?? new GetSpotMarketRequestArgs(), options.WithDefaults());
 
         public static Output<GetSpotMarketRequestResult> Invoke(GetSpotMarketRequestInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpotMarketRequestResult>("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args ?? new GetSpotMarketRequestInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpotMarketRequestResult>("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", args ?? new GetSpotMarketRequestInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -14,25 +14,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Retrieve device type details of a Cisco router
- * // Device type has to be available in DC and SV metros
- * const ciscoRouter = pulumi.output(equinix.networkedge.getDeviceType({
+ * const ciscoRouter = equinix.networkedge.getDeviceType({
  *     category: "Router",
  *     metroCodes: [
  *         "DC",
  *         "SV",
  *     ],
  *     vendor: "Cisco",
- * }));
+ * });
  * ```
  */
 export function getDeviceType(args?: GetDeviceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceTypeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDeviceType:getDeviceType", {
         "category": args.category,
         "metroCodes": args.metroCodes,
@@ -84,9 +79,28 @@ export interface GetDeviceTypeResult {
     readonly name: string;
     readonly vendor: string;
 }
-
+/**
+ * Use this data source to get Equinix Network Edge device type details. For further details, check supported
+ * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const ciscoRouter = equinix.networkedge.getDeviceType({
+ *     category: "Router",
+ *     metroCodes: [
+ *         "DC",
+ *         "SV",
+ *     ],
+ *     vendor: "Cisco",
+ * });
+ * ```
+ */
 export function getDeviceTypeOutput(args?: GetDeviceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceTypeResult> {
-    return pulumi.output(args).apply(a => getDeviceType(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeviceType(a, opts))
 }
 
 /**

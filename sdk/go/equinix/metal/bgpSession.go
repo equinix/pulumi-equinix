@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ type BgpSession struct {
 	DefaultRoute pulumi.BoolPtrOutput `pulumi:"defaultRoute"`
 	// ID of device.
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
-	// Status of the session - up or down
+	// Status of the session - `up` or `down`
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -71,7 +71,7 @@ type bgpSessionState struct {
 	DefaultRoute *bool `pulumi:"defaultRoute"`
 	// ID of device.
 	DeviceId *string `pulumi:"deviceId"`
-	// Status of the session - up or down
+	// Status of the session - `up` or `down`
 	Status *string `pulumi:"status"`
 }
 
@@ -82,7 +82,7 @@ type BgpSessionState struct {
 	DefaultRoute pulumi.BoolPtrInput
 	// ID of device.
 	DeviceId pulumi.StringPtrInput
-	// Status of the session - up or down
+	// Status of the session - `up` or `down`
 	Status pulumi.StringPtrInput
 }
 
@@ -211,7 +211,7 @@ func (o BgpSessionOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpSession) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// Status of the session - up or down
+// Status of the session - `up` or `down`
 func (o BgpSessionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpSession) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const exampleVrf = pulumi.output(equinix.metal.getVrf({
+ * const exampleVrf = equinix.metal.getVrf({
  *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",
- * }));
+ * });
  * ```
  */
 export function getVrf(args: GetVrfArgs, opts?: pulumi.InvokeOptions): Promise<GetVrfResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getVrf:getVrf", {
         "vrfId": args.vrfId,
     }, opts);
@@ -75,9 +72,24 @@ export interface GetVrfResult {
     readonly projectId: string;
     readonly vrfId: string;
 }
-
+/**
+ * Use this data source to retrieve a VRF resource.
+ *
+ * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const exampleVrf = equinix.metal.getVrf({
+ *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",
+ * });
+ * ```
+ */
 export function getVrfOutput(args: GetVrfOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrfResult> {
-    return pulumi.output(args).apply(a => getVrf(a, opts))
+    return pulumi.output(args).apply((a: any) => getVrf(a, opts))
 }
 
 /**

@@ -16,6 +16,8 @@ PROVIDER         := pulumi-resource-${PACK}
 VERSION          := $(shell pulumictl get version)
 JAVA_GEN         := pulumi-java-gen
 JAVA_GEN_VERSION := v0.7.1
+JAVA_GROUP_ID    := com.${ORG}.pulumi
+JAVA_ARTIFACT_ID := ${PACK}
 TESTPARALLELISM  := 4
 
 WORKING_DIR     := $(shell pwd)
@@ -66,13 +68,14 @@ build_sdks:: install_plugins provider build_nodejs build_python build_go build_d
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs:: install_plugins tfgen # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
+build_nodejs:: patch_nodejs # fix generated files
+build_nodejs::
 	cd sdk/nodejs/ && \
         yarn install && \
         yarn run tsc && \
 		cp -R scripts/ bin && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
-build_nodejs:: patch_nodejs # fix generated files
 
 patch_nodejs::
 	echo "patch_nodejs: find and replace wrong imports in examples" && \
@@ -106,10 +109,16 @@ build_go:: install_plugins tfgen # build the go sdk
 
 build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java: bin/pulumi-java-gen
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
-		gradle --console=plain build --debug
+		sed -i.bak -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' \
+			-e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' \
+			-e 's/inceptionYear = .*/inceptionYear = "2023"/g' \
+			-e 's/description = .*/description = "A Pulumi package for creating and managing equinix cloud resources."/g' ./build.gradle && \
+		sed -i.bak -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle && \
+		gradle --console=plain build && \
+		rm -f build.gradle.bak
 
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml

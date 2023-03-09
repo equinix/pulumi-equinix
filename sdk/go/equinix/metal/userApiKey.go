@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +71,10 @@ func NewUserApiKey(ctx *pulumi.Context,
 	if args.ReadOnly == nil {
 		return nil, errors.New("invalid value for required argument 'ReadOnly'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource UserApiKey
 	err := ctx.RegisterResource("equinix:metal/userApiKey:UserApiKey", name, args, &resource, opts...)

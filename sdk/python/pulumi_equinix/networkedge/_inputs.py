@@ -315,13 +315,15 @@ class DeviceClusterDetailsNode0Args:
                  uuid: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs']] = None):
         """
-        :param pulumi.Input[str] license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
-        :param pulumi.Input[str] license_token: License token. This is necessary for Palo Alto clusters.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
+               mode.
         :param pulumi.Input[str] name: Device name.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs'] vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs'] vendor_configuration: Map of vendor specific configuration parameters for a device
+               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+               on a device (max one key).  See SSH Key below for more details.
         """
         if license_file_id is not None:
             pulumi.set(__self__, "license_file_id", license_file_id)
@@ -338,7 +340,7 @@ class DeviceClusterDetailsNode0Args:
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        License file id. This is necessary for Fortinet and Juniper clusters.
+        Identifier of a license file that will be applied on the device.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -350,7 +352,8 @@ class DeviceClusterDetailsNode0Args:
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[pulumi.Input[str]]:
         """
-        License token. This is necessary for Palo Alto clusters.
+        License Token applicable for some device types in BYOL licensing
+        mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -386,9 +389,10 @@ class DeviceClusterDetailsNode0Args:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs']]:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        Map of vendor specific configuration parameters for a device
+        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        on a device (max one key).  See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -513,13 +517,15 @@ class DeviceClusterDetailsNode1Args:
                  uuid: Optional[pulumi.Input[str]] = None,
                  vendor_configuration: Optional[pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs']] = None):
         """
-        :param pulumi.Input[str] license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
-        :param pulumi.Input[str] license_token: License token. This is necessary for Palo Alto clusters.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
+               mode.
         :param pulumi.Input[str] name: Device name.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs'] vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs'] vendor_configuration: Map of vendor specific configuration parameters for a device
+               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+               on a device (max one key).  See SSH Key below for more details.
         """
         if license_file_id is not None:
             pulumi.set(__self__, "license_file_id", license_file_id)
@@ -536,7 +542,7 @@ class DeviceClusterDetailsNode1Args:
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        License file id. This is necessary for Fortinet and Juniper clusters.
+        Identifier of a license file that will be applied on the device.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -548,7 +554,8 @@ class DeviceClusterDetailsNode1Args:
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[pulumi.Input[str]]:
         """
-        License token. This is necessary for Palo Alto clusters.
+        License Token applicable for some device types in BYOL licensing
+        mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -584,9 +591,10 @@ class DeviceClusterDetailsNode1Args:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs']]:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        Map of vendor specific configuration parameters for a device
+        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        on a device (max one key).  See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -1059,6 +1067,7 @@ class DeviceSecondaryDeviceArgs:
                  acl_template_id: Optional[pulumi.Input[str]] = None,
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
+                 cloud_init_file_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ibx: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceSecondaryDeviceInterfaceArgs']]]] = None,
@@ -1089,18 +1098,19 @@ class DeviceSecondaryDeviceArgs:
         :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, for a secondary
                device.
         :param pulumi.Input[int] asn: (Autonomous System Number) Unique identifier for a network on the internet.
+        :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on a secondary device.
         :param pulumi.Input[str] hostname: Secondary device hostname.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceSecondaryDeviceInterfaceArgs']]] interfaces: List of device interfaces. See Interface Attribute below
                for more details.
         :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               secondary device. Applicable for some devices types in BYOL licensing mode.
-        :param pulumi.Input[str] license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
+               secondary device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on a secondary device.
         :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`,
                `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
         :param pulumi.Input[str] license_token: License Token can be provided for some device types o the device.
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
-               applied on the device.
+               applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
                device.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either
@@ -1126,6 +1136,8 @@ class DeviceSecondaryDeviceArgs:
             pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
         if asn is not None:
             pulumi.set(__self__, "asn", asn)
+        if cloud_init_file_id is not None:
+            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if ibx is not None:
@@ -1253,6 +1265,18 @@ class DeviceSecondaryDeviceArgs:
         pulumi.set(self, "asn", value)
 
     @property
+    @pulumi.getter(name="cloudInitFileId")
+    def cloud_init_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of a cloud init file that will be applied on a secondary device.
+        """
+        return pulumi.get(self, "cloud_init_file_id")
+
+    @cloud_init_file_id.setter
+    def cloud_init_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_init_file_id", value)
+
+    @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1294,7 +1318,7 @@ class DeviceSecondaryDeviceArgs:
     def license_file(self) -> Optional[pulumi.Input[str]]:
         """
         Path to the license file that will be uploaded and applied on a
-        secondary device. Applicable for some devices types in BYOL licensing mode.
+        secondary device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -1306,7 +1330,7 @@ class DeviceSecondaryDeviceArgs:
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        License file id. This is necessary for Fortinet and Juniper clusters.
+        Identifier of a license file that will be applied on a secondary device.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -1344,7 +1368,7 @@ class DeviceSecondaryDeviceArgs:
     def mgmt_acl_template_uuid(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of an MGMT interface ACL template that will be
-        applied on the device.
+        applied on a secondary device.
         * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
         device.
         """

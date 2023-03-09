@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *     description: "Virtual Circuit",
  *     connectionId: exampleConnection.then(exampleConnection => exampleConnection.id),
  *     projectId: equinix_metal_project.example.id,
- *     portId: exampleConnection.then(exampleConnection => exampleConnection.ports?[0]?.id),
+ *     portId: exampleConnection.then(exampleConnection => exampleConnection.ports?.[0]?.id),
  *     nniVlan: 1024,
  *     vrfId: equinix_metal_vrf.example.id,
  *     peerAsn: 65530,

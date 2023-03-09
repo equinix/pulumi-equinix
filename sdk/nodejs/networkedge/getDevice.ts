@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -14,23 +16,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Retrieve data for an existing Equinix Network Edge device with UUID "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee"
- * const byUuid = pulumi.output(equinix.networkedge.getDevice({
+ * const byUuid = equinix.networkedge.getDevice({
  *     uuid: "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee",
- * }));
- * // Retrieve data for an existing Equinix Network Edge device named "Arcus-Gateway-A1"
- * const byName = pulumi.output(equinix.networkedge.getDevice({
+ * });
+ * const byName = equinix.networkedge.getDevice({
  *     name: "Arcus-Gateway-A1",
- * }));
+ * });
  * ```
  */
 export function getDevice(args?: GetDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDevice:getDevice", {
         "name": args.name,
         "uuid": args.uuid,
@@ -175,9 +172,25 @@ export interface GetDeviceResult {
      */
     readonly zoneCode: string;
 }
-
+/**
+ * Use this data source to get Equinix Network Edge device details.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const byUuid = equinix.networkedge.getDevice({
+ *     uuid: "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee",
+ * });
+ * const byName = equinix.networkedge.getDevice({
+ *     name: "Arcus-Gateway-A1",
+ * });
+ * ```
+ */
 export function getDeviceOutput(args?: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
-    return pulumi.output(args).apply(a => getDevice(a, opts))
+    return pulumi.output(args).apply((a: any) => getDevice(a, opts))
 }
 
 /**

@@ -11,6 +11,47 @@ import (
 )
 
 // Use this data source to get Equinix Metal Operating System image.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := metal.GetOperatingSystem(ctx, &metal.GetOperatingSystemArgs{
+//				Distro:          pulumi.StringRef("ubuntu"),
+//				Version:         pulumi.StringRef("20.04"),
+//				ProvisionableOn: pulumi.StringRef("c3.medium.x86"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metal.NewDevice(ctx, "server", &metal.DeviceArgs{
+//				Hostname: pulumi.String("tf.ubuntu"),
+//				Plan:     pulumi.String("c3.medium.x86"),
+//				Facilities: pulumi.StringArray{
+//					pulumi.String("ny5"),
+//				},
+//				OperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),
+//				BillingCycle:    pulumi.String("hourly"),
+//				ProjectId:       pulumi.Any(local.Project_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOperatingSystem(ctx *pulumi.Context, args *GetOperatingSystemArgs, opts ...pulumi.InvokeOption) (*GetOperatingSystemResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetOperatingSystemResult

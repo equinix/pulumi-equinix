@@ -2,16 +2,15 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 export function getPorts(args?: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getPorts:getPorts", {
         "filters": args.filters,
     }, opts);
@@ -44,9 +43,8 @@ export interface GetPortsResult {
      */
     readonly id: string;
 }
-
 export function getPortsOutput(args?: GetPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortsResult> {
-    return pulumi.output(args).apply(a => getPorts(a, opts))
+    return pulumi.output(args).apply((a: any) => getPorts(a, opts))
 }
 
 /**

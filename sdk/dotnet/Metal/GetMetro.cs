@@ -15,13 +15,13 @@ namespace Pulumi.Equinix.Metal
         /// Provides an Equinix Metal metro datasource.
         /// </summary>
         public static Task<GetMetroResult> InvokeAsync(GetMetroArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an Equinix Metal metro datasource.
         /// </summary>
         public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());
     }
 
 

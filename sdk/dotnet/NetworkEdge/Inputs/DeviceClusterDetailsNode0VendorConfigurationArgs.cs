@@ -12,18 +12,38 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
 
     public sealed class DeviceClusterDetailsNode0VendorConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activationKey")]
+        private Input<string>? _activationKey;
+
         /// <summary>
         /// Activation key. This is required for Velocloud clusters.
         /// </summary>
-        [Input("activationKey")]
-        public Input<string>? ActivationKey { get; set; }
+        public Input<string>? ActivationKey
+        {
+            get => _activationKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _activationKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("adminPassword")]
+        private Input<string>? _adminPassword;
 
         /// <summary>
         /// The administrative password of the device. You can use it to log in
         /// to the console. This field is not available for all device types.
         /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
+        public Input<string>? AdminPassword
+        {
+            get => _adminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// System IP Address. Mandatory for the Fortinet SDWAN cluster device.
@@ -43,12 +63,22 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        [Input("rootPassword")]
+        private Input<string>? _rootPassword;
+
         /// <summary>
         /// The CLI password of the device. This field is relevant only for the
         /// Velocloud SDWAN cluster.
         /// </summary>
-        [Input("rootPassword")]
-        public Input<string>? RootPassword { get; set; }
+        public Input<string>? RootPassword
+        {
+            get => _rootPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public DeviceClusterDetailsNode0VendorConfigurationArgs()
         {

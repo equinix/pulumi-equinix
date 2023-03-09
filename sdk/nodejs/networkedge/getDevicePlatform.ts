@@ -15,21 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Retrieve platform configuration of a large flavor for a CSR100V device type
- * // Platform has to support IPBASE software package
- * const csrLarge = pulumi.output(equinix.networkedge.getDevicePlatform({
+ * const csrLarge = equinix.networkedge.getDevicePlatform({
  *     deviceType: "CSR1000V",
  *     flavor: "large",
  *     packages: ["IPBASE"],
- * }));
+ * });
  * ```
  */
 export function getDevicePlatform(args: GetDevicePlatformArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicePlatformResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", {
         "coreCount": args.coreCount,
         "deviceType": args.deviceType,
@@ -96,9 +91,26 @@ export interface GetDevicePlatformResult {
     readonly memoryUnit: string;
     readonly packages: string[];
 }
-
+/**
+ * Use this data source to get Equinix Network Edge device platform configuration details
+ * for a given device type. For further details, check supported
+ * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const csrLarge = equinix.networkedge.getDevicePlatform({
+ *     deviceType: "CSR1000V",
+ *     flavor: "large",
+ *     packages: ["IPBASE"],
+ * });
+ * ```
+ */
 export function getDevicePlatformOutput(args: GetDevicePlatformOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePlatformResult> {
-    return pulumi.output(args).apply(a => getDevicePlatform(a, opts))
+    return pulumi.output(args).apply((a: any) => getDevicePlatform(a, opts))
 }
 
 /**

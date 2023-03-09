@@ -12,10 +12,10 @@ namespace Pulumi.Equinix.Fabric
     public static class GetPorts
     {
         public static Task<GetPortsResult> InvokeAsync(GetPortsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsArgs(), options.WithDefaults());
 
         public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,22 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Retrieve details for CSR1000V device software with latest path of 16.09 version
- * // that supports IPBASE package
- * const csrLatest1609 = pulumi.output(equinix.networkedge.getDeviceSoftware({
+ * const csrLatest1609 = equinix.networkedge.getDeviceSoftware({
  *     deviceType: "CSR1000V",
  *     mostRecent: true,
  *     packages: ["IPBASE"],
  *     versionRegex: "^16.09.+",
- * }));
+ * });
  * ```
  */
 export function getDeviceSoftware(args: GetDeviceSoftwareArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceSoftwareResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", {
         "deviceType": args.deviceType,
         "mostRecent": args.mostRecent,
@@ -103,9 +98,27 @@ export interface GetDeviceSoftwareResult {
     readonly version: string;
     readonly versionRegex?: string;
 }
-
+/**
+ * Use this data source to get Equinix Network Edge device software details for a given
+ * device type. For further details, check supported
+ * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const csrLatest1609 = equinix.networkedge.getDeviceSoftware({
+ *     deviceType: "CSR1000V",
+ *     mostRecent: true,
+ *     packages: ["IPBASE"],
+ *     versionRegex: "^16.09.+",
+ * });
+ * ```
+ */
 export function getDeviceSoftwareOutput(args: GetDeviceSoftwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceSoftwareResult> {
-    return pulumi.output(args).apply(a => getDeviceSoftware(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeviceSoftware(a, opts))
 }
 
 /**

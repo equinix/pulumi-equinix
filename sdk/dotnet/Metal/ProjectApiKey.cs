@@ -89,6 +89,10 @@ namespace Pulumi.Equinix.Metal
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/equinix/pulumi-equinix",
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -158,11 +162,21 @@ namespace Pulumi.Equinix.Metal
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// API token which can be used in Equinix Metal API clients
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProjectApiKeyState()
         {

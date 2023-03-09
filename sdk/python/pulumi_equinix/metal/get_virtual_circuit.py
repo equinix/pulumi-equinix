@@ -170,8 +170,6 @@ class GetVirtualCircuitResult:
     def project_id(self) -> str:
         """
         ID of project to which the VC belongs.
-        * `vnid`, `nni_vlan`, `nni_nvid` - VLAN parameters, see the
-        [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
         """
         return pulumi.get(self, "project_id")
 
@@ -224,6 +222,10 @@ class GetVirtualCircuitResult:
     @property
     @pulumi.getter
     def vnid(self) -> int:
+        """
+        , `nni_vlan`, `nni_nvid` - VLAN parameters, see the
+        [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        """
         return pulumi.get(self, "vnid")
 
     @property

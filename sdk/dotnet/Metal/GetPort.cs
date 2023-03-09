@@ -55,7 +55,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPortResult> InvokeAsync(GetPortArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to read ports of existing devices. You can read port by either its UUID,
@@ -101,7 +101,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
     }
 
 

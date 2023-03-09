@@ -241,6 +241,8 @@ class ProjectApiKey(pulumi.CustomResource):
                 raise TypeError("Missing required property 'read_only'")
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProjectApiKey, __self__).__init__(
             'equinix:metal/projectApiKey:ProjectApiKey',
             resource_name,

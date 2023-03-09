@@ -22,7 +22,7 @@ namespace Pulumi.Equinix.Metal
         /// &gt; Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
         /// </summary>
         public static Task<GetPrecreatedIpBlockResult> InvokeAsync(GetPrecreatedIpBlockArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
@@ -35,7 +35,7 @@ namespace Pulumi.Equinix.Metal
         /// &gt; Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
         /// </summary>
         public static Output<GetPrecreatedIpBlockResult> Invoke(GetPrecreatedIpBlockInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrecreatedIpBlockResult>("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args ?? new GetPrecreatedIpBlockInvokeArgs(), options.WithDefaults());
     }
 
 

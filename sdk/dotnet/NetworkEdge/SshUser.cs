@@ -30,8 +30,8 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         Password = "secret",
     ///         DeviceIds = new[]
     ///         {
-    ///             equinix_ne_device.Csr1000v_ha.Uuid,
-    ///             equinix_ne_device.Csr1000v_ha.Redundant_uuid,
+    ///             equinix_network_device.Csr1000v_ha.Uuid,
+    ///             equinix_network_device.Csr1000v_ha.Redundant_uuid,
     ///         },
     ///     });
     /// 
@@ -97,6 +97,10 @@ namespace Pulumi.Equinix.NetworkEdge
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/equinix/pulumi-equinix",
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -132,11 +136,21 @@ namespace Pulumi.Equinix.NetworkEdge
             set => _deviceIds = value;
         }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// SSH user password.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// SSH user login name.
@@ -164,11 +178,21 @@ namespace Pulumi.Equinix.NetworkEdge
             set => _deviceIds = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// SSH user password.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// SSH user login name.

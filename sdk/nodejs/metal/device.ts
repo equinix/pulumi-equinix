@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -141,6 +143,32 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Create a device and allow the `userData` and `customData` attributes to change in-place (i.e., without destroying and recreating the device):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const pxe1 = new equinix.metal.Device("pxe1", {
+ *     hostname: "tf.coreos2-pxe",
+ *     plan: "c3.small.x86",
+ *     metro: "sv",
+ *     operatingSystem: "custom_ipxe",
+ *     billingCycle: "hourly",
+ *     projectId: local.project_id,
+ *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
+ *     alwaysPxe: false,
+ *     userData: local.user_data,
+ *     customData: local.custom_data,
+ *     behavior: {
+ *         allowChanges: [
+ *             "custom_data",
+ *             "user_data",
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported using an existing device ID
@@ -195,6 +223,10 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly alwaysPxe!: pulumi.Output<boolean | undefined>;
     /**
+     * Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+     */
+    public readonly behavior!: pulumi.Output<outputs.metal.DeviceBehavior | undefined>;
+    /**
      * monthly or hourly
      */
     public readonly billingCycle!: pulumi.Output<string>;
@@ -203,7 +235,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * A string of the desired Custom Data for the device.
+     * A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
      */
     public readonly customData!: pulumi.Output<string | undefined>;
     /**
@@ -345,7 +377,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly updated!: pulumi.Output<string>;
     /**
-     * A string of the desired User Data for the device.
+     * A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -376,6 +408,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["accessPublicIpv4"] = state ? state.accessPublicIpv4 : undefined;
             resourceInputs["accessPublicIpv6"] = state ? state.accessPublicIpv6 : undefined;
             resourceInputs["alwaysPxe"] = state ? state.alwaysPxe : undefined;
+            resourceInputs["behavior"] = state ? state.behavior : undefined;
             resourceInputs["billingCycle"] = state ? state.billingCycle : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["customData"] = state ? state.customData : undefined;
@@ -420,8 +453,9 @@ export class Device extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["alwaysPxe"] = args ? args.alwaysPxe : undefined;
+            resourceInputs["behavior"] = args ? args.behavior : undefined;
             resourceInputs["billingCycle"] = args ? args.billingCycle : undefined;
-            resourceInputs["customData"] = args ? args.customData : undefined;
+            resourceInputs["customData"] = args?.customData ? pulumi.secret(args.customData) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["facilities"] = args ? args.facilities : undefined;
             resourceInputs["forceDetachVolumes"] = args ? args.forceDetachVolumes : undefined;
@@ -438,7 +472,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terminationTime"] = args ? args.terminationTime : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["userData"] = args?.userData ? pulumi.secret(args.userData) : undefined;
             resourceInputs["userSshKeyIds"] = args ? args.userSshKeyIds : undefined;
             resourceInputs["waitForReservationDeprovision"] = args ? args.waitForReservationDeprovision : undefined;
             resourceInputs["accessPrivateIpv4"] = undefined /*out*/;
@@ -457,6 +491,8 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["customData", "rootPassword", "userData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Device.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -483,6 +519,10 @@ export interface DeviceState {
      */
     alwaysPxe?: pulumi.Input<boolean>;
     /**
+     * Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+     */
+    behavior?: pulumi.Input<inputs.metal.DeviceBehavior>;
+    /**
      * monthly or hourly
      */
     billingCycle?: pulumi.Input<string | enums.metal.BillingCycle>;
@@ -491,7 +531,7 @@ export interface DeviceState {
      */
     created?: pulumi.Input<string>;
     /**
-     * A string of the desired Custom Data for the device.
+     * A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
      */
     customData?: pulumi.Input<string>;
     /**
@@ -633,7 +673,7 @@ export interface DeviceState {
      */
     updated?: pulumi.Input<string>;
     /**
-     * A string of the desired User Data for the device.
+     * A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
      */
     userData?: pulumi.Input<string>;
     /**
@@ -658,11 +698,15 @@ export interface DeviceArgs {
      */
     alwaysPxe?: pulumi.Input<boolean>;
     /**
+     * Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+     */
+    behavior?: pulumi.Input<inputs.metal.DeviceBehavior>;
+    /**
      * monthly or hourly
      */
     billingCycle?: pulumi.Input<string | enums.metal.BillingCycle>;
     /**
-     * A string of the desired Custom Data for the device.
+     * A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
      */
     customData?: pulumi.Input<string>;
     /**
@@ -753,7 +797,7 @@ export interface DeviceArgs {
      */
     terminationTime?: pulumi.Input<string>;
     /**
-     * A string of the desired User Data for the device.
+     * A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
      */
     userData?: pulumi.Input<string>;
     /**

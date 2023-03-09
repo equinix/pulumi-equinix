@@ -28,10 +28,12 @@ class DeviceArgs:
                  acl_template_id: Optional[pulumi.Input[str]] = None,
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  byol: Optional[pulumi.Input[bool]] = None,
+                 cloud_init_file_id: Optional[pulumi.Input[str]] = None,
                  cluster_details: Optional[pulumi.Input['DeviceClusterDetailsArgs']] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
                  license_file: Optional[pulumi.Input[str]] = None,
+                 license_file_id: Optional[pulumi.Input[str]] = None,
                  license_token: Optional[pulumi.Input[str]] = None,
                  mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -55,19 +57,22 @@ class DeviceArgs:
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] version: Device software software version.
-        :param pulumi.Input[str] acl_template_id: Identifier of an ACL template that will be applied on the device.
+        :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
         :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
                allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
                `bring your own license` or `subscription` (default).
+        :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
         :param pulumi.Input['DeviceClusterDetailsArgs'] cluster_details: An object that has the cluster details. See
                Cluster Details below for more details.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
                default number for a given device type will be used.
         :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some devices types in BYOL licensing mode.
-        :param pulumi.Input[str] license_token: License token. This is necessary for Palo Alto clusters.
+               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
+               mode.
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
                applied on the device.
         :param pulumi.Input[str] name: Device name.
@@ -76,13 +81,14 @@ class DeviceArgs:
         :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant
                device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix managed` (default).
+               `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
+               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+               on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
         pulumi.set(__self__, "account_number", account_number)
@@ -99,6 +105,8 @@ class DeviceArgs:
             pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
         if byol is not None:
             pulumi.set(__self__, "byol", byol)
+        if cloud_init_file_id is not None:
+            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
         if cluster_details is not None:
             pulumi.set(__self__, "cluster_details", cluster_details)
         if hostname is not None:
@@ -107,6 +115,8 @@ class DeviceArgs:
             pulumi.set(__self__, "interface_count", interface_count)
         if license_file is not None:
             pulumi.set(__self__, "license_file", license_file)
+        if license_file_id is not None:
+            pulumi.set(__self__, "license_file_id", license_file_id)
         if license_token is not None:
             pulumi.set(__self__, "license_token", license_token)
         if mgmt_acl_template_uuid is not None:
@@ -233,7 +243,7 @@ class DeviceArgs:
     @pulumi.getter(name="aclTemplateId")
     def acl_template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of an ACL template that will be applied on the device.
+        Identifier of a WAN interface ACL template that will be applied on the device.
         """
         return pulumi.get(self, "acl_template_id")
 
@@ -266,6 +276,18 @@ class DeviceArgs:
     @byol.setter
     def byol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "byol", value)
+
+    @property
+    @pulumi.getter(name="cloudInitFileId")
+    def cloud_init_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of a cloud init file that will be applied on the device.
+        """
+        return pulumi.get(self, "cloud_init_file_id")
+
+    @cloud_init_file_id.setter
+    def cloud_init_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_init_file_id", value)
 
     @property
     @pulumi.getter(name="clusterDetails")
@@ -310,7 +332,7 @@ class DeviceArgs:
     def license_file(self) -> Optional[pulumi.Input[str]]:
         """
         Path to the license file that will be uploaded and applied on a
-        device. Applicable for some devices types in BYOL licensing mode.
+        device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -319,10 +341,23 @@ class DeviceArgs:
         pulumi.set(self, "license_file", value)
 
     @property
+    @pulumi.getter(name="licenseFileId")
+    def license_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of a license file that will be applied on the device.
+        """
+        return pulumi.get(self, "license_file_id")
+
+    @license_file_id.setter
+    def license_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_file_id", value)
+
+    @property
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[pulumi.Input[str]]:
         """
-        License token. This is necessary for Palo Alto clusters.
+        License Token applicable for some device types in BYOL licensing
+        mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -397,7 +432,7 @@ class DeviceArgs:
     def self_managed(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix managed` (default).
+        `self-managed` or `Equinix-managed` (default).
         """
         return pulumi.get(self, "self_managed")
 
@@ -445,9 +480,10 @@ class DeviceArgs:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        Map of vendor specific configuration parameters for a device
+        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        on a device (max one key).  See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -476,6 +512,7 @@ class _DeviceState:
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  asn: Optional[pulumi.Input[int]] = None,
                  byol: Optional[pulumi.Input[bool]] = None,
+                 cloud_init_file_id: Optional[pulumi.Input[str]] = None,
                  cluster_details: Optional[pulumi.Input['DeviceClusterDetailsArgs']] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -514,12 +551,13 @@ class _DeviceState:
         """
         Input properties used for looking up and filtering Device resources.
         :param pulumi.Input[str] account_number: Billing account number for a device.
-        :param pulumi.Input[str] acl_template_id: Identifier of an ACL template that will be applied on the device.
+        :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
         :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
                allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[int] asn: (Autonomous System Number) Unique identifier for a network on the internet.
         :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
                `bring your own license` or `subscription` (default).
+        :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
         :param pulumi.Input['DeviceClusterDetailsArgs'] cluster_details: An object that has the cluster details. See
                Cluster Details below for more details.
         :param pulumi.Input[int] core_count: Number of CPU cores used by device.
@@ -530,11 +568,12 @@ class _DeviceState:
         :param pulumi.Input[Sequence[pulumi.Input['DeviceInterfaceArgs']]] interfaces: List of device interfaces. See Interface Attribute below
                for more details.
         :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some devices types in BYOL licensing mode.
-        :param pulumi.Input[str] license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
+               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
         :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`,
                `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
-        :param pulumi.Input[str] license_token: License token. This is necessary for Palo Alto clusters.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
+               mode.
         :param pulumi.Input[str] metro_code: Device location metro code.
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
                applied on the device.
@@ -551,7 +590,7 @@ class _DeviceState:
         :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant
                device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix managed` (default).
+               `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[str] ssh_ip_address: IP address of SSH enabled interface on the device.
         :param pulumi.Input[str] ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
         :param pulumi.Input['DeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
@@ -561,9 +600,10 @@ class _DeviceState:
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
+               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+               on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         :param pulumi.Input[str] zone_code: Device location zone code.
@@ -578,6 +618,8 @@ class _DeviceState:
             pulumi.set(__self__, "asn", asn)
         if byol is not None:
             pulumi.set(__self__, "byol", byol)
+        if cloud_init_file_id is not None:
+            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
         if cluster_details is not None:
             pulumi.set(__self__, "cluster_details", cluster_details)
         if core_count is not None:
@@ -665,7 +707,7 @@ class _DeviceState:
     @pulumi.getter(name="aclTemplateId")
     def acl_template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of an ACL template that will be applied on the device.
+        Identifier of a WAN interface ACL template that will be applied on the device.
         """
         return pulumi.get(self, "acl_template_id")
 
@@ -710,6 +752,18 @@ class _DeviceState:
     @byol.setter
     def byol(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "byol", value)
+
+    @property
+    @pulumi.getter(name="cloudInitFileId")
+    def cloud_init_file_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of a cloud init file that will be applied on the device.
+        """
+        return pulumi.get(self, "cloud_init_file_id")
+
+    @cloud_init_file_id.setter
+    def cloud_init_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_init_file_id", value)
 
     @property
     @pulumi.getter(name="clusterDetails")
@@ -791,7 +845,7 @@ class _DeviceState:
     def license_file(self) -> Optional[pulumi.Input[str]]:
         """
         Path to the license file that will be uploaded and applied on a
-        device. Applicable for some devices types in BYOL licensing mode.
+        device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -803,7 +857,7 @@ class _DeviceState:
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> Optional[pulumi.Input[str]]:
         """
-        License file id. This is necessary for Fortinet and Juniper clusters.
+        Identifier of a license file that will be applied on the device.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -828,7 +882,8 @@ class _DeviceState:
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[pulumi.Input[str]]:
         """
-        License token. This is necessary for Palo Alto clusters.
+        License Token applicable for some device types in BYOL licensing
+        mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -977,7 +1032,7 @@ class _DeviceState:
     def self_managed(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix managed` (default).
+        `self-managed` or `Equinix-managed` (default).
         """
         return pulumi.get(self, "self_managed")
 
@@ -1097,9 +1152,10 @@ class _DeviceState:
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        Map of vendor specific configuration parameters for a device
+        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        on a device (max one key).  See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -1153,11 +1209,13 @@ class Device(pulumi.CustomResource):
                  acl_template_id: Optional[pulumi.Input[str]] = None,
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  byol: Optional[pulumi.Input[bool]] = None,
+                 cloud_init_file_id: Optional[pulumi.Input[str]] = None,
                  cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
                  license_file: Optional[pulumi.Input[str]] = None,
+                 license_file_id: Optional[pulumi.Input[str]] = None,
                  license_token: Optional[pulumi.Input[str]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
@@ -1196,85 +1254,6 @@ class Device(pulumi.CustomResource):
           software license. There are no charges associated with such license. It is the only licensing mode
           for `self-configured` devices.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        dc = equinix.networkedge.get_account(metro_code="DC")
-        sv = equinix.networkedge.get_account(metro_code="SV")
-        csr1000v_ha = equinix.networkedge.Device("csr1000v-ha",
-            throughput=500,
-            throughput_unit="Mbps",
-            metro_code=dc.metro_code,
-            type_code="CSR1000V",
-            package_code="SEC",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            hostname="csr1000v-p",
-            term_length=6,
-            account_number=dc.number,
-            version="16.09.05",
-            core_count=2,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-csr1000v-s",
-                metro_code=sv.metro_code,
-                hostname="csr1000v-s",
-                notifications=[
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                account_number=sv.number,
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account(metro_code="SV")
-        panw_cluster = equinix.networkedge.Device("panw-cluster",
-            metro_code=sv.metro_code,
-            type_code="PA-VM",
-            self_managed=True,
-            byol=True,
-            package_code="VM100",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=6,
-            account_number=sv.number,
-            version="10.1.3",
-            interface_count=10,
-            core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
-        ```
-
         ## Import
 
         This resource can be imported using an existing ID
@@ -1283,16 +1262,17 @@ class Device(pulumi.CustomResource):
          $ pulumi import equinix:networkedge/device:Device example {existing_id}
         ```
 
-         The `license_token` and `mgtm_acl_template_uuid` fields can not be imported.
+         The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_number: Billing account number for a device.
-        :param pulumi.Input[str] acl_template_id: Identifier of an ACL template that will be applied on the device.
+        :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
         :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
                allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
                `bring your own license` or `subscription` (default).
+        :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
         :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See
                Cluster Details below for more details.
         :param pulumi.Input[int] core_count: Number of CPU cores used by device.
@@ -1300,8 +1280,10 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
                default number for a given device type will be used.
         :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some devices types in BYOL licensing mode.
-        :param pulumi.Input[str] license_token: License token. This is necessary for Palo Alto clusters.
+               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
+               mode.
         :param pulumi.Input[str] metro_code: Device location metro code.
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
                applied on the device.
@@ -1314,15 +1296,16 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant
                device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix managed` (default).
+               `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[int] term_length: Device term length.
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
+               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+               on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
@@ -1351,85 +1334,6 @@ class Device(pulumi.CustomResource):
           software license. There are no charges associated with such license. It is the only licensing mode
           for `self-configured` devices.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        dc = equinix.networkedge.get_account(metro_code="DC")
-        sv = equinix.networkedge.get_account(metro_code="SV")
-        csr1000v_ha = equinix.networkedge.Device("csr1000v-ha",
-            throughput=500,
-            throughput_unit="Mbps",
-            metro_code=dc.metro_code,
-            type_code="CSR1000V",
-            package_code="SEC",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            hostname="csr1000v-p",
-            term_length=6,
-            account_number=dc.number,
-            version="16.09.05",
-            core_count=2,
-            secondary_device=equinix.networkedge.DeviceSecondaryDeviceArgs(
-                name="tf-csr1000v-s",
-                metro_code=sv.metro_code,
-                hostname="csr1000v-s",
-                notifications=[
-                    "john@equinix.com",
-                    "marry@equinix.com",
-                ],
-                account_number=sv.number,
-            ))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        sv = equinix.networkedge.get_account(metro_code="SV")
-        panw_cluster = equinix.networkedge.Device("panw-cluster",
-            metro_code=sv.metro_code,
-            type_code="PA-VM",
-            self_managed=True,
-            byol=True,
-            package_code="VM100",
-            notifications=[
-                "john@equinix.com",
-                "marry@equinix.com",
-                "fred@equinix.com",
-            ],
-            term_length=6,
-            account_number=sv.number,
-            version="10.1.3",
-            interface_count=10,
-            core_count=2,
-            ssh_key=equinix.networkedge.DeviceSshKeyArgs(
-                username="test",
-                key_name="test-key",
-            ),
-            acl_template_id="0bff6e05-f0e7-44cd-804a-25b92b835f8b",
-            cluster_details=equinix.networkedge.DeviceClusterDetailsArgs(
-                cluster_name="tf-panw-cluster",
-                node0=equinix.networkedge.DeviceClusterDetailsNode0Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs(
-                        hostname="panw-node0",
-                    ),
-                    license_token="licenseToken",
-                ),
-                node1=equinix.networkedge.DeviceClusterDetailsNode1Args(
-                    vendor_configuration=equinix.networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs(
-                        hostname="panw-node1",
-                    ),
-                    license_token="licenseToken",
-                ),
-            ))
-        ```
-
         ## Import
 
         This resource can be imported using an existing ID
@@ -1438,7 +1342,7 @@ class Device(pulumi.CustomResource):
          $ pulumi import equinix:networkedge/device:Device example {existing_id}
         ```
 
-         The `license_token` and `mgtm_acl_template_uuid` fields can not be imported.
+         The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
 
         :param str resource_name: The name of the resource.
         :param DeviceArgs args: The arguments to use to populate this resource's properties.
@@ -1459,11 +1363,13 @@ class Device(pulumi.CustomResource):
                  acl_template_id: Optional[pulumi.Input[str]] = None,
                  additional_bandwidth: Optional[pulumi.Input[int]] = None,
                  byol: Optional[pulumi.Input[bool]] = None,
+                 cloud_init_file_id: Optional[pulumi.Input[str]] = None,
                  cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
                  license_file: Optional[pulumi.Input[str]] = None,
+                 license_file_id: Optional[pulumi.Input[str]] = None,
                  license_token: Optional[pulumi.Input[str]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
@@ -1497,6 +1403,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["acl_template_id"] = acl_template_id
             __props__.__dict__["additional_bandwidth"] = additional_bandwidth
             __props__.__dict__["byol"] = byol
+            __props__.__dict__["cloud_init_file_id"] = cloud_init_file_id
             __props__.__dict__["cluster_details"] = cluster_details
             if core_count is None and not opts.urn:
                 raise TypeError("Missing required property 'core_count'")
@@ -1504,6 +1411,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["interface_count"] = interface_count
             __props__.__dict__["license_file"] = license_file
+            __props__.__dict__["license_file_id"] = license_file_id
             __props__.__dict__["license_token"] = license_token
             if metro_code is None and not opts.urn:
                 raise TypeError("Missing required property 'metro_code'")
@@ -1537,7 +1445,6 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["asn"] = None
             __props__.__dict__["ibx"] = None
             __props__.__dict__["interfaces"] = None
-            __props__.__dict__["license_file_id"] = None
             __props__.__dict__["license_status"] = None
             __props__.__dict__["redundancy_type"] = None
             __props__.__dict__["redundant_id"] = None
@@ -1562,6 +1469,7 @@ class Device(pulumi.CustomResource):
             additional_bandwidth: Optional[pulumi.Input[int]] = None,
             asn: Optional[pulumi.Input[int]] = None,
             byol: Optional[pulumi.Input[bool]] = None,
+            cloud_init_file_id: Optional[pulumi.Input[str]] = None,
             cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
             core_count: Optional[pulumi.Input[int]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -1605,12 +1513,13 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_number: Billing account number for a device.
-        :param pulumi.Input[str] acl_template_id: Identifier of an ACL template that will be applied on the device.
+        :param pulumi.Input[str] acl_template_id: Identifier of a WAN interface ACL template that will be applied on the device.
         :param pulumi.Input[int] additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be
                allocated to the device (in addition to default 15Mbps).
         :param pulumi.Input[int] asn: (Autonomous System Number) Unique identifier for a network on the internet.
         :param pulumi.Input[bool] byol: Boolean value that determines device licensing mode, i.e.,
                `bring your own license` or `subscription` (default).
+        :param pulumi.Input[str] cloud_init_file_id: Identifier of a cloud init file that will be applied on the device.
         :param pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']] cluster_details: An object that has the cluster details. See
                Cluster Details below for more details.
         :param pulumi.Input[int] core_count: Number of CPU cores used by device.
@@ -1621,11 +1530,12 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceInterfaceArgs']]]] interfaces: List of device interfaces. See Interface Attribute below
                for more details.
         :param pulumi.Input[str] license_file: Path to the license file that will be uploaded and applied on a
-               device. Applicable for some devices types in BYOL licensing mode.
-        :param pulumi.Input[str] license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
+               device. Applicable for some device types in BYOL licensing mode.
+        :param pulumi.Input[str] license_file_id: Identifier of a license file that will be applied on the device.
         :param pulumi.Input[str] license_status: Device license registration status. Possible values are `APPLYING_LICENSE`,
                `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
-        :param pulumi.Input[str] license_token: License token. This is necessary for Palo Alto clusters.
+        :param pulumi.Input[str] license_token: License Token applicable for some device types in BYOL licensing
+               mode.
         :param pulumi.Input[str] metro_code: Device location metro code.
         :param pulumi.Input[str] mgmt_acl_template_uuid: Identifier of an MGMT interface ACL template that will be
                applied on the device.
@@ -1642,7 +1552,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant
                device configurations. See Secondary Device below for more details.
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
-               `self-managed` or `Equinix managed` (default).
+               `self-managed` or `Equinix-managed` (default).
         :param pulumi.Input[str] ssh_ip_address: IP address of SSH enabled interface on the device.
         :param pulumi.Input[str] ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
         :param pulumi.Input[pulumi.InputType['DeviceSshKeyArgs']] ssh_key: Definition of SSH key that will be provisioned on a device
@@ -1652,9 +1562,10 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: An object that has fields relevant to the vendor of the
-               cluster device. See Cluster Details - Nodes - Vendor Configuration
-               below for more details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
+               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+               on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         :param pulumi.Input[str] zone_code: Device location zone code.
@@ -1668,6 +1579,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["additional_bandwidth"] = additional_bandwidth
         __props__.__dict__["asn"] = asn
         __props__.__dict__["byol"] = byol
+        __props__.__dict__["cloud_init_file_id"] = cloud_init_file_id
         __props__.__dict__["cluster_details"] = cluster_details
         __props__.__dict__["core_count"] = core_count
         __props__.__dict__["hostname"] = hostname
@@ -1717,7 +1629,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="aclTemplateId")
     def acl_template_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Identifier of an ACL template that will be applied on the device.
+        Identifier of a WAN interface ACL template that will be applied on the device.
         """
         return pulumi.get(self, "acl_template_id")
 
@@ -1746,6 +1658,14 @@ class Device(pulumi.CustomResource):
         `bring your own license` or `subscription` (default).
         """
         return pulumi.get(self, "byol")
+
+    @property
+    @pulumi.getter(name="cloudInitFileId")
+    def cloud_init_file_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Identifier of a cloud init file that will be applied on the device.
+        """
+        return pulumi.get(self, "cloud_init_file_id")
 
     @property
     @pulumi.getter(name="clusterDetails")
@@ -1803,7 +1723,7 @@ class Device(pulumi.CustomResource):
     def license_file(self) -> pulumi.Output[Optional[str]]:
         """
         Path to the license file that will be uploaded and applied on a
-        device. Applicable for some devices types in BYOL licensing mode.
+        device. Applicable for some device types in BYOL licensing mode.
         """
         return pulumi.get(self, "license_file")
 
@@ -1811,7 +1731,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> pulumi.Output[str]:
         """
-        License file id. This is necessary for Fortinet and Juniper clusters.
+        Identifier of a license file that will be applied on the device.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -1828,7 +1748,8 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> pulumi.Output[Optional[str]]:
         """
-        License token. This is necessary for Palo Alto clusters.
+        License Token applicable for some device types in BYOL licensing
+        mode.
         """
         return pulumi.get(self, "license_token")
 
@@ -1929,7 +1850,7 @@ class Device(pulumi.CustomResource):
     def self_managed(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean value that determines device management mode, i.e.,
-        `self-managed` or `Equinix managed` (default).
+        `self-managed` or `Equinix-managed` (default).
         """
         return pulumi.get(self, "self_managed")
 
@@ -2009,9 +1930,10 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        An object that has fields relevant to the vendor of the
-        cluster device. See Cluster Details - Nodes - Vendor Configuration
-        below for more details.
+        Map of vendor specific configuration parameters for a device
+        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+        on a device (max one key).  See SSH Key below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 

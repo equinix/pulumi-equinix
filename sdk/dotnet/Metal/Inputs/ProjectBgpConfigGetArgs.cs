@@ -31,11 +31,21 @@ namespace Pulumi.Equinix.Metal.Inputs
         [Input("maxPrefix")]
         public Input<int>? MaxPrefix { get; set; }
 
+        [Input("md5")]
+        private Input<string>? _md5;
+
         /// <summary>
         /// Password for BGP session in plaintext (not a checksum).
         /// </summary>
-        [Input("md5")]
-        public Input<string>? Md5 { get; set; }
+        public Input<string>? Md5
+        {
+            get => _md5;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _md5 = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// status of BGP configuration in the project.

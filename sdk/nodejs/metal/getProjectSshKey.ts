@@ -20,11 +20,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProjectSshKey(args: GetProjectSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectSshKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getProjectSshKey:getProjectSshKey", {
         "id": args.id,
         "projectId": args.projectId,
@@ -89,9 +86,23 @@ export interface GetProjectSshKeyResult {
      */
     readonly updated: string;
 }
-
+/**
+ * Use this datasource to retrieve attributes of a Project SSH Key API resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const myKey = equinix.metal.getProjectSshKey({
+ *     search: "username@hostname",
+ *     projectId: local.project_id,
+ * });
+ * ```
+ */
 export function getProjectSshKeyOutput(args: GetProjectSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSshKeyResult> {
-    return pulumi.output(args).apply(a => getProjectSshKey(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectSshKey(a, opts))
 }
 
 /**

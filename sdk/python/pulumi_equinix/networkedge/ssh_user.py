@@ -161,8 +161,8 @@ class SshUser(pulumi.CustomResource):
             username="john",
             password="secret",
             device_ids=[
-                equinix_ne_device["csr1000v-ha"]["uuid"],
-                equinix_ne_device["csr1000v-ha"]["redundant_uuid"],
+                equinix_network_device["csr1000v-ha"]["uuid"],
+                equinix_network_device["csr1000v-ha"]["redundant_uuid"],
             ])
         ```
 
@@ -202,8 +202,8 @@ class SshUser(pulumi.CustomResource):
             username="john",
             password="secret",
             device_ids=[
-                equinix_ne_device["csr1000v-ha"]["uuid"],
-                equinix_ne_device["csr1000v-ha"]["redundant_uuid"],
+                equinix_network_device["csr1000v-ha"]["uuid"],
+                equinix_network_device["csr1000v-ha"]["redundant_uuid"],
             ])
         ```
 
@@ -247,11 +247,13 @@ class SshUser(pulumi.CustomResource):
             __props__.__dict__["device_ids"] = device_ids
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["uuid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SshUser, __self__).__init__(
             'equinix:networkedge/sshUser:SshUser',
             resource_name,

@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -37,11 +39,8 @@ import * as utilities from "../utilities";
  */
 export function getDevice(args?: GetDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getDevice:getDevice", {
         "deviceId": args.deviceId,
         "hostname": args.hostname,
@@ -153,9 +152,38 @@ export interface GetDeviceResult {
      */
     readonly tags: string[];
 }
-
+/**
+ * Provides an Equinix Metal device datasource.
+ *
+ * > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
+ *  the raw state as plain-text.
+ * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const test = equinix.metal.getDevice({
+ *     projectId: local.project_id,
+ *     hostname: "mydevice",
+ * });
+ * export const id = test.then(test => test.id);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const test = equinix.metal.getDevice({
+ *     deviceId: "4c641195-25e5-4c3c-b2b7-4cd7a42c7b40",
+ * });
+ * export const ipv4 = test.then(test => test.accessPublicIpv4);
+ * ```
+ */
 export function getDeviceOutput(args?: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
-    return pulumi.output(args).apply(a => getDevice(a, opts))
+    return pulumi.output(args).apply((a: any) => getDevice(a, opts))
 }
 
 /**

@@ -38,7 +38,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string> DeviceId { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the session - up or down
+        /// Status of the session - `up` or `down`
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? DeviceId { get; set; }
 
         /// <summary>
-        /// Status of the session - up or down
+        /// Status of the session - `up` or `down`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

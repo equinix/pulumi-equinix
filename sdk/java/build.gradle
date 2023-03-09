@@ -77,18 +77,18 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = ""
-            artifactId = ""
+            groupId = "com.equinix.pulumi"
+            artifactId = "equinix"
             version = resolvedVersion
             from components.java
             artifact sourcesJar
             artifact javadocJar
 
             pom {
-                inceptionYear = ""
-                name = ""
+                inceptionYear = "2023"
+                name = "equinix"
                 packaging = "jar"
-                description = ""
+                description = "A Pulumi package for creating and managing equinix cloud resources."
 
                 url = "https://github.com/equinix/pulumi-equinix"
 

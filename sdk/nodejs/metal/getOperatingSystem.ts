@@ -30,11 +30,8 @@ import * as utilities from "../utilities";
  */
 export function getOperatingSystem(args?: GetOperatingSystemArgs, opts?: pulumi.InvokeOptions): Promise<GetOperatingSystemResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getOperatingSystem:getOperatingSystem", {
         "distro": args.distro,
         "name": args.name,
@@ -82,9 +79,32 @@ export interface GetOperatingSystemResult {
     readonly slug: string;
     readonly version?: string;
 }
-
+/**
+ * Use this data source to get Equinix Metal Operating System image.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const example = equinix.metal.getOperatingSystem({
+ *     distro: "ubuntu",
+ *     version: "20.04",
+ *     provisionableOn: "c3.medium.x86",
+ * });
+ * const server = new equinix.metal.Device("server", {
+ *     hostname: "tf.ubuntu",
+ *     plan: "c3.medium.x86",
+ *     facilities: ["ny5"],
+ *     operatingSystem: example.then(example => example.id).apply((x) => @equinix/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
+ *     billingCycle: "hourly",
+ *     projectId: local.project_id,
+ * });
+ * ```
+ */
 export function getOperatingSystemOutput(args?: GetOperatingSystemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOperatingSystemResult> {
-    return pulumi.output(args).apply(a => getOperatingSystem(a, opts))
+    return pulumi.output(args).apply((a: any) => getOperatingSystem(a, opts))
 }
 
 /**

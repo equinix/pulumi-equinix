@@ -25,11 +25,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:networkedge/getAccount:getAccount", {
         "metroCode": args.metroCode,
         "name": args.name,
@@ -76,9 +73,28 @@ export interface GetAccountResult {
      */
     readonly ucmId: string;
 }
-
+/**
+ * Use this data source to get number and identifier of Equinix Network Edge
+ * billing account in a given metro location.
+ *
+ * Billing account reference is required to create Network Edge virtual device
+ * in corresponding metro location.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const dc = equinix.networkedge.getAccount({
+ *     metroCode: "DC",
+ *     status: "Active",
+ * });
+ * export const number = dc.then(dc => dc.number);
+ * ```
+ */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(args).apply(a => getAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccount(a, opts))
 }
 
 /**

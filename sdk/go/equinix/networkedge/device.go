@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,134 +29,6 @@ import (
 //     software license. There are no charges associated with such license. It is the only licensing mode
 //     for `self-configured` devices.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dc, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				MetroCode: "DC",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				MetroCode: "SV",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "csr1000v-ha", &networkedge.DeviceArgs{
-//				Throughput:     pulumi.Int(500),
-//				ThroughputUnit: pulumi.String("Mbps"),
-//				MetroCode:      pulumi.String(dc.MetroCode),
-//				TypeCode:       pulumi.String("CSR1000V"),
-//				PackageCode:    pulumi.String("SEC"),
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("john@equinix.com"),
-//					pulumi.String("marry@equinix.com"),
-//					pulumi.String("fred@equinix.com"),
-//				},
-//				Hostname:      pulumi.String("csr1000v-p"),
-//				TermLength:    pulumi.Int(6),
-//				AccountNumber: pulumi.String(dc.Number),
-//				Version:       pulumi.String("16.09.05"),
-//				CoreCount:     pulumi.Int(2),
-//				SecondaryDevice: &networkedge.DeviceSecondaryDeviceArgs{
-//					Name:      pulumi.String("tf-csr1000v-s"),
-//					MetroCode: pulumi.String(sv.MetroCode),
-//					Hostname:  pulumi.String("csr1000v-s"),
-//					Notifications: pulumi.StringArray{
-//						pulumi.String("john@equinix.com"),
-//						pulumi.String("marry@equinix.com"),
-//					},
-//					AccountNumber: pulumi.String(sv.Number),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sv, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
-//				MetroCode: "SV",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkedge.NewDevice(ctx, "panw-cluster", &networkedge.DeviceArgs{
-//				MetroCode:   pulumi.String(sv.MetroCode),
-//				TypeCode:    pulumi.String("PA-VM"),
-//				SelfManaged: pulumi.Bool(true),
-//				Byol:        pulumi.Bool(true),
-//				PackageCode: pulumi.String("VM100"),
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("john@equinix.com"),
-//					pulumi.String("marry@equinix.com"),
-//					pulumi.String("fred@equinix.com"),
-//				},
-//				TermLength:     pulumi.Int(6),
-//				AccountNumber:  pulumi.String(sv.Number),
-//				Version:        pulumi.String("10.1.3"),
-//				InterfaceCount: pulumi.Int(10),
-//				CoreCount:      pulumi.Int(2),
-//				SshKey: &networkedge.DeviceSshKeyArgs{
-//					Username: pulumi.String("test"),
-//					KeyName:  pulumi.String("test-key"),
-//				},
-//				AclTemplateId: pulumi.String("0bff6e05-f0e7-44cd-804a-25b92b835f8b"),
-//				ClusterDetails: &networkedge.DeviceClusterDetailsArgs{
-//					ClusterName: pulumi.String("tf-panw-cluster"),
-//					Node0: &networkedge.DeviceClusterDetailsNode0Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode0VendorConfigurationArgs{
-//							Hostname: pulumi.String("panw-node0"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//					Node1: &networkedge.DeviceClusterDetailsNode1Args{
-//						VendorConfiguration: &networkedge.DeviceClusterDetailsNode1VendorConfigurationArgs{
-//							Hostname: pulumi.String("panw-node1"),
-//						},
-//						LicenseToken: pulumi.String("licenseToken"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # This resource can be imported using an existing ID
@@ -167,13 +39,13 @@ import (
 //
 // ```
 //
-//	The `license_token` and `mgtm_acl_template_uuid` fields can not be imported.
+//	The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
 type Device struct {
 	pulumi.CustomResourceState
 
 	// Billing account number for a device.
 	AccountNumber pulumi.StringOutput `pulumi:"accountNumber"`
-	// Identifier of an ACL template that will be applied on the device.
+	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId pulumi.StringPtrOutput `pulumi:"aclTemplateId"`
 	// Additional Internet bandwidth, in Mbps, that will be
 	// allocated to the device (in addition to default 15Mbps).
@@ -183,6 +55,8 @@ type Device struct {
 	// Boolean value that determines device licensing mode, i.e.,
 	// `bring your own license` or `subscription` (default).
 	Byol pulumi.BoolPtrOutput `pulumi:"byol"`
+	// Identifier of a cloud init file that will be applied on the device.
+	CloudInitFileId pulumi.StringPtrOutput `pulumi:"cloudInitFileId"`
 	// An object that has the cluster details. See
 	// Cluster Details below for more details.
 	ClusterDetails DeviceClusterDetailsPtrOutput `pulumi:"clusterDetails"`
@@ -199,14 +73,15 @@ type Device struct {
 	// for more details.
 	Interfaces DeviceInterfaceArrayOutput `pulumi:"interfaces"`
 	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some devices types in BYOL licensing mode.
+	// device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrOutput `pulumi:"licenseFile"`
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringOutput `pulumi:"licenseFileId"`
 	// Device license registration status. Possible values are `APPLYING_LICENSE`,
 	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus pulumi.StringOutput `pulumi:"licenseStatus"`
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken pulumi.StringPtrOutput `pulumi:"licenseToken"`
 	// Device location metro code.
 	MetroCode pulumi.StringOutput `pulumi:"metroCode"`
@@ -235,7 +110,7 @@ type Device struct {
 	// device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrOutput `pulumi:"secondaryDevice"`
 	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix managed` (default).
+	// `self-managed` or `Equinix-managed` (default).
 	SelfManaged pulumi.BoolPtrOutput `pulumi:"selfManaged"`
 	// IP address of SSH enabled interface on the device.
 	SshIpAddress pulumi.StringOutput `pulumi:"sshIpAddress"`
@@ -255,9 +130,10 @@ type Device struct {
 	TypeCode pulumi.StringOutput `pulumi:"typeCode"`
 	// Device unique identifier.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapOutput `pulumi:"vendorConfiguration"`
 	// Device software software version.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -323,7 +199,7 @@ func GetDevice(ctx *pulumi.Context,
 type deviceState struct {
 	// Billing account number for a device.
 	AccountNumber *string `pulumi:"accountNumber"`
-	// Identifier of an ACL template that will be applied on the device.
+	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId *string `pulumi:"aclTemplateId"`
 	// Additional Internet bandwidth, in Mbps, that will be
 	// allocated to the device (in addition to default 15Mbps).
@@ -333,6 +209,8 @@ type deviceState struct {
 	// Boolean value that determines device licensing mode, i.e.,
 	// `bring your own license` or `subscription` (default).
 	Byol *bool `pulumi:"byol"`
+	// Identifier of a cloud init file that will be applied on the device.
+	CloudInitFileId *string `pulumi:"cloudInitFileId"`
 	// An object that has the cluster details. See
 	// Cluster Details below for more details.
 	ClusterDetails *DeviceClusterDetails `pulumi:"clusterDetails"`
@@ -349,14 +227,15 @@ type deviceState struct {
 	// for more details.
 	Interfaces []DeviceInterface `pulumi:"interfaces"`
 	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some devices types in BYOL licensing mode.
+	// device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile *string `pulumi:"licenseFile"`
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
 	// Device license registration status. Possible values are `APPLYING_LICENSE`,
 	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus *string `pulumi:"licenseStatus"`
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device location metro code.
 	MetroCode *string `pulumi:"metroCode"`
@@ -385,7 +264,7 @@ type deviceState struct {
 	// device configurations. See Secondary Device below for more details.
 	SecondaryDevice *DeviceSecondaryDevice `pulumi:"secondaryDevice"`
 	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix managed` (default).
+	// `self-managed` or `Equinix-managed` (default).
 	SelfManaged *bool `pulumi:"selfManaged"`
 	// IP address of SSH enabled interface on the device.
 	SshIpAddress *string `pulumi:"sshIpAddress"`
@@ -405,9 +284,10 @@ type deviceState struct {
 	TypeCode *string `pulumi:"typeCode"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// Device software software version.
 	Version *string `pulumi:"version"`
@@ -420,7 +300,7 @@ type deviceState struct {
 type DeviceState struct {
 	// Billing account number for a device.
 	AccountNumber pulumi.StringPtrInput
-	// Identifier of an ACL template that will be applied on the device.
+	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId pulumi.StringPtrInput
 	// Additional Internet bandwidth, in Mbps, that will be
 	// allocated to the device (in addition to default 15Mbps).
@@ -430,6 +310,8 @@ type DeviceState struct {
 	// Boolean value that determines device licensing mode, i.e.,
 	// `bring your own license` or `subscription` (default).
 	Byol pulumi.BoolPtrInput
+	// Identifier of a cloud init file that will be applied on the device.
+	CloudInitFileId pulumi.StringPtrInput
 	// An object that has the cluster details. See
 	// Cluster Details below for more details.
 	ClusterDetails DeviceClusterDetailsPtrInput
@@ -446,14 +328,15 @@ type DeviceState struct {
 	// for more details.
 	Interfaces DeviceInterfaceArrayInput
 	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some devices types in BYOL licensing mode.
+	// device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrInput
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringPtrInput
 	// Device license registration status. Possible values are `APPLYING_LICENSE`,
 	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
 	LicenseStatus pulumi.StringPtrInput
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken pulumi.StringPtrInput
 	// Device location metro code.
 	MetroCode pulumi.StringPtrInput
@@ -482,7 +365,7 @@ type DeviceState struct {
 	// device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrInput
 	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix managed` (default).
+	// `self-managed` or `Equinix-managed` (default).
 	SelfManaged pulumi.BoolPtrInput
 	// IP address of SSH enabled interface on the device.
 	SshIpAddress pulumi.StringPtrInput
@@ -502,9 +385,10 @@ type DeviceState struct {
 	TypeCode pulumi.StringPtrInput
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
 	// Device software software version.
 	Version pulumi.StringPtrInput
@@ -521,7 +405,7 @@ func (DeviceState) ElementType() reflect.Type {
 type deviceArgs struct {
 	// Billing account number for a device.
 	AccountNumber string `pulumi:"accountNumber"`
-	// Identifier of an ACL template that will be applied on the device.
+	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId *string `pulumi:"aclTemplateId"`
 	// Additional Internet bandwidth, in Mbps, that will be
 	// allocated to the device (in addition to default 15Mbps).
@@ -529,6 +413,8 @@ type deviceArgs struct {
 	// Boolean value that determines device licensing mode, i.e.,
 	// `bring your own license` or `subscription` (default).
 	Byol *bool `pulumi:"byol"`
+	// Identifier of a cloud init file that will be applied on the device.
+	CloudInitFileId *string `pulumi:"cloudInitFileId"`
 	// An object that has the cluster details. See
 	// Cluster Details below for more details.
 	ClusterDetails *DeviceClusterDetails `pulumi:"clusterDetails"`
@@ -540,9 +426,12 @@ type deviceArgs struct {
 	// default number for a given device type will be used.
 	InterfaceCount *int `pulumi:"interfaceCount"`
 	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some devices types in BYOL licensing mode.
+	// device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile *string `pulumi:"licenseFile"`
-	// License token. This is necessary for Palo Alto clusters.
+	// Identifier of a license file that will be applied on the device.
+	LicenseFileId *string `pulumi:"licenseFileId"`
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device location metro code.
 	MetroCode string `pulumi:"metroCode"`
@@ -564,7 +453,7 @@ type deviceArgs struct {
 	// device configurations. See Secondary Device below for more details.
 	SecondaryDevice *DeviceSecondaryDevice `pulumi:"secondaryDevice"`
 	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix managed` (default).
+	// `self-managed` or `Equinix-managed` (default).
 	SelfManaged *bool `pulumi:"selfManaged"`
 	// Definition of SSH key that will be provisioned on a device
 	SshKey *DeviceSshKey `pulumi:"sshKey"`
@@ -576,9 +465,10 @@ type deviceArgs struct {
 	ThroughputUnit *string `pulumi:"throughputUnit"`
 	// Device type code.
 	TypeCode string `pulumi:"typeCode"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
 	// Device software software version.
 	Version string `pulumi:"version"`
@@ -590,7 +480,7 @@ type deviceArgs struct {
 type DeviceArgs struct {
 	// Billing account number for a device.
 	AccountNumber pulumi.StringInput
-	// Identifier of an ACL template that will be applied on the device.
+	// Identifier of a WAN interface ACL template that will be applied on the device.
 	AclTemplateId pulumi.StringPtrInput
 	// Additional Internet bandwidth, in Mbps, that will be
 	// allocated to the device (in addition to default 15Mbps).
@@ -598,6 +488,8 @@ type DeviceArgs struct {
 	// Boolean value that determines device licensing mode, i.e.,
 	// `bring your own license` or `subscription` (default).
 	Byol pulumi.BoolPtrInput
+	// Identifier of a cloud init file that will be applied on the device.
+	CloudInitFileId pulumi.StringPtrInput
 	// An object that has the cluster details. See
 	// Cluster Details below for more details.
 	ClusterDetails DeviceClusterDetailsPtrInput
@@ -609,9 +501,12 @@ type DeviceArgs struct {
 	// default number for a given device type will be used.
 	InterfaceCount pulumi.IntPtrInput
 	// Path to the license file that will be uploaded and applied on a
-	// device. Applicable for some devices types in BYOL licensing mode.
+	// device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrInput
-	// License token. This is necessary for Palo Alto clusters.
+	// Identifier of a license file that will be applied on the device.
+	LicenseFileId pulumi.StringPtrInput
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken pulumi.StringPtrInput
 	// Device location metro code.
 	MetroCode pulumi.StringInput
@@ -633,7 +528,7 @@ type DeviceArgs struct {
 	// device configurations. See Secondary Device below for more details.
 	SecondaryDevice DeviceSecondaryDevicePtrInput
 	// Boolean value that determines device management mode, i.e.,
-	// `self-managed` or `Equinix managed` (default).
+	// `self-managed` or `Equinix-managed` (default).
 	SelfManaged pulumi.BoolPtrInput
 	// Definition of SSH key that will be provisioned on a device
 	SshKey DeviceSshKeyPtrInput
@@ -645,9 +540,10 @@ type DeviceArgs struct {
 	ThroughputUnit pulumi.StringPtrInput
 	// Device type code.
 	TypeCode pulumi.StringInput
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
 	// Device software software version.
 	Version pulumi.StringInput
@@ -747,7 +643,7 @@ func (o DeviceOutput) AccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.AccountNumber }).(pulumi.StringOutput)
 }
 
-// Identifier of an ACL template that will be applied on the device.
+// Identifier of a WAN interface ACL template that will be applied on the device.
 func (o DeviceOutput) AclTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.AclTemplateId }).(pulumi.StringPtrOutput)
 }
@@ -767,6 +663,11 @@ func (o DeviceOutput) Asn() pulumi.IntOutput {
 // `bring your own license` or `subscription` (default).
 func (o DeviceOutput) Byol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolPtrOutput { return v.Byol }).(pulumi.BoolPtrOutput)
+}
+
+// Identifier of a cloud init file that will be applied on the device.
+func (o DeviceOutput) CloudInitFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.CloudInitFileId }).(pulumi.StringPtrOutput)
 }
 
 // An object that has the cluster details. See
@@ -803,12 +704,12 @@ func (o DeviceOutput) Interfaces() DeviceInterfaceArrayOutput {
 }
 
 // Path to the license file that will be uploaded and applied on a
-// device. Applicable for some devices types in BYOL licensing mode.
+// device. Applicable for some device types in BYOL licensing mode.
 func (o DeviceOutput) LicenseFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.LicenseFile }).(pulumi.StringPtrOutput)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on the device.
 func (o DeviceOutput) LicenseFileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LicenseFileId }).(pulumi.StringOutput)
 }
@@ -819,7 +720,8 @@ func (o DeviceOutput) LicenseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LicenseStatus }).(pulumi.StringOutput)
 }
 
-// License token. This is necessary for Palo Alto clusters.
+// License Token applicable for some device types in BYOL licensing
+// mode.
 func (o DeviceOutput) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.LicenseToken }).(pulumi.StringPtrOutput)
 }
@@ -884,7 +786,7 @@ func (o DeviceOutput) SecondaryDevice() DeviceSecondaryDevicePtrOutput {
 }
 
 // Boolean value that determines device management mode, i.e.,
-// `self-managed` or `Equinix managed` (default).
+// `self-managed` or `Equinix-managed` (default).
 func (o DeviceOutput) SelfManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolPtrOutput { return v.SelfManaged }).(pulumi.BoolPtrOutput)
 }
@@ -934,9 +836,10 @@ func (o DeviceOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// Map of vendor specific configuration parameters for a device
+// (controller1, activationKey, managementType, siteId, systemIpAddress)
+//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+//     on a device (max one key).  See SSH Key below for more details.
 func (o DeviceOutput) VendorConfiguration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringMapOutput { return v.VendorConfiguration }).(pulumi.StringMapOutput)
 }

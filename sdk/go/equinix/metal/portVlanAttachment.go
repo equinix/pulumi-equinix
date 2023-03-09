@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,7 +86,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

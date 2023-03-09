@@ -38,7 +38,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVrfResult> InvokeAsync(GetVrfArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve a VRF resource.
@@ -67,7 +67,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVrfResult> Invoke(GetVrfInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfInvokeArgs(), options.WithDefaults());
     }
 
 

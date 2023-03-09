@@ -57,7 +57,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpotMarketPriceResult> InvokeAsync(GetSpotMarketPriceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpotMarketPriceResult>("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args ?? new GetSpotMarketPriceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpotMarketPriceResult>("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args ?? new GetSpotMarketPriceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get Equinix Metal Spot Market Price for a plan.
@@ -105,7 +105,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSpotMarketPriceResult> Invoke(GetSpotMarketPriceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpotMarketPriceResult>("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args ?? new GetSpotMarketPriceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpotMarketPriceResult>("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args ?? new GetSpotMarketPriceInvokeArgs(), options.WithDefaults());
     }
 
 

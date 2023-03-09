@@ -2,16 +2,15 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfilesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", {
         "filters": args.filters,
         "sorts": args.sorts,
@@ -53,9 +52,8 @@ export interface GetServiceProfilesResult {
      */
     readonly sorts?: outputs.fabric.GetServiceProfilesSort[];
 }
-
 export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
-    return pulumi.output(args).apply(a => getServiceProfiles(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))
 }
 
 /**

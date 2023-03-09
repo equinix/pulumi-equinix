@@ -44,7 +44,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDeviceSoftwareResult> InvokeAsync(GetDeviceSoftwareArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get Equinix Network Edge device software details for a given
@@ -79,7 +79,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDeviceSoftwareResult> Invoke(GetDeviceSoftwareInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareInvokeArgs(), options.WithDefaults());
     }
 
 

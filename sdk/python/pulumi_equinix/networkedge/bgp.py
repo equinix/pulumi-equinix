@@ -400,7 +400,7 @@ class Bgp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BgpArgs.__new__(BgpArgs)
 
-            __props__.__dict__["authentication_key"] = authentication_key
+            __props__.__dict__["authentication_key"] = None if authentication_key is None else pulumi.Output.secret(authentication_key)
             if connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
@@ -420,6 +420,8 @@ class Bgp(pulumi.CustomResource):
             __props__.__dict__["provisioning_status"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uuid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authenticationKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Bgp, __self__).__init__(
             'equinix:networkedge/bgp:Bgp',
             resource_name,

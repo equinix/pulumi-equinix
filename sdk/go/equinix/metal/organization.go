@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,7 +51,8 @@ import (
 type Organization struct {
 	pulumi.CustomResourceState
 
-	// Postal address.
+	// An object that has the address information. See Address
+	// below for more details.
 	Address OrganizationAddressOutput `pulumi:"address"`
 	// The timestamp for when the organization was created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -102,7 +103,8 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
-	// Postal address.
+	// An object that has the address information. See Address
+	// below for more details.
 	Address *OrganizationAddress `pulumi:"address"`
 	// The timestamp for when the organization was created.
 	Created *string `pulumi:"created"`
@@ -121,7 +123,8 @@ type organizationState struct {
 }
 
 type OrganizationState struct {
-	// Postal address.
+	// An object that has the address information. See Address
+	// below for more details.
 	Address OrganizationAddressPtrInput
 	// The timestamp for when the organization was created.
 	Created pulumi.StringPtrInput
@@ -144,7 +147,8 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// Postal address.
+	// An object that has the address information. See Address
+	// below for more details.
 	Address OrganizationAddress `pulumi:"address"`
 	// Description string.
 	Description *string `pulumi:"description"`
@@ -160,7 +164,8 @@ type organizationArgs struct {
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// Postal address.
+	// An object that has the address information. See Address
+	// below for more details.
 	Address OrganizationAddressInput
 	// Description string.
 	Description pulumi.StringPtrInput
@@ -261,7 +266,8 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Postal address.
+// An object that has the address information. See Address
+// below for more details.
 func (o OrganizationOutput) Address() OrganizationAddressOutput {
 	return o.ApplyT(func(v *Organization) OrganizationAddressOutput { return v.Address }).(OrganizationAddressOutput)
 }

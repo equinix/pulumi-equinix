@@ -5,19 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./connection";
-export * from "./getConnection";
-export * from "./getPorts";
-export * from "./getServiceProfile";
-export * from "./getServiceProfiles";
-export * from "./serviceProfile";
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
+export const getConnection: typeof import("./getConnection").getConnection = null as any;
+export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
+export { GetPortsArgs, GetPortsResult, GetPortsOutputArgs } from "./getPorts";
+export const getPorts: typeof import("./getPorts").getPorts = null as any;
+export const getPortsOutput: typeof import("./getPorts").getPortsOutput = null as any;
+utilities.lazyLoad(exports, ["getPorts","getPortsOutput"], () => require("./getPorts"));
+
+export { GetServiceProfileArgs, GetServiceProfileResult, GetServiceProfileOutputArgs } from "./getServiceProfile";
+export const getServiceProfile: typeof import("./getServiceProfile").getServiceProfile = null as any;
+export const getServiceProfileOutput: typeof import("./getServiceProfile").getServiceProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceProfile","getServiceProfileOutput"], () => require("./getServiceProfile"));
+
+export { GetServiceProfilesArgs, GetServiceProfilesResult, GetServiceProfilesOutputArgs } from "./getServiceProfiles";
+export const getServiceProfiles: typeof import("./getServiceProfiles").getServiceProfiles = null as any;
+export const getServiceProfilesOutput: typeof import("./getServiceProfiles").getServiceProfilesOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceProfiles","getServiceProfilesOutput"], () => require("./getServiceProfiles"));
+
+export { ServiceProfileArgs, ServiceProfileState } from "./serviceProfile";
+export type ServiceProfile = import("./serviceProfile").ServiceProfile;
+export const ServiceProfile: typeof import("./serviceProfile").ServiceProfile = null as any;
+utilities.lazyLoad(exports, ["ServiceProfile"], () => require("./serviceProfile"));
+
 
 // Export enums:
 export * from "../types/enums/fabric";
-
-// Import resources to register:
-import { Connection } from "./connection";
-import { ServiceProfile } from "./serviceProfile";
 
 const _module = {
     version: utilities.getVersion(),

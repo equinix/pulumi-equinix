@@ -24,7 +24,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/networkedge"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

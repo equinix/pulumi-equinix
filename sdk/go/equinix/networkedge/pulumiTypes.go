@@ -519,17 +519,19 @@ func (o DeviceClusterDetailsPtrOutput) NumOfNodes() pulumi.IntPtrOutput {
 }
 
 type DeviceClusterDetailsNode0 struct {
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device name.
 	Name *string `pulumi:"name"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration *DeviceClusterDetailsNode0VendorConfiguration `pulumi:"vendorConfiguration"`
 }
 
@@ -545,17 +547,19 @@ type DeviceClusterDetailsNode0Input interface {
 }
 
 type DeviceClusterDetailsNode0Args struct {
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringPtrInput `pulumi:"licenseFileId"`
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken pulumi.StringPtrInput `pulumi:"licenseToken"`
 	// Device name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration DeviceClusterDetailsNode0VendorConfigurationPtrInput `pulumi:"vendorConfiguration"`
 }
 
@@ -636,12 +640,13 @@ func (o DeviceClusterDetailsNode0Output) ToDeviceClusterDetailsNode0PtrOutputWit
 	}).(DeviceClusterDetailsNode0PtrOutput)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on the device.
 func (o DeviceClusterDetailsNode0Output) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.LicenseFileId }).(pulumi.StringPtrOutput)
 }
 
-// License token. This is necessary for Palo Alto clusters.
+// License Token applicable for some device types in BYOL licensing
+// mode.
 func (o DeviceClusterDetailsNode0Output) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.LicenseToken }).(pulumi.StringPtrOutput)
 }
@@ -656,9 +661,10 @@ func (o DeviceClusterDetailsNode0Output) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// Map of vendor specific configuration parameters for a device
+// (controller1, activationKey, managementType, siteId, systemIpAddress)
+//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+//     on a device (max one key).  See SSH Key below for more details.
 func (o DeviceClusterDetailsNode0Output) VendorConfiguration() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0VendorConfiguration {
 		return v.VendorConfiguration
@@ -689,7 +695,7 @@ func (o DeviceClusterDetailsNode0PtrOutput) Elem() DeviceClusterDetailsNode0Outp
 	}).(DeviceClusterDetailsNode0Output)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on the device.
 func (o DeviceClusterDetailsNode0PtrOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *string {
 		if v == nil {
@@ -699,7 +705,8 @@ func (o DeviceClusterDetailsNode0PtrOutput) LicenseFileId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// License token. This is necessary for Palo Alto clusters.
+// License Token applicable for some device types in BYOL licensing
+// mode.
 func (o DeviceClusterDetailsNode0PtrOutput) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *string {
 		if v == nil {
@@ -729,9 +736,10 @@ func (o DeviceClusterDetailsNode0PtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// Map of vendor specific configuration parameters for a device
+// (controller1, activationKey, managementType, siteId, systemIpAddress)
+//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+//     on a device (max one key).  See SSH Key below for more details.
 func (o DeviceClusterDetailsNode0PtrOutput) VendorConfiguration() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0VendorConfiguration {
 		if v == nil {
@@ -982,17 +990,19 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) RootPassword() pu
 }
 
 type DeviceClusterDetailsNode1 struct {
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device name.
 	Name *string `pulumi:"name"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration *DeviceClusterDetailsNode1VendorConfiguration `pulumi:"vendorConfiguration"`
 }
 
@@ -1008,17 +1018,19 @@ type DeviceClusterDetailsNode1Input interface {
 }
 
 type DeviceClusterDetailsNode1Args struct {
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on the device.
 	LicenseFileId pulumi.StringPtrInput `pulumi:"licenseFileId"`
-	// License token. This is necessary for Palo Alto clusters.
+	// License Token applicable for some device types in BYOL licensing
+	// mode.
 	LicenseToken pulumi.StringPtrInput `pulumi:"licenseToken"`
 	// Device name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// An object that has fields relevant to the vendor of the
-	// cluster device. See Cluster Details - Nodes - Vendor Configuration
-	// below for more details.
+	// Map of vendor specific configuration parameters for a device
+	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration DeviceClusterDetailsNode1VendorConfigurationPtrInput `pulumi:"vendorConfiguration"`
 }
 
@@ -1099,12 +1111,13 @@ func (o DeviceClusterDetailsNode1Output) ToDeviceClusterDetailsNode1PtrOutputWit
 	}).(DeviceClusterDetailsNode1PtrOutput)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on the device.
 func (o DeviceClusterDetailsNode1Output) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.LicenseFileId }).(pulumi.StringPtrOutput)
 }
 
-// License token. This is necessary for Palo Alto clusters.
+// License Token applicable for some device types in BYOL licensing
+// mode.
 func (o DeviceClusterDetailsNode1Output) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.LicenseToken }).(pulumi.StringPtrOutput)
 }
@@ -1119,9 +1132,10 @@ func (o DeviceClusterDetailsNode1Output) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// Map of vendor specific configuration parameters for a device
+// (controller1, activationKey, managementType, siteId, systemIpAddress)
+//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+//     on a device (max one key).  See SSH Key below for more details.
 func (o DeviceClusterDetailsNode1Output) VendorConfiguration() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1VendorConfiguration {
 		return v.VendorConfiguration
@@ -1152,7 +1166,7 @@ func (o DeviceClusterDetailsNode1PtrOutput) Elem() DeviceClusterDetailsNode1Outp
 	}).(DeviceClusterDetailsNode1Output)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on the device.
 func (o DeviceClusterDetailsNode1PtrOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *string {
 		if v == nil {
@@ -1162,7 +1176,8 @@ func (o DeviceClusterDetailsNode1PtrOutput) LicenseFileId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// License token. This is necessary for Palo Alto clusters.
+// License Token applicable for some device types in BYOL licensing
+// mode.
 func (o DeviceClusterDetailsNode1PtrOutput) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *string {
 		if v == nil {
@@ -1192,9 +1207,10 @@ func (o DeviceClusterDetailsNode1PtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An object that has fields relevant to the vendor of the
-// cluster device. See Cluster Details - Nodes - Vendor Configuration
-// below for more details.
+// Map of vendor specific configuration parameters for a device
+// (controller1, activationKey, managementType, siteId, systemIpAddress)
+//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+//     on a device (max one key).  See SSH Key below for more details.
 func (o DeviceClusterDetailsNode1PtrOutput) VendorConfiguration() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1VendorConfiguration {
 		if v == nil {
@@ -1920,6 +1936,8 @@ type DeviceSecondaryDevice struct {
 	AdditionalBandwidth *int `pulumi:"additionalBandwidth"`
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn *int `pulumi:"asn"`
+	// Identifier of a cloud init file that will be applied on a secondary device.
+	CloudInitFileId *string `pulumi:"cloudInitFileId"`
 	// Secondary device hostname.
 	Hostname *string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
@@ -1928,9 +1946,9 @@ type DeviceSecondaryDevice struct {
 	// for more details.
 	Interfaces []DeviceSecondaryDeviceInterface `pulumi:"interfaces"`
 	// Path to the license file that will be uploaded and applied on a
-	// secondary device. Applicable for some devices types in BYOL licensing mode.
+	// secondary device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile *string `pulumi:"licenseFile"`
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on a secondary device.
 	LicenseFileId *string `pulumi:"licenseFileId"`
 	// Device license registration status. Possible values are `APPLYING_LICENSE`,
 	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
@@ -1940,7 +1958,7 @@ type DeviceSecondaryDevice struct {
 	// Metro location of a secondary device.
 	MetroCode string `pulumi:"metroCode"`
 	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// applied on a secondary device.
 	// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
 	//   device.
 	MgmtAclTemplateUuid *string `pulumi:"mgmtAclTemplateUuid"`
@@ -1996,6 +2014,8 @@ type DeviceSecondaryDeviceArgs struct {
 	AdditionalBandwidth pulumi.IntPtrInput `pulumi:"additionalBandwidth"`
 	// (Autonomous System Number) Unique identifier for a network on the internet.
 	Asn pulumi.IntPtrInput `pulumi:"asn"`
+	// Identifier of a cloud init file that will be applied on a secondary device.
+	CloudInitFileId pulumi.StringPtrInput `pulumi:"cloudInitFileId"`
 	// Secondary device hostname.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
@@ -2004,9 +2024,9 @@ type DeviceSecondaryDeviceArgs struct {
 	// for more details.
 	Interfaces DeviceSecondaryDeviceInterfaceArrayInput `pulumi:"interfaces"`
 	// Path to the license file that will be uploaded and applied on a
-	// secondary device. Applicable for some devices types in BYOL licensing mode.
+	// secondary device. Applicable for some device types in BYOL licensing mode.
 	LicenseFile pulumi.StringPtrInput `pulumi:"licenseFile"`
-	// License file id. This is necessary for Fortinet and Juniper clusters.
+	// Identifier of a license file that will be applied on a secondary device.
 	LicenseFileId pulumi.StringPtrInput `pulumi:"licenseFileId"`
 	// Device license registration status. Possible values are `APPLYING_LICENSE`,
 	// `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
@@ -2016,7 +2036,7 @@ type DeviceSecondaryDeviceArgs struct {
 	// Metro location of a secondary device.
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
 	// Identifier of an MGMT interface ACL template that will be
-	// applied on the device.
+	// applied on a secondary device.
 	// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
 	//   device.
 	MgmtAclTemplateUuid pulumi.StringPtrInput `pulumi:"mgmtAclTemplateUuid"`
@@ -2149,6 +2169,11 @@ func (o DeviceSecondaryDeviceOutput) Asn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *int { return v.Asn }).(pulumi.IntPtrOutput)
 }
 
+// Identifier of a cloud init file that will be applied on a secondary device.
+func (o DeviceSecondaryDeviceOutput) CloudInitFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.CloudInitFileId }).(pulumi.StringPtrOutput)
+}
+
 // Secondary device hostname.
 func (o DeviceSecondaryDeviceOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.Hostname }).(pulumi.StringPtrOutput)
@@ -2166,12 +2191,12 @@ func (o DeviceSecondaryDeviceOutput) Interfaces() DeviceSecondaryDeviceInterface
 }
 
 // Path to the license file that will be uploaded and applied on a
-// secondary device. Applicable for some devices types in BYOL licensing mode.
+// secondary device. Applicable for some device types in BYOL licensing mode.
 func (o DeviceSecondaryDeviceOutput) LicenseFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.LicenseFile }).(pulumi.StringPtrOutput)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on a secondary device.
 func (o DeviceSecondaryDeviceOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceSecondaryDevice) *string { return v.LicenseFileId }).(pulumi.StringPtrOutput)
 }
@@ -2193,7 +2218,7 @@ func (o DeviceSecondaryDeviceOutput) MetroCode() pulumi.StringOutput {
 }
 
 // Identifier of an MGMT interface ACL template that will be
-// applied on the device.
+// applied on a secondary device.
 //   - `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
 //     device.
 func (o DeviceSecondaryDeviceOutput) MgmtAclTemplateUuid() pulumi.StringPtrOutput {
@@ -2333,6 +2358,16 @@ func (o DeviceSecondaryDevicePtrOutput) Asn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Identifier of a cloud init file that will be applied on a secondary device.
+func (o DeviceSecondaryDevicePtrOutput) CloudInitFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudInitFileId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Secondary device hostname.
 func (o DeviceSecondaryDevicePtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
@@ -2365,7 +2400,7 @@ func (o DeviceSecondaryDevicePtrOutput) Interfaces() DeviceSecondaryDeviceInterf
 }
 
 // Path to the license file that will be uploaded and applied on a
-// secondary device. Applicable for some devices types in BYOL licensing mode.
+// secondary device. Applicable for some device types in BYOL licensing mode.
 func (o DeviceSecondaryDevicePtrOutput) LicenseFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2375,7 +2410,7 @@ func (o DeviceSecondaryDevicePtrOutput) LicenseFile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// License file id. This is necessary for Fortinet and Juniper clusters.
+// Identifier of a license file that will be applied on a secondary device.
 func (o DeviceSecondaryDevicePtrOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceSecondaryDevice) *string {
 		if v == nil {
@@ -2417,7 +2452,7 @@ func (o DeviceSecondaryDevicePtrOutput) MetroCode() pulumi.StringPtrOutput {
 }
 
 // Identifier of an MGMT interface ACL template that will be
-// applied on the device.
+// applied on a secondary device.
 //   - `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
 //     device.
 func (o DeviceSecondaryDevicePtrOutput) MgmtAclTemplateUuid() pulumi.StringPtrOutput {

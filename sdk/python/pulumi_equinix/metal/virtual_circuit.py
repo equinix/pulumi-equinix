@@ -735,7 +735,7 @@ class VirtualCircuit(pulumi.CustomResource):
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["customer_ip"] = customer_ip
             __props__.__dict__["description"] = description
-            __props__.__dict__["md5"] = md5
+            __props__.__dict__["md5"] = None if md5 is None else pulumi.Output.secret(md5)
             __props__.__dict__["metal_ip"] = metal_ip
             __props__.__dict__["name"] = name
             __props__.__dict__["nni_vlan"] = nni_vlan
@@ -754,6 +754,8 @@ class VirtualCircuit(pulumi.CustomResource):
             __props__.__dict__["nni_vnid"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["vnid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["md5"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(VirtualCircuit, __self__).__init__(
             'equinix:metal/virtualCircuit:VirtualCircuit',
             resource_name,

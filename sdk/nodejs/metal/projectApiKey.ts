@@ -106,6 +106,8 @@ export class ProjectApiKey extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }

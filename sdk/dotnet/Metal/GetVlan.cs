@@ -65,7 +65,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVlanResult> InvokeAsync(GetVlanArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
@@ -121,7 +121,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVlanResult> Invoke(GetVlanInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());
     }
 
 

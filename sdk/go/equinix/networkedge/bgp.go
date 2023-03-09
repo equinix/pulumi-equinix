@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +105,13 @@ func NewBgp(ctx *pulumi.Context,
 	if args.RemoteIpAddress == nil {
 		return nil, errors.New("invalid value for required argument 'RemoteIpAddress'")
 	}
+	if args.AuthenticationKey != nil {
+		args.AuthenticationKey = pulumi.ToSecret(args.AuthenticationKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authenticationKey",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Bgp
 	err := ctx.RegisterResource("equinix:networkedge/bgp:Bgp", name, args, &resource, opts...)

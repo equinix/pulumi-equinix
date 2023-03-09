@@ -25,11 +25,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIpBlockRanges(args: GetIpBlockRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpBlockRangesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getIpBlockRanges:getIpBlockRanges", {
         "facility": args.facility,
         "metro": args.metro,
@@ -85,9 +82,28 @@ export interface GetIpBlockRangesResult {
      */
     readonly publicIpv4s: string[];
 }
-
+/**
+ * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
+ *
+ * There are four types of IP blocks in Equinix: equinixMetalGlobal IPv4, public IPv4, private IPv4 and IPv6. Both global and public IPv4 are routable from the Internet. Public IPv4 blocks are allocated in a facility or metro, and addresses from it can only be assigned to devices in that location. Addresses from Global IPv4 block can be assigned to a device in any metro.
+ *
+ * The datasource has 4 list attributes: `globalIpv4`, `publicIpv4`, `privateIpv4` and `ipv6`, each listing CIDR notation (`<network>/<mask>`) of respective blocks from the project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const projectId = "<UUID_of_your_project>";
+ * const test = equinix.metal.getIpBlockRanges({
+ *     projectId: projectId,
+ * });
+ * export const out = test;
+ * ```
+ */
 export function getIpBlockRangesOutput(args: GetIpBlockRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpBlockRangesResult> {
-    return pulumi.output(args).apply(a => getIpBlockRanges(a, opts))
+    return pulumi.output(args).apply((a: any) => getIpBlockRanges(a, opts))
 }
 
 /**

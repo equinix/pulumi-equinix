@@ -145,7 +145,7 @@ export class Bgp extends pulumi.CustomResource {
             if ((!args || args.remoteIpAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'remoteIpAddress'");
             }
-            resourceInputs["authenticationKey"] = args ? args.authenticationKey : undefined;
+            resourceInputs["authenticationKey"] = args?.authenticationKey ? pulumi.secret(args.authenticationKey) : undefined;
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["localAsn"] = args ? args.localAsn : undefined;
             resourceInputs["localIpAddress"] = args ? args.localIpAddress : undefined;
@@ -157,6 +157,8 @@ export class Bgp extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authenticationKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Bgp.__pulumiType, name, resourceInputs, opts);
     }
 }

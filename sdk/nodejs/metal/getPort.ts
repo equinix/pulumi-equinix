@@ -33,11 +33,8 @@ import * as utilities from "../utilities";
  */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getPort:getPort", {
         "deviceId": args.deviceId,
         "name": args.name,
@@ -116,9 +113,35 @@ export interface GetPortResult {
      */
     readonly vxlanIds: number[];
 }
-
+/**
+ * Use this data source to read ports of existing devices. You can read port by either its UUID,
+ * or by a device UUID and port name.
+ *
+ * ## Example Usage
+ *
+ * Create a device and read it's eth0 port to the datasource.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const projectId = "<UUID_of_your_project>";
+ * const testDevice = new equinix.metal.Device("testDevice", {
+ *     hostname: "tfacc-test-device-port",
+ *     plan: "c3.medium.x86",
+ *     facilities: ["sv15"],
+ *     operatingSystem: "ubuntu_20_04",
+ *     billingCycle: "hourly",
+ *     projectId: projectId,
+ * });
+ * const testPort = equinix.metal.getPortOutput({
+ *     deviceId: testDevice.id,
+ *     name: "eth0",
+ * });
+ * ```
+ */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
-    return pulumi.output(args).apply(a => getPort(a, opts))
+    return pulumi.output(args).apply((a: any) => getPort(a, opts))
 }
 
 /**

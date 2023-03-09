@@ -12,10 +12,10 @@ namespace Pulumi.Equinix.Metal
     public static class GetPlans
     {
         public static Task<GetPlansResult> InvokeAsync(GetPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansArgs(), options.WithDefaults());
 
         public static Output<GetPlansResult> Invoke(GetPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansInvokeArgs(), options.WithDefaults());
     }
 
 

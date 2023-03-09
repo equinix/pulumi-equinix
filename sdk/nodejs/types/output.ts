@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 
 export namespace fabric {
     export interface ConnectionASide {
@@ -1683,6 +1685,13 @@ export namespace metal {
         type: string;
     }
 
+    export interface DeviceBehavior {
+        /**
+         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+         */
+        allowChanges?: string[];
+    }
+
     export interface DeviceIpAddress {
         /**
          * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
@@ -1996,33 +2005,53 @@ export namespace metal {
     }
 
     export interface GetPlansPlan {
+        /**
+         * list of facilities where the plan is available
+         */
         availableInMetros: string[];
+        /**
+         * list of facilities where the plan is available
+         */
         availableIns: string[];
+        /**
+         * plan class
+         */
         class: string;
+        /**
+         * list of deployment types, e.g. on_demand, spot_market
+         */
         deploymentTypes: string[];
+        /**
+         * description of the plan
+         */
         description: string;
         /**
          * id of the plan
          */
         id: string;
+        /**
+         * flag showing if it's a legacy plan
+         */
         legacy: boolean;
+        /**
+         * plan line, e.g. baremetal
+         */
         line: string;
         /**
          * name of the plan
-         * - `slug`- plan slug
-         * - `description`- description of the plan
-         * - `line`- plan line, e.g. baremetal
-         * - `legacy`- flag showing if it's a legacy plan
-         * - `class`- plan class
-         * - `pricingHour`- plan hourly price
-         * - `pricingMonth`- plan monthly price
-         * - `deploymentTypes`- list of deployment types, e.g. on_demand, spotMarket
-         * - `availableIn`- list of facilities where the plan is available
-         * - `availableInMetros`- list of facilities where the plan is available
          */
         name: string;
+        /**
+         * plan hourly price
+         */
         pricingHour: number;
+        /**
+         * plan monthly price
+         */
         pricingMonth: number;
+        /**
+         * plan slug
+         */
         slug: string;
     }
 
@@ -2127,6 +2156,7 @@ export namespace metal {
         userSshKeys?: string[];
         userdata?: string;
     }
+
 }
 
 export namespace networkedge {
@@ -2209,11 +2239,12 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode0 {
         /**
-         * License file id. This is necessary for Fortinet and Juniper clusters.
+         * Identifier of a license file that will be applied on the device.
          */
         licenseFileId?: string;
         /**
-         * License token. This is necessary for Palo Alto clusters.
+         * License Token applicable for some device types in BYOL licensing
+         * mode.
          */
         licenseToken?: string;
         /**
@@ -2225,9 +2256,10 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * Map of vendor specific configuration parameters for a device
+         * (controller1, activationKey, managementType, siteId, systemIpAddress)
+         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+         * on a device (max one key).  See SSH Key below for more details.
          */
         vendorConfiguration?: outputs.networkedge.DeviceClusterDetailsNode0VendorConfiguration;
     }
@@ -2263,11 +2295,12 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode1 {
         /**
-         * License file id. This is necessary for Fortinet and Juniper clusters.
+         * Identifier of a license file that will be applied on the device.
          */
         licenseFileId?: string;
         /**
-         * License token. This is necessary for Palo Alto clusters.
+         * License Token applicable for some device types in BYOL licensing
+         * mode.
          */
         licenseToken?: string;
         /**
@@ -2279,9 +2312,10 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * Map of vendor specific configuration parameters for a device
+         * (controller1, activationKey, managementType, siteId, systemIpAddress)
+         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+         * on a device (max one key).  See SSH Key below for more details.
          */
         vendorConfiguration?: outputs.networkedge.DeviceClusterDetailsNode1VendorConfiguration;
     }
@@ -2431,6 +2465,10 @@ export namespace networkedge {
          */
         asn: number;
         /**
+         * Identifier of a cloud init file that will be applied on a secondary device.
+         */
+        cloudInitFileId?: string;
+        /**
          * Secondary device hostname.
          */
         hostname?: string;
@@ -2445,11 +2483,11 @@ export namespace networkedge {
         interfaces: outputs.networkedge.DeviceSecondaryDeviceInterface[];
         /**
          * Path to the license file that will be uploaded and applied on a
-         * secondary device. Applicable for some devices types in BYOL licensing mode.
+         * secondary device. Applicable for some device types in BYOL licensing mode.
          */
         licenseFile?: string;
         /**
-         * License file id. This is necessary for Fortinet and Juniper clusters.
+         * Identifier of a license file that will be applied on a secondary device.
          */
         licenseFileId: string;
         /**
@@ -2467,7 +2505,7 @@ export namespace networkedge {
         metroCode: string;
         /**
          * Identifier of an MGMT interface ACL template that will be
-         * applied on the device.
+         * applied on a secondary device.
          * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
          * device.
          */

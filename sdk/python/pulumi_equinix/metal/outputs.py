@@ -14,6 +14,7 @@ from ._enums import *
 __all__ = [
     'ConnectionPort',
     'ConnectionServiceToken',
+    'DeviceBehavior',
     'DeviceIpAddress',
     'DeviceNetwork',
     'DevicePort',
@@ -207,6 +208,42 @@ class ConnectionServiceToken(dict):
         Connection type - dedicated or shared.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DeviceBehavior(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowChanges":
+            suggest = "allow_changes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceBehavior. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceBehavior.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceBehavior.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_changes: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allow_changes: List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        """
+        if allow_changes is not None:
+            pulumi.set(__self__, "allow_changes", allow_changes)
+
+    @property
+    @pulumi.getter(name="allowChanges")
+    def allow_changes(self) -> Optional[Sequence[str]]:
+        """
+        List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        """
+        return pulumi.get(self, "allow_changes")
 
 
 @pulumi.output_type
@@ -1442,18 +1479,18 @@ class GetPlansPlanResult(dict):
                  pricing_month: float,
                  slug: str):
         """
+        :param Sequence[str] available_in_metros: list of facilities where the plan is available
+        :param Sequence[str] available_ins: list of facilities where the plan is available
+        :param str class_: plan class
+        :param Sequence[str] deployment_types: list of deployment types, e.g. on_demand, spot_market
+        :param str description: description of the plan
         :param str id: id of the plan
+        :param bool legacy: flag showing if it's a legacy plan
+        :param str line: plan line, e.g. baremetal
         :param str name: name of the plan
-               - `slug`- plan slug
-               - `description`- description of the plan
-               - `line`- plan line, e.g. baremetal
-               - `legacy`- flag showing if it's a legacy plan
-               - `class`- plan class
-               - `pricing_hour`- plan hourly price
-               - `pricing_month`- plan monthly price
-               - `deployment_types`- list of deployment types, e.g. on_demand, spot_market
-               - `available_in`- list of facilities where the plan is available
-               - `available_in_metros`- list of facilities where the plan is available
+        :param float pricing_hour: plan hourly price
+        :param float pricing_month: plan monthly price
+        :param str slug: plan slug
         """
         pulumi.set(__self__, "available_in_metros", available_in_metros)
         pulumi.set(__self__, "available_ins", available_ins)
@@ -1471,26 +1508,41 @@ class GetPlansPlanResult(dict):
     @property
     @pulumi.getter(name="availableInMetros")
     def available_in_metros(self) -> Sequence[str]:
+        """
+        list of facilities where the plan is available
+        """
         return pulumi.get(self, "available_in_metros")
 
     @property
     @pulumi.getter(name="availableIns")
     def available_ins(self) -> Sequence[str]:
+        """
+        list of facilities where the plan is available
+        """
         return pulumi.get(self, "available_ins")
 
     @property
     @pulumi.getter(name="class")
     def class_(self) -> str:
+        """
+        plan class
+        """
         return pulumi.get(self, "class_")
 
     @property
     @pulumi.getter(name="deploymentTypes")
     def deployment_types(self) -> Sequence[str]:
+        """
+        list of deployment types, e.g. on_demand, spot_market
+        """
         return pulumi.get(self, "deployment_types")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        description of the plan
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -1504,11 +1556,17 @@ class GetPlansPlanResult(dict):
     @property
     @pulumi.getter
     def legacy(self) -> bool:
+        """
+        flag showing if it's a legacy plan
+        """
         return pulumi.get(self, "legacy")
 
     @property
     @pulumi.getter
     def line(self) -> str:
+        """
+        plan line, e.g. baremetal
+        """
         return pulumi.get(self, "line")
 
     @property
@@ -1516,32 +1574,31 @@ class GetPlansPlanResult(dict):
     def name(self) -> str:
         """
         name of the plan
-        - `slug`- plan slug
-        - `description`- description of the plan
-        - `line`- plan line, e.g. baremetal
-        - `legacy`- flag showing if it's a legacy plan
-        - `class`- plan class
-        - `pricing_hour`- plan hourly price
-        - `pricing_month`- plan monthly price
-        - `deployment_types`- list of deployment types, e.g. on_demand, spot_market
-        - `available_in`- list of facilities where the plan is available
-        - `available_in_metros`- list of facilities where the plan is available
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="pricingHour")
     def pricing_hour(self) -> float:
+        """
+        plan hourly price
+        """
         return pulumi.get(self, "pricing_hour")
 
     @property
     @pulumi.getter(name="pricingMonth")
     def pricing_month(self) -> float:
+        """
+        plan monthly price
+        """
         return pulumi.get(self, "pricing_month")
 
     @property
     @pulumi.getter
     def slug(self) -> str:
+        """
+        plan slug
+        """
         return pulumi.get(self, "slug")
 
 

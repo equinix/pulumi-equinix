@@ -43,7 +43,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHardwareReservationResult> InvokeAsync(GetHardwareReservationArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
@@ -77,7 +77,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHardwareReservationResult> Invoke(GetHardwareReservationInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHardwareReservationResult>("equinix:metal/getHardwareReservation:getHardwareReservation", args ?? new GetHardwareReservationInvokeArgs(), options.WithDefaults());
     }
 
 

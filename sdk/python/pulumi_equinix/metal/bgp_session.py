@@ -77,7 +77,7 @@ class _BgpSessionState:
         :param pulumi.Input[str] address_family: `ipv4` or `ipv6`.
         :param pulumi.Input[bool] default_route: Boolean flag to set the default route policy. False by default.
         :param pulumi.Input[str] device_id: ID of device.
-        :param pulumi.Input[str] status: Status of the session - up or down
+        :param pulumi.Input[str] status: Status of the session - `up` or `down`
         """
         if address_family is not None:
             pulumi.set(__self__, "address_family", address_family)
@@ -128,7 +128,7 @@ class _BgpSessionState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the session - up or down
+        Status of the session - `up` or `down`
         """
         return pulumi.get(self, "status")
 
@@ -231,7 +231,7 @@ class BgpSession(pulumi.CustomResource):
         :param pulumi.Input[str] address_family: `ipv4` or `ipv6`.
         :param pulumi.Input[bool] default_route: Boolean flag to set the default route policy. False by default.
         :param pulumi.Input[str] device_id: ID of device.
-        :param pulumi.Input[str] status: Status of the session - up or down
+        :param pulumi.Input[str] status: Status of the session - `up` or `down`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -271,7 +271,7 @@ class BgpSession(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the session - up or down
+        Status of the session - `up` or `down`
         """
         return pulumi.get(self, "status")
 

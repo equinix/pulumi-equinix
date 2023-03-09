@@ -201,6 +201,10 @@ namespace Pulumi.Equinix.Metal
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/equinix/pulumi-equinix",
+                AdditionalSecretOutputs =
+                {
+                    "md5",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -242,11 +246,21 @@ namespace Pulumi.Equinix.Metal
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("md5")]
+        private Input<string>? _md5;
+
         /// <summary>
         /// The password that can be set for the VRF BGP peer
         /// </summary>
-        [Input("md5")]
-        public Input<string>? Md5 { get; set; }
+        public Input<string>? Md5
+        {
+            get => _md5;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _md5 = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.
@@ -350,11 +364,21 @@ namespace Pulumi.Equinix.Metal
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("md5")]
+        private Input<string>? _md5;
+
         /// <summary>
         /// The password that can be set for the VRF BGP peer
         /// </summary>
-        [Input("md5")]
-        public Input<string>? Md5 { get; set; }
+        public Input<string>? Md5
+        {
+            get => _md5;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _md5 = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Metal IP address for the SVI (Switch Virtual Interface) of the VirtualCircuit. Will default to the first usable IP in the subnet.

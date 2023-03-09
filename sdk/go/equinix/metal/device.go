@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,7 +95,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -134,10 +133,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -154,62 +150,48 @@ import (
 //				BillingCycle:          pulumi.String("hourly"),
 //				ProjectId:             pulumi.Any(local.Project_id),
 //				HardwareReservationId: pulumi.String("next-available"),
-//				Storage: pulumi.String(fmt.Sprintf(`{
-//	  "disks": [
-//	    {
-//	      "device": "/dev/sda",
-//	      "wipeTable": true,
-//	      "partitions": [
-//	        {
-//	          "label": "BIOS",
-//	          "number": 1,
-//	          "size": "4096"
-//	        },
-//	        {
-//	          "label": "SWAP",
-//	          "number": 2,
-//	          "size": "3993600"
-//	        },
-//	        {
-//	          "label": "ROOT",
-//	          "number": 3,
-//	          "size": "0"
-//	        }
-//	      ]
-//	    }
-//	  ],
-//	  "filesystems": [
-//	    {
-//	      "mount": {
-//	        "device": "/dev/sda3",
-//	        "format": "ext4",
-//	        "point": "/",
-//	        "create": {
-//	          "options": [
-//	            "-L",
-//	            "ROOT"
-//	          ]
-//	        }
-//	      }
-//	    },
-//	    {
-//	      "mount": {
-//	        "device": "/dev/sda2",
-//	        "format": "swap",
-//	        "point": "none",
-//	        "create": {
-//	          "options": [
-//	            "-L",
-//	            "SWAP"
-//	          ]
-//	        }
-//	      }
-//	    }
-//	  ]
+//				Storage:               pulumi.String("{\n  \"disks\": [\n    {\n      \"device\": \"/dev/sda\",\n      \"wipeTable\": true,\n      \"partitions\": [\n        {\n          \"label\": \"BIOS\",\n          \"number\": 1,\n          \"size\": \"4096\"\n        },\n        {\n          \"label\": \"SWAP\",\n          \"number\": 2,\n          \"size\": \"3993600\"\n        },\n        {\n          \"label\": \"ROOT\",\n          \"number\": 3,\n          \"size\": \"0\"\n        }\n      ]\n    }\n  ],\n  \"filesystems\": [\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda3\",\n        \"format\": \"ext4\",\n        \"point\": \"/\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"ROOT\"\n          ]\n        }\n      }\n    },\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda2\",\n        \"format\": \"swap\",\n        \"point\": \"none\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"SWAP\"\n          ]\n        }\n      }\n    }\n  ]\n}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
 //	}
 //
-// `)),
+// ```
 //
+// Create a device and allow the `userData` and `customData` attributes to change in-place (i.e., without destroying and recreating the device):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("tf.coreos2-pxe"),
+//				Plan:            pulumi.String("c3.small.x86"),
+//				Metro:           pulumi.String("sv"),
+//				OperatingSystem: pulumi.String("custom_ipxe"),
+//				BillingCycle:    pulumi.String("hourly"),
+//				ProjectId:       pulumi.Any(local.Project_id),
+//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe"),
+//				AlwaysPxe:       pulumi.Bool(false),
+//				UserData:        pulumi.Any(local.User_data),
+//				CustomData:      pulumi.Any(local.Custom_data),
+//				Behavior: &metal.DeviceBehaviorArgs{
+//					AllowChanges: pulumi.StringArray{
+//						pulumi.String("custom_data"),
+//						pulumi.String("user_data"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -241,11 +223,13 @@ type Device struct {
 	// If true, a device with OS `customIpxe` will continue to boot via iPXE
 	// on reboots.
 	AlwaysPxe pulumi.BoolPtrOutput `pulumi:"alwaysPxe"`
+	// Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+	Behavior DeviceBehaviorPtrOutput `pulumi:"behavior"`
 	// monthly or hourly
 	BillingCycle pulumi.StringOutput `pulumi:"billingCycle"`
 	// The timestamp for when the device was created.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// A string of the desired Custom Data for the device.
+	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
 	// The facility where the device is deployed.
 	DeployedFacility pulumi.StringOutput `pulumi:"deployedFacility"`
@@ -333,7 +317,7 @@ type Device struct {
 	TerminationTime pulumi.StringPtrOutput `pulumi:"terminationTime"`
 	// The timestamp for the last time the device was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// A string of the desired User Data for the device.
+	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
 	UserSshKeyIds pulumi.StringArrayOutput `pulumi:"userSshKeyIds"`
@@ -359,6 +343,18 @@ func NewDevice(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	if args.CustomData != nil {
+		args.CustomData = pulumi.ToSecret(args.CustomData).(pulumi.StringPtrInput)
+	}
+	if args.UserData != nil {
+		args.UserData = pulumi.ToSecret(args.UserData).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"customData",
+		"rootPassword",
+		"userData",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Device
 	err := ctx.RegisterResource("equinix:metal/device:Device", name, args, &resource, opts...)
@@ -391,11 +387,13 @@ type deviceState struct {
 	// If true, a device with OS `customIpxe` will continue to boot via iPXE
 	// on reboots.
 	AlwaysPxe *bool `pulumi:"alwaysPxe"`
+	// Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+	Behavior *DeviceBehavior `pulumi:"behavior"`
 	// monthly or hourly
 	BillingCycle *string `pulumi:"billingCycle"`
 	// The timestamp for when the device was created.
 	Created *string `pulumi:"created"`
-	// A string of the desired Custom Data for the device.
+	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData *string `pulumi:"customData"`
 	// The facility where the device is deployed.
 	DeployedFacility *string `pulumi:"deployedFacility"`
@@ -483,7 +481,7 @@ type deviceState struct {
 	TerminationTime *string `pulumi:"terminationTime"`
 	// The timestamp for the last time the device was updated.
 	Updated *string `pulumi:"updated"`
-	// A string of the desired User Data for the device.
+	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData *string `pulumi:"userData"`
 	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
 	UserSshKeyIds []string `pulumi:"userSshKeyIds"`
@@ -503,11 +501,13 @@ type DeviceState struct {
 	// If true, a device with OS `customIpxe` will continue to boot via iPXE
 	// on reboots.
 	AlwaysPxe pulumi.BoolPtrInput
+	// Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+	Behavior DeviceBehaviorPtrInput
 	// monthly or hourly
 	BillingCycle pulumi.StringPtrInput
 	// The timestamp for when the device was created.
 	Created pulumi.StringPtrInput
-	// A string of the desired Custom Data for the device.
+	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrInput
 	// The facility where the device is deployed.
 	DeployedFacility pulumi.StringPtrInput
@@ -595,7 +595,7 @@ type DeviceState struct {
 	TerminationTime pulumi.StringPtrInput
 	// The timestamp for the last time the device was updated.
 	Updated pulumi.StringPtrInput
-	// A string of the desired User Data for the device.
+	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData pulumi.StringPtrInput
 	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
 	UserSshKeyIds pulumi.StringArrayInput
@@ -613,9 +613,11 @@ type deviceArgs struct {
 	// If true, a device with OS `customIpxe` will continue to boot via iPXE
 	// on reboots.
 	AlwaysPxe *bool `pulumi:"alwaysPxe"`
+	// Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+	Behavior *DeviceBehavior `pulumi:"behavior"`
 	// monthly or hourly
 	BillingCycle *string `pulumi:"billingCycle"`
-	// A string of the desired Custom Data for the device.
+	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData *string `pulumi:"customData"`
 	// The device description.
 	Description *string `pulumi:"description"`
@@ -672,7 +674,7 @@ type deviceArgs struct {
 	// Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
 	// If you don't supply timezone info, timestamp is assumed to be in UTC.
 	TerminationTime *string `pulumi:"terminationTime"`
-	// A string of the desired User Data for the device.
+	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData *string `pulumi:"userData"`
 	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
 	UserSshKeyIds []string `pulumi:"userSshKeyIds"`
@@ -687,9 +689,11 @@ type DeviceArgs struct {
 	// If true, a device with OS `customIpxe` will continue to boot via iPXE
 	// on reboots.
 	AlwaysPxe pulumi.BoolPtrInput
+	// Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+	Behavior DeviceBehaviorPtrInput
 	// monthly or hourly
 	BillingCycle pulumi.StringPtrInput
-	// A string of the desired Custom Data for the device.
+	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrInput
 	// The device description.
 	Description pulumi.StringPtrInput
@@ -746,7 +750,7 @@ type DeviceArgs struct {
 	// Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
 	// If you don't supply timezone info, timestamp is assumed to be in UTC.
 	TerminationTime pulumi.StringPtrInput
-	// A string of the desired User Data for the device.
+	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData pulumi.StringPtrInput
 	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
 	UserSshKeyIds pulumi.StringArrayInput
@@ -864,6 +868,11 @@ func (o DeviceOutput) AlwaysPxe() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolPtrOutput { return v.AlwaysPxe }).(pulumi.BoolPtrOutput)
 }
 
+// Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+func (o DeviceOutput) Behavior() DeviceBehaviorPtrOutput {
+	return o.ApplyT(func(v *Device) DeviceBehaviorPtrOutput { return v.Behavior }).(DeviceBehaviorPtrOutput)
+}
+
 // monthly or hourly
 func (o DeviceOutput) BillingCycle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.BillingCycle }).(pulumi.StringOutput)
@@ -874,7 +883,7 @@ func (o DeviceOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// A string of the desired Custom Data for the device.
+// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 func (o DeviceOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
 }
@@ -1043,7 +1052,7 @@ func (o DeviceOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// A string of the desired User Data for the device.
+// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 func (o DeviceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

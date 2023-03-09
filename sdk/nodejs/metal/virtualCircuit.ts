@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * const testVirtualCircuit = new equinix.metal.VirtualCircuit("testVirtualCircuit", {
  *     connectionId: connId,
  *     projectId: projectId,
- *     portId: testConnection.then(testConnection => testConnection.ports?[0]?.id),
+ *     portId: testConnection.then(testConnection => testConnection.ports?.[0]?.id),
  *     vlanId: testVlan.id,
  *     nniVlan: 1056,
  * });
@@ -195,7 +195,7 @@ export class VirtualCircuit extends pulumi.CustomResource {
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["customerIp"] = args ? args.customerIp : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
+            resourceInputs["md5"] = args?.md5 ? pulumi.secret(args.md5) : undefined;
             resourceInputs["metalIp"] = args ? args.metalIp : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nniVlan"] = args ? args.nniVlan : undefined;
@@ -212,6 +212,8 @@ export class VirtualCircuit extends pulumi.CustomResource {
             resourceInputs["vnid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["md5"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(VirtualCircuit.__pulumiType, name, resourceInputs, opts);
     }
 }

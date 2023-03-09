@@ -21,6 +21,7 @@ class DeviceArgs:
                  plan: pulumi.Input[Union[str, 'Plan']],
                  project_id: pulumi.Input[str],
                  always_pxe: Optional[pulumi.Input[bool]] = None,
+                 behavior: Optional[pulumi.Input['DeviceBehaviorArgs']] = None,
                  billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -50,8 +51,9 @@ class DeviceArgs:
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
                on reboots.
+        :param pulumi.Input['DeviceBehaviorArgs'] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
-        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.
+        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: The device description.
         :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
                through the list and will deploy your device to first facility with free capacity. List items must
@@ -84,7 +86,7 @@ class DeviceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device.
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
                If you don't supply timezone info, timestamp is assumed to be in UTC.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.
+        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -95,6 +97,8 @@ class DeviceArgs:
         pulumi.set(__self__, "project_id", project_id)
         if always_pxe is not None:
             pulumi.set(__self__, "always_pxe", always_pxe)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
         if billing_cycle is not None:
             pulumi.set(__self__, "billing_cycle", billing_cycle)
         if custom_data is not None:
@@ -186,6 +190,18 @@ class DeviceArgs:
         pulumi.set(self, "always_pxe", value)
 
     @property
+    @pulumi.getter
+    def behavior(self) -> Optional[pulumi.Input['DeviceBehaviorArgs']]:
+        """
+        Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        """
+        return pulumi.get(self, "behavior")
+
+    @behavior.setter
+    def behavior(self, value: Optional[pulumi.Input['DeviceBehaviorArgs']]):
+        pulumi.set(self, "behavior", value)
+
+    @property
     @pulumi.getter(name="billingCycle")
     def billing_cycle(self) -> Optional[pulumi.Input[Union[str, 'BillingCycle']]]:
         """
@@ -201,7 +217,7 @@ class DeviceArgs:
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A string of the desired Custom Data for the device.
+        A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "custom_data")
 
@@ -388,7 +404,7 @@ class DeviceArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A string of the desired User Data for the device.
+        A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "user_data")
 
@@ -430,6 +446,7 @@ class _DeviceState:
                  access_public_ipv4: Optional[pulumi.Input[str]] = None,
                  access_public_ipv6: Optional[pulumi.Input[str]] = None,
                  always_pxe: Optional[pulumi.Input[bool]] = None,
+                 behavior: Optional[pulumi.Input['DeviceBehaviorArgs']] = None,
                  billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
                  created: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
@@ -469,9 +486,10 @@ class _DeviceState:
         :param pulumi.Input[str] access_public_ipv6: The ipv6 maintenance IP assigned to the device.
         :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
                on reboots.
+        :param pulumi.Input['DeviceBehaviorArgs'] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] created: The timestamp for when the device was created.
-        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.
+        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] deployed_facility: The facility where the device is deployed.
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
                It is useful when using the `next-available` hardware reservation.
@@ -530,7 +548,7 @@ class _DeviceState:
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
                If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] updated: The timestamp for the last time the device was updated.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.
+        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -544,6 +562,8 @@ class _DeviceState:
             pulumi.set(__self__, "access_public_ipv6", access_public_ipv6)
         if always_pxe is not None:
             pulumi.set(__self__, "always_pxe", always_pxe)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
         if billing_cycle is not None:
             pulumi.set(__self__, "billing_cycle", billing_cycle)
         if created is not None:
@@ -662,6 +682,18 @@ class _DeviceState:
         pulumi.set(self, "always_pxe", value)
 
     @property
+    @pulumi.getter
+    def behavior(self) -> Optional[pulumi.Input['DeviceBehaviorArgs']]:
+        """
+        Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        """
+        return pulumi.get(self, "behavior")
+
+    @behavior.setter
+    def behavior(self, value: Optional[pulumi.Input['DeviceBehaviorArgs']]):
+        pulumi.set(self, "behavior", value)
+
+    @property
     @pulumi.getter(name="billingCycle")
     def billing_cycle(self) -> Optional[pulumi.Input[Union[str, 'BillingCycle']]]:
         """
@@ -689,7 +721,7 @@ class _DeviceState:
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A string of the desired Custom Data for the device.
+        A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "custom_data")
 
@@ -1045,7 +1077,7 @@ class _DeviceState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        A string of the desired User Data for the device.
+        A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "user_data")
 
@@ -1086,6 +1118,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_pxe: Optional[pulumi.Input[bool]] = None,
+                 behavior: Optional[pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']]] = None,
                  billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1240,6 +1273,31 @@ class Device(pulumi.CustomResource):
         \"\"\")
         ```
 
+        Create a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):
+
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan="c3.small.x86",
+            metro="sv",
+            operating_system="custom_ipxe",
+            billing_cycle="hourly",
+            project_id=local["project_id"],
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=local["user_data"],
+            custom_data=local["custom_data"],
+            behavior=equinix.metal.DeviceBehaviorArgs(
+                allow_changes=[
+                    "custom_data",
+                    "user_data",
+                ],
+            ))
+        ```
+
         ## Import
 
         This resource can be imported using an existing device ID
@@ -1252,8 +1310,9 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
                on reboots.
+        :param pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
-        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.
+        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: The device description.
         :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
                through the list and will deploy your device to first facility with free capacity. List items must
@@ -1293,7 +1352,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the device.
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
                If you don't supply timezone info, timestamp is assumed to be in UTC.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.
+        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -1437,6 +1496,31 @@ class Device(pulumi.CustomResource):
         \"\"\")
         ```
 
+        Create a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):
+
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        pxe1 = equinix.metal.Device("pxe1",
+            hostname="tf.coreos2-pxe",
+            plan="c3.small.x86",
+            metro="sv",
+            operating_system="custom_ipxe",
+            billing_cycle="hourly",
+            project_id=local["project_id"],
+            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
+            always_pxe=False,
+            user_data=local["user_data"],
+            custom_data=local["custom_data"],
+            behavior=equinix.metal.DeviceBehaviorArgs(
+                allow_changes=[
+                    "custom_data",
+                    "user_data",
+                ],
+            ))
+        ```
+
         ## Import
 
         This resource can be imported using an existing device ID
@@ -1461,6 +1545,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_pxe: Optional[pulumi.Input[bool]] = None,
+                 behavior: Optional[pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']]] = None,
                  billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1492,8 +1577,9 @@ class Device(pulumi.CustomResource):
             __props__ = DeviceArgs.__new__(DeviceArgs)
 
             __props__.__dict__["always_pxe"] = always_pxe
+            __props__.__dict__["behavior"] = behavior
             __props__.__dict__["billing_cycle"] = billing_cycle
-            __props__.__dict__["custom_data"] = custom_data
+            __props__.__dict__["custom_data"] = None if custom_data is None else pulumi.Output.secret(custom_data)
             __props__.__dict__["description"] = description
             __props__.__dict__["facilities"] = facilities
             __props__.__dict__["force_detach_volumes"] = force_detach_volumes
@@ -1516,7 +1602,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["storage"] = storage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["termination_time"] = termination_time
-            __props__.__dict__["user_data"] = user_data
+            __props__.__dict__["user_data"] = None if user_data is None else pulumi.Output.secret(user_data)
             __props__.__dict__["user_ssh_key_ids"] = user_ssh_key_ids
             __props__.__dict__["wait_for_reservation_deprovision"] = wait_for_reservation_deprovision
             __props__.__dict__["access_private_ipv4"] = None
@@ -1533,6 +1619,8 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["ssh_key_ids"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["updated"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["customData", "rootPassword", "userData"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Device, __self__).__init__(
             'equinix:metal/device:Device',
             resource_name,
@@ -1547,6 +1635,7 @@ class Device(pulumi.CustomResource):
             access_public_ipv4: Optional[pulumi.Input[str]] = None,
             access_public_ipv6: Optional[pulumi.Input[str]] = None,
             always_pxe: Optional[pulumi.Input[bool]] = None,
+            behavior: Optional[pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']]] = None,
             billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
             created: Optional[pulumi.Input[str]] = None,
             custom_data: Optional[pulumi.Input[str]] = None,
@@ -1591,9 +1680,10 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] access_public_ipv6: The ipv6 maintenance IP assigned to the device.
         :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
                on reboots.
+        :param pulumi.Input[pulumi.InputType['DeviceBehaviorArgs']] behavior: Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] created: The timestamp for when the device was created.
-        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.
+        :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] deployed_facility: The facility where the device is deployed.
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
                It is useful when using the `next-available` hardware reservation.
@@ -1652,7 +1742,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
                If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] updated: The timestamp for the last time the device was updated.
-        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.
+        :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -1666,6 +1756,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["access_public_ipv4"] = access_public_ipv4
         __props__.__dict__["access_public_ipv6"] = access_public_ipv6
         __props__.__dict__["always_pxe"] = always_pxe
+        __props__.__dict__["behavior"] = behavior
         __props__.__dict__["billing_cycle"] = billing_cycle
         __props__.__dict__["created"] = created
         __props__.__dict__["custom_data"] = custom_data
@@ -1734,6 +1825,14 @@ class Device(pulumi.CustomResource):
         return pulumi.get(self, "always_pxe")
 
     @property
+    @pulumi.getter
+    def behavior(self) -> pulumi.Output[Optional['outputs.DeviceBehavior']]:
+        """
+        Behavioral overrides that change how the resource handles certain attribute updates. See Behavior below for more details.
+        """
+        return pulumi.get(self, "behavior")
+
+    @property
     @pulumi.getter(name="billingCycle")
     def billing_cycle(self) -> pulumi.Output[str]:
         """
@@ -1753,7 +1852,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="customData")
     def custom_data(self) -> pulumi.Output[Optional[str]]:
         """
-        A string of the desired Custom Data for the device.
+        A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "custom_data")
 
@@ -2001,7 +2100,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        A string of the desired User Data for the device.
+        A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
         """
         return pulumi.get(self, "user_data")
 

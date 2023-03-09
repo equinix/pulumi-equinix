@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 
 export namespace fabric {
     export interface ConnectionASide {
@@ -448,21 +450,6 @@ export namespace fabric {
         name?: pulumi.Input<string>;
     }
 
-    export interface GetServiceProfilesFilterArgs {
-        /**
-         * Possible operator to use on filters = - equal
-         */
-        operator?: pulumi.Input<string>;
-        /**
-         * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
-         */
-        property?: pulumi.Input<string>;
-        /**
-         * Values
-         */
-        values?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
     export interface GetServiceProfilesFilter {
         /**
          * Possible operator to use on filters = - equal
@@ -476,6 +463,21 @@ export namespace fabric {
          * Values
          */
         values?: string[];
+    }
+
+    export interface GetServiceProfilesFilterArgs {
+        /**
+         * Possible operator to use on filters = - equal
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+         */
+        property?: pulumi.Input<string>;
+        /**
+         * Values
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetServiceProfilesSort {
@@ -831,6 +833,13 @@ export namespace metal {
         type?: pulumi.Input<string>;
     }
 
+    export interface DeviceBehavior {
+        /**
+         * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+         */
+        allowChanges?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface DeviceIpAddress {
         /**
          * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
@@ -911,18 +920,6 @@ export namespace metal {
         preserveData?: pulumi.Input<boolean>;
     }
 
-    export interface GetFacilityCapacityArgs {
-        /**
-         * Device plan that must be available in selected location.
-         */
-        plan: pulumi.Input<string>;
-        /**
-         * Minimun number of devices that must be available in selected location.
-         * Default is `1`.
-         */
-        quantity?: pulumi.Input<number>;
-    }
-
     export interface GetFacilityCapacity {
         /**
          * Device plan that must be available in selected location.
@@ -935,7 +932,7 @@ export namespace metal {
         quantity?: number;
     }
 
-    export interface GetMetroCapacityArgs {
+    export interface GetFacilityCapacityArgs {
         /**
          * Device plan that must be available in selected location.
          */
@@ -959,23 +956,16 @@ export namespace metal {
         quantity?: number;
     }
 
-    export interface GetPlansFilterArgs {
+    export interface GetMetroCapacityArgs {
         /**
-         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         * Device plan that must be available in selected location.
          */
-        all?: pulumi.Input<boolean>;
+        plan: pulumi.Input<string>;
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * Minimun number of devices that must be available in selected location.
+         * Default is `1`.
          */
-        attribute: pulumi.Input<string>;
-        /**
-         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
-         */
-        matchBy?: pulumi.Input<string>;
-        /**
-         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
+        quantity?: pulumi.Input<number>;
     }
 
     export interface GetPlansFilter {
@@ -995,6 +985,25 @@ export namespace metal {
          * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
          */
         values: string[];
+    }
+
+    export interface GetPlansFilterArgs {
+        /**
+         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         */
+        all?: pulumi.Input<boolean>;
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: pulumi.Input<string>;
+        /**
+         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+         */
+        matchBy?: pulumi.Input<string>;
+        /**
+         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GetPlansSort {
@@ -1086,7 +1095,6 @@ export namespace metal {
         userSshKeys?: pulumi.Input<pulumi.Input<string>[]>;
         userdata?: pulumi.Input<string>;
     }
-
 }
 
 export namespace networkedge {
@@ -1169,11 +1177,12 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode0 {
         /**
-         * License file id. This is necessary for Fortinet and Juniper clusters.
+         * Identifier of a license file that will be applied on the device.
          */
         licenseFileId?: pulumi.Input<string>;
         /**
-         * License token. This is necessary for Palo Alto clusters.
+         * License Token applicable for some device types in BYOL licensing
+         * mode.
          */
         licenseToken?: pulumi.Input<string>;
         /**
@@ -1185,9 +1194,10 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * Map of vendor specific configuration parameters for a device
+         * (controller1, activationKey, managementType, siteId, systemIpAddress)
+         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+         * on a device (max one key).  See SSH Key below for more details.
          */
         vendorConfiguration?: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode0VendorConfiguration>;
     }
@@ -1223,11 +1233,12 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode1 {
         /**
-         * License file id. This is necessary for Fortinet and Juniper clusters.
+         * Identifier of a license file that will be applied on the device.
          */
         licenseFileId?: pulumi.Input<string>;
         /**
-         * License token. This is necessary for Palo Alto clusters.
+         * License Token applicable for some device types in BYOL licensing
+         * mode.
          */
         licenseToken?: pulumi.Input<string>;
         /**
@@ -1239,9 +1250,10 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * An object that has fields relevant to the vendor of the
-         * cluster device. See Cluster Details - Nodes - Vendor Configuration
-         * below for more details.
+         * Map of vendor specific configuration parameters for a device
+         * (controller1, activationKey, managementType, siteId, systemIpAddress)
+         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+         * on a device (max one key).  See SSH Key below for more details.
          */
         vendorConfiguration?: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode1VendorConfiguration>;
     }
@@ -1391,6 +1403,10 @@ export namespace networkedge {
          */
         asn?: pulumi.Input<number>;
         /**
+         * Identifier of a cloud init file that will be applied on a secondary device.
+         */
+        cloudInitFileId?: pulumi.Input<string>;
+        /**
          * Secondary device hostname.
          */
         hostname?: pulumi.Input<string>;
@@ -1405,11 +1421,11 @@ export namespace networkedge {
         interfaces?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceSecondaryDeviceInterface>[]>;
         /**
          * Path to the license file that will be uploaded and applied on a
-         * secondary device. Applicable for some devices types in BYOL licensing mode.
+         * secondary device. Applicable for some device types in BYOL licensing mode.
          */
         licenseFile?: pulumi.Input<string>;
         /**
-         * License file id. This is necessary for Fortinet and Juniper clusters.
+         * Identifier of a license file that will be applied on a secondary device.
          */
         licenseFileId?: pulumi.Input<string>;
         /**
@@ -1427,7 +1443,7 @@ export namespace networkedge {
         metroCode: pulumi.Input<string>;
         /**
          * Identifier of an MGMT interface ACL template that will be
-         * applied on the device.
+         * applied on a secondary device.
          * * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
          * device.
          */

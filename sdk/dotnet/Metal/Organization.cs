@@ -42,7 +42,8 @@ namespace Pulumi.Equinix.Metal
     public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Postal address.
+        /// An object that has the address information. See Address
+        /// below for more details.
         /// </summary>
         [Output("address")]
         public Output<Outputs.OrganizationAddress> Address { get; private set; } = null!;
@@ -137,7 +138,8 @@ namespace Pulumi.Equinix.Metal
     public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Postal address.
+        /// An object that has the address information. See Address
+        /// below for more details.
         /// </summary>
         [Input("address", required: true)]
         public Input<Inputs.OrganizationAddressArgs> Address { get; set; } = null!;
@@ -181,7 +183,8 @@ namespace Pulumi.Equinix.Metal
     public sealed class OrganizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Postal address.
+        /// An object that has the address information. See Address
+        /// below for more details.
         /// </summary>
         [Input("address")]
         public Input<Inputs.OrganizationAddressGetArgs>? Address { get; set; }

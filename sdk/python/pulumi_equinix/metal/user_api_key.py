@@ -217,6 +217,8 @@ class UserApiKey(pulumi.CustomResource):
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["token"] = None
             __props__.__dict__["user_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(UserApiKey, __self__).__init__(
             'equinix:metal/userApiKey:UserApiKey',
             resource_name,

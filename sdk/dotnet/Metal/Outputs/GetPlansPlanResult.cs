@@ -13,33 +13,53 @@ namespace Pulumi.Equinix.Metal.Outputs
     [OutputType]
     public sealed class GetPlansPlanResult
     {
+        /// <summary>
+        /// list of facilities where the plan is available
+        /// </summary>
         public readonly ImmutableArray<string> AvailableInMetros;
+        /// <summary>
+        /// list of facilities where the plan is available
+        /// </summary>
         public readonly ImmutableArray<string> AvailableIns;
+        /// <summary>
+        /// plan class
+        /// </summary>
         public readonly string Class;
+        /// <summary>
+        /// list of deployment types, e.g. on_demand, spot_market
+        /// </summary>
         public readonly ImmutableArray<string> DeploymentTypes;
+        /// <summary>
+        /// description of the plan
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// id of the plan
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// flag showing if it's a legacy plan
+        /// </summary>
         public readonly bool Legacy;
+        /// <summary>
+        /// plan line, e.g. baremetal
+        /// </summary>
         public readonly string Line;
         /// <summary>
         /// name of the plan
-        /// - `slug`- plan slug
-        /// - `description`- description of the plan
-        /// - `line`- plan line, e.g. baremetal
-        /// - `legacy`- flag showing if it's a legacy plan
-        /// - `class`- plan class
-        /// - `pricing_hour`- plan hourly price
-        /// - `pricing_month`- plan monthly price
-        /// - `deployment_types`- list of deployment types, e.g. on_demand, spot_market
-        /// - `available_in`- list of facilities where the plan is available
-        /// - `available_in_metros`- list of facilities where the plan is available
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// plan hourly price
+        /// </summary>
         public readonly double PricingHour;
+        /// <summary>
+        /// plan monthly price
+        /// </summary>
         public readonly double PricingMonth;
+        /// <summary>
+        /// plan slug
+        /// </summary>
         public readonly string Slug;
 
         [OutputConstructor]

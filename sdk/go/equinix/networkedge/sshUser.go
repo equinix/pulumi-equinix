@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,8 +32,8 @@ import (
 //				Username: pulumi.String("john"),
 //				Password: pulumi.String("secret"),
 //				DeviceIds: pulumi.StringArray{
-//					pulumi.Any(equinix_ne_device.Csr1000v - ha.Uuid),
-//					pulumi.Any(equinix_ne_device.Csr1000v - ha.Redundant_uuid),
+//					equinix_network_device.Csr1000vHa.Uuid,
+//					equinix_network_device.Csr1000vHa.Redundant_uuid,
 //				},
 //			})
 //			if err != nil {
@@ -83,6 +83,13 @@ func NewSshUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource SshUser
 	err := ctx.RegisterResource("equinix:networkedge/sshUser:SshUser", name, args, &resource, opts...)

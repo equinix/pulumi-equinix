@@ -134,6 +134,10 @@ namespace Pulumi.Equinix.NetworkEdge
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/equinix/pulumi-equinix",
+                AdditionalSecretOutputs =
+                {
+                    "authenticationKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -157,11 +161,21 @@ namespace Pulumi.Equinix.NetworkEdge
 
     public sealed class BgpArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authenticationKey")]
+        private Input<string>? _authenticationKey;
+
         /// <summary>
         /// shared key used for BGP peer authentication.
         /// </summary>
-        [Input("authenticationKey")]
-        public Input<string>? AuthenticationKey { get; set; }
+        public Input<string>? AuthenticationKey
+        {
+            get => _authenticationKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authenticationKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// identifier of a connection established between.
@@ -202,11 +216,21 @@ namespace Pulumi.Equinix.NetworkEdge
 
     public sealed class BgpState : global::Pulumi.ResourceArgs
     {
+        [Input("authenticationKey")]
+        private Input<string>? _authenticationKey;
+
         /// <summary>
         /// shared key used for BGP peer authentication.
         /// </summary>
-        [Input("authenticationKey")]
-        public Input<string>? AuthenticationKey { get; set; }
+        public Input<string>? AuthenticationKey
+        {
+            get => _authenticationKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authenticationKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// identifier of a connection established between.

@@ -39,6 +39,12 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<int>? Asn { get; set; }
 
         /// <summary>
+        /// Identifier of a cloud init file that will be applied on a secondary device.
+        /// </summary>
+        [Input("cloudInitFileId")]
+        public Input<string>? CloudInitFileId { get; set; }
+
+        /// <summary>
         /// Secondary device hostname.
         /// </summary>
         [Input("hostname")]
@@ -65,13 +71,13 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
 
         /// <summary>
         /// Path to the license file that will be uploaded and applied on a
-        /// secondary device. Applicable for some devices types in BYOL licensing mode.
+        /// secondary device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         [Input("licenseFile")]
         public Input<string>? LicenseFile { get; set; }
 
         /// <summary>
-        /// License file id. This is necessary for Fortinet and Juniper clusters.
+        /// Identifier of a license file that will be applied on a secondary device.
         /// </summary>
         [Input("licenseFileId")]
         public Input<string>? LicenseFileId { get; set; }
@@ -97,7 +103,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
 
         /// <summary>
         /// Identifier of an MGMT interface ACL template that will be
-        /// applied on the device.
+        /// applied on a secondary device.
         /// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
         /// device.
         /// </summary>

@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getSpotMarketRequest(args: GetSpotMarketRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotMarketRequestResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getSpotMarketRequest:getSpotMarketRequest", {
         "requestId": args.requestId,
     }, opts);
@@ -71,9 +68,8 @@ export interface GetSpotMarketRequestResult {
     readonly projectId: string;
     readonly requestId: string;
 }
-
 export function getSpotMarketRequestOutput(args: GetSpotMarketRequestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotMarketRequestResult> {
-    return pulumi.output(args).apply(a => getSpotMarketRequest(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpotMarketRequest(a, opts))
 }
 
 /**

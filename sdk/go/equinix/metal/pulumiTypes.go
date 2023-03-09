@@ -276,6 +276,143 @@ func (o ConnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) ConnectionSe
 	}).(ConnectionServiceTokenOutput)
 }
 
+type DeviceBehavior struct {
+	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+	AllowChanges []string `pulumi:"allowChanges"`
+}
+
+// DeviceBehaviorInput is an input type that accepts DeviceBehaviorArgs and DeviceBehaviorOutput values.
+// You can construct a concrete instance of `DeviceBehaviorInput` via:
+//
+//	DeviceBehaviorArgs{...}
+type DeviceBehaviorInput interface {
+	pulumi.Input
+
+	ToDeviceBehaviorOutput() DeviceBehaviorOutput
+	ToDeviceBehaviorOutputWithContext(context.Context) DeviceBehaviorOutput
+}
+
+type DeviceBehaviorArgs struct {
+	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+	AllowChanges pulumi.StringArrayInput `pulumi:"allowChanges"`
+}
+
+func (DeviceBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceBehavior)(nil)).Elem()
+}
+
+func (i DeviceBehaviorArgs) ToDeviceBehaviorOutput() DeviceBehaviorOutput {
+	return i.ToDeviceBehaviorOutputWithContext(context.Background())
+}
+
+func (i DeviceBehaviorArgs) ToDeviceBehaviorOutputWithContext(ctx context.Context) DeviceBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceBehaviorOutput)
+}
+
+func (i DeviceBehaviorArgs) ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOutput {
+	return i.ToDeviceBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceBehaviorArgs) ToDeviceBehaviorPtrOutputWithContext(ctx context.Context) DeviceBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceBehaviorOutput).ToDeviceBehaviorPtrOutputWithContext(ctx)
+}
+
+// DeviceBehaviorPtrInput is an input type that accepts DeviceBehaviorArgs, DeviceBehaviorPtr and DeviceBehaviorPtrOutput values.
+// You can construct a concrete instance of `DeviceBehaviorPtrInput` via:
+//
+//	        DeviceBehaviorArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOutput
+	ToDeviceBehaviorPtrOutputWithContext(context.Context) DeviceBehaviorPtrOutput
+}
+
+type deviceBehaviorPtrType DeviceBehaviorArgs
+
+func DeviceBehaviorPtr(v *DeviceBehaviorArgs) DeviceBehaviorPtrInput {
+	return (*deviceBehaviorPtrType)(v)
+}
+
+func (*deviceBehaviorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceBehavior)(nil)).Elem()
+}
+
+func (i *deviceBehaviorPtrType) ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOutput {
+	return i.ToDeviceBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceBehaviorPtrType) ToDeviceBehaviorPtrOutputWithContext(ctx context.Context) DeviceBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceBehaviorPtrOutput)
+}
+
+type DeviceBehaviorOutput struct{ *pulumi.OutputState }
+
+func (DeviceBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceBehavior)(nil)).Elem()
+}
+
+func (o DeviceBehaviorOutput) ToDeviceBehaviorOutput() DeviceBehaviorOutput {
+	return o
+}
+
+func (o DeviceBehaviorOutput) ToDeviceBehaviorOutputWithContext(ctx context.Context) DeviceBehaviorOutput {
+	return o
+}
+
+func (o DeviceBehaviorOutput) ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOutput {
+	return o.ToDeviceBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceBehaviorOutput) ToDeviceBehaviorPtrOutputWithContext(ctx context.Context) DeviceBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceBehavior) *DeviceBehavior {
+		return &v
+	}).(DeviceBehaviorPtrOutput)
+}
+
+// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+func (o DeviceBehaviorOutput) AllowChanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceBehavior) []string { return v.AllowChanges }).(pulumi.StringArrayOutput)
+}
+
+type DeviceBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceBehavior)(nil)).Elem()
+}
+
+func (o DeviceBehaviorPtrOutput) ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOutput {
+	return o
+}
+
+func (o DeviceBehaviorPtrOutput) ToDeviceBehaviorPtrOutputWithContext(ctx context.Context) DeviceBehaviorPtrOutput {
+	return o
+}
+
+func (o DeviceBehaviorPtrOutput) Elem() DeviceBehaviorOutput {
+	return o.ApplyT(func(v *DeviceBehavior) DeviceBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceBehavior
+		return ret
+	}).(DeviceBehaviorOutput)
+}
+
+// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
+func (o DeviceBehaviorPtrOutput) AllowChanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceBehavior) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowChanges
+	}).(pulumi.StringArrayOutput)
+}
+
 type DeviceIpAddress struct {
 	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
 	Cidr *int `pulumi:"cidr"`
@@ -3050,30 +3187,30 @@ func (o GetPlansFilterArrayOutput) Index(i pulumi.IntInput) GetPlansFilterOutput
 }
 
 type GetPlansPlan struct {
+	// list of facilities where the plan is available
 	AvailableInMetros []string `pulumi:"availableInMetros"`
-	AvailableIns      []string `pulumi:"availableIns"`
-	Class             string   `pulumi:"class"`
-	DeploymentTypes   []string `pulumi:"deploymentTypes"`
-	Description       string   `pulumi:"description"`
+	// list of facilities where the plan is available
+	AvailableIns []string `pulumi:"availableIns"`
+	// plan class
+	Class string `pulumi:"class"`
+	// list of deployment types, e.g. on_demand, spot_market
+	DeploymentTypes []string `pulumi:"deploymentTypes"`
+	// description of the plan
+	Description string `pulumi:"description"`
 	// id of the plan
-	Id     string `pulumi:"id"`
-	Legacy bool   `pulumi:"legacy"`
-	Line   string `pulumi:"line"`
+	Id string `pulumi:"id"`
+	// flag showing if it's a legacy plan
+	Legacy bool `pulumi:"legacy"`
+	// plan line, e.g. baremetal
+	Line string `pulumi:"line"`
 	// name of the plan
-	// - `slug`- plan slug
-	// - `description`- description of the plan
-	// - `line`- plan line, e.g. baremetal
-	// - `legacy`- flag showing if it's a legacy plan
-	// - `class`- plan class
-	// - `pricingHour`- plan hourly price
-	// - `pricingMonth`- plan monthly price
-	// - `deploymentTypes`- list of deployment types, e.g. on_demand, spotMarket
-	// - `availableIn`- list of facilities where the plan is available
-	// - `availableInMetros`- list of facilities where the plan is available
-	Name         string  `pulumi:"name"`
-	PricingHour  float64 `pulumi:"pricingHour"`
+	Name string `pulumi:"name"`
+	// plan hourly price
+	PricingHour float64 `pulumi:"pricingHour"`
+	// plan monthly price
 	PricingMonth float64 `pulumi:"pricingMonth"`
-	Slug         string  `pulumi:"slug"`
+	// plan slug
+	Slug string `pulumi:"slug"`
 }
 
 // GetPlansPlanInput is an input type that accepts GetPlansPlanArgs and GetPlansPlanOutput values.
@@ -3088,30 +3225,30 @@ type GetPlansPlanInput interface {
 }
 
 type GetPlansPlanArgs struct {
+	// list of facilities where the plan is available
 	AvailableInMetros pulumi.StringArrayInput `pulumi:"availableInMetros"`
-	AvailableIns      pulumi.StringArrayInput `pulumi:"availableIns"`
-	Class             pulumi.StringInput      `pulumi:"class"`
-	DeploymentTypes   pulumi.StringArrayInput `pulumi:"deploymentTypes"`
-	Description       pulumi.StringInput      `pulumi:"description"`
+	// list of facilities where the plan is available
+	AvailableIns pulumi.StringArrayInput `pulumi:"availableIns"`
+	// plan class
+	Class pulumi.StringInput `pulumi:"class"`
+	// list of deployment types, e.g. on_demand, spot_market
+	DeploymentTypes pulumi.StringArrayInput `pulumi:"deploymentTypes"`
+	// description of the plan
+	Description pulumi.StringInput `pulumi:"description"`
 	// id of the plan
-	Id     pulumi.StringInput `pulumi:"id"`
-	Legacy pulumi.BoolInput   `pulumi:"legacy"`
-	Line   pulumi.StringInput `pulumi:"line"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// flag showing if it's a legacy plan
+	Legacy pulumi.BoolInput `pulumi:"legacy"`
+	// plan line, e.g. baremetal
+	Line pulumi.StringInput `pulumi:"line"`
 	// name of the plan
-	// - `slug`- plan slug
-	// - `description`- description of the plan
-	// - `line`- plan line, e.g. baremetal
-	// - `legacy`- flag showing if it's a legacy plan
-	// - `class`- plan class
-	// - `pricingHour`- plan hourly price
-	// - `pricingMonth`- plan monthly price
-	// - `deploymentTypes`- list of deployment types, e.g. on_demand, spotMarket
-	// - `availableIn`- list of facilities where the plan is available
-	// - `availableInMetros`- list of facilities where the plan is available
-	Name         pulumi.StringInput  `pulumi:"name"`
-	PricingHour  pulumi.Float64Input `pulumi:"pricingHour"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// plan hourly price
+	PricingHour pulumi.Float64Input `pulumi:"pricingHour"`
+	// plan monthly price
 	PricingMonth pulumi.Float64Input `pulumi:"pricingMonth"`
-	Slug         pulumi.StringInput  `pulumi:"slug"`
+	// plan slug
+	Slug pulumi.StringInput `pulumi:"slug"`
 }
 
 func (GetPlansPlanArgs) ElementType() reflect.Type {
@@ -3165,22 +3302,27 @@ func (o GetPlansPlanOutput) ToGetPlansPlanOutputWithContext(ctx context.Context)
 	return o
 }
 
+// list of facilities where the plan is available
 func (o GetPlansPlanOutput) AvailableInMetros() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPlansPlan) []string { return v.AvailableInMetros }).(pulumi.StringArrayOutput)
 }
 
+// list of facilities where the plan is available
 func (o GetPlansPlanOutput) AvailableIns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPlansPlan) []string { return v.AvailableIns }).(pulumi.StringArrayOutput)
 }
 
+// plan class
 func (o GetPlansPlanOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansPlan) string { return v.Class }).(pulumi.StringOutput)
 }
 
+// list of deployment types, e.g. on_demand, spot_market
 func (o GetPlansPlanOutput) DeploymentTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPlansPlan) []string { return v.DeploymentTypes }).(pulumi.StringArrayOutput)
 }
 
+// description of the plan
 func (o GetPlansPlanOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansPlan) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -3190,37 +3332,32 @@ func (o GetPlansPlanOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansPlan) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// flag showing if it's a legacy plan
 func (o GetPlansPlanOutput) Legacy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPlansPlan) bool { return v.Legacy }).(pulumi.BoolOutput)
 }
 
+// plan line, e.g. baremetal
 func (o GetPlansPlanOutput) Line() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansPlan) string { return v.Line }).(pulumi.StringOutput)
 }
 
 // name of the plan
-// - `slug`- plan slug
-// - `description`- description of the plan
-// - `line`- plan line, e.g. baremetal
-// - `legacy`- flag showing if it's a legacy plan
-// - `class`- plan class
-// - `pricingHour`- plan hourly price
-// - `pricingMonth`- plan monthly price
-// - `deploymentTypes`- list of deployment types, e.g. on_demand, spotMarket
-// - `availableIn`- list of facilities where the plan is available
-// - `availableInMetros`- list of facilities where the plan is available
 func (o GetPlansPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansPlan) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// plan hourly price
 func (o GetPlansPlanOutput) PricingHour() pulumi.Float64Output {
 	return o.ApplyT(func(v GetPlansPlan) float64 { return v.PricingHour }).(pulumi.Float64Output)
 }
 
+// plan monthly price
 func (o GetPlansPlanOutput) PricingMonth() pulumi.Float64Output {
 	return o.ApplyT(func(v GetPlansPlan) float64 { return v.PricingMonth }).(pulumi.Float64Output)
 }
 
+// plan slug
 func (o GetPlansPlanOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansPlan) string { return v.Slug }).(pulumi.StringOutput)
 }
@@ -3489,6 +3626,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPortArrayInput)(nil)).Elem(), ConnectionPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionServiceTokenInput)(nil)).Elem(), ConnectionServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionServiceTokenArrayInput)(nil)).Elem(), ConnectionServiceTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceBehaviorInput)(nil)).Elem(), DeviceBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceBehaviorPtrInput)(nil)).Elem(), DeviceBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceIpAddressInput)(nil)).Elem(), DeviceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceIpAddressArrayInput)(nil)).Elem(), DeviceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceNetworkInput)(nil)).Elem(), DeviceNetworkArgs{})
@@ -3535,6 +3674,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionPortArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionServiceTokenOutput{})
 	pulumi.RegisterOutputType(ConnectionServiceTokenArrayOutput{})
+	pulumi.RegisterOutputType(DeviceBehaviorOutput{})
+	pulumi.RegisterOutputType(DeviceBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(DeviceIpAddressOutput{})
 	pulumi.RegisterOutputType(DeviceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DeviceNetworkOutput{})

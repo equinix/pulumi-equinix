@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -24,93 +26,6 @@ import * as utilities from "../utilities";
  *   software license. There are no charges associated with such license. It is the only licensing mode
  *   for `self-configured` devices.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const dc = equinix.networkedge.getAccount({
- *     metroCode: "DC",
- * });
- * const sv = equinix.networkedge.getAccount({
- *     metroCode: "SV",
- * });
- * const csr1000v_ha = new equinix.networkedge.Device("csr1000v-ha", {
- *     throughput: 500,
- *     throughputUnit: "Mbps",
- *     metroCode: dc.then(dc => dc.metroCode),
- *     typeCode: "CSR1000V",
- *     packageCode: "SEC",
- *     notifications: [
- *         "john@equinix.com",
- *         "marry@equinix.com",
- *         "fred@equinix.com",
- *     ],
- *     hostname: "csr1000v-p",
- *     termLength: 6,
- *     accountNumber: dc.then(dc => dc.number),
- *     version: "16.09.05",
- *     coreCount: 2,
- *     secondaryDevice: {
- *         name: "tf-csr1000v-s",
- *         metroCode: sv.then(sv => sv.metroCode),
- *         hostname: "csr1000v-s",
- *         notifications: [
- *             "john@equinix.com",
- *             "marry@equinix.com",
- *         ],
- *         accountNumber: sv.then(sv => sv.number),
- *     },
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const sv = equinix.networkedge.getAccount({
- *     metroCode: "SV",
- * });
- * const panw_cluster = new equinix.networkedge.Device("panw-cluster", {
- *     metroCode: sv.then(sv => sv.metroCode),
- *     typeCode: "PA-VM",
- *     selfManaged: true,
- *     byol: true,
- *     packageCode: "VM100",
- *     notifications: [
- *         "john@equinix.com",
- *         "marry@equinix.com",
- *         "fred@equinix.com",
- *     ],
- *     termLength: 6,
- *     accountNumber: sv.then(sv => sv.number),
- *     version: "10.1.3",
- *     interfaceCount: 10,
- *     coreCount: 2,
- *     sshKey: {
- *         username: "test",
- *         keyName: "test-key",
- *     },
- *     aclTemplateId: "0bff6e05-f0e7-44cd-804a-25b92b835f8b",
- *     clusterDetails: {
- *         clusterName: "tf-panw-cluster",
- *         node0: {
- *             vendorConfiguration: {
- *                 hostname: "panw-node0",
- *             },
- *             licenseToken: "licenseToken",
- *         },
- *         node1: {
- *             vendorConfiguration: {
- *                 hostname: "panw-node1",
- *             },
- *             licenseToken: "licenseToken",
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported using an existing ID
@@ -119,7 +34,7 @@ import * as utilities from "../utilities";
  *  $ pulumi import equinix:networkedge/device:Device example {existing_id}
  * ```
  *
- *  The `license_token` and `mgtm_acl_template_uuid` fields can not be imported.
+ *  The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
  */
 export class Device extends pulumi.CustomResource {
     /**
@@ -154,7 +69,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly accountNumber!: pulumi.Output<string>;
     /**
-     * Identifier of an ACL template that will be applied on the device.
+     * Identifier of a WAN interface ACL template that will be applied on the device.
      */
     public readonly aclTemplateId!: pulumi.Output<string | undefined>;
     /**
@@ -171,6 +86,10 @@ export class Device extends pulumi.CustomResource {
      * `bring your own license` or `subscription` (default).
      */
     public readonly byol!: pulumi.Output<boolean | undefined>;
+    /**
+     * Identifier of a cloud init file that will be applied on the device.
+     */
+    public readonly cloudInitFileId!: pulumi.Output<string | undefined>;
     /**
      * An object that has the cluster details. See
      * Cluster Details below for more details.
@@ -200,20 +119,21 @@ export class Device extends pulumi.CustomResource {
     public /*out*/ readonly interfaces!: pulumi.Output<outputs.networkedge.DeviceInterface[]>;
     /**
      * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some devices types in BYOL licensing mode.
+     * device. Applicable for some device types in BYOL licensing mode.
      */
     public readonly licenseFile!: pulumi.Output<string | undefined>;
     /**
-     * License file id. This is necessary for Fortinet and Juniper clusters.
+     * Identifier of a license file that will be applied on the device.
      */
-    public /*out*/ readonly licenseFileId!: pulumi.Output<string>;
+    public readonly licenseFileId!: pulumi.Output<string>;
     /**
      * Device license registration status. Possible values are `APPLYING_LICENSE`,
      * `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
      */
     public /*out*/ readonly licenseStatus!: pulumi.Output<string>;
     /**
-     * License token. This is necessary for Palo Alto clusters.
+     * License Token applicable for some device types in BYOL licensing
+     * mode.
      */
     public readonly licenseToken!: pulumi.Output<string | undefined>;
     /**
@@ -266,7 +186,7 @@ export class Device extends pulumi.CustomResource {
     public readonly secondaryDevice!: pulumi.Output<outputs.networkedge.DeviceSecondaryDevice | undefined>;
     /**
      * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix managed` (default).
+     * `self-managed` or `Equinix-managed` (default).
      */
     public readonly selfManaged!: pulumi.Output<boolean | undefined>;
     /**
@@ -306,9 +226,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
-     * An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * Map of vendor specific configuration parameters for a device
+     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+     * on a device (max one key).  See SSH Key below for more details.
      */
     public readonly vendorConfiguration!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -342,6 +263,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["additionalBandwidth"] = state ? state.additionalBandwidth : undefined;
             resourceInputs["asn"] = state ? state.asn : undefined;
             resourceInputs["byol"] = state ? state.byol : undefined;
+            resourceInputs["cloudInitFileId"] = state ? state.cloudInitFileId : undefined;
             resourceInputs["clusterDetails"] = state ? state.clusterDetails : undefined;
             resourceInputs["coreCount"] = state ? state.coreCount : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
@@ -407,11 +329,13 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["aclTemplateId"] = args ? args.aclTemplateId : undefined;
             resourceInputs["additionalBandwidth"] = args ? args.additionalBandwidth : undefined;
             resourceInputs["byol"] = args ? args.byol : undefined;
+            resourceInputs["cloudInitFileId"] = args ? args.cloudInitFileId : undefined;
             resourceInputs["clusterDetails"] = args ? args.clusterDetails : undefined;
             resourceInputs["coreCount"] = args ? args.coreCount : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["interfaceCount"] = args ? args.interfaceCount : undefined;
             resourceInputs["licenseFile"] = args ? args.licenseFile : undefined;
+            resourceInputs["licenseFileId"] = args ? args.licenseFileId : undefined;
             resourceInputs["licenseToken"] = args ? args.licenseToken : undefined;
             resourceInputs["metroCode"] = args ? args.metroCode : undefined;
             resourceInputs["mgmtAclTemplateUuid"] = args ? args.mgmtAclTemplateUuid : undefined;
@@ -433,7 +357,6 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["asn"] = undefined /*out*/;
             resourceInputs["ibx"] = undefined /*out*/;
             resourceInputs["interfaces"] = undefined /*out*/;
-            resourceInputs["licenseFileId"] = undefined /*out*/;
             resourceInputs["licenseStatus"] = undefined /*out*/;
             resourceInputs["redundancyType"] = undefined /*out*/;
             resourceInputs["redundantId"] = undefined /*out*/;
@@ -458,7 +381,7 @@ export interface DeviceState {
      */
     accountNumber?: pulumi.Input<string>;
     /**
-     * Identifier of an ACL template that will be applied on the device.
+     * Identifier of a WAN interface ACL template that will be applied on the device.
      */
     aclTemplateId?: pulumi.Input<string>;
     /**
@@ -475,6 +398,10 @@ export interface DeviceState {
      * `bring your own license` or `subscription` (default).
      */
     byol?: pulumi.Input<boolean>;
+    /**
+     * Identifier of a cloud init file that will be applied on the device.
+     */
+    cloudInitFileId?: pulumi.Input<string>;
     /**
      * An object that has the cluster details. See
      * Cluster Details below for more details.
@@ -504,11 +431,11 @@ export interface DeviceState {
     interfaces?: pulumi.Input<pulumi.Input<inputs.networkedge.DeviceInterface>[]>;
     /**
      * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some devices types in BYOL licensing mode.
+     * device. Applicable for some device types in BYOL licensing mode.
      */
     licenseFile?: pulumi.Input<string>;
     /**
-     * License file id. This is necessary for Fortinet and Juniper clusters.
+     * Identifier of a license file that will be applied on the device.
      */
     licenseFileId?: pulumi.Input<string>;
     /**
@@ -517,7 +444,8 @@ export interface DeviceState {
      */
     licenseStatus?: pulumi.Input<string>;
     /**
-     * License token. This is necessary for Palo Alto clusters.
+     * License Token applicable for some device types in BYOL licensing
+     * mode.
      */
     licenseToken?: pulumi.Input<string>;
     /**
@@ -570,7 +498,7 @@ export interface DeviceState {
     secondaryDevice?: pulumi.Input<inputs.networkedge.DeviceSecondaryDevice>;
     /**
      * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix managed` (default).
+     * `self-managed` or `Equinix-managed` (default).
      */
     selfManaged?: pulumi.Input<boolean>;
     /**
@@ -610,9 +538,10 @@ export interface DeviceState {
      */
     uuid?: pulumi.Input<string>;
     /**
-     * An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * Map of vendor specific configuration parameters for a device
+     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+     * on a device (max one key).  See SSH Key below for more details.
      */
     vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -638,7 +567,7 @@ export interface DeviceArgs {
      */
     accountNumber: pulumi.Input<string>;
     /**
-     * Identifier of an ACL template that will be applied on the device.
+     * Identifier of a WAN interface ACL template that will be applied on the device.
      */
     aclTemplateId?: pulumi.Input<string>;
     /**
@@ -651,6 +580,10 @@ export interface DeviceArgs {
      * `bring your own license` or `subscription` (default).
      */
     byol?: pulumi.Input<boolean>;
+    /**
+     * Identifier of a cloud init file that will be applied on the device.
+     */
+    cloudInitFileId?: pulumi.Input<string>;
     /**
      * An object that has the cluster details. See
      * Cluster Details below for more details.
@@ -671,11 +604,16 @@ export interface DeviceArgs {
     interfaceCount?: pulumi.Input<number>;
     /**
      * Path to the license file that will be uploaded and applied on a
-     * device. Applicable for some devices types in BYOL licensing mode.
+     * device. Applicable for some device types in BYOL licensing mode.
      */
     licenseFile?: pulumi.Input<string>;
     /**
-     * License token. This is necessary for Palo Alto clusters.
+     * Identifier of a license file that will be applied on the device.
+     */
+    licenseFileId?: pulumi.Input<string>;
+    /**
+     * License Token applicable for some device types in BYOL licensing
+     * mode.
      */
     licenseToken?: pulumi.Input<string>;
     /**
@@ -715,7 +653,7 @@ export interface DeviceArgs {
     secondaryDevice?: pulumi.Input<inputs.networkedge.DeviceSecondaryDevice>;
     /**
      * Boolean value that determines device management mode, i.e.,
-     * `self-managed` or `Equinix managed` (default).
+     * `self-managed` or `Equinix-managed` (default).
      */
     selfManaged?: pulumi.Input<boolean>;
     /**
@@ -739,9 +677,10 @@ export interface DeviceArgs {
      */
     typeCode: pulumi.Input<string>;
     /**
-     * An object that has fields relevant to the vendor of the
-     * cluster device. See Cluster Details - Nodes - Vendor Configuration
-     * below for more details.
+     * Map of vendor specific configuration parameters for a device
+     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
+     * on a device (max one key).  See SSH Key below for more details.
      */
     vendorConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

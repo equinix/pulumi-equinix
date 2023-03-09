@@ -2,18 +2,17 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
  * Provides an Equinix Metal metro datasource.
  */
 export function getMetro(args: GetMetroArgs, opts?: pulumi.InvokeOptions): Promise<GetMetroResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getMetro:getMetro", {
         "capacities": args.capacities,
         "code": args.code,
@@ -53,9 +52,11 @@ export interface GetMetroResult {
      */
     readonly name: string;
 }
-
+/**
+ * Provides an Equinix Metal metro datasource.
+ */
 export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetroResult> {
-    return pulumi.output(args).apply(a => getMetro(a, opts))
+    return pulumi.output(args).apply((a: any) => getMetro(a, opts))
 }
 
 /**

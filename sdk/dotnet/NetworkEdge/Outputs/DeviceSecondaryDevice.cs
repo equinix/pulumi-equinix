@@ -32,6 +32,10 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly int? Asn;
         /// <summary>
+        /// Identifier of a cloud init file that will be applied on a secondary device.
+        /// </summary>
+        public readonly string? CloudInitFileId;
+        /// <summary>
         /// Secondary device hostname.
         /// </summary>
         public readonly string? Hostname;
@@ -46,11 +50,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         public readonly ImmutableArray<Outputs.DeviceSecondaryDeviceInterface> Interfaces;
         /// <summary>
         /// Path to the license file that will be uploaded and applied on a
-        /// secondary device. Applicable for some devices types in BYOL licensing mode.
+        /// secondary device. Applicable for some device types in BYOL licensing mode.
         /// </summary>
         public readonly string? LicenseFile;
         /// <summary>
-        /// License file id. This is necessary for Fortinet and Juniper clusters.
+        /// Identifier of a license file that will be applied on a secondary device.
         /// </summary>
         public readonly string? LicenseFileId;
         /// <summary>
@@ -68,7 +72,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         public readonly string MetroCode;
         /// <summary>
         /// Identifier of an MGMT interface ACL template that will be
-        /// applied on the device.
+        /// applied on a secondary device.
         /// * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
         /// device.
         /// </summary>
@@ -134,6 +138,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             int? asn,
 
+            string? cloudInitFileId,
+
             string? hostname,
 
             string? ibx,
@@ -182,6 +188,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             AclTemplateId = aclTemplateId;
             AdditionalBandwidth = additionalBandwidth;
             Asn = asn;
+            CloudInitFileId = cloudInitFileId;
             Hostname = hostname;
             Ibx = ibx;
             Interfaces = interfaces;

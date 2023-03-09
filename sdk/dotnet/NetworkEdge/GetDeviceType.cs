@@ -43,7 +43,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDeviceTypeResult> InvokeAsync(GetDeviceTypeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get Equinix Network Edge device type details. For further details, check supported
@@ -77,7 +77,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDeviceTypeResult> Invoke(GetDeviceTypeInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeInvokeArgs(), options.WithDefaults());
     }
 
 

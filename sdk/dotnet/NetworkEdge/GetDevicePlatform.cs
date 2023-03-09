@@ -43,7 +43,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDevicePlatformResult> InvokeAsync(GetDevicePlatformArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get Equinix Network Edge device platform configuration details
@@ -77,7 +77,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDevicePlatformResult> Invoke(GetDevicePlatformInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformInvokeArgs(), options.WithDefaults());
     }
 
 

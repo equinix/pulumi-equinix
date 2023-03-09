@@ -44,7 +44,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualCircuitResult> InvokeAsync(GetVirtualCircuitArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve a virtual circuit resource from
@@ -79,7 +79,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualCircuitResult> Invoke(GetVirtualCircuitInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -155,8 +155,6 @@ namespace Pulumi.Equinix.Metal
         public readonly string PortId;
         /// <summary>
         /// ID of project to which the VC belongs.
-        /// * `vnid`, `nni_vlan`, `nni_nvid` - VLAN parameters, see the
-        /// [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
@@ -181,6 +179,10 @@ namespace Pulumi.Equinix.Metal
         public readonly ImmutableArray<string> Tags;
         public readonly string VirtualCircuitId;
         public readonly string VlanId;
+        /// <summary>
+        /// , `nni_vlan`, `nni_nvid` - VLAN parameters, see the
+        /// [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+        /// </summary>
         public readonly int Vnid;
         /// <summary>
         /// UUID of the VLAN to associate.

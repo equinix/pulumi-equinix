@@ -120,6 +120,17 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg: "equinix",
 		Config:    map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
+		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
+		IgnoreMappings: []string{
+			"equinix_ecx_l2_connection", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_connection
+			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
+			"equinix_ecx_l2_serviceprofile", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile
+			"equinix_network_file", // TODO
+			"equinix_ecx_l2_sellerprofile", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile datasource
+			"equinix_ecx_l2_sellerprofiles", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profiles datasource
+			"equinix_ecx_port", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_ports datasource
+			"equinix_fabric_port", // TODO
+		},
 		Resources:            map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
 			"equinix_fabric_connection":      {
@@ -817,14 +828,15 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
-			// RootNamespace: "Pulumi",
+			RootNamespace: "Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
 		},
 		Java: &tfbridge.JavaInfo{
-			// BasePackage: "com.pulumi",
+			BasePackage: "com.equinix.pulumi",
+			BuildFiles: "gradle",
 		},
 	}
 

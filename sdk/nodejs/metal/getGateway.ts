@@ -27,11 +27,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getGateway:getGateway", {
         "gatewayId": args.gatewayId,
     }, opts);
@@ -82,9 +79,30 @@ export interface GetGatewayResult {
      */
     readonly vrfId: string;
 }
-
+/**
+ * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
+ *
+ * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
+ * const testVlan = new equinix.metal.Vlan("testVlan", {
+ *     description: "test VLAN in SV",
+ *     metro: "sv",
+ *     projectId: local.project_id,
+ * });
+ * const testGateway = equinix.metal.getGateway({
+ *     gatewayId: local.gateway_id,
+ * });
+ * ```
+ */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
-    return pulumi.output(args).apply(a => getGateway(a, opts))
+    return pulumi.output(args).apply((a: any) => getGateway(a, opts))
 }
 
 /**

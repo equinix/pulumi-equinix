@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,7 +35,7 @@ import (
 //					pulumi.String("limited_collaborator"),
 //				},
 //				ProjectsIds: pulumi.StringArray{
-//					pulumi.Any(_var.Project_id),
+//					_var.Project_id,
 //				},
 //				OrganizationId: pulumi.Any(_var.Organization_id),
 //			})

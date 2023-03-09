@@ -38,7 +38,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["out"] = test.Apply(getIpBlockRangesResult =&gt; getIpBlockRangesResult),
+        ///         ["out"] = test,
         ///     };
         /// });
         /// ```
@@ -46,7 +46,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpBlockRangesResult> InvokeAsync(GetIpBlockRangesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpBlockRangesResult>("equinix:metal/getIpBlockRanges:getIpBlockRanges", args ?? new GetIpBlockRangesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpBlockRangesResult>("equinix:metal/getIpBlockRanges:getIpBlockRanges", args ?? new GetIpBlockRangesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
@@ -75,7 +75,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["out"] = test.Apply(getIpBlockRangesResult =&gt; getIpBlockRangesResult),
+        ///         ["out"] = test,
         ///     };
         /// });
         /// ```
@@ -83,7 +83,7 @@ namespace Pulumi.Equinix.Metal
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpBlockRangesResult> Invoke(GetIpBlockRangesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpBlockRangesResult>("equinix:metal/getIpBlockRanges:getIpBlockRanges", args ?? new GetIpBlockRangesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpBlockRangesResult>("equinix:metal/getIpBlockRanges:getIpBlockRanges", args ?? new GetIpBlockRangesInvokeArgs(), options.WithDefaults());
     }
 
 

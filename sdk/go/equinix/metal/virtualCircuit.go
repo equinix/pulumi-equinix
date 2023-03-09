@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -44,7 +43,7 @@ import (
 //			}
 //			testVlan, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
 //				ProjectId: pulumi.String(projectId),
-//				Metro:     pulumi.String(testConnection.Metro),
+//				Metro:     *pulumi.String(testConnection.Metro),
 //			})
 //			if err != nil {
 //				return err
@@ -52,7 +51,7 @@ import (
 //			_, err = metal.NewVirtualCircuit(ctx, "testVirtualCircuit", &metal.VirtualCircuitArgs{
 //				ConnectionId: pulumi.String(connId),
 //				ProjectId:    pulumi.String(projectId),
-//				PortId:       pulumi.String(testConnection.Ports[0].Id),
+//				PortId:       *pulumi.String(testConnection.Ports[0].Id),
 //				VlanId:       testVlan.ID(),
 //				NniVlan:      pulumi.Int(1056),
 //			})
@@ -135,6 +134,13 @@ func NewVirtualCircuit(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	if args.Md5 != nil {
+		args.Md5 = pulumi.ToSecret(args.Md5).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"md5",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource VirtualCircuit
 	err := ctx.RegisterResource("equinix:metal/virtualCircuit:VirtualCircuit", name, args, &resource, opts...)

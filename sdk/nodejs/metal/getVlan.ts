@@ -41,11 +41,8 @@ import * as utilities from "../utilities";
  */
 export function getVlan(args?: GetVlanArgs, opts?: pulumi.InvokeOptions): Promise<GetVlanResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getVlan:getVlan", {
         "facility": args.facility,
         "metro": args.metro,
@@ -103,9 +100,43 @@ export interface GetVlanResult {
     readonly vlanId: string;
     readonly vxlan: number;
 }
-
+/**
+ * Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
+ * searched by VLAN UUID, or project UUID and vxlan number.
+ *
+ * ## Example Usage
+ *
+ * Fetch a vlan by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const foovlan = new equinix.metal.Vlan("foovlan", {
+ *     projectId: local.project_id,
+ *     metro: "sv",
+ *     vxlan: 5,
+ * });
+ * const dsvlan = equinix.metal.getVlanOutput({
+ *     vlanId: foovlan.id,
+ * });
+ * ```
+ *
+ * Fetch a vlan by project ID, vxlan and metro
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const dsvlan = equinix.metal.getVlan({
+ *     projectId: local.project_id,
+ *     vxlan: 5,
+ *     metro: "sv",
+ * });
+ * ```
+ */
 export function getVlanOutput(args?: GetVlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlanResult> {
-    return pulumi.output(args).apply(a => getVlan(a, opts))
+    return pulumi.output(args).apply((a: any) => getVlan(a, opts))
 }
 
 /**

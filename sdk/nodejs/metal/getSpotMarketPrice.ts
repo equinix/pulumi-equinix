@@ -15,10 +15,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const example = pulumi.output(equinix.metal.getSpotMarketPrice({
+ * const example = equinix.metal.getSpotMarketPrice({
  *     facility: "ny5",
  *     plan: "c3.small.x86",
- * }));
+ * });
  * ```
  *
  * Lookup by metro:
@@ -27,18 +27,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const example = pulumi.output(equinix.metal.getSpotMarketPrice({
+ * const example = equinix.metal.getSpotMarketPrice({
  *     metro: "sv",
  *     plan: "c3.small.x86",
- * }));
+ * });
  * ```
  */
 export function getSpotMarketPrice(args: GetSpotMarketPriceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotMarketPriceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", {
         "facility": args.facility,
         "metro": args.metro,
@@ -80,9 +77,37 @@ export interface GetSpotMarketPriceResult {
      */
     readonly price: number;
 }
-
+/**
+ * Use this data source to get Equinix Metal Spot Market Price for a plan.
+ *
+ * ## Example Usage
+ *
+ * Lookup by facility:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const example = equinix.metal.getSpotMarketPrice({
+ *     facility: "ny5",
+ *     plan: "c3.small.x86",
+ * });
+ * ```
+ *
+ * Lookup by metro:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const example = equinix.metal.getSpotMarketPrice({
+ *     metro: "sv",
+ *     plan: "c3.small.x86",
+ * });
+ * ```
+ */
 export function getSpotMarketPriceOutput(args: GetSpotMarketPriceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotMarketPriceResult> {
-    return pulumi.output(args).apply(a => getSpotMarketPrice(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpotMarketPrice(a, opts))
 }
 
 /**

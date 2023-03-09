@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -27,11 +29,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDeviceBgpNeighbors(args: GetDeviceBgpNeighborsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceBgpNeighborsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", {
         "deviceId": args.deviceId,
     }, opts);
@@ -61,9 +60,29 @@ export interface GetDeviceBgpNeighborsResult {
      */
     readonly id: string;
 }
-
+/**
+ * Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
+ *
+ * To have any BGP neighbors listed, the device must be in BGP-enabled project
+ * and have a BGP session assigned.
+ *
+ * To learn more about using BGP in Equinix Metal, see the
+ * equinix.metal.BgpSession resource documentation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const test = equinix.metal.getDeviceBgpNeighbors({
+ *     deviceId: "4c641195-25e5-4c3c-b2b7-4cd7a42c7b40",
+ * });
+ * export const bgpNeighborsListing = test.then(test => test.bgpNeighbors);
+ * ```
+ */
 export function getDeviceBgpNeighborsOutput(args: GetDeviceBgpNeighborsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceBgpNeighborsResult> {
-    return pulumi.output(args).apply(a => getDeviceBgpNeighbors(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeviceBgpNeighbors(a, opts))
 }
 
 /**

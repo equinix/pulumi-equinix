@@ -24,7 +24,8 @@ class OrganizationArgs:
                  website: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input['OrganizationAddressArgs'] address: Postal address.
+        :param pulumi.Input['OrganizationAddressArgs'] address: An object that has the address information. See Address
+               below for more details.
         :param pulumi.Input[str] description: Description string.
         :param pulumi.Input[str] logo: Logo URL.
         :param pulumi.Input[str] name: The name of the Organization.
@@ -47,7 +48,8 @@ class OrganizationArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input['OrganizationAddressArgs']:
         """
-        Postal address.
+        An object that has the address information. See Address
+        below for more details.
         """
         return pulumi.get(self, "address")
 
@@ -129,7 +131,8 @@ class _OrganizationState:
                  website: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
-        :param pulumi.Input['OrganizationAddressArgs'] address: Postal address.
+        :param pulumi.Input['OrganizationAddressArgs'] address: An object that has the address information. See Address
+               below for more details.
         :param pulumi.Input[str] created: The timestamp for when the organization was created.
         :param pulumi.Input[str] description: Description string.
         :param pulumi.Input[str] logo: Logo URL.
@@ -159,7 +162,8 @@ class _OrganizationState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input['OrganizationAddressArgs']]:
         """
-        Postal address.
+        An object that has the address information. See Address
+        below for more details.
         """
         return pulumi.get(self, "address")
 
@@ -287,7 +291,8 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationAddressArgs']] address: Postal address.
+        :param pulumi.Input[pulumi.InputType['OrganizationAddressArgs']] address: An object that has the address information. See Address
+               below for more details.
         :param pulumi.Input[str] description: Description string.
         :param pulumi.Input[str] logo: Logo URL.
         :param pulumi.Input[str] name: The name of the Organization.
@@ -386,7 +391,8 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationAddressArgs']] address: Postal address.
+        :param pulumi.Input[pulumi.InputType['OrganizationAddressArgs']] address: An object that has the address information. See Address
+               below for more details.
         :param pulumi.Input[str] created: The timestamp for when the organization was created.
         :param pulumi.Input[str] description: Description string.
         :param pulumi.Input[str] logo: Logo URL.
@@ -413,7 +419,8 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output['outputs.OrganizationAddress']:
         """
-        Postal address.
+        An object that has the address information. See Address
+        below for more details.
         """
         return pulumi.get(self, "address")
 

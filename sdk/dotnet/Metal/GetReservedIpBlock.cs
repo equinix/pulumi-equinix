@@ -20,7 +20,7 @@ namespace Pulumi.Equinix.Metal
         /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
         /// </summary>
         public static Task<GetReservedIpBlockResult> InvokeAsync(GetReservedIpBlockArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
@@ -31,7 +31,7 @@ namespace Pulumi.Equinix.Metal
         /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
         /// </summary>
         public static Output<GetReservedIpBlockResult> Invoke(GetReservedIpBlockInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockInvokeArgs(), options.WithDefaults());
     }
 
 

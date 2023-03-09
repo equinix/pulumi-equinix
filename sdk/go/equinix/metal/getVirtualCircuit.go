@@ -23,7 +23,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,8 +85,6 @@ type LookupVirtualCircuitResult struct {
 	// UUID of the Connection Port where the VC is scoped to.
 	PortId string `pulumi:"portId"`
 	// ID of project to which the VC belongs.
-	// * `vnid`, `nniVlan`, `nniNvid` - VLAN parameters, see the
-	//   [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
 	ProjectId string `pulumi:"projectId"`
 	// Speed of the Virtual Circuit resource.
 	Speed string `pulumi:"speed"`
@@ -103,7 +100,9 @@ type LookupVirtualCircuitResult struct {
 	Tags             []string `pulumi:"tags"`
 	VirtualCircuitId string   `pulumi:"virtualCircuitId"`
 	VlanId           string   `pulumi:"vlanId"`
-	Vnid             int      `pulumi:"vnid"`
+	// , `nniVlan`, `nniNvid` - VLAN parameters, see the
+	// [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
+	Vnid int `pulumi:"vnid"`
 	// UUID of the VLAN to associate.
 	VrfId string `pulumi:"vrfId"`
 }
@@ -200,8 +199,6 @@ func (o LookupVirtualCircuitResultOutput) PortId() pulumi.StringOutput {
 }
 
 // ID of project to which the VC belongs.
-//   - `vnid`, `nniVlan`, `nniNvid` - VLAN parameters, see the
-//     [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
 func (o LookupVirtualCircuitResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -238,6 +235,8 @@ func (o LookupVirtualCircuitResultOutput) VlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) string { return v.VlanId }).(pulumi.StringOutput)
 }
 
+// , `nniVlan`, `nniNvid` - VLAN parameters, see the
+// [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
 func (o LookupVirtualCircuitResultOutput) Vnid() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVirtualCircuitResult) int { return v.Vnid }).(pulumi.IntOutput)
 }

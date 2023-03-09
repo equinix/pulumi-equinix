@@ -12,10 +12,10 @@ namespace Pulumi.Equinix.Fabric
     public static class GetServiceProfiles
     {
         public static Task<GetServiceProfilesResult> InvokeAsync(GetServiceProfilesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesArgs(), options.WithDefaults());
 
         public static Output<GetServiceProfilesResult> Invoke(GetServiceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesInvokeArgs(), options.WithDefaults());
     }
 
 

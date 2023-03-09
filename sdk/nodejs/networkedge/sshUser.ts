@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  *     username: "john",
  *     password: "secret",
  *     deviceIds: [
- *         equinix_ne_device["csr1000v-ha"].uuid,
- *         equinix_ne_device["csr1000v-ha"].redundant_uuid,
+ *         equinix_network_device["csr1000v-ha"].uuid,
+ *         equinix_network_device["csr1000v-ha"].redundant_uuid,
  *     ],
  * });
  * ```
@@ -108,11 +108,13 @@ export class SshUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["deviceIds"] = args ? args.deviceIds : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SshUser.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'ConnectionPortArgs',
     'ConnectionServiceTokenArgs',
+    'DeviceBehaviorArgs',
     'DeviceIpAddressArgs',
     'DeviceNetworkArgs',
     'DevicePortArgs',
@@ -210,6 +211,29 @@ class ConnectionServiceTokenArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class DeviceBehaviorArgs:
+    def __init__(__self__, *,
+                 allow_changes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_changes: List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        """
+        if allow_changes is not None:
+            pulumi.set(__self__, "allow_changes", allow_changes)
+
+    @property
+    @pulumi.getter(name="allowChanges")
+    def allow_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
+        """
+        return pulumi.get(self, "allow_changes")
+
+    @allow_changes.setter
+    def allow_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_changes", value)
 
 
 @pulumi.input_type

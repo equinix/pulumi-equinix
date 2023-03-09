@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,7 +110,6 @@ import (
 // import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -125,9 +124,9 @@ import (
 //			}
 //			_, err = metal.NewVirtualCircuit(ctx, "exampleVirtualCircuit", &metal.VirtualCircuitArgs{
 //				Description:  pulumi.String("Virtual Circuit"),
-//				ConnectionId: pulumi.String(exampleConnection.Id),
+//				ConnectionId: *pulumi.String(exampleConnection.Id),
 //				ProjectId:    pulumi.Any(equinix_metal_project.Example.Id),
-//				PortId:       pulumi.String(exampleConnection.Ports[0].Id),
+//				PortId:       *pulumi.String(exampleConnection.Ports[0].Id),
 //				NniVlan:      pulumi.Int(1024),
 //				VrfId:        pulumi.Any(equinix_metal_vrf.Example.Id),
 //				PeerAsn:      pulumi.Int(65530),

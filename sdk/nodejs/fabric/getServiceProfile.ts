@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs, enums } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +13,8 @@ import * as utilities from "../utilities";
  * > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
  */
 export function getServiceProfile(args: GetServiceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfile:getServiceProfile", {
         "state": args.state,
         "uuid": args.uuid,
@@ -121,9 +120,13 @@ export interface GetServiceProfileResult {
      */
     readonly visibility: string;
 }
-
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
+ *
+ * > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+ */
 export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfileResult> {
-    return pulumi.output(args).apply(a => getServiceProfile(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceProfile(a, opts))
 }
 
 /**

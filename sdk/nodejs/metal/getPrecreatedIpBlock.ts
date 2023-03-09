@@ -15,11 +15,8 @@ import * as utilities from "../utilities";
  * > Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
  */
 export function getPrecreatedIpBlock(args: GetPrecreatedIpBlockArgs, opts?: pulumi.InvokeOptions): Promise<GetPrecreatedIpBlockResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", {
         "addressFamily": args.addressFamily,
         "facility": args.facility,
@@ -89,9 +86,18 @@ export interface GetPrecreatedIpBlockResult {
     readonly type: string;
     readonly vrfId: string;
 }
-
+/**
+ * Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
+ * You can then use the cidrsubnet TF builtin function to derive subnets.
+ *
+ * > For backward compatibility, this data source will also return reserved (elastic) IP blocks.
+ *
+ * > Precreated (management) IP blocks for a metro will not be available until first device is created in that metro.
+ *
+ * > Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the equinix.metal.Device data source instead.
+ */
 export function getPrecreatedIpBlockOutput(args: GetPrecreatedIpBlockOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrecreatedIpBlockResult> {
-    return pulumi.output(args).apply(a => getPrecreatedIpBlock(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrecreatedIpBlock(a, opts))
 }
 
 /**
