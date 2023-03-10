@@ -103,8 +103,8 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.pulumi.equinix.metal.Device;
-import com.pulumi.equinix.metal.DeviceArgs;
+import com.equinix.pulumi.equinix.metal.Device;
+import com.equinix.pulumi.equinix.metal.DeviceArgs;
 
 public class App {
     public static void main(String[] args) {
