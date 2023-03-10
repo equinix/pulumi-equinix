@@ -10,6 +10,13 @@ export const AclProtocolType = {
 
 export type AclProtocolType = (typeof AclProtocolType)[keyof typeof AclProtocolType];
 
+export const FileType = {
+    License: "LICENSE",
+    CloudInit: "CLOUD_INIT",
+} as const;
+
+export type FileType = (typeof FileType)[keyof typeof FileType];
+
 export const ThroughputUnit = {
     Mbps: "Mbps",
     Gbps: "Gbps",

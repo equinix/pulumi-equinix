@@ -175,6 +175,170 @@ func (in *aclProtocolTypePtr) ToAclProtocolTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AclProtocolTypePtrOutput)
 }
 
+type FileType string
+
+const (
+	FileTypeLicense   = FileType("LICENSE")
+	FileTypeCloudInit = FileType("CLOUD_INIT")
+)
+
+func (FileType) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileType)(nil)).Elem()
+}
+
+func (e FileType) ToFileTypeOutput() FileTypeOutput {
+	return pulumi.ToOutput(e).(FileTypeOutput)
+}
+
+func (e FileType) ToFileTypeOutputWithContext(ctx context.Context) FileTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FileTypeOutput)
+}
+
+func (e FileType) ToFileTypePtrOutput() FileTypePtrOutput {
+	return e.ToFileTypePtrOutputWithContext(context.Background())
+}
+
+func (e FileType) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
+	return FileType(e).ToFileTypeOutputWithContext(ctx).ToFileTypePtrOutputWithContext(ctx)
+}
+
+func (e FileType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FileType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FileType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FileType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FileTypeOutput struct{ *pulumi.OutputState }
+
+func (FileTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileType)(nil)).Elem()
+}
+
+func (o FileTypeOutput) ToFileTypeOutput() FileTypeOutput {
+	return o
+}
+
+func (o FileTypeOutput) ToFileTypeOutputWithContext(ctx context.Context) FileTypeOutput {
+	return o
+}
+
+func (o FileTypeOutput) ToFileTypePtrOutput() FileTypePtrOutput {
+	return o.ToFileTypePtrOutputWithContext(context.Background())
+}
+
+func (o FileTypeOutput) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileType) *FileType {
+		return &v
+	}).(FileTypePtrOutput)
+}
+
+func (o FileTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FileTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FileType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FileTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FileTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FileType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FileTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FileTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileType)(nil)).Elem()
+}
+
+func (o FileTypePtrOutput) ToFileTypePtrOutput() FileTypePtrOutput {
+	return o
+}
+
+func (o FileTypePtrOutput) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
+	return o
+}
+
+func (o FileTypePtrOutput) Elem() FileTypeOutput {
+	return o.ApplyT(func(v *FileType) FileType {
+		if v != nil {
+			return *v
+		}
+		var ret FileType
+		return ret
+	}).(FileTypeOutput)
+}
+
+func (o FileTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FileType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FileTypeInput is an input type that accepts FileTypeArgs and FileTypeOutput values.
+// You can construct a concrete instance of `FileTypeInput` via:
+//
+//	FileTypeArgs{...}
+type FileTypeInput interface {
+	pulumi.Input
+
+	ToFileTypeOutput() FileTypeOutput
+	ToFileTypeOutputWithContext(context.Context) FileTypeOutput
+}
+
+var fileTypePtrType = reflect.TypeOf((**FileType)(nil)).Elem()
+
+type FileTypePtrInput interface {
+	pulumi.Input
+
+	ToFileTypePtrOutput() FileTypePtrOutput
+	ToFileTypePtrOutputWithContext(context.Context) FileTypePtrOutput
+}
+
+type fileTypePtr string
+
+func FileTypePtr(v string) FileTypePtrInput {
+	return (*fileTypePtr)(&v)
+}
+
+func (*fileTypePtr) ElementType() reflect.Type {
+	return fileTypePtrType
+}
+
+func (in *fileTypePtr) ToFileTypePtrOutput() FileTypePtrOutput {
+	return pulumi.ToOutput(in).(FileTypePtrOutput)
+}
+
+func (in *fileTypePtr) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FileTypePtrOutput)
+}
+
 type ThroughputUnit string
 
 const (
@@ -342,10 +506,14 @@ func (in *throughputUnitPtr) ToThroughputUnitPtrOutputWithContext(ctx context.Co
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclProtocolTypeInput)(nil)).Elem(), AclProtocolType("IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AclProtocolTypePtrInput)(nil)).Elem(), AclProtocolType("IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FileTypeInput)(nil)).Elem(), FileType("LICENSE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FileTypePtrInput)(nil)).Elem(), FileType("LICENSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThroughputUnitInput)(nil)).Elem(), ThroughputUnit("Mbps"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThroughputUnitPtrInput)(nil)).Elem(), ThroughputUnit("Mbps"))
 	pulumi.RegisterOutputType(AclProtocolTypeOutput{})
 	pulumi.RegisterOutputType(AclProtocolTypePtrOutput{})
+	pulumi.RegisterOutputType(FileTypeOutput{})
+	pulumi.RegisterOutputType(FileTypePtrOutput{})
 	pulumi.RegisterOutputType(ThroughputUnitOutput{})
 	pulumi.RegisterOutputType(ThroughputUnitPtrOutput{})
 }

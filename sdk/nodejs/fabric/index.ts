@@ -15,6 +15,11 @@ export const getConnection: typeof import("./getConnection").getConnection = nul
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
+export { GetPortArgs, GetPortResult, GetPortOutputArgs } from "./getPort";
+export const getPort: typeof import("./getPort").getPort = null as any;
+export const getPortOutput: typeof import("./getPort").getPortOutput = null as any;
+utilities.lazyLoad(exports, ["getPort","getPortOutput"], () => require("./getPort"));
+
 export { GetPortsArgs, GetPortsResult, GetPortsOutputArgs } from "./getPorts";
 export const getPorts: typeof import("./getPorts").getPorts = null as any;
 export const getPortsOutput: typeof import("./getPorts").getPortsOutput = null as any;

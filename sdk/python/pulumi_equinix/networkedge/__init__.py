@@ -15,6 +15,7 @@ from .get_device import *
 from .get_device_platform import *
 from .get_device_software import *
 from .get_device_type import *
+from .network_file import *
 from .ssh_key import *
 from .ssh_user import *
 from ._inputs import *

@@ -8,6 +8,7 @@ import typing
 from ._enums import *
 from .connection import *
 from .get_connection import *
+from .get_port import *
 from .get_ports import *
 from .get_service_profile import *
 from .get_service_profiles import *

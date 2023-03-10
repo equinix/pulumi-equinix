@@ -237,6 +237,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "networkedge/networkFile",
+  "fqn": "pulumi_equinix.networkedge",
+  "classes": {
+   "equinix:networkedge/networkFile:NetworkFile": "NetworkFile"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "networkedge/sshKey",
   "fqn": "pulumi_equinix.networkedge",
   "classes": {

@@ -37,6 +37,34 @@ namespace Pulumi.Equinix.NetworkEdge
     }
 
     [EnumType]
+    public readonly struct FileType : IEquatable<FileType>
+    {
+        private readonly string _value;
+
+        private FileType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static FileType License { get; } = new FileType("LICENSE");
+        public static FileType CloudInit { get; } = new FileType("CLOUD_INIT");
+
+        public static bool operator ==(FileType left, FileType right) => left.Equals(right);
+        public static bool operator !=(FileType left, FileType right) => !left.Equals(right);
+
+        public static explicit operator string(FileType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FileType other && Equals(other);
+        public bool Equals(FileType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct ThroughputUnit : IEquatable<ThroughputUnit>
     {
         private readonly string _value;
