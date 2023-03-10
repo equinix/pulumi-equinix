@@ -6,6 +6,8 @@ package com.equinix.pulumi.equinix.fabric;
 import com.equinix.pulumi.equinix.Utilities;
 import com.equinix.pulumi.equinix.fabric.inputs.GetConnectionArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetConnectionPlainArgs;
+import com.equinix.pulumi.equinix.fabric.inputs.GetPortArgs;
+import com.equinix.pulumi.equinix.fabric.inputs.GetPortPlainArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetPortsArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetPortsPlainArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetServiceProfileArgs;
@@ -13,6 +15,7 @@ import com.equinix.pulumi.equinix.fabric.inputs.GetServiceProfilePlainArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetServiceProfilesPlainArgs;
 import com.equinix.pulumi.equinix.fabric.outputs.GetConnectionResult;
+import com.equinix.pulumi.equinix.fabric.outputs.GetPortResult;
 import com.equinix.pulumi.equinix.fabric.outputs.GetPortsResult;
 import com.equinix.pulumi.equinix.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.equinix.fabric.outputs.GetServiceProfilesResult;
@@ -40,6 +43,18 @@ public final class FabricFunctions {
     }
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPortResult> getPort(GetPortArgs args) {
+        return getPort(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args) {
+        return getPortPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetPortsResult> getPorts() {
         return getPorts(GetPortsArgs.Empty, InvokeOptions.Empty);

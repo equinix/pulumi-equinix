@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AclProtocolType',
+    'FileType',
     'ThroughputUnit',
 ]
 
@@ -14,6 +15,11 @@ class AclProtocolType(str, Enum):
     IP = "IP"
     TCP = "TCP"
     UDP = "UDP"
+
+
+class FileType(str, Enum):
+    LICENSE = "LICENSE"
+    CLOUD_INIT = "CLOUD_INIT"
 
 
 class ThroughputUnit(str, Enum):

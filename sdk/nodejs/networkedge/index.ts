@@ -50,6 +50,11 @@ export const getDeviceType: typeof import("./getDeviceType").getDeviceType = nul
 export const getDeviceTypeOutput: typeof import("./getDeviceType").getDeviceTypeOutput = null as any;
 utilities.lazyLoad(exports, ["getDeviceType","getDeviceTypeOutput"], () => require("./getDeviceType"));
 
+export { NetworkFileArgs, NetworkFileState } from "./networkFile";
+export type NetworkFile = import("./networkFile").NetworkFile;
+export const NetworkFile: typeof import("./networkFile").NetworkFile = null as any;
+utilities.lazyLoad(exports, ["NetworkFile"], () => require("./networkFile"));
+
 export { SshKeyArgs, SshKeyState } from "./sshKey";
 export type SshKey = import("./sshKey").SshKey;
 export const SshKey: typeof import("./sshKey").SshKey = null as any;
@@ -76,6 +81,8 @@ const _module = {
                 return new Device(name, <any>undefined, { urn })
             case "equinix:networkedge/deviceLink:DeviceLink":
                 return new DeviceLink(name, <any>undefined, { urn })
+            case "equinix:networkedge/networkFile:NetworkFile":
+                return new NetworkFile(name, <any>undefined, { urn })
             case "equinix:networkedge/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
             case "equinix:networkedge/sshUser:SshUser":
@@ -89,5 +96,6 @@ pulumi.runtime.registerResourceModule("equinix", "networkedge/aclTemplate", _mod
 pulumi.runtime.registerResourceModule("equinix", "networkedge/bgp", _module)
 pulumi.runtime.registerResourceModule("equinix", "networkedge/device", _module)
 pulumi.runtime.registerResourceModule("equinix", "networkedge/deviceLink", _module)
+pulumi.runtime.registerResourceModule("equinix", "networkedge/networkFile", _module)
 pulumi.runtime.registerResourceModule("equinix", "networkedge/sshKey", _module)
 pulumi.runtime.registerResourceModule("equinix", "networkedge/sshUser", _module)

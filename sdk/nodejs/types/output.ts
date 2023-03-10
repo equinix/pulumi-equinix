@@ -933,6 +933,91 @@ export namespace fabric {
         uuid: string;
     }
 
+    export interface GetPortAccount {
+        accountName: string;
+        accountNumber: number;
+        globalCustId: string;
+        globalOrgId: string;
+        globalOrganizationName: string;
+        orgId: number;
+        organizationName: string;
+    }
+
+    export interface GetPortChangeLog {
+        createdBy: string;
+        createdByEmail: string;
+        createdByFullName: string;
+        createdDateTime: string;
+        deletedBy: string;
+        deletedByEmail: string;
+        deletedByFullName: string;
+        deletedDateTime: string;
+        updatedBy: string;
+        updatedByEmail: string;
+        updatedByFullName: string;
+        updatedDateTime: string;
+    }
+
+    export interface GetPortDevice {
+        /**
+         * Port name
+         */
+        name: string;
+        /**
+         * Port redundancy information
+         */
+        redundancies: outputs.fabric.GetPortDeviceRedundancy[];
+    }
+
+    export interface GetPortDeviceRedundancy {
+        group: string;
+        priority: string;
+    }
+
+    export interface GetPortEncapsulation {
+        tagProtocolId: string;
+        /**
+         * Port type
+         */
+        type: string;
+    }
+
+    export interface GetPortLag {
+        enabled: boolean;
+        /**
+         * The ID of this resource.
+         */
+        id: string;
+        memberStatus: string;
+        /**
+         * Port name
+         */
+        name: string;
+    }
+
+    export interface GetPortLocation {
+        /**
+         * Port URI information
+         */
+        href: string;
+        ibx: string;
+        metroCode: string;
+        metroName: string;
+        region: string;
+    }
+
+    export interface GetPortOperation {
+        connectionCount: number;
+        opStatusChangedAt: string;
+        operationalStatus: string;
+    }
+
+    export interface GetPortRedundancy {
+        enabled: boolean;
+        group: number;
+        priority: string;
+    }
+
     export interface GetPortsData {
         accounts: outputs.fabric.GetPortsDataAccount[];
         availableBandwidth: number;

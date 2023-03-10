@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Device{}
 	case "equinix:networkedge/deviceLink:DeviceLink":
 		r = &DeviceLink{}
+	case "equinix:networkedge/networkFile:NetworkFile":
+		r = &NetworkFile{}
 	case "equinix:networkedge/sshKey:SshKey":
 		r = &SshKey{}
 	case "equinix:networkedge/sshUser:SshUser":
@@ -64,6 +66,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"networkedge/deviceLink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"networkedge/networkFile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -11883,6 +11883,1056 @@ func (o GetConnectionZSideServiceTokenArrayOutput) Index(i pulumi.IntInput) GetC
 	}).(GetConnectionZSideServiceTokenOutput)
 }
 
+type GetPortAccount struct {
+	AccountName            string `pulumi:"accountName"`
+	AccountNumber          int    `pulumi:"accountNumber"`
+	GlobalCustId           string `pulumi:"globalCustId"`
+	GlobalOrgId            string `pulumi:"globalOrgId"`
+	GlobalOrganizationName string `pulumi:"globalOrganizationName"`
+	OrgId                  int    `pulumi:"orgId"`
+	OrganizationName       string `pulumi:"organizationName"`
+}
+
+// GetPortAccountInput is an input type that accepts GetPortAccountArgs and GetPortAccountOutput values.
+// You can construct a concrete instance of `GetPortAccountInput` via:
+//
+//	GetPortAccountArgs{...}
+type GetPortAccountInput interface {
+	pulumi.Input
+
+	ToGetPortAccountOutput() GetPortAccountOutput
+	ToGetPortAccountOutputWithContext(context.Context) GetPortAccountOutput
+}
+
+type GetPortAccountArgs struct {
+	AccountName            pulumi.StringInput `pulumi:"accountName"`
+	AccountNumber          pulumi.IntInput    `pulumi:"accountNumber"`
+	GlobalCustId           pulumi.StringInput `pulumi:"globalCustId"`
+	GlobalOrgId            pulumi.StringInput `pulumi:"globalOrgId"`
+	GlobalOrganizationName pulumi.StringInput `pulumi:"globalOrganizationName"`
+	OrgId                  pulumi.IntInput    `pulumi:"orgId"`
+	OrganizationName       pulumi.StringInput `pulumi:"organizationName"`
+}
+
+func (GetPortAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortAccount)(nil)).Elem()
+}
+
+func (i GetPortAccountArgs) ToGetPortAccountOutput() GetPortAccountOutput {
+	return i.ToGetPortAccountOutputWithContext(context.Background())
+}
+
+func (i GetPortAccountArgs) ToGetPortAccountOutputWithContext(ctx context.Context) GetPortAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortAccountOutput)
+}
+
+// GetPortAccountArrayInput is an input type that accepts GetPortAccountArray and GetPortAccountArrayOutput values.
+// You can construct a concrete instance of `GetPortAccountArrayInput` via:
+//
+//	GetPortAccountArray{ GetPortAccountArgs{...} }
+type GetPortAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetPortAccountArrayOutput() GetPortAccountArrayOutput
+	ToGetPortAccountArrayOutputWithContext(context.Context) GetPortAccountArrayOutput
+}
+
+type GetPortAccountArray []GetPortAccountInput
+
+func (GetPortAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortAccount)(nil)).Elem()
+}
+
+func (i GetPortAccountArray) ToGetPortAccountArrayOutput() GetPortAccountArrayOutput {
+	return i.ToGetPortAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortAccountArray) ToGetPortAccountArrayOutputWithContext(ctx context.Context) GetPortAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortAccountArrayOutput)
+}
+
+type GetPortAccountOutput struct{ *pulumi.OutputState }
+
+func (GetPortAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortAccount)(nil)).Elem()
+}
+
+func (o GetPortAccountOutput) ToGetPortAccountOutput() GetPortAccountOutput {
+	return o
+}
+
+func (o GetPortAccountOutput) ToGetPortAccountOutputWithContext(ctx context.Context) GetPortAccountOutput {
+	return o
+}
+
+func (o GetPortAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+func (o GetPortAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+}
+
+func (o GetPortAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+}
+
+func (o GetPortAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+}
+
+func (o GetPortAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+}
+
+func (o GetPortAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortAccount) int { return v.OrgId }).(pulumi.IntOutput)
+}
+
+func (o GetPortAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+}
+
+type GetPortAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortAccount)(nil)).Elem()
+}
+
+func (o GetPortAccountArrayOutput) ToGetPortAccountArrayOutput() GetPortAccountArrayOutput {
+	return o
+}
+
+func (o GetPortAccountArrayOutput) ToGetPortAccountArrayOutputWithContext(ctx context.Context) GetPortAccountArrayOutput {
+	return o
+}
+
+func (o GetPortAccountArrayOutput) Index(i pulumi.IntInput) GetPortAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortAccount {
+		return vs[0].([]GetPortAccount)[vs[1].(int)]
+	}).(GetPortAccountOutput)
+}
+
+type GetPortChangeLog struct {
+	CreatedBy         string `pulumi:"createdBy"`
+	CreatedByEmail    string `pulumi:"createdByEmail"`
+	CreatedByFullName string `pulumi:"createdByFullName"`
+	CreatedDateTime   string `pulumi:"createdDateTime"`
+	DeletedBy         string `pulumi:"deletedBy"`
+	DeletedByEmail    string `pulumi:"deletedByEmail"`
+	DeletedByFullName string `pulumi:"deletedByFullName"`
+	DeletedDateTime   string `pulumi:"deletedDateTime"`
+	UpdatedBy         string `pulumi:"updatedBy"`
+	UpdatedByEmail    string `pulumi:"updatedByEmail"`
+	UpdatedByFullName string `pulumi:"updatedByFullName"`
+	UpdatedDateTime   string `pulumi:"updatedDateTime"`
+}
+
+// GetPortChangeLogInput is an input type that accepts GetPortChangeLogArgs and GetPortChangeLogOutput values.
+// You can construct a concrete instance of `GetPortChangeLogInput` via:
+//
+//	GetPortChangeLogArgs{...}
+type GetPortChangeLogInput interface {
+	pulumi.Input
+
+	ToGetPortChangeLogOutput() GetPortChangeLogOutput
+	ToGetPortChangeLogOutputWithContext(context.Context) GetPortChangeLogOutput
+}
+
+type GetPortChangeLogArgs struct {
+	CreatedBy         pulumi.StringInput `pulumi:"createdBy"`
+	CreatedByEmail    pulumi.StringInput `pulumi:"createdByEmail"`
+	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
+	CreatedDateTime   pulumi.StringInput `pulumi:"createdDateTime"`
+	DeletedBy         pulumi.StringInput `pulumi:"deletedBy"`
+	DeletedByEmail    pulumi.StringInput `pulumi:"deletedByEmail"`
+	DeletedByFullName pulumi.StringInput `pulumi:"deletedByFullName"`
+	DeletedDateTime   pulumi.StringInput `pulumi:"deletedDateTime"`
+	UpdatedBy         pulumi.StringInput `pulumi:"updatedBy"`
+	UpdatedByEmail    pulumi.StringInput `pulumi:"updatedByEmail"`
+	UpdatedByFullName pulumi.StringInput `pulumi:"updatedByFullName"`
+	UpdatedDateTime   pulumi.StringInput `pulumi:"updatedDateTime"`
+}
+
+func (GetPortChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortChangeLog)(nil)).Elem()
+}
+
+func (i GetPortChangeLogArgs) ToGetPortChangeLogOutput() GetPortChangeLogOutput {
+	return i.ToGetPortChangeLogOutputWithContext(context.Background())
+}
+
+func (i GetPortChangeLogArgs) ToGetPortChangeLogOutputWithContext(ctx context.Context) GetPortChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortChangeLogOutput)
+}
+
+// GetPortChangeLogArrayInput is an input type that accepts GetPortChangeLogArray and GetPortChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetPortChangeLogArrayInput` via:
+//
+//	GetPortChangeLogArray{ GetPortChangeLogArgs{...} }
+type GetPortChangeLogArrayInput interface {
+	pulumi.Input
+
+	ToGetPortChangeLogArrayOutput() GetPortChangeLogArrayOutput
+	ToGetPortChangeLogArrayOutputWithContext(context.Context) GetPortChangeLogArrayOutput
+}
+
+type GetPortChangeLogArray []GetPortChangeLogInput
+
+func (GetPortChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortChangeLog)(nil)).Elem()
+}
+
+func (i GetPortChangeLogArray) ToGetPortChangeLogArrayOutput() GetPortChangeLogArrayOutput {
+	return i.ToGetPortChangeLogArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortChangeLogArray) ToGetPortChangeLogArrayOutputWithContext(ctx context.Context) GetPortChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortChangeLogArrayOutput)
+}
+
+type GetPortChangeLogOutput struct{ *pulumi.OutputState }
+
+func (GetPortChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortChangeLog)(nil)).Elem()
+}
+
+func (o GetPortChangeLogOutput) ToGetPortChangeLogOutput() GetPortChangeLogOutput {
+	return o
+}
+
+func (o GetPortChangeLogOutput) ToGetPortChangeLogOutputWithContext(ctx context.Context) GetPortChangeLogOutput {
+	return o
+}
+
+func (o GetPortChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+}
+
+func (o GetPortChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+}
+
+type GetPortChangeLogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortChangeLog)(nil)).Elem()
+}
+
+func (o GetPortChangeLogArrayOutput) ToGetPortChangeLogArrayOutput() GetPortChangeLogArrayOutput {
+	return o
+}
+
+func (o GetPortChangeLogArrayOutput) ToGetPortChangeLogArrayOutputWithContext(ctx context.Context) GetPortChangeLogArrayOutput {
+	return o
+}
+
+func (o GetPortChangeLogArrayOutput) Index(i pulumi.IntInput) GetPortChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortChangeLog {
+		return vs[0].([]GetPortChangeLog)[vs[1].(int)]
+	}).(GetPortChangeLogOutput)
+}
+
+type GetPortDevice struct {
+	// Port name
+	Name string `pulumi:"name"`
+	// Port redundancy information
+	Redundancies []GetPortDeviceRedundancy `pulumi:"redundancies"`
+}
+
+// GetPortDeviceInput is an input type that accepts GetPortDeviceArgs and GetPortDeviceOutput values.
+// You can construct a concrete instance of `GetPortDeviceInput` via:
+//
+//	GetPortDeviceArgs{...}
+type GetPortDeviceInput interface {
+	pulumi.Input
+
+	ToGetPortDeviceOutput() GetPortDeviceOutput
+	ToGetPortDeviceOutputWithContext(context.Context) GetPortDeviceOutput
+}
+
+type GetPortDeviceArgs struct {
+	// Port name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port redundancy information
+	Redundancies GetPortDeviceRedundancyArrayInput `pulumi:"redundancies"`
+}
+
+func (GetPortDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortDevice)(nil)).Elem()
+}
+
+func (i GetPortDeviceArgs) ToGetPortDeviceOutput() GetPortDeviceOutput {
+	return i.ToGetPortDeviceOutputWithContext(context.Background())
+}
+
+func (i GetPortDeviceArgs) ToGetPortDeviceOutputWithContext(ctx context.Context) GetPortDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortDeviceOutput)
+}
+
+// GetPortDeviceArrayInput is an input type that accepts GetPortDeviceArray and GetPortDeviceArrayOutput values.
+// You can construct a concrete instance of `GetPortDeviceArrayInput` via:
+//
+//	GetPortDeviceArray{ GetPortDeviceArgs{...} }
+type GetPortDeviceArrayInput interface {
+	pulumi.Input
+
+	ToGetPortDeviceArrayOutput() GetPortDeviceArrayOutput
+	ToGetPortDeviceArrayOutputWithContext(context.Context) GetPortDeviceArrayOutput
+}
+
+type GetPortDeviceArray []GetPortDeviceInput
+
+func (GetPortDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortDevice)(nil)).Elem()
+}
+
+func (i GetPortDeviceArray) ToGetPortDeviceArrayOutput() GetPortDeviceArrayOutput {
+	return i.ToGetPortDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortDeviceArray) ToGetPortDeviceArrayOutputWithContext(ctx context.Context) GetPortDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortDeviceArrayOutput)
+}
+
+type GetPortDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetPortDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortDevice)(nil)).Elem()
+}
+
+func (o GetPortDeviceOutput) ToGetPortDeviceOutput() GetPortDeviceOutput {
+	return o
+}
+
+func (o GetPortDeviceOutput) ToGetPortDeviceOutputWithContext(ctx context.Context) GetPortDeviceOutput {
+	return o
+}
+
+// Port name
+func (o GetPortDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortDevice) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port redundancy information
+func (o GetPortDeviceOutput) Redundancies() GetPortDeviceRedundancyArrayOutput {
+	return o.ApplyT(func(v GetPortDevice) []GetPortDeviceRedundancy { return v.Redundancies }).(GetPortDeviceRedundancyArrayOutput)
+}
+
+type GetPortDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortDevice)(nil)).Elem()
+}
+
+func (o GetPortDeviceArrayOutput) ToGetPortDeviceArrayOutput() GetPortDeviceArrayOutput {
+	return o
+}
+
+func (o GetPortDeviceArrayOutput) ToGetPortDeviceArrayOutputWithContext(ctx context.Context) GetPortDeviceArrayOutput {
+	return o
+}
+
+func (o GetPortDeviceArrayOutput) Index(i pulumi.IntInput) GetPortDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortDevice {
+		return vs[0].([]GetPortDevice)[vs[1].(int)]
+	}).(GetPortDeviceOutput)
+}
+
+type GetPortDeviceRedundancy struct {
+	Group    string `pulumi:"group"`
+	Priority string `pulumi:"priority"`
+}
+
+// GetPortDeviceRedundancyInput is an input type that accepts GetPortDeviceRedundancyArgs and GetPortDeviceRedundancyOutput values.
+// You can construct a concrete instance of `GetPortDeviceRedundancyInput` via:
+//
+//	GetPortDeviceRedundancyArgs{...}
+type GetPortDeviceRedundancyInput interface {
+	pulumi.Input
+
+	ToGetPortDeviceRedundancyOutput() GetPortDeviceRedundancyOutput
+	ToGetPortDeviceRedundancyOutputWithContext(context.Context) GetPortDeviceRedundancyOutput
+}
+
+type GetPortDeviceRedundancyArgs struct {
+	Group    pulumi.StringInput `pulumi:"group"`
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (GetPortDeviceRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortDeviceRedundancy)(nil)).Elem()
+}
+
+func (i GetPortDeviceRedundancyArgs) ToGetPortDeviceRedundancyOutput() GetPortDeviceRedundancyOutput {
+	return i.ToGetPortDeviceRedundancyOutputWithContext(context.Background())
+}
+
+func (i GetPortDeviceRedundancyArgs) ToGetPortDeviceRedundancyOutputWithContext(ctx context.Context) GetPortDeviceRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortDeviceRedundancyOutput)
+}
+
+// GetPortDeviceRedundancyArrayInput is an input type that accepts GetPortDeviceRedundancyArray and GetPortDeviceRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetPortDeviceRedundancyArrayInput` via:
+//
+//	GetPortDeviceRedundancyArray{ GetPortDeviceRedundancyArgs{...} }
+type GetPortDeviceRedundancyArrayInput interface {
+	pulumi.Input
+
+	ToGetPortDeviceRedundancyArrayOutput() GetPortDeviceRedundancyArrayOutput
+	ToGetPortDeviceRedundancyArrayOutputWithContext(context.Context) GetPortDeviceRedundancyArrayOutput
+}
+
+type GetPortDeviceRedundancyArray []GetPortDeviceRedundancyInput
+
+func (GetPortDeviceRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortDeviceRedundancy)(nil)).Elem()
+}
+
+func (i GetPortDeviceRedundancyArray) ToGetPortDeviceRedundancyArrayOutput() GetPortDeviceRedundancyArrayOutput {
+	return i.ToGetPortDeviceRedundancyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortDeviceRedundancyArray) ToGetPortDeviceRedundancyArrayOutputWithContext(ctx context.Context) GetPortDeviceRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortDeviceRedundancyArrayOutput)
+}
+
+type GetPortDeviceRedundancyOutput struct{ *pulumi.OutputState }
+
+func (GetPortDeviceRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortDeviceRedundancy)(nil)).Elem()
+}
+
+func (o GetPortDeviceRedundancyOutput) ToGetPortDeviceRedundancyOutput() GetPortDeviceRedundancyOutput {
+	return o
+}
+
+func (o GetPortDeviceRedundancyOutput) ToGetPortDeviceRedundancyOutputWithContext(ctx context.Context) GetPortDeviceRedundancyOutput {
+	return o
+}
+
+func (o GetPortDeviceRedundancyOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortDeviceRedundancy) string { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o GetPortDeviceRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortDeviceRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetPortDeviceRedundancyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortDeviceRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortDeviceRedundancy)(nil)).Elem()
+}
+
+func (o GetPortDeviceRedundancyArrayOutput) ToGetPortDeviceRedundancyArrayOutput() GetPortDeviceRedundancyArrayOutput {
+	return o
+}
+
+func (o GetPortDeviceRedundancyArrayOutput) ToGetPortDeviceRedundancyArrayOutputWithContext(ctx context.Context) GetPortDeviceRedundancyArrayOutput {
+	return o
+}
+
+func (o GetPortDeviceRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortDeviceRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortDeviceRedundancy {
+		return vs[0].([]GetPortDeviceRedundancy)[vs[1].(int)]
+	}).(GetPortDeviceRedundancyOutput)
+}
+
+type GetPortEncapsulation struct {
+	TagProtocolId string `pulumi:"tagProtocolId"`
+	// Port type
+	Type string `pulumi:"type"`
+}
+
+// GetPortEncapsulationInput is an input type that accepts GetPortEncapsulationArgs and GetPortEncapsulationOutput values.
+// You can construct a concrete instance of `GetPortEncapsulationInput` via:
+//
+//	GetPortEncapsulationArgs{...}
+type GetPortEncapsulationInput interface {
+	pulumi.Input
+
+	ToGetPortEncapsulationOutput() GetPortEncapsulationOutput
+	ToGetPortEncapsulationOutputWithContext(context.Context) GetPortEncapsulationOutput
+}
+
+type GetPortEncapsulationArgs struct {
+	TagProtocolId pulumi.StringInput `pulumi:"tagProtocolId"`
+	// Port type
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPortEncapsulationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortEncapsulation)(nil)).Elem()
+}
+
+func (i GetPortEncapsulationArgs) ToGetPortEncapsulationOutput() GetPortEncapsulationOutput {
+	return i.ToGetPortEncapsulationOutputWithContext(context.Background())
+}
+
+func (i GetPortEncapsulationArgs) ToGetPortEncapsulationOutputWithContext(ctx context.Context) GetPortEncapsulationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortEncapsulationOutput)
+}
+
+// GetPortEncapsulationArrayInput is an input type that accepts GetPortEncapsulationArray and GetPortEncapsulationArrayOutput values.
+// You can construct a concrete instance of `GetPortEncapsulationArrayInput` via:
+//
+//	GetPortEncapsulationArray{ GetPortEncapsulationArgs{...} }
+type GetPortEncapsulationArrayInput interface {
+	pulumi.Input
+
+	ToGetPortEncapsulationArrayOutput() GetPortEncapsulationArrayOutput
+	ToGetPortEncapsulationArrayOutputWithContext(context.Context) GetPortEncapsulationArrayOutput
+}
+
+type GetPortEncapsulationArray []GetPortEncapsulationInput
+
+func (GetPortEncapsulationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortEncapsulation)(nil)).Elem()
+}
+
+func (i GetPortEncapsulationArray) ToGetPortEncapsulationArrayOutput() GetPortEncapsulationArrayOutput {
+	return i.ToGetPortEncapsulationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortEncapsulationArray) ToGetPortEncapsulationArrayOutputWithContext(ctx context.Context) GetPortEncapsulationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortEncapsulationArrayOutput)
+}
+
+type GetPortEncapsulationOutput struct{ *pulumi.OutputState }
+
+func (GetPortEncapsulationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortEncapsulation)(nil)).Elem()
+}
+
+func (o GetPortEncapsulationOutput) ToGetPortEncapsulationOutput() GetPortEncapsulationOutput {
+	return o
+}
+
+func (o GetPortEncapsulationOutput) ToGetPortEncapsulationOutputWithContext(ctx context.Context) GetPortEncapsulationOutput {
+	return o
+}
+
+func (o GetPortEncapsulationOutput) TagProtocolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortEncapsulation) string { return v.TagProtocolId }).(pulumi.StringOutput)
+}
+
+// Port type
+func (o GetPortEncapsulationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortEncapsulation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPortEncapsulationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortEncapsulationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortEncapsulation)(nil)).Elem()
+}
+
+func (o GetPortEncapsulationArrayOutput) ToGetPortEncapsulationArrayOutput() GetPortEncapsulationArrayOutput {
+	return o
+}
+
+func (o GetPortEncapsulationArrayOutput) ToGetPortEncapsulationArrayOutputWithContext(ctx context.Context) GetPortEncapsulationArrayOutput {
+	return o
+}
+
+func (o GetPortEncapsulationArrayOutput) Index(i pulumi.IntInput) GetPortEncapsulationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortEncapsulation {
+		return vs[0].([]GetPortEncapsulation)[vs[1].(int)]
+	}).(GetPortEncapsulationOutput)
+}
+
+type GetPortLag struct {
+	Enabled bool `pulumi:"enabled"`
+	// The ID of this resource.
+	Id           string `pulumi:"id"`
+	MemberStatus string `pulumi:"memberStatus"`
+	// Port name
+	Name string `pulumi:"name"`
+}
+
+// GetPortLagInput is an input type that accepts GetPortLagArgs and GetPortLagOutput values.
+// You can construct a concrete instance of `GetPortLagInput` via:
+//
+//	GetPortLagArgs{...}
+type GetPortLagInput interface {
+	pulumi.Input
+
+	ToGetPortLagOutput() GetPortLagOutput
+	ToGetPortLagOutputWithContext(context.Context) GetPortLagOutput
+}
+
+type GetPortLagArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of this resource.
+	Id           pulumi.StringInput `pulumi:"id"`
+	MemberStatus pulumi.StringInput `pulumi:"memberStatus"`
+	// Port name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetPortLagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortLag)(nil)).Elem()
+}
+
+func (i GetPortLagArgs) ToGetPortLagOutput() GetPortLagOutput {
+	return i.ToGetPortLagOutputWithContext(context.Background())
+}
+
+func (i GetPortLagArgs) ToGetPortLagOutputWithContext(ctx context.Context) GetPortLagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortLagOutput)
+}
+
+// GetPortLagArrayInput is an input type that accepts GetPortLagArray and GetPortLagArrayOutput values.
+// You can construct a concrete instance of `GetPortLagArrayInput` via:
+//
+//	GetPortLagArray{ GetPortLagArgs{...} }
+type GetPortLagArrayInput interface {
+	pulumi.Input
+
+	ToGetPortLagArrayOutput() GetPortLagArrayOutput
+	ToGetPortLagArrayOutputWithContext(context.Context) GetPortLagArrayOutput
+}
+
+type GetPortLagArray []GetPortLagInput
+
+func (GetPortLagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortLag)(nil)).Elem()
+}
+
+func (i GetPortLagArray) ToGetPortLagArrayOutput() GetPortLagArrayOutput {
+	return i.ToGetPortLagArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortLagArray) ToGetPortLagArrayOutputWithContext(ctx context.Context) GetPortLagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortLagArrayOutput)
+}
+
+type GetPortLagOutput struct{ *pulumi.OutputState }
+
+func (GetPortLagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortLag)(nil)).Elem()
+}
+
+func (o GetPortLagOutput) ToGetPortLagOutput() GetPortLagOutput {
+	return o
+}
+
+func (o GetPortLagOutput) ToGetPortLagOutputWithContext(ctx context.Context) GetPortLagOutput {
+	return o
+}
+
+func (o GetPortLagOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPortLag) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of this resource.
+func (o GetPortLagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPortLagOutput) MemberStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLag) string { return v.MemberStatus }).(pulumi.StringOutput)
+}
+
+// Port name
+func (o GetPortLagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetPortLagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortLagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortLag)(nil)).Elem()
+}
+
+func (o GetPortLagArrayOutput) ToGetPortLagArrayOutput() GetPortLagArrayOutput {
+	return o
+}
+
+func (o GetPortLagArrayOutput) ToGetPortLagArrayOutputWithContext(ctx context.Context) GetPortLagArrayOutput {
+	return o
+}
+
+func (o GetPortLagArrayOutput) Index(i pulumi.IntInput) GetPortLagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortLag {
+		return vs[0].([]GetPortLag)[vs[1].(int)]
+	}).(GetPortLagOutput)
+}
+
+type GetPortLocation struct {
+	// Port URI information
+	Href      string `pulumi:"href"`
+	Ibx       string `pulumi:"ibx"`
+	MetroCode string `pulumi:"metroCode"`
+	MetroName string `pulumi:"metroName"`
+	Region    string `pulumi:"region"`
+}
+
+// GetPortLocationInput is an input type that accepts GetPortLocationArgs and GetPortLocationOutput values.
+// You can construct a concrete instance of `GetPortLocationInput` via:
+//
+//	GetPortLocationArgs{...}
+type GetPortLocationInput interface {
+	pulumi.Input
+
+	ToGetPortLocationOutput() GetPortLocationOutput
+	ToGetPortLocationOutputWithContext(context.Context) GetPortLocationOutput
+}
+
+type GetPortLocationArgs struct {
+	// Port URI information
+	Href      pulumi.StringInput `pulumi:"href"`
+	Ibx       pulumi.StringInput `pulumi:"ibx"`
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	MetroName pulumi.StringInput `pulumi:"metroName"`
+	Region    pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortLocation)(nil)).Elem()
+}
+
+func (i GetPortLocationArgs) ToGetPortLocationOutput() GetPortLocationOutput {
+	return i.ToGetPortLocationOutputWithContext(context.Background())
+}
+
+func (i GetPortLocationArgs) ToGetPortLocationOutputWithContext(ctx context.Context) GetPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortLocationOutput)
+}
+
+// GetPortLocationArrayInput is an input type that accepts GetPortLocationArray and GetPortLocationArrayOutput values.
+// You can construct a concrete instance of `GetPortLocationArrayInput` via:
+//
+//	GetPortLocationArray{ GetPortLocationArgs{...} }
+type GetPortLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetPortLocationArrayOutput() GetPortLocationArrayOutput
+	ToGetPortLocationArrayOutputWithContext(context.Context) GetPortLocationArrayOutput
+}
+
+type GetPortLocationArray []GetPortLocationInput
+
+func (GetPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortLocation)(nil)).Elem()
+}
+
+func (i GetPortLocationArray) ToGetPortLocationArrayOutput() GetPortLocationArrayOutput {
+	return i.ToGetPortLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortLocationArray) ToGetPortLocationArrayOutputWithContext(ctx context.Context) GetPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortLocationArrayOutput)
+}
+
+type GetPortLocationOutput struct{ *pulumi.OutputState }
+
+func (GetPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortLocation)(nil)).Elem()
+}
+
+func (o GetPortLocationOutput) ToGetPortLocationOutput() GetPortLocationOutput {
+	return o
+}
+
+func (o GetPortLocationOutput) ToGetPortLocationOutputWithContext(ctx context.Context) GetPortLocationOutput {
+	return o
+}
+
+// Port URI information
+func (o GetPortLocationOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLocation) string { return v.Href }).(pulumi.StringOutput)
+}
+
+func (o GetPortLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLocation) string { return v.Ibx }).(pulumi.StringOutput)
+}
+
+func (o GetPortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+func (o GetPortLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLocation) string { return v.MetroName }).(pulumi.StringOutput)
+}
+
+func (o GetPortLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetPortLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortLocation)(nil)).Elem()
+}
+
+func (o GetPortLocationArrayOutput) ToGetPortLocationArrayOutput() GetPortLocationArrayOutput {
+	return o
+}
+
+func (o GetPortLocationArrayOutput) ToGetPortLocationArrayOutputWithContext(ctx context.Context) GetPortLocationArrayOutput {
+	return o
+}
+
+func (o GetPortLocationArrayOutput) Index(i pulumi.IntInput) GetPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortLocation {
+		return vs[0].([]GetPortLocation)[vs[1].(int)]
+	}).(GetPortLocationOutput)
+}
+
+type GetPortOperation struct {
+	ConnectionCount   int    `pulumi:"connectionCount"`
+	OpStatusChangedAt string `pulumi:"opStatusChangedAt"`
+	OperationalStatus string `pulumi:"operationalStatus"`
+}
+
+// GetPortOperationInput is an input type that accepts GetPortOperationArgs and GetPortOperationOutput values.
+// You can construct a concrete instance of `GetPortOperationInput` via:
+//
+//	GetPortOperationArgs{...}
+type GetPortOperationInput interface {
+	pulumi.Input
+
+	ToGetPortOperationOutput() GetPortOperationOutput
+	ToGetPortOperationOutputWithContext(context.Context) GetPortOperationOutput
+}
+
+type GetPortOperationArgs struct {
+	ConnectionCount   pulumi.IntInput    `pulumi:"connectionCount"`
+	OpStatusChangedAt pulumi.StringInput `pulumi:"opStatusChangedAt"`
+	OperationalStatus pulumi.StringInput `pulumi:"operationalStatus"`
+}
+
+func (GetPortOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortOperation)(nil)).Elem()
+}
+
+func (i GetPortOperationArgs) ToGetPortOperationOutput() GetPortOperationOutput {
+	return i.ToGetPortOperationOutputWithContext(context.Background())
+}
+
+func (i GetPortOperationArgs) ToGetPortOperationOutputWithContext(ctx context.Context) GetPortOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortOperationOutput)
+}
+
+// GetPortOperationArrayInput is an input type that accepts GetPortOperationArray and GetPortOperationArrayOutput values.
+// You can construct a concrete instance of `GetPortOperationArrayInput` via:
+//
+//	GetPortOperationArray{ GetPortOperationArgs{...} }
+type GetPortOperationArrayInput interface {
+	pulumi.Input
+
+	ToGetPortOperationArrayOutput() GetPortOperationArrayOutput
+	ToGetPortOperationArrayOutputWithContext(context.Context) GetPortOperationArrayOutput
+}
+
+type GetPortOperationArray []GetPortOperationInput
+
+func (GetPortOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortOperation)(nil)).Elem()
+}
+
+func (i GetPortOperationArray) ToGetPortOperationArrayOutput() GetPortOperationArrayOutput {
+	return i.ToGetPortOperationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortOperationArray) ToGetPortOperationArrayOutputWithContext(ctx context.Context) GetPortOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortOperationArrayOutput)
+}
+
+type GetPortOperationOutput struct{ *pulumi.OutputState }
+
+func (GetPortOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortOperation)(nil)).Elem()
+}
+
+func (o GetPortOperationOutput) ToGetPortOperationOutput() GetPortOperationOutput {
+	return o
+}
+
+func (o GetPortOperationOutput) ToGetPortOperationOutputWithContext(ctx context.Context) GetPortOperationOutput {
+	return o
+}
+
+func (o GetPortOperationOutput) ConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortOperation) int { return v.ConnectionCount }).(pulumi.IntOutput)
+}
+
+func (o GetPortOperationOutput) OpStatusChangedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortOperation) string { return v.OpStatusChangedAt }).(pulumi.StringOutput)
+}
+
+func (o GetPortOperationOutput) OperationalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortOperation) string { return v.OperationalStatus }).(pulumi.StringOutput)
+}
+
+type GetPortOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortOperation)(nil)).Elem()
+}
+
+func (o GetPortOperationArrayOutput) ToGetPortOperationArrayOutput() GetPortOperationArrayOutput {
+	return o
+}
+
+func (o GetPortOperationArrayOutput) ToGetPortOperationArrayOutputWithContext(ctx context.Context) GetPortOperationArrayOutput {
+	return o
+}
+
+func (o GetPortOperationArrayOutput) Index(i pulumi.IntInput) GetPortOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortOperation {
+		return vs[0].([]GetPortOperation)[vs[1].(int)]
+	}).(GetPortOperationOutput)
+}
+
+type GetPortRedundancy struct {
+	Enabled  bool   `pulumi:"enabled"`
+	Group    int    `pulumi:"group"`
+	Priority string `pulumi:"priority"`
+}
+
+// GetPortRedundancyInput is an input type that accepts GetPortRedundancyArgs and GetPortRedundancyOutput values.
+// You can construct a concrete instance of `GetPortRedundancyInput` via:
+//
+//	GetPortRedundancyArgs{...}
+type GetPortRedundancyInput interface {
+	pulumi.Input
+
+	ToGetPortRedundancyOutput() GetPortRedundancyOutput
+	ToGetPortRedundancyOutputWithContext(context.Context) GetPortRedundancyOutput
+}
+
+type GetPortRedundancyArgs struct {
+	Enabled  pulumi.BoolInput   `pulumi:"enabled"`
+	Group    pulumi.IntInput    `pulumi:"group"`
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (GetPortRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortRedundancy)(nil)).Elem()
+}
+
+func (i GetPortRedundancyArgs) ToGetPortRedundancyOutput() GetPortRedundancyOutput {
+	return i.ToGetPortRedundancyOutputWithContext(context.Background())
+}
+
+func (i GetPortRedundancyArgs) ToGetPortRedundancyOutputWithContext(ctx context.Context) GetPortRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortRedundancyOutput)
+}
+
+// GetPortRedundancyArrayInput is an input type that accepts GetPortRedundancyArray and GetPortRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetPortRedundancyArrayInput` via:
+//
+//	GetPortRedundancyArray{ GetPortRedundancyArgs{...} }
+type GetPortRedundancyArrayInput interface {
+	pulumi.Input
+
+	ToGetPortRedundancyArrayOutput() GetPortRedundancyArrayOutput
+	ToGetPortRedundancyArrayOutputWithContext(context.Context) GetPortRedundancyArrayOutput
+}
+
+type GetPortRedundancyArray []GetPortRedundancyInput
+
+func (GetPortRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortRedundancy)(nil)).Elem()
+}
+
+func (i GetPortRedundancyArray) ToGetPortRedundancyArrayOutput() GetPortRedundancyArrayOutput {
+	return i.ToGetPortRedundancyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortRedundancyArray) ToGetPortRedundancyArrayOutputWithContext(ctx context.Context) GetPortRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortRedundancyArrayOutput)
+}
+
+type GetPortRedundancyOutput struct{ *pulumi.OutputState }
+
+func (GetPortRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortRedundancy)(nil)).Elem()
+}
+
+func (o GetPortRedundancyOutput) ToGetPortRedundancyOutput() GetPortRedundancyOutput {
+	return o
+}
+
+func (o GetPortRedundancyOutput) ToGetPortRedundancyOutputWithContext(ctx context.Context) GetPortRedundancyOutput {
+	return o
+}
+
+func (o GetPortRedundancyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPortRedundancy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetPortRedundancyOutput) Group() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortRedundancy) int { return v.Group }).(pulumi.IntOutput)
+}
+
+func (o GetPortRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type GetPortRedundancyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortRedundancy)(nil)).Elem()
+}
+
+func (o GetPortRedundancyArrayOutput) ToGetPortRedundancyArrayOutput() GetPortRedundancyArrayOutput {
+	return o
+}
+
+func (o GetPortRedundancyArrayOutput) ToGetPortRedundancyArrayOutputWithContext(ctx context.Context) GetPortRedundancyArrayOutput {
+	return o
+}
+
+func (o GetPortRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortRedundancy {
+		return vs[0].([]GetPortRedundancy)[vs[1].(int)]
+	}).(GetPortRedundancyOutput)
+}
+
 type GetPortsData struct {
 	Accounts           []GetPortsDataAccount       `pulumi:"accounts"`
 	AvailableBandwidth int                         `pulumi:"availableBandwidth"`
@@ -17303,6 +18353,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointVirtualDeviceArrayInput)(nil)).Elem(), GetConnectionZSideAccessPointVirtualDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideServiceTokenInput)(nil)).Elem(), GetConnectionZSideServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideServiceTokenArrayInput)(nil)).Elem(), GetConnectionZSideServiceTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAccountInput)(nil)).Elem(), GetPortAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAccountArrayInput)(nil)).Elem(), GetPortAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortChangeLogInput)(nil)).Elem(), GetPortChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortChangeLogArrayInput)(nil)).Elem(), GetPortChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceInput)(nil)).Elem(), GetPortDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceArrayInput)(nil)).Elem(), GetPortDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceRedundancyInput)(nil)).Elem(), GetPortDeviceRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceRedundancyArrayInput)(nil)).Elem(), GetPortDeviceRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortEncapsulationInput)(nil)).Elem(), GetPortEncapsulationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortEncapsulationArrayInput)(nil)).Elem(), GetPortEncapsulationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLagInput)(nil)).Elem(), GetPortLagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLagArrayInput)(nil)).Elem(), GetPortLagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLocationInput)(nil)).Elem(), GetPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLocationArrayInput)(nil)).Elem(), GetPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortOperationInput)(nil)).Elem(), GetPortOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortOperationArrayInput)(nil)).Elem(), GetPortOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortRedundancyInput)(nil)).Elem(), GetPortRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortRedundancyArrayInput)(nil)).Elem(), GetPortRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataInput)(nil)).Elem(), GetPortsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataArrayInput)(nil)).Elem(), GetPortsDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataAccountInput)(nil)).Elem(), GetPortsDataAccountArgs{})
@@ -17579,6 +18647,24 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointVirtualDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideServiceTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetPortAccountOutput{})
+	pulumi.RegisterOutputType(GetPortAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetPortChangeLogOutput{})
+	pulumi.RegisterOutputType(GetPortChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetPortDeviceOutput{})
+	pulumi.RegisterOutputType(GetPortDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetPortDeviceRedundancyOutput{})
+	pulumi.RegisterOutputType(GetPortDeviceRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(GetPortEncapsulationOutput{})
+	pulumi.RegisterOutputType(GetPortEncapsulationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortLagOutput{})
+	pulumi.RegisterOutputType(GetPortLagArrayOutput{})
+	pulumi.RegisterOutputType(GetPortLocationOutput{})
+	pulumi.RegisterOutputType(GetPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortOperationOutput{})
+	pulumi.RegisterOutputType(GetPortOperationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortRedundancyOutput{})
+	pulumi.RegisterOutputType(GetPortRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetPortsDataOutput{})
 	pulumi.RegisterOutputType(GetPortsDataArrayOutput{})
 	pulumi.RegisterOutputType(GetPortsDataAccountOutput{})

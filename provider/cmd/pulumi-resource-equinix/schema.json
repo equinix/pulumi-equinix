@@ -5805,6 +5805,483 @@
                 }
             }
         },
+        "equinix:fabric/getPortAccount:getPortAccount": {
+            "properties": {
+                "accountName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "accountNumber": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "globalCustId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "globalOrgId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "globalOrganizationName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "orgId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "organizationName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountName",
+                "accountNumber",
+                "globalCustId",
+                "globalOrgId",
+                "globalOrganizationName",
+                "orgId",
+                "organizationName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortChangeLog:getPortChangeLog": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdByFullName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdDateTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deletedBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deletedByEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deletedByFullName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deletedDateTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedByEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedByFullName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedDateTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "createdByEmail",
+                "createdByFullName",
+                "createdDateTime",
+                "deletedBy",
+                "deletedByEmail",
+                "deletedByFullName",
+                "deletedDateTime",
+                "updatedBy",
+                "updatedByEmail",
+                "updatedByFullName",
+                "updatedDateTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortDevice:getPortDevice": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Port name\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "redundancies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:fabric/getPortDeviceRedundancy:getPortDeviceRedundancy"
+                    },
+                    "description": "Port redundancy information\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "redundancies"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortDeviceRedundancy:getPortDeviceRedundancy": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "group",
+                "priority"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortEncapsulation:getPortEncapsulation": {
+            "properties": {
+                "tagProtocolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Port type\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "tagProtocolId",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortLag:getPortLag": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "memberStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Port name\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "id",
+                "memberStatus",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortLocation:getPortLocation": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "Port URI information\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ibx": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metroCode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "metroName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "href",
+                "ibx",
+                "metroCode",
+                "metroName",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortOperation:getPortOperation": {
+            "properties": {
+                "connectionCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "opStatusChangedAt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operationalStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionCount",
+                "opStatusChangedAt",
+                "operationalStatus"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:fabric/getPortRedundancy:getPortRedundancy": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "group": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "group",
+                "priority"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "equinix:fabric/getPortsData:getPortsData": {
             "properties": {
                 "accounts": {
@@ -12246,6 +12723,19 @@
                 }
             ]
         },
+        "equinix:networkedge/fileType:FileType": {
+            "type": "string",
+            "enum": [
+                {
+                    "name": "License",
+                    "value": "LICENSE"
+                },
+                {
+                    "name": "CloudInit",
+                    "value": "CLOUD_INIT"
+                }
+            ]
+        },
         "equinix:networkedge/getDeviceClusterDetail:getDeviceClusterDetail": {
             "properties": {
                 "clusterId": {
@@ -17962,6 +18452,192 @@
                 "type": "object"
             }
         },
+        "equinix:networkedge/networkFile:NetworkFile": {
+            "description": "Resource `equinix.networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.\n\n\n## Import\n\nThis resource can be imported using an existing ID\n\n```sh\n $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}\n```\n\n The `content`, `self_managed` and `byol` fields can not be imported. ",
+            "properties": {
+                "byol": {
+                    "type": "boolean",
+                    "description": "Boolean value that determines device licensing mode, i.e.,\n`bring your own license` or `subscription`.\n"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Uploaded file content, expected to be a UTF-8 encoded string.\n",
+                    "secret": true
+                },
+                "deviceTypeCode": {
+                    "type": "string",
+                    "description": "Device type code\n"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "File name.\n"
+                },
+                "metroCode": {
+                    "type": "string",
+                    "description": "File upload location metro code. It should match the device location metro code.\n"
+                },
+                "processType": {
+                    "type": "string",
+                    "description": "File process type (LICENSE or CLOUD_INIT).\n"
+                },
+                "selfManaged": {
+                    "type": "boolean",
+                    "description": "Boolean value that determines device management mode, i.e.,\n`self-managed` or `Equinix-managed`.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "File upload status.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier of file resource.\n"
+                }
+            },
+            "required": [
+                "byol",
+                "content",
+                "deviceTypeCode",
+                "fileName",
+                "metroCode",
+                "processType",
+                "selfManaged",
+                "status",
+                "uuid"
+            ],
+            "inputProperties": {
+                "byol": {
+                    "type": "boolean",
+                    "description": "Boolean value that determines device licensing mode, i.e.,\n`bring your own license` or `subscription`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Uploaded file content, expected to be a UTF-8 encoded string.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "deviceTypeCode": {
+                    "type": "string",
+                    "description": "Device type code\n",
+                    "willReplaceOnChanges": true
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "File name.\n",
+                    "willReplaceOnChanges": true
+                },
+                "metroCode": {
+                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/equinix:index/metro:Metro"
+                        }
+                    ],
+                    "description": "File upload location metro code. It should match the device location metro code.\n",
+                    "willReplaceOnChanges": true
+                },
+                "processType": {
+                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/equinix:networkedge/fileType:FileType"
+                        }
+                    ],
+                    "description": "File process type (LICENSE or CLOUD_INIT).\n",
+                    "willReplaceOnChanges": true
+                },
+                "selfManaged": {
+                    "type": "boolean",
+                    "description": "Boolean value that determines device management mode, i.e.,\n`self-managed` or `Equinix-managed`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "byol",
+                "content",
+                "deviceTypeCode",
+                "fileName",
+                "metroCode",
+                "processType",
+                "selfManaged"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkFile resources.\n",
+                "properties": {
+                    "byol": {
+                        "type": "boolean",
+                        "description": "Boolean value that determines device licensing mode, i.e.,\n`bring your own license` or `subscription`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "Uploaded file content, expected to be a UTF-8 encoded string.\n",
+                        "secret": true,
+                        "willReplaceOnChanges": true
+                    },
+                    "deviceTypeCode": {
+                        "type": "string",
+                        "description": "Device type code\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "description": "File name.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "metroCode": {
+                        "type": "string",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/equinix:index/metro:Metro"
+                            }
+                        ],
+                        "description": "File upload location metro code. It should match the device location metro code.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "processType": {
+                        "type": "string",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string",
+                                "$ref": "#/types/equinix:networkedge/fileType:FileType"
+                            }
+                        ],
+                        "description": "File process type (LICENSE or CLOUD_INIT).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "selfManaged": {
+                        "type": "boolean",
+                        "description": "Boolean value that determines device management mode, i.e.,\n`self-managed` or `Equinix-managed`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "File upload status.\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Unique identifier of file resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "equinix:networkedge/sshKey:SshKey": {
             "description": "Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.\n\n\n## Import\n\nThis resource can be imported using an existing ID\n\n```sh\n $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}\n```\n\n ",
             "properties": {
@@ -18254,6 +18930,148 @@
                     "state",
                     "type",
                     "zSides",
+                    "id"
+                ]
+            }
+        },
+        "equinix:fabric/getPort:getPort": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getPort.\n",
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned port identifier\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPort.\n",
+                "properties": {
+                    "accounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortAccount:getPortAccount"
+                        },
+                        "description": "Customer account information that is associated with this port\n"
+                    },
+                    "availableBandwidth": {
+                        "type": "integer",
+                        "description": "Port available bandwidth in Mbps\n"
+                    },
+                    "bandwidth": {
+                        "type": "integer",
+                        "description": "Port bandwidth in Mbps\n"
+                    },
+                    "changeLogs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortChangeLog:getPortChangeLog"
+                        },
+                        "description": "Captures port lifecycle change information\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Port description\n"
+                    },
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortDevice:getPortDevice"
+                        },
+                        "description": "Port device\n"
+                    },
+                    "encapsulations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortEncapsulation:getPortEncapsulation"
+                        },
+                        "description": "Port encapsulation protocol\n"
+                    },
+                    "href": {
+                        "type": "string",
+                        "description": "Port URI information\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "lags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortLag:getPortLag"
+                        },
+                        "description": "Port Lag\n"
+                    },
+                    "locations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortLocation:getPortLocation"
+                        },
+                        "description": "Port location information\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Port name\n"
+                    },
+                    "operations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortOperation:getPortOperation"
+                        },
+                        "description": "Port specific operational data\n"
+                    },
+                    "redundancies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:fabric/getPortRedundancy:getPortRedundancy"
+                        },
+                        "description": "Port redundancy information\n"
+                    },
+                    "serviceType": {
+                        "type": "string",
+                        "description": "Port service type\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Port state\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Port type\n"
+                    },
+                    "usedBandwidth": {
+                        "type": "integer",
+                        "description": "Port used bandwidth in Mbps\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "Equinix-assigned port identifier\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accounts",
+                    "availableBandwidth",
+                    "bandwidth",
+                    "changeLogs",
+                    "description",
+                    "devices",
+                    "encapsulations",
+                    "href",
+                    "lags",
+                    "locations",
+                    "name",
+                    "operations",
+                    "redundancies",
+                    "serviceType",
+                    "state",
+                    "type",
+                    "usedBandwidth",
+                    "uuid",
                     "id"
                 ]
             }

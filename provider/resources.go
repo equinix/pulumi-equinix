@@ -125,11 +125,9 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_ecx_l2_connection", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_connection
 			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
 			"equinix_ecx_l2_serviceprofile", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile
-			"equinix_network_file", // TODO
 			"equinix_ecx_l2_sellerprofile", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile datasource
 			"equinix_ecx_l2_sellerprofiles", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profiles datasource
-			"equinix_ecx_port", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_ports datasource
-			"equinix_fabric_port", // TODO
+			"equinix_ecx_port", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_port datasource
 		},
 		Resources:            map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
@@ -381,6 +379,19 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_network_device_link":  {Tok: makeEquinixResource(networkEdgeMod, "DeviceLink")},
 			"equinix_network_ssh_key":      {Tok: makeEquinixResource(networkEdgeMod, "SshKey")},
 			"equinix_network_ssh_user":     {Tok: makeEquinixResource(networkEdgeMod, "SshUser")},
+			"equinix_network_file":         {
+				Tok: makeEquinixResource(networkEdgeMod, "NetworkFile"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"metro_code": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+					},
+					"process_type": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(networkEdgeMod, "FileType")},
+					},
+				},
+			},
 		},
 		ExtraTypes: map[string]pulumiSchema.ComplexTypeSpec{
 			makeEquinixToken(equinixMod, "Metro"): {
@@ -565,6 +576,15 @@ func Provider() tfbridge.ProviderInfo {
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "Mbps", Value: "Mbps"},
 					{Name: "Gbps", Value: "Gbps"},
+				},
+			},
+			makeEquinixToken(networkEdgeMod, "FileType"): {
+				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
+					Type: "string",
+				},
+				Enum: []pulumiSchema.EnumValueSpec{
+					{Name: "License", Value: "LICENSE"},
+					{Name: "CloudInit", Value: "CLOUD_INIT"},
 				},
 			},
 			makeEquinixToken(metalMod, "BillingCycle"): {
@@ -763,35 +783,36 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_connection": 	   {Tok: makeEquinixDataSource(fabricMod, "Connection")},
-			"equinix_fabric_ports": 		   {Tok: makeEquinixDataSource(fabricMod, "Ports")},
+			"equinix_fabric_connection":       {Tok: makeEquinixDataSource(fabricMod, "Connection")},
+			"equinix_fabric_port":             {Tok: makeEquinixDataSource(fabricMod, "Port")},
+			"equinix_fabric_ports":            {Tok: makeEquinixDataSource(fabricMod, "Ports")},
 			"equinix_fabric_service_profile":  {Tok: makeEquinixDataSource(fabricMod, "ServiceProfile")},
 			"equinix_fabric_service_profiles": {Tok: makeEquinixDataSource(fabricMod, "ServiceProfiles")},
 			// Equinix Metal v1
-			"equinix_metal_connection": 		  {Tok: makeEquinixDataSource(metalMod, "Connection")},
-			"equinix_metal_device": 			  {Tok: makeEquinixDataSource(metalMod, "Device")},
+			"equinix_metal_connection":           {Tok: makeEquinixDataSource(metalMod, "Connection")},
+			"equinix_metal_device":               {Tok: makeEquinixDataSource(metalMod, "Device")},
 			"equinix_metal_device_bgp_neighbors": {Tok: makeEquinixDataSource(metalMod, "DeviceBgpNeighbors")},
-			"equinix_metal_facility": 			  {Tok: makeEquinixDataSource(metalMod, "Facility")},
-			"equinix_metal_gateway": 			  {Tok: makeEquinixDataSource(metalMod, "Gateway")},
+			"equinix_metal_facility":             {Tok: makeEquinixDataSource(metalMod, "Facility")},
+			"equinix_metal_gateway":              {Tok: makeEquinixDataSource(metalMod, "Gateway")},
 			"equinix_metal_hardware_reservation": {Tok: makeEquinixDataSource(metalMod, "HardwareReservation")},
-			"equinix_metal_ip_block_ranges":	  {Tok: makeEquinixDataSource(metalMod, "IpBlockRanges")},
-			"equinix_metal_metro":				  {Tok: makeEquinixDataSource(metalMod, "Metro")},
-			"equinix_metal_operating_system": 	  {Tok: makeEquinixDataSource(metalMod, "OperatingSystem")},
-			"equinix_metal_organization": 		  {Tok: makeEquinixDataSource(metalMod, "Organization")},
-			"equinix_metal_plans":		 		  {Tok: makeEquinixDataSource(metalMod, "Plans")},
-			"equinix_metal_port": 				  {Tok: makeEquinixDataSource(metalMod, "Port")},
+			"equinix_metal_ip_block_ranges":      {Tok: makeEquinixDataSource(metalMod, "IpBlockRanges")},
+			"equinix_metal_metro":                {Tok: makeEquinixDataSource(metalMod, "Metro")},
+			"equinix_metal_operating_system":     {Tok: makeEquinixDataSource(metalMod, "OperatingSystem")},
+			"equinix_metal_organization":         {Tok: makeEquinixDataSource(metalMod, "Organization")},
+			"equinix_metal_plans":                {Tok: makeEquinixDataSource(metalMod, "Plans")},
+			"equinix_metal_port":                 {Tok: makeEquinixDataSource(metalMod, "Port")},
 			"equinix_metal_precreated_ip_block":  {Tok: makeEquinixDataSource(metalMod, "PrecreatedIpBlock")},
-			"equinix_metal_project":			  {Tok: makeEquinixDataSource(metalMod, "Project")},
-			"equinix_metal_project_ssh_key": 	  {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
-			"equinix_metal_reserved_ip_block": 	  {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
-			"equinix_metal_spot_market_price": 	  {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
+			"equinix_metal_project":              {Tok: makeEquinixDataSource(metalMod, "Project")},
+			"equinix_metal_project_ssh_key":      {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
+			"equinix_metal_reserved_ip_block":    {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
+			"equinix_metal_spot_market_price":    {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
 			"equinix_metal_spot_market_request":  {Tok: makeEquinixDataSource(metalMod, "SpotMarketRequest")},
-			"equinix_metal_virtual_circuit": 	  {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
-			"equinix_metal_vlan": 				  {Tok: makeEquinixDataSource(metalMod, "Vlan")},
-			"equinix_metal_vrf": 				  {Tok: makeEquinixDataSource(metalMod, "Vrf")},
+			"equinix_metal_virtual_circuit":      {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
+			"equinix_metal_vlan":                 {Tok: makeEquinixDataSource(metalMod, "Vlan")},
+			"equinix_metal_vrf":                  {Tok: makeEquinixDataSource(metalMod, "Vrf")},
 			// Network Edge v1
-			"equinix_network_account": 		   {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
-			"equinix_network_device": 		   {Tok: makeEquinixDataSource(networkEdgeMod, "Device")},
+			"equinix_network_account":         {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
+			"equinix_network_device":          {Tok: makeEquinixDataSource(networkEdgeMod, "Device")},
 			"equinix_network_device_platform": {Tok: makeEquinixDataSource(networkEdgeMod, "DevicePlatform")},
 			"equinix_network_device_software": {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceSoftware")},
 			"equinix_network_device_type":     {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceType")},

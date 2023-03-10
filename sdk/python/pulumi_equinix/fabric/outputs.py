@@ -105,6 +105,15 @@ __all__ = [
     'GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult',
     'GetConnectionZSideAccessPointVirtualDeviceResult',
     'GetConnectionZSideServiceTokenResult',
+    'GetPortAccountResult',
+    'GetPortChangeLogResult',
+    'GetPortDeviceResult',
+    'GetPortDeviceRedundancyResult',
+    'GetPortEncapsulationResult',
+    'GetPortLagResult',
+    'GetPortLocationResult',
+    'GetPortOperationResult',
+    'GetPortRedundancyResult',
     'GetPortsDataResult',
     'GetPortsDataAccountResult',
     'GetPortsDataChangeLogResult',
@@ -5400,6 +5409,363 @@ class GetConnectionZSideServiceTokenResult(dict):
         Equinix-assigned connection identifier
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetPortAccountResult(dict):
+    def __init__(__self__, *,
+                 account_name: str,
+                 account_number: int,
+                 global_cust_id: str,
+                 global_org_id: str,
+                 global_organization_name: str,
+                 org_id: int,
+                 organization_name: str):
+        pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "global_cust_id", global_cust_id)
+        pulumi.set(__self__, "global_org_id", global_org_id)
+        pulumi.set(__self__, "global_organization_name", global_organization_name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+
+    @property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> str:
+        return pulumi.get(self, "account_name")
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> int:
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="globalCustId")
+    def global_cust_id(self) -> str:
+        return pulumi.get(self, "global_cust_id")
+
+    @property
+    @pulumi.getter(name="globalOrgId")
+    def global_org_id(self) -> str:
+        return pulumi.get(self, "global_org_id")
+
+    @property
+    @pulumi.getter(name="globalOrganizationName")
+    def global_organization_name(self) -> str:
+        return pulumi.get(self, "global_organization_name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> int:
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> str:
+        return pulumi.get(self, "organization_name")
+
+
+@pulumi.output_type
+class GetPortChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetPortDeviceResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 redundancies: Sequence['outputs.GetPortDeviceRedundancyResult']):
+        """
+        :param str name: Port name
+        :param Sequence['GetPortDeviceRedundancyArgs'] redundancies: Port redundancy information
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "redundancies", redundancies)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Port name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def redundancies(self) -> Sequence['outputs.GetPortDeviceRedundancyResult']:
+        """
+        Port redundancy information
+        """
+        return pulumi.get(self, "redundancies")
+
+
+@pulumi.output_type
+class GetPortDeviceRedundancyResult(dict):
+    def __init__(__self__, *,
+                 group: str,
+                 priority: str):
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class GetPortEncapsulationResult(dict):
+    def __init__(__self__, *,
+                 tag_protocol_id: str,
+                 type: str):
+        """
+        :param str type: Port type
+        """
+        pulumi.set(__self__, "tag_protocol_id", tag_protocol_id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="tagProtocolId")
+    def tag_protocol_id(self) -> str:
+        return pulumi.get(self, "tag_protocol_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Port type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPortLagResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 id: str,
+                 member_status: str,
+                 name: str):
+        """
+        :param str id: The ID of this resource.
+        :param str name: Port name
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "member_status", member_status)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="memberStatus")
+    def member_status(self) -> str:
+        return pulumi.get(self, "member_status")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Port name
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPortLocationResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 ibx: str,
+                 metro_code: str,
+                 metro_name: str,
+                 region: str):
+        """
+        :param str href: Port URI information
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_name", metro_name)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Port URI information
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> str:
+        return pulumi.get(self, "ibx")
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> str:
+        return pulumi.get(self, "metro_code")
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> str:
+        return pulumi.get(self, "metro_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetPortOperationResult(dict):
+    def __init__(__self__, *,
+                 connection_count: int,
+                 op_status_changed_at: str,
+                 operational_status: str):
+        pulumi.set(__self__, "connection_count", connection_count)
+        pulumi.set(__self__, "op_status_changed_at", op_status_changed_at)
+        pulumi.set(__self__, "operational_status", operational_status)
+
+    @property
+    @pulumi.getter(name="connectionCount")
+    def connection_count(self) -> int:
+        return pulumi.get(self, "connection_count")
+
+    @property
+    @pulumi.getter(name="opStatusChangedAt")
+    def op_status_changed_at(self) -> str:
+        return pulumi.get(self, "op_status_changed_at")
+
+    @property
+    @pulumi.getter(name="operationalStatus")
+    def operational_status(self) -> str:
+        return pulumi.get(self, "operational_status")
+
+
+@pulumi.output_type
+class GetPortRedundancyResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 group: int,
+                 priority: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def group(self) -> int:
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        return pulumi.get(self, "priority")
 
 
 @pulumi.output_type
