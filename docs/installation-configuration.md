@@ -1,12 +1,12 @@
 ---
-title: Equininx Installation & Configuration
-meta_desc: Information on how to install the Equininx provider.
+title: Equinix Installation & Configuration
+meta_desc: Information on how to install the Equinix provider.
 layout: installation
 ---
 
 ## Installation
 
-The Pulumi Equininx provider is available as a package in all Pulumi languages:
+The Pulumi Equinix provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@equinix/pulumi-equinix`](https://www.npmjs.com/package/@equinix/pulumi-equinix)
 * Python: [`pulumi_equinix`](https://pypi.org/project/pulumi-equinix/)
