@@ -74,14 +74,13 @@ func main() {
 {{% choosable language csharp %}}
 
 ```csharp
-using Pulumi;
 using Equinix = Pulumi.Equinix;
 
 class MyStack : Stack
 {
     public MyStack()
     {
-        var web1 = new EquinixMetal.Device("web1", new EquinixMetal.DeviceArgs
+        var web1 = new Equinix.Metal.Device("web1", new Equinix.Metal.DeviceArgs
         {
             Hostname = "webserver1",
             Plan = "c3.small.x86",
