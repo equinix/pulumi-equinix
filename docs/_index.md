@@ -4,13 +4,16 @@ meta_desc: Provides an overview of the Equinix Provider for Pulumi.
 layout: overview
 ---
 
-The Equinix provider for Pulumi can be used to provision resources in [Equinix](https://deploy.Equinix.com).
+The Equinix provider for Pulumi can be used to provision [Equinix](https://deploy.Equinix.com) resources (Metal, Fabric, and Network Edge).
 
 The Equinix provider must be configured with credentials to create and update resources in Equinix.
 
+> Note: This provider supercedes the [Pulumi Equinix Metal provider](https://www.pulumi.com/registry/packages/equinix-metal/).
+
 ## Example
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+<!-- {{< chooser language "typescript,python,go,csharp,java,yaml" >}} -->
+{{< chooser language "typescript,python,go,yaml" >}}
 {{% choosable language typescript %}}
 
 ```typescript
@@ -71,7 +74,7 @@ func main() {
 ```
 
 {{% /choosable %}}
-{{% choosable language csharp %}}
+<!-- {{% choosable language csharp %}}
 
 ```csharp
 using Equinix = Pulumi.Equinix;
@@ -123,7 +126,7 @@ public class App {
 }
 ```
 
-{{% /choosable %}}
+{{% /choosable %}} -->
 {{% choosable language yaml %}}
 
 ```yaml

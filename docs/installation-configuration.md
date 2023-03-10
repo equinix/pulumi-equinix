@@ -11,8 +11,11 @@ The Pulumi Equinix provider is available as a package in all Pulumi languages:
 * JavaScript/TypeScript: [`@equinix/pulumi-equinix`](https://www.npmjs.com/package/@equinix/pulumi-equinix)
 * Python: [`pulumi_equinix`](https://pypi.org/project/pulumi-equinix/)
 * Go: [`github.com/equinix/pulumi-equinix/sdk/go/equinix`](https://pkg.go.dev/github.com/equinix/pulumi-equinix/sdk)
-* .NET: [`equinix.Pulumi.Equinix`](https://www.nuget.org/packages/equinix.PulumiPackage.Equinix)
-<!-- * Java: [`com.equinix.pulumi`](https://search.maven.org/search?q=com.equinix.pulumi) -->
+
+Coming Soon!
+
+* .NET: [`Pulumi.Equinix`](https://www.nuget.org/packages/Pulumi.Equinix)
+* Java: [`com.equinix.pulumi`](https://search.maven.org/search?q=com.equinix.pulumi)
 
 ### Provider Binary
 
