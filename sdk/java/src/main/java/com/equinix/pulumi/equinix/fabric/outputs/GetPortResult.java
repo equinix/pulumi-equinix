@@ -14,7 +14,6 @@ import com.equinix.pulumi.equinix.fabric.outputs.GetPortRedundancy;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -23,7 +22,7 @@ public final class GetPortResult {
      * @return Customer account information that is associated with this port
      * 
      */
-    private List<GetPortAccount> accounts;
+    private GetPortAccount account;
     /**
      * @return Port available bandwidth in Mbps
      * 
@@ -38,7 +37,7 @@ public final class GetPortResult {
      * @return Captures port lifecycle change information
      * 
      */
-    private List<GetPortChangeLog> changeLogs;
+    private GetPortChangeLog changeLog;
     /**
      * @return Port description
      * 
@@ -48,12 +47,12 @@ public final class GetPortResult {
      * @return Port device
      * 
      */
-    private List<GetPortDevice> devices;
+    private GetPortDevice device;
     /**
      * @return Port encapsulation protocol
      * 
      */
-    private List<GetPortEncapsulation> encapsulations;
+    private GetPortEncapsulation encapsulation;
     /**
      * @return Port URI information
      * 
@@ -68,12 +67,12 @@ public final class GetPortResult {
      * @return Port Lag
      * 
      */
-    private List<GetPortLag> lags;
+    private GetPortLag lag;
     /**
      * @return Port location information
      * 
      */
-    private List<GetPortLocation> locations;
+    private GetPortLocation location;
     /**
      * @return Port name
      * 
@@ -83,12 +82,12 @@ public final class GetPortResult {
      * @return Port specific operational data
      * 
      */
-    private List<GetPortOperation> operations;
+    private GetPortOperation operation;
     /**
      * @return Port redundancy information
      * 
      */
-    private List<GetPortRedundancy> redundancies;
+    private GetPortRedundancy redundancy;
     /**
      * @return Port service type
      * 
@@ -120,8 +119,8 @@ public final class GetPortResult {
      * @return Customer account information that is associated with this port
      * 
      */
-    public List<GetPortAccount> accounts() {
-        return this.accounts;
+    public GetPortAccount account() {
+        return this.account;
     }
     /**
      * @return Port available bandwidth in Mbps
@@ -141,8 +140,8 @@ public final class GetPortResult {
      * @return Captures port lifecycle change information
      * 
      */
-    public List<GetPortChangeLog> changeLogs() {
-        return this.changeLogs;
+    public GetPortChangeLog changeLog() {
+        return this.changeLog;
     }
     /**
      * @return Port description
@@ -155,15 +154,15 @@ public final class GetPortResult {
      * @return Port device
      * 
      */
-    public List<GetPortDevice> devices() {
-        return this.devices;
+    public GetPortDevice device() {
+        return this.device;
     }
     /**
      * @return Port encapsulation protocol
      * 
      */
-    public List<GetPortEncapsulation> encapsulations() {
-        return this.encapsulations;
+    public GetPortEncapsulation encapsulation() {
+        return this.encapsulation;
     }
     /**
      * @return Port URI information
@@ -183,15 +182,15 @@ public final class GetPortResult {
      * @return Port Lag
      * 
      */
-    public List<GetPortLag> lags() {
-        return this.lags;
+    public GetPortLag lag() {
+        return this.lag;
     }
     /**
      * @return Port location information
      * 
      */
-    public List<GetPortLocation> locations() {
-        return this.locations;
+    public GetPortLocation location() {
+        return this.location;
     }
     /**
      * @return Port name
@@ -204,15 +203,15 @@ public final class GetPortResult {
      * @return Port specific operational data
      * 
      */
-    public List<GetPortOperation> operations() {
-        return this.operations;
+    public GetPortOperation operation() {
+        return this.operation;
     }
     /**
      * @return Port redundancy information
      * 
      */
-    public List<GetPortRedundancy> redundancies() {
-        return this.redundancies;
+    public GetPortRedundancy redundancy() {
+        return this.redundancy;
     }
     /**
      * @return Port service type
@@ -259,20 +258,20 @@ public final class GetPortResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetPortAccount> accounts;
+        private GetPortAccount account;
         private Integer availableBandwidth;
         private Integer bandwidth;
-        private List<GetPortChangeLog> changeLogs;
+        private GetPortChangeLog changeLog;
         private String description;
-        private List<GetPortDevice> devices;
-        private List<GetPortEncapsulation> encapsulations;
+        private GetPortDevice device;
+        private GetPortEncapsulation encapsulation;
         private String href;
         private String id;
-        private List<GetPortLag> lags;
-        private List<GetPortLocation> locations;
+        private GetPortLag lag;
+        private GetPortLocation location;
         private String name;
-        private List<GetPortOperation> operations;
-        private List<GetPortRedundancy> redundancies;
+        private GetPortOperation operation;
+        private GetPortRedundancy redundancy;
         private String serviceType;
         private String state;
         private String type;
@@ -281,20 +280,20 @@ public final class GetPortResult {
         public Builder() {}
         public Builder(GetPortResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accounts = defaults.accounts;
+    	      this.account = defaults.account;
     	      this.availableBandwidth = defaults.availableBandwidth;
     	      this.bandwidth = defaults.bandwidth;
-    	      this.changeLogs = defaults.changeLogs;
+    	      this.changeLog = defaults.changeLog;
     	      this.description = defaults.description;
-    	      this.devices = defaults.devices;
-    	      this.encapsulations = defaults.encapsulations;
+    	      this.device = defaults.device;
+    	      this.encapsulation = defaults.encapsulation;
     	      this.href = defaults.href;
     	      this.id = defaults.id;
-    	      this.lags = defaults.lags;
-    	      this.locations = defaults.locations;
+    	      this.lag = defaults.lag;
+    	      this.location = defaults.location;
     	      this.name = defaults.name;
-    	      this.operations = defaults.operations;
-    	      this.redundancies = defaults.redundancies;
+    	      this.operation = defaults.operation;
+    	      this.redundancy = defaults.redundancy;
     	      this.serviceType = defaults.serviceType;
     	      this.state = defaults.state;
     	      this.type = defaults.type;
@@ -303,12 +302,9 @@ public final class GetPortResult {
         }
 
         @CustomType.Setter
-        public Builder accounts(List<GetPortAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+        public Builder account(GetPortAccount account) {
+            this.account = Objects.requireNonNull(account);
             return this;
-        }
-        public Builder accounts(GetPortAccount... accounts) {
-            return accounts(List.of(accounts));
         }
         @CustomType.Setter
         public Builder availableBandwidth(Integer availableBandwidth) {
@@ -321,12 +317,9 @@ public final class GetPortResult {
             return this;
         }
         @CustomType.Setter
-        public Builder changeLogs(List<GetPortChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+        public Builder changeLog(GetPortChangeLog changeLog) {
+            this.changeLog = Objects.requireNonNull(changeLog);
             return this;
-        }
-        public Builder changeLogs(GetPortChangeLog... changeLogs) {
-            return changeLogs(List.of(changeLogs));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -334,20 +327,14 @@ public final class GetPortResult {
             return this;
         }
         @CustomType.Setter
-        public Builder devices(List<GetPortDevice> devices) {
-            this.devices = Objects.requireNonNull(devices);
+        public Builder device(GetPortDevice device) {
+            this.device = Objects.requireNonNull(device);
             return this;
-        }
-        public Builder devices(GetPortDevice... devices) {
-            return devices(List.of(devices));
         }
         @CustomType.Setter
-        public Builder encapsulations(List<GetPortEncapsulation> encapsulations) {
-            this.encapsulations = Objects.requireNonNull(encapsulations);
+        public Builder encapsulation(GetPortEncapsulation encapsulation) {
+            this.encapsulation = Objects.requireNonNull(encapsulation);
             return this;
-        }
-        public Builder encapsulations(GetPortEncapsulation... encapsulations) {
-            return encapsulations(List.of(encapsulations));
         }
         @CustomType.Setter
         public Builder href(String href) {
@@ -360,20 +347,14 @@ public final class GetPortResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lags(List<GetPortLag> lags) {
-            this.lags = Objects.requireNonNull(lags);
+        public Builder lag(GetPortLag lag) {
+            this.lag = Objects.requireNonNull(lag);
             return this;
-        }
-        public Builder lags(GetPortLag... lags) {
-            return lags(List.of(lags));
         }
         @CustomType.Setter
-        public Builder locations(List<GetPortLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
+        public Builder location(GetPortLocation location) {
+            this.location = Objects.requireNonNull(location);
             return this;
-        }
-        public Builder locations(GetPortLocation... locations) {
-            return locations(List.of(locations));
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -381,20 +362,14 @@ public final class GetPortResult {
             return this;
         }
         @CustomType.Setter
-        public Builder operations(List<GetPortOperation> operations) {
-            this.operations = Objects.requireNonNull(operations);
+        public Builder operation(GetPortOperation operation) {
+            this.operation = Objects.requireNonNull(operation);
             return this;
-        }
-        public Builder operations(GetPortOperation... operations) {
-            return operations(List.of(operations));
         }
         @CustomType.Setter
-        public Builder redundancies(List<GetPortRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+        public Builder redundancy(GetPortRedundancy redundancy) {
+            this.redundancy = Objects.requireNonNull(redundancy);
             return this;
-        }
-        public Builder redundancies(GetPortRedundancy... redundancies) {
-            return redundancies(List.of(redundancies));
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
@@ -423,20 +398,20 @@ public final class GetPortResult {
         }
         public GetPortResult build() {
             final var o = new GetPortResult();
-            o.accounts = accounts;
+            o.account = account;
             o.availableBandwidth = availableBandwidth;
             o.bandwidth = bandwidth;
-            o.changeLogs = changeLogs;
+            o.changeLog = changeLog;
             o.description = description;
-            o.devices = devices;
-            o.encapsulations = encapsulations;
+            o.device = device;
+            o.encapsulation = encapsulation;
             o.href = href;
             o.id = id;
-            o.lags = lags;
-            o.locations = locations;
+            o.lag = lag;
+            o.location = location;
             o.name = name;
-            o.operations = operations;
-            o.redundancies = redundancies;
+            o.operation = operation;
+            o.redundancy = redundancy;
             o.serviceType = serviceType;
             o.state = state;
             o.type = type;

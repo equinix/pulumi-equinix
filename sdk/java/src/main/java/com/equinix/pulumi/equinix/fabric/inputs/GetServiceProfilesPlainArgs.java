@@ -20,37 +20,37 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
      * Service Profile Search Filter
      * 
      */
-    @Import(name="filters")
-    private @Nullable List<GetServiceProfilesFilter> filters;
+    @Import(name="filter")
+    private @Nullable GetServiceProfilesFilter filter;
 
     /**
      * @return Service Profile Search Filter
      * 
      */
-    public Optional<List<GetServiceProfilesFilter>> filters() {
-        return Optional.ofNullable(this.filters);
+    public Optional<GetServiceProfilesFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * Service Profile Sort criteria for Search Request response payload
      * 
      */
-    @Import(name="sorts")
-    private @Nullable List<GetServiceProfilesSort> sorts;
+    @Import(name="sort")
+    private @Nullable List<GetServiceProfilesSort> sort;
 
     /**
      * @return Service Profile Sort criteria for Search Request response payload
      * 
      */
-    public Optional<List<GetServiceProfilesSort>> sorts() {
-        return Optional.ofNullable(this.sorts);
+    public Optional<List<GetServiceProfilesSort>> sort() {
+        return Optional.ofNullable(this.sort);
     }
 
     private GetServiceProfilesPlainArgs() {}
 
     private GetServiceProfilesPlainArgs(GetServiceProfilesPlainArgs $) {
-        this.filters = $.filters;
-        this.sorts = $.sorts;
+        this.filter = $.filter;
+        this.sort = $.sort;
     }
 
     public static Builder builder() {
@@ -72,45 +72,35 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param filters Service Profile Search Filter
+         * @param filter Service Profile Search Filter
          * 
          * @return builder
          * 
          */
-        public Builder filters(@Nullable List<GetServiceProfilesFilter> filters) {
-            $.filters = filters;
+        public Builder filter(@Nullable GetServiceProfilesFilter filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param filters Service Profile Search Filter
+         * @param sort Service Profile Sort criteria for Search Request response payload
          * 
          * @return builder
          * 
          */
-        public Builder filters(GetServiceProfilesFilter... filters) {
-            return filters(List.of(filters));
-        }
-
-        /**
-         * @param sorts Service Profile Sort criteria for Search Request response payload
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sorts(@Nullable List<GetServiceProfilesSort> sorts) {
-            $.sorts = sorts;
+        public Builder sort(@Nullable List<GetServiceProfilesSort> sort) {
+            $.sort = sort;
             return this;
         }
 
         /**
-         * @param sorts Service Profile Sort criteria for Search Request response payload
+         * @param sort Service Profile Sort criteria for Search Request response payload
          * 
          * @return builder
          * 
          */
-        public Builder sorts(GetServiceProfilesSort... sorts) {
-            return sorts(List.of(sorts));
+        public Builder sort(GetServiceProfilesSort... sort) {
+            return sort(List.of(sort));
         }
 
         public GetServiceProfilesPlainArgs build() {

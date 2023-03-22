@@ -22,10 +22,10 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, addresses=None, description=None, id=None, logo=None, name=None, organization_id=None, project_ids=None, twitter=None, website=None):
-        if addresses and not isinstance(addresses, list):
-            raise TypeError("Expected argument 'addresses' to be a list")
-        pulumi.set(__self__, "addresses", addresses)
+    def __init__(__self__, address=None, description=None, id=None, logo=None, name=None, organization_id=None, project_ids=None, twitter=None, website=None):
+        if address and not isinstance(address, dict):
+            raise TypeError("Expected argument 'address' to be a dict")
+        pulumi.set(__self__, "address", address)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -53,11 +53,11 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
-    def addresses(self) -> Sequence['outputs.GetOrganizationAddressResult']:
+    def address(self) -> 'outputs.GetOrganizationAddressResult':
         """
         Postal address.
         """
-        return pulumi.get(self, "addresses")
+        return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
@@ -124,7 +124,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
         if False:
             yield self
         return GetOrganizationResult(
-            addresses=self.addresses,
+            address=self.address,
             description=self.description,
             id=self.id,
             logo=self.logo,
@@ -162,7 +162,7 @@ def get_organization(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
-        addresses=__ret__.addresses,
+        address=__ret__.address,
         description=__ret__.description,
         id=__ret__.id,
         logo=__ret__.logo,

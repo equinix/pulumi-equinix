@@ -2978,31 +2978,6 @@ func (i GetOrganizationAddressArgs) ToGetOrganizationAddressOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressOutput)
 }
 
-// GetOrganizationAddressArrayInput is an input type that accepts GetOrganizationAddressArray and GetOrganizationAddressArrayOutput values.
-// You can construct a concrete instance of `GetOrganizationAddressArrayInput` via:
-//
-//	GetOrganizationAddressArray{ GetOrganizationAddressArgs{...} }
-type GetOrganizationAddressArrayInput interface {
-	pulumi.Input
-
-	ToGetOrganizationAddressArrayOutput() GetOrganizationAddressArrayOutput
-	ToGetOrganizationAddressArrayOutputWithContext(context.Context) GetOrganizationAddressArrayOutput
-}
-
-type GetOrganizationAddressArray []GetOrganizationAddressInput
-
-func (GetOrganizationAddressArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOrganizationAddress)(nil)).Elem()
-}
-
-func (i GetOrganizationAddressArray) ToGetOrganizationAddressArrayOutput() GetOrganizationAddressArrayOutput {
-	return i.ToGetOrganizationAddressArrayOutputWithContext(context.Background())
-}
-
-func (i GetOrganizationAddressArray) ToGetOrganizationAddressArrayOutputWithContext(ctx context.Context) GetOrganizationAddressArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressArrayOutput)
-}
-
 type GetOrganizationAddressOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationAddressOutput) ElementType() reflect.Type {
@@ -3040,26 +3015,6 @@ func (o GetOrganizationAddressOutput) State() pulumi.StringOutput {
 // Zip Code.
 func (o GetOrganizationAddressOutput) ZipCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationAddress) string { return v.ZipCode }).(pulumi.StringOutput)
-}
-
-type GetOrganizationAddressArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOrganizationAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOrganizationAddress)(nil)).Elem()
-}
-
-func (o GetOrganizationAddressArrayOutput) ToGetOrganizationAddressArrayOutput() GetOrganizationAddressArrayOutput {
-	return o
-}
-
-func (o GetOrganizationAddressArrayOutput) ToGetOrganizationAddressArrayOutputWithContext(ctx context.Context) GetOrganizationAddressArrayOutput {
-	return o
-}
-
-func (o GetOrganizationAddressArrayOutput) Index(i pulumi.IntInput) GetOrganizationAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationAddress {
-		return vs[0].([]GetOrganizationAddress)[vs[1].(int)]
-	}).(GetOrganizationAddressOutput)
 }
 
 type GetPlansFilter struct {
@@ -3537,31 +3492,6 @@ func (i GetProjectBgpConfigArgs) ToGetProjectBgpConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBgpConfigOutput)
 }
 
-// GetProjectBgpConfigArrayInput is an input type that accepts GetProjectBgpConfigArray and GetProjectBgpConfigArrayOutput values.
-// You can construct a concrete instance of `GetProjectBgpConfigArrayInput` via:
-//
-//	GetProjectBgpConfigArray{ GetProjectBgpConfigArgs{...} }
-type GetProjectBgpConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetProjectBgpConfigArrayOutput() GetProjectBgpConfigArrayOutput
-	ToGetProjectBgpConfigArrayOutputWithContext(context.Context) GetProjectBgpConfigArrayOutput
-}
-
-type GetProjectBgpConfigArray []GetProjectBgpConfigInput
-
-func (GetProjectBgpConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectBgpConfig)(nil)).Elem()
-}
-
-func (i GetProjectBgpConfigArray) ToGetProjectBgpConfigArrayOutput() GetProjectBgpConfigArrayOutput {
-	return i.ToGetProjectBgpConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetProjectBgpConfigArray) ToGetProjectBgpConfigArrayOutputWithContext(ctx context.Context) GetProjectBgpConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBgpConfigArrayOutput)
-}
-
 type GetProjectBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (GetProjectBgpConfigOutput) ElementType() reflect.Type {
@@ -3599,26 +3529,6 @@ func (o GetProjectBgpConfigOutput) Md5() pulumi.StringPtrOutput {
 // Status of BGP configuration in the project.
 func (o GetProjectBgpConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectBgpConfig) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetProjectBgpConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetProjectBgpConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectBgpConfig)(nil)).Elem()
-}
-
-func (o GetProjectBgpConfigArrayOutput) ToGetProjectBgpConfigArrayOutput() GetProjectBgpConfigArrayOutput {
-	return o
-}
-
-func (o GetProjectBgpConfigArrayOutput) ToGetProjectBgpConfigArrayOutputWithContext(ctx context.Context) GetProjectBgpConfigArrayOutput {
-	return o
-}
-
-func (o GetProjectBgpConfigArrayOutput) Index(i pulumi.IntInput) GetProjectBgpConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectBgpConfig {
-		return vs[0].([]GetProjectBgpConfig)[vs[1].(int)]
-	}).(GetProjectBgpConfigOutput)
 }
 
 func init() {
@@ -3661,7 +3571,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroCapacityInput)(nil)).Elem(), GetMetroCapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroCapacityArrayInput)(nil)).Elem(), GetMetroCapacityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressInput)(nil)).Elem(), GetOrganizationAddressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressArrayInput)(nil)).Elem(), GetOrganizationAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansFilterInput)(nil)).Elem(), GetPlansFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansFilterArrayInput)(nil)).Elem(), GetPlansFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansPlanInput)(nil)).Elem(), GetPlansPlanArgs{})
@@ -3669,7 +3578,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansSortInput)(nil)).Elem(), GetPlansSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansSortArrayInput)(nil)).Elem(), GetPlansSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBgpConfigInput)(nil)).Elem(), GetProjectBgpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBgpConfigArrayInput)(nil)).Elem(), GetProjectBgpConfigArray{})
 	pulumi.RegisterOutputType(ConnectionPortOutput{})
 	pulumi.RegisterOutputType(ConnectionPortArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionServiceTokenOutput{})
@@ -3709,7 +3617,6 @@ func init() {
 	pulumi.RegisterOutputType(GetMetroCapacityOutput{})
 	pulumi.RegisterOutputType(GetMetroCapacityArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationAddressOutput{})
-	pulumi.RegisterOutputType(GetOrganizationAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetPlansFilterOutput{})
 	pulumi.RegisterOutputType(GetPlansFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetPlansPlanOutput{})
@@ -3717,5 +3624,4 @@ func init() {
 	pulumi.RegisterOutputType(GetPlansSortOutput{})
 	pulumi.RegisterOutputType(GetPlansSortArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectBgpConfigOutput{})
-	pulumi.RegisterOutputType(GetProjectBgpConfigArrayOutput{})
 }

@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'equinix', PLUGIN_VERSION, '--server', 'https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'equinix', PLUGIN_VERSION, '--server', 'https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""

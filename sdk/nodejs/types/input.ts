@@ -11,30 +11,30 @@ export namespace fabric {
         /**
          * Point of access details
          */
-        accessPoints?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPoint>[]>;
+        accessPoint?: pulumi.Input<inputs.fabric.ConnectionASideAccessPoint>;
         /**
          * Connection side additional information
          */
-        additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAdditionalInfo>[]>;
+        additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAdditionalInfo>[]>;
         /**
          * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
          */
-        serviceTokens?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideServiceToken>[]>;
+        serviceToken?: pulumi.Input<inputs.fabric.ConnectionASideServiceToken>;
     }
 
     export interface ConnectionASideAccessPoint {
         /**
          * Customer account information that is associated with this connection
          */
-        accounts?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointAccount>[]>;
+        account?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointAccount>;
         authenticationKey?: pulumi.Input<string>;
-        gateways?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointGateway>[]>;
-        interfaces?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointInterface>[]>;
-        linkProtocols?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
-        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointLocation>[]>;
+        gateway?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointGateway>;
+        interface?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointInterface>;
+        linkProtocol?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointLinkProtocol>;
+        location?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointLocation>;
         peeringType?: pulumi.Input<string | enums.fabric.AccessPointPeeringType>;
-        ports?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointPort>[]>;
-        profiles?: pulumi.Input<string | enums.fabric.ProfileType>;
+        port?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointPort>;
+        profile?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointProfile>;
         providerConnectionId?: pulumi.Input<string>;
         routingProtocols?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointRoutingProtocol>[]>;
         sellerRegion?: pulumi.Input<string>;
@@ -42,7 +42,7 @@ export namespace fabric {
          * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
-        virtualDevices?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointVirtualDevice>[]>;
+        virtualDevice?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointVirtualDevice>;
     }
 
     export interface ConnectionASideAccessPointAccount {
@@ -75,6 +75,16 @@ export namespace fabric {
         uuid?: pulumi.Input<string>;
     }
 
+    export interface ConnectionASideAccessPointLinkProtocol {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
+        vlanCTag?: pulumi.Input<number>;
+        vlanSTag?: pulumi.Input<number>;
+        vlanTag?: pulumi.Input<number>;
+    }
+
     export interface ConnectionASideAccessPointLocation {
         ibx?: pulumi.Input<string>;
         metroCode?: pulumi.Input<string | enums.Metro>;
@@ -103,6 +113,32 @@ export namespace fabric {
          * Priority type- PRIMARY, SECONDARY
          */
         priority?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionASideAccessPointProfile {
+        accessPointTypeConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointProfileAccessPointTypeConfig>[]>;
+        description?: pulumi.Input<string>;
+        /**
+         * Connection URI information
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type: pulumi.Input<string | enums.fabric.ProfileType>;
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointRoutingProtocol {
@@ -214,7 +250,7 @@ export namespace fabric {
         /**
          * Connection additional information
          */
-        additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOperationErrorAdditionalInfo>[]>;
+        additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOperationErrorAdditionalInfo>[]>;
         correlationId?: pulumi.Input<string>;
         details?: pulumi.Input<string>;
         errorCode?: pulumi.Input<string>;
@@ -272,30 +308,30 @@ export namespace fabric {
         /**
          * Point of access details
          */
-        accessPoints?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPoint>[]>;
+        accessPoint?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPoint>;
         /**
          * Connection side additional information
          */
-        additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAdditionalInfo>[]>;
+        additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAdditionalInfo>[]>;
         /**
          * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
          */
-        serviceTokens?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideServiceToken>[]>;
+        serviceToken?: pulumi.Input<inputs.fabric.ConnectionZSideServiceToken>;
     }
 
     export interface ConnectionZSideAccessPoint {
         /**
          * Customer account information that is associated with this connection
          */
-        accounts?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointAccount>[]>;
+        account?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointAccount>;
         authenticationKey?: pulumi.Input<string>;
-        gateways?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointGateway>[]>;
-        interfaces?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointInterface>[]>;
-        linkProtocols?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
-        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointLocation>[]>;
+        gateway?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointGateway>;
+        interface?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointInterface>;
+        linkProtocol?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointLinkProtocol>;
+        location?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointLocation>;
         peeringType?: pulumi.Input<string | enums.fabric.AccessPointPeeringType>;
-        ports?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPort>[]>;
-        profiles?: pulumi.Input<string | enums.fabric.ProfileType>;
+        port?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPort>;
+        profile?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointProfile>;
         providerConnectionId?: pulumi.Input<string>;
         routingProtocols?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointRoutingProtocol>[]>;
         sellerRegion?: pulumi.Input<string>;
@@ -303,7 +339,7 @@ export namespace fabric {
          * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
-        virtualDevices?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointVirtualDevice>[]>;
+        virtualDevice?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointVirtualDevice>;
     }
 
     export interface ConnectionZSideAccessPointAccount {
@@ -336,6 +372,16 @@ export namespace fabric {
         uuid?: pulumi.Input<string>;
     }
 
+    export interface ConnectionZSideAccessPointLinkProtocol {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
+        vlanCTag?: pulumi.Input<number>;
+        vlanSTag?: pulumi.Input<number>;
+        vlanTag?: pulumi.Input<number>;
+    }
+
     export interface ConnectionZSideAccessPointLocation {
         ibx?: pulumi.Input<string>;
         metroCode?: pulumi.Input<string | enums.Metro>;
@@ -364,6 +410,32 @@ export namespace fabric {
          * Priority type- PRIMARY, SECONDARY
          */
         priority?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionZSideAccessPointProfile {
+        accessPointTypeConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointProfileAccessPointTypeConfig>[]>;
+        description?: pulumi.Input<string>;
+        /**
+         * Connection URI information
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type: pulumi.Input<string | enums.fabric.ProfileType>;
+        uuid: pulumi.Input<string>;
+    }
+
+    export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointRoutingProtocol {
@@ -522,11 +594,11 @@ export namespace fabric {
         /**
          * Api configuration details
          */
-        apiConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigApiConfig>[]>;
+        apiConfig?: pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigApiConfig>;
         /**
          * Authentication key details
          */
-        authenticationKeys?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKey>[]>;
+        authenticationKey?: pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKey>;
         /**
          * Percentage of port bandwidth at which an allocation alert is generated
          */
@@ -546,7 +618,7 @@ export namespace fabric {
         /**
          * Link protocol configuration details
          */
-        linkProtocolConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfig>[]>;
+        linkProtocolConfig?: pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfig>;
         /**
          * Supported bandwidths
          */
@@ -782,7 +854,7 @@ export namespace fabric {
         /**
          * Device Location
          */
-        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileVirtualDeviceLocation>[]>;
+        location?: pulumi.Input<inputs.fabric.ServiceProfileVirtualDeviceLocation>;
         /**
          * Virtual Device Type
          */
@@ -1127,7 +1199,7 @@ export namespace networkedge {
         /**
          * Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
          */
-        protocol: pulumi.Input<string | enums.networkedge.AclProtocolType>;
+        protocol: pulumi.Input<string | enums.networkedge.AclRuleProtocolType>;
         sequenceNumber?: pulumi.Input<number>;
         /**
          * @deprecated Source Type will not be returned

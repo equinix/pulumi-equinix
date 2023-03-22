@@ -17,11 +17,11 @@ type ServiceProfile struct {
 	// Access point config information
 	AccessPointTypeConfigs ServiceProfileAccessPointTypeConfigArrayOutput `pulumi:"accessPointTypeConfigs"`
 	// Account
-	Accounts ServiceProfileAccountArrayOutput `pulumi:"accounts"`
+	Account ServiceProfileAccountPtrOutput `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails pulumi.StringArrayOutput `pulumi:"allowedEmails"`
 	// Captures connection lifecycle change information
-	ChangeLogs ServiceProfileChangeLogArrayOutput `pulumi:"changeLogs"`
+	ChangeLog ServiceProfileChangeLogOutput `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayOutput `pulumi:"customFields"`
 	// User-provided service description
@@ -29,7 +29,7 @@ type ServiceProfile struct {
 	// Service Profile URI response attribute
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Marketing Info
-	MarketingInfos ServiceProfileMarketingInfoArrayOutput `pulumi:"marketingInfos"`
+	MarketingInfo ServiceProfileMarketingInfoPtrOutput `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros ServiceProfileMetroArrayOutput `pulumi:"metros"`
 	// Customer-assigned service profile name
@@ -39,7 +39,7 @@ type ServiceProfile struct {
 	// Ports
 	Ports ServiceProfilePortArrayOutput `pulumi:"ports"`
 	// Project information
-	Projects ServiceProfileProjectArrayOutput `pulumi:"projects"`
+	Project ServiceProfileProjectPtrOutput `pulumi:"project"`
 	// Self Profile
 	SelfProfile pulumi.BoolPtrOutput `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -95,11 +95,11 @@ type serviceProfileState struct {
 	// Access point config information
 	AccessPointTypeConfigs []ServiceProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
 	// Account
-	Accounts []ServiceProfileAccount `pulumi:"accounts"`
+	Account *ServiceProfileAccount `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails []string `pulumi:"allowedEmails"`
 	// Captures connection lifecycle change information
-	ChangeLogs []ServiceProfileChangeLog `pulumi:"changeLogs"`
+	ChangeLog *ServiceProfileChangeLog `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
 	// User-provided service description
@@ -107,7 +107,7 @@ type serviceProfileState struct {
 	// Service Profile URI response attribute
 	Href *string `pulumi:"href"`
 	// Marketing Info
-	MarketingInfos []ServiceProfileMarketingInfo `pulumi:"marketingInfos"`
+	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []ServiceProfileMetro `pulumi:"metros"`
 	// Customer-assigned service profile name
@@ -117,7 +117,7 @@ type serviceProfileState struct {
 	// Ports
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
-	Projects []ServiceProfileProject `pulumi:"projects"`
+	Project *ServiceProfileProject `pulumi:"project"`
 	// Self Profile
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -138,11 +138,11 @@ type ServiceProfileState struct {
 	// Access point config information
 	AccessPointTypeConfigs ServiceProfileAccessPointTypeConfigArrayInput
 	// Account
-	Accounts ServiceProfileAccountArrayInput
+	Account ServiceProfileAccountPtrInput
 	// Array of contact emails
 	AllowedEmails pulumi.StringArrayInput
 	// Captures connection lifecycle change information
-	ChangeLogs ServiceProfileChangeLogArrayInput
+	ChangeLog ServiceProfileChangeLogPtrInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
 	// User-provided service description
@@ -150,7 +150,7 @@ type ServiceProfileState struct {
 	// Service Profile URI response attribute
 	Href pulumi.StringPtrInput
 	// Marketing Info
-	MarketingInfos ServiceProfileMarketingInfoArrayInput
+	MarketingInfo ServiceProfileMarketingInfoPtrInput
 	// Access point config information
 	Metros ServiceProfileMetroArrayInput
 	// Customer-assigned service profile name
@@ -160,7 +160,7 @@ type ServiceProfileState struct {
 	// Ports
 	Ports ServiceProfilePortArrayInput
 	// Project information
-	Projects ServiceProfileProjectArrayInput
+	Project ServiceProfileProjectPtrInput
 	// Self Profile
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -185,7 +185,7 @@ type serviceProfileArgs struct {
 	// Access point config information
 	AccessPointTypeConfigs []ServiceProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
 	// Account
-	Accounts []ServiceProfileAccount `pulumi:"accounts"`
+	Account *ServiceProfileAccount `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails []string `pulumi:"allowedEmails"`
 	// Custom Fields
@@ -193,7 +193,7 @@ type serviceProfileArgs struct {
 	// User-provided service description
 	Description string `pulumi:"description"`
 	// Marketing Info
-	MarketingInfos []ServiceProfileMarketingInfo `pulumi:"marketingInfos"`
+	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []ServiceProfileMetro `pulumi:"metros"`
 	// Customer-assigned service profile name
@@ -203,7 +203,7 @@ type serviceProfileArgs struct {
 	// Ports
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
-	Projects []ServiceProfileProject `pulumi:"projects"`
+	Project *ServiceProfileProject `pulumi:"project"`
 	// Self Profile
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -223,7 +223,7 @@ type ServiceProfileArgs struct {
 	// Access point config information
 	AccessPointTypeConfigs ServiceProfileAccessPointTypeConfigArrayInput
 	// Account
-	Accounts ServiceProfileAccountArrayInput
+	Account ServiceProfileAccountPtrInput
 	// Array of contact emails
 	AllowedEmails pulumi.StringArrayInput
 	// Custom Fields
@@ -231,7 +231,7 @@ type ServiceProfileArgs struct {
 	// User-provided service description
 	Description pulumi.StringInput
 	// Marketing Info
-	MarketingInfos ServiceProfileMarketingInfoArrayInput
+	MarketingInfo ServiceProfileMarketingInfoPtrInput
 	// Access point config information
 	Metros ServiceProfileMetroArrayInput
 	// Customer-assigned service profile name
@@ -241,7 +241,7 @@ type ServiceProfileArgs struct {
 	// Ports
 	Ports ServiceProfilePortArrayInput
 	// Project information
-	Projects ServiceProfileProjectArrayInput
+	Project ServiceProfileProjectPtrInput
 	// Self Profile
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -351,8 +351,8 @@ func (o ServiceProfileOutput) AccessPointTypeConfigs() ServiceProfileAccessPoint
 }
 
 // Account
-func (o ServiceProfileOutput) Accounts() ServiceProfileAccountArrayOutput {
-	return o.ApplyT(func(v *ServiceProfile) ServiceProfileAccountArrayOutput { return v.Accounts }).(ServiceProfileAccountArrayOutput)
+func (o ServiceProfileOutput) Account() ServiceProfileAccountPtrOutput {
+	return o.ApplyT(func(v *ServiceProfile) ServiceProfileAccountPtrOutput { return v.Account }).(ServiceProfileAccountPtrOutput)
 }
 
 // Array of contact emails
@@ -361,8 +361,8 @@ func (o ServiceProfileOutput) AllowedEmails() pulumi.StringArrayOutput {
 }
 
 // Captures connection lifecycle change information
-func (o ServiceProfileOutput) ChangeLogs() ServiceProfileChangeLogArrayOutput {
-	return o.ApplyT(func(v *ServiceProfile) ServiceProfileChangeLogArrayOutput { return v.ChangeLogs }).(ServiceProfileChangeLogArrayOutput)
+func (o ServiceProfileOutput) ChangeLog() ServiceProfileChangeLogOutput {
+	return o.ApplyT(func(v *ServiceProfile) ServiceProfileChangeLogOutput { return v.ChangeLog }).(ServiceProfileChangeLogOutput)
 }
 
 // Custom Fields
@@ -381,8 +381,8 @@ func (o ServiceProfileOutput) Href() pulumi.StringOutput {
 }
 
 // Marketing Info
-func (o ServiceProfileOutput) MarketingInfos() ServiceProfileMarketingInfoArrayOutput {
-	return o.ApplyT(func(v *ServiceProfile) ServiceProfileMarketingInfoArrayOutput { return v.MarketingInfos }).(ServiceProfileMarketingInfoArrayOutput)
+func (o ServiceProfileOutput) MarketingInfo() ServiceProfileMarketingInfoPtrOutput {
+	return o.ApplyT(func(v *ServiceProfile) ServiceProfileMarketingInfoPtrOutput { return v.MarketingInfo }).(ServiceProfileMarketingInfoPtrOutput)
 }
 
 // Access point config information
@@ -406,8 +406,8 @@ func (o ServiceProfileOutput) Ports() ServiceProfilePortArrayOutput {
 }
 
 // Project information
-func (o ServiceProfileOutput) Projects() ServiceProfileProjectArrayOutput {
-	return o.ApplyT(func(v *ServiceProfile) ServiceProfileProjectArrayOutput { return v.Projects }).(ServiceProfileProjectArrayOutput)
+func (o ServiceProfileOutput) Project() ServiceProfileProjectPtrOutput {
+	return o.ApplyT(func(v *ServiceProfile) ServiceProfileProjectPtrOutput { return v.Project }).(ServiceProfileProjectPtrOutput)
 }
 
 // Self Profile

@@ -1,0 +1,35 @@
+name: equinix-fabric-connection
+runtime: go
+description: An Equinix Fabric connection resource
+config:
+  linkProtocolCtag:
+    type: integer
+    default: 2112
+  linkProtocolStag:
+    type: integer
+    default: 2019
+  # notificationEmails:
+  #   type: array
+  # items:
+  #   type: string
+  # default:
+  #   - "example@equinix.com"
+  linkProtocolType:
+    type: string
+    default: QINQ
+  portName:
+    type: string
+  serviceProfileAuthKey:
+    type: string
+  serviceProfileMetro:
+    type: string
+    default: SV
+  serviceProfileName:
+    type: string
+    default: AWS Direct Connect
+  serviceProfileRegion:
+    type: string
+    default: us-west-1
+  speedInMbps:
+    type: integer
+    default: 50

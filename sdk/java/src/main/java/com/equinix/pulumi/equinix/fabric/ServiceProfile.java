@@ -46,15 +46,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Account
      * 
      */
-    @Export(name="accounts", refs={List.class,ServiceProfileAccount.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServiceProfileAccount>> accounts;
+    @Export(name="account", refs={ServiceProfileAccount.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceProfileAccount> account;
 
     /**
      * @return Account
      * 
      */
-    public Output<Optional<List<ServiceProfileAccount>>> accounts() {
-        return Codegen.optional(this.accounts);
+    public Output<Optional<ServiceProfileAccount>> account() {
+        return Codegen.optional(this.account);
     }
     /**
      * Array of contact emails
@@ -74,15 +74,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Captures connection lifecycle change information
      * 
      */
-    @Export(name="changeLogs", refs={List.class,ServiceProfileChangeLog.class}, tree="[0,1]")
-    private Output<List<ServiceProfileChangeLog>> changeLogs;
+    @Export(name="changeLog", refs={ServiceProfileChangeLog.class}, tree="[0]")
+    private Output<ServiceProfileChangeLog> changeLog;
 
     /**
      * @return Captures connection lifecycle change information
      * 
      */
-    public Output<List<ServiceProfileChangeLog>> changeLogs() {
-        return this.changeLogs;
+    public Output<ServiceProfileChangeLog> changeLog() {
+        return this.changeLog;
     }
     /**
      * Custom Fields
@@ -130,15 +130,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Marketing Info
      * 
      */
-    @Export(name="marketingInfos", refs={List.class,ServiceProfileMarketingInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServiceProfileMarketingInfo>> marketingInfos;
+    @Export(name="marketingInfo", refs={ServiceProfileMarketingInfo.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceProfileMarketingInfo> marketingInfo;
 
     /**
      * @return Marketing Info
      * 
      */
-    public Output<Optional<List<ServiceProfileMarketingInfo>>> marketingInfos() {
-        return Codegen.optional(this.marketingInfos);
+    public Output<Optional<ServiceProfileMarketingInfo>> marketingInfo() {
+        return Codegen.optional(this.marketingInfo);
     }
     /**
      * Access point config information
@@ -200,15 +200,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Project information
      * 
      */
-    @Export(name="projects", refs={List.class,ServiceProfileProject.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServiceProfileProject>> projects;
+    @Export(name="project", refs={ServiceProfileProject.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceProfileProject> project;
 
     /**
      * @return Project information
      * 
      */
-    public Output<Optional<List<ServiceProfileProject>>> projects() {
-        return Codegen.optional(this.projects);
+    public Output<Optional<ServiceProfileProject>> project() {
+        return Codegen.optional(this.project);
     }
     /**
      * Self Profile

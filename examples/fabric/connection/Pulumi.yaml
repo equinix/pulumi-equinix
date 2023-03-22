@@ -1,0 +1,88 @@
+name: equinix-fabric-connection
+runtime: yaml
+description: An Equinix Fabric connection resource
+config:
+  speedInMbps:
+    type: integer
+    default: 50
+  # notificationEmails:
+  #   type: array
+    # items:
+    #   type: string
+    # default:
+    #   - "example@equinix.com"
+  linkProtocolType:
+    type: string
+    default: QINQ
+  linkProtocolStag:
+    type: integer
+    default: 2019
+  linkProtocolCtag:
+    type: integer
+    default: 2112
+  portName:
+    type: string
+  serviceProfileName:
+    type: string
+    default: AWS Direct Connect
+  serviceProfileRegion:
+    type: string
+    default: us-west-1
+  serviceProfileMetro:
+    type: string
+    default: SV
+  serviceProfileAuthKey:
+    type: string
+variables:
+  serviceProfileId:
+    fn::invoke:
+      function: equinix:fabric:getServiceProfiles
+      arguments:
+        filter:
+          property: "/name"
+          operator: "="
+          values:
+          - ${serviceProfileName}
+      return: data.uuid
+  portId:
+    fn::invoke:
+      function: equinix:fabric:getPorts
+      arguments:
+        filters:
+        - name: ${portName}
+      return: data.uuid
+resources:
+  colo2Aws:
+    type: equinix:fabric:Connection
+    properties:
+      name: colo2Aws
+      type: EVPL_VC
+      notifications:
+      - type: ALL
+        # emails: ${notificationEmails}
+        emails:
+        - example@equinix.com
+      bandwidth: ${speedInMbps}
+      redundancy:
+        priority: PRIMARY
+      aSide:
+        accessPoint:
+          type: COLO
+          port:
+            uuid: ${portId}
+          linkProtocol:
+            type: ${linkProtocolType}
+            vlanSTag: ${linkProtocolStag}
+            vlanTag: ${linkProtocolCtag}
+      zSide:
+        accessPoint:
+          type: SP
+          authenticationKey: ${serviceProfileAuthKey}
+          sellerRegion: ${serviceProfileRegion}
+          profile:
+            type: L2_PROFILE
+            uuid: ${serviceProfileId}
+          location:
+            metroCode: ${serviceProfileMetro}
+outputs:
+  connectionId: http://${colo2Aws.id}

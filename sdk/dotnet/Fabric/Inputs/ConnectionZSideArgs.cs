@@ -12,41 +12,29 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ConnectionZSideArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessPoints")]
-        private InputList<Inputs.ConnectionZSideAccessPointArgs>? _accessPoints;
-
         /// <summary>
         /// Point of access details
         /// </summary>
-        public InputList<Inputs.ConnectionZSideAccessPointArgs> AccessPoints
-        {
-            get => _accessPoints ?? (_accessPoints = new InputList<Inputs.ConnectionZSideAccessPointArgs>());
-            set => _accessPoints = value;
-        }
+        [Input("accessPoint")]
+        public Input<Inputs.ConnectionZSideAccessPointArgs>? AccessPoint { get; set; }
 
-        [Input("additionalInfos")]
-        private InputList<Inputs.ConnectionZSideAdditionalInfoArgs>? _additionalInfos;
+        [Input("additionalInfo")]
+        private InputList<Inputs.ConnectionZSideAdditionalInfoArgs>? _additionalInfo;
 
         /// <summary>
         /// Connection side additional information
         /// </summary>
-        public InputList<Inputs.ConnectionZSideAdditionalInfoArgs> AdditionalInfos
+        public InputList<Inputs.ConnectionZSideAdditionalInfoArgs> AdditionalInfo
         {
-            get => _additionalInfos ?? (_additionalInfos = new InputList<Inputs.ConnectionZSideAdditionalInfoArgs>());
-            set => _additionalInfos = value;
+            get => _additionalInfo ?? (_additionalInfo = new InputList<Inputs.ConnectionZSideAdditionalInfoArgs>());
+            set => _additionalInfo = value;
         }
-
-        [Input("serviceTokens")]
-        private InputList<Inputs.ConnectionZSideServiceTokenArgs>? _serviceTokens;
 
         /// <summary>
         /// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         /// </summary>
-        public InputList<Inputs.ConnectionZSideServiceTokenArgs> ServiceTokens
-        {
-            get => _serviceTokens ?? (_serviceTokens = new InputList<Inputs.ConnectionZSideServiceTokenArgs>());
-            set => _serviceTokens = value;
-        }
+        [Input("serviceToken")]
+        public Input<Inputs.ConnectionZSideServiceTokenArgs>? ServiceToken { get; set; }
 
         public ConnectionZSideArgs()
         {

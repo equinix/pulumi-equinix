@@ -293,6 +293,11 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly metro!: pulumi.Output<string | undefined>;
     /**
+     * The device's private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     */
+    public /*out*/ readonly network!: pulumi.Output<outputs.metal.DeviceNetwork[]>;
+    /**
      * (Deprecated) Network type of a device, used in
      * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
      * attribute is deprecated you should handle Network Type with one of
@@ -304,11 +309,6 @@ export class Device extends pulumi.CustomResource {
      * @deprecated You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
      */
     public /*out*/ readonly networkType!: pulumi.Output<string>;
-    /**
-     * The device's private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     */
-    public /*out*/ readonly networks!: pulumi.Output<outputs.metal.DeviceNetwork[]>;
     /**
      * The operating system slug. To find the slug, or visit
      * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
@@ -423,8 +423,8 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["ipxeScriptUrl"] = state ? state.ipxeScriptUrl : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
             resourceInputs["metro"] = state ? state.metro : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["operatingSystem"] = state ? state.operatingSystem : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["ports"] = state ? state.ports : undefined;
@@ -482,8 +482,8 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["deployedFacility"] = undefined /*out*/;
             resourceInputs["deployedHardwareReservationId"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
+            resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkType"] = undefined /*out*/;
-            resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
             resourceInputs["rootPassword"] = undefined /*out*/;
             resourceInputs["sshKeyIds"] = undefined /*out*/;
@@ -589,6 +589,11 @@ export interface DeviceState {
      */
     metro?: pulumi.Input<string>;
     /**
+     * The device's private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     */
+    network?: pulumi.Input<pulumi.Input<inputs.metal.DeviceNetwork>[]>;
+    /**
      * (Deprecated) Network type of a device, used in
      * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
      * attribute is deprecated you should handle Network Type with one of
@@ -600,11 +605,6 @@ export interface DeviceState {
      * @deprecated You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
      */
     networkType?: pulumi.Input<string | enums.metal.NetworkType>;
-    /**
-     * The device's private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     */
-    networks?: pulumi.Input<pulumi.Input<inputs.metal.DeviceNetwork>[]>;
     /**
      * The operating system slug. To find the slug, or visit
      * [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your

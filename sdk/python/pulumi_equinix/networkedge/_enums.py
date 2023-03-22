@@ -5,13 +5,13 @@
 from enum import Enum
 
 __all__ = [
-    'AclProtocolType',
+    'AclRuleProtocolType',
     'FileType',
     'ThroughputUnit',
 ]
 
 
-class AclProtocolType(str, Enum):
+class AclRuleProtocolType(str, Enum):
     IP = "IP"
     TCP = "TCP"
     UDP = "UDP"

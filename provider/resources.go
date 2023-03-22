@@ -40,7 +40,6 @@ const (
 	fabricMod  		= "Fabric"  	// Equinix Fabric
 	metalMod		= "Metal"  		// Equinix Metal
 	networkEdgeMod 	= "NetworkEdge"	// Equinix Network Edge
-
 )
 
 var namespaceMap = map[string]string{
@@ -134,16 +133,17 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_connection":      {
 				Tok: makeEquinixResource(fabricMod, "Connection"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"type": {
-						Type:     "string",
-						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ConnectionType")},
-					},
 					"a_side": {
+						MaxItemsOne: tfbridge.True(),
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"access_point": {
+									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
+											"account": {
+												MaxItemsOne: tfbridge.True(),
+											},
 											"peering_type": {
 												Type:     "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
@@ -152,7 +152,25 @@ func Provider() tfbridge.ProviderInfo {
 												Type:     "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
 											},
+											"gateway": {
+												MaxItemsOne: tfbridge.True(),
+											},
+											"interface": {
+												MaxItemsOne: tfbridge.True(),
+											},
+											"link_protocol": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"type": {
+															Type:     "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+														},
+													},
+												},
+											},
 											"location": {
+												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
@@ -162,66 +180,36 @@ func Provider() tfbridge.ProviderInfo {
 													},
 												},
 											},
-											"link_protocol": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+											"port": {
+												MaxItemsOne: tfbridge.True(),
+												Fields: map[string]*tfbridge.SchemaInfo{
+													"redundancy": {
+														MaxItemsOne: tfbridge.True(),
+													},
+												},
 											},
 											"profile": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
-											},
-										},
-									},
-								},
-								"service_token": {
-									Elem: &tfbridge.SchemaInfo{
-										Fields: map[string]*tfbridge.SchemaInfo{
-											"type": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ServiceTokenType")},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-					"z_side": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"access_point": {
-									Elem: &tfbridge.SchemaInfo{
-										Fields: map[string]*tfbridge.SchemaInfo{
-											"peering_type": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
-											},
-											"type": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
-											},
-											"location": {
+												MaxItemsOne: tfbridge.True(),
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
-														"metro_code": {
+														"type": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
 														},
 													},
 												},
 											},
-											"link_protocol": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
-											},
-											"profile": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+											"virtual_device": {
+												MaxItemsOne: tfbridge.True(),
 											},
 										},
 									},
 								},
+								"additional_info": {
+									Name: "additionalInfo",
+								},
 								"service_token": {
+									MaxItemsOne: tfbridge.True(),
 									Elem: &tfbridge.SchemaInfo{
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"type": {
@@ -240,6 +228,133 @@ func Provider() tfbridge.ProviderInfo {
 								"type": {
 									Type:     "string",
 									AltTypes: []tokens.Type{makeEquinixType(fabricMod, "NotificationsType")},
+								},
+							},
+						},
+					},
+					"type": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ConnectionType")},
+					},
+					"additional_info": {
+						Name: "additionalInfo",
+					},
+					"order": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"redundancy": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"account": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change_log": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"operation": {
+						MaxItemsOne: tfbridge.True(),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"errors": {
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"additional_info": {
+												Name: "additionalInfo",
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+					"project": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"z_side": {
+						MaxItemsOne: tfbridge.True(),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"access_point": {
+									MaxItemsOne: tfbridge.True(),
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"account": {
+												MaxItemsOne: tfbridge.True(),
+											},
+											"peering_type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+											},
+											"type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
+											},
+											"gateway": {
+												MaxItemsOne: tfbridge.True(),
+											},
+											"interface": {
+												MaxItemsOne: tfbridge.True(),
+											},
+											"link_protocol": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"type": {
+															Type:     "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+														},
+													},
+												},
+											},
+											"location": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"metro_code": {
+															Type:     "string",
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+														},
+													},
+												},
+											},
+											"port": {
+												MaxItemsOne: tfbridge.True(),
+												Fields: map[string]*tfbridge.SchemaInfo{
+													"redundancy": {
+														MaxItemsOne: tfbridge.True(),
+													},
+												},
+											},
+											"profile": {
+												MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"type": {
+															Type:     "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+														},
+													},
+												},
+											},
+											"virtual_device": {
+												MaxItemsOne: tfbridge.True(),
+											},
+										},
+									},
+								},
+								"additional_info": {
+									Name: "additionalInfo",
+								},
+								"service_token": {
+									MaxItemsOne: tfbridge.True(),
+									Elem: &tfbridge.SchemaInfo{
+										Fields: map[string]*tfbridge.SchemaInfo{
+											"type": {
+												Type:     "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ServiceTokenType")},
+											},
+										},
+									},
 								},
 							},
 						},
@@ -253,14 +368,6 @@ func Provider() tfbridge.ProviderInfo {
 						Type:     "string",
 						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
 					},
-					"state": {
-						Type:     "string",
-						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileState")},
-					},
-					"visibility": {
-						Type:     "string",
-						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileVisibility")},
-					},
 					"access_point_type_configs": {
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
@@ -268,8 +375,31 @@ func Provider() tfbridge.ProviderInfo {
 									Type:     "string",
 									AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileAccessPointType")},
 								},
+								"api_config": {
+									MaxItemsOne: tfbridge.True(),
+								},
+								"authentication_key": {
+									MaxItemsOne: tfbridge.True(),
+								},
+								"link_protocol_config": {
+									MaxItemsOne: tfbridge.True(),
+								},
 							},
 						},
+					},
+					"account": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"marketing_info": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"state": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileState")},
+					},
+					"visibility": {
+						Type:     "string",
+						AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileVisibility")},
 					},
 					"notifications": {
 						Elem: &tfbridge.SchemaInfo{
@@ -281,12 +411,27 @@ func Provider() tfbridge.ProviderInfo {
 							},
 						},
 					},
+					"virtual_devices": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"location": {
+									MaxItemsOne: tfbridge.True(),
+								},
+							},
+						},
+					},
+					"change_log": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"project": {
+						MaxItemsOne: tfbridge.True(),
+					},
 				},
 			},
 			// Equinix Metal v1
-			"equinix_metal_bgp_session":          {Tok: makeEquinixResource(metalMod, "BgpSession")},
-			"equinix_metal_connection":           {Tok: makeEquinixResource(metalMod, "Connection")},
-			"equinix_metal_device":      		  {
+			"equinix_metal_bgp_session": {Tok: makeEquinixResource(metalMod, "BgpSession")},
+			"equinix_metal_connection":  {Tok: makeEquinixResource(metalMod, "Connection")},
+			"equinix_metal_device":      {
 				Tok: makeEquinixResource(metalMod, "Device"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"billing_cycle": {
@@ -311,16 +456,39 @@ func Provider() tfbridge.ProviderInfo {
 						Type:     "string",
 						AltTypes: []tokens.Type{makeEquinixType(metalMod, "Plan")},
 					},
+					"behavior": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"reinstall": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"network": {
+						Name: "network",
+					},
 				},
 			},
 			"equinix_metal_device_network_type":  {Tok: makeEquinixResource(metalMod, "DeviceNetworkType")},
 			"equinix_metal_gateway":      		  {Tok: makeEquinixResource(metalMod, "Gateway")},
 			"equinix_metal_ip_attachment":        {Tok: makeEquinixResource(metalMod, "IpAttachment")},
-			"equinix_metal_organization":      	  {Tok: makeEquinixResource(metalMod, "Organization")},
+			"equinix_metal_organization":      	  {
+				Tok: makeEquinixResource(metalMod, "Organization"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"address": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			"equinix_metal_organization_member":  {Tok: makeEquinixResource(metalMod, "OrganizationMember")},
 			"equinix_metal_port":      			  {Tok: makeEquinixResource(metalMod, "Port")},
 			"equinix_metal_port_vlan_attachment": {Tok: makeEquinixResource(metalMod, "PortVlanAttachment")},
-			"equinix_metal_project":      		  {Tok: makeEquinixResource(metalMod, "Project")},
+			"equinix_metal_project":      		  {
+				Tok: makeEquinixResource(metalMod, "Project"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"bgp_config": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			"equinix_metal_project_api_key":      {Tok: makeEquinixResource(metalMod, "ProjectApiKey")},
 			"equinix_metal_project_ssh_key":      {Tok: makeEquinixResource(metalMod, "ProjectSshKey")},
 			"equinix_metal_reserved_ip_block": {
@@ -336,11 +504,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_spot_market_request":  {Tok: makeEquinixResource(metalMod, "SpotMarketRequest")},
-			"equinix_metal_ssh_key":      		  {Tok: makeEquinixResource(metalMod, "SshKey")},
-			"equinix_metal_user_api_key":      	  {Tok: makeEquinixResource(metalMod, "UserApiKey")},
-			"equinix_metal_virtual_circuit":      {Tok: makeEquinixResource(metalMod, "VirtualCircuit")},
-			"equinix_metal_vlan":      			  {
+			"equinix_metal_spot_market_request": {Tok: makeEquinixResource(metalMod, "SpotMarketRequest")},
+			"equinix_metal_ssh_key":      		 {Tok: makeEquinixResource(metalMod, "SshKey")},
+			"equinix_metal_user_api_key":      	 {Tok: makeEquinixResource(metalMod, "UserApiKey")},
+			"equinix_metal_virtual_circuit":     {Tok: makeEquinixResource(metalMod, "VirtualCircuit")},
+			"equinix_metal_vlan":      			 {
 				Tok: makeEquinixResource(metalMod, "Vlan"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"facility": {
@@ -349,7 +517,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_vrf":      			  {Tok: makeEquinixResource(metalMod, "Vrf")},
+			"equinix_metal_vrf": {Tok: makeEquinixResource(metalMod, "Vrf")},
 			// Network Edge v1
 			"equinix_network_acl_template": {
 				Tok: makeEquinixResource(networkEdgeMod, "AclTemplate"),
@@ -359,15 +527,15 @@ func Provider() tfbridge.ProviderInfo {
 							Fields: map[string]*tfbridge.SchemaInfo{
 								"protocol": {
 									Type:     "string",
-									AltTypes: []tokens.Type{makeEquinixType(networkEdgeMod, "AclProtocolType")},
+									AltTypes: []tokens.Type{makeEquinixType(networkEdgeMod, "AclRuleProtocolType")},
 								},
 							},
 						},
 					},
 				},
 			},
-			"equinix_network_bgp":     	 	{Tok: makeEquinixResource(networkEdgeMod, "Bgp")},
-			"equinix_network_device":       {
+			"equinix_network_bgp":    {Tok: makeEquinixResource(networkEdgeMod, "Bgp")},
+			"equinix_network_device": {
 				Tok: makeEquinixResource(networkEdgeMod, "Device"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"throughput_unit": {
@@ -376,10 +544,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_network_device_link":  {Tok: makeEquinixResource(networkEdgeMod, "DeviceLink")},
-			"equinix_network_ssh_key":      {Tok: makeEquinixResource(networkEdgeMod, "SshKey")},
-			"equinix_network_ssh_user":     {Tok: makeEquinixResource(networkEdgeMod, "SshUser")},
-			"equinix_network_file":         {
+			"equinix_network_device_link": {Tok: makeEquinixResource(networkEdgeMod, "DeviceLink")},
+			"equinix_network_ssh_key":     {Tok: makeEquinixResource(networkEdgeMod, "SshKey")},
+			"equinix_network_ssh_user":    {Tok: makeEquinixResource(networkEdgeMod, "SshUser")},
+			"equinix_network_file":        {
 				Tok: makeEquinixResource(networkEdgeMod, "NetworkFile"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"metro_code": {
@@ -559,7 +727,7 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "VD", Value: "VD", Description: "Virtual Device"},
 				},
 			},
-			makeEquinixToken(networkEdgeMod, "AclProtocolType"): {
+			makeEquinixToken(networkEdgeMod, "AclRuleProtocolType"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
 				},
@@ -783,11 +951,313 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_connection":       {Tok: makeEquinixDataSource(fabricMod, "Connection")},
-			"equinix_fabric_port":             {Tok: makeEquinixDataSource(fabricMod, "Port")},
-			"equinix_fabric_ports":            {Tok: makeEquinixDataSource(fabricMod, "Ports")},
-			"equinix_fabric_service_profile":  {Tok: makeEquinixDataSource(fabricMod, "ServiceProfile")},
-			"equinix_fabric_service_profiles": {Tok: makeEquinixDataSource(fabricMod, "ServiceProfiles")},
+			"equinix_fabric_connection": {
+				Tok: makeEquinixDataSource(fabricMod, "Connection"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"a_side": {
+						MaxItemsOne: tfbridge.True(),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"service_token": {
+									MaxItemsOne: tfbridge.True(),
+								},
+								"access_point": {
+									MaxItemsOne: tfbridge.True(),
+									Fields: map[string]*tfbridge.SchemaInfo{
+										"account": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"interface": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"virtual_device": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"link_protocol": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"gateway": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"profile": {
+											MaxItemsOne: tfbridge.True(),
+											Fields: map[string]*tfbridge.SchemaInfo{
+												"access_point_type_configs": {
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"api_config": {
+															MaxItemsOne: tfbridge.True(),
+														},
+														"authentication_key": {
+															MaxItemsOne: tfbridge.True(),
+														},
+														"link_protocol_config": {
+															MaxItemsOne: tfbridge.True(),
+														},
+													},
+												},
+											},
+										},
+										"port": {
+											MaxItemsOne: tfbridge.True(),
+											Fields: map[string]*tfbridge.SchemaInfo{
+												"redundancy": {
+													MaxItemsOne: tfbridge.True(),
+												},
+											},
+										},
+										"location": {
+											MaxItemsOne: tfbridge.True(),
+										},
+									},
+								},
+							},
+						},
+					},
+					"account": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"additional_info": {
+						Name: "additionalInfo",
+					},
+					"change_log": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"operation": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"order": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"project": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"redundancy": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"z_side": {
+						MaxItemsOne: tfbridge.True(),
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"service_token": {
+									MaxItemsOne: tfbridge.True(),
+								},
+								"access_point": {
+									MaxItemsOne: tfbridge.True(),
+									Fields: map[string]*tfbridge.SchemaInfo{
+										"account": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"interface": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"virtual_device": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"link_protocol": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"gateway": {
+											MaxItemsOne: tfbridge.True(),
+										},
+										"profile": {
+											MaxItemsOne: tfbridge.True(),
+											Fields: map[string]*tfbridge.SchemaInfo{
+												"access_point_type_configs": {
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"api_config": {
+															MaxItemsOne: tfbridge.True(),
+														},
+														"authentication_key": {
+															MaxItemsOne: tfbridge.True(),
+														},
+														"link_protocol_config": {
+															MaxItemsOne: tfbridge.True(),
+														},
+													},
+												},
+											},
+										},
+										"port": {
+											MaxItemsOne: tfbridge.True(),
+											Fields: map[string]*tfbridge.SchemaInfo{
+												"redundancy": {
+													MaxItemsOne: tfbridge.True(),
+												},
+											},
+										},
+										"location": {
+											MaxItemsOne: tfbridge.True(),
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			"equinix_fabric_port": {           
+				Tok: makeEquinixDataSource(fabricMod, "Port"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"account": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change_log": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"device": {
+						MaxItemsOne: tfbridge.True(),
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"redundancy": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"encapsulation": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"lag": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"location": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"operation": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"redundancy": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"equinix_fabric_ports": {
+				Tok: makeEquinixDataSource(fabricMod, "Ports"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"data": {
+						Name: "data",
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"account": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"change_log": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"device": {
+								MaxItemsOne: tfbridge.True(),
+								Fields: map[string]*tfbridge.SchemaInfo{
+									"redundancy": {
+										MaxItemsOne: tfbridge.True(),
+									},
+								},
+							},
+							"encapsulation": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"lag": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"location": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"operation": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"redundancy": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+				},
+			},
+			"equinix_fabric_service_profile": {
+				Tok: makeEquinixDataSource(fabricMod, "ServiceProfile"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"access_point_type_configs": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"api_config": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"authentication_key": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"link_protocol_config": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"account": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change_log": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"marketing_info": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"ports": {
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"location": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+					"project": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"equinix_fabric_service_profiles": {
+				Tok: makeEquinixDataSource(fabricMod, "ServiceProfiles"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"filter": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"sort": {
+						Name: "sort",
+					},
+					"data": {
+						Name: "data",
+						Fields: map[string]*tfbridge.SchemaInfo{
+							"access_point_type_configs": {
+								Fields: map[string]*tfbridge.SchemaInfo{
+									"api_config": {
+										MaxItemsOne: tfbridge.True(),
+									},
+									"authentication_key": {
+										MaxItemsOne: tfbridge.True(),
+									},
+									"link_protocol_config": {
+										MaxItemsOne: tfbridge.True(),
+									},
+								},
+							},
+							"account": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"change_log": {
+								MaxItemsOne: tfbridge.True(),
+							},
+							"marketing_info": {
+								MaxItemsOne: tfbridge.True(),
+								Fields: map[string]*tfbridge.SchemaInfo{
+									"process_step": {
+										MaxItemsOne: tfbridge.True(),
+									},
+								},
+							},
+							"ports": {
+								Fields: map[string]*tfbridge.SchemaInfo{
+									"location": {
+										MaxItemsOne: tfbridge.True(),
+									},
+								},
+							},
+							"project": {
+								MaxItemsOne: tfbridge.True(),
+							},
+						},
+					},
+				},
+			},
 			// Equinix Metal v1
 			"equinix_metal_connection":           {Tok: makeEquinixDataSource(metalMod, "Connection")},
 			"equinix_metal_device":               {Tok: makeEquinixDataSource(metalMod, "Device")},
@@ -798,11 +1268,25 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_metal_ip_block_ranges":      {Tok: makeEquinixDataSource(metalMod, "IpBlockRanges")},
 			"equinix_metal_metro":                {Tok: makeEquinixDataSource(metalMod, "Metro")},
 			"equinix_metal_operating_system":     {Tok: makeEquinixDataSource(metalMod, "OperatingSystem")},
-			"equinix_metal_organization":         {Tok: makeEquinixDataSource(metalMod, "Organization")},
+			"equinix_metal_organization":         {
+				Tok: makeEquinixDataSource(metalMod, "Organization"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"address": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			"equinix_metal_plans":                {Tok: makeEquinixDataSource(metalMod, "Plans")},
 			"equinix_metal_port":                 {Tok: makeEquinixDataSource(metalMod, "Port")},
 			"equinix_metal_precreated_ip_block":  {Tok: makeEquinixDataSource(metalMod, "PrecreatedIpBlock")},
-			"equinix_metal_project":              {Tok: makeEquinixDataSource(metalMod, "Project")},
+			"equinix_metal_project":              {
+				Tok: makeEquinixDataSource(metalMod, "Project"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"bgp_config": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			"equinix_metal_project_ssh_key":      {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
 			"equinix_metal_reserved_ip_block":    {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
 			"equinix_metal_spot_market_price":    {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
@@ -812,7 +1296,14 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_metal_vrf":                  {Tok: makeEquinixDataSource(metalMod, "Vrf")},
 			// Network Edge v1
 			"equinix_network_account":         {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
-			"equinix_network_device":          {Tok: makeEquinixDataSource(networkEdgeMod, "Device")},
+			"equinix_network_device":          {
+				Tok: makeEquinixDataSource(networkEdgeMod, "Device"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"valid_status_list": {
+						Name: "validStatusList",
+					},
+				},
+			},
 			"equinix_network_device_platform": {Tok: makeEquinixDataSource(networkEdgeMod, "DevicePlatform")},
 			"equinix_network_device_software": {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceSoftware")},
 			"equinix_network_device_type":     {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceType")},

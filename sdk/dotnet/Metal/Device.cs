@@ -350,6 +350,13 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Metro { get; private set; } = null!;
 
         /// <summary>
+        /// The device's private and public IP (v4 and v6) network details. See
+        /// Network Attribute below for more details.
+        /// </summary>
+        [Output("network")]
+        public Output<ImmutableArray<Outputs.DeviceNetwork>> Network { get; private set; } = null!;
+
+        /// <summary>
         /// (Deprecated) Network type of a device, used in
         /// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
         /// attribute is deprecated you should handle Network Type with one of
@@ -360,13 +367,6 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
-
-        /// <summary>
-        /// The device's private and public IP (v4 and v6) network details. See
-        /// Network Attribute below for more details.
-        /// </summary>
-        [Output("networks")]
-        public Output<ImmutableArray<Outputs.DeviceNetwork>> Networks { get; private set; } = null!;
 
         /// <summary>
         /// The operating system slug. To find the slug, or visit
@@ -504,7 +504,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
                 AdditionalSecretOutputs =
                 {
                     "customData",
@@ -903,6 +903,19 @@ namespace Pulumi.Equinix.Metal
         [Input("metro")]
         public Input<string>? Metro { get; set; }
 
+        [Input("network")]
+        private InputList<Inputs.DeviceNetworkGetArgs>? _network;
+
+        /// <summary>
+        /// The device's private and public IP (v4 and v6) network details. See
+        /// Network Attribute below for more details.
+        /// </summary>
+        public InputList<Inputs.DeviceNetworkGetArgs> Network
+        {
+            get => _network ?? (_network = new InputList<Inputs.DeviceNetworkGetArgs>());
+            set => _network = value;
+        }
+
         /// <summary>
         /// (Deprecated) Network type of a device, used in
         /// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
@@ -914,19 +927,6 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         [Input("networkType")]
         public InputUnion<string, Pulumi.Equinix.Metal.NetworkType>? NetworkType { get; set; }
-
-        [Input("networks")]
-        private InputList<Inputs.DeviceNetworkGetArgs>? _networks;
-
-        /// <summary>
-        /// The device's private and public IP (v4 and v6) network details. See
-        /// Network Attribute below for more details.
-        /// </summary>
-        public InputList<Inputs.DeviceNetworkGetArgs> Networks
-        {
-            get => _networks ?? (_networks = new InputList<Inputs.DeviceNetworkGetArgs>());
-            set => _networks = value;
-        }
 
         /// <summary>
         /// The operating system slug. To find the slug, or visit

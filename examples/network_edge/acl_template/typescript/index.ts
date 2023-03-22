@@ -1,0 +1,24 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as equinix from "@equinix/pulumi-equinix";
+
+const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
+    name: "test",
+    description: "Test ACL template",
+    inboundRules: [
+        {
+            subnet: "1.1.1.1/32",
+            protocol: "IP",
+            srcPort: "any",
+            dstPort: "any",
+            description: "inbound rule description",
+        },
+        {
+            subnet: "2.2.2.2/28",
+            protocol: "TCP",
+            srcPort: "any",
+            dstPort: "any",
+            description: "inbound rule description",
+        },
+    ],
+});
+export const templateId = aclTemplate.id;

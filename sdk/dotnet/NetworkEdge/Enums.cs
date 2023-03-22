@@ -8,27 +8,27 @@ using Pulumi;
 namespace Pulumi.Equinix.NetworkEdge
 {
     [EnumType]
-    public readonly struct AclProtocolType : IEquatable<AclProtocolType>
+    public readonly struct AclRuleProtocolType : IEquatable<AclRuleProtocolType>
     {
         private readonly string _value;
 
-        private AclProtocolType(string value)
+        private AclRuleProtocolType(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public static AclProtocolType IP { get; } = new AclProtocolType("IP");
-        public static AclProtocolType TCP { get; } = new AclProtocolType("TCP");
-        public static AclProtocolType UDP { get; } = new AclProtocolType("UDP");
+        public static AclRuleProtocolType IP { get; } = new AclRuleProtocolType("IP");
+        public static AclRuleProtocolType TCP { get; } = new AclRuleProtocolType("TCP");
+        public static AclRuleProtocolType UDP { get; } = new AclRuleProtocolType("UDP");
 
-        public static bool operator ==(AclProtocolType left, AclProtocolType right) => left.Equals(right);
-        public static bool operator !=(AclProtocolType left, AclProtocolType right) => !left.Equals(right);
+        public static bool operator ==(AclRuleProtocolType left, AclRuleProtocolType right) => left.Equals(right);
+        public static bool operator !=(AclRuleProtocolType left, AclRuleProtocolType right) => !left.Equals(right);
 
-        public static explicit operator string(AclProtocolType value) => value._value;
+        public static explicit operator string(AclRuleProtocolType value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is AclProtocolType other && Equals(other);
-        public bool Equals(AclProtocolType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is AclRuleProtocolType other && Equals(other);
+        public bool Equals(AclRuleProtocolType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

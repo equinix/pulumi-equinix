@@ -580,6 +580,22 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metro);
     }
     /**
+     * The device&#39;s private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     * 
+     */
+    @Export(name="network", refs={List.class,DeviceNetwork.class}, tree="[0,1]")
+    private Output<List<DeviceNetwork>> network;
+
+    /**
+     * @return The device&#39;s private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     * 
+     */
+    public Output<List<DeviceNetwork>> network() {
+        return this.network;
+    }
+    /**
      * (Deprecated) Network type of a device, used in
      * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
      * attribute is deprecated you should handle Network Type with one of
@@ -608,22 +624,6 @@ public class Device extends com.pulumi.resources.CustomResource {
      */
     public Output<String> networkType() {
         return this.networkType;
-    }
-    /**
-     * The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     * 
-     */
-    @Export(name="networks", refs={List.class,DeviceNetwork.class}, tree="[0,1]")
-    private Output<List<DeviceNetwork>> networks;
-
-    /**
-     * @return The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     * 
-     */
-    public Output<List<DeviceNetwork>> networks() {
-        return this.networks;
     }
     /**
      * The operating system slug. To find the slug, or visit

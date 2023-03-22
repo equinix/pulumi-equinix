@@ -38,15 +38,15 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Requester or Customer side connection configuration object of the multi-segment connection
      */
-    public readonly aSides!: pulumi.Output<outputs.fabric.ConnectionASide[]>;
+    public readonly aSide!: pulumi.Output<outputs.fabric.ConnectionASide>;
     /**
      * Customer account information that is associated with this connection
      */
-    public /*out*/ readonly accounts!: pulumi.Output<outputs.fabric.ConnectionAccount[]>;
+    public /*out*/ readonly account!: pulumi.Output<outputs.fabric.ConnectionAccount>;
     /**
      * Connection additional information
      */
-    public readonly additionalInfos!: pulumi.Output<outputs.fabric.ConnectionAdditionalInfo[] | undefined>;
+    public readonly additionalInfo!: pulumi.Output<outputs.fabric.ConnectionAdditionalInfo[] | undefined>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -54,7 +54,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Captures connection lifecycle change information
      */
-    public /*out*/ readonly changeLogs!: pulumi.Output<outputs.fabric.ConnectionChangeLog[]>;
+    public /*out*/ readonly changeLog!: pulumi.Output<outputs.fabric.ConnectionChangeLog>;
     /**
      * Connection directionality from the requester point of view
      */
@@ -78,19 +78,19 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Connection type-specific operational data
      */
-    public /*out*/ readonly operations!: pulumi.Output<outputs.fabric.ConnectionOperation[]>;
+    public /*out*/ readonly operation!: pulumi.Output<outputs.fabric.ConnectionOperation>;
     /**
      * Order related to this connection information
      */
-    public readonly orders!: pulumi.Output<outputs.fabric.ConnectionOrder[] | undefined>;
+    public readonly order!: pulumi.Output<outputs.fabric.ConnectionOrder | undefined>;
     /**
      * Project information
      */
-    public readonly projects!: pulumi.Output<outputs.fabric.ConnectionProject[] | undefined>;
+    public readonly project!: pulumi.Output<outputs.fabric.ConnectionProject | undefined>;
     /**
      * Redundancy Information
      */
-    public readonly redundancies!: pulumi.Output<outputs.fabric.ConnectionRedundancy[] | undefined>;
+    public readonly redundancy!: pulumi.Output<outputs.fabric.ConnectionRedundancy | undefined>;
     /**
      * Connection overall state
      */
@@ -102,7 +102,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
-    public readonly zSides!: pulumi.Output<outputs.fabric.ConnectionZSide[]>;
+    public readonly zSide!: pulumi.Output<outputs.fabric.ConnectionZSide>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -117,27 +117,27 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["aSides"] = state ? state.aSides : undefined;
-            resourceInputs["accounts"] = state ? state.accounts : undefined;
-            resourceInputs["additionalInfos"] = state ? state.additionalInfos : undefined;
+            resourceInputs["aSide"] = state ? state.aSide : undefined;
+            resourceInputs["account"] = state ? state.account : undefined;
+            resourceInputs["additionalInfo"] = state ? state.additionalInfo : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["changeLogs"] = state ? state.changeLogs : undefined;
+            resourceInputs["changeLog"] = state ? state.changeLog : undefined;
             resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["isRemote"] = state ? state.isRemote : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifications"] = state ? state.notifications : undefined;
-            resourceInputs["operations"] = state ? state.operations : undefined;
-            resourceInputs["orders"] = state ? state.orders : undefined;
-            resourceInputs["projects"] = state ? state.projects : undefined;
-            resourceInputs["redundancies"] = state ? state.redundancies : undefined;
+            resourceInputs["operation"] = state ? state.operation : undefined;
+            resourceInputs["order"] = state ? state.order : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["redundancy"] = state ? state.redundancy : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zSides"] = state ? state.zSides : undefined;
+            resourceInputs["zSide"] = state ? state.zSide : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.aSides === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'aSides'");
+            if ((!args || args.aSide === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'aSide'");
             }
             if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
@@ -148,25 +148,25 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zSides === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zSides'");
+            if ((!args || args.zSide === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zSide'");
             }
-            resourceInputs["aSides"] = args ? args.aSides : undefined;
-            resourceInputs["additionalInfos"] = args ? args.additionalInfos : undefined;
+            resourceInputs["aSide"] = args ? args.aSide : undefined;
+            resourceInputs["additionalInfo"] = args ? args.additionalInfo : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
-            resourceInputs["orders"] = args ? args.orders : undefined;
-            resourceInputs["projects"] = args ? args.projects : undefined;
-            resourceInputs["redundancies"] = args ? args.redundancies : undefined;
+            resourceInputs["order"] = args ? args.order : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["redundancy"] = args ? args.redundancy : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zSides"] = args ? args.zSides : undefined;
-            resourceInputs["accounts"] = undefined /*out*/;
-            resourceInputs["changeLogs"] = undefined /*out*/;
+            resourceInputs["zSide"] = args ? args.zSide : undefined;
+            resourceInputs["account"] = undefined /*out*/;
+            resourceInputs["changeLog"] = undefined /*out*/;
             resourceInputs["direction"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
             resourceInputs["isRemote"] = undefined /*out*/;
-            resourceInputs["operations"] = undefined /*out*/;
+            resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -181,15 +181,15 @@ export interface ConnectionState {
     /**
      * Requester or Customer side connection configuration object of the multi-segment connection
      */
-    aSides?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASide>[]>;
+    aSide?: pulumi.Input<inputs.fabric.ConnectionASide>;
     /**
      * Customer account information that is associated with this connection
      */
-    accounts?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAccount>[]>;
+    account?: pulumi.Input<inputs.fabric.ConnectionAccount>;
     /**
      * Connection additional information
      */
-    additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAdditionalInfo>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAdditionalInfo>[]>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -197,7 +197,7 @@ export interface ConnectionState {
     /**
      * Captures connection lifecycle change information
      */
-    changeLogs?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionChangeLog>[]>;
+    changeLog?: pulumi.Input<inputs.fabric.ConnectionChangeLog>;
     /**
      * Connection directionality from the requester point of view
      */
@@ -221,19 +221,19 @@ export interface ConnectionState {
     /**
      * Connection type-specific operational data
      */
-    operations?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOperation>[]>;
+    operation?: pulumi.Input<inputs.fabric.ConnectionOperation>;
     /**
      * Order related to this connection information
      */
-    orders?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOrder>[]>;
+    order?: pulumi.Input<inputs.fabric.ConnectionOrder>;
     /**
      * Project information
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionProject>[]>;
+    project?: pulumi.Input<inputs.fabric.ConnectionProject>;
     /**
      * Redundancy Information
      */
-    redundancies?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionRedundancy>[]>;
+    redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
      * Connection overall state
      */
@@ -245,7 +245,7 @@ export interface ConnectionState {
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
-    zSides?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSide>[]>;
+    zSide?: pulumi.Input<inputs.fabric.ConnectionZSide>;
 }
 
 /**
@@ -255,11 +255,11 @@ export interface ConnectionArgs {
     /**
      * Requester or Customer side connection configuration object of the multi-segment connection
      */
-    aSides: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASide>[]>;
+    aSide: pulumi.Input<inputs.fabric.ConnectionASide>;
     /**
      * Connection additional information
      */
-    additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAdditionalInfo>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAdditionalInfo>[]>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -275,15 +275,15 @@ export interface ConnectionArgs {
     /**
      * Order related to this connection information
      */
-    orders?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOrder>[]>;
+    order?: pulumi.Input<inputs.fabric.ConnectionOrder>;
     /**
      * Project information
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionProject>[]>;
+    project?: pulumi.Input<inputs.fabric.ConnectionProject>;
     /**
      * Redundancy Information
      */
-    redundancies?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionRedundancy>[]>;
+    redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
      * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
      */
@@ -291,5 +291,5 @@ export interface ConnectionArgs {
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
-    zSides: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSide>[]>;
+    zSide: pulumi.Input<inputs.fabric.ConnectionZSide>;
 }

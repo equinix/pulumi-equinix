@@ -18,17 +18,11 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("interfaceUuid")]
         public Input<string>? InterfaceUuid { get; set; }
 
-        [Input("locations")]
-        private InputList<Inputs.ServiceProfileVirtualDeviceLocationGetArgs>? _locations;
-
         /// <summary>
         /// Device Location
         /// </summary>
-        public InputList<Inputs.ServiceProfileVirtualDeviceLocationGetArgs> Locations
-        {
-            get => _locations ?? (_locations = new InputList<Inputs.ServiceProfileVirtualDeviceLocationGetArgs>());
-            set => _locations = value;
-        }
+        [Input("location")]
+        public Input<Inputs.ServiceProfileVirtualDeviceLocationGetArgs>? Location { get; set; }
 
         /// <summary>
         /// Virtual Device Type

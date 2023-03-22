@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`equinix` Terraform Provider](https://github.com/equinix/terraform-provider-equinix).",
     "repository": "https://github.com/equinix/pulumi-equinix",
-    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
     "publisher": "Equinix",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -105,11 +105,8 @@
     "types": {
         "equinix:fabric/ConnectionASide:ConnectionASide": {
             "properties": {
-                "accessPoints": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPoint:ConnectionASideAccessPoint"
-                    },
+                "accessPoint": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPoint:ConnectionASideAccessPoint",
                     "description": "Point of access details\n",
                     "language": {
                         "python": {
@@ -117,7 +114,7 @@
                         }
                     }
                 },
-                "additionalInfos": {
+                "additionalInfo": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:fabric/ConnectionASideAdditionalInfo:ConnectionASideAdditionalInfo"
@@ -129,11 +126,8 @@
                         }
                     }
                 },
-                "serviceTokens": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideServiceToken:ConnectionASideServiceToken"
-                    },
+                "serviceToken": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideServiceToken:ConnectionASideServiceToken",
                     "description": "For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets\n",
                     "language": {
                         "python": {
@@ -146,11 +140,8 @@
         },
         "equinix:fabric/ConnectionASideAccessPoint:ConnectionASideAccessPoint": {
             "properties": {
-                "accounts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointAccount:ConnectionASideAccessPointAccount"
-                    },
+                "account": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointAccount:ConnectionASideAccessPointAccount",
                     "description": "Customer account information that is associated with this connection\n",
                     "language": {
                         "python": {
@@ -166,48 +157,32 @@
                         }
                     }
                 },
-                "gateways": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointGateway:ConnectionASideAccessPointGateway"
-                    },
+                "gateway": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointGateway:ConnectionASideAccessPointGateway",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "interfaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointInterface:ConnectionASideAccessPointInterface"
-                    },
+                "interface": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointInterface:ConnectionASideAccessPointInterface",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "linkProtocols": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/types/equinix:fabric/accessPointLinkProtocolType:AccessPointLinkProtocolType"
-                        }
-                    ],
+                "linkProtocol": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointLinkProtocol:ConnectionASideAccessPointLinkProtocol",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "locations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointLocation:ConnectionASideAccessPointLocation"
-                    },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointLocation:ConnectionASideAccessPointLocation",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -231,26 +206,16 @@
                         }
                     }
                 },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointPort:ConnectionASideAccessPointPort"
-                    },
+                "port": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointPort:ConnectionASideAccessPointPort",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "profiles": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/types/equinix:fabric/profileType:ProfileType"
-                        }
-                    ],
+                "profile": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointProfile:ConnectionASideAccessPointProfile",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -302,11 +267,8 @@
                         }
                     }
                 },
-                "virtualDevices": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointVirtualDevice:ConnectionASideAccessPointVirtualDevice"
-                    },
+                "virtualDevice": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointVirtualDevice:ConnectionASideAccessPointVirtualDevice",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -318,8 +280,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "accounts",
-                        "locations"
+                        "account",
+                        "location"
                     ]
                 }
             }
@@ -469,6 +431,15 @@
             "properties": {
                 "type": {
                     "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/equinix:fabric/accessPointLinkProtocolType:AccessPointLinkProtocolType"
+                        }
+                    ],
                     "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n",
                     "language": {
                         "python": {
@@ -683,6 +654,15 @@
                 },
                 "type": {
                     "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/equinix:fabric/profileType:ProfileType"
+                        }
+                    ],
                     "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n",
                     "language": {
                         "python": {
@@ -1202,7 +1182,7 @@
         },
         "equinix:fabric/ConnectionOperationError:ConnectionOperationError": {
             "properties": {
-                "additionalInfos": {
+                "additionalInfo": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:fabric/ConnectionOperationErrorAdditionalInfo:ConnectionOperationErrorAdditionalInfo"
@@ -1259,7 +1239,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "additionalInfos",
+                        "additionalInfo",
                         "correlationId",
                         "details",
                         "errorCode",
@@ -1410,11 +1390,8 @@
         },
         "equinix:fabric/ConnectionZSide:ConnectionZSide": {
             "properties": {
-                "accessPoints": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPoint:ConnectionZSideAccessPoint"
-                    },
+                "accessPoint": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPoint:ConnectionZSideAccessPoint",
                     "description": "Point of access details\n",
                     "language": {
                         "python": {
@@ -1422,7 +1399,7 @@
                         }
                     }
                 },
-                "additionalInfos": {
+                "additionalInfo": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:fabric/ConnectionZSideAdditionalInfo:ConnectionZSideAdditionalInfo"
@@ -1434,11 +1411,8 @@
                         }
                     }
                 },
-                "serviceTokens": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideServiceToken:ConnectionZSideServiceToken"
-                    },
+                "serviceToken": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideServiceToken:ConnectionZSideServiceToken",
                     "description": "For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets\n",
                     "language": {
                         "python": {
@@ -1451,11 +1425,8 @@
         },
         "equinix:fabric/ConnectionZSideAccessPoint:ConnectionZSideAccessPoint": {
             "properties": {
-                "accounts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointAccount:ConnectionZSideAccessPointAccount"
-                    },
+                "account": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointAccount:ConnectionZSideAccessPointAccount",
                     "description": "Customer account information that is associated with this connection\n",
                     "language": {
                         "python": {
@@ -1471,48 +1442,32 @@
                         }
                     }
                 },
-                "gateways": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointGateway:ConnectionZSideAccessPointGateway"
-                    },
+                "gateway": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointGateway:ConnectionZSideAccessPointGateway",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "interfaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointInterface:ConnectionZSideAccessPointInterface"
-                    },
+                "interface": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointInterface:ConnectionZSideAccessPointInterface",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "linkProtocols": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/types/equinix:fabric/accessPointLinkProtocolType:AccessPointLinkProtocolType"
-                        }
-                    ],
+                "linkProtocol": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointLinkProtocol:ConnectionZSideAccessPointLinkProtocol",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "locations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointLocation:ConnectionZSideAccessPointLocation"
-                    },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointLocation:ConnectionZSideAccessPointLocation",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1536,26 +1491,16 @@
                         }
                     }
                 },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointPort:ConnectionZSideAccessPointPort"
-                    },
+                "port": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointPort:ConnectionZSideAccessPointPort",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "profiles": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/types/equinix:fabric/profileType:ProfileType"
-                        }
-                    ],
+                "profile": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointProfile:ConnectionZSideAccessPointProfile",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1607,11 +1552,8 @@
                         }
                     }
                 },
-                "virtualDevices": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointVirtualDevice:ConnectionZSideAccessPointVirtualDevice"
-                    },
+                "virtualDevice": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointVirtualDevice:ConnectionZSideAccessPointVirtualDevice",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1623,8 +1565,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "accounts",
-                        "locations"
+                        "account",
+                        "location"
                     ]
                 }
             }
@@ -1774,6 +1716,15 @@
             "properties": {
                 "type": {
                     "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/equinix:fabric/accessPointLinkProtocolType:AccessPointLinkProtocolType"
+                        }
+                    ],
                     "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n",
                     "language": {
                         "python": {
@@ -1988,6 +1939,15 @@
                 },
                 "type": {
                     "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "#/types/equinix:fabric/profileType:ProfileType"
+                        }
+                    ],
                     "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n",
                     "language": {
                         "python": {
@@ -2238,11 +2198,8 @@
                         }
                     }
                 },
-                "apiConfigs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileAccessPointTypeConfigApiConfig:ServiceProfileAccessPointTypeConfigApiConfig"
-                    },
+                "apiConfig": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileAccessPointTypeConfigApiConfig:ServiceProfileAccessPointTypeConfigApiConfig",
                     "description": "Api configuration details\n",
                     "language": {
                         "python": {
@@ -2250,11 +2207,8 @@
                         }
                     }
                 },
-                "authenticationKeys": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileAccessPointTypeConfigAuthenticationKey:ServiceProfileAccessPointTypeConfigAuthenticationKey"
-                    },
+                "authenticationKey": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileAccessPointTypeConfigAuthenticationKey:ServiceProfileAccessPointTypeConfigAuthenticationKey",
                     "description": "Authentication key details\n",
                     "language": {
                         "python": {
@@ -2298,11 +2252,8 @@
                         }
                     }
                 },
-                "linkProtocolConfigs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileAccessPointTypeConfigLinkProtocolConfig:ServiceProfileAccessPointTypeConfigLinkProtocolConfig"
-                    },
+                "linkProtocolConfig": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileAccessPointTypeConfigLinkProtocolConfig:ServiceProfileAccessPointTypeConfigLinkProtocolConfig",
                     "description": "Link protocol configuration details\n",
                     "language": {
                         "python": {
@@ -3079,11 +3030,8 @@
                         }
                     }
                 },
-                "locations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileVirtualDeviceLocation:ServiceProfileVirtualDeviceLocation"
-                    },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileVirtualDeviceLocation:ServiceProfileVirtualDeviceLocation",
                     "description": "Device Location\n",
                     "language": {
                         "python": {
@@ -3273,22 +3221,16 @@
         },
         "equinix:fabric/getConnectionASide:getConnectionASide": {
             "properties": {
-                "accessPoints": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/getConnectionASideAccessPoint:getConnectionASideAccessPoint"
-                    },
+                "accessPoint": {
+                    "$ref": "#/types/equinix:fabric/getConnectionASideAccessPoint:getConnectionASideAccessPoint",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "serviceTokens": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/getConnectionASideServiceToken:getConnectionASideServiceToken"
-                    },
+                "serviceToken": {
+                    "$ref": "#/types/equinix:fabric/getConnectionASideServiceToken:getConnectionASideServiceToken",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3298,8 +3240,8 @@
             },
             "type": "object",
             "required": [
-                "accessPoints",
-                "serviceTokens"
+                "accessPoint",
+                "serviceToken"
             ],
             "language": {
                 "nodejs": {
@@ -4800,22 +4742,16 @@
         },
         "equinix:fabric/getConnectionZSide:getConnectionZSide": {
             "properties": {
-                "accessPoints": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/getConnectionZSideAccessPoint:getConnectionZSideAccessPoint"
-                    },
+                "accessPoint": {
+                    "$ref": "#/types/equinix:fabric/getConnectionZSideAccessPoint:getConnectionZSideAccessPoint",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "serviceTokens": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/getConnectionZSideServiceToken:getConnectionZSideServiceToken"
-                    },
+                "serviceToken": {
+                    "$ref": "#/types/equinix:fabric/getConnectionZSideServiceToken:getConnectionZSideServiceToken",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4825,8 +4761,8 @@
             },
             "type": "object",
             "required": [
-                "accessPoints",
-                "serviceTokens"
+                "accessPoint",
+                "serviceToken"
             ],
             "language": {
                 "nodejs": {
@@ -6282,12 +6218,12 @@
                 }
             }
         },
-        "equinix:fabric/getPortsData:getPortsData": {
+        "equinix:fabric/getPortsDatum:getPortsDatum": {
             "properties": {
                 "accounts": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataAccount:getPortsDataAccount"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumAccount:getPortsDatumAccount"
                     },
                     "language": {
                         "python": {
@@ -6314,7 +6250,7 @@
                 "changeLogs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataChangeLog:getPortsDataChangeLog"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumChangeLog:getPortsDatumChangeLog"
                     },
                     "language": {
                         "python": {
@@ -6333,7 +6269,7 @@
                 "devices": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataDevice:getPortsDataDevice"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumDevice:getPortsDatumDevice"
                     },
                     "language": {
                         "python": {
@@ -6344,7 +6280,7 @@
                 "encapsulations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataEncapsulation:getPortsDataEncapsulation"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumEncapsulation:getPortsDatumEncapsulation"
                     },
                     "language": {
                         "python": {
@@ -6363,7 +6299,7 @@
                 "lags": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataLag:getPortsDataLag"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumLag:getPortsDatumLag"
                     },
                     "language": {
                         "python": {
@@ -6374,7 +6310,7 @@
                 "locations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataLocation:getPortsDataLocation"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumLocation:getPortsDatumLocation"
                     },
                     "language": {
                         "python": {
@@ -6393,7 +6329,7 @@
                 "operations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataOperation:getPortsDataOperation"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumOperation:getPortsDatumOperation"
                     },
                     "language": {
                         "python": {
@@ -6404,7 +6340,7 @@
                 "redundancies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataRedundancy:getPortsDataRedundancy"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumRedundancy:getPortsDatumRedundancy"
                     },
                     "language": {
                         "python": {
@@ -6479,7 +6415,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataAccount:getPortsDataAccount": {
+        "equinix:fabric/getPortsDatumAccount:getPortsDatumAccount": {
             "properties": {
                 "accountName": {
                     "type": "string",
@@ -6554,7 +6490,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataChangeLog:getPortsDataChangeLog": {
+        "equinix:fabric/getPortsDatumChangeLog:getPortsDatumChangeLog": {
             "properties": {
                 "createdBy": {
                     "type": "string",
@@ -6674,7 +6610,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataDevice:getPortsDataDevice": {
+        "equinix:fabric/getPortsDatumDevice:getPortsDatumDevice": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -6687,7 +6623,7 @@
                 "redundancies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getPortsDataDeviceRedundancy:getPortsDataDeviceRedundancy"
+                        "$ref": "#/types/equinix:fabric/getPortsDatumDeviceRedundancy:getPortsDatumDeviceRedundancy"
                     },
                     "language": {
                         "python": {
@@ -6707,7 +6643,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataDeviceRedundancy:getPortsDataDeviceRedundancy": {
+        "equinix:fabric/getPortsDatumDeviceRedundancy:getPortsDatumDeviceRedundancy": {
             "properties": {
                 "group": {
                     "type": "string",
@@ -6737,7 +6673,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataEncapsulation:getPortsDataEncapsulation": {
+        "equinix:fabric/getPortsDatumEncapsulation:getPortsDatumEncapsulation": {
             "properties": {
                 "tagProtocolId": {
                     "type": "string",
@@ -6767,7 +6703,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataLag:getPortsDataLag": {
+        "equinix:fabric/getPortsDatumLag:getPortsDatumLag": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -6816,7 +6752,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataLocation:getPortsDataLocation": {
+        "equinix:fabric/getPortsDatumLocation:getPortsDatumLocation": {
             "properties": {
                 "href": {
                     "type": "string",
@@ -6873,7 +6809,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataOperation:getPortsDataOperation": {
+        "equinix:fabric/getPortsDatumOperation:getPortsDatumOperation": {
             "properties": {
                 "connectionCount": {
                     "type": "integer",
@@ -6912,7 +6848,7 @@
                 }
             }
         },
-        "equinix:fabric/getPortsDataRedundancy:getPortsDataRedundancy": {
+        "equinix:fabric/getPortsDatumRedundancy:getPortsDatumRedundancy": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -7893,12 +7829,12 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesData:getServiceProfilesData": {
+        "equinix:fabric/getServiceProfilesDatum:getServiceProfilesDatum": {
             "properties": {
                 "accessPointTypeConfigs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataAccessPointTypeConfig:getServiceProfilesDataAccessPointTypeConfig"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumAccessPointTypeConfig:getServiceProfilesDatumAccessPointTypeConfig"
                     },
                     "language": {
                         "python": {
@@ -7909,7 +7845,7 @@
                 "accounts": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataAccount:getServiceProfilesDataAccount"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumAccount:getServiceProfilesDatumAccount"
                     },
                     "language": {
                         "python": {
@@ -7931,7 +7867,7 @@
                 "changeLogs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataChangeLog:getServiceProfilesDataChangeLog"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumChangeLog:getServiceProfilesDatumChangeLog"
                     },
                     "language": {
                         "python": {
@@ -7942,7 +7878,7 @@
                 "customFields": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataCustomField:getServiceProfilesDataCustomField"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumCustomField:getServiceProfilesDatumCustomField"
                     },
                     "language": {
                         "python": {
@@ -7969,7 +7905,7 @@
                 "marketingInfos": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataMarketingInfo:getServiceProfilesDataMarketingInfo"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumMarketingInfo:getServiceProfilesDatumMarketingInfo"
                     },
                     "language": {
                         "python": {
@@ -7980,7 +7916,7 @@
                 "metros": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataMetro:getServiceProfilesDataMetro"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumMetro:getServiceProfilesDatumMetro"
                     },
                     "language": {
                         "python": {
@@ -7999,7 +7935,7 @@
                 "notifications": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataNotification:getServiceProfilesDataNotification"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumNotification:getServiceProfilesDatumNotification"
                     },
                     "language": {
                         "python": {
@@ -8010,7 +7946,7 @@
                 "ports": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataPort:getServiceProfilesDataPort"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumPort:getServiceProfilesDatumPort"
                     },
                     "language": {
                         "python": {
@@ -8021,7 +7957,7 @@
                 "projects": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataProject:getServiceProfilesDataProject"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumProject:getServiceProfilesDatumProject"
                     },
                     "language": {
                         "python": {
@@ -8107,7 +8043,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataAccessPointTypeConfig:getServiceProfilesDataAccessPointTypeConfig": {
+        "equinix:fabric/getServiceProfilesDatumAccessPointTypeConfig:getServiceProfilesDatumAccessPointTypeConfig": {
             "properties": {
                 "allowBandwidthAutoApproval": {
                     "type": "boolean",
@@ -8144,7 +8080,7 @@
                 "apiConfigs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataAccessPointTypeConfigApiConfig:getServiceProfilesDataAccessPointTypeConfigApiConfig"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumAccessPointTypeConfigApiConfig:getServiceProfilesDatumAccessPointTypeConfigApiConfig"
                     },
                     "language": {
                         "python": {
@@ -8155,7 +8091,7 @@
                 "authenticationKeys": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataAccessPointTypeConfigAuthenticationKey:getServiceProfilesDataAccessPointTypeConfigAuthenticationKey"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumAccessPointTypeConfigAuthenticationKey:getServiceProfilesDatumAccessPointTypeConfigAuthenticationKey"
                     },
                     "language": {
                         "python": {
@@ -8198,7 +8134,7 @@
                 "linkProtocolConfigs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig:getServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig:getServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig"
                     },
                     "language": {
                         "python": {
@@ -8257,7 +8193,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataAccessPointTypeConfigApiConfig:getServiceProfilesDataAccessPointTypeConfigApiConfig": {
+        "equinix:fabric/getServiceProfilesDatumAccessPointTypeConfigApiConfig:getServiceProfilesDatumAccessPointTypeConfigApiConfig": {
             "properties": {
                 "allowOverSubscription": {
                     "type": "boolean",
@@ -8332,7 +8268,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataAccessPointTypeConfigAuthenticationKey:getServiceProfilesDataAccessPointTypeConfigAuthenticationKey": {
+        "equinix:fabric/getServiceProfilesDatumAccessPointTypeConfigAuthenticationKey:getServiceProfilesDatumAccessPointTypeConfigAuthenticationKey": {
             "properties": {
                 "description": {
                     "type": "string",
@@ -8371,7 +8307,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig:getServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig": {
+        "equinix:fabric/getServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig:getServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig": {
             "properties": {
                 "encapsulation": {
                     "type": "string",
@@ -8410,7 +8346,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataAccount:getServiceProfilesDataAccount": {
+        "equinix:fabric/getServiceProfilesDatumAccount:getServiceProfilesDatumAccount": {
             "properties": {
                 "accountName": {
                     "type": "string",
@@ -8494,7 +8430,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataChangeLog:getServiceProfilesDataChangeLog": {
+        "equinix:fabric/getServiceProfilesDatumChangeLog:getServiceProfilesDatumChangeLog": {
             "properties": {
                 "createdBy": {
                     "type": "string",
@@ -8614,7 +8550,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataCustomField:getServiceProfilesDataCustomField": {
+        "equinix:fabric/getServiceProfilesDatumCustomField:getServiceProfilesDatumCustomField": {
             "properties": {
                 "captureInEmail": {
                     "type": "boolean",
@@ -8683,7 +8619,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataMarketingInfo:getServiceProfilesDataMarketingInfo": {
+        "equinix:fabric/getServiceProfilesDatumMarketingInfo:getServiceProfilesDatumMarketingInfo": {
             "properties": {
                 "logo": {
                     "type": "string",
@@ -8696,7 +8632,7 @@
                 "processSteps": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataMarketingInfoProcessStep:getServiceProfilesDataMarketingInfoProcessStep"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumMarketingInfoProcessStep:getServiceProfilesDatumMarketingInfoProcessStep"
                     },
                     "language": {
                         "python": {
@@ -8725,7 +8661,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataMarketingInfoProcessStep:getServiceProfilesDataMarketingInfoProcessStep": {
+        "equinix:fabric/getServiceProfilesDatumMarketingInfoProcessStep:getServiceProfilesDatumMarketingInfoProcessStep": {
             "properties": {
                 "description": {
                     "type": "string",
@@ -8764,7 +8700,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataMetro:getServiceProfilesDataMetro": {
+        "equinix:fabric/getServiceProfilesDatumMetro:getServiceProfilesDatumMetro": {
             "properties": {
                 "code": {
                     "type": "string",
@@ -8836,7 +8772,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataNotification:getServiceProfilesDataNotification": {
+        "equinix:fabric/getServiceProfilesDatumNotification:getServiceProfilesDatumNotification": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -8878,7 +8814,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataPort:getServiceProfilesDataPort": {
+        "equinix:fabric/getServiceProfilesDatumPort:getServiceProfilesDatumPort": {
             "properties": {
                 "crossConnectId": {
                     "type": "string",
@@ -8891,7 +8827,7 @@
                 "locations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/equinix:fabric/getServiceProfilesDataPortLocation:getServiceProfilesDataPortLocation"
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesDatumPortLocation:getServiceProfilesDatumPortLocation"
                     },
                     "language": {
                         "python": {
@@ -8947,7 +8883,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataPortLocation:getServiceProfilesDataPortLocation": {
+        "equinix:fabric/getServiceProfilesDatumPortLocation:getServiceProfilesDatumPortLocation": {
             "properties": {
                 "ibx": {
                     "type": "string",
@@ -8995,7 +8931,7 @@
                 }
             }
         },
-        "equinix:fabric/getServiceProfilesDataProject:getServiceProfilesDataProject": {
+        "equinix:fabric/getServiceProfilesDatumProject:getServiceProfilesDatumProject": {
             "properties": {
                 "href": {
                     "type": "string",
@@ -11619,7 +11555,7 @@
                         },
                         {
                             "type": "string",
-                            "$ref": "#/types/equinix:networkedge/aclProtocolType:AclProtocolType"
+                            "$ref": "#/types/equinix:networkedge/aclRuleProtocolType:AclRuleProtocolType"
                         }
                     ],
                     "description": "Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.\n",
@@ -12706,7 +12642,7 @@
                 "username"
             ]
         },
-        "equinix:networkedge/aclProtocolType:AclProtocolType": {
+        "equinix:networkedge/aclRuleProtocolType:AclRuleProtocolType": {
             "type": "string",
             "enum": [
                 {
@@ -13664,21 +13600,15 @@
     "resources": {
         "equinix:fabric/connection:Connection": {
             "properties": {
-                "aSides": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASide:ConnectionASide"
-                    },
+                "aSide": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASide:ConnectionASide",
                     "description": "Requester or Customer side connection configuration object of the multi-segment connection\n"
                 },
-                "accounts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionAccount:ConnectionAccount"
-                    },
+                "account": {
+                    "$ref": "#/types/equinix:fabric/ConnectionAccount:ConnectionAccount",
                     "description": "Customer account information that is associated with this connection\n"
                 },
-                "additionalInfos": {
+                "additionalInfo": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:fabric/ConnectionAdditionalInfo:ConnectionAdditionalInfo"
@@ -13689,11 +13619,8 @@
                     "type": "integer",
                     "description": "Connection bandwidth in Mbps\n"
                 },
-                "changeLogs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionChangeLog:ConnectionChangeLog"
-                    },
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/ConnectionChangeLog:ConnectionChangeLog",
                     "description": "Captures connection lifecycle change information\n"
                 },
                 "direction": {
@@ -13719,32 +13646,20 @@
                     },
                     "description": "Preferences for notifications on connection configuration or status changes\n"
                 },
-                "operations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionOperation:ConnectionOperation"
-                    },
+                "operation": {
+                    "$ref": "#/types/equinix:fabric/ConnectionOperation:ConnectionOperation",
                     "description": "Connection type-specific operational data\n"
                 },
-                "orders": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionOrder:ConnectionOrder"
-                    },
+                "order": {
+                    "$ref": "#/types/equinix:fabric/ConnectionOrder:ConnectionOrder",
                     "description": "Order related to this connection information\n"
                 },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionProject:ConnectionProject"
-                    },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/ConnectionProject:ConnectionProject",
                     "description": "Project information\n"
                 },
-                "redundancies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionRedundancy:ConnectionRedundancy"
-                    },
+                "redundancy": {
+                    "$ref": "#/types/equinix:fabric/ConnectionRedundancy:ConnectionRedundancy",
                     "description": "Redundancy Information\n"
                 },
                 "state": {
@@ -13755,38 +13670,32 @@
                     "type": "string",
                     "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n"
                 },
-                "zSides": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide"
-                    },
+                "zSide": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide",
                     "description": "Destination or Provider side connection configuration object of the multi-segment connection\n"
                 }
             },
             "required": [
-                "aSides",
-                "accounts",
+                "aSide",
+                "account",
                 "bandwidth",
-                "changeLogs",
+                "changeLog",
                 "direction",
                 "href",
                 "isRemote",
                 "name",
                 "notifications",
-                "operations",
+                "operation",
                 "state",
                 "type",
-                "zSides"
+                "zSide"
             ],
             "inputProperties": {
-                "aSides": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASide:ConnectionASide"
-                    },
+                "aSide": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASide:ConnectionASide",
                     "description": "Requester or Customer side connection configuration object of the multi-segment connection\n"
                 },
-                "additionalInfos": {
+                "additionalInfo": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:fabric/ConnectionAdditionalInfo:ConnectionAdditionalInfo"
@@ -13808,25 +13717,16 @@
                     },
                     "description": "Preferences for notifications on connection configuration or status changes\n"
                 },
-                "orders": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionOrder:ConnectionOrder"
-                    },
+                "order": {
+                    "$ref": "#/types/equinix:fabric/ConnectionOrder:ConnectionOrder",
                     "description": "Order related to this connection information\n"
                 },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionProject:ConnectionProject"
-                    },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/ConnectionProject:ConnectionProject",
                     "description": "Project information\n"
                 },
-                "redundancies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionRedundancy:ConnectionRedundancy"
-                    },
+                "redundancy": {
+                    "$ref": "#/types/equinix:fabric/ConnectionRedundancy:ConnectionRedundancy",
                     "description": "Redundancy Information\n"
                 },
                 "type": {
@@ -13842,39 +13742,30 @@
                     ],
                     "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n"
                 },
-                "zSides": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide"
-                    },
+                "zSide": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide",
                     "description": "Destination or Provider side connection configuration object of the multi-segment connection\n"
                 }
             },
             "requiredInputs": [
-                "aSides",
+                "aSide",
                 "bandwidth",
                 "notifications",
                 "type",
-                "zSides"
+                "zSide"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Connection resources.\n",
                 "properties": {
-                    "aSides": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionASide:ConnectionASide"
-                        },
+                    "aSide": {
+                        "$ref": "#/types/equinix:fabric/ConnectionASide:ConnectionASide",
                         "description": "Requester or Customer side connection configuration object of the multi-segment connection\n"
                     },
-                    "accounts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionAccount:ConnectionAccount"
-                        },
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/ConnectionAccount:ConnectionAccount",
                         "description": "Customer account information that is associated with this connection\n"
                     },
-                    "additionalInfos": {
+                    "additionalInfo": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/equinix:fabric/ConnectionAdditionalInfo:ConnectionAdditionalInfo"
@@ -13885,11 +13776,8 @@
                         "type": "integer",
                         "description": "Connection bandwidth in Mbps\n"
                     },
-                    "changeLogs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionChangeLog:ConnectionChangeLog"
-                        },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/ConnectionChangeLog:ConnectionChangeLog",
                         "description": "Captures connection lifecycle change information\n"
                     },
                     "direction": {
@@ -13915,32 +13803,20 @@
                         },
                         "description": "Preferences for notifications on connection configuration or status changes\n"
                     },
-                    "operations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionOperation:ConnectionOperation"
-                        },
+                    "operation": {
+                        "$ref": "#/types/equinix:fabric/ConnectionOperation:ConnectionOperation",
                         "description": "Connection type-specific operational data\n"
                     },
-                    "orders": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionOrder:ConnectionOrder"
-                        },
+                    "order": {
+                        "$ref": "#/types/equinix:fabric/ConnectionOrder:ConnectionOrder",
                         "description": "Order related to this connection information\n"
                     },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionProject:ConnectionProject"
-                        },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/ConnectionProject:ConnectionProject",
                         "description": "Project information\n"
                     },
-                    "redundancies": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionRedundancy:ConnectionRedundancy"
-                        },
+                    "redundancy": {
+                        "$ref": "#/types/equinix:fabric/ConnectionRedundancy:ConnectionRedundancy",
                         "description": "Redundancy Information\n"
                     },
                     "state": {
@@ -13960,11 +13836,8 @@
                         ],
                         "description": "Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC\n"
                     },
-                    "zSides": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide"
-                        },
+                    "zSide": {
+                        "$ref": "#/types/equinix:fabric/ConnectionZSide:ConnectionZSide",
                         "description": "Destination or Provider side connection configuration object of the multi-segment connection\n"
                     }
                 },
@@ -13980,11 +13853,8 @@
                     },
                     "description": "Access point config information\n"
                 },
-                "accounts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileAccount:ServiceProfileAccount"
-                    },
+                "account": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileAccount:ServiceProfileAccount",
                     "description": "Account\n"
                 },
                 "allowedEmails": {
@@ -13994,11 +13864,8 @@
                     },
                     "description": "Array of contact emails\n"
                 },
-                "changeLogs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileChangeLog:ServiceProfileChangeLog"
-                    },
+                "changeLog": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileChangeLog:ServiceProfileChangeLog",
                     "description": "Captures connection lifecycle change information\n"
                 },
                 "customFields": {
@@ -14016,11 +13883,8 @@
                     "type": "string",
                     "description": "Service Profile URI response attribute\n"
                 },
-                "marketingInfos": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileMarketingInfo:ServiceProfileMarketingInfo"
-                    },
+                "marketingInfo": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileMarketingInfo:ServiceProfileMarketingInfo",
                     "description": "Marketing Info\n"
                 },
                 "metros": {
@@ -14048,11 +13912,8 @@
                     },
                     "description": "Ports\n"
                 },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileProject:ServiceProfileProject"
-                    },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileProject:ServiceProfileProject",
                     "description": "Project information\n"
                 },
                 "selfProfile": {
@@ -14091,7 +13952,7 @@
                 }
             },
             "required": [
-                "changeLogs",
+                "changeLog",
                 "description",
                 "href",
                 "name",
@@ -14106,11 +13967,8 @@
                     },
                     "description": "Access point config information\n"
                 },
-                "accounts": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileAccount:ServiceProfileAccount"
-                    },
+                "account": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileAccount:ServiceProfileAccount",
                     "description": "Account\n"
                 },
                 "allowedEmails": {
@@ -14131,11 +13989,8 @@
                     "type": "string",
                     "description": "User-provided service description\n"
                 },
-                "marketingInfos": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileMarketingInfo:ServiceProfileMarketingInfo"
-                    },
+                "marketingInfo": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileMarketingInfo:ServiceProfileMarketingInfo",
                     "description": "Marketing Info\n"
                 },
                 "metros": {
@@ -14163,11 +14018,8 @@
                     },
                     "description": "Ports\n"
                 },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfileProject:ServiceProfileProject"
-                    },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfileProject:ServiceProfileProject",
                     "description": "Project information\n"
                 },
                 "selfProfile": {
@@ -14242,11 +14094,8 @@
                         },
                         "description": "Access point config information\n"
                     },
-                    "accounts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ServiceProfileAccount:ServiceProfileAccount"
-                        },
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/ServiceProfileAccount:ServiceProfileAccount",
                         "description": "Account\n"
                     },
                     "allowedEmails": {
@@ -14256,11 +14105,8 @@
                         },
                         "description": "Array of contact emails\n"
                     },
-                    "changeLogs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ServiceProfileChangeLog:ServiceProfileChangeLog"
-                        },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/ServiceProfileChangeLog:ServiceProfileChangeLog",
                         "description": "Captures connection lifecycle change information\n"
                     },
                     "customFields": {
@@ -14278,11 +14124,8 @@
                         "type": "string",
                         "description": "Service Profile URI response attribute\n"
                     },
-                    "marketingInfos": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ServiceProfileMarketingInfo:ServiceProfileMarketingInfo"
-                        },
+                    "marketingInfo": {
+                        "$ref": "#/types/equinix:fabric/ServiceProfileMarketingInfo:ServiceProfileMarketingInfo",
                         "description": "Marketing Info\n"
                     },
                     "metros": {
@@ -14310,11 +14153,8 @@
                         },
                         "description": "Ports\n"
                     },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/ServiceProfileProject:ServiceProfileProject"
-                        },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/ServiceProfileProject:ServiceProfileProject",
                         "description": "Project information\n"
                     },
                     "selfProfile": {
@@ -14802,17 +14642,17 @@
                     "type": "string",
                     "description": "Metro area for the new device. Conflicts with `facilities`.\n"
                 },
-                "networkType": {
-                    "type": "string",
-                    "description": "(Deprecated) Network type of a device, used in\n[Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this\nattribute is deprecated you should handle Network Type with one of\nequinix_metal_port,\nequinix.metal.DeviceNetworkType resources or\nequinix.metal.Port datasource.\nSee network_types guide for more info.\n",
-                    "deprecationMessage": "You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info"
-                },
-                "networks": {
+                "network": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:metal/DeviceNetwork:DeviceNetwork"
                     },
                     "description": "The device's private and public IP (v4 and v6) network details. See\nNetwork Attribute below for more details.\n"
+                },
+                "networkType": {
+                    "type": "string",
+                    "description": "(Deprecated) Network type of a device, used in\n[Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this\nattribute is deprecated you should handle Network Type with one of\nequinix_metal_port,\nequinix.metal.DeviceNetworkType resources or\nequinix.metal.Port datasource.\nSee network_types guide for more info.\n",
+                    "deprecationMessage": "You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info"
                 },
                 "operatingSystem": {
                     "type": "string",
@@ -14906,7 +14746,7 @@
                 "deployedHardwareReservationId",
                 "hostname",
                 "locked",
-                "networks",
+                "network",
                 "networkType",
                 "operatingSystem",
                 "plan",
@@ -15186,6 +15026,13 @@
                         "description": "Metro area for the new device. Conflicts with `facilities`.\n",
                         "willReplaceOnChanges": true
                     },
+                    "network": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:metal/DeviceNetwork:DeviceNetwork"
+                        },
+                        "description": "The device's private and public IP (v4 and v6) network details. See\nNetwork Attribute below for more details.\n"
+                    },
                     "networkType": {
                         "type": "string",
                         "oneOf": [
@@ -15199,13 +15046,6 @@
                         ],
                         "description": "(Deprecated) Network type of a device, used in\n[Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this\nattribute is deprecated you should handle Network Type with one of\nequinix_metal_port,\nequinix.metal.DeviceNetworkType resources or\nequinix.metal.Port datasource.\nSee network_types guide for more info.\n",
                         "deprecationMessage": "You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info"
-                    },
-                    "networks": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/DeviceNetwork:DeviceNetwork"
-                        },
-                        "description": "The device's private and public IP (v4 and v6) network details. See\nNetwork Attribute below for more details.\n"
                     },
                     "operatingSystem": {
                         "type": "string",
@@ -18783,11 +18623,8 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getConnection.\n",
                 "properties": {
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionProject:getConnectionProject"
-                        },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/getConnectionProject:getConnectionProject",
                         "description": "Project information\n"
                     },
                     "uuid": {
@@ -18800,21 +18637,15 @@
             "outputs": {
                 "description": "A collection of values returned by getConnection.\n",
                 "properties": {
-                    "aSides": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionASide:getConnectionASide"
-                        },
+                    "aSide": {
+                        "$ref": "#/types/equinix:fabric/getConnectionASide:getConnectionASide",
                         "description": "Requester or Customer side connection configuration object of the multi-segment connection\n"
                     },
-                    "accounts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionAccount:getConnectionAccount"
-                        },
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/getConnectionAccount:getConnectionAccount",
                         "description": "Customer account information that is associated with this connection\n"
                     },
-                    "additionalInfos": {
+                    "additionalInfo": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/equinix:fabric/getConnectionAdditionalInfo:getConnectionAdditionalInfo"
@@ -18825,11 +18656,8 @@
                         "type": "integer",
                         "description": "Connection bandwidth in Mbps\n"
                     },
-                    "changeLogs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionChangeLog:getConnectionChangeLog"
-                        },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/getConnectionChangeLog:getConnectionChangeLog",
                         "description": "Captures connection lifecycle change information\n"
                     },
                     "description": {
@@ -18863,32 +18691,20 @@
                         },
                         "description": "Preferences for notifications on connection configuration or status changes\n"
                     },
-                    "operations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionOperation:getConnectionOperation"
-                        },
+                    "operation": {
+                        "$ref": "#/types/equinix:fabric/getConnectionOperation:getConnectionOperation",
                         "description": "Connection specific operational data\n"
                     },
-                    "orders": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionOrder:getConnectionOrder"
-                        },
+                    "order": {
+                        "$ref": "#/types/equinix:fabric/getConnectionOrder:getConnectionOrder",
                         "description": "Order related to this connection information\n"
                     },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionProject:getConnectionProject"
-                        },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/getConnectionProject:getConnectionProject",
                         "description": "Project information\n"
                     },
-                    "redundancies": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionRedundancy:getConnectionRedundancy"
-                        },
+                    "redundancy": {
+                        "$ref": "#/types/equinix:fabric/getConnectionRedundancy:getConnectionRedundancy",
                         "description": "Redundancy Information\n"
                     },
                     "state": {
@@ -18903,33 +18719,30 @@
                         "type": "string",
                         "description": "Equinix-assigned connection identifier\n"
                     },
-                    "zSides": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getConnectionZSide:getConnectionZSide"
-                        },
+                    "zSide": {
+                        "$ref": "#/types/equinix:fabric/getConnectionZSide:getConnectionZSide",
                         "description": "Destination or Provider side connection configuration object of the multi-segment connection\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "aSides",
-                    "accounts",
-                    "additionalInfos",
+                    "aSide",
+                    "account",
+                    "additionalInfo",
                     "bandwidth",
-                    "changeLogs",
+                    "changeLog",
                     "description",
                     "direction",
                     "href",
                     "isRemote",
                     "name",
                     "notifications",
-                    "operations",
-                    "orders",
-                    "redundancies",
+                    "operation",
+                    "order",
+                    "redundancy",
                     "state",
                     "type",
-                    "zSides",
+                    "zSide",
                     "id"
                 ]
             }
@@ -18951,11 +18764,8 @@
             "outputs": {
                 "description": "A collection of values returned by getPort.\n",
                 "properties": {
-                    "accounts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortAccount:getPortAccount"
-                        },
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/getPortAccount:getPortAccount",
                         "description": "Customer account information that is associated with this port\n"
                     },
                     "availableBandwidth": {
@@ -18966,29 +18776,20 @@
                         "type": "integer",
                         "description": "Port bandwidth in Mbps\n"
                     },
-                    "changeLogs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortChangeLog:getPortChangeLog"
-                        },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/getPortChangeLog:getPortChangeLog",
                         "description": "Captures port lifecycle change information\n"
                     },
                     "description": {
                         "type": "string",
                         "description": "Port description\n"
                     },
-                    "devices": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortDevice:getPortDevice"
-                        },
+                    "device": {
+                        "$ref": "#/types/equinix:fabric/getPortDevice:getPortDevice",
                         "description": "Port device\n"
                     },
-                    "encapsulations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortEncapsulation:getPortEncapsulation"
-                        },
+                    "encapsulation": {
+                        "$ref": "#/types/equinix:fabric/getPortEncapsulation:getPortEncapsulation",
                         "description": "Port encapsulation protocol\n"
                     },
                     "href": {
@@ -18999,36 +18800,24 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
-                    "lags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortLag:getPortLag"
-                        },
+                    "lag": {
+                        "$ref": "#/types/equinix:fabric/getPortLag:getPortLag",
                         "description": "Port Lag\n"
                     },
-                    "locations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortLocation:getPortLocation"
-                        },
+                    "location": {
+                        "$ref": "#/types/equinix:fabric/getPortLocation:getPortLocation",
                         "description": "Port location information\n"
                     },
                     "name": {
                         "type": "string",
                         "description": "Port name\n"
                     },
-                    "operations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortOperation:getPortOperation"
-                        },
+                    "operation": {
+                        "$ref": "#/types/equinix:fabric/getPortOperation:getPortOperation",
                         "description": "Port specific operational data\n"
                     },
-                    "redundancies": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortRedundancy:getPortRedundancy"
-                        },
+                    "redundancy": {
+                        "$ref": "#/types/equinix:fabric/getPortRedundancy:getPortRedundancy",
                         "description": "Port redundancy information\n"
                     },
                     "serviceType": {
@@ -19054,19 +18843,19 @@
                 },
                 "type": "object",
                 "required": [
-                    "accounts",
+                    "account",
                     "availableBandwidth",
                     "bandwidth",
-                    "changeLogs",
+                    "changeLog",
                     "description",
-                    "devices",
-                    "encapsulations",
+                    "device",
+                    "encapsulation",
                     "href",
-                    "lags",
-                    "locations",
+                    "lag",
+                    "location",
                     "name",
-                    "operations",
-                    "redundancies",
+                    "operation",
+                    "redundancy",
                     "serviceType",
                     "state",
                     "type",
@@ -19093,10 +18882,10 @@
             "outputs": {
                 "description": "A collection of values returned by getPorts.\n",
                 "properties": {
-                    "datas": {
+                    "data": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/equinix:fabric/getPortsData:getPortsData"
+                            "$ref": "#/types/equinix:fabric/getPortsDatum:getPortsDatum"
                         },
                         "description": "List of  Ports\n"
                     },
@@ -19114,7 +18903,7 @@
                 },
                 "type": "object",
                 "required": [
-                    "datas",
+                    "data",
                     "id"
                 ]
             }
@@ -19148,11 +18937,8 @@
                         },
                         "description": "Access point config information\n"
                     },
-                    "accounts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfileAccount:getServiceProfileAccount"
-                        },
+                    "account": {
+                        "$ref": "#/types/equinix:fabric/getServiceProfileAccount:getServiceProfileAccount",
                         "description": "Account\n"
                     },
                     "allowedEmails": {
@@ -19162,11 +18948,8 @@
                         },
                         "description": "Array of contact emails\n"
                     },
-                    "changeLogs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfileChangeLog:getServiceProfileChangeLog"
-                        },
+                    "changeLog": {
+                        "$ref": "#/types/equinix:fabric/getServiceProfileChangeLog:getServiceProfileChangeLog",
                         "description": "Captures connection lifecycle change information\n"
                     },
                     "customFields": {
@@ -19188,11 +18971,8 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
-                    "marketingInfos": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfileMarketingInfo:getServiceProfileMarketingInfo"
-                        },
+                    "marketingInfo": {
+                        "$ref": "#/types/equinix:fabric/getServiceProfileMarketingInfo:getServiceProfileMarketingInfo",
                         "description": "Marketing Info\n"
                     },
                     "metros": {
@@ -19220,11 +19000,8 @@
                         },
                         "description": "Ports\n"
                     },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfileProject:getServiceProfileProject"
-                        },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/getServiceProfileProject:getServiceProfileProject",
                         "description": "Project information\n"
                     },
                     "selfProfile": {
@@ -19258,18 +19035,18 @@
                 "type": "object",
                 "required": [
                     "accessPointTypeConfigs",
-                    "accounts",
+                    "account",
                     "allowedEmails",
-                    "changeLogs",
+                    "changeLog",
                     "customFields",
                     "description",
                     "href",
-                    "marketingInfos",
+                    "marketingInfo",
                     "metros",
                     "name",
                     "notifications",
                     "ports",
-                    "projects",
+                    "project",
                     "selfProfile",
                     "tags",
                     "type",
@@ -19283,14 +19060,11 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getServiceProfiles.\n",
                 "properties": {
-                    "filters": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfilesFilter:getServiceProfilesFilter"
-                        },
+                    "filter": {
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesFilter:getServiceProfilesFilter",
                         "description": "Service Profile Search Filter\n"
                     },
-                    "sorts": {
+                    "sort": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/equinix:fabric/getServiceProfilesSort:getServiceProfilesSort"
@@ -19303,25 +19077,22 @@
             "outputs": {
                 "description": "A collection of values returned by getServiceProfiles.\n",
                 "properties": {
-                    "datas": {
+                    "data": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfilesData:getServiceProfilesData"
+                            "$ref": "#/types/equinix:fabric/getServiceProfilesDatum:getServiceProfilesDatum"
                         },
                         "description": "List of  Service Profiles\n"
                     },
-                    "filters": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getServiceProfilesFilter:getServiceProfilesFilter"
-                        },
+                    "filter": {
+                        "$ref": "#/types/equinix:fabric/getServiceProfilesFilter:getServiceProfilesFilter",
                         "description": "Service Profile Search Filter\n"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
-                    "sorts": {
+                    "sort": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/equinix:fabric/getServiceProfilesSort:getServiceProfilesSort"
@@ -19331,7 +19102,7 @@
                 },
                 "type": "object",
                 "required": [
-                    "datas",
+                    "data",
                     "id"
                 ]
             }
@@ -20083,11 +19854,8 @@
             "outputs": {
                 "description": "A collection of values returned by getOrganization.\n",
                 "properties": {
-                    "addresses": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/getOrganizationAddress:getOrganizationAddress"
-                        },
+                    "address": {
+                        "$ref": "#/types/equinix:metal/getOrganizationAddress:getOrganizationAddress",
                         "description": "Postal address.\n"
                     },
                     "description": {
@@ -20126,7 +19894,7 @@
                 },
                 "type": "object",
                 "required": [
-                    "addresses",
+                    "address",
                     "description",
                     "logo",
                     "name",
@@ -20437,11 +20205,8 @@
                         "type": "boolean",
                         "description": "Whether Backend Transfer is enabled for this project.\n"
                     },
-                    "bgpConfigs": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/getProjectBgpConfig:getProjectBgpConfig"
-                        },
+                    "bgpConfig": {
+                        "$ref": "#/types/equinix:metal/getProjectBgpConfig:getProjectBgpConfig",
                         "description": "Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).\n"
                     },
                     "created": {
@@ -20481,7 +20246,7 @@
                 "type": "object",
                 "required": [
                     "backendTransfer",
-                    "bgpConfigs",
+                    "bgpConfig",
                     "created",
                     "name",
                     "organizationId",

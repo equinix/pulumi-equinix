@@ -15,20 +15,20 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Requester or Customer side connection configuration object of the multi-segment connection
         /// </summary>
-        [Output("aSides")]
-        public Output<ImmutableArray<Outputs.ConnectionASide>> ASides { get; private set; } = null!;
+        [Output("aSide")]
+        public Output<Outputs.ConnectionASide> ASide { get; private set; } = null!;
 
         /// <summary>
         /// Customer account information that is associated with this connection
         /// </summary>
-        [Output("accounts")]
-        public Output<ImmutableArray<Outputs.ConnectionAccount>> Accounts { get; private set; } = null!;
+        [Output("account")]
+        public Output<Outputs.ConnectionAccount> Account { get; private set; } = null!;
 
         /// <summary>
         /// Connection additional information
         /// </summary>
-        [Output("additionalInfos")]
-        public Output<ImmutableArray<Outputs.ConnectionAdditionalInfo>> AdditionalInfos { get; private set; } = null!;
+        [Output("additionalInfo")]
+        public Output<ImmutableArray<Outputs.ConnectionAdditionalInfo>> AdditionalInfo { get; private set; } = null!;
 
         /// <summary>
         /// Connection bandwidth in Mbps
@@ -39,8 +39,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Captures connection lifecycle change information
         /// </summary>
-        [Output("changeLogs")]
-        public Output<ImmutableArray<Outputs.ConnectionChangeLog>> ChangeLogs { get; private set; } = null!;
+        [Output("changeLog")]
+        public Output<Outputs.ConnectionChangeLog> ChangeLog { get; private set; } = null!;
 
         /// <summary>
         /// Connection directionality from the requester point of view
@@ -75,26 +75,26 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Connection type-specific operational data
         /// </summary>
-        [Output("operations")]
-        public Output<ImmutableArray<Outputs.ConnectionOperation>> Operations { get; private set; } = null!;
+        [Output("operation")]
+        public Output<Outputs.ConnectionOperation> Operation { get; private set; } = null!;
 
         /// <summary>
         /// Order related to this connection information
         /// </summary>
-        [Output("orders")]
-        public Output<ImmutableArray<Outputs.ConnectionOrder>> Orders { get; private set; } = null!;
+        [Output("order")]
+        public Output<Outputs.ConnectionOrder?> Order { get; private set; } = null!;
 
         /// <summary>
         /// Project information
         /// </summary>
-        [Output("projects")]
-        public Output<ImmutableArray<Outputs.ConnectionProject>> Projects { get; private set; } = null!;
+        [Output("project")]
+        public Output<Outputs.ConnectionProject?> Project { get; private set; } = null!;
 
         /// <summary>
         /// Redundancy Information
         /// </summary>
-        [Output("redundancies")]
-        public Output<ImmutableArray<Outputs.ConnectionRedundancy>> Redundancies { get; private set; } = null!;
+        [Output("redundancy")]
+        public Output<Outputs.ConnectionRedundancy?> Redundancy { get; private set; } = null!;
 
         /// <summary>
         /// Connection overall state
@@ -111,8 +111,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection
         /// </summary>
-        [Output("zSides")]
-        public Output<ImmutableArray<Outputs.ConnectionZSide>> ZSides { get; private set; } = null!;
+        [Output("zSide")]
+        public Output<Outputs.ConnectionZSide> ZSide { get; private set; } = null!;
 
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Pulumi.Equinix.Fabric
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -161,28 +161,22 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
-        [Input("aSides", required: true)]
-        private InputList<Inputs.ConnectionASideArgs>? _aSides;
-
         /// <summary>
         /// Requester or Customer side connection configuration object of the multi-segment connection
         /// </summary>
-        public InputList<Inputs.ConnectionASideArgs> ASides
-        {
-            get => _aSides ?? (_aSides = new InputList<Inputs.ConnectionASideArgs>());
-            set => _aSides = value;
-        }
+        [Input("aSide", required: true)]
+        public Input<Inputs.ConnectionASideArgs> ASide { get; set; } = null!;
 
-        [Input("additionalInfos")]
-        private InputList<Inputs.ConnectionAdditionalInfoArgs>? _additionalInfos;
+        [Input("additionalInfo")]
+        private InputList<Inputs.ConnectionAdditionalInfoArgs>? _additionalInfo;
 
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public InputList<Inputs.ConnectionAdditionalInfoArgs> AdditionalInfos
+        public InputList<Inputs.ConnectionAdditionalInfoArgs> AdditionalInfo
         {
-            get => _additionalInfos ?? (_additionalInfos = new InputList<Inputs.ConnectionAdditionalInfoArgs>());
-            set => _additionalInfos = value;
+            get => _additionalInfo ?? (_additionalInfo = new InputList<Inputs.ConnectionAdditionalInfoArgs>());
+            set => _additionalInfo = value;
         }
 
         /// <summary>
@@ -209,41 +203,23 @@ namespace Pulumi.Equinix.Fabric
             set => _notifications = value;
         }
 
-        [Input("orders")]
-        private InputList<Inputs.ConnectionOrderArgs>? _orders;
-
         /// <summary>
         /// Order related to this connection information
         /// </summary>
-        public InputList<Inputs.ConnectionOrderArgs> Orders
-        {
-            get => _orders ?? (_orders = new InputList<Inputs.ConnectionOrderArgs>());
-            set => _orders = value;
-        }
-
-        [Input("projects")]
-        private InputList<Inputs.ConnectionProjectArgs>? _projects;
+        [Input("order")]
+        public Input<Inputs.ConnectionOrderArgs>? Order { get; set; }
 
         /// <summary>
         /// Project information
         /// </summary>
-        public InputList<Inputs.ConnectionProjectArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.ConnectionProjectArgs>());
-            set => _projects = value;
-        }
-
-        [Input("redundancies")]
-        private InputList<Inputs.ConnectionRedundancyArgs>? _redundancies;
+        [Input("project")]
+        public Input<Inputs.ConnectionProjectArgs>? Project { get; set; }
 
         /// <summary>
         /// Redundancy Information
         /// </summary>
-        public InputList<Inputs.ConnectionRedundancyArgs> Redundancies
-        {
-            get => _redundancies ?? (_redundancies = new InputList<Inputs.ConnectionRedundancyArgs>());
-            set => _redundancies = value;
-        }
+        [Input("redundancy")]
+        public Input<Inputs.ConnectionRedundancyArgs>? Redundancy { get; set; }
 
         /// <summary>
         /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
@@ -251,17 +227,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType> Type { get; set; } = null!;
 
-        [Input("zSides", required: true)]
-        private InputList<Inputs.ConnectionZSideArgs>? _zSides;
-
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection
         /// </summary>
-        public InputList<Inputs.ConnectionZSideArgs> ZSides
-        {
-            get => _zSides ?? (_zSides = new InputList<Inputs.ConnectionZSideArgs>());
-            set => _zSides = value;
-        }
+        [Input("zSide", required: true)]
+        public Input<Inputs.ConnectionZSideArgs> ZSide { get; set; } = null!;
 
         public ConnectionArgs()
         {
@@ -271,40 +241,28 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
-        [Input("aSides")]
-        private InputList<Inputs.ConnectionASideGetArgs>? _aSides;
-
         /// <summary>
         /// Requester or Customer side connection configuration object of the multi-segment connection
         /// </summary>
-        public InputList<Inputs.ConnectionASideGetArgs> ASides
-        {
-            get => _aSides ?? (_aSides = new InputList<Inputs.ConnectionASideGetArgs>());
-            set => _aSides = value;
-        }
-
-        [Input("accounts")]
-        private InputList<Inputs.ConnectionAccountGetArgs>? _accounts;
+        [Input("aSide")]
+        public Input<Inputs.ConnectionASideGetArgs>? ASide { get; set; }
 
         /// <summary>
         /// Customer account information that is associated with this connection
         /// </summary>
-        public InputList<Inputs.ConnectionAccountGetArgs> Accounts
-        {
-            get => _accounts ?? (_accounts = new InputList<Inputs.ConnectionAccountGetArgs>());
-            set => _accounts = value;
-        }
+        [Input("account")]
+        public Input<Inputs.ConnectionAccountGetArgs>? Account { get; set; }
 
-        [Input("additionalInfos")]
-        private InputList<Inputs.ConnectionAdditionalInfoGetArgs>? _additionalInfos;
+        [Input("additionalInfo")]
+        private InputList<Inputs.ConnectionAdditionalInfoGetArgs>? _additionalInfo;
 
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public InputList<Inputs.ConnectionAdditionalInfoGetArgs> AdditionalInfos
+        public InputList<Inputs.ConnectionAdditionalInfoGetArgs> AdditionalInfo
         {
-            get => _additionalInfos ?? (_additionalInfos = new InputList<Inputs.ConnectionAdditionalInfoGetArgs>());
-            set => _additionalInfos = value;
+            get => _additionalInfo ?? (_additionalInfo = new InputList<Inputs.ConnectionAdditionalInfoGetArgs>());
+            set => _additionalInfo = value;
         }
 
         /// <summary>
@@ -313,17 +271,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
-        [Input("changeLogs")]
-        private InputList<Inputs.ConnectionChangeLogGetArgs>? _changeLogs;
-
         /// <summary>
         /// Captures connection lifecycle change information
         /// </summary>
-        public InputList<Inputs.ConnectionChangeLogGetArgs> ChangeLogs
-        {
-            get => _changeLogs ?? (_changeLogs = new InputList<Inputs.ConnectionChangeLogGetArgs>());
-            set => _changeLogs = value;
-        }
+        [Input("changeLog")]
+        public Input<Inputs.ConnectionChangeLogGetArgs>? ChangeLog { get; set; }
 
         /// <summary>
         /// Connection directionality from the requester point of view
@@ -361,53 +313,29 @@ namespace Pulumi.Equinix.Fabric
             set => _notifications = value;
         }
 
-        [Input("operations")]
-        private InputList<Inputs.ConnectionOperationGetArgs>? _operations;
-
         /// <summary>
         /// Connection type-specific operational data
         /// </summary>
-        public InputList<Inputs.ConnectionOperationGetArgs> Operations
-        {
-            get => _operations ?? (_operations = new InputList<Inputs.ConnectionOperationGetArgs>());
-            set => _operations = value;
-        }
-
-        [Input("orders")]
-        private InputList<Inputs.ConnectionOrderGetArgs>? _orders;
+        [Input("operation")]
+        public Input<Inputs.ConnectionOperationGetArgs>? Operation { get; set; }
 
         /// <summary>
         /// Order related to this connection information
         /// </summary>
-        public InputList<Inputs.ConnectionOrderGetArgs> Orders
-        {
-            get => _orders ?? (_orders = new InputList<Inputs.ConnectionOrderGetArgs>());
-            set => _orders = value;
-        }
-
-        [Input("projects")]
-        private InputList<Inputs.ConnectionProjectGetArgs>? _projects;
+        [Input("order")]
+        public Input<Inputs.ConnectionOrderGetArgs>? Order { get; set; }
 
         /// <summary>
         /// Project information
         /// </summary>
-        public InputList<Inputs.ConnectionProjectGetArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.ConnectionProjectGetArgs>());
-            set => _projects = value;
-        }
-
-        [Input("redundancies")]
-        private InputList<Inputs.ConnectionRedundancyGetArgs>? _redundancies;
+        [Input("project")]
+        public Input<Inputs.ConnectionProjectGetArgs>? Project { get; set; }
 
         /// <summary>
         /// Redundancy Information
         /// </summary>
-        public InputList<Inputs.ConnectionRedundancyGetArgs> Redundancies
-        {
-            get => _redundancies ?? (_redundancies = new InputList<Inputs.ConnectionRedundancyGetArgs>());
-            set => _redundancies = value;
-        }
+        [Input("redundancy")]
+        public Input<Inputs.ConnectionRedundancyGetArgs>? Redundancy { get; set; }
 
         /// <summary>
         /// Connection overall state
@@ -421,17 +349,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType>? Type { get; set; }
 
-        [Input("zSides")]
-        private InputList<Inputs.ConnectionZSideGetArgs>? _zSides;
-
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection
         /// </summary>
-        public InputList<Inputs.ConnectionZSideGetArgs> ZSides
-        {
-            get => _zSides ?? (_zSides = new InputList<Inputs.ConnectionZSideGetArgs>());
-            set => _zSides = value;
-        }
+        [Input("zSide")]
+        public Input<Inputs.ConnectionZSideGetArgs>? ZSide { get; set; }
 
         public ConnectionState()
         {

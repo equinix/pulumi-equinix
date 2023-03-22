@@ -1,0 +1,3 @@
+name: equinix-networkedge-acl-template
+runtime: java
+description: An Equinix Network Edge Access Control List template resource

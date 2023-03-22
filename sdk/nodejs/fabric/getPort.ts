@@ -32,7 +32,7 @@ export interface GetPortResult {
     /**
      * Customer account information that is associated with this port
      */
-    readonly accounts: outputs.fabric.GetPortAccount[];
+    readonly account: outputs.fabric.GetPortAccount;
     /**
      * Port available bandwidth in Mbps
      */
@@ -44,7 +44,7 @@ export interface GetPortResult {
     /**
      * Captures port lifecycle change information
      */
-    readonly changeLogs: outputs.fabric.GetPortChangeLog[];
+    readonly changeLog: outputs.fabric.GetPortChangeLog;
     /**
      * Port description
      */
@@ -52,11 +52,11 @@ export interface GetPortResult {
     /**
      * Port device
      */
-    readonly devices: outputs.fabric.GetPortDevice[];
+    readonly device: outputs.fabric.GetPortDevice;
     /**
      * Port encapsulation protocol
      */
-    readonly encapsulations: outputs.fabric.GetPortEncapsulation[];
+    readonly encapsulation: outputs.fabric.GetPortEncapsulation;
     /**
      * Port URI information
      */
@@ -68,11 +68,11 @@ export interface GetPortResult {
     /**
      * Port Lag
      */
-    readonly lags: outputs.fabric.GetPortLag[];
+    readonly lag: outputs.fabric.GetPortLag;
     /**
      * Port location information
      */
-    readonly locations: outputs.fabric.GetPortLocation[];
+    readonly location: outputs.fabric.GetPortLocation;
     /**
      * Port name
      */
@@ -80,11 +80,11 @@ export interface GetPortResult {
     /**
      * Port specific operational data
      */
-    readonly operations: outputs.fabric.GetPortOperation[];
+    readonly operation: outputs.fabric.GetPortOperation;
     /**
      * Port redundancy information
      */
-    readonly redundancies: outputs.fabric.GetPortRedundancy[];
+    readonly redundancy: outputs.fabric.GetPortRedundancy;
     /**
      * Port service type
      */

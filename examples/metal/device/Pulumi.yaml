@@ -1,0 +1,18 @@
+name: equinix-metal-device
+runtime: yaml
+description: An Equinix Metal device resource
+config:
+  projectId:
+    type: string
+resources:
+  web:
+    type: equinix:metal:Device
+    properties:
+      hostname: webserver1
+      plan: c3.small.x86
+      operatingSystem: ubuntu_20_04
+      metro: sv
+      billingCycle: hourly
+      projectId: ${projectId}
+outputs:
+  webPublicIp: http://${web.accessPublicIpv4}

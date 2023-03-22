@@ -12,16 +12,16 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ConnectionOperationErrorGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("additionalInfos")]
-        private InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs>? _additionalInfos;
+        [Input("additionalInfo")]
+        private InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs>? _additionalInfo;
 
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs> AdditionalInfos
+        public InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs> AdditionalInfo
         {
-            get => _additionalInfos ?? (_additionalInfos = new InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs>());
-            set => _additionalInfos = value;
+            get => _additionalInfo ?? (_additionalInfo = new InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs>());
+            set => _additionalInfo = value;
         }
 
         [Input("correlationId")]

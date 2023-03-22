@@ -42,7 +42,7 @@ export class ServiceProfile extends pulumi.CustomResource {
     /**
      * Account
      */
-    public readonly accounts!: pulumi.Output<outputs.fabric.ServiceProfileAccount[] | undefined>;
+    public readonly account!: pulumi.Output<outputs.fabric.ServiceProfileAccount | undefined>;
     /**
      * Array of contact emails
      */
@@ -50,7 +50,7 @@ export class ServiceProfile extends pulumi.CustomResource {
     /**
      * Captures connection lifecycle change information
      */
-    public /*out*/ readonly changeLogs!: pulumi.Output<outputs.fabric.ServiceProfileChangeLog[]>;
+    public /*out*/ readonly changeLog!: pulumi.Output<outputs.fabric.ServiceProfileChangeLog>;
     /**
      * Custom Fields
      */
@@ -66,7 +66,7 @@ export class ServiceProfile extends pulumi.CustomResource {
     /**
      * Marketing Info
      */
-    public readonly marketingInfos!: pulumi.Output<outputs.fabric.ServiceProfileMarketingInfo[] | undefined>;
+    public readonly marketingInfo!: pulumi.Output<outputs.fabric.ServiceProfileMarketingInfo | undefined>;
     /**
      * Access point config information
      */
@@ -86,7 +86,7 @@ export class ServiceProfile extends pulumi.CustomResource {
     /**
      * Project information
      */
-    public readonly projects!: pulumi.Output<outputs.fabric.ServiceProfileProject[] | undefined>;
+    public readonly project!: pulumi.Output<outputs.fabric.ServiceProfileProject | undefined>;
     /**
      * Self Profile
      */
@@ -130,18 +130,18 @@ export class ServiceProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceProfileState | undefined;
             resourceInputs["accessPointTypeConfigs"] = state ? state.accessPointTypeConfigs : undefined;
-            resourceInputs["accounts"] = state ? state.accounts : undefined;
+            resourceInputs["account"] = state ? state.account : undefined;
             resourceInputs["allowedEmails"] = state ? state.allowedEmails : undefined;
-            resourceInputs["changeLogs"] = state ? state.changeLogs : undefined;
+            resourceInputs["changeLog"] = state ? state.changeLog : undefined;
             resourceInputs["customFields"] = state ? state.customFields : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
-            resourceInputs["marketingInfos"] = state ? state.marketingInfos : undefined;
+            resourceInputs["marketingInfo"] = state ? state.marketingInfo : undefined;
             resourceInputs["metros"] = state ? state.metros : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["projects"] = state ? state.projects : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfProfile"] = state ? state.selfProfile : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -158,23 +158,23 @@ export class ServiceProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accessPointTypeConfigs"] = args ? args.accessPointTypeConfigs : undefined;
-            resourceInputs["accounts"] = args ? args.accounts : undefined;
+            resourceInputs["account"] = args ? args.account : undefined;
             resourceInputs["allowedEmails"] = args ? args.allowedEmails : undefined;
             resourceInputs["customFields"] = args ? args.customFields : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["marketingInfos"] = args ? args.marketingInfos : undefined;
+            resourceInputs["marketingInfo"] = args ? args.marketingInfo : undefined;
             resourceInputs["metros"] = args ? args.metros : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["ports"] = args ? args.ports : undefined;
-            resourceInputs["projects"] = args ? args.projects : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["selfProfile"] = args ? args.selfProfile : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["virtualDevices"] = args ? args.virtualDevices : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
-            resourceInputs["changeLogs"] = undefined /*out*/;
+            resourceInputs["changeLog"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }
@@ -194,7 +194,7 @@ export interface ServiceProfileState {
     /**
      * Account
      */
-    accounts?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccount>[]>;
+    account?: pulumi.Input<inputs.fabric.ServiceProfileAccount>;
     /**
      * Array of contact emails
      */
@@ -202,7 +202,7 @@ export interface ServiceProfileState {
     /**
      * Captures connection lifecycle change information
      */
-    changeLogs?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileChangeLog>[]>;
+    changeLog?: pulumi.Input<inputs.fabric.ServiceProfileChangeLog>;
     /**
      * Custom Fields
      */
@@ -218,7 +218,7 @@ export interface ServiceProfileState {
     /**
      * Marketing Info
      */
-    marketingInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileMarketingInfo>[]>;
+    marketingInfo?: pulumi.Input<inputs.fabric.ServiceProfileMarketingInfo>;
     /**
      * Access point config information
      */
@@ -238,7 +238,7 @@ export interface ServiceProfileState {
     /**
      * Project information
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileProject>[]>;
+    project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
      * Self Profile
      */
@@ -280,7 +280,7 @@ export interface ServiceProfileArgs {
     /**
      * Account
      */
-    accounts?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccount>[]>;
+    account?: pulumi.Input<inputs.fabric.ServiceProfileAccount>;
     /**
      * Array of contact emails
      */
@@ -296,7 +296,7 @@ export interface ServiceProfileArgs {
     /**
      * Marketing Info
      */
-    marketingInfos?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileMarketingInfo>[]>;
+    marketingInfo?: pulumi.Input<inputs.fabric.ServiceProfileMarketingInfo>;
     /**
      * Access point config information
      */
@@ -316,7 +316,7 @@ export interface ServiceProfileArgs {
     /**
      * Project information
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileProject>[]>;
+    project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
      * Self Profile
      */

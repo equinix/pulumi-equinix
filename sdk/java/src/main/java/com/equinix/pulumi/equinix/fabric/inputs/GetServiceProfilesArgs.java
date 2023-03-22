@@ -21,37 +21,37 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
      * Service Profile Search Filter
      * 
      */
-    @Import(name="filters")
-    private @Nullable Output<List<GetServiceProfilesFilterArgs>> filters;
+    @Import(name="filter")
+    private @Nullable Output<GetServiceProfilesFilterArgs> filter;
 
     /**
      * @return Service Profile Search Filter
      * 
      */
-    public Optional<Output<List<GetServiceProfilesFilterArgs>>> filters() {
-        return Optional.ofNullable(this.filters);
+    public Optional<Output<GetServiceProfilesFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * Service Profile Sort criteria for Search Request response payload
      * 
      */
-    @Import(name="sorts")
-    private @Nullable Output<List<GetServiceProfilesSortArgs>> sorts;
+    @Import(name="sort")
+    private @Nullable Output<List<GetServiceProfilesSortArgs>> sort;
 
     /**
      * @return Service Profile Sort criteria for Search Request response payload
      * 
      */
-    public Optional<Output<List<GetServiceProfilesSortArgs>>> sorts() {
-        return Optional.ofNullable(this.sorts);
+    public Optional<Output<List<GetServiceProfilesSortArgs>>> sort() {
+        return Optional.ofNullable(this.sort);
     }
 
     private GetServiceProfilesArgs() {}
 
     private GetServiceProfilesArgs(GetServiceProfilesArgs $) {
-        this.filters = $.filters;
-        this.sorts = $.sorts;
+        this.filter = $.filter;
+        this.sort = $.sort;
     }
 
     public static Builder builder() {
@@ -73,65 +73,55 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param filters Service Profile Search Filter
+         * @param filter Service Profile Search Filter
          * 
          * @return builder
          * 
          */
-        public Builder filters(@Nullable Output<List<GetServiceProfilesFilterArgs>> filters) {
-            $.filters = filters;
+        public Builder filter(@Nullable Output<GetServiceProfilesFilterArgs> filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param filters Service Profile Search Filter
+         * @param filter Service Profile Search Filter
          * 
          * @return builder
          * 
          */
-        public Builder filters(List<GetServiceProfilesFilterArgs> filters) {
-            return filters(Output.of(filters));
+        public Builder filter(GetServiceProfilesFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
-         * @param filters Service Profile Search Filter
+         * @param sort Service Profile Sort criteria for Search Request response payload
          * 
          * @return builder
          * 
          */
-        public Builder filters(GetServiceProfilesFilterArgs... filters) {
-            return filters(List.of(filters));
-        }
-
-        /**
-         * @param sorts Service Profile Sort criteria for Search Request response payload
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sorts(@Nullable Output<List<GetServiceProfilesSortArgs>> sorts) {
-            $.sorts = sorts;
+        public Builder sort(@Nullable Output<List<GetServiceProfilesSortArgs>> sort) {
+            $.sort = sort;
             return this;
         }
 
         /**
-         * @param sorts Service Profile Sort criteria for Search Request response payload
+         * @param sort Service Profile Sort criteria for Search Request response payload
          * 
          * @return builder
          * 
          */
-        public Builder sorts(List<GetServiceProfilesSortArgs> sorts) {
-            return sorts(Output.of(sorts));
+        public Builder sort(List<GetServiceProfilesSortArgs> sort) {
+            return sort(Output.of(sort));
         }
 
         /**
-         * @param sorts Service Profile Sort criteria for Search Request response payload
+         * @param sort Service Profile Sort criteria for Search Request response payload
          * 
          * @return builder
          * 
          */
-        public Builder sorts(GetServiceProfilesSortArgs... sorts) {
-            return sorts(List.of(sorts));
+        public Builder sort(GetServiceProfilesSortArgs... sort) {
+            return sort(List.of(sort));
         }
 
         public GetServiceProfilesArgs build() {

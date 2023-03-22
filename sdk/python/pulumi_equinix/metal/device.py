@@ -461,8 +461,8 @@ class _DeviceState:
                  ipxe_script_url: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]] = None,
                  network_type: Optional[pulumi.Input[Union[str, 'NetworkType']]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]] = None,
                  operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
                  plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]]] = None,
@@ -511,6 +511,8 @@ class _DeviceState:
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
         :param pulumi.Input[bool] locked: Whether the device is locked.
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] network: The device's private and public IP (v4 and v6) network details. See
+               Network Attribute below for more details.
         :param pulumi.Input[Union[str, 'NetworkType']] network_type: (Deprecated) Network type of a device, used in
                [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
                attribute is deprecated you should handle Network Type with one of
@@ -518,8 +520,6 @@ class _DeviceState:
                metal.DeviceNetworkType resources or
                metal.Port datasource.
                See network_types guide for more info.
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] networks: The device's private and public IP (v4 and v6) network details. See
-               Network Attribute below for more details.
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
                API auth token in the top of the page and see JSON from the API response.
@@ -592,13 +592,13 @@ class _DeviceState:
             pulumi.set(__self__, "locked", locked)
         if metro is not None:
             pulumi.set(__self__, "metro", metro)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if network_type is not None:
             warnings.warn("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""", DeprecationWarning)
             pulumi.log.warn("""network_type is deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
         if network_type is not None:
             pulumi.set(__self__, "network_type", network_type)
-        if networks is not None:
-            pulumi.set(__self__, "networks", networks)
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
         if plan is not None:
@@ -872,6 +872,19 @@ class _DeviceState:
         pulumi.set(self, "metro", value)
 
     @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]]:
+        """
+        The device's private and public IP (v4 and v6) network details. See
+        Network Attribute below for more details.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]]):
+        pulumi.set(self, "network", value)
+
+    @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[Union[str, 'NetworkType']]]:
         """
@@ -888,19 +901,6 @@ class _DeviceState:
     @network_type.setter
     def network_type(self, value: Optional[pulumi.Input[Union[str, 'NetworkType']]]):
         pulumi.set(self, "network_type", value)
-
-    @property
-    @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]]:
-        """
-        The device's private and public IP (v4 and v6) network details. See
-        Network Attribute below for more details.
-        """
-        return pulumi.get(self, "networks")
-
-    @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]]):
-        pulumi.set(self, "networks", value)
 
     @property
     @pulumi.getter(name="operatingSystem")
@@ -1612,8 +1612,8 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["deployed_facility"] = None
             __props__.__dict__["deployed_hardware_reservation_id"] = None
             __props__.__dict__["locked"] = None
+            __props__.__dict__["network"] = None
             __props__.__dict__["network_type"] = None
-            __props__.__dict__["networks"] = None
             __props__.__dict__["ports"] = None
             __props__.__dict__["root_password"] = None
             __props__.__dict__["ssh_key_ids"] = None
@@ -1650,8 +1650,8 @@ class Device(pulumi.CustomResource):
             ipxe_script_url: Optional[pulumi.Input[str]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
             metro: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]]] = None,
             network_type: Optional[pulumi.Input[Union[str, 'NetworkType']]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]]] = None,
             operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
             plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]]] = None,
@@ -1705,6 +1705,8 @@ class Device(pulumi.CustomResource):
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
         :param pulumi.Input[bool] locked: Whether the device is locked.
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]] network: The device's private and public IP (v4 and v6) network details. See
+               Network Attribute below for more details.
         :param pulumi.Input[Union[str, 'NetworkType']] network_type: (Deprecated) Network type of a device, used in
                [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
                attribute is deprecated you should handle Network Type with one of
@@ -1712,8 +1714,6 @@ class Device(pulumi.CustomResource):
                metal.DeviceNetworkType resources or
                metal.Port datasource.
                See network_types guide for more info.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]] networks: The device's private and public IP (v4 and v6) network details. See
-               Network Attribute below for more details.
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
                API auth token in the top of the page and see JSON from the API response.
@@ -1771,8 +1771,8 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["ipxe_script_url"] = ipxe_script_url
         __props__.__dict__["locked"] = locked
         __props__.__dict__["metro"] = metro
+        __props__.__dict__["network"] = network
         __props__.__dict__["network_type"] = network_type
-        __props__.__dict__["networks"] = networks
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["plan"] = plan
         __props__.__dict__["ports"] = ports
@@ -1955,6 +1955,15 @@ class Device(pulumi.CustomResource):
         return pulumi.get(self, "metro")
 
     @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[Sequence['outputs.DeviceNetwork']]:
+        """
+        The device's private and public IP (v4 and v6) network details. See
+        Network Attribute below for more details.
+        """
+        return pulumi.get(self, "network")
+
+    @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
@@ -1967,15 +1976,6 @@ class Device(pulumi.CustomResource):
         See network_types guide for more info.
         """
         return pulumi.get(self, "network_type")
-
-    @property
-    @pulumi.getter
-    def networks(self) -> pulumi.Output[Sequence['outputs.DeviceNetwork']]:
-        """
-        The device's private and public IP (v4 and v6) network details. See
-        Network Attribute below for more details.
-        """
-        return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter(name="operatingSystem")

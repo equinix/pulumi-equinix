@@ -33,7 +33,7 @@ export interface GetPortsResult {
     /**
      * List of  Ports
      */
-    readonly datas: outputs.fabric.GetPortsData[];
+    readonly data: outputs.fabric.GetPortsDatum[];
     /**
      * name
      */

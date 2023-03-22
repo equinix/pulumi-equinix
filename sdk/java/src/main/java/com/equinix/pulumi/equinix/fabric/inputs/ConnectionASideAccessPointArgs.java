@@ -3,15 +3,15 @@
 
 package com.equinix.pulumi.equinix.fabric.inputs;
 
-import com.equinix.pulumi.equinix.fabric.enums.AccessPointLinkProtocolType;
 import com.equinix.pulumi.equinix.fabric.enums.AccessPointPeeringType;
 import com.equinix.pulumi.equinix.fabric.enums.AccessPointType;
-import com.equinix.pulumi.equinix.fabric.enums.ProfileType;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointAccountArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointGatewayArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
+import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLocationArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointProfileArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointRoutingProtocolArgs;
 import com.equinix.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
 import com.pulumi.core.Either;
@@ -32,15 +32,15 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
      * Customer account information that is associated with this connection
      * 
      */
-    @Import(name="accounts")
-    private @Nullable Output<List<ConnectionASideAccessPointAccountArgs>> accounts;
+    @Import(name="account")
+    private @Nullable Output<ConnectionASideAccessPointAccountArgs> account;
 
     /**
      * @return Customer account information that is associated with this connection
      * 
      */
-    public Optional<Output<List<ConnectionASideAccessPointAccountArgs>>> accounts() {
-        return Optional.ofNullable(this.accounts);
+    public Optional<Output<ConnectionASideAccessPointAccountArgs>> account() {
+        return Optional.ofNullable(this.account);
     }
 
     @Import(name="authenticationKey")
@@ -50,32 +50,32 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.authenticationKey);
     }
 
-    @Import(name="gateways")
-    private @Nullable Output<List<ConnectionASideAccessPointGatewayArgs>> gateways;
+    @Import(name="gateway")
+    private @Nullable Output<ConnectionASideAccessPointGatewayArgs> gateway;
 
-    public Optional<Output<List<ConnectionASideAccessPointGatewayArgs>>> gateways() {
-        return Optional.ofNullable(this.gateways);
+    public Optional<Output<ConnectionASideAccessPointGatewayArgs>> gateway() {
+        return Optional.ofNullable(this.gateway);
     }
 
-    @Import(name="interfaces")
-    private @Nullable Output<List<ConnectionASideAccessPointInterfaceArgs>> interfaces;
+    @Import(name="interface")
+    private @Nullable Output<ConnectionASideAccessPointInterfaceArgs> interface_;
 
-    public Optional<Output<List<ConnectionASideAccessPointInterfaceArgs>>> interfaces() {
-        return Optional.ofNullable(this.interfaces);
+    public Optional<Output<ConnectionASideAccessPointInterfaceArgs>> interface_() {
+        return Optional.ofNullable(this.interface_);
     }
 
-    @Import(name="linkProtocols")
-    private @Nullable Output<Either<String,AccessPointLinkProtocolType>> linkProtocols;
+    @Import(name="linkProtocol")
+    private @Nullable Output<ConnectionASideAccessPointLinkProtocolArgs> linkProtocol;
 
-    public Optional<Output<Either<String,AccessPointLinkProtocolType>>> linkProtocols() {
-        return Optional.ofNullable(this.linkProtocols);
+    public Optional<Output<ConnectionASideAccessPointLinkProtocolArgs>> linkProtocol() {
+        return Optional.ofNullable(this.linkProtocol);
     }
 
-    @Import(name="locations")
-    private @Nullable Output<List<ConnectionASideAccessPointLocationArgs>> locations;
+    @Import(name="location")
+    private @Nullable Output<ConnectionASideAccessPointLocationArgs> location;
 
-    public Optional<Output<List<ConnectionASideAccessPointLocationArgs>>> locations() {
-        return Optional.ofNullable(this.locations);
+    public Optional<Output<ConnectionASideAccessPointLocationArgs>> location() {
+        return Optional.ofNullable(this.location);
     }
 
     @Import(name="peeringType")
@@ -85,18 +85,18 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.peeringType);
     }
 
-    @Import(name="ports")
-    private @Nullable Output<List<ConnectionASideAccessPointPortArgs>> ports;
+    @Import(name="port")
+    private @Nullable Output<ConnectionASideAccessPointPortArgs> port;
 
-    public Optional<Output<List<ConnectionASideAccessPointPortArgs>>> ports() {
-        return Optional.ofNullable(this.ports);
+    public Optional<Output<ConnectionASideAccessPointPortArgs>> port() {
+        return Optional.ofNullable(this.port);
     }
 
-    @Import(name="profiles")
-    private @Nullable Output<Either<String,ProfileType>> profiles;
+    @Import(name="profile")
+    private @Nullable Output<ConnectionASideAccessPointProfileArgs> profile;
 
-    public Optional<Output<Either<String,ProfileType>>> profiles() {
-        return Optional.ofNullable(this.profiles);
+    public Optional<Output<ConnectionASideAccessPointProfileArgs>> profile() {
+        return Optional.ofNullable(this.profile);
     }
 
     @Import(name="providerConnectionId")
@@ -135,30 +135,30 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.type);
     }
 
-    @Import(name="virtualDevices")
-    private @Nullable Output<List<ConnectionASideAccessPointVirtualDeviceArgs>> virtualDevices;
+    @Import(name="virtualDevice")
+    private @Nullable Output<ConnectionASideAccessPointVirtualDeviceArgs> virtualDevice;
 
-    public Optional<Output<List<ConnectionASideAccessPointVirtualDeviceArgs>>> virtualDevices() {
-        return Optional.ofNullable(this.virtualDevices);
+    public Optional<Output<ConnectionASideAccessPointVirtualDeviceArgs>> virtualDevice() {
+        return Optional.ofNullable(this.virtualDevice);
     }
 
     private ConnectionASideAccessPointArgs() {}
 
     private ConnectionASideAccessPointArgs(ConnectionASideAccessPointArgs $) {
-        this.accounts = $.accounts;
+        this.account = $.account;
         this.authenticationKey = $.authenticationKey;
-        this.gateways = $.gateways;
-        this.interfaces = $.interfaces;
-        this.linkProtocols = $.linkProtocols;
-        this.locations = $.locations;
+        this.gateway = $.gateway;
+        this.interface_ = $.interface_;
+        this.linkProtocol = $.linkProtocol;
+        this.location = $.location;
         this.peeringType = $.peeringType;
-        this.ports = $.ports;
-        this.profiles = $.profiles;
+        this.port = $.port;
+        this.profile = $.profile;
         this.providerConnectionId = $.providerConnectionId;
         this.routingProtocols = $.routingProtocols;
         this.sellerRegion = $.sellerRegion;
         this.type = $.type;
-        this.virtualDevices = $.virtualDevices;
+        this.virtualDevice = $.virtualDevice;
     }
 
     public static Builder builder() {
@@ -180,34 +180,24 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param accounts Customer account information that is associated with this connection
+         * @param account Customer account information that is associated with this connection
          * 
          * @return builder
          * 
          */
-        public Builder accounts(@Nullable Output<List<ConnectionASideAccessPointAccountArgs>> accounts) {
-            $.accounts = accounts;
+        public Builder account(@Nullable Output<ConnectionASideAccessPointAccountArgs> account) {
+            $.account = account;
             return this;
         }
 
         /**
-         * @param accounts Customer account information that is associated with this connection
+         * @param account Customer account information that is associated with this connection
          * 
          * @return builder
          * 
          */
-        public Builder accounts(List<ConnectionASideAccessPointAccountArgs> accounts) {
-            return accounts(Output.of(accounts));
-        }
-
-        /**
-         * @param accounts Customer account information that is associated with this connection
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accounts(ConnectionASideAccessPointAccountArgs... accounts) {
-            return accounts(List.of(accounts));
+        public Builder account(ConnectionASideAccessPointAccountArgs account) {
+            return account(Output.of(account));
         }
 
         public Builder authenticationKey(@Nullable Output<String> authenticationKey) {
@@ -219,60 +209,40 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
             return authenticationKey(Output.of(authenticationKey));
         }
 
-        public Builder gateways(@Nullable Output<List<ConnectionASideAccessPointGatewayArgs>> gateways) {
-            $.gateways = gateways;
+        public Builder gateway(@Nullable Output<ConnectionASideAccessPointGatewayArgs> gateway) {
+            $.gateway = gateway;
             return this;
         }
 
-        public Builder gateways(List<ConnectionASideAccessPointGatewayArgs> gateways) {
-            return gateways(Output.of(gateways));
+        public Builder gateway(ConnectionASideAccessPointGatewayArgs gateway) {
+            return gateway(Output.of(gateway));
         }
 
-        public Builder gateways(ConnectionASideAccessPointGatewayArgs... gateways) {
-            return gateways(List.of(gateways));
-        }
-
-        public Builder interfaces(@Nullable Output<List<ConnectionASideAccessPointInterfaceArgs>> interfaces) {
-            $.interfaces = interfaces;
+        public Builder interface_(@Nullable Output<ConnectionASideAccessPointInterfaceArgs> interface_) {
+            $.interface_ = interface_;
             return this;
         }
 
-        public Builder interfaces(List<ConnectionASideAccessPointInterfaceArgs> interfaces) {
-            return interfaces(Output.of(interfaces));
+        public Builder interface_(ConnectionASideAccessPointInterfaceArgs interface_) {
+            return interface_(Output.of(interface_));
         }
 
-        public Builder interfaces(ConnectionASideAccessPointInterfaceArgs... interfaces) {
-            return interfaces(List.of(interfaces));
-        }
-
-        public Builder linkProtocols(@Nullable Output<Either<String,AccessPointLinkProtocolType>> linkProtocols) {
-            $.linkProtocols = linkProtocols;
+        public Builder linkProtocol(@Nullable Output<ConnectionASideAccessPointLinkProtocolArgs> linkProtocol) {
+            $.linkProtocol = linkProtocol;
             return this;
         }
 
-        public Builder linkProtocols(Either<String,AccessPointLinkProtocolType> linkProtocols) {
-            return linkProtocols(Output.of(linkProtocols));
+        public Builder linkProtocol(ConnectionASideAccessPointLinkProtocolArgs linkProtocol) {
+            return linkProtocol(Output.of(linkProtocol));
         }
 
-        public Builder linkProtocols(String linkProtocols) {
-            return linkProtocols(Either.ofLeft(linkProtocols));
-        }
-
-        public Builder linkProtocols(AccessPointLinkProtocolType linkProtocols) {
-            return linkProtocols(Either.ofRight(linkProtocols));
-        }
-
-        public Builder locations(@Nullable Output<List<ConnectionASideAccessPointLocationArgs>> locations) {
-            $.locations = locations;
+        public Builder location(@Nullable Output<ConnectionASideAccessPointLocationArgs> location) {
+            $.location = location;
             return this;
         }
 
-        public Builder locations(List<ConnectionASideAccessPointLocationArgs> locations) {
-            return locations(Output.of(locations));
-        }
-
-        public Builder locations(ConnectionASideAccessPointLocationArgs... locations) {
-            return locations(List.of(locations));
+        public Builder location(ConnectionASideAccessPointLocationArgs location) {
+            return location(Output.of(location));
         }
 
         public Builder peeringType(@Nullable Output<Either<String,AccessPointPeeringType>> peeringType) {
@@ -292,34 +262,22 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
             return peeringType(Either.ofRight(peeringType));
         }
 
-        public Builder ports(@Nullable Output<List<ConnectionASideAccessPointPortArgs>> ports) {
-            $.ports = ports;
+        public Builder port(@Nullable Output<ConnectionASideAccessPointPortArgs> port) {
+            $.port = port;
             return this;
         }
 
-        public Builder ports(List<ConnectionASideAccessPointPortArgs> ports) {
-            return ports(Output.of(ports));
+        public Builder port(ConnectionASideAccessPointPortArgs port) {
+            return port(Output.of(port));
         }
 
-        public Builder ports(ConnectionASideAccessPointPortArgs... ports) {
-            return ports(List.of(ports));
-        }
-
-        public Builder profiles(@Nullable Output<Either<String,ProfileType>> profiles) {
-            $.profiles = profiles;
+        public Builder profile(@Nullable Output<ConnectionASideAccessPointProfileArgs> profile) {
+            $.profile = profile;
             return this;
         }
 
-        public Builder profiles(Either<String,ProfileType> profiles) {
-            return profiles(Output.of(profiles));
-        }
-
-        public Builder profiles(String profiles) {
-            return profiles(Either.ofLeft(profiles));
-        }
-
-        public Builder profiles(ProfileType profiles) {
-            return profiles(Either.ofRight(profiles));
+        public Builder profile(ConnectionASideAccessPointProfileArgs profile) {
+            return profile(Output.of(profile));
         }
 
         public Builder providerConnectionId(@Nullable Output<String> providerConnectionId) {
@@ -394,17 +352,13 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
             return type(Either.ofRight(type));
         }
 
-        public Builder virtualDevices(@Nullable Output<List<ConnectionASideAccessPointVirtualDeviceArgs>> virtualDevices) {
-            $.virtualDevices = virtualDevices;
+        public Builder virtualDevice(@Nullable Output<ConnectionASideAccessPointVirtualDeviceArgs> virtualDevice) {
+            $.virtualDevice = virtualDevice;
             return this;
         }
 
-        public Builder virtualDevices(List<ConnectionASideAccessPointVirtualDeviceArgs> virtualDevices) {
-            return virtualDevices(Output.of(virtualDevices));
-        }
-
-        public Builder virtualDevices(ConnectionASideAccessPointVirtualDeviceArgs... virtualDevices) {
-            return virtualDevices(List.of(virtualDevices));
+        public Builder virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs virtualDevice) {
+            return virtualDevice(Output.of(virtualDevice));
         }
 
         public ConnectionASideAccessPointArgs build() {

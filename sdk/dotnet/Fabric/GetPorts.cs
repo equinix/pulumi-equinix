@@ -66,7 +66,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// List of  Ports
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortsDataResult> Datas;
+        public readonly ImmutableArray<Outputs.GetPortsDatumResult> Data;
         /// <summary>
         /// name
         /// </summary>
@@ -78,13 +78,13 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetPortsResult(
-            ImmutableArray<Outputs.GetPortsDataResult> datas,
+            ImmutableArray<Outputs.GetPortsDatumResult> data,
 
             ImmutableArray<Outputs.GetPortsFilterResult> filters,
 
             string id)
         {
-            Datas = datas;
+            Data = data;
             Filters = filters;
             Id = id;
         }

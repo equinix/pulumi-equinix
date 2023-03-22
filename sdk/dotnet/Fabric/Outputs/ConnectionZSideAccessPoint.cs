@@ -16,15 +16,15 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Customer account information that is associated with this connection
         /// </summary>
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointAccount> Accounts;
+        public readonly Outputs.ConnectionZSideAccessPointAccount? Account;
         public readonly string? AuthenticationKey;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointGateway> Gateways;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointInterface> Interfaces;
-        public readonly string? LinkProtocols;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointLocation> Locations;
+        public readonly Outputs.ConnectionZSideAccessPointGateway? Gateway;
+        public readonly Outputs.ConnectionZSideAccessPointInterface? Interface;
+        public readonly Outputs.ConnectionZSideAccessPointLinkProtocol? LinkProtocol;
+        public readonly Outputs.ConnectionZSideAccessPointLocation? Location;
         public readonly string? PeeringType;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointPort> Ports;
-        public readonly string? Profiles;
+        public readonly Outputs.ConnectionZSideAccessPointPort? Port;
+        public readonly Outputs.ConnectionZSideAccessPointProfile? Profile;
         public readonly string? ProviderConnectionId;
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointRoutingProtocol> RoutingProtocols;
         public readonly string? SellerRegion;
@@ -32,27 +32,27 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         /// </summary>
         public readonly string? Type;
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointVirtualDevice> VirtualDevices;
+        public readonly Outputs.ConnectionZSideAccessPointVirtualDevice? VirtualDevice;
 
         [OutputConstructor]
         private ConnectionZSideAccessPoint(
-            ImmutableArray<Outputs.ConnectionZSideAccessPointAccount> accounts,
+            Outputs.ConnectionZSideAccessPointAccount? account,
 
             string? authenticationKey,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointGateway> gateways,
+            Outputs.ConnectionZSideAccessPointGateway? gateway,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointInterface> interfaces,
+            Outputs.ConnectionZSideAccessPointInterface? @interface,
 
-            string? linkProtocols,
+            Outputs.ConnectionZSideAccessPointLinkProtocol? linkProtocol,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointLocation> locations,
+            Outputs.ConnectionZSideAccessPointLocation? location,
 
             string? peeringType,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointPort> ports,
+            Outputs.ConnectionZSideAccessPointPort? port,
 
-            string? profiles,
+            Outputs.ConnectionZSideAccessPointProfile? profile,
 
             string? providerConnectionId,
 
@@ -62,22 +62,22 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string? type,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointVirtualDevice> virtualDevices)
+            Outputs.ConnectionZSideAccessPointVirtualDevice? virtualDevice)
         {
-            Accounts = accounts;
+            Account = account;
             AuthenticationKey = authenticationKey;
-            Gateways = gateways;
-            Interfaces = interfaces;
-            LinkProtocols = linkProtocols;
-            Locations = locations;
+            Gateway = gateway;
+            Interface = @interface;
+            LinkProtocol = linkProtocol;
+            Location = location;
             PeeringType = peeringType;
-            Ports = ports;
-            Profiles = profiles;
+            Port = port;
+            Profile = profile;
             ProviderConnectionId = providerConnectionId;
             RoutingProtocols = routingProtocols;
             SellerRegion = sellerRegion;
             Type = type;
-            VirtualDevices = virtualDevices;
+            VirtualDevice = virtualDevice;
         }
     }
 }

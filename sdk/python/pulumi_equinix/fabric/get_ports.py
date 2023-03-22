@@ -23,10 +23,10 @@ class GetPortsResult:
     """
     A collection of values returned by getPorts.
     """
-    def __init__(__self__, datas=None, filters=None, id=None):
-        if datas and not isinstance(datas, list):
-            raise TypeError("Expected argument 'datas' to be a list")
-        pulumi.set(__self__, "datas", datas)
+    def __init__(__self__, data=None, filters=None, id=None):
+        if data and not isinstance(data, list):
+            raise TypeError("Expected argument 'data' to be a list")
+        pulumi.set(__self__, "data", data)
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
@@ -36,11 +36,11 @@ class GetPortsResult:
 
     @property
     @pulumi.getter
-    def datas(self) -> Sequence['outputs.GetPortsDataResult']:
+    def data(self) -> Sequence['outputs.GetPortsDatumResult']:
         """
         List of  Ports
         """
-        return pulumi.get(self, "datas")
+        return pulumi.get(self, "data")
 
     @property
     @pulumi.getter
@@ -65,7 +65,7 @@ class AwaitableGetPortsResult(GetPortsResult):
         if False:
             yield self
         return GetPortsResult(
-            datas=self.datas,
+            data=self.data,
             filters=self.filters,
             id=self.id)
 
@@ -83,7 +83,7 @@ def get_ports(filters: Optional[Sequence[pulumi.InputType['GetPortsFilterArgs']]
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult).value
 
     return AwaitableGetPortsResult(
-        datas=__ret__.datas,
+        data=__ret__.data,
         filters=__ret__.filters,
         id=__ret__.id)
 

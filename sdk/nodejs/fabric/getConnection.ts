@@ -12,7 +12,7 @@ export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOpti
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getConnection:getConnection", {
-        "projects": args.projects,
+        "project": args.project,
         "uuid": args.uuid,
     }, opts);
 }
@@ -24,7 +24,7 @@ export interface GetConnectionArgs {
     /**
      * Project information
      */
-    projects?: inputs.fabric.GetConnectionProject[];
+    project?: inputs.fabric.GetConnectionProject;
     /**
      * Equinix-assigned connection identifier
      */
@@ -38,15 +38,15 @@ export interface GetConnectionResult {
     /**
      * Requester or Customer side connection configuration object of the multi-segment connection
      */
-    readonly aSides: outputs.fabric.GetConnectionASide[];
+    readonly aSide: outputs.fabric.GetConnectionASide;
     /**
      * Customer account information that is associated with this connection
      */
-    readonly accounts: outputs.fabric.GetConnectionAccount[];
+    readonly account: outputs.fabric.GetConnectionAccount;
     /**
      * Connection additional information
      */
-    readonly additionalInfos: outputs.fabric.GetConnectionAdditionalInfo[];
+    readonly additionalInfo: outputs.fabric.GetConnectionAdditionalInfo[];
     /**
      * Connection bandwidth in Mbps
      */
@@ -54,7 +54,7 @@ export interface GetConnectionResult {
     /**
      * Captures connection lifecycle change information
      */
-    readonly changeLogs: outputs.fabric.GetConnectionChangeLog[];
+    readonly changeLog: outputs.fabric.GetConnectionChangeLog;
     /**
      * Customer-provided connection description
      */
@@ -86,19 +86,19 @@ export interface GetConnectionResult {
     /**
      * Connection specific operational data
      */
-    readonly operations: outputs.fabric.GetConnectionOperation[];
+    readonly operation: outputs.fabric.GetConnectionOperation;
     /**
      * Order related to this connection information
      */
-    readonly orders: outputs.fabric.GetConnectionOrder[];
+    readonly order: outputs.fabric.GetConnectionOrder;
     /**
      * Project information
      */
-    readonly projects?: outputs.fabric.GetConnectionProject[];
+    readonly project?: outputs.fabric.GetConnectionProject;
     /**
      * Redundancy Information
      */
-    readonly redundancies: outputs.fabric.GetConnectionRedundancy[];
+    readonly redundancy: outputs.fabric.GetConnectionRedundancy;
     /**
      * Connection overall state
      */
@@ -114,7 +114,7 @@ export interface GetConnectionResult {
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
-    readonly zSides: outputs.fabric.GetConnectionZSide[];
+    readonly zSide: outputs.fabric.GetConnectionZSide;
 }
 export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
     return pulumi.output(args).apply((a: any) => getConnection(a, opts))
@@ -127,7 +127,7 @@ export interface GetConnectionOutputArgs {
     /**
      * Project information
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.GetConnectionProjectArgs>[]>;
+    project?: pulumi.Input<inputs.fabric.GetConnectionProjectArgs>;
     /**
      * Equinix-assigned connection identifier
      */

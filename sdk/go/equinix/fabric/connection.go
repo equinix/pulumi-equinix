@@ -15,15 +15,15 @@ type Connection struct {
 	pulumi.CustomResourceState
 
 	// Requester or Customer side connection configuration object of the multi-segment connection
-	ASides ConnectionASideArrayOutput `pulumi:"aSides"`
+	ASide ConnectionASideOutput `pulumi:"aSide"`
 	// Customer account information that is associated with this connection
-	Accounts ConnectionAccountArrayOutput `pulumi:"accounts"`
+	Account ConnectionAccountOutput `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfos ConnectionAdditionalInfoArrayOutput `pulumi:"additionalInfos"`
+	AdditionalInfo ConnectionAdditionalInfoArrayOutput `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
-	ChangeLogs ConnectionChangeLogArrayOutput `pulumi:"changeLogs"`
+	ChangeLog ConnectionChangeLogOutput `pulumi:"changeLog"`
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Connection URI information
@@ -35,19 +35,19 @@ type Connection struct {
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayOutput `pulumi:"notifications"`
 	// Connection type-specific operational data
-	Operations ConnectionOperationArrayOutput `pulumi:"operations"`
+	Operation ConnectionOperationOutput `pulumi:"operation"`
 	// Order related to this connection information
-	Orders ConnectionOrderArrayOutput `pulumi:"orders"`
+	Order ConnectionOrderPtrOutput `pulumi:"order"`
 	// Project information
-	Projects ConnectionProjectArrayOutput `pulumi:"projects"`
+	Project ConnectionProjectPtrOutput `pulumi:"project"`
 	// Redundancy Information
-	Redundancies ConnectionRedundancyArrayOutput `pulumi:"redundancies"`
+	Redundancy ConnectionRedundancyPtrOutput `pulumi:"redundancy"`
 	// Connection overall state
 	State pulumi.StringOutput `pulumi:"state"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
-	ZSides ConnectionZSideArrayOutput `pulumi:"zSides"`
+	ZSide ConnectionZSideOutput `pulumi:"zSide"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -57,8 +57,8 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ASides == nil {
-		return nil, errors.New("invalid value for required argument 'ASides'")
+	if args.ASide == nil {
+		return nil, errors.New("invalid value for required argument 'ASide'")
 	}
 	if args.Bandwidth == nil {
 		return nil, errors.New("invalid value for required argument 'Bandwidth'")
@@ -69,8 +69,8 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	if args.ZSides == nil {
-		return nil, errors.New("invalid value for required argument 'ZSides'")
+	if args.ZSide == nil {
+		return nil, errors.New("invalid value for required argument 'ZSide'")
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Connection
@@ -96,15 +96,15 @@ func GetConnection(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
-	ASides []ConnectionASide `pulumi:"aSides"`
+	ASide *ConnectionASide `pulumi:"aSide"`
 	// Customer account information that is associated with this connection
-	Accounts []ConnectionAccount `pulumi:"accounts"`
+	Account *ConnectionAccount `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfos []ConnectionAdditionalInfo `pulumi:"additionalInfos"`
+	AdditionalInfo []ConnectionAdditionalInfo `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
-	ChangeLogs []ConnectionChangeLog `pulumi:"changeLogs"`
+	ChangeLog *ConnectionChangeLog `pulumi:"changeLog"`
 	// Connection directionality from the requester point of view
 	Direction *string `pulumi:"direction"`
 	// Connection URI information
@@ -116,32 +116,32 @@ type connectionState struct {
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ConnectionNotification `pulumi:"notifications"`
 	// Connection type-specific operational data
-	Operations []ConnectionOperation `pulumi:"operations"`
+	Operation *ConnectionOperation `pulumi:"operation"`
 	// Order related to this connection information
-	Orders []ConnectionOrder `pulumi:"orders"`
+	Order *ConnectionOrder `pulumi:"order"`
 	// Project information
-	Projects []ConnectionProject `pulumi:"projects"`
+	Project *ConnectionProject `pulumi:"project"`
 	// Redundancy Information
-	Redundancies []ConnectionRedundancy `pulumi:"redundancies"`
+	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State *string `pulumi:"state"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
 	Type *string `pulumi:"type"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
-	ZSides []ConnectionZSide `pulumi:"zSides"`
+	ZSide *ConnectionZSide `pulumi:"zSide"`
 }
 
 type ConnectionState struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
-	ASides ConnectionASideArrayInput
+	ASide ConnectionASidePtrInput
 	// Customer account information that is associated with this connection
-	Accounts ConnectionAccountArrayInput
+	Account ConnectionAccountPtrInput
 	// Connection additional information
-	AdditionalInfos ConnectionAdditionalInfoArrayInput
+	AdditionalInfo ConnectionAdditionalInfoArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntPtrInput
 	// Captures connection lifecycle change information
-	ChangeLogs ConnectionChangeLogArrayInput
+	ChangeLog ConnectionChangeLogPtrInput
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringPtrInput
 	// Connection URI information
@@ -153,19 +153,19 @@ type ConnectionState struct {
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayInput
 	// Connection type-specific operational data
-	Operations ConnectionOperationArrayInput
+	Operation ConnectionOperationPtrInput
 	// Order related to this connection information
-	Orders ConnectionOrderArrayInput
+	Order ConnectionOrderPtrInput
 	// Project information
-	Projects ConnectionProjectArrayInput
+	Project ConnectionProjectPtrInput
 	// Redundancy Information
-	Redundancies ConnectionRedundancyArrayInput
+	Redundancy ConnectionRedundancyPtrInput
 	// Connection overall state
 	State pulumi.StringPtrInput
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
 	Type pulumi.StringPtrInput
 	// Destination or Provider side connection configuration object of the multi-segment connection
-	ZSides ConnectionZSideArrayInput
+	ZSide ConnectionZSidePtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -174,9 +174,9 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
-	ASides []ConnectionASide `pulumi:"aSides"`
+	ASide ConnectionASide `pulumi:"aSide"`
 	// Connection additional information
-	AdditionalInfos []ConnectionAdditionalInfo `pulumi:"additionalInfos"`
+	AdditionalInfo []ConnectionAdditionalInfo `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -184,23 +184,23 @@ type connectionArgs struct {
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ConnectionNotification `pulumi:"notifications"`
 	// Order related to this connection information
-	Orders []ConnectionOrder `pulumi:"orders"`
+	Order *ConnectionOrder `pulumi:"order"`
 	// Project information
-	Projects []ConnectionProject `pulumi:"projects"`
+	Project *ConnectionProject `pulumi:"project"`
 	// Redundancy Information
-	Redundancies []ConnectionRedundancy `pulumi:"redundancies"`
+	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
 	Type string `pulumi:"type"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
-	ZSides []ConnectionZSide `pulumi:"zSides"`
+	ZSide ConnectionZSide `pulumi:"zSide"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
-	ASides ConnectionASideArrayInput
+	ASide ConnectionASideInput
 	// Connection additional information
-	AdditionalInfos ConnectionAdditionalInfoArrayInput
+	AdditionalInfo ConnectionAdditionalInfoArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntInput
 	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
@@ -208,15 +208,15 @@ type ConnectionArgs struct {
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayInput
 	// Order related to this connection information
-	Orders ConnectionOrderArrayInput
+	Order ConnectionOrderPtrInput
 	// Project information
-	Projects ConnectionProjectArrayInput
+	Project ConnectionProjectPtrInput
 	// Redundancy Information
-	Redundancies ConnectionRedundancyArrayInput
+	Redundancy ConnectionRedundancyPtrInput
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
 	Type pulumi.StringInput
 	// Destination or Provider side connection configuration object of the multi-segment connection
-	ZSides ConnectionZSideArrayInput
+	ZSide ConnectionZSideInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -307,18 +307,18 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 }
 
 // Requester or Customer side connection configuration object of the multi-segment connection
-func (o ConnectionOutput) ASides() ConnectionASideArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionASideArrayOutput { return v.ASides }).(ConnectionASideArrayOutput)
+func (o ConnectionOutput) ASide() ConnectionASideOutput {
+	return o.ApplyT(func(v *Connection) ConnectionASideOutput { return v.ASide }).(ConnectionASideOutput)
 }
 
 // Customer account information that is associated with this connection
-func (o ConnectionOutput) Accounts() ConnectionAccountArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionAccountArrayOutput { return v.Accounts }).(ConnectionAccountArrayOutput)
+func (o ConnectionOutput) Account() ConnectionAccountOutput {
+	return o.ApplyT(func(v *Connection) ConnectionAccountOutput { return v.Account }).(ConnectionAccountOutput)
 }
 
 // Connection additional information
-func (o ConnectionOutput) AdditionalInfos() ConnectionAdditionalInfoArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionAdditionalInfoArrayOutput { return v.AdditionalInfos }).(ConnectionAdditionalInfoArrayOutput)
+func (o ConnectionOutput) AdditionalInfo() ConnectionAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v *Connection) ConnectionAdditionalInfoArrayOutput { return v.AdditionalInfo }).(ConnectionAdditionalInfoArrayOutput)
 }
 
 // Connection bandwidth in Mbps
@@ -327,8 +327,8 @@ func (o ConnectionOutput) Bandwidth() pulumi.IntOutput {
 }
 
 // Captures connection lifecycle change information
-func (o ConnectionOutput) ChangeLogs() ConnectionChangeLogArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionChangeLogArrayOutput { return v.ChangeLogs }).(ConnectionChangeLogArrayOutput)
+func (o ConnectionOutput) ChangeLog() ConnectionChangeLogOutput {
+	return o.ApplyT(func(v *Connection) ConnectionChangeLogOutput { return v.ChangeLog }).(ConnectionChangeLogOutput)
 }
 
 // Connection directionality from the requester point of view
@@ -357,23 +357,23 @@ func (o ConnectionOutput) Notifications() ConnectionNotificationArrayOutput {
 }
 
 // Connection type-specific operational data
-func (o ConnectionOutput) Operations() ConnectionOperationArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionOperationArrayOutput { return v.Operations }).(ConnectionOperationArrayOutput)
+func (o ConnectionOutput) Operation() ConnectionOperationOutput {
+	return o.ApplyT(func(v *Connection) ConnectionOperationOutput { return v.Operation }).(ConnectionOperationOutput)
 }
 
 // Order related to this connection information
-func (o ConnectionOutput) Orders() ConnectionOrderArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionOrderArrayOutput { return v.Orders }).(ConnectionOrderArrayOutput)
+func (o ConnectionOutput) Order() ConnectionOrderPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionOrderPtrOutput { return v.Order }).(ConnectionOrderPtrOutput)
 }
 
 // Project information
-func (o ConnectionOutput) Projects() ConnectionProjectArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionProjectArrayOutput { return v.Projects }).(ConnectionProjectArrayOutput)
+func (o ConnectionOutput) Project() ConnectionProjectPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionProjectPtrOutput { return v.Project }).(ConnectionProjectPtrOutput)
 }
 
 // Redundancy Information
-func (o ConnectionOutput) Redundancies() ConnectionRedundancyArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionRedundancyArrayOutput { return v.Redundancies }).(ConnectionRedundancyArrayOutput)
+func (o ConnectionOutput) Redundancy() ConnectionRedundancyPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionRedundancyPtrOutput { return v.Redundancy }).(ConnectionRedundancyPtrOutput)
 }
 
 // Connection overall state
@@ -387,8 +387,8 @@ func (o ConnectionOutput) Type() pulumi.StringOutput {
 }
 
 // Destination or Provider side connection configuration object of the multi-segment connection
-func (o ConnectionOutput) ZSides() ConnectionZSideArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionZSideArrayOutput { return v.ZSides }).(ConnectionZSideArrayOutput)
+func (o ConnectionOutput) ZSide() ConnectionZSideOutput {
+	return o.ApplyT(func(v *Connection) ConnectionZSideOutput { return v.ZSide }).(ConnectionZSideOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

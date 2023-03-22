@@ -28,17 +28,17 @@ public final class GetConnectionResult {
      * @return Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    private List<GetConnectionASide> aSides;
+    private GetConnectionASide aSide;
     /**
      * @return Customer account information that is associated with this connection
      * 
      */
-    private List<GetConnectionAccount> accounts;
+    private GetConnectionAccount account;
     /**
      * @return Connection additional information
      * 
      */
-    private List<GetConnectionAdditionalInfo> additionalInfos;
+    private List<GetConnectionAdditionalInfo> additionalInfo;
     /**
      * @return Connection bandwidth in Mbps
      * 
@@ -48,7 +48,7 @@ public final class GetConnectionResult {
      * @return Captures connection lifecycle change information
      * 
      */
-    private List<GetConnectionChangeLog> changeLogs;
+    private GetConnectionChangeLog changeLog;
     /**
      * @return Customer-provided connection description
      * 
@@ -88,22 +88,22 @@ public final class GetConnectionResult {
      * @return Connection specific operational data
      * 
      */
-    private List<GetConnectionOperation> operations;
+    private GetConnectionOperation operation;
     /**
      * @return Order related to this connection information
      * 
      */
-    private List<GetConnectionOrder> orders;
+    private GetConnectionOrder order;
     /**
      * @return Project information
      * 
      */
-    private @Nullable List<GetConnectionProject> projects;
+    private @Nullable GetConnectionProject project;
     /**
      * @return Redundancy Information
      * 
      */
-    private List<GetConnectionRedundancy> redundancies;
+    private GetConnectionRedundancy redundancy;
     /**
      * @return Connection overall state
      * 
@@ -123,29 +123,29 @@ public final class GetConnectionResult {
      * @return Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    private List<GetConnectionZSide> zSides;
+    private GetConnectionZSide zSide;
 
     private GetConnectionResult() {}
     /**
      * @return Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    public List<GetConnectionASide> aSides() {
-        return this.aSides;
+    public GetConnectionASide aSide() {
+        return this.aSide;
     }
     /**
      * @return Customer account information that is associated with this connection
      * 
      */
-    public List<GetConnectionAccount> accounts() {
-        return this.accounts;
+    public GetConnectionAccount account() {
+        return this.account;
     }
     /**
      * @return Connection additional information
      * 
      */
-    public List<GetConnectionAdditionalInfo> additionalInfos() {
-        return this.additionalInfos;
+    public List<GetConnectionAdditionalInfo> additionalInfo() {
+        return this.additionalInfo;
     }
     /**
      * @return Connection bandwidth in Mbps
@@ -158,8 +158,8 @@ public final class GetConnectionResult {
      * @return Captures connection lifecycle change information
      * 
      */
-    public List<GetConnectionChangeLog> changeLogs() {
-        return this.changeLogs;
+    public GetConnectionChangeLog changeLog() {
+        return this.changeLog;
     }
     /**
      * @return Customer-provided connection description
@@ -214,29 +214,29 @@ public final class GetConnectionResult {
      * @return Connection specific operational data
      * 
      */
-    public List<GetConnectionOperation> operations() {
-        return this.operations;
+    public GetConnectionOperation operation() {
+        return this.operation;
     }
     /**
      * @return Order related to this connection information
      * 
      */
-    public List<GetConnectionOrder> orders() {
-        return this.orders;
+    public GetConnectionOrder order() {
+        return this.order;
     }
     /**
      * @return Project information
      * 
      */
-    public List<GetConnectionProject> projects() {
-        return this.projects == null ? List.of() : this.projects;
+    public Optional<GetConnectionProject> project() {
+        return Optional.ofNullable(this.project);
     }
     /**
      * @return Redundancy Information
      * 
      */
-    public List<GetConnectionRedundancy> redundancies() {
-        return this.redundancies;
+    public GetConnectionRedundancy redundancy() {
+        return this.redundancy;
     }
     /**
      * @return Connection overall state
@@ -263,8 +263,8 @@ public final class GetConnectionResult {
      * @return Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    public List<GetConnectionZSide> zSides() {
-        return this.zSides;
+    public GetConnectionZSide zSide() {
+        return this.zSide;
     }
 
     public static Builder builder() {
@@ -276,11 +276,11 @@ public final class GetConnectionResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetConnectionASide> aSides;
-        private List<GetConnectionAccount> accounts;
-        private List<GetConnectionAdditionalInfo> additionalInfos;
+        private GetConnectionASide aSide;
+        private GetConnectionAccount account;
+        private List<GetConnectionAdditionalInfo> additionalInfo;
         private Integer bandwidth;
-        private List<GetConnectionChangeLog> changeLogs;
+        private GetConnectionChangeLog changeLog;
         private String description;
         private String direction;
         private String href;
@@ -288,22 +288,22 @@ public final class GetConnectionResult {
         private Boolean isRemote;
         private String name;
         private List<GetConnectionNotification> notifications;
-        private List<GetConnectionOperation> operations;
-        private List<GetConnectionOrder> orders;
-        private @Nullable List<GetConnectionProject> projects;
-        private List<GetConnectionRedundancy> redundancies;
+        private GetConnectionOperation operation;
+        private GetConnectionOrder order;
+        private @Nullable GetConnectionProject project;
+        private GetConnectionRedundancy redundancy;
         private String state;
         private String type;
         private @Nullable String uuid;
-        private List<GetConnectionZSide> zSides;
+        private GetConnectionZSide zSide;
         public Builder() {}
         public Builder(GetConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.aSides = defaults.aSides;
-    	      this.accounts = defaults.accounts;
-    	      this.additionalInfos = defaults.additionalInfos;
+    	      this.aSide = defaults.aSide;
+    	      this.account = defaults.account;
+    	      this.additionalInfo = defaults.additionalInfo;
     	      this.bandwidth = defaults.bandwidth;
-    	      this.changeLogs = defaults.changeLogs;
+    	      this.changeLog = defaults.changeLog;
     	      this.description = defaults.description;
     	      this.direction = defaults.direction;
     	      this.href = defaults.href;
@@ -311,39 +311,33 @@ public final class GetConnectionResult {
     	      this.isRemote = defaults.isRemote;
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
-    	      this.operations = defaults.operations;
-    	      this.orders = defaults.orders;
-    	      this.projects = defaults.projects;
-    	      this.redundancies = defaults.redundancies;
+    	      this.operation = defaults.operation;
+    	      this.order = defaults.order;
+    	      this.project = defaults.project;
+    	      this.redundancy = defaults.redundancy;
     	      this.state = defaults.state;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
-    	      this.zSides = defaults.zSides;
+    	      this.zSide = defaults.zSide;
         }
 
         @CustomType.Setter
-        public Builder aSides(List<GetConnectionASide> aSides) {
-            this.aSides = Objects.requireNonNull(aSides);
+        public Builder aSide(GetConnectionASide aSide) {
+            this.aSide = Objects.requireNonNull(aSide);
             return this;
-        }
-        public Builder aSides(GetConnectionASide... aSides) {
-            return aSides(List.of(aSides));
         }
         @CustomType.Setter
-        public Builder accounts(List<GetConnectionAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+        public Builder account(GetConnectionAccount account) {
+            this.account = Objects.requireNonNull(account);
             return this;
-        }
-        public Builder accounts(GetConnectionAccount... accounts) {
-            return accounts(List.of(accounts));
         }
         @CustomType.Setter
-        public Builder additionalInfos(List<GetConnectionAdditionalInfo> additionalInfos) {
-            this.additionalInfos = Objects.requireNonNull(additionalInfos);
+        public Builder additionalInfo(List<GetConnectionAdditionalInfo> additionalInfo) {
+            this.additionalInfo = Objects.requireNonNull(additionalInfo);
             return this;
         }
-        public Builder additionalInfos(GetConnectionAdditionalInfo... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
+        public Builder additionalInfo(GetConnectionAdditionalInfo... additionalInfo) {
+            return additionalInfo(List.of(additionalInfo));
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
@@ -351,12 +345,9 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder changeLogs(List<GetConnectionChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+        public Builder changeLog(GetConnectionChangeLog changeLog) {
+            this.changeLog = Objects.requireNonNull(changeLog);
             return this;
-        }
-        public Builder changeLogs(GetConnectionChangeLog... changeLogs) {
-            return changeLogs(List.of(changeLogs));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -397,36 +388,24 @@ public final class GetConnectionResult {
             return notifications(List.of(notifications));
         }
         @CustomType.Setter
-        public Builder operations(List<GetConnectionOperation> operations) {
-            this.operations = Objects.requireNonNull(operations);
+        public Builder operation(GetConnectionOperation operation) {
+            this.operation = Objects.requireNonNull(operation);
             return this;
-        }
-        public Builder operations(GetConnectionOperation... operations) {
-            return operations(List.of(operations));
         }
         @CustomType.Setter
-        public Builder orders(List<GetConnectionOrder> orders) {
-            this.orders = Objects.requireNonNull(orders);
+        public Builder order(GetConnectionOrder order) {
+            this.order = Objects.requireNonNull(order);
             return this;
-        }
-        public Builder orders(GetConnectionOrder... orders) {
-            return orders(List.of(orders));
         }
         @CustomType.Setter
-        public Builder projects(@Nullable List<GetConnectionProject> projects) {
-            this.projects = projects;
+        public Builder project(@Nullable GetConnectionProject project) {
+            this.project = project;
             return this;
-        }
-        public Builder projects(GetConnectionProject... projects) {
-            return projects(List.of(projects));
         }
         @CustomType.Setter
-        public Builder redundancies(List<GetConnectionRedundancy> redundancies) {
-            this.redundancies = Objects.requireNonNull(redundancies);
+        public Builder redundancy(GetConnectionRedundancy redundancy) {
+            this.redundancy = Objects.requireNonNull(redundancy);
             return this;
-        }
-        public Builder redundancies(GetConnectionRedundancy... redundancies) {
-            return redundancies(List.of(redundancies));
         }
         @CustomType.Setter
         public Builder state(String state) {
@@ -444,20 +423,17 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zSides(List<GetConnectionZSide> zSides) {
-            this.zSides = Objects.requireNonNull(zSides);
+        public Builder zSide(GetConnectionZSide zSide) {
+            this.zSide = Objects.requireNonNull(zSide);
             return this;
-        }
-        public Builder zSides(GetConnectionZSide... zSides) {
-            return zSides(List.of(zSides));
         }
         public GetConnectionResult build() {
             final var o = new GetConnectionResult();
-            o.aSides = aSides;
-            o.accounts = accounts;
-            o.additionalInfos = additionalInfos;
+            o.aSide = aSide;
+            o.account = account;
+            o.additionalInfo = additionalInfo;
             o.bandwidth = bandwidth;
-            o.changeLogs = changeLogs;
+            o.changeLog = changeLog;
             o.description = description;
             o.direction = direction;
             o.href = href;
@@ -465,14 +441,14 @@ public final class GetConnectionResult {
             o.isRemote = isRemote;
             o.name = name;
             o.notifications = notifications;
-            o.operations = operations;
-            o.orders = orders;
-            o.projects = projects;
-            o.redundancies = redundancies;
+            o.operation = operation;
+            o.order = order;
+            o.project = project;
+            o.redundancy = redundancy;
             o.state = state;
             o.type = type;
             o.uuid = uuid;
-            o.zSides = zSides;
+            o.zSide = zSide;
             return o;
         }
     }

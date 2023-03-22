@@ -20,15 +20,15 @@ class ServiceProfileArgs:
                  description: pulumi.Input[str],
                  type: pulumi.Input[Union[str, 'ProfileType']],
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]] = None,
+                 account: Optional[pulumi.Input['ServiceProfileAccountArgs']] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]]] = None,
-                 marketing_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]]] = None,
+                 marketing_info: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']] = None,
                  metros: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]] = None,
+                 project: Optional[pulumi.Input['ServiceProfileProjectArgs']] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39,15 +39,15 @@ class ServiceProfileArgs:
         :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]] accounts: Account
+        :param pulumi.Input['ServiceProfileAccountArgs'] account: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]] marketing_infos: Marketing Info
+        :param pulumi.Input['ServiceProfileMarketingInfoArgs'] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]] metros: Access point config information
         :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]] projects: Project information
+        :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
@@ -58,14 +58,14 @@ class ServiceProfileArgs:
         pulumi.set(__self__, "type", type)
         if access_point_type_configs is not None:
             pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
-        if accounts is not None:
-            pulumi.set(__self__, "accounts", accounts)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
         if allowed_emails is not None:
             pulumi.set(__self__, "allowed_emails", allowed_emails)
         if custom_fields is not None:
             pulumi.set(__self__, "custom_fields", custom_fields)
-        if marketing_infos is not None:
-            pulumi.set(__self__, "marketing_infos", marketing_infos)
+        if marketing_info is not None:
+            pulumi.set(__self__, "marketing_info", marketing_info)
         if metros is not None:
             pulumi.set(__self__, "metros", metros)
         if name is not None:
@@ -74,8 +74,8 @@ class ServiceProfileArgs:
             pulumi.set(__self__, "notifications", notifications)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
-        if projects is not None:
-            pulumi.set(__self__, "projects", projects)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if self_profile is not None:
             pulumi.set(__self__, "self_profile", self_profile)
         if state is not None:
@@ -125,15 +125,15 @@ class ServiceProfileArgs:
 
     @property
     @pulumi.getter
-    def accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]]:
+    def account(self) -> Optional[pulumi.Input['ServiceProfileAccountArgs']]:
         """
         Account
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
-    @accounts.setter
-    def accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]]):
-        pulumi.set(self, "accounts", value)
+    @account.setter
+    def account(self, value: Optional[pulumi.Input['ServiceProfileAccountArgs']]):
+        pulumi.set(self, "account", value)
 
     @property
     @pulumi.getter(name="allowedEmails")
@@ -160,16 +160,16 @@ class ServiceProfileArgs:
         pulumi.set(self, "custom_fields", value)
 
     @property
-    @pulumi.getter(name="marketingInfos")
-    def marketing_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]]]:
+    @pulumi.getter(name="marketingInfo")
+    def marketing_info(self) -> Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']]:
         """
         Marketing Info
         """
-        return pulumi.get(self, "marketing_infos")
+        return pulumi.get(self, "marketing_info")
 
-    @marketing_infos.setter
-    def marketing_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]]]):
-        pulumi.set(self, "marketing_infos", value)
+    @marketing_info.setter
+    def marketing_info(self, value: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']]):
+        pulumi.set(self, "marketing_info", value)
 
     @property
     @pulumi.getter
@@ -221,15 +221,15 @@ class ServiceProfileArgs:
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]]:
+    def project(self) -> Optional[pulumi.Input['ServiceProfileProjectArgs']]:
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
-    @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]]):
-        pulumi.set(self, "projects", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input['ServiceProfileProjectArgs']]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="selfProfile")
@@ -296,18 +296,18 @@ class ServiceProfileArgs:
 class _ServiceProfileState:
     def __init__(__self__, *,
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]] = None,
+                 account: Optional[pulumi.Input['ServiceProfileAccountArgs']] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileChangeLogArgs']]]] = None,
+                 change_log: Optional[pulumi.Input['ServiceProfileChangeLogArgs']] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
-                 marketing_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]]] = None,
+                 marketing_info: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']] = None,
                  metros: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]] = None,
+                 project: Optional[pulumi.Input['ServiceProfileProjectArgs']] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -318,18 +318,18 @@ class _ServiceProfileState:
         """
         Input properties used for looking up and filtering ServiceProfile resources.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]] accounts: Account
+        :param pulumi.Input['ServiceProfileAccountArgs'] account: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileChangeLogArgs']]] change_logs: Captures connection lifecycle change information
+        :param pulumi.Input['ServiceProfileChangeLogArgs'] change_log: Captures connection lifecycle change information
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
         :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] href: Service Profile URI response attribute
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]] marketing_infos: Marketing Info
+        :param pulumi.Input['ServiceProfileMarketingInfoArgs'] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]] metros: Access point config information
         :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]] projects: Project information
+        :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
@@ -340,20 +340,20 @@ class _ServiceProfileState:
         """
         if access_point_type_configs is not None:
             pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
-        if accounts is not None:
-            pulumi.set(__self__, "accounts", accounts)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
         if allowed_emails is not None:
             pulumi.set(__self__, "allowed_emails", allowed_emails)
-        if change_logs is not None:
-            pulumi.set(__self__, "change_logs", change_logs)
+        if change_log is not None:
+            pulumi.set(__self__, "change_log", change_log)
         if custom_fields is not None:
             pulumi.set(__self__, "custom_fields", custom_fields)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if href is not None:
             pulumi.set(__self__, "href", href)
-        if marketing_infos is not None:
-            pulumi.set(__self__, "marketing_infos", marketing_infos)
+        if marketing_info is not None:
+            pulumi.set(__self__, "marketing_info", marketing_info)
         if metros is not None:
             pulumi.set(__self__, "metros", metros)
         if name is not None:
@@ -362,8 +362,8 @@ class _ServiceProfileState:
             pulumi.set(__self__, "notifications", notifications)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
-        if projects is not None:
-            pulumi.set(__self__, "projects", projects)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if self_profile is not None:
             pulumi.set(__self__, "self_profile", self_profile)
         if state is not None:
@@ -393,15 +393,15 @@ class _ServiceProfileState:
 
     @property
     @pulumi.getter
-    def accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]]:
+    def account(self) -> Optional[pulumi.Input['ServiceProfileAccountArgs']]:
         """
         Account
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
-    @accounts.setter
-    def accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccountArgs']]]]):
-        pulumi.set(self, "accounts", value)
+    @account.setter
+    def account(self, value: Optional[pulumi.Input['ServiceProfileAccountArgs']]):
+        pulumi.set(self, "account", value)
 
     @property
     @pulumi.getter(name="allowedEmails")
@@ -416,16 +416,16 @@ class _ServiceProfileState:
         pulumi.set(self, "allowed_emails", value)
 
     @property
-    @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileChangeLogArgs']]]]:
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> Optional[pulumi.Input['ServiceProfileChangeLogArgs']]:
         """
         Captures connection lifecycle change information
         """
-        return pulumi.get(self, "change_logs")
+        return pulumi.get(self, "change_log")
 
-    @change_logs.setter
-    def change_logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileChangeLogArgs']]]]):
-        pulumi.set(self, "change_logs", value)
+    @change_log.setter
+    def change_log(self, value: Optional[pulumi.Input['ServiceProfileChangeLogArgs']]):
+        pulumi.set(self, "change_log", value)
 
     @property
     @pulumi.getter(name="customFields")
@@ -464,16 +464,16 @@ class _ServiceProfileState:
         pulumi.set(self, "href", value)
 
     @property
-    @pulumi.getter(name="marketingInfos")
-    def marketing_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]]]:
+    @pulumi.getter(name="marketingInfo")
+    def marketing_info(self) -> Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']]:
         """
         Marketing Info
         """
-        return pulumi.get(self, "marketing_infos")
+        return pulumi.get(self, "marketing_info")
 
-    @marketing_infos.setter
-    def marketing_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoArgs']]]]):
-        pulumi.set(self, "marketing_infos", value)
+    @marketing_info.setter
+    def marketing_info(self, value: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']]):
+        pulumi.set(self, "marketing_info", value)
 
     @property
     @pulumi.getter
@@ -525,15 +525,15 @@ class _ServiceProfileState:
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]]:
+    def project(self) -> Optional[pulumi.Input['ServiceProfileProjectArgs']]:
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
-    @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileProjectArgs']]]]):
-        pulumi.set(self, "projects", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input['ServiceProfileProjectArgs']]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="selfProfile")
@@ -626,16 +626,16 @@ class ServiceProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]]]] = None,
+                 account: Optional[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 marketing_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]]]] = None,
+                 marketing_info: Optional[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]] = None,
                  metros: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]]] = None,
+                 project: Optional[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -648,16 +648,16 @@ class ServiceProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]]] accounts: Account
+        :param pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']] account: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
         :param pulumi.Input[str] description: User-provided service description
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]]] marketing_infos: Marketing Info
+        :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
         :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]] projects: Project information
+        :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
@@ -689,16 +689,16 @@ class ServiceProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]]]] = None,
+                 account: Optional[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 marketing_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]]]] = None,
+                 marketing_info: Optional[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]] = None,
                  metros: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]]] = None,
+                 project: Optional[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]] = None,
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -715,18 +715,18 @@ class ServiceProfile(pulumi.CustomResource):
             __props__ = ServiceProfileArgs.__new__(ServiceProfileArgs)
 
             __props__.__dict__["access_point_type_configs"] = access_point_type_configs
-            __props__.__dict__["accounts"] = accounts
+            __props__.__dict__["account"] = account
             __props__.__dict__["allowed_emails"] = allowed_emails
             __props__.__dict__["custom_fields"] = custom_fields
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
-            __props__.__dict__["marketing_infos"] = marketing_infos
+            __props__.__dict__["marketing_info"] = marketing_info
             __props__.__dict__["metros"] = metros
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["ports"] = ports
-            __props__.__dict__["projects"] = projects
+            __props__.__dict__["project"] = project
             __props__.__dict__["self_profile"] = self_profile
             __props__.__dict__["state"] = state
             __props__.__dict__["tags"] = tags
@@ -735,7 +735,7 @@ class ServiceProfile(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["virtual_devices"] = virtual_devices
             __props__.__dict__["visibility"] = visibility
-            __props__.__dict__["change_logs"] = None
+            __props__.__dict__["change_log"] = None
             __props__.__dict__["href"] = None
             __props__.__dict__["uuid"] = None
         super(ServiceProfile, __self__).__init__(
@@ -749,18 +749,18 @@ class ServiceProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
-            accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]]]] = None,
+            account: Optional[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]] = None,
             allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']]]]] = None,
+            change_log: Optional[pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']]] = None,
             custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
-            marketing_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]]]] = None,
+            marketing_info: Optional[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]] = None,
             metros: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]]] = None,
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]]] = None,
-            projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]]] = None,
+            project: Optional[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]] = None,
             self_profile: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -776,18 +776,18 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]]] accounts: Account
+        :param pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']] account: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']]]] change_logs: Captures connection lifecycle change information
+        :param pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
         :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] href: Service Profile URI response attribute
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']]]] marketing_infos: Marketing Info
+        :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
         :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']]]] projects: Project information
+        :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
@@ -801,18 +801,18 @@ class ServiceProfile(pulumi.CustomResource):
         __props__ = _ServiceProfileState.__new__(_ServiceProfileState)
 
         __props__.__dict__["access_point_type_configs"] = access_point_type_configs
-        __props__.__dict__["accounts"] = accounts
+        __props__.__dict__["account"] = account
         __props__.__dict__["allowed_emails"] = allowed_emails
-        __props__.__dict__["change_logs"] = change_logs
+        __props__.__dict__["change_log"] = change_log
         __props__.__dict__["custom_fields"] = custom_fields
         __props__.__dict__["description"] = description
         __props__.__dict__["href"] = href
-        __props__.__dict__["marketing_infos"] = marketing_infos
+        __props__.__dict__["marketing_info"] = marketing_info
         __props__.__dict__["metros"] = metros
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["ports"] = ports
-        __props__.__dict__["projects"] = projects
+        __props__.__dict__["project"] = project
         __props__.__dict__["self_profile"] = self_profile
         __props__.__dict__["state"] = state
         __props__.__dict__["tags"] = tags
@@ -832,11 +832,11 @@ class ServiceProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def accounts(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceProfileAccount']]]:
+    def account(self) -> pulumi.Output[Optional['outputs.ServiceProfileAccount']]:
         """
         Account
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
     @property
     @pulumi.getter(name="allowedEmails")
@@ -847,12 +847,12 @@ class ServiceProfile(pulumi.CustomResource):
         return pulumi.get(self, "allowed_emails")
 
     @property
-    @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> pulumi.Output[Sequence['outputs.ServiceProfileChangeLog']]:
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> pulumi.Output['outputs.ServiceProfileChangeLog']:
         """
         Captures connection lifecycle change information
         """
-        return pulumi.get(self, "change_logs")
+        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customFields")
@@ -879,12 +879,12 @@ class ServiceProfile(pulumi.CustomResource):
         return pulumi.get(self, "href")
 
     @property
-    @pulumi.getter(name="marketingInfos")
-    def marketing_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceProfileMarketingInfo']]]:
+    @pulumi.getter(name="marketingInfo")
+    def marketing_info(self) -> pulumi.Output[Optional['outputs.ServiceProfileMarketingInfo']]:
         """
         Marketing Info
         """
-        return pulumi.get(self, "marketing_infos")
+        return pulumi.get(self, "marketing_info")
 
     @property
     @pulumi.getter
@@ -920,11 +920,11 @@ class ServiceProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def projects(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceProfileProject']]]:
+    def project(self) -> pulumi.Output[Optional['outputs.ServiceProfileProject']]:
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfProfile")

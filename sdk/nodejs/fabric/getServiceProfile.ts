@@ -46,7 +46,7 @@ export interface GetServiceProfileResult {
     /**
      * Account
      */
-    readonly accounts: outputs.fabric.GetServiceProfileAccount[];
+    readonly account: outputs.fabric.GetServiceProfileAccount;
     /**
      * Array of contact emails
      */
@@ -54,7 +54,7 @@ export interface GetServiceProfileResult {
     /**
      * Captures connection lifecycle change information
      */
-    readonly changeLogs: outputs.fabric.GetServiceProfileChangeLog[];
+    readonly changeLog: outputs.fabric.GetServiceProfileChangeLog;
     /**
      * Custom Fields
      */
@@ -74,7 +74,7 @@ export interface GetServiceProfileResult {
     /**
      * Marketing Info
      */
-    readonly marketingInfos: outputs.fabric.GetServiceProfileMarketingInfo[];
+    readonly marketingInfo: outputs.fabric.GetServiceProfileMarketingInfo;
     /**
      * Access point config information
      */
@@ -94,7 +94,7 @@ export interface GetServiceProfileResult {
     /**
      * Project information
      */
-    readonly projects: outputs.fabric.GetServiceProfileProject[];
+    readonly project: outputs.fabric.GetServiceProfileProject;
     /**
      * Self Profile indicating if the profile is created for customer's  self use
      */

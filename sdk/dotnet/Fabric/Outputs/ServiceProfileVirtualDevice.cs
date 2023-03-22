@@ -20,7 +20,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Device Location
         /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceProfileVirtualDeviceLocation> Locations;
+        public readonly Outputs.ServiceProfileVirtualDeviceLocation? Location;
         /// <summary>
         /// Virtual Device Type
         /// </summary>
@@ -34,14 +34,14 @@ namespace Pulumi.Equinix.Fabric.Outputs
         private ServiceProfileVirtualDevice(
             string? interfaceUuid,
 
-            ImmutableArray<Outputs.ServiceProfileVirtualDeviceLocation> locations,
+            Outputs.ServiceProfileVirtualDeviceLocation? location,
 
             string type,
 
             string uuid)
         {
             InterfaceUuid = interfaceUuid;
-            Locations = locations;
+            Location = location;
             Type = type;
             Uuid = uuid;
         }

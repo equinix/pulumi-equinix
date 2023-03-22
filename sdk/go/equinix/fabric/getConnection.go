@@ -23,7 +23,7 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 // A collection of arguments for invoking getConnection.
 type LookupConnectionArgs struct {
 	// Project information
-	Projects []GetConnectionProject `pulumi:"projects"`
+	Project *GetConnectionProject `pulumi:"project"`
 	// Equinix-assigned connection identifier
 	Uuid *string `pulumi:"uuid"`
 }
@@ -31,15 +31,15 @@ type LookupConnectionArgs struct {
 // A collection of values returned by getConnection.
 type LookupConnectionResult struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
-	ASides []GetConnectionASide `pulumi:"aSides"`
+	ASide GetConnectionASide `pulumi:"aSide"`
 	// Customer account information that is associated with this connection
-	Accounts []GetConnectionAccount `pulumi:"accounts"`
+	Account GetConnectionAccount `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfos []GetConnectionAdditionalInfo `pulumi:"additionalInfos"`
+	AdditionalInfo []GetConnectionAdditionalInfo `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
-	ChangeLogs []GetConnectionChangeLog `pulumi:"changeLogs"`
+	ChangeLog GetConnectionChangeLog `pulumi:"changeLog"`
 	// Customer-provided connection description
 	Description string `pulumi:"description"`
 	// Connection directionality from the requester point of view
@@ -55,13 +55,13 @@ type LookupConnectionResult struct {
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []GetConnectionNotification `pulumi:"notifications"`
 	// Connection specific operational data
-	Operations []GetConnectionOperation `pulumi:"operations"`
+	Operation GetConnectionOperation `pulumi:"operation"`
 	// Order related to this connection information
-	Orders []GetConnectionOrder `pulumi:"orders"`
+	Order GetConnectionOrder `pulumi:"order"`
 	// Project information
-	Projects []GetConnectionProject `pulumi:"projects"`
+	Project *GetConnectionProject `pulumi:"project"`
 	// Redundancy Information
-	Redundancies []GetConnectionRedundancy `pulumi:"redundancies"`
+	Redundancy GetConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State string `pulumi:"state"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
@@ -69,7 +69,7 @@ type LookupConnectionResult struct {
 	// Equinix-assigned connection identifier
 	Uuid *string `pulumi:"uuid"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
-	ZSides []GetConnectionZSide `pulumi:"zSides"`
+	ZSide GetConnectionZSide `pulumi:"zSide"`
 }
 
 func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
@@ -88,7 +88,7 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 // A collection of arguments for invoking getConnection.
 type LookupConnectionOutputArgs struct {
 	// Project information
-	Projects GetConnectionProjectArrayInput `pulumi:"projects"`
+	Project GetConnectionProjectPtrInput `pulumi:"project"`
 	// Equinix-assigned connection identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
@@ -113,18 +113,18 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(
 }
 
 // Requester or Customer side connection configuration object of the multi-segment connection
-func (o LookupConnectionResultOutput) ASides() GetConnectionASideArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionASide { return v.ASides }).(GetConnectionASideArrayOutput)
+func (o LookupConnectionResultOutput) ASide() GetConnectionASideOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionASide { return v.ASide }).(GetConnectionASideOutput)
 }
 
 // Customer account information that is associated with this connection
-func (o LookupConnectionResultOutput) Accounts() GetConnectionAccountArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionAccount { return v.Accounts }).(GetConnectionAccountArrayOutput)
+func (o LookupConnectionResultOutput) Account() GetConnectionAccountOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionAccount { return v.Account }).(GetConnectionAccountOutput)
 }
 
 // Connection additional information
-func (o LookupConnectionResultOutput) AdditionalInfos() GetConnectionAdditionalInfoArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionAdditionalInfo { return v.AdditionalInfos }).(GetConnectionAdditionalInfoArrayOutput)
+func (o LookupConnectionResultOutput) AdditionalInfo() GetConnectionAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionAdditionalInfo { return v.AdditionalInfo }).(GetConnectionAdditionalInfoArrayOutput)
 }
 
 // Connection bandwidth in Mbps
@@ -133,8 +133,8 @@ func (o LookupConnectionResultOutput) Bandwidth() pulumi.IntOutput {
 }
 
 // Captures connection lifecycle change information
-func (o LookupConnectionResultOutput) ChangeLogs() GetConnectionChangeLogArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionChangeLog { return v.ChangeLogs }).(GetConnectionChangeLogArrayOutput)
+func (o LookupConnectionResultOutput) ChangeLog() GetConnectionChangeLogOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionChangeLog { return v.ChangeLog }).(GetConnectionChangeLogOutput)
 }
 
 // Customer-provided connection description
@@ -173,23 +173,23 @@ func (o LookupConnectionResultOutput) Notifications() GetConnectionNotificationA
 }
 
 // Connection specific operational data
-func (o LookupConnectionResultOutput) Operations() GetConnectionOperationArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionOperation { return v.Operations }).(GetConnectionOperationArrayOutput)
+func (o LookupConnectionResultOutput) Operation() GetConnectionOperationOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionOperation { return v.Operation }).(GetConnectionOperationOutput)
 }
 
 // Order related to this connection information
-func (o LookupConnectionResultOutput) Orders() GetConnectionOrderArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionOrder { return v.Orders }).(GetConnectionOrderArrayOutput)
+func (o LookupConnectionResultOutput) Order() GetConnectionOrderOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionOrder { return v.Order }).(GetConnectionOrderOutput)
 }
 
 // Project information
-func (o LookupConnectionResultOutput) Projects() GetConnectionProjectArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionProject { return v.Projects }).(GetConnectionProjectArrayOutput)
+func (o LookupConnectionResultOutput) Project() GetConnectionProjectPtrOutput {
+	return o.ApplyT(func(v LookupConnectionResult) *GetConnectionProject { return v.Project }).(GetConnectionProjectPtrOutput)
 }
 
 // Redundancy Information
-func (o LookupConnectionResultOutput) Redundancies() GetConnectionRedundancyArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionRedundancy { return v.Redundancies }).(GetConnectionRedundancyArrayOutput)
+func (o LookupConnectionResultOutput) Redundancy() GetConnectionRedundancyOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionRedundancy { return v.Redundancy }).(GetConnectionRedundancyOutput)
 }
 
 // Connection overall state
@@ -208,8 +208,8 @@ func (o LookupConnectionResultOutput) Uuid() pulumi.StringPtrOutput {
 }
 
 // Destination or Provider side connection configuration object of the multi-segment connection
-func (o LookupConnectionResultOutput) ZSides() GetConnectionZSideArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionZSide { return v.ZSides }).(GetConnectionZSideArrayOutput)
+func (o LookupConnectionResultOutput) ZSide() GetConnectionZSideOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionZSide { return v.ZSide }).(GetConnectionZSideOutput)
 }
 
 func init() {

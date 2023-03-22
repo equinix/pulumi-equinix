@@ -21,8 +21,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Account
         /// </summary>
-        [Output("accounts")]
-        public Output<ImmutableArray<Outputs.ServiceProfileAccount>> Accounts { get; private set; } = null!;
+        [Output("account")]
+        public Output<Outputs.ServiceProfileAccount?> Account { get; private set; } = null!;
 
         /// <summary>
         /// Array of contact emails
@@ -33,8 +33,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Captures connection lifecycle change information
         /// </summary>
-        [Output("changeLogs")]
-        public Output<ImmutableArray<Outputs.ServiceProfileChangeLog>> ChangeLogs { get; private set; } = null!;
+        [Output("changeLog")]
+        public Output<Outputs.ServiceProfileChangeLog> ChangeLog { get; private set; } = null!;
 
         /// <summary>
         /// Custom Fields
@@ -57,8 +57,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Marketing Info
         /// </summary>
-        [Output("marketingInfos")]
-        public Output<ImmutableArray<Outputs.ServiceProfileMarketingInfo>> MarketingInfos { get; private set; } = null!;
+        [Output("marketingInfo")]
+        public Output<Outputs.ServiceProfileMarketingInfo?> MarketingInfo { get; private set; } = null!;
 
         /// <summary>
         /// Access point config information
@@ -87,8 +87,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Project information
         /// </summary>
-        [Output("projects")]
-        public Output<ImmutableArray<Outputs.ServiceProfileProject>> Projects { get; private set; } = null!;
+        [Output("project")]
+        public Output<Outputs.ServiceProfileProject?> Project { get; private set; } = null!;
 
         /// <summary>
         /// Self Profile
@@ -155,7 +155,7 @@ namespace Pulumi.Equinix.Fabric
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -191,17 +191,11 @@ namespace Pulumi.Equinix.Fabric
             set => _accessPointTypeConfigs = value;
         }
 
-        [Input("accounts")]
-        private InputList<Inputs.ServiceProfileAccountArgs>? _accounts;
-
         /// <summary>
         /// Account
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccountArgs> Accounts
-        {
-            get => _accounts ?? (_accounts = new InputList<Inputs.ServiceProfileAccountArgs>());
-            set => _accounts = value;
-        }
+        [Input("account")]
+        public Input<Inputs.ServiceProfileAccountArgs>? Account { get; set; }
 
         [Input("allowedEmails")]
         private InputList<string>? _allowedEmails;
@@ -233,17 +227,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
-        [Input("marketingInfos")]
-        private InputList<Inputs.ServiceProfileMarketingInfoArgs>? _marketingInfos;
-
         /// <summary>
         /// Marketing Info
         /// </summary>
-        public InputList<Inputs.ServiceProfileMarketingInfoArgs> MarketingInfos
-        {
-            get => _marketingInfos ?? (_marketingInfos = new InputList<Inputs.ServiceProfileMarketingInfoArgs>());
-            set => _marketingInfos = value;
-        }
+        [Input("marketingInfo")]
+        public Input<Inputs.ServiceProfileMarketingInfoArgs>? MarketingInfo { get; set; }
 
         [Input("metros")]
         private InputList<Inputs.ServiceProfileMetroArgs>? _metros;
@@ -287,17 +275,11 @@ namespace Pulumi.Equinix.Fabric
             set => _ports = value;
         }
 
-        [Input("projects")]
-        private InputList<Inputs.ServiceProfileProjectArgs>? _projects;
-
         /// <summary>
         /// Project information
         /// </summary>
-        public InputList<Inputs.ServiceProfileProjectArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.ServiceProfileProjectArgs>());
-            set => _projects = value;
-        }
+        [Input("project")]
+        public Input<Inputs.ServiceProfileProjectArgs>? Project { get; set; }
 
         /// <summary>
         /// Self Profile
@@ -367,17 +349,11 @@ namespace Pulumi.Equinix.Fabric
             set => _accessPointTypeConfigs = value;
         }
 
-        [Input("accounts")]
-        private InputList<Inputs.ServiceProfileAccountGetArgs>? _accounts;
-
         /// <summary>
         /// Account
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccountGetArgs> Accounts
-        {
-            get => _accounts ?? (_accounts = new InputList<Inputs.ServiceProfileAccountGetArgs>());
-            set => _accounts = value;
-        }
+        [Input("account")]
+        public Input<Inputs.ServiceProfileAccountGetArgs>? Account { get; set; }
 
         [Input("allowedEmails")]
         private InputList<string>? _allowedEmails;
@@ -391,17 +367,11 @@ namespace Pulumi.Equinix.Fabric
             set => _allowedEmails = value;
         }
 
-        [Input("changeLogs")]
-        private InputList<Inputs.ServiceProfileChangeLogGetArgs>? _changeLogs;
-
         /// <summary>
         /// Captures connection lifecycle change information
         /// </summary>
-        public InputList<Inputs.ServiceProfileChangeLogGetArgs> ChangeLogs
-        {
-            get => _changeLogs ?? (_changeLogs = new InputList<Inputs.ServiceProfileChangeLogGetArgs>());
-            set => _changeLogs = value;
-        }
+        [Input("changeLog")]
+        public Input<Inputs.ServiceProfileChangeLogGetArgs>? ChangeLog { get; set; }
 
         [Input("customFields")]
         private InputList<Inputs.ServiceProfileCustomFieldGetArgs>? _customFields;
@@ -427,17 +397,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("href")]
         public Input<string>? Href { get; set; }
 
-        [Input("marketingInfos")]
-        private InputList<Inputs.ServiceProfileMarketingInfoGetArgs>? _marketingInfos;
-
         /// <summary>
         /// Marketing Info
         /// </summary>
-        public InputList<Inputs.ServiceProfileMarketingInfoGetArgs> MarketingInfos
-        {
-            get => _marketingInfos ?? (_marketingInfos = new InputList<Inputs.ServiceProfileMarketingInfoGetArgs>());
-            set => _marketingInfos = value;
-        }
+        [Input("marketingInfo")]
+        public Input<Inputs.ServiceProfileMarketingInfoGetArgs>? MarketingInfo { get; set; }
 
         [Input("metros")]
         private InputList<Inputs.ServiceProfileMetroGetArgs>? _metros;
@@ -481,17 +445,11 @@ namespace Pulumi.Equinix.Fabric
             set => _ports = value;
         }
 
-        [Input("projects")]
-        private InputList<Inputs.ServiceProfileProjectGetArgs>? _projects;
-
         /// <summary>
         /// Project information
         /// </summary>
-        public InputList<Inputs.ServiceProfileProjectGetArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.ServiceProfileProjectGetArgs>());
-            set => _projects = value;
-        }
+        [Input("project")]
+        public Input<Inputs.ServiceProfileProjectGetArgs>? Project { get; set; }
 
         /// <summary>
         /// Self Profile

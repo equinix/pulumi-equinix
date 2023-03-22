@@ -22,19 +22,19 @@ class GetServiceProfileResult:
     """
     A collection of values returned by getServiceProfile.
     """
-    def __init__(__self__, access_point_type_configs=None, accounts=None, allowed_emails=None, change_logs=None, custom_fields=None, description=None, href=None, id=None, marketing_infos=None, metros=None, name=None, notifications=None, ports=None, projects=None, self_profile=None, state=None, tags=None, type=None, uuid=None, visibility=None):
+    def __init__(__self__, access_point_type_configs=None, account=None, allowed_emails=None, change_log=None, custom_fields=None, description=None, href=None, id=None, marketing_info=None, metros=None, name=None, notifications=None, ports=None, project=None, self_profile=None, state=None, tags=None, type=None, uuid=None, visibility=None):
         if access_point_type_configs and not isinstance(access_point_type_configs, list):
             raise TypeError("Expected argument 'access_point_type_configs' to be a list")
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
-        if accounts and not isinstance(accounts, list):
-            raise TypeError("Expected argument 'accounts' to be a list")
-        pulumi.set(__self__, "accounts", accounts)
+        if account and not isinstance(account, dict):
+            raise TypeError("Expected argument 'account' to be a dict")
+        pulumi.set(__self__, "account", account)
         if allowed_emails and not isinstance(allowed_emails, list):
             raise TypeError("Expected argument 'allowed_emails' to be a list")
         pulumi.set(__self__, "allowed_emails", allowed_emails)
-        if change_logs and not isinstance(change_logs, list):
-            raise TypeError("Expected argument 'change_logs' to be a list")
-        pulumi.set(__self__, "change_logs", change_logs)
+        if change_log and not isinstance(change_log, dict):
+            raise TypeError("Expected argument 'change_log' to be a dict")
+        pulumi.set(__self__, "change_log", change_log)
         if custom_fields and not isinstance(custom_fields, list):
             raise TypeError("Expected argument 'custom_fields' to be a list")
         pulumi.set(__self__, "custom_fields", custom_fields)
@@ -47,9 +47,9 @@ class GetServiceProfileResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if marketing_infos and not isinstance(marketing_infos, list):
-            raise TypeError("Expected argument 'marketing_infos' to be a list")
-        pulumi.set(__self__, "marketing_infos", marketing_infos)
+        if marketing_info and not isinstance(marketing_info, dict):
+            raise TypeError("Expected argument 'marketing_info' to be a dict")
+        pulumi.set(__self__, "marketing_info", marketing_info)
         if metros and not isinstance(metros, list):
             raise TypeError("Expected argument 'metros' to be a list")
         pulumi.set(__self__, "metros", metros)
@@ -62,9 +62,9 @@ class GetServiceProfileResult:
         if ports and not isinstance(ports, list):
             raise TypeError("Expected argument 'ports' to be a list")
         pulumi.set(__self__, "ports", ports)
-        if projects and not isinstance(projects, list):
-            raise TypeError("Expected argument 'projects' to be a list")
-        pulumi.set(__self__, "projects", projects)
+        if project and not isinstance(project, dict):
+            raise TypeError("Expected argument 'project' to be a dict")
+        pulumi.set(__self__, "project", project)
         if self_profile and not isinstance(self_profile, bool):
             raise TypeError("Expected argument 'self_profile' to be a bool")
         pulumi.set(__self__, "self_profile", self_profile)
@@ -94,11 +94,11 @@ class GetServiceProfileResult:
 
     @property
     @pulumi.getter
-    def accounts(self) -> Sequence['outputs.GetServiceProfileAccountResult']:
+    def account(self) -> 'outputs.GetServiceProfileAccountResult':
         """
         Account
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
     @property
     @pulumi.getter(name="allowedEmails")
@@ -109,12 +109,12 @@ class GetServiceProfileResult:
         return pulumi.get(self, "allowed_emails")
 
     @property
-    @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> Sequence['outputs.GetServiceProfileChangeLogResult']:
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetServiceProfileChangeLogResult':
         """
         Captures connection lifecycle change information
         """
-        return pulumi.get(self, "change_logs")
+        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter(name="customFields")
@@ -149,12 +149,12 @@ class GetServiceProfileResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="marketingInfos")
-    def marketing_infos(self) -> Sequence['outputs.GetServiceProfileMarketingInfoResult']:
+    @pulumi.getter(name="marketingInfo")
+    def marketing_info(self) -> 'outputs.GetServiceProfileMarketingInfoResult':
         """
         Marketing Info
         """
-        return pulumi.get(self, "marketing_infos")
+        return pulumi.get(self, "marketing_info")
 
     @property
     @pulumi.getter
@@ -190,11 +190,11 @@ class GetServiceProfileResult:
 
     @property
     @pulumi.getter
-    def projects(self) -> Sequence['outputs.GetServiceProfileProjectResult']:
+    def project(self) -> 'outputs.GetServiceProfileProjectResult':
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="selfProfile")
@@ -252,19 +252,19 @@ class AwaitableGetServiceProfileResult(GetServiceProfileResult):
             yield self
         return GetServiceProfileResult(
             access_point_type_configs=self.access_point_type_configs,
-            accounts=self.accounts,
+            account=self.account,
             allowed_emails=self.allowed_emails,
-            change_logs=self.change_logs,
+            change_log=self.change_log,
             custom_fields=self.custom_fields,
             description=self.description,
             href=self.href,
             id=self.id,
-            marketing_infos=self.marketing_infos,
+            marketing_info=self.marketing_info,
             metros=self.metros,
             name=self.name,
             notifications=self.notifications,
             ports=self.ports,
-            projects=self.projects,
+            project=self.project,
             self_profile=self.self_profile,
             state=self.state,
             tags=self.tags,
@@ -293,19 +293,19 @@ def get_service_profile(state: Optional[str] = None,
 
     return AwaitableGetServiceProfileResult(
         access_point_type_configs=__ret__.access_point_type_configs,
-        accounts=__ret__.accounts,
+        account=__ret__.account,
         allowed_emails=__ret__.allowed_emails,
-        change_logs=__ret__.change_logs,
+        change_log=__ret__.change_log,
         custom_fields=__ret__.custom_fields,
         description=__ret__.description,
         href=__ret__.href,
         id=__ret__.id,
-        marketing_infos=__ret__.marketing_infos,
+        marketing_info=__ret__.marketing_info,
         metros=__ret__.metros,
         name=__ret__.name,
         notifications=__ret__.notifications,
         ports=__ret__.ports,
-        projects=__ret__.projects,
+        project=__ret__.project,
         self_profile=__ret__.self_profile,
         state=__ret__.state,
         tags=__ret__.tags,

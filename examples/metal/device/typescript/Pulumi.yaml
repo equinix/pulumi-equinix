@@ -1,0 +1,6 @@
+name: equinix-metal-device
+runtime: nodejs
+description: An Equinix Metal device resource
+config:
+  projectId:
+    type: string

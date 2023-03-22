@@ -33,43 +33,43 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    @Export(name="aSides", refs={List.class,ConnectionASide.class}, tree="[0,1]")
-    private Output<List<ConnectionASide>> aSides;
+    @Export(name="aSide", refs={ConnectionASide.class}, tree="[0]")
+    private Output<ConnectionASide> aSide;
 
     /**
      * @return Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    public Output<List<ConnectionASide>> aSides() {
-        return this.aSides;
+    public Output<ConnectionASide> aSide() {
+        return this.aSide;
     }
     /**
      * Customer account information that is associated with this connection
      * 
      */
-    @Export(name="accounts", refs={List.class,ConnectionAccount.class}, tree="[0,1]")
-    private Output<List<ConnectionAccount>> accounts;
+    @Export(name="account", refs={ConnectionAccount.class}, tree="[0]")
+    private Output<ConnectionAccount> account;
 
     /**
      * @return Customer account information that is associated with this connection
      * 
      */
-    public Output<List<ConnectionAccount>> accounts() {
-        return this.accounts;
+    public Output<ConnectionAccount> account() {
+        return this.account;
     }
     /**
      * Connection additional information
      * 
      */
-    @Export(name="additionalInfos", refs={List.class,ConnectionAdditionalInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionAdditionalInfo>> additionalInfos;
+    @Export(name="additionalInfo", refs={List.class,ConnectionAdditionalInfo.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ConnectionAdditionalInfo>> additionalInfo;
 
     /**
      * @return Connection additional information
      * 
      */
-    public Output<Optional<List<ConnectionAdditionalInfo>>> additionalInfos() {
-        return Codegen.optional(this.additionalInfos);
+    public Output<Optional<List<ConnectionAdditionalInfo>>> additionalInfo() {
+        return Codegen.optional(this.additionalInfo);
     }
     /**
      * Connection bandwidth in Mbps
@@ -89,15 +89,15 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Captures connection lifecycle change information
      * 
      */
-    @Export(name="changeLogs", refs={List.class,ConnectionChangeLog.class}, tree="[0,1]")
-    private Output<List<ConnectionChangeLog>> changeLogs;
+    @Export(name="changeLog", refs={ConnectionChangeLog.class}, tree="[0]")
+    private Output<ConnectionChangeLog> changeLog;
 
     /**
      * @return Captures connection lifecycle change information
      * 
      */
-    public Output<List<ConnectionChangeLog>> changeLogs() {
-        return this.changeLogs;
+    public Output<ConnectionChangeLog> changeLog() {
+        return this.changeLog;
     }
     /**
      * Connection directionality from the requester point of view
@@ -173,57 +173,57 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection type-specific operational data
      * 
      */
-    @Export(name="operations", refs={List.class,ConnectionOperation.class}, tree="[0,1]")
-    private Output<List<ConnectionOperation>> operations;
+    @Export(name="operation", refs={ConnectionOperation.class}, tree="[0]")
+    private Output<ConnectionOperation> operation;
 
     /**
      * @return Connection type-specific operational data
      * 
      */
-    public Output<List<ConnectionOperation>> operations() {
-        return this.operations;
+    public Output<ConnectionOperation> operation() {
+        return this.operation;
     }
     /**
      * Order related to this connection information
      * 
      */
-    @Export(name="orders", refs={List.class,ConnectionOrder.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionOrder>> orders;
+    @Export(name="order", refs={ConnectionOrder.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionOrder> order;
 
     /**
      * @return Order related to this connection information
      * 
      */
-    public Output<Optional<List<ConnectionOrder>>> orders() {
-        return Codegen.optional(this.orders);
+    public Output<Optional<ConnectionOrder>> order() {
+        return Codegen.optional(this.order);
     }
     /**
      * Project information
      * 
      */
-    @Export(name="projects", refs={List.class,ConnectionProject.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionProject>> projects;
+    @Export(name="project", refs={ConnectionProject.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProject> project;
 
     /**
      * @return Project information
      * 
      */
-    public Output<Optional<List<ConnectionProject>>> projects() {
-        return Codegen.optional(this.projects);
+    public Output<Optional<ConnectionProject>> project() {
+        return Codegen.optional(this.project);
     }
     /**
      * Redundancy Information
      * 
      */
-    @Export(name="redundancies", refs={List.class,ConnectionRedundancy.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionRedundancy>> redundancies;
+    @Export(name="redundancy", refs={ConnectionRedundancy.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionRedundancy> redundancy;
 
     /**
      * @return Redundancy Information
      * 
      */
-    public Output<Optional<List<ConnectionRedundancy>>> redundancies() {
-        return Codegen.optional(this.redundancies);
+    public Output<Optional<ConnectionRedundancy>> redundancy() {
+        return Codegen.optional(this.redundancy);
     }
     /**
      * Connection overall state
@@ -257,15 +257,15 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    @Export(name="zSides", refs={List.class,ConnectionZSide.class}, tree="[0,1]")
-    private Output<List<ConnectionZSide>> zSides;
+    @Export(name="zSide", refs={ConnectionZSide.class}, tree="[0]")
+    private Output<ConnectionZSide> zSide;
 
     /**
      * @return Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    public Output<List<ConnectionZSide>> zSides() {
-        return this.zSides;
+    public Output<ConnectionZSide> zSide() {
+        return this.zSide;
     }
 
     /**

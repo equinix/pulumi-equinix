@@ -42,12 +42,12 @@ public final class ServiceProfileAccessPointTypeConfig {
      * @return Api configuration details
      * 
      */
-    private @Nullable List<ServiceProfileAccessPointTypeConfigApiConfig> apiConfigs;
+    private @Nullable ServiceProfileAccessPointTypeConfigApiConfig apiConfig;
     /**
      * @return Authentication key details
      * 
      */
-    private @Nullable List<ServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys;
+    private @Nullable ServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey;
     /**
      * @return Percentage of port bandwidth at which an allocation alert is generated
      * 
@@ -72,7 +72,7 @@ public final class ServiceProfileAccessPointTypeConfig {
      * @return Link protocol configuration details
      * 
      */
-    private @Nullable List<ServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
+    private @Nullable ServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig;
     /**
      * @return Supported bandwidths
      * 
@@ -122,15 +122,15 @@ public final class ServiceProfileAccessPointTypeConfig {
      * @return Api configuration details
      * 
      */
-    public List<ServiceProfileAccessPointTypeConfigApiConfig> apiConfigs() {
-        return this.apiConfigs == null ? List.of() : this.apiConfigs;
+    public Optional<ServiceProfileAccessPointTypeConfigApiConfig> apiConfig() {
+        return Optional.ofNullable(this.apiConfig);
     }
     /**
      * @return Authentication key details
      * 
      */
-    public List<ServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys() {
-        return this.authenticationKeys == null ? List.of() : this.authenticationKeys;
+    public Optional<ServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKey() {
+        return Optional.ofNullable(this.authenticationKey);
     }
     /**
      * @return Percentage of port bandwidth at which an allocation alert is generated
@@ -164,8 +164,8 @@ public final class ServiceProfileAccessPointTypeConfig {
      * @return Link protocol configuration details
      * 
      */
-    public List<ServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs() {
-        return this.linkProtocolConfigs == null ? List.of() : this.linkProtocolConfigs;
+    public Optional<ServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfig() {
+        return Optional.ofNullable(this.linkProtocolConfig);
     }
     /**
      * @return Supported bandwidths
@@ -202,13 +202,13 @@ public final class ServiceProfileAccessPointTypeConfig {
         private @Nullable Boolean allowBandwidthUpgrade;
         private @Nullable Boolean allowCustomBandwidth;
         private @Nullable Boolean allowRemoteConnections;
-        private @Nullable List<ServiceProfileAccessPointTypeConfigApiConfig> apiConfigs;
-        private @Nullable List<ServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys;
+        private @Nullable ServiceProfileAccessPointTypeConfigApiConfig apiConfig;
+        private @Nullable ServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey;
         private @Nullable Double bandwidthAlertThreshold;
         private @Nullable String connectionLabel;
         private @Nullable Boolean connectionRedundancyRequired;
         private @Nullable Boolean enableAutoGenerateServiceKey;
-        private @Nullable List<ServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
+        private @Nullable ServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig;
         private @Nullable List<Integer> supportedBandwidths;
         private String type;
         private @Nullable String uuid;
@@ -219,13 +219,13 @@ public final class ServiceProfileAccessPointTypeConfig {
     	      this.allowBandwidthUpgrade = defaults.allowBandwidthUpgrade;
     	      this.allowCustomBandwidth = defaults.allowCustomBandwidth;
     	      this.allowRemoteConnections = defaults.allowRemoteConnections;
-    	      this.apiConfigs = defaults.apiConfigs;
-    	      this.authenticationKeys = defaults.authenticationKeys;
+    	      this.apiConfig = defaults.apiConfig;
+    	      this.authenticationKey = defaults.authenticationKey;
     	      this.bandwidthAlertThreshold = defaults.bandwidthAlertThreshold;
     	      this.connectionLabel = defaults.connectionLabel;
     	      this.connectionRedundancyRequired = defaults.connectionRedundancyRequired;
     	      this.enableAutoGenerateServiceKey = defaults.enableAutoGenerateServiceKey;
-    	      this.linkProtocolConfigs = defaults.linkProtocolConfigs;
+    	      this.linkProtocolConfig = defaults.linkProtocolConfig;
     	      this.supportedBandwidths = defaults.supportedBandwidths;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
@@ -252,20 +252,14 @@ public final class ServiceProfileAccessPointTypeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder apiConfigs(@Nullable List<ServiceProfileAccessPointTypeConfigApiConfig> apiConfigs) {
-            this.apiConfigs = apiConfigs;
+        public Builder apiConfig(@Nullable ServiceProfileAccessPointTypeConfigApiConfig apiConfig) {
+            this.apiConfig = apiConfig;
             return this;
-        }
-        public Builder apiConfigs(ServiceProfileAccessPointTypeConfigApiConfig... apiConfigs) {
-            return apiConfigs(List.of(apiConfigs));
         }
         @CustomType.Setter
-        public Builder authenticationKeys(@Nullable List<ServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys) {
-            this.authenticationKeys = authenticationKeys;
+        public Builder authenticationKey(@Nullable ServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey) {
+            this.authenticationKey = authenticationKey;
             return this;
-        }
-        public Builder authenticationKeys(ServiceProfileAccessPointTypeConfigAuthenticationKey... authenticationKeys) {
-            return authenticationKeys(List.of(authenticationKeys));
         }
         @CustomType.Setter
         public Builder bandwidthAlertThreshold(@Nullable Double bandwidthAlertThreshold) {
@@ -288,12 +282,9 @@ public final class ServiceProfileAccessPointTypeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder linkProtocolConfigs(@Nullable List<ServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs) {
-            this.linkProtocolConfigs = linkProtocolConfigs;
+        public Builder linkProtocolConfig(@Nullable ServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig) {
+            this.linkProtocolConfig = linkProtocolConfig;
             return this;
-        }
-        public Builder linkProtocolConfigs(ServiceProfileAccessPointTypeConfigLinkProtocolConfig... linkProtocolConfigs) {
-            return linkProtocolConfigs(List.of(linkProtocolConfigs));
         }
         @CustomType.Setter
         public Builder supportedBandwidths(@Nullable List<Integer> supportedBandwidths) {
@@ -319,13 +310,13 @@ public final class ServiceProfileAccessPointTypeConfig {
             o.allowBandwidthUpgrade = allowBandwidthUpgrade;
             o.allowCustomBandwidth = allowCustomBandwidth;
             o.allowRemoteConnections = allowRemoteConnections;
-            o.apiConfigs = apiConfigs;
-            o.authenticationKeys = authenticationKeys;
+            o.apiConfig = apiConfig;
+            o.authenticationKey = authenticationKey;
             o.bandwidthAlertThreshold = bandwidthAlertThreshold;
             o.connectionLabel = connectionLabel;
             o.connectionRedundancyRequired = connectionRedundancyRequired;
             o.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            o.linkProtocolConfigs = linkProtocolConfigs;
+            o.linkProtocolConfig = linkProtocolConfig;
             o.supportedBandwidths = supportedBandwidths;
             o.type = type;
             o.uuid = uuid;

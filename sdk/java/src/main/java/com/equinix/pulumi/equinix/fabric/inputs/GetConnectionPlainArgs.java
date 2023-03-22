@@ -6,7 +6,6 @@ package com.equinix.pulumi.equinix.fabric.inputs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetConnectionProject;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,15 +19,15 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
      * Project information
      * 
      */
-    @Import(name="projects")
-    private @Nullable List<GetConnectionProject> projects;
+    @Import(name="project")
+    private @Nullable GetConnectionProject project;
 
     /**
      * @return Project information
      * 
      */
-    public Optional<List<GetConnectionProject>> projects() {
-        return Optional.ofNullable(this.projects);
+    public Optional<GetConnectionProject> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -49,7 +48,7 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
     private GetConnectionPlainArgs() {}
 
     private GetConnectionPlainArgs(GetConnectionPlainArgs $) {
-        this.projects = $.projects;
+        this.project = $.project;
         this.uuid = $.uuid;
     }
 
@@ -72,24 +71,14 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param projects Project information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder projects(@Nullable List<GetConnectionProject> projects) {
-            $.projects = projects;
+        public Builder project(@Nullable GetConnectionProject project) {
+            $.project = project;
             return this;
-        }
-
-        /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(GetConnectionProject... projects) {
-            return projects(List.of(projects));
         }
 
         /**

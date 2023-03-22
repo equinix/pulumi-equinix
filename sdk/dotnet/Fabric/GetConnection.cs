@@ -21,17 +21,11 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetConnectionArgs : global::Pulumi.InvokeArgs
     {
-        [Input("projects")]
-        private List<Inputs.GetConnectionProjectArgs>? _projects;
-
         /// <summary>
         /// Project information
         /// </summary>
-        public List<Inputs.GetConnectionProjectArgs> Projects
-        {
-            get => _projects ?? (_projects = new List<Inputs.GetConnectionProjectArgs>());
-            set => _projects = value;
-        }
+        [Input("project")]
+        public Inputs.GetConnectionProjectArgs? Project { get; set; }
 
         /// <summary>
         /// Equinix-assigned connection identifier
@@ -47,17 +41,11 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("projects")]
-        private InputList<Inputs.GetConnectionProjectInputArgs>? _projects;
-
         /// <summary>
         /// Project information
         /// </summary>
-        public InputList<Inputs.GetConnectionProjectInputArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.GetConnectionProjectInputArgs>());
-            set => _projects = value;
-        }
+        [Input("project")]
+        public Input<Inputs.GetConnectionProjectInputArgs>? Project { get; set; }
 
         /// <summary>
         /// Equinix-assigned connection identifier
@@ -78,15 +66,15 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Requester or Customer side connection configuration object of the multi-segment connection
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionASideResult> ASides;
+        public readonly Outputs.GetConnectionASideResult ASide;
         /// <summary>
         /// Customer account information that is associated with this connection
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionAccountResult> Accounts;
+        public readonly Outputs.GetConnectionAccountResult Account;
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionAdditionalInfoResult> AdditionalInfos;
+        public readonly ImmutableArray<Outputs.GetConnectionAdditionalInfoResult> AdditionalInfo;
         /// <summary>
         /// Connection bandwidth in Mbps
         /// </summary>
@@ -94,7 +82,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Captures connection lifecycle change information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionChangeLogResult> ChangeLogs;
+        public readonly Outputs.GetConnectionChangeLogResult ChangeLog;
         /// <summary>
         /// Customer-provided connection description
         /// </summary>
@@ -126,19 +114,19 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Connection specific operational data
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionOperationResult> Operations;
+        public readonly Outputs.GetConnectionOperationResult Operation;
         /// <summary>
         /// Order related to this connection information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionOrderResult> Orders;
+        public readonly Outputs.GetConnectionOrderResult Order;
         /// <summary>
         /// Project information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionProjectResult> Projects;
+        public readonly Outputs.GetConnectionProjectResult? Project;
         /// <summary>
         /// Redundancy Information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionRedundancyResult> Redundancies;
+        public readonly Outputs.GetConnectionRedundancyResult Redundancy;
         /// <summary>
         /// Connection overall state
         /// </summary>
@@ -154,19 +142,19 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionZSideResult> ZSides;
+        public readonly Outputs.GetConnectionZSideResult ZSide;
 
         [OutputConstructor]
         private GetConnectionResult(
-            ImmutableArray<Outputs.GetConnectionASideResult> aSides,
+            Outputs.GetConnectionASideResult aSide,
 
-            ImmutableArray<Outputs.GetConnectionAccountResult> accounts,
+            Outputs.GetConnectionAccountResult account,
 
-            ImmutableArray<Outputs.GetConnectionAdditionalInfoResult> additionalInfos,
+            ImmutableArray<Outputs.GetConnectionAdditionalInfoResult> additionalInfo,
 
             int bandwidth,
 
-            ImmutableArray<Outputs.GetConnectionChangeLogResult> changeLogs,
+            Outputs.GetConnectionChangeLogResult changeLog,
 
             string description,
 
@@ -182,13 +170,13 @@ namespace Pulumi.Equinix.Fabric
 
             ImmutableArray<Outputs.GetConnectionNotificationResult> notifications,
 
-            ImmutableArray<Outputs.GetConnectionOperationResult> operations,
+            Outputs.GetConnectionOperationResult operation,
 
-            ImmutableArray<Outputs.GetConnectionOrderResult> orders,
+            Outputs.GetConnectionOrderResult order,
 
-            ImmutableArray<Outputs.GetConnectionProjectResult> projects,
+            Outputs.GetConnectionProjectResult? project,
 
-            ImmutableArray<Outputs.GetConnectionRedundancyResult> redundancies,
+            Outputs.GetConnectionRedundancyResult redundancy,
 
             string state,
 
@@ -196,13 +184,13 @@ namespace Pulumi.Equinix.Fabric
 
             string? uuid,
 
-            ImmutableArray<Outputs.GetConnectionZSideResult> zSides)
+            Outputs.GetConnectionZSideResult zSide)
         {
-            ASides = aSides;
-            Accounts = accounts;
-            AdditionalInfos = additionalInfos;
+            ASide = aSide;
+            Account = account;
+            AdditionalInfo = additionalInfo;
             Bandwidth = bandwidth;
-            ChangeLogs = changeLogs;
+            ChangeLog = changeLog;
             Description = description;
             Direction = direction;
             Href = href;
@@ -210,14 +198,14 @@ namespace Pulumi.Equinix.Fabric
             IsRemote = isRemote;
             Name = name;
             Notifications = notifications;
-            Operations = operations;
-            Orders = orders;
-            Projects = projects;
-            Redundancies = redundancies;
+            Operation = operation;
+            Order = order;
+            Project = project;
+            Redundancy = redundancy;
             State = state;
             Type = type;
             Uuid = uuid;
-            ZSides = zSides;
+            ZSide = zSide;
         }
     }
 }

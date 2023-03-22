@@ -29,7 +29,7 @@ type GetPortsArgs struct {
 // A collection of values returned by getPorts.
 type GetPortsResult struct {
 	// List of  Ports
-	Datas []GetPortsData `pulumi:"datas"`
+	Data []GetPortsDatum `pulumi:"data"`
 	// name
 	Filters []GetPortsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -75,8 +75,8 @@ func (o GetPortsResultOutput) ToGetPortsResultOutputWithContext(ctx context.Cont
 }
 
 // List of  Ports
-func (o GetPortsResultOutput) Datas() GetPortsDataArrayOutput {
-	return o.ApplyT(func(v GetPortsResult) []GetPortsData { return v.Datas }).(GetPortsDataArrayOutput)
+func (o GetPortsResultOutput) Data() GetPortsDatumArrayOutput {
+	return o.ApplyT(func(v GetPortsResult) []GetPortsDatum { return v.Data }).(GetPortsDatumArrayOutput)
 }
 
 // name

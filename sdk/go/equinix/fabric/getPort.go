@@ -29,33 +29,33 @@ type GetPortArgs struct {
 // A collection of values returned by getPort.
 type GetPortResult struct {
 	// Customer account information that is associated with this port
-	Accounts []GetPortAccount `pulumi:"accounts"`
+	Account GetPortAccount `pulumi:"account"`
 	// Port available bandwidth in Mbps
 	AvailableBandwidth int `pulumi:"availableBandwidth"`
 	// Port bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Captures port lifecycle change information
-	ChangeLogs []GetPortChangeLog `pulumi:"changeLogs"`
+	ChangeLog GetPortChangeLog `pulumi:"changeLog"`
 	// Port description
 	Description string `pulumi:"description"`
 	// Port device
-	Devices []GetPortDevice `pulumi:"devices"`
+	Device GetPortDevice `pulumi:"device"`
 	// Port encapsulation protocol
-	Encapsulations []GetPortEncapsulation `pulumi:"encapsulations"`
+	Encapsulation GetPortEncapsulation `pulumi:"encapsulation"`
 	// Port URI information
 	Href string `pulumi:"href"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Port Lag
-	Lags []GetPortLag `pulumi:"lags"`
+	Lag GetPortLag `pulumi:"lag"`
 	// Port location information
-	Locations []GetPortLocation `pulumi:"locations"`
+	Location GetPortLocation `pulumi:"location"`
 	// Port name
 	Name string `pulumi:"name"`
 	// Port specific operational data
-	Operations []GetPortOperation `pulumi:"operations"`
+	Operation GetPortOperation `pulumi:"operation"`
 	// Port redundancy information
-	Redundancies []GetPortRedundancy `pulumi:"redundancies"`
+	Redundancy GetPortRedundancy `pulumi:"redundancy"`
 	// Port service type
 	ServiceType string `pulumi:"serviceType"`
 	// Port state
@@ -107,8 +107,8 @@ func (o GetPortResultOutput) ToGetPortResultOutputWithContext(ctx context.Contex
 }
 
 // Customer account information that is associated with this port
-func (o GetPortResultOutput) Accounts() GetPortAccountArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortAccount { return v.Accounts }).(GetPortAccountArrayOutput)
+func (o GetPortResultOutput) Account() GetPortAccountOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortAccount { return v.Account }).(GetPortAccountOutput)
 }
 
 // Port available bandwidth in Mbps
@@ -122,8 +122,8 @@ func (o GetPortResultOutput) Bandwidth() pulumi.IntOutput {
 }
 
 // Captures port lifecycle change information
-func (o GetPortResultOutput) ChangeLogs() GetPortChangeLogArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortChangeLog { return v.ChangeLogs }).(GetPortChangeLogArrayOutput)
+func (o GetPortResultOutput) ChangeLog() GetPortChangeLogOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortChangeLog { return v.ChangeLog }).(GetPortChangeLogOutput)
 }
 
 // Port description
@@ -132,13 +132,13 @@ func (o GetPortResultOutput) Description() pulumi.StringOutput {
 }
 
 // Port device
-func (o GetPortResultOutput) Devices() GetPortDeviceArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortDevice { return v.Devices }).(GetPortDeviceArrayOutput)
+func (o GetPortResultOutput) Device() GetPortDeviceOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortDevice { return v.Device }).(GetPortDeviceOutput)
 }
 
 // Port encapsulation protocol
-func (o GetPortResultOutput) Encapsulations() GetPortEncapsulationArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortEncapsulation { return v.Encapsulations }).(GetPortEncapsulationArrayOutput)
+func (o GetPortResultOutput) Encapsulation() GetPortEncapsulationOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortEncapsulation { return v.Encapsulation }).(GetPortEncapsulationOutput)
 }
 
 // Port URI information
@@ -152,13 +152,13 @@ func (o GetPortResultOutput) Id() pulumi.StringOutput {
 }
 
 // Port Lag
-func (o GetPortResultOutput) Lags() GetPortLagArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortLag { return v.Lags }).(GetPortLagArrayOutput)
+func (o GetPortResultOutput) Lag() GetPortLagOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortLag { return v.Lag }).(GetPortLagOutput)
 }
 
 // Port location information
-func (o GetPortResultOutput) Locations() GetPortLocationArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortLocation { return v.Locations }).(GetPortLocationArrayOutput)
+func (o GetPortResultOutput) Location() GetPortLocationOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortLocation { return v.Location }).(GetPortLocationOutput)
 }
 
 // Port name
@@ -167,13 +167,13 @@ func (o GetPortResultOutput) Name() pulumi.StringOutput {
 }
 
 // Port specific operational data
-func (o GetPortResultOutput) Operations() GetPortOperationArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortOperation { return v.Operations }).(GetPortOperationArrayOutput)
+func (o GetPortResultOutput) Operation() GetPortOperationOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortOperation { return v.Operation }).(GetPortOperationOutput)
 }
 
 // Port redundancy information
-func (o GetPortResultOutput) Redundancies() GetPortRedundancyArrayOutput {
-	return o.ApplyT(func(v GetPortResult) []GetPortRedundancy { return v.Redundancies }).(GetPortRedundancyArrayOutput)
+func (o GetPortResultOutput) Redundancy() GetPortRedundancyOutput {
+	return o.ApplyT(func(v GetPortResult) GetPortRedundancy { return v.Redundancy }).(GetPortRedundancyOutput)
 }
 
 // Port service type

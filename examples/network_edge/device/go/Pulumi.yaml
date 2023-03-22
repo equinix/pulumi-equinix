@@ -1,0 +1,32 @@
+name: equinix-networkedge-device-cisco-C8KV
+runtime: go
+description: An Equinix Network Edge virtual network device - Cisco Catalyst 8000V Router
+config:
+  accountName:
+    type: string
+  aclTemplateId:
+    type: string
+  additionalBandwidth:
+    type: integer
+    default: 5
+  devicePackageCode:
+    type: string
+    default: network-essentials
+  deviceVersion:
+    type: string
+    default: 17.06.01a
+  licenseToken:
+    type: string
+  metro:
+    type: string
+    default: SV
+  sizeInCores:
+    type: integer
+    default: 2
+  sshKeyName:
+    type: string
+  sshUserName:
+    type: string
+  termLength:
+    type: integer
+    default: 6

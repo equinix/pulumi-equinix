@@ -53,7 +53,7 @@ export interface GetOrganizationResult {
     /**
      * Postal address.
      */
-    readonly addresses: outputs.metal.GetOrganizationAddress[];
+    readonly address: outputs.metal.GetOrganizationAddress;
     /**
      * Description string.
      */

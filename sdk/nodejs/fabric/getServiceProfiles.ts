@@ -12,8 +12,8 @@ export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", {
-        "filters": args.filters,
-        "sorts": args.sorts,
+        "filter": args.filter,
+        "sort": args.sort,
     }, opts);
 }
 
@@ -24,11 +24,11 @@ export interface GetServiceProfilesArgs {
     /**
      * Service Profile Search Filter
      */
-    filters?: inputs.fabric.GetServiceProfilesFilter[];
+    filter?: inputs.fabric.GetServiceProfilesFilter;
     /**
      * Service Profile Sort criteria for Search Request response payload
      */
-    sorts?: inputs.fabric.GetServiceProfilesSort[];
+    sort?: inputs.fabric.GetServiceProfilesSort[];
 }
 
 /**
@@ -38,11 +38,11 @@ export interface GetServiceProfilesResult {
     /**
      * List of  Service Profiles
      */
-    readonly datas: outputs.fabric.GetServiceProfilesData[];
+    readonly data: outputs.fabric.GetServiceProfilesDatum[];
     /**
      * Service Profile Search Filter
      */
-    readonly filters?: outputs.fabric.GetServiceProfilesFilter[];
+    readonly filter?: outputs.fabric.GetServiceProfilesFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -50,7 +50,7 @@ export interface GetServiceProfilesResult {
     /**
      * Service Profile Sort criteria for Search Request response payload
      */
-    readonly sorts?: outputs.fabric.GetServiceProfilesSort[];
+    readonly sort?: outputs.fabric.GetServiceProfilesSort[];
 }
 export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))
@@ -63,9 +63,9 @@ export interface GetServiceProfilesOutputArgs {
     /**
      * Service Profile Search Filter
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.fabric.GetServiceProfilesFilterArgs>[]>;
+    filter?: pulumi.Input<inputs.fabric.GetServiceProfilesFilterArgs>;
     /**
      * Service Profile Sort criteria for Search Request response payload
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.fabric.GetServiceProfilesSortArgs>[]>;
+    sort?: pulumi.Input<pulumi.Input<inputs.fabric.GetServiceProfilesSortArgs>[]>;
 }

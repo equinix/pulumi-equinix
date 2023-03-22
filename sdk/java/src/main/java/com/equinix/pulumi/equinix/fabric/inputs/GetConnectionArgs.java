@@ -7,7 +7,6 @@ import com.equinix.pulumi.equinix.fabric.inputs.GetConnectionProjectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,15 +20,15 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
      * Project information
      * 
      */
-    @Import(name="projects")
-    private @Nullable Output<List<GetConnectionProjectArgs>> projects;
+    @Import(name="project")
+    private @Nullable Output<GetConnectionProjectArgs> project;
 
     /**
      * @return Project information
      * 
      */
-    public Optional<Output<List<GetConnectionProjectArgs>>> projects() {
-        return Optional.ofNullable(this.projects);
+    public Optional<Output<GetConnectionProjectArgs>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -50,7 +49,7 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
     private GetConnectionArgs() {}
 
     private GetConnectionArgs(GetConnectionArgs $) {
-        this.projects = $.projects;
+        this.project = $.project;
         this.uuid = $.uuid;
     }
 
@@ -73,34 +72,24 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projects Project information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder projects(@Nullable Output<List<GetConnectionProjectArgs>> projects) {
-            $.projects = projects;
+        public Builder project(@Nullable Output<GetConnectionProjectArgs> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projects Project information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder projects(List<GetConnectionProjectArgs> projects) {
-            return projects(Output.of(projects));
-        }
-
-        /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(GetConnectionProjectArgs... projects) {
-            return projects(List.of(projects));
+        public Builder project(GetConnectionProjectArgs project) {
+            return project(Output.of(project));
         }
 
         /**

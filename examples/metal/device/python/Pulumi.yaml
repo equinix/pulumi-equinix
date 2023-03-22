@@ -1,0 +1,6 @@
+name: equinix-metal-device
+runtime: python
+description: An Equinix Metal device resource
+config:
+  projectId:
+    type: string

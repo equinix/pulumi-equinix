@@ -3,13 +3,14 @@
 
 package com.equinix.pulumi.equinix.fabric.outputs;
 
-import com.equinix.pulumi.equinix.fabric.outputs.GetServiceProfilesData;
+import com.equinix.pulumi.equinix.fabric.outputs.GetServiceProfilesDatum;
 import com.equinix.pulumi.equinix.fabric.outputs.GetServiceProfilesFilter;
 import com.equinix.pulumi.equinix.fabric.outputs.GetServiceProfilesSort;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,12 +19,12 @@ public final class GetServiceProfilesResult {
      * @return List of  Service Profiles
      * 
      */
-    private List<GetServiceProfilesData> datas;
+    private List<GetServiceProfilesDatum> data;
     /**
      * @return Service Profile Search Filter
      * 
      */
-    private @Nullable List<GetServiceProfilesFilter> filters;
+    private @Nullable GetServiceProfilesFilter filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -33,22 +34,22 @@ public final class GetServiceProfilesResult {
      * @return Service Profile Sort criteria for Search Request response payload
      * 
      */
-    private @Nullable List<GetServiceProfilesSort> sorts;
+    private @Nullable List<GetServiceProfilesSort> sort;
 
     private GetServiceProfilesResult() {}
     /**
      * @return List of  Service Profiles
      * 
      */
-    public List<GetServiceProfilesData> datas() {
-        return this.datas;
+    public List<GetServiceProfilesDatum> data() {
+        return this.data;
     }
     /**
      * @return Service Profile Search Filter
      * 
      */
-    public List<GetServiceProfilesFilter> filters() {
-        return this.filters == null ? List.of() : this.filters;
+    public Optional<GetServiceProfilesFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -61,8 +62,8 @@ public final class GetServiceProfilesResult {
      * @return Service Profile Sort criteria for Search Request response payload
      * 
      */
-    public List<GetServiceProfilesSort> sorts() {
-        return this.sorts == null ? List.of() : this.sorts;
+    public List<GetServiceProfilesSort> sort() {
+        return this.sort == null ? List.of() : this.sort;
     }
 
     public static Builder builder() {
@@ -74,34 +75,31 @@ public final class GetServiceProfilesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetServiceProfilesData> datas;
-        private @Nullable List<GetServiceProfilesFilter> filters;
+        private List<GetServiceProfilesDatum> data;
+        private @Nullable GetServiceProfilesFilter filter;
         private String id;
-        private @Nullable List<GetServiceProfilesSort> sorts;
+        private @Nullable List<GetServiceProfilesSort> sort;
         public Builder() {}
         public Builder(GetServiceProfilesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.datas = defaults.datas;
-    	      this.filters = defaults.filters;
+    	      this.data = defaults.data;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
-    	      this.sorts = defaults.sorts;
+    	      this.sort = defaults.sort;
         }
 
         @CustomType.Setter
-        public Builder datas(List<GetServiceProfilesData> datas) {
-            this.datas = Objects.requireNonNull(datas);
+        public Builder data(List<GetServiceProfilesDatum> data) {
+            this.data = Objects.requireNonNull(data);
             return this;
         }
-        public Builder datas(GetServiceProfilesData... datas) {
-            return datas(List.of(datas));
+        public Builder data(GetServiceProfilesDatum... data) {
+            return data(List.of(data));
         }
         @CustomType.Setter
-        public Builder filters(@Nullable List<GetServiceProfilesFilter> filters) {
-            this.filters = filters;
+        public Builder filter(@Nullable GetServiceProfilesFilter filter) {
+            this.filter = filter;
             return this;
-        }
-        public Builder filters(GetServiceProfilesFilter... filters) {
-            return filters(List.of(filters));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -109,19 +107,19 @@ public final class GetServiceProfilesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder sorts(@Nullable List<GetServiceProfilesSort> sorts) {
-            this.sorts = sorts;
+        public Builder sort(@Nullable List<GetServiceProfilesSort> sort) {
+            this.sort = sort;
             return this;
         }
-        public Builder sorts(GetServiceProfilesSort... sorts) {
-            return sorts(List.of(sorts));
+        public Builder sort(GetServiceProfilesSort... sort) {
+            return sort(List.of(sort));
         }
         public GetServiceProfilesResult build() {
             final var o = new GetServiceProfilesResult();
-            o.datas = datas;
-            o.filters = filters;
+            o.data = data;
+            o.filter = filter;
             o.id = id;
-            o.sorts = sorts;
+            o.sort = sort;
             return o;
         }
     }

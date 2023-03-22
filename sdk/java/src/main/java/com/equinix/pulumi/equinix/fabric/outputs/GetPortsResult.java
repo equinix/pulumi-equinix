@@ -3,7 +3,7 @@
 
 package com.equinix.pulumi.equinix.fabric.outputs;
 
-import com.equinix.pulumi.equinix.fabric.outputs.GetPortsData;
+import com.equinix.pulumi.equinix.fabric.outputs.GetPortsDatum;
 import com.equinix.pulumi.equinix.fabric.outputs.GetPortsFilter;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -17,7 +17,7 @@ public final class GetPortsResult {
      * @return List of  Ports
      * 
      */
-    private List<GetPortsData> datas;
+    private List<GetPortsDatum> data;
     /**
      * @return name
      * 
@@ -34,8 +34,8 @@ public final class GetPortsResult {
      * @return List of  Ports
      * 
      */
-    public List<GetPortsData> datas() {
-        return this.datas;
+    public List<GetPortsDatum> data() {
+        return this.data;
     }
     /**
      * @return name
@@ -61,24 +61,24 @@ public final class GetPortsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetPortsData> datas;
+        private List<GetPortsDatum> data;
         private @Nullable List<GetPortsFilter> filters;
         private String id;
         public Builder() {}
         public Builder(GetPortsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.datas = defaults.datas;
+    	      this.data = defaults.data;
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
         }
 
         @CustomType.Setter
-        public Builder datas(List<GetPortsData> datas) {
-            this.datas = Objects.requireNonNull(datas);
+        public Builder data(List<GetPortsDatum> data) {
+            this.data = Objects.requireNonNull(data);
             return this;
         }
-        public Builder datas(GetPortsData... datas) {
-            return datas(List.of(datas));
+        public Builder data(GetPortsDatum... data) {
+            return data(List.of(data));
         }
         @CustomType.Setter
         public Builder filters(@Nullable List<GetPortsFilter> filters) {
@@ -95,7 +95,7 @@ public final class GetPortsResult {
         }
         public GetPortsResult build() {
             final var o = new GetPortsResult();
-            o.datas = datas;
+            o.data = data;
             o.filters = filters;
             o.id = id;
             return o;

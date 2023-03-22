@@ -263,6 +263,9 @@ type Device struct {
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrOutput `pulumi:"metro"`
+	// The device's private and public IP (v4 and v6) network details. See
+	// Network Attribute below for more details.
+	Network DeviceNetworkArrayOutput `pulumi:"network"`
 	// (Deprecated) Network type of a device, used in
 	// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 	// attribute is deprecated you should handle Network Type with one of
@@ -273,9 +276,6 @@ type Device struct {
 	//
 	// Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
-	Networks DeviceNetworkArrayOutput `pulumi:"networks"`
 	// The operating system slug. To find the slug, or visit
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
@@ -427,6 +427,9 @@ type deviceState struct {
 	Locked *bool `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro *string `pulumi:"metro"`
+	// The device's private and public IP (v4 and v6) network details. See
+	// Network Attribute below for more details.
+	Network []DeviceNetwork `pulumi:"network"`
 	// (Deprecated) Network type of a device, used in
 	// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 	// attribute is deprecated you should handle Network Type with one of
@@ -437,9 +440,6 @@ type deviceState struct {
 	//
 	// Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 	NetworkType *string `pulumi:"networkType"`
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
-	Networks []DeviceNetwork `pulumi:"networks"`
 	// The operating system slug. To find the slug, or visit
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
@@ -541,6 +541,9 @@ type DeviceState struct {
 	Locked pulumi.BoolPtrInput
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrInput
+	// The device's private and public IP (v4 and v6) network details. See
+	// Network Attribute below for more details.
+	Network DeviceNetworkArrayInput
 	// (Deprecated) Network type of a device, used in
 	// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 	// attribute is deprecated you should handle Network Type with one of
@@ -551,9 +554,6 @@ type DeviceState struct {
 	//
 	// Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 	NetworkType pulumi.StringPtrInput
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
-	Networks DeviceNetworkArrayInput
 	// The operating system slug. To find the slug, or visit
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
@@ -953,6 +953,12 @@ func (o DeviceOutput) Metro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Metro }).(pulumi.StringPtrOutput)
 }
 
+// The device's private and public IP (v4 and v6) network details. See
+// Network Attribute below for more details.
+func (o DeviceOutput) Network() DeviceNetworkArrayOutput {
+	return o.ApplyT(func(v *Device) DeviceNetworkArrayOutput { return v.Network }).(DeviceNetworkArrayOutput)
+}
+
 // (Deprecated) Network type of a device, used in
 // [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 // attribute is deprecated you should handle Network Type with one of
@@ -964,12 +970,6 @@ func (o DeviceOutput) Metro() pulumi.StringPtrOutput {
 // Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 func (o DeviceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
-}
-
-// The device's private and public IP (v4 and v6) network details. See
-// Network Attribute below for more details.
-func (o DeviceOutput) Networks() DeviceNetworkArrayOutput {
-	return o.ApplyT(func(v *Device) DeviceNetworkArrayOutput { return v.Networks }).(DeviceNetworkArrayOutput)
 }
 
 // The operating system slug. To find the slug, or visit

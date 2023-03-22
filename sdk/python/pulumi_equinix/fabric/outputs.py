@@ -18,9 +18,12 @@ __all__ = [
     'ConnectionASideAccessPointAccount',
     'ConnectionASideAccessPointGateway',
     'ConnectionASideAccessPointInterface',
+    'ConnectionASideAccessPointLinkProtocol',
     'ConnectionASideAccessPointLocation',
     'ConnectionASideAccessPointPort',
     'ConnectionASideAccessPointPortRedundancy',
+    'ConnectionASideAccessPointProfile',
+    'ConnectionASideAccessPointProfileAccessPointTypeConfig',
     'ConnectionASideAccessPointRoutingProtocol',
     'ConnectionASideAccessPointVirtualDevice',
     'ConnectionASideAdditionalInfo',
@@ -40,9 +43,12 @@ __all__ = [
     'ConnectionZSideAccessPointAccount',
     'ConnectionZSideAccessPointGateway',
     'ConnectionZSideAccessPointInterface',
+    'ConnectionZSideAccessPointLinkProtocol',
     'ConnectionZSideAccessPointLocation',
     'ConnectionZSideAccessPointPort',
     'ConnectionZSideAccessPointPortRedundancy',
+    'ConnectionZSideAccessPointProfile',
+    'ConnectionZSideAccessPointProfileAccessPointTypeConfig',
     'ConnectionZSideAccessPointRoutingProtocol',
     'ConnectionZSideAccessPointVirtualDevice',
     'ConnectionZSideAdditionalInfo',
@@ -114,16 +120,16 @@ __all__ = [
     'GetPortLocationResult',
     'GetPortOperationResult',
     'GetPortRedundancyResult',
-    'GetPortsDataResult',
-    'GetPortsDataAccountResult',
-    'GetPortsDataChangeLogResult',
-    'GetPortsDataDeviceResult',
-    'GetPortsDataDeviceRedundancyResult',
-    'GetPortsDataEncapsulationResult',
-    'GetPortsDataLagResult',
-    'GetPortsDataLocationResult',
-    'GetPortsDataOperationResult',
-    'GetPortsDataRedundancyResult',
+    'GetPortsDatumResult',
+    'GetPortsDatumAccountResult',
+    'GetPortsDatumChangeLogResult',
+    'GetPortsDatumDeviceResult',
+    'GetPortsDatumDeviceRedundancyResult',
+    'GetPortsDatumEncapsulationResult',
+    'GetPortsDatumLagResult',
+    'GetPortsDatumLocationResult',
+    'GetPortsDatumOperationResult',
+    'GetPortsDatumRedundancyResult',
     'GetPortsFilterResult',
     'GetServiceProfileAccessPointTypeConfigResult',
     'GetServiceProfileAccessPointTypeConfigApiConfigResult',
@@ -139,21 +145,21 @@ __all__ = [
     'GetServiceProfilePortResult',
     'GetServiceProfilePortLocationResult',
     'GetServiceProfileProjectResult',
-    'GetServiceProfilesDataResult',
-    'GetServiceProfilesDataAccessPointTypeConfigResult',
-    'GetServiceProfilesDataAccessPointTypeConfigApiConfigResult',
-    'GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyResult',
-    'GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigResult',
-    'GetServiceProfilesDataAccountResult',
-    'GetServiceProfilesDataChangeLogResult',
-    'GetServiceProfilesDataCustomFieldResult',
-    'GetServiceProfilesDataMarketingInfoResult',
-    'GetServiceProfilesDataMarketingInfoProcessStepResult',
-    'GetServiceProfilesDataMetroResult',
-    'GetServiceProfilesDataNotificationResult',
-    'GetServiceProfilesDataPortResult',
-    'GetServiceProfilesDataPortLocationResult',
-    'GetServiceProfilesDataProjectResult',
+    'GetServiceProfilesDatumResult',
+    'GetServiceProfilesDatumAccessPointTypeConfigResult',
+    'GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult',
+    'GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult',
+    'GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult',
+    'GetServiceProfilesDatumAccountResult',
+    'GetServiceProfilesDatumChangeLogResult',
+    'GetServiceProfilesDatumCustomFieldResult',
+    'GetServiceProfilesDatumMarketingInfoResult',
+    'GetServiceProfilesDatumMarketingInfoProcessStepResult',
+    'GetServiceProfilesDatumMetroResult',
+    'GetServiceProfilesDatumNotificationResult',
+    'GetServiceProfilesDatumPortResult',
+    'GetServiceProfilesDatumPortLocationResult',
+    'GetServiceProfilesDatumProjectResult',
     'GetServiceProfilesFilterResult',
     'GetServiceProfilesSortResult',
 ]
@@ -163,12 +169,12 @@ class ConnectionASide(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accessPoints":
-            suggest = "access_points"
-        elif key == "additionalInfos":
-            suggest = "additional_infos"
-        elif key == "serviceTokens":
-            suggest = "service_tokens"
+        if key == "accessPoint":
+            suggest = "access_point"
+        elif key == "additionalInfo":
+            suggest = "additional_info"
+        elif key == "serviceToken":
+            suggest = "service_token"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionASide. Access the value via the '{suggest}' property getter instead.")
@@ -182,44 +188,44 @@ class ConnectionASide(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_points: Optional[Sequence['outputs.ConnectionASideAccessPoint']] = None,
-                 additional_infos: Optional[Sequence['outputs.ConnectionASideAdditionalInfo']] = None,
-                 service_tokens: Optional[Sequence['outputs.ConnectionASideServiceToken']] = None):
+                 access_point: Optional['outputs.ConnectionASideAccessPoint'] = None,
+                 additional_info: Optional[Sequence['outputs.ConnectionASideAdditionalInfo']] = None,
+                 service_token: Optional['outputs.ConnectionASideServiceToken'] = None):
         """
-        :param Sequence['ConnectionASideAccessPointArgs'] access_points: Point of access details
-        :param Sequence['ConnectionASideAdditionalInfoArgs'] additional_infos: Connection side additional information
-        :param Sequence['ConnectionASideServiceTokenArgs'] service_tokens: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        :param 'ConnectionASideAccessPointArgs' access_point: Point of access details
+        :param Sequence['ConnectionASideAdditionalInfoArgs'] additional_info: Connection side additional information
+        :param 'ConnectionASideServiceTokenArgs' service_token: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         """
-        if access_points is not None:
-            pulumi.set(__self__, "access_points", access_points)
-        if additional_infos is not None:
-            pulumi.set(__self__, "additional_infos", additional_infos)
-        if service_tokens is not None:
-            pulumi.set(__self__, "service_tokens", service_tokens)
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if additional_info is not None:
+            pulumi.set(__self__, "additional_info", additional_info)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
 
     @property
-    @pulumi.getter(name="accessPoints")
-    def access_points(self) -> Optional[Sequence['outputs.ConnectionASideAccessPoint']]:
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> Optional['outputs.ConnectionASideAccessPoint']:
         """
         Point of access details
         """
-        return pulumi.get(self, "access_points")
+        return pulumi.get(self, "access_point")
 
     @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Optional[Sequence['outputs.ConnectionASideAdditionalInfo']]:
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[Sequence['outputs.ConnectionASideAdditionalInfo']]:
         """
         Connection side additional information
         """
-        return pulumi.get(self, "additional_infos")
+        return pulumi.get(self, "additional_info")
 
     @property
-    @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[Sequence['outputs.ConnectionASideServiceToken']]:
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional['outputs.ConnectionASideServiceToken']:
         """
         For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         """
-        return pulumi.get(self, "service_tokens")
+        return pulumi.get(self, "service_token")
 
 
 @pulumi.output_type
@@ -229,8 +235,8 @@ class ConnectionASideAccessPoint(dict):
         suggest = None
         if key == "authenticationKey":
             suggest = "authentication_key"
-        elif key == "linkProtocols":
-            suggest = "link_protocols"
+        elif key == "linkProtocol":
+            suggest = "link_protocol"
         elif key == "peeringType":
             suggest = "peering_type"
         elif key == "providerConnectionId":
@@ -239,8 +245,8 @@ class ConnectionASideAccessPoint(dict):
             suggest = "routing_protocols"
         elif key == "sellerRegion":
             suggest = "seller_region"
-        elif key == "virtualDevices":
-            suggest = "virtual_devices"
+        elif key == "virtualDevice":
+            suggest = "virtual_device"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionASideAccessPoint. Access the value via the '{suggest}' property getter instead.")
@@ -254,42 +260,42 @@ class ConnectionASideAccessPoint(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 accounts: Optional[Sequence['outputs.ConnectionASideAccessPointAccount']] = None,
+                 account: Optional['outputs.ConnectionASideAccessPointAccount'] = None,
                  authentication_key: Optional[str] = None,
-                 gateways: Optional[Sequence['outputs.ConnectionASideAccessPointGateway']] = None,
-                 interfaces: Optional[Sequence['outputs.ConnectionASideAccessPointInterface']] = None,
-                 link_protocols: Optional[str] = None,
-                 locations: Optional[Sequence['outputs.ConnectionASideAccessPointLocation']] = None,
+                 gateway: Optional['outputs.ConnectionASideAccessPointGateway'] = None,
+                 interface: Optional['outputs.ConnectionASideAccessPointInterface'] = None,
+                 link_protocol: Optional['outputs.ConnectionASideAccessPointLinkProtocol'] = None,
+                 location: Optional['outputs.ConnectionASideAccessPointLocation'] = None,
                  peering_type: Optional[str] = None,
-                 ports: Optional[Sequence['outputs.ConnectionASideAccessPointPort']] = None,
-                 profiles: Optional[str] = None,
+                 port: Optional['outputs.ConnectionASideAccessPointPort'] = None,
+                 profile: Optional['outputs.ConnectionASideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
                  routing_protocols: Optional[Sequence['outputs.ConnectionASideAccessPointRoutingProtocol']] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
-                 virtual_devices: Optional[Sequence['outputs.ConnectionASideAccessPointVirtualDevice']] = None):
+                 virtual_device: Optional['outputs.ConnectionASideAccessPointVirtualDevice'] = None):
         """
-        :param Sequence['ConnectionASideAccessPointAccountArgs'] accounts: Customer account information that is associated with this connection
+        :param 'ConnectionASideAccessPointAccountArgs' account: Customer account information that is associated with this connection
         :param Union[str, 'AccessPointType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
-        if accounts is not None:
-            pulumi.set(__self__, "accounts", accounts)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
         if authentication_key is not None:
             pulumi.set(__self__, "authentication_key", authentication_key)
-        if gateways is not None:
-            pulumi.set(__self__, "gateways", gateways)
-        if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
-        if link_protocols is not None:
-            pulumi.set(__self__, "link_protocols", link_protocols)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if peering_type is not None:
             pulumi.set(__self__, "peering_type", peering_type)
-        if ports is not None:
-            pulumi.set(__self__, "ports", ports)
-        if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if routing_protocols is not None:
@@ -298,16 +304,16 @@ class ConnectionASideAccessPoint(dict):
             pulumi.set(__self__, "seller_region", seller_region)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if virtual_devices is not None:
-            pulumi.set(__self__, "virtual_devices", virtual_devices)
+        if virtual_device is not None:
+            pulumi.set(__self__, "virtual_device", virtual_device)
 
     @property
     @pulumi.getter
-    def accounts(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointAccount']]:
+    def account(self) -> Optional['outputs.ConnectionASideAccessPointAccount']:
         """
         Customer account information that is associated with this connection
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
     @property
     @pulumi.getter(name="authenticationKey")
@@ -316,23 +322,23 @@ class ConnectionASideAccessPoint(dict):
 
     @property
     @pulumi.getter
-    def gateways(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointGateway']]:
-        return pulumi.get(self, "gateways")
+    def gateway(self) -> Optional['outputs.ConnectionASideAccessPointGateway']:
+        return pulumi.get(self, "gateway")
 
     @property
     @pulumi.getter
-    def interfaces(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointInterface']]:
-        return pulumi.get(self, "interfaces")
+    def interface(self) -> Optional['outputs.ConnectionASideAccessPointInterface']:
+        return pulumi.get(self, "interface")
 
     @property
-    @pulumi.getter(name="linkProtocols")
-    def link_protocols(self) -> Optional[str]:
-        return pulumi.get(self, "link_protocols")
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.ConnectionASideAccessPointLinkProtocol']:
+        return pulumi.get(self, "link_protocol")
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointLocation']]:
-        return pulumi.get(self, "locations")
+    def location(self) -> Optional['outputs.ConnectionASideAccessPointLocation']:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="peeringType")
@@ -341,13 +347,13 @@ class ConnectionASideAccessPoint(dict):
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointPort']]:
-        return pulumi.get(self, "ports")
+    def port(self) -> Optional['outputs.ConnectionASideAccessPointPort']:
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def profiles(self) -> Optional[str]:
-        return pulumi.get(self, "profiles")
+    def profile(self) -> Optional['outputs.ConnectionASideAccessPointProfile']:
+        return pulumi.get(self, "profile")
 
     @property
     @pulumi.getter(name="providerConnectionId")
@@ -373,9 +379,9 @@ class ConnectionASideAccessPoint(dict):
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter(name="virtualDevices")
-    def virtual_devices(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointVirtualDevice']]:
-        return pulumi.get(self, "virtual_devices")
+    @pulumi.getter(name="virtualDevice")
+    def virtual_device(self) -> Optional['outputs.ConnectionASideAccessPointVirtualDevice']:
+        return pulumi.get(self, "virtual_device")
 
 
 @pulumi.output_type
@@ -535,6 +541,70 @@ class ConnectionASideAccessPointInterface(dict):
 
 
 @pulumi.output_type
+class ConnectionASideAccessPointLinkProtocol(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanCTag":
+            suggest = "vlan_c_tag"
+        elif key == "vlanSTag":
+            suggest = "vlan_s_tag"
+        elif key == "vlanTag":
+            suggest = "vlan_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionASideAccessPointLinkProtocol. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionASideAccessPointLinkProtocol.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionASideAccessPointLinkProtocol.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: Optional[str] = None,
+                 vlan_c_tag: Optional[int] = None,
+                 vlan_s_tag: Optional[int] = None,
+                 vlan_tag: Optional[int] = None):
+        """
+        :param Union[str, 'AccessPointLinkProtocolType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vlan_c_tag is not None:
+            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
+        if vlan_s_tag is not None:
+            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vlanCTag")
+    def vlan_c_tag(self) -> Optional[int]:
+        return pulumi.get(self, "vlan_c_tag")
+
+    @property
+    @pulumi.getter(name="vlanSTag")
+    def vlan_s_tag(self) -> Optional[int]:
+        return pulumi.get(self, "vlan_s_tag")
+
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[int]:
+        return pulumi.get(self, "vlan_tag")
+
+
+@pulumi.output_type
 class ConnectionASideAccessPointLocation(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -658,6 +728,115 @@ class ConnectionASideAccessPointPortRedundancy(dict):
         Priority type- PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class ConnectionASideAccessPointProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessPointTypeConfigs":
+            suggest = "access_point_type_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionASideAccessPointProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionASideAccessPointProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionASideAccessPointProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str,
+                 access_point_type_configs: Optional[Sequence['outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig']] = None,
+                 description: Optional[str] = None,
+                 href: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param Union[str, 'ProfileType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param str href: Connection URI information
+        :param str name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if access_point_type_configs is not None:
+            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="accessPointTypeConfigs")
+    def access_point_type_configs(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig']]:
+        return pulumi.get(self, "access_point_type_configs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        Connection URI information
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -1188,8 +1367,8 @@ class ConnectionOperationError(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "additionalInfos":
-            suggest = "additional_infos"
+        if key == "additionalInfo":
+            suggest = "additional_info"
         elif key == "correlationId":
             suggest = "correlation_id"
         elif key == "errorCode":
@@ -1209,17 +1388,17 @@ class ConnectionOperationError(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 additional_infos: Optional[Sequence['outputs.ConnectionOperationErrorAdditionalInfo']] = None,
+                 additional_info: Optional[Sequence['outputs.ConnectionOperationErrorAdditionalInfo']] = None,
                  correlation_id: Optional[str] = None,
                  details: Optional[str] = None,
                  error_code: Optional[str] = None,
                  error_message: Optional[str] = None,
                  help: Optional[str] = None):
         """
-        :param Sequence['ConnectionOperationErrorAdditionalInfoArgs'] additional_infos: Connection additional information
+        :param Sequence['ConnectionOperationErrorAdditionalInfoArgs'] additional_info: Connection additional information
         """
-        if additional_infos is not None:
-            pulumi.set(__self__, "additional_infos", additional_infos)
+        if additional_info is not None:
+            pulumi.set(__self__, "additional_info", additional_info)
         if correlation_id is not None:
             pulumi.set(__self__, "correlation_id", correlation_id)
         if details is not None:
@@ -1232,12 +1411,12 @@ class ConnectionOperationError(dict):
             pulumi.set(__self__, "help", help)
 
     @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Optional[Sequence['outputs.ConnectionOperationErrorAdditionalInfo']]:
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[Sequence['outputs.ConnectionOperationErrorAdditionalInfo']]:
         """
         Connection additional information
         """
-        return pulumi.get(self, "additional_infos")
+        return pulumi.get(self, "additional_info")
 
     @property
     @pulumi.getter(name="correlationId")
@@ -1448,12 +1627,12 @@ class ConnectionZSide(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accessPoints":
-            suggest = "access_points"
-        elif key == "additionalInfos":
-            suggest = "additional_infos"
-        elif key == "serviceTokens":
-            suggest = "service_tokens"
+        if key == "accessPoint":
+            suggest = "access_point"
+        elif key == "additionalInfo":
+            suggest = "additional_info"
+        elif key == "serviceToken":
+            suggest = "service_token"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionZSide. Access the value via the '{suggest}' property getter instead.")
@@ -1467,44 +1646,44 @@ class ConnectionZSide(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_points: Optional[Sequence['outputs.ConnectionZSideAccessPoint']] = None,
-                 additional_infos: Optional[Sequence['outputs.ConnectionZSideAdditionalInfo']] = None,
-                 service_tokens: Optional[Sequence['outputs.ConnectionZSideServiceToken']] = None):
+                 access_point: Optional['outputs.ConnectionZSideAccessPoint'] = None,
+                 additional_info: Optional[Sequence['outputs.ConnectionZSideAdditionalInfo']] = None,
+                 service_token: Optional['outputs.ConnectionZSideServiceToken'] = None):
         """
-        :param Sequence['ConnectionZSideAccessPointArgs'] access_points: Point of access details
-        :param Sequence['ConnectionZSideAdditionalInfoArgs'] additional_infos: Connection side additional information
-        :param Sequence['ConnectionZSideServiceTokenArgs'] service_tokens: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        :param 'ConnectionZSideAccessPointArgs' access_point: Point of access details
+        :param Sequence['ConnectionZSideAdditionalInfoArgs'] additional_info: Connection side additional information
+        :param 'ConnectionZSideServiceTokenArgs' service_token: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         """
-        if access_points is not None:
-            pulumi.set(__self__, "access_points", access_points)
-        if additional_infos is not None:
-            pulumi.set(__self__, "additional_infos", additional_infos)
-        if service_tokens is not None:
-            pulumi.set(__self__, "service_tokens", service_tokens)
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if additional_info is not None:
+            pulumi.set(__self__, "additional_info", additional_info)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
 
     @property
-    @pulumi.getter(name="accessPoints")
-    def access_points(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPoint']]:
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> Optional['outputs.ConnectionZSideAccessPoint']:
         """
         Point of access details
         """
-        return pulumi.get(self, "access_points")
+        return pulumi.get(self, "access_point")
 
     @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Optional[Sequence['outputs.ConnectionZSideAdditionalInfo']]:
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[Sequence['outputs.ConnectionZSideAdditionalInfo']]:
         """
         Connection side additional information
         """
-        return pulumi.get(self, "additional_infos")
+        return pulumi.get(self, "additional_info")
 
     @property
-    @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[Sequence['outputs.ConnectionZSideServiceToken']]:
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> Optional['outputs.ConnectionZSideServiceToken']:
         """
         For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         """
-        return pulumi.get(self, "service_tokens")
+        return pulumi.get(self, "service_token")
 
 
 @pulumi.output_type
@@ -1514,8 +1693,8 @@ class ConnectionZSideAccessPoint(dict):
         suggest = None
         if key == "authenticationKey":
             suggest = "authentication_key"
-        elif key == "linkProtocols":
-            suggest = "link_protocols"
+        elif key == "linkProtocol":
+            suggest = "link_protocol"
         elif key == "peeringType":
             suggest = "peering_type"
         elif key == "providerConnectionId":
@@ -1524,8 +1703,8 @@ class ConnectionZSideAccessPoint(dict):
             suggest = "routing_protocols"
         elif key == "sellerRegion":
             suggest = "seller_region"
-        elif key == "virtualDevices":
-            suggest = "virtual_devices"
+        elif key == "virtualDevice":
+            suggest = "virtual_device"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionZSideAccessPoint. Access the value via the '{suggest}' property getter instead.")
@@ -1539,42 +1718,42 @@ class ConnectionZSideAccessPoint(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 accounts: Optional[Sequence['outputs.ConnectionZSideAccessPointAccount']] = None,
+                 account: Optional['outputs.ConnectionZSideAccessPointAccount'] = None,
                  authentication_key: Optional[str] = None,
-                 gateways: Optional[Sequence['outputs.ConnectionZSideAccessPointGateway']] = None,
-                 interfaces: Optional[Sequence['outputs.ConnectionZSideAccessPointInterface']] = None,
-                 link_protocols: Optional[str] = None,
-                 locations: Optional[Sequence['outputs.ConnectionZSideAccessPointLocation']] = None,
+                 gateway: Optional['outputs.ConnectionZSideAccessPointGateway'] = None,
+                 interface: Optional['outputs.ConnectionZSideAccessPointInterface'] = None,
+                 link_protocol: Optional['outputs.ConnectionZSideAccessPointLinkProtocol'] = None,
+                 location: Optional['outputs.ConnectionZSideAccessPointLocation'] = None,
                  peering_type: Optional[str] = None,
-                 ports: Optional[Sequence['outputs.ConnectionZSideAccessPointPort']] = None,
-                 profiles: Optional[str] = None,
+                 port: Optional['outputs.ConnectionZSideAccessPointPort'] = None,
+                 profile: Optional['outputs.ConnectionZSideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
                  routing_protocols: Optional[Sequence['outputs.ConnectionZSideAccessPointRoutingProtocol']] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
-                 virtual_devices: Optional[Sequence['outputs.ConnectionZSideAccessPointVirtualDevice']] = None):
+                 virtual_device: Optional['outputs.ConnectionZSideAccessPointVirtualDevice'] = None):
         """
-        :param Sequence['ConnectionZSideAccessPointAccountArgs'] accounts: Customer account information that is associated with this connection
+        :param 'ConnectionZSideAccessPointAccountArgs' account: Customer account information that is associated with this connection
         :param Union[str, 'AccessPointType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
         """
-        if accounts is not None:
-            pulumi.set(__self__, "accounts", accounts)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
         if authentication_key is not None:
             pulumi.set(__self__, "authentication_key", authentication_key)
-        if gateways is not None:
-            pulumi.set(__self__, "gateways", gateways)
-        if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
-        if link_protocols is not None:
-            pulumi.set(__self__, "link_protocols", link_protocols)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if peering_type is not None:
             pulumi.set(__self__, "peering_type", peering_type)
-        if ports is not None:
-            pulumi.set(__self__, "ports", ports)
-        if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if routing_protocols is not None:
@@ -1583,16 +1762,16 @@ class ConnectionZSideAccessPoint(dict):
             pulumi.set(__self__, "seller_region", seller_region)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if virtual_devices is not None:
-            pulumi.set(__self__, "virtual_devices", virtual_devices)
+        if virtual_device is not None:
+            pulumi.set(__self__, "virtual_device", virtual_device)
 
     @property
     @pulumi.getter
-    def accounts(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointAccount']]:
+    def account(self) -> Optional['outputs.ConnectionZSideAccessPointAccount']:
         """
         Customer account information that is associated with this connection
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
     @property
     @pulumi.getter(name="authenticationKey")
@@ -1601,23 +1780,23 @@ class ConnectionZSideAccessPoint(dict):
 
     @property
     @pulumi.getter
-    def gateways(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointGateway']]:
-        return pulumi.get(self, "gateways")
+    def gateway(self) -> Optional['outputs.ConnectionZSideAccessPointGateway']:
+        return pulumi.get(self, "gateway")
 
     @property
     @pulumi.getter
-    def interfaces(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointInterface']]:
-        return pulumi.get(self, "interfaces")
+    def interface(self) -> Optional['outputs.ConnectionZSideAccessPointInterface']:
+        return pulumi.get(self, "interface")
 
     @property
-    @pulumi.getter(name="linkProtocols")
-    def link_protocols(self) -> Optional[str]:
-        return pulumi.get(self, "link_protocols")
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.ConnectionZSideAccessPointLinkProtocol']:
+        return pulumi.get(self, "link_protocol")
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointLocation']]:
-        return pulumi.get(self, "locations")
+    def location(self) -> Optional['outputs.ConnectionZSideAccessPointLocation']:
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="peeringType")
@@ -1626,13 +1805,13 @@ class ConnectionZSideAccessPoint(dict):
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointPort']]:
-        return pulumi.get(self, "ports")
+    def port(self) -> Optional['outputs.ConnectionZSideAccessPointPort']:
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def profiles(self) -> Optional[str]:
-        return pulumi.get(self, "profiles")
+    def profile(self) -> Optional['outputs.ConnectionZSideAccessPointProfile']:
+        return pulumi.get(self, "profile")
 
     @property
     @pulumi.getter(name="providerConnectionId")
@@ -1658,9 +1837,9 @@ class ConnectionZSideAccessPoint(dict):
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter(name="virtualDevices")
-    def virtual_devices(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointVirtualDevice']]:
-        return pulumi.get(self, "virtual_devices")
+    @pulumi.getter(name="virtualDevice")
+    def virtual_device(self) -> Optional['outputs.ConnectionZSideAccessPointVirtualDevice']:
+        return pulumi.get(self, "virtual_device")
 
 
 @pulumi.output_type
@@ -1820,6 +1999,70 @@ class ConnectionZSideAccessPointInterface(dict):
 
 
 @pulumi.output_type
+class ConnectionZSideAccessPointLinkProtocol(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanCTag":
+            suggest = "vlan_c_tag"
+        elif key == "vlanSTag":
+            suggest = "vlan_s_tag"
+        elif key == "vlanTag":
+            suggest = "vlan_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionZSideAccessPointLinkProtocol. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionZSideAccessPointLinkProtocol.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionZSideAccessPointLinkProtocol.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: Optional[str] = None,
+                 vlan_c_tag: Optional[int] = None,
+                 vlan_s_tag: Optional[int] = None,
+                 vlan_tag: Optional[int] = None):
+        """
+        :param Union[str, 'AccessPointLinkProtocolType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if vlan_c_tag is not None:
+            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
+        if vlan_s_tag is not None:
+            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vlanCTag")
+    def vlan_c_tag(self) -> Optional[int]:
+        return pulumi.get(self, "vlan_c_tag")
+
+    @property
+    @pulumi.getter(name="vlanSTag")
+    def vlan_s_tag(self) -> Optional[int]:
+        return pulumi.get(self, "vlan_s_tag")
+
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[int]:
+        return pulumi.get(self, "vlan_tag")
+
+
+@pulumi.output_type
 class ConnectionZSideAccessPointLocation(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1943,6 +2186,115 @@ class ConnectionZSideAccessPointPortRedundancy(dict):
         Priority type- PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class ConnectionZSideAccessPointProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessPointTypeConfigs":
+            suggest = "access_point_type_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionZSideAccessPointProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionZSideAccessPointProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionZSideAccessPointProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str,
+                 access_point_type_configs: Optional[Sequence['outputs.ConnectionZSideAccessPointProfileAccessPointTypeConfig']] = None,
+                 description: Optional[str] = None,
+                 href: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param Union[str, 'ProfileType'] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        :param str href: Connection URI information
+        :param str name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if access_point_type_configs is not None:
+            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="accessPointTypeConfigs")
+    def access_point_type_configs(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointProfileAccessPointTypeConfig']]:
+        return pulumi.get(self, "access_point_type_configs")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        Connection URI information
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
+    def __init__(__self__, *,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -2114,10 +2466,10 @@ class ServiceProfileAccessPointTypeConfig(dict):
             suggest = "allow_custom_bandwidth"
         elif key == "allowRemoteConnections":
             suggest = "allow_remote_connections"
-        elif key == "apiConfigs":
-            suggest = "api_configs"
-        elif key == "authenticationKeys":
-            suggest = "authentication_keys"
+        elif key == "apiConfig":
+            suggest = "api_config"
+        elif key == "authenticationKey":
+            suggest = "authentication_key"
         elif key == "bandwidthAlertThreshold":
             suggest = "bandwidth_alert_threshold"
         elif key == "connectionLabel":
@@ -2126,8 +2478,8 @@ class ServiceProfileAccessPointTypeConfig(dict):
             suggest = "connection_redundancy_required"
         elif key == "enableAutoGenerateServiceKey":
             suggest = "enable_auto_generate_service_key"
-        elif key == "linkProtocolConfigs":
-            suggest = "link_protocol_configs"
+        elif key == "linkProtocolConfig":
+            suggest = "link_protocol_config"
         elif key == "supportedBandwidths":
             suggest = "supported_bandwidths"
 
@@ -2148,13 +2500,13 @@ class ServiceProfileAccessPointTypeConfig(dict):
                  allow_bandwidth_upgrade: Optional[bool] = None,
                  allow_custom_bandwidth: Optional[bool] = None,
                  allow_remote_connections: Optional[bool] = None,
-                 api_configs: Optional[Sequence['outputs.ServiceProfileAccessPointTypeConfigApiConfig']] = None,
-                 authentication_keys: Optional[Sequence['outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey']] = None,
+                 api_config: Optional['outputs.ServiceProfileAccessPointTypeConfigApiConfig'] = None,
+                 authentication_key: Optional['outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey'] = None,
                  bandwidth_alert_threshold: Optional[float] = None,
                  connection_label: Optional[str] = None,
                  connection_redundancy_required: Optional[bool] = None,
                  enable_auto_generate_service_key: Optional[bool] = None,
-                 link_protocol_configs: Optional[Sequence['outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig']] = None,
+                 link_protocol_config: Optional['outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig'] = None,
                  supported_bandwidths: Optional[Sequence[int]] = None,
                  uuid: Optional[str] = None):
         """
@@ -2163,13 +2515,13 @@ class ServiceProfileAccessPointTypeConfig(dict):
         :param bool allow_bandwidth_upgrade: Availability of a bandwidth upgrade. The default is false
         :param bool allow_custom_bandwidth: Setting to enable or disable the ability of the buyer to customize the bandwidth
         :param bool allow_remote_connections: Setting to allow or prohibit remote connections to the service profile
-        :param Sequence['ServiceProfileAccessPointTypeConfigApiConfigArgs'] api_configs: Api configuration details
-        :param Sequence['ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs'] authentication_keys: Authentication key details
+        :param 'ServiceProfileAccessPointTypeConfigApiConfigArgs' api_config: Api configuration details
+        :param 'ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs' authentication_key: Authentication key details
         :param float bandwidth_alert_threshold: Percentage of port bandwidth at which an allocation alert is generated
         :param str connection_label: Custom name for Connection
         :param bool connection_redundancy_required: Mandate redundant connections
         :param bool enable_auto_generate_service_key: Enable auto generate service key
-        :param Sequence['ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs'] link_protocol_configs: Link protocol configuration details
+        :param 'ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs' link_protocol_config: Link protocol configuration details
         :param Sequence[int] supported_bandwidths: Supported bandwidths
         :param str uuid: Colo/Port Uuid
         """
@@ -2182,10 +2534,10 @@ class ServiceProfileAccessPointTypeConfig(dict):
             pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
         if allow_remote_connections is not None:
             pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
-        if api_configs is not None:
-            pulumi.set(__self__, "api_configs", api_configs)
-        if authentication_keys is not None:
-            pulumi.set(__self__, "authentication_keys", authentication_keys)
+        if api_config is not None:
+            pulumi.set(__self__, "api_config", api_config)
+        if authentication_key is not None:
+            pulumi.set(__self__, "authentication_key", authentication_key)
         if bandwidth_alert_threshold is not None:
             pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
         if connection_label is not None:
@@ -2194,8 +2546,8 @@ class ServiceProfileAccessPointTypeConfig(dict):
             pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
         if enable_auto_generate_service_key is not None:
             pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
-        if link_protocol_configs is not None:
-            pulumi.set(__self__, "link_protocol_configs", link_protocol_configs)
+        if link_protocol_config is not None:
+            pulumi.set(__self__, "link_protocol_config", link_protocol_config)
         if supported_bandwidths is not None:
             pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
         if uuid is not None:
@@ -2242,20 +2594,20 @@ class ServiceProfileAccessPointTypeConfig(dict):
         return pulumi.get(self, "allow_remote_connections")
 
     @property
-    @pulumi.getter(name="apiConfigs")
-    def api_configs(self) -> Optional[Sequence['outputs.ServiceProfileAccessPointTypeConfigApiConfig']]:
+    @pulumi.getter(name="apiConfig")
+    def api_config(self) -> Optional['outputs.ServiceProfileAccessPointTypeConfigApiConfig']:
         """
         Api configuration details
         """
-        return pulumi.get(self, "api_configs")
+        return pulumi.get(self, "api_config")
 
     @property
-    @pulumi.getter(name="authenticationKeys")
-    def authentication_keys(self) -> Optional[Sequence['outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey']]:
+    @pulumi.getter(name="authenticationKey")
+    def authentication_key(self) -> Optional['outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey']:
         """
         Authentication key details
         """
-        return pulumi.get(self, "authentication_keys")
+        return pulumi.get(self, "authentication_key")
 
     @property
     @pulumi.getter(name="bandwidthAlertThreshold")
@@ -2290,12 +2642,12 @@ class ServiceProfileAccessPointTypeConfig(dict):
         return pulumi.get(self, "enable_auto_generate_service_key")
 
     @property
-    @pulumi.getter(name="linkProtocolConfigs")
-    def link_protocol_configs(self) -> Optional[Sequence['outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig']]:
+    @pulumi.getter(name="linkProtocolConfig")
+    def link_protocol_config(self) -> Optional['outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig']:
         """
         Link protocol configuration details
         """
-        return pulumi.get(self, "link_protocol_configs")
+        return pulumi.get(self, "link_protocol_config")
 
     @property
     @pulumi.getter(name="supportedBandwidths")
@@ -3351,19 +3703,19 @@ class ServiceProfileVirtualDevice(dict):
                  type: str,
                  uuid: str,
                  interface_uuid: Optional[str] = None,
-                 locations: Optional[Sequence['outputs.ServiceProfileVirtualDeviceLocation']] = None):
+                 location: Optional['outputs.ServiceProfileVirtualDeviceLocation'] = None):
         """
         :param str type: Virtual Device Type
         :param str uuid: Virtual Device Uuid
         :param str interface_uuid: Device Interface Uuid
-        :param Sequence['ServiceProfileVirtualDeviceLocationArgs'] locations: Device Location
+        :param 'ServiceProfileVirtualDeviceLocationArgs' location: Device Location
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
         if interface_uuid is not None:
             pulumi.set(__self__, "interface_uuid", interface_uuid)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
 
     @property
     @pulumi.getter
@@ -3391,11 +3743,11 @@ class ServiceProfileVirtualDevice(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[Sequence['outputs.ServiceProfileVirtualDeviceLocation']]:
+    def location(self) -> Optional['outputs.ServiceProfileVirtualDeviceLocation']:
         """
         Device Location
         """
-        return pulumi.get(self, "locations")
+        return pulumi.get(self, "location")
 
 
 @pulumi.output_type
@@ -3457,20 +3809,20 @@ class ServiceProfileVirtualDeviceLocation(dict):
 @pulumi.output_type
 class GetConnectionASideResult(dict):
     def __init__(__self__, *,
-                 access_points: Sequence['outputs.GetConnectionASideAccessPointResult'],
-                 service_tokens: Sequence['outputs.GetConnectionASideServiceTokenResult']):
-        pulumi.set(__self__, "access_points", access_points)
-        pulumi.set(__self__, "service_tokens", service_tokens)
+                 access_point: 'outputs.GetConnectionASideAccessPointResult',
+                 service_token: 'outputs.GetConnectionASideServiceTokenResult'):
+        pulumi.set(__self__, "access_point", access_point)
+        pulumi.set(__self__, "service_token", service_token)
 
     @property
-    @pulumi.getter(name="accessPoints")
-    def access_points(self) -> Sequence['outputs.GetConnectionASideAccessPointResult']:
-        return pulumi.get(self, "access_points")
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> 'outputs.GetConnectionASideAccessPointResult':
+        return pulumi.get(self, "access_point")
 
     @property
-    @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Sequence['outputs.GetConnectionASideServiceTokenResult']:
-        return pulumi.get(self, "service_tokens")
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> 'outputs.GetConnectionASideServiceTokenResult':
+        return pulumi.get(self, "service_token")
 
 
 @pulumi.output_type
@@ -4622,20 +4974,20 @@ class GetConnectionRedundancyResult(dict):
 @pulumi.output_type
 class GetConnectionZSideResult(dict):
     def __init__(__self__, *,
-                 access_points: Sequence['outputs.GetConnectionZSideAccessPointResult'],
-                 service_tokens: Sequence['outputs.GetConnectionZSideServiceTokenResult']):
-        pulumi.set(__self__, "access_points", access_points)
-        pulumi.set(__self__, "service_tokens", service_tokens)
+                 access_point: 'outputs.GetConnectionZSideAccessPointResult',
+                 service_token: 'outputs.GetConnectionZSideServiceTokenResult'):
+        pulumi.set(__self__, "access_point", access_point)
+        pulumi.set(__self__, "service_token", service_token)
 
     @property
-    @pulumi.getter(name="accessPoints")
-    def access_points(self) -> Sequence['outputs.GetConnectionZSideAccessPointResult']:
-        return pulumi.get(self, "access_points")
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> 'outputs.GetConnectionZSideAccessPointResult':
+        return pulumi.get(self, "access_point")
 
     @property
-    @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Sequence['outputs.GetConnectionZSideServiceTokenResult']:
-        return pulumi.get(self, "service_tokens")
+    @pulumi.getter(name="serviceToken")
+    def service_token(self) -> 'outputs.GetConnectionZSideServiceTokenResult':
+        return pulumi.get(self, "service_token")
 
 
 @pulumi.output_type
@@ -5769,21 +6121,21 @@ class GetPortRedundancyResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataResult(dict):
+class GetPortsDatumResult(dict):
     def __init__(__self__, *,
-                 accounts: Sequence['outputs.GetPortsDataAccountResult'],
+                 accounts: Sequence['outputs.GetPortsDatumAccountResult'],
                  available_bandwidth: int,
                  bandwidth: int,
-                 change_logs: Sequence['outputs.GetPortsDataChangeLogResult'],
+                 change_logs: Sequence['outputs.GetPortsDatumChangeLogResult'],
                  description: str,
-                 devices: Sequence['outputs.GetPortsDataDeviceResult'],
-                 encapsulations: Sequence['outputs.GetPortsDataEncapsulationResult'],
+                 devices: Sequence['outputs.GetPortsDatumDeviceResult'],
+                 encapsulations: Sequence['outputs.GetPortsDatumEncapsulationResult'],
                  href: str,
-                 lags: Sequence['outputs.GetPortsDataLagResult'],
-                 locations: Sequence['outputs.GetPortsDataLocationResult'],
+                 lags: Sequence['outputs.GetPortsDatumLagResult'],
+                 locations: Sequence['outputs.GetPortsDatumLocationResult'],
                  name: str,
-                 operations: Sequence['outputs.GetPortsDataOperationResult'],
-                 redundancies: Sequence['outputs.GetPortsDataRedundancyResult'],
+                 operations: Sequence['outputs.GetPortsDatumOperationResult'],
+                 redundancies: Sequence['outputs.GetPortsDatumRedundancyResult'],
                  service_type: str,
                  state: str,
                  type: str,
@@ -5811,7 +6163,7 @@ class GetPortsDataResult(dict):
 
     @property
     @pulumi.getter
-    def accounts(self) -> Sequence['outputs.GetPortsDataAccountResult']:
+    def accounts(self) -> Sequence['outputs.GetPortsDatumAccountResult']:
         return pulumi.get(self, "accounts")
 
     @property
@@ -5826,7 +6178,7 @@ class GetPortsDataResult(dict):
 
     @property
     @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> Sequence['outputs.GetPortsDataChangeLogResult']:
+    def change_logs(self) -> Sequence['outputs.GetPortsDatumChangeLogResult']:
         return pulumi.get(self, "change_logs")
 
     @property
@@ -5836,12 +6188,12 @@ class GetPortsDataResult(dict):
 
     @property
     @pulumi.getter
-    def devices(self) -> Sequence['outputs.GetPortsDataDeviceResult']:
+    def devices(self) -> Sequence['outputs.GetPortsDatumDeviceResult']:
         return pulumi.get(self, "devices")
 
     @property
     @pulumi.getter
-    def encapsulations(self) -> Sequence['outputs.GetPortsDataEncapsulationResult']:
+    def encapsulations(self) -> Sequence['outputs.GetPortsDatumEncapsulationResult']:
         return pulumi.get(self, "encapsulations")
 
     @property
@@ -5851,12 +6203,12 @@ class GetPortsDataResult(dict):
 
     @property
     @pulumi.getter
-    def lags(self) -> Sequence['outputs.GetPortsDataLagResult']:
+    def lags(self) -> Sequence['outputs.GetPortsDatumLagResult']:
         return pulumi.get(self, "lags")
 
     @property
     @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetPortsDataLocationResult']:
+    def locations(self) -> Sequence['outputs.GetPortsDatumLocationResult']:
         return pulumi.get(self, "locations")
 
     @property
@@ -5866,12 +6218,12 @@ class GetPortsDataResult(dict):
 
     @property
     @pulumi.getter
-    def operations(self) -> Sequence['outputs.GetPortsDataOperationResult']:
+    def operations(self) -> Sequence['outputs.GetPortsDatumOperationResult']:
         return pulumi.get(self, "operations")
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Sequence['outputs.GetPortsDataRedundancyResult']:
+    def redundancies(self) -> Sequence['outputs.GetPortsDatumRedundancyResult']:
         return pulumi.get(self, "redundancies")
 
     @property
@@ -5901,7 +6253,7 @@ class GetPortsDataResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataAccountResult(dict):
+class GetPortsDatumAccountResult(dict):
     def __init__(__self__, *,
                  account_name: str,
                  account_number: int,
@@ -5955,7 +6307,7 @@ class GetPortsDataAccountResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataChangeLogResult(dict):
+class GetPortsDatumChangeLogResult(dict):
     def __init__(__self__, *,
                  created_by: str,
                  created_by_email: str,
@@ -6044,10 +6396,10 @@ class GetPortsDataChangeLogResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataDeviceResult(dict):
+class GetPortsDatumDeviceResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 redundancies: Sequence['outputs.GetPortsDataDeviceRedundancyResult']):
+                 redundancies: Sequence['outputs.GetPortsDatumDeviceRedundancyResult']):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "redundancies", redundancies)
 
@@ -6058,12 +6410,12 @@ class GetPortsDataDeviceResult(dict):
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Sequence['outputs.GetPortsDataDeviceRedundancyResult']:
+    def redundancies(self) -> Sequence['outputs.GetPortsDatumDeviceRedundancyResult']:
         return pulumi.get(self, "redundancies")
 
 
 @pulumi.output_type
-class GetPortsDataDeviceRedundancyResult(dict):
+class GetPortsDatumDeviceRedundancyResult(dict):
     def __init__(__self__, *,
                  group: str,
                  priority: str):
@@ -6082,7 +6434,7 @@ class GetPortsDataDeviceRedundancyResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataEncapsulationResult(dict):
+class GetPortsDatumEncapsulationResult(dict):
     def __init__(__self__, *,
                  tag_protocol_id: str,
                  type: str):
@@ -6101,7 +6453,7 @@ class GetPortsDataEncapsulationResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataLagResult(dict):
+class GetPortsDatumLagResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  id: str,
@@ -6140,7 +6492,7 @@ class GetPortsDataLagResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataLocationResult(dict):
+class GetPortsDatumLocationResult(dict):
     def __init__(__self__, *,
                  href: str,
                  ibx: str,
@@ -6180,7 +6532,7 @@ class GetPortsDataLocationResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataOperationResult(dict):
+class GetPortsDatumOperationResult(dict):
     def __init__(__self__, *,
                  connection_count: int,
                  op_status_changed_at: str,
@@ -6206,7 +6558,7 @@ class GetPortsDataOperationResult(dict):
 
 
 @pulumi.output_type
-class GetPortsDataRedundancyResult(dict):
+class GetPortsDatumRedundancyResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  group: int,
@@ -6937,21 +7289,21 @@ class GetServiceProfileProjectResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataResult(dict):
+class GetServiceProfilesDatumResult(dict):
     def __init__(__self__, *,
-                 access_point_type_configs: Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigResult'],
-                 accounts: Sequence['outputs.GetServiceProfilesDataAccountResult'],
+                 access_point_type_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigResult'],
+                 accounts: Sequence['outputs.GetServiceProfilesDatumAccountResult'],
                  allowed_emails: Sequence[str],
-                 change_logs: Sequence['outputs.GetServiceProfilesDataChangeLogResult'],
-                 custom_fields: Sequence['outputs.GetServiceProfilesDataCustomFieldResult'],
+                 change_logs: Sequence['outputs.GetServiceProfilesDatumChangeLogResult'],
+                 custom_fields: Sequence['outputs.GetServiceProfilesDatumCustomFieldResult'],
                  description: str,
                  href: str,
-                 marketing_infos: Sequence['outputs.GetServiceProfilesDataMarketingInfoResult'],
-                 metros: Sequence['outputs.GetServiceProfilesDataMetroResult'],
+                 marketing_infos: Sequence['outputs.GetServiceProfilesDatumMarketingInfoResult'],
+                 metros: Sequence['outputs.GetServiceProfilesDatumMetroResult'],
                  name: str,
-                 notifications: Sequence['outputs.GetServiceProfilesDataNotificationResult'],
-                 ports: Sequence['outputs.GetServiceProfilesDataPortResult'],
-                 projects: Sequence['outputs.GetServiceProfilesDataProjectResult'],
+                 notifications: Sequence['outputs.GetServiceProfilesDatumNotificationResult'],
+                 ports: Sequence['outputs.GetServiceProfilesDatumPortResult'],
+                 projects: Sequence['outputs.GetServiceProfilesDatumProjectResult'],
                  self_profile: bool,
                  tags: Sequence[str],
                  type: str,
@@ -6982,12 +7334,12 @@ class GetServiceProfilesDataResult(dict):
 
     @property
     @pulumi.getter(name="accessPointTypeConfigs")
-    def access_point_type_configs(self) -> Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigResult']:
+    def access_point_type_configs(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigResult']:
         return pulumi.get(self, "access_point_type_configs")
 
     @property
     @pulumi.getter
-    def accounts(self) -> Sequence['outputs.GetServiceProfilesDataAccountResult']:
+    def accounts(self) -> Sequence['outputs.GetServiceProfilesDatumAccountResult']:
         return pulumi.get(self, "accounts")
 
     @property
@@ -6997,12 +7349,12 @@ class GetServiceProfilesDataResult(dict):
 
     @property
     @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> Sequence['outputs.GetServiceProfilesDataChangeLogResult']:
+    def change_logs(self) -> Sequence['outputs.GetServiceProfilesDatumChangeLogResult']:
         return pulumi.get(self, "change_logs")
 
     @property
     @pulumi.getter(name="customFields")
-    def custom_fields(self) -> Sequence['outputs.GetServiceProfilesDataCustomFieldResult']:
+    def custom_fields(self) -> Sequence['outputs.GetServiceProfilesDatumCustomFieldResult']:
         return pulumi.get(self, "custom_fields")
 
     @property
@@ -7017,12 +7369,12 @@ class GetServiceProfilesDataResult(dict):
 
     @property
     @pulumi.getter(name="marketingInfos")
-    def marketing_infos(self) -> Sequence['outputs.GetServiceProfilesDataMarketingInfoResult']:
+    def marketing_infos(self) -> Sequence['outputs.GetServiceProfilesDatumMarketingInfoResult']:
         return pulumi.get(self, "marketing_infos")
 
     @property
     @pulumi.getter
-    def metros(self) -> Sequence['outputs.GetServiceProfilesDataMetroResult']:
+    def metros(self) -> Sequence['outputs.GetServiceProfilesDatumMetroResult']:
         return pulumi.get(self, "metros")
 
     @property
@@ -7032,17 +7384,17 @@ class GetServiceProfilesDataResult(dict):
 
     @property
     @pulumi.getter
-    def notifications(self) -> Sequence['outputs.GetServiceProfilesDataNotificationResult']:
+    def notifications(self) -> Sequence['outputs.GetServiceProfilesDatumNotificationResult']:
         return pulumi.get(self, "notifications")
 
     @property
     @pulumi.getter
-    def ports(self) -> Sequence['outputs.GetServiceProfilesDataPortResult']:
+    def ports(self) -> Sequence['outputs.GetServiceProfilesDatumPortResult']:
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter
-    def projects(self) -> Sequence['outputs.GetServiceProfilesDataProjectResult']:
+    def projects(self) -> Sequence['outputs.GetServiceProfilesDatumProjectResult']:
         return pulumi.get(self, "projects")
 
     @property
@@ -7077,19 +7429,19 @@ class GetServiceProfilesDataResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataAccessPointTypeConfigResult(dict):
+class GetServiceProfilesDatumAccessPointTypeConfigResult(dict):
     def __init__(__self__, *,
                  allow_bandwidth_auto_approval: bool,
                  allow_bandwidth_upgrade: bool,
                  allow_custom_bandwidth: bool,
                  allow_remote_connections: bool,
-                 api_configs: Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigApiConfigResult'],
-                 authentication_keys: Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyResult'],
+                 api_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult'],
+                 authentication_keys: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult'],
                  bandwidth_alert_threshold: float,
                  connection_label: str,
                  connection_redundancy_required: bool,
                  enable_auto_generate_service_key: bool,
-                 link_protocol_configs: Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigResult'],
+                 link_protocol_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult'],
                  supported_bandwidths: Sequence[int],
                  type: str,
                  uuid: str):
@@ -7130,12 +7482,12 @@ class GetServiceProfilesDataAccessPointTypeConfigResult(dict):
 
     @property
     @pulumi.getter(name="apiConfigs")
-    def api_configs(self) -> Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigApiConfigResult']:
+    def api_configs(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult']:
         return pulumi.get(self, "api_configs")
 
     @property
     @pulumi.getter(name="authenticationKeys")
-    def authentication_keys(self) -> Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyResult']:
+    def authentication_keys(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult']:
         return pulumi.get(self, "authentication_keys")
 
     @property
@@ -7160,7 +7512,7 @@ class GetServiceProfilesDataAccessPointTypeConfigResult(dict):
 
     @property
     @pulumi.getter(name="linkProtocolConfigs")
-    def link_protocol_configs(self) -> Sequence['outputs.GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigResult']:
+    def link_protocol_configs(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult']:
         return pulumi.get(self, "link_protocol_configs")
 
     @property
@@ -7180,7 +7532,7 @@ class GetServiceProfilesDataAccessPointTypeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataAccessPointTypeConfigApiConfigResult(dict):
+class GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult(dict):
     def __init__(__self__, *,
                  allow_over_subscription: bool,
                  api_available: bool,
@@ -7234,7 +7586,7 @@ class GetServiceProfilesDataAccessPointTypeConfigApiConfigResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyResult(dict):
+class GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult(dict):
     def __init__(__self__, *,
                  description: str,
                  label: str,
@@ -7260,7 +7612,7 @@ class GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigResult(dict):
+class GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult(dict):
     def __init__(__self__, *,
                  encapsulation: str,
                  encapsulation_strategy: str,
@@ -7286,7 +7638,7 @@ class GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataAccountResult(dict):
+class GetServiceProfilesDatumAccountResult(dict):
     def __init__(__self__, *,
                  account_name: str,
                  account_number: int,
@@ -7347,7 +7699,7 @@ class GetServiceProfilesDataAccountResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataChangeLogResult(dict):
+class GetServiceProfilesDatumChangeLogResult(dict):
     def __init__(__self__, *,
                  created_by: str,
                  created_by_email: str,
@@ -7436,7 +7788,7 @@ class GetServiceProfilesDataChangeLogResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataCustomFieldResult(dict):
+class GetServiceProfilesDatumCustomFieldResult(dict):
     def __init__(__self__, *,
                  capture_in_email: bool,
                  data_type: str,
@@ -7483,10 +7835,10 @@ class GetServiceProfilesDataCustomFieldResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataMarketingInfoResult(dict):
+class GetServiceProfilesDatumMarketingInfoResult(dict):
     def __init__(__self__, *,
                  logo: str,
-                 process_steps: Sequence['outputs.GetServiceProfilesDataMarketingInfoProcessStepResult'],
+                 process_steps: Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult'],
                  promotion: bool):
         pulumi.set(__self__, "logo", logo)
         pulumi.set(__self__, "process_steps", process_steps)
@@ -7499,7 +7851,7 @@ class GetServiceProfilesDataMarketingInfoResult(dict):
 
     @property
     @pulumi.getter(name="processSteps")
-    def process_steps(self) -> Sequence['outputs.GetServiceProfilesDataMarketingInfoProcessStepResult']:
+    def process_steps(self) -> Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult']:
         return pulumi.get(self, "process_steps")
 
     @property
@@ -7509,7 +7861,7 @@ class GetServiceProfilesDataMarketingInfoResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataMarketingInfoProcessStepResult(dict):
+class GetServiceProfilesDatumMarketingInfoProcessStepResult(dict):
     def __init__(__self__, *,
                  description: str,
                  sub_title: str,
@@ -7535,7 +7887,7 @@ class GetServiceProfilesDataMarketingInfoProcessStepResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataMetroResult(dict):
+class GetServiceProfilesDatumMetroResult(dict):
     def __init__(__self__, *,
                  code: str,
                  display_name: str,
@@ -7582,7 +7934,7 @@ class GetServiceProfilesDataMetroResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataNotificationResult(dict):
+class GetServiceProfilesDatumNotificationResult(dict):
     def __init__(__self__, *,
                  emails: Sequence[str],
                  send_interval: str,
@@ -7608,10 +7960,10 @@ class GetServiceProfilesDataNotificationResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataPortResult(dict):
+class GetServiceProfilesDatumPortResult(dict):
     def __init__(__self__, *,
                  cross_connect_id: str,
-                 locations: Sequence['outputs.GetServiceProfilesDataPortLocationResult'],
+                 locations: Sequence['outputs.GetServiceProfilesDatumPortLocationResult'],
                  seller_region: str,
                  seller_region_description: str,
                  type: str,
@@ -7630,7 +7982,7 @@ class GetServiceProfilesDataPortResult(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetServiceProfilesDataPortLocationResult']:
+    def locations(self) -> Sequence['outputs.GetServiceProfilesDatumPortLocationResult']:
         return pulumi.get(self, "locations")
 
     @property
@@ -7655,7 +8007,7 @@ class GetServiceProfilesDataPortResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataPortLocationResult(dict):
+class GetServiceProfilesDatumPortLocationResult(dict):
     def __init__(__self__, *,
                  ibx: str,
                  metro_code: str,
@@ -7688,7 +8040,7 @@ class GetServiceProfilesDataPortLocationResult(dict):
 
 
 @pulumi.output_type
-class GetServiceProfilesDataProjectResult(dict):
+class GetServiceProfilesDatumProjectResult(dict):
     def __init__(__self__, *,
                  href: str,
                  project_id: str):

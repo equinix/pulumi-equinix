@@ -9,6 +9,7 @@ import com.equinix.pulumi.equinix.fabric.outputs.ConnectionZSideServiceToken;
 import com.pulumi.core.annotations.CustomType;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -17,39 +18,39 @@ public final class ConnectionZSide {
      * @return Point of access details
      * 
      */
-    private @Nullable List<ConnectionZSideAccessPoint> accessPoints;
+    private @Nullable ConnectionZSideAccessPoint accessPoint;
     /**
      * @return Connection side additional information
      * 
      */
-    private @Nullable List<ConnectionZSideAdditionalInfo> additionalInfos;
+    private @Nullable List<ConnectionZSideAdditionalInfo> additionalInfo;
     /**
      * @return For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
      * 
      */
-    private @Nullable List<ConnectionZSideServiceToken> serviceTokens;
+    private @Nullable ConnectionZSideServiceToken serviceToken;
 
     private ConnectionZSide() {}
     /**
      * @return Point of access details
      * 
      */
-    public List<ConnectionZSideAccessPoint> accessPoints() {
-        return this.accessPoints == null ? List.of() : this.accessPoints;
+    public Optional<ConnectionZSideAccessPoint> accessPoint() {
+        return Optional.ofNullable(this.accessPoint);
     }
     /**
      * @return Connection side additional information
      * 
      */
-    public List<ConnectionZSideAdditionalInfo> additionalInfos() {
-        return this.additionalInfos == null ? List.of() : this.additionalInfos;
+    public List<ConnectionZSideAdditionalInfo> additionalInfo() {
+        return this.additionalInfo == null ? List.of() : this.additionalInfo;
     }
     /**
      * @return For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
      * 
      */
-    public List<ConnectionZSideServiceToken> serviceTokens() {
-        return this.serviceTokens == null ? List.of() : this.serviceTokens;
+    public Optional<ConnectionZSideServiceToken> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     public static Builder builder() {
@@ -61,46 +62,40 @@ public final class ConnectionZSide {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<ConnectionZSideAccessPoint> accessPoints;
-        private @Nullable List<ConnectionZSideAdditionalInfo> additionalInfos;
-        private @Nullable List<ConnectionZSideServiceToken> serviceTokens;
+        private @Nullable ConnectionZSideAccessPoint accessPoint;
+        private @Nullable List<ConnectionZSideAdditionalInfo> additionalInfo;
+        private @Nullable ConnectionZSideServiceToken serviceToken;
         public Builder() {}
         public Builder(ConnectionZSide defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessPoints = defaults.accessPoints;
-    	      this.additionalInfos = defaults.additionalInfos;
-    	      this.serviceTokens = defaults.serviceTokens;
+    	      this.accessPoint = defaults.accessPoint;
+    	      this.additionalInfo = defaults.additionalInfo;
+    	      this.serviceToken = defaults.serviceToken;
         }
 
         @CustomType.Setter
-        public Builder accessPoints(@Nullable List<ConnectionZSideAccessPoint> accessPoints) {
-            this.accessPoints = accessPoints;
+        public Builder accessPoint(@Nullable ConnectionZSideAccessPoint accessPoint) {
+            this.accessPoint = accessPoint;
             return this;
-        }
-        public Builder accessPoints(ConnectionZSideAccessPoint... accessPoints) {
-            return accessPoints(List.of(accessPoints));
         }
         @CustomType.Setter
-        public Builder additionalInfos(@Nullable List<ConnectionZSideAdditionalInfo> additionalInfos) {
-            this.additionalInfos = additionalInfos;
+        public Builder additionalInfo(@Nullable List<ConnectionZSideAdditionalInfo> additionalInfo) {
+            this.additionalInfo = additionalInfo;
             return this;
         }
-        public Builder additionalInfos(ConnectionZSideAdditionalInfo... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
+        public Builder additionalInfo(ConnectionZSideAdditionalInfo... additionalInfo) {
+            return additionalInfo(List.of(additionalInfo));
         }
         @CustomType.Setter
-        public Builder serviceTokens(@Nullable List<ConnectionZSideServiceToken> serviceTokens) {
-            this.serviceTokens = serviceTokens;
+        public Builder serviceToken(@Nullable ConnectionZSideServiceToken serviceToken) {
+            this.serviceToken = serviceToken;
             return this;
-        }
-        public Builder serviceTokens(ConnectionZSideServiceToken... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
         }
         public ConnectionZSide build() {
             final var o = new ConnectionZSide();
-            o.accessPoints = accessPoints;
-            o.additionalInfos = additionalInfos;
-            o.serviceTokens = serviceTokens;
+            o.accessPoint = accessPoint;
+            o.additionalInfo = additionalInfo;
+            o.serviceToken = serviceToken;
             return o;
         }
     }

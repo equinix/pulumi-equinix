@@ -6,7 +6,6 @@ package com.equinix.pulumi.equinix.fabric.outputs;
 import com.equinix.pulumi.equinix.fabric.outputs.ServiceProfileVirtualDeviceLocation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,7 +21,7 @@ public final class ServiceProfileVirtualDevice {
      * @return Device Location
      * 
      */
-    private @Nullable List<ServiceProfileVirtualDeviceLocation> locations;
+    private @Nullable ServiceProfileVirtualDeviceLocation location;
     /**
      * @return Virtual Device Type
      * 
@@ -46,8 +45,8 @@ public final class ServiceProfileVirtualDevice {
      * @return Device Location
      * 
      */
-    public List<ServiceProfileVirtualDeviceLocation> locations() {
-        return this.locations == null ? List.of() : this.locations;
+    public Optional<ServiceProfileVirtualDeviceLocation> location() {
+        return Optional.ofNullable(this.location);
     }
     /**
      * @return Virtual Device Type
@@ -74,14 +73,14 @@ public final class ServiceProfileVirtualDevice {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String interfaceUuid;
-        private @Nullable List<ServiceProfileVirtualDeviceLocation> locations;
+        private @Nullable ServiceProfileVirtualDeviceLocation location;
         private String type;
         private String uuid;
         public Builder() {}
         public Builder(ServiceProfileVirtualDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interfaceUuid = defaults.interfaceUuid;
-    	      this.locations = defaults.locations;
+    	      this.location = defaults.location;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
         }
@@ -92,12 +91,9 @@ public final class ServiceProfileVirtualDevice {
             return this;
         }
         @CustomType.Setter
-        public Builder locations(@Nullable List<ServiceProfileVirtualDeviceLocation> locations) {
-            this.locations = locations;
+        public Builder location(@Nullable ServiceProfileVirtualDeviceLocation location) {
+            this.location = location;
             return this;
-        }
-        public Builder locations(ServiceProfileVirtualDeviceLocation... locations) {
-            return locations(List.of(locations));
         }
         @CustomType.Setter
         public Builder type(String type) {
@@ -112,7 +108,7 @@ public final class ServiceProfileVirtualDevice {
         public ServiceProfileVirtualDevice build() {
             final var o = new ServiceProfileVirtualDevice();
             o.interfaceUuid = interfaceUuid;
-            o.locations = locations;
+            o.location = location;
             o.type = type;
             o.uuid = uuid;
             return o;
