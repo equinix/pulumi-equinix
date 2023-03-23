@@ -1,0 +1,17 @@
+name: equinix-metal-gateway
+runtime: yaml
+description: An Equinix Metal Gateway resource
+config:
+  projectId:
+    type: string
+  vlanId:
+    type: string
+resources:
+  gateway:
+    type: equinix:metal:Gateway
+    properties:
+      projectId: ${projectId}
+      vlanId: ${vlanId}
+      privateIpv4SubnetSize: 8
+outputs:
+  gatewayState: ${gateway.state}

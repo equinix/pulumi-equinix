@@ -1,0 +1,8 @@
+name: equinix-metal-gateway
+runtime: dotnet
+description: An Equinix Metal Gateway resource
+config:
+  projectId:
+    type: string
+  vlanId:
+    type: string
