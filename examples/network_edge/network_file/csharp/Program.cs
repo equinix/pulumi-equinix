@@ -9,7 +9,7 @@ return await Deployment.RunAsync(() =>
     var networkFile = new Equinix.NetworkEdge.NetworkFile("networkFile", new()
     {
         FileName = "Aviatrix-ZTP-file",
-        Content = new FileAsset("./assets/aviatrix-cloud-init.txt"),
+        Content = new FileAsset("./../assets/aviatrix-cloud-init.txt"),
         MetroCode = metro,
         DeviceTypeCode = "AVIATRIX_EDGE",
         ProcessType = "CLOUD_INIT",

@@ -15,7 +15,7 @@ func main() {
 		}
 		networkFile, err := networkedge.NewNetworkFile(ctx, "networkFile", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("Aviatrix-ZTP-file"),
-			Content:        pulumi.NewFileAsset("./assets/aviatrix-cloud-init.txt"),
+			Content:        pulumi.NewFileAsset("./../assets/aviatrix-cloud-init.txt"),
 			MetroCode:      pulumi.String(metro),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 			ProcessType:    pulumi.String("CLOUD_INIT"),

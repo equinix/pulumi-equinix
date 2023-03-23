@@ -11,7 +11,7 @@ resources:
     properties:
       fileName: Aviatrix-ZTP-file
       content:
-        fn::fileAsset: ./assets/aviatrix-cloud-init.txt
+        fn::fileAsset: ./../assets/aviatrix-cloud-init.txt
       metroCode: ${metro}
       deviceTypeCode: AVIATRIX_EDGE
       processType: CLOUD_INIT

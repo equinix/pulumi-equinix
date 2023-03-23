@@ -7,7 +7,7 @@ if metro is None:
     metro = "SV"
 network_file = equinix.networkedge.NetworkFile("networkFile",
     file_name="Aviatrix-ZTP-file",
-    content=pulumi.FileAsset("./assets/aviatrix-cloud-init.txt"),
+    content=pulumi.FileAsset("./../assets/aviatrix-cloud-init.txt"),
     metro_code=metro,
     device_type_code="AVIATRIX_EDGE",
     process_type="CLOUD_INIT",

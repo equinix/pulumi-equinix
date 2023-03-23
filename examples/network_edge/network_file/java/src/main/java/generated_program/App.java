@@ -23,7 +23,7 @@ public class App {
         final var metro = config.get("metro").orElse("SV");
         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
             .fileName("Aviatrix-ZTP-file")
-            .content(new FileAsset("./assets/aviatrix-cloud-init.txt"))
+            .content(new FileAsset("./../assets/aviatrix-cloud-init.txt"))
             .metroCode(metro)
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")

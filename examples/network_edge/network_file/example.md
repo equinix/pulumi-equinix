@@ -10,7 +10,7 @@ const config = new pulumi.Config();
 const metro = config.get("metro") || "SV";
 const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     fileName: "Aviatrix-ZTP-file",
-    content: new pulumi.asset.FileAsset("./assets/aviatrix-cloud-init.txt"),
+    content: new pulumi.asset.FileAsset("./../assets/aviatrix-cloud-init.txt"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
     processType: "CLOUD_INIT",
@@ -35,7 +35,7 @@ if metro is None:
     metro = "SV"
 network_file = equinix.networkedge.NetworkFile("networkFile",
     file_name="Aviatrix-ZTP-file",
-    content=pulumi.FileAsset("./assets/aviatrix-cloud-init.txt"),
+    content=pulumi.FileAsset("./../assets/aviatrix-cloud-init.txt"),
     metro_code=metro,
     device_type_code="AVIATRIX_EDGE",
     process_type="CLOUD_INIT",
@@ -67,7 +67,7 @@ func main() {
 		}
 		networkFile, err := networkedge.NewNetworkFile(ctx, "networkFile", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("Aviatrix-ZTP-file"),
-			Content:        pulumi.NewFileAsset("./assets/aviatrix-cloud-init.txt"),
+			Content:        pulumi.NewFileAsset("./../assets/aviatrix-cloud-init.txt"),
 			MetroCode:      pulumi.String(metro),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 			ProcessType:    pulumi.String("CLOUD_INIT"),
@@ -100,7 +100,7 @@ return await Deployment.RunAsync(() =>
     var networkFile = new Equinix.NetworkEdge.NetworkFile("networkFile", new()
     {
         FileName = "Aviatrix-ZTP-file",
-        Content = new FileAsset("./assets/aviatrix-cloud-init.txt"),
+        Content = new FileAsset("./../assets/aviatrix-cloud-init.txt"),
         MetroCode = metro,
         DeviceTypeCode = "AVIATRIX_EDGE",
         ProcessType = "CLOUD_INIT",
@@ -146,7 +146,7 @@ public class App {
         final var metro = config.get("metro").orElse("SV");
         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
             .fileName("Aviatrix-ZTP-file")
-            .content(new FileAsset("./assets/aviatrix-cloud-init.txt"))
+            .content(new FileAsset("./../assets/aviatrix-cloud-init.txt"))
             .metroCode(metro)
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")
@@ -175,7 +175,7 @@ resources:
     properties:
       fileName: Aviatrix-ZTP-file
       content:
-        fn::fileAsset: ./assets/aviatrix-cloud-init.txt
+        fn::fileAsset: ./../assets/aviatrix-cloud-init.txt
       metroCode: ${metro}
       deviceTypeCode: AVIATRIX_EDGE
       processType: CLOUD_INIT
