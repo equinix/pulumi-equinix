@@ -1,0 +1,26 @@
+name: equinix-metal-interconnection-fabric-billed-token
+runtime: yaml
+description: An [Equinix Metal Interconnection](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#fabric-virtual-connections-fabric-billed) -Fabric Billed- resource
+config:
+  projectId:
+    type: string
+  metro:
+    type: string
+    default: SV
+  speedInMbps:
+    type: integer
+    default: 200
+resources:
+  connection:
+    type: equinix:metal:Interconnection
+    properties:
+      name: fabric-port-to-metal
+      projectId: ${projectId}
+      type: shared
+      redundancy: primary
+      metro: ${metro}
+      speed: ${speedInMbps}Mbps
+      serviceTokenType: z_side
+outputs:
+  connectionStatus: ${connection.status}
+  connectionTokens: ${connection.serviceTokens}
