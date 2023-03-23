@@ -1,0 +1,9 @@
+name: equinix-metal-device-network-type
+runtime: python
+description: An Equinix Metal Device Network Type resource
+config:
+  deviceId:
+    type: string
+  networkType:
+    type: string
+    default: hybrid
