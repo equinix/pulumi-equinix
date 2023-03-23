@@ -1,0 +1,3 @@
+name: equinix-networkedge-ssh-key
+runtime: go
+description: An Equinix Network Edge SSH Key resource
