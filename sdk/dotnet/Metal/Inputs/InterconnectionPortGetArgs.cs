@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal.Inputs
 {
 
-    public sealed class ConnectionPortGetArgs : global::Pulumi.ResourceArgs
+    public sealed class InterconnectionPortGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -47,9 +47,9 @@ namespace Pulumi.Equinix.Metal.Inputs
             set => _virtualCircuitIds = value;
         }
 
-        public ConnectionPortGetArgs()
+        public InterconnectionPortGetArgs()
         {
         }
-        public static new ConnectionPortGetArgs Empty => new ConnectionPortGetArgs();
+        public static new InterconnectionPortGetArgs Empty => new InterconnectionPortGetArgs();
     }
 }

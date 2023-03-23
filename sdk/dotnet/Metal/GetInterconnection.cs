@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Equinix.Metal
 {
-    public static class GetConnection
+    public static class GetInterconnection
     {
         /// <summary>
         /// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
@@ -27,7 +27,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Equinix.Metal.GetConnection.Invoke(new()
+        ///     var example = Equinix.Metal.GetInterconnection.Invoke(new()
         ///     {
         ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
         ///     });
@@ -37,8 +37,8 @@ namespace Pulumi.Equinix.Metal
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("equinix:metal/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
+        public static Task<GetInterconnectionResult> InvokeAsync(GetInterconnectionArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectionResult>("equinix:metal/getInterconnection:getInterconnection", args ?? new GetInterconnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
@@ -56,7 +56,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Equinix.Metal.GetConnection.Invoke(new()
+        ///     var example = Equinix.Metal.GetInterconnection.Invoke(new()
         ///     {
         ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
         ///     });
@@ -66,12 +66,12 @@ namespace Pulumi.Equinix.Metal
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("equinix:metal/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
+        public static Output<GetInterconnectionResult> Invoke(GetInterconnectionInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectionResult>("equinix:metal/getInterconnection:getInterconnection", args ?? new GetInterconnectionInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetConnectionArgs : global::Pulumi.InvokeArgs
+    public sealed class GetInterconnectionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the connection resource.
@@ -79,13 +79,13 @@ namespace Pulumi.Equinix.Metal
         [Input("connectionId", required: true)]
         public string ConnectionId { get; set; } = null!;
 
-        public GetConnectionArgs()
+        public GetInterconnectionArgs()
         {
         }
-        public static new GetConnectionArgs Empty => new GetConnectionArgs();
+        public static new GetInterconnectionArgs Empty => new GetInterconnectionArgs();
     }
 
-    public sealed class GetConnectionInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetInterconnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the connection resource.
@@ -93,15 +93,15 @@ namespace Pulumi.Equinix.Metal
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
 
-        public GetConnectionInvokeArgs()
+        public GetInterconnectionInvokeArgs()
         {
         }
-        public static new GetConnectionInvokeArgs Empty => new GetConnectionInvokeArgs();
+        public static new GetInterconnectionInvokeArgs Empty => new GetInterconnectionInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetConnectionResult
+    public sealed class GetInterconnectionResult
     {
         public readonly string ConnectionId;
         /// <summary>
@@ -135,7 +135,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionPortResult> Ports;
+        public readonly ImmutableArray<Outputs.GetInterconnectionPortResult> Ports;
         /// <summary>
         /// ID of project to which the connection belongs.
         /// </summary>
@@ -151,7 +151,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// List of connection service tokens with attributes
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionServiceTokenResult> ServiceTokens;
+        public readonly ImmutableArray<Outputs.GetInterconnectionServiceTokenResult> ServiceTokens;
         /// <summary>
         /// Port speed in bits per second.
         /// </summary>
@@ -178,7 +178,7 @@ namespace Pulumi.Equinix.Metal
         public readonly ImmutableArray<int> Vlans;
 
         [OutputConstructor]
-        private GetConnectionResult(
+        private GetInterconnectionResult(
             string connectionId,
 
             string description,
@@ -195,7 +195,7 @@ namespace Pulumi.Equinix.Metal
 
             string organizationId,
 
-            ImmutableArray<Outputs.GetConnectionPortResult> ports,
+            ImmutableArray<Outputs.GetInterconnectionPortResult> ports,
 
             string projectId,
 
@@ -203,7 +203,7 @@ namespace Pulumi.Equinix.Metal
 
             string serviceTokenType,
 
-            ImmutableArray<Outputs.GetConnectionServiceTokenResult> serviceTokens,
+            ImmutableArray<Outputs.GetInterconnectionServiceTokenResult> serviceTokens,
 
             string speed,
 

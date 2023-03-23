@@ -88,14 +88,14 @@ func isZero(v interface{}) bool {
 
 // pkgResourceDefaultOpts provides package level defaults to pulumi.OptionResource.
 func pkgResourceDefaultOpts(opts []pulumi.ResourceOption) []pulumi.ResourceOption {
-	defaults := []pulumi.ResourceOption{pulumi.PluginDownloadURL("https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty")}
+	defaults := []pulumi.ResourceOption{pulumi.PluginDownloadURL("https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty")}
 
 	return append(defaults, opts...)
 }
 
 // pkgInvokeDefaultOpts provides package level defaults to pulumi.OptionInvoke.
 func pkgInvokeDefaultOpts(opts []pulumi.InvokeOption) []pulumi.InvokeOption {
-	defaults := []pulumi.InvokeOption{pulumi.PluginDownloadURL("https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty")}
+	defaults := []pulumi.InvokeOption{pulumi.PluginDownloadURL("https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty")}
 
 	return append(defaults, opts...)
 }

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleConnection, err := metal.LookupConnection(ctx, &metal.LookupConnectionArgs{
+//			exampleConnection, err := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
 //				ConnectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
 //			}, nil)
 //			if err != nil {

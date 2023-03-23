@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type Connection struct {
+type Interconnection struct {
 	pulumi.CustomResourceState
 
 	// Description for the connection resource.
@@ -28,16 +28,16 @@ type Connection struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
 	// port is described in documentation of the
-	// metal.Connection datasource.
-	Ports ConnectionPortArrayOutput `pulumi:"ports"`
+	// metal.Interconnection datasource.
+	Ports InterconnectionPortArrayOutput `pulumi:"ports"`
 	// ID of the project where the connection is scoped to, must be set for.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Connection redundancy - redundant or primary.
 	Redundancy pulumi.StringOutput `pulumi:"redundancy"`
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType pulumi.StringPtrOutput `pulumi:"serviceTokenType"`
-	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Connection datasource.
-	ServiceTokens ConnectionServiceTokenArrayOutput `pulumi:"serviceTokens"`
+	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+	ServiceTokens InterconnectionServiceTokenArrayOutput `pulumi:"serviceTokens"`
 	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
 	Speed pulumi.StringOutput `pulumi:"speed"`
 	// Status of the connection resource.
@@ -54,9 +54,9 @@ type Connection struct {
 	Vlans pulumi.IntArrayOutput `pulumi:"vlans"`
 }
 
-// NewConnection registers a new resource with the given unique name, arguments, and options.
-func NewConnection(ctx *pulumi.Context,
-	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
+// NewInterconnection registers a new resource with the given unique name, arguments, and options.
+func NewInterconnection(ctx *pulumi.Context,
+	name string, args *InterconnectionArgs, opts ...pulumi.ResourceOption) (*Interconnection, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -71,28 +71,28 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	opts = pkgResourceDefaultOpts(opts)
-	var resource Connection
-	err := ctx.RegisterResource("equinix:metal/connection:Connection", name, args, &resource, opts...)
+	var resource Interconnection
+	err := ctx.RegisterResource("equinix:metal/interconnection:Interconnection", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetConnection gets an existing Connection resource's state with the given name, ID, and optional
+// GetInterconnection gets an existing Interconnection resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetConnection(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ConnectionState, opts ...pulumi.ResourceOption) (*Connection, error) {
-	var resource Connection
-	err := ctx.ReadResource("equinix:metal/connection:Connection", name, id, state, &resource, opts...)
+func GetInterconnection(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *InterconnectionState, opts ...pulumi.ResourceOption) (*Interconnection, error) {
+	var resource Interconnection
+	err := ctx.ReadResource("equinix:metal/interconnection:Interconnection", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering Connection resources.
-type connectionState struct {
+// Input properties used for looking up and filtering Interconnection resources.
+type interconnectionState struct {
 	// Description for the connection resource.
 	Description *string `pulumi:"description"`
 	// Facility where the connection will be created.
@@ -107,16 +107,16 @@ type connectionState struct {
 	OrganizationId *string `pulumi:"organizationId"`
 	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
 	// port is described in documentation of the
-	// metal.Connection datasource.
-	Ports []ConnectionPort `pulumi:"ports"`
+	// metal.Interconnection datasource.
+	Ports []InterconnectionPort `pulumi:"ports"`
 	// ID of the project where the connection is scoped to, must be set for.
 	ProjectId *string `pulumi:"projectId"`
 	// Connection redundancy - redundant or primary.
 	Redundancy *string `pulumi:"redundancy"`
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
-	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Connection datasource.
-	ServiceTokens []ConnectionServiceToken `pulumi:"serviceTokens"`
+	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+	ServiceTokens []InterconnectionServiceToken `pulumi:"serviceTokens"`
 	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
 	Speed *string `pulumi:"speed"`
 	// Status of the connection resource.
@@ -133,7 +133,7 @@ type connectionState struct {
 	Vlans []int `pulumi:"vlans"`
 }
 
-type ConnectionState struct {
+type InterconnectionState struct {
 	// Description for the connection resource.
 	Description pulumi.StringPtrInput
 	// Facility where the connection will be created.
@@ -148,16 +148,16 @@ type ConnectionState struct {
 	OrganizationId pulumi.StringPtrInput
 	// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
 	// port is described in documentation of the
-	// metal.Connection datasource.
-	Ports ConnectionPortArrayInput
+	// metal.Interconnection datasource.
+	Ports InterconnectionPortArrayInput
 	// ID of the project where the connection is scoped to, must be set for.
 	ProjectId pulumi.StringPtrInput
 	// Connection redundancy - redundant or primary.
 	Redundancy pulumi.StringPtrInput
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType pulumi.StringPtrInput
-	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Connection datasource.
-	ServiceTokens ConnectionServiceTokenArrayInput
+	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+	ServiceTokens InterconnectionServiceTokenArrayInput
 	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
 	Speed pulumi.StringPtrInput
 	// Status of the connection resource.
@@ -174,11 +174,11 @@ type ConnectionState struct {
 	Vlans pulumi.IntArrayInput
 }
 
-func (ConnectionState) ElementType() reflect.Type {
-	return reflect.TypeOf((*connectionState)(nil)).Elem()
+func (InterconnectionState) ElementType() reflect.Type {
+	return reflect.TypeOf((*interconnectionState)(nil)).Elem()
 }
 
-type connectionArgs struct {
+type interconnectionArgs struct {
 	// Description for the connection resource.
 	Description *string `pulumi:"description"`
 	// Facility where the connection will be created.
@@ -207,8 +207,8 @@ type connectionArgs struct {
 	Vlans []int `pulumi:"vlans"`
 }
 
-// The set of arguments for constructing a Connection resource.
-type ConnectionArgs struct {
+// The set of arguments for constructing a Interconnection resource.
+type InterconnectionArgs struct {
 	// Description for the connection resource.
 	Description pulumi.StringPtrInput
 	// Facility where the connection will be created.
@@ -237,227 +237,227 @@ type ConnectionArgs struct {
 	Vlans pulumi.IntArrayInput
 }
 
-func (ConnectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*connectionArgs)(nil)).Elem()
+func (InterconnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*interconnectionArgs)(nil)).Elem()
 }
 
-type ConnectionInput interface {
+type InterconnectionInput interface {
 	pulumi.Input
 
-	ToConnectionOutput() ConnectionOutput
-	ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput
+	ToInterconnectionOutput() InterconnectionOutput
+	ToInterconnectionOutputWithContext(ctx context.Context) InterconnectionOutput
 }
 
-func (*Connection) ElementType() reflect.Type {
-	return reflect.TypeOf((**Connection)(nil)).Elem()
+func (*Interconnection) ElementType() reflect.Type {
+	return reflect.TypeOf((**Interconnection)(nil)).Elem()
 }
 
-func (i *Connection) ToConnectionOutput() ConnectionOutput {
-	return i.ToConnectionOutputWithContext(context.Background())
+func (i *Interconnection) ToInterconnectionOutput() InterconnectionOutput {
+	return i.ToInterconnectionOutputWithContext(context.Background())
 }
 
-func (i *Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
+func (i *Interconnection) ToInterconnectionOutputWithContext(ctx context.Context) InterconnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionOutput)
 }
 
-// ConnectionArrayInput is an input type that accepts ConnectionArray and ConnectionArrayOutput values.
-// You can construct a concrete instance of `ConnectionArrayInput` via:
+// InterconnectionArrayInput is an input type that accepts InterconnectionArray and InterconnectionArrayOutput values.
+// You can construct a concrete instance of `InterconnectionArrayInput` via:
 //
-//	ConnectionArray{ ConnectionArgs{...} }
-type ConnectionArrayInput interface {
+//	InterconnectionArray{ InterconnectionArgs{...} }
+type InterconnectionArrayInput interface {
 	pulumi.Input
 
-	ToConnectionArrayOutput() ConnectionArrayOutput
-	ToConnectionArrayOutputWithContext(context.Context) ConnectionArrayOutput
+	ToInterconnectionArrayOutput() InterconnectionArrayOutput
+	ToInterconnectionArrayOutputWithContext(context.Context) InterconnectionArrayOutput
 }
 
-type ConnectionArray []ConnectionInput
+type InterconnectionArray []InterconnectionInput
 
-func (ConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*Connection)(nil)).Elem()
+func (InterconnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Interconnection)(nil)).Elem()
 }
 
-func (i ConnectionArray) ToConnectionArrayOutput() ConnectionArrayOutput {
-	return i.ToConnectionArrayOutputWithContext(context.Background())
+func (i InterconnectionArray) ToInterconnectionArrayOutput() InterconnectionArrayOutput {
+	return i.ToInterconnectionArrayOutputWithContext(context.Background())
 }
 
-func (i ConnectionArray) ToConnectionArrayOutputWithContext(ctx context.Context) ConnectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionArrayOutput)
+func (i InterconnectionArray) ToInterconnectionArrayOutputWithContext(ctx context.Context) InterconnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionArrayOutput)
 }
 
-// ConnectionMapInput is an input type that accepts ConnectionMap and ConnectionMapOutput values.
-// You can construct a concrete instance of `ConnectionMapInput` via:
+// InterconnectionMapInput is an input type that accepts InterconnectionMap and InterconnectionMapOutput values.
+// You can construct a concrete instance of `InterconnectionMapInput` via:
 //
-//	ConnectionMap{ "key": ConnectionArgs{...} }
-type ConnectionMapInput interface {
+//	InterconnectionMap{ "key": InterconnectionArgs{...} }
+type InterconnectionMapInput interface {
 	pulumi.Input
 
-	ToConnectionMapOutput() ConnectionMapOutput
-	ToConnectionMapOutputWithContext(context.Context) ConnectionMapOutput
+	ToInterconnectionMapOutput() InterconnectionMapOutput
+	ToInterconnectionMapOutputWithContext(context.Context) InterconnectionMapOutput
 }
 
-type ConnectionMap map[string]ConnectionInput
+type InterconnectionMap map[string]InterconnectionInput
 
-func (ConnectionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*Connection)(nil)).Elem()
+func (InterconnectionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Interconnection)(nil)).Elem()
 }
 
-func (i ConnectionMap) ToConnectionMapOutput() ConnectionMapOutput {
-	return i.ToConnectionMapOutputWithContext(context.Background())
+func (i InterconnectionMap) ToInterconnectionMapOutput() InterconnectionMapOutput {
+	return i.ToInterconnectionMapOutputWithContext(context.Background())
 }
 
-func (i ConnectionMap) ToConnectionMapOutputWithContext(ctx context.Context) ConnectionMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMapOutput)
+func (i InterconnectionMap) ToInterconnectionMapOutputWithContext(ctx context.Context) InterconnectionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionMapOutput)
 }
 
-type ConnectionOutput struct{ *pulumi.OutputState }
+type InterconnectionOutput struct{ *pulumi.OutputState }
 
-func (ConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Connection)(nil)).Elem()
+func (InterconnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Interconnection)(nil)).Elem()
 }
 
-func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
+func (o InterconnectionOutput) ToInterconnectionOutput() InterconnectionOutput {
 	return o
 }
 
-func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+func (o InterconnectionOutput) ToInterconnectionOutputWithContext(ctx context.Context) InterconnectionOutput {
 	return o
 }
 
 // Description for the connection resource.
-func (o ConnectionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o InterconnectionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Facility where the connection will be created.
-func (o ConnectionOutput) Facility() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Facility }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Facility() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Facility }).(pulumi.StringOutput)
 }
 
 // Metro where the connection will be created.
-func (o ConnectionOutput) Metro() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Metro }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Metro() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Metro }).(pulumi.StringOutput)
 }
 
 // Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
-func (o ConnectionOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
+func (o InterconnectionOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 // Name of the connection resource
-func (o ConnectionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // ID of the organization where the connection is scoped to.
-func (o ConnectionOutput) OrganizationId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+func (o InterconnectionOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
 // List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
 // port is described in documentation of the
-// metal.Connection datasource.
-func (o ConnectionOutput) Ports() ConnectionPortArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionPortArrayOutput { return v.Ports }).(ConnectionPortArrayOutput)
+// metal.Interconnection datasource.
+func (o InterconnectionOutput) Ports() InterconnectionPortArrayOutput {
+	return o.ApplyT(func(v *Interconnection) InterconnectionPortArrayOutput { return v.Ports }).(InterconnectionPortArrayOutput)
 }
 
 // ID of the project where the connection is scoped to, must be set for.
-func (o ConnectionOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o InterconnectionOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Connection redundancy - redundant or primary.
-func (o ConnectionOutput) Redundancy() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Redundancy }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Redundancy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Redundancy }).(pulumi.StringOutput)
 }
 
 // Only used with shared connection. Type of service token to use for the connection, a_side or z_side
-func (o ConnectionOutput) ServiceTokenType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ServiceTokenType }).(pulumi.StringPtrOutput)
+func (o InterconnectionOutput) ServiceTokenType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.ServiceTokenType }).(pulumi.StringPtrOutput)
 }
 
-// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Connection datasource.
-func (o ConnectionOutput) ServiceTokens() ConnectionServiceTokenArrayOutput {
-	return o.ApplyT(func(v *Connection) ConnectionServiceTokenArrayOutput { return v.ServiceTokens }).(ConnectionServiceTokenArrayOutput)
+// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
+func (o InterconnectionOutput) ServiceTokens() InterconnectionServiceTokenArrayOutput {
+	return o.ApplyT(func(v *Interconnection) InterconnectionServiceTokenArrayOutput { return v.ServiceTokens }).(InterconnectionServiceTokenArrayOutput)
 }
 
 // Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-func (o ConnectionOutput) Speed() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Speed }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Speed() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Speed }).(pulumi.StringOutput)
 }
 
 // Status of the connection resource.
-func (o ConnectionOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // String list of tags.
-func (o ConnectionOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+func (o InterconnectionOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 //
 // Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
-func (o ConnectionOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
 // Connection type - dedicated or shared.
-func (o ConnectionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+func (o InterconnectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
-func (o ConnectionOutput) Vlans() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *Connection) pulumi.IntArrayOutput { return v.Vlans }).(pulumi.IntArrayOutput)
+func (o InterconnectionOutput) Vlans() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.IntArrayOutput { return v.Vlans }).(pulumi.IntArrayOutput)
 }
 
-type ConnectionArrayOutput struct{ *pulumi.OutputState }
+type InterconnectionArrayOutput struct{ *pulumi.OutputState }
 
-func (ConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*Connection)(nil)).Elem()
+func (InterconnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Interconnection)(nil)).Elem()
 }
 
-func (o ConnectionArrayOutput) ToConnectionArrayOutput() ConnectionArrayOutput {
+func (o InterconnectionArrayOutput) ToInterconnectionArrayOutput() InterconnectionArrayOutput {
 	return o
 }
 
-func (o ConnectionArrayOutput) ToConnectionArrayOutputWithContext(ctx context.Context) ConnectionArrayOutput {
+func (o InterconnectionArrayOutput) ToInterconnectionArrayOutputWithContext(ctx context.Context) InterconnectionArrayOutput {
 	return o
 }
 
-func (o ConnectionArrayOutput) Index(i pulumi.IntInput) ConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Connection {
-		return vs[0].([]*Connection)[vs[1].(int)]
-	}).(ConnectionOutput)
+func (o InterconnectionArrayOutput) Index(i pulumi.IntInput) InterconnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Interconnection {
+		return vs[0].([]*Interconnection)[vs[1].(int)]
+	}).(InterconnectionOutput)
 }
 
-type ConnectionMapOutput struct{ *pulumi.OutputState }
+type InterconnectionMapOutput struct{ *pulumi.OutputState }
 
-func (ConnectionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*Connection)(nil)).Elem()
+func (InterconnectionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Interconnection)(nil)).Elem()
 }
 
-func (o ConnectionMapOutput) ToConnectionMapOutput() ConnectionMapOutput {
+func (o InterconnectionMapOutput) ToInterconnectionMapOutput() InterconnectionMapOutput {
 	return o
 }
 
-func (o ConnectionMapOutput) ToConnectionMapOutputWithContext(ctx context.Context) ConnectionMapOutput {
+func (o InterconnectionMapOutput) ToInterconnectionMapOutputWithContext(ctx context.Context) InterconnectionMapOutput {
 	return o
 }
 
-func (o ConnectionMapOutput) MapIndex(k pulumi.StringInput) ConnectionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Connection {
-		return vs[0].(map[string]*Connection)[vs[1].(string)]
-	}).(ConnectionOutput)
+func (o InterconnectionMapOutput) MapIndex(k pulumi.StringInput) InterconnectionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Interconnection {
+		return vs[0].(map[string]*Interconnection)[vs[1].(string)]
+	}).(InterconnectionOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInput)(nil)).Elem(), &Connection{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionArrayInput)(nil)).Elem(), ConnectionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionMapInput)(nil)).Elem(), ConnectionMap{})
-	pulumi.RegisterOutputType(ConnectionOutput{})
-	pulumi.RegisterOutputType(ConnectionArrayOutput{})
-	pulumi.RegisterOutputType(ConnectionMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionInput)(nil)).Elem(), &Interconnection{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionArrayInput)(nil)).Elem(), InterconnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionMapInput)(nil)).Elem(), InterconnectionMap{})
+	pulumi.RegisterOutputType(InterconnectionOutput{})
+	pulumi.RegisterOutputType(InterconnectionArrayOutput{})
+	pulumi.RegisterOutputType(InterconnectionMapOutput{})
 }

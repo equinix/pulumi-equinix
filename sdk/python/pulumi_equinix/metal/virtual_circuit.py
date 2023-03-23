@@ -606,14 +606,14 @@ class VirtualCircuit(pulumi.CustomResource):
 
         project_id = "52000fb2-ee46-4673-93a8-de2c2bdba33c"
         conn_id = "73f12f29-3e19-43a0-8e90-ae81580db1e0"
-        test_connection = equinix.metal.get_connection(connection_id=conn_id)
+        test_interconnection = equinix.metal.get_interconnection(connection_id=conn_id)
         test_vlan = equinix.metal.Vlan("testVlan",
             project_id=project_id,
-            metro=test_connection.metro)
+            metro=test_interconnection.metro)
         test_virtual_circuit = equinix.metal.VirtualCircuit("testVirtualCircuit",
             connection_id=conn_id,
             project_id=project_id,
-            port_id=test_connection.ports[0].id,
+            port_id=test_interconnection.ports[0].id,
             vlan_id=test_vlan.id,
             nni_vlan=1056)
         ```
@@ -671,14 +671,14 @@ class VirtualCircuit(pulumi.CustomResource):
 
         project_id = "52000fb2-ee46-4673-93a8-de2c2bdba33c"
         conn_id = "73f12f29-3e19-43a0-8e90-ae81580db1e0"
-        test_connection = equinix.metal.get_connection(connection_id=conn_id)
+        test_interconnection = equinix.metal.get_interconnection(connection_id=conn_id)
         test_vlan = equinix.metal.Vlan("testVlan",
             project_id=project_id,
-            metro=test_connection.metro)
+            metro=test_interconnection.metro)
         test_virtual_circuit = equinix.metal.VirtualCircuit("testVirtualCircuit",
             connection_id=conn_id,
             project_id=project_id,
-            port_id=test_connection.ports[0].id,
+            port_id=test_interconnection.ports[0].id,
             vlan_id=test_vlan.id,
             nni_vlan=1056)
         ```

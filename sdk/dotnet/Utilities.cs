@@ -53,7 +53,7 @@ namespace Pulumi.Equinix
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty";
             return dst;
         }
 

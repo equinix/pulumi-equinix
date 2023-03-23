@@ -31,7 +31,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     ///     var connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
     /// 
-    ///     var testConnection = Equinix.Metal.GetConnection.Invoke(new()
+    ///     var testInterconnection = Equinix.Metal.GetInterconnection.Invoke(new()
     ///     {
     ///         ConnectionId = connId,
     ///     });
@@ -39,14 +39,14 @@ namespace Pulumi.Equinix.Metal
     ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
     ///     {
     ///         ProjectId = projectId,
-    ///         Metro = testConnection.Apply(getConnectionResult =&gt; getConnectionResult.Metro),
+    ///         Metro = testInterconnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Metro),
     ///     });
     /// 
     ///     var testVirtualCircuit = new Equinix.Metal.VirtualCircuit("testVirtualCircuit", new()
     ///     {
     ///         ConnectionId = connId,
     ///         ProjectId = projectId,
-    ///         PortId = testConnection.Apply(getConnectionResult =&gt; getConnectionResult.Ports[0]?.Id),
+    ///         PortId = testInterconnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[0]?.Id),
     ///         VlanId = testVlan.Id,
     ///         NniVlan = 1056,
     ///     });
@@ -200,7 +200,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty",
                 AdditionalSecretOutputs =
                 {
                     "md5",

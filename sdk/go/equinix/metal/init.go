@@ -23,14 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "equinix:metal/bgpSession:BgpSession":
 		r = &BgpSession{}
-	case "equinix:metal/connection:Connection":
-		r = &Connection{}
 	case "equinix:metal/device:Device":
 		r = &Device{}
 	case "equinix:metal/deviceNetworkType:DeviceNetworkType":
 		r = &DeviceNetworkType{}
 	case "equinix:metal/gateway:Gateway":
 		r = &Gateway{}
+	case "equinix:metal/interconnection:Interconnection":
+		r = &Interconnection{}
 	case "equinix:metal/ipAttachment:IpAttachment":
 		r = &IpAttachment{}
 	case "equinix:metal/organization:Organization":
@@ -81,11 +81,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"equinix",
-		"metal/connection",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"equinix",
 		"metal/device",
 		&module{version},
 	)
@@ -97,6 +92,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"equinix",
 		"metal/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"metal/interconnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

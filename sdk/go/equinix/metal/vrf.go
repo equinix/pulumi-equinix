@@ -116,7 +116,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleConnection, err := metal.LookupConnection(ctx, &metal.LookupConnectionArgs{
+//			exampleInterconnection, err := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
 //				ConnectionId: _var.Metal_dedicated_connection_id,
 //			}, nil)
 //			if err != nil {
@@ -124,9 +124,9 @@ import (
 //			}
 //			_, err = metal.NewVirtualCircuit(ctx, "exampleVirtualCircuit", &metal.VirtualCircuitArgs{
 //				Description:  pulumi.String("Virtual Circuit"),
-//				ConnectionId: *pulumi.String(exampleConnection.Id),
+//				ConnectionId: *pulumi.String(exampleInterconnection.Id),
 //				ProjectId:    pulumi.Any(equinix_metal_project.Example.Id),
-//				PortId:       *pulumi.String(exampleConnection.Ports[0].Id),
+//				PortId:       *pulumi.String(exampleInterconnection.Ports[0].Id),
 //				NniVlan:      pulumi.Int(1024),
 //				VrfId:        pulumi.Any(equinix_metal_vrf.Example.Id),
 //				PeerAsn:      pulumi.Int(65530),

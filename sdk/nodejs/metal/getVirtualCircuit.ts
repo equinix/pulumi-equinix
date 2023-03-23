@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const exampleConnection = equinix.metal.getConnection({
+ * const exampleConnection = equinix.metal.getInterconnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
  * });
  * const exampleVc = exampleConnection.then(exampleConnection => equinix.metal.getVirtualCircuit({
@@ -132,7 +132,7 @@ export interface GetVirtualCircuitResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const exampleConnection = equinix.metal.getConnection({
+ * const exampleConnection = equinix.metal.getInterconnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
  * });
  * const exampleVc = exampleConnection.then(exampleConnection => equinix.metal.getVirtualCircuit({

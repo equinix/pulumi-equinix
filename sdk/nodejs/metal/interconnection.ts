@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
-export class Connection extends pulumi.CustomResource {
+export class Interconnection extends pulumi.CustomResource {
     /**
-     * Get an existing Connection resource's state with the given name, ID, and optional extra
+     * Get an existing Interconnection resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -17,22 +17,22 @@ export class Connection extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionState, opts?: pulumi.CustomResourceOptions): Connection {
-        return new Connection(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InterconnectionState, opts?: pulumi.CustomResourceOptions): Interconnection {
+        return new Interconnection(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'equinix:metal/connection:Connection';
+    public static readonly __pulumiType = 'equinix:metal/interconnection:Interconnection';
 
     /**
-     * Returns true if the given object is an instance of Connection.  This is designed to work even
+     * Returns true if the given object is an instance of Interconnection.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Connection {
+    public static isInstance(obj: any): obj is Interconnection {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Connection.__pulumiType;
+        return obj['__pulumiType'] === Interconnection.__pulumiType;
     }
 
     /**
@@ -62,9 +62,9 @@ export class Connection extends pulumi.CustomResource {
     /**
      * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
      * port is described in documentation of the
-     * equinix.metal.Connection datasource.
+     * equinix.metal.Interconnection datasource.
      */
-    public /*out*/ readonly ports!: pulumi.Output<outputs.metal.ConnectionPort[]>;
+    public /*out*/ readonly ports!: pulumi.Output<outputs.metal.InterconnectionPort[]>;
     /**
      * ID of the project where the connection is scoped to, must be set for.
      */
@@ -78,9 +78,9 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly serviceTokenType!: pulumi.Output<string | undefined>;
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Connection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Interconnection datasource.
      */
-    public /*out*/ readonly serviceTokens!: pulumi.Output<outputs.metal.ConnectionServiceToken[]>;
+    public /*out*/ readonly serviceTokens!: pulumi.Output<outputs.metal.InterconnectionServiceToken[]>;
     /**
      * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
      */
@@ -109,18 +109,18 @@ export class Connection extends pulumi.CustomResource {
     public readonly vlans!: pulumi.Output<number[] | undefined>;
 
     /**
-     * Create a Connection resource with the given unique name, arguments, and options.
+     * Create a Interconnection resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: InterconnectionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: InterconnectionArgs | InterconnectionState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ConnectionState | undefined;
+            const state = argsOrState as InterconnectionState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["facility"] = state ? state.facility : undefined;
             resourceInputs["metro"] = state ? state.metro : undefined;
@@ -139,7 +139,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vlans"] = state ? state.vlans : undefined;
         } else {
-            const args = argsOrState as ConnectionArgs | undefined;
+            const args = argsOrState as InterconnectionArgs | undefined;
             if ((!args || args.redundancy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'redundancy'");
             }
@@ -168,14 +168,14 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Connection.__pulumiType, name, resourceInputs, opts);
+        super(Interconnection.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Connection resources.
+ * Input properties used for looking up and filtering Interconnection resources.
  */
-export interface ConnectionState {
+export interface InterconnectionState {
     /**
      * Description for the connection resource.
      */
@@ -203,9 +203,9 @@ export interface ConnectionState {
     /**
      * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
      * port is described in documentation of the
-     * equinix.metal.Connection datasource.
+     * equinix.metal.Interconnection datasource.
      */
-    ports?: pulumi.Input<pulumi.Input<inputs.metal.ConnectionPort>[]>;
+    ports?: pulumi.Input<pulumi.Input<inputs.metal.InterconnectionPort>[]>;
     /**
      * ID of the project where the connection is scoped to, must be set for.
      */
@@ -219,9 +219,9 @@ export interface ConnectionState {
      */
     serviceTokenType?: pulumi.Input<string>;
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Connection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the equinix.metal.Interconnection datasource.
      */
-    serviceTokens?: pulumi.Input<pulumi.Input<inputs.metal.ConnectionServiceToken>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<inputs.metal.InterconnectionServiceToken>[]>;
     /**
      * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
      */
@@ -251,9 +251,9 @@ export interface ConnectionState {
 }
 
 /**
- * The set of arguments for constructing a Connection resource.
+ * The set of arguments for constructing a Interconnection resource.
  */
-export interface ConnectionArgs {
+export interface InterconnectionArgs {
     /**
      * Description for the connection resource.
      */

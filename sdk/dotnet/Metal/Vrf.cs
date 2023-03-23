@@ -89,7 +89,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleConnection = Equinix.Metal.GetConnection.Invoke(new()
+    ///     var exampleInterconnection = Equinix.Metal.GetInterconnection.Invoke(new()
     ///     {
     ///         ConnectionId = @var.Metal_dedicated_connection_id,
     ///     });
@@ -97,9 +97,9 @@ namespace Pulumi.Equinix.Metal
     ///     var exampleVirtualCircuit = new Equinix.Metal.VirtualCircuit("exampleVirtualCircuit", new()
     ///     {
     ///         Description = "Virtual Circuit",
-    ///         ConnectionId = exampleConnection.Apply(getConnectionResult =&gt; getConnectionResult.Id),
+    ///         ConnectionId = exampleInterconnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Id),
     ///         ProjectId = equinix_metal_project.Example.Id,
-    ///         PortId = exampleConnection.Apply(getConnectionResult =&gt; getConnectionResult.Ports[0]?.Id),
+    ///         PortId = exampleInterconnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[0]?.Id),
     ///         NniVlan = 1024,
     ///         VrfId = equinix_metal_vrf.Example.Id,
     ///         PeerAsn = 65530,
@@ -181,7 +181,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

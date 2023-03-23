@@ -284,12 +284,12 @@ class Vrf(pulumi.CustomResource):
         import pulumi
         import pulumi_equinix as equinix
 
-        example_connection = equinix.metal.get_connection(connection_id=var["metal_dedicated_connection_id"])
+        example_interconnection = equinix.metal.get_interconnection(connection_id=var["metal_dedicated_connection_id"])
         example_virtual_circuit = equinix.metal.VirtualCircuit("exampleVirtualCircuit",
             description="Virtual Circuit",
-            connection_id=example_connection.id,
+            connection_id=example_interconnection.id,
             project_id=equinix_metal_project["example"]["id"],
-            port_id=example_connection.ports[0].id,
+            port_id=example_interconnection.ports[0].id,
             nni_vlan=1024,
             vrf_id=equinix_metal_vrf["example"]["id"],
             peer_asn=65530,
@@ -376,12 +376,12 @@ class Vrf(pulumi.CustomResource):
         import pulumi
         import pulumi_equinix as equinix
 
-        example_connection = equinix.metal.get_connection(connection_id=var["metal_dedicated_connection_id"])
+        example_interconnection = equinix.metal.get_interconnection(connection_id=var["metal_dedicated_connection_id"])
         example_virtual_circuit = equinix.metal.VirtualCircuit("exampleVirtualCircuit",
             description="Virtual Circuit",
-            connection_id=example_connection.id,
+            connection_id=example_interconnection.id,
             project_id=equinix_metal_project["example"]["id"],
-            port_id=example_connection.ports[0].id,
+            port_id=example_interconnection.ports[0].id,
             nni_vlan=1024,
             vrf_id=equinix_metal_vrf["example"]["id"],
             peer_asn=65530,

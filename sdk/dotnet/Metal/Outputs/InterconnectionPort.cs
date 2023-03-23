@@ -11,7 +11,7 @@ namespace Pulumi.Equinix.Metal.Outputs
 {
 
     [OutputType]
-    public sealed class ConnectionPort
+    public sealed class InterconnectionPort
     {
         public readonly string? Id;
         public readonly string? LinkStatus;
@@ -31,7 +31,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         public readonly ImmutableArray<object> VirtualCircuitIds;
 
         [OutputConstructor]
-        private ConnectionPort(
+        private InterconnectionPort(
             string? id,
 
             string? linkStatus,

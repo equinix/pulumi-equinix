@@ -9,8 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Equinix.Metal
 {
-    [EquinixResourceType("equinix:metal/connection:Connection")]
-    public partial class Connection : global::Pulumi.CustomResource
+    [EquinixResourceType("equinix:metal/interconnection:Interconnection")]
+    public partial class Interconnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description for the connection resource.
@@ -51,10 +51,10 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
         /// port is described in documentation of the
-        /// equinix.metal.Connection datasource.
+        /// equinix.metal.Interconnection datasource.
         /// </summary>
         [Output("ports")]
-        public Output<ImmutableArray<Outputs.ConnectionPort>> Ports { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InterconnectionPort>> Ports { get; private set; } = null!;
 
         /// <summary>
         /// ID of the project where the connection is scoped to, must be set for.
@@ -75,10 +75,10 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> ServiceTokenType { get; private set; } = null!;
 
         /// <summary>
-        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Connection datasource.
+        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
         /// </summary>
         [Output("serviceTokens")]
-        public Output<ImmutableArray<Outputs.ConnectionServiceToken>> ServiceTokens { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InterconnectionServiceToken>> ServiceTokens { get; private set; } = null!;
 
         /// <summary>
         /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
@@ -118,19 +118,19 @@ namespace Pulumi.Equinix.Metal
 
 
         /// <summary>
-        /// Create a Connection resource with the given unique name, arguments, and options.
+        /// Create a Interconnection resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
-            : base("equinix:metal/connection:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
+        public Interconnection(string name, InterconnectionArgs args, CustomResourceOptions? options = null)
+            : base("equinix:metal/interconnection:Interconnection", name, args ?? new InterconnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Connection(string name, Input<string> id, ConnectionState? state = null, CustomResourceOptions? options = null)
-            : base("equinix:metal/connection:Connection", name, state, MakeResourceOptions(options, id))
+        private Interconnection(string name, Input<string> id, InterconnectionState? state = null, CustomResourceOptions? options = null)
+            : base("equinix:metal/interconnection:Interconnection", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -139,7 +139,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -147,7 +147,7 @@ namespace Pulumi.Equinix.Metal
             return merged;
         }
         /// <summary>
-        /// Get an existing Connection resource's state with the given name, ID, and optional extra
+        /// Get an existing Interconnection resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -155,13 +155,13 @@ namespace Pulumi.Equinix.Metal
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Connection Get(string name, Input<string> id, ConnectionState? state = null, CustomResourceOptions? options = null)
+        public static Interconnection Get(string name, Input<string> id, InterconnectionState? state = null, CustomResourceOptions? options = null)
         {
-            return new Connection(name, id, state, options);
+            return new Interconnection(name, id, state, options);
         }
     }
 
-    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
+    public sealed class InterconnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description for the connection resource.
@@ -253,13 +253,13 @@ namespace Pulumi.Equinix.Metal
             set => _vlans = value;
         }
 
-        public ConnectionArgs()
+        public InterconnectionArgs()
         {
         }
-        public static new ConnectionArgs Empty => new ConnectionArgs();
+        public static new InterconnectionArgs Empty => new InterconnectionArgs();
     }
 
-    public sealed class ConnectionState : global::Pulumi.ResourceArgs
+    public sealed class InterconnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description for the connection resource.
@@ -298,16 +298,16 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? OrganizationId { get; set; }
 
         [Input("ports")]
-        private InputList<Inputs.ConnectionPortGetArgs>? _ports;
+        private InputList<Inputs.InterconnectionPortGetArgs>? _ports;
 
         /// <summary>
         /// List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
         /// port is described in documentation of the
-        /// equinix.metal.Connection datasource.
+        /// equinix.metal.Interconnection datasource.
         /// </summary>
-        public InputList<Inputs.ConnectionPortGetArgs> Ports
+        public InputList<Inputs.InterconnectionPortGetArgs> Ports
         {
-            get => _ports ?? (_ports = new InputList<Inputs.ConnectionPortGetArgs>());
+            get => _ports ?? (_ports = new InputList<Inputs.InterconnectionPortGetArgs>());
             set => _ports = value;
         }
 
@@ -330,14 +330,14 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? ServiceTokenType { get; set; }
 
         [Input("serviceTokens")]
-        private InputList<Inputs.ConnectionServiceTokenGetArgs>? _serviceTokens;
+        private InputList<Inputs.InterconnectionServiceTokenGetArgs>? _serviceTokens;
 
         /// <summary>
-        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Connection datasource.
+        /// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
         /// </summary>
-        public InputList<Inputs.ConnectionServiceTokenGetArgs> ServiceTokens
+        public InputList<Inputs.InterconnectionServiceTokenGetArgs> ServiceTokens
         {
-            get => _serviceTokens ?? (_serviceTokens = new InputList<Inputs.ConnectionServiceTokenGetArgs>());
+            get => _serviceTokens ?? (_serviceTokens = new InputList<Inputs.InterconnectionServiceTokenGetArgs>());
             set => _serviceTokens = value;
         }
 
@@ -389,9 +389,9 @@ namespace Pulumi.Equinix.Metal
             set => _vlans = value;
         }
 
-        public ConnectionState()
+        public InterconnectionState()
         {
         }
-        public static new ConnectionState Empty => new ConnectionState();
+        public static new InterconnectionState Empty => new InterconnectionState();
     }
 }

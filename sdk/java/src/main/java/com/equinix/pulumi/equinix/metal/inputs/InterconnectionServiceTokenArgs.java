@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ConnectionServiceTokenArgs extends com.pulumi.resources.ResourceArgs {
+public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ConnectionServiceTokenArgs Empty = new ConnectionServiceTokenArgs();
+    public static final InterconnectionServiceTokenArgs Empty = new InterconnectionServiceTokenArgs();
 
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
@@ -65,9 +65,9 @@ public final class ConnectionServiceTokenArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.type);
     }
 
-    private ConnectionServiceTokenArgs() {}
+    private InterconnectionServiceTokenArgs() {}
 
-    private ConnectionServiceTokenArgs(ConnectionServiceTokenArgs $) {
+    private InterconnectionServiceTokenArgs(InterconnectionServiceTokenArgs $) {
         this.expiresAt = $.expiresAt;
         this.id = $.id;
         this.maxAllowedSpeed = $.maxAllowedSpeed;
@@ -79,19 +79,19 @@ public final class ConnectionServiceTokenArgs extends com.pulumi.resources.Resou
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ConnectionServiceTokenArgs defaults) {
+    public static Builder builder(InterconnectionServiceTokenArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ConnectionServiceTokenArgs $;
+        private InterconnectionServiceTokenArgs $;
 
         public Builder() {
-            $ = new ConnectionServiceTokenArgs();
+            $ = new InterconnectionServiceTokenArgs();
         }
 
-        public Builder(ConnectionServiceTokenArgs defaults) {
-            $ = new ConnectionServiceTokenArgs(Objects.requireNonNull(defaults));
+        public Builder(InterconnectionServiceTokenArgs defaults) {
+            $ = new InterconnectionServiceTokenArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder expiresAt(@Nullable Output<String> expiresAt) {
@@ -160,7 +160,7 @@ public final class ConnectionServiceTokenArgs extends com.pulumi.resources.Resou
             return type(Output.of(type));
         }
 
-        public ConnectionServiceTokenArgs build() {
+        public InterconnectionServiceTokenArgs build() {
             return $;
         }
     }

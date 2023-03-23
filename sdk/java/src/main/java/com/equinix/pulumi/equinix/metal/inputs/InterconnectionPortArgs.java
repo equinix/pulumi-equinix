@@ -14,9 +14,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ConnectionPortArgs extends com.pulumi.resources.ResourceArgs {
+public final class InterconnectionPortArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ConnectionPortArgs Empty = new ConnectionPortArgs();
+    public static final InterconnectionPortArgs Empty = new InterconnectionPortArgs();
 
     @Import(name="id")
     private @Nullable Output<String> id;
@@ -91,9 +91,9 @@ public final class ConnectionPortArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.virtualCircuitIds);
     }
 
-    private ConnectionPortArgs() {}
+    private InterconnectionPortArgs() {}
 
-    private ConnectionPortArgs(ConnectionPortArgs $) {
+    private InterconnectionPortArgs(InterconnectionPortArgs $) {
         this.id = $.id;
         this.linkStatus = $.linkStatus;
         this.name = $.name;
@@ -106,19 +106,19 @@ public final class ConnectionPortArgs extends com.pulumi.resources.ResourceArgs 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ConnectionPortArgs defaults) {
+    public static Builder builder(InterconnectionPortArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ConnectionPortArgs $;
+        private InterconnectionPortArgs $;
 
         public Builder() {
-            $ = new ConnectionPortArgs();
+            $ = new InterconnectionPortArgs();
         }
 
-        public Builder(ConnectionPortArgs defaults) {
-            $ = new ConnectionPortArgs(Objects.requireNonNull(defaults));
+        public Builder(InterconnectionPortArgs defaults) {
+            $ = new InterconnectionPortArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder id(@Nullable Output<String> id) {
@@ -224,7 +224,7 @@ public final class ConnectionPortArgs extends com.pulumi.resources.ResourceArgs 
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
 
-        public ConnectionPortArgs build() {
+        public InterconnectionPortArgs build() {
             return $;
         }
     }

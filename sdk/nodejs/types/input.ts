@@ -874,37 +874,6 @@ export namespace fabric {
 }
 
 export namespace metal {
-    export interface ConnectionPort {
-        id?: pulumi.Input<string>;
-        linkStatus?: pulumi.Input<string>;
-        /**
-         * Name of the connection resource
-         */
-        name?: pulumi.Input<string>;
-        role?: pulumi.Input<string>;
-        /**
-         * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-         */
-        speed?: pulumi.Input<number>;
-        /**
-         * Status of the connection resource.
-         */
-        status?: pulumi.Input<string>;
-        virtualCircuitIds?: pulumi.Input<any[]>;
-    }
-
-    export interface ConnectionServiceToken {
-        expiresAt?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        maxAllowedSpeed?: pulumi.Input<string>;
-        role?: pulumi.Input<string>;
-        state?: pulumi.Input<string>;
-        /**
-         * Connection type - dedicated or shared.
-         */
-        type?: pulumi.Input<string>;
-    }
-
     export interface DeviceBehavior {
         /**
          * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
@@ -1098,6 +1067,37 @@ export namespace metal {
          * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
          */
         direction?: pulumi.Input<string>;
+    }
+
+    export interface InterconnectionPort {
+        id?: pulumi.Input<string>;
+        linkStatus?: pulumi.Input<string>;
+        /**
+         * Name of the connection resource
+         */
+        name?: pulumi.Input<string>;
+        role?: pulumi.Input<string>;
+        /**
+         * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         */
+        speed?: pulumi.Input<number>;
+        /**
+         * Status of the connection resource.
+         */
+        status?: pulumi.Input<string>;
+        virtualCircuitIds?: pulumi.Input<any[]>;
+    }
+
+    export interface InterconnectionServiceToken {
+        expiresAt?: pulumi.Input<string>;
+        id?: pulumi.Input<string>;
+        maxAllowedSpeed?: pulumi.Input<string>;
+        role?: pulumi.Input<string>;
+        state?: pulumi.Input<string>;
+        /**
+         * Connection type - dedicated or shared.
+         */
+        type?: pulumi.Input<string>;
     }
 
     export interface OrganizationAddress {

@@ -10,272 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ConnectionPort struct {
-	Id         *string `pulumi:"id"`
-	LinkStatus *string `pulumi:"linkStatus"`
-	// Name of the connection resource
-	Name *string `pulumi:"name"`
-	Role *string `pulumi:"role"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-	Speed *int `pulumi:"speed"`
-	// Status of the connection resource.
-	Status            *string       `pulumi:"status"`
-	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
-}
-
-// ConnectionPortInput is an input type that accepts ConnectionPortArgs and ConnectionPortOutput values.
-// You can construct a concrete instance of `ConnectionPortInput` via:
-//
-//	ConnectionPortArgs{...}
-type ConnectionPortInput interface {
-	pulumi.Input
-
-	ToConnectionPortOutput() ConnectionPortOutput
-	ToConnectionPortOutputWithContext(context.Context) ConnectionPortOutput
-}
-
-type ConnectionPortArgs struct {
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	LinkStatus pulumi.StringPtrInput `pulumi:"linkStatus"`
-	// Name of the connection resource
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-	Speed pulumi.IntPtrInput `pulumi:"speed"`
-	// Status of the connection resource.
-	Status            pulumi.StringPtrInput `pulumi:"status"`
-	VirtualCircuitIds pulumi.ArrayInput     `pulumi:"virtualCircuitIds"`
-}
-
-func (ConnectionPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionPort)(nil)).Elem()
-}
-
-func (i ConnectionPortArgs) ToConnectionPortOutput() ConnectionPortOutput {
-	return i.ToConnectionPortOutputWithContext(context.Background())
-}
-
-func (i ConnectionPortArgs) ToConnectionPortOutputWithContext(ctx context.Context) ConnectionPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPortOutput)
-}
-
-// ConnectionPortArrayInput is an input type that accepts ConnectionPortArray and ConnectionPortArrayOutput values.
-// You can construct a concrete instance of `ConnectionPortArrayInput` via:
-//
-//	ConnectionPortArray{ ConnectionPortArgs{...} }
-type ConnectionPortArrayInput interface {
-	pulumi.Input
-
-	ToConnectionPortArrayOutput() ConnectionPortArrayOutput
-	ToConnectionPortArrayOutputWithContext(context.Context) ConnectionPortArrayOutput
-}
-
-type ConnectionPortArray []ConnectionPortInput
-
-func (ConnectionPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionPort)(nil)).Elem()
-}
-
-func (i ConnectionPortArray) ToConnectionPortArrayOutput() ConnectionPortArrayOutput {
-	return i.ToConnectionPortArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionPortArray) ToConnectionPortArrayOutputWithContext(ctx context.Context) ConnectionPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPortArrayOutput)
-}
-
-type ConnectionPortOutput struct{ *pulumi.OutputState }
-
-func (ConnectionPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionPort)(nil)).Elem()
-}
-
-func (o ConnectionPortOutput) ToConnectionPortOutput() ConnectionPortOutput {
-	return o
-}
-
-func (o ConnectionPortOutput) ToConnectionPortOutputWithContext(ctx context.Context) ConnectionPortOutput {
-	return o
-}
-
-func (o ConnectionPortOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionPort) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionPortOutput) LinkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionPort) *string { return v.LinkStatus }).(pulumi.StringPtrOutput)
-}
-
-// Name of the connection resource
-func (o ConnectionPortOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionPort) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionPortOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionPort) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-func (o ConnectionPortOutput) Speed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ConnectionPort) *int { return v.Speed }).(pulumi.IntPtrOutput)
-}
-
-// Status of the connection resource.
-func (o ConnectionPortOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionPort) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v ConnectionPort) []interface{} { return v.VirtualCircuitIds }).(pulumi.ArrayOutput)
-}
-
-type ConnectionPortArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionPort)(nil)).Elem()
-}
-
-func (o ConnectionPortArrayOutput) ToConnectionPortArrayOutput() ConnectionPortArrayOutput {
-	return o
-}
-
-func (o ConnectionPortArrayOutput) ToConnectionPortArrayOutputWithContext(ctx context.Context) ConnectionPortArrayOutput {
-	return o
-}
-
-func (o ConnectionPortArrayOutput) Index(i pulumi.IntInput) ConnectionPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionPort {
-		return vs[0].([]ConnectionPort)[vs[1].(int)]
-	}).(ConnectionPortOutput)
-}
-
-type ConnectionServiceToken struct {
-	ExpiresAt       *string `pulumi:"expiresAt"`
-	Id              *string `pulumi:"id"`
-	MaxAllowedSpeed *string `pulumi:"maxAllowedSpeed"`
-	Role            *string `pulumi:"role"`
-	State           *string `pulumi:"state"`
-	// Connection type - dedicated or shared.
-	Type *string `pulumi:"type"`
-}
-
-// ConnectionServiceTokenInput is an input type that accepts ConnectionServiceTokenArgs and ConnectionServiceTokenOutput values.
-// You can construct a concrete instance of `ConnectionServiceTokenInput` via:
-//
-//	ConnectionServiceTokenArgs{...}
-type ConnectionServiceTokenInput interface {
-	pulumi.Input
-
-	ToConnectionServiceTokenOutput() ConnectionServiceTokenOutput
-	ToConnectionServiceTokenOutputWithContext(context.Context) ConnectionServiceTokenOutput
-}
-
-type ConnectionServiceTokenArgs struct {
-	ExpiresAt       pulumi.StringPtrInput `pulumi:"expiresAt"`
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	MaxAllowedSpeed pulumi.StringPtrInput `pulumi:"maxAllowedSpeed"`
-	Role            pulumi.StringPtrInput `pulumi:"role"`
-	State           pulumi.StringPtrInput `pulumi:"state"`
-	// Connection type - dedicated or shared.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (ConnectionServiceTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionServiceToken)(nil)).Elem()
-}
-
-func (i ConnectionServiceTokenArgs) ToConnectionServiceTokenOutput() ConnectionServiceTokenOutput {
-	return i.ToConnectionServiceTokenOutputWithContext(context.Background())
-}
-
-func (i ConnectionServiceTokenArgs) ToConnectionServiceTokenOutputWithContext(ctx context.Context) ConnectionServiceTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServiceTokenOutput)
-}
-
-// ConnectionServiceTokenArrayInput is an input type that accepts ConnectionServiceTokenArray and ConnectionServiceTokenArrayOutput values.
-// You can construct a concrete instance of `ConnectionServiceTokenArrayInput` via:
-//
-//	ConnectionServiceTokenArray{ ConnectionServiceTokenArgs{...} }
-type ConnectionServiceTokenArrayInput interface {
-	pulumi.Input
-
-	ToConnectionServiceTokenArrayOutput() ConnectionServiceTokenArrayOutput
-	ToConnectionServiceTokenArrayOutputWithContext(context.Context) ConnectionServiceTokenArrayOutput
-}
-
-type ConnectionServiceTokenArray []ConnectionServiceTokenInput
-
-func (ConnectionServiceTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionServiceToken)(nil)).Elem()
-}
-
-func (i ConnectionServiceTokenArray) ToConnectionServiceTokenArrayOutput() ConnectionServiceTokenArrayOutput {
-	return i.ToConnectionServiceTokenArrayOutputWithContext(context.Background())
-}
-
-func (i ConnectionServiceTokenArray) ToConnectionServiceTokenArrayOutputWithContext(ctx context.Context) ConnectionServiceTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionServiceTokenArrayOutput)
-}
-
-type ConnectionServiceTokenOutput struct{ *pulumi.OutputState }
-
-func (ConnectionServiceTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionServiceToken)(nil)).Elem()
-}
-
-func (o ConnectionServiceTokenOutput) ToConnectionServiceTokenOutput() ConnectionServiceTokenOutput {
-	return o
-}
-
-func (o ConnectionServiceTokenOutput) ToConnectionServiceTokenOutputWithContext(ctx context.Context) ConnectionServiceTokenOutput {
-	return o
-}
-
-func (o ConnectionServiceTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionServiceToken) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionServiceTokenOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionServiceToken) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionServiceTokenOutput) MaxAllowedSpeed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionServiceToken) *string { return v.MaxAllowedSpeed }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionServiceTokenOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionServiceToken) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-func (o ConnectionServiceTokenOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionServiceToken) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Connection type - dedicated or shared.
-func (o ConnectionServiceTokenOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type ConnectionServiceTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (ConnectionServiceTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionServiceToken)(nil)).Elem()
-}
-
-func (o ConnectionServiceTokenArrayOutput) ToConnectionServiceTokenArrayOutput() ConnectionServiceTokenArrayOutput {
-	return o
-}
-
-func (o ConnectionServiceTokenArrayOutput) ToConnectionServiceTokenArrayOutputWithContext(ctx context.Context) ConnectionServiceTokenArrayOutput {
-	return o
-}
-
-func (o ConnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) ConnectionServiceTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionServiceToken {
-		return vs[0].([]ConnectionServiceToken)[vs[1].(int)]
-	}).(ConnectionServiceTokenOutput)
-}
-
 type DeviceBehavior struct {
 	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
 	AllowChanges []string `pulumi:"allowChanges"`
@@ -982,6 +716,272 @@ func (o DeviceReinstallPtrOutput) PreserveData() pulumi.BoolPtrOutput {
 		}
 		return v.PreserveData
 	}).(pulumi.BoolPtrOutput)
+}
+
+type InterconnectionPort struct {
+	Id         *string `pulumi:"id"`
+	LinkStatus *string `pulumi:"linkStatus"`
+	// Name of the connection resource
+	Name *string `pulumi:"name"`
+	Role *string `pulumi:"role"`
+	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	Speed *int `pulumi:"speed"`
+	// Status of the connection resource.
+	Status            *string       `pulumi:"status"`
+	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
+}
+
+// InterconnectionPortInput is an input type that accepts InterconnectionPortArgs and InterconnectionPortOutput values.
+// You can construct a concrete instance of `InterconnectionPortInput` via:
+//
+//	InterconnectionPortArgs{...}
+type InterconnectionPortInput interface {
+	pulumi.Input
+
+	ToInterconnectionPortOutput() InterconnectionPortOutput
+	ToInterconnectionPortOutputWithContext(context.Context) InterconnectionPortOutput
+}
+
+type InterconnectionPortArgs struct {
+	Id         pulumi.StringPtrInput `pulumi:"id"`
+	LinkStatus pulumi.StringPtrInput `pulumi:"linkStatus"`
+	// Name of the connection resource
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	Speed pulumi.IntPtrInput `pulumi:"speed"`
+	// Status of the connection resource.
+	Status            pulumi.StringPtrInput `pulumi:"status"`
+	VirtualCircuitIds pulumi.ArrayInput     `pulumi:"virtualCircuitIds"`
+}
+
+func (InterconnectionPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectionPort)(nil)).Elem()
+}
+
+func (i InterconnectionPortArgs) ToInterconnectionPortOutput() InterconnectionPortOutput {
+	return i.ToInterconnectionPortOutputWithContext(context.Background())
+}
+
+func (i InterconnectionPortArgs) ToInterconnectionPortOutputWithContext(ctx context.Context) InterconnectionPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionPortOutput)
+}
+
+// InterconnectionPortArrayInput is an input type that accepts InterconnectionPortArray and InterconnectionPortArrayOutput values.
+// You can construct a concrete instance of `InterconnectionPortArrayInput` via:
+//
+//	InterconnectionPortArray{ InterconnectionPortArgs{...} }
+type InterconnectionPortArrayInput interface {
+	pulumi.Input
+
+	ToInterconnectionPortArrayOutput() InterconnectionPortArrayOutput
+	ToInterconnectionPortArrayOutputWithContext(context.Context) InterconnectionPortArrayOutput
+}
+
+type InterconnectionPortArray []InterconnectionPortInput
+
+func (InterconnectionPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectionPort)(nil)).Elem()
+}
+
+func (i InterconnectionPortArray) ToInterconnectionPortArrayOutput() InterconnectionPortArrayOutput {
+	return i.ToInterconnectionPortArrayOutputWithContext(context.Background())
+}
+
+func (i InterconnectionPortArray) ToInterconnectionPortArrayOutputWithContext(ctx context.Context) InterconnectionPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionPortArrayOutput)
+}
+
+type InterconnectionPortOutput struct{ *pulumi.OutputState }
+
+func (InterconnectionPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectionPort)(nil)).Elem()
+}
+
+func (o InterconnectionPortOutput) ToInterconnectionPortOutput() InterconnectionPortOutput {
+	return o
+}
+
+func (o InterconnectionPortOutput) ToInterconnectionPortOutputWithContext(ctx context.Context) InterconnectionPortOutput {
+	return o
+}
+
+func (o InterconnectionPortOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionPort) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionPortOutput) LinkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionPort) *string { return v.LinkStatus }).(pulumi.StringPtrOutput)
+}
+
+// Name of the connection resource
+func (o InterconnectionPortOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionPort) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionPortOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionPort) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+func (o InterconnectionPortOutput) Speed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InterconnectionPort) *int { return v.Speed }).(pulumi.IntPtrOutput)
+}
+
+// Status of the connection resource.
+func (o InterconnectionPortOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionPort) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
+	return o.ApplyT(func(v InterconnectionPort) []interface{} { return v.VirtualCircuitIds }).(pulumi.ArrayOutput)
+}
+
+type InterconnectionPortArrayOutput struct{ *pulumi.OutputState }
+
+func (InterconnectionPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectionPort)(nil)).Elem()
+}
+
+func (o InterconnectionPortArrayOutput) ToInterconnectionPortArrayOutput() InterconnectionPortArrayOutput {
+	return o
+}
+
+func (o InterconnectionPortArrayOutput) ToInterconnectionPortArrayOutputWithContext(ctx context.Context) InterconnectionPortArrayOutput {
+	return o
+}
+
+func (o InterconnectionPortArrayOutput) Index(i pulumi.IntInput) InterconnectionPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectionPort {
+		return vs[0].([]InterconnectionPort)[vs[1].(int)]
+	}).(InterconnectionPortOutput)
+}
+
+type InterconnectionServiceToken struct {
+	ExpiresAt       *string `pulumi:"expiresAt"`
+	Id              *string `pulumi:"id"`
+	MaxAllowedSpeed *string `pulumi:"maxAllowedSpeed"`
+	Role            *string `pulumi:"role"`
+	State           *string `pulumi:"state"`
+	// Connection type - dedicated or shared.
+	Type *string `pulumi:"type"`
+}
+
+// InterconnectionServiceTokenInput is an input type that accepts InterconnectionServiceTokenArgs and InterconnectionServiceTokenOutput values.
+// You can construct a concrete instance of `InterconnectionServiceTokenInput` via:
+//
+//	InterconnectionServiceTokenArgs{...}
+type InterconnectionServiceTokenInput interface {
+	pulumi.Input
+
+	ToInterconnectionServiceTokenOutput() InterconnectionServiceTokenOutput
+	ToInterconnectionServiceTokenOutputWithContext(context.Context) InterconnectionServiceTokenOutput
+}
+
+type InterconnectionServiceTokenArgs struct {
+	ExpiresAt       pulumi.StringPtrInput `pulumi:"expiresAt"`
+	Id              pulumi.StringPtrInput `pulumi:"id"`
+	MaxAllowedSpeed pulumi.StringPtrInput `pulumi:"maxAllowedSpeed"`
+	Role            pulumi.StringPtrInput `pulumi:"role"`
+	State           pulumi.StringPtrInput `pulumi:"state"`
+	// Connection type - dedicated or shared.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InterconnectionServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectionServiceToken)(nil)).Elem()
+}
+
+func (i InterconnectionServiceTokenArgs) ToInterconnectionServiceTokenOutput() InterconnectionServiceTokenOutput {
+	return i.ToInterconnectionServiceTokenOutputWithContext(context.Background())
+}
+
+func (i InterconnectionServiceTokenArgs) ToInterconnectionServiceTokenOutputWithContext(ctx context.Context) InterconnectionServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionServiceTokenOutput)
+}
+
+// InterconnectionServiceTokenArrayInput is an input type that accepts InterconnectionServiceTokenArray and InterconnectionServiceTokenArrayOutput values.
+// You can construct a concrete instance of `InterconnectionServiceTokenArrayInput` via:
+//
+//	InterconnectionServiceTokenArray{ InterconnectionServiceTokenArgs{...} }
+type InterconnectionServiceTokenArrayInput interface {
+	pulumi.Input
+
+	ToInterconnectionServiceTokenArrayOutput() InterconnectionServiceTokenArrayOutput
+	ToInterconnectionServiceTokenArrayOutputWithContext(context.Context) InterconnectionServiceTokenArrayOutput
+}
+
+type InterconnectionServiceTokenArray []InterconnectionServiceTokenInput
+
+func (InterconnectionServiceTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectionServiceToken)(nil)).Elem()
+}
+
+func (i InterconnectionServiceTokenArray) ToInterconnectionServiceTokenArrayOutput() InterconnectionServiceTokenArrayOutput {
+	return i.ToInterconnectionServiceTokenArrayOutputWithContext(context.Background())
+}
+
+func (i InterconnectionServiceTokenArray) ToInterconnectionServiceTokenArrayOutputWithContext(ctx context.Context) InterconnectionServiceTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionServiceTokenArrayOutput)
+}
+
+type InterconnectionServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (InterconnectionServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectionServiceToken)(nil)).Elem()
+}
+
+func (o InterconnectionServiceTokenOutput) ToInterconnectionServiceTokenOutput() InterconnectionServiceTokenOutput {
+	return o
+}
+
+func (o InterconnectionServiceTokenOutput) ToInterconnectionServiceTokenOutputWithContext(ctx context.Context) InterconnectionServiceTokenOutput {
+	return o
+}
+
+func (o InterconnectionServiceTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionServiceTokenOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionServiceTokenOutput) MaxAllowedSpeed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.MaxAllowedSpeed }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionServiceTokenOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+func (o InterconnectionServiceTokenOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Connection type - dedicated or shared.
+func (o InterconnectionServiceTokenOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InterconnectionServiceTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (InterconnectionServiceTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectionServiceToken)(nil)).Elem()
+}
+
+func (o InterconnectionServiceTokenArrayOutput) ToInterconnectionServiceTokenArrayOutput() InterconnectionServiceTokenArrayOutput {
+	return o
+}
+
+func (o InterconnectionServiceTokenArrayOutput) ToInterconnectionServiceTokenArrayOutputWithContext(ctx context.Context) InterconnectionServiceTokenArrayOutput {
+	return o
+}
+
+func (o InterconnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) InterconnectionServiceTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectionServiceToken {
+		return vs[0].([]InterconnectionServiceToken)[vs[1].(int)]
+	}).(InterconnectionServiceTokenOutput)
 }
 
 type OrganizationAddress struct {
@@ -1761,296 +1761,6 @@ func (o SpotMarketRequestInstanceParametersPtrOutput) Userdata() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetConnectionPort struct {
-	// Port UUID.
-	Id string `pulumi:"id"`
-	// Port link status.
-	LinkStatus string `pulumi:"linkStatus"`
-	// Port name.
-	Name string `pulumi:"name"`
-	// Port role - primary or secondary.
-	Role string `pulumi:"role"`
-	// Port speed in bits per second.
-	Speed int `pulumi:"speed"`
-	// Port status.
-	Status string `pulumi:"status"`
-	// List of IDs of virtual cicruits attached to this port.
-	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
-}
-
-// GetConnectionPortInput is an input type that accepts GetConnectionPortArgs and GetConnectionPortOutput values.
-// You can construct a concrete instance of `GetConnectionPortInput` via:
-//
-//	GetConnectionPortArgs{...}
-type GetConnectionPortInput interface {
-	pulumi.Input
-
-	ToGetConnectionPortOutput() GetConnectionPortOutput
-	ToGetConnectionPortOutputWithContext(context.Context) GetConnectionPortOutput
-}
-
-type GetConnectionPortArgs struct {
-	// Port UUID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Port link status.
-	LinkStatus pulumi.StringInput `pulumi:"linkStatus"`
-	// Port name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Port role - primary or secondary.
-	Role pulumi.StringInput `pulumi:"role"`
-	// Port speed in bits per second.
-	Speed pulumi.IntInput `pulumi:"speed"`
-	// Port status.
-	Status pulumi.StringInput `pulumi:"status"`
-	// List of IDs of virtual cicruits attached to this port.
-	VirtualCircuitIds pulumi.ArrayInput `pulumi:"virtualCircuitIds"`
-}
-
-func (GetConnectionPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionPort)(nil)).Elem()
-}
-
-func (i GetConnectionPortArgs) ToGetConnectionPortOutput() GetConnectionPortOutput {
-	return i.ToGetConnectionPortOutputWithContext(context.Background())
-}
-
-func (i GetConnectionPortArgs) ToGetConnectionPortOutputWithContext(ctx context.Context) GetConnectionPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionPortOutput)
-}
-
-// GetConnectionPortArrayInput is an input type that accepts GetConnectionPortArray and GetConnectionPortArrayOutput values.
-// You can construct a concrete instance of `GetConnectionPortArrayInput` via:
-//
-//	GetConnectionPortArray{ GetConnectionPortArgs{...} }
-type GetConnectionPortArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionPortArrayOutput() GetConnectionPortArrayOutput
-	ToGetConnectionPortArrayOutputWithContext(context.Context) GetConnectionPortArrayOutput
-}
-
-type GetConnectionPortArray []GetConnectionPortInput
-
-func (GetConnectionPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionPort)(nil)).Elem()
-}
-
-func (i GetConnectionPortArray) ToGetConnectionPortArrayOutput() GetConnectionPortArrayOutput {
-	return i.ToGetConnectionPortArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionPortArray) ToGetConnectionPortArrayOutputWithContext(ctx context.Context) GetConnectionPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionPortArrayOutput)
-}
-
-type GetConnectionPortOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionPort)(nil)).Elem()
-}
-
-func (o GetConnectionPortOutput) ToGetConnectionPortOutput() GetConnectionPortOutput {
-	return o
-}
-
-func (o GetConnectionPortOutput) ToGetConnectionPortOutputWithContext(ctx context.Context) GetConnectionPortOutput {
-	return o
-}
-
-// Port UUID.
-func (o GetConnectionPortOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionPort) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Port link status.
-func (o GetConnectionPortOutput) LinkStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionPort) string { return v.LinkStatus }).(pulumi.StringOutput)
-}
-
-// Port name.
-func (o GetConnectionPortOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionPort) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Port role - primary or secondary.
-func (o GetConnectionPortOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionPort) string { return v.Role }).(pulumi.StringOutput)
-}
-
-// Port speed in bits per second.
-func (o GetConnectionPortOutput) Speed() pulumi.IntOutput {
-	return o.ApplyT(func(v GetConnectionPort) int { return v.Speed }).(pulumi.IntOutput)
-}
-
-// Port status.
-func (o GetConnectionPortOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionPort) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// List of IDs of virtual cicruits attached to this port.
-func (o GetConnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v GetConnectionPort) []interface{} { return v.VirtualCircuitIds }).(pulumi.ArrayOutput)
-}
-
-type GetConnectionPortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionPort)(nil)).Elem()
-}
-
-func (o GetConnectionPortArrayOutput) ToGetConnectionPortArrayOutput() GetConnectionPortArrayOutput {
-	return o
-}
-
-func (o GetConnectionPortArrayOutput) ToGetConnectionPortArrayOutputWithContext(ctx context.Context) GetConnectionPortArrayOutput {
-	return o
-}
-
-func (o GetConnectionPortArrayOutput) Index(i pulumi.IntInput) GetConnectionPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionPort {
-		return vs[0].([]GetConnectionPort)[vs[1].(int)]
-	}).(GetConnectionPortOutput)
-}
-
-type GetConnectionServiceToken struct {
-	// Expiration date of the service token.
-	ExpiresAt string `pulumi:"expiresAt"`
-	// Port UUID.
-	Id string `pulumi:"id"`
-	// Maximum allowed speed for the service token, string like in the `speed` attribute.
-	MaxAllowedSpeed string `pulumi:"maxAllowedSpeed"`
-	// Port role - primary or secondary.
-	Role  string `pulumi:"role"`
-	State string `pulumi:"state"`
-	// Token type, `aSide` or `zSide`.
-	Type string `pulumi:"type"`
-}
-
-// GetConnectionServiceTokenInput is an input type that accepts GetConnectionServiceTokenArgs and GetConnectionServiceTokenOutput values.
-// You can construct a concrete instance of `GetConnectionServiceTokenInput` via:
-//
-//	GetConnectionServiceTokenArgs{...}
-type GetConnectionServiceTokenInput interface {
-	pulumi.Input
-
-	ToGetConnectionServiceTokenOutput() GetConnectionServiceTokenOutput
-	ToGetConnectionServiceTokenOutputWithContext(context.Context) GetConnectionServiceTokenOutput
-}
-
-type GetConnectionServiceTokenArgs struct {
-	// Expiration date of the service token.
-	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
-	// Port UUID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Maximum allowed speed for the service token, string like in the `speed` attribute.
-	MaxAllowedSpeed pulumi.StringInput `pulumi:"maxAllowedSpeed"`
-	// Port role - primary or secondary.
-	Role  pulumi.StringInput `pulumi:"role"`
-	State pulumi.StringInput `pulumi:"state"`
-	// Token type, `aSide` or `zSide`.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetConnectionServiceTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionServiceToken)(nil)).Elem()
-}
-
-func (i GetConnectionServiceTokenArgs) ToGetConnectionServiceTokenOutput() GetConnectionServiceTokenOutput {
-	return i.ToGetConnectionServiceTokenOutputWithContext(context.Background())
-}
-
-func (i GetConnectionServiceTokenArgs) ToGetConnectionServiceTokenOutputWithContext(ctx context.Context) GetConnectionServiceTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionServiceTokenOutput)
-}
-
-// GetConnectionServiceTokenArrayInput is an input type that accepts GetConnectionServiceTokenArray and GetConnectionServiceTokenArrayOutput values.
-// You can construct a concrete instance of `GetConnectionServiceTokenArrayInput` via:
-//
-//	GetConnectionServiceTokenArray{ GetConnectionServiceTokenArgs{...} }
-type GetConnectionServiceTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionServiceTokenArrayOutput() GetConnectionServiceTokenArrayOutput
-	ToGetConnectionServiceTokenArrayOutputWithContext(context.Context) GetConnectionServiceTokenArrayOutput
-}
-
-type GetConnectionServiceTokenArray []GetConnectionServiceTokenInput
-
-func (GetConnectionServiceTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionServiceToken)(nil)).Elem()
-}
-
-func (i GetConnectionServiceTokenArray) ToGetConnectionServiceTokenArrayOutput() GetConnectionServiceTokenArrayOutput {
-	return i.ToGetConnectionServiceTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionServiceTokenArray) ToGetConnectionServiceTokenArrayOutputWithContext(ctx context.Context) GetConnectionServiceTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionServiceTokenArrayOutput)
-}
-
-type GetConnectionServiceTokenOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionServiceTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionServiceToken)(nil)).Elem()
-}
-
-func (o GetConnectionServiceTokenOutput) ToGetConnectionServiceTokenOutput() GetConnectionServiceTokenOutput {
-	return o
-}
-
-func (o GetConnectionServiceTokenOutput) ToGetConnectionServiceTokenOutputWithContext(ctx context.Context) GetConnectionServiceTokenOutput {
-	return o
-}
-
-// Expiration date of the service token.
-func (o GetConnectionServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionServiceToken) string { return v.ExpiresAt }).(pulumi.StringOutput)
-}
-
-// Port UUID.
-func (o GetConnectionServiceTokenOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionServiceToken) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Maximum allowed speed for the service token, string like in the `speed` attribute.
-func (o GetConnectionServiceTokenOutput) MaxAllowedSpeed() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionServiceToken) string { return v.MaxAllowedSpeed }).(pulumi.StringOutput)
-}
-
-// Port role - primary or secondary.
-func (o GetConnectionServiceTokenOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionServiceToken) string { return v.Role }).(pulumi.StringOutput)
-}
-
-func (o GetConnectionServiceTokenOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionServiceToken) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Token type, `aSide` or `zSide`.
-func (o GetConnectionServiceTokenOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionServiceToken) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetConnectionServiceTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionServiceTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionServiceToken)(nil)).Elem()
-}
-
-func (o GetConnectionServiceTokenArrayOutput) ToGetConnectionServiceTokenArrayOutput() GetConnectionServiceTokenArrayOutput {
-	return o
-}
-
-func (o GetConnectionServiceTokenArrayOutput) ToGetConnectionServiceTokenArrayOutputWithContext(ctx context.Context) GetConnectionServiceTokenArrayOutput {
-	return o
-}
-
-func (o GetConnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) GetConnectionServiceTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionServiceToken {
-		return vs[0].([]GetConnectionServiceToken)[vs[1].(int)]
-	}).(GetConnectionServiceTokenOutput)
-}
-
 type GetDeviceBgpNeighborsBgpNeighbor struct {
 	// IP address version, 4 or 6.
 	AddressFamily int `pulumi:"addressFamily"`
@@ -2820,6 +2530,296 @@ func (o GetFacilityCapacityArrayOutput) Index(i pulumi.IntInput) GetFacilityCapa
 	}).(GetFacilityCapacityOutput)
 }
 
+type GetInterconnectionPort struct {
+	// Port UUID.
+	Id string `pulumi:"id"`
+	// Port link status.
+	LinkStatus string `pulumi:"linkStatus"`
+	// Port name.
+	Name string `pulumi:"name"`
+	// Port role - primary or secondary.
+	Role string `pulumi:"role"`
+	// Port speed in bits per second.
+	Speed int `pulumi:"speed"`
+	// Port status.
+	Status string `pulumi:"status"`
+	// List of IDs of virtual cicruits attached to this port.
+	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
+}
+
+// GetInterconnectionPortInput is an input type that accepts GetInterconnectionPortArgs and GetInterconnectionPortOutput values.
+// You can construct a concrete instance of `GetInterconnectionPortInput` via:
+//
+//	GetInterconnectionPortArgs{...}
+type GetInterconnectionPortInput interface {
+	pulumi.Input
+
+	ToGetInterconnectionPortOutput() GetInterconnectionPortOutput
+	ToGetInterconnectionPortOutputWithContext(context.Context) GetInterconnectionPortOutput
+}
+
+type GetInterconnectionPortArgs struct {
+	// Port UUID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Port link status.
+	LinkStatus pulumi.StringInput `pulumi:"linkStatus"`
+	// Port name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port role - primary or secondary.
+	Role pulumi.StringInput `pulumi:"role"`
+	// Port speed in bits per second.
+	Speed pulumi.IntInput `pulumi:"speed"`
+	// Port status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// List of IDs of virtual cicruits attached to this port.
+	VirtualCircuitIds pulumi.ArrayInput `pulumi:"virtualCircuitIds"`
+}
+
+func (GetInterconnectionPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterconnectionPort)(nil)).Elem()
+}
+
+func (i GetInterconnectionPortArgs) ToGetInterconnectionPortOutput() GetInterconnectionPortOutput {
+	return i.ToGetInterconnectionPortOutputWithContext(context.Background())
+}
+
+func (i GetInterconnectionPortArgs) ToGetInterconnectionPortOutputWithContext(ctx context.Context) GetInterconnectionPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionPortOutput)
+}
+
+// GetInterconnectionPortArrayInput is an input type that accepts GetInterconnectionPortArray and GetInterconnectionPortArrayOutput values.
+// You can construct a concrete instance of `GetInterconnectionPortArrayInput` via:
+//
+//	GetInterconnectionPortArray{ GetInterconnectionPortArgs{...} }
+type GetInterconnectionPortArrayInput interface {
+	pulumi.Input
+
+	ToGetInterconnectionPortArrayOutput() GetInterconnectionPortArrayOutput
+	ToGetInterconnectionPortArrayOutputWithContext(context.Context) GetInterconnectionPortArrayOutput
+}
+
+type GetInterconnectionPortArray []GetInterconnectionPortInput
+
+func (GetInterconnectionPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterconnectionPort)(nil)).Elem()
+}
+
+func (i GetInterconnectionPortArray) ToGetInterconnectionPortArrayOutput() GetInterconnectionPortArrayOutput {
+	return i.ToGetInterconnectionPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterconnectionPortArray) ToGetInterconnectionPortArrayOutputWithContext(ctx context.Context) GetInterconnectionPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionPortArrayOutput)
+}
+
+type GetInterconnectionPortOutput struct{ *pulumi.OutputState }
+
+func (GetInterconnectionPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterconnectionPort)(nil)).Elem()
+}
+
+func (o GetInterconnectionPortOutput) ToGetInterconnectionPortOutput() GetInterconnectionPortOutput {
+	return o
+}
+
+func (o GetInterconnectionPortOutput) ToGetInterconnectionPortOutputWithContext(ctx context.Context) GetInterconnectionPortOutput {
+	return o
+}
+
+// Port UUID.
+func (o GetInterconnectionPortOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Port link status.
+func (o GetInterconnectionPortOutput) LinkStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) string { return v.LinkStatus }).(pulumi.StringOutput)
+}
+
+// Port name.
+func (o GetInterconnectionPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port role - primary or secondary.
+func (o GetInterconnectionPortOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// Port speed in bits per second.
+func (o GetInterconnectionPortOutput) Speed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) int { return v.Speed }).(pulumi.IntOutput)
+}
+
+// Port status.
+func (o GetInterconnectionPortOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// List of IDs of virtual cicruits attached to this port.
+func (o GetInterconnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetInterconnectionPort) []interface{} { return v.VirtualCircuitIds }).(pulumi.ArrayOutput)
+}
+
+type GetInterconnectionPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterconnectionPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterconnectionPort)(nil)).Elem()
+}
+
+func (o GetInterconnectionPortArrayOutput) ToGetInterconnectionPortArrayOutput() GetInterconnectionPortArrayOutput {
+	return o
+}
+
+func (o GetInterconnectionPortArrayOutput) ToGetInterconnectionPortArrayOutputWithContext(ctx context.Context) GetInterconnectionPortArrayOutput {
+	return o
+}
+
+func (o GetInterconnectionPortArrayOutput) Index(i pulumi.IntInput) GetInterconnectionPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterconnectionPort {
+		return vs[0].([]GetInterconnectionPort)[vs[1].(int)]
+	}).(GetInterconnectionPortOutput)
+}
+
+type GetInterconnectionServiceToken struct {
+	// Expiration date of the service token.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// Port UUID.
+	Id string `pulumi:"id"`
+	// Maximum allowed speed for the service token, string like in the `speed` attribute.
+	MaxAllowedSpeed string `pulumi:"maxAllowedSpeed"`
+	// Port role - primary or secondary.
+	Role  string `pulumi:"role"`
+	State string `pulumi:"state"`
+	// Token type, `aSide` or `zSide`.
+	Type string `pulumi:"type"`
+}
+
+// GetInterconnectionServiceTokenInput is an input type that accepts GetInterconnectionServiceTokenArgs and GetInterconnectionServiceTokenOutput values.
+// You can construct a concrete instance of `GetInterconnectionServiceTokenInput` via:
+//
+//	GetInterconnectionServiceTokenArgs{...}
+type GetInterconnectionServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetInterconnectionServiceTokenOutput() GetInterconnectionServiceTokenOutput
+	ToGetInterconnectionServiceTokenOutputWithContext(context.Context) GetInterconnectionServiceTokenOutput
+}
+
+type GetInterconnectionServiceTokenArgs struct {
+	// Expiration date of the service token.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// Port UUID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum allowed speed for the service token, string like in the `speed` attribute.
+	MaxAllowedSpeed pulumi.StringInput `pulumi:"maxAllowedSpeed"`
+	// Port role - primary or secondary.
+	Role  pulumi.StringInput `pulumi:"role"`
+	State pulumi.StringInput `pulumi:"state"`
+	// Token type, `aSide` or `zSide`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInterconnectionServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterconnectionServiceToken)(nil)).Elem()
+}
+
+func (i GetInterconnectionServiceTokenArgs) ToGetInterconnectionServiceTokenOutput() GetInterconnectionServiceTokenOutput {
+	return i.ToGetInterconnectionServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetInterconnectionServiceTokenArgs) ToGetInterconnectionServiceTokenOutputWithContext(ctx context.Context) GetInterconnectionServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionServiceTokenOutput)
+}
+
+// GetInterconnectionServiceTokenArrayInput is an input type that accepts GetInterconnectionServiceTokenArray and GetInterconnectionServiceTokenArrayOutput values.
+// You can construct a concrete instance of `GetInterconnectionServiceTokenArrayInput` via:
+//
+//	GetInterconnectionServiceTokenArray{ GetInterconnectionServiceTokenArgs{...} }
+type GetInterconnectionServiceTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetInterconnectionServiceTokenArrayOutput() GetInterconnectionServiceTokenArrayOutput
+	ToGetInterconnectionServiceTokenArrayOutputWithContext(context.Context) GetInterconnectionServiceTokenArrayOutput
+}
+
+type GetInterconnectionServiceTokenArray []GetInterconnectionServiceTokenInput
+
+func (GetInterconnectionServiceTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterconnectionServiceToken)(nil)).Elem()
+}
+
+func (i GetInterconnectionServiceTokenArray) ToGetInterconnectionServiceTokenArrayOutput() GetInterconnectionServiceTokenArrayOutput {
+	return i.ToGetInterconnectionServiceTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterconnectionServiceTokenArray) ToGetInterconnectionServiceTokenArrayOutputWithContext(ctx context.Context) GetInterconnectionServiceTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionServiceTokenArrayOutput)
+}
+
+type GetInterconnectionServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetInterconnectionServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterconnectionServiceToken)(nil)).Elem()
+}
+
+func (o GetInterconnectionServiceTokenOutput) ToGetInterconnectionServiceTokenOutput() GetInterconnectionServiceTokenOutput {
+	return o
+}
+
+func (o GetInterconnectionServiceTokenOutput) ToGetInterconnectionServiceTokenOutputWithContext(ctx context.Context) GetInterconnectionServiceTokenOutput {
+	return o
+}
+
+// Expiration date of the service token.
+func (o GetInterconnectionServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionServiceToken) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// Port UUID.
+func (o GetInterconnectionServiceTokenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionServiceToken) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum allowed speed for the service token, string like in the `speed` attribute.
+func (o GetInterconnectionServiceTokenOutput) MaxAllowedSpeed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionServiceToken) string { return v.MaxAllowedSpeed }).(pulumi.StringOutput)
+}
+
+// Port role - primary or secondary.
+func (o GetInterconnectionServiceTokenOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionServiceToken) string { return v.Role }).(pulumi.StringOutput)
+}
+
+func (o GetInterconnectionServiceTokenOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionServiceToken) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Token type, `aSide` or `zSide`.
+func (o GetInterconnectionServiceTokenOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterconnectionServiceToken) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInterconnectionServiceTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterconnectionServiceTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterconnectionServiceToken)(nil)).Elem()
+}
+
+func (o GetInterconnectionServiceTokenArrayOutput) ToGetInterconnectionServiceTokenArrayOutput() GetInterconnectionServiceTokenArrayOutput {
+	return o
+}
+
+func (o GetInterconnectionServiceTokenArrayOutput) ToGetInterconnectionServiceTokenArrayOutputWithContext(ctx context.Context) GetInterconnectionServiceTokenArrayOutput {
+	return o
+}
+
+func (o GetInterconnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) GetInterconnectionServiceTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterconnectionServiceToken {
+		return vs[0].([]GetInterconnectionServiceToken)[vs[1].(int)]
+	}).(GetInterconnectionServiceTokenOutput)
+}
+
 type GetMetroCapacity struct {
 	// Device plan that must be available in selected location.
 	Plan string `pulumi:"plan"`
@@ -3532,10 +3532,6 @@ func (o GetProjectBgpConfigOutput) Status() pulumi.StringOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPortInput)(nil)).Elem(), ConnectionPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionPortArrayInput)(nil)).Elem(), ConnectionPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionServiceTokenInput)(nil)).Elem(), ConnectionServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionServiceTokenArrayInput)(nil)).Elem(), ConnectionServiceTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceBehaviorInput)(nil)).Elem(), DeviceBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceBehaviorPtrInput)(nil)).Elem(), DeviceBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceIpAddressInput)(nil)).Elem(), DeviceIpAddressArgs{})
@@ -3546,16 +3542,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePortArrayInput)(nil)).Elem(), DevicePortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceReinstallInput)(nil)).Elem(), DeviceReinstallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceReinstallPtrInput)(nil)).Elem(), DeviceReinstallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionPortInput)(nil)).Elem(), InterconnectionPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionPortArrayInput)(nil)).Elem(), InterconnectionPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionServiceTokenInput)(nil)).Elem(), InterconnectionServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionServiceTokenArrayInput)(nil)).Elem(), InterconnectionServiceTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressInput)(nil)).Elem(), OrganizationAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressPtrInput)(nil)).Elem(), OrganizationAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBgpConfigInput)(nil)).Elem(), ProjectBgpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBgpConfigPtrInput)(nil)).Elem(), ProjectBgpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpotMarketRequestInstanceParametersInput)(nil)).Elem(), SpotMarketRequestInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpotMarketRequestInstanceParametersPtrInput)(nil)).Elem(), SpotMarketRequestInstanceParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionPortInput)(nil)).Elem(), GetConnectionPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionPortArrayInput)(nil)).Elem(), GetConnectionPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionServiceTokenInput)(nil)).Elem(), GetConnectionServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionServiceTokenArrayInput)(nil)).Elem(), GetConnectionServiceTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceBgpNeighborsBgpNeighborInput)(nil)).Elem(), GetDeviceBgpNeighborsBgpNeighborArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceBgpNeighborsBgpNeighborArrayInput)(nil)).Elem(), GetDeviceBgpNeighborsBgpNeighborArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceBgpNeighborsBgpNeighborRoutesInInput)(nil)).Elem(), GetDeviceBgpNeighborsBgpNeighborRoutesInArgs{})
@@ -3568,6 +3564,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicePortArrayInput)(nil)).Elem(), GetDevicePortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFacilityCapacityInput)(nil)).Elem(), GetFacilityCapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFacilityCapacityArrayInput)(nil)).Elem(), GetFacilityCapacityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectionPortInput)(nil)).Elem(), GetInterconnectionPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectionPortArrayInput)(nil)).Elem(), GetInterconnectionPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectionServiceTokenInput)(nil)).Elem(), GetInterconnectionServiceTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectionServiceTokenArrayInput)(nil)).Elem(), GetInterconnectionServiceTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroCapacityInput)(nil)).Elem(), GetMetroCapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetroCapacityArrayInput)(nil)).Elem(), GetMetroCapacityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressInput)(nil)).Elem(), GetOrganizationAddressArgs{})
@@ -3578,10 +3578,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansSortInput)(nil)).Elem(), GetPlansSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlansSortArrayInput)(nil)).Elem(), GetPlansSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectBgpConfigInput)(nil)).Elem(), GetProjectBgpConfigArgs{})
-	pulumi.RegisterOutputType(ConnectionPortOutput{})
-	pulumi.RegisterOutputType(ConnectionPortArrayOutput{})
-	pulumi.RegisterOutputType(ConnectionServiceTokenOutput{})
-	pulumi.RegisterOutputType(ConnectionServiceTokenArrayOutput{})
 	pulumi.RegisterOutputType(DeviceBehaviorOutput{})
 	pulumi.RegisterOutputType(DeviceBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(DeviceIpAddressOutput{})
@@ -3592,16 +3588,16 @@ func init() {
 	pulumi.RegisterOutputType(DevicePortArrayOutput{})
 	pulumi.RegisterOutputType(DeviceReinstallOutput{})
 	pulumi.RegisterOutputType(DeviceReinstallPtrOutput{})
+	pulumi.RegisterOutputType(InterconnectionPortOutput{})
+	pulumi.RegisterOutputType(InterconnectionPortArrayOutput{})
+	pulumi.RegisterOutputType(InterconnectionServiceTokenOutput{})
+	pulumi.RegisterOutputType(InterconnectionServiceTokenArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationAddressOutput{})
 	pulumi.RegisterOutputType(OrganizationAddressPtrOutput{})
 	pulumi.RegisterOutputType(ProjectBgpConfigOutput{})
 	pulumi.RegisterOutputType(ProjectBgpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SpotMarketRequestInstanceParametersOutput{})
 	pulumi.RegisterOutputType(SpotMarketRequestInstanceParametersPtrOutput{})
-	pulumi.RegisterOutputType(GetConnectionPortOutput{})
-	pulumi.RegisterOutputType(GetConnectionPortArrayOutput{})
-	pulumi.RegisterOutputType(GetConnectionServiceTokenOutput{})
-	pulumi.RegisterOutputType(GetConnectionServiceTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetDeviceBgpNeighborsBgpNeighborOutput{})
 	pulumi.RegisterOutputType(GetDeviceBgpNeighborsBgpNeighborArrayOutput{})
 	pulumi.RegisterOutputType(GetDeviceBgpNeighborsBgpNeighborRoutesInOutput{})
@@ -3614,6 +3610,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDevicePortArrayOutput{})
 	pulumi.RegisterOutputType(GetFacilityCapacityOutput{})
 	pulumi.RegisterOutputType(GetFacilityCapacityArrayOutput{})
+	pulumi.RegisterOutputType(GetInterconnectionPortOutput{})
+	pulumi.RegisterOutputType(GetInterconnectionPortArrayOutput{})
+	pulumi.RegisterOutputType(GetInterconnectionServiceTokenOutput{})
+	pulumi.RegisterOutputType(GetInterconnectionServiceTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetMetroCapacityOutput{})
 	pulumi.RegisterOutputType(GetMetroCapacityArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationAddressOutput{})

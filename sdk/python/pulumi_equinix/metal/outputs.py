@@ -12,24 +12,24 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
-    'ConnectionPort',
-    'ConnectionServiceToken',
     'DeviceBehavior',
     'DeviceIpAddress',
     'DeviceNetwork',
     'DevicePort',
     'DeviceReinstall',
+    'InterconnectionPort',
+    'InterconnectionServiceToken',
     'OrganizationAddress',
     'ProjectBgpConfig',
     'SpotMarketRequestInstanceParameters',
-    'GetConnectionPortResult',
-    'GetConnectionServiceTokenResult',
     'GetDeviceBgpNeighborsBgpNeighborResult',
     'GetDeviceBgpNeighborsBgpNeighborRoutesInResult',
     'GetDeviceBgpNeighborsBgpNeighborRoutesOutResult',
     'GetDeviceNetworkResult',
     'GetDevicePortResult',
     'GetFacilityCapacityResult',
+    'GetInterconnectionPortResult',
+    'GetInterconnectionServiceTokenResult',
     'GetMetroCapacityResult',
     'GetOrganizationAddressResult',
     'GetPlansFilterResult',
@@ -37,178 +37,6 @@ __all__ = [
     'GetPlansSortResult',
     'GetProjectBgpConfigResult',
 ]
-
-@pulumi.output_type
-class ConnectionPort(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "linkStatus":
-            suggest = "link_status"
-        elif key == "virtualCircuitIds":
-            suggest = "virtual_circuit_ids"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionPort. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionPort.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionPort.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 link_status: Optional[str] = None,
-                 name: Optional[str] = None,
-                 role: Optional[str] = None,
-                 speed: Optional[int] = None,
-                 status: Optional[str] = None,
-                 virtual_circuit_ids: Optional[Sequence[Any]] = None):
-        """
-        :param str name: Name of the connection resource
-        :param int speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-        :param str status: Status of the connection resource.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if link_status is not None:
-            pulumi.set(__self__, "link_status", link_status)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-        if speed is not None:
-            pulumi.set(__self__, "speed", speed)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if virtual_circuit_ids is not None:
-            pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="linkStatus")
-    def link_status(self) -> Optional[str]:
-        return pulumi.get(self, "link_status")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name of the connection resource
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def role(self) -> Optional[str]:
-        return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def speed(self) -> Optional[int]:
-        """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-        """
-        return pulumi.get(self, "speed")
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[str]:
-        """
-        Status of the connection resource.
-        """
-        return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="virtualCircuitIds")
-    def virtual_circuit_ids(self) -> Optional[Sequence[Any]]:
-        return pulumi.get(self, "virtual_circuit_ids")
-
-
-@pulumi.output_type
-class ConnectionServiceToken(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "expiresAt":
-            suggest = "expires_at"
-        elif key == "maxAllowedSpeed":
-            suggest = "max_allowed_speed"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConnectionServiceToken. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConnectionServiceToken.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConnectionServiceToken.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 expires_at: Optional[str] = None,
-                 id: Optional[str] = None,
-                 max_allowed_speed: Optional[str] = None,
-                 role: Optional[str] = None,
-                 state: Optional[str] = None,
-                 type: Optional[str] = None):
-        """
-        :param str type: Connection type - dedicated or shared.
-        """
-        if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if max_allowed_speed is not None:
-            pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[str]:
-        return pulumi.get(self, "expires_at")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="maxAllowedSpeed")
-    def max_allowed_speed(self) -> Optional[str]:
-        return pulumi.get(self, "max_allowed_speed")
-
-    @property
-    @pulumi.getter
-    def role(self) -> Optional[str]:
-        return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[str]:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Connection type - dedicated or shared.
-        """
-        return pulumi.get(self, "type")
-
 
 @pulumi.output_type
 class DeviceBehavior(dict):
@@ -507,6 +335,178 @@ class DeviceReinstall(dict):
         Defaults to `false`.
         """
         return pulumi.get(self, "preserve_data")
+
+
+@pulumi.output_type
+class InterconnectionPort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkStatus":
+            suggest = "link_status"
+        elif key == "virtualCircuitIds":
+            suggest = "virtual_circuit_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectionPort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectionPort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectionPort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 link_status: Optional[str] = None,
+                 name: Optional[str] = None,
+                 role: Optional[str] = None,
+                 speed: Optional[int] = None,
+                 status: Optional[str] = None,
+                 virtual_circuit_ids: Optional[Sequence[Any]] = None):
+        """
+        :param str name: Name of the connection resource
+        :param int speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param str status: Status of the connection resource.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link_status is not None:
+            pulumi.set(__self__, "link_status", link_status)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if speed is not None:
+            pulumi.set(__self__, "speed", speed)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if virtual_circuit_ids is not None:
+            pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="linkStatus")
+    def link_status(self) -> Optional[str]:
+        return pulumi.get(self, "link_status")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the connection resource
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def speed(self) -> Optional[int]:
+        """
+        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        """
+        return pulumi.get(self, "speed")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Status of the connection resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="virtualCircuitIds")
+    def virtual_circuit_ids(self) -> Optional[Sequence[Any]]:
+        return pulumi.get(self, "virtual_circuit_ids")
+
+
+@pulumi.output_type
+class InterconnectionServiceToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiresAt":
+            suggest = "expires_at"
+        elif key == "maxAllowedSpeed":
+            suggest = "max_allowed_speed"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectionServiceToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectionServiceToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectionServiceToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expires_at: Optional[str] = None,
+                 id: Optional[str] = None,
+                 max_allowed_speed: Optional[str] = None,
+                 role: Optional[str] = None,
+                 state: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str type: Connection type - dedicated or shared.
+        """
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_allowed_speed is not None:
+            pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[str]:
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxAllowedSpeed")
+    def max_allowed_speed(self) -> Optional[str]:
+        return pulumi.get(self, "max_allowed_speed")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Connection type - dedicated or shared.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -829,159 +829,6 @@ class SpotMarketRequestInstanceParameters(dict):
     @pulumi.getter
     def userdata(self) -> Optional[str]:
         return pulumi.get(self, "userdata")
-
-
-@pulumi.output_type
-class GetConnectionPortResult(dict):
-    def __init__(__self__, *,
-                 id: str,
-                 link_status: str,
-                 name: str,
-                 role: str,
-                 speed: int,
-                 status: str,
-                 virtual_circuit_ids: Sequence[Any]):
-        """
-        :param str id: Port UUID.
-        :param str link_status: Port link status.
-        :param str name: Port name.
-        :param str role: Port role - primary or secondary.
-        :param int speed: Port speed in bits per second.
-        :param str status: Port status.
-        :param Sequence[Any] virtual_circuit_ids: List of IDs of virtual cicruits attached to this port.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "link_status", link_status)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "speed", speed)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Port UUID.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="linkStatus")
-    def link_status(self) -> str:
-        """
-        Port link status.
-        """
-        return pulumi.get(self, "link_status")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        Port name.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def role(self) -> str:
-        """
-        Port role - primary or secondary.
-        """
-        return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def speed(self) -> int:
-        """
-        Port speed in bits per second.
-        """
-        return pulumi.get(self, "speed")
-
-    @property
-    @pulumi.getter
-    def status(self) -> str:
-        """
-        Port status.
-        """
-        return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="virtualCircuitIds")
-    def virtual_circuit_ids(self) -> Sequence[Any]:
-        """
-        List of IDs of virtual cicruits attached to this port.
-        """
-        return pulumi.get(self, "virtual_circuit_ids")
-
-
-@pulumi.output_type
-class GetConnectionServiceTokenResult(dict):
-    def __init__(__self__, *,
-                 expires_at: str,
-                 id: str,
-                 max_allowed_speed: str,
-                 role: str,
-                 state: str,
-                 type: str):
-        """
-        :param str expires_at: Expiration date of the service token.
-        :param str id: Port UUID.
-        :param str max_allowed_speed: Maximum allowed speed for the service token, string like in the `speed` attribute.
-        :param str role: Port role - primary or secondary.
-        :param str type: Token type, `a_side` or `z_side`.
-        """
-        pulumi.set(__self__, "expires_at", expires_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> str:
-        """
-        Expiration date of the service token.
-        """
-        return pulumi.get(self, "expires_at")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Port UUID.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="maxAllowedSpeed")
-    def max_allowed_speed(self) -> str:
-        """
-        Maximum allowed speed for the service token, string like in the `speed` attribute.
-        """
-        return pulumi.get(self, "max_allowed_speed")
-
-    @property
-    @pulumi.getter
-    def role(self) -> str:
-        """
-        Port role - primary or secondary.
-        """
-        return pulumi.get(self, "role")
-
-    @property
-    @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Token type, `a_side` or `z_side`.
-        """
-        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -1314,6 +1161,159 @@ class GetFacilityCapacityResult(dict):
         Default is `1`.
         """
         return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class GetInterconnectionPortResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 link_status: str,
+                 name: str,
+                 role: str,
+                 speed: int,
+                 status: str,
+                 virtual_circuit_ids: Sequence[Any]):
+        """
+        :param str id: Port UUID.
+        :param str link_status: Port link status.
+        :param str name: Port name.
+        :param str role: Port role - primary or secondary.
+        :param int speed: Port speed in bits per second.
+        :param str status: Port status.
+        :param Sequence[Any] virtual_circuit_ids: List of IDs of virtual cicruits attached to this port.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link_status", link_status)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "speed", speed)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Port UUID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="linkStatus")
+    def link_status(self) -> str:
+        """
+        Port link status.
+        """
+        return pulumi.get(self, "link_status")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Port name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        Port role - primary or secondary.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def speed(self) -> int:
+        """
+        Port speed in bits per second.
+        """
+        return pulumi.get(self, "speed")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Port status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="virtualCircuitIds")
+    def virtual_circuit_ids(self) -> Sequence[Any]:
+        """
+        List of IDs of virtual cicruits attached to this port.
+        """
+        return pulumi.get(self, "virtual_circuit_ids")
+
+
+@pulumi.output_type
+class GetInterconnectionServiceTokenResult(dict):
+    def __init__(__self__, *,
+                 expires_at: str,
+                 id: str,
+                 max_allowed_speed: str,
+                 role: str,
+                 state: str,
+                 type: str):
+        """
+        :param str expires_at: Expiration date of the service token.
+        :param str id: Port UUID.
+        :param str max_allowed_speed: Maximum allowed speed for the service token, string like in the `speed` attribute.
+        :param str role: Port role - primary or secondary.
+        :param str type: Token type, `a_side` or `z_side`.
+        """
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> str:
+        """
+        Expiration date of the service token.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Port UUID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxAllowedSpeed")
+    def max_allowed_speed(self) -> str:
+        """
+        Maximum allowed speed for the service token, string like in the `speed` attribute.
+        """
+        return pulumi.get(self, "max_allowed_speed")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        Port role - primary or secondary.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Token type, `a_side` or `z_side`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

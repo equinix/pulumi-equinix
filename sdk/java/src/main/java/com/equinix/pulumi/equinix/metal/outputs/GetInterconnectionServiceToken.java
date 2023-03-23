@@ -8,7 +8,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetConnectionServiceToken {
+public final class GetInterconnectionServiceToken {
     /**
      * @return Expiration date of the service token.
      * 
@@ -36,7 +36,7 @@ public final class GetConnectionServiceToken {
      */
     private String type;
 
-    private GetConnectionServiceToken() {}
+    private GetInterconnectionServiceToken() {}
     /**
      * @return Expiration date of the service token.
      * 
@@ -80,7 +80,7 @@ public final class GetConnectionServiceToken {
         return new Builder();
     }
 
-    public static Builder builder(GetConnectionServiceToken defaults) {
+    public static Builder builder(GetInterconnectionServiceToken defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -92,7 +92,7 @@ public final class GetConnectionServiceToken {
         private String state;
         private String type;
         public Builder() {}
-        public Builder(GetConnectionServiceToken defaults) {
+        public Builder(GetInterconnectionServiceToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expiresAt = defaults.expiresAt;
     	      this.id = defaults.id;
@@ -132,8 +132,8 @@ public final class GetConnectionServiceToken {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        public GetConnectionServiceToken build() {
-            final var o = new GetConnectionServiceToken();
+        public GetInterconnectionServiceToken build() {
+            final var o = new GetInterconnectionServiceToken();
             o.expiresAt = expiresAt;
             o.id = id;
             o.maxAllowedSpeed = maxAllowedSpeed;

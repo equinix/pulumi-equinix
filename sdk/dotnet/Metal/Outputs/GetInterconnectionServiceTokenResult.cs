@@ -11,7 +11,7 @@ namespace Pulumi.Equinix.Metal.Outputs
 {
 
     [OutputType]
-    public sealed class GetConnectionServiceTokenResult
+    public sealed class GetInterconnectionServiceTokenResult
     {
         /// <summary>
         /// Expiration date of the service token.
@@ -36,7 +36,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         public readonly string Type;
 
         [OutputConstructor]
-        private GetConnectionServiceTokenResult(
+        private GetInterconnectionServiceTokenResult(
             string expiresAt,
 
             string id,

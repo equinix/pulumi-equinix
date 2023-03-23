@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetConnectionPort {
+public final class GetInterconnectionPort {
     /**
      * @return Port UUID.
      * 
@@ -48,7 +48,7 @@ public final class GetConnectionPort {
      */
     private List<Object> virtualCircuitIds;
 
-    private GetConnectionPort() {}
+    private GetInterconnectionPort() {}
     /**
      * @return Port UUID.
      * 
@@ -103,7 +103,7 @@ public final class GetConnectionPort {
         return new Builder();
     }
 
-    public static Builder builder(GetConnectionPort defaults) {
+    public static Builder builder(GetInterconnectionPort defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -116,7 +116,7 @@ public final class GetConnectionPort {
         private String status;
         private List<Object> virtualCircuitIds;
         public Builder() {}
-        public Builder(GetConnectionPort defaults) {
+        public Builder(GetInterconnectionPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.linkStatus = defaults.linkStatus;
@@ -165,8 +165,8 @@ public final class GetConnectionPort {
         public Builder virtualCircuitIds(Object... virtualCircuitIds) {
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
-        public GetConnectionPort build() {
-            final var o = new GetConnectionPort();
+        public GetInterconnectionPort build() {
+            final var o = new GetInterconnectionPort();
             o.id = id;
             o.linkStatus = linkStatus;
             o.name = name;

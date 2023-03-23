@@ -9,9 +9,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
+public final class GetInterconnectionArgs extends com.pulumi.resources.InvokeArgs {
 
-    public static final GetConnectionArgs Empty = new GetConnectionArgs();
+    public static final GetInterconnectionArgs Empty = new GetInterconnectionArgs();
 
     /**
      * ID of the connection resource.
@@ -28,28 +28,28 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
         return this.connectionId;
     }
 
-    private GetConnectionArgs() {}
+    private GetInterconnectionArgs() {}
 
-    private GetConnectionArgs(GetConnectionArgs $) {
+    private GetInterconnectionArgs(GetInterconnectionArgs $) {
         this.connectionId = $.connectionId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetConnectionArgs defaults) {
+    public static Builder builder(GetInterconnectionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetConnectionArgs $;
+        private GetInterconnectionArgs $;
 
         public Builder() {
-            $ = new GetConnectionArgs();
+            $ = new GetInterconnectionArgs();
         }
 
-        public Builder(GetConnectionArgs defaults) {
-            $ = new GetConnectionArgs(Objects.requireNonNull(defaults));
+        public Builder(GetInterconnectionArgs defaults) {
+            $ = new GetInterconnectionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -73,7 +73,7 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
             return connectionId(Output.of(connectionId));
         }
 
-        public GetConnectionArgs build() {
+        public GetInterconnectionArgs build() {
             $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
             return $;
         }

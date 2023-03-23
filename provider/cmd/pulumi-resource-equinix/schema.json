@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`equinix` Terraform Provider](https://github.com/equinix/terraform-provider-equinix).",
     "repository": "https://github.com/equinix/pulumi-equinix",
-    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678463449+7a8d98d9.dirty",
+    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty",
     "publisher": "Equinix",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -9332,152 +9332,6 @@
                 }
             ]
         },
-        "equinix:metal/ConnectionPort:ConnectionPort": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "linkStatus": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of the connection resource\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "role": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "speed": {
-                    "type": "integer",
-                    "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Status of the connection resource.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "virtualCircuitIds": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "pulumi.json#/Any"
-                    },
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "id",
-                        "linkStatus",
-                        "name",
-                        "role",
-                        "speed",
-                        "status",
-                        "virtualCircuitIds"
-                    ]
-                }
-            }
-        },
-        "equinix:metal/ConnectionServiceToken:ConnectionServiceToken": {
-            "properties": {
-                "expiresAt": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "id": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "maxAllowedSpeed": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "role": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "state": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Connection type - dedicated or shared.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "expiresAt",
-                        "id",
-                        "maxAllowedSpeed",
-                        "role",
-                        "state",
-                        "type"
-                    ]
-                }
-            }
-        },
         "equinix:metal/DeviceBehavior:DeviceBehavior": {
             "properties": {
                 "allowChanges": {
@@ -9686,6 +9540,152 @@
                 }
             },
             "type": "object"
+        },
+        "equinix:metal/InterconnectionPort:InterconnectionPort": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "linkStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the connection resource\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "speed": {
+                    "type": "integer",
+                    "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the connection resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "virtualCircuitIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "linkStatus",
+                        "name",
+                        "role",
+                        "speed",
+                        "status",
+                        "virtualCircuitIds"
+                    ]
+                }
+            }
+        },
+        "equinix:metal/InterconnectionServiceToken:InterconnectionServiceToken": {
+            "properties": {
+                "expiresAt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAllowedSpeed": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "state": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Connection type - dedicated or shared.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expiresAt",
+                        "id",
+                        "maxAllowedSpeed",
+                        "role",
+                        "state",
+                        "type"
+                    ]
+                }
+            }
         },
         "equinix:metal/OrganizationAddress:OrganizationAddress": {
             "properties": {
@@ -10192,162 +10192,6 @@
                 }
             ]
         },
-        "equinix:metal/getConnectionPort:getConnectionPort": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Port UUID.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "linkStatus": {
-                    "type": "string",
-                    "description": "Port link status.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Port name.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "role": {
-                    "type": "string",
-                    "description": "Port role - primary or secondary.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "speed": {
-                    "type": "integer",
-                    "description": "Port speed in bits per second.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Port status.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "virtualCircuitIds": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "pulumi.json#/Any"
-                    },
-                    "description": "List of IDs of virtual cicruits attached to this port.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "required": [
-                "id",
-                "linkStatus",
-                "name",
-                "role",
-                "speed",
-                "status",
-                "virtualCircuitIds"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "equinix:metal/getConnectionServiceToken:getConnectionServiceToken": {
-            "properties": {
-                "expiresAt": {
-                    "type": "string",
-                    "description": "Expiration date of the service token.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Port UUID.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "maxAllowedSpeed": {
-                    "type": "string",
-                    "description": "Maximum allowed speed for the service token, string like in the `speed` attribute.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "role": {
-                    "type": "string",
-                    "description": "Port role - primary or secondary.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "state": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Token type, `a_side` or `z_side`.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "required": [
-                "expiresAt",
-                "id",
-                "maxAllowedSpeed",
-                "role",
-                "state",
-                "type"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
         "equinix:metal/getDeviceBgpNeighborsBgpNeighbor:getDeviceBgpNeighborsBgpNeighbor": {
             "properties": {
                 "addressFamily": {
@@ -10682,6 +10526,162 @@
             "required": [
                 "plan"
             ]
+        },
+        "equinix:metal/getInterconnectionPort:getInterconnectionPort": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Port UUID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "linkStatus": {
+                    "type": "string",
+                    "description": "Port link status.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Port name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Port role - primary or secondary.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "speed": {
+                    "type": "integer",
+                    "description": "Port speed in bits per second.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Port status.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "virtualCircuitIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "List of IDs of virtual cicruits attached to this port.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "linkStatus",
+                "name",
+                "role",
+                "speed",
+                "status",
+                "virtualCircuitIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "equinix:metal/getInterconnectionServiceToken:getInterconnectionServiceToken": {
+            "properties": {
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Expiration date of the service token.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Port UUID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAllowedSpeed": {
+                    "type": "string",
+                    "description": "Maximum allowed speed for the service token, string like in the `speed` attribute.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Port role - primary or secondary.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "state": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Token type, `a_side` or `z_side`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "expiresAt",
+                "id",
+                "maxAllowedSpeed",
+                "role",
+                "state",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "equinix:metal/getMetroCapacity:getMetroCapacity": {
             "properties": {
@@ -14294,268 +14294,6 @@
                 "type": "object"
             }
         },
-        "equinix:metal/connection:Connection": {
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "description": "Description for the connection resource.\n"
-                },
-                "facility": {
-                    "type": "string",
-                    "description": "Facility where the connection will be created.\n"
-                },
-                "metro": {
-                    "type": "string",
-                    "description": "Metro where the connection will be created.\n"
-                },
-                "mode": {
-                    "type": "string",
-                    "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of the connection resource\n"
-                },
-                "organizationId": {
-                    "type": "string",
-                    "description": "ID of the organization where the connection is scoped to.\n"
-                },
-                "ports": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:metal/ConnectionPort:ConnectionPort"
-                    },
-                    "description": "List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of\nport is described in documentation of the\nequinix.metal.Connection datasource.\n"
-                },
-                "projectId": {
-                    "type": "string",
-                    "description": "ID of the project where the connection is scoped to, must be set for.\n"
-                },
-                "redundancy": {
-                    "type": "string",
-                    "description": "Connection redundancy - redundant or primary.\n"
-                },
-                "serviceTokenType": {
-                    "type": "string",
-                    "description": "Only used with shared connection. Type of service token to use for the connection, a_side or z_side\n"
-                },
-                "serviceTokens": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:metal/ConnectionServiceToken:ConnectionServiceToken"
-                    },
-                    "description": "List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Connection datasource.\n"
-                },
-                "speed": {
-                    "type": "string",
-                    "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Status of the connection resource.\n"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "String list of tags.\n"
-                },
-                "token": {
-                    "type": "string",
-                    "description": "(Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.\n",
-                    "deprecationMessage": "If your organization already has connection service tokens enabled, use `service_tokens` instead"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Connection type - dedicated or shared.\n"
-                },
-                "vlans": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    },
-                    "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
-                }
-            },
-            "required": [
-                "facility",
-                "metro",
-                "name",
-                "organizationId",
-                "ports",
-                "redundancy",
-                "serviceTokens",
-                "speed",
-                "status",
-                "token",
-                "type"
-            ],
-            "inputProperties": {
-                "description": {
-                    "type": "string",
-                    "description": "Description for the connection resource.\n"
-                },
-                "facility": {
-                    "type": "string",
-                    "description": "Facility where the connection will be created.\n",
-                    "willReplaceOnChanges": true
-                },
-                "metro": {
-                    "type": "string",
-                    "description": "Metro where the connection will be created.\n",
-                    "willReplaceOnChanges": true
-                },
-                "mode": {
-                    "type": "string",
-                    "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of the connection resource\n",
-                    "willReplaceOnChanges": true
-                },
-                "organizationId": {
-                    "type": "string",
-                    "description": "ID of the organization where the connection is scoped to.\n",
-                    "willReplaceOnChanges": true
-                },
-                "projectId": {
-                    "type": "string",
-                    "description": "ID of the project where the connection is scoped to, must be set for.\n",
-                    "willReplaceOnChanges": true
-                },
-                "redundancy": {
-                    "type": "string",
-                    "description": "Connection redundancy - redundant or primary.\n"
-                },
-                "serviceTokenType": {
-                    "type": "string",
-                    "description": "Only used with shared connection. Type of service token to use for the connection, a_side or z_side\n"
-                },
-                "speed": {
-                    "type": "string",
-                    "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "String list of tags.\n"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Connection type - dedicated or shared.\n",
-                    "willReplaceOnChanges": true
-                },
-                "vlans": {
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    },
-                    "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
-                }
-            },
-            "requiredInputs": [
-                "redundancy",
-                "speed",
-                "type"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Connection resources.\n",
-                "properties": {
-                    "description": {
-                        "type": "string",
-                        "description": "Description for the connection resource.\n"
-                    },
-                    "facility": {
-                        "type": "string",
-                        "description": "Facility where the connection will be created.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "metro": {
-                        "type": "string",
-                        "description": "Metro where the connection will be created.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "mode": {
-                        "type": "string",
-                        "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Name of the connection resource\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "organizationId": {
-                        "type": "string",
-                        "description": "ID of the organization where the connection is scoped to.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "ports": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/ConnectionPort:ConnectionPort"
-                        },
-                        "description": "List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of\nport is described in documentation of the\nequinix.metal.Connection datasource.\n"
-                    },
-                    "projectId": {
-                        "type": "string",
-                        "description": "ID of the project where the connection is scoped to, must be set for.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "redundancy": {
-                        "type": "string",
-                        "description": "Connection redundancy - redundant or primary.\n"
-                    },
-                    "serviceTokenType": {
-                        "type": "string",
-                        "description": "Only used with shared connection. Type of service token to use for the connection, a_side or z_side\n"
-                    },
-                    "serviceTokens": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/ConnectionServiceToken:ConnectionServiceToken"
-                        },
-                        "description": "List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Connection datasource.\n"
-                    },
-                    "speed": {
-                        "type": "string",
-                        "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "Status of the connection resource.\n"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "String list of tags.\n"
-                    },
-                    "token": {
-                        "type": "string",
-                        "description": "(Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.\n",
-                        "deprecationMessage": "If your organization already has connection service tokens enabled, use `service_tokens` instead"
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "Connection type - dedicated or shared.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "vlans": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        },
-                        "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "equinix:metal/device:Device": {
             "description": "Provides an Equinix Metal device resource. This can be used to create,\nmodify, and delete devices.\n\n\u003e **NOTE:** All arguments including the `root_password` and `user_data` will be stored in\n the raw state as plain-text.\n[Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a device and add it to cool_project\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tf.coreos2\",\n    plan: \"c3.small.x86\",\n    metro: \"sv\",\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tf.coreos2\",\n    plan=\"c3.small.x86\",\n    metro=\"sv\",\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tf.coreos2\",\n        Plan = \"c3.small.x86\",\n        Metro = \"sv\",\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2\"),\n\t\t\tPlan:            pulumi.String(\"c3.small.x86\"),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()        \n            .hostname(\"tf.coreos2\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${local.project_id}\n```\n\nSame as above, but boot via iPXE initially, using the Ignition Provider for provisioning\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst pxe1 = new equinix.metal.Device(\"pxe1\", {\n    hostname: \"tf.coreos2-pxe\",\n    plan: \"c3.small.x86\",\n    metro: \"sv\",\n    operatingSystem: \"custom_ipxe\",\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n    ipxeScriptUrl: \"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\",\n    alwaysPxe: false,\n    userData: data.ignition_config.example.rendered,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npxe1 = equinix.metal.Device(\"pxe1\",\n    hostname=\"tf.coreos2-pxe\",\n    plan=\"c3.small.x86\",\n    metro=\"sv\",\n    operating_system=\"custom_ipxe\",\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"],\n    ipxe_script_url=\"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\",\n    always_pxe=False,\n    user_data=data[\"ignition_config\"][\"example\"][\"rendered\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pxe1 = new Equinix.Metal.Device(\"pxe1\", new()\n    {\n        Hostname = \"tf.coreos2-pxe\",\n        Plan = \"c3.small.x86\",\n        Metro = \"sv\",\n        OperatingSystem = \"custom_ipxe\",\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n        IpxeScriptUrl = \"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\",\n        AlwaysPxe = false,\n        UserData = data.Ignition_config.Example.Rendered,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"pxe1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2-pxe\"),\n\t\t\tPlan:            pulumi.String(\"c3.small.x86\"),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"custom_ipxe\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t\tIpxeScriptUrl:   pulumi.String(\"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\"),\n\t\t\tAlwaysPxe:       pulumi.Bool(false),\n\t\t\tUserData:        pulumi.Any(data.Ignition_config.Example.Rendered),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pxe1 = new Device(\"pxe1\", DeviceArgs.builder()        \n            .hostname(\"tf.coreos2-pxe\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"custom_ipxe\")\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .ipxeScriptUrl(\"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\")\n            .alwaysPxe(\"false\")\n            .userData(data.ignition_config().example().rendered())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pxe1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2-pxe\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: custom_ipxe\n      billingCycle: hourly\n      projectId: ${local.project_id}\n      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\n      alwaysPxe: 'false'\n      userData: ${data.ignition_config.example.rendered}\n```\n\nCreate a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tf.coreos2\",\n    plan: \"c3.small.x86\",\n    facilities: [\"ny5\"],\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n    ipAddresses: [{\n        type: \"private_ipv4\",\n        cidr: 30,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tf.coreos2\",\n    plan=\"c3.small.x86\",\n    facilities=[\"ny5\"],\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"],\n    ip_addresses=[equinix.metal.DeviceIpAddressArgs(\n        type=\"private_ipv4\",\n        cidr=30,\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tf.coreos2\",\n        Plan = \"c3.small.x86\",\n        Facilities = new[]\n        {\n            \"ny5\",\n        },\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n        IpAddresses = new[]\n        {\n            new Equinix.Metal.Inputs.DeviceIpAddressArgs\n            {\n                Type = \"private_ipv4\",\n                Cidr = 30,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname: pulumi.String(\"tf.coreos2\"),\n\t\t\tPlan:     pulumi.String(\"c3.small.x86\"),\n\t\t\tFacilities: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ny5\"),\n\t\t\t},\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t\tIpAddresses: metal.DeviceIpAddressArray{\n\t\t\t\t\u0026metal.DeviceIpAddressArgs{\n\t\t\t\t\tType: pulumi.String(\"private_ipv4\"),\n\t\t\t\t\tCidr: pulumi.Int(30),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.inputs.DeviceIpAddressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()        \n            .hostname(\"tf.coreos2\")\n            .plan(\"c3.small.x86\")\n            .facilities(\"ny5\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .ipAddresses(DeviceIpAddressArgs.builder()\n                .type(\"private_ipv4\")\n                .cidr(30)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2\n      plan: c3.small.x86\n      facilities:\n        - ny5\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${local.project_id}\n      ipAddresses:\n        - type: private_ipv4\n          cidr: 30\n```\n\nDeploy device on next-available reserved hardware and do custom partitioning.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst web1 = new equinix.metal.Device(\"web1\", {\n    hostname: \"tftest\",\n    plan: \"c3.small.x86\",\n    facilities: [\"ny5\"],\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n    hardwareReservationId: \"next-available\",\n    storage: `{\n  \"disks\": [\n    {\n      \"device\": \"/dev/sda\",\n      \"wipeTable\": true,\n      \"partitions\": [\n        {\n          \"label\": \"BIOS\",\n          \"number\": 1,\n          \"size\": \"4096\"\n        },\n        {\n          \"label\": \"SWAP\",\n          \"number\": 2,\n          \"size\": \"3993600\"\n        },\n        {\n          \"label\": \"ROOT\",\n          \"number\": 3,\n          \"size\": \"0\"\n        }\n      ]\n    }\n  ],\n  \"filesystems\": [\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda3\",\n        \"format\": \"ext4\",\n        \"point\": \"/\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"ROOT\"\n          ]\n        }\n      }\n    },\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda2\",\n        \"format\": \"swap\",\n        \"point\": \"none\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"SWAP\"\n          ]\n        }\n      }\n    }\n  ]\n}\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nweb1 = equinix.metal.Device(\"web1\",\n    hostname=\"tftest\",\n    plan=\"c3.small.x86\",\n    facilities=[\"ny5\"],\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"],\n    hardware_reservation_id=\"next-available\",\n    storage=\"\"\"{\n  \"disks\": [\n    {\n      \"device\": \"/dev/sda\",\n      \"wipeTable\": true,\n      \"partitions\": [\n        {\n          \"label\": \"BIOS\",\n          \"number\": 1,\n          \"size\": \"4096\"\n        },\n        {\n          \"label\": \"SWAP\",\n          \"number\": 2,\n          \"size\": \"3993600\"\n        },\n        {\n          \"label\": \"ROOT\",\n          \"number\": 3,\n          \"size\": \"0\"\n        }\n      ]\n    }\n  ],\n  \"filesystems\": [\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda3\",\n        \"format\": \"ext4\",\n        \"point\": \"/\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"ROOT\"\n          ]\n        }\n      }\n    },\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda2\",\n        \"format\": \"swap\",\n        \"point\": \"none\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"SWAP\"\n          ]\n        }\n      }\n    }\n  ]\n}\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web1 = new Equinix.Metal.Device(\"web1\", new()\n    {\n        Hostname = \"tftest\",\n        Plan = \"c3.small.x86\",\n        Facilities = new[]\n        {\n            \"ny5\",\n        },\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n        HardwareReservationId = \"next-available\",\n        Storage = @\"{\n  \"\"disks\"\": [\n    {\n      \"\"device\"\": \"\"/dev/sda\"\",\n      \"\"wipeTable\"\": true,\n      \"\"partitions\"\": [\n        {\n          \"\"label\"\": \"\"BIOS\"\",\n          \"\"number\"\": 1,\n          \"\"size\"\": \"\"4096\"\"\n        },\n        {\n          \"\"label\"\": \"\"SWAP\"\",\n          \"\"number\"\": 2,\n          \"\"size\"\": \"\"3993600\"\"\n        },\n        {\n          \"\"label\"\": \"\"ROOT\"\",\n          \"\"number\"\": 3,\n          \"\"size\"\": \"\"0\"\"\n        }\n      ]\n    }\n  ],\n  \"\"filesystems\"\": [\n    {\n      \"\"mount\"\": {\n        \"\"device\"\": \"\"/dev/sda3\"\",\n        \"\"format\"\": \"\"ext4\"\",\n        \"\"point\"\": \"\"/\"\",\n        \"\"create\"\": {\n          \"\"options\"\": [\n            \"\"-L\"\",\n            \"\"ROOT\"\"\n          ]\n        }\n      }\n    },\n    {\n      \"\"mount\"\": {\n        \"\"device\"\": \"\"/dev/sda2\"\",\n        \"\"format\"\": \"\"swap\"\",\n        \"\"point\"\": \"\"none\"\",\n        \"\"create\"\": {\n          \"\"options\"\": [\n            \"\"-L\"\",\n            \"\"SWAP\"\"\n          ]\n        }\n      }\n    }\n  ]\n}\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"web1\", \u0026metal.DeviceArgs{\n\t\t\tHostname: pulumi.String(\"tftest\"),\n\t\t\tPlan:     pulumi.String(\"c3.small.x86\"),\n\t\t\tFacilities: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ny5\"),\n\t\t\t},\n\t\t\tOperatingSystem:       pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:          pulumi.String(\"hourly\"),\n\t\t\tProjectId:             pulumi.Any(local.Project_id),\n\t\t\tHardwareReservationId: pulumi.String(\"next-available\"),\n\t\t\tStorage:               pulumi.String(\"{\\n  \\\"disks\\\": [\\n    {\\n      \\\"device\\\": \\\"/dev/sda\\\",\\n      \\\"wipeTable\\\": true,\\n      \\\"partitions\\\": [\\n        {\\n          \\\"label\\\": \\\"BIOS\\\",\\n          \\\"number\\\": 1,\\n          \\\"size\\\": \\\"4096\\\"\\n        },\\n        {\\n          \\\"label\\\": \\\"SWAP\\\",\\n          \\\"number\\\": 2,\\n          \\\"size\\\": \\\"3993600\\\"\\n        },\\n        {\\n          \\\"label\\\": \\\"ROOT\\\",\\n          \\\"number\\\": 3,\\n          \\\"size\\\": \\\"0\\\"\\n        }\\n      ]\\n    }\\n  ],\\n  \\\"filesystems\\\": [\\n    {\\n      \\\"mount\\\": {\\n        \\\"device\\\": \\\"/dev/sda3\\\",\\n        \\\"format\\\": \\\"ext4\\\",\\n        \\\"point\\\": \\\"/\\\",\\n        \\\"create\\\": {\\n          \\\"options\\\": [\\n            \\\"-L\\\",\\n            \\\"ROOT\\\"\\n          ]\\n        }\\n      }\\n    },\\n    {\\n      \\\"mount\\\": {\\n        \\\"device\\\": \\\"/dev/sda2\\\",\\n        \\\"format\\\": \\\"swap\\\",\\n        \\\"point\\\": \\\"none\\\",\\n        \\\"create\\\": {\\n          \\\"options\\\": [\\n            \\\"-L\\\",\\n            \\\"SWAP\\\"\\n          ]\\n        }\\n      }\\n    }\\n  ]\\n}\\n\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web1 = new Device(\"web1\", DeviceArgs.builder()        \n            .hostname(\"tftest\")\n            .plan(\"c3.small.x86\")\n            .facilities(\"ny5\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .hardwareReservationId(\"next-available\")\n            .storage(\"\"\"\n{\n  \"disks\": [\n    {\n      \"device\": \"/dev/sda\",\n      \"wipeTable\": true,\n      \"partitions\": [\n        {\n          \"label\": \"BIOS\",\n          \"number\": 1,\n          \"size\": \"4096\"\n        },\n        {\n          \"label\": \"SWAP\",\n          \"number\": 2,\n          \"size\": \"3993600\"\n        },\n        {\n          \"label\": \"ROOT\",\n          \"number\": 3,\n          \"size\": \"0\"\n        }\n      ]\n    }\n  ],\n  \"filesystems\": [\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda3\",\n        \"format\": \"ext4\",\n        \"point\": \"/\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"ROOT\"\n          ]\n        }\n      }\n    },\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda2\",\n        \"format\": \"swap\",\n        \"point\": \"none\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"SWAP\"\n          ]\n        }\n      }\n    }\n  ]\n}\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tftest\n      plan: c3.small.x86\n      facilities:\n        - ny5\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${local.project_id}\n      hardwareReservationId: next-available\n      storage: |\n        {\n          \"disks\": [\n            {\n              \"device\": \"/dev/sda\",\n              \"wipeTable\": true,\n              \"partitions\": [\n                {\n                  \"label\": \"BIOS\",\n                  \"number\": 1,\n                  \"size\": \"4096\"\n                },\n                {\n                  \"label\": \"SWAP\",\n                  \"number\": 2,\n                  \"size\": \"3993600\"\n                },\n                {\n                  \"label\": \"ROOT\",\n                  \"number\": 3,\n                  \"size\": \"0\"\n                }\n              ]\n            }\n          ],\n          \"filesystems\": [\n            {\n              \"mount\": {\n                \"device\": \"/dev/sda3\",\n                \"format\": \"ext4\",\n                \"point\": \"/\",\n                \"create\": {\n                  \"options\": [\n                    \"-L\",\n                    \"ROOT\"\n                  ]\n                }\n              }\n            },\n            {\n              \"mount\": {\n                \"device\": \"/dev/sda2\",\n                \"format\": \"swap\",\n                \"point\": \"none\",\n                \"create\": {\n                  \"options\": [\n                    \"-L\",\n                    \"SWAP\"\n                  ]\n                }\n              }\n            }\n          ]\n        }\n```\n\nCreate a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst pxe1 = new equinix.metal.Device(\"pxe1\", {\n    hostname: \"tf.coreos2-pxe\",\n    plan: \"c3.small.x86\",\n    metro: \"sv\",\n    operatingSystem: \"custom_ipxe\",\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n    ipxeScriptUrl: \"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\",\n    alwaysPxe: false,\n    userData: local.user_data,\n    customData: local.custom_data,\n    behavior: {\n        allowChanges: [\n            \"custom_data\",\n            \"user_data\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\npxe1 = equinix.metal.Device(\"pxe1\",\n    hostname=\"tf.coreos2-pxe\",\n    plan=\"c3.small.x86\",\n    metro=\"sv\",\n    operating_system=\"custom_ipxe\",\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"],\n    ipxe_script_url=\"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\",\n    always_pxe=False,\n    user_data=local[\"user_data\"],\n    custom_data=local[\"custom_data\"],\n    behavior=equinix.metal.DeviceBehaviorArgs(\n        allow_changes=[\n            \"custom_data\",\n            \"user_data\",\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pxe1 = new Equinix.Metal.Device(\"pxe1\", new()\n    {\n        Hostname = \"tf.coreos2-pxe\",\n        Plan = \"c3.small.x86\",\n        Metro = \"sv\",\n        OperatingSystem = \"custom_ipxe\",\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n        IpxeScriptUrl = \"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\",\n        AlwaysPxe = false,\n        UserData = local.User_data,\n        CustomData = local.Custom_data,\n        Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs\n        {\n            AllowChanges = new[]\n            {\n                \"custom_data\",\n                \"user_data\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.NewDevice(ctx, \"pxe1\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.coreos2-pxe\"),\n\t\t\tPlan:            pulumi.String(\"c3.small.x86\"),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"custom_ipxe\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t\tIpxeScriptUrl:   pulumi.String(\"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\"),\n\t\t\tAlwaysPxe:       pulumi.Bool(false),\n\t\t\tUserData:        pulumi.Any(local.User_data),\n\t\t\tCustomData:      pulumi.Any(local.Custom_data),\n\t\t\tBehavior: \u0026metal.DeviceBehaviorArgs{\n\t\t\t\tAllowChanges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"custom_data\"),\n\t\t\t\t\tpulumi.String(\"user_data\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.inputs.DeviceBehaviorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pxe1 = new Device(\"pxe1\", DeviceArgs.builder()        \n            .hostname(\"tf.coreos2-pxe\")\n            .plan(\"c3.small.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"custom_ipxe\")\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .ipxeScriptUrl(\"https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\")\n            .alwaysPxe(\"false\")\n            .userData(local.user_data())\n            .customData(local.custom_data())\n            .behavior(DeviceBehaviorArgs.builder()\n                .allowChanges(                \n                    \"custom_data\",\n                    \"user_data\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pxe1:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.coreos2-pxe\n      plan: c3.small.x86\n      metro: sv\n      operatingSystem: custom_ipxe\n      billingCycle: hourly\n      projectId: ${local.project_id}\n      ipxeScriptUrl: https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe\n      alwaysPxe: 'false'\n      userData: ${local.user_data}\n      customData: ${local.custom_data}\n      behavior:\n        allowChanges:\n          - custom_data\n          - user_data\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported using an existing device ID\n\n```sh\n $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}\n```\n\n ",
             "properties": {
@@ -15293,6 +15031,268 @@
                     "vrfId": {
                         "type": "string",
                         "description": "UUID of the VRF associated with the IP Reservation\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "equinix:metal/interconnection:Interconnection": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description for the connection resource.\n"
+                },
+                "facility": {
+                    "type": "string",
+                    "description": "Facility where the connection will be created.\n"
+                },
+                "metro": {
+                    "type": "string",
+                    "description": "Metro where the connection will be created.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the connection resource\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "ID of the organization where the connection is scoped to.\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:metal/InterconnectionPort:InterconnectionPort"
+                    },
+                    "description": "List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of\nport is described in documentation of the\nequinix.metal.Interconnection datasource.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project where the connection is scoped to, must be set for.\n"
+                },
+                "redundancy": {
+                    "type": "string",
+                    "description": "Connection redundancy - redundant or primary.\n"
+                },
+                "serviceTokenType": {
+                    "type": "string",
+                    "description": "Only used with shared connection. Type of service token to use for the connection, a_side or z_side\n"
+                },
+                "serviceTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/equinix:metal/InterconnectionServiceToken:InterconnectionServiceToken"
+                    },
+                    "description": "List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.\n"
+                },
+                "speed": {
+                    "type": "string",
+                    "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the connection resource.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "String list of tags.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "(Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.\n",
+                    "deprecationMessage": "If your organization already has connection service tokens enabled, use `service_tokens` instead"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Connection type - dedicated or shared.\n"
+                },
+                "vlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                }
+            },
+            "required": [
+                "facility",
+                "metro",
+                "name",
+                "organizationId",
+                "ports",
+                "redundancy",
+                "serviceTokens",
+                "speed",
+                "status",
+                "token",
+                "type"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description for the connection resource.\n"
+                },
+                "facility": {
+                    "type": "string",
+                    "description": "Facility where the connection will be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "metro": {
+                    "type": "string",
+                    "description": "Metro where the connection will be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the connection resource\n",
+                    "willReplaceOnChanges": true
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "ID of the organization where the connection is scoped to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project where the connection is scoped to, must be set for.\n",
+                    "willReplaceOnChanges": true
+                },
+                "redundancy": {
+                    "type": "string",
+                    "description": "Connection redundancy - redundant or primary.\n"
+                },
+                "serviceTokenType": {
+                    "type": "string",
+                    "description": "Only used with shared connection. Type of service token to use for the connection, a_side or z_side\n"
+                },
+                "speed": {
+                    "type": "string",
+                    "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "String list of tags.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Connection type - dedicated or shared.\n",
+                    "willReplaceOnChanges": true
+                },
+                "vlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                }
+            },
+            "requiredInputs": [
+                "redundancy",
+                "speed",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Interconnection resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description for the connection resource.\n"
+                    },
+                    "facility": {
+                        "type": "string",
+                        "description": "Facility where the connection will be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "metro": {
+                        "type": "string",
+                        "description": "Metro where the connection will be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the connection resource\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "ID of the organization where the connection is scoped to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:metal/InterconnectionPort:InterconnectionPort"
+                        },
+                        "description": "List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of\nport is described in documentation of the\nequinix.metal.Interconnection datasource.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "ID of the project where the connection is scoped to, must be set for.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "redundancy": {
+                        "type": "string",
+                        "description": "Connection redundancy - redundant or primary.\n"
+                    },
+                    "serviceTokenType": {
+                        "type": "string",
+                        "description": "Only used with shared connection. Type of service token to use for the connection, a_side or z_side\n"
+                    },
+                    "serviceTokens": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:metal/InterconnectionServiceToken:InterconnectionServiceToken"
+                        },
+                        "description": "List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.\n"
+                    },
+                    "speed": {
+                        "type": "string",
+                        "description": "Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the connection resource.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "String list of tags.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "(Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.\n",
+                        "deprecationMessage": "If your organization already has connection service tokens enabled, use `service_tokens` instead"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Connection type - dedicated or shared.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "vlans": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
                     }
                 },
                 "type": "object"
@@ -16877,7 +16877,7 @@
             }
         },
         "equinix:metal/virtualCircuit:VirtualCircuit": {
-            "description": "Use this resource to associate VLAN with a Dedicated Port from\n[Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/#associating-a-vlan-with-a-dedicated-port).\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nPick an existing Project and dedicated Connection, create a VLAN and use `equinix.metal.VirtualCircuit`\nto associate it with a Primary Port of the Connection.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\nconst connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\nconst testConnection = equinix.metal.getConnection({\n    connectionId: connId,\n});\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    projectId: projectId,\n    metro: testConnection.then(testConnection =\u003e testConnection.metro),\n});\nconst testVirtualCircuit = new equinix.metal.VirtualCircuit(\"testVirtualCircuit\", {\n    connectionId: connId,\n    projectId: projectId,\n    portId: testConnection.then(testConnection =\u003e testConnection.ports?.[0]?.id),\n    vlanId: testVlan.id,\n    nniVlan: 1056,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\nconn_id = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\ntest_connection = equinix.metal.get_connection(connection_id=conn_id)\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    project_id=project_id,\n    metro=test_connection.metro)\ntest_virtual_circuit = equinix.metal.VirtualCircuit(\"testVirtualCircuit\",\n    connection_id=conn_id,\n    project_id=project_id,\n    port_id=test_connection.ports[0].id,\n    vlan_id=test_vlan.id,\n    nni_vlan=1056)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n    var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n    var testConnection = Equinix.Metal.GetConnection.Invoke(new()\n    {\n        ConnectionId = connId,\n    });\n\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        ProjectId = projectId,\n        Metro = testConnection.Apply(getConnectionResult =\u003e getConnectionResult.Metro),\n    });\n\n    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"testVirtualCircuit\", new()\n    {\n        ConnectionId = connId,\n        ProjectId = projectId,\n        PortId = testConnection.Apply(getConnectionResult =\u003e getConnectionResult.Ports[0]?.Id),\n        VlanId = testVlan.Id,\n        NniVlan = 1056,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\n\t\tconnId := \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\n\t\ttestConnection, err := metal.LookupConnection(ctx, \u0026metal.LookupConnectionArgs{\n\t\t\tConnectionId: connId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestVlan, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     *pulumi.String(testConnection.Metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"testVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tConnectionId: pulumi.String(connId),\n\t\t\tProjectId:    pulumi.String(projectId),\n\t\t\tPortId:       *pulumi.String(testConnection.Ports[0].Id),\n\t\t\tVlanId:       testVlan.ID(),\n\t\t\tNniVlan:      pulumi.Int(1056),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetConnectionArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n        final var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n        final var testConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()\n            .connectionId(connId)\n            .build());\n\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()        \n            .projectId(projectId)\n            .metro(testConnection.applyValue(getConnectionResult -\u003e getConnectionResult.metro()))\n            .build());\n\n        var testVirtualCircuit = new VirtualCircuit(\"testVirtualCircuit\", VirtualCircuitArgs.builder()        \n            .connectionId(connId)\n            .projectId(projectId)\n            .portId(testConnection.applyValue(getConnectionResult -\u003e getConnectionResult.ports()[0].id()))\n            .vlanId(testVlan.id())\n            .nniVlan(1056)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testVlan:\n    type: equinix:metal:Vlan\n    properties:\n      projectId: ${projectId}\n      metro: ${testConnection.metro}\n  testVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    properties:\n      connectionId: ${connId}\n      projectId: ${projectId}\n      portId: ${testConnection.ports[0].id}\n      vlanId: ${testVlan.id}\n      nniVlan: 1056\nvariables:\n  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c\n  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0\n  testConnection:\n    fn::invoke:\n      Function: equinix:metal:getConnection\n      Arguments:\n        connectionId: ${connId}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported using an existing Virtual Circuit ID\n\n```sh\n $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}\n```\n\n ",
+            "description": "Use this resource to associate VLAN with a Dedicated Port from\n[Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/#associating-a-vlan-with-a-dedicated-port).\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nPick an existing Project and dedicated Connection, create a VLAN and use `equinix.metal.VirtualCircuit`\nto associate it with a Primary Port of the Connection.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\nconst connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\nconst testInterconnection = equinix.metal.getInterconnection({\n    connectionId: connId,\n});\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    projectId: projectId,\n    metro: testInterconnection.then(testInterconnection =\u003e testInterconnection.metro),\n});\nconst testVirtualCircuit = new equinix.metal.VirtualCircuit(\"testVirtualCircuit\", {\n    connectionId: connId,\n    projectId: projectId,\n    portId: testInterconnection.then(testInterconnection =\u003e testInterconnection.ports?.[0]?.id),\n    vlanId: testVlan.id,\n    nniVlan: 1056,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\nconn_id = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\ntest_interconnection = equinix.metal.get_interconnection(connection_id=conn_id)\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    project_id=project_id,\n    metro=test_interconnection.metro)\ntest_virtual_circuit = equinix.metal.VirtualCircuit(\"testVirtualCircuit\",\n    connection_id=conn_id,\n    project_id=project_id,\n    port_id=test_interconnection.ports[0].id,\n    vlan_id=test_vlan.id,\n    nni_vlan=1056)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n    var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n    var testInterconnection = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = connId,\n    });\n\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        ProjectId = projectId,\n        Metro = testInterconnection.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Metro),\n    });\n\n    var testVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"testVirtualCircuit\", new()\n    {\n        ConnectionId = connId,\n        ProjectId = projectId,\n        PortId = testInterconnection.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[0]?.Id),\n        VlanId = testVlan.Id,\n        NniVlan = 1056,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"52000fb2-ee46-4673-93a8-de2c2bdba33c\"\n\t\tconnId := \"73f12f29-3e19-43a0-8e90-ae81580db1e0\"\n\t\ttestInterconnection, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: connId,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestVlan, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tMetro:     *pulumi.String(testInterconnection.Metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"testVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tConnectionId: pulumi.String(connId),\n\t\t\tProjectId:    pulumi.String(projectId),\n\t\t\tPortId:       *pulumi.String(testInterconnection.Ports[0].Id),\n\t\t\tVlanId:       testVlan.ID(),\n\t\t\tNniVlan:      pulumi.Int(1056),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"52000fb2-ee46-4673-93a8-de2c2bdba33c\";\n\n        final var connId = \"73f12f29-3e19-43a0-8e90-ae81580db1e0\";\n\n        final var testInterconnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(connId)\n            .build());\n\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()        \n            .projectId(projectId)\n            .metro(testInterconnection.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.metro()))\n            .build());\n\n        var testVirtualCircuit = new VirtualCircuit(\"testVirtualCircuit\", VirtualCircuitArgs.builder()        \n            .connectionId(connId)\n            .projectId(projectId)\n            .portId(testInterconnection.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[0].id()))\n            .vlanId(testVlan.id())\n            .nniVlan(1056)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testVlan:\n    type: equinix:metal:Vlan\n    properties:\n      projectId: ${projectId}\n      metro: ${testInterconnection.metro}\n  testVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    properties:\n      connectionId: ${connId}\n      projectId: ${projectId}\n      portId: ${testInterconnection.ports[0].id}\n      vlanId: ${testVlan.id}\n      nniVlan: 1056\nvariables:\n  projectId: 52000fb2-ee46-4673-93a8-de2c2bdba33c\n  connId: 73f12f29-3e19-43a0-8e90-ae81580db1e0\n  testInterconnection:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: ${connId}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported using an existing Virtual Circuit ID\n\n```sh\n $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}\n```\n\n ",
             "properties": {
                 "connectionId": {
                     "type": "string",
@@ -17238,7 +17238,7 @@
             }
         },
         "equinix:metal/vrf:Vrf": {
-            "description": "Use this resource to manage a VRF.\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a VRF in your desired metro and project with any IP ranges that you want the VRF to route and forward.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst exampleProject = new equinix.metal.Project(\"exampleProject\", {});\nconst exampleVrf = new equinix.metal.Vrf(\"exampleVrf\", {\n    description: \"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\",\n    metro: \"da\",\n    localAsn: 65000,\n    ipRanges: [\n        \"192.168.100.0/25\",\n        \"192.168.200.0/25\",\n    ],\n    projectId: exampleProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_project = equinix.metal.Project(\"exampleProject\")\nexample_vrf = equinix.metal.Vrf(\"exampleVrf\",\n    description=\"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\",\n    metro=\"da\",\n    local_asn=65000,\n    ip_ranges=[\n        \"192.168.100.0/25\",\n        \"192.168.200.0/25\",\n    ],\n    project_id=example_project.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleProject = new Equinix.Metal.Project(\"exampleProject\");\n\n    var exampleVrf = new Equinix.Metal.Vrf(\"exampleVrf\", new()\n    {\n        Description = \"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\",\n        Metro = \"da\",\n        LocalAsn = 65000,\n        IpRanges = new[]\n        {\n            \"192.168.100.0/25\",\n            \"192.168.200.0/25\",\n        },\n        ProjectId = exampleProject.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProject, err := metal.NewProject(ctx, \"exampleProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVrf(ctx, \"exampleVrf\", \u0026metal.VrfArgs{\n\t\t\tDescription: pulumi.String(\"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\"),\n\t\t\tMetro:       pulumi.String(\"da\"),\n\t\t\tLocalAsn:    pulumi.Int(65000),\n\t\t\tIpRanges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"192.168.100.0/25\"),\n\t\t\t\tpulumi.String(\"192.168.200.0/25\"),\n\t\t\t},\n\t\t\tProjectId: exampleProject.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Project;\nimport com.pulumi.equinix.metal.Vrf;\nimport com.pulumi.equinix.metal.VrfArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleProject = new Project(\"exampleProject\");\n\n        var exampleVrf = new Vrf(\"exampleVrf\", VrfArgs.builder()        \n            .description(\"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\")\n            .metro(\"da\")\n            .localAsn(\"65000\")\n            .ipRanges(            \n                \"192.168.100.0/25\",\n                \"192.168.200.0/25\")\n            .projectId(exampleProject.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleProject:\n    type: equinix:metal:Project\n  exampleVrf:\n    type: equinix:metal:Vrf\n    properties:\n      description: VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\n      metro: da\n      localAsn: '65000'\n      ipRanges:\n        - 192.168.100.0/25\n        - 192.168.200.0/25\n      projectId: ${exampleProject.id}\n```\n\nCreate IP reservations and assign them to a Metal Gateway resources. The Gateway will be assigned the first address in the block.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst exampleReservedIpBlock = new equinix.metal.ReservedIpBlock(\"exampleReservedIpBlock\", {\n    description: \"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\",\n    projectId: equinix_metal_project.example.id,\n    metro: equinix_metal_vrf.example.metro,\n    type: \"vrf\",\n    vrfId: equinix_metal_vrf.example.id,\n    cidr: 29,\n    network: \"192.168.100.0\",\n});\nconst exampleVlan = new equinix.metal.Vlan(\"exampleVlan\", {\n    description: \"A VLAN for Layer2 and Hybrid Metal devices\",\n    metro: equinix_metal_vrf.example.metro,\n    projectId: equinix_metal_project.example.id,\n});\nconst exampleGateway = new equinix.metal.Gateway(\"exampleGateway\", {\n    projectId: equinix_metal_project.example.id,\n    vlanId: exampleVlan.id,\n    ipReservationId: exampleReservedIpBlock.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_reserved_ip_block = equinix.metal.ReservedIpBlock(\"exampleReservedIpBlock\",\n    description=\"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\",\n    project_id=equinix_metal_project[\"example\"][\"id\"],\n    metro=equinix_metal_vrf[\"example\"][\"metro\"],\n    type=\"vrf\",\n    vrf_id=equinix_metal_vrf[\"example\"][\"id\"],\n    cidr=29,\n    network=\"192.168.100.0\")\nexample_vlan = equinix.metal.Vlan(\"exampleVlan\",\n    description=\"A VLAN for Layer2 and Hybrid Metal devices\",\n    metro=equinix_metal_vrf[\"example\"][\"metro\"],\n    project_id=equinix_metal_project[\"example\"][\"id\"])\nexample_gateway = equinix.metal.Gateway(\"exampleGateway\",\n    project_id=equinix_metal_project[\"example\"][\"id\"],\n    vlan_id=example_vlan.id,\n    ip_reservation_id=example_reserved_ip_block.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleReservedIpBlock = new Equinix.Metal.ReservedIpBlock(\"exampleReservedIpBlock\", new()\n    {\n        Description = \"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\",\n        ProjectId = equinix_metal_project.Example.Id,\n        Metro = equinix_metal_vrf.Example.Metro,\n        Type = \"vrf\",\n        VrfId = equinix_metal_vrf.Example.Id,\n        Cidr = 29,\n        Network = \"192.168.100.0\",\n    });\n\n    var exampleVlan = new Equinix.Metal.Vlan(\"exampleVlan\", new()\n    {\n        Description = \"A VLAN for Layer2 and Hybrid Metal devices\",\n        Metro = equinix_metal_vrf.Example.Metro,\n        ProjectId = equinix_metal_project.Example.Id,\n    });\n\n    var exampleGateway = new Equinix.Metal.Gateway(\"exampleGateway\", new()\n    {\n        ProjectId = equinix_metal_project.Example.Id,\n        VlanId = exampleVlan.Id,\n        IpReservationId = exampleReservedIpBlock.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleReservedIpBlock, err := metal.NewReservedIpBlock(ctx, \"exampleReservedIpBlock\", \u0026metal.ReservedIpBlockArgs{\n\t\t\tDescription: pulumi.String(\"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\"),\n\t\t\tProjectId:   pulumi.Any(equinix_metal_project.Example.Id),\n\t\t\tMetro:       pulumi.Any(equinix_metal_vrf.Example.Metro),\n\t\t\tType:        pulumi.String(\"vrf\"),\n\t\t\tVrfId:       pulumi.Any(equinix_metal_vrf.Example.Id),\n\t\t\tCidr:        pulumi.Int(29),\n\t\t\tNetwork:     pulumi.String(\"192.168.100.0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleVlan, err := metal.NewVlan(ctx, \"exampleVlan\", \u0026metal.VlanArgs{\n\t\t\tDescription: pulumi.String(\"A VLAN for Layer2 and Hybrid Metal devices\"),\n\t\t\tMetro:       pulumi.Any(equinix_metal_vrf.Example.Metro),\n\t\t\tProjectId:   pulumi.Any(equinix_metal_project.Example.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewGateway(ctx, \"exampleGateway\", \u0026metal.GatewayArgs{\n\t\t\tProjectId:       pulumi.Any(equinix_metal_project.Example.Id),\n\t\t\tVlanId:          exampleVlan.ID(),\n\t\t\tIpReservationId: exampleReservedIpBlock.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.ReservedIpBlock;\nimport com.pulumi.equinix.metal.ReservedIpBlockArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.Gateway;\nimport com.pulumi.equinix.metal.GatewayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleReservedIpBlock = new ReservedIpBlock(\"exampleReservedIpBlock\", ReservedIpBlockArgs.builder()        \n            .description(\"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\")\n            .projectId(equinix_metal_project.example().id())\n            .metro(equinix_metal_vrf.example().metro())\n            .type(\"vrf\")\n            .vrfId(equinix_metal_vrf.example().id())\n            .cidr(29)\n            .network(\"192.168.100.0\")\n            .build());\n\n        var exampleVlan = new Vlan(\"exampleVlan\", VlanArgs.builder()        \n            .description(\"A VLAN for Layer2 and Hybrid Metal devices\")\n            .metro(equinix_metal_vrf.example().metro())\n            .projectId(equinix_metal_project.example().id())\n            .build());\n\n        var exampleGateway = new Gateway(\"exampleGateway\", GatewayArgs.builder()        \n            .projectId(equinix_metal_project.example().id())\n            .vlanId(exampleVlan.id())\n            .ipReservationId(exampleReservedIpBlock.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleReservedIpBlock:\n    type: equinix:metal:ReservedIpBlock\n    properties:\n      description: Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\n      projectId: ${equinix_metal_project.example.id}\n      metro: ${equinix_metal_vrf.example.metro}\n      type: vrf\n      vrfId: ${equinix_metal_vrf.example.id}\n      cidr: 29\n      network: 192.168.100.0\n  exampleVlan:\n    type: equinix:metal:Vlan\n    properties:\n      description: A VLAN for Layer2 and Hybrid Metal devices\n      metro: ${equinix_metal_vrf.example.metro}\n      projectId: ${equinix_metal_project.example.id}\n  exampleGateway:\n    type: equinix:metal:Gateway\n    properties:\n      projectId: ${equinix_metal_project.example.id}\n      vlanId: ${exampleVlan.id}\n      ipReservationId: ${exampleReservedIpBlock.id}\n```\n\nAttach a Virtual Circuit from a Dedicated Metal Connection to the Metal Gateway.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst exampleConnection = equinix.metal.getConnection({\n    connectionId: _var.metal_dedicated_connection_id,\n});\nconst exampleVirtualCircuit = new equinix.metal.VirtualCircuit(\"exampleVirtualCircuit\", {\n    description: \"Virtual Circuit\",\n    connectionId: exampleConnection.then(exampleConnection =\u003e exampleConnection.id),\n    projectId: equinix_metal_project.example.id,\n    portId: exampleConnection.then(exampleConnection =\u003e exampleConnection.ports?.[0]?.id),\n    nniVlan: 1024,\n    vrfId: equinix_metal_vrf.example.id,\n    peerAsn: 65530,\n    subnet: \"192.168.100.16/31\",\n    metalIp: \"192.168.100.16\",\n    customerIp: \"192.168.100.17\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_connection = equinix.metal.get_connection(connection_id=var[\"metal_dedicated_connection_id\"])\nexample_virtual_circuit = equinix.metal.VirtualCircuit(\"exampleVirtualCircuit\",\n    description=\"Virtual Circuit\",\n    connection_id=example_connection.id,\n    project_id=equinix_metal_project[\"example\"][\"id\"],\n    port_id=example_connection.ports[0].id,\n    nni_vlan=1024,\n    vrf_id=equinix_metal_vrf[\"example\"][\"id\"],\n    peer_asn=65530,\n    subnet=\"192.168.100.16/31\",\n    metal_ip=\"192.168.100.16\",\n    customer_ip=\"192.168.100.17\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleConnection = Equinix.Metal.GetConnection.Invoke(new()\n    {\n        ConnectionId = @var.Metal_dedicated_connection_id,\n    });\n\n    var exampleVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"exampleVirtualCircuit\", new()\n    {\n        Description = \"Virtual Circuit\",\n        ConnectionId = exampleConnection.Apply(getConnectionResult =\u003e getConnectionResult.Id),\n        ProjectId = equinix_metal_project.Example.Id,\n        PortId = exampleConnection.Apply(getConnectionResult =\u003e getConnectionResult.Ports[0]?.Id),\n        NniVlan = 1024,\n        VrfId = equinix_metal_vrf.Example.Id,\n        PeerAsn = 65530,\n        Subnet = \"192.168.100.16/31\",\n        MetalIp = \"192.168.100.16\",\n        CustomerIp = \"192.168.100.17\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleConnection, err := metal.LookupConnection(ctx, \u0026metal.LookupConnectionArgs{\n\t\t\tConnectionId: _var.Metal_dedicated_connection_id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"exampleVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tDescription:  pulumi.String(\"Virtual Circuit\"),\n\t\t\tConnectionId: *pulumi.String(exampleConnection.Id),\n\t\t\tProjectId:    pulumi.Any(equinix_metal_project.Example.Id),\n\t\t\tPortId:       *pulumi.String(exampleConnection.Ports[0].Id),\n\t\t\tNniVlan:      pulumi.Int(1024),\n\t\t\tVrfId:        pulumi.Any(equinix_metal_vrf.Example.Id),\n\t\t\tPeerAsn:      pulumi.Int(65530),\n\t\t\tSubnet:       pulumi.String(\"192.168.100.16/31\"),\n\t\t\tMetalIp:      pulumi.String(\"192.168.100.16\"),\n\t\t\tCustomerIp:   pulumi.String(\"192.168.100.17\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetConnectionArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()\n            .connectionId(var_.metal_dedicated_connection_id())\n            .build());\n\n        var exampleVirtualCircuit = new VirtualCircuit(\"exampleVirtualCircuit\", VirtualCircuitArgs.builder()        \n            .description(\"Virtual Circuit\")\n            .connectionId(exampleConnection.applyValue(getConnectionResult -\u003e getConnectionResult.id()))\n            .projectId(equinix_metal_project.example().id())\n            .portId(exampleConnection.applyValue(getConnectionResult -\u003e getConnectionResult.ports()[0].id()))\n            .nniVlan(1024)\n            .vrfId(equinix_metal_vrf.example().id())\n            .peerAsn(65530)\n            .subnet(\"192.168.100.16/31\")\n            .metalIp(\"192.168.100.16\")\n            .customerIp(\"192.168.100.17\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    properties:\n      description: Virtual Circuit\n      connectionId: ${exampleConnection.id}\n      projectId: ${equinix_metal_project.example.id}\n      portId: ${exampleConnection.ports[0].id}\n      nniVlan: 1024\n      vrfId: ${equinix_metal_vrf.example.id}\n      peerAsn: 65530\n      subnet: 192.168.100.16/31\n      metalIp: 192.168.100.16\n      customerIp: 192.168.100.17\nvariables:\n  exampleConnection:\n    fn::invoke:\n      Function: equinix:metal:getConnection\n      Arguments:\n        connectionId: ${var.metal_dedicated_connection_id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported using an existing VRF ID\n\n```sh\n $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}\n```\n\n ",
+            "description": "Use this resource to manage a VRF.\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a VRF in your desired metro and project with any IP ranges that you want the VRF to route and forward.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst exampleProject = new equinix.metal.Project(\"exampleProject\", {});\nconst exampleVrf = new equinix.metal.Vrf(\"exampleVrf\", {\n    description: \"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\",\n    metro: \"da\",\n    localAsn: 65000,\n    ipRanges: [\n        \"192.168.100.0/25\",\n        \"192.168.200.0/25\",\n    ],\n    projectId: exampleProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_project = equinix.metal.Project(\"exampleProject\")\nexample_vrf = equinix.metal.Vrf(\"exampleVrf\",\n    description=\"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\",\n    metro=\"da\",\n    local_asn=65000,\n    ip_ranges=[\n        \"192.168.100.0/25\",\n        \"192.168.200.0/25\",\n    ],\n    project_id=example_project.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleProject = new Equinix.Metal.Project(\"exampleProject\");\n\n    var exampleVrf = new Equinix.Metal.Vrf(\"exampleVrf\", new()\n    {\n        Description = \"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\",\n        Metro = \"da\",\n        LocalAsn = 65000,\n        IpRanges = new[]\n        {\n            \"192.168.100.0/25\",\n            \"192.168.200.0/25\",\n        },\n        ProjectId = exampleProject.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleProject, err := metal.NewProject(ctx, \"exampleProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVrf(ctx, \"exampleVrf\", \u0026metal.VrfArgs{\n\t\t\tDescription: pulumi.String(\"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\"),\n\t\t\tMetro:       pulumi.String(\"da\"),\n\t\t\tLocalAsn:    pulumi.Int(65000),\n\t\t\tIpRanges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"192.168.100.0/25\"),\n\t\t\t\tpulumi.String(\"192.168.200.0/25\"),\n\t\t\t},\n\t\t\tProjectId: exampleProject.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Project;\nimport com.pulumi.equinix.metal.Vrf;\nimport com.pulumi.equinix.metal.VrfArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleProject = new Project(\"exampleProject\");\n\n        var exampleVrf = new Vrf(\"exampleVrf\", VrfArgs.builder()        \n            .description(\"VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\")\n            .metro(\"da\")\n            .localAsn(\"65000\")\n            .ipRanges(            \n                \"192.168.100.0/25\",\n                \"192.168.200.0/25\")\n            .projectId(exampleProject.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleProject:\n    type: equinix:metal:Project\n  exampleVrf:\n    type: equinix:metal:Vrf\n    properties:\n      description: VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25\n      metro: da\n      localAsn: '65000'\n      ipRanges:\n        - 192.168.100.0/25\n        - 192.168.200.0/25\n      projectId: ${exampleProject.id}\n```\n\nCreate IP reservations and assign them to a Metal Gateway resources. The Gateway will be assigned the first address in the block.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\n\nconst exampleReservedIpBlock = new equinix.metal.ReservedIpBlock(\"exampleReservedIpBlock\", {\n    description: \"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\",\n    projectId: equinix_metal_project.example.id,\n    metro: equinix_metal_vrf.example.metro,\n    type: \"vrf\",\n    vrfId: equinix_metal_vrf.example.id,\n    cidr: 29,\n    network: \"192.168.100.0\",\n});\nconst exampleVlan = new equinix.metal.Vlan(\"exampleVlan\", {\n    description: \"A VLAN for Layer2 and Hybrid Metal devices\",\n    metro: equinix_metal_vrf.example.metro,\n    projectId: equinix_metal_project.example.id,\n});\nconst exampleGateway = new equinix.metal.Gateway(\"exampleGateway\", {\n    projectId: equinix_metal_project.example.id,\n    vlanId: exampleVlan.id,\n    ipReservationId: exampleReservedIpBlock.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_reserved_ip_block = equinix.metal.ReservedIpBlock(\"exampleReservedIpBlock\",\n    description=\"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\",\n    project_id=equinix_metal_project[\"example\"][\"id\"],\n    metro=equinix_metal_vrf[\"example\"][\"metro\"],\n    type=\"vrf\",\n    vrf_id=equinix_metal_vrf[\"example\"][\"id\"],\n    cidr=29,\n    network=\"192.168.100.0\")\nexample_vlan = equinix.metal.Vlan(\"exampleVlan\",\n    description=\"A VLAN for Layer2 and Hybrid Metal devices\",\n    metro=equinix_metal_vrf[\"example\"][\"metro\"],\n    project_id=equinix_metal_project[\"example\"][\"id\"])\nexample_gateway = equinix.metal.Gateway(\"exampleGateway\",\n    project_id=equinix_metal_project[\"example\"][\"id\"],\n    vlan_id=example_vlan.id,\n    ip_reservation_id=example_reserved_ip_block.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleReservedIpBlock = new Equinix.Metal.ReservedIpBlock(\"exampleReservedIpBlock\", new()\n    {\n        Description = \"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\",\n        ProjectId = equinix_metal_project.Example.Id,\n        Metro = equinix_metal_vrf.Example.Metro,\n        Type = \"vrf\",\n        VrfId = equinix_metal_vrf.Example.Id,\n        Cidr = 29,\n        Network = \"192.168.100.0\",\n    });\n\n    var exampleVlan = new Equinix.Metal.Vlan(\"exampleVlan\", new()\n    {\n        Description = \"A VLAN for Layer2 and Hybrid Metal devices\",\n        Metro = equinix_metal_vrf.Example.Metro,\n        ProjectId = equinix_metal_project.Example.Id,\n    });\n\n    var exampleGateway = new Equinix.Metal.Gateway(\"exampleGateway\", new()\n    {\n        ProjectId = equinix_metal_project.Example.Id,\n        VlanId = exampleVlan.Id,\n        IpReservationId = exampleReservedIpBlock.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleReservedIpBlock, err := metal.NewReservedIpBlock(ctx, \"exampleReservedIpBlock\", \u0026metal.ReservedIpBlockArgs{\n\t\t\tDescription: pulumi.String(\"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\"),\n\t\t\tProjectId:   pulumi.Any(equinix_metal_project.Example.Id),\n\t\t\tMetro:       pulumi.Any(equinix_metal_vrf.Example.Metro),\n\t\t\tType:        pulumi.String(\"vrf\"),\n\t\t\tVrfId:       pulumi.Any(equinix_metal_vrf.Example.Id),\n\t\t\tCidr:        pulumi.Int(29),\n\t\t\tNetwork:     pulumi.String(\"192.168.100.0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleVlan, err := metal.NewVlan(ctx, \"exampleVlan\", \u0026metal.VlanArgs{\n\t\t\tDescription: pulumi.String(\"A VLAN for Layer2 and Hybrid Metal devices\"),\n\t\t\tMetro:       pulumi.Any(equinix_metal_vrf.Example.Metro),\n\t\t\tProjectId:   pulumi.Any(equinix_metal_project.Example.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewGateway(ctx, \"exampleGateway\", \u0026metal.GatewayArgs{\n\t\t\tProjectId:       pulumi.Any(equinix_metal_project.Example.Id),\n\t\t\tVlanId:          exampleVlan.ID(),\n\t\t\tIpReservationId: exampleReservedIpBlock.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.ReservedIpBlock;\nimport com.pulumi.equinix.metal.ReservedIpBlockArgs;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.Gateway;\nimport com.pulumi.equinix.metal.GatewayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleReservedIpBlock = new ReservedIpBlock(\"exampleReservedIpBlock\", ReservedIpBlockArgs.builder()        \n            .description(\"Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\")\n            .projectId(equinix_metal_project.example().id())\n            .metro(equinix_metal_vrf.example().metro())\n            .type(\"vrf\")\n            .vrfId(equinix_metal_vrf.example().id())\n            .cidr(29)\n            .network(\"192.168.100.0\")\n            .build());\n\n        var exampleVlan = new Vlan(\"exampleVlan\", VlanArgs.builder()        \n            .description(\"A VLAN for Layer2 and Hybrid Metal devices\")\n            .metro(equinix_metal_vrf.example().metro())\n            .projectId(equinix_metal_project.example().id())\n            .build());\n\n        var exampleGateway = new Gateway(\"exampleGateway\", GatewayArgs.builder()        \n            .projectId(equinix_metal_project.example().id())\n            .vlanId(exampleVlan.id())\n            .ipReservationId(exampleReservedIpBlock.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleReservedIpBlock:\n    type: equinix:metal:ReservedIpBlock\n    properties:\n      description: Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.\n      projectId: ${equinix_metal_project.example.id}\n      metro: ${equinix_metal_vrf.example.metro}\n      type: vrf\n      vrfId: ${equinix_metal_vrf.example.id}\n      cidr: 29\n      network: 192.168.100.0\n  exampleVlan:\n    type: equinix:metal:Vlan\n    properties:\n      description: A VLAN for Layer2 and Hybrid Metal devices\n      metro: ${equinix_metal_vrf.example.metro}\n      projectId: ${equinix_metal_project.example.id}\n  exampleGateway:\n    type: equinix:metal:Gateway\n    properties:\n      projectId: ${equinix_metal_project.example.id}\n      vlanId: ${exampleVlan.id}\n      ipReservationId: ${exampleReservedIpBlock.id}\n```\n\nAttach a Virtual Circuit from a Dedicated Metal Connection to the Metal Gateway.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst exampleInterconnection = equinix.metal.getInterconnection({\n    connectionId: _var.metal_dedicated_connection_id,\n});\nconst exampleVirtualCircuit = new equinix.metal.VirtualCircuit(\"exampleVirtualCircuit\", {\n    description: \"Virtual Circuit\",\n    connectionId: exampleInterconnection.then(exampleInterconnection =\u003e exampleInterconnection.id),\n    projectId: equinix_metal_project.example.id,\n    portId: exampleInterconnection.then(exampleInterconnection =\u003e exampleInterconnection.ports?.[0]?.id),\n    nniVlan: 1024,\n    vrfId: equinix_metal_vrf.example.id,\n    peerAsn: 65530,\n    subnet: \"192.168.100.16/31\",\n    metalIp: \"192.168.100.16\",\n    customerIp: \"192.168.100.17\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_interconnection = equinix.metal.get_interconnection(connection_id=var[\"metal_dedicated_connection_id\"])\nexample_virtual_circuit = equinix.metal.VirtualCircuit(\"exampleVirtualCircuit\",\n    description=\"Virtual Circuit\",\n    connection_id=example_interconnection.id,\n    project_id=equinix_metal_project[\"example\"][\"id\"],\n    port_id=example_interconnection.ports[0].id,\n    nni_vlan=1024,\n    vrf_id=equinix_metal_vrf[\"example\"][\"id\"],\n    peer_asn=65530,\n    subnet=\"192.168.100.16/31\",\n    metal_ip=\"192.168.100.16\",\n    customer_ip=\"192.168.100.17\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleInterconnection = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = @var.Metal_dedicated_connection_id,\n    });\n\n    var exampleVirtualCircuit = new Equinix.Metal.VirtualCircuit(\"exampleVirtualCircuit\", new()\n    {\n        Description = \"Virtual Circuit\",\n        ConnectionId = exampleInterconnection.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Id),\n        ProjectId = equinix_metal_project.Example.Id,\n        PortId = exampleInterconnection.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[0]?.Id),\n        NniVlan = 1024,\n        VrfId = equinix_metal_vrf.Example.Id,\n        PeerAsn = 65530,\n        Subnet = \"192.168.100.16/31\",\n        MetalIp = \"192.168.100.16\",\n        CustomerIp = \"192.168.100.17\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleInterconnection, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: _var.Metal_dedicated_connection_id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewVirtualCircuit(ctx, \"exampleVirtualCircuit\", \u0026metal.VirtualCircuitArgs{\n\t\t\tDescription:  pulumi.String(\"Virtual Circuit\"),\n\t\t\tConnectionId: *pulumi.String(exampleInterconnection.Id),\n\t\t\tProjectId:    pulumi.Any(equinix_metal_project.Example.Id),\n\t\t\tPortId:       *pulumi.String(exampleInterconnection.Ports[0].Id),\n\t\t\tNniVlan:      pulumi.Int(1024),\n\t\t\tVrfId:        pulumi.Any(equinix_metal_vrf.Example.Id),\n\t\t\tPeerAsn:      pulumi.Int(65530),\n\t\t\tSubnet:       pulumi.String(\"192.168.100.16/31\"),\n\t\t\tMetalIp:      pulumi.String(\"192.168.100.16\"),\n\t\t\tCustomerIp:   pulumi.String(\"192.168.100.17\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.VirtualCircuit;\nimport com.pulumi.equinix.metal.VirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleInterconnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(var_.metal_dedicated_connection_id())\n            .build());\n\n        var exampleVirtualCircuit = new VirtualCircuit(\"exampleVirtualCircuit\", VirtualCircuitArgs.builder()        \n            .description(\"Virtual Circuit\")\n            .connectionId(exampleInterconnection.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.id()))\n            .projectId(equinix_metal_project.example().id())\n            .portId(exampleInterconnection.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[0].id()))\n            .nniVlan(1024)\n            .vrfId(equinix_metal_vrf.example().id())\n            .peerAsn(65530)\n            .subnet(\"192.168.100.16/31\")\n            .metalIp(\"192.168.100.16\")\n            .customerIp(\"192.168.100.17\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleVirtualCircuit:\n    type: equinix:metal:VirtualCircuit\n    properties:\n      description: Virtual Circuit\n      connectionId: ${exampleInterconnection.id}\n      projectId: ${equinix_metal_project.example.id}\n      portId: ${exampleInterconnection.ports[0].id}\n      nniVlan: 1024\n      vrfId: ${equinix_metal_vrf.example.id}\n      peerAsn: 65530\n      subnet: 192.168.100.16/31\n      metalIp: 192.168.100.16\n      customerIp: 192.168.100.17\nvariables:\n  exampleInterconnection:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: ${var.metal_dedicated_connection_id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported using an existing VRF ID\n\n```sh\n $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string",
@@ -19107,137 +19107,6 @@
                 ]
             }
         },
-        "equinix:metal/getConnection:getConnection": {
-            "description": "Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)\n\n\u003e Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getConnection({\n    connectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_connection(connection_id=\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetConnection.Invoke(new()\n    {\n        ConnectionId = \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.LookupConnection(ctx, \u0026metal.LookupConnectionArgs{\n\t\t\tConnectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetConnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getConnection(GetConnectionArgs.builder()\n            .connectionId(\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getConnection\n      Arguments:\n        connectionId: 4347e805-eb46-4699-9eb9-5c116e6a017d\n```\n{{% /example %}}\n{{% /examples %}}",
-            "inputs": {
-                "description": "A collection of arguments for invoking getConnection.\n",
-                "properties": {
-                    "connectionId": {
-                        "type": "string",
-                        "description": "ID of the connection resource.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "connectionId"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getConnection.\n",
-                "properties": {
-                    "connectionId": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Description of the connection resource.\n"
-                    },
-                    "facility": {
-                        "type": "string",
-                        "description": "Slug of a facility to which the connection belongs.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
-                    },
-                    "metro": {
-                        "type": "string",
-                        "description": "Slug of a metro to which the connection belongs.\n"
-                    },
-                    "mode": {
-                        "type": "string",
-                        "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "Port name.\n"
-                    },
-                    "organizationId": {
-                        "type": "string",
-                        "description": "ID of the organization where the connection is scoped to.\n"
-                    },
-                    "ports": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/getConnectionPort:getConnectionPort"
-                        },
-                        "description": "List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)\n"
-                    },
-                    "projectId": {
-                        "type": "string",
-                        "description": "ID of project to which the connection belongs.\n"
-                    },
-                    "redundancy": {
-                        "type": "string",
-                        "description": "Connection redundancy, reduntant or primary.\n"
-                    },
-                    "serviceTokenType": {
-                        "type": "string",
-                        "description": "Type of service token, a_side or z_side. One available in shared connection.\n"
-                    },
-                    "serviceTokens": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:metal/getConnectionServiceToken:getConnectionServiceToken"
-                        },
-                        "description": "List of connection service tokens with attributes\n"
-                    },
-                    "speed": {
-                        "type": "string",
-                        "description": "Port speed in bits per second.\n"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "Port status.\n"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "String list of tags.\n"
-                    },
-                    "token": {
-                        "type": "string",
-                        "description": "(Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.\n",
-                        "deprecationMessage": "If your organization already has connection service tokens enabled, use `service_tokens` instead"
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "Token type, `a_side` or `z_side`.\n"
-                    },
-                    "vlans": {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        },
-                        "description": "Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "connectionId",
-                    "description",
-                    "facility",
-                    "metro",
-                    "mode",
-                    "name",
-                    "organizationId",
-                    "ports",
-                    "projectId",
-                    "redundancy",
-                    "serviceTokenType",
-                    "serviceTokens",
-                    "speed",
-                    "status",
-                    "tags",
-                    "token",
-                    "type",
-                    "vlans",
-                    "id"
-                ]
-            }
-        },
         "equinix:metal/getDevice:getDevice": {
             "description": "Provides an Equinix Metal device datasource.\n\n\u003e **Note:** All arguments including the `root_password` and `user_data` will be stored in\n the raw state as plain-text.\n[Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst test = equinix.metal.getDevice({\n    projectId: local.project_id,\n    hostname: \"mydevice\",\n});\nexport const id = test.then(test =\u003e test.id);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\ntest = equinix.metal.get_device(project_id=local[\"project_id\"],\n    hostname=\"mydevice\")\npulumi.export(\"id\", test.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Equinix.Metal.GetDevice.Invoke(new()\n    {\n        ProjectId = local.Project_id,\n        Hostname = \"mydevice\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"id\"] = test.Apply(getDeviceResult =\u003e getDeviceResult.Id),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := metal.LookupDevice(ctx, \u0026metal.LookupDeviceArgs{\n\t\t\tProjectId: pulumi.StringRef(local.Project_id),\n\t\t\tHostname:  pulumi.StringRef(\"mydevice\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"id\", test.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetDeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()\n            .projectId(local.project_id())\n            .hostname(\"mydevice\")\n            .build());\n\n        ctx.export(\"id\", test.applyValue(getDeviceResult -\u003e getDeviceResult.id()));\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: equinix:metal:getDevice\n      Arguments:\n        projectId: ${local.project_id}\n        hostname: mydevice\noutputs:\n  id: ${test.id}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst test = equinix.metal.getDevice({\n    deviceId: \"4c641195-25e5-4c3c-b2b7-4cd7a42c7b40\",\n});\nexport const ipv4 = test.then(test =\u003e test.accessPublicIpv4);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\ntest = equinix.metal.get_device(device_id=\"4c641195-25e5-4c3c-b2b7-4cd7a42c7b40\")\npulumi.export(\"ipv4\", test.access_public_ipv4)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Equinix.Metal.GetDevice.Invoke(new()\n    {\n        DeviceId = \"4c641195-25e5-4c3c-b2b7-4cd7a42c7b40\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ipv4\"] = test.Apply(getDeviceResult =\u003e getDeviceResult.AccessPublicIpv4),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := metal.LookupDevice(ctx, \u0026metal.LookupDeviceArgs{\n\t\t\tDeviceId: pulumi.StringRef(\"4c641195-25e5-4c3c-b2b7-4cd7a42c7b40\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ipv4\", test.AccessPublicIpv4)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetDeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = MetalFunctions.getDevice(GetDeviceArgs.builder()\n            .deviceId(\"4c641195-25e5-4c3c-b2b7-4cd7a42c7b40\")\n            .build());\n\n        ctx.export(\"ipv4\", test.applyValue(getDeviceResult -\u003e getDeviceResult.accessPublicIpv4()));\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: equinix:metal:getDevice\n      Arguments:\n        deviceId: 4c641195-25e5-4c3c-b2b7-4cd7a42c7b40\noutputs:\n  ipv4: ${test.accessPublicIpv4}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -19642,6 +19511,137 @@
                     "shortId",
                     "spare",
                     "switchUuid"
+                ]
+            }
+        },
+        "equinix:metal/getInterconnection:getInterconnection": {
+            "description": "Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)\n\n\u003e Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getInterconnection({\n    connectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_interconnection(connection_id=\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: 4347e805-eb46-4699-9eb9-5c116e6a017d\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInterconnection.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "ID of the connection resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInterconnection.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the connection resource.\n"
+                    },
+                    "facility": {
+                        "type": "string",
+                        "description": "Slug of a facility to which the connection belongs.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "metro": {
+                        "type": "string",
+                        "description": "Slug of a metro to which the connection belongs.\n"
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "Mode for connections in IBX facilities with the dedicated type - standard or tunnel.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Port name.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "ID of the organization where the connection is scoped to.\n"
+                    },
+                    "ports": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:metal/getInterconnectionPort:getInterconnectionPort"
+                        },
+                        "description": "List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "ID of project to which the connection belongs.\n"
+                    },
+                    "redundancy": {
+                        "type": "string",
+                        "description": "Connection redundancy, reduntant or primary.\n"
+                    },
+                    "serviceTokenType": {
+                        "type": "string",
+                        "description": "Type of service token, a_side or z_side. One available in shared connection.\n"
+                    },
+                    "serviceTokens": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/equinix:metal/getInterconnectionServiceToken:getInterconnectionServiceToken"
+                        },
+                        "description": "List of connection service tokens with attributes\n"
+                    },
+                    "speed": {
+                        "type": "string",
+                        "description": "Port speed in bits per second.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Port status.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "String list of tags.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "(Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.\n",
+                        "deprecationMessage": "If your organization already has connection service tokens enabled, use `service_tokens` instead"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Token type, `a_side` or `z_side`.\n"
+                    },
+                    "vlans": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId",
+                    "description",
+                    "facility",
+                    "metro",
+                    "mode",
+                    "name",
+                    "organizationId",
+                    "ports",
+                    "projectId",
+                    "redundancy",
+                    "serviceTokenType",
+                    "serviceTokens",
+                    "speed",
+                    "status",
+                    "tags",
+                    "token",
+                    "type",
+                    "vlans",
+                    "id"
                 ]
             }
         },
@@ -20574,7 +20574,7 @@
             }
         },
         "equinix:metal/getVirtualCircuit:getVirtualCircuit": {
-            "description": "Use this data source to retrieve a virtual circuit resource from\n[Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst exampleConnection = equinix.metal.getConnection({\n    connectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n});\nconst exampleVc = exampleConnection.then(exampleConnection =\u003e equinix.metal.getVirtualCircuit({\n    virtualCircuitId: exampleConnection.ports?.[1]?.virtualCircuitIds?.[0],\n}));\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_connection = equinix.metal.get_connection(connection_id=\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\nexample_vc = equinix.metal.get_virtual_circuit(virtual_circuit_id=example_connection.ports[1].virtual_circuit_ids[0])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleConnection = Equinix.Metal.GetConnection.Invoke(new()\n    {\n        ConnectionId = \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n    });\n\n    var exampleVc = Equinix.Metal.GetVirtualCircuit.Invoke(new()\n    {\n        VirtualCircuitId = exampleConnection.Apply(getConnectionResult =\u003e getConnectionResult.Ports[1]?.VirtualCircuitIds[0]),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleConnection, err := metal.LookupConnection(ctx, \u0026metal.LookupConnectionArgs{\n\t\t\tConnectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.LookupVirtualCircuit(ctx, \u0026metal.LookupVirtualCircuitArgs{\n\t\t\tVirtualCircuitId: exampleConnection.Ports[1].VirtualCircuitIds[0],\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetConnectionArgs;\nimport com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()\n            .connectionId(\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\n            .build());\n\n        final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()\n            .virtualCircuitId(exampleConnection.applyValue(getConnectionResult -\u003e getConnectionResult.ports()[1].virtualCircuitIds()[0]))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleConnection:\n    fn::invoke:\n      Function: equinix:metal:getConnection\n      Arguments:\n        connectionId: 4347e805-eb46-4699-9eb9-5c116e6a017d\n  exampleVc:\n    fn::invoke:\n      Function: equinix:metal:getVirtualCircuit\n      Arguments:\n        virtualCircuitId: ${exampleConnection.ports[1].virtualCircuitIds[0]}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to retrieve a virtual circuit resource from\n[Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst exampleConnection = equinix.metal.getInterconnection({\n    connectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n});\nconst exampleVc = exampleConnection.then(exampleConnection =\u003e equinix.metal.getVirtualCircuit({\n    virtualCircuitId: exampleConnection.ports?.[1]?.virtualCircuitIds?.[0],\n}));\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_connection = equinix.metal.get_interconnection(connection_id=\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\nexample_vc = equinix.metal.get_virtual_circuit(virtual_circuit_id=example_connection.ports[1].virtual_circuit_ids[0])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleConnection = Equinix.Metal.GetInterconnection.Invoke(new()\n    {\n        ConnectionId = \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n    });\n\n    var exampleVc = Equinix.Metal.GetVirtualCircuit.Invoke(new()\n    {\n        VirtualCircuitId = exampleConnection.Apply(getInterconnectionResult =\u003e getInterconnectionResult.Ports[1]?.VirtualCircuitIds[0]),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleConnection, err := metal.LookupInterconnection(ctx, \u0026metal.LookupInterconnectionArgs{\n\t\t\tConnectionId: \"4347e805-eb46-4699-9eb9-5c116e6a017d\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.LookupVirtualCircuit(ctx, \u0026metal.LookupVirtualCircuitArgs{\n\t\t\tVirtualCircuitId: exampleConnection.Ports[1].VirtualCircuitIds[0],\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;\nimport com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()\n            .connectionId(\"4347e805-eb46-4699-9eb9-5c116e6a017d\")\n            .build());\n\n        final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()\n            .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -\u003e getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  exampleConnection:\n    fn::invoke:\n      Function: equinix:metal:getInterconnection\n      Arguments:\n        connectionId: 4347e805-eb46-4699-9eb9-5c116e6a017d\n  exampleVc:\n    fn::invoke:\n      Function: equinix:metal:getVirtualCircuit\n      Arguments:\n        virtualCircuitId: ${exampleConnection.ports[1].virtualCircuitIds[0]}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getVirtualCircuit.\n",
                 "properties": {

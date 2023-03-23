@@ -35,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			projectId := "52000fb2-ee46-4673-93a8-de2c2bdba33c"
 //			connId := "73f12f29-3e19-43a0-8e90-ae81580db1e0"
-//			testConnection, err := metal.LookupConnection(ctx, &metal.LookupConnectionArgs{
+//			testInterconnection, err := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
 //				ConnectionId: connId,
 //			}, nil)
 //			if err != nil {
@@ -43,7 +43,7 @@ import (
 //			}
 //			testVlan, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
 //				ProjectId: pulumi.String(projectId),
-//				Metro:     *pulumi.String(testConnection.Metro),
+//				Metro:     *pulumi.String(testInterconnection.Metro),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ import (
 //			_, err = metal.NewVirtualCircuit(ctx, "testVirtualCircuit", &metal.VirtualCircuitArgs{
 //				ConnectionId: pulumi.String(connId),
 //				ProjectId:    pulumi.String(projectId),
-//				PortId:       *pulumi.String(testConnection.Ports[0].Id),
+//				PortId:       *pulumi.String(testInterconnection.Ports[0].Id),
 //				VlanId:       testVlan.ID(),
 //				NniVlan:      pulumi.Int(1056),
 //			})

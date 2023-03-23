@@ -1811,37 +1811,6 @@ export namespace fabric {
 }
 
 export namespace metal {
-    export interface ConnectionPort {
-        id: string;
-        linkStatus: string;
-        /**
-         * Name of the connection resource
-         */
-        name: string;
-        role: string;
-        /**
-         * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-         */
-        speed: number;
-        /**
-         * Status of the connection resource.
-         */
-        status: string;
-        virtualCircuitIds: any[];
-    }
-
-    export interface ConnectionServiceToken {
-        expiresAt: string;
-        id: string;
-        maxAllowedSpeed: string;
-        role: string;
-        state: string;
-        /**
-         * Connection type - dedicated or shared.
-         */
-        type: string;
-    }
-
     export interface DeviceBehavior {
         /**
          * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
@@ -1927,61 +1896,6 @@ export namespace metal {
          * Defaults to `false`.
          */
         preserveData?: boolean;
-    }
-
-    export interface GetConnectionPort {
-        /**
-         * Port UUID.
-         */
-        id: string;
-        /**
-         * Port link status.
-         */
-        linkStatus: string;
-        /**
-         * Port name.
-         */
-        name: string;
-        /**
-         * Port role - primary or secondary.
-         */
-        role: string;
-        /**
-         * Port speed in bits per second.
-         */
-        speed: number;
-        /**
-         * Port status.
-         */
-        status: string;
-        /**
-         * List of IDs of virtual cicruits attached to this port.
-         */
-        virtualCircuitIds: any[];
-    }
-
-    export interface GetConnectionServiceToken {
-        /**
-         * Expiration date of the service token.
-         */
-        expiresAt: string;
-        /**
-         * Port UUID.
-         */
-        id: string;
-        /**
-         * Maximum allowed speed for the service token, string like in the `speed` attribute.
-         */
-        maxAllowedSpeed: string;
-        /**
-         * Port role - primary or secondary.
-         */
-        role: string;
-        state: string;
-        /**
-         * Token type, `aSide` or `zSide`.
-         */
-        type: string;
     }
 
     export interface GetDeviceBgpNeighborsBgpNeighbor {
@@ -2105,6 +2019,61 @@ export namespace metal {
          * Default is `1`.
          */
         quantity?: number;
+    }
+
+    export interface GetInterconnectionPort {
+        /**
+         * Port UUID.
+         */
+        id: string;
+        /**
+         * Port link status.
+         */
+        linkStatus: string;
+        /**
+         * Port name.
+         */
+        name: string;
+        /**
+         * Port role - primary or secondary.
+         */
+        role: string;
+        /**
+         * Port speed in bits per second.
+         */
+        speed: number;
+        /**
+         * Port status.
+         */
+        status: string;
+        /**
+         * List of IDs of virtual cicruits attached to this port.
+         */
+        virtualCircuitIds: any[];
+    }
+
+    export interface GetInterconnectionServiceToken {
+        /**
+         * Expiration date of the service token.
+         */
+        expiresAt: string;
+        /**
+         * Port UUID.
+         */
+        id: string;
+        /**
+         * Maximum allowed speed for the service token, string like in the `speed` attribute.
+         */
+        maxAllowedSpeed: string;
+        /**
+         * Port role - primary or secondary.
+         */
+        role: string;
+        state: string;
+        /**
+         * Token type, `aSide` or `zSide`.
+         */
+        type: string;
     }
 
     export interface GetMetroCapacity {
@@ -2244,6 +2213,37 @@ export namespace metal {
          * Status of BGP configuration in the project.
          */
         status: string;
+    }
+
+    export interface InterconnectionPort {
+        id: string;
+        linkStatus: string;
+        /**
+         * Name of the connection resource
+         */
+        name: string;
+        role: string;
+        /**
+         * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         */
+        speed: number;
+        /**
+         * Status of the connection resource.
+         */
+        status: string;
+        virtualCircuitIds: any[];
+    }
+
+    export interface InterconnectionServiceToken {
+        expiresAt: string;
+        id: string;
+        maxAllowedSpeed: string;
+        role: string;
+        state: string;
+        /**
+         * Connection type - dedicated or shared.
+         */
+        type: string;
     }
 
     export interface OrganizationAddress {

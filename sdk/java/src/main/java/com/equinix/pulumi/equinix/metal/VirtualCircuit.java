@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.MetalFunctions;
- * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
+ * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
  * import com.pulumi.equinix.metal.Vlan;
  * import com.pulumi.equinix.metal.VlanArgs;
  * import com.pulumi.equinix.metal.VirtualCircuit;
@@ -55,19 +55,19 @@ import javax.annotation.Nullable;
  * 
  *         final var connId = &#34;73f12f29-3e19-43a0-8e90-ae81580db1e0&#34;;
  * 
- *         final var testConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()
+ *         final var testInterconnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
  *             .connectionId(connId)
  *             .build());
  * 
  *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
  *             .projectId(projectId)
- *             .metro(testConnection.applyValue(getConnectionResult -&gt; getConnectionResult.metro()))
+ *             .metro(testInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.metro()))
  *             .build());
  * 
  *         var testVirtualCircuit = new VirtualCircuit(&#34;testVirtualCircuit&#34;, VirtualCircuitArgs.builder()        
  *             .connectionId(connId)
  *             .projectId(projectId)
- *             .portId(testConnection.applyValue(getConnectionResult -&gt; getConnectionResult.ports()[0].id()))
+ *             .portId(testInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[0].id()))
  *             .vlanId(testVlan.id())
  *             .nniVlan(1056)
  *             .build());

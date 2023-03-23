@@ -4,10 +4,10 @@
 package com.equinix.pulumi.equinix.metal;
 
 import com.equinix.pulumi.equinix.Utilities;
-import com.equinix.pulumi.equinix.metal.ConnectionArgs;
-import com.equinix.pulumi.equinix.metal.inputs.ConnectionState;
-import com.equinix.pulumi.equinix.metal.outputs.ConnectionPort;
-import com.equinix.pulumi.equinix.metal.outputs.ConnectionServiceToken;
+import com.equinix.pulumi.equinix.metal.InterconnectionArgs;
+import com.equinix.pulumi.equinix.metal.inputs.InterconnectionState;
+import com.equinix.pulumi.equinix.metal.outputs.InterconnectionPort;
+import com.equinix.pulumi.equinix.metal.outputs.InterconnectionServiceToken;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-@ResourceType(type="equinix:metal/connection:Connection")
-public class Connection extends com.pulumi.resources.CustomResource {
+@ResourceType(type="equinix:metal/interconnection:Interconnection")
+public class Interconnection extends com.pulumi.resources.CustomResource {
     /**
      * Description for the connection resource.
      * 
@@ -107,19 +107,19 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
      * port is described in documentation of the
-     * equinix.metal.Connection datasource.
+     * equinix.metal.Interconnection datasource.
      * 
      */
-    @Export(name="ports", refs={List.class,ConnectionPort.class}, tree="[0,1]")
-    private Output<List<ConnectionPort>> ports;
+    @Export(name="ports", refs={List.class,InterconnectionPort.class}, tree="[0,1]")
+    private Output<List<InterconnectionPort>> ports;
 
     /**
      * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`). Schema of
      * port is described in documentation of the
-     * equinix.metal.Connection datasource.
+     * equinix.metal.Interconnection datasource.
      * 
      */
-    public Output<List<ConnectionPort>> ports() {
+    public Output<List<InterconnectionPort>> ports() {
         return this.ports;
     }
     /**
@@ -165,17 +165,17 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceTokenType);
     }
     /**
-     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Connection datasource.
+     * List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
-    @Export(name="serviceTokens", refs={List.class,ConnectionServiceToken.class}, tree="[0,1]")
-    private Output<List<ConnectionServiceToken>> serviceTokens;
+    @Export(name="serviceTokens", refs={List.class,InterconnectionServiceToken.class}, tree="[0,1]")
+    private Output<List<InterconnectionServiceToken>> serviceTokens;
 
     /**
-     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Connection datasource.
+     * @return List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the equinix.metal.Interconnection datasource.
      * 
      */
-    public Output<List<ConnectionServiceToken>> serviceTokens() {
+    public Output<List<InterconnectionServiceToken>> serviceTokens() {
         return this.serviceTokens;
     }
     /**
@@ -271,15 +271,15 @@ public class Connection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Connection(String name) {
-        this(name, ConnectionArgs.Empty);
+    public Interconnection(String name) {
+        this(name, InterconnectionArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Connection(String name, ConnectionArgs args) {
+    public Interconnection(String name, InterconnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -288,12 +288,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Connection(String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/connection:Connection", name, args == null ? ConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Interconnection(String name, InterconnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/interconnection:Interconnection", name, args == null ? InterconnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Connection(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("equinix:metal/connection:Connection", name, state, makeResourceOptions(options, id));
+    private Interconnection(String name, Output<String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("equinix:metal/interconnection:Interconnection", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -312,7 +312,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Connection get(String name, Output<String> id, @Nullable ConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new Connection(name, id, state, options);
+    public static Interconnection get(String name, Output<String> id, @Nullable InterconnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new Interconnection(name, id, state, options);
     }
 }

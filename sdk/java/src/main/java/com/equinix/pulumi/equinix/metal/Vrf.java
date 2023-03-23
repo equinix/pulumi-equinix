@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.MetalFunctions;
- * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
+ * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
  * import com.pulumi.equinix.metal.VirtualCircuit;
  * import com.pulumi.equinix.metal.VirtualCircuitArgs;
  * import java.util.List;
@@ -138,15 +138,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()
+ *         final var exampleInterconnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
  *             .connectionId(var_.metal_dedicated_connection_id())
  *             .build());
  * 
  *         var exampleVirtualCircuit = new VirtualCircuit(&#34;exampleVirtualCircuit&#34;, VirtualCircuitArgs.builder()        
  *             .description(&#34;Virtual Circuit&#34;)
- *             .connectionId(exampleConnection.applyValue(getConnectionResult -&gt; getConnectionResult.id()))
+ *             .connectionId(exampleInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.id()))
  *             .projectId(equinix_metal_project.example().id())
- *             .portId(exampleConnection.applyValue(getConnectionResult -&gt; getConnectionResult.ports()[0].id()))
+ *             .portId(exampleInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[0].id()))
  *             .nniVlan(1024)
  *             .vrfId(equinix_metal_vrf.example().id())
  *             .peerAsn(65530)

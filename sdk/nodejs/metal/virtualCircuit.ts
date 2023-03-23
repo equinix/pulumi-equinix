@@ -21,17 +21,17 @@ import * as utilities from "../utilities";
  *
  * const projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
  * const connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
- * const testConnection = equinix.metal.getConnection({
+ * const testInterconnection = equinix.metal.getInterconnection({
  *     connectionId: connId,
  * });
  * const testVlan = new equinix.metal.Vlan("testVlan", {
  *     projectId: projectId,
- *     metro: testConnection.then(testConnection => testConnection.metro),
+ *     metro: testInterconnection.then(testInterconnection => testInterconnection.metro),
  * });
  * const testVirtualCircuit = new equinix.metal.VirtualCircuit("testVirtualCircuit", {
  *     connectionId: connId,
  *     projectId: projectId,
- *     portId: testConnection.then(testConnection => testConnection.ports?.[0]?.id),
+ *     portId: testInterconnection.then(testInterconnection => testInterconnection.ports?.[0]?.id),
  *     vlanId: testVlan.id,
  *     nniVlan: 1056,
  * });

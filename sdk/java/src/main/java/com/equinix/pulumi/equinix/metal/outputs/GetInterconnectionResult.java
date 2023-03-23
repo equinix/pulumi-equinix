@@ -3,8 +3,8 @@
 
 package com.equinix.pulumi.equinix.metal.outputs;
 
-import com.equinix.pulumi.equinix.metal.outputs.GetConnectionPort;
-import com.equinix.pulumi.equinix.metal.outputs.GetConnectionServiceToken;
+import com.equinix.pulumi.equinix.metal.outputs.GetInterconnectionPort;
+import com.equinix.pulumi.equinix.metal.outputs.GetInterconnectionServiceToken;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetConnectionResult {
+public final class GetInterconnectionResult {
     private String connectionId;
     /**
      * @return Description of the connection resource.
@@ -53,7 +53,7 @@ public final class GetConnectionResult {
      * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
      * 
      */
-    private List<GetConnectionPort> ports;
+    private List<GetInterconnectionPort> ports;
     /**
      * @return ID of project to which the connection belongs.
      * 
@@ -73,7 +73,7 @@ public final class GetConnectionResult {
      * @return List of connection service tokens with attributes
      * 
      */
-    private List<GetConnectionServiceToken> serviceTokens;
+    private List<GetInterconnectionServiceToken> serviceTokens;
     /**
      * @return Port speed in bits per second.
      * 
@@ -109,7 +109,7 @@ public final class GetConnectionResult {
      */
     private List<Integer> vlans;
 
-    private GetConnectionResult() {}
+    private GetInterconnectionResult() {}
     public String connectionId() {
         return this.connectionId;
     }
@@ -166,7 +166,7 @@ public final class GetConnectionResult {
      * @return List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
      * 
      */
-    public List<GetConnectionPort> ports() {
+    public List<GetInterconnectionPort> ports() {
         return this.ports;
     }
     /**
@@ -194,7 +194,7 @@ public final class GetConnectionResult {
      * @return List of connection service tokens with attributes
      * 
      */
-    public List<GetConnectionServiceToken> serviceTokens() {
+    public List<GetInterconnectionServiceToken> serviceTokens() {
         return this.serviceTokens;
     }
     /**
@@ -248,7 +248,7 @@ public final class GetConnectionResult {
         return new Builder();
     }
 
-    public static Builder builder(GetConnectionResult defaults) {
+    public static Builder builder(GetInterconnectionResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -261,11 +261,11 @@ public final class GetConnectionResult {
         private String mode;
         private String name;
         private String organizationId;
-        private List<GetConnectionPort> ports;
+        private List<GetInterconnectionPort> ports;
         private String projectId;
         private String redundancy;
         private String serviceTokenType;
-        private List<GetConnectionServiceToken> serviceTokens;
+        private List<GetInterconnectionServiceToken> serviceTokens;
         private String speed;
         private String status;
         private List<String> tags;
@@ -273,7 +273,7 @@ public final class GetConnectionResult {
         private String type;
         private List<Integer> vlans;
         public Builder() {}
-        public Builder(GetConnectionResult defaults) {
+        public Builder(GetInterconnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionId = defaults.connectionId;
     	      this.description = defaults.description;
@@ -337,11 +337,11 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ports(List<GetConnectionPort> ports) {
+        public Builder ports(List<GetInterconnectionPort> ports) {
             this.ports = Objects.requireNonNull(ports);
             return this;
         }
-        public Builder ports(GetConnectionPort... ports) {
+        public Builder ports(GetInterconnectionPort... ports) {
             return ports(List.of(ports));
         }
         @CustomType.Setter
@@ -360,11 +360,11 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder serviceTokens(List<GetConnectionServiceToken> serviceTokens) {
+        public Builder serviceTokens(List<GetInterconnectionServiceToken> serviceTokens) {
             this.serviceTokens = Objects.requireNonNull(serviceTokens);
             return this;
         }
-        public Builder serviceTokens(GetConnectionServiceToken... serviceTokens) {
+        public Builder serviceTokens(GetInterconnectionServiceToken... serviceTokens) {
             return serviceTokens(List.of(serviceTokens));
         }
         @CustomType.Setter
@@ -403,8 +403,8 @@ public final class GetConnectionResult {
         public Builder vlans(Integer... vlans) {
             return vlans(List.of(vlans));
         }
-        public GetConnectionResult build() {
-            final var o = new GetConnectionResult();
+        public GetInterconnectionResult build() {
+            final var o = new GetInterconnectionResult();
             o.connectionId = connectionId;
             o.description = description;
             o.facility = facility;

@@ -18,23 +18,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const example = equinix.metal.getConnection({
+ * const example = equinix.metal.getInterconnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
  * });
  * ```
  */
-export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
+export function getInterconnection(args: GetInterconnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectionResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("equinix:metal/getConnection:getConnection", {
+    return pulumi.runtime.invoke("equinix:metal/getInterconnection:getInterconnection", {
         "connectionId": args.connectionId,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getConnection.
+ * A collection of arguments for invoking getInterconnection.
  */
-export interface GetConnectionArgs {
+export interface GetInterconnectionArgs {
     /**
      * ID of the connection resource.
      */
@@ -42,9 +42,9 @@ export interface GetConnectionArgs {
 }
 
 /**
- * A collection of values returned by getConnection.
+ * A collection of values returned by getInterconnection.
  */
-export interface GetConnectionResult {
+export interface GetInterconnectionResult {
     readonly connectionId: string;
     /**
      * Description of the connection resource.
@@ -77,7 +77,7 @@ export interface GetConnectionResult {
     /**
      * List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
      */
-    readonly ports: outputs.metal.GetConnectionPort[];
+    readonly ports: outputs.metal.GetInterconnectionPort[];
     /**
      * ID of project to which the connection belongs.
      */
@@ -93,7 +93,7 @@ export interface GetConnectionResult {
     /**
      * List of connection service tokens with attributes
      */
-    readonly serviceTokens: outputs.metal.GetConnectionServiceToken[];
+    readonly serviceTokens: outputs.metal.GetInterconnectionServiceToken[];
     /**
      * Port speed in bits per second.
      */
@@ -132,19 +132,19 @@ export interface GetConnectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const example = equinix.metal.getConnection({
+ * const example = equinix.metal.getInterconnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
  * });
  * ```
  */
-export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getConnection(a, opts))
+export function getInterconnectionOutput(args: GetInterconnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectionResult> {
+    return pulumi.output(args).apply((a: any) => getInterconnection(a, opts))
 }
 
 /**
- * A collection of arguments for invoking getConnection.
+ * A collection of arguments for invoking getInterconnection.
  */
-export interface GetConnectionOutputArgs {
+export interface GetInterconnectionOutputArgs {
     /**
      * ID of the connection resource.
      */

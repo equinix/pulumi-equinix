@@ -10,11 +10,6 @@ export type BgpSession = import("./bgpSession").BgpSession;
 export const BgpSession: typeof import("./bgpSession").BgpSession = null as any;
 utilities.lazyLoad(exports, ["BgpSession"], () => require("./bgpSession"));
 
-export { ConnectionArgs, ConnectionState } from "./connection";
-export type Connection = import("./connection").Connection;
-export const Connection: typeof import("./connection").Connection = null as any;
-utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
-
 export { DeviceArgs, DeviceState } from "./device";
 export type Device = import("./device").Device;
 export const Device: typeof import("./device").Device = null as any;
@@ -29,11 +24,6 @@ export { GatewayArgs, GatewayState } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
-
-export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
-export const getConnection: typeof import("./getConnection").getConnection = null as any;
-export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
-utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
 export { GetDeviceArgs, GetDeviceResult, GetDeviceOutputArgs } from "./getDevice";
 export const getDevice: typeof import("./getDevice").getDevice = null as any;
@@ -59,6 +49,11 @@ export { GetHardwareReservationArgs, GetHardwareReservationResult, GetHardwareRe
 export const getHardwareReservation: typeof import("./getHardwareReservation").getHardwareReservation = null as any;
 export const getHardwareReservationOutput: typeof import("./getHardwareReservation").getHardwareReservationOutput = null as any;
 utilities.lazyLoad(exports, ["getHardwareReservation","getHardwareReservationOutput"], () => require("./getHardwareReservation"));
+
+export { GetInterconnectionArgs, GetInterconnectionResult, GetInterconnectionOutputArgs } from "./getInterconnection";
+export const getInterconnection: typeof import("./getInterconnection").getInterconnection = null as any;
+export const getInterconnectionOutput: typeof import("./getInterconnection").getInterconnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getInterconnection","getInterconnectionOutput"], () => require("./getInterconnection"));
 
 export { GetIpBlockRangesArgs, GetIpBlockRangesResult, GetIpBlockRangesOutputArgs } from "./getIpBlockRanges";
 export const getIpBlockRanges: typeof import("./getIpBlockRanges").getIpBlockRanges = null as any;
@@ -134,6 +129,11 @@ export { GetVrfArgs, GetVrfResult, GetVrfOutputArgs } from "./getVrf";
 export const getVrf: typeof import("./getVrf").getVrf = null as any;
 export const getVrfOutput: typeof import("./getVrf").getVrfOutput = null as any;
 utilities.lazyLoad(exports, ["getVrf","getVrfOutput"], () => require("./getVrf"));
+
+export { InterconnectionArgs, InterconnectionState } from "./interconnection";
+export type Interconnection = import("./interconnection").Interconnection;
+export const Interconnection: typeof import("./interconnection").Interconnection = null as any;
+utilities.lazyLoad(exports, ["Interconnection"], () => require("./interconnection"));
 
 export { IpAttachmentArgs, IpAttachmentState } from "./ipAttachment";
 export type IpAttachment = import("./ipAttachment").IpAttachment;
@@ -220,14 +220,14 @@ const _module = {
         switch (type) {
             case "equinix:metal/bgpSession:BgpSession":
                 return new BgpSession(name, <any>undefined, { urn })
-            case "equinix:metal/connection:Connection":
-                return new Connection(name, <any>undefined, { urn })
             case "equinix:metal/device:Device":
                 return new Device(name, <any>undefined, { urn })
             case "equinix:metal/deviceNetworkType:DeviceNetworkType":
                 return new DeviceNetworkType(name, <any>undefined, { urn })
             case "equinix:metal/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "equinix:metal/interconnection:Interconnection":
+                return new Interconnection(name, <any>undefined, { urn })
             case "equinix:metal/ipAttachment:IpAttachment":
                 return new IpAttachment(name, <any>undefined, { urn })
             case "equinix:metal/organization:Organization":
@@ -264,10 +264,10 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("equinix", "metal/bgpSession", _module)
-pulumi.runtime.registerResourceModule("equinix", "metal/connection", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/device", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/deviceNetworkType", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/gateway", _module)
+pulumi.runtime.registerResourceModule("equinix", "metal/interconnection", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/ipAttachment", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/organization", _module)
 pulumi.runtime.registerResourceModule("equinix", "metal/organizationMember", _module)

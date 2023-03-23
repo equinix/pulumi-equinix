@@ -53,14 +53,6 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
-  "mod": "metal/connection",
-  "fqn": "pulumi_equinix.metal",
-  "classes": {
-   "equinix:metal/connection:Connection": "Connection"
-  }
- },
- {
-  "pkg": "equinix",
   "mod": "metal/device",
   "fqn": "pulumi_equinix.metal",
   "classes": {
@@ -81,6 +73,14 @@ _utilities.register(
   "fqn": "pulumi_equinix.metal",
   "classes": {
    "equinix:metal/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "metal/interconnection",
+  "fqn": "pulumi_equinix.metal",
+  "classes": {
+   "equinix:metal/interconnection:Interconnection": "Interconnection"
   }
  },
  {

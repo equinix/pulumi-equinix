@@ -430,7 +430,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			// Equinix Metal v1
 			"equinix_metal_bgp_session": {Tok: makeEquinixResource(metalMod, "BgpSession")},
-			"equinix_metal_connection":  {Tok: makeEquinixResource(metalMod, "Connection")},
+			"equinix_metal_connection":  {Tok: makeEquinixResource(metalMod, "Interconnection")},
 			"equinix_metal_device":      {
 				Tok: makeEquinixResource(metalMod, "Device"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -1259,7 +1259,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			// Equinix Metal v1
-			"equinix_metal_connection":           {Tok: makeEquinixDataSource(metalMod, "Connection")},
+			"equinix_metal_connection":           {Tok: makeEquinixDataSource(metalMod, "Interconnection")},
 			"equinix_metal_device":               {Tok: makeEquinixDataSource(metalMod, "Device")},
 			"equinix_metal_device_bgp_neighbors": {Tok: makeEquinixDataSource(metalMod, "DeviceBgpNeighbors")},
 			"equinix_metal_facility":             {Tok: makeEquinixDataSource(metalMod, "Facility")},

@@ -11,7 +11,7 @@ namespace Pulumi.Equinix.Metal.Outputs
 {
 
     [OutputType]
-    public sealed class ConnectionServiceToken
+    public sealed class InterconnectionServiceToken
     {
         public readonly string? ExpiresAt;
         public readonly string? Id;
@@ -24,7 +24,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         public readonly string? Type;
 
         [OutputConstructor]
-        private ConnectionServiceToken(
+        private InterconnectionServiceToken(
             string? expiresAt,
 
             string? id,

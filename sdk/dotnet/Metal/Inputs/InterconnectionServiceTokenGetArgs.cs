@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal.Inputs
 {
 
-    public sealed class ConnectionServiceTokenGetArgs : global::Pulumi.ResourceArgs
+    public sealed class InterconnectionServiceTokenGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
@@ -33,9 +33,9 @@ namespace Pulumi.Equinix.Metal.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        public ConnectionServiceTokenGetArgs()
+        public InterconnectionServiceTokenGetArgs()
         {
         }
-        public static new ConnectionServiceTokenGetArgs Empty => new ConnectionServiceTokenGetArgs();
+        public static new InterconnectionServiceTokenGetArgs Empty => new InterconnectionServiceTokenGetArgs();
     }
 }

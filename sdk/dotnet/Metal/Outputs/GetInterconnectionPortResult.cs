@@ -11,7 +11,7 @@ namespace Pulumi.Equinix.Metal.Outputs
 {
 
     [OutputType]
-    public sealed class GetConnectionPortResult
+    public sealed class GetInterconnectionPortResult
     {
         /// <summary>
         /// Port UUID.
@@ -43,7 +43,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         public readonly ImmutableArray<object> VirtualCircuitIds;
 
         [OutputConstructor]
-        private GetConnectionPortResult(
+        private GetInterconnectionPortResult(
             string id,
 
             string linkStatus,

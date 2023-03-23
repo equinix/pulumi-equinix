@@ -63,14 +63,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const exampleConnection = equinix.metal.getConnection({
+ * const exampleInterconnection = equinix.metal.getInterconnection({
  *     connectionId: _var.metal_dedicated_connection_id,
  * });
  * const exampleVirtualCircuit = new equinix.metal.VirtualCircuit("exampleVirtualCircuit", {
  *     description: "Virtual Circuit",
- *     connectionId: exampleConnection.then(exampleConnection => exampleConnection.id),
+ *     connectionId: exampleInterconnection.then(exampleInterconnection => exampleInterconnection.id),
  *     projectId: equinix_metal_project.example.id,
- *     portId: exampleConnection.then(exampleConnection => exampleConnection.ports?.[0]?.id),
+ *     portId: exampleInterconnection.then(exampleInterconnection => exampleInterconnection.ports?.[0]?.id),
  *     nniVlan: 1024,
  *     vrfId: equinix_metal_vrf.example.id,
  *     peerAsn: 65530,

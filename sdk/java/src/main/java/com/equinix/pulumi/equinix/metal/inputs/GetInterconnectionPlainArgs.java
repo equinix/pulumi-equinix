@@ -8,9 +8,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArgs {
+public final class GetInterconnectionPlainArgs extends com.pulumi.resources.InvokeArgs {
 
-    public static final GetConnectionPlainArgs Empty = new GetConnectionPlainArgs();
+    public static final GetInterconnectionPlainArgs Empty = new GetInterconnectionPlainArgs();
 
     /**
      * ID of the connection resource.
@@ -27,28 +27,28 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
         return this.connectionId;
     }
 
-    private GetConnectionPlainArgs() {}
+    private GetInterconnectionPlainArgs() {}
 
-    private GetConnectionPlainArgs(GetConnectionPlainArgs $) {
+    private GetInterconnectionPlainArgs(GetInterconnectionPlainArgs $) {
         this.connectionId = $.connectionId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetConnectionPlainArgs defaults) {
+    public static Builder builder(GetInterconnectionPlainArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetConnectionPlainArgs $;
+        private GetInterconnectionPlainArgs $;
 
         public Builder() {
-            $ = new GetConnectionPlainArgs();
+            $ = new GetInterconnectionPlainArgs();
         }
 
-        public Builder(GetConnectionPlainArgs defaults) {
-            $ = new GetConnectionPlainArgs(Objects.requireNonNull(defaults));
+        public Builder(GetInterconnectionPlainArgs defaults) {
+            $ = new GetInterconnectionPlainArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -62,7 +62,7 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
-        public GetConnectionPlainArgs build() {
+        public GetInterconnectionPlainArgs build() {
             $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
             return $;
         }

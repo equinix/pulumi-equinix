@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'GetConnectionResult',
-    'AwaitableGetConnectionResult',
-    'get_connection',
-    'get_connection_output',
+    'GetInterconnectionResult',
+    'AwaitableGetInterconnectionResult',
+    'get_interconnection',
+    'get_interconnection_output',
 ]
 
 @pulumi.output_type
-class GetConnectionResult:
+class GetInterconnectionResult:
     """
-    A collection of values returned by getConnection.
+    A collection of values returned by getInterconnection.
     """
     def __init__(__self__, connection_id=None, description=None, facility=None, id=None, metro=None, mode=None, name=None, organization_id=None, ports=None, project_id=None, redundancy=None, service_token_type=None, service_tokens=None, speed=None, status=None, tags=None, token=None, type=None, vlans=None):
         if connection_id and not isinstance(connection_id, str):
@@ -148,7 +148,7 @@ class GetConnectionResult:
 
     @property
     @pulumi.getter
-    def ports(self) -> Sequence['outputs.GetConnectionPortResult']:
+    def ports(self) -> Sequence['outputs.GetInterconnectionPortResult']:
         """
         List of connection ports - primary (`ports[0]`) and secondary (`ports[1]`)
         """
@@ -180,7 +180,7 @@ class GetConnectionResult:
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Sequence['outputs.GetConnectionServiceTokenResult']:
+    def service_tokens(self) -> Sequence['outputs.GetInterconnectionServiceTokenResult']:
         """
         List of connection service tokens with attributes
         """
@@ -235,12 +235,12 @@ class GetConnectionResult:
         return pulumi.get(self, "vlans")
 
 
-class AwaitableGetConnectionResult(GetConnectionResult):
+class AwaitableGetInterconnectionResult(GetInterconnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetConnectionResult(
+        return GetInterconnectionResult(
             connection_id=self.connection_id,
             description=self.description,
             facility=self.facility,
@@ -262,8 +262,8 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             vlans=self.vlans)
 
 
-def get_connection(connection_id: Optional[str] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionResult:
+def get_interconnection(connection_id: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInterconnectionResult:
     """
     Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
 
@@ -275,7 +275,7 @@ def get_connection(connection_id: Optional[str] = None,
     import pulumi
     import pulumi_equinix as equinix
 
-    example = equinix.metal.get_connection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
+    example = equinix.metal.get_interconnection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
     ```
 
 
@@ -284,9 +284,9 @@ def get_connection(connection_id: Optional[str] = None,
     __args__ = dict()
     __args__['connectionId'] = connection_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('equinix:metal/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
+    __ret__ = pulumi.runtime.invoke('equinix:metal/getInterconnection:getInterconnection', __args__, opts=opts, typ=GetInterconnectionResult).value
 
-    return AwaitableGetConnectionResult(
+    return AwaitableGetInterconnectionResult(
         connection_id=__ret__.connection_id,
         description=__ret__.description,
         facility=__ret__.facility,
@@ -308,9 +308,9 @@ def get_connection(connection_id: Optional[str] = None,
         vlans=__ret__.vlans)
 
 
-@_utilities.lift_output_func(get_connection)
-def get_connection_output(connection_id: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
+@_utilities.lift_output_func(get_interconnection)
+def get_interconnection_output(connection_id: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterconnectionResult]:
     """
     Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
 
@@ -322,7 +322,7 @@ def get_connection_output(connection_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_equinix as equinix
 
-    example = equinix.metal.get_connection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
+    example = equinix.metal.get_interconnection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
     ```
 
 

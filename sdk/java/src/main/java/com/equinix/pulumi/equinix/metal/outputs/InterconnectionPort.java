@@ -13,7 +13,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ConnectionPort {
+public final class InterconnectionPort {
     private @Nullable String id;
     private @Nullable String linkStatus;
     /**
@@ -34,7 +34,7 @@ public final class ConnectionPort {
     private @Nullable String status;
     private @Nullable List<Object> virtualCircuitIds;
 
-    private ConnectionPort() {}
+    private InterconnectionPort() {}
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
@@ -73,7 +73,7 @@ public final class ConnectionPort {
         return new Builder();
     }
 
-    public static Builder builder(ConnectionPort defaults) {
+    public static Builder builder(InterconnectionPort defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -86,7 +86,7 @@ public final class ConnectionPort {
         private @Nullable String status;
         private @Nullable List<Object> virtualCircuitIds;
         public Builder() {}
-        public Builder(ConnectionPort defaults) {
+        public Builder(InterconnectionPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.linkStatus = defaults.linkStatus;
@@ -135,8 +135,8 @@ public final class ConnectionPort {
         public Builder virtualCircuitIds(Object... virtualCircuitIds) {
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
-        public ConnectionPort build() {
-            final var o = new ConnectionPort();
+        public InterconnectionPort build() {
+            final var o = new InterconnectionPort();
             o.id = id;
             o.linkStatus = linkStatus;
             o.name = name;

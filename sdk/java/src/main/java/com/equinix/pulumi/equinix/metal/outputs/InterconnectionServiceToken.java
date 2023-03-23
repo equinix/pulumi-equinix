@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ConnectionServiceToken {
+public final class InterconnectionServiceToken {
     private @Nullable String expiresAt;
     private @Nullable String id;
     private @Nullable String maxAllowedSpeed;
@@ -22,7 +22,7 @@ public final class ConnectionServiceToken {
      */
     private @Nullable String type;
 
-    private ConnectionServiceToken() {}
+    private InterconnectionServiceToken() {}
     public Optional<String> expiresAt() {
         return Optional.ofNullable(this.expiresAt);
     }
@@ -50,7 +50,7 @@ public final class ConnectionServiceToken {
         return new Builder();
     }
 
-    public static Builder builder(ConnectionServiceToken defaults) {
+    public static Builder builder(InterconnectionServiceToken defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -62,7 +62,7 @@ public final class ConnectionServiceToken {
         private @Nullable String state;
         private @Nullable String type;
         public Builder() {}
-        public Builder(ConnectionServiceToken defaults) {
+        public Builder(InterconnectionServiceToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expiresAt = defaults.expiresAt;
     	      this.id = defaults.id;
@@ -102,8 +102,8 @@ public final class ConnectionServiceToken {
             this.type = type;
             return this;
         }
-        public ConnectionServiceToken build() {
-            final var o = new ConnectionServiceToken();
+        public InterconnectionServiceToken build() {
+            final var o = new InterconnectionServiceToken();
             o.expiresAt = expiresAt;
             o.id = id;
             o.maxAllowedSpeed = maxAllowedSpeed;
