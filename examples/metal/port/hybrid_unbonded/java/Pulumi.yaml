@@ -1,0 +1,6 @@
+name: equinix-metal-port
+runtime: java
+description: An Equinix Metal Port resource
+config:
+  portId:
+    type: string

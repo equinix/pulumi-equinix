@@ -1,0 +1,20 @@
+name: equinix-metal-port
+runtime: yaml
+description: An Equinix Metal Port resource
+config:
+  portId:
+    type: string
+  vlanId:
+    type: string
+resources:
+  portBond0:
+    type: equinix:metal:Port
+    properties:
+      portId: ${portId}
+      bonded: true
+      layer2: false
+      vlanIds:
+      - ${vlanId}
+outputs:
+  portType: ${port.type}
+  portBondedNetworkType: ${port.networkType}
