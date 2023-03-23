@@ -5,12 +5,13 @@
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
+import * as fs from "fs";
 
 const config = new pulumi.Config();
 const metro = config.get("metro") || "SV";
 const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     fileName: "Aviatrix-ZTP-file",
-    content: new pulumi.asset.FileAsset("./../assets/aviatrix-cloud-init.txt"),
+    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
     processType: "CLOUD_INIT",
@@ -35,7 +36,7 @@ if metro is None:
     metro = "SV"
 network_file = equinix.networkedge.NetworkFile("networkFile",
     file_name="Aviatrix-ZTP-file",
-    content=pulumi.FileAsset("./../assets/aviatrix-cloud-init.txt"),
+    content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
     metro_code=metro,
     device_type_code="AVIATRIX_EDGE",
     process_type="CLOUD_INIT",
@@ -53,10 +54,20 @@ pulumi.export("networkFileStatus", network_file.status)
 package main
 
 import (
+	"os"
+
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+func readFileOrPanic(path string) pulumi.StringPtrInput {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		panic(err.Error())
+	}
+	return pulumi.String(string(data))
+}
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
@@ -67,7 +78,7 @@ func main() {
 		}
 		networkFile, err := networkedge.NewNetworkFile(ctx, "networkFile", &networkedge.NetworkFileArgs{
 			FileName:       pulumi.String("Aviatrix-ZTP-file"),
-			Content:        pulumi.NewFileAsset("./../assets/aviatrix-cloud-init.txt"),
+			Content:        readFileOrPanic("./../assets/aviatrix-cloud-init.txt"),
 			MetroCode:      pulumi.String(metro),
 			DeviceTypeCode: pulumi.String("AVIATRIX_EDGE"),
 			ProcessType:    pulumi.String("CLOUD_INIT"),
@@ -90,6 +101,7 @@ func main() {
 
 ```csharp
 using System.Collections.Generic;
+using System.IO;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -100,7 +112,7 @@ return await Deployment.RunAsync(() =>
     var networkFile = new Equinix.NetworkEdge.NetworkFile("networkFile", new()
     {
         FileName = "Aviatrix-ZTP-file",
-        Content = new FileAsset("./../assets/aviatrix-cloud-init.txt"),
+        Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
         MetroCode = metro,
         DeviceTypeCode = "AVIATRIX_EDGE",
         ProcessType = "CLOUD_INIT",
@@ -128,7 +140,6 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.equinix.networkedge.NetworkFile;
 import com.pulumi.equinix.networkedge.NetworkFileArgs;
-import com.pulumi.asset.FileAsset;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -146,7 +157,7 @@ public class App {
         final var metro = config.get("metro").orElse("SV");
         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
             .fileName("Aviatrix-ZTP-file")
-            .content(new FileAsset("./../assets/aviatrix-cloud-init.txt"))
+            .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
             .metroCode(metro)
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")
@@ -175,7 +186,7 @@ resources:
     properties:
       fileName: Aviatrix-ZTP-file
       content:
-        fn::fileAsset: ./../assets/aviatrix-cloud-init.txt
+        fn::readFile: ./../assets/aviatrix-cloud-init.txt
       metroCode: ${metro}
       deviceTypeCode: AVIATRIX_EDGE
       processType: CLOUD_INIT
