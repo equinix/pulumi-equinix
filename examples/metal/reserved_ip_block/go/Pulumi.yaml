@@ -1,0 +1,15 @@
+name: equinix-metal-reserved-ip-block
+runtime: go
+description: An Equinix Metal Reserved IP Block resource
+config:
+  metro:
+    type: string
+    default: FR
+  projectId:
+    type: string
+  quantity:
+    type: integer
+    default: 1
+  type:
+    type: string
+    default: public_ipv4
