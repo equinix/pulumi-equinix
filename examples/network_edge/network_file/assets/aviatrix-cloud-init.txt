@@ -1,0 +1,6 @@
+#cloud-config-example
+
+// THIS IS AN EXAMPLE FILE. YOU MAY NEED TO FOLLOW INSTRUCTIONS
+// TO GENERATE A VALID CLOUDINIT ZTP FILE FOR AVIATRIX DEVICES
+// https://docs.equinix.com/en-us/Content/Interconnection/NE/deploy-guide/Aviatrix/NE-create-Aviatrix-Edge.htm?Highlight=Aviatrix
+// https://docs.aviatrix.com/documentation/latest/deploying-secure-networks/edge-equinix-workflow.html
