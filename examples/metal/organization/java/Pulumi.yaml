@@ -1,0 +1,6 @@
+name: equinix-metal-organization
+runtime: java
+description: An Equinix Metal Organization resource
+config:
+  deviceId:
+    type: string

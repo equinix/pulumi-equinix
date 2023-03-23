@@ -1,0 +1,6 @@
+name: equinix-metal-organization
+runtime: python
+description: An Equinix Metal Organization resource
+config:
+  deviceId:
+    type: string
