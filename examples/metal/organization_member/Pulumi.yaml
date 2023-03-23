@@ -1,0 +1,23 @@
+name: equinix-metal-organization-member
+runtime: yaml
+description: An Equinix Metal Organization Member resource to manage the membership of existing and new invitees within an Equinix Metal organization and its projects
+config:
+  organizationId:
+    type: string
+  projectId:
+    type: string
+  userEmailAddress:
+    type: string
+resources:
+  member:
+    type: equinix:metal:OrganizationMember
+    properties:
+      invitee: ${userEmailAddress}
+      roles:
+      - limited_collaborator
+      projectsIds:
+      - ${projectId}
+      organizationId: ${organizationId}
+outputs:
+  memberId: ${member.id}
+  memberState: ${member.state}
