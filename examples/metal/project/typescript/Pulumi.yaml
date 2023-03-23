@@ -1,0 +1,9 @@
+name: equinix-metal-project
+runtime: nodejs
+description: An Equinix Metal Project resource
+config:
+  name:
+    type: string
+    default: Default Project
+  organizationId:
+    type: string
