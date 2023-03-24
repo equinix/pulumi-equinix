@@ -17,31 +17,39 @@ The Equinix provider must be configured with credentials to create and update re
 {{% choosable language typescript %}}
 
 ```typescript
+import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
 
-const web1 = new equinix.metal.Device("web1", {
+const config = new pulumi.Config();
+const projectId = config.require("projectId");
+const web = new equinix.metal.Device("web", {
     hostname: "webserver1",
     plan: "c3.small.x86",
-    metro: "sv",
     operatingSystem: "ubuntu_20_04",
+    metro: "sv",
     billingCycle: "hourly",
-    projectId: "my-project-id",
+    projectId: projectId,
 });
+export const webPublicIp = pulumi.interpolate`http://${web.accessPublicIpv4}`;
 ```
 
 {{% /choosable %}}
 {{% choosable language python %}}
 
 ```python
+import pulumi
 import pulumi_equinix as equinix
 
-web1 = equinix.metal.Device("web1",
+config = pulumi.Config()
+project_id = config.require("projectId")
+web = equinix.metal.Device("web",
     hostname="webserver1",
     plan="c3.small.x86",
-    metro="sv",
     operating_system="ubuntu_20_04",
+    metro="sv",
     billing_cycle="hourly",
-    project_id="my-project-id")
+    project_id=project_id)
+pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
 ```
 
 {{% /choosable %}}
@@ -51,50 +59,63 @@ web1 = equinix.metal.Device("web1",
 package main
 
 import (
+	"fmt"
+
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
-    pulumi.Run(func(ctx *pulumi.Context) error {
-        _, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-            Hostname:        pulumi.String("webserver1"),
-            Plan:            pulumi.String("c3.small.x86"),
-            Metro:           pulumi.String("sv"),
-            OperatingSystem: pulumi.String("ubuntu_20_04"),
-            BillingCycle:    pulumi.String("hourly"),
-            ProjectId:       pulumi.Any("my-project-id"),
-        })
-        if err != nil {
-            return err
-        }
-        return nil
-    })
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		cfg := config.New(ctx, "")
+		projectId := cfg.Require("projectId")
+		web, err := metal.NewDevice(ctx, "web", &metal.DeviceArgs{
+			Hostname:        pulumi.String("webserver1"),
+			Plan:            pulumi.String("c3.small.x86"),
+			OperatingSystem: pulumi.String("ubuntu_20_04"),
+			Metro:           pulumi.String("sv"),
+			BillingCycle:    pulumi.String("hourly"),
+			ProjectId:       pulumi.String(projectId),
+		})
+		if err != nil {
+			return err
+		}
+		ctx.Export("webPublicIp", web.AccessPublicIpv4.ApplyT(func(accessPublicIpv4 string) (string, error) {
+			return fmt.Sprintf("http://%v", accessPublicIpv4), nil
+		}).(pulumi.StringOutput))
+		return nil
+	})
 }
 ```
 
 {{% /choosable %}}
-<!-- {{% choosable language csharp %}}
+{{% choosable language csharp %}}
 
 ```csharp
+using System.Collections.Generic;
+using Pulumi;
 using Equinix = Pulumi.Equinix;
 
-class MyStack : Stack
+return await Deployment.RunAsync(() => 
 {
-    public MyStack()
+    var config = new Config();
+    var projectId = config.Require("projectId");
+    var web = new Equinix.Metal.Device("web", new()
     {
-        var web1 = new Equinix.Metal.Device("web1", new Equinix.Metal.DeviceArgs
-        {
-            Hostname = "webserver1",
-            Plan = "c3.small.x86",
-            Metro = "sv",
-            OperatingSystem = "ubuntu_20_04",
-            BillingCycle = "hourly",
-            ProjectId = "my-project-id",
-        });
-    }
+        Hostname = "webserver1",
+        Plan = "c3.small.x86",
+        OperatingSystem = "ubuntu_20_04",
+        Metro = "sv",
+        BillingCycle = "hourly",
+        ProjectId = projectId,
+    });
 
-}
+    return new Dictionary<string, object?>
+    {
+        ["webPublicIp"] = web.AccessPublicIpv4.Apply(accessPublicIpv4 => $"http://{accessPublicIpv4}"),
+    };
+});
 ```
 
 {{% /choosable %}}
@@ -105,8 +126,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.equinix.metal.Device;
-import com.equinix.pulumi.equinix.metal.DeviceArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.Device;
+import com.pulumi.equinix.metal.DeviceArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -114,32 +142,44 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var web1 = new Device("web1";, DeviceArgs.builder()        
+        final var config = ctx.config();
+        final var projectId = config.get("projectId");
+        var web = new Device("web", DeviceArgs.builder()        
             .hostname("webserver1")
             .plan("c3.small.x86")
-            .metro("sv")
             .operatingSystem("ubuntu_20_04")
+            .metro("sv")
             .billingCycle("hourly")
-            .projectId("my-project-id")
+            .projectId(projectId)
             .build());
+
+        ctx.export("webPublicIp", web.accessPublicIpv4().applyValue(accessPublicIpv4 -> String.format("http://%s", accessPublicIpv4)));
     }
 }
 ```
 
-{{% /choosable %}} -->
+{{% /choosable %}}
 {{% choosable language yaml %}}
 
 ```yaml
+name: equinix-metal-device
+runtime: yaml
+description: An Equinix Metal Device resource
+config:
+  projectId:
+    type: string
 resources:
   web:
     type: equinix:metal:Device
     properties:
       hostname: webserver1
-      instanceType: c3.small.x86
+      plan: c3.small.x86
       operatingSystem: ubuntu_20_04
       metro: sv
       billingCycle: hourly
-      projectId: my-project-id
+      projectId: ${projectId}
+outputs:
+  webPublicIp: http://${web.accessPublicIpv4}
 ```
 
 {{% /choosable %}}
