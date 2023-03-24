@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
-import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const projectId = config.require("projectId");
