@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -22,7 +23,7 @@ public final class GetPortsResult {
      * @return name
      * 
      */
-    private @Nullable List<GetPortsFilter> filters;
+    private @Nullable GetPortsFilter filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -41,8 +42,8 @@ public final class GetPortsResult {
      * @return name
      * 
      */
-    public List<GetPortsFilter> filters() {
-        return this.filters == null ? List.of() : this.filters;
+    public Optional<GetPortsFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -62,13 +63,13 @@ public final class GetPortsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPortsDatum> data;
-        private @Nullable List<GetPortsFilter> filters;
+        private @Nullable GetPortsFilter filter;
         private String id;
         public Builder() {}
         public Builder(GetPortsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.data = defaults.data;
-    	      this.filters = defaults.filters;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
         }
 
@@ -81,12 +82,9 @@ public final class GetPortsResult {
             return data(List.of(data));
         }
         @CustomType.Setter
-        public Builder filters(@Nullable List<GetPortsFilter> filters) {
-            this.filters = filters;
+        public Builder filter(@Nullable GetPortsFilter filter) {
+            this.filter = filter;
             return this;
-        }
-        public Builder filters(GetPortsFilter... filters) {
-            return filters(List.of(filters));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -96,7 +94,7 @@ public final class GetPortsResult {
         public GetPortsResult build() {
             final var o = new GetPortsResult();
             o.data = data;
-            o.filters = filters;
+            o.filter = filter;
             o.id = id;
             return o;
         }

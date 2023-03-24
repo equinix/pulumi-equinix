@@ -23,7 +23,7 @@ func GetPorts(ctx *pulumi.Context, args *GetPortsArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getPorts.
 type GetPortsArgs struct {
 	// name
-	Filters []GetPortsFilter `pulumi:"filters"`
+	Filter *GetPortsFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getPorts.
@@ -31,7 +31,7 @@ type GetPortsResult struct {
 	// List of  Ports
 	Data []GetPortsDatum `pulumi:"data"`
 	// name
-	Filters []GetPortsFilter `pulumi:"filters"`
+	Filter *GetPortsFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -52,7 +52,7 @@ func GetPortsOutput(ctx *pulumi.Context, args GetPortsOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getPorts.
 type GetPortsOutputArgs struct {
 	// name
-	Filters GetPortsFilterArrayInput `pulumi:"filters"`
+	Filter GetPortsFilterPtrInput `pulumi:"filter"`
 }
 
 func (GetPortsOutputArgs) ElementType() reflect.Type {
@@ -80,8 +80,8 @@ func (o GetPortsResultOutput) Data() GetPortsDatumArrayOutput {
 }
 
 // name
-func (o GetPortsResultOutput) Filters() GetPortsFilterArrayOutput {
-	return o.ApplyT(func(v GetPortsResult) []GetPortsFilter { return v.Filters }).(GetPortsFilterArrayOutput)
+func (o GetPortsResultOutput) Filter() GetPortsFilterPtrOutput {
+	return o.ApplyT(func(v GetPortsResult) *GetPortsFilter { return v.Filter }).(GetPortsFilterPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

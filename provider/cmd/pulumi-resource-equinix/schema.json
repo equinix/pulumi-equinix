@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`equinix` Terraform Provider](https://github.com/equinix/terraform-provider-equinix).",
     "repository": "https://github.com/equinix/pulumi-equinix",
-    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty",
+    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
     "publisher": "Equinix",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -18869,11 +18869,8 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getPorts.\n",
                 "properties": {
-                    "filters": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortsFilter:getPortsFilter"
-                        },
+                    "filter": {
+                        "$ref": "#/types/equinix:fabric/getPortsFilter:getPortsFilter",
                         "description": "name\n"
                     }
                 },
@@ -18889,11 +18886,8 @@
                         },
                         "description": "List of  Ports\n"
                     },
-                    "filters": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/getPortsFilter:getPortsFilter"
-                        },
+                    "filter": {
+                        "$ref": "#/types/equinix:fabric/getPortsFilter:getPortsFilter",
                         "description": "name\n"
                     },
                     "id": {

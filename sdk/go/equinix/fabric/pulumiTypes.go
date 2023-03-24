@@ -16332,29 +16332,45 @@ func (i GetPortsFilterArgs) ToGetPortsFilterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterOutput)
 }
 
-// GetPortsFilterArrayInput is an input type that accepts GetPortsFilterArray and GetPortsFilterArrayOutput values.
-// You can construct a concrete instance of `GetPortsFilterArrayInput` via:
+func (i GetPortsFilterArgs) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
+	return i.ToGetPortsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetPortsFilterArgs) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterOutput).ToGetPortsFilterPtrOutputWithContext(ctx)
+}
+
+// GetPortsFilterPtrInput is an input type that accepts GetPortsFilterArgs, GetPortsFilterPtr and GetPortsFilterPtrOutput values.
+// You can construct a concrete instance of `GetPortsFilterPtrInput` via:
 //
-//	GetPortsFilterArray{ GetPortsFilterArgs{...} }
-type GetPortsFilterArrayInput interface {
+//	        GetPortsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPortsFilterPtrInput interface {
 	pulumi.Input
 
-	ToGetPortsFilterArrayOutput() GetPortsFilterArrayOutput
-	ToGetPortsFilterArrayOutputWithContext(context.Context) GetPortsFilterArrayOutput
+	ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput
+	ToGetPortsFilterPtrOutputWithContext(context.Context) GetPortsFilterPtrOutput
 }
 
-type GetPortsFilterArray []GetPortsFilterInput
+type getPortsFilterPtrType GetPortsFilterArgs
 
-func (GetPortsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsFilter)(nil)).Elem()
+func GetPortsFilterPtr(v *GetPortsFilterArgs) GetPortsFilterPtrInput {
+	return (*getPortsFilterPtrType)(v)
 }
 
-func (i GetPortsFilterArray) ToGetPortsFilterArrayOutput() GetPortsFilterArrayOutput {
-	return i.ToGetPortsFilterArrayOutputWithContext(context.Background())
+func (*getPortsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPortsFilter)(nil)).Elem()
 }
 
-func (i GetPortsFilterArray) ToGetPortsFilterArrayOutputWithContext(ctx context.Context) GetPortsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterArrayOutput)
+func (i *getPortsFilterPtrType) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
+	return i.ToGetPortsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getPortsFilterPtrType) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterPtrOutput)
 }
 
 type GetPortsFilterOutput struct{ *pulumi.OutputState }
@@ -16371,29 +16387,53 @@ func (o GetPortsFilterOutput) ToGetPortsFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetPortsFilterOutput) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
+	return o.ToGetPortsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetPortsFilterOutput) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPortsFilter) *GetPortsFilter {
+		return &v
+	}).(GetPortsFilterPtrOutput)
+}
+
 // Query Parameter to Get Ports By Name
 func (o GetPortsFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPortsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type GetPortsFilterArrayOutput struct{ *pulumi.OutputState }
+type GetPortsFilterPtrOutput struct{ *pulumi.OutputState }
 
-func (GetPortsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsFilter)(nil)).Elem()
+func (GetPortsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPortsFilter)(nil)).Elem()
 }
 
-func (o GetPortsFilterArrayOutput) ToGetPortsFilterArrayOutput() GetPortsFilterArrayOutput {
+func (o GetPortsFilterPtrOutput) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
 	return o
 }
 
-func (o GetPortsFilterArrayOutput) ToGetPortsFilterArrayOutputWithContext(ctx context.Context) GetPortsFilterArrayOutput {
+func (o GetPortsFilterPtrOutput) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
 	return o
 }
 
-func (o GetPortsFilterArrayOutput) Index(i pulumi.IntInput) GetPortsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsFilter {
-		return vs[0].([]GetPortsFilter)[vs[1].(int)]
+func (o GetPortsFilterPtrOutput) Elem() GetPortsFilterOutput {
+	return o.ApplyT(func(v *GetPortsFilter) GetPortsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetPortsFilter
+		return ret
 	}).(GetPortsFilterOutput)
+}
+
+// Query Parameter to Get Ports By Name
+func (o GetPortsFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPortsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceProfileAccessPointTypeConfig struct {
@@ -20392,7 +20432,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyInput)(nil)).Elem(), GetPortsDatumRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyArrayInput)(nil)).Elem(), GetPortsDatumRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterInput)(nil)).Elem(), GetPortsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterArrayInput)(nil)).Elem(), GetPortsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterPtrInput)(nil)).Elem(), GetPortsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigApiConfigInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigApiConfigArgs{})
@@ -20667,7 +20707,7 @@ func init() {
 	pulumi.RegisterOutputType(GetPortsDatumRedundancyOutput{})
 	pulumi.RegisterOutputType(GetPortsDatumRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetPortsFilterOutput{})
-	pulumi.RegisterOutputType(GetPortsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigApiConfigOutput{})

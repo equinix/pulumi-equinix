@@ -1132,6 +1132,10 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_fabric_ports": {
 				Tok: makeEquinixDataSource(fabricMod, "Ports"),
 				Fields: map[string]*tfbridge.SchemaInfo{
+					"filters": {
+						Name: "filter",
+						MaxItemsOne: tfbridge.True(),
+					},
 					"data": {
 						Name: "data",
 						Fields: map[string]*tfbridge.SchemaInfo{

@@ -25,6 +25,6 @@
     "pulumi": {
         "resource": true,
         "name": "equinix",
-        "server": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679576138+f6b31edc.dirty"
+        "server": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty"
     }
 }
