@@ -278,40 +278,26 @@ class OrganizationMember(pulumi.CustomResource):
         Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
 
         ## Example Usage
-
-        Add a member to an organization to collaborate on given projects:
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
+        config = pulumi.Config()
+        organization_id = config.require("organizationId")
+        project_id = config.require("projectId")
+        user_email_address = config.require("userEmailAddress")
         member = equinix.metal.OrganizationMember("member",
-            invitee="member@example.com",
+            invitee=user_email_address,
             roles=["limited_collaborator"],
-            projects_ids=[var["project_id"]],
-            organization_id=var["organization_id"])
-        ```
-
-        Add a member to an organization as an organization administrator:
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        owner = equinix.metal.OrganizationMember("owner",
-            invitee="admin@example.com",
-            roles=["owner"],
-            projects_ids=[],
-            organization_id=var["organization_id"])
+            projects_ids=[project_id],
+            organization_id=organization_id)
+        pulumi.export("memberId", member.id)
+        pulumi.export("memberState", member.state)
         ```
 
         ## Import
 
-        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments
-
-        ```sh
-         $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
-        ```
+        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -331,40 +317,26 @@ class OrganizationMember(pulumi.CustomResource):
         Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
 
         ## Example Usage
-
-        Add a member to an organization to collaborate on given projects:
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
+        config = pulumi.Config()
+        organization_id = config.require("organizationId")
+        project_id = config.require("projectId")
+        user_email_address = config.require("userEmailAddress")
         member = equinix.metal.OrganizationMember("member",
-            invitee="member@example.com",
+            invitee=user_email_address,
             roles=["limited_collaborator"],
-            projects_ids=[var["project_id"]],
-            organization_id=var["organization_id"])
-        ```
-
-        Add a member to an organization as an organization administrator:
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        owner = equinix.metal.OrganizationMember("owner",
-            invitee="admin@example.com",
-            roles=["owner"],
-            projects_ids=[],
-            organization_id=var["organization_id"])
+            projects_ids=[project_id],
+            organization_id=organization_id)
+        pulumi.export("memberId", member.id)
+        pulumi.export("memberState", member.state)
         ```
 
         ## Import
 
-        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments
-
-        ```sh
-         $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
-        ```
+        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param OrganizationMemberArgs args: The arguments to use to populate this resource's properties.

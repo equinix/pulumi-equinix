@@ -45,12 +45,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ProjectApiKey(&#34;test&#34;, ProjectApiKeyArgs.builder()        
- *             .projectId(local.existing_project_id())
- *             .description(&#34;Read-only key scoped to a projct&#34;)
- *             .readOnly(true)
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var readOnly = config.get(&#34;readOnly&#34;).orElse(false);
+ *         var apiKey = new ProjectApiKey(&#34;apiKey&#34;, ProjectApiKeyArgs.builder()        
+ *             .projectId(projectId)
+ *             .description(&#34;A project level API Key&#34;)
+ *             .readOnly(readOnly)
  *             .build());
  * 
+ *         ctx.export(&#34;apiKeyToken&#34;, apiKey.token());
  *     }
  * }
  * ```

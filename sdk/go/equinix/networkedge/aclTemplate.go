@@ -18,7 +18,6 @@ import (
 // traffic. Templates can be assigned to the network devices.
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -31,27 +30,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkedge.NewAclTemplate(ctx, "myacl", &networkedge.AclTemplateArgs{
+//			aclTemplate, err := networkedge.NewAclTemplate(ctx, "aclTemplate", &networkedge.AclTemplateArgs{
+//				Name:        pulumi.String("test"),
 //				Description: pulumi.String("Test ACL template"),
 //				InboundRules: networkedge.AclTemplateInboundRuleArray{
 //					&networkedge.AclTemplateInboundRuleArgs{
-//						Description: pulumi.String("inbound rule description"),
-//						DstPort:     pulumi.String("any"),
+//						Subnet:      pulumi.String("1.1.1.1/32"),
 //						Protocol:    pulumi.String("IP"),
 //						SrcPort:     pulumi.String("any"),
-//						Subnet:      pulumi.String("1.1.1.1/32"),
+//						DstPort:     pulumi.String("any"),
+//						Description: pulumi.String("inbound rule description"),
 //					},
 //					&networkedge.AclTemplateInboundRuleArgs{
-//						DstPort:  pulumi.String("53,1045,2041"),
-//						Protocol: pulumi.String("UDP"),
-//						SrcPort:  pulumi.String("any"),
-//						Subnet:   pulumi.String("172.16.25.0/24"),
+//						Subnet:      pulumi.String("2.2.2.2/28"),
+//						Protocol:    pulumi.String("TCP"),
+//						SrcPort:     pulumi.String("any"),
+//						DstPort:     pulumi.String("any"),
+//						Description: pulumi.String("inbound rule description"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("templateId", aclTemplate.ID())
 //			return nil
 //		})
 //	}
@@ -60,13 +62,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id}
-//
-// ```
+// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
 type AclTemplate struct {
 	pulumi.CustomResourceState
 

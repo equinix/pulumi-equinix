@@ -9,41 +9,27 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Add a member to an organization to collaborate on given projects:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
+ * const config = new pulumi.Config();
+ * const organizationId = config.require("organizationId");
+ * const projectId = config.require("projectId");
+ * const userEmailAddress = config.require("userEmailAddress");
  * const member = new equinix.metal.OrganizationMember("member", {
- *     invitee: "member@example.com",
+ *     invitee: userEmailAddress,
  *     roles: ["limited_collaborator"],
- *     projectsIds: [_var.project_id],
- *     organizationId: _var.organization_id,
+ *     projectsIds: [projectId],
+ *     organizationId: organizationId,
  * });
- * ```
- *
- * Add a member to an organization as an organization administrator:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const owner = new equinix.metal.OrganizationMember("owner", {
- *     invitee: "admin@example.com",
- *     roles: ["owner"],
- *     projectsIds: [],
- *     organizationId: _var.organization_id,
- * });
+ * export const memberId = member.id;
+ * export const memberState = member.state;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments
- *
- * ```sh
- *  $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
- * ```
+ * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
  */
 export class OrganizationMember extends pulumi.CustomResource {
     /**

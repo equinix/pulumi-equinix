@@ -21,15 +21,15 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
      * Connection additional information
      * 
      */
-    @Import(name="additionalInfos")
-    private @Nullable Output<List<ConnectionOperationErrorAdditionalInfoArgs>> additionalInfos;
+    @Import(name="additionalInfo")
+    private @Nullable Output<List<ConnectionOperationErrorAdditionalInfoArgs>> additionalInfo;
 
     /**
      * @return Connection additional information
      * 
      */
-    public Optional<Output<List<ConnectionOperationErrorAdditionalInfoArgs>>> additionalInfos() {
-        return Optional.ofNullable(this.additionalInfos);
+    public Optional<Output<List<ConnectionOperationErrorAdditionalInfoArgs>>> additionalInfo() {
+        return Optional.ofNullable(this.additionalInfo);
     }
 
     @Import(name="correlationId")
@@ -70,7 +70,7 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
     private ConnectionOperationErrorArgs() {}
 
     private ConnectionOperationErrorArgs(ConnectionOperationErrorArgs $) {
-        this.additionalInfos = $.additionalInfos;
+        this.additionalInfo = $.additionalInfo;
         this.correlationId = $.correlationId;
         this.details = $.details;
         this.errorCode = $.errorCode;
@@ -97,34 +97,34 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param additionalInfos Connection additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(@Nullable Output<List<ConnectionOperationErrorAdditionalInfoArgs>> additionalInfos) {
-            $.additionalInfos = additionalInfos;
+        public Builder additionalInfo(@Nullable Output<List<ConnectionOperationErrorAdditionalInfoArgs>> additionalInfo) {
+            $.additionalInfo = additionalInfo;
             return this;
         }
 
         /**
-         * @param additionalInfos Connection additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(List<ConnectionOperationErrorAdditionalInfoArgs> additionalInfos) {
-            return additionalInfos(Output.of(additionalInfos));
+        public Builder additionalInfo(List<ConnectionOperationErrorAdditionalInfoArgs> additionalInfo) {
+            return additionalInfo(Output.of(additionalInfo));
         }
 
         /**
-         * @param additionalInfos Connection additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(ConnectionOperationErrorAdditionalInfoArgs... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
+        public Builder additionalInfo(ConnectionOperationErrorAdditionalInfoArgs... additionalInfo) {
+            return additionalInfo(List.of(additionalInfo));
         }
 
         public Builder correlationId(@Nullable Output<String> correlationId) {

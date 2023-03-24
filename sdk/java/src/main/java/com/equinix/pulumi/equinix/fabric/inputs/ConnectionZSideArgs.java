@@ -22,53 +22,53 @@ public final class ConnectionZSideArgs extends com.pulumi.resources.ResourceArgs
      * Point of access details
      * 
      */
-    @Import(name="accessPoints")
-    private @Nullable Output<List<ConnectionZSideAccessPointArgs>> accessPoints;
+    @Import(name="accessPoint")
+    private @Nullable Output<ConnectionZSideAccessPointArgs> accessPoint;
 
     /**
      * @return Point of access details
      * 
      */
-    public Optional<Output<List<ConnectionZSideAccessPointArgs>>> accessPoints() {
-        return Optional.ofNullable(this.accessPoints);
+    public Optional<Output<ConnectionZSideAccessPointArgs>> accessPoint() {
+        return Optional.ofNullable(this.accessPoint);
     }
 
     /**
      * Connection side additional information
      * 
      */
-    @Import(name="additionalInfos")
-    private @Nullable Output<List<ConnectionZSideAdditionalInfoArgs>> additionalInfos;
+    @Import(name="additionalInfo")
+    private @Nullable Output<List<ConnectionZSideAdditionalInfoArgs>> additionalInfo;
 
     /**
      * @return Connection side additional information
      * 
      */
-    public Optional<Output<List<ConnectionZSideAdditionalInfoArgs>>> additionalInfos() {
-        return Optional.ofNullable(this.additionalInfos);
+    public Optional<Output<List<ConnectionZSideAdditionalInfoArgs>>> additionalInfo() {
+        return Optional.ofNullable(this.additionalInfo);
     }
 
     /**
      * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
      * 
      */
-    @Import(name="serviceTokens")
-    private @Nullable Output<List<ConnectionZSideServiceTokenArgs>> serviceTokens;
+    @Import(name="serviceToken")
+    private @Nullable Output<ConnectionZSideServiceTokenArgs> serviceToken;
 
     /**
      * @return For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
      * 
      */
-    public Optional<Output<List<ConnectionZSideServiceTokenArgs>>> serviceTokens() {
-        return Optional.ofNullable(this.serviceTokens);
+    public Optional<Output<ConnectionZSideServiceTokenArgs>> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     private ConnectionZSideArgs() {}
 
     private ConnectionZSideArgs(ConnectionZSideArgs $) {
-        this.accessPoints = $.accessPoints;
-        this.additionalInfos = $.additionalInfos;
-        this.serviceTokens = $.serviceTokens;
+        this.accessPoint = $.accessPoint;
+        this.additionalInfo = $.additionalInfo;
+        this.serviceToken = $.serviceToken;
     }
 
     public static Builder builder() {
@@ -90,96 +90,76 @@ public final class ConnectionZSideArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accessPoints Point of access details
+         * @param accessPoint Point of access details
          * 
          * @return builder
          * 
          */
-        public Builder accessPoints(@Nullable Output<List<ConnectionZSideAccessPointArgs>> accessPoints) {
-            $.accessPoints = accessPoints;
+        public Builder accessPoint(@Nullable Output<ConnectionZSideAccessPointArgs> accessPoint) {
+            $.accessPoint = accessPoint;
             return this;
         }
 
         /**
-         * @param accessPoints Point of access details
+         * @param accessPoint Point of access details
          * 
          * @return builder
          * 
          */
-        public Builder accessPoints(List<ConnectionZSideAccessPointArgs> accessPoints) {
-            return accessPoints(Output.of(accessPoints));
+        public Builder accessPoint(ConnectionZSideAccessPointArgs accessPoint) {
+            return accessPoint(Output.of(accessPoint));
         }
 
         /**
-         * @param accessPoints Point of access details
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder accessPoints(ConnectionZSideAccessPointArgs... accessPoints) {
-            return accessPoints(List.of(accessPoints));
-        }
-
-        /**
-         * @param additionalInfos Connection side additional information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder additionalInfos(@Nullable Output<List<ConnectionZSideAdditionalInfoArgs>> additionalInfos) {
-            $.additionalInfos = additionalInfos;
+        public Builder additionalInfo(@Nullable Output<List<ConnectionZSideAdditionalInfoArgs>> additionalInfo) {
+            $.additionalInfo = additionalInfo;
             return this;
         }
 
         /**
-         * @param additionalInfos Connection side additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(List<ConnectionZSideAdditionalInfoArgs> additionalInfos) {
-            return additionalInfos(Output.of(additionalInfos));
+        public Builder additionalInfo(List<ConnectionZSideAdditionalInfoArgs> additionalInfo) {
+            return additionalInfo(Output.of(additionalInfo));
         }
 
         /**
-         * @param additionalInfos Connection side additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(ConnectionZSideAdditionalInfoArgs... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
+        public Builder additionalInfo(ConnectionZSideAdditionalInfoArgs... additionalInfo) {
+            return additionalInfo(List.of(additionalInfo));
         }
 
         /**
-         * @param serviceTokens For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+         * @param serviceToken For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
          * 
          * @return builder
          * 
          */
-        public Builder serviceTokens(@Nullable Output<List<ConnectionZSideServiceTokenArgs>> serviceTokens) {
-            $.serviceTokens = serviceTokens;
+        public Builder serviceToken(@Nullable Output<ConnectionZSideServiceTokenArgs> serviceToken) {
+            $.serviceToken = serviceToken;
             return this;
         }
 
         /**
-         * @param serviceTokens For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+         * @param serviceToken For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
          * 
          * @return builder
          * 
          */
-        public Builder serviceTokens(List<ConnectionZSideServiceTokenArgs> serviceTokens) {
-            return serviceTokens(Output.of(serviceTokens));
-        }
-
-        /**
-         * @param serviceTokens For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(ConnectionZSideServiceTokenArgs... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
+        public Builder serviceToken(ConnectionZSideServiceTokenArgs serviceToken) {
+            return serviceToken(Output.of(serviceToken));
         }
 
         public ConnectionZSideArgs build() {

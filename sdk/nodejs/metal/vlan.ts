@@ -21,28 +21,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Create a new VLAN in facility "sv15"
- * const vlan1Vlan = new equinix.metal.Vlan("vlan1Vlan", {
- *     description: "VLAN in New Jersey",
- *     facility: "sv15",
- *     projectId: local.project_id,
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const metro = config.get("metro") || "DA";
+ * const vxlan = config.require("vxlan");
+ * const vlan = new equinix.metal.Vlan("vlan", {
+ *     description: "VLAN in Dallas",
+ *     projectId: projectId,
+ *     metro: metro,
+ *     vxlan: vxlan,
  * });
- * // Create a new VLAN in metro "esv"
- * const vlan1Metal_vlanVlan = new equinix.metal.Vlan("vlan1Metal/vlanVlan", {
- *     description: "VLAN in New Jersey",
- *     metro: "sv",
- *     projectId: local.project_id,
- *     vxlan: 1040,
- * });
+ * export const vlanId = vlan.id;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing VLAN ID (UUID)
- *
- * ```sh
- *  $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
- * ```
+ * This resource can be imported using an existing VLAN ID (UUID): <break><break>```sh<break> $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} <break>```<break><break>
  */
 export class Vlan extends pulumi.CustomResource {
     /**

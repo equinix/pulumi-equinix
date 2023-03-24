@@ -45,30 +45,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vlan1Vlan = new Vlan(&#34;vlan1Vlan&#34;, VlanArgs.builder()        
- *             .description(&#34;VLAN in New Jersey&#34;)
- *             .facility(&#34;sv15&#34;)
- *             .projectId(local.project_id())
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;DA&#34;);
+ *         final var vxlan = config.get(&#34;vxlan&#34;);
+ *         var vlan = new Vlan(&#34;vlan&#34;, VlanArgs.builder()        
+ *             .description(&#34;VLAN in Dallas&#34;)
+ *             .projectId(projectId)
+ *             .metro(metro)
+ *             .vxlan(vxlan)
  *             .build());
  * 
- *         var vlan1Metal_vlanVlan = new Vlan(&#34;vlan1Metal/vlanVlan&#34;, VlanArgs.builder()        
- *             .description(&#34;VLAN in New Jersey&#34;)
- *             .metro(&#34;sv&#34;)
- *             .projectId(local.project_id())
- *             .vxlan(1040)
- *             .build());
- * 
+ *         ctx.export(&#34;vlanId&#34;, vlan.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing VLAN ID (UUID)
- * 
- * ```sh
- *  $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
- * ```
+ * This resource can be imported using an existing VLAN ID (UUID): &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/vlan:Vlan")

@@ -122,7 +122,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Postal address.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetOrganizationAddressResult> Addresses;
+        public readonly Outputs.GetOrganizationAddressResult Address;
         /// <summary>
         /// Description string.
         /// </summary>
@@ -152,7 +152,7 @@ namespace Pulumi.Equinix.Metal
 
         [OutputConstructor]
         private GetOrganizationResult(
-            ImmutableArray<Outputs.GetOrganizationAddressResult> addresses,
+            Outputs.GetOrganizationAddressResult address,
 
             string description,
 
@@ -170,7 +170,7 @@ namespace Pulumi.Equinix.Metal
 
             string website)
         {
-            Addresses = addresses;
+            Address = address;
             Description = description;
             Id = id;
             Logo = logo;

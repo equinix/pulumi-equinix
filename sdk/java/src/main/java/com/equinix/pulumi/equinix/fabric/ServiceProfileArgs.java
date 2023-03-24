@@ -49,15 +49,15 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
      * Account
      * 
      */
-    @Import(name="accounts")
-    private @Nullable Output<List<ServiceProfileAccountArgs>> accounts;
+    @Import(name="account")
+    private @Nullable Output<ServiceProfileAccountArgs> account;
 
     /**
      * @return Account
      * 
      */
-    public Optional<Output<List<ServiceProfileAccountArgs>>> accounts() {
-        return Optional.ofNullable(this.accounts);
+    public Optional<Output<ServiceProfileAccountArgs>> account() {
+        return Optional.ofNullable(this.account);
     }
 
     /**
@@ -109,15 +109,15 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
      * Marketing Info
      * 
      */
-    @Import(name="marketingInfos")
-    private @Nullable Output<List<ServiceProfileMarketingInfoArgs>> marketingInfos;
+    @Import(name="marketingInfo")
+    private @Nullable Output<ServiceProfileMarketingInfoArgs> marketingInfo;
 
     /**
      * @return Marketing Info
      * 
      */
-    public Optional<Output<List<ServiceProfileMarketingInfoArgs>>> marketingInfos() {
-        return Optional.ofNullable(this.marketingInfos);
+    public Optional<Output<ServiceProfileMarketingInfoArgs>> marketingInfo() {
+        return Optional.ofNullable(this.marketingInfo);
     }
 
     /**
@@ -184,15 +184,15 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
      * Project information
      * 
      */
-    @Import(name="projects")
-    private @Nullable Output<List<ServiceProfileProjectArgs>> projects;
+    @Import(name="project")
+    private @Nullable Output<ServiceProfileProjectArgs> project;
 
     /**
      * @return Project information
      * 
      */
-    public Optional<Output<List<ServiceProfileProjectArgs>>> projects() {
-        return Optional.ofNullable(this.projects);
+    public Optional<Output<ServiceProfileProjectArgs>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -289,16 +289,16 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
 
     private ServiceProfileArgs(ServiceProfileArgs $) {
         this.accessPointTypeConfigs = $.accessPointTypeConfigs;
-        this.accounts = $.accounts;
+        this.account = $.account;
         this.allowedEmails = $.allowedEmails;
         this.customFields = $.customFields;
         this.description = $.description;
-        this.marketingInfos = $.marketingInfos;
+        this.marketingInfo = $.marketingInfo;
         this.metros = $.metros;
         this.name = $.name;
         this.notifications = $.notifications;
         this.ports = $.ports;
-        this.projects = $.projects;
+        this.project = $.project;
         this.selfProfile = $.selfProfile;
         this.state = $.state;
         this.tags = $.tags;
@@ -357,34 +357,24 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accounts Account
+         * @param account Account
          * 
          * @return builder
          * 
          */
-        public Builder accounts(@Nullable Output<List<ServiceProfileAccountArgs>> accounts) {
-            $.accounts = accounts;
+        public Builder account(@Nullable Output<ServiceProfileAccountArgs> account) {
+            $.account = account;
             return this;
         }
 
         /**
-         * @param accounts Account
+         * @param account Account
          * 
          * @return builder
          * 
          */
-        public Builder accounts(List<ServiceProfileAccountArgs> accounts) {
-            return accounts(Output.of(accounts));
-        }
-
-        /**
-         * @param accounts Account
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accounts(ServiceProfileAccountArgs... accounts) {
-            return accounts(List.of(accounts));
+        public Builder account(ServiceProfileAccountArgs account) {
+            return account(Output.of(account));
         }
 
         /**
@@ -471,34 +461,24 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param marketingInfos Marketing Info
+         * @param marketingInfo Marketing Info
          * 
          * @return builder
          * 
          */
-        public Builder marketingInfos(@Nullable Output<List<ServiceProfileMarketingInfoArgs>> marketingInfos) {
-            $.marketingInfos = marketingInfos;
+        public Builder marketingInfo(@Nullable Output<ServiceProfileMarketingInfoArgs> marketingInfo) {
+            $.marketingInfo = marketingInfo;
             return this;
         }
 
         /**
-         * @param marketingInfos Marketing Info
+         * @param marketingInfo Marketing Info
          * 
          * @return builder
          * 
          */
-        public Builder marketingInfos(List<ServiceProfileMarketingInfoArgs> marketingInfos) {
-            return marketingInfos(Output.of(marketingInfos));
-        }
-
-        /**
-         * @param marketingInfos Marketing Info
-         * 
-         * @return builder
-         * 
-         */
-        public Builder marketingInfos(ServiceProfileMarketingInfoArgs... marketingInfos) {
-            return marketingInfos(List.of(marketingInfos));
+        public Builder marketingInfo(ServiceProfileMarketingInfoArgs marketingInfo) {
+            return marketingInfo(Output.of(marketingInfo));
         }
 
         /**
@@ -616,34 +596,24 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projects Project information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder projects(@Nullable Output<List<ServiceProfileProjectArgs>> projects) {
-            $.projects = projects;
+        public Builder project(@Nullable Output<ServiceProfileProjectArgs> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projects Project information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder projects(List<ServiceProfileProjectArgs> projects) {
-            return projects(Output.of(projects));
-        }
-
-        /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(ServiceProfileProjectArgs... projects) {
-            return projects(List.of(projects));
+        public Builder project(ServiceProfileProjectArgs project) {
+            return project(Output.of(project));
         }
 
         /**

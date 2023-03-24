@@ -1,0 +1,9 @@
+name: equinix-metal-spot-market-request
+runtime: nodejs
+description: An Equinix Metal Spot Market Request resource
+config:
+  metro:
+    type: string
+    default: FR
+  projectId:
+    type: string

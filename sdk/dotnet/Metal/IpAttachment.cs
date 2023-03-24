@@ -21,6 +21,31 @@ namespace Pulumi.Equinix.Metal
     /// is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
     /// 
     /// Device and reserved block must be in the same facility.
+    /// 
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var deviceId = config.Require("deviceId");
+    ///     var subnetCidr = config.Get("subnetCidr") ?? "147.229.10.152/31";
+    ///     var ipAttachResource = new Equinix.Metal.IpAttachment("ipAttach", new()
+    ///     {
+    ///         DeviceId = deviceId,
+    ///         CidrNotation = subnetCidr,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["ipAttach"] = ipAttachResource.Id,
+    ///         ["ipNetmask"] = ipAttachResource.Netmask,
+    ///     };
+    /// });
+    /// ```
     /// </summary>
     [EquinixResourceType("equinix:metal/ipAttachment:IpAttachment")]
     public partial class IpAttachment : global::Pulumi.CustomResource
@@ -115,7 +140,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

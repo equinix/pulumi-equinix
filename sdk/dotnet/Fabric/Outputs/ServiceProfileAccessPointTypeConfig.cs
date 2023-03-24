@@ -32,11 +32,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Api configuration details
         /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfigApiConfig> ApiConfigs;
+        public readonly Outputs.ServiceProfileAccessPointTypeConfigApiConfig? ApiConfig;
         /// <summary>
         /// Authentication key details
         /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey> AuthenticationKeys;
+        public readonly Outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey? AuthenticationKey;
         /// <summary>
         /// Percentage of port bandwidth at which an allocation alert is generated
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Link protocol configuration details
         /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig> LinkProtocolConfigs;
+        public readonly Outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig? LinkProtocolConfig;
         /// <summary>
         /// Supported bandwidths
         /// </summary>
@@ -80,9 +80,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             bool? allowRemoteConnections,
 
-            ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfigApiConfig> apiConfigs,
+            Outputs.ServiceProfileAccessPointTypeConfigApiConfig? apiConfig,
 
-            ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys,
+            Outputs.ServiceProfileAccessPointTypeConfigAuthenticationKey? authenticationKey,
 
             double? bandwidthAlertThreshold,
 
@@ -92,7 +92,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             bool? enableAutoGenerateServiceKey,
 
-            ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs,
+            Outputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfig? linkProtocolConfig,
 
             ImmutableArray<int> supportedBandwidths,
 
@@ -104,13 +104,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
             AllowBandwidthUpgrade = allowBandwidthUpgrade;
             AllowCustomBandwidth = allowCustomBandwidth;
             AllowRemoteConnections = allowRemoteConnections;
-            ApiConfigs = apiConfigs;
-            AuthenticationKeys = authenticationKeys;
+            ApiConfig = apiConfig;
+            AuthenticationKey = authenticationKey;
             BandwidthAlertThreshold = bandwidthAlertThreshold;
             ConnectionLabel = connectionLabel;
             ConnectionRedundancyRequired = connectionRedundancyRequired;
             EnableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            LinkProtocolConfigs = linkProtocolConfigs;
+            LinkProtocolConfig = linkProtocolConfig;
             SupportedBandwidths = supportedBandwidths;
             Type = type;
             Uuid = uuid;

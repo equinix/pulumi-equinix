@@ -23,32 +23,32 @@ class GetPortsResult:
     """
     A collection of values returned by getPorts.
     """
-    def __init__(__self__, datas=None, filters=None, id=None):
-        if datas and not isinstance(datas, list):
-            raise TypeError("Expected argument 'datas' to be a list")
-        pulumi.set(__self__, "datas", datas)
-        if filters and not isinstance(filters, list):
-            raise TypeError("Expected argument 'filters' to be a list")
-        pulumi.set(__self__, "filters", filters)
+    def __init__(__self__, data=None, filter=None, id=None):
+        if data and not isinstance(data, list):
+            raise TypeError("Expected argument 'data' to be a list")
+        pulumi.set(__self__, "data", data)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def datas(self) -> Sequence['outputs.GetPortsDataResult']:
+    def data(self) -> Sequence['outputs.GetPortsDatumResult']:
         """
         List of  Ports
         """
-        return pulumi.get(self, "datas")
+        return pulumi.get(self, "data")
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[Sequence['outputs.GetPortsFilterResult']]:
+    def filter(self) -> Optional['outputs.GetPortsFilterResult']:
         """
         name
         """
-        return pulumi.get(self, "filters")
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -65,35 +65,35 @@ class AwaitableGetPortsResult(GetPortsResult):
         if False:
             yield self
         return GetPortsResult(
-            datas=self.datas,
-            filters=self.filters,
+            data=self.data,
+            filter=self.filter,
             id=self.id)
 
 
-def get_ports(filters: Optional[Sequence[pulumi.InputType['GetPortsFilterArgs']]] = None,
+def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortsResult:
     """
     Use this data source to access information about an existing resource.
 
-    :param Sequence[pulumi.InputType['GetPortsFilterArgs']] filters: name
+    :param pulumi.InputType['GetPortsFilterArgs'] filter: name
     """
     __args__ = dict()
-    __args__['filters'] = filters
+    __args__['filter'] = filter
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult).value
 
     return AwaitableGetPortsResult(
-        datas=__ret__.datas,
-        filters=__ret__.filters,
+        data=__ret__.data,
+        filter=__ret__.filter,
         id=__ret__.id)
 
 
 @_utilities.lift_output_func(get_ports)
-def get_ports_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPortsFilterArgs']]]]] = None,
+def get_ports_output(filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetPortsFilterArgs']]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortsResult]:
     """
     Use this data source to access information about an existing resource.
 
-    :param Sequence[pulumi.InputType['GetPortsFilterArgs']] filters: name
+    :param pulumi.InputType['GetPortsFilterArgs'] filter: name
     """
     ...

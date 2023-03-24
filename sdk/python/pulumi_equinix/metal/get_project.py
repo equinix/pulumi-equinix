@@ -22,13 +22,13 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, backend_transfer=None, bgp_configs=None, created=None, id=None, name=None, organization_id=None, payment_method_id=None, project_id=None, updated=None, user_ids=None):
+    def __init__(__self__, backend_transfer=None, bgp_config=None, created=None, id=None, name=None, organization_id=None, payment_method_id=None, project_id=None, updated=None, user_ids=None):
         if backend_transfer and not isinstance(backend_transfer, bool):
             raise TypeError("Expected argument 'backend_transfer' to be a bool")
         pulumi.set(__self__, "backend_transfer", backend_transfer)
-        if bgp_configs and not isinstance(bgp_configs, list):
-            raise TypeError("Expected argument 'bgp_configs' to be a list")
-        pulumi.set(__self__, "bgp_configs", bgp_configs)
+        if bgp_config and not isinstance(bgp_config, dict):
+            raise TypeError("Expected argument 'bgp_config' to be a dict")
+        pulumi.set(__self__, "bgp_config", bgp_config)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -63,12 +63,12 @@ class GetProjectResult:
         return pulumi.get(self, "backend_transfer")
 
     @property
-    @pulumi.getter(name="bgpConfigs")
-    def bgp_configs(self) -> Sequence['outputs.GetProjectBgpConfigResult']:
+    @pulumi.getter(name="bgpConfig")
+    def bgp_config(self) -> 'outputs.GetProjectBgpConfigResult':
         """
         Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
         """
-        return pulumi.get(self, "bgp_configs")
+        return pulumi.get(self, "bgp_config")
 
     @property
     @pulumi.getter
@@ -136,7 +136,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             yield self
         return GetProjectResult(
             backend_transfer=self.backend_transfer,
-            bgp_configs=self.bgp_configs,
+            bgp_config=self.bgp_config,
             created=self.created,
             id=self.id,
             name=self.name,
@@ -175,7 +175,7 @@ def get_project(name: Optional[str] = None,
 
     return AwaitableGetProjectResult(
         backend_transfer=__ret__.backend_transfer,
-        bgp_configs=__ret__.bgp_configs,
+        bgp_config=__ret__.bgp_config,
         created=__ret__.created,
         id=__ret__.id,
         name=__ret__.name,

@@ -23,21 +23,21 @@ func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts 
 // A collection of arguments for invoking getServiceProfiles.
 type GetServiceProfilesArgs struct {
 	// Service Profile Search Filter
-	Filters []GetServiceProfilesFilter `pulumi:"filters"`
+	Filter *GetServiceProfilesFilter `pulumi:"filter"`
 	// Service Profile Sort criteria for Search Request response payload
-	Sorts []GetServiceProfilesSort `pulumi:"sorts"`
+	Sort []GetServiceProfilesSort `pulumi:"sort"`
 }
 
 // A collection of values returned by getServiceProfiles.
 type GetServiceProfilesResult struct {
 	// List of  Service Profiles
-	Datas []GetServiceProfilesData `pulumi:"datas"`
+	Data []GetServiceProfilesDatum `pulumi:"data"`
 	// Service Profile Search Filter
-	Filters []GetServiceProfilesFilter `pulumi:"filters"`
+	Filter *GetServiceProfilesFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Service Profile Sort criteria for Search Request response payload
-	Sorts []GetServiceProfilesSort `pulumi:"sorts"`
+	Sort []GetServiceProfilesSort `pulumi:"sort"`
 }
 
 func GetServiceProfilesOutput(ctx *pulumi.Context, args GetServiceProfilesOutputArgs, opts ...pulumi.InvokeOption) GetServiceProfilesResultOutput {
@@ -56,9 +56,9 @@ func GetServiceProfilesOutput(ctx *pulumi.Context, args GetServiceProfilesOutput
 // A collection of arguments for invoking getServiceProfiles.
 type GetServiceProfilesOutputArgs struct {
 	// Service Profile Search Filter
-	Filters GetServiceProfilesFilterArrayInput `pulumi:"filters"`
+	Filter GetServiceProfilesFilterPtrInput `pulumi:"filter"`
 	// Service Profile Sort criteria for Search Request response payload
-	Sorts GetServiceProfilesSortArrayInput `pulumi:"sorts"`
+	Sort GetServiceProfilesSortArrayInput `pulumi:"sort"`
 }
 
 func (GetServiceProfilesOutputArgs) ElementType() reflect.Type {
@@ -81,13 +81,13 @@ func (o GetServiceProfilesResultOutput) ToGetServiceProfilesResultOutputWithCont
 }
 
 // List of  Service Profiles
-func (o GetServiceProfilesResultOutput) Datas() GetServiceProfilesDataArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesData { return v.Datas }).(GetServiceProfilesDataArrayOutput)
+func (o GetServiceProfilesResultOutput) Data() GetServiceProfilesDatumArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesDatum { return v.Data }).(GetServiceProfilesDatumArrayOutput)
 }
 
 // Service Profile Search Filter
-func (o GetServiceProfilesResultOutput) Filters() GetServiceProfilesFilterArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesFilter { return v.Filters }).(GetServiceProfilesFilterArrayOutput)
+func (o GetServiceProfilesResultOutput) Filter() GetServiceProfilesFilterPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) *GetServiceProfilesFilter { return v.Filter }).(GetServiceProfilesFilterPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -96,8 +96,8 @@ func (o GetServiceProfilesResultOutput) Id() pulumi.StringOutput {
 }
 
 // Service Profile Sort criteria for Search Request response payload
-func (o GetServiceProfilesResultOutput) Sorts() GetServiceProfilesSortArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesSort { return v.Sorts }).(GetServiceProfilesSortArrayOutput)
+func (o GetServiceProfilesResultOutput) Sort() GetServiceProfilesSortArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesSort { return v.Sort }).(GetServiceProfilesSortArrayOutput)
 }
 
 func init() {

@@ -5,7 +5,6 @@ package com.equinix.pulumi.equinix.fabric.inputs;
 
 import com.equinix.pulumi.equinix.fabric.inputs.GetPortsFilter;
 import com.pulumi.core.annotations.Import;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,21 +18,21 @@ public final class GetPortsPlainArgs extends com.pulumi.resources.InvokeArgs {
      * name
      * 
      */
-    @Import(name="filters")
-    private @Nullable List<GetPortsFilter> filters;
+    @Import(name="filter")
+    private @Nullable GetPortsFilter filter;
 
     /**
      * @return name
      * 
      */
-    public Optional<List<GetPortsFilter>> filters() {
-        return Optional.ofNullable(this.filters);
+    public Optional<GetPortsFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     private GetPortsPlainArgs() {}
 
     private GetPortsPlainArgs(GetPortsPlainArgs $) {
-        this.filters = $.filters;
+        this.filter = $.filter;
     }
 
     public static Builder builder() {
@@ -55,24 +54,14 @@ public final class GetPortsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filters name
+         * @param filter name
          * 
          * @return builder
          * 
          */
-        public Builder filters(@Nullable List<GetPortsFilter> filters) {
-            $.filters = filters;
+        public Builder filter(@Nullable GetPortsFilter filter) {
+            $.filter = filter;
             return this;
-        }
-
-        /**
-         * @param filters name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filters(GetPortsFilter... filters) {
-            return filters(List.of(filters));
         }
 
         public GetPortsPlainArgs build() {

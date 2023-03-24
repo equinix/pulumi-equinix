@@ -31,7 +31,7 @@ public final class GetServiceProfileResult {
      * @return Account
      * 
      */
-    private List<GetServiceProfileAccount> accounts;
+    private GetServiceProfileAccount account;
     /**
      * @return Array of contact emails
      * 
@@ -41,7 +41,7 @@ public final class GetServiceProfileResult {
      * @return Captures connection lifecycle change information
      * 
      */
-    private List<GetServiceProfileChangeLog> changeLogs;
+    private GetServiceProfileChangeLog changeLog;
     /**
      * @return Custom Fields
      * 
@@ -66,7 +66,7 @@ public final class GetServiceProfileResult {
      * @return Marketing Info
      * 
      */
-    private List<GetServiceProfileMarketingInfo> marketingInfos;
+    private GetServiceProfileMarketingInfo marketingInfo;
     /**
      * @return Access point config information
      * 
@@ -91,7 +91,7 @@ public final class GetServiceProfileResult {
      * @return Project information
      * 
      */
-    private List<GetServiceProfileProject> projects;
+    private GetServiceProfileProject project;
     /**
      * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
@@ -135,8 +135,8 @@ public final class GetServiceProfileResult {
      * @return Account
      * 
      */
-    public List<GetServiceProfileAccount> accounts() {
-        return this.accounts;
+    public GetServiceProfileAccount account() {
+        return this.account;
     }
     /**
      * @return Array of contact emails
@@ -149,8 +149,8 @@ public final class GetServiceProfileResult {
      * @return Captures connection lifecycle change information
      * 
      */
-    public List<GetServiceProfileChangeLog> changeLogs() {
-        return this.changeLogs;
+    public GetServiceProfileChangeLog changeLog() {
+        return this.changeLog;
     }
     /**
      * @return Custom Fields
@@ -184,8 +184,8 @@ public final class GetServiceProfileResult {
      * @return Marketing Info
      * 
      */
-    public List<GetServiceProfileMarketingInfo> marketingInfos() {
-        return this.marketingInfos;
+    public GetServiceProfileMarketingInfo marketingInfo() {
+        return this.marketingInfo;
     }
     /**
      * @return Access point config information
@@ -219,8 +219,8 @@ public final class GetServiceProfileResult {
      * @return Project information
      * 
      */
-    public List<GetServiceProfileProject> projects() {
-        return this.projects;
+    public GetServiceProfileProject project() {
+        return this.project;
     }
     /**
      * @return Self Profile indicating if the profile is created for customer&#39;s  self use
@@ -275,19 +275,19 @@ public final class GetServiceProfileResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetServiceProfileAccessPointTypeConfig> accessPointTypeConfigs;
-        private List<GetServiceProfileAccount> accounts;
+        private GetServiceProfileAccount account;
         private List<String> allowedEmails;
-        private List<GetServiceProfileChangeLog> changeLogs;
+        private GetServiceProfileChangeLog changeLog;
         private List<GetServiceProfileCustomField> customFields;
         private String description;
         private String href;
         private String id;
-        private List<GetServiceProfileMarketingInfo> marketingInfos;
+        private GetServiceProfileMarketingInfo marketingInfo;
         private List<GetServiceProfileMetro> metros;
         private String name;
         private List<GetServiceProfileNotification> notifications;
         private List<GetServiceProfilePort> ports;
-        private List<GetServiceProfileProject> projects;
+        private GetServiceProfileProject project;
         private Boolean selfProfile;
         private @Nullable String state;
         private List<String> tags;
@@ -298,19 +298,19 @@ public final class GetServiceProfileResult {
         public Builder(GetServiceProfileResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointTypeConfigs = defaults.accessPointTypeConfigs;
-    	      this.accounts = defaults.accounts;
+    	      this.account = defaults.account;
     	      this.allowedEmails = defaults.allowedEmails;
-    	      this.changeLogs = defaults.changeLogs;
+    	      this.changeLog = defaults.changeLog;
     	      this.customFields = defaults.customFields;
     	      this.description = defaults.description;
     	      this.href = defaults.href;
     	      this.id = defaults.id;
-    	      this.marketingInfos = defaults.marketingInfos;
+    	      this.marketingInfo = defaults.marketingInfo;
     	      this.metros = defaults.metros;
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
     	      this.ports = defaults.ports;
-    	      this.projects = defaults.projects;
+    	      this.project = defaults.project;
     	      this.selfProfile = defaults.selfProfile;
     	      this.state = defaults.state;
     	      this.tags = defaults.tags;
@@ -328,12 +328,9 @@ public final class GetServiceProfileResult {
             return accessPointTypeConfigs(List.of(accessPointTypeConfigs));
         }
         @CustomType.Setter
-        public Builder accounts(List<GetServiceProfileAccount> accounts) {
-            this.accounts = Objects.requireNonNull(accounts);
+        public Builder account(GetServiceProfileAccount account) {
+            this.account = Objects.requireNonNull(account);
             return this;
-        }
-        public Builder accounts(GetServiceProfileAccount... accounts) {
-            return accounts(List.of(accounts));
         }
         @CustomType.Setter
         public Builder allowedEmails(List<String> allowedEmails) {
@@ -344,12 +341,9 @@ public final class GetServiceProfileResult {
             return allowedEmails(List.of(allowedEmails));
         }
         @CustomType.Setter
-        public Builder changeLogs(List<GetServiceProfileChangeLog> changeLogs) {
-            this.changeLogs = Objects.requireNonNull(changeLogs);
+        public Builder changeLog(GetServiceProfileChangeLog changeLog) {
+            this.changeLog = Objects.requireNonNull(changeLog);
             return this;
-        }
-        public Builder changeLogs(GetServiceProfileChangeLog... changeLogs) {
-            return changeLogs(List.of(changeLogs));
         }
         @CustomType.Setter
         public Builder customFields(List<GetServiceProfileCustomField> customFields) {
@@ -375,12 +369,9 @@ public final class GetServiceProfileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder marketingInfos(List<GetServiceProfileMarketingInfo> marketingInfos) {
-            this.marketingInfos = Objects.requireNonNull(marketingInfos);
+        public Builder marketingInfo(GetServiceProfileMarketingInfo marketingInfo) {
+            this.marketingInfo = Objects.requireNonNull(marketingInfo);
             return this;
-        }
-        public Builder marketingInfos(GetServiceProfileMarketingInfo... marketingInfos) {
-            return marketingInfos(List.of(marketingInfos));
         }
         @CustomType.Setter
         public Builder metros(List<GetServiceProfileMetro> metros) {
@@ -412,12 +403,9 @@ public final class GetServiceProfileResult {
             return ports(List.of(ports));
         }
         @CustomType.Setter
-        public Builder projects(List<GetServiceProfileProject> projects) {
-            this.projects = Objects.requireNonNull(projects);
+        public Builder project(GetServiceProfileProject project) {
+            this.project = Objects.requireNonNull(project);
             return this;
-        }
-        public Builder projects(GetServiceProfileProject... projects) {
-            return projects(List.of(projects));
         }
         @CustomType.Setter
         public Builder selfProfile(Boolean selfProfile) {
@@ -455,19 +443,19 @@ public final class GetServiceProfileResult {
         public GetServiceProfileResult build() {
             final var o = new GetServiceProfileResult();
             o.accessPointTypeConfigs = accessPointTypeConfigs;
-            o.accounts = accounts;
+            o.account = account;
             o.allowedEmails = allowedEmails;
-            o.changeLogs = changeLogs;
+            o.changeLog = changeLog;
             o.customFields = customFields;
             o.description = description;
             o.href = href;
             o.id = id;
-            o.marketingInfos = marketingInfos;
+            o.marketingInfo = marketingInfo;
             o.metros = metros;
             o.name = name;
             o.notifications = notifications;
             o.ports = ports;
-            o.projects = projects;
+            o.project = project;
             o.selfProfile = selfProfile;
             o.state = state;
             o.tags = tags;

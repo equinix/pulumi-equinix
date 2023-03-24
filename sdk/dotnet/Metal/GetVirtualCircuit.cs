@@ -28,14 +28,14 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnection = Equinix.Metal.GetConnection.Invoke(new()
+        ///     var exampleConnection = Equinix.Metal.GetInterconnection.Invoke(new()
         ///     {
         ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
         ///     });
         /// 
         ///     var exampleVc = Equinix.Metal.GetVirtualCircuit.Invoke(new()
         ///     {
-        ///         VirtualCircuitId = exampleConnection.Apply(getConnectionResult =&gt; getConnectionResult.Ports[1]?.VirtualCircuitIds[0]),
+        ///         VirtualCircuitId = exampleConnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[1]?.VirtualCircuitIds[0]),
         ///     });
         /// 
         /// });
@@ -63,14 +63,14 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnection = Equinix.Metal.GetConnection.Invoke(new()
+        ///     var exampleConnection = Equinix.Metal.GetInterconnection.Invoke(new()
         ///     {
         ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
         ///     });
         /// 
         ///     var exampleVc = Equinix.Metal.GetVirtualCircuit.Invoke(new()
         ///     {
-        ///         VirtualCircuitId = exampleConnection.Apply(getConnectionResult =&gt; getConnectionResult.Ports[1]?.VirtualCircuitIds[0]),
+        ///         VirtualCircuitId = exampleConnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[1]?.VirtualCircuitIds[0]),
         ///     });
         /// 
         /// });

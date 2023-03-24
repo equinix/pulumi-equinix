@@ -1,0 +1,10 @@
+name: equinix-metal-virtual-circuit
+runtime: dotnet
+description: An Equinix Metal Virtual Circuit resource
+config:
+  connectionId:
+    type: string
+  projectId:
+    type: string
+  vlanId:
+    type: string

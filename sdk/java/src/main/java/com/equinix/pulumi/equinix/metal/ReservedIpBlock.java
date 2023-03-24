@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
  * 
  * ## Example Usage
- * 
- * Allocate reserved IP blocks:
  * ```java
  * package generated_program;
  * 
@@ -57,89 +55,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var twoElasticAddresses = new ReservedIpBlock(&#34;twoElasticAddresses&#34;, ReservedIpBlockArgs.builder()        
- *             .projectId(local.project_id())
- *             .facility(&#34;sv15&#34;)
- *             .quantity(2)
- *             .build());
- * 
- *         var testReservedIpBlock = new ReservedIpBlock(&#34;testReservedIpBlock&#34;, ReservedIpBlockArgs.builder()        
- *             .projectId(local.project_id())
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
+ *         final var type = config.get(&#34;type&#34;).orElse(&#34;public_ipv4&#34;);
+ *         final var quantity = config.get(&#34;quantity&#34;).orElse(1);
+ *         var ipBlock = new ReservedIpBlock(&#34;ipBlock&#34;, ReservedIpBlockArgs.builder()        
+ *             .projectId(projectId)
  *             .type(&#34;public_ipv4&#34;)
- *             .metro(&#34;sv&#34;)
- *             .quantity(1)
+ *             .quantity(quantity)
+ *             .metro(metro)
  *             .build());
  * 
- *         var testMetal_reservedIpBlockReservedIpBlock = new ReservedIpBlock(&#34;testMetal/reservedIpBlockReservedIpBlock&#34;, ReservedIpBlockArgs.builder()        
- *             .projectId(local.project_id())
- *             .type(&#34;global_ipv4&#34;)
- *             .quantity(1)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Allocate a block and run a device with public IPv4 from the block
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.ReservedIpBlock;
- * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import com.pulumi.equinix.metal.inputs.DeviceIpAddressArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ReservedIpBlock(&#34;example&#34;, ReservedIpBlockArgs.builder()        
- *             .projectId(local.project_id())
- *             .facility(&#34;sv15&#34;)
- *             .quantity(2)
- *             .build());
- * 
- *         var nodes = new Device(&#34;nodes&#34;, DeviceArgs.builder()        
- *             .projectId(local.project_id())
- *             .facilities(&#34;sv15&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .hostname(&#34;test&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .ipAddresses(            
- *                 DeviceIpAddressArgs.builder()
- *                     .type(&#34;public_ipv4&#34;)
- *                     .cidr(31)
- *                     .reservationIds(example.id())
- *                     .build(),
- *                 DeviceIpAddressArgs.builder()
- *                     .type(&#34;private_ipv4&#34;)
- *                     .build())
- *             .build());
- * 
+ *         ctx.export(&#34;ipBlockId&#34;, ipBlock.id());
+ *         ctx.export(&#34;ipBlockSubent&#34;, ipBlock.cidrNotation());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing IP reservation ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
- * ```
+ * This resource can be imported using an existing IP reservation ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/reservedIpBlock:ReservedIpBlock")

@@ -7,7 +7,6 @@ import com.equinix.pulumi.equinix.fabric.inputs.ServiceProfileVirtualDeviceLocat
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,15 +35,15 @@ public final class ServiceProfileVirtualDeviceArgs extends com.pulumi.resources.
      * Device Location
      * 
      */
-    @Import(name="locations")
-    private @Nullable Output<List<ServiceProfileVirtualDeviceLocationArgs>> locations;
+    @Import(name="location")
+    private @Nullable Output<ServiceProfileVirtualDeviceLocationArgs> location;
 
     /**
      * @return Device Location
      * 
      */
-    public Optional<Output<List<ServiceProfileVirtualDeviceLocationArgs>>> locations() {
-        return Optional.ofNullable(this.locations);
+    public Optional<Output<ServiceProfileVirtualDeviceLocationArgs>> location() {
+        return Optional.ofNullable(this.location);
     }
 
     /**
@@ -81,7 +80,7 @@ public final class ServiceProfileVirtualDeviceArgs extends com.pulumi.resources.
 
     private ServiceProfileVirtualDeviceArgs(ServiceProfileVirtualDeviceArgs $) {
         this.interfaceUuid = $.interfaceUuid;
-        this.locations = $.locations;
+        this.location = $.location;
         this.type = $.type;
         this.uuid = $.uuid;
     }
@@ -126,34 +125,24 @@ public final class ServiceProfileVirtualDeviceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param locations Device Location
+         * @param location Device Location
          * 
          * @return builder
          * 
          */
-        public Builder locations(@Nullable Output<List<ServiceProfileVirtualDeviceLocationArgs>> locations) {
-            $.locations = locations;
+        public Builder location(@Nullable Output<ServiceProfileVirtualDeviceLocationArgs> location) {
+            $.location = location;
             return this;
         }
 
         /**
-         * @param locations Device Location
+         * @param location Device Location
          * 
          * @return builder
          * 
          */
-        public Builder locations(List<ServiceProfileVirtualDeviceLocationArgs> locations) {
-            return locations(Output.of(locations));
-        }
-
-        /**
-         * @param locations Device Location
-         * 
-         * @return builder
-         * 
-         */
-        public Builder locations(ServiceProfileVirtualDeviceLocationArgs... locations) {
-            return locations(List.of(locations));
+        public Builder location(ServiceProfileVirtualDeviceLocationArgs location) {
+            return location(Output.of(location));
         }
 
         /**

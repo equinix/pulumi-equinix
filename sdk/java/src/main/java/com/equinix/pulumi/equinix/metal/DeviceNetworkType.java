@@ -15,16 +15,43 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
  * 
- * &gt; **NOTE:** This resource takes a named network type with any mode required parameters and converts a device to the named network type. This resource simulated the network type interface for Devices in the Equinix Metal Portal. That interface changed when additional network types were introduced with more diverse port configurations and it is not guaranteed to work in devices with more than two ethernet ports. See the Network Types Guide for examples of this resource and to learn about the recommended `equinix.metal.Port` alternative.
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.DeviceNetworkType;
+ * import com.pulumi.equinix.metal.DeviceNetworkTypeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var deviceId = config.get(&#34;deviceId&#34;);
+ *         final var networkType = config.get(&#34;networkType&#34;).orElse(&#34;hybrid&#34;);
+ *         var deviceNetwork = new DeviceNetworkType(&#34;deviceNetwork&#34;, DeviceNetworkTypeArgs.builder()        
+ *             .deviceId(deviceId)
+ *             .type(networkType)
+ *             .build());
+ * 
+ *         ctx.export(&#34;deviceNetworkId&#34;, deviceNetwork.id());
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * This resource can also be imported using existing device ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
- * ```
+ * This resource can also be imported using existing device ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/deviceNetworkType:DeviceNetworkType")

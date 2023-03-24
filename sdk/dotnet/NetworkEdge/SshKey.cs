@@ -12,13 +12,31 @@ namespace Pulumi.Equinix.NetworkEdge
     /// <summary>
     /// Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
     /// 
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sshKey = new Equinix.NetworkEdge.SshKey("sshKey", new()
+    ///     {
+    ///         Name = "johnKent",
+    ///         PublicKey = File.ReadAllText("/Users/John/.ssh/ne_rsa.pub"),
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["sshKeyId"] = sshKey.Id,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
-    /// ```
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource
@@ -65,7 +83,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

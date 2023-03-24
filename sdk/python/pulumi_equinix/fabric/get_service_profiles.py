@@ -23,35 +23,35 @@ class GetServiceProfilesResult:
     """
     A collection of values returned by getServiceProfiles.
     """
-    def __init__(__self__, datas=None, filters=None, id=None, sorts=None):
-        if datas and not isinstance(datas, list):
-            raise TypeError("Expected argument 'datas' to be a list")
-        pulumi.set(__self__, "datas", datas)
-        if filters and not isinstance(filters, list):
-            raise TypeError("Expected argument 'filters' to be a list")
-        pulumi.set(__self__, "filters", filters)
+    def __init__(__self__, data=None, filter=None, id=None, sort=None):
+        if data and not isinstance(data, list):
+            raise TypeError("Expected argument 'data' to be a list")
+        pulumi.set(__self__, "data", data)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if sorts and not isinstance(sorts, list):
-            raise TypeError("Expected argument 'sorts' to be a list")
-        pulumi.set(__self__, "sorts", sorts)
+        if sort and not isinstance(sort, list):
+            raise TypeError("Expected argument 'sort' to be a list")
+        pulumi.set(__self__, "sort", sort)
 
     @property
     @pulumi.getter
-    def datas(self) -> Sequence['outputs.GetServiceProfilesDataResult']:
+    def data(self) -> Sequence['outputs.GetServiceProfilesDatumResult']:
         """
         List of  Service Profiles
         """
-        return pulumi.get(self, "datas")
+        return pulumi.get(self, "data")
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[Sequence['outputs.GetServiceProfilesFilterResult']]:
+    def filter(self) -> Optional['outputs.GetServiceProfilesFilterResult']:
         """
         Service Profile Search Filter
         """
-        return pulumi.get(self, "filters")
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -63,11 +63,11 @@ class GetServiceProfilesResult:
 
     @property
     @pulumi.getter
-    def sorts(self) -> Optional[Sequence['outputs.GetServiceProfilesSortResult']]:
+    def sort(self) -> Optional[Sequence['outputs.GetServiceProfilesSortResult']]:
         """
         Service Profile Sort criteria for Search Request response payload
         """
-        return pulumi.get(self, "sorts")
+        return pulumi.get(self, "sort")
 
 
 class AwaitableGetServiceProfilesResult(GetServiceProfilesResult):
@@ -76,42 +76,42 @@ class AwaitableGetServiceProfilesResult(GetServiceProfilesResult):
         if False:
             yield self
         return GetServiceProfilesResult(
-            datas=self.datas,
-            filters=self.filters,
+            data=self.data,
+            filter=self.filter,
             id=self.id,
-            sorts=self.sorts)
+            sort=self.sort)
 
 
-def get_service_profiles(filters: Optional[Sequence[pulumi.InputType['GetServiceProfilesFilterArgs']]] = None,
-                         sorts: Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]] = None,
+def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFilterArgs']] = None,
+                         sort: Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceProfilesResult:
     """
     Use this data source to access information about an existing resource.
 
-    :param Sequence[pulumi.InputType['GetServiceProfilesFilterArgs']] filters: Service Profile Search Filter
-    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sorts: Service Profile Sort criteria for Search Request response payload
+    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
+    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
     """
     __args__ = dict()
-    __args__['filters'] = filters
-    __args__['sorts'] = sorts
+    __args__['filter'] = filter
+    __args__['sort'] = sort
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getServiceProfiles:getServiceProfiles', __args__, opts=opts, typ=GetServiceProfilesResult).value
 
     return AwaitableGetServiceProfilesResult(
-        datas=__ret__.datas,
-        filters=__ret__.filters,
+        data=__ret__.data,
+        filter=__ret__.filter,
         id=__ret__.id,
-        sorts=__ret__.sorts)
+        sort=__ret__.sort)
 
 
 @_utilities.lift_output_func(get_service_profiles)
-def get_service_profiles_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceProfilesFilterArgs']]]]] = None,
-                                sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]]]] = None,
+def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceProfilesFilterArgs']]]] = None,
+                                sort: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
     """
     Use this data source to access information about an existing resource.
 
-    :param Sequence[pulumi.InputType['GetServiceProfilesFilterArgs']] filters: Service Profile Search Filter
-    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sorts: Service Profile Sort criteria for Search Request response payload
+    :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
+    :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
     """
     ...

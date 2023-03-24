@@ -1,0 +1,12 @@
+name: equinix-metal-interconnection-fabric-billed-token
+runtime: python
+description: An [Equinix Metal Interconnection](https://deploy.equinix.com/developers/docs/metal/interconnections/introduction/#fabric-virtual-connections-fabric-billed) -Fabric Billed- resource
+config:
+  metro:
+    type: string
+    default: SV
+  projectId:
+    type: string
+  speedInMbps:
+    type: integer
+    default: 200

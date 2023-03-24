@@ -3,7 +3,7 @@
 
 package com.equinix.pulumi.equinix.networkedge.inputs;
 
-import com.equinix.pulumi.equinix.networkedge.enums.AclProtocolType;
+import com.equinix.pulumi.equinix.networkedge.enums.AclRuleProtocolType;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -56,13 +56,13 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
      * 
      */
     @Import(name="protocol", required=true)
-    private Output<Either<String,AclProtocolType>> protocol;
+    private Output<Either<String,AclRuleProtocolType>> protocol;
 
     /**
      * @return Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
      * 
      */
-    public Output<Either<String,AclProtocolType>> protocol() {
+    public Output<Either<String,AclRuleProtocolType>> protocol() {
         return this.protocol;
     }
 
@@ -228,7 +228,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder protocol(Output<Either<String,AclProtocolType>> protocol) {
+        public Builder protocol(Output<Either<String,AclRuleProtocolType>> protocol) {
             $.protocol = protocol;
             return this;
         }
@@ -239,7 +239,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder protocol(Either<String,AclProtocolType> protocol) {
+        public Builder protocol(Either<String,AclRuleProtocolType> protocol) {
             return protocol(Output.of(protocol));
         }
 
@@ -259,7 +259,7 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder protocol(AclProtocolType protocol) {
+        public Builder protocol(AclRuleProtocolType protocol) {
             return protocol(Either.ofRight(protocol));
         }
 

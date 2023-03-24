@@ -47,10 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var req = new SpotMarketRequest(&#34;req&#34;, SpotMarketRequestArgs.builder()        
- *             .projectId(local.project_id())
- *             .maxBidPrice(0.03)
- *             .facilities(&#34;ny5&#34;)
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
+ *         var request = new SpotMarketRequest(&#34;request&#34;, SpotMarketRequestArgs.builder()        
+ *             .projectId(projectId)
+ *             .metro(metro)
+ *             .maxBidPrice(0.75)
  *             .devicesMin(1)
  *             .devicesMax(1)
  *             .instanceParameters(SpotMarketRequestInstanceParametersArgs.builder()
@@ -61,17 +64,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         ctx.export(&#34;requestId&#34;, request.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing spot market request ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
- * ```
+ * This resource can be imported using an existing spot market request ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/spotMarketRequest:SpotMarketRequest")

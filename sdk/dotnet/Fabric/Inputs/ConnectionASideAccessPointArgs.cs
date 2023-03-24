@@ -12,61 +12,35 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ConnectionASideAccessPointArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accounts")]
-        private InputList<Inputs.ConnectionASideAccessPointAccountArgs>? _accounts;
-
         /// <summary>
         /// Customer account information that is associated with this connection
         /// </summary>
-        public InputList<Inputs.ConnectionASideAccessPointAccountArgs> Accounts
-        {
-            get => _accounts ?? (_accounts = new InputList<Inputs.ConnectionASideAccessPointAccountArgs>());
-            set => _accounts = value;
-        }
+        [Input("account")]
+        public Input<Inputs.ConnectionASideAccessPointAccountArgs>? Account { get; set; }
 
         [Input("authenticationKey")]
         public Input<string>? AuthenticationKey { get; set; }
 
-        [Input("gateways")]
-        private InputList<Inputs.ConnectionASideAccessPointGatewayArgs>? _gateways;
-        public InputList<Inputs.ConnectionASideAccessPointGatewayArgs> Gateways
-        {
-            get => _gateways ?? (_gateways = new InputList<Inputs.ConnectionASideAccessPointGatewayArgs>());
-            set => _gateways = value;
-        }
+        [Input("gateway")]
+        public Input<Inputs.ConnectionASideAccessPointGatewayArgs>? Gateway { get; set; }
 
-        [Input("interfaces")]
-        private InputList<Inputs.ConnectionASideAccessPointInterfaceArgs>? _interfaces;
-        public InputList<Inputs.ConnectionASideAccessPointInterfaceArgs> Interfaces
-        {
-            get => _interfaces ?? (_interfaces = new InputList<Inputs.ConnectionASideAccessPointInterfaceArgs>());
-            set => _interfaces = value;
-        }
+        [Input("interface")]
+        public Input<Inputs.ConnectionASideAccessPointInterfaceArgs>? Interface { get; set; }
 
-        [Input("linkProtocols")]
-        public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointLinkProtocolType>? LinkProtocols { get; set; }
+        [Input("linkProtocol")]
+        public Input<Inputs.ConnectionASideAccessPointLinkProtocolArgs>? LinkProtocol { get; set; }
 
-        [Input("locations")]
-        private InputList<Inputs.ConnectionASideAccessPointLocationArgs>? _locations;
-        public InputList<Inputs.ConnectionASideAccessPointLocationArgs> Locations
-        {
-            get => _locations ?? (_locations = new InputList<Inputs.ConnectionASideAccessPointLocationArgs>());
-            set => _locations = value;
-        }
+        [Input("location")]
+        public Input<Inputs.ConnectionASideAccessPointLocationArgs>? Location { get; set; }
 
         [Input("peeringType")]
         public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointPeeringType>? PeeringType { get; set; }
 
-        [Input("ports")]
-        private InputList<Inputs.ConnectionASideAccessPointPortArgs>? _ports;
-        public InputList<Inputs.ConnectionASideAccessPointPortArgs> Ports
-        {
-            get => _ports ?? (_ports = new InputList<Inputs.ConnectionASideAccessPointPortArgs>());
-            set => _ports = value;
-        }
+        [Input("port")]
+        public Input<Inputs.ConnectionASideAccessPointPortArgs>? Port { get; set; }
 
-        [Input("profiles")]
-        public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Profiles { get; set; }
+        [Input("profile")]
+        public Input<Inputs.ConnectionASideAccessPointProfileArgs>? Profile { get; set; }
 
         [Input("providerConnectionId")]
         public Input<string>? ProviderConnectionId { get; set; }
@@ -88,13 +62,8 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointType>? Type { get; set; }
 
-        [Input("virtualDevices")]
-        private InputList<Inputs.ConnectionASideAccessPointVirtualDeviceArgs>? _virtualDevices;
-        public InputList<Inputs.ConnectionASideAccessPointVirtualDeviceArgs> VirtualDevices
-        {
-            get => _virtualDevices ?? (_virtualDevices = new InputList<Inputs.ConnectionASideAccessPointVirtualDeviceArgs>());
-            set => _virtualDevices = value;
-        }
+        [Input("virtualDevice")]
+        public Input<Inputs.ConnectionASideAccessPointVirtualDeviceArgs>? VirtualDevice { get; set; }
 
         public ConnectionASideAccessPointArgs()
         {

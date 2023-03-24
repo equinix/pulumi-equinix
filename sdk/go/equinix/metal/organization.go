@@ -14,7 +14,6 @@ import (
 // Provides a resource to manage organization resource in Equinix Metal.
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -22,17 +21,28 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewOrganization(ctx, "tfOrganization1", &metal.OrganizationArgs{
-//				Description: pulumi.String("quux"),
+//			cfg := config.New(ctx, "")
+//			deviceId := cfg.Require("deviceId")
+//			orgResource, err := metal.NewOrganization(ctx, "org", &metal.OrganizationArgs{
+//				Name: pulumi.String("Foo Organization"),
+//				Address: &metal.OrganizationAddressArgs{
+//					Address: pulumi.String("org street"),
+//					City:    pulumi.String("london"),
+//					Country: pulumi.String("GB"),
+//					ZipCode: pulumi.String("12345"),
+//				},
+//				Description: pulumi.String("An organization"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("org", orgResource.ID())
 //			return nil
 //		})
 //	}
@@ -41,13 +51,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing organization ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id}
-//
-// ```
+// This resource can be imported using an existing organization ID: <break><break>```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
 type Organization struct {
 	pulumi.CustomResourceState
 

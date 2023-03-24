@@ -272,22 +272,27 @@ class Organization(pulumi.CustomResource):
         Provides a resource to manage organization resource in Equinix Metal.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a new Organization
-        tf_organization1 = equinix.metal.Organization("tfOrganization1", description="quux")
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        org_resource = equinix.metal.Organization("org",
+            name="Foo Organization",
+            address=equinix.metal.OrganizationAddressArgs(
+                address="org street",
+                city="london",
+                country="GB",
+                zip_code="12345",
+            ),
+            description="An organization")
+        pulumi.export("org", org_resource.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing organization ID
-
-        ```sh
-         $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id}
-        ```
+        This resource can be imported using an existing organization ID: <break><break>```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -309,22 +314,27 @@ class Organization(pulumi.CustomResource):
         Provides a resource to manage organization resource in Equinix Metal.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a new Organization
-        tf_organization1 = equinix.metal.Organization("tfOrganization1", description="quux")
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        org_resource = equinix.metal.Organization("org",
+            name="Foo Organization",
+            address=equinix.metal.OrganizationAddressArgs(
+                address="org street",
+                city="london",
+                country="GB",
+                zip_code="12345",
+            ),
+            description="An organization")
+        pulumi.export("org", org_resource.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing organization ID
-
-        ```sh
-         $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id}
-        ```
+        This resource can be imported using an existing organization ID: <break><break>```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.

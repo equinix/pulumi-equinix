@@ -18,56 +18,56 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
-                 a_sides: pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]],
+                 a_side: pulumi.Input['ConnectionASideArgs'],
                  bandwidth: pulumi.Input[int],
                  notifications: pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]],
                  type: pulumi.Input[Union[str, 'ConnectionType']],
-                 z_sides: pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]],
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]] = None,
+                 z_side: pulumi.Input['ConnectionZSideArgs'],
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]] = None,
-                 redundancies: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]] = None):
+                 order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
+                 project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
+                 redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]] a_sides: Requester or Customer side connection configuration object of the multi-segment connection
+        :param pulumi.Input['ConnectionASideArgs'] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]] additional_infos: Connection additional information
+        :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]] additional_info: Connection additional information
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]] orders: Order related to this connection information
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]] projects: Project information
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]] redundancies: Redundancy Information
+        :param pulumi.Input['ConnectionOrderArgs'] order: Order related to this connection information
+        :param pulumi.Input['ConnectionProjectArgs'] project: Project information
+        :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
         """
-        pulumi.set(__self__, "a_sides", a_sides)
+        pulumi.set(__self__, "a_side", a_side)
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "notifications", notifications)
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "z_sides", z_sides)
-        if additional_infos is not None:
-            pulumi.set(__self__, "additional_infos", additional_infos)
+        pulumi.set(__self__, "z_side", z_side)
+        if additional_info is not None:
+            pulumi.set(__self__, "additional_info", additional_info)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if orders is not None:
-            pulumi.set(__self__, "orders", orders)
-        if projects is not None:
-            pulumi.set(__self__, "projects", projects)
-        if redundancies is not None:
-            pulumi.set(__self__, "redundancies", redundancies)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if redundancy is not None:
+            pulumi.set(__self__, "redundancy", redundancy)
 
     @property
-    @pulumi.getter(name="aSides")
-    def a_sides(self) -> pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]]:
+    @pulumi.getter(name="aSide")
+    def a_side(self) -> pulumi.Input['ConnectionASideArgs']:
         """
         Requester or Customer side connection configuration object of the multi-segment connection
         """
-        return pulumi.get(self, "a_sides")
+        return pulumi.get(self, "a_side")
 
-    @a_sides.setter
-    def a_sides(self, value: pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]]):
-        pulumi.set(self, "a_sides", value)
+    @a_side.setter
+    def a_side(self, value: pulumi.Input['ConnectionASideArgs']):
+        pulumi.set(self, "a_side", value)
 
     @property
     @pulumi.getter
@@ -106,28 +106,28 @@ class ConnectionArgs:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="zSides")
-    def z_sides(self) -> pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]]:
+    @pulumi.getter(name="zSide")
+    def z_side(self) -> pulumi.Input['ConnectionZSideArgs']:
         """
         Destination or Provider side connection configuration object of the multi-segment connection
         """
-        return pulumi.get(self, "z_sides")
+        return pulumi.get(self, "z_side")
 
-    @z_sides.setter
-    def z_sides(self, value: pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]]):
-        pulumi.set(self, "z_sides", value)
+    @z_side.setter
+    def z_side(self, value: pulumi.Input['ConnectionZSideArgs']):
+        pulumi.set(self, "z_side", value)
 
     @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]:
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]:
         """
         Connection additional information
         """
-        return pulumi.get(self, "additional_infos")
+        return pulumi.get(self, "additional_info")
 
-    @additional_infos.setter
-    def additional_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]):
-        pulumi.set(self, "additional_infos", value)
+    @additional_info.setter
+    def additional_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]):
+        pulumi.set(self, "additional_info", value)
 
     @property
     @pulumi.getter
@@ -143,91 +143,91 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]]]:
+    def order(self) -> Optional[pulumi.Input['ConnectionOrderArgs']]:
         """
         Order related to this connection information
         """
-        return pulumi.get(self, "orders")
+        return pulumi.get(self, "order")
 
-    @orders.setter
-    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]]]):
-        pulumi.set(self, "orders", value)
+    @order.setter
+    def order(self, value: Optional[pulumi.Input['ConnectionOrderArgs']]):
+        pulumi.set(self, "order", value)
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]]:
+    def project(self) -> Optional[pulumi.Input['ConnectionProjectArgs']]:
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
-    @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]]):
-        pulumi.set(self, "projects", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input['ConnectionProjectArgs']]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]]:
+    def redundancy(self) -> Optional[pulumi.Input['ConnectionRedundancyArgs']]:
         """
         Redundancy Information
         """
-        return pulumi.get(self, "redundancies")
+        return pulumi.get(self, "redundancy")
 
-    @redundancies.setter
-    def redundancies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]]):
-        pulumi.set(self, "redundancies", value)
+    @redundancy.setter
+    def redundancy(self, value: Optional[pulumi.Input['ConnectionRedundancyArgs']]):
+        pulumi.set(self, "redundancy", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 a_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]]] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAccountArgs']]]] = None,
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]] = None,
+                 a_side: Optional[pulumi.Input['ConnectionASideArgs']] = None,
+                 account: Optional[pulumi.Input['ConnectionAccountArgs']] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
-                 change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionChangeLogArgs']]]] = None,
+                 change_log: Optional[pulumi.Input['ConnectionChangeLogArgs']] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  is_remote: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationArgs']]]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]] = None,
-                 redundancies: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]] = None,
+                 operation: Optional[pulumi.Input['ConnectionOperationArgs']] = None,
+                 order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
+                 project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
+                 redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-                 z_sides: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]]] = None):
+                 z_side: Optional[pulumi.Input['ConnectionZSideArgs']] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]] a_sides: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionAccountArgs']]] accounts: Customer account information that is associated with this connection
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]] additional_infos: Connection additional information
+        :param pulumi.Input['ConnectionASideArgs'] a_side: Requester or Customer side connection configuration object of the multi-segment connection
+        :param pulumi.Input['ConnectionAccountArgs'] account: Customer account information that is associated with this connection
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionChangeLogArgs']]] change_logs: Captures connection lifecycle change information
+        :param pulumi.Input['ConnectionChangeLogArgs'] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
         :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOperationArgs']]] operations: Connection type-specific operational data
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]] orders: Order related to this connection information
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]] projects: Project information
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]] redundancies: Redundancy Information
+        :param pulumi.Input['ConnectionOperationArgs'] operation: Connection type-specific operational data
+        :param pulumi.Input['ConnectionOrderArgs'] order: Order related to this connection information
+        :param pulumi.Input['ConnectionProjectArgs'] project: Project information
+        :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
         :param pulumi.Input[str] state: Connection overall state
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
+        :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
-        if a_sides is not None:
-            pulumi.set(__self__, "a_sides", a_sides)
-        if accounts is not None:
-            pulumi.set(__self__, "accounts", accounts)
-        if additional_infos is not None:
-            pulumi.set(__self__, "additional_infos", additional_infos)
+        if a_side is not None:
+            pulumi.set(__self__, "a_side", a_side)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
+        if additional_info is not None:
+            pulumi.set(__self__, "additional_info", additional_info)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
-        if change_logs is not None:
-            pulumi.set(__self__, "change_logs", change_logs)
+        if change_log is not None:
+            pulumi.set(__self__, "change_log", change_log)
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
         if href is not None:
@@ -238,56 +238,56 @@ class _ConnectionState:
             pulumi.set(__self__, "name", name)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
-        if operations is not None:
-            pulumi.set(__self__, "operations", operations)
-        if orders is not None:
-            pulumi.set(__self__, "orders", orders)
-        if projects is not None:
-            pulumi.set(__self__, "projects", projects)
-        if redundancies is not None:
-            pulumi.set(__self__, "redundancies", redundancies)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if redundancy is not None:
+            pulumi.set(__self__, "redundancy", redundancy)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if z_sides is not None:
-            pulumi.set(__self__, "z_sides", z_sides)
+        if z_side is not None:
+            pulumi.set(__self__, "z_side", z_side)
 
     @property
-    @pulumi.getter(name="aSides")
-    def a_sides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]]]:
+    @pulumi.getter(name="aSide")
+    def a_side(self) -> Optional[pulumi.Input['ConnectionASideArgs']]:
         """
         Requester or Customer side connection configuration object of the multi-segment connection
         """
-        return pulumi.get(self, "a_sides")
+        return pulumi.get(self, "a_side")
 
-    @a_sides.setter
-    def a_sides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideArgs']]]]):
-        pulumi.set(self, "a_sides", value)
+    @a_side.setter
+    def a_side(self, value: Optional[pulumi.Input['ConnectionASideArgs']]):
+        pulumi.set(self, "a_side", value)
 
     @property
     @pulumi.getter
-    def accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAccountArgs']]]]:
+    def account(self) -> Optional[pulumi.Input['ConnectionAccountArgs']]:
         """
         Customer account information that is associated with this connection
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
-    @accounts.setter
-    def accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAccountArgs']]]]):
-        pulumi.set(self, "accounts", value)
+    @account.setter
+    def account(self, value: Optional[pulumi.Input['ConnectionAccountArgs']]):
+        pulumi.set(self, "account", value)
 
     @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]:
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]:
         """
         Connection additional information
         """
-        return pulumi.get(self, "additional_infos")
+        return pulumi.get(self, "additional_info")
 
-    @additional_infos.setter
-    def additional_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]):
-        pulumi.set(self, "additional_infos", value)
+    @additional_info.setter
+    def additional_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionAdditionalInfoArgs']]]]):
+        pulumi.set(self, "additional_info", value)
 
     @property
     @pulumi.getter
@@ -302,16 +302,16 @@ class _ConnectionState:
         pulumi.set(self, "bandwidth", value)
 
     @property
-    @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionChangeLogArgs']]]]:
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> Optional[pulumi.Input['ConnectionChangeLogArgs']]:
         """
         Captures connection lifecycle change information
         """
-        return pulumi.get(self, "change_logs")
+        return pulumi.get(self, "change_log")
 
-    @change_logs.setter
-    def change_logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionChangeLogArgs']]]]):
-        pulumi.set(self, "change_logs", value)
+    @change_log.setter
+    def change_log(self, value: Optional[pulumi.Input['ConnectionChangeLogArgs']]):
+        pulumi.set(self, "change_log", value)
 
     @property
     @pulumi.getter
@@ -375,51 +375,51 @@ class _ConnectionState:
 
     @property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationArgs']]]]:
+    def operation(self) -> Optional[pulumi.Input['ConnectionOperationArgs']]:
         """
         Connection type-specific operational data
         """
-        return pulumi.get(self, "operations")
+        return pulumi.get(self, "operation")
 
-    @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationArgs']]]]):
-        pulumi.set(self, "operations", value)
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input['ConnectionOperationArgs']]):
+        pulumi.set(self, "operation", value)
 
     @property
     @pulumi.getter
-    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]]]:
+    def order(self) -> Optional[pulumi.Input['ConnectionOrderArgs']]:
         """
         Order related to this connection information
         """
-        return pulumi.get(self, "orders")
+        return pulumi.get(self, "order")
 
-    @orders.setter
-    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOrderArgs']]]]):
-        pulumi.set(self, "orders", value)
+    @order.setter
+    def order(self, value: Optional[pulumi.Input['ConnectionOrderArgs']]):
+        pulumi.set(self, "order", value)
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]]:
+    def project(self) -> Optional[pulumi.Input['ConnectionProjectArgs']]:
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
-    @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProjectArgs']]]]):
-        pulumi.set(self, "projects", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input['ConnectionProjectArgs']]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]]:
+    def redundancy(self) -> Optional[pulumi.Input['ConnectionRedundancyArgs']]:
         """
         Redundancy Information
         """
-        return pulumi.get(self, "redundancies")
+        return pulumi.get(self, "redundancy")
 
-    @redundancies.setter
-    def redundancies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionRedundancyArgs']]]]):
-        pulumi.set(self, "redundancies", value)
+    @redundancy.setter
+    def redundancy(self, value: Optional[pulumi.Input['ConnectionRedundancyArgs']]):
+        pulumi.set(self, "redundancy", value)
 
     @property
     @pulumi.getter
@@ -446,16 +446,16 @@ class _ConnectionState:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="zSides")
-    def z_sides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]]]:
+    @pulumi.getter(name="zSide")
+    def z_side(self) -> Optional[pulumi.Input['ConnectionZSideArgs']]:
         """
         Destination or Provider side connection configuration object of the multi-segment connection
         """
-        return pulumi.get(self, "z_sides")
+        return pulumi.get(self, "z_side")
 
-    @z_sides.setter
-    def z_sides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideArgs']]]]):
-        pulumi.set(self, "z_sides", value)
+    @z_side.setter
+    def z_side(self, value: Optional[pulumi.Input['ConnectionZSideArgs']]):
+        pulumi.set(self, "z_side", value)
 
 
 class Connection(pulumi.CustomResource):
@@ -463,31 +463,98 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 a_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]]]] = None,
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]]] = None,
+                 a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]]] = None,
-                 redundancies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]]] = None,
+                 order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
+                 project: Optional[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]] = None,
+                 redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-                 z_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]]] = None,
+                 z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None,
                  __props__=None):
         """
-        Create a Connection resource with the given unique name, props, and options.
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        metro = config.get("metro")
+        if metro is None:
+            metro = "FR"
+        speed_in_mbps = config.get_int("speedInMbps")
+        if speed_in_mbps is None:
+            speed_in_mbps = 50
+        fabric_port_name = config.require("fabricPortName")
+        aws_region = config.get("awsRegion")
+        if aws_region is None:
+            aws_region = "eu-central-1"
+        aws_account_id = config.require("awsAccountId")
+        service_profile_id = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
+            property="/name",
+            operator="=",
+            values=["AWS Direct Connect"],
+        )).data[0].uuid
+        port_id = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+            name=fabric_port_name,
+        )).data[0].uuid
+        colo2_aws = equinix.fabric.Connection("colo2Aws",
+            name="Pulumi-colo2Aws",
+            type="EVPL_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type="ALL",
+                emails=["example@equinix.com"],
+            )],
+            bandwidth=speed_in_mbps,
+            redundancy=equinix.fabric.ConnectionRedundancyArgs(
+                priority="PRIMARY",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type="COLO",
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid=port_id,
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type="DOT1Q",
+                        vlan_tag=1234,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type="SP",
+                    authentication_key=aws_account_id,
+                    seller_region=aws_region,
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type="L2_PROFILE",
+                        uuid=service_profile_id,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=metro,
+                    ),
+                ),
+            ))
+        pulumi.export("connectionId", colo2_aws.id)
+        pulumi.export("connectionStatus", colo2_aws.operation.equinix_status)
+        pulumi.export("connectionProviderStatus", colo2_aws.operation.provider_status)
+        pulumi.export("awsDirectConnectId", colo2_aws.z_side.access_point.provider_connection_id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]]] a_sides: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]] additional_infos: Connection additional information
+        :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]] orders: Order related to this connection information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]] projects: Project information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]] redundancies: Redundancy Information
+        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order related to this connection information
+        :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
+        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Redundancy Information
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
+        :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         ...
     @overload
@@ -496,7 +563,74 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Connection resource with the given unique name, props, and options.
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        metro = config.get("metro")
+        if metro is None:
+            metro = "FR"
+        speed_in_mbps = config.get_int("speedInMbps")
+        if speed_in_mbps is None:
+            speed_in_mbps = 50
+        fabric_port_name = config.require("fabricPortName")
+        aws_region = config.get("awsRegion")
+        if aws_region is None:
+            aws_region = "eu-central-1"
+        aws_account_id = config.require("awsAccountId")
+        service_profile_id = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
+            property="/name",
+            operator="=",
+            values=["AWS Direct Connect"],
+        )).data[0].uuid
+        port_id = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+            name=fabric_port_name,
+        )).data[0].uuid
+        colo2_aws = equinix.fabric.Connection("colo2Aws",
+            name="Pulumi-colo2Aws",
+            type="EVPL_VC",
+            notifications=[equinix.fabric.ConnectionNotificationArgs(
+                type="ALL",
+                emails=["example@equinix.com"],
+            )],
+            bandwidth=speed_in_mbps,
+            redundancy=equinix.fabric.ConnectionRedundancyArgs(
+                priority="PRIMARY",
+            ),
+            a_side=equinix.fabric.ConnectionASideArgs(
+                access_point=equinix.fabric.ConnectionASideAccessPointArgs(
+                    type="COLO",
+                    port=equinix.fabric.ConnectionASideAccessPointPortArgs(
+                        uuid=port_id,
+                    ),
+                    link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
+                        type="DOT1Q",
+                        vlan_tag=1234,
+                    ),
+                ),
+            ),
+            z_side=equinix.fabric.ConnectionZSideArgs(
+                access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
+                    type="SP",
+                    authentication_key=aws_account_id,
+                    seller_region=aws_region,
+                    profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
+                        type="L2_PROFILE",
+                        uuid=service_profile_id,
+                    ),
+                    location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
+                        metro_code=metro,
+                    ),
+                ),
+            ))
+        pulumi.export("connectionId", colo2_aws.id)
+        pulumi.export("connectionStatus", colo2_aws.operation.equinix_status)
+        pulumi.export("connectionProviderStatus", colo2_aws.operation.provider_status)
+        pulumi.export("awsDirectConnectId", colo2_aws.z_side.access_point.provider_connection_id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -512,16 +646,16 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 a_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]]]] = None,
-                 additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]]] = None,
+                 a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
+                 additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]]] = None,
-                 redundancies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]]] = None,
+                 order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
+                 project: Optional[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]] = None,
+                 redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-                 z_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]]] = None,
+                 z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -531,10 +665,10 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            if a_sides is None and not opts.urn:
-                raise TypeError("Missing required property 'a_sides'")
-            __props__.__dict__["a_sides"] = a_sides
-            __props__.__dict__["additional_infos"] = additional_infos
+            if a_side is None and not opts.urn:
+                raise TypeError("Missing required property 'a_side'")
+            __props__.__dict__["a_side"] = a_side
+            __props__.__dict__["additional_info"] = additional_info
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
@@ -542,21 +676,21 @@ class Connection(pulumi.CustomResource):
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
-            __props__.__dict__["orders"] = orders
-            __props__.__dict__["projects"] = projects
-            __props__.__dict__["redundancies"] = redundancies
+            __props__.__dict__["order"] = order
+            __props__.__dict__["project"] = project
+            __props__.__dict__["redundancy"] = redundancy
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if z_sides is None and not opts.urn:
-                raise TypeError("Missing required property 'z_sides'")
-            __props__.__dict__["z_sides"] = z_sides
-            __props__.__dict__["accounts"] = None
-            __props__.__dict__["change_logs"] = None
+            if z_side is None and not opts.urn:
+                raise TypeError("Missing required property 'z_side'")
+            __props__.__dict__["z_side"] = z_side
+            __props__.__dict__["account"] = None
+            __props__.__dict__["change_log"] = None
             __props__.__dict__["direction"] = None
             __props__.__dict__["href"] = None
             __props__.__dict__["is_remote"] = None
-            __props__.__dict__["operations"] = None
+            __props__.__dict__["operation"] = None
             __props__.__dict__["state"] = None
         super(Connection, __self__).__init__(
             'equinix:fabric/connection:Connection',
@@ -568,23 +702,23 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            a_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]]]] = None,
-            accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAccountArgs']]]]] = None,
-            additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]]] = None,
+            a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
+            account: Optional[pulumi.Input[pulumi.InputType['ConnectionAccountArgs']]] = None,
+            additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
-            change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']]]]] = None,
+            change_log: Optional[pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
             is_remote: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
-            operations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOperationArgs']]]]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]]] = None,
-            projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]]] = None,
-            redundancies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]]] = None,
+            operation: Optional[pulumi.Input[pulumi.InputType['ConnectionOperationArgs']]] = None,
+            order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
+            project: Optional[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]] = None,
+            redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-            z_sides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]]] = None) -> 'Connection':
+            z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -592,70 +726,70 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]]] a_sides: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAccountArgs']]]] accounts: Customer account information that is associated with this connection
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]] additional_infos: Connection additional information
+        :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
+        :param pulumi.Input[pulumi.InputType['ConnectionAccountArgs']] account: Customer account information that is associated with this connection
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionAdditionalInfoArgs']]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']]]] change_logs: Captures connection lifecycle change information
+        :param pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
         :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOperationArgs']]]] operations: Connection type-specific operational data
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]]] orders: Order related to this connection information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionProjectArgs']]]] projects: Project information
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]]] redundancies: Redundancy Information
+        :param pulumi.Input[pulumi.InputType['ConnectionOperationArgs']] operation: Connection type-specific operational data
+        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order related to this connection information
+        :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
+        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Redundancy Information
         :param pulumi.Input[str] state: Connection overall state
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]]] z_sides: Destination or Provider side connection configuration object of the multi-segment connection
+        :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
-        __props__.__dict__["a_sides"] = a_sides
-        __props__.__dict__["accounts"] = accounts
-        __props__.__dict__["additional_infos"] = additional_infos
+        __props__.__dict__["a_side"] = a_side
+        __props__.__dict__["account"] = account
+        __props__.__dict__["additional_info"] = additional_info
         __props__.__dict__["bandwidth"] = bandwidth
-        __props__.__dict__["change_logs"] = change_logs
+        __props__.__dict__["change_log"] = change_log
         __props__.__dict__["direction"] = direction
         __props__.__dict__["href"] = href
         __props__.__dict__["is_remote"] = is_remote
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
-        __props__.__dict__["operations"] = operations
-        __props__.__dict__["orders"] = orders
-        __props__.__dict__["projects"] = projects
-        __props__.__dict__["redundancies"] = redundancies
+        __props__.__dict__["operation"] = operation
+        __props__.__dict__["order"] = order
+        __props__.__dict__["project"] = project
+        __props__.__dict__["redundancy"] = redundancy
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
-        __props__.__dict__["z_sides"] = z_sides
+        __props__.__dict__["z_side"] = z_side
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="aSides")
-    def a_sides(self) -> pulumi.Output[Sequence['outputs.ConnectionASide']]:
+    @pulumi.getter(name="aSide")
+    def a_side(self) -> pulumi.Output['outputs.ConnectionASide']:
         """
         Requester or Customer side connection configuration object of the multi-segment connection
         """
-        return pulumi.get(self, "a_sides")
+        return pulumi.get(self, "a_side")
 
     @property
     @pulumi.getter
-    def accounts(self) -> pulumi.Output[Sequence['outputs.ConnectionAccount']]:
+    def account(self) -> pulumi.Output['outputs.ConnectionAccount']:
         """
         Customer account information that is associated with this connection
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
     @property
-    @pulumi.getter(name="additionalInfos")
-    def additional_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionAdditionalInfo']]]:
+    @pulumi.getter(name="additionalInfo")
+    def additional_info(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionAdditionalInfo']]]:
         """
         Connection additional information
         """
-        return pulumi.get(self, "additional_infos")
+        return pulumi.get(self, "additional_info")
 
     @property
     @pulumi.getter
@@ -666,12 +800,12 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "bandwidth")
 
     @property
-    @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> pulumi.Output[Sequence['outputs.ConnectionChangeLog']]:
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> pulumi.Output['outputs.ConnectionChangeLog']:
         """
         Captures connection lifecycle change information
         """
-        return pulumi.get(self, "change_logs")
+        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter
@@ -715,35 +849,35 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def operations(self) -> pulumi.Output[Sequence['outputs.ConnectionOperation']]:
+    def operation(self) -> pulumi.Output['outputs.ConnectionOperation']:
         """
         Connection type-specific operational data
         """
-        return pulumi.get(self, "operations")
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter
-    def orders(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionOrder']]]:
+    def order(self) -> pulumi.Output[Optional['outputs.ConnectionOrder']]:
         """
         Order related to this connection information
         """
-        return pulumi.get(self, "orders")
+        return pulumi.get(self, "order")
 
     @property
     @pulumi.getter
-    def projects(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionProject']]]:
+    def project(self) -> pulumi.Output[Optional['outputs.ConnectionProject']]:
         """
         Project information
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
-    def redundancies(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionRedundancy']]]:
+    def redundancy(self) -> pulumi.Output[Optional['outputs.ConnectionRedundancy']]:
         """
         Redundancy Information
         """
-        return pulumi.get(self, "redundancies")
+        return pulumi.get(self, "redundancy")
 
     @property
     @pulumi.getter
@@ -762,10 +896,10 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter(name="zSides")
-    def z_sides(self) -> pulumi.Output[Sequence['outputs.ConnectionZSide']]:
+    @pulumi.getter(name="zSide")
+    def z_side(self) -> pulumi.Output['outputs.ConnectionZSide']:
         """
         Destination or Provider side connection configuration object of the multi-segment connection
         """
-        return pulumi.get(self, "z_sides")
+        return pulumi.get(self, "z_side")
 

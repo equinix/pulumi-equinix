@@ -20,34 +20,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Creates ACL template and assigns it to the network device
- * const myacl = new equinix.networkedge.AclTemplate("myacl", {
+ * const aclTemplate = new equinix.networkedge.AclTemplate("aclTemplate", {
+ *     name: "test",
  *     description: "Test ACL template",
  *     inboundRules: [
  *         {
- *             description: "inbound rule description",
- *             dstPort: "any",
+ *             subnet: "1.1.1.1/32",
  *             protocol: "IP",
  *             srcPort: "any",
- *             subnet: "1.1.1.1/32",
+ *             dstPort: "any",
+ *             description: "inbound rule description",
  *         },
  *         {
- *             dstPort: "53,1045,2041",
- *             protocol: "UDP",
+ *             subnet: "2.2.2.2/28",
+ *             protocol: "TCP",
  *             srcPort: "any",
- *             subnet: "172.16.25.0/24",
+ *             dstPort: "any",
+ *             description: "inbound rule description",
  *         },
  *     ],
  * });
+ * export const templateId = aclTemplate.id;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing ID
- *
- * ```sh
- *  $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
  */
 export class AclTemplate extends pulumi.CustomResource {
     /**

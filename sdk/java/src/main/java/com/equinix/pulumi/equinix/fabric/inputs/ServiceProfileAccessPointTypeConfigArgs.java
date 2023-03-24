@@ -88,30 +88,30 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
      * Api configuration details
      * 
      */
-    @Import(name="apiConfigs")
-    private @Nullable Output<List<ServiceProfileAccessPointTypeConfigApiConfigArgs>> apiConfigs;
+    @Import(name="apiConfig")
+    private @Nullable Output<ServiceProfileAccessPointTypeConfigApiConfigArgs> apiConfig;
 
     /**
      * @return Api configuration details
      * 
      */
-    public Optional<Output<List<ServiceProfileAccessPointTypeConfigApiConfigArgs>>> apiConfigs() {
-        return Optional.ofNullable(this.apiConfigs);
+    public Optional<Output<ServiceProfileAccessPointTypeConfigApiConfigArgs>> apiConfig() {
+        return Optional.ofNullable(this.apiConfig);
     }
 
     /**
      * Authentication key details
      * 
      */
-    @Import(name="authenticationKeys")
-    private @Nullable Output<List<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>> authenticationKeys;
+    @Import(name="authenticationKey")
+    private @Nullable Output<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs> authenticationKey;
 
     /**
      * @return Authentication key details
      * 
      */
-    public Optional<Output<List<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>>> authenticationKeys() {
-        return Optional.ofNullable(this.authenticationKeys);
+    public Optional<Output<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>> authenticationKey() {
+        return Optional.ofNullable(this.authenticationKey);
     }
 
     /**
@@ -178,15 +178,15 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
      * Link protocol configuration details
      * 
      */
-    @Import(name="linkProtocolConfigs")
-    private @Nullable Output<List<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>> linkProtocolConfigs;
+    @Import(name="linkProtocolConfig")
+    private @Nullable Output<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs> linkProtocolConfig;
 
     /**
      * @return Link protocol configuration details
      * 
      */
-    public Optional<Output<List<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>>> linkProtocolConfigs() {
-        return Optional.ofNullable(this.linkProtocolConfigs);
+    public Optional<Output<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>> linkProtocolConfig() {
+        return Optional.ofNullable(this.linkProtocolConfig);
     }
 
     /**
@@ -241,13 +241,13 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
         this.allowBandwidthUpgrade = $.allowBandwidthUpgrade;
         this.allowCustomBandwidth = $.allowCustomBandwidth;
         this.allowRemoteConnections = $.allowRemoteConnections;
-        this.apiConfigs = $.apiConfigs;
-        this.authenticationKeys = $.authenticationKeys;
+        this.apiConfig = $.apiConfig;
+        this.authenticationKey = $.authenticationKey;
         this.bandwidthAlertThreshold = $.bandwidthAlertThreshold;
         this.connectionLabel = $.connectionLabel;
         this.connectionRedundancyRequired = $.connectionRedundancyRequired;
         this.enableAutoGenerateServiceKey = $.enableAutoGenerateServiceKey;
-        this.linkProtocolConfigs = $.linkProtocolConfigs;
+        this.linkProtocolConfig = $.linkProtocolConfig;
         this.supportedBandwidths = $.supportedBandwidths;
         this.type = $.type;
         this.uuid = $.uuid;
@@ -356,65 +356,45 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param apiConfigs Api configuration details
+         * @param apiConfig Api configuration details
          * 
          * @return builder
          * 
          */
-        public Builder apiConfigs(@Nullable Output<List<ServiceProfileAccessPointTypeConfigApiConfigArgs>> apiConfigs) {
-            $.apiConfigs = apiConfigs;
+        public Builder apiConfig(@Nullable Output<ServiceProfileAccessPointTypeConfigApiConfigArgs> apiConfig) {
+            $.apiConfig = apiConfig;
             return this;
         }
 
         /**
-         * @param apiConfigs Api configuration details
+         * @param apiConfig Api configuration details
          * 
          * @return builder
          * 
          */
-        public Builder apiConfigs(List<ServiceProfileAccessPointTypeConfigApiConfigArgs> apiConfigs) {
-            return apiConfigs(Output.of(apiConfigs));
+        public Builder apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs apiConfig) {
+            return apiConfig(Output.of(apiConfig));
         }
 
         /**
-         * @param apiConfigs Api configuration details
+         * @param authenticationKey Authentication key details
          * 
          * @return builder
          * 
          */
-        public Builder apiConfigs(ServiceProfileAccessPointTypeConfigApiConfigArgs... apiConfigs) {
-            return apiConfigs(List.of(apiConfigs));
-        }
-
-        /**
-         * @param authenticationKeys Authentication key details
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authenticationKeys(@Nullable Output<List<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>> authenticationKeys) {
-            $.authenticationKeys = authenticationKeys;
+        public Builder authenticationKey(@Nullable Output<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs> authenticationKey) {
+            $.authenticationKey = authenticationKey;
             return this;
         }
 
         /**
-         * @param authenticationKeys Authentication key details
+         * @param authenticationKey Authentication key details
          * 
          * @return builder
          * 
          */
-        public Builder authenticationKeys(List<ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs> authenticationKeys) {
-            return authenticationKeys(Output.of(authenticationKeys));
-        }
-
-        /**
-         * @param authenticationKeys Authentication key details
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authenticationKeys(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs... authenticationKeys) {
-            return authenticationKeys(List.of(authenticationKeys));
+        public Builder authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs authenticationKey) {
+            return authenticationKey(Output.of(authenticationKey));
         }
 
         /**
@@ -502,34 +482,24 @@ public final class ServiceProfileAccessPointTypeConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param linkProtocolConfigs Link protocol configuration details
+         * @param linkProtocolConfig Link protocol configuration details
          * 
          * @return builder
          * 
          */
-        public Builder linkProtocolConfigs(@Nullable Output<List<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>> linkProtocolConfigs) {
-            $.linkProtocolConfigs = linkProtocolConfigs;
+        public Builder linkProtocolConfig(@Nullable Output<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs> linkProtocolConfig) {
+            $.linkProtocolConfig = linkProtocolConfig;
             return this;
         }
 
         /**
-         * @param linkProtocolConfigs Link protocol configuration details
+         * @param linkProtocolConfig Link protocol configuration details
          * 
          * @return builder
          * 
          */
-        public Builder linkProtocolConfigs(List<ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs> linkProtocolConfigs) {
-            return linkProtocolConfigs(Output.of(linkProtocolConfigs));
-        }
-
-        /**
-         * @param linkProtocolConfigs Link protocol configuration details
-         * 
-         * @return builder
-         * 
-         */
-        public Builder linkProtocolConfigs(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs... linkProtocolConfigs) {
-            return linkProtocolConfigs(List.of(linkProtocolConfigs));
+        public Builder linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs linkProtocolConfig) {
+            return linkProtocolConfig(Output.of(linkProtocolConfig));
         }
 
         /**

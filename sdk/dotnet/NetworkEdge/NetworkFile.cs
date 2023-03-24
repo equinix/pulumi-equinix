@@ -12,15 +12,39 @@ namespace Pulumi.Equinix.NetworkEdge
     /// <summary>
     /// Resource `equinix.networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
     /// 
-    /// ## Import
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
     /// 
-    /// This resource can be imported using an existing ID
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var metro = config.Get("metro") ?? "SV";
+    ///     var networkFile = new Equinix.NetworkEdge.NetworkFile("networkFile", new()
+    ///     {
+    ///         FileName = "Aviatrix-ZTP-file",
+    ///         Content = File.ReadAllText("./../assets/aviatrix-cloud-init.txt"),
+    ///         MetroCode = metro,
+    ///         DeviceTypeCode = "AVIATRIX_EDGE",
+    ///         ProcessType = "CLOUD_INIT",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///     });
     /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["networkFileId"] = networkFile.Id,
+    ///         ["networkFileStatus"] = networkFile.Status,
+    ///     };
+    /// });
     /// ```
     /// 
-    ///  The `content`, `self_managed` and `byol` fields can not be imported.
+    /// ## Import
+    /// 
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `content`, `self_managed` and `byol` fields can not be imported.
     /// </summary>
     [EquinixResourceType("equinix:networkedge/networkFile:NetworkFile")]
     public partial class NetworkFile : global::Pulumi.CustomResource
@@ -104,7 +128,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
                 AdditionalSecretOutputs =
                 {
                     "content",

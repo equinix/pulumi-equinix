@@ -1,0 +1,18 @@
+name: equinix-networkedge-ssh-user
+runtime: yaml
+description: An Equinix Network Edge SSH User resource
+config:
+  device1Id:
+    type: string
+  device2Id:
+    type: string
+resources:
+  sshUser:
+    type: equinix:networkedge:SshUser
+    properties:
+      username: johnKent
+      deviceIds:
+      - ${device1Id}
+      - ${device2Id}
+outputs:
+  sshUserId: ${sshUser.id}

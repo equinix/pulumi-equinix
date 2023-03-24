@@ -10,125 +10,125 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type AclProtocolType string
+type AclRuleProtocolType string
 
 const (
-	AclProtocolTypeIP  = AclProtocolType("IP")
-	AclProtocolTypeTCP = AclProtocolType("TCP")
-	AclProtocolTypeUDP = AclProtocolType("UDP")
+	AclRuleProtocolTypeIP  = AclRuleProtocolType("IP")
+	AclRuleProtocolTypeTCP = AclRuleProtocolType("TCP")
+	AclRuleProtocolTypeUDP = AclRuleProtocolType("UDP")
 )
 
-func (AclProtocolType) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclProtocolType)(nil)).Elem()
+func (AclRuleProtocolType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRuleProtocolType)(nil)).Elem()
 }
 
-func (e AclProtocolType) ToAclProtocolTypeOutput() AclProtocolTypeOutput {
-	return pulumi.ToOutput(e).(AclProtocolTypeOutput)
+func (e AclRuleProtocolType) ToAclRuleProtocolTypeOutput() AclRuleProtocolTypeOutput {
+	return pulumi.ToOutput(e).(AclRuleProtocolTypeOutput)
 }
 
-func (e AclProtocolType) ToAclProtocolTypeOutputWithContext(ctx context.Context) AclProtocolTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AclProtocolTypeOutput)
+func (e AclRuleProtocolType) ToAclRuleProtocolTypeOutputWithContext(ctx context.Context) AclRuleProtocolTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AclRuleProtocolTypeOutput)
 }
 
-func (e AclProtocolType) ToAclProtocolTypePtrOutput() AclProtocolTypePtrOutput {
-	return e.ToAclProtocolTypePtrOutputWithContext(context.Background())
+func (e AclRuleProtocolType) ToAclRuleProtocolTypePtrOutput() AclRuleProtocolTypePtrOutput {
+	return e.ToAclRuleProtocolTypePtrOutputWithContext(context.Background())
 }
 
-func (e AclProtocolType) ToAclProtocolTypePtrOutputWithContext(ctx context.Context) AclProtocolTypePtrOutput {
-	return AclProtocolType(e).ToAclProtocolTypeOutputWithContext(ctx).ToAclProtocolTypePtrOutputWithContext(ctx)
+func (e AclRuleProtocolType) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
+	return AclRuleProtocolType(e).ToAclRuleProtocolTypeOutputWithContext(ctx).ToAclRuleProtocolTypePtrOutputWithContext(ctx)
 }
 
-func (e AclProtocolType) ToStringOutput() pulumi.StringOutput {
+func (e AclRuleProtocolType) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e AclProtocolType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e AclRuleProtocolType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e AclProtocolType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e AclRuleProtocolType) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e AclProtocolType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e AclRuleProtocolType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type AclProtocolTypeOutput struct{ *pulumi.OutputState }
+type AclRuleProtocolTypeOutput struct{ *pulumi.OutputState }
 
-func (AclProtocolTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclProtocolType)(nil)).Elem()
+func (AclRuleProtocolTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRuleProtocolType)(nil)).Elem()
 }
 
-func (o AclProtocolTypeOutput) ToAclProtocolTypeOutput() AclProtocolTypeOutput {
+func (o AclRuleProtocolTypeOutput) ToAclRuleProtocolTypeOutput() AclRuleProtocolTypeOutput {
 	return o
 }
 
-func (o AclProtocolTypeOutput) ToAclProtocolTypeOutputWithContext(ctx context.Context) AclProtocolTypeOutput {
+func (o AclRuleProtocolTypeOutput) ToAclRuleProtocolTypeOutputWithContext(ctx context.Context) AclRuleProtocolTypeOutput {
 	return o
 }
 
-func (o AclProtocolTypeOutput) ToAclProtocolTypePtrOutput() AclProtocolTypePtrOutput {
-	return o.ToAclProtocolTypePtrOutputWithContext(context.Background())
+func (o AclRuleProtocolTypeOutput) ToAclRuleProtocolTypePtrOutput() AclRuleProtocolTypePtrOutput {
+	return o.ToAclRuleProtocolTypePtrOutputWithContext(context.Background())
 }
 
-func (o AclProtocolTypeOutput) ToAclProtocolTypePtrOutputWithContext(ctx context.Context) AclProtocolTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclProtocolType) *AclProtocolType {
+func (o AclRuleProtocolTypeOutput) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclRuleProtocolType) *AclRuleProtocolType {
 		return &v
-	}).(AclProtocolTypePtrOutput)
+	}).(AclRuleProtocolTypePtrOutput)
 }
 
-func (o AclProtocolTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o AclRuleProtocolTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o AclProtocolTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AclProtocolType) string {
+func (o AclRuleProtocolTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AclRuleProtocolType) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o AclProtocolTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o AclRuleProtocolTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o AclProtocolTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AclProtocolType) *string {
+func (o AclRuleProtocolTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AclRuleProtocolType) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type AclProtocolTypePtrOutput struct{ *pulumi.OutputState }
+type AclRuleProtocolTypePtrOutput struct{ *pulumi.OutputState }
 
-func (AclProtocolTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclProtocolType)(nil)).Elem()
+func (AclRuleProtocolTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclRuleProtocolType)(nil)).Elem()
 }
 
-func (o AclProtocolTypePtrOutput) ToAclProtocolTypePtrOutput() AclProtocolTypePtrOutput {
+func (o AclRuleProtocolTypePtrOutput) ToAclRuleProtocolTypePtrOutput() AclRuleProtocolTypePtrOutput {
 	return o
 }
 
-func (o AclProtocolTypePtrOutput) ToAclProtocolTypePtrOutputWithContext(ctx context.Context) AclProtocolTypePtrOutput {
+func (o AclRuleProtocolTypePtrOutput) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
 	return o
 }
 
-func (o AclProtocolTypePtrOutput) Elem() AclProtocolTypeOutput {
-	return o.ApplyT(func(v *AclProtocolType) AclProtocolType {
+func (o AclRuleProtocolTypePtrOutput) Elem() AclRuleProtocolTypeOutput {
+	return o.ApplyT(func(v *AclRuleProtocolType) AclRuleProtocolType {
 		if v != nil {
 			return *v
 		}
-		var ret AclProtocolType
+		var ret AclRuleProtocolType
 		return ret
-	}).(AclProtocolTypeOutput)
+	}).(AclRuleProtocolTypeOutput)
 }
 
-func (o AclProtocolTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o AclRuleProtocolTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o AclProtocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AclProtocolType) *string {
+func (o AclRuleProtocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AclRuleProtocolType) *string {
 		if e == nil {
 			return nil
 		}
@@ -137,42 +137,42 @@ func (o AclProtocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// AclProtocolTypeInput is an input type that accepts AclProtocolTypeArgs and AclProtocolTypeOutput values.
-// You can construct a concrete instance of `AclProtocolTypeInput` via:
+// AclRuleProtocolTypeInput is an input type that accepts AclRuleProtocolTypeArgs and AclRuleProtocolTypeOutput values.
+// You can construct a concrete instance of `AclRuleProtocolTypeInput` via:
 //
-//	AclProtocolTypeArgs{...}
-type AclProtocolTypeInput interface {
+//	AclRuleProtocolTypeArgs{...}
+type AclRuleProtocolTypeInput interface {
 	pulumi.Input
 
-	ToAclProtocolTypeOutput() AclProtocolTypeOutput
-	ToAclProtocolTypeOutputWithContext(context.Context) AclProtocolTypeOutput
+	ToAclRuleProtocolTypeOutput() AclRuleProtocolTypeOutput
+	ToAclRuleProtocolTypeOutputWithContext(context.Context) AclRuleProtocolTypeOutput
 }
 
-var aclProtocolTypePtrType = reflect.TypeOf((**AclProtocolType)(nil)).Elem()
+var aclRuleProtocolTypePtrType = reflect.TypeOf((**AclRuleProtocolType)(nil)).Elem()
 
-type AclProtocolTypePtrInput interface {
+type AclRuleProtocolTypePtrInput interface {
 	pulumi.Input
 
-	ToAclProtocolTypePtrOutput() AclProtocolTypePtrOutput
-	ToAclProtocolTypePtrOutputWithContext(context.Context) AclProtocolTypePtrOutput
+	ToAclRuleProtocolTypePtrOutput() AclRuleProtocolTypePtrOutput
+	ToAclRuleProtocolTypePtrOutputWithContext(context.Context) AclRuleProtocolTypePtrOutput
 }
 
-type aclProtocolTypePtr string
+type aclRuleProtocolTypePtr string
 
-func AclProtocolTypePtr(v string) AclProtocolTypePtrInput {
-	return (*aclProtocolTypePtr)(&v)
+func AclRuleProtocolTypePtr(v string) AclRuleProtocolTypePtrInput {
+	return (*aclRuleProtocolTypePtr)(&v)
 }
 
-func (*aclProtocolTypePtr) ElementType() reflect.Type {
-	return aclProtocolTypePtrType
+func (*aclRuleProtocolTypePtr) ElementType() reflect.Type {
+	return aclRuleProtocolTypePtrType
 }
 
-func (in *aclProtocolTypePtr) ToAclProtocolTypePtrOutput() AclProtocolTypePtrOutput {
-	return pulumi.ToOutput(in).(AclProtocolTypePtrOutput)
+func (in *aclRuleProtocolTypePtr) ToAclRuleProtocolTypePtrOutput() AclRuleProtocolTypePtrOutput {
+	return pulumi.ToOutput(in).(AclRuleProtocolTypePtrOutput)
 }
 
-func (in *aclProtocolTypePtr) ToAclProtocolTypePtrOutputWithContext(ctx context.Context) AclProtocolTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AclProtocolTypePtrOutput)
+func (in *aclRuleProtocolTypePtr) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AclRuleProtocolTypePtrOutput)
 }
 
 type FileType string
@@ -504,14 +504,14 @@ func (in *throughputUnitPtr) ToThroughputUnitPtrOutputWithContext(ctx context.Co
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AclProtocolTypeInput)(nil)).Elem(), AclProtocolType("IP"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AclProtocolTypePtrInput)(nil)).Elem(), AclProtocolType("IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRuleProtocolTypeInput)(nil)).Elem(), AclRuleProtocolType("IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRuleProtocolTypePtrInput)(nil)).Elem(), AclRuleProtocolType("IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FileTypeInput)(nil)).Elem(), FileType("LICENSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FileTypePtrInput)(nil)).Elem(), FileType("LICENSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThroughputUnitInput)(nil)).Elem(), ThroughputUnit("Mbps"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThroughputUnitPtrInput)(nil)).Elem(), ThroughputUnit("Mbps"))
-	pulumi.RegisterOutputType(AclProtocolTypeOutput{})
-	pulumi.RegisterOutputType(AclProtocolTypePtrOutput{})
+	pulumi.RegisterOutputType(AclRuleProtocolTypeOutput{})
+	pulumi.RegisterOutputType(AclRuleProtocolTypePtrOutput{})
 	pulumi.RegisterOutputType(FileTypeOutput{})
 	pulumi.RegisterOutputType(FileTypePtrOutput{})
 	pulumi.RegisterOutputType(ThroughputUnitOutput{})

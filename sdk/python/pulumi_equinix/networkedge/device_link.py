@@ -217,43 +217,48 @@ class DeviceLink(pulumi.CustomResource):
         Network Edge virtual network device links.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Example of device link with HA device pair
-        # where each device is in different metro
-        test = equinix.networkedge.DeviceLink("test",
+        config = pulumi.Config()
+        account_name = config.require("accountName")
+        account_metro = config.require("accountMetro")
+        device1_id = config.require("device1Id")
+        device2_id = config.require("device2Id")
+        accountf_num = equinix.networkedge.get_account(name=account_name,
+            metro_code=account_metro).number
+        device1_metro = equinix.networkedge.get_device(uuid=device1_id).metro_code
+        device2_metro = equinix.networkedge.get_device(uuid=device2_id).metro_code
+        device_link = equinix.networkedge.DeviceLink("deviceLink",
+            name="test-link",
             subnet="192.168.40.64/27",
             devices=[
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=equinix_network_device["test"]["uuid"],
-                    asn=equinix_network_device["test"]["asn"] if equinix_network_device["test"]["asn"] > 0 else 22111,
+                    id="device1Id",
+                    asn=22111,
                     interface_id=6,
                 ),
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=equinix_network_device["test"]["secondary_device"][0]["uuid"],
-                    asn=equinix_network_device["test"]["secondary_device"][0]["asn"] if equinix_network_device["test"]["secondary_device"][0]["asn"] > 0 else 22333,
+                    id="device2Id",
+                    asn=22333,
                     interface_id=7,
                 ),
             ],
             links=[equinix.networkedge.DeviceLinkLinkArgs(
-                account_number=equinix_network_device["test"]["account_number"],
-                src_metro_code=equinix_network_device["test"]["metro_code"],
-                dst_metro_code=equinix_network_device["test"]["secondary_device"][0]["metro_code"],
+                account_number=accountf_num,
+                src_metro_code=device1_metro,
+                dst_metro_code=device2_metro,
                 throughput="50",
                 throughput_unit="Mbps",
             )])
+        pulumi.export("status", device_link.status)
+        pulumi.export("devices", device_link.devices)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -276,43 +281,48 @@ class DeviceLink(pulumi.CustomResource):
         Network Edge virtual network device links.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Example of device link with HA device pair
-        # where each device is in different metro
-        test = equinix.networkedge.DeviceLink("test",
+        config = pulumi.Config()
+        account_name = config.require("accountName")
+        account_metro = config.require("accountMetro")
+        device1_id = config.require("device1Id")
+        device2_id = config.require("device2Id")
+        accountf_num = equinix.networkedge.get_account(name=account_name,
+            metro_code=account_metro).number
+        device1_metro = equinix.networkedge.get_device(uuid=device1_id).metro_code
+        device2_metro = equinix.networkedge.get_device(uuid=device2_id).metro_code
+        device_link = equinix.networkedge.DeviceLink("deviceLink",
+            name="test-link",
             subnet="192.168.40.64/27",
             devices=[
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=equinix_network_device["test"]["uuid"],
-                    asn=equinix_network_device["test"]["asn"] if equinix_network_device["test"]["asn"] > 0 else 22111,
+                    id="device1Id",
+                    asn=22111,
                     interface_id=6,
                 ),
                 equinix.networkedge.DeviceLinkDeviceArgs(
-                    id=equinix_network_device["test"]["secondary_device"][0]["uuid"],
-                    asn=equinix_network_device["test"]["secondary_device"][0]["asn"] if equinix_network_device["test"]["secondary_device"][0]["asn"] > 0 else 22333,
+                    id="device2Id",
+                    asn=22333,
                     interface_id=7,
                 ),
             ],
             links=[equinix.networkedge.DeviceLinkLinkArgs(
-                account_number=equinix_network_device["test"]["account_number"],
-                src_metro_code=equinix_network_device["test"]["metro_code"],
-                dst_metro_code=equinix_network_device["test"]["secondary_device"][0]["metro_code"],
+                account_number=accountf_num,
+                src_metro_code=device1_metro,
+                dst_metro_code=device2_metro,
                 throughput="50",
                 throughput_unit="Mbps",
             )])
+        pulumi.export("status", device_link.status)
+        pulumi.export("devices", device_link.devices)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param DeviceLinkArgs args: The arguments to use to populate this resource's properties.

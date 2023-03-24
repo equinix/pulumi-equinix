@@ -11,16 +11,32 @@ namespace Pulumi.Equinix.Metal
 {
     /// <summary>
     /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
     /// 
-    /// &gt; **NOTE:** This resource takes a named network type with any mode required parameters and converts a device to the named network type. This resource simulated the network type interface for Devices in the Equinix Metal Portal. That interface changed when additional network types were introduced with more diverse port configurations and it is not guaranteed to work in devices with more than two ethernet ports. See the Network Types Guide for examples of this resource and to learn about the recommended `equinix.metal.Port` alternative.
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var deviceId = config.Require("deviceId");
+    ///     var networkType = config.Get("networkType") ?? "hybrid";
+    ///     var deviceNetwork = new Equinix.Metal.DeviceNetworkType("deviceNetwork", new()
+    ///     {
+    ///         DeviceId = deviceId,
+    ///         Type = networkType,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["deviceNetworkId"] = deviceNetwork.Id,
+    ///     };
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can also be imported using existing device ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
-    /// ```
+    /// This resource can also be imported using existing device ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/deviceNetworkType:DeviceNetworkType")]
     public partial class DeviceNetworkType : global::Pulumi.CustomResource
@@ -61,7 +77,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

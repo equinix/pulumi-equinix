@@ -2,13 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const AclProtocolType = {
+export const AclRuleProtocolType = {
     IP: "IP",
     TCP: "TCP",
     UDP: "UDP",
 } as const;
 
-export type AclProtocolType = (typeof AclProtocolType)[keyof typeof AclProtocolType];
+export type AclRuleProtocolType = (typeof AclRuleProtocolType)[keyof typeof AclRuleProtocolType];
 
 export const FileType = {
     License: "LICENSE",

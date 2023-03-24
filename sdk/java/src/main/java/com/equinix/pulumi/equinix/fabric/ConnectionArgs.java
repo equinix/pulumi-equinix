@@ -30,30 +30,30 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    @Import(name="aSides", required=true)
-    private Output<List<ConnectionASideArgs>> aSides;
+    @Import(name="aSide", required=true)
+    private Output<ConnectionASideArgs> aSide;
 
     /**
      * @return Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    public Output<List<ConnectionASideArgs>> aSides() {
-        return this.aSides;
+    public Output<ConnectionASideArgs> aSide() {
+        return this.aSide;
     }
 
     /**
      * Connection additional information
      * 
      */
-    @Import(name="additionalInfos")
-    private @Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfos;
+    @Import(name="additionalInfo")
+    private @Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfo;
 
     /**
      * @return Connection additional information
      * 
      */
-    public Optional<Output<List<ConnectionAdditionalInfoArgs>>> additionalInfos() {
-        return Optional.ofNullable(this.additionalInfos);
+    public Optional<Output<List<ConnectionAdditionalInfoArgs>>> additionalInfo() {
+        return Optional.ofNullable(this.additionalInfo);
     }
 
     /**
@@ -105,45 +105,45 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * Order related to this connection information
      * 
      */
-    @Import(name="orders")
-    private @Nullable Output<List<ConnectionOrderArgs>> orders;
+    @Import(name="order")
+    private @Nullable Output<ConnectionOrderArgs> order;
 
     /**
      * @return Order related to this connection information
      * 
      */
-    public Optional<Output<List<ConnectionOrderArgs>>> orders() {
-        return Optional.ofNullable(this.orders);
+    public Optional<Output<ConnectionOrderArgs>> order() {
+        return Optional.ofNullable(this.order);
     }
 
     /**
      * Project information
      * 
      */
-    @Import(name="projects")
-    private @Nullable Output<List<ConnectionProjectArgs>> projects;
+    @Import(name="project")
+    private @Nullable Output<ConnectionProjectArgs> project;
 
     /**
      * @return Project information
      * 
      */
-    public Optional<Output<List<ConnectionProjectArgs>>> projects() {
-        return Optional.ofNullable(this.projects);
+    public Optional<Output<ConnectionProjectArgs>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
      * Redundancy Information
      * 
      */
-    @Import(name="redundancies")
-    private @Nullable Output<List<ConnectionRedundancyArgs>> redundancies;
+    @Import(name="redundancy")
+    private @Nullable Output<ConnectionRedundancyArgs> redundancy;
 
     /**
      * @return Redundancy Information
      * 
      */
-    public Optional<Output<List<ConnectionRedundancyArgs>>> redundancies() {
-        return Optional.ofNullable(this.redundancies);
+    public Optional<Output<ConnectionRedundancyArgs>> redundancy() {
+        return Optional.ofNullable(this.redundancy);
     }
 
     /**
@@ -165,30 +165,30 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    @Import(name="zSides", required=true)
-    private Output<List<ConnectionZSideArgs>> zSides;
+    @Import(name="zSide", required=true)
+    private Output<ConnectionZSideArgs> zSide;
 
     /**
      * @return Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    public Output<List<ConnectionZSideArgs>> zSides() {
-        return this.zSides;
+    public Output<ConnectionZSideArgs> zSide() {
+        return this.zSide;
     }
 
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
-        this.aSides = $.aSides;
-        this.additionalInfos = $.additionalInfos;
+        this.aSide = $.aSide;
+        this.additionalInfo = $.additionalInfo;
         this.bandwidth = $.bandwidth;
         this.name = $.name;
         this.notifications = $.notifications;
-        this.orders = $.orders;
-        this.projects = $.projects;
-        this.redundancies = $.redundancies;
+        this.order = $.order;
+        this.project = $.project;
+        this.redundancy = $.redundancy;
         this.type = $.type;
-        this.zSides = $.zSides;
+        this.zSide = $.zSide;
     }
 
     public static Builder builder() {
@@ -210,65 +210,55 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aSides Requester or Customer side connection configuration object of the multi-segment connection
+         * @param aSide Requester or Customer side connection configuration object of the multi-segment connection
          * 
          * @return builder
          * 
          */
-        public Builder aSides(Output<List<ConnectionASideArgs>> aSides) {
-            $.aSides = aSides;
+        public Builder aSide(Output<ConnectionASideArgs> aSide) {
+            $.aSide = aSide;
             return this;
         }
 
         /**
-         * @param aSides Requester or Customer side connection configuration object of the multi-segment connection
+         * @param aSide Requester or Customer side connection configuration object of the multi-segment connection
          * 
          * @return builder
          * 
          */
-        public Builder aSides(List<ConnectionASideArgs> aSides) {
-            return aSides(Output.of(aSides));
+        public Builder aSide(ConnectionASideArgs aSide) {
+            return aSide(Output.of(aSide));
         }
 
         /**
-         * @param aSides Requester or Customer side connection configuration object of the multi-segment connection
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
          */
-        public Builder aSides(ConnectionASideArgs... aSides) {
-            return aSides(List.of(aSides));
-        }
-
-        /**
-         * @param additionalInfos Connection additional information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder additionalInfos(@Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfos) {
-            $.additionalInfos = additionalInfos;
+        public Builder additionalInfo(@Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfo) {
+            $.additionalInfo = additionalInfo;
             return this;
         }
 
         /**
-         * @param additionalInfos Connection additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(List<ConnectionAdditionalInfoArgs> additionalInfos) {
-            return additionalInfos(Output.of(additionalInfos));
+        public Builder additionalInfo(List<ConnectionAdditionalInfoArgs> additionalInfo) {
+            return additionalInfo(Output.of(additionalInfo));
         }
 
         /**
-         * @param additionalInfos Connection additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfos(ConnectionAdditionalInfoArgs... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
+        public Builder additionalInfo(ConnectionAdditionalInfoArgs... additionalInfo) {
+            return additionalInfo(List.of(additionalInfo));
         }
 
         /**
@@ -345,96 +335,66 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orders Order related to this connection information
+         * @param order Order related to this connection information
          * 
          * @return builder
          * 
          */
-        public Builder orders(@Nullable Output<List<ConnectionOrderArgs>> orders) {
-            $.orders = orders;
+        public Builder order(@Nullable Output<ConnectionOrderArgs> order) {
+            $.order = order;
             return this;
         }
 
         /**
-         * @param orders Order related to this connection information
+         * @param order Order related to this connection information
          * 
          * @return builder
          * 
          */
-        public Builder orders(List<ConnectionOrderArgs> orders) {
-            return orders(Output.of(orders));
+        public Builder order(ConnectionOrderArgs order) {
+            return order(Output.of(order));
         }
 
         /**
-         * @param orders Order related to this connection information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder orders(ConnectionOrderArgs... orders) {
-            return orders(List.of(orders));
-        }
-
-        /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(@Nullable Output<List<ConnectionProjectArgs>> projects) {
-            $.projects = projects;
+        public Builder project(@Nullable Output<ConnectionProjectArgs> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projects Project information
+         * @param project Project information
          * 
          * @return builder
          * 
          */
-        public Builder projects(List<ConnectionProjectArgs> projects) {
-            return projects(Output.of(projects));
+        public Builder project(ConnectionProjectArgs project) {
+            return project(Output.of(project));
         }
 
         /**
-         * @param projects Project information
+         * @param redundancy Redundancy Information
          * 
          * @return builder
          * 
          */
-        public Builder projects(ConnectionProjectArgs... projects) {
-            return projects(List.of(projects));
-        }
-
-        /**
-         * @param redundancies Redundancy Information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder redundancies(@Nullable Output<List<ConnectionRedundancyArgs>> redundancies) {
-            $.redundancies = redundancies;
+        public Builder redundancy(@Nullable Output<ConnectionRedundancyArgs> redundancy) {
+            $.redundancy = redundancy;
             return this;
         }
 
         /**
-         * @param redundancies Redundancy Information
+         * @param redundancy Redundancy Information
          * 
          * @return builder
          * 
          */
-        public Builder redundancies(List<ConnectionRedundancyArgs> redundancies) {
-            return redundancies(Output.of(redundancies));
-        }
-
-        /**
-         * @param redundancies Redundancy Information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder redundancies(ConnectionRedundancyArgs... redundancies) {
-            return redundancies(List.of(redundancies));
+        public Builder redundancy(ConnectionRedundancyArgs redundancy) {
+            return redundancy(Output.of(redundancy));
         }
 
         /**
@@ -479,42 +439,32 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zSides Destination or Provider side connection configuration object of the multi-segment connection
+         * @param zSide Destination or Provider side connection configuration object of the multi-segment connection
          * 
          * @return builder
          * 
          */
-        public Builder zSides(Output<List<ConnectionZSideArgs>> zSides) {
-            $.zSides = zSides;
+        public Builder zSide(Output<ConnectionZSideArgs> zSide) {
+            $.zSide = zSide;
             return this;
         }
 
         /**
-         * @param zSides Destination or Provider side connection configuration object of the multi-segment connection
+         * @param zSide Destination or Provider side connection configuration object of the multi-segment connection
          * 
          * @return builder
          * 
          */
-        public Builder zSides(List<ConnectionZSideArgs> zSides) {
-            return zSides(Output.of(zSides));
-        }
-
-        /**
-         * @param zSides Destination or Provider side connection configuration object of the multi-segment connection
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zSides(ConnectionZSideArgs... zSides) {
-            return zSides(List.of(zSides));
+        public Builder zSide(ConnectionZSideArgs zSide) {
+            return zSide(Output.of(zSide));
         }
 
         public ConnectionArgs build() {
-            $.aSides = Objects.requireNonNull($.aSides, "expected parameter 'aSides' to be non-null");
+            $.aSide = Objects.requireNonNull($.aSide, "expected parameter 'aSide' to be non-null");
             $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
             $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zSides = Objects.requireNonNull($.zSides, "expected parameter 'zSides' to be non-null");
+            $.zSide = Objects.requireNonNull($.zSide, "expected parameter 'zSide' to be non-null");
             return $;
         }
     }

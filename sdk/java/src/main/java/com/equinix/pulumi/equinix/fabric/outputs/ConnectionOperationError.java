@@ -17,7 +17,7 @@ public final class ConnectionOperationError {
      * @return Connection additional information
      * 
      */
-    private @Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfos;
+    private @Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfo;
     private @Nullable String correlationId;
     private @Nullable String details;
     private @Nullable String errorCode;
@@ -29,8 +29,8 @@ public final class ConnectionOperationError {
      * @return Connection additional information
      * 
      */
-    public List<ConnectionOperationErrorAdditionalInfo> additionalInfos() {
-        return this.additionalInfos == null ? List.of() : this.additionalInfos;
+    public List<ConnectionOperationErrorAdditionalInfo> additionalInfo() {
+        return this.additionalInfo == null ? List.of() : this.additionalInfo;
     }
     public Optional<String> correlationId() {
         return Optional.ofNullable(this.correlationId);
@@ -57,7 +57,7 @@ public final class ConnectionOperationError {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfos;
+        private @Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfo;
         private @Nullable String correlationId;
         private @Nullable String details;
         private @Nullable String errorCode;
@@ -66,7 +66,7 @@ public final class ConnectionOperationError {
         public Builder() {}
         public Builder(ConnectionOperationError defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.additionalInfos = defaults.additionalInfos;
+    	      this.additionalInfo = defaults.additionalInfo;
     	      this.correlationId = defaults.correlationId;
     	      this.details = defaults.details;
     	      this.errorCode = defaults.errorCode;
@@ -75,12 +75,12 @@ public final class ConnectionOperationError {
         }
 
         @CustomType.Setter
-        public Builder additionalInfos(@Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfos) {
-            this.additionalInfos = additionalInfos;
+        public Builder additionalInfo(@Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfo) {
+            this.additionalInfo = additionalInfo;
             return this;
         }
-        public Builder additionalInfos(ConnectionOperationErrorAdditionalInfo... additionalInfos) {
-            return additionalInfos(List.of(additionalInfos));
+        public Builder additionalInfo(ConnectionOperationErrorAdditionalInfo... additionalInfo) {
+            return additionalInfo(List.of(additionalInfo));
         }
         @CustomType.Setter
         public Builder correlationId(@Nullable String correlationId) {
@@ -109,7 +109,7 @@ public final class ConnectionOperationError {
         }
         public ConnectionOperationError build() {
             final var o = new ConnectionOperationError();
-            o.additionalInfos = additionalInfos;
+            o.additionalInfo = additionalInfo;
             o.correlationId = correlationId;
             o.details = details;
             o.errorCode = errorCode;

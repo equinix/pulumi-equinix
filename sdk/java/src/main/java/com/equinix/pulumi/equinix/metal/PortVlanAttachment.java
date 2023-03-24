@@ -28,137 +28,6 @@ import javax.annotation.Nullable;
  * * &lt;https://metal.equinix.com/developers/docs/networking/layer2/&gt;
  * * &lt;https://metal.equinix.com/developers/docs/networking/layer2-configs/&gt;
  * 
- * ## Example Usage
- * ### Hybrid network type
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import com.pulumi.equinix.metal.DeviceNetworkType;
- * import com.pulumi.equinix.metal.DeviceNetworkTypeArgs;
- * import com.pulumi.equinix.metal.PortVlanAttachment;
- * import com.pulumi.equinix.metal.PortVlanAttachmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
- *             .description(&#34;VLAN in New Jersey&#34;)
- *             .facility(&#34;ny5&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;test&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .facilities(&#34;ny5&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var testDeviceNetworkType = new DeviceNetworkType(&#34;testDeviceNetworkType&#34;, DeviceNetworkTypeArgs.builder()        
- *             .deviceId(testDevice.id())
- *             .type(&#34;hybrid&#34;)
- *             .build());
- * 
- *         var testPortVlanAttachment = new PortVlanAttachment(&#34;testPortVlanAttachment&#34;, PortVlanAttachmentArgs.builder()        
- *             .deviceId(testDeviceNetworkType.id())
- *             .portName(&#34;eth1&#34;)
- *             .vlanVnid(testVlan.vxlan())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Layer 2 network
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import com.pulumi.equinix.metal.DeviceNetworkType;
- * import com.pulumi.equinix.metal.DeviceNetworkTypeArgs;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
- * import com.pulumi.equinix.metal.PortVlanAttachment;
- * import com.pulumi.equinix.metal.PortVlanAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;test&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .facilities(&#34;ny5&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var testDeviceNetworkType = new DeviceNetworkType(&#34;testDeviceNetworkType&#34;, DeviceNetworkTypeArgs.builder()        
- *             .deviceId(testDevice.id())
- *             .type(&#34;layer2-individual&#34;)
- *             .build());
- * 
- *         var test1Vlan = new Vlan(&#34;test1Vlan&#34;, VlanArgs.builder()        
- *             .description(&#34;VLAN in New Jersey&#34;)
- *             .facility(&#34;ny5&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var test2Vlan = new Vlan(&#34;test2Vlan&#34;, VlanArgs.builder()        
- *             .description(&#34;VLAN in New Jersey&#34;)
- *             .facility(&#34;ny5&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var test1PortVlanAttachment = new PortVlanAttachment(&#34;test1PortVlanAttachment&#34;, PortVlanAttachmentArgs.builder()        
- *             .deviceId(testDeviceNetworkType.id())
- *             .vlanVnid(test1Vlan.vxlan())
- *             .portName(&#34;eth1&#34;)
- *             .build());
- * 
- *         var test2PortVlanAttachment = new PortVlanAttachment(&#34;test2PortVlanAttachment&#34;, PortVlanAttachmentArgs.builder()        
- *             .deviceId(testDeviceNetworkType.id())
- *             .vlanVnid(test2Vlan.vxlan())
- *             .portName(&#34;eth1&#34;)
- *             .native_(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;equinix_metal_port_vlan_attachment.test1&#34;)
- *                 .build());
- * 
- *     }
- * }
- * ```
  * ## Attribute Referece
  * 
  * In addition to all arguments above, the following attributes are exported:
@@ -166,6 +35,44 @@ import javax.annotation.Nullable;
  * * `id` - UUID of device port used in the assignment.
  * * `vlan_id` - UUID of VLAN API resource.
  * * `port_id` - UUID of device port.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.PortVlanAttachment;
+ * import com.pulumi.equinix.metal.PortVlanAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var deviceId = config.get(&#34;deviceId&#34;);
+ *         final var portName = config.get(&#34;portName&#34;).orElse(&#34;eth1&#34;);
+ *         final var vxlanId = config.get(&#34;vxlanId&#34;).orElse(1004);
+ *         var attach = new PortVlanAttachment(&#34;attach&#34;, PortVlanAttachmentArgs.builder()        
+ *             .deviceId(deviceId)
+ *             .portName(portName)
+ *             .vlanVnid(vxlanId)
+ *             .build());
+ * 
+ *         ctx.export(&#34;attachId&#34;, attach.id());
+ *         ctx.export(&#34;portId&#34;, attach.portId());
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="equinix:metal/portVlanAttachment:PortVlanAttachment")

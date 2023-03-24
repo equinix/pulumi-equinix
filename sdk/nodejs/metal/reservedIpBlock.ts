@@ -25,73 +25,28 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Allocate reserved IP blocks:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility for myproject
- * const twoElasticAddresses = new equinix.metal.ReservedIpBlock("twoElasticAddresses", {
- *     projectId: local.project_id,
- *     facility: "sv15",
- *     quantity: 2,
- * });
- * // Allocate 1 floating IP in Sillicon Valley (sv) metro
- * const testReservedIpBlock = new equinix.metal.ReservedIpBlock("testReservedIpBlock", {
- *     projectId: local.project_id,
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const metro = config.get("metro") || "FR";
+ * const type = config.get("type") || "public_ipv4";
+ * const quantity = config.getNumber("quantity") || 1;
+ * const ipBlock = new equinix.metal.ReservedIpBlock("ipBlock", {
+ *     projectId: projectId,
  *     type: "public_ipv4",
- *     metro: "sv",
- *     quantity: 1,
+ *     quantity: quantity,
+ *     metro: metro,
  * });
- * // Allocate 1 global floating IP, which can be assigned to device in any facility
- * const testMetal_reservedIpBlockReservedIpBlock = new equinix.metal.ReservedIpBlock("testMetal/reservedIpBlockReservedIpBlock", {
- *     projectId: local.project_id,
- *     type: "global_ipv4",
- *     quantity: 1,
- * });
- * ```
- *
- * Allocate a block and run a device with public IPv4 from the block
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * // Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility
- * const example = new equinix.metal.ReservedIpBlock("example", {
- *     projectId: local.project_id,
- *     facility: "sv15",
- *     quantity: 2,
- * });
- * // Run a device with both public IPv4 from the block assigned
- * const nodes = new equinix.metal.Device("nodes", {
- *     projectId: local.project_id,
- *     facilities: ["sv15"],
- *     plan: "c3.small.x86",
- *     operatingSystem: "ubuntu_20_04",
- *     hostname: "test",
- *     billingCycle: "hourly",
- *     ipAddresses: [
- *         {
- *             type: "public_ipv4",
- *             cidr: 31,
- *             reservationIds: [example.id],
- *         },
- *         {
- *             type: "private_ipv4",
- *         },
- *     ],
- * });
+ * export const ipBlockId = ipBlock.id;
+ * export const ipBlockSubent = ipBlock.cidrNotation;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing IP reservation ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
- * ```
+ * This resource can be imported using an existing IP reservation ID: <break><break>```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
  */
 export class ReservedIpBlock extends pulumi.CustomResource {
     /**

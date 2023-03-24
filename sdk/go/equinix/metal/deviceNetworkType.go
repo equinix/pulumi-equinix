@@ -12,18 +12,42 @@ import (
 )
 
 // ## Example Usage
+// ```go
+// package main
 //
-// > **NOTE:** This resource takes a named network type with any mode required parameters and converts a device to the named network type. This resource simulated the network type interface for Devices in the Equinix Metal Portal. That interface changed when additional network types were introduced with more diverse port configurations and it is not guaranteed to work in devices with more than two ethernet ports. See the Network Types Guide for examples of this resource and to learn about the recommended `metal.Port` alternative.
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			deviceId := cfg.Require("deviceId")
+//			networkType := "hybrid"
+//			if param := cfg.Get("networkType"); param != "" {
+//				networkType = param
+//			}
+//			deviceNetwork, err := metal.NewDeviceNetworkType(ctx, "deviceNetwork", &metal.DeviceNetworkTypeArgs{
+//				DeviceId: pulumi.String(deviceId),
+//				Type:     pulumi.String(networkType),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("deviceNetworkId", deviceNetwork.ID())
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # This resource can also be imported using existing device ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
-//
-// ```
+// This resource can also be imported using existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} <break>```<break><break>
 type DeviceNetworkType struct {
 	pulumi.CustomResourceState
 

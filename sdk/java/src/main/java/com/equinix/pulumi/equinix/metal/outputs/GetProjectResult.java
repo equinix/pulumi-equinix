@@ -21,7 +21,7 @@ public final class GetProjectResult {
      * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
      */
-    private List<GetProjectBgpConfig> bgpConfigs;
+    private GetProjectBgpConfig bgpConfig;
     /**
      * @return The timestamp for when the project was created.
      * 
@@ -67,8 +67,8 @@ public final class GetProjectResult {
      * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
      */
-    public List<GetProjectBgpConfig> bgpConfigs() {
-        return this.bgpConfigs;
+    public GetProjectBgpConfig bgpConfig() {
+        return this.bgpConfig;
     }
     /**
      * @return The timestamp for when the project was created.
@@ -129,7 +129,7 @@ public final class GetProjectResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean backendTransfer;
-        private List<GetProjectBgpConfig> bgpConfigs;
+        private GetProjectBgpConfig bgpConfig;
         private String created;
         private String id;
         private String name;
@@ -142,7 +142,7 @@ public final class GetProjectResult {
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendTransfer = defaults.backendTransfer;
-    	      this.bgpConfigs = defaults.bgpConfigs;
+    	      this.bgpConfig = defaults.bgpConfig;
     	      this.created = defaults.created;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -159,12 +159,9 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
-        public Builder bgpConfigs(List<GetProjectBgpConfig> bgpConfigs) {
-            this.bgpConfigs = Objects.requireNonNull(bgpConfigs);
+        public Builder bgpConfig(GetProjectBgpConfig bgpConfig) {
+            this.bgpConfig = Objects.requireNonNull(bgpConfig);
             return this;
-        }
-        public Builder bgpConfigs(GetProjectBgpConfig... bgpConfigs) {
-            return bgpConfigs(List.of(bgpConfigs));
         }
         @CustomType.Setter
         public Builder created(String created) {
@@ -212,7 +209,7 @@ public final class GetProjectResult {
         public GetProjectResult build() {
             final var o = new GetProjectResult();
             o.backendTransfer = backendTransfer;
-            o.bgpConfigs = bgpConfigs;
+            o.bgpConfig = bgpConfig;
             o.created = created;
             o.id = id;
             o.name = name;

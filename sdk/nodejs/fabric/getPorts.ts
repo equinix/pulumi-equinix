@@ -12,7 +12,7 @@ export function getPorts(args?: GetPortsArgs, opts?: pulumi.InvokeOptions): Prom
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getPorts:getPorts", {
-        "filters": args.filters,
+        "filter": args.filter,
     }, opts);
 }
 
@@ -23,7 +23,7 @@ export interface GetPortsArgs {
     /**
      * name
      */
-    filters?: inputs.fabric.GetPortsFilter[];
+    filter?: inputs.fabric.GetPortsFilter;
 }
 
 /**
@@ -33,11 +33,11 @@ export interface GetPortsResult {
     /**
      * List of  Ports
      */
-    readonly datas: outputs.fabric.GetPortsData[];
+    readonly data: outputs.fabric.GetPortsDatum[];
     /**
      * name
      */
-    readonly filters?: outputs.fabric.GetPortsFilter[];
+    readonly filter?: outputs.fabric.GetPortsFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -54,5 +54,5 @@ export interface GetPortsOutputArgs {
     /**
      * name
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.fabric.GetPortsFilterArgs>[]>;
+    filter?: pulumi.Input<inputs.fabric.GetPortsFilterArgs>;
 }

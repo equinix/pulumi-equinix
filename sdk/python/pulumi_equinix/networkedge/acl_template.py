@@ -254,38 +254,35 @@ class AclTemplate(pulumi.CustomResource):
         traffic. Templates can be assigned to the network devices.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Creates ACL template and assigns it to the network device
-        myacl = equinix.networkedge.AclTemplate("myacl",
+        acl_template = equinix.networkedge.AclTemplate("aclTemplate",
+            name="test",
             description="Test ACL template",
             inbound_rules=[
                 equinix.networkedge.AclTemplateInboundRuleArgs(
-                    description="inbound rule description",
-                    dst_port="any",
+                    subnet="1.1.1.1/32",
                     protocol="IP",
                     src_port="any",
-                    subnet="1.1.1.1/32",
+                    dst_port="any",
+                    description="inbound rule description",
                 ),
                 equinix.networkedge.AclTemplateInboundRuleArgs(
-                    dst_port="53,1045,2041",
-                    protocol="UDP",
+                    subnet="2.2.2.2/28",
+                    protocol="TCP",
                     src_port="any",
-                    subnet="172.16.25.0/24",
+                    dst_port="any",
+                    description="inbound rule description",
                 ),
             ])
+        pulumi.export("templateId", acl_template.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -309,38 +306,35 @@ class AclTemplate(pulumi.CustomResource):
         traffic. Templates can be assigned to the network devices.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Creates ACL template and assigns it to the network device
-        myacl = equinix.networkedge.AclTemplate("myacl",
+        acl_template = equinix.networkedge.AclTemplate("aclTemplate",
+            name="test",
             description="Test ACL template",
             inbound_rules=[
                 equinix.networkedge.AclTemplateInboundRuleArgs(
-                    description="inbound rule description",
-                    dst_port="any",
+                    subnet="1.1.1.1/32",
                     protocol="IP",
                     src_port="any",
-                    subnet="1.1.1.1/32",
+                    dst_port="any",
+                    description="inbound rule description",
                 ),
                 equinix.networkedge.AclTemplateInboundRuleArgs(
-                    dst_port="53,1045,2041",
-                    protocol="UDP",
+                    subnet="2.2.2.2/28",
+                    protocol="TCP",
                     src_port="any",
-                    subnet="172.16.25.0/24",
+                    dst_port="any",
+                    description="inbound rule description",
                 ),
             ])
+        pulumi.export("templateId", acl_template.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param AclTemplateArgs args: The arguments to use to populate this resource's properties.

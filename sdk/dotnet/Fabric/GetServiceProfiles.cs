@@ -21,28 +21,22 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetServiceProfilesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("filters")]
-        private List<Inputs.GetServiceProfilesFilterArgs>? _filters;
-
         /// <summary>
         /// Service Profile Search Filter
         /// </summary>
-        public List<Inputs.GetServiceProfilesFilterArgs> Filters
-        {
-            get => _filters ?? (_filters = new List<Inputs.GetServiceProfilesFilterArgs>());
-            set => _filters = value;
-        }
+        [Input("filter")]
+        public Inputs.GetServiceProfilesFilterArgs? Filter { get; set; }
 
-        [Input("sorts")]
-        private List<Inputs.GetServiceProfilesSortArgs>? _sorts;
+        [Input("sort")]
+        private List<Inputs.GetServiceProfilesSortArgs>? _sort;
 
         /// <summary>
         /// Service Profile Sort criteria for Search Request response payload
         /// </summary>
-        public List<Inputs.GetServiceProfilesSortArgs> Sorts
+        public List<Inputs.GetServiceProfilesSortArgs> Sort
         {
-            get => _sorts ?? (_sorts = new List<Inputs.GetServiceProfilesSortArgs>());
-            set => _sorts = value;
+            get => _sort ?? (_sort = new List<Inputs.GetServiceProfilesSortArgs>());
+            set => _sort = value;
         }
 
         public GetServiceProfilesArgs()
@@ -53,28 +47,22 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetServiceProfilesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("filters")]
-        private InputList<Inputs.GetServiceProfilesFilterInputArgs>? _filters;
-
         /// <summary>
         /// Service Profile Search Filter
         /// </summary>
-        public InputList<Inputs.GetServiceProfilesFilterInputArgs> Filters
-        {
-            get => _filters ?? (_filters = new InputList<Inputs.GetServiceProfilesFilterInputArgs>());
-            set => _filters = value;
-        }
+        [Input("filter")]
+        public Input<Inputs.GetServiceProfilesFilterInputArgs>? Filter { get; set; }
 
-        [Input("sorts")]
-        private InputList<Inputs.GetServiceProfilesSortInputArgs>? _sorts;
+        [Input("sort")]
+        private InputList<Inputs.GetServiceProfilesSortInputArgs>? _sort;
 
         /// <summary>
         /// Service Profile Sort criteria for Search Request response payload
         /// </summary>
-        public InputList<Inputs.GetServiceProfilesSortInputArgs> Sorts
+        public InputList<Inputs.GetServiceProfilesSortInputArgs> Sort
         {
-            get => _sorts ?? (_sorts = new InputList<Inputs.GetServiceProfilesSortInputArgs>());
-            set => _sorts = value;
+            get => _sort ?? (_sort = new InputList<Inputs.GetServiceProfilesSortInputArgs>());
+            set => _sort = value;
         }
 
         public GetServiceProfilesInvokeArgs()
@@ -90,11 +78,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// List of  Service Profiles
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfilesDataResult> Datas;
+        public readonly ImmutableArray<Outputs.GetServiceProfilesDatumResult> Data;
         /// <summary>
         /// Service Profile Search Filter
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfilesFilterResult> Filters;
+        public readonly Outputs.GetServiceProfilesFilterResult? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -102,22 +90,22 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Service Profile Sort criteria for Search Request response payload
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfilesSortResult> Sorts;
+        public readonly ImmutableArray<Outputs.GetServiceProfilesSortResult> Sort;
 
         [OutputConstructor]
         private GetServiceProfilesResult(
-            ImmutableArray<Outputs.GetServiceProfilesDataResult> datas,
+            ImmutableArray<Outputs.GetServiceProfilesDatumResult> data,
 
-            ImmutableArray<Outputs.GetServiceProfilesFilterResult> filters,
+            Outputs.GetServiceProfilesFilterResult? filter,
 
             string id,
 
-            ImmutableArray<Outputs.GetServiceProfilesSortResult> sorts)
+            ImmutableArray<Outputs.GetServiceProfilesSortResult> sort)
         {
-            Datas = datas;
-            Filters = filters;
+            Data = data;
+            Filter = filter;
             Id = id;
-            Sorts = sorts;
+            Sort = sort;
         }
     }
 }

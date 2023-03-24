@@ -1,0 +1,10 @@
+name: equinix-metal-organization-member
+runtime: nodejs
+description: An Equinix Metal Organization Member resource to manage the membership of existing and new invitees within an Equinix Metal organization and its projects
+config:
+  organizationId:
+    type: string
+  projectId:
+    type: string
+  userEmailAddress:
+    type: string

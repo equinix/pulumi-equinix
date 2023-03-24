@@ -27,9 +27,6 @@ import (
 // > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 //
 // ## Example Usage
-//
-// Allocate reserved IP blocks:
-//
 // ```go
 // package main
 //
@@ -37,89 +34,37 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewReservedIpBlock(ctx, "twoElasticAddresses", &metal.ReservedIpBlockArgs{
-//				ProjectId: pulumi.Any(local.Project_id),
-//				Facility:  pulumi.String("sv15"),
-//				Quantity:  pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			metro := "FR"
+//			if param := cfg.Get("metro"); param != "" {
+//				metro = param
 //			}
-//			_, err = metal.NewReservedIpBlock(ctx, "testReservedIpBlock", &metal.ReservedIpBlockArgs{
-//				ProjectId: pulumi.Any(local.Project_id),
+//			_type := "public_ipv4"
+//			if param := cfg.Get("type"); param != "" {
+//				_type = param
+//			}
+//			quantity := 1
+//			if param := cfg.GetInt("quantity"); param != 0 {
+//				quantity = param
+//			}
+//			ipBlock, err := metal.NewReservedIpBlock(ctx, "ipBlock", &metal.ReservedIpBlockArgs{
+//				ProjectId: pulumi.String(projectId),
 //				Type:      pulumi.String("public_ipv4"),
-//				Metro:     pulumi.String("sv"),
-//				Quantity:  pulumi.Int(1),
+//				Quantity:  pulumi.Int(quantity),
+//				Metro:     pulumi.String(metro),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = metal.NewReservedIpBlock(ctx, "testMetal/reservedIpBlockReservedIpBlock", &metal.ReservedIpBlockArgs{
-//				ProjectId: pulumi.Any(local.Project_id),
-//				Type:      pulumi.String("global_ipv4"),
-//				Quantity:  pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Allocate a block and run a device with public IPv4 from the block
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := metal.NewReservedIpBlock(ctx, "example", &metal.ReservedIpBlockArgs{
-//				ProjectId: pulumi.Any(local.Project_id),
-//				Facility:  pulumi.String("sv15"),
-//				Quantity:  pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.NewDevice(ctx, "nodes", &metal.DeviceArgs{
-//				ProjectId: pulumi.Any(local.Project_id),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("sv15"),
-//				},
-//				Plan:            pulumi.String("c3.small.x86"),
-//				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				Hostname:        pulumi.String("test"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				IpAddresses: metal.DeviceIpAddressArray{
-//					&metal.DeviceIpAddressArgs{
-//						Type: pulumi.String("public_ipv4"),
-//						Cidr: pulumi.Int(31),
-//						ReservationIds: pulumi.StringArray{
-//							example.ID(),
-//						},
-//					},
-//					&metal.DeviceIpAddressArgs{
-//						Type: pulumi.String("private_ipv4"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("ipBlockId", ipBlock.ID())
+//			ctx.Export("ipBlockSubent", ipBlock.CidrNotation)
 //			return nil
 //		})
 //	}
@@ -128,13 +73,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing IP reservation ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
-//
-// ```
+// This resource can be imported using an existing IP reservation ID: <break><break>```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
 type ReservedIpBlock struct {
 	pulumi.CustomResourceState
 

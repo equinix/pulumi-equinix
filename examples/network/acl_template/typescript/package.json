@@ -1,0 +1,11 @@
+{
+		"name": "equinix-networkedge-acl-template",
+		"devDependencies": {
+			"@types/node": "^14"
+		},
+		"dependencies": {
+			"typescript": "^4.0.0",
+			"@pulumi/pulumi": "^3.0.0",
+			"@equinix/pulumi-equinix": "^0.1.0"
+		}
+}

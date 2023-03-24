@@ -6,7 +6,6 @@ package com.equinix.pulumi.equinix.fabric.inputs;
 import com.equinix.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,21 +19,21 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
      * name
      * 
      */
-    @Import(name="filters")
-    private @Nullable Output<List<GetPortsFilterArgs>> filters;
+    @Import(name="filter")
+    private @Nullable Output<GetPortsFilterArgs> filter;
 
     /**
      * @return name
      * 
      */
-    public Optional<Output<List<GetPortsFilterArgs>>> filters() {
-        return Optional.ofNullable(this.filters);
+    public Optional<Output<GetPortsFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     private GetPortsArgs() {}
 
     private GetPortsArgs(GetPortsArgs $) {
-        this.filters = $.filters;
+        this.filter = $.filter;
     }
 
     public static Builder builder() {
@@ -56,34 +55,24 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filters name
+         * @param filter name
          * 
          * @return builder
          * 
          */
-        public Builder filters(@Nullable Output<List<GetPortsFilterArgs>> filters) {
-            $.filters = filters;
+        public Builder filter(@Nullable Output<GetPortsFilterArgs> filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param filters name
+         * @param filter name
          * 
          * @return builder
          * 
          */
-        public Builder filters(List<GetPortsFilterArgs> filters) {
-            return filters(Output.of(filters));
-        }
-
-        /**
-         * @param filters name
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filters(GetPortsFilterArgs... filters) {
-            return filters(List.of(filters));
+        public Builder filter(GetPortsFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         public GetPortsArgs build() {

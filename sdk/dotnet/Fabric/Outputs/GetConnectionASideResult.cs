@@ -13,17 +13,17 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideResult
     {
-        public readonly ImmutableArray<Outputs.GetConnectionASideAccessPointResult> AccessPoints;
-        public readonly ImmutableArray<Outputs.GetConnectionASideServiceTokenResult> ServiceTokens;
+        public readonly Outputs.GetConnectionASideAccessPointResult AccessPoint;
+        public readonly Outputs.GetConnectionASideServiceTokenResult ServiceToken;
 
         [OutputConstructor]
         private GetConnectionASideResult(
-            ImmutableArray<Outputs.GetConnectionASideAccessPointResult> accessPoints,
+            Outputs.GetConnectionASideAccessPointResult accessPoint,
 
-            ImmutableArray<Outputs.GetConnectionASideServiceTokenResult> serviceTokens)
+            Outputs.GetConnectionASideServiceTokenResult serviceToken)
         {
-            AccessPoints = accessPoints;
-            ServiceTokens = serviceTokens;
+            AccessPoint = accessPoint;
+            ServiceToken = serviceToken;
         }
     }
 }

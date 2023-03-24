@@ -45,39 +45,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new DeviceLink(&#34;test&#34;, DeviceLinkArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var accountName = config.get(&#34;accountName&#34;);
+ *         final var accountMetro = config.get(&#34;accountMetro&#34;);
+ *         final var device1Id = config.get(&#34;device1Id&#34;);
+ *         final var device2Id = config.get(&#34;device2Id&#34;);
+ *         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
+ *             .name(accountName)
+ *             .metroCode(accountMetro)
+ *             .build()).number();
+ * 
+ *         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
+ *             .uuid(device1Id)
+ *             .build()).metroCode();
+ * 
+ *         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
+ *             .uuid(device2Id)
+ *             .build()).metroCode();
+ * 
+ *         var deviceLink = new DeviceLink(&#34;deviceLink&#34;, DeviceLinkArgs.builder()        
+ *             .name(&#34;test-link&#34;)
  *             .subnet(&#34;192.168.40.64/27&#34;)
  *             .devices(            
  *                 DeviceLinkDeviceArgs.builder()
- *                     .id(equinix_network_device.test().uuid())
- *                     .asn(equinix_network_device.test().asn() &gt; 0 ? equinix_network_device.test().asn() : 22111)
+ *                     .id(&#34;device1Id&#34;)
+ *                     .asn(22111)
  *                     .interfaceId(6)
  *                     .build(),
  *                 DeviceLinkDeviceArgs.builder()
- *                     .id(equinix_network_device.test().secondary_device()[0].uuid())
- *                     .asn(equinix_network_device.test().secondary_device()[0].asn() &gt; 0 ? equinix_network_device.test().secondary_device()[0].asn() : 22333)
+ *                     .id(&#34;device2Id&#34;)
+ *                     .asn(22333)
  *                     .interfaceId(7)
  *                     .build())
  *             .links(DeviceLinkLinkArgs.builder()
- *                 .accountNumber(equinix_network_device.test().account_number())
- *                 .srcMetroCode(equinix_network_device.test().metro_code())
- *                 .dstMetroCode(equinix_network_device.test().secondary_device()[0].metro_code())
- *                 .throughput(&#34;50&#34;)
+ *                 .accountNumber(accountfNum)
+ *                 .srcMetroCode(device1Metro)
+ *                 .dstMetroCode(device2Metro)
+ *                 .throughput(50)
  *                 .throughputUnit(&#34;Mbps&#34;)
  *                 .build())
  *             .build());
  * 
+ *         ctx.export(&#34;status&#34;, deviceLink.status());
+ *         ctx.export(&#34;devices&#34;, deviceLink.devices());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID
- * 
- * ```sh
- *  $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/deviceLink:DeviceLink")

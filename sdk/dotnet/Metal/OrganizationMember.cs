@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Metal
     /// Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
     /// 
     /// ## Example Usage
-    /// 
-    /// Add a member to an organization to collaborate on given projects:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -23,53 +20,35 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var organizationId = config.Require("organizationId");
+    ///     var projectId = config.Require("projectId");
+    ///     var userEmailAddress = config.Require("userEmailAddress");
     ///     var member = new Equinix.Metal.OrganizationMember("member", new()
     ///     {
-    ///         Invitee = "member@example.com",
+    ///         Invitee = userEmailAddress,
     ///         Roles = new[]
     ///         {
     ///             "limited_collaborator",
     ///         },
     ///         ProjectsIds = new[]
     ///         {
-    ///             @var.Project_id,
+    ///             projectId,
     ///         },
-    ///         OrganizationId = @var.Organization_id,
+    ///         OrganizationId = organizationId,
     ///     });
     /// 
-    /// });
-    /// ```
-    /// 
-    /// Add a member to an organization as an organization administrator:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var owner = new Equinix.Metal.OrganizationMember("owner", new()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         Invitee = "admin@example.com",
-    ///         Roles = new[]
-    ///         {
-    ///             "owner",
-    ///         },
-    ///         ProjectsIds = new[] {},
-    ///         OrganizationId = @var.Organization_id,
-    ///     });
-    /// 
+    ///         ["memberId"] = member.Id,
+    ///         ["memberState"] = member.State,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the `invitee` and `organization_id` as colon separated arguments
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
-    /// ```
+    /// This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/organizationMember:OrganizationMember")]
     public partial class OrganizationMember : global::Pulumi.CustomResource
@@ -157,7 +136,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

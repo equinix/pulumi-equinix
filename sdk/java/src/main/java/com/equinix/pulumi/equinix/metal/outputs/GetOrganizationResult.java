@@ -15,7 +15,7 @@ public final class GetOrganizationResult {
      * @return Postal address.
      * 
      */
-    private List<GetOrganizationAddress> addresses;
+    private GetOrganizationAddress address;
     /**
      * @return Description string.
      * 
@@ -54,8 +54,8 @@ public final class GetOrganizationResult {
      * @return Postal address.
      * 
      */
-    public List<GetOrganizationAddress> addresses() {
-        return this.addresses;
+    public GetOrganizationAddress address() {
+        return this.address;
     }
     /**
      * @return Description string.
@@ -115,7 +115,7 @@ public final class GetOrganizationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetOrganizationAddress> addresses;
+        private GetOrganizationAddress address;
         private String description;
         private String id;
         private String logo;
@@ -127,7 +127,7 @@ public final class GetOrganizationResult {
         public Builder() {}
         public Builder(GetOrganizationResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.addresses = defaults.addresses;
+    	      this.address = defaults.address;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.logo = defaults.logo;
@@ -139,12 +139,9 @@ public final class GetOrganizationResult {
         }
 
         @CustomType.Setter
-        public Builder addresses(List<GetOrganizationAddress> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+        public Builder address(GetOrganizationAddress address) {
+            this.address = Objects.requireNonNull(address);
             return this;
-        }
-        public Builder addresses(GetOrganizationAddress... addresses) {
-            return addresses(List.of(addresses));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -191,7 +188,7 @@ public final class GetOrganizationResult {
         }
         public GetOrganizationResult build() {
             final var o = new GetOrganizationResult();
-            o.addresses = addresses;
+            o.address = address;
             o.description = description;
             o.id = id;
             o.logo = logo;

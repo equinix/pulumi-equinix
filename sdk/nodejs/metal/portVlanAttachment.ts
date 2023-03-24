@@ -16,78 +16,6 @@ import * as utilities from "../utilities";
  * * <https://metal.equinix.com/developers/docs/networking/layer2/>
  * * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
  *
- * ## Example Usage
- * ### Hybrid network type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const testVlan = new equinix.metal.Vlan("testVlan", {
- *     description: "VLAN in New Jersey",
- *     facility: "ny5",
- *     projectId: local.project_id,
- * });
- * const testDevice = new equinix.metal.Device("testDevice", {
- *     hostname: "test",
- *     plan: "c3.small.x86",
- *     facilities: ["ny5"],
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- * });
- * const testDeviceNetworkType = new equinix.metal.DeviceNetworkType("testDeviceNetworkType", {
- *     deviceId: testDevice.id,
- *     type: "hybrid",
- * });
- * const testPortVlanAttachment = new equinix.metal.PortVlanAttachment("testPortVlanAttachment", {
- *     deviceId: testDeviceNetworkType.id,
- *     portName: "eth1",
- *     vlanVnid: testVlan.vxlan,
- * });
- * ```
- * ### Layer 2 network
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const testDevice = new equinix.metal.Device("testDevice", {
- *     hostname: "test",
- *     plan: "c3.small.x86",
- *     facilities: ["ny5"],
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- * });
- * const testDeviceNetworkType = new equinix.metal.DeviceNetworkType("testDeviceNetworkType", {
- *     deviceId: testDevice.id,
- *     type: "layer2-individual",
- * });
- * const test1Vlan = new equinix.metal.Vlan("test1Vlan", {
- *     description: "VLAN in New Jersey",
- *     facility: "ny5",
- *     projectId: local.project_id,
- * });
- * const test2Vlan = new equinix.metal.Vlan("test2Vlan", {
- *     description: "VLAN in New Jersey",
- *     facility: "ny5",
- *     projectId: local.project_id,
- * });
- * const test1PortVlanAttachment = new equinix.metal.PortVlanAttachment("test1PortVlanAttachment", {
- *     deviceId: testDeviceNetworkType.id,
- *     vlanVnid: test1Vlan.vxlan,
- *     portName: "eth1",
- * });
- * const test2PortVlanAttachment = new equinix.metal.PortVlanAttachment("test2PortVlanAttachment", {
- *     deviceId: testDeviceNetworkType.id,
- *     vlanVnid: test2Vlan.vxlan,
- *     portName: "eth1",
- *     native: true,
- * }, {
- *     dependsOn: ["equinix_metal_port_vlan_attachment.test1"],
- * });
- * ```
  * ## Attribute Referece
  *
  * In addition to all arguments above, the following attributes are exported:
@@ -95,6 +23,25 @@ import * as utilities from "../utilities";
  * * `id` - UUID of device port used in the assignment.
  * * `vlanId` - UUID of VLAN API resource.
  * * `portId` - UUID of device port.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const deviceId = config.require("deviceId");
+ * const portName = config.get("portName") || "eth1";
+ * const vxlanId = config.getNumber("vxlanId") || 1004;
+ * const attach = new equinix.metal.PortVlanAttachment("attach", {
+ *     deviceId: deviceId,
+ *     portName: portName,
+ *     vlanVnid: vxlanId,
+ * });
+ * export const attachId = attach.id;
+ * export const portId = attach.portId;
+ * ```
  */
 export class PortVlanAttachment extends pulumi.CustomResource {
     /**

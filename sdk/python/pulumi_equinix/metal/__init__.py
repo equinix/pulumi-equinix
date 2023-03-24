@@ -7,16 +7,15 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .bgp_session import *
-from .connection import *
 from .device import *
 from .device_network_type import *
 from .gateway import *
-from .get_connection import *
 from .get_device import *
 from .get_device_bgp_neighbors import *
 from .get_facility import *
 from .get_gateway import *
 from .get_hardware_reservation import *
+from .get_interconnection import *
 from .get_ip_block_ranges import *
 from .get_metro import *
 from .get_operating_system import *
@@ -32,6 +31,7 @@ from .get_spot_market_request import *
 from .get_virtual_circuit import *
 from .get_vlan import *
 from .get_vrf import *
+from .interconnection import *
 from .ip_attachment import *
 from .organization import *
 from .organization_member import *

@@ -15,7 +15,6 @@ namespace Pulumi.Equinix.Metal
     /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -23,53 +22,20 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
-    ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var vlanId = config.Require("vlanId");
+    ///     var gateway = new Equinix.Metal.Gateway("gateway", new()
     ///     {
-    ///         Description = "test VLAN in SV",
-    ///         Metro = "sv",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var testGateway = new Equinix.Metal.Gateway("testGateway", new()
-    ///     {
-    ///         ProjectId = local.Project_id,
-    ///         VlanId = testVlan.Id,
+    ///         ProjectId = projectId,
+    ///         VlanId = vlanId,
     ///         PrivateIpv4SubnetSize = 8,
     ///     });
     /// 
-    /// });
-    /// ```
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create Metal Gateway for a VLAN and reserved IP address block
-    ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         Description = "test VLAN in SV",
-    ///         Metro = "sv",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var testReservedIpBlock = new Equinix.Metal.ReservedIpBlock("testReservedIpBlock", new()
-    ///     {
-    ///         ProjectId = local.Project_id,
-    ///         Metro = "sv",
-    ///         Quantity = 2,
-    ///     });
-    /// 
-    ///     var testGateway = new Equinix.Metal.Gateway("testGateway", new()
-    ///     {
-    ///         ProjectId = local.Project_id,
-    ///         VlanId = testVlan.Id,
-    ///         IpReservationId = testReservedIpBlock.Id,
-    ///     });
-    /// 
+    ///         ["gatewayState"] = gateway.State,
+    ///     };
     /// });
     /// ```
     /// </summary>
@@ -137,7 +103,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -1,0 +1,9 @@
+name: equinix-metal-vrf
+runtime: go
+description: An Equinix Metal VRF resource
+config:
+  metro:
+    type: string
+    default: DA
+  projectId:
+    type: string

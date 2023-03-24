@@ -1,0 +1,16 @@
+name: equinix-metal-project-ssh-key
+runtime: yaml
+description: An Equinix Metal Project SSH Key resource
+config:
+  projectId:
+    type: string
+resources:
+  sshKey:
+    type: equinix:metal:ProjectSshKey
+    properties:
+      projectId: ${projectId}
+      name: johnKent
+      publicKey:
+        fn::readFile: /Users/John/.ssh/metal_rsa.pub
+outputs:
+  sshKeyId: ${sshKey.id}

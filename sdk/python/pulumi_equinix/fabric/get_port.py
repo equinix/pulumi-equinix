@@ -22,49 +22,49 @@ class GetPortResult:
     """
     A collection of values returned by getPort.
     """
-    def __init__(__self__, accounts=None, available_bandwidth=None, bandwidth=None, change_logs=None, description=None, devices=None, encapsulations=None, href=None, id=None, lags=None, locations=None, name=None, operations=None, redundancies=None, service_type=None, state=None, type=None, used_bandwidth=None, uuid=None):
-        if accounts and not isinstance(accounts, list):
-            raise TypeError("Expected argument 'accounts' to be a list")
-        pulumi.set(__self__, "accounts", accounts)
+    def __init__(__self__, account=None, available_bandwidth=None, bandwidth=None, change_log=None, description=None, device=None, encapsulation=None, href=None, id=None, lag=None, location=None, name=None, operation=None, redundancy=None, service_type=None, state=None, type=None, used_bandwidth=None, uuid=None):
+        if account and not isinstance(account, dict):
+            raise TypeError("Expected argument 'account' to be a dict")
+        pulumi.set(__self__, "account", account)
         if available_bandwidth and not isinstance(available_bandwidth, int):
             raise TypeError("Expected argument 'available_bandwidth' to be a int")
         pulumi.set(__self__, "available_bandwidth", available_bandwidth)
         if bandwidth and not isinstance(bandwidth, int):
             raise TypeError("Expected argument 'bandwidth' to be a int")
         pulumi.set(__self__, "bandwidth", bandwidth)
-        if change_logs and not isinstance(change_logs, list):
-            raise TypeError("Expected argument 'change_logs' to be a list")
-        pulumi.set(__self__, "change_logs", change_logs)
+        if change_log and not isinstance(change_log, dict):
+            raise TypeError("Expected argument 'change_log' to be a dict")
+        pulumi.set(__self__, "change_log", change_log)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if devices and not isinstance(devices, list):
-            raise TypeError("Expected argument 'devices' to be a list")
-        pulumi.set(__self__, "devices", devices)
-        if encapsulations and not isinstance(encapsulations, list):
-            raise TypeError("Expected argument 'encapsulations' to be a list")
-        pulumi.set(__self__, "encapsulations", encapsulations)
+        if device and not isinstance(device, dict):
+            raise TypeError("Expected argument 'device' to be a dict")
+        pulumi.set(__self__, "device", device)
+        if encapsulation and not isinstance(encapsulation, dict):
+            raise TypeError("Expected argument 'encapsulation' to be a dict")
+        pulumi.set(__self__, "encapsulation", encapsulation)
         if href and not isinstance(href, str):
             raise TypeError("Expected argument 'href' to be a str")
         pulumi.set(__self__, "href", href)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if lags and not isinstance(lags, list):
-            raise TypeError("Expected argument 'lags' to be a list")
-        pulumi.set(__self__, "lags", lags)
-        if locations and not isinstance(locations, list):
-            raise TypeError("Expected argument 'locations' to be a list")
-        pulumi.set(__self__, "locations", locations)
+        if lag and not isinstance(lag, dict):
+            raise TypeError("Expected argument 'lag' to be a dict")
+        pulumi.set(__self__, "lag", lag)
+        if location and not isinstance(location, dict):
+            raise TypeError("Expected argument 'location' to be a dict")
+        pulumi.set(__self__, "location", location)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if operations and not isinstance(operations, list):
-            raise TypeError("Expected argument 'operations' to be a list")
-        pulumi.set(__self__, "operations", operations)
-        if redundancies and not isinstance(redundancies, list):
-            raise TypeError("Expected argument 'redundancies' to be a list")
-        pulumi.set(__self__, "redundancies", redundancies)
+        if operation and not isinstance(operation, dict):
+            raise TypeError("Expected argument 'operation' to be a dict")
+        pulumi.set(__self__, "operation", operation)
+        if redundancy and not isinstance(redundancy, dict):
+            raise TypeError("Expected argument 'redundancy' to be a dict")
+        pulumi.set(__self__, "redundancy", redundancy)
         if service_type and not isinstance(service_type, str):
             raise TypeError("Expected argument 'service_type' to be a str")
         pulumi.set(__self__, "service_type", service_type)
@@ -83,11 +83,11 @@ class GetPortResult:
 
     @property
     @pulumi.getter
-    def accounts(self) -> Sequence['outputs.GetPortAccountResult']:
+    def account(self) -> 'outputs.GetPortAccountResult':
         """
         Customer account information that is associated with this port
         """
-        return pulumi.get(self, "accounts")
+        return pulumi.get(self, "account")
 
     @property
     @pulumi.getter(name="availableBandwidth")
@@ -106,12 +106,12 @@ class GetPortResult:
         return pulumi.get(self, "bandwidth")
 
     @property
-    @pulumi.getter(name="changeLogs")
-    def change_logs(self) -> Sequence['outputs.GetPortChangeLogResult']:
+    @pulumi.getter(name="changeLog")
+    def change_log(self) -> 'outputs.GetPortChangeLogResult':
         """
         Captures port lifecycle change information
         """
-        return pulumi.get(self, "change_logs")
+        return pulumi.get(self, "change_log")
 
     @property
     @pulumi.getter
@@ -123,19 +123,19 @@ class GetPortResult:
 
     @property
     @pulumi.getter
-    def devices(self) -> Sequence['outputs.GetPortDeviceResult']:
+    def device(self) -> 'outputs.GetPortDeviceResult':
         """
         Port device
         """
-        return pulumi.get(self, "devices")
+        return pulumi.get(self, "device")
 
     @property
     @pulumi.getter
-    def encapsulations(self) -> Sequence['outputs.GetPortEncapsulationResult']:
+    def encapsulation(self) -> 'outputs.GetPortEncapsulationResult':
         """
         Port encapsulation protocol
         """
-        return pulumi.get(self, "encapsulations")
+        return pulumi.get(self, "encapsulation")
 
     @property
     @pulumi.getter
@@ -155,19 +155,19 @@ class GetPortResult:
 
     @property
     @pulumi.getter
-    def lags(self) -> Sequence['outputs.GetPortLagResult']:
+    def lag(self) -> 'outputs.GetPortLagResult':
         """
         Port Lag
         """
-        return pulumi.get(self, "lags")
+        return pulumi.get(self, "lag")
 
     @property
     @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetPortLocationResult']:
+    def location(self) -> 'outputs.GetPortLocationResult':
         """
         Port location information
         """
-        return pulumi.get(self, "locations")
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -179,19 +179,19 @@ class GetPortResult:
 
     @property
     @pulumi.getter
-    def operations(self) -> Sequence['outputs.GetPortOperationResult']:
+    def operation(self) -> 'outputs.GetPortOperationResult':
         """
         Port specific operational data
         """
-        return pulumi.get(self, "operations")
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Sequence['outputs.GetPortRedundancyResult']:
+    def redundancy(self) -> 'outputs.GetPortRedundancyResult':
         """
         Port redundancy information
         """
-        return pulumi.get(self, "redundancies")
+        return pulumi.get(self, "redundancy")
 
     @property
     @pulumi.getter(name="serviceType")
@@ -240,20 +240,20 @@ class AwaitableGetPortResult(GetPortResult):
         if False:
             yield self
         return GetPortResult(
-            accounts=self.accounts,
+            account=self.account,
             available_bandwidth=self.available_bandwidth,
             bandwidth=self.bandwidth,
-            change_logs=self.change_logs,
+            change_log=self.change_log,
             description=self.description,
-            devices=self.devices,
-            encapsulations=self.encapsulations,
+            device=self.device,
+            encapsulation=self.encapsulation,
             href=self.href,
             id=self.id,
-            lags=self.lags,
-            locations=self.locations,
+            lag=self.lag,
+            location=self.location,
             name=self.name,
-            operations=self.operations,
-            redundancies=self.redundancies,
+            operation=self.operation,
+            redundancy=self.redundancy,
             service_type=self.service_type,
             state=self.state,
             type=self.type,
@@ -274,20 +274,20 @@ def get_port(uuid: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getPort:getPort', __args__, opts=opts, typ=GetPortResult).value
 
     return AwaitableGetPortResult(
-        accounts=__ret__.accounts,
+        account=__ret__.account,
         available_bandwidth=__ret__.available_bandwidth,
         bandwidth=__ret__.bandwidth,
-        change_logs=__ret__.change_logs,
+        change_log=__ret__.change_log,
         description=__ret__.description,
-        devices=__ret__.devices,
-        encapsulations=__ret__.encapsulations,
+        device=__ret__.device,
+        encapsulation=__ret__.encapsulation,
         href=__ret__.href,
         id=__ret__.id,
-        lags=__ret__.lags,
-        locations=__ret__.locations,
+        lag=__ret__.lag,
+        location=__ret__.location,
         name=__ret__.name,
-        operations=__ret__.operations,
-        redundancies=__ret__.redundancies,
+        operation=__ret__.operation,
+        redundancy=__ret__.redundancy,
         service_type=__ret__.service_type,
         state=__ret__.state,
         type=__ret__.type,

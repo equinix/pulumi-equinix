@@ -1,0 +1,12 @@
+name: equinix-metal-port-vlan-attachment
+runtime: python
+description: An Equinix Metal Port Vlan Attachment resource to attach device ports to VLANs
+config:
+  deviceId:
+    type: string
+  portName:
+    type: string
+    default: eth1
+  vxlanId:
+    type: integer
+    default: 1004

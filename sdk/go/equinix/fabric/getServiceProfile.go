@@ -36,11 +36,11 @@ type LookupServiceProfileResult struct {
 	// Access point config information
 	AccessPointTypeConfigs []GetServiceProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
 	// Account
-	Accounts []GetServiceProfileAccount `pulumi:"accounts"`
+	Account GetServiceProfileAccount `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails []string `pulumi:"allowedEmails"`
 	// Captures connection lifecycle change information
-	ChangeLogs []GetServiceProfileChangeLog `pulumi:"changeLogs"`
+	ChangeLog GetServiceProfileChangeLog `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields []GetServiceProfileCustomField `pulumi:"customFields"`
 	// User-provided service description
@@ -50,7 +50,7 @@ type LookupServiceProfileResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Marketing Info
-	MarketingInfos []GetServiceProfileMarketingInfo `pulumi:"marketingInfos"`
+	MarketingInfo GetServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []GetServiceProfileMetro `pulumi:"metros"`
 	// Customer-assigned service profile name
@@ -60,7 +60,7 @@ type LookupServiceProfileResult struct {
 	// Ports
 	Ports []GetServiceProfilePort `pulumi:"ports"`
 	// Project information
-	Projects []GetServiceProfileProject `pulumi:"projects"`
+	Project GetServiceProfileProject `pulumi:"project"`
 	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
@@ -123,8 +123,8 @@ func (o LookupServiceProfileResultOutput) AccessPointTypeConfigs() GetServicePro
 }
 
 // Account
-func (o LookupServiceProfileResultOutput) Accounts() GetServiceProfileAccountArrayOutput {
-	return o.ApplyT(func(v LookupServiceProfileResult) []GetServiceProfileAccount { return v.Accounts }).(GetServiceProfileAccountArrayOutput)
+func (o LookupServiceProfileResultOutput) Account() GetServiceProfileAccountOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileAccount { return v.Account }).(GetServiceProfileAccountOutput)
 }
 
 // Array of contact emails
@@ -133,8 +133,8 @@ func (o LookupServiceProfileResultOutput) AllowedEmails() pulumi.StringArrayOutp
 }
 
 // Captures connection lifecycle change information
-func (o LookupServiceProfileResultOutput) ChangeLogs() GetServiceProfileChangeLogArrayOutput {
-	return o.ApplyT(func(v LookupServiceProfileResult) []GetServiceProfileChangeLog { return v.ChangeLogs }).(GetServiceProfileChangeLogArrayOutput)
+func (o LookupServiceProfileResultOutput) ChangeLog() GetServiceProfileChangeLogOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileChangeLog { return v.ChangeLog }).(GetServiceProfileChangeLogOutput)
 }
 
 // Custom Fields
@@ -158,8 +158,8 @@ func (o LookupServiceProfileResultOutput) Id() pulumi.StringOutput {
 }
 
 // Marketing Info
-func (o LookupServiceProfileResultOutput) MarketingInfos() GetServiceProfileMarketingInfoArrayOutput {
-	return o.ApplyT(func(v LookupServiceProfileResult) []GetServiceProfileMarketingInfo { return v.MarketingInfos }).(GetServiceProfileMarketingInfoArrayOutput)
+func (o LookupServiceProfileResultOutput) MarketingInfo() GetServiceProfileMarketingInfoOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileMarketingInfo { return v.MarketingInfo }).(GetServiceProfileMarketingInfoOutput)
 }
 
 // Access point config information
@@ -183,8 +183,8 @@ func (o LookupServiceProfileResultOutput) Ports() GetServiceProfilePortArrayOutp
 }
 
 // Project information
-func (o LookupServiceProfileResultOutput) Projects() GetServiceProfileProjectArrayOutput {
-	return o.ApplyT(func(v LookupServiceProfileResult) []GetServiceProfileProject { return v.Projects }).(GetServiceProfileProjectArrayOutput)
+func (o LookupServiceProfileResultOutput) Project() GetServiceProfileProjectOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileProject { return v.Project }).(GetServiceProfileProjectOutput)
 }
 
 // Self Profile indicating if the profile is created for customer's  self use

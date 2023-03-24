@@ -18,7 +18,6 @@ namespace Pulumi.Equinix.Metal
     /// create resources.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -26,12 +25,19 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Equinix.Metal.UserApiKey("test", new()
+    ///     var config = new Config();
+    ///     var description = config.Get("description") ?? "An user level API Key";
+    ///     var readOnly = config.GetBoolean("readOnly") ?? false;
+    ///     var apiKey = new Equinix.Metal.UserApiKey("apiKey", new()
     ///     {
-    ///         Description = "Read-only user key",
-    ///         ReadOnly = true,
+    ///         Description = description,
+    ///         ReadOnly = readOnly,
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["apiKeyToken"] = apiKey.Token,
+    ///     };
     /// });
     /// ```
     /// </summary>
@@ -86,7 +92,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
                 AdditionalSecretOutputs =
                 {
                     "token",

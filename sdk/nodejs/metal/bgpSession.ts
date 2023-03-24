@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * You need to have BGP config enabled in your project.
  *
  * BGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal's upstream routers.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const deviceId = config.require("deviceId");
+ * const bgp = new equinix.metal.BgpSession("bgp", {
+ *     deviceId: deviceId,
+ *     addressFamily: "ipv4",
+ * });
+ * export const bgpSessionStatus = bgp.status;
+ * ```
  */
 export class BgpSession extends pulumi.CustomResource {
     /**

@@ -11,13 +11,13 @@ from .. import _utilities
 from ._enums import *
 
 __all__ = [
-    'ConnectionPortArgs',
-    'ConnectionServiceTokenArgs',
     'DeviceBehaviorArgs',
     'DeviceIpAddressArgs',
     'DeviceNetworkArgs',
     'DevicePortArgs',
     'DeviceReinstallArgs',
+    'InterconnectionPortArgs',
+    'InterconnectionServiceTokenArgs',
     'OrganizationAddressArgs',
     'ProjectBgpConfigArgs',
     'SpotMarketRequestInstanceParametersArgs',
@@ -26,192 +26,6 @@ __all__ = [
     'GetPlansFilterArgs',
     'GetPlansSortArgs',
 ]
-
-@pulumi.input_type
-class ConnectionPortArgs:
-    def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 link_status: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
-                 speed: Optional[pulumi.Input[int]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 virtual_circuit_ids: Optional[pulumi.Input[Sequence[Any]]] = None):
-        """
-        :param pulumi.Input[str] name: Name of the connection resource
-        :param pulumi.Input[int] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-        :param pulumi.Input[str] status: Status of the connection resource.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if link_status is not None:
-            pulumi.set(__self__, "link_status", link_status)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-        if speed is not None:
-            pulumi.set(__self__, "speed", speed)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if virtual_circuit_ids is not None:
-            pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="linkStatus")
-    def link_status(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "link_status")
-
-    @link_status.setter
-    def link_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "link_status", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the connection resource
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "role")
-
-    @role.setter
-    def role(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "role", value)
-
-    @property
-    @pulumi.getter
-    def speed(self) -> Optional[pulumi.Input[int]]:
-        """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-        """
-        return pulumi.get(self, "speed")
-
-    @speed.setter
-    def speed(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "speed", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the connection resource.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="virtualCircuitIds")
-    def virtual_circuit_ids(self) -> Optional[pulumi.Input[Sequence[Any]]]:
-        return pulumi.get(self, "virtual_circuit_ids")
-
-    @virtual_circuit_ids.setter
-    def virtual_circuit_ids(self, value: Optional[pulumi.Input[Sequence[Any]]]):
-        pulumi.set(self, "virtual_circuit_ids", value)
-
-
-@pulumi.input_type
-class ConnectionServiceTokenArgs:
-    def __init__(__self__, *,
-                 expires_at: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 max_allowed_speed: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: Connection type - dedicated or shared.
-        """
-        if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if max_allowed_speed is not None:
-            pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "expires_at")
-
-    @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expires_at", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="maxAllowedSpeed")
-    def max_allowed_speed(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "max_allowed_speed")
-
-    @max_allowed_speed.setter
-    def max_allowed_speed(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "max_allowed_speed", value)
-
-    @property
-    @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "role")
-
-    @role.setter
-    def role(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "role", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Connection type - dedicated or shared.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class DeviceBehaviorArgs:
@@ -525,6 +339,192 @@ class DeviceReinstallArgs:
     @preserve_data.setter
     def preserve_data(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preserve_data", value)
+
+
+@pulumi.input_type
+class InterconnectionPortArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 link_status: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 speed: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 virtual_circuit_ids: Optional[pulumi.Input[Sequence[Any]]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the connection resource
+        :param pulumi.Input[int] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param pulumi.Input[str] status: Status of the connection resource.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link_status is not None:
+            pulumi.set(__self__, "link_status", link_status)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if speed is not None:
+            pulumi.set(__self__, "speed", speed)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if virtual_circuit_ids is not None:
+            pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="linkStatus")
+    def link_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "link_status")
+
+    @link_status.setter
+    def link_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_status", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the connection resource
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def speed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        """
+        return pulumi.get(self, "speed")
+
+    @speed.setter
+    def speed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "speed", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the connection resource.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="virtualCircuitIds")
+    def virtual_circuit_ids(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+        return pulumi.get(self, "virtual_circuit_ids")
+
+    @virtual_circuit_ids.setter
+    def virtual_circuit_ids(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+        pulumi.set(self, "virtual_circuit_ids", value)
+
+
+@pulumi.input_type
+class InterconnectionServiceTokenArgs:
+    def __init__(__self__, *,
+                 expires_at: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 max_allowed_speed: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Connection type - dedicated or shared.
+        """
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_allowed_speed is not None:
+            pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="maxAllowedSpeed")
+    def max_allowed_speed(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_allowed_speed")
+
+    @max_allowed_speed.setter
+    def max_allowed_speed(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_allowed_speed", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connection type - dedicated or shared.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

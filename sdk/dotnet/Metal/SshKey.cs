@@ -15,7 +15,6 @@ namespace Pulumi.Equinix.Metal
     /// The link between User SSH key and device is implicit. If you want to make sure that a key will be copied to a device, you must ensure that the device resource `depends_on` the key resource.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -24,40 +23,22 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new SSH key
-    ///     var key1 = new Equinix.Metal.SshKey("key1", new()
+    ///     var sshKey = new Equinix.Metal.SshKey("sshKey", new()
     ///     {
-    ///         PublicKey = File.ReadAllText("/home/terraform/.ssh/id_rsa.pub"),
+    ///         Name = "johnKent",
+    ///         PublicKey = File.ReadAllText("/Users/John/.ssh/metal_rsa.pub"),
     ///     });
     /// 
-    ///     // Create new device with "key1" included. The device resource "depends_on" the
-    ///     // key, in order to make sure the key is created before the device.
-    ///     var test = new Equinix.Metal.Device("test", new()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         Hostname = "test-device",
-    ///         Plan = "c3.small.x86",
-    ///         Metro = "sv",
-    ///         OperatingSystem = "ubuntu_20_04",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             "equinix_metal_ssh_key.key1",
-    ///         },
-    ///     });
-    /// 
+    ///         ["sshKeyId"] = sshKey.Id,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing SSH Key ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id}
-    /// ```
+    /// This resource can be imported using an existing SSH Key ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource
@@ -122,7 +103,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

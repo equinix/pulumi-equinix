@@ -18,10 +18,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const test = new equinix.metal.UserApiKey("test", {
- *     description: "Read-only user key",
- *     readOnly: true,
+ * const config = new pulumi.Config();
+ * const description = config.get("description") || "An user level API Key";
+ * const readOnly = config.getBoolean("readOnly") || false;
+ * const apiKey = new equinix.metal.UserApiKey("apiKey", {
+ *     description: description,
+ *     readOnly: readOnly,
  * });
+ * export const apiKeyToken = apiKey.token;
  * ```
  */
 export class UserApiKey extends pulumi.CustomResource {

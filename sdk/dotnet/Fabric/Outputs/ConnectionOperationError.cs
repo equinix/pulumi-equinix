@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public readonly ImmutableArray<Outputs.ConnectionOperationErrorAdditionalInfo> AdditionalInfos;
+        public readonly ImmutableArray<Outputs.ConnectionOperationErrorAdditionalInfo> AdditionalInfo;
         public readonly string? CorrelationId;
         public readonly string? Details;
         public readonly string? ErrorCode;
@@ -25,7 +25,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
         [OutputConstructor]
         private ConnectionOperationError(
-            ImmutableArray<Outputs.ConnectionOperationErrorAdditionalInfo> additionalInfos,
+            ImmutableArray<Outputs.ConnectionOperationErrorAdditionalInfo> additionalInfo,
 
             string? correlationId,
 
@@ -37,7 +37,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string? help)
         {
-            AdditionalInfos = additionalInfos;
+            AdditionalInfo = additionalInfo;
             CorrelationId = correlationId;
             Details = details;
             ErrorCode = errorCode;

@@ -59,7 +59,7 @@ type LookupOrganizationArgs struct {
 // A collection of values returned by getOrganization.
 type LookupOrganizationResult struct {
 	// Postal address.
-	Addresses []GetOrganizationAddress `pulumi:"addresses"`
+	Address GetOrganizationAddress `pulumi:"address"`
 	// Description string.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -117,8 +117,8 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithCont
 }
 
 // Postal address.
-func (o LookupOrganizationResultOutput) Addresses() GetOrganizationAddressArrayOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) []GetOrganizationAddress { return v.Addresses }).(GetOrganizationAddressArrayOutput)
+func (o LookupOrganizationResultOutput) Address() GetOrganizationAddressOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) GetOrganizationAddress { return v.Address }).(GetOrganizationAddressOutput)
 }
 
 // Description string.

@@ -36,29 +36,17 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("allowRemoteConnections")]
         public Input<bool>? AllowRemoteConnections { get; set; }
 
-        [Input("apiConfigs")]
-        private InputList<Inputs.ServiceProfileAccessPointTypeConfigApiConfigGetArgs>? _apiConfigs;
-
         /// <summary>
         /// Api configuration details
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccessPointTypeConfigApiConfigGetArgs> ApiConfigs
-        {
-            get => _apiConfigs ?? (_apiConfigs = new InputList<Inputs.ServiceProfileAccessPointTypeConfigApiConfigGetArgs>());
-            set => _apiConfigs = value;
-        }
-
-        [Input("authenticationKeys")]
-        private InputList<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyGetArgs>? _authenticationKeys;
+        [Input("apiConfig")]
+        public Input<Inputs.ServiceProfileAccessPointTypeConfigApiConfigGetArgs>? ApiConfig { get; set; }
 
         /// <summary>
         /// Authentication key details
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyGetArgs> AuthenticationKeys
-        {
-            get => _authenticationKeys ?? (_authenticationKeys = new InputList<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyGetArgs>());
-            set => _authenticationKeys = value;
-        }
+        [Input("authenticationKey")]
+        public Input<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyGetArgs>? AuthenticationKey { get; set; }
 
         /// <summary>
         /// Percentage of port bandwidth at which an allocation alert is generated
@@ -84,17 +72,11 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("enableAutoGenerateServiceKey")]
         public Input<bool>? EnableAutoGenerateServiceKey { get; set; }
 
-        [Input("linkProtocolConfigs")]
-        private InputList<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigGetArgs>? _linkProtocolConfigs;
-
         /// <summary>
         /// Link protocol configuration details
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigGetArgs> LinkProtocolConfigs
-        {
-            get => _linkProtocolConfigs ?? (_linkProtocolConfigs = new InputList<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigGetArgs>());
-            set => _linkProtocolConfigs = value;
-        }
+        [Input("linkProtocolConfig")]
+        public Input<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigGetArgs>? LinkProtocolConfig { get; set; }
 
         [Input("supportedBandwidths")]
         private InputList<int>? _supportedBandwidths;

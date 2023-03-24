@@ -21,17 +21,11 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetPortsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("filters")]
-        private List<Inputs.GetPortsFilterArgs>? _filters;
-
         /// <summary>
         /// name
         /// </summary>
-        public List<Inputs.GetPortsFilterArgs> Filters
-        {
-            get => _filters ?? (_filters = new List<Inputs.GetPortsFilterArgs>());
-            set => _filters = value;
-        }
+        [Input("filter")]
+        public Inputs.GetPortsFilterArgs? Filter { get; set; }
 
         public GetPortsArgs()
         {
@@ -41,17 +35,11 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetPortsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("filters")]
-        private InputList<Inputs.GetPortsFilterInputArgs>? _filters;
-
         /// <summary>
         /// name
         /// </summary>
-        public InputList<Inputs.GetPortsFilterInputArgs> Filters
-        {
-            get => _filters ?? (_filters = new InputList<Inputs.GetPortsFilterInputArgs>());
-            set => _filters = value;
-        }
+        [Input("filter")]
+        public Input<Inputs.GetPortsFilterInputArgs>? Filter { get; set; }
 
         public GetPortsInvokeArgs()
         {
@@ -66,11 +54,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// List of  Ports
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortsDataResult> Datas;
+        public readonly ImmutableArray<Outputs.GetPortsDatumResult> Data;
         /// <summary>
         /// name
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortsFilterResult> Filters;
+        public readonly Outputs.GetPortsFilterResult? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -78,14 +66,14 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetPortsResult(
-            ImmutableArray<Outputs.GetPortsDataResult> datas,
+            ImmutableArray<Outputs.GetPortsDatumResult> data,
 
-            ImmutableArray<Outputs.GetPortsFilterResult> filters,
+            Outputs.GetPortsFilterResult? filter,
 
             string id)
         {
-            Datas = datas;
-            Filters = filters;
+            Data = data;
+            Filter = filter;
             Id = id;
         }
     }

@@ -1,0 +1,3 @@
+name: equinix-metal-ssh-key
+runtime: nodejs
+description: An Equinix Metal User SSH Key resource

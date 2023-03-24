@@ -4,8 +4,6 @@
 package com.equinix.pulumi.equinix.metal;
 
 import com.equinix.pulumi.equinix.Utilities;
-import com.equinix.pulumi.equinix.metal.inputs.GetConnectionArgs;
-import com.equinix.pulumi.equinix.metal.inputs.GetConnectionPlainArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetDeviceArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetDeviceBgpNeighborsArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetDeviceBgpNeighborsPlainArgs;
@@ -16,6 +14,8 @@ import com.equinix.pulumi.equinix.metal.inputs.GetGatewayArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetGatewayPlainArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetHardwareReservationArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetHardwareReservationPlainArgs;
+import com.equinix.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+import com.equinix.pulumi.equinix.metal.inputs.GetInterconnectionPlainArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetIpBlockRangesArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetIpBlockRangesPlainArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetMetroArgs;
@@ -46,12 +46,12 @@ import com.equinix.pulumi.equinix.metal.inputs.GetVlanArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetVlanPlainArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetVrfArgs;
 import com.equinix.pulumi.equinix.metal.inputs.GetVrfPlainArgs;
-import com.equinix.pulumi.equinix.metal.outputs.GetConnectionResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetDeviceBgpNeighborsResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetDeviceResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetFacilityResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetGatewayResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetHardwareReservationResult;
+import com.equinix.pulumi.equinix.metal.outputs.GetInterconnectionResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetIpBlockRangesResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetMetroResult;
 import com.equinix.pulumi.equinix.metal.outputs.GetOperatingSystemResult;
@@ -74,162 +74,6 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MetalFunctions {
-    /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
-     * 
-     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
-        return getConnection(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
-     * 
-     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
-        return getConnectionPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
-     * 
-     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("equinix:metal/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
-     * 
-     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getConnection(GetConnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
-    public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("equinix:metal/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
-    }
     /**
      * Provides an Equinix Metal device datasource.
      * 
@@ -1311,6 +1155,162 @@ public final class MetalFunctions {
      */
     public static CompletableFuture<GetHardwareReservationResult> getHardwareReservationPlain(GetHardwareReservationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getHardwareReservation:getHardwareReservation", TypeShape.of(GetHardwareReservationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * 
+     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInterconnectionResult> getInterconnection(GetInterconnectionArgs args) {
+        return getInterconnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * 
+     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInterconnectionResult> getInterconnectionPlain(GetInterconnectionPlainArgs args) {
+        return getInterconnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * 
+     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInterconnectionResult> getInterconnection(GetInterconnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
+     * 
+     * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInterconnectionResult> getInterconnectionPlain(GetInterconnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:metal/getInterconnection:getInterconnection", TypeShape.of(GetInterconnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
@@ -3204,7 +3204,7 @@ public final class MetalFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
      * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3219,12 +3219,12 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()
+     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
      *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
      *             .build());
      * 
      *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getConnectionResult -&gt; getConnectionResult.ports()[1].virtualCircuitIds()[0]))
+     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
      *             .build());
      * 
      *     }
@@ -3249,7 +3249,7 @@ public final class MetalFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
      * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3264,12 +3264,12 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()
+     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
      *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
      *             .build());
      * 
      *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getConnectionResult -&gt; getConnectionResult.ports()[1].virtualCircuitIds()[0]))
+     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
      *             .build());
      * 
      *     }
@@ -3294,7 +3294,7 @@ public final class MetalFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
      * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3309,12 +3309,12 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()
+     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
      *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
      *             .build());
      * 
      *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getConnectionResult -&gt; getConnectionResult.ports()[1].virtualCircuitIds()[0]))
+     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
      *             .build());
      * 
      *     }
@@ -3339,7 +3339,7 @@ public final class MetalFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetConnectionArgs;
+     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
      * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -3354,12 +3354,12 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getConnection(GetConnectionArgs.builder()
+     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
      *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
      *             .build());
      * 
      *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getConnectionResult -&gt; getConnectionResult.ports()[1].virtualCircuitIds()[0]))
+     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
      *             .build());
      * 
      *     }

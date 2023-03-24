@@ -274,6 +274,23 @@ class IpAttachment(pulumi.CustomResource):
 
         Device and reserved block must be in the same facility.
 
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        subnet_cidr = config.get("subnetCidr")
+        if subnet_cidr is None:
+            subnet_cidr = "147.229.10.152/31"
+        ip_attach_resource = equinix.metal.IpAttachment("ipAttach",
+            device_id=device_id,
+            cidr_notation=subnet_cidr)
+        pulumi.export("ipAttach", ip_attach_resource.id)
+        pulumi.export("ipNetmask", ip_attach_resource.netmask)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_notation: CIDR notation of subnet from block reserved in the same project
@@ -298,6 +315,23 @@ class IpAttachment(pulumi.CustomResource):
         is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
 
         Device and reserved block must be in the same facility.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        subnet_cidr = config.get("subnetCidr")
+        if subnet_cidr is None:
+            subnet_cidr = "147.229.10.152/31"
+        ip_attach_resource = equinix.metal.IpAttachment("ipAttach",
+            device_id=device_id,
+            cidr_notation=subnet_cidr)
+        pulumi.export("ipAttach", ip_attach_resource.id)
+        pulumi.export("ipNetmask", ip_attach_resource.netmask)
+        ```
 
         :param str resource_name: The name of the resource.
         :param IpAttachmentArgs args: The arguments to use to populate this resource's properties.

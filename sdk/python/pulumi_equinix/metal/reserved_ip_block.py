@@ -592,69 +592,33 @@ class ReservedIpBlock(pulumi.CustomResource):
         > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 
         ## Example Usage
-
-        Allocate reserved IP blocks:
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility for myproject
-        two_elastic_addresses = equinix.metal.ReservedIpBlock("twoElasticAddresses",
-            project_id=local["project_id"],
-            facility="sv15",
-            quantity=2)
-        # Allocate 1 floating IP in Sillicon Valley (sv) metro
-        test_reserved_ip_block = equinix.metal.ReservedIpBlock("testReservedIpBlock",
-            project_id=local["project_id"],
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "FR"
+        type = config.get("type")
+        if type is None:
+            type = "public_ipv4"
+        quantity = config.get_int("quantity")
+        if quantity is None:
+            quantity = 1
+        ip_block = equinix.metal.ReservedIpBlock("ipBlock",
+            project_id=project_id,
             type="public_ipv4",
-            metro="sv",
-            quantity=1)
-        # Allocate 1 global floating IP, which can be assigned to device in any facility
-        test_metal_reserved_ip_block_reserved_ip_block = equinix.metal.ReservedIpBlock("testMetal/reservedIpBlockReservedIpBlock",
-            project_id=local["project_id"],
-            type="global_ipv4",
-            quantity=1)
-        ```
-
-        Allocate a block and run a device with public IPv4 from the block
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility
-        example = equinix.metal.ReservedIpBlock("example",
-            project_id=local["project_id"],
-            facility="sv15",
-            quantity=2)
-        # Run a device with both public IPv4 from the block assigned
-        nodes = equinix.metal.Device("nodes",
-            project_id=local["project_id"],
-            facilities=["sv15"],
-            plan="c3.small.x86",
-            operating_system="ubuntu_20_04",
-            hostname="test",
-            billing_cycle="hourly",
-            ip_addresses=[
-                equinix.metal.DeviceIpAddressArgs(
-                    type="public_ipv4",
-                    cidr=31,
-                    reservation_ids=[example.id],
-                ),
-                equinix.metal.DeviceIpAddressArgs(
-                    type="private_ipv4",
-                ),
-            ])
+            quantity=quantity,
+            metro=metro)
+        pulumi.export("ipBlockId", ip_block.id)
+        pulumi.export("ipBlockSubent", ip_block.cidr_notation)
         ```
 
         ## Import
 
-        This resource can be imported using an existing IP reservation ID
-
-        ```sh
-         $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
-        ```
+        This resource can be imported using an existing IP reservation ID: <break><break>```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -698,69 +662,33 @@ class ReservedIpBlock(pulumi.CustomResource):
         > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 
         ## Example Usage
-
-        Allocate reserved IP blocks:
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility for myproject
-        two_elastic_addresses = equinix.metal.ReservedIpBlock("twoElasticAddresses",
-            project_id=local["project_id"],
-            facility="sv15",
-            quantity=2)
-        # Allocate 1 floating IP in Sillicon Valley (sv) metro
-        test_reserved_ip_block = equinix.metal.ReservedIpBlock("testReservedIpBlock",
-            project_id=local["project_id"],
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "FR"
+        type = config.get("type")
+        if type is None:
+            type = "public_ipv4"
+        quantity = config.get_int("quantity")
+        if quantity is None:
+            quantity = 1
+        ip_block = equinix.metal.ReservedIpBlock("ipBlock",
+            project_id=project_id,
             type="public_ipv4",
-            metro="sv",
-            quantity=1)
-        # Allocate 1 global floating IP, which can be assigned to device in any facility
-        test_metal_reserved_ip_block_reserved_ip_block = equinix.metal.ReservedIpBlock("testMetal/reservedIpBlockReservedIpBlock",
-            project_id=local["project_id"],
-            type="global_ipv4",
-            quantity=1)
-        ```
-
-        Allocate a block and run a device with public IPv4 from the block
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        # Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility
-        example = equinix.metal.ReservedIpBlock("example",
-            project_id=local["project_id"],
-            facility="sv15",
-            quantity=2)
-        # Run a device with both public IPv4 from the block assigned
-        nodes = equinix.metal.Device("nodes",
-            project_id=local["project_id"],
-            facilities=["sv15"],
-            plan="c3.small.x86",
-            operating_system="ubuntu_20_04",
-            hostname="test",
-            billing_cycle="hourly",
-            ip_addresses=[
-                equinix.metal.DeviceIpAddressArgs(
-                    type="public_ipv4",
-                    cidr=31,
-                    reservation_ids=[example.id],
-                ),
-                equinix.metal.DeviceIpAddressArgs(
-                    type="private_ipv4",
-                ),
-            ])
+            quantity=quantity,
+            metro=metro)
+        pulumi.export("ipBlockId", ip_block.id)
+        pulumi.export("ipBlockSubent", ip_block.cidr_notation)
         ```
 
         ## Import
 
-        This resource can be imported using an existing IP reservation ID
-
-        ```sh
-         $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
-        ```
+        This resource can be imported using an existing IP reservation ID: <break><break>```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param ReservedIpBlockArgs args: The arguments to use to populate this resource's properties.

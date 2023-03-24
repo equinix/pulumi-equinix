@@ -28,15 +28,72 @@ namespace Pulumi.Equinix.NetworkEdge
     ///   software license. There are no charges associated with such license. It is the only licensing mode
     ///   for `self-configured` devices.
     /// 
-    /// ## Import
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
     /// 
-    /// This resource can be imported using an existing ID
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var accountName = config.Require("accountName");
+    ///     var licenseToken = config.Require("licenseToken");
+    ///     var sshUserName = config.Require("sshUserName");
+    ///     var sshKeyName = config.Require("sshKeyName");
+    ///     var aclTemplateId = config.Require("aclTemplateId");
+    ///     var metro = config.Get("metro") ?? "SV";
+    ///     var devicePackageCode = config.Get("devicePackageCode") ?? "network-essentials";
+    ///     var deviceVersion = config.Get("deviceVersion") ?? "17.06.01a";
+    ///     var sizeInCores = config.GetNumber("sizeInCores") ?? 2;
+    ///     var termLength = config.GetNumber("termLength") ?? 6;
+    ///     var additionalBandwidth = config.GetNumber("additionalBandwidth") ?? 5;
+    ///     var accountNum = Equinix.NetworkEdge.GetAccount.Invoke(new()
+    ///     {
+    ///         Name = accountName,
+    ///         MetroCode = metro,
+    ///     }).Apply(invoke =&gt; invoke.Number);
     /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/device:Device example {existing_id}
+    ///     var c8KRouter = new Equinix.NetworkEdge.Device("c8kRouter", new()
+    ///     {
+    ///         Name = "catalystRouter",
+    ///         MetroCode = metro,
+    ///         TypeCode = "C8000V",
+    ///         SelfManaged = true,
+    ///         Byol = true,
+    ///         PackageCode = devicePackageCode,
+    ///         Notifications = new[]
+    ///         {
+    ///             "example@equinix.com",
+    ///         },
+    ///         Hostname = "C8KV",
+    ///         AccountNumber = accountNum,
+    ///         Version = version,
+    ///         CoreCount = sizeInCores,
+    ///         TermLength = termLength,
+    ///         LicenseToken = licenseToken,
+    ///         AdditionalBandwidth = additionalBandwidth,
+    ///         SshKey = new Equinix.NetworkEdge.Inputs.DeviceSshKeyArgs
+    ///         {
+    ///             Username = sshUserName,
+    ///             KeyName = sshKeyName,
+    ///         },
+    ///         AclTemplateId = aclTemplateId,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["routerId"] = c8KRouter.Id,
+    ///         ["provisionStatus"] = c8KRouter.Status,
+    ///         ["licenseStatus"] = c8KRouter.LicenseStatus,
+    ///         ["sshIpAddress"] = c8KRouter.SshIpAddress,
+    ///     };
+    /// });
     /// ```
     /// 
-    ///  The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+    /// ## Import
+    /// 
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/device:Device example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
     /// </summary>
     [EquinixResourceType("equinix:networkedge/device:Device")]
     public partial class Device : global::Pulumi.CustomResource
@@ -326,7 +383,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

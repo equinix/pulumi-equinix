@@ -14,9 +14,6 @@ import (
 // Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
 //
 // ## Example Usage
-//
-// Add a member to an organization to collaborate on given projects:
-//
 // ```go
 // package main
 //
@@ -24,55 +21,31 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewOrganizationMember(ctx, "member", &metal.OrganizationMemberArgs{
-//				Invitee: pulumi.String("member@example.com"),
+//			cfg := config.New(ctx, "")
+//			organizationId := cfg.Require("organizationId")
+//			projectId := cfg.Require("projectId")
+//			userEmailAddress := cfg.Require("userEmailAddress")
+//			member, err := metal.NewOrganizationMember(ctx, "member", &metal.OrganizationMemberArgs{
+//				Invitee: pulumi.String(userEmailAddress),
 //				Roles: pulumi.StringArray{
 //					pulumi.String("limited_collaborator"),
 //				},
 //				ProjectsIds: pulumi.StringArray{
-//					_var.Project_id,
+//					pulumi.String(projectId),
 //				},
-//				OrganizationId: pulumi.Any(_var.Organization_id),
+//				OrganizationId: pulumi.String(organizationId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Add a member to an organization as an organization administrator:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewOrganizationMember(ctx, "owner", &metal.OrganizationMemberArgs{
-//				Invitee: pulumi.String("admin@example.com"),
-//				Roles: pulumi.StringArray{
-//					pulumi.String("owner"),
-//				},
-//				ProjectsIds:    pulumi.StringArray{},
-//				OrganizationId: pulumi.Any(_var.Organization_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("memberId", member.ID())
+//			ctx.Export("memberState", member.State)
 //			return nil
 //		})
 //	}
@@ -81,13 +54,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using the `invitee` and `organization_id` as colon separated arguments
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
-//
-// ```
+// This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
 type OrganizationMember struct {
 	pulumi.CustomResourceState
 

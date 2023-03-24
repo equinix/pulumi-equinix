@@ -19,8 +19,6 @@ import javax.annotation.Nullable;
  * Manage the membership of existing and new invitees within an Equinix Metal organization and its projects.
  * 
  * ## Example Usage
- * 
- * Add a member to an organization to collaborate on given projects:
  * ```java
  * package generated_program;
  * 
@@ -42,57 +40,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var organizationId = config.get(&#34;organizationId&#34;);
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var userEmailAddress = config.get(&#34;userEmailAddress&#34;);
  *         var member = new OrganizationMember(&#34;member&#34;, OrganizationMemberArgs.builder()        
- *             .invitee(&#34;member@example.com&#34;)
+ *             .invitee(userEmailAddress)
  *             .roles(&#34;limited_collaborator&#34;)
- *             .projectsIds(var_.project_id())
- *             .organizationId(var_.organization_id())
+ *             .projectsIds(projectId)
+ *             .organizationId(organizationId)
  *             .build());
  * 
- *     }
- * }
- * ```
- * 
- * Add a member to an organization as an organization administrator:
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.OrganizationMember;
- * import com.pulumi.equinix.metal.OrganizationMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var owner = new OrganizationMember(&#34;owner&#34;, OrganizationMemberArgs.builder()        
- *             .invitee(&#34;admin@example.com&#34;)
- *             .roles(&#34;owner&#34;)
- *             .projectsIds()
- *             .organizationId(var_.organization_id())
- *             .build());
- * 
+ *         ctx.export(&#34;memberId&#34;, member.id());
+ *         ctx.export(&#34;memberState&#34;, member.state());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments
- * 
- * ```sh
- *  $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
- * ```
+ * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/organizationMember:OrganizationMember")

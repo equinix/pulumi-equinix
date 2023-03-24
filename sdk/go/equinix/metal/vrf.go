@@ -16,9 +16,6 @@ import (
 // > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 //
 // ## Example Usage
-//
-// Create a VRF in your desired metro and project with any IP ranges that you want the VRF to route and forward.
-//
 // ```go
 // package main
 //
@@ -26,117 +23,33 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProject, err := metal.NewProject(ctx, "exampleProject", nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			metro := "DA"
+//			if param := cfg.Get("metro"); param != "" {
+//				metro = param
 //			}
-//			_, err = metal.NewVrf(ctx, "exampleVrf", &metal.VrfArgs{
-//				Description: pulumi.String("VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25"),
-//				Metro:       pulumi.String("da"),
+//			vrf, err := metal.NewVrf(ctx, "vrf", &metal.VrfArgs{
+//				Description: pulumi.String("VRF with ASN 65000 and a pool of address space"),
+//				Name:        pulumi.String("example-vrf"),
+//				Metro:       pulumi.String(metro),
 //				LocalAsn:    pulumi.Int(65000),
 //				IpRanges: pulumi.StringArray{
 //					pulumi.String("192.168.100.0/25"),
 //					pulumi.String("192.168.200.0/25"),
 //				},
-//				ProjectId: exampleProject.ID(),
+//				ProjectId: pulumi.String(projectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create IP reservations and assign them to a Metal Gateway resources. The Gateway will be assigned the first address in the block.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleReservedIpBlock, err := metal.NewReservedIpBlock(ctx, "exampleReservedIpBlock", &metal.ReservedIpBlockArgs{
-//				Description: pulumi.String("Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space."),
-//				ProjectId:   pulumi.Any(equinix_metal_project.Example.Id),
-//				Metro:       pulumi.Any(equinix_metal_vrf.Example.Metro),
-//				Type:        pulumi.String("vrf"),
-//				VrfId:       pulumi.Any(equinix_metal_vrf.Example.Id),
-//				Cidr:        pulumi.Int(29),
-//				Network:     pulumi.String("192.168.100.0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleVlan, err := metal.NewVlan(ctx, "exampleVlan", &metal.VlanArgs{
-//				Description: pulumi.String("A VLAN for Layer2 and Hybrid Metal devices"),
-//				Metro:       pulumi.Any(equinix_metal_vrf.Example.Metro),
-//				ProjectId:   pulumi.Any(equinix_metal_project.Example.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.NewGateway(ctx, "exampleGateway", &metal.GatewayArgs{
-//				ProjectId:       pulumi.Any(equinix_metal_project.Example.Id),
-//				VlanId:          exampleVlan.ID(),
-//				IpReservationId: exampleReservedIpBlock.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Attach a Virtual Circuit from a Dedicated Metal Connection to the Metal Gateway.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleConnection, err := metal.LookupConnection(ctx, &metal.LookupConnectionArgs{
-//				ConnectionId: _var.Metal_dedicated_connection_id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.NewVirtualCircuit(ctx, "exampleVirtualCircuit", &metal.VirtualCircuitArgs{
-//				Description:  pulumi.String("Virtual Circuit"),
-//				ConnectionId: *pulumi.String(exampleConnection.Id),
-//				ProjectId:    pulumi.Any(equinix_metal_project.Example.Id),
-//				PortId:       *pulumi.String(exampleConnection.Ports[0].Id),
-//				NniVlan:      pulumi.Int(1024),
-//				VrfId:        pulumi.Any(equinix_metal_vrf.Example.Id),
-//				PeerAsn:      pulumi.Int(65530),
-//				Subnet:       pulumi.String("192.168.100.16/31"),
-//				MetalIp:      pulumi.String("192.168.100.16"),
-//				CustomerIp:   pulumi.String("192.168.100.17"),
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("vrfId", vrf.ID())
 //			return nil
 //		})
 //	}
@@ -145,13 +58,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing VRF ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}
-//
-// ```
+// This resource can be imported using an existing VRF ID: <break><break>```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
 type Vrf struct {
 	pulumi.CustomResourceState
 

@@ -26,9 +26,6 @@ namespace Pulumi.Equinix.Metal
     /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
     /// 
     /// ## Example Usage
-    /// 
-    /// Allocate reserved IP blocks:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -36,91 +33,30 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility for myproject
-    ///     var twoElasticAddresses = new Equinix.Metal.ReservedIpBlock("twoElasticAddresses", new()
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var metro = config.Get("metro") ?? "FR";
+    ///     var type = config.Get("type") ?? "public_ipv4";
+    ///     var quantity = config.GetNumber("quantity") ?? 1;
+    ///     var ipBlock = new Equinix.Metal.ReservedIpBlock("ipBlock", new()
     ///     {
-    ///         ProjectId = local.Project_id,
-    ///         Facility = "sv15",
-    ///         Quantity = 2,
-    ///     });
-    /// 
-    ///     // Allocate 1 floating IP in Sillicon Valley (sv) metro
-    ///     var testReservedIpBlock = new Equinix.Metal.ReservedIpBlock("testReservedIpBlock", new()
-    ///     {
-    ///         ProjectId = local.Project_id,
+    ///         ProjectId = projectId,
     ///         Type = "public_ipv4",
-    ///         Metro = "sv",
-    ///         Quantity = 1,
+    ///         Quantity = quantity,
+    ///         Metro = metro,
     ///     });
     /// 
-    ///     // Allocate 1 global floating IP, which can be assigned to device in any facility
-    ///     var testMetal_reservedIpBlockReservedIpBlock = new Equinix.Metal.ReservedIpBlock("testMetal/reservedIpBlockReservedIpBlock", new()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ProjectId = local.Project_id,
-    ///         Type = "global_ipv4",
-    ///         Quantity = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Allocate a block and run a device with public IPv4 from the block
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Allocate /31 block of max 2 public IPv4 addresses in Silicon Valley (sv15) facility
-    ///     var example = new Equinix.Metal.ReservedIpBlock("example", new()
-    ///     {
-    ///         ProjectId = local.Project_id,
-    ///         Facility = "sv15",
-    ///         Quantity = 2,
-    ///     });
-    /// 
-    ///     // Run a device with both public IPv4 from the block assigned
-    ///     var nodes = new Equinix.Metal.Device("nodes", new()
-    ///     {
-    ///         ProjectId = local.Project_id,
-    ///         Facilities = new[]
-    ///         {
-    ///             "sv15",
-    ///         },
-    ///         Plan = "c3.small.x86",
-    ///         OperatingSystem = "ubuntu_20_04",
-    ///         Hostname = "test",
-    ///         BillingCycle = "hourly",
-    ///         IpAddresses = new[]
-    ///         {
-    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
-    ///             {
-    ///                 Type = "public_ipv4",
-    ///                 Cidr = 31,
-    ///                 ReservationIds = new[]
-    ///                 {
-    ///                     example.Id,
-    ///                 },
-    ///             },
-    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
-    ///             {
-    ///                 Type = "private_ipv4",
-    ///             },
-    ///         },
-    ///     });
-    /// 
+    ///         ["ipBlockId"] = ipBlock.Id,
+    ///         ["ipBlockSubent"] = ipBlock.CidrNotation,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing IP reservation ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
-    /// ```
+    /// This resource can be imported using an existing IP reservation ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/reservedIpBlock:ReservedIpBlock")]
     public partial class ReservedIpBlock : global::Pulumi.CustomResource
@@ -267,7 +203,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

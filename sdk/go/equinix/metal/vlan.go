@@ -19,7 +19,6 @@ import (
 // * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -27,28 +26,29 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewVlan(ctx, "vlan1Vlan", &metal.VlanArgs{
-//				Description: pulumi.String("VLAN in New Jersey"),
-//				Facility:    pulumi.String("sv15"),
-//				ProjectId:   pulumi.Any(local.Project_id),
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			metro := "DA"
+//			if param := cfg.Get("metro"); param != "" {
+//				metro = param
+//			}
+//			vxlan := cfg.Require("vxlan")
+//			vlan, err := metal.NewVlan(ctx, "vlan", &metal.VlanArgs{
+//				Description: pulumi.String("VLAN in Dallas"),
+//				ProjectId:   pulumi.String(projectId),
+//				Metro:       pulumi.String(metro),
+//				Vxlan:       pulumi.String(vxlan),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = metal.NewVlan(ctx, "vlan1Metal/vlanVlan", &metal.VlanArgs{
-//				Description: pulumi.String("VLAN in New Jersey"),
-//				Metro:       pulumi.String("sv"),
-//				ProjectId:   pulumi.Any(local.Project_id),
-//				Vxlan:       pulumi.Int(1040),
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("vlanId", vlan.ID())
 //			return nil
 //		})
 //	}
@@ -57,13 +57,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing VLAN ID (UUID)
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
-//
-// ```
+// This resource can be imported using an existing VLAN ID (UUID): <break><break>```sh<break> $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} <break>```<break><break>
 type Vlan struct {
 	pulumi.CustomResourceState
 

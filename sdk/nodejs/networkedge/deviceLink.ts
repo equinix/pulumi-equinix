@@ -17,39 +17,51 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Example of device link with HA device pair
- * // where each device is in different metro
- * const test = new equinix.networkedge.DeviceLink("test", {
+ * const config = new pulumi.Config();
+ * const accountName = config.require("accountName");
+ * const accountMetro = config.require("accountMetro");
+ * const device1Id = config.require("device1Id");
+ * const device2Id = config.require("device2Id");
+ * const accountfNum = equinix.networkedge.getAccount({
+ *     name: accountName,
+ *     metroCode: accountMetro,
+ * }).then(invoke => invoke.number);
+ * const device1Metro = equinix.networkedge.getDevice({
+ *     uuid: device1Id,
+ * }).then(invoke => invoke.metroCode);
+ * const device2Metro = equinix.networkedge.getDevice({
+ *     uuid: device2Id,
+ * }).then(invoke => invoke.metroCode);
+ * const deviceLink = new equinix.networkedge.DeviceLink("deviceLink", {
+ *     name: "test-link",
  *     subnet: "192.168.40.64/27",
  *     devices: [
  *         {
- *             id: equinix_network_device.test.uuid,
- *             asn: equinix_network_device.test.asn > 0 ? equinix_network_device.test.asn : 22111,
+ *             id: "device1Id",
+ *             asn: 22111,
  *             interfaceId: 6,
  *         },
  *         {
- *             id: equinix_network_device.test.secondary_device[0].uuid,
- *             asn: equinix_network_device.test.secondary_device[0].asn > 0 ? equinix_network_device.test.secondary_device[0].asn : 22333,
+ *             id: "device2Id",
+ *             asn: 22333,
  *             interfaceId: 7,
  *         },
  *     ],
  *     links: [{
- *         accountNumber: equinix_network_device.test.account_number,
- *         srcMetroCode: equinix_network_device.test.metro_code,
- *         dstMetroCode: equinix_network_device.test.secondary_device[0].metro_code,
+ *         accountNumber: accountfNum,
+ *         srcMetroCode: device1Metro,
+ *         dstMetroCode: device2Metro,
  *         throughput: "50",
  *         throughputUnit: "Mbps",
  *     }],
  * });
+ * export const status = deviceLink.status;
+ * export const devices = deviceLink.devices;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing ID
- *
- * ```sh
- *  $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
  */
 export class DeviceLink extends pulumi.CustomResource {
     /**

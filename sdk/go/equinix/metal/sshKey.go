@@ -16,7 +16,6 @@ import (
 // The link between User SSH key and device is implicit. If you want to make sure that a key will be copied to a device, you must ensure that the device resource `dependsOn` the key resource.
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -39,25 +38,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewSshKey(ctx, "key1", &metal.SshKeyArgs{
-//				PublicKey: readFileOrPanic("/home/terraform/.ssh/id_rsa.pub"),
+//			sshKey, err := metal.NewSshKey(ctx, "sshKey", &metal.SshKeyArgs{
+//				Name:      pulumi.String("johnKent"),
+//				PublicKey: readFileOrPanic("/Users/John/.ssh/metal_rsa.pub"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = metal.NewDevice(ctx, "test", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("test-device"),
-//				Plan:            pulumi.String("c3.small.x86"),
-//				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				pulumi.Resource("equinix_metal_ssh_key.key1"),
-//			}))
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("sshKeyId", sshKey.ID())
 //			return nil
 //		})
 //	}
@@ -66,13 +54,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing SSH Key ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id}
-//
-// ```
+// This resource can be imported using an existing SSH Key ID: <break><break>```sh<break> $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} <break>```<break><break>
 type SshKey struct {
 	pulumi.CustomResourceState
 

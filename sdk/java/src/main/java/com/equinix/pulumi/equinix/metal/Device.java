@@ -30,8 +30,6 @@ import javax.annotation.Nullable;
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * 
  * ## Example Usage
- * 
- * Create a device and add it to cool_project
  * ```java
  * package generated_program;
  * 
@@ -53,240 +51,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web1 = new Device(&#34;web1&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;tf.coreos2&#34;)
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         var web = new Device(&#34;web&#34;, DeviceArgs.builder()        
+ *             .hostname(&#34;webserver1&#34;)
  *             .plan(&#34;c3.small.x86&#34;)
- *             .metro(&#34;sv&#34;)
  *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var pxe1 = new Device(&#34;pxe1&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;tf.coreos2-pxe&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
  *             .metro(&#34;sv&#34;)
- *             .operatingSystem(&#34;custom_ipxe&#34;)
  *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .ipxeScriptUrl(&#34;https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe&#34;)
- *             .alwaysPxe(&#34;false&#34;)
- *             .userData(data.ignition_config().example().rendered())
+ *             .projectId(projectId)
  *             .build());
  * 
- *     }
- * }
- * ```
- * 
- * Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import com.pulumi.equinix.metal.inputs.DeviceIpAddressArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var web1 = new Device(&#34;web1&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;tf.coreos2&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .facilities(&#34;ny5&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .ipAddresses(DeviceIpAddressArgs.builder()
- *                 .type(&#34;private_ipv4&#34;)
- *                 .cidr(30)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Deploy device on next-available reserved hardware and do custom partitioning.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var web1 = new Device(&#34;web1&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;tftest&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .facilities(&#34;ny5&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .hardwareReservationId(&#34;next-available&#34;)
- *             .storage(&#34;&#34;&#34;
- * {
- *   &#34;disks&#34;: [
- *     {
- *       &#34;device&#34;: &#34;/dev/sda&#34;,
- *       &#34;wipeTable&#34;: true,
- *       &#34;partitions&#34;: [
- *         {
- *           &#34;label&#34;: &#34;BIOS&#34;,
- *           &#34;number&#34;: 1,
- *           &#34;size&#34;: &#34;4096&#34;
- *         },
- *         {
- *           &#34;label&#34;: &#34;SWAP&#34;,
- *           &#34;number&#34;: 2,
- *           &#34;size&#34;: &#34;3993600&#34;
- *         },
- *         {
- *           &#34;label&#34;: &#34;ROOT&#34;,
- *           &#34;number&#34;: 3,
- *           &#34;size&#34;: &#34;0&#34;
- *         }
- *       ]
- *     }
- *   ],
- *   &#34;filesystems&#34;: [
- *     {
- *       &#34;mount&#34;: {
- *         &#34;device&#34;: &#34;/dev/sda3&#34;,
- *         &#34;format&#34;: &#34;ext4&#34;,
- *         &#34;point&#34;: &#34;/&#34;,
- *         &#34;create&#34;: {
- *           &#34;options&#34;: [
- *             &#34;-L&#34;,
- *             &#34;ROOT&#34;
- *           ]
- *         }
- *       }
- *     },
- *     {
- *       &#34;mount&#34;: {
- *         &#34;device&#34;: &#34;/dev/sda2&#34;,
- *         &#34;format&#34;: &#34;swap&#34;,
- *         &#34;point&#34;: &#34;none&#34;,
- *         &#34;create&#34;: {
- *           &#34;options&#34;: [
- *             &#34;-L&#34;,
- *             &#34;SWAP&#34;
- *           ]
- *         }
- *       }
- *     }
- *   ]
- * }
- *             &#34;&#34;&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Create a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import com.pulumi.equinix.metal.inputs.DeviceBehaviorArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var pxe1 = new Device(&#34;pxe1&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;tf.coreos2-pxe&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .metro(&#34;sv&#34;)
- *             .operatingSystem(&#34;custom_ipxe&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .ipxeScriptUrl(&#34;https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe&#34;)
- *             .alwaysPxe(&#34;false&#34;)
- *             .userData(local.user_data())
- *             .customData(local.custom_data())
- *             .behavior(DeviceBehaviorArgs.builder()
- *                 .allowChanges(                
- *                     &#34;custom_data&#34;,
- *                     &#34;user_data&#34;)
- *                 .build())
- *             .build());
- * 
+ *         ctx.export(&#34;webPublicIp&#34;, web.accessPublicIpv4().applyValue(accessPublicIpv4 -&gt; String.format(&#34;http://%s&#34;, accessPublicIpv4)));
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing device ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
- * ```
+ * This resource can be imported using an existing device ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/device:Device")
@@ -580,6 +363,22 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metro);
     }
     /**
+     * The device&#39;s private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     * 
+     */
+    @Export(name="network", refs={List.class,DeviceNetwork.class}, tree="[0,1]")
+    private Output<List<DeviceNetwork>> network;
+
+    /**
+     * @return The device&#39;s private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     * 
+     */
+    public Output<List<DeviceNetwork>> network() {
+        return this.network;
+    }
+    /**
      * (Deprecated) Network type of a device, used in
      * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
      * attribute is deprecated you should handle Network Type with one of
@@ -608,22 +407,6 @@ public class Device extends com.pulumi.resources.CustomResource {
      */
     public Output<String> networkType() {
         return this.networkType;
-    }
-    /**
-     * The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     * 
-     */
-    @Export(name="networks", refs={List.class,DeviceNetwork.class}, tree="[0,1]")
-    private Output<List<DeviceNetwork>> networks;
-
-    /**
-     * @return The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     * 
-     */
-    public Output<List<DeviceNetwork>> networks() {
-        return this.networks;
     }
     /**
      * The operating system slug. To find the slug, or visit

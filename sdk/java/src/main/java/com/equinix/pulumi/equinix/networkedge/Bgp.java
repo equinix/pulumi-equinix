@@ -42,26 +42,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Bgp(&#34;test&#34;, BgpArgs.builder()        
- *             .authenticationKey(&#34;secret&#34;)
+ *         var bgp = new Bgp(&#34;bgp&#34;, BgpArgs.builder()        
  *             .connectionId(&#34;54014acf-9730-4b55-a791-459283d05fb1&#34;)
- *             .localAsn(12345)
  *             .localIpAddress(&#34;10.1.1.1/30&#34;)
- *             .remoteAsn(66123)
+ *             .localAsn(12345)
  *             .remoteIpAddress(&#34;10.1.1.2&#34;)
+ *             .remoteAsn(66123)
+ *             .authenticationKey(&#34;secret&#34;)
  *             .build());
  * 
+ *         ctx.export(&#34;state&#34;, bgp.state());
+ *         ctx.export(&#34;provisioningStatus&#34;, bgp.provisioningStatus());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID
- * 
- * ```sh
- *  $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/bgp:Bgp")

@@ -27,9 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.SshKey;
  * import com.pulumi.equinix.metal.SshKeyArgs;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,32 +40,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key1 = new SshKey(&#34;key1&#34;, SshKeyArgs.builder()        
- *             .publicKey(Files.readString(Paths.get(&#34;/home/terraform/.ssh/id_rsa.pub&#34;)))
+ *         var sshKey = new SshKey(&#34;sshKey&#34;, SshKeyArgs.builder()        
+ *             .name(&#34;johnKent&#34;)
+ *             .publicKey(Files.readString(Paths.get(&#34;/Users/John/.ssh/metal_rsa.pub&#34;)))
  *             .build());
  * 
- *         var test = new Device(&#34;test&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;test-device&#34;)
- *             .plan(&#34;c3.small.x86&#34;)
- *             .metro(&#34;sv&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectId(local.project_id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;equinix_metal_ssh_key.key1&#34;)
- *                 .build());
- * 
+ *         ctx.export(&#34;sshKeyId&#34;, sshKey.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing SSH Key ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id}
- * ```
+ * This resource can be imported using an existing SSH Key ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/sshKey:SshKey")

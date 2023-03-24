@@ -80,7 +80,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Account
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfileAccountResult> Accounts;
+        public readonly Outputs.GetServiceProfileAccountResult Account;
         /// <summary>
         /// Array of contact emails
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Captures connection lifecycle change information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfileChangeLogResult> ChangeLogs;
+        public readonly Outputs.GetServiceProfileChangeLogResult ChangeLog;
         /// <summary>
         /// Custom Fields
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Marketing Info
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfileMarketingInfoResult> MarketingInfos;
+        public readonly Outputs.GetServiceProfileMarketingInfoResult MarketingInfo;
         /// <summary>
         /// Access point config information
         /// </summary>
@@ -128,7 +128,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Project information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceProfileProjectResult> Projects;
+        public readonly Outputs.GetServiceProfileProjectResult Project;
         /// <summary>
         /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
@@ -158,11 +158,11 @@ namespace Pulumi.Equinix.Fabric
         private GetServiceProfileResult(
             ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigResult> accessPointTypeConfigs,
 
-            ImmutableArray<Outputs.GetServiceProfileAccountResult> accounts,
+            Outputs.GetServiceProfileAccountResult account,
 
             ImmutableArray<string> allowedEmails,
 
-            ImmutableArray<Outputs.GetServiceProfileChangeLogResult> changeLogs,
+            Outputs.GetServiceProfileChangeLogResult changeLog,
 
             ImmutableArray<Outputs.GetServiceProfileCustomFieldResult> customFields,
 
@@ -172,7 +172,7 @@ namespace Pulumi.Equinix.Fabric
 
             string id,
 
-            ImmutableArray<Outputs.GetServiceProfileMarketingInfoResult> marketingInfos,
+            Outputs.GetServiceProfileMarketingInfoResult marketingInfo,
 
             ImmutableArray<Outputs.GetServiceProfileMetroResult> metros,
 
@@ -182,7 +182,7 @@ namespace Pulumi.Equinix.Fabric
 
             ImmutableArray<Outputs.GetServiceProfilePortResult> ports,
 
-            ImmutableArray<Outputs.GetServiceProfileProjectResult> projects,
+            Outputs.GetServiceProfileProjectResult project,
 
             bool selfProfile,
 
@@ -197,19 +197,19 @@ namespace Pulumi.Equinix.Fabric
             string visibility)
         {
             AccessPointTypeConfigs = accessPointTypeConfigs;
-            Accounts = accounts;
+            Account = account;
             AllowedEmails = allowedEmails;
-            ChangeLogs = changeLogs;
+            ChangeLog = changeLog;
             CustomFields = customFields;
             Description = description;
             Href = href;
             Id = id;
-            MarketingInfos = marketingInfos;
+            MarketingInfo = marketingInfo;
             Metros = metros;
             Name = name;
             Notifications = notifications;
             Ports = ports;
-            Projects = projects;
+            Project = project;
             SelfProfile = selfProfile;
             State = state;
             Tags = tags;

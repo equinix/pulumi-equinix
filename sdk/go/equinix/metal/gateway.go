@@ -16,7 +16,6 @@ import (
 // > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -24,69 +23,24 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testVlan, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
-//				Description: pulumi.String("test VLAN in SV"),
-//				Metro:       pulumi.String("sv"),
-//				ProjectId:   pulumi.Any(local.Project_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.NewGateway(ctx, "testGateway", &metal.GatewayArgs{
-//				ProjectId:             pulumi.Any(local.Project_id),
-//				VlanId:                testVlan.ID(),
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			vlanId := cfg.Require("vlanId")
+//			gateway, err := metal.NewGateway(ctx, "gateway", &metal.GatewayArgs{
+//				ProjectId:             pulumi.String(projectId),
+//				VlanId:                pulumi.String(vlanId),
 //				PrivateIpv4SubnetSize: pulumi.Int(8),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testVlan, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
-//				Description: pulumi.String("test VLAN in SV"),
-//				Metro:       pulumi.String("sv"),
-//				ProjectId:   pulumi.Any(local.Project_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			testReservedIpBlock, err := metal.NewReservedIpBlock(ctx, "testReservedIpBlock", &metal.ReservedIpBlockArgs{
-//				ProjectId: pulumi.Any(local.Project_id),
-//				Metro:     pulumi.String("sv"),
-//				Quantity:  pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.NewGateway(ctx, "testGateway", &metal.GatewayArgs{
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				VlanId:          testVlan.ID(),
-//				IpReservationId: testReservedIpBlock.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("gatewayState", gateway.State)
 //			return nil
 //		})
 //	}

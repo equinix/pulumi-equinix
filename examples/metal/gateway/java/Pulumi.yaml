@@ -1,0 +1,8 @@
+name: equinix-metal-gateway
+runtime: java
+description: An Equinix Metal Gateway resource
+config:
+  projectId:
+    type: string
+  vlanId:
+    type: string

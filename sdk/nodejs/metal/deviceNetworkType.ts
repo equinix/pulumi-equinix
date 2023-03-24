@@ -7,15 +7,23 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * > **NOTE:** This resource takes a named network type with any mode required parameters and converts a device to the named network type. This resource simulated the network type interface for Devices in the Equinix Metal Portal. That interface changed when additional network types were introduced with more diverse port configurations and it is not guaranteed to work in devices with more than two ethernet ports. See the Network Types Guide for examples of this resource and to learn about the recommended `equinix.metal.Port` alternative.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const deviceId = config.require("deviceId");
+ * const networkType = config.get("networkType") || "hybrid";
+ * const deviceNetwork = new equinix.metal.DeviceNetworkType("deviceNetwork", {
+ *     deviceId: deviceId,
+ *     type: networkType,
+ * });
+ * export const deviceNetworkId = deviceNetwork.id;
+ * ```
  *
  * ## Import
  *
- * This resource can also be imported using existing device ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
- * ```
+ * This resource can also be imported using existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} <break>```<break><break>
  */
 export class DeviceNetworkType extends pulumi.CustomResource {
     /**

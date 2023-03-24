@@ -36,29 +36,17 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("allowRemoteConnections")]
         public Input<bool>? AllowRemoteConnections { get; set; }
 
-        [Input("apiConfigs")]
-        private InputList<Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs>? _apiConfigs;
-
         /// <summary>
         /// Api configuration details
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs> ApiConfigs
-        {
-            get => _apiConfigs ?? (_apiConfigs = new InputList<Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs>());
-            set => _apiConfigs = value;
-        }
-
-        [Input("authenticationKeys")]
-        private InputList<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>? _authenticationKeys;
+        [Input("apiConfig")]
+        public Input<Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs>? ApiConfig { get; set; }
 
         /// <summary>
         /// Authentication key details
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs> AuthenticationKeys
-        {
-            get => _authenticationKeys ?? (_authenticationKeys = new InputList<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>());
-            set => _authenticationKeys = value;
-        }
+        [Input("authenticationKey")]
+        public Input<Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs>? AuthenticationKey { get; set; }
 
         /// <summary>
         /// Percentage of port bandwidth at which an allocation alert is generated
@@ -84,17 +72,11 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("enableAutoGenerateServiceKey")]
         public Input<bool>? EnableAutoGenerateServiceKey { get; set; }
 
-        [Input("linkProtocolConfigs")]
-        private InputList<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>? _linkProtocolConfigs;
-
         /// <summary>
         /// Link protocol configuration details
         /// </summary>
-        public InputList<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs> LinkProtocolConfigs
-        {
-            get => _linkProtocolConfigs ?? (_linkProtocolConfigs = new InputList<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>());
-            set => _linkProtocolConfigs = value;
-        }
+        [Input("linkProtocolConfig")]
+        public Input<Inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs>? LinkProtocolConfig { get; set; }
 
         [Input("supportedBandwidths")]
         private InputList<int>? _supportedBandwidths;

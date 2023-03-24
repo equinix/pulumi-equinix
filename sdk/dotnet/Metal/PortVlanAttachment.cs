@@ -21,116 +21,6 @@ namespace Pulumi.Equinix.Metal
     /// * &lt;https://metal.equinix.com/developers/docs/networking/layer2/&gt;
     /// * &lt;https://metal.equinix.com/developers/docs/networking/layer2-configs/&gt;
     /// 
-    /// ## Example Usage
-    /// ### Hybrid network type
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
-    ///     {
-    ///         Description = "VLAN in New Jersey",
-    ///         Facility = "ny5",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var testDevice = new Equinix.Metal.Device("testDevice", new()
-    ///     {
-    ///         Hostname = "test",
-    ///         Plan = "c3.small.x86",
-    ///         Facilities = new[]
-    ///         {
-    ///             "ny5",
-    ///         },
-    ///         OperatingSystem = "ubuntu_20_04",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var testDeviceNetworkType = new Equinix.Metal.DeviceNetworkType("testDeviceNetworkType", new()
-    ///     {
-    ///         DeviceId = testDevice.Id,
-    ///         Type = "hybrid",
-    ///     });
-    /// 
-    ///     var testPortVlanAttachment = new Equinix.Metal.PortVlanAttachment("testPortVlanAttachment", new()
-    ///     {
-    ///         DeviceId = testDeviceNetworkType.Id,
-    ///         PortName = "eth1",
-    ///         VlanVnid = testVlan.Vxlan,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Layer 2 network
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testDevice = new Equinix.Metal.Device("testDevice", new()
-    ///     {
-    ///         Hostname = "test",
-    ///         Plan = "c3.small.x86",
-    ///         Facilities = new[]
-    ///         {
-    ///             "ny5",
-    ///         },
-    ///         OperatingSystem = "ubuntu_20_04",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var testDeviceNetworkType = new Equinix.Metal.DeviceNetworkType("testDeviceNetworkType", new()
-    ///     {
-    ///         DeviceId = testDevice.Id,
-    ///         Type = "layer2-individual",
-    ///     });
-    /// 
-    ///     var test1Vlan = new Equinix.Metal.Vlan("test1Vlan", new()
-    ///     {
-    ///         Description = "VLAN in New Jersey",
-    ///         Facility = "ny5",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var test2Vlan = new Equinix.Metal.Vlan("test2Vlan", new()
-    ///     {
-    ///         Description = "VLAN in New Jersey",
-    ///         Facility = "ny5",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    ///     var test1PortVlanAttachment = new Equinix.Metal.PortVlanAttachment("test1PortVlanAttachment", new()
-    ///     {
-    ///         DeviceId = testDeviceNetworkType.Id,
-    ///         VlanVnid = test1Vlan.Vxlan,
-    ///         PortName = "eth1",
-    ///     });
-    /// 
-    ///     var test2PortVlanAttachment = new Equinix.Metal.PortVlanAttachment("test2PortVlanAttachment", new()
-    ///     {
-    ///         DeviceId = testDeviceNetworkType.Id,
-    ///         VlanVnid = test2Vlan.Vxlan,
-    ///         PortName = "eth1",
-    ///         Native = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             "equinix_metal_port_vlan_attachment.test1",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Attribute Referece
     /// 
     /// In addition to all arguments above, the following attributes are exported:
@@ -138,6 +28,33 @@ namespace Pulumi.Equinix.Metal
     /// * `id` - UUID of device port used in the assignment.
     /// * `vlan_id` - UUID of VLAN API resource.
     /// * `port_id` - UUID of device port.
+    /// 
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var deviceId = config.Require("deviceId");
+    ///     var portName = config.Get("portName") ?? "eth1";
+    ///     var vxlanId = config.GetNumber("vxlanId") ?? 1004;
+    ///     var attach = new Equinix.Metal.PortVlanAttachment("attach", new()
+    ///     {
+    ///         DeviceId = deviceId,
+    ///         PortName = portName,
+    ///         VlanVnid = vxlanId,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["attachId"] = attach.Id,
+    ///         ["portId"] = attach.PortId,
+    ///     };
+    /// });
+    /// ```
     /// </summary>
     [EquinixResourceType("equinix:metal/portVlanAttachment:PortVlanAttachment")]
     public partial class PortVlanAttachment : global::Pulumi.CustomResource
@@ -211,7 +128,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1678461909+632e4c16.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

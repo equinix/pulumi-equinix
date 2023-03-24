@@ -61,7 +61,7 @@ type LookupProjectResult struct {
 	// Whether Backend Transfer is enabled for this project.
 	BackendTransfer bool `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
-	BgpConfigs []GetProjectBgpConfig `pulumi:"bgpConfigs"`
+	BgpConfig GetProjectBgpConfig `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created string `pulumi:"created"`
 	// The provider-assigned unique ID for this managed resource.
@@ -124,8 +124,8 @@ func (o LookupProjectResultOutput) BackendTransfer() pulumi.BoolOutput {
 }
 
 // Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
-func (o LookupProjectResultOutput) BgpConfigs() GetProjectBgpConfigArrayOutput {
-	return o.ApplyT(func(v LookupProjectResult) []GetProjectBgpConfig { return v.BgpConfigs }).(GetProjectBgpConfigArrayOutput)
+func (o LookupProjectResultOutput) BgpConfig() GetProjectBgpConfigOutput {
+	return o.ApplyT(func(v LookupProjectResult) GetProjectBgpConfig { return v.BgpConfig }).(GetProjectBgpConfigOutput)
 }
 
 // The timestamp for when the project was created.

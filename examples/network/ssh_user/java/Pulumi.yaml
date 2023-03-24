@@ -1,0 +1,8 @@
+name: equinix-networkedge-ssh-user
+runtime: java
+description: An Equinix Network Edge SSH User resource
+config:
+  device1Id:
+    type: string
+  device2Id:
+    type: string

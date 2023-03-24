@@ -18,12 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Create a new read-only API key in existing project
- * const test = new equinix.metal.ProjectApiKey("test", {
- *     projectId: local.existing_project_id,
- *     description: "Read-only key scoped to a projct",
- *     readOnly: true,
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const readOnly = config.getBoolean("readOnly") || false;
+ * const apiKey = new equinix.metal.ProjectApiKey("apiKey", {
+ *     projectId: projectId,
+ *     description: "A project level API Key",
+ *     readOnly: readOnly,
  * });
+ * export const apiKeyToken = apiKey.token;
  * ```
  */
 export class ProjectApiKey extends pulumi.CustomResource {

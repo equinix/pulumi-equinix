@@ -199,31 +199,27 @@ class Vlan(pulumi.CustomResource):
         * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a new VLAN in facility "sv15"
-        vlan1_vlan = equinix.metal.Vlan("vlan1Vlan",
-            description="VLAN in New Jersey",
-            facility="sv15",
-            project_id=local["project_id"])
-        # Create a new VLAN in metro "esv"
-        vlan1_metal_vlan_vlan = equinix.metal.Vlan("vlan1Metal/vlanVlan",
-            description="VLAN in New Jersey",
-            metro="sv",
-            project_id=local["project_id"],
-            vxlan=1040)
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "DA"
+        vxlan = config.require("vxlan")
+        vlan = equinix.metal.Vlan("vlan",
+            description="VLAN in Dallas",
+            project_id=project_id,
+            metro=metro,
+            vxlan=vxlan)
+        pulumi.export("vlanId", vlan.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing VLAN ID (UUID)
-
-        ```sh
-         $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
-        ```
+        This resource can be imported using an existing VLAN ID (UUID): <break><break>```sh<break> $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -247,31 +243,27 @@ class Vlan(pulumi.CustomResource):
         * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a new VLAN in facility "sv15"
-        vlan1_vlan = equinix.metal.Vlan("vlan1Vlan",
-            description="VLAN in New Jersey",
-            facility="sv15",
-            project_id=local["project_id"])
-        # Create a new VLAN in metro "esv"
-        vlan1_metal_vlan_vlan = equinix.metal.Vlan("vlan1Metal/vlanVlan",
-            description="VLAN in New Jersey",
-            metro="sv",
-            project_id=local["project_id"],
-            vxlan=1040)
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "DA"
+        vxlan = config.require("vxlan")
+        vlan = equinix.metal.Vlan("vlan",
+            description="VLAN in Dallas",
+            project_id=project_id,
+            metro=metro,
+            vxlan=vxlan)
+        pulumi.export("vlanId", vlan.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing VLAN ID (UUID)
-
-        ```sh
-         $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
-        ```
+        This resource can be imported using an existing VLAN ID (UUID): <break><break>```sh<break> $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param VlanArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,84 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.ServiceProfile;
+ * import com.pulumi.equinix.fabric.ServiceProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileAccountArgs;
+ * import com.pulumi.equinix.fabric.inputs.ServiceProfileMarketingInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var profile = new ServiceProfile(&#34;profile&#34;, ServiceProfileArgs.builder()        
+ *             .name(&#34;Example Cloud Provider&#34;)
+ *             .description(&#34;50 to 500 Mbps Hosted Connection to Example Cloud&#34;)
+ *             .type(&#34;L2_PROFILE&#34;)
+ *             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
+ *                 .type(&#34;COLO&#34;)
+ *                 .supportedBandwidths(                
+ *                     50,
+ *                     100,
+ *                     200,
+ *                     500)
+ *                 .allowRemoteConnections(true)
+ *                 .allowCustomBandwidth(false)
+ *                 .allowBandwidthAutoApproval(false)
+ *                 .linkProtocolConfig(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs.builder()
+ *                     .encapsulationStrategy(&#34;CTAGED&#34;)
+ *                     .reuseVlanSTag(false)
+ *                     .encapsulation(&#34;DOT1Q&#34;)
+ *                     .build())
+ *                 .enableAutoGenerateServiceKey(&#34;false,&#34;)
+ *                 .connectionRedundancyRequired(&#34;false,&#34;)
+ *                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
+ *                     .apiAvailable(true)
+ *                     .integrationId(&#34;Example-Connect-01&#34;)
+ *                     .bandwidthFromApi(false)
+ *                     .build())
+ *                 .connectionLabel(&#34;Virtual Circuit Name&#34;)
+ *                 .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
+ *                     .required(true)
+ *                     .label(&#34;Example ACCOUNT ID&#34;)
+ *                     .build())
+ *                 .build())
+ *             .account(ServiceProfileAccountArgs.builder()
+ *                 .organizationName(&#34;Example Cloud&#34;)
+ *                 .globalOrganizationName(&#34;Example Global&#34;)
+ *                 .build())
+ *             .metros(null)
+ *             .visibility(&#34;PUBLIC&#34;)
+ *             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
+ *                 .promotion(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export(&#34;profileId&#34;, profile.id());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="equinix:fabric/serviceProfile:ServiceProfile")
 public class ServiceProfile extends com.pulumi.resources.CustomResource {
     /**
@@ -46,15 +124,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Account
      * 
      */
-    @Export(name="accounts", refs={List.class,ServiceProfileAccount.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServiceProfileAccount>> accounts;
+    @Export(name="account", refs={ServiceProfileAccount.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceProfileAccount> account;
 
     /**
      * @return Account
      * 
      */
-    public Output<Optional<List<ServiceProfileAccount>>> accounts() {
-        return Codegen.optional(this.accounts);
+    public Output<Optional<ServiceProfileAccount>> account() {
+        return Codegen.optional(this.account);
     }
     /**
      * Array of contact emails
@@ -74,15 +152,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Captures connection lifecycle change information
      * 
      */
-    @Export(name="changeLogs", refs={List.class,ServiceProfileChangeLog.class}, tree="[0,1]")
-    private Output<List<ServiceProfileChangeLog>> changeLogs;
+    @Export(name="changeLog", refs={ServiceProfileChangeLog.class}, tree="[0]")
+    private Output<ServiceProfileChangeLog> changeLog;
 
     /**
      * @return Captures connection lifecycle change information
      * 
      */
-    public Output<List<ServiceProfileChangeLog>> changeLogs() {
-        return this.changeLogs;
+    public Output<ServiceProfileChangeLog> changeLog() {
+        return this.changeLog;
     }
     /**
      * Custom Fields
@@ -130,15 +208,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Marketing Info
      * 
      */
-    @Export(name="marketingInfos", refs={List.class,ServiceProfileMarketingInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServiceProfileMarketingInfo>> marketingInfos;
+    @Export(name="marketingInfo", refs={ServiceProfileMarketingInfo.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceProfileMarketingInfo> marketingInfo;
 
     /**
      * @return Marketing Info
      * 
      */
-    public Output<Optional<List<ServiceProfileMarketingInfo>>> marketingInfos() {
-        return Codegen.optional(this.marketingInfos);
+    public Output<Optional<ServiceProfileMarketingInfo>> marketingInfo() {
+        return Codegen.optional(this.marketingInfo);
     }
     /**
      * Access point config information
@@ -200,15 +278,15 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
      * Project information
      * 
      */
-    @Export(name="projects", refs={List.class,ServiceProfileProject.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ServiceProfileProject>> projects;
+    @Export(name="project", refs={ServiceProfileProject.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceProfileProject> project;
 
     /**
      * @return Project information
      * 
      */
-    public Output<Optional<List<ServiceProfileProject>>> projects() {
-        return Codegen.optional(this.projects);
+    public Output<Optional<ServiceProfileProject>> project() {
+        return Codegen.optional(this.project);
     }
     /**
      * Self Profile

@@ -172,32 +172,19 @@ class SshKey(pulumi.CustomResource):
         The link between User SSH key and device is implicit. If you want to make sure that a key will be copied to a device, you must ensure that the device resource `depends_on` the key resource.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a new SSH key
-        key1 = equinix.metal.SshKey("key1", public_key=(lambda path: open(path).read())("/home/terraform/.ssh/id_rsa.pub"))
-        # Create new device with "key1" included. The device resource "depends_on" the
-        # key, in order to make sure the key is created before the device.
-        test = equinix.metal.Device("test",
-            hostname="test-device",
-            plan="c3.small.x86",
-            metro="sv",
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            opts=pulumi.ResourceOptions(depends_on=["equinix_metal_ssh_key.key1"]))
+        ssh_key = equinix.metal.SshKey("sshKey",
+            name="johnKent",
+            public_key=(lambda path: open(path).read())("/Users/John/.ssh/metal_rsa.pub"))
+        pulumi.export("sshKeyId", ssh_key.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing SSH Key ID
-
-        ```sh
-         $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id}
-        ```
+        This resource can be imported using an existing SSH Key ID: <break><break>```sh<break> $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -217,32 +204,19 @@ class SshKey(pulumi.CustomResource):
         The link between User SSH key and device is implicit. If you want to make sure that a key will be copied to a device, you must ensure that the device resource `depends_on` the key resource.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a new SSH key
-        key1 = equinix.metal.SshKey("key1", public_key=(lambda path: open(path).read())("/home/terraform/.ssh/id_rsa.pub"))
-        # Create new device with "key1" included. The device resource "depends_on" the
-        # key, in order to make sure the key is created before the device.
-        test = equinix.metal.Device("test",
-            hostname="test-device",
-            plan="c3.small.x86",
-            metro="sv",
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            opts=pulumi.ResourceOptions(depends_on=["equinix_metal_ssh_key.key1"]))
+        ssh_key = equinix.metal.SshKey("sshKey",
+            name="johnKent",
+            public_key=(lambda path: open(path).read())("/Users/John/.ssh/metal_rsa.pub"))
+        pulumi.export("sshKeyId", ssh_key.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing SSH Key ID
-
-        ```sh
-         $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id}
-        ```
+        This resource can be imported using an existing SSH Key ID: <break><break>```sh<break> $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.

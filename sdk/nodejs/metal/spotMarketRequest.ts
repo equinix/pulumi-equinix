@@ -18,11 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Create a spot market request
- * const req = new equinix.metal.SpotMarketRequest("req", {
- *     projectId: local.project_id,
- *     maxBidPrice: 0.03,
- *     facilities: ["ny5"],
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const metro = config.get("metro") || "FR";
+ * const request = new equinix.metal.SpotMarketRequest("request", {
+ *     projectId: projectId,
+ *     metro: metro,
+ *     maxBidPrice: 0.75,
  *     devicesMin: 1,
  *     devicesMax: 1,
  *     instanceParameters: {
@@ -32,15 +34,12 @@ import * as utilities from "../utilities";
  *         plan: "c3.small.x86",
  *     },
  * });
+ * export const requestId = request.id;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing spot market request ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
- * ```
+ * This resource can be imported using an existing spot market request ID: <break><break>```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
  */
 export class SpotMarketRequest extends pulumi.CustomResource {
     /**

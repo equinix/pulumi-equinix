@@ -302,15 +302,30 @@ class NetworkFile(pulumi.CustomResource):
         """
         Resource `networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
 
-        ## Import
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+        config = pulumi.Config()
+        metro = config.get("metro")
+        if metro is None:
+            metro = "SV"
+        network_file = equinix.networkedge.NetworkFile("networkFile",
+            file_name="Aviatrix-ZTP-file",
+            content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
+            metro_code=metro,
+            device_type_code="AVIATRIX_EDGE",
+            process_type="CLOUD_INIT",
+            self_managed=True,
+            byol=True)
+        pulumi.export("networkFileId", network_file.id)
+        pulumi.export("networkFileStatus", network_file.status)
         ```
 
-         The `content`, `self_managed` and `byol` fields can not be imported.
+        ## Import
+
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,15 +348,30 @@ class NetworkFile(pulumi.CustomResource):
         """
         Resource `networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
 
-        ## Import
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+        config = pulumi.Config()
+        metro = config.get("metro")
+        if metro is None:
+            metro = "SV"
+        network_file = equinix.networkedge.NetworkFile("networkFile",
+            file_name="Aviatrix-ZTP-file",
+            content=(lambda path: open(path).read())("./../assets/aviatrix-cloud-init.txt"),
+            metro_code=metro,
+            device_type_code="AVIATRIX_EDGE",
+            process_type="CLOUD_INIT",
+            self_managed=True,
+            byol=True)
+        pulumi.export("networkFileId", network_file.id)
+        pulumi.export("networkFileStatus", network_file.status)
         ```
 
-         The `content`, `self_managed` and `byol` fields can not be imported.
+        ## Import
+
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.
 
         :param str resource_name: The name of the resource.
         :param NetworkFileArgs args: The arguments to use to populate this resource's properties.

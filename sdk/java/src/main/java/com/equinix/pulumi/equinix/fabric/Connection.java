@@ -27,49 +27,150 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
+ *         final var speedInMbps = config.get(&#34;speedInMbps&#34;).orElse(50);
+ *         final var fabricPortName = config.get(&#34;fabricPortName&#34;);
+ *         final var awsRegion = config.get(&#34;awsRegion&#34;).orElse(&#34;eu-central-1&#34;);
+ *         final var awsAccountId = config.get(&#34;awsAccountId&#34;);
+ *         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+ *             .filter(GetServiceProfilesFilterArgs.builder()
+ *                 .property(&#34;/name&#34;)
+ *                 .operator(&#34;=&#34;)
+ *                 .values(&#34;AWS Direct Connect&#34;)
+ *                 .build())
+ *             .build()).data()[0].uuid();
+ * 
+ *         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
+ *             .filter(GetPortsFilterArgs.builder()
+ *                 .name(fabricPortName)
+ *                 .build())
+ *             .build()).data()[0].uuid();
+ * 
+ *         var colo2Aws = new Connection(&#34;colo2Aws&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Pulumi-colo2Aws&#34;)
+ *             .type(&#34;EVPL_VC&#34;)
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type(&#34;ALL&#34;)
+ *                 .emails(&#34;example@equinix.com&#34;)
+ *                 .build())
+ *             .bandwidth(speedInMbps)
+ *             .redundancy(ConnectionRedundancyArgs.builder()
+ *                 .priority(&#34;PRIMARY&#34;)
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type(&#34;COLO&#34;)
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid(portId)
+ *                         .build())
+ *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+ *                         .type(&#34;DOT1Q&#34;)
+ *                         .vlanTag(1234)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type(&#34;SP&#34;)
+ *                     .authenticationKey(awsAccountId)
+ *                     .sellerRegion(awsRegion)
+ *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
+ *                         .type(&#34;L2_PROFILE&#34;)
+ *                         .uuid(serviceProfileId)
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode(metro)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export(&#34;connectionId&#34;, colo2Aws.id());
+ *         ctx.export(&#34;connectionStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.equinixStatus()));
+ *         ctx.export(&#34;connectionProviderStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.providerStatus()));
+ *         ctx.export(&#34;awsDirectConnectId&#34;, colo2Aws.zSide().applyValue(zSide -&gt; zSide.accessPoint().providerConnectionId()));
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="equinix:fabric/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    @Export(name="aSides", refs={List.class,ConnectionASide.class}, tree="[0,1]")
-    private Output<List<ConnectionASide>> aSides;
+    @Export(name="aSide", refs={ConnectionASide.class}, tree="[0]")
+    private Output<ConnectionASide> aSide;
 
     /**
      * @return Requester or Customer side connection configuration object of the multi-segment connection
      * 
      */
-    public Output<List<ConnectionASide>> aSides() {
-        return this.aSides;
+    public Output<ConnectionASide> aSide() {
+        return this.aSide;
     }
     /**
      * Customer account information that is associated with this connection
      * 
      */
-    @Export(name="accounts", refs={List.class,ConnectionAccount.class}, tree="[0,1]")
-    private Output<List<ConnectionAccount>> accounts;
+    @Export(name="account", refs={ConnectionAccount.class}, tree="[0]")
+    private Output<ConnectionAccount> account;
 
     /**
      * @return Customer account information that is associated with this connection
      * 
      */
-    public Output<List<ConnectionAccount>> accounts() {
-        return this.accounts;
+    public Output<ConnectionAccount> account() {
+        return this.account;
     }
     /**
      * Connection additional information
      * 
      */
-    @Export(name="additionalInfos", refs={List.class,ConnectionAdditionalInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionAdditionalInfo>> additionalInfos;
+    @Export(name="additionalInfo", refs={List.class,ConnectionAdditionalInfo.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ConnectionAdditionalInfo>> additionalInfo;
 
     /**
      * @return Connection additional information
      * 
      */
-    public Output<Optional<List<ConnectionAdditionalInfo>>> additionalInfos() {
-        return Codegen.optional(this.additionalInfos);
+    public Output<Optional<List<ConnectionAdditionalInfo>>> additionalInfo() {
+        return Codegen.optional(this.additionalInfo);
     }
     /**
      * Connection bandwidth in Mbps
@@ -89,15 +190,15 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Captures connection lifecycle change information
      * 
      */
-    @Export(name="changeLogs", refs={List.class,ConnectionChangeLog.class}, tree="[0,1]")
-    private Output<List<ConnectionChangeLog>> changeLogs;
+    @Export(name="changeLog", refs={ConnectionChangeLog.class}, tree="[0]")
+    private Output<ConnectionChangeLog> changeLog;
 
     /**
      * @return Captures connection lifecycle change information
      * 
      */
-    public Output<List<ConnectionChangeLog>> changeLogs() {
-        return this.changeLogs;
+    public Output<ConnectionChangeLog> changeLog() {
+        return this.changeLog;
     }
     /**
      * Connection directionality from the requester point of view
@@ -173,57 +274,57 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection type-specific operational data
      * 
      */
-    @Export(name="operations", refs={List.class,ConnectionOperation.class}, tree="[0,1]")
-    private Output<List<ConnectionOperation>> operations;
+    @Export(name="operation", refs={ConnectionOperation.class}, tree="[0]")
+    private Output<ConnectionOperation> operation;
 
     /**
      * @return Connection type-specific operational data
      * 
      */
-    public Output<List<ConnectionOperation>> operations() {
-        return this.operations;
+    public Output<ConnectionOperation> operation() {
+        return this.operation;
     }
     /**
      * Order related to this connection information
      * 
      */
-    @Export(name="orders", refs={List.class,ConnectionOrder.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionOrder>> orders;
+    @Export(name="order", refs={ConnectionOrder.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionOrder> order;
 
     /**
      * @return Order related to this connection information
      * 
      */
-    public Output<Optional<List<ConnectionOrder>>> orders() {
-        return Codegen.optional(this.orders);
+    public Output<Optional<ConnectionOrder>> order() {
+        return Codegen.optional(this.order);
     }
     /**
      * Project information
      * 
      */
-    @Export(name="projects", refs={List.class,ConnectionProject.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionProject>> projects;
+    @Export(name="project", refs={ConnectionProject.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProject> project;
 
     /**
      * @return Project information
      * 
      */
-    public Output<Optional<List<ConnectionProject>>> projects() {
-        return Codegen.optional(this.projects);
+    public Output<Optional<ConnectionProject>> project() {
+        return Codegen.optional(this.project);
     }
     /**
      * Redundancy Information
      * 
      */
-    @Export(name="redundancies", refs={List.class,ConnectionRedundancy.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionRedundancy>> redundancies;
+    @Export(name="redundancy", refs={ConnectionRedundancy.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionRedundancy> redundancy;
 
     /**
      * @return Redundancy Information
      * 
      */
-    public Output<Optional<List<ConnectionRedundancy>>> redundancies() {
-        return Codegen.optional(this.redundancies);
+    public Output<Optional<ConnectionRedundancy>> redundancy() {
+        return Codegen.optional(this.redundancy);
     }
     /**
      * Connection overall state
@@ -257,15 +358,15 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    @Export(name="zSides", refs={List.class,ConnectionZSide.class}, tree="[0,1]")
-    private Output<List<ConnectionZSide>> zSides;
+    @Export(name="zSide", refs={ConnectionZSide.class}, tree="[0]")
+    private Output<ConnectionZSide> zSide;
 
     /**
      * @return Destination or Provider side connection configuration object of the multi-segment connection
      * 
      */
-    public Output<List<ConnectionZSide>> zSides() {
-        return this.zSides;
+    public Output<ConnectionZSide> zSide() {
+        return this.zSide;
     }
 
     /**

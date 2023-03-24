@@ -54,7 +54,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Customer account information that is associated with this port
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortAccountResult> Accounts;
+        public readonly Outputs.GetPortAccountResult Account;
         /// <summary>
         /// Port available bandwidth in Mbps
         /// </summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Captures port lifecycle change information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortChangeLogResult> ChangeLogs;
+        public readonly Outputs.GetPortChangeLogResult ChangeLog;
         /// <summary>
         /// Port description
         /// </summary>
@@ -74,11 +74,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Port device
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortDeviceResult> Devices;
+        public readonly Outputs.GetPortDeviceResult Device;
         /// <summary>
         /// Port encapsulation protocol
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortEncapsulationResult> Encapsulations;
+        public readonly Outputs.GetPortEncapsulationResult Encapsulation;
         /// <summary>
         /// Port URI information
         /// </summary>
@@ -90,11 +90,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Port Lag
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortLagResult> Lags;
+        public readonly Outputs.GetPortLagResult Lag;
         /// <summary>
         /// Port location information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortLocationResult> Locations;
+        public readonly Outputs.GetPortLocationResult Location;
         /// <summary>
         /// Port name
         /// </summary>
@@ -102,11 +102,11 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Port specific operational data
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortOperationResult> Operations;
+        public readonly Outputs.GetPortOperationResult Operation;
         /// <summary>
         /// Port redundancy information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPortRedundancyResult> Redundancies;
+        public readonly Outputs.GetPortRedundancyResult Redundancy;
         /// <summary>
         /// Port service type
         /// </summary>
@@ -130,33 +130,33 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetPortResult(
-            ImmutableArray<Outputs.GetPortAccountResult> accounts,
+            Outputs.GetPortAccountResult account,
 
             int availableBandwidth,
 
             int bandwidth,
 
-            ImmutableArray<Outputs.GetPortChangeLogResult> changeLogs,
+            Outputs.GetPortChangeLogResult changeLog,
 
             string description,
 
-            ImmutableArray<Outputs.GetPortDeviceResult> devices,
+            Outputs.GetPortDeviceResult device,
 
-            ImmutableArray<Outputs.GetPortEncapsulationResult> encapsulations,
+            Outputs.GetPortEncapsulationResult encapsulation,
 
             string href,
 
             string id,
 
-            ImmutableArray<Outputs.GetPortLagResult> lags,
+            Outputs.GetPortLagResult lag,
 
-            ImmutableArray<Outputs.GetPortLocationResult> locations,
+            Outputs.GetPortLocationResult location,
 
             string name,
 
-            ImmutableArray<Outputs.GetPortOperationResult> operations,
+            Outputs.GetPortOperationResult operation,
 
-            ImmutableArray<Outputs.GetPortRedundancyResult> redundancies,
+            Outputs.GetPortRedundancyResult redundancy,
 
             string serviceType,
 
@@ -168,20 +168,20 @@ namespace Pulumi.Equinix.Fabric
 
             string uuid)
         {
-            Accounts = accounts;
+            Account = account;
             AvailableBandwidth = availableBandwidth;
             Bandwidth = bandwidth;
-            ChangeLogs = changeLogs;
+            ChangeLog = changeLog;
             Description = description;
-            Devices = devices;
-            Encapsulations = encapsulations;
+            Device = device;
+            Encapsulation = encapsulation;
             Href = href;
             Id = id;
-            Lags = lags;
-            Locations = locations;
+            Lag = lag;
+            Location = location;
             Name = name;
-            Operations = operations;
-            Redundancies = redundancies;
+            Operation = operation;
+            Redundancy = redundancy;
             ServiceType = serviceType;
             State = state;
             Type = type;

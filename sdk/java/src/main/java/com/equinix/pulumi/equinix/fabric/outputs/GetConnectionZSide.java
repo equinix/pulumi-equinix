@@ -6,20 +6,19 @@ package com.equinix.pulumi.equinix.fabric.outputs;
 import com.equinix.pulumi.equinix.fabric.outputs.GetConnectionZSideAccessPoint;
 import com.equinix.pulumi.equinix.fabric.outputs.GetConnectionZSideServiceToken;
 import com.pulumi.core.annotations.CustomType;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConnectionZSide {
-    private List<GetConnectionZSideAccessPoint> accessPoints;
-    private List<GetConnectionZSideServiceToken> serviceTokens;
+    private GetConnectionZSideAccessPoint accessPoint;
+    private GetConnectionZSideServiceToken serviceToken;
 
     private GetConnectionZSide() {}
-    public List<GetConnectionZSideAccessPoint> accessPoints() {
-        return this.accessPoints;
+    public GetConnectionZSideAccessPoint accessPoint() {
+        return this.accessPoint;
     }
-    public List<GetConnectionZSideServiceToken> serviceTokens() {
-        return this.serviceTokens;
+    public GetConnectionZSideServiceToken serviceToken() {
+        return this.serviceToken;
     }
 
     public static Builder builder() {
@@ -31,35 +30,29 @@ public final class GetConnectionZSide {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetConnectionZSideAccessPoint> accessPoints;
-        private List<GetConnectionZSideServiceToken> serviceTokens;
+        private GetConnectionZSideAccessPoint accessPoint;
+        private GetConnectionZSideServiceToken serviceToken;
         public Builder() {}
         public Builder(GetConnectionZSide defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessPoints = defaults.accessPoints;
-    	      this.serviceTokens = defaults.serviceTokens;
+    	      this.accessPoint = defaults.accessPoint;
+    	      this.serviceToken = defaults.serviceToken;
         }
 
         @CustomType.Setter
-        public Builder accessPoints(List<GetConnectionZSideAccessPoint> accessPoints) {
-            this.accessPoints = Objects.requireNonNull(accessPoints);
+        public Builder accessPoint(GetConnectionZSideAccessPoint accessPoint) {
+            this.accessPoint = Objects.requireNonNull(accessPoint);
             return this;
-        }
-        public Builder accessPoints(GetConnectionZSideAccessPoint... accessPoints) {
-            return accessPoints(List.of(accessPoints));
         }
         @CustomType.Setter
-        public Builder serviceTokens(List<GetConnectionZSideServiceToken> serviceTokens) {
-            this.serviceTokens = Objects.requireNonNull(serviceTokens);
+        public Builder serviceToken(GetConnectionZSideServiceToken serviceToken) {
+            this.serviceToken = Objects.requireNonNull(serviceToken);
             return this;
-        }
-        public Builder serviceTokens(GetConnectionZSideServiceToken... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
         }
         public GetConnectionZSide build() {
             final var o = new GetConnectionZSide();
-            o.accessPoints = accessPoints;
-            o.serviceTokens = serviceTokens;
+            o.accessPoint = accessPoint;
+            o.serviceToken = serviceToken;
             return o;
         }
     }

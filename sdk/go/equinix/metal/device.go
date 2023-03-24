@@ -21,181 +21,37 @@ import (
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 //
 // ## Example Usage
-//
-// # Create a device and add it to coolProject
-//
 // ```go
 // package main
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2"),
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			web, err := metal.NewDevice(ctx, "web", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("webserver1"),
 //				Plan:            pulumi.String("c3.small.x86"),
-//				Metro:           pulumi.String("sv"),
 //				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2-pxe"),
-//				Plan:            pulumi.String("c3.small.x86"),
 //				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String("custom_ipxe"),
 //				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe"),
-//				AlwaysPxe:       pulumi.Bool(false),
-//				UserData:        pulumi.Any(data.Ignition_config.Example.Rendered),
+//				ProjectId:       pulumi.String(projectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname: pulumi.String("tf.coreos2"),
-//				Plan:     pulumi.String("c3.small.x86"),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("ny5"),
-//				},
-//				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				IpAddresses: metal.DeviceIpAddressArray{
-//					&metal.DeviceIpAddressArgs{
-//						Type: pulumi.String("private_ipv4"),
-//						Cidr: pulumi.Int(30),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Deploy device on next-available reserved hardware and do custom partitioning.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname: pulumi.String("tftest"),
-//				Plan:     pulumi.String("c3.small.x86"),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("ny5"),
-//				},
-//				OperatingSystem:       pulumi.String("ubuntu_20_04"),
-//				BillingCycle:          pulumi.String("hourly"),
-//				ProjectId:             pulumi.Any(local.Project_id),
-//				HardwareReservationId: pulumi.String("next-available"),
-//				Storage:               pulumi.String("{\n  \"disks\": [\n    {\n      \"device\": \"/dev/sda\",\n      \"wipeTable\": true,\n      \"partitions\": [\n        {\n          \"label\": \"BIOS\",\n          \"number\": 1,\n          \"size\": \"4096\"\n        },\n        {\n          \"label\": \"SWAP\",\n          \"number\": 2,\n          \"size\": \"3993600\"\n        },\n        {\n          \"label\": \"ROOT\",\n          \"number\": 3,\n          \"size\": \"0\"\n        }\n      ]\n    }\n  ],\n  \"filesystems\": [\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda3\",\n        \"format\": \"ext4\",\n        \"point\": \"/\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"ROOT\"\n          ]\n        }\n      }\n    },\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda2\",\n        \"format\": \"swap\",\n        \"point\": \"none\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"SWAP\"\n          ]\n        }\n      }\n    }\n  ]\n}\n"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a device and allow the `userData` and `customData` attributes to change in-place (i.e., without destroying and recreating the device):
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2-pxe"),
-//				Plan:            pulumi.String("c3.small.x86"),
-//				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String("custom_ipxe"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe"),
-//				AlwaysPxe:       pulumi.Bool(false),
-//				UserData:        pulumi.Any(local.User_data),
-//				CustomData:      pulumi.Any(local.Custom_data),
-//				Behavior: &metal.DeviceBehaviorArgs{
-//					AllowChanges: pulumi.StringArray{
-//						pulumi.String("custom_data"),
-//						pulumi.String("user_data"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("webPublicIp", web.AccessPublicIpv4.ApplyT(func(accessPublicIpv4 string) (string, error) {
+//				return fmt.Sprintf("http://%v", accessPublicIpv4), nil
+//			}).(pulumi.StringOutput))
 //			return nil
 //		})
 //	}
@@ -204,13 +60,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing device ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
-//
-// ```
+// This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 type Device struct {
 	pulumi.CustomResourceState
 
@@ -263,6 +113,9 @@ type Device struct {
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrOutput `pulumi:"metro"`
+	// The device's private and public IP (v4 and v6) network details. See
+	// Network Attribute below for more details.
+	Network DeviceNetworkArrayOutput `pulumi:"network"`
 	// (Deprecated) Network type of a device, used in
 	// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 	// attribute is deprecated you should handle Network Type with one of
@@ -273,9 +126,6 @@ type Device struct {
 	//
 	// Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
-	Networks DeviceNetworkArrayOutput `pulumi:"networks"`
 	// The operating system slug. To find the slug, or visit
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
@@ -427,6 +277,9 @@ type deviceState struct {
 	Locked *bool `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro *string `pulumi:"metro"`
+	// The device's private and public IP (v4 and v6) network details. See
+	// Network Attribute below for more details.
+	Network []DeviceNetwork `pulumi:"network"`
 	// (Deprecated) Network type of a device, used in
 	// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 	// attribute is deprecated you should handle Network Type with one of
@@ -437,9 +290,6 @@ type deviceState struct {
 	//
 	// Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 	NetworkType *string `pulumi:"networkType"`
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
-	Networks []DeviceNetwork `pulumi:"networks"`
 	// The operating system slug. To find the slug, or visit
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
@@ -541,6 +391,9 @@ type DeviceState struct {
 	Locked pulumi.BoolPtrInput
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrInput
+	// The device's private and public IP (v4 and v6) network details. See
+	// Network Attribute below for more details.
+	Network DeviceNetworkArrayInput
 	// (Deprecated) Network type of a device, used in
 	// [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 	// attribute is deprecated you should handle Network Type with one of
@@ -551,9 +404,6 @@ type DeviceState struct {
 	//
 	// Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 	NetworkType pulumi.StringPtrInput
-	// The device's private and public IP (v4 and v6) network details. See
-	// Network Attribute below for more details.
-	Networks DeviceNetworkArrayInput
 	// The operating system slug. To find the slug, or visit
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
@@ -953,6 +803,12 @@ func (o DeviceOutput) Metro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Metro }).(pulumi.StringPtrOutput)
 }
 
+// The device's private and public IP (v4 and v6) network details. See
+// Network Attribute below for more details.
+func (o DeviceOutput) Network() DeviceNetworkArrayOutput {
+	return o.ApplyT(func(v *Device) DeviceNetworkArrayOutput { return v.Network }).(DeviceNetworkArrayOutput)
+}
+
 // (Deprecated) Network type of a device, used in
 // [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
 // attribute is deprecated you should handle Network Type with one of
@@ -964,12 +820,6 @@ func (o DeviceOutput) Metro() pulumi.StringPtrOutput {
 // Deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info
 func (o DeviceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
-}
-
-// The device's private and public IP (v4 and v6) network details. See
-// Network Attribute below for more details.
-func (o DeviceOutput) Networks() DeviceNetworkArrayOutput {
-	return o.ApplyT(func(v *Device) DeviceNetworkArrayOutput { return v.Networks }).(DeviceNetworkArrayOutput)
 }
 
 // The operating system slug. To find the slug, or visit

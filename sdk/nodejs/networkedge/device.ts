@@ -26,15 +26,58 @@ import * as utilities from "../utilities";
  *   software license. There are no charges associated with such license. It is the only licensing mode
  *   for `self-configured` devices.
  *
- * ## Import
+ * ## Example Usage
  *
- * This resource can be imported using an existing ID
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
  *
- * ```sh
- *  $ pulumi import equinix:networkedge/device:Device example {existing_id}
+ * const config = new pulumi.Config();
+ * const accountName = config.require("accountName");
+ * const licenseToken = config.require("licenseToken");
+ * const sshUserName = config.require("sshUserName");
+ * const sshKeyName = config.require("sshKeyName");
+ * const aclTemplateId = config.require("aclTemplateId");
+ * const metro = config.get("metro") || "SV";
+ * const devicePackageCode = config.get("devicePackageCode") || "network-essentials";
+ * const deviceVersion = config.get("deviceVersion") || "17.06.01a";
+ * const sizeInCores = config.getNumber("sizeInCores") || 2;
+ * const termLength = config.getNumber("termLength") || 6;
+ * const additionalBandwidth = config.getNumber("additionalBandwidth") || 5;
+ * const accountNum = equinix.networkedge.getAccount({
+ *     name: accountName,
+ *     metroCode: metro,
+ * }).then(invoke => invoke.number);
+ * const c8KRouter = new equinix.networkedge.Device("c8kRouter", {
+ *     name: "catalystRouter",
+ *     metroCode: metro,
+ *     typeCode: "C8000V",
+ *     selfManaged: true,
+ *     byol: true,
+ *     packageCode: devicePackageCode,
+ *     notifications: ["example@equinix.com"],
+ *     hostname: "C8KV",
+ *     accountNumber: accountNum,
+ *     version: version,
+ *     coreCount: sizeInCores,
+ *     termLength: termLength,
+ *     licenseToken: licenseToken,
+ *     additionalBandwidth: additionalBandwidth,
+ *     sshKey: {
+ *         username: sshUserName,
+ *         keyName: sshKeyName,
+ *     },
+ *     aclTemplateId: aclTemplateId,
+ * });
+ * export const routerId = c8KRouter.id;
+ * export const provisionStatus = c8KRouter.status;
+ * export const licenseStatus = c8KRouter.licenseStatus;
+ * export const sshIpAddress = c8KRouter.sshIpAddress;
  * ```
  *
- *  The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+ * ## Import
+ *
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
  */
 export class Device extends pulumi.CustomResource {
     /**

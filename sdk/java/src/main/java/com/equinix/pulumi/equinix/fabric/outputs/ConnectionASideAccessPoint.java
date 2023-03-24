@@ -6,8 +6,10 @@ package com.equinix.pulumi.equinix.fabric.outputs;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointAccount;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointGateway;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointInterface;
+import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointLinkProtocol;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointLocation;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointPort;
+import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointProfile;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointRoutingProtocol;
 import com.equinix.pulumi.equinix.fabric.outputs.ConnectionASideAccessPointVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
@@ -23,15 +25,15 @@ public final class ConnectionASideAccessPoint {
      * @return Customer account information that is associated with this connection
      * 
      */
-    private @Nullable List<ConnectionASideAccessPointAccount> accounts;
+    private @Nullable ConnectionASideAccessPointAccount account;
     private @Nullable String authenticationKey;
-    private @Nullable List<ConnectionASideAccessPointGateway> gateways;
-    private @Nullable List<ConnectionASideAccessPointInterface> interfaces;
-    private @Nullable String linkProtocols;
-    private @Nullable List<ConnectionASideAccessPointLocation> locations;
+    private @Nullable ConnectionASideAccessPointGateway gateway;
+    private @Nullable ConnectionASideAccessPointInterface interface_;
+    private @Nullable ConnectionASideAccessPointLinkProtocol linkProtocol;
+    private @Nullable ConnectionASideAccessPointLocation location;
     private @Nullable String peeringType;
-    private @Nullable List<ConnectionASideAccessPointPort> ports;
-    private @Nullable String profiles;
+    private @Nullable ConnectionASideAccessPointPort port;
+    private @Nullable ConnectionASideAccessPointProfile profile;
     private @Nullable String providerConnectionId;
     private @Nullable List<ConnectionASideAccessPointRoutingProtocol> routingProtocols;
     private @Nullable String sellerRegion;
@@ -40,39 +42,39 @@ public final class ConnectionASideAccessPoint {
      * 
      */
     private @Nullable String type;
-    private @Nullable List<ConnectionASideAccessPointVirtualDevice> virtualDevices;
+    private @Nullable ConnectionASideAccessPointVirtualDevice virtualDevice;
 
     private ConnectionASideAccessPoint() {}
     /**
      * @return Customer account information that is associated with this connection
      * 
      */
-    public List<ConnectionASideAccessPointAccount> accounts() {
-        return this.accounts == null ? List.of() : this.accounts;
+    public Optional<ConnectionASideAccessPointAccount> account() {
+        return Optional.ofNullable(this.account);
     }
     public Optional<String> authenticationKey() {
         return Optional.ofNullable(this.authenticationKey);
     }
-    public List<ConnectionASideAccessPointGateway> gateways() {
-        return this.gateways == null ? List.of() : this.gateways;
+    public Optional<ConnectionASideAccessPointGateway> gateway() {
+        return Optional.ofNullable(this.gateway);
     }
-    public List<ConnectionASideAccessPointInterface> interfaces() {
-        return this.interfaces == null ? List.of() : this.interfaces;
+    public Optional<ConnectionASideAccessPointInterface> interface_() {
+        return Optional.ofNullable(this.interface_);
     }
-    public Optional<String> linkProtocols() {
-        return Optional.ofNullable(this.linkProtocols);
+    public Optional<ConnectionASideAccessPointLinkProtocol> linkProtocol() {
+        return Optional.ofNullable(this.linkProtocol);
     }
-    public List<ConnectionASideAccessPointLocation> locations() {
-        return this.locations == null ? List.of() : this.locations;
+    public Optional<ConnectionASideAccessPointLocation> location() {
+        return Optional.ofNullable(this.location);
     }
     public Optional<String> peeringType() {
         return Optional.ofNullable(this.peeringType);
     }
-    public List<ConnectionASideAccessPointPort> ports() {
-        return this.ports == null ? List.of() : this.ports;
+    public Optional<ConnectionASideAccessPointPort> port() {
+        return Optional.ofNullable(this.port);
     }
-    public Optional<String> profiles() {
-        return Optional.ofNullable(this.profiles);
+    public Optional<ConnectionASideAccessPointProfile> profile() {
+        return Optional.ofNullable(this.profile);
     }
     public Optional<String> providerConnectionId() {
         return Optional.ofNullable(this.providerConnectionId);
@@ -90,8 +92,8 @@ public final class ConnectionASideAccessPoint {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
-    public List<ConnectionASideAccessPointVirtualDevice> virtualDevices() {
-        return this.virtualDevices == null ? List.of() : this.virtualDevices;
+    public Optional<ConnectionASideAccessPointVirtualDevice> virtualDevice() {
+        return Optional.ofNullable(this.virtualDevice);
     }
 
     public static Builder builder() {
@@ -103,46 +105,43 @@ public final class ConnectionASideAccessPoint {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<ConnectionASideAccessPointAccount> accounts;
+        private @Nullable ConnectionASideAccessPointAccount account;
         private @Nullable String authenticationKey;
-        private @Nullable List<ConnectionASideAccessPointGateway> gateways;
-        private @Nullable List<ConnectionASideAccessPointInterface> interfaces;
-        private @Nullable String linkProtocols;
-        private @Nullable List<ConnectionASideAccessPointLocation> locations;
+        private @Nullable ConnectionASideAccessPointGateway gateway;
+        private @Nullable ConnectionASideAccessPointInterface interface_;
+        private @Nullable ConnectionASideAccessPointLinkProtocol linkProtocol;
+        private @Nullable ConnectionASideAccessPointLocation location;
         private @Nullable String peeringType;
-        private @Nullable List<ConnectionASideAccessPointPort> ports;
-        private @Nullable String profiles;
+        private @Nullable ConnectionASideAccessPointPort port;
+        private @Nullable ConnectionASideAccessPointProfile profile;
         private @Nullable String providerConnectionId;
         private @Nullable List<ConnectionASideAccessPointRoutingProtocol> routingProtocols;
         private @Nullable String sellerRegion;
         private @Nullable String type;
-        private @Nullable List<ConnectionASideAccessPointVirtualDevice> virtualDevices;
+        private @Nullable ConnectionASideAccessPointVirtualDevice virtualDevice;
         public Builder() {}
         public Builder(ConnectionASideAccessPoint defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accounts = defaults.accounts;
+    	      this.account = defaults.account;
     	      this.authenticationKey = defaults.authenticationKey;
-    	      this.gateways = defaults.gateways;
-    	      this.interfaces = defaults.interfaces;
-    	      this.linkProtocols = defaults.linkProtocols;
-    	      this.locations = defaults.locations;
+    	      this.gateway = defaults.gateway;
+    	      this.interface_ = defaults.interface_;
+    	      this.linkProtocol = defaults.linkProtocol;
+    	      this.location = defaults.location;
     	      this.peeringType = defaults.peeringType;
-    	      this.ports = defaults.ports;
-    	      this.profiles = defaults.profiles;
+    	      this.port = defaults.port;
+    	      this.profile = defaults.profile;
     	      this.providerConnectionId = defaults.providerConnectionId;
     	      this.routingProtocols = defaults.routingProtocols;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.type = defaults.type;
-    	      this.virtualDevices = defaults.virtualDevices;
+    	      this.virtualDevice = defaults.virtualDevice;
         }
 
         @CustomType.Setter
-        public Builder accounts(@Nullable List<ConnectionASideAccessPointAccount> accounts) {
-            this.accounts = accounts;
+        public Builder account(@Nullable ConnectionASideAccessPointAccount account) {
+            this.account = account;
             return this;
-        }
-        public Builder accounts(ConnectionASideAccessPointAccount... accounts) {
-            return accounts(List.of(accounts));
         }
         @CustomType.Setter
         public Builder authenticationKey(@Nullable String authenticationKey) {
@@ -150,33 +149,24 @@ public final class ConnectionASideAccessPoint {
             return this;
         }
         @CustomType.Setter
-        public Builder gateways(@Nullable List<ConnectionASideAccessPointGateway> gateways) {
-            this.gateways = gateways;
+        public Builder gateway(@Nullable ConnectionASideAccessPointGateway gateway) {
+            this.gateway = gateway;
             return this;
         }
-        public Builder gateways(ConnectionASideAccessPointGateway... gateways) {
-            return gateways(List.of(gateways));
-        }
-        @CustomType.Setter
-        public Builder interfaces(@Nullable List<ConnectionASideAccessPointInterface> interfaces) {
-            this.interfaces = interfaces;
-            return this;
-        }
-        public Builder interfaces(ConnectionASideAccessPointInterface... interfaces) {
-            return interfaces(List.of(interfaces));
-        }
-        @CustomType.Setter
-        public Builder linkProtocols(@Nullable String linkProtocols) {
-            this.linkProtocols = linkProtocols;
+        @CustomType.Setter("interface")
+        public Builder interface_(@Nullable ConnectionASideAccessPointInterface interface_) {
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
-        public Builder locations(@Nullable List<ConnectionASideAccessPointLocation> locations) {
-            this.locations = locations;
+        public Builder linkProtocol(@Nullable ConnectionASideAccessPointLinkProtocol linkProtocol) {
+            this.linkProtocol = linkProtocol;
             return this;
         }
-        public Builder locations(ConnectionASideAccessPointLocation... locations) {
-            return locations(List.of(locations));
+        @CustomType.Setter
+        public Builder location(@Nullable ConnectionASideAccessPointLocation location) {
+            this.location = location;
+            return this;
         }
         @CustomType.Setter
         public Builder peeringType(@Nullable String peeringType) {
@@ -184,16 +174,13 @@ public final class ConnectionASideAccessPoint {
             return this;
         }
         @CustomType.Setter
-        public Builder ports(@Nullable List<ConnectionASideAccessPointPort> ports) {
-            this.ports = ports;
+        public Builder port(@Nullable ConnectionASideAccessPointPort port) {
+            this.port = port;
             return this;
         }
-        public Builder ports(ConnectionASideAccessPointPort... ports) {
-            return ports(List.of(ports));
-        }
         @CustomType.Setter
-        public Builder profiles(@Nullable String profiles) {
-            this.profiles = profiles;
+        public Builder profile(@Nullable ConnectionASideAccessPointProfile profile) {
+            this.profile = profile;
             return this;
         }
         @CustomType.Setter
@@ -220,29 +207,26 @@ public final class ConnectionASideAccessPoint {
             return this;
         }
         @CustomType.Setter
-        public Builder virtualDevices(@Nullable List<ConnectionASideAccessPointVirtualDevice> virtualDevices) {
-            this.virtualDevices = virtualDevices;
+        public Builder virtualDevice(@Nullable ConnectionASideAccessPointVirtualDevice virtualDevice) {
+            this.virtualDevice = virtualDevice;
             return this;
-        }
-        public Builder virtualDevices(ConnectionASideAccessPointVirtualDevice... virtualDevices) {
-            return virtualDevices(List.of(virtualDevices));
         }
         public ConnectionASideAccessPoint build() {
             final var o = new ConnectionASideAccessPoint();
-            o.accounts = accounts;
+            o.account = account;
             o.authenticationKey = authenticationKey;
-            o.gateways = gateways;
-            o.interfaces = interfaces;
-            o.linkProtocols = linkProtocols;
-            o.locations = locations;
+            o.gateway = gateway;
+            o.interface_ = interface_;
+            o.linkProtocol = linkProtocol;
+            o.location = location;
             o.peeringType = peeringType;
-            o.ports = ports;
-            o.profiles = profiles;
+            o.port = port;
+            o.profile = profile;
             o.providerConnectionId = providerConnectionId;
             o.routingProtocols = routingProtocols;
             o.sellerRegion = sellerRegion;
             o.type = type;
-            o.virtualDevices = virtualDevices;
+            o.virtualDevice = virtualDevice;
             return o;
         }
     }

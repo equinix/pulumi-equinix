@@ -336,6 +336,23 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The device&#39;s private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<List<DeviceNetworkArgs>> network;
+
+    /**
+     * @return The device&#39;s private and public IP (v4 and v6) network details. See
+     * Network Attribute below for more details.
+     * 
+     */
+    public Optional<Output<List<DeviceNetworkArgs>>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
      * (Deprecated) Network type of a device, used in
      * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
      * attribute is deprecated you should handle Network Type with one of
@@ -368,23 +385,6 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info */
     public Optional<Output<Either<String,NetworkType>>> networkType() {
         return Optional.ofNullable(this.networkType);
-    }
-
-    /**
-     * The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     * 
-     */
-    @Import(name="networks")
-    private @Nullable Output<List<DeviceNetworkArgs>> networks;
-
-    /**
-     * @return The device&#39;s private and public IP (v4 and v6) network details. See
-     * Network Attribute below for more details.
-     * 
-     */
-    public Optional<Output<List<DeviceNetworkArgs>>> networks() {
-        return Optional.ofNullable(this.networks);
     }
 
     /**
@@ -683,8 +683,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         this.ipxeScriptUrl = $.ipxeScriptUrl;
         this.locked = $.locked;
         this.metro = $.metro;
+        this.network = $.network;
         this.networkType = $.networkType;
-        this.networks = $.networks;
         this.operatingSystem = $.operatingSystem;
         this.plan = $.plan;
         this.ports = $.ports;
@@ -1188,6 +1188,40 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param network The device&#39;s private and public IP (v4 and v6) network details. See
+         * Network Attribute below for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<List<DeviceNetworkArgs>> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network The device&#39;s private and public IP (v4 and v6) network details. See
+         * Network Attribute below for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(List<DeviceNetworkArgs> network) {
+            return network(Output.of(network));
+        }
+
+        /**
+         * @param network The device&#39;s private and public IP (v4 and v6) network details. See
+         * Network Attribute below for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(DeviceNetworkArgs... network) {
+            return network(List.of(network));
+        }
+
+        /**
          * @param networkType (Deprecated) Network type of a device, used in
          * [Layer 2 networking](https://metal.equinix.com/developers/docs/networking/layer2/). Since this
          * attribute is deprecated you should handle Network Type with one of
@@ -1266,40 +1300,6 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info */
         public Builder networkType(NetworkType networkType) {
             return networkType(Either.ofRight(networkType));
-        }
-
-        /**
-         * @param networks The device&#39;s private and public IP (v4 and v6) network details. See
-         * Network Attribute below for more details.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networks(@Nullable Output<List<DeviceNetworkArgs>> networks) {
-            $.networks = networks;
-            return this;
-        }
-
-        /**
-         * @param networks The device&#39;s private and public IP (v4 and v6) network details. See
-         * Network Attribute below for more details.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networks(List<DeviceNetworkArgs> networks) {
-            return networks(Output.of(networks));
-        }
-
-        /**
-         * @param networks The device&#39;s private and public IP (v4 and v6) network details. See
-         * Network Attribute below for more details.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networks(DeviceNetworkArgs... networks) {
-            return networks(List.of(networks));
         }
 
         /**

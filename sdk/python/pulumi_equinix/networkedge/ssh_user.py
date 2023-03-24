@@ -150,29 +150,25 @@ class SshUser(pulumi.CustomResource):
         Edge SSH users.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create SSH user with password auth method and associate it with
-        # two virtual network devices
-        john = equinix.networkedge.SshUser("john",
-            username="john",
-            password="secret",
+        config = pulumi.Config()
+        device1_id = config.require("device1Id")
+        device2_id = config.require("device2Id")
+        ssh_user = equinix.networkedge.SshUser("sshUser",
+            username="johnKent",
             device_ids=[
-                equinix_network_device["csr1000v-ha"]["uuid"],
-                equinix_network_device["csr1000v-ha"]["redundant_uuid"],
+                device1_id,
+                device2_id,
             ])
+        pulumi.export("sshUserId", ssh_user.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -191,29 +187,25 @@ class SshUser(pulumi.CustomResource):
         Edge SSH users.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create SSH user with password auth method and associate it with
-        # two virtual network devices
-        john = equinix.networkedge.SshUser("john",
-            username="john",
-            password="secret",
+        config = pulumi.Config()
+        device1_id = config.require("device1Id")
+        device2_id = config.require("device2Id")
+        ssh_user = equinix.networkedge.SshUser("sshUser",
+            username="johnKent",
             device_ids=[
-                equinix_network_device["csr1000v-ha"]["uuid"],
-                equinix_network_device["csr1000v-ha"]["redundant_uuid"],
+                device1_id,
+                device2_id,
             ])
+        pulumi.export("sshUserId", ssh_user.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param SshUserArgs args: The arguments to use to populate this resource's properties.

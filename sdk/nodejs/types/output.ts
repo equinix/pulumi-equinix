@@ -11,30 +11,30 @@ export namespace fabric {
         /**
          * Point of access details
          */
-        accessPoints?: outputs.fabric.ConnectionASideAccessPoint[];
+        accessPoint?: outputs.fabric.ConnectionASideAccessPoint;
         /**
          * Connection side additional information
          */
-        additionalInfos?: outputs.fabric.ConnectionASideAdditionalInfo[];
+        additionalInfo?: outputs.fabric.ConnectionASideAdditionalInfo[];
         /**
          * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
          */
-        serviceTokens?: outputs.fabric.ConnectionASideServiceToken[];
+        serviceToken?: outputs.fabric.ConnectionASideServiceToken;
     }
 
     export interface ConnectionASideAccessPoint {
         /**
          * Customer account information that is associated with this connection
          */
-        accounts: outputs.fabric.ConnectionASideAccessPointAccount[];
+        account: outputs.fabric.ConnectionASideAccessPointAccount;
         authenticationKey?: string;
-        gateways?: outputs.fabric.ConnectionASideAccessPointGateway[];
-        interfaces?: outputs.fabric.ConnectionASideAccessPointInterface[];
-        linkProtocols?: any;
-        locations: outputs.fabric.ConnectionASideAccessPointLocation[];
+        gateway?: outputs.fabric.ConnectionASideAccessPointGateway;
+        interface?: outputs.fabric.ConnectionASideAccessPointInterface;
+        linkProtocol?: outputs.fabric.ConnectionASideAccessPointLinkProtocol;
+        location: outputs.fabric.ConnectionASideAccessPointLocation;
         peeringType?: string;
-        ports?: outputs.fabric.ConnectionASideAccessPointPort[];
-        profiles?: any;
+        port?: outputs.fabric.ConnectionASideAccessPointPort;
+        profile?: outputs.fabric.ConnectionASideAccessPointProfile;
         providerConnectionId?: string;
         routingProtocols?: outputs.fabric.ConnectionASideAccessPointRoutingProtocol[];
         sellerRegion?: string;
@@ -42,7 +42,7 @@ export namespace fabric {
          * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
          */
         type?: string;
-        virtualDevices?: outputs.fabric.ConnectionASideAccessPointVirtualDevice[];
+        virtualDevice?: outputs.fabric.ConnectionASideAccessPointVirtualDevice;
     }
 
     export interface ConnectionASideAccessPointAccount {
@@ -75,6 +75,16 @@ export namespace fabric {
         uuid?: string;
     }
 
+    export interface ConnectionASideAccessPointLinkProtocol {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type?: string;
+        vlanCTag: number;
+        vlanSTag: number;
+        vlanTag: number;
+    }
+
     export interface ConnectionASideAccessPointLocation {
         ibx: string;
         metroCode: string;
@@ -103,6 +113,32 @@ export namespace fabric {
          * Priority type- PRIMARY, SECONDARY
          */
         priority: string;
+    }
+
+    export interface ConnectionASideAccessPointProfile {
+        accessPointTypeConfigs: outputs.fabric.ConnectionASideAccessPointProfileAccessPointTypeConfig[];
+        description: string;
+        /**
+         * Connection URI information
+         */
+        href: string;
+        /**
+         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name: string;
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type: string;
+        uuid: string;
+    }
+
+    export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type: string;
+        uuid: string;
     }
 
     export interface ConnectionASideAccessPointRoutingProtocol {
@@ -214,7 +250,7 @@ export namespace fabric {
         /**
          * Connection additional information
          */
-        additionalInfos: outputs.fabric.ConnectionOperationErrorAdditionalInfo[];
+        additionalInfo: outputs.fabric.ConnectionOperationErrorAdditionalInfo[];
         correlationId: string;
         details: string;
         errorCode: string;
@@ -272,30 +308,30 @@ export namespace fabric {
         /**
          * Point of access details
          */
-        accessPoints?: outputs.fabric.ConnectionZSideAccessPoint[];
+        accessPoint?: outputs.fabric.ConnectionZSideAccessPoint;
         /**
          * Connection side additional information
          */
-        additionalInfos?: outputs.fabric.ConnectionZSideAdditionalInfo[];
+        additionalInfo?: outputs.fabric.ConnectionZSideAdditionalInfo[];
         /**
          * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
          */
-        serviceTokens?: outputs.fabric.ConnectionZSideServiceToken[];
+        serviceToken?: outputs.fabric.ConnectionZSideServiceToken;
     }
 
     export interface ConnectionZSideAccessPoint {
         /**
          * Customer account information that is associated with this connection
          */
-        accounts: outputs.fabric.ConnectionZSideAccessPointAccount[];
+        account: outputs.fabric.ConnectionZSideAccessPointAccount;
         authenticationKey?: string;
-        gateways?: outputs.fabric.ConnectionZSideAccessPointGateway[];
-        interfaces?: outputs.fabric.ConnectionZSideAccessPointInterface[];
-        linkProtocols?: any;
-        locations: outputs.fabric.ConnectionZSideAccessPointLocation[];
+        gateway?: outputs.fabric.ConnectionZSideAccessPointGateway;
+        interface?: outputs.fabric.ConnectionZSideAccessPointInterface;
+        linkProtocol?: outputs.fabric.ConnectionZSideAccessPointLinkProtocol;
+        location: outputs.fabric.ConnectionZSideAccessPointLocation;
         peeringType?: string;
-        ports?: outputs.fabric.ConnectionZSideAccessPointPort[];
-        profiles?: any;
+        port?: outputs.fabric.ConnectionZSideAccessPointPort;
+        profile?: outputs.fabric.ConnectionZSideAccessPointProfile;
         providerConnectionId?: string;
         routingProtocols?: outputs.fabric.ConnectionZSideAccessPointRoutingProtocol[];
         sellerRegion?: string;
@@ -303,7 +339,7 @@ export namespace fabric {
          * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
          */
         type?: string;
-        virtualDevices?: outputs.fabric.ConnectionZSideAccessPointVirtualDevice[];
+        virtualDevice?: outputs.fabric.ConnectionZSideAccessPointVirtualDevice;
     }
 
     export interface ConnectionZSideAccessPointAccount {
@@ -336,6 +372,16 @@ export namespace fabric {
         uuid?: string;
     }
 
+    export interface ConnectionZSideAccessPointLinkProtocol {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type?: string;
+        vlanCTag: number;
+        vlanSTag: number;
+        vlanTag: number;
+    }
+
     export interface ConnectionZSideAccessPointLocation {
         ibx: string;
         metroCode: string;
@@ -364,6 +410,32 @@ export namespace fabric {
          * Priority type- PRIMARY, SECONDARY
          */
         priority: string;
+    }
+
+    export interface ConnectionZSideAccessPointProfile {
+        accessPointTypeConfigs: outputs.fabric.ConnectionZSideAccessPointProfileAccessPointTypeConfig[];
+        description: string;
+        /**
+         * Connection URI information
+         */
+        href: string;
+        /**
+         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name: string;
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type: string;
+        uuid: string;
+    }
+
+    export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
+        /**
+         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         */
+        type: string;
+        uuid: string;
     }
 
     export interface ConnectionZSideAccessPointRoutingProtocol {
@@ -415,8 +487,8 @@ export namespace fabric {
     }
 
     export interface GetConnectionASide {
-        accessPoints: outputs.fabric.GetConnectionASideAccessPoint[];
-        serviceTokens: outputs.fabric.GetConnectionASideServiceToken[];
+        accessPoint: outputs.fabric.GetConnectionASideAccessPoint;
+        serviceToken: outputs.fabric.GetConnectionASideServiceToken;
     }
 
     export interface GetConnectionASideAccessPoint {
@@ -717,8 +789,8 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSide {
-        accessPoints: outputs.fabric.GetConnectionZSideAccessPoint[];
-        serviceTokens: outputs.fabric.GetConnectionZSideServiceToken[];
+        accessPoint: outputs.fabric.GetConnectionZSideAccessPoint;
+        serviceToken: outputs.fabric.GetConnectionZSideServiceToken;
     }
 
     export interface GetConnectionZSideAccessPoint {
@@ -1018,20 +1090,20 @@ export namespace fabric {
         priority: string;
     }
 
-    export interface GetPortsData {
-        accounts: outputs.fabric.GetPortsDataAccount[];
+    export interface GetPortsDatum {
+        accounts: outputs.fabric.GetPortsDatumAccount[];
         availableBandwidth: number;
         bandwidth: number;
-        changeLogs: outputs.fabric.GetPortsDataChangeLog[];
+        changeLogs: outputs.fabric.GetPortsDatumChangeLog[];
         description: string;
-        devices: outputs.fabric.GetPortsDataDevice[];
-        encapsulations: outputs.fabric.GetPortsDataEncapsulation[];
+        devices: outputs.fabric.GetPortsDatumDevice[];
+        encapsulations: outputs.fabric.GetPortsDatumEncapsulation[];
         href: string;
-        lags: outputs.fabric.GetPortsDataLag[];
-        locations: outputs.fabric.GetPortsDataLocation[];
+        lags: outputs.fabric.GetPortsDatumLag[];
+        locations: outputs.fabric.GetPortsDatumLocation[];
         name: string;
-        operations: outputs.fabric.GetPortsDataOperation[];
-        redundancies: outputs.fabric.GetPortsDataRedundancy[];
+        operations: outputs.fabric.GetPortsDatumOperation[];
+        redundancies: outputs.fabric.GetPortsDatumRedundancy[];
         serviceType: string;
         state: string;
         type: string;
@@ -1039,7 +1111,7 @@ export namespace fabric {
         uuid?: string;
     }
 
-    export interface GetPortsDataAccount {
+    export interface GetPortsDatumAccount {
         accountName: string;
         accountNumber: number;
         globalCustId: string;
@@ -1049,7 +1121,7 @@ export namespace fabric {
         organizationName: string;
     }
 
-    export interface GetPortsDataChangeLog {
+    export interface GetPortsDatumChangeLog {
         createdBy: string;
         createdByEmail: string;
         createdByFullName: string;
@@ -1064,22 +1136,22 @@ export namespace fabric {
         updatedDateTime: string;
     }
 
-    export interface GetPortsDataDevice {
+    export interface GetPortsDatumDevice {
         name: string;
-        redundancies: outputs.fabric.GetPortsDataDeviceRedundancy[];
+        redundancies: outputs.fabric.GetPortsDatumDeviceRedundancy[];
     }
 
-    export interface GetPortsDataDeviceRedundancy {
+    export interface GetPortsDatumDeviceRedundancy {
         group: string;
         priority: string;
     }
 
-    export interface GetPortsDataEncapsulation {
+    export interface GetPortsDatumEncapsulation {
         tagProtocolId: string;
         type: string;
     }
 
-    export interface GetPortsDataLag {
+    export interface GetPortsDatumLag {
         enabled: boolean;
         /**
          * The ID of this resource.
@@ -1089,7 +1161,7 @@ export namespace fabric {
         name: string;
     }
 
-    export interface GetPortsDataLocation {
+    export interface GetPortsDatumLocation {
         href: string;
         ibx: string;
         metroCode: string;
@@ -1097,13 +1169,13 @@ export namespace fabric {
         region: string;
     }
 
-    export interface GetPortsDataOperation {
+    export interface GetPortsDatumOperation {
         connectionCount: number;
         opStatusChangedAt: string;
         operationalStatus: string;
     }
 
-    export interface GetPortsDataRedundancy {
+    export interface GetPortsDatumRedundancy {
         enabled: boolean;
         group: number;
         priority: string;
@@ -1268,20 +1340,20 @@ export namespace fabric {
         projectId: string;
     }
 
-    export interface GetServiceProfilesData {
-        accessPointTypeConfigs: outputs.fabric.GetServiceProfilesDataAccessPointTypeConfig[];
-        accounts: outputs.fabric.GetServiceProfilesDataAccount[];
+    export interface GetServiceProfilesDatum {
+        accessPointTypeConfigs: outputs.fabric.GetServiceProfilesDatumAccessPointTypeConfig[];
+        accounts: outputs.fabric.GetServiceProfilesDatumAccount[];
         allowedEmails: string[];
-        changeLogs: outputs.fabric.GetServiceProfilesDataChangeLog[];
-        customFields: outputs.fabric.GetServiceProfilesDataCustomField[];
+        changeLogs: outputs.fabric.GetServiceProfilesDatumChangeLog[];
+        customFields: outputs.fabric.GetServiceProfilesDatumCustomField[];
         description: string;
         href: string;
-        marketingInfos: outputs.fabric.GetServiceProfilesDataMarketingInfo[];
-        metros: outputs.fabric.GetServiceProfilesDataMetro[];
+        marketingInfos: outputs.fabric.GetServiceProfilesDatumMarketingInfo[];
+        metros: outputs.fabric.GetServiceProfilesDatumMetro[];
         name: string;
-        notifications: outputs.fabric.GetServiceProfilesDataNotification[];
-        ports: outputs.fabric.GetServiceProfilesDataPort[];
-        projects: outputs.fabric.GetServiceProfilesDataProject[];
+        notifications: outputs.fabric.GetServiceProfilesDatumNotification[];
+        ports: outputs.fabric.GetServiceProfilesDatumPort[];
+        projects: outputs.fabric.GetServiceProfilesDatumProject[];
         selfProfile: boolean;
         state?: string;
         tags: string[];
@@ -1290,24 +1362,24 @@ export namespace fabric {
         visibility: string;
     }
 
-    export interface GetServiceProfilesDataAccessPointTypeConfig {
+    export interface GetServiceProfilesDatumAccessPointTypeConfig {
         allowBandwidthAutoApproval: boolean;
         allowBandwidthUpgrade: boolean;
         allowCustomBandwidth: boolean;
         allowRemoteConnections: boolean;
-        apiConfigs: outputs.fabric.GetServiceProfilesDataAccessPointTypeConfigApiConfig[];
-        authenticationKeys: outputs.fabric.GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey[];
+        apiConfigs: outputs.fabric.GetServiceProfilesDatumAccessPointTypeConfigApiConfig[];
+        authenticationKeys: outputs.fabric.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey[];
         bandwidthAlertThreshold: number;
         connectionLabel: string;
         connectionRedundancyRequired: boolean;
         enableAutoGenerateServiceKey: boolean;
-        linkProtocolConfigs: outputs.fabric.GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig[];
+        linkProtocolConfigs: outputs.fabric.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig[];
         supportedBandwidths: number[];
         type: string;
         uuid: string;
     }
 
-    export interface GetServiceProfilesDataAccessPointTypeConfigApiConfig {
+    export interface GetServiceProfilesDatumAccessPointTypeConfigApiConfig {
         allowOverSubscription: boolean;
         apiAvailable: boolean;
         bandwidthFromApi: boolean;
@@ -1317,19 +1389,19 @@ export namespace fabric {
         overSubscriptionLimit: number;
     }
 
-    export interface GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey {
+    export interface GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey {
         description: string;
         label: string;
         required: boolean;
     }
 
-    export interface GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig {
+    export interface GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig {
         encapsulation: string;
         encapsulationStrategy: string;
         reuseVlanSTag: boolean;
     }
 
-    export interface GetServiceProfilesDataAccount {
+    export interface GetServiceProfilesDatumAccount {
         accountName: string;
         accountNumber: number;
         globalCustId: string;
@@ -1340,7 +1412,7 @@ export namespace fabric {
         ucmId: string;
     }
 
-    export interface GetServiceProfilesDataChangeLog {
+    export interface GetServiceProfilesDatumChangeLog {
         createdBy: string;
         createdByEmail: string;
         createdByFullName: string;
@@ -1355,7 +1427,7 @@ export namespace fabric {
         updatedDateTime: string;
     }
 
-    export interface GetServiceProfilesDataCustomField {
+    export interface GetServiceProfilesDatumCustomField {
         captureInEmail: boolean;
         dataType: string;
         description: string;
@@ -1364,19 +1436,19 @@ export namespace fabric {
         required: boolean;
     }
 
-    export interface GetServiceProfilesDataMarketingInfo {
+    export interface GetServiceProfilesDatumMarketingInfo {
         logo: string;
-        processSteps: outputs.fabric.GetServiceProfilesDataMarketingInfoProcessStep[];
+        processSteps: outputs.fabric.GetServiceProfilesDatumMarketingInfoProcessStep[];
         promotion: boolean;
     }
 
-    export interface GetServiceProfilesDataMarketingInfoProcessStep {
+    export interface GetServiceProfilesDatumMarketingInfoProcessStep {
         description: string;
         subTitle: string;
         title: string;
     }
 
-    export interface GetServiceProfilesDataMetro {
+    export interface GetServiceProfilesDatumMetro {
         code: string;
         displayName: string;
         ibxs: string[];
@@ -1385,29 +1457,29 @@ export namespace fabric {
         sellerRegions: {[key: string]: string};
     }
 
-    export interface GetServiceProfilesDataNotification {
+    export interface GetServiceProfilesDatumNotification {
         emails: string[];
         sendInterval: string;
         type: string;
     }
 
-    export interface GetServiceProfilesDataPort {
+    export interface GetServiceProfilesDatumPort {
         crossConnectId: string;
-        locations: outputs.fabric.GetServiceProfilesDataPortLocation[];
+        locations: outputs.fabric.GetServiceProfilesDatumPortLocation[];
         sellerRegion: string;
         sellerRegionDescription: string;
         type: string;
         uuid: string;
     }
 
-    export interface GetServiceProfilesDataPortLocation {
+    export interface GetServiceProfilesDatumPortLocation {
         ibx: string;
         metroCode: string;
         metroName: string;
         region: string;
     }
 
-    export interface GetServiceProfilesDataProject {
+    export interface GetServiceProfilesDatumProject {
         href: string;
         projectId: string;
     }
@@ -1458,11 +1530,11 @@ export namespace fabric {
         /**
          * Api configuration details
          */
-        apiConfigs?: outputs.fabric.ServiceProfileAccessPointTypeConfigApiConfig[];
+        apiConfig?: outputs.fabric.ServiceProfileAccessPointTypeConfigApiConfig;
         /**
          * Authentication key details
          */
-        authenticationKeys?: outputs.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKey[];
+        authenticationKey?: outputs.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKey;
         /**
          * Percentage of port bandwidth at which an allocation alert is generated
          */
@@ -1482,7 +1554,7 @@ export namespace fabric {
         /**
          * Link protocol configuration details
          */
-        linkProtocolConfigs?: outputs.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfig[];
+        linkProtocolConfig?: outputs.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfig;
         /**
          * Supported bandwidths
          */
@@ -1718,7 +1790,7 @@ export namespace fabric {
         /**
          * Device Location
          */
-        locations?: outputs.fabric.ServiceProfileVirtualDeviceLocation[];
+        location?: outputs.fabric.ServiceProfileVirtualDeviceLocation;
         /**
          * Virtual Device Type
          */
@@ -1739,37 +1811,6 @@ export namespace fabric {
 }
 
 export namespace metal {
-    export interface ConnectionPort {
-        id: string;
-        linkStatus: string;
-        /**
-         * Name of the connection resource
-         */
-        name: string;
-        role: string;
-        /**
-         * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-         */
-        speed: number;
-        /**
-         * Status of the connection resource.
-         */
-        status: string;
-        virtualCircuitIds: any[];
-    }
-
-    export interface ConnectionServiceToken {
-        expiresAt: string;
-        id: string;
-        maxAllowedSpeed: string;
-        role: string;
-        state: string;
-        /**
-         * Connection type - dedicated or shared.
-         */
-        type: string;
-    }
-
     export interface DeviceBehavior {
         /**
          * List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
@@ -1855,61 +1896,6 @@ export namespace metal {
          * Defaults to `false`.
          */
         preserveData?: boolean;
-    }
-
-    export interface GetConnectionPort {
-        /**
-         * Port UUID.
-         */
-        id: string;
-        /**
-         * Port link status.
-         */
-        linkStatus: string;
-        /**
-         * Port name.
-         */
-        name: string;
-        /**
-         * Port role - primary or secondary.
-         */
-        role: string;
-        /**
-         * Port speed in bits per second.
-         */
-        speed: number;
-        /**
-         * Port status.
-         */
-        status: string;
-        /**
-         * List of IDs of virtual cicruits attached to this port.
-         */
-        virtualCircuitIds: any[];
-    }
-
-    export interface GetConnectionServiceToken {
-        /**
-         * Expiration date of the service token.
-         */
-        expiresAt: string;
-        /**
-         * Port UUID.
-         */
-        id: string;
-        /**
-         * Maximum allowed speed for the service token, string like in the `speed` attribute.
-         */
-        maxAllowedSpeed: string;
-        /**
-         * Port role - primary or secondary.
-         */
-        role: string;
-        state: string;
-        /**
-         * Token type, `aSide` or `zSide`.
-         */
-        type: string;
     }
 
     export interface GetDeviceBgpNeighborsBgpNeighbor {
@@ -2033,6 +2019,61 @@ export namespace metal {
          * Default is `1`.
          */
         quantity?: number;
+    }
+
+    export interface GetInterconnectionPort {
+        /**
+         * Port UUID.
+         */
+        id: string;
+        /**
+         * Port link status.
+         */
+        linkStatus: string;
+        /**
+         * Port name.
+         */
+        name: string;
+        /**
+         * Port role - primary or secondary.
+         */
+        role: string;
+        /**
+         * Port speed in bits per second.
+         */
+        speed: number;
+        /**
+         * Port status.
+         */
+        status: string;
+        /**
+         * List of IDs of virtual cicruits attached to this port.
+         */
+        virtualCircuitIds: any[];
+    }
+
+    export interface GetInterconnectionServiceToken {
+        /**
+         * Expiration date of the service token.
+         */
+        expiresAt: string;
+        /**
+         * Port UUID.
+         */
+        id: string;
+        /**
+         * Maximum allowed speed for the service token, string like in the `speed` attribute.
+         */
+        maxAllowedSpeed: string;
+        /**
+         * Port role - primary or secondary.
+         */
+        role: string;
+        state: string;
+        /**
+         * Token type, `aSide` or `zSide`.
+         */
+        type: string;
     }
 
     export interface GetMetroCapacity {
@@ -2172,6 +2213,37 @@ export namespace metal {
          * Status of BGP configuration in the project.
          */
         status: string;
+    }
+
+    export interface InterconnectionPort {
+        id: string;
+        linkStatus: string;
+        /**
+         * Name of the connection resource
+         */
+        name: string;
+        role: string;
+        /**
+         * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         */
+        speed: number;
+        /**
+         * Status of the connection resource.
+         */
+        status: string;
+        virtualCircuitIds: any[];
+    }
+
+    export interface InterconnectionServiceToken {
+        expiresAt: string;
+        id: string;
+        maxAllowedSpeed: string;
+        role: string;
+        state: string;
+        /**
+         * Connection type - dedicated or shared.
+         */
+        type: string;
     }
 
     export interface OrganizationAddress {

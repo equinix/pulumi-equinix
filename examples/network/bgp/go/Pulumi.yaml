@@ -1,0 +1,3 @@
+name: equinix-networkedge-bgp
+runtime: go
+description: An Equinix Network Edge BGP peering configuration resource

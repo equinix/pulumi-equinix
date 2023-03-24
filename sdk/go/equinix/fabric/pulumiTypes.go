@@ -13,11 +13,11 @@ import (
 
 type ConnectionASide struct {
 	// Point of access details
-	AccessPoints []ConnectionASideAccessPoint `pulumi:"accessPoints"`
+	AccessPoint *ConnectionASideAccessPoint `pulumi:"accessPoint"`
 	// Connection side additional information
-	AdditionalInfos []ConnectionASideAdditionalInfo `pulumi:"additionalInfos"`
+	AdditionalInfo []ConnectionASideAdditionalInfo `pulumi:"additionalInfo"`
 	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-	ServiceTokens []ConnectionASideServiceToken `pulumi:"serviceTokens"`
+	ServiceToken *ConnectionASideServiceToken `pulumi:"serviceToken"`
 }
 
 // ConnectionASideInput is an input type that accepts ConnectionASideArgs and ConnectionASideOutput values.
@@ -33,11 +33,11 @@ type ConnectionASideInput interface {
 
 type ConnectionASideArgs struct {
 	// Point of access details
-	AccessPoints ConnectionASideAccessPointArrayInput `pulumi:"accessPoints"`
+	AccessPoint ConnectionASideAccessPointPtrInput `pulumi:"accessPoint"`
 	// Connection side additional information
-	AdditionalInfos ConnectionASideAdditionalInfoArrayInput `pulumi:"additionalInfos"`
+	AdditionalInfo ConnectionASideAdditionalInfoArrayInput `pulumi:"additionalInfo"`
 	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-	ServiceTokens ConnectionASideServiceTokenArrayInput `pulumi:"serviceTokens"`
+	ServiceToken ConnectionASideServiceTokenPtrInput `pulumi:"serviceToken"`
 }
 
 func (ConnectionASideArgs) ElementType() reflect.Type {
@@ -52,29 +52,45 @@ func (i ConnectionASideArgs) ToConnectionASideOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideOutput)
 }
 
-// ConnectionASideArrayInput is an input type that accepts ConnectionASideArray and ConnectionASideArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideArrayInput` via:
+func (i ConnectionASideArgs) ToConnectionASidePtrOutput() ConnectionASidePtrOutput {
+	return i.ToConnectionASidePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideArgs) ToConnectionASidePtrOutputWithContext(ctx context.Context) ConnectionASidePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideOutput).ToConnectionASidePtrOutputWithContext(ctx)
+}
+
+// ConnectionASidePtrInput is an input type that accepts ConnectionASideArgs, ConnectionASidePtr and ConnectionASidePtrOutput values.
+// You can construct a concrete instance of `ConnectionASidePtrInput` via:
 //
-//	ConnectionASideArray{ ConnectionASideArgs{...} }
-type ConnectionASideArrayInput interface {
+//	        ConnectionASideArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASidePtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideArrayOutput() ConnectionASideArrayOutput
-	ToConnectionASideArrayOutputWithContext(context.Context) ConnectionASideArrayOutput
+	ToConnectionASidePtrOutput() ConnectionASidePtrOutput
+	ToConnectionASidePtrOutputWithContext(context.Context) ConnectionASidePtrOutput
 }
 
-type ConnectionASideArray []ConnectionASideInput
+type connectionASidePtrType ConnectionASideArgs
 
-func (ConnectionASideArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASide)(nil)).Elem()
+func ConnectionASidePtr(v *ConnectionASideArgs) ConnectionASidePtrInput {
+	return (*connectionASidePtrType)(v)
 }
 
-func (i ConnectionASideArray) ToConnectionASideArrayOutput() ConnectionASideArrayOutput {
-	return i.ToConnectionASideArrayOutputWithContext(context.Background())
+func (*connectionASidePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASide)(nil)).Elem()
 }
 
-func (i ConnectionASideArray) ToConnectionASideArrayOutputWithContext(ctx context.Context) ConnectionASideArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideArrayOutput)
+func (i *connectionASidePtrType) ToConnectionASidePtrOutput() ConnectionASidePtrOutput {
+	return i.ToConnectionASidePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASidePtrType) ToConnectionASidePtrOutputWithContext(ctx context.Context) ConnectionASidePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASidePtrOutput)
 }
 
 type ConnectionASideOutput struct{ *pulumi.OutputState }
@@ -91,58 +107,102 @@ func (o ConnectionASideOutput) ToConnectionASideOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ConnectionASideOutput) ToConnectionASidePtrOutput() ConnectionASidePtrOutput {
+	return o.ToConnectionASidePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideOutput) ToConnectionASidePtrOutputWithContext(ctx context.Context) ConnectionASidePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASide) *ConnectionASide {
+		return &v
+	}).(ConnectionASidePtrOutput)
+}
+
 // Point of access details
-func (o ConnectionASideOutput) AccessPoints() ConnectionASideAccessPointArrayOutput {
-	return o.ApplyT(func(v ConnectionASide) []ConnectionASideAccessPoint { return v.AccessPoints }).(ConnectionASideAccessPointArrayOutput)
+func (o ConnectionASideOutput) AccessPoint() ConnectionASideAccessPointPtrOutput {
+	return o.ApplyT(func(v ConnectionASide) *ConnectionASideAccessPoint { return v.AccessPoint }).(ConnectionASideAccessPointPtrOutput)
 }
 
 // Connection side additional information
-func (o ConnectionASideOutput) AdditionalInfos() ConnectionASideAdditionalInfoArrayOutput {
-	return o.ApplyT(func(v ConnectionASide) []ConnectionASideAdditionalInfo { return v.AdditionalInfos }).(ConnectionASideAdditionalInfoArrayOutput)
+func (o ConnectionASideOutput) AdditionalInfo() ConnectionASideAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v ConnectionASide) []ConnectionASideAdditionalInfo { return v.AdditionalInfo }).(ConnectionASideAdditionalInfoArrayOutput)
 }
 
 // For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-func (o ConnectionASideOutput) ServiceTokens() ConnectionASideServiceTokenArrayOutput {
-	return o.ApplyT(func(v ConnectionASide) []ConnectionASideServiceToken { return v.ServiceTokens }).(ConnectionASideServiceTokenArrayOutput)
+func (o ConnectionASideOutput) ServiceToken() ConnectionASideServiceTokenPtrOutput {
+	return o.ApplyT(func(v ConnectionASide) *ConnectionASideServiceToken { return v.ServiceToken }).(ConnectionASideServiceTokenPtrOutput)
 }
 
-type ConnectionASideArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASidePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASide)(nil)).Elem()
+func (ConnectionASidePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASide)(nil)).Elem()
 }
 
-func (o ConnectionASideArrayOutput) ToConnectionASideArrayOutput() ConnectionASideArrayOutput {
+func (o ConnectionASidePtrOutput) ToConnectionASidePtrOutput() ConnectionASidePtrOutput {
 	return o
 }
 
-func (o ConnectionASideArrayOutput) ToConnectionASideArrayOutputWithContext(ctx context.Context) ConnectionASideArrayOutput {
+func (o ConnectionASidePtrOutput) ToConnectionASidePtrOutputWithContext(ctx context.Context) ConnectionASidePtrOutput {
 	return o
 }
 
-func (o ConnectionASideArrayOutput) Index(i pulumi.IntInput) ConnectionASideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASide {
-		return vs[0].([]ConnectionASide)[vs[1].(int)]
+func (o ConnectionASidePtrOutput) Elem() ConnectionASideOutput {
+	return o.ApplyT(func(v *ConnectionASide) ConnectionASide {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASide
+		return ret
 	}).(ConnectionASideOutput)
+}
+
+// Point of access details
+func (o ConnectionASidePtrOutput) AccessPoint() ConnectionASideAccessPointPtrOutput {
+	return o.ApplyT(func(v *ConnectionASide) *ConnectionASideAccessPoint {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPoint
+	}).(ConnectionASideAccessPointPtrOutput)
+}
+
+// Connection side additional information
+func (o ConnectionASidePtrOutput) AdditionalInfo() ConnectionASideAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v *ConnectionASide) []ConnectionASideAdditionalInfo {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ConnectionASideAdditionalInfoArrayOutput)
+}
+
+// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+func (o ConnectionASidePtrOutput) ServiceToken() ConnectionASideServiceTokenPtrOutput {
+	return o.ApplyT(func(v *ConnectionASide) *ConnectionASideServiceToken {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToken
+	}).(ConnectionASideServiceTokenPtrOutput)
 }
 
 type ConnectionASideAccessPoint struct {
 	// Customer account information that is associated with this connection
-	Accounts             []ConnectionASideAccessPointAccount         `pulumi:"accounts"`
+	Account              *ConnectionASideAccessPointAccount          `pulumi:"account"`
 	AuthenticationKey    *string                                     `pulumi:"authenticationKey"`
-	Gateways             []ConnectionASideAccessPointGateway         `pulumi:"gateways"`
-	Interfaces           []ConnectionASideAccessPointInterface       `pulumi:"interfaces"`
-	LinkProtocols        *string                                     `pulumi:"linkProtocols"`
-	Locations            []ConnectionASideAccessPointLocation        `pulumi:"locations"`
+	Gateway              *ConnectionASideAccessPointGateway          `pulumi:"gateway"`
+	Interface            *ConnectionASideAccessPointInterface        `pulumi:"interface"`
+	LinkProtocol         *ConnectionASideAccessPointLinkProtocol     `pulumi:"linkProtocol"`
+	Location             *ConnectionASideAccessPointLocation         `pulumi:"location"`
 	PeeringType          *string                                     `pulumi:"peeringType"`
-	Ports                []ConnectionASideAccessPointPort            `pulumi:"ports"`
-	Profiles             *string                                     `pulumi:"profiles"`
+	Port                 *ConnectionASideAccessPointPort             `pulumi:"port"`
+	Profile              *ConnectionASideAccessPointProfile          `pulumi:"profile"`
 	ProviderConnectionId *string                                     `pulumi:"providerConnectionId"`
 	RoutingProtocols     []ConnectionASideAccessPointRoutingProtocol `pulumi:"routingProtocols"`
 	SellerRegion         *string                                     `pulumi:"sellerRegion"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-	Type           *string                                   `pulumi:"type"`
-	VirtualDevices []ConnectionASideAccessPointVirtualDevice `pulumi:"virtualDevices"`
+	Type          *string                                  `pulumi:"type"`
+	VirtualDevice *ConnectionASideAccessPointVirtualDevice `pulumi:"virtualDevice"`
 }
 
 // ConnectionASideAccessPointInput is an input type that accepts ConnectionASideAccessPointArgs and ConnectionASideAccessPointOutput values.
@@ -158,21 +218,21 @@ type ConnectionASideAccessPointInput interface {
 
 type ConnectionASideAccessPointArgs struct {
 	// Customer account information that is associated with this connection
-	Accounts             ConnectionASideAccessPointAccountArrayInput         `pulumi:"accounts"`
+	Account              ConnectionASideAccessPointAccountPtrInput           `pulumi:"account"`
 	AuthenticationKey    pulumi.StringPtrInput                               `pulumi:"authenticationKey"`
-	Gateways             ConnectionASideAccessPointGatewayArrayInput         `pulumi:"gateways"`
-	Interfaces           ConnectionASideAccessPointInterfaceArrayInput       `pulumi:"interfaces"`
-	LinkProtocols        pulumi.StringPtrInput                               `pulumi:"linkProtocols"`
-	Locations            ConnectionASideAccessPointLocationArrayInput        `pulumi:"locations"`
+	Gateway              ConnectionASideAccessPointGatewayPtrInput           `pulumi:"gateway"`
+	Interface            ConnectionASideAccessPointInterfacePtrInput         `pulumi:"interface"`
+	LinkProtocol         ConnectionASideAccessPointLinkProtocolPtrInput      `pulumi:"linkProtocol"`
+	Location             ConnectionASideAccessPointLocationPtrInput          `pulumi:"location"`
 	PeeringType          pulumi.StringPtrInput                               `pulumi:"peeringType"`
-	Ports                ConnectionASideAccessPointPortArrayInput            `pulumi:"ports"`
-	Profiles             pulumi.StringPtrInput                               `pulumi:"profiles"`
+	Port                 ConnectionASideAccessPointPortPtrInput              `pulumi:"port"`
+	Profile              ConnectionASideAccessPointProfilePtrInput           `pulumi:"profile"`
 	ProviderConnectionId pulumi.StringPtrInput                               `pulumi:"providerConnectionId"`
 	RoutingProtocols     ConnectionASideAccessPointRoutingProtocolArrayInput `pulumi:"routingProtocols"`
 	SellerRegion         pulumi.StringPtrInput                               `pulumi:"sellerRegion"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-	Type           pulumi.StringPtrInput                             `pulumi:"type"`
-	VirtualDevices ConnectionASideAccessPointVirtualDeviceArrayInput `pulumi:"virtualDevices"`
+	Type          pulumi.StringPtrInput                           `pulumi:"type"`
+	VirtualDevice ConnectionASideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
 }
 
 func (ConnectionASideAccessPointArgs) ElementType() reflect.Type {
@@ -187,29 +247,45 @@ func (i ConnectionASideAccessPointArgs) ToConnectionASideAccessPointOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointOutput)
 }
 
-// ConnectionASideAccessPointArrayInput is an input type that accepts ConnectionASideAccessPointArray and ConnectionASideAccessPointArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointArrayInput` via:
+func (i ConnectionASideAccessPointArgs) ToConnectionASideAccessPointPtrOutput() ConnectionASideAccessPointPtrOutput {
+	return i.ToConnectionASideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointArgs) ToConnectionASideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointOutput).ToConnectionASideAccessPointPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointPtrInput is an input type that accepts ConnectionASideAccessPointArgs, ConnectionASideAccessPointPtr and ConnectionASideAccessPointPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointPtrInput` via:
 //
-//	ConnectionASideAccessPointArray{ ConnectionASideAccessPointArgs{...} }
-type ConnectionASideAccessPointArrayInput interface {
+//	        ConnectionASideAccessPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointArrayOutput() ConnectionASideAccessPointArrayOutput
-	ToConnectionASideAccessPointArrayOutputWithContext(context.Context) ConnectionASideAccessPointArrayOutput
+	ToConnectionASideAccessPointPtrOutput() ConnectionASideAccessPointPtrOutput
+	ToConnectionASideAccessPointPtrOutputWithContext(context.Context) ConnectionASideAccessPointPtrOutput
 }
 
-type ConnectionASideAccessPointArray []ConnectionASideAccessPointInput
+type connectionASideAccessPointPtrType ConnectionASideAccessPointArgs
 
-func (ConnectionASideAccessPointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPoint)(nil)).Elem()
+func ConnectionASideAccessPointPtr(v *ConnectionASideAccessPointArgs) ConnectionASideAccessPointPtrInput {
+	return (*connectionASideAccessPointPtrType)(v)
 }
 
-func (i ConnectionASideAccessPointArray) ToConnectionASideAccessPointArrayOutput() ConnectionASideAccessPointArrayOutput {
-	return i.ToConnectionASideAccessPointArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPoint)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointArray) ToConnectionASideAccessPointArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointArrayOutput)
+func (i *connectionASideAccessPointPtrType) ToConnectionASideAccessPointPtrOutput() ConnectionASideAccessPointPtrOutput {
+	return i.ToConnectionASideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointPtrType) ToConnectionASideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPtrOutput)
 }
 
 type ConnectionASideAccessPointOutput struct{ *pulumi.OutputState }
@@ -226,41 +302,51 @@ func (o ConnectionASideAccessPointOutput) ToConnectionASideAccessPointOutputWith
 	return o
 }
 
+func (o ConnectionASideAccessPointOutput) ToConnectionASideAccessPointPtrOutput() ConnectionASideAccessPointPtrOutput {
+	return o.ToConnectionASideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointOutput) ToConnectionASideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPoint) *ConnectionASideAccessPoint {
+		return &v
+	}).(ConnectionASideAccessPointPtrOutput)
+}
+
 // Customer account information that is associated with this connection
-func (o ConnectionASideAccessPointOutput) Accounts() ConnectionASideAccessPointAccountArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointAccount { return v.Accounts }).(ConnectionASideAccessPointAccountArrayOutput)
+func (o ConnectionASideAccessPointOutput) Account() ConnectionASideAccessPointAccountPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointAccount { return v.Account }).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
 func (o ConnectionASideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) Gateways() ConnectionASideAccessPointGatewayArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointGateway { return v.Gateways }).(ConnectionASideAccessPointGatewayArrayOutput)
+func (o ConnectionASideAccessPointOutput) Gateway() ConnectionASideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointGateway { return v.Gateway }).(ConnectionASideAccessPointGatewayPtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) Interfaces() ConnectionASideAccessPointInterfaceArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointInterface { return v.Interfaces }).(ConnectionASideAccessPointInterfaceArrayOutput)
+func (o ConnectionASideAccessPointOutput) Interface() ConnectionASideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointInterface { return v.Interface }).(ConnectionASideAccessPointInterfacePtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) LinkProtocols() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.LinkProtocols }).(pulumi.StringPtrOutput)
+func (o ConnectionASideAccessPointOutput) LinkProtocol() ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointLinkProtocol { return v.LinkProtocol }).(ConnectionASideAccessPointLinkProtocolPtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) Locations() ConnectionASideAccessPointLocationArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointLocation { return v.Locations }).(ConnectionASideAccessPointLocationArrayOutput)
+func (o ConnectionASideAccessPointOutput) Location() ConnectionASideAccessPointLocationPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointLocation { return v.Location }).(ConnectionASideAccessPointLocationPtrOutput)
 }
 
 func (o ConnectionASideAccessPointOutput) PeeringType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.PeeringType }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) Ports() ConnectionASideAccessPointPortArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointPort { return v.Ports }).(ConnectionASideAccessPointPortArrayOutput)
+func (o ConnectionASideAccessPointOutput) Port() ConnectionASideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointPort { return v.Port }).(ConnectionASideAccessPointPortPtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) Profiles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Profiles }).(pulumi.StringPtrOutput)
+func (o ConnectionASideAccessPointOutput) Profile() ConnectionASideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointProfile { return v.Profile }).(ConnectionASideAccessPointProfilePtrOutput)
 }
 
 func (o ConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
@@ -282,28 +368,160 @@ func (o ConnectionASideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionASideAccessPointOutput) VirtualDevices() ConnectionASideAccessPointVirtualDeviceArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPoint) []ConnectionASideAccessPointVirtualDevice { return v.VirtualDevices }).(ConnectionASideAccessPointVirtualDeviceArrayOutput)
+func (o ConnectionASideAccessPointOutput) VirtualDevice() ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointVirtualDevice { return v.VirtualDevice }).(ConnectionASideAccessPointVirtualDevicePtrOutput)
 }
 
-type ConnectionASideAccessPointArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPoint)(nil)).Elem()
+func (ConnectionASideAccessPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPoint)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointArrayOutput) ToConnectionASideAccessPointArrayOutput() ConnectionASideAccessPointArrayOutput {
+func (o ConnectionASideAccessPointPtrOutput) ToConnectionASideAccessPointPtrOutput() ConnectionASideAccessPointPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointArrayOutput) ToConnectionASideAccessPointArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointArrayOutput {
+func (o ConnectionASideAccessPointPtrOutput) ToConnectionASideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPoint {
-		return vs[0].([]ConnectionASideAccessPoint)[vs[1].(int)]
+func (o ConnectionASideAccessPointPtrOutput) Elem() ConnectionASideAccessPointOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) ConnectionASideAccessPoint {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPoint
+		return ret
 	}).(ConnectionASideAccessPointOutput)
+}
+
+// Customer account information that is associated with this connection
+func (o ConnectionASideAccessPointPtrOutput) Account() ConnectionASideAccessPointAccountPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointAccount {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(ConnectionASideAccessPointAccountPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) Gateway() ConnectionASideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(ConnectionASideAccessPointGatewayPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) Interface() ConnectionASideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointInterface {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(ConnectionASideAccessPointInterfacePtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) LinkProtocol() ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointLinkProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.LinkProtocol
+	}).(ConnectionASideAccessPointLinkProtocolPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) Location() ConnectionASideAccessPointLocationPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(ConnectionASideAccessPointLocationPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeeringType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) Port() ConnectionASideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointPort {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(ConnectionASideAccessPointPortPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) Profile() ConnectionASideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointProfile {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(ConnectionASideAccessPointProfilePtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) ProviderConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) RoutingProtocols() ConnectionASideAccessPointRoutingProtocolArrayOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) []ConnectionASideAccessPointRoutingProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingProtocols
+	}).(ConnectionASideAccessPointRoutingProtocolArrayOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SellerRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionASideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointPtrOutput) VirtualDevice() ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointVirtualDevice {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualDevice
+	}).(ConnectionASideAccessPointVirtualDevicePtrOutput)
 }
 
 type ConnectionASideAccessPointAccount struct {
@@ -349,29 +567,45 @@ func (i ConnectionASideAccessPointAccountArgs) ToConnectionASideAccessPointAccou
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointAccountOutput)
 }
 
-// ConnectionASideAccessPointAccountArrayInput is an input type that accepts ConnectionASideAccessPointAccountArray and ConnectionASideAccessPointAccountArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointAccountArrayInput` via:
+func (i ConnectionASideAccessPointAccountArgs) ToConnectionASideAccessPointAccountPtrOutput() ConnectionASideAccessPointAccountPtrOutput {
+	return i.ToConnectionASideAccessPointAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointAccountArgs) ToConnectionASideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointAccountOutput).ToConnectionASideAccessPointAccountPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointAccountPtrInput is an input type that accepts ConnectionASideAccessPointAccountArgs, ConnectionASideAccessPointAccountPtr and ConnectionASideAccessPointAccountPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointAccountPtrInput` via:
 //
-//	ConnectionASideAccessPointAccountArray{ ConnectionASideAccessPointAccountArgs{...} }
-type ConnectionASideAccessPointAccountArrayInput interface {
+//	        ConnectionASideAccessPointAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointAccountPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointAccountArrayOutput() ConnectionASideAccessPointAccountArrayOutput
-	ToConnectionASideAccessPointAccountArrayOutputWithContext(context.Context) ConnectionASideAccessPointAccountArrayOutput
+	ToConnectionASideAccessPointAccountPtrOutput() ConnectionASideAccessPointAccountPtrOutput
+	ToConnectionASideAccessPointAccountPtrOutputWithContext(context.Context) ConnectionASideAccessPointAccountPtrOutput
 }
 
-type ConnectionASideAccessPointAccountArray []ConnectionASideAccessPointAccountInput
+type connectionASideAccessPointAccountPtrType ConnectionASideAccessPointAccountArgs
 
-func (ConnectionASideAccessPointAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointAccount)(nil)).Elem()
+func ConnectionASideAccessPointAccountPtr(v *ConnectionASideAccessPointAccountArgs) ConnectionASideAccessPointAccountPtrInput {
+	return (*connectionASideAccessPointAccountPtrType)(v)
 }
 
-func (i ConnectionASideAccessPointAccountArray) ToConnectionASideAccessPointAccountArrayOutput() ConnectionASideAccessPointAccountArrayOutput {
-	return i.ToConnectionASideAccessPointAccountArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointAccount)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointAccountArray) ToConnectionASideAccessPointAccountArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointAccountArrayOutput)
+func (i *connectionASideAccessPointAccountPtrType) ToConnectionASideAccessPointAccountPtrOutput() ConnectionASideAccessPointAccountPtrOutput {
+	return i.ToConnectionASideAccessPointAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointAccountPtrType) ToConnectionASideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
 type ConnectionASideAccessPointAccountOutput struct{ *pulumi.OutputState }
@@ -386,6 +620,16 @@ func (o ConnectionASideAccessPointAccountOutput) ToConnectionASideAccessPointAcc
 
 func (o ConnectionASideAccessPointAccountOutput) ToConnectionASideAccessPointAccountOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountOutput {
 	return o
+}
+
+func (o ConnectionASideAccessPointAccountOutput) ToConnectionASideAccessPointAccountPtrOutput() ConnectionASideAccessPointAccountPtrOutput {
+	return o.ToConnectionASideAccessPointAccountPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointAccountOutput) ToConnectionASideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointAccount) *ConnectionASideAccessPointAccount {
+		return &v
+	}).(ConnectionASideAccessPointAccountPtrOutput)
 }
 
 func (o ConnectionASideAccessPointAccountOutput) AccountName() pulumi.StringPtrOutput {
@@ -416,24 +660,91 @@ func (o ConnectionASideAccessPointAccountOutput) OrganizationName() pulumi.Strin
 	return o.ApplyT(func(v ConnectionASideAccessPointAccount) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointAccountArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointAccountPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointAccount)(nil)).Elem()
+func (ConnectionASideAccessPointAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointAccount)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointAccountArrayOutput) ToConnectionASideAccessPointAccountArrayOutput() ConnectionASideAccessPointAccountArrayOutput {
+func (o ConnectionASideAccessPointAccountPtrOutput) ToConnectionASideAccessPointAccountPtrOutput() ConnectionASideAccessPointAccountPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointAccountArrayOutput) ToConnectionASideAccessPointAccountArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountArrayOutput {
+func (o ConnectionASideAccessPointAccountPtrOutput) ToConnectionASideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointAccountPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointAccountArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointAccount {
-		return vs[0].([]ConnectionASideAccessPointAccount)[vs[1].(int)]
+func (o ConnectionASideAccessPointAccountPtrOutput) Elem() ConnectionASideAccessPointAccountOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) ConnectionASideAccessPointAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointAccount
+		return ret
 	}).(ConnectionASideAccessPointAccountOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalCustId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionASideAccessPointAccountPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointGateway struct {
@@ -471,29 +782,45 @@ func (i ConnectionASideAccessPointGatewayArgs) ToConnectionASideAccessPointGatew
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointGatewayOutput)
 }
 
-// ConnectionASideAccessPointGatewayArrayInput is an input type that accepts ConnectionASideAccessPointGatewayArray and ConnectionASideAccessPointGatewayArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointGatewayArrayInput` via:
+func (i ConnectionASideAccessPointGatewayArgs) ToConnectionASideAccessPointGatewayPtrOutput() ConnectionASideAccessPointGatewayPtrOutput {
+	return i.ToConnectionASideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointGatewayArgs) ToConnectionASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointGatewayOutput).ToConnectionASideAccessPointGatewayPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointGatewayPtrInput is an input type that accepts ConnectionASideAccessPointGatewayArgs, ConnectionASideAccessPointGatewayPtr and ConnectionASideAccessPointGatewayPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointGatewayPtrInput` via:
 //
-//	ConnectionASideAccessPointGatewayArray{ ConnectionASideAccessPointGatewayArgs{...} }
-type ConnectionASideAccessPointGatewayArrayInput interface {
+//	        ConnectionASideAccessPointGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointGatewayPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointGatewayArrayOutput() ConnectionASideAccessPointGatewayArrayOutput
-	ToConnectionASideAccessPointGatewayArrayOutputWithContext(context.Context) ConnectionASideAccessPointGatewayArrayOutput
+	ToConnectionASideAccessPointGatewayPtrOutput() ConnectionASideAccessPointGatewayPtrOutput
+	ToConnectionASideAccessPointGatewayPtrOutputWithContext(context.Context) ConnectionASideAccessPointGatewayPtrOutput
 }
 
-type ConnectionASideAccessPointGatewayArray []ConnectionASideAccessPointGatewayInput
+type connectionASideAccessPointGatewayPtrType ConnectionASideAccessPointGatewayArgs
 
-func (ConnectionASideAccessPointGatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointGateway)(nil)).Elem()
+func ConnectionASideAccessPointGatewayPtr(v *ConnectionASideAccessPointGatewayArgs) ConnectionASideAccessPointGatewayPtrInput {
+	return (*connectionASideAccessPointGatewayPtrType)(v)
 }
 
-func (i ConnectionASideAccessPointGatewayArray) ToConnectionASideAccessPointGatewayArrayOutput() ConnectionASideAccessPointGatewayArrayOutput {
-	return i.ToConnectionASideAccessPointGatewayArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointGateway)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointGatewayArray) ToConnectionASideAccessPointGatewayArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointGatewayArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointGatewayArrayOutput)
+func (i *connectionASideAccessPointGatewayPtrType) ToConnectionASideAccessPointGatewayPtrOutput() ConnectionASideAccessPointGatewayPtrOutput {
+	return i.ToConnectionASideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointGatewayPtrType) ToConnectionASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointGatewayPtrOutput)
 }
 
 type ConnectionASideAccessPointGatewayOutput struct{ *pulumi.OutputState }
@@ -510,6 +837,16 @@ func (o ConnectionASideAccessPointGatewayOutput) ToConnectionASideAccessPointGat
 	return o
 }
 
+func (o ConnectionASideAccessPointGatewayOutput) ToConnectionASideAccessPointGatewayPtrOutput() ConnectionASideAccessPointGatewayPtrOutput {
+	return o.ToConnectionASideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointGatewayOutput) ToConnectionASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointGateway) *ConnectionASideAccessPointGateway {
+		return &v
+	}).(ConnectionASideAccessPointGatewayPtrOutput)
+}
+
 // Connection URI information
 func (o ConnectionASideAccessPointGatewayOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointGateway) *string { return v.Href }).(pulumi.StringPtrOutput)
@@ -519,24 +856,47 @@ func (o ConnectionASideAccessPointGatewayOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointGateway) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointGatewayArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointGatewayPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointGatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointGateway)(nil)).Elem()
+func (ConnectionASideAccessPointGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointGateway)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointGatewayArrayOutput) ToConnectionASideAccessPointGatewayArrayOutput() ConnectionASideAccessPointGatewayArrayOutput {
+func (o ConnectionASideAccessPointGatewayPtrOutput) ToConnectionASideAccessPointGatewayPtrOutput() ConnectionASideAccessPointGatewayPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointGatewayArrayOutput) ToConnectionASideAccessPointGatewayArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointGatewayArrayOutput {
+func (o ConnectionASideAccessPointGatewayPtrOutput) ToConnectionASideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointGatewayPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointGatewayArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointGateway {
-		return vs[0].([]ConnectionASideAccessPointGateway)[vs[1].(int)]
+func (o ConnectionASideAccessPointGatewayPtrOutput) Elem() ConnectionASideAccessPointGatewayOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointGateway) ConnectionASideAccessPointGateway {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointGateway
+		return ret
 	}).(ConnectionASideAccessPointGatewayOutput)
+}
+
+// Connection URI information
+func (o ConnectionASideAccessPointGatewayPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointGatewayPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointInterface struct {
@@ -578,29 +938,45 @@ func (i ConnectionASideAccessPointInterfaceArgs) ToConnectionASideAccessPointInt
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointInterfaceOutput)
 }
 
-// ConnectionASideAccessPointInterfaceArrayInput is an input type that accepts ConnectionASideAccessPointInterfaceArray and ConnectionASideAccessPointInterfaceArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointInterfaceArrayInput` via:
+func (i ConnectionASideAccessPointInterfaceArgs) ToConnectionASideAccessPointInterfacePtrOutput() ConnectionASideAccessPointInterfacePtrOutput {
+	return i.ToConnectionASideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointInterfaceArgs) ToConnectionASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointInterfaceOutput).ToConnectionASideAccessPointInterfacePtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointInterfacePtrInput is an input type that accepts ConnectionASideAccessPointInterfaceArgs, ConnectionASideAccessPointInterfacePtr and ConnectionASideAccessPointInterfacePtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointInterfacePtrInput` via:
 //
-//	ConnectionASideAccessPointInterfaceArray{ ConnectionASideAccessPointInterfaceArgs{...} }
-type ConnectionASideAccessPointInterfaceArrayInput interface {
+//	        ConnectionASideAccessPointInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointInterfacePtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointInterfaceArrayOutput() ConnectionASideAccessPointInterfaceArrayOutput
-	ToConnectionASideAccessPointInterfaceArrayOutputWithContext(context.Context) ConnectionASideAccessPointInterfaceArrayOutput
+	ToConnectionASideAccessPointInterfacePtrOutput() ConnectionASideAccessPointInterfacePtrOutput
+	ToConnectionASideAccessPointInterfacePtrOutputWithContext(context.Context) ConnectionASideAccessPointInterfacePtrOutput
 }
 
-type ConnectionASideAccessPointInterfaceArray []ConnectionASideAccessPointInterfaceInput
+type connectionASideAccessPointInterfacePtrType ConnectionASideAccessPointInterfaceArgs
 
-func (ConnectionASideAccessPointInterfaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointInterface)(nil)).Elem()
+func ConnectionASideAccessPointInterfacePtr(v *ConnectionASideAccessPointInterfaceArgs) ConnectionASideAccessPointInterfacePtrInput {
+	return (*connectionASideAccessPointInterfacePtrType)(v)
 }
 
-func (i ConnectionASideAccessPointInterfaceArray) ToConnectionASideAccessPointInterfaceArrayOutput() ConnectionASideAccessPointInterfaceArrayOutput {
-	return i.ToConnectionASideAccessPointInterfaceArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointInterface)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointInterfaceArray) ToConnectionASideAccessPointInterfaceArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointInterfaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointInterfaceArrayOutput)
+func (i *connectionASideAccessPointInterfacePtrType) ToConnectionASideAccessPointInterfacePtrOutput() ConnectionASideAccessPointInterfacePtrOutput {
+	return i.ToConnectionASideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointInterfacePtrType) ToConnectionASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointInterfacePtrOutput)
 }
 
 type ConnectionASideAccessPointInterfaceOutput struct{ *pulumi.OutputState }
@@ -617,6 +993,16 @@ func (o ConnectionASideAccessPointInterfaceOutput) ToConnectionASideAccessPointI
 	return o
 }
 
+func (o ConnectionASideAccessPointInterfaceOutput) ToConnectionASideAccessPointInterfacePtrOutput() ConnectionASideAccessPointInterfacePtrOutput {
+	return o.ToConnectionASideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointInterfaceOutput) ToConnectionASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointInterface) *ConnectionASideAccessPointInterface {
+		return &v
+	}).(ConnectionASideAccessPointInterfacePtrOutput)
+}
+
 // The ID of this resource.
 func (o ConnectionASideAccessPointInterfaceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -631,24 +1017,57 @@ func (o ConnectionASideAccessPointInterfaceOutput) Uuid() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionASideAccessPointInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointInterfaceArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointInterfacePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointInterfaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointInterface)(nil)).Elem()
+func (ConnectionASideAccessPointInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointInterface)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointInterfaceArrayOutput) ToConnectionASideAccessPointInterfaceArrayOutput() ConnectionASideAccessPointInterfaceArrayOutput {
+func (o ConnectionASideAccessPointInterfacePtrOutput) ToConnectionASideAccessPointInterfacePtrOutput() ConnectionASideAccessPointInterfacePtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointInterfaceArrayOutput) ToConnectionASideAccessPointInterfaceArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointInterfaceArrayOutput {
+func (o ConnectionASideAccessPointInterfacePtrOutput) ToConnectionASideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointInterfacePtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointInterfaceArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointInterface {
-		return vs[0].([]ConnectionASideAccessPointInterface)[vs[1].(int)]
+func (o ConnectionASideAccessPointInterfacePtrOutput) Elem() ConnectionASideAccessPointInterfaceOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) ConnectionASideAccessPointInterface {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointInterface
+		return ret
 	}).(ConnectionASideAccessPointInterfaceOutput)
+}
+
+// The ID of this resource.
+func (o ConnectionASideAccessPointInterfacePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionASideAccessPointInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointLinkProtocol struct {
@@ -690,6 +1109,47 @@ func (i ConnectionASideAccessPointLinkProtocolArgs) ToConnectionASideAccessPoint
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLinkProtocolOutput)
 }
 
+func (i ConnectionASideAccessPointLinkProtocolArgs) ToConnectionASideAccessPointLinkProtocolPtrOutput() ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return i.ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointLinkProtocolArgs) ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLinkProtocolOutput).ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointLinkProtocolPtrInput is an input type that accepts ConnectionASideAccessPointLinkProtocolArgs, ConnectionASideAccessPointLinkProtocolPtr and ConnectionASideAccessPointLinkProtocolPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointLinkProtocolPtrInput` via:
+//
+//	        ConnectionASideAccessPointLinkProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointLinkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToConnectionASideAccessPointLinkProtocolPtrOutput() ConnectionASideAccessPointLinkProtocolPtrOutput
+	ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(context.Context) ConnectionASideAccessPointLinkProtocolPtrOutput
+}
+
+type connectionASideAccessPointLinkProtocolPtrType ConnectionASideAccessPointLinkProtocolArgs
+
+func ConnectionASideAccessPointLinkProtocolPtr(v *ConnectionASideAccessPointLinkProtocolArgs) ConnectionASideAccessPointLinkProtocolPtrInput {
+	return (*connectionASideAccessPointLinkProtocolPtrType)(v)
+}
+
+func (*connectionASideAccessPointLinkProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (i *connectionASideAccessPointLinkProtocolPtrType) ToConnectionASideAccessPointLinkProtocolPtrOutput() ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return i.ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointLinkProtocolPtrType) ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLinkProtocolPtrOutput)
+}
+
 type ConnectionASideAccessPointLinkProtocolOutput struct{ *pulumi.OutputState }
 
 func (ConnectionASideAccessPointLinkProtocolOutput) ElementType() reflect.Type {
@@ -702,6 +1162,16 @@ func (o ConnectionASideAccessPointLinkProtocolOutput) ToConnectionASideAccessPoi
 
 func (o ConnectionASideAccessPointLinkProtocolOutput) ToConnectionASideAccessPointLinkProtocolOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolOutput {
 	return o
+}
+
+func (o ConnectionASideAccessPointLinkProtocolOutput) ToConnectionASideAccessPointLinkProtocolPtrOutput() ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return o.ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointLinkProtocolOutput) ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointLinkProtocol) *ConnectionASideAccessPointLinkProtocol {
+		return &v
+	}).(ConnectionASideAccessPointLinkProtocolPtrOutput)
 }
 
 // Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
@@ -719,6 +1189,67 @@ func (o ConnectionASideAccessPointLinkProtocolOutput) VlanSTag() pulumi.IntPtrOu
 
 func (o ConnectionASideAccessPointLinkProtocolOutput) VlanTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointLinkProtocol) *int { return v.VlanTag }).(pulumi.IntPtrOutput)
+}
+
+type ConnectionASideAccessPointLinkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionASideAccessPointLinkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) ToConnectionASideAccessPointLinkProtocolPtrOutput() ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) ToConnectionASideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) Elem() ConnectionASideAccessPointLinkProtocolOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLinkProtocol) ConnectionASideAccessPointLinkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointLinkProtocol
+		return ret
+	}).(ConnectionASideAccessPointLinkProtocolOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLinkProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanCTag
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanSTag
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionASideAccessPointLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanTag
+	}).(pulumi.IntPtrOutput)
 }
 
 type ConnectionASideAccessPointLocation struct {
@@ -758,29 +1289,45 @@ func (i ConnectionASideAccessPointLocationArgs) ToConnectionASideAccessPointLoca
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLocationOutput)
 }
 
-// ConnectionASideAccessPointLocationArrayInput is an input type that accepts ConnectionASideAccessPointLocationArray and ConnectionASideAccessPointLocationArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointLocationArrayInput` via:
+func (i ConnectionASideAccessPointLocationArgs) ToConnectionASideAccessPointLocationPtrOutput() ConnectionASideAccessPointLocationPtrOutput {
+	return i.ToConnectionASideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointLocationArgs) ToConnectionASideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLocationOutput).ToConnectionASideAccessPointLocationPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointLocationPtrInput is an input type that accepts ConnectionASideAccessPointLocationArgs, ConnectionASideAccessPointLocationPtr and ConnectionASideAccessPointLocationPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointLocationPtrInput` via:
 //
-//	ConnectionASideAccessPointLocationArray{ ConnectionASideAccessPointLocationArgs{...} }
-type ConnectionASideAccessPointLocationArrayInput interface {
+//	        ConnectionASideAccessPointLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointLocationPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointLocationArrayOutput() ConnectionASideAccessPointLocationArrayOutput
-	ToConnectionASideAccessPointLocationArrayOutputWithContext(context.Context) ConnectionASideAccessPointLocationArrayOutput
+	ToConnectionASideAccessPointLocationPtrOutput() ConnectionASideAccessPointLocationPtrOutput
+	ToConnectionASideAccessPointLocationPtrOutputWithContext(context.Context) ConnectionASideAccessPointLocationPtrOutput
 }
 
-type ConnectionASideAccessPointLocationArray []ConnectionASideAccessPointLocationInput
+type connectionASideAccessPointLocationPtrType ConnectionASideAccessPointLocationArgs
 
-func (ConnectionASideAccessPointLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointLocation)(nil)).Elem()
+func ConnectionASideAccessPointLocationPtr(v *ConnectionASideAccessPointLocationArgs) ConnectionASideAccessPointLocationPtrInput {
+	return (*connectionASideAccessPointLocationPtrType)(v)
 }
 
-func (i ConnectionASideAccessPointLocationArray) ToConnectionASideAccessPointLocationArrayOutput() ConnectionASideAccessPointLocationArrayOutput {
-	return i.ToConnectionASideAccessPointLocationArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointLocation)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointLocationArray) ToConnectionASideAccessPointLocationArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLocationArrayOutput)
+func (i *connectionASideAccessPointLocationPtrType) ToConnectionASideAccessPointLocationPtrOutput() ConnectionASideAccessPointLocationPtrOutput {
+	return i.ToConnectionASideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointLocationPtrType) ToConnectionASideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointLocationPtrOutput)
 }
 
 type ConnectionASideAccessPointLocationOutput struct{ *pulumi.OutputState }
@@ -795,6 +1342,16 @@ func (o ConnectionASideAccessPointLocationOutput) ToConnectionASideAccessPointLo
 
 func (o ConnectionASideAccessPointLocationOutput) ToConnectionASideAccessPointLocationOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationOutput {
 	return o
+}
+
+func (o ConnectionASideAccessPointLocationOutput) ToConnectionASideAccessPointLocationPtrOutput() ConnectionASideAccessPointLocationPtrOutput {
+	return o.ToConnectionASideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointLocationOutput) ToConnectionASideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointLocation) *ConnectionASideAccessPointLocation {
+		return &v
+	}).(ConnectionASideAccessPointLocationPtrOutput)
 }
 
 func (o ConnectionASideAccessPointLocationOutput) Ibx() pulumi.StringPtrOutput {
@@ -813,24 +1370,64 @@ func (o ConnectionASideAccessPointLocationOutput) Region() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ConnectionASideAccessPointLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointLocationArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointLocationPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointLocation)(nil)).Elem()
+func (ConnectionASideAccessPointLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointLocation)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointLocationArrayOutput) ToConnectionASideAccessPointLocationArrayOutput() ConnectionASideAccessPointLocationArrayOutput {
+func (o ConnectionASideAccessPointLocationPtrOutput) ToConnectionASideAccessPointLocationPtrOutput() ConnectionASideAccessPointLocationPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointLocationArrayOutput) ToConnectionASideAccessPointLocationArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationArrayOutput {
+func (o ConnectionASideAccessPointLocationPtrOutput) ToConnectionASideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointLocationPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointLocationArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointLocation {
-		return vs[0].([]ConnectionASideAccessPointLocation)[vs[1].(int)]
+func (o ConnectionASideAccessPointLocationPtrOutput) Elem() ConnectionASideAccessPointLocationOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLocation) ConnectionASideAccessPointLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointLocation
+		return ret
 	}).(ConnectionASideAccessPointLocationOutput)
+}
+
+func (o ConnectionASideAccessPointLocationPtrOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointLocationPtrOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointPort struct {
@@ -876,29 +1473,45 @@ func (i ConnectionASideAccessPointPortArgs) ToConnectionASideAccessPointPortOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortOutput)
 }
 
-// ConnectionASideAccessPointPortArrayInput is an input type that accepts ConnectionASideAccessPointPortArray and ConnectionASideAccessPointPortArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointPortArrayInput` via:
+func (i ConnectionASideAccessPointPortArgs) ToConnectionASideAccessPointPortPtrOutput() ConnectionASideAccessPointPortPtrOutput {
+	return i.ToConnectionASideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointPortArgs) ToConnectionASideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortOutput).ToConnectionASideAccessPointPortPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointPortPtrInput is an input type that accepts ConnectionASideAccessPointPortArgs, ConnectionASideAccessPointPortPtr and ConnectionASideAccessPointPortPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointPortPtrInput` via:
 //
-//	ConnectionASideAccessPointPortArray{ ConnectionASideAccessPointPortArgs{...} }
-type ConnectionASideAccessPointPortArrayInput interface {
+//	        ConnectionASideAccessPointPortArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointPortPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointPortArrayOutput() ConnectionASideAccessPointPortArrayOutput
-	ToConnectionASideAccessPointPortArrayOutputWithContext(context.Context) ConnectionASideAccessPointPortArrayOutput
+	ToConnectionASideAccessPointPortPtrOutput() ConnectionASideAccessPointPortPtrOutput
+	ToConnectionASideAccessPointPortPtrOutputWithContext(context.Context) ConnectionASideAccessPointPortPtrOutput
 }
 
-type ConnectionASideAccessPointPortArray []ConnectionASideAccessPointPortInput
+type connectionASideAccessPointPortPtrType ConnectionASideAccessPointPortArgs
 
-func (ConnectionASideAccessPointPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointPort)(nil)).Elem()
+func ConnectionASideAccessPointPortPtr(v *ConnectionASideAccessPointPortArgs) ConnectionASideAccessPointPortPtrInput {
+	return (*connectionASideAccessPointPortPtrType)(v)
 }
 
-func (i ConnectionASideAccessPointPortArray) ToConnectionASideAccessPointPortArrayOutput() ConnectionASideAccessPointPortArrayOutput {
-	return i.ToConnectionASideAccessPointPortArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointPort)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointPortArray) ToConnectionASideAccessPointPortArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortArrayOutput)
+func (i *connectionASideAccessPointPortPtrType) ToConnectionASideAccessPointPortPtrOutput() ConnectionASideAccessPointPortPtrOutput {
+	return i.ToConnectionASideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointPortPtrType) ToConnectionASideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortPtrOutput)
 }
 
 type ConnectionASideAccessPointPortOutput struct{ *pulumi.OutputState }
@@ -913,6 +1526,16 @@ func (o ConnectionASideAccessPointPortOutput) ToConnectionASideAccessPointPortOu
 
 func (o ConnectionASideAccessPointPortOutput) ToConnectionASideAccessPointPortOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortOutput {
 	return o
+}
+
+func (o ConnectionASideAccessPointPortOutput) ToConnectionASideAccessPointPortPtrOutput() ConnectionASideAccessPointPortPtrOutput {
+	return o.ToConnectionASideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointPortOutput) ToConnectionASideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointPort) *ConnectionASideAccessPointPort {
+		return &v
+	}).(ConnectionASideAccessPointPortPtrOutput)
 }
 
 // Connection URI information
@@ -936,24 +1559,67 @@ func (o ConnectionASideAccessPointPortOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointPort) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointPortArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointPortPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointPort)(nil)).Elem()
+func (ConnectionASideAccessPointPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointPort)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointPortArrayOutput) ToConnectionASideAccessPointPortArrayOutput() ConnectionASideAccessPointPortArrayOutput {
+func (o ConnectionASideAccessPointPortPtrOutput) ToConnectionASideAccessPointPortPtrOutput() ConnectionASideAccessPointPortPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointPortArrayOutput) ToConnectionASideAccessPointPortArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortArrayOutput {
+func (o ConnectionASideAccessPointPortPtrOutput) ToConnectionASideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointPortArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointPort {
-		return vs[0].([]ConnectionASideAccessPointPort)[vs[1].(int)]
+func (o ConnectionASideAccessPointPortPtrOutput) Elem() ConnectionASideAccessPointPortOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPort) ConnectionASideAccessPointPort {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointPort
+		return ret
 	}).(ConnectionASideAccessPointPortOutput)
+}
+
+// Connection URI information
+func (o ConnectionASideAccessPointPortPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o ConnectionASideAccessPointPortPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redundancy Information
+func (o ConnectionASideAccessPointPortPtrOutput) Redundancies() ConnectionASideAccessPointPortRedundancyArrayOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPort) []ConnectionASideAccessPointPortRedundancy {
+		if v == nil {
+			return nil
+		}
+		return v.Redundancies
+	}).(ConnectionASideAccessPointPortRedundancyArrayOutput)
+}
+
+func (o ConnectionASideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointPortRedundancy struct {
@@ -1100,6 +1766,47 @@ func (i ConnectionASideAccessPointProfileArgs) ToConnectionASideAccessPointProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointProfileOutput)
 }
 
+func (i ConnectionASideAccessPointProfileArgs) ToConnectionASideAccessPointProfilePtrOutput() ConnectionASideAccessPointProfilePtrOutput {
+	return i.ToConnectionASideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointProfileArgs) ToConnectionASideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointProfileOutput).ToConnectionASideAccessPointProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointProfilePtrInput is an input type that accepts ConnectionASideAccessPointProfileArgs, ConnectionASideAccessPointProfilePtr and ConnectionASideAccessPointProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointProfilePtrInput` via:
+//
+//	        ConnectionASideAccessPointProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionASideAccessPointProfilePtrOutput() ConnectionASideAccessPointProfilePtrOutput
+	ToConnectionASideAccessPointProfilePtrOutputWithContext(context.Context) ConnectionASideAccessPointProfilePtrOutput
+}
+
+type connectionASideAccessPointProfilePtrType ConnectionASideAccessPointProfileArgs
+
+func ConnectionASideAccessPointProfilePtr(v *ConnectionASideAccessPointProfileArgs) ConnectionASideAccessPointProfilePtrInput {
+	return (*connectionASideAccessPointProfilePtrType)(v)
+}
+
+func (*connectionASideAccessPointProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointProfile)(nil)).Elem()
+}
+
+func (i *connectionASideAccessPointProfilePtrType) ToConnectionASideAccessPointProfilePtrOutput() ConnectionASideAccessPointProfilePtrOutput {
+	return i.ToConnectionASideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointProfilePtrType) ToConnectionASideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointProfilePtrOutput)
+}
+
 type ConnectionASideAccessPointProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionASideAccessPointProfileOutput) ElementType() reflect.Type {
@@ -1112,6 +1819,16 @@ func (o ConnectionASideAccessPointProfileOutput) ToConnectionASideAccessPointPro
 
 func (o ConnectionASideAccessPointProfileOutput) ToConnectionASideAccessPointProfileOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfileOutput {
 	return o
+}
+
+func (o ConnectionASideAccessPointProfileOutput) ToConnectionASideAccessPointProfilePtrOutput() ConnectionASideAccessPointProfilePtrOutput {
+	return o.ToConnectionASideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointProfileOutput) ToConnectionASideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointProfile) *ConnectionASideAccessPointProfile {
+		return &v
+	}).(ConnectionASideAccessPointProfilePtrOutput)
 }
 
 func (o ConnectionASideAccessPointProfileOutput) AccessPointTypeConfigs() ConnectionASideAccessPointProfileAccessPointTypeConfigArrayOutput {
@@ -1141,6 +1858,87 @@ func (o ConnectionASideAccessPointProfileOutput) Type() pulumi.StringOutput {
 
 func (o ConnectionASideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type ConnectionASideAccessPointProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionASideAccessPointProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointProfile)(nil)).Elem()
+}
+
+func (o ConnectionASideAccessPointProfilePtrOutput) ToConnectionASideAccessPointProfilePtrOutput() ConnectionASideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionASideAccessPointProfilePtrOutput) ToConnectionASideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionASideAccessPointProfilePtrOutput) Elem() ConnectionASideAccessPointProfileOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) ConnectionASideAccessPointProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointProfile
+		return ret
+	}).(ConnectionASideAccessPointProfileOutput)
+}
+
+func (o ConnectionASideAccessPointProfilePtrOutput) AccessPointTypeConfigs() ConnectionASideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) []ConnectionASideAccessPointProfileAccessPointTypeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPointTypeConfigs
+	}).(ConnectionASideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+func (o ConnectionASideAccessPointProfilePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URI information
+func (o ConnectionASideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o ConnectionASideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionASideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointProfileAccessPointTypeConfig struct {
@@ -1397,29 +2195,45 @@ func (i ConnectionASideAccessPointVirtualDeviceArgs) ToConnectionASideAccessPoin
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointVirtualDeviceOutput)
 }
 
-// ConnectionASideAccessPointVirtualDeviceArrayInput is an input type that accepts ConnectionASideAccessPointVirtualDeviceArray and ConnectionASideAccessPointVirtualDeviceArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointVirtualDeviceArrayInput` via:
+func (i ConnectionASideAccessPointVirtualDeviceArgs) ToConnectionASideAccessPointVirtualDevicePtrOutput() ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return i.ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointVirtualDeviceArgs) ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointVirtualDeviceOutput).ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointVirtualDevicePtrInput is an input type that accepts ConnectionASideAccessPointVirtualDeviceArgs, ConnectionASideAccessPointVirtualDevicePtr and ConnectionASideAccessPointVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointVirtualDevicePtrInput` via:
 //
-//	ConnectionASideAccessPointVirtualDeviceArray{ ConnectionASideAccessPointVirtualDeviceArgs{...} }
-type ConnectionASideAccessPointVirtualDeviceArrayInput interface {
+//	        ConnectionASideAccessPointVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointVirtualDevicePtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointVirtualDeviceArrayOutput() ConnectionASideAccessPointVirtualDeviceArrayOutput
-	ToConnectionASideAccessPointVirtualDeviceArrayOutputWithContext(context.Context) ConnectionASideAccessPointVirtualDeviceArrayOutput
+	ToConnectionASideAccessPointVirtualDevicePtrOutput() ConnectionASideAccessPointVirtualDevicePtrOutput
+	ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(context.Context) ConnectionASideAccessPointVirtualDevicePtrOutput
 }
 
-type ConnectionASideAccessPointVirtualDeviceArray []ConnectionASideAccessPointVirtualDeviceInput
+type connectionASideAccessPointVirtualDevicePtrType ConnectionASideAccessPointVirtualDeviceArgs
 
-func (ConnectionASideAccessPointVirtualDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointVirtualDevice)(nil)).Elem()
+func ConnectionASideAccessPointVirtualDevicePtr(v *ConnectionASideAccessPointVirtualDeviceArgs) ConnectionASideAccessPointVirtualDevicePtrInput {
+	return (*connectionASideAccessPointVirtualDevicePtrType)(v)
 }
 
-func (i ConnectionASideAccessPointVirtualDeviceArray) ToConnectionASideAccessPointVirtualDeviceArrayOutput() ConnectionASideAccessPointVirtualDeviceArrayOutput {
-	return i.ToConnectionASideAccessPointVirtualDeviceArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointVirtualDevice)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointVirtualDeviceArray) ToConnectionASideAccessPointVirtualDeviceArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointVirtualDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointVirtualDeviceArrayOutput)
+func (i *connectionASideAccessPointVirtualDevicePtrType) ToConnectionASideAccessPointVirtualDevicePtrOutput() ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return i.ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointVirtualDevicePtrType) ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointVirtualDevicePtrOutput)
 }
 
 type ConnectionASideAccessPointVirtualDeviceOutput struct{ *pulumi.OutputState }
@@ -1436,6 +2250,16 @@ func (o ConnectionASideAccessPointVirtualDeviceOutput) ToConnectionASideAccessPo
 	return o
 }
 
+func (o ConnectionASideAccessPointVirtualDeviceOutput) ToConnectionASideAccessPointVirtualDevicePtrOutput() ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return o.ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointVirtualDeviceOutput) ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointVirtualDevice) *ConnectionASideAccessPointVirtualDevice {
+		return &v
+	}).(ConnectionASideAccessPointVirtualDevicePtrOutput)
+}
+
 // Connection URI information
 func (o ConnectionASideAccessPointVirtualDeviceOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
@@ -1450,24 +2274,57 @@ func (o ConnectionASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointVirtualDeviceArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointVirtualDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointVirtualDevice)(nil)).Elem()
+func (ConnectionASideAccessPointVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointVirtualDevice)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointVirtualDeviceArrayOutput) ToConnectionASideAccessPointVirtualDeviceArrayOutput() ConnectionASideAccessPointVirtualDeviceArrayOutput {
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) ToConnectionASideAccessPointVirtualDevicePtrOutput() ConnectionASideAccessPointVirtualDevicePtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointVirtualDeviceArrayOutput) ToConnectionASideAccessPointVirtualDeviceArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointVirtualDeviceArrayOutput {
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) ToConnectionASideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointVirtualDevicePtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointVirtualDeviceArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointVirtualDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointVirtualDevice {
-		return vs[0].([]ConnectionASideAccessPointVirtualDevice)[vs[1].(int)]
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Elem() ConnectionASideAccessPointVirtualDeviceOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) ConnectionASideAccessPointVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointVirtualDevice
+		return ret
 	}).(ConnectionASideAccessPointVirtualDeviceOutput)
+}
+
+// Connection URI information
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAdditionalInfo struct {
@@ -1617,29 +2474,45 @@ func (i ConnectionASideServiceTokenArgs) ToConnectionASideServiceTokenOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideServiceTokenOutput)
 }
 
-// ConnectionASideServiceTokenArrayInput is an input type that accepts ConnectionASideServiceTokenArray and ConnectionASideServiceTokenArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideServiceTokenArrayInput` via:
+func (i ConnectionASideServiceTokenArgs) ToConnectionASideServiceTokenPtrOutput() ConnectionASideServiceTokenPtrOutput {
+	return i.ToConnectionASideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideServiceTokenArgs) ToConnectionASideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionASideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideServiceTokenOutput).ToConnectionASideServiceTokenPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideServiceTokenPtrInput is an input type that accepts ConnectionASideServiceTokenArgs, ConnectionASideServiceTokenPtr and ConnectionASideServiceTokenPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideServiceTokenPtrInput` via:
 //
-//	ConnectionASideServiceTokenArray{ ConnectionASideServiceTokenArgs{...} }
-type ConnectionASideServiceTokenArrayInput interface {
+//	        ConnectionASideServiceTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideServiceTokenPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideServiceTokenArrayOutput() ConnectionASideServiceTokenArrayOutput
-	ToConnectionASideServiceTokenArrayOutputWithContext(context.Context) ConnectionASideServiceTokenArrayOutput
+	ToConnectionASideServiceTokenPtrOutput() ConnectionASideServiceTokenPtrOutput
+	ToConnectionASideServiceTokenPtrOutputWithContext(context.Context) ConnectionASideServiceTokenPtrOutput
 }
 
-type ConnectionASideServiceTokenArray []ConnectionASideServiceTokenInput
+type connectionASideServiceTokenPtrType ConnectionASideServiceTokenArgs
 
-func (ConnectionASideServiceTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideServiceToken)(nil)).Elem()
+func ConnectionASideServiceTokenPtr(v *ConnectionASideServiceTokenArgs) ConnectionASideServiceTokenPtrInput {
+	return (*connectionASideServiceTokenPtrType)(v)
 }
 
-func (i ConnectionASideServiceTokenArray) ToConnectionASideServiceTokenArrayOutput() ConnectionASideServiceTokenArrayOutput {
-	return i.ToConnectionASideServiceTokenArrayOutputWithContext(context.Background())
+func (*connectionASideServiceTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideServiceToken)(nil)).Elem()
 }
 
-func (i ConnectionASideServiceTokenArray) ToConnectionASideServiceTokenArrayOutputWithContext(ctx context.Context) ConnectionASideServiceTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideServiceTokenArrayOutput)
+func (i *connectionASideServiceTokenPtrType) ToConnectionASideServiceTokenPtrOutput() ConnectionASideServiceTokenPtrOutput {
+	return i.ToConnectionASideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideServiceTokenPtrType) ToConnectionASideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionASideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideServiceTokenPtrOutput)
 }
 
 type ConnectionASideServiceTokenOutput struct{ *pulumi.OutputState }
@@ -1654,6 +2527,16 @@ func (o ConnectionASideServiceTokenOutput) ToConnectionASideServiceTokenOutput()
 
 func (o ConnectionASideServiceTokenOutput) ToConnectionASideServiceTokenOutputWithContext(ctx context.Context) ConnectionASideServiceTokenOutput {
 	return o
+}
+
+func (o ConnectionASideServiceTokenOutput) ToConnectionASideServiceTokenPtrOutput() ConnectionASideServiceTokenPtrOutput {
+	return o.ToConnectionASideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideServiceTokenOutput) ToConnectionASideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionASideServiceTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideServiceToken) *ConnectionASideServiceToken {
+		return &v
+	}).(ConnectionASideServiceTokenPtrOutput)
 }
 
 func (o ConnectionASideServiceTokenOutput) Description() pulumi.StringPtrOutput {
@@ -1674,24 +2557,66 @@ func (o ConnectionASideServiceTokenOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideServiceToken) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideServiceTokenArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideServiceTokenPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideServiceTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideServiceToken)(nil)).Elem()
+func (ConnectionASideServiceTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideServiceToken)(nil)).Elem()
 }
 
-func (o ConnectionASideServiceTokenArrayOutput) ToConnectionASideServiceTokenArrayOutput() ConnectionASideServiceTokenArrayOutput {
+func (o ConnectionASideServiceTokenPtrOutput) ToConnectionASideServiceTokenPtrOutput() ConnectionASideServiceTokenPtrOutput {
 	return o
 }
 
-func (o ConnectionASideServiceTokenArrayOutput) ToConnectionASideServiceTokenArrayOutputWithContext(ctx context.Context) ConnectionASideServiceTokenArrayOutput {
+func (o ConnectionASideServiceTokenPtrOutput) ToConnectionASideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionASideServiceTokenPtrOutput {
 	return o
 }
 
-func (o ConnectionASideServiceTokenArrayOutput) Index(i pulumi.IntInput) ConnectionASideServiceTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideServiceToken {
-		return vs[0].([]ConnectionASideServiceToken)[vs[1].(int)]
+func (o ConnectionASideServiceTokenPtrOutput) Elem() ConnectionASideServiceTokenOutput {
+	return o.ApplyT(func(v *ConnectionASideServiceToken) ConnectionASideServiceToken {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideServiceToken
+		return ret
 	}).(ConnectionASideServiceTokenOutput)
+}
+
+func (o ConnectionASideServiceTokenPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URI information
+func (o ConnectionASideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionASideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionASideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionAccount struct {
@@ -1737,29 +2662,45 @@ func (i ConnectionAccountArgs) ToConnectionAccountOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountOutput)
 }
 
-// ConnectionAccountArrayInput is an input type that accepts ConnectionAccountArray and ConnectionAccountArrayOutput values.
-// You can construct a concrete instance of `ConnectionAccountArrayInput` via:
+func (i ConnectionAccountArgs) ToConnectionAccountPtrOutput() ConnectionAccountPtrOutput {
+	return i.ToConnectionAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAccountArgs) ToConnectionAccountPtrOutputWithContext(ctx context.Context) ConnectionAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountOutput).ToConnectionAccountPtrOutputWithContext(ctx)
+}
+
+// ConnectionAccountPtrInput is an input type that accepts ConnectionAccountArgs, ConnectionAccountPtr and ConnectionAccountPtrOutput values.
+// You can construct a concrete instance of `ConnectionAccountPtrInput` via:
 //
-//	ConnectionAccountArray{ ConnectionAccountArgs{...} }
-type ConnectionAccountArrayInput interface {
+//	        ConnectionAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionAccountPtrInput interface {
 	pulumi.Input
 
-	ToConnectionAccountArrayOutput() ConnectionAccountArrayOutput
-	ToConnectionAccountArrayOutputWithContext(context.Context) ConnectionAccountArrayOutput
+	ToConnectionAccountPtrOutput() ConnectionAccountPtrOutput
+	ToConnectionAccountPtrOutputWithContext(context.Context) ConnectionAccountPtrOutput
 }
 
-type ConnectionAccountArray []ConnectionAccountInput
+type connectionAccountPtrType ConnectionAccountArgs
 
-func (ConnectionAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionAccount)(nil)).Elem()
+func ConnectionAccountPtr(v *ConnectionAccountArgs) ConnectionAccountPtrInput {
+	return (*connectionAccountPtrType)(v)
 }
 
-func (i ConnectionAccountArray) ToConnectionAccountArrayOutput() ConnectionAccountArrayOutput {
-	return i.ToConnectionAccountArrayOutputWithContext(context.Background())
+func (*connectionAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccount)(nil)).Elem()
 }
 
-func (i ConnectionAccountArray) ToConnectionAccountArrayOutputWithContext(ctx context.Context) ConnectionAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountArrayOutput)
+func (i *connectionAccountPtrType) ToConnectionAccountPtrOutput() ConnectionAccountPtrOutput {
+	return i.ToConnectionAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAccountPtrType) ToConnectionAccountPtrOutputWithContext(ctx context.Context) ConnectionAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAccountPtrOutput)
 }
 
 type ConnectionAccountOutput struct{ *pulumi.OutputState }
@@ -1774,6 +2715,16 @@ func (o ConnectionAccountOutput) ToConnectionAccountOutput() ConnectionAccountOu
 
 func (o ConnectionAccountOutput) ToConnectionAccountOutputWithContext(ctx context.Context) ConnectionAccountOutput {
 	return o
+}
+
+func (o ConnectionAccountOutput) ToConnectionAccountPtrOutput() ConnectionAccountPtrOutput {
+	return o.ToConnectionAccountPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAccountOutput) ToConnectionAccountPtrOutputWithContext(ctx context.Context) ConnectionAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAccount) *ConnectionAccount {
+		return &v
+	}).(ConnectionAccountPtrOutput)
 }
 
 func (o ConnectionAccountOutput) AccountName() pulumi.StringPtrOutput {
@@ -1804,24 +2755,91 @@ func (o ConnectionAccountOutput) OrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAccount) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionAccountArrayOutput struct{ *pulumi.OutputState }
+type ConnectionAccountPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionAccount)(nil)).Elem()
+func (ConnectionAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAccount)(nil)).Elem()
 }
 
-func (o ConnectionAccountArrayOutput) ToConnectionAccountArrayOutput() ConnectionAccountArrayOutput {
+func (o ConnectionAccountPtrOutput) ToConnectionAccountPtrOutput() ConnectionAccountPtrOutput {
 	return o
 }
 
-func (o ConnectionAccountArrayOutput) ToConnectionAccountArrayOutputWithContext(ctx context.Context) ConnectionAccountArrayOutput {
+func (o ConnectionAccountPtrOutput) ToConnectionAccountPtrOutputWithContext(ctx context.Context) ConnectionAccountPtrOutput {
 	return o
 }
 
-func (o ConnectionAccountArrayOutput) Index(i pulumi.IntInput) ConnectionAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionAccount {
-		return vs[0].([]ConnectionAccount)[vs[1].(int)]
+func (o ConnectionAccountPtrOutput) Elem() ConnectionAccountOutput {
+	return o.ApplyT(func(v *ConnectionAccount) ConnectionAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAccount
+		return ret
 	}).(ConnectionAccountOutput)
+}
+
+func (o ConnectionAccountPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionAccountPtrOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalCustId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccountPtrOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccountPtrOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionAccountPtrOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionAccountPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionAdditionalInfo struct {
@@ -1983,29 +3001,45 @@ func (i ConnectionChangeLogArgs) ToConnectionChangeLogOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionChangeLogOutput)
 }
 
-// ConnectionChangeLogArrayInput is an input type that accepts ConnectionChangeLogArray and ConnectionChangeLogArrayOutput values.
-// You can construct a concrete instance of `ConnectionChangeLogArrayInput` via:
+func (i ConnectionChangeLogArgs) ToConnectionChangeLogPtrOutput() ConnectionChangeLogPtrOutput {
+	return i.ToConnectionChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionChangeLogArgs) ToConnectionChangeLogPtrOutputWithContext(ctx context.Context) ConnectionChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionChangeLogOutput).ToConnectionChangeLogPtrOutputWithContext(ctx)
+}
+
+// ConnectionChangeLogPtrInput is an input type that accepts ConnectionChangeLogArgs, ConnectionChangeLogPtr and ConnectionChangeLogPtrOutput values.
+// You can construct a concrete instance of `ConnectionChangeLogPtrInput` via:
 //
-//	ConnectionChangeLogArray{ ConnectionChangeLogArgs{...} }
-type ConnectionChangeLogArrayInput interface {
+//	        ConnectionChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionChangeLogPtrInput interface {
 	pulumi.Input
 
-	ToConnectionChangeLogArrayOutput() ConnectionChangeLogArrayOutput
-	ToConnectionChangeLogArrayOutputWithContext(context.Context) ConnectionChangeLogArrayOutput
+	ToConnectionChangeLogPtrOutput() ConnectionChangeLogPtrOutput
+	ToConnectionChangeLogPtrOutputWithContext(context.Context) ConnectionChangeLogPtrOutput
 }
 
-type ConnectionChangeLogArray []ConnectionChangeLogInput
+type connectionChangeLogPtrType ConnectionChangeLogArgs
 
-func (ConnectionChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionChangeLog)(nil)).Elem()
+func ConnectionChangeLogPtr(v *ConnectionChangeLogArgs) ConnectionChangeLogPtrInput {
+	return (*connectionChangeLogPtrType)(v)
 }
 
-func (i ConnectionChangeLogArray) ToConnectionChangeLogArrayOutput() ConnectionChangeLogArrayOutput {
-	return i.ToConnectionChangeLogArrayOutputWithContext(context.Background())
+func (*connectionChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionChangeLog)(nil)).Elem()
 }
 
-func (i ConnectionChangeLogArray) ToConnectionChangeLogArrayOutputWithContext(ctx context.Context) ConnectionChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionChangeLogArrayOutput)
+func (i *connectionChangeLogPtrType) ToConnectionChangeLogPtrOutput() ConnectionChangeLogPtrOutput {
+	return i.ToConnectionChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionChangeLogPtrType) ToConnectionChangeLogPtrOutputWithContext(ctx context.Context) ConnectionChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionChangeLogPtrOutput)
 }
 
 type ConnectionChangeLogOutput struct{ *pulumi.OutputState }
@@ -2020,6 +3054,16 @@ func (o ConnectionChangeLogOutput) ToConnectionChangeLogOutput() ConnectionChang
 
 func (o ConnectionChangeLogOutput) ToConnectionChangeLogOutputWithContext(ctx context.Context) ConnectionChangeLogOutput {
 	return o
+}
+
+func (o ConnectionChangeLogOutput) ToConnectionChangeLogPtrOutput() ConnectionChangeLogPtrOutput {
+	return o.ToConnectionChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionChangeLogOutput) ToConnectionChangeLogPtrOutputWithContext(ctx context.Context) ConnectionChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionChangeLog) *ConnectionChangeLog {
+		return &v
+	}).(ConnectionChangeLogPtrOutput)
 }
 
 func (o ConnectionChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
@@ -2070,24 +3114,136 @@ func (o ConnectionChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionChangeLogArrayOutput struct{ *pulumi.OutputState }
+type ConnectionChangeLogPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionChangeLog)(nil)).Elem()
+func (ConnectionChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionChangeLog)(nil)).Elem()
 }
 
-func (o ConnectionChangeLogArrayOutput) ToConnectionChangeLogArrayOutput() ConnectionChangeLogArrayOutput {
+func (o ConnectionChangeLogPtrOutput) ToConnectionChangeLogPtrOutput() ConnectionChangeLogPtrOutput {
 	return o
 }
 
-func (o ConnectionChangeLogArrayOutput) ToConnectionChangeLogArrayOutputWithContext(ctx context.Context) ConnectionChangeLogArrayOutput {
+func (o ConnectionChangeLogPtrOutput) ToConnectionChangeLogPtrOutputWithContext(ctx context.Context) ConnectionChangeLogPtrOutput {
 	return o
 }
 
-func (o ConnectionChangeLogArrayOutput) Index(i pulumi.IntInput) ConnectionChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionChangeLog {
-		return vs[0].([]ConnectionChangeLog)[vs[1].(int)]
+func (o ConnectionChangeLogPtrOutput) Elem() ConnectionChangeLogOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) ConnectionChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionChangeLog
+		return ret
 	}).(ConnectionChangeLogOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionNotification struct {
@@ -2240,29 +3396,45 @@ func (i ConnectionOperationArgs) ToConnectionOperationOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOperationOutput)
 }
 
-// ConnectionOperationArrayInput is an input type that accepts ConnectionOperationArray and ConnectionOperationArrayOutput values.
-// You can construct a concrete instance of `ConnectionOperationArrayInput` via:
+func (i ConnectionOperationArgs) ToConnectionOperationPtrOutput() ConnectionOperationPtrOutput {
+	return i.ToConnectionOperationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOperationArgs) ToConnectionOperationPtrOutputWithContext(ctx context.Context) ConnectionOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOperationOutput).ToConnectionOperationPtrOutputWithContext(ctx)
+}
+
+// ConnectionOperationPtrInput is an input type that accepts ConnectionOperationArgs, ConnectionOperationPtr and ConnectionOperationPtrOutput values.
+// You can construct a concrete instance of `ConnectionOperationPtrInput` via:
 //
-//	ConnectionOperationArray{ ConnectionOperationArgs{...} }
-type ConnectionOperationArrayInput interface {
+//	        ConnectionOperationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOperationPtrInput interface {
 	pulumi.Input
 
-	ToConnectionOperationArrayOutput() ConnectionOperationArrayOutput
-	ToConnectionOperationArrayOutputWithContext(context.Context) ConnectionOperationArrayOutput
+	ToConnectionOperationPtrOutput() ConnectionOperationPtrOutput
+	ToConnectionOperationPtrOutputWithContext(context.Context) ConnectionOperationPtrOutput
 }
 
-type ConnectionOperationArray []ConnectionOperationInput
+type connectionOperationPtrType ConnectionOperationArgs
 
-func (ConnectionOperationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionOperation)(nil)).Elem()
+func ConnectionOperationPtr(v *ConnectionOperationArgs) ConnectionOperationPtrInput {
+	return (*connectionOperationPtrType)(v)
 }
 
-func (i ConnectionOperationArray) ToConnectionOperationArrayOutput() ConnectionOperationArrayOutput {
-	return i.ToConnectionOperationArrayOutputWithContext(context.Background())
+func (*connectionOperationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOperation)(nil)).Elem()
 }
 
-func (i ConnectionOperationArray) ToConnectionOperationArrayOutputWithContext(ctx context.Context) ConnectionOperationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOperationArrayOutput)
+func (i *connectionOperationPtrType) ToConnectionOperationPtrOutput() ConnectionOperationPtrOutput {
+	return i.ToConnectionOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOperationPtrType) ToConnectionOperationPtrOutputWithContext(ctx context.Context) ConnectionOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOperationPtrOutput)
 }
 
 type ConnectionOperationOutput struct{ *pulumi.OutputState }
@@ -2279,6 +3451,16 @@ func (o ConnectionOperationOutput) ToConnectionOperationOutputWithContext(ctx co
 	return o
 }
 
+func (o ConnectionOperationOutput) ToConnectionOperationPtrOutput() ConnectionOperationPtrOutput {
+	return o.ToConnectionOperationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOperationOutput) ToConnectionOperationPtrOutputWithContext(ctx context.Context) ConnectionOperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOperation) *ConnectionOperation {
+		return &v
+	}).(ConnectionOperationPtrOutput)
+}
+
 func (o ConnectionOperationOutput) EquinixStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOperation) *string { return v.EquinixStatus }).(pulumi.StringPtrOutput)
 }
@@ -2291,34 +3473,65 @@ func (o ConnectionOperationOutput) ProviderStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOperation) *string { return v.ProviderStatus }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionOperationArrayOutput struct{ *pulumi.OutputState }
+type ConnectionOperationPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionOperationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionOperation)(nil)).Elem()
+func (ConnectionOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOperation)(nil)).Elem()
 }
 
-func (o ConnectionOperationArrayOutput) ToConnectionOperationArrayOutput() ConnectionOperationArrayOutput {
+func (o ConnectionOperationPtrOutput) ToConnectionOperationPtrOutput() ConnectionOperationPtrOutput {
 	return o
 }
 
-func (o ConnectionOperationArrayOutput) ToConnectionOperationArrayOutputWithContext(ctx context.Context) ConnectionOperationArrayOutput {
+func (o ConnectionOperationPtrOutput) ToConnectionOperationPtrOutputWithContext(ctx context.Context) ConnectionOperationPtrOutput {
 	return o
 }
 
-func (o ConnectionOperationArrayOutput) Index(i pulumi.IntInput) ConnectionOperationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOperation {
-		return vs[0].([]ConnectionOperation)[vs[1].(int)]
+func (o ConnectionOperationPtrOutput) Elem() ConnectionOperationOutput {
+	return o.ApplyT(func(v *ConnectionOperation) ConnectionOperation {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOperation
+		return ret
 	}).(ConnectionOperationOutput)
+}
+
+func (o ConnectionOperationPtrOutput) EquinixStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EquinixStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionOperationPtrOutput) Errors() ConnectionOperationErrorArrayOutput {
+	return o.ApplyT(func(v *ConnectionOperation) []ConnectionOperationError {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(ConnectionOperationErrorArrayOutput)
+}
+
+func (o ConnectionOperationPtrOutput) ProviderStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOperationError struct {
 	// Connection additional information
-	AdditionalInfos []ConnectionOperationErrorAdditionalInfo `pulumi:"additionalInfos"`
-	CorrelationId   *string                                  `pulumi:"correlationId"`
-	Details         *string                                  `pulumi:"details"`
-	ErrorCode       *string                                  `pulumi:"errorCode"`
-	ErrorMessage    *string                                  `pulumi:"errorMessage"`
-	Help            *string                                  `pulumi:"help"`
+	AdditionalInfo []ConnectionOperationErrorAdditionalInfo `pulumi:"additionalInfo"`
+	CorrelationId  *string                                  `pulumi:"correlationId"`
+	Details        *string                                  `pulumi:"details"`
+	ErrorCode      *string                                  `pulumi:"errorCode"`
+	ErrorMessage   *string                                  `pulumi:"errorMessage"`
+	Help           *string                                  `pulumi:"help"`
 }
 
 // ConnectionOperationErrorInput is an input type that accepts ConnectionOperationErrorArgs and ConnectionOperationErrorOutput values.
@@ -2334,12 +3547,12 @@ type ConnectionOperationErrorInput interface {
 
 type ConnectionOperationErrorArgs struct {
 	// Connection additional information
-	AdditionalInfos ConnectionOperationErrorAdditionalInfoArrayInput `pulumi:"additionalInfos"`
-	CorrelationId   pulumi.StringPtrInput                            `pulumi:"correlationId"`
-	Details         pulumi.StringPtrInput                            `pulumi:"details"`
-	ErrorCode       pulumi.StringPtrInput                            `pulumi:"errorCode"`
-	ErrorMessage    pulumi.StringPtrInput                            `pulumi:"errorMessage"`
-	Help            pulumi.StringPtrInput                            `pulumi:"help"`
+	AdditionalInfo ConnectionOperationErrorAdditionalInfoArrayInput `pulumi:"additionalInfo"`
+	CorrelationId  pulumi.StringPtrInput                            `pulumi:"correlationId"`
+	Details        pulumi.StringPtrInput                            `pulumi:"details"`
+	ErrorCode      pulumi.StringPtrInput                            `pulumi:"errorCode"`
+	ErrorMessage   pulumi.StringPtrInput                            `pulumi:"errorMessage"`
+	Help           pulumi.StringPtrInput                            `pulumi:"help"`
 }
 
 func (ConnectionOperationErrorArgs) ElementType() reflect.Type {
@@ -2394,8 +3607,8 @@ func (o ConnectionOperationErrorOutput) ToConnectionOperationErrorOutputWithCont
 }
 
 // Connection additional information
-func (o ConnectionOperationErrorOutput) AdditionalInfos() ConnectionOperationErrorAdditionalInfoArrayOutput {
-	return o.ApplyT(func(v ConnectionOperationError) []ConnectionOperationErrorAdditionalInfo { return v.AdditionalInfos }).(ConnectionOperationErrorAdditionalInfoArrayOutput)
+func (o ConnectionOperationErrorOutput) AdditionalInfo() ConnectionOperationErrorAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v ConnectionOperationError) []ConnectionOperationErrorAdditionalInfo { return v.AdditionalInfo }).(ConnectionOperationErrorAdditionalInfoArrayOutput)
 }
 
 func (o ConnectionOperationErrorOutput) CorrelationId() pulumi.StringPtrOutput {
@@ -2583,29 +3796,45 @@ func (i ConnectionOrderArgs) ToConnectionOrderOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOrderOutput)
 }
 
-// ConnectionOrderArrayInput is an input type that accepts ConnectionOrderArray and ConnectionOrderArrayOutput values.
-// You can construct a concrete instance of `ConnectionOrderArrayInput` via:
+func (i ConnectionOrderArgs) ToConnectionOrderPtrOutput() ConnectionOrderPtrOutput {
+	return i.ToConnectionOrderPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOrderArgs) ToConnectionOrderPtrOutputWithContext(ctx context.Context) ConnectionOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOrderOutput).ToConnectionOrderPtrOutputWithContext(ctx)
+}
+
+// ConnectionOrderPtrInput is an input type that accepts ConnectionOrderArgs, ConnectionOrderPtr and ConnectionOrderPtrOutput values.
+// You can construct a concrete instance of `ConnectionOrderPtrInput` via:
 //
-//	ConnectionOrderArray{ ConnectionOrderArgs{...} }
-type ConnectionOrderArrayInput interface {
+//	        ConnectionOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOrderPtrInput interface {
 	pulumi.Input
 
-	ToConnectionOrderArrayOutput() ConnectionOrderArrayOutput
-	ToConnectionOrderArrayOutputWithContext(context.Context) ConnectionOrderArrayOutput
+	ToConnectionOrderPtrOutput() ConnectionOrderPtrOutput
+	ToConnectionOrderPtrOutputWithContext(context.Context) ConnectionOrderPtrOutput
 }
 
-type ConnectionOrderArray []ConnectionOrderInput
+type connectionOrderPtrType ConnectionOrderArgs
 
-func (ConnectionOrderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionOrder)(nil)).Elem()
+func ConnectionOrderPtr(v *ConnectionOrderArgs) ConnectionOrderPtrInput {
+	return (*connectionOrderPtrType)(v)
 }
 
-func (i ConnectionOrderArray) ToConnectionOrderArrayOutput() ConnectionOrderArrayOutput {
-	return i.ToConnectionOrderArrayOutputWithContext(context.Background())
+func (*connectionOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOrder)(nil)).Elem()
 }
 
-func (i ConnectionOrderArray) ToConnectionOrderArrayOutputWithContext(ctx context.Context) ConnectionOrderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOrderArrayOutput)
+func (i *connectionOrderPtrType) ToConnectionOrderPtrOutput() ConnectionOrderPtrOutput {
+	return i.ToConnectionOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOrderPtrType) ToConnectionOrderPtrOutputWithContext(ctx context.Context) ConnectionOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOrderPtrOutput)
 }
 
 type ConnectionOrderOutput struct{ *pulumi.OutputState }
@@ -2620,6 +3849,16 @@ func (o ConnectionOrderOutput) ToConnectionOrderOutput() ConnectionOrderOutput {
 
 func (o ConnectionOrderOutput) ToConnectionOrderOutputWithContext(ctx context.Context) ConnectionOrderOutput {
 	return o
+}
+
+func (o ConnectionOrderOutput) ToConnectionOrderPtrOutput() ConnectionOrderPtrOutput {
+	return o.ToConnectionOrderPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOrderOutput) ToConnectionOrderPtrOutputWithContext(ctx context.Context) ConnectionOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOrder) *ConnectionOrder {
+		return &v
+	}).(ConnectionOrderPtrOutput)
 }
 
 // Billing tier for connection bandwidth
@@ -2642,24 +3881,68 @@ func (o ConnectionOrderOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOrder) *string { return v.PurchaseOrderNumber }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionOrderArrayOutput struct{ *pulumi.OutputState }
+type ConnectionOrderPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionOrderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionOrder)(nil)).Elem()
+func (ConnectionOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOrder)(nil)).Elem()
 }
 
-func (o ConnectionOrderArrayOutput) ToConnectionOrderArrayOutput() ConnectionOrderArrayOutput {
+func (o ConnectionOrderPtrOutput) ToConnectionOrderPtrOutput() ConnectionOrderPtrOutput {
 	return o
 }
 
-func (o ConnectionOrderArrayOutput) ToConnectionOrderArrayOutputWithContext(ctx context.Context) ConnectionOrderArrayOutput {
+func (o ConnectionOrderPtrOutput) ToConnectionOrderPtrOutputWithContext(ctx context.Context) ConnectionOrderPtrOutput {
 	return o
 }
 
-func (o ConnectionOrderArrayOutput) Index(i pulumi.IntInput) ConnectionOrderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOrder {
-		return vs[0].([]ConnectionOrder)[vs[1].(int)]
+func (o ConnectionOrderPtrOutput) Elem() ConnectionOrderOutput {
+	return o.ApplyT(func(v *ConnectionOrder) ConnectionOrder {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOrder
+		return ret
 	}).(ConnectionOrderOutput)
+}
+
+// Billing tier for connection bandwidth
+func (o ConnectionOrderPtrOutput) BillingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order Identification
+func (o ConnectionOrderPtrOutput) OrderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order Reference Number
+func (o ConnectionOrderPtrOutput) OrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Purchase order number
+func (o ConnectionOrderPtrOutput) PurchaseOrderNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PurchaseOrderNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionProject struct {
@@ -2699,29 +3982,45 @@ func (i ConnectionProjectArgs) ToConnectionProjectOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProjectOutput)
 }
 
-// ConnectionProjectArrayInput is an input type that accepts ConnectionProjectArray and ConnectionProjectArrayOutput values.
-// You can construct a concrete instance of `ConnectionProjectArrayInput` via:
+func (i ConnectionProjectArgs) ToConnectionProjectPtrOutput() ConnectionProjectPtrOutput {
+	return i.ToConnectionProjectPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProjectArgs) ToConnectionProjectPtrOutputWithContext(ctx context.Context) ConnectionProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProjectOutput).ToConnectionProjectPtrOutputWithContext(ctx)
+}
+
+// ConnectionProjectPtrInput is an input type that accepts ConnectionProjectArgs, ConnectionProjectPtr and ConnectionProjectPtrOutput values.
+// You can construct a concrete instance of `ConnectionProjectPtrInput` via:
 //
-//	ConnectionProjectArray{ ConnectionProjectArgs{...} }
-type ConnectionProjectArrayInput interface {
+//	        ConnectionProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProjectPtrInput interface {
 	pulumi.Input
 
-	ToConnectionProjectArrayOutput() ConnectionProjectArrayOutput
-	ToConnectionProjectArrayOutputWithContext(context.Context) ConnectionProjectArrayOutput
+	ToConnectionProjectPtrOutput() ConnectionProjectPtrOutput
+	ToConnectionProjectPtrOutputWithContext(context.Context) ConnectionProjectPtrOutput
 }
 
-type ConnectionProjectArray []ConnectionProjectInput
+type connectionProjectPtrType ConnectionProjectArgs
 
-func (ConnectionProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionProject)(nil)).Elem()
+func ConnectionProjectPtr(v *ConnectionProjectArgs) ConnectionProjectPtrInput {
+	return (*connectionProjectPtrType)(v)
 }
 
-func (i ConnectionProjectArray) ToConnectionProjectArrayOutput() ConnectionProjectArrayOutput {
-	return i.ToConnectionProjectArrayOutputWithContext(context.Background())
+func (*connectionProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProject)(nil)).Elem()
 }
 
-func (i ConnectionProjectArray) ToConnectionProjectArrayOutputWithContext(ctx context.Context) ConnectionProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProjectArrayOutput)
+func (i *connectionProjectPtrType) ToConnectionProjectPtrOutput() ConnectionProjectPtrOutput {
+	return i.ToConnectionProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProjectPtrType) ToConnectionProjectPtrOutputWithContext(ctx context.Context) ConnectionProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProjectPtrOutput)
 }
 
 type ConnectionProjectOutput struct{ *pulumi.OutputState }
@@ -2738,6 +4037,16 @@ func (o ConnectionProjectOutput) ToConnectionProjectOutputWithContext(ctx contex
 	return o
 }
 
+func (o ConnectionProjectOutput) ToConnectionProjectPtrOutput() ConnectionProjectPtrOutput {
+	return o.ToConnectionProjectPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProjectOutput) ToConnectionProjectPtrOutputWithContext(ctx context.Context) ConnectionProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProject) *ConnectionProject {
+		return &v
+	}).(ConnectionProjectPtrOutput)
+}
+
 // Unique Resource URL
 func (o ConnectionProjectOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProject) *string { return v.Href }).(pulumi.StringPtrOutput)
@@ -2748,24 +4057,48 @@ func (o ConnectionProjectOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProject) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionProjectArrayOutput struct{ *pulumi.OutputState }
+type ConnectionProjectPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionProject)(nil)).Elem()
+func (ConnectionProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProject)(nil)).Elem()
 }
 
-func (o ConnectionProjectArrayOutput) ToConnectionProjectArrayOutput() ConnectionProjectArrayOutput {
+func (o ConnectionProjectPtrOutput) ToConnectionProjectPtrOutput() ConnectionProjectPtrOutput {
 	return o
 }
 
-func (o ConnectionProjectArrayOutput) ToConnectionProjectArrayOutputWithContext(ctx context.Context) ConnectionProjectArrayOutput {
+func (o ConnectionProjectPtrOutput) ToConnectionProjectPtrOutputWithContext(ctx context.Context) ConnectionProjectPtrOutput {
 	return o
 }
 
-func (o ConnectionProjectArrayOutput) Index(i pulumi.IntInput) ConnectionProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionProject {
-		return vs[0].([]ConnectionProject)[vs[1].(int)]
+func (o ConnectionProjectPtrOutput) Elem() ConnectionProjectOutput {
+	return o.ApplyT(func(v *ConnectionProject) ConnectionProject {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProject
+		return ret
 	}).(ConnectionProjectOutput)
+}
+
+// Unique Resource URL
+func (o ConnectionProjectPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project Id
+func (o ConnectionProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionRedundancy struct {
@@ -2805,29 +4138,45 @@ func (i ConnectionRedundancyArgs) ToConnectionRedundancyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRedundancyOutput)
 }
 
-// ConnectionRedundancyArrayInput is an input type that accepts ConnectionRedundancyArray and ConnectionRedundancyArrayOutput values.
-// You can construct a concrete instance of `ConnectionRedundancyArrayInput` via:
+func (i ConnectionRedundancyArgs) ToConnectionRedundancyPtrOutput() ConnectionRedundancyPtrOutput {
+	return i.ToConnectionRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionRedundancyArgs) ToConnectionRedundancyPtrOutputWithContext(ctx context.Context) ConnectionRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRedundancyOutput).ToConnectionRedundancyPtrOutputWithContext(ctx)
+}
+
+// ConnectionRedundancyPtrInput is an input type that accepts ConnectionRedundancyArgs, ConnectionRedundancyPtr and ConnectionRedundancyPtrOutput values.
+// You can construct a concrete instance of `ConnectionRedundancyPtrInput` via:
 //
-//	ConnectionRedundancyArray{ ConnectionRedundancyArgs{...} }
-type ConnectionRedundancyArrayInput interface {
+//	        ConnectionRedundancyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionRedundancyPtrInput interface {
 	pulumi.Input
 
-	ToConnectionRedundancyArrayOutput() ConnectionRedundancyArrayOutput
-	ToConnectionRedundancyArrayOutputWithContext(context.Context) ConnectionRedundancyArrayOutput
+	ToConnectionRedundancyPtrOutput() ConnectionRedundancyPtrOutput
+	ToConnectionRedundancyPtrOutputWithContext(context.Context) ConnectionRedundancyPtrOutput
 }
 
-type ConnectionRedundancyArray []ConnectionRedundancyInput
+type connectionRedundancyPtrType ConnectionRedundancyArgs
 
-func (ConnectionRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionRedundancy)(nil)).Elem()
+func ConnectionRedundancyPtr(v *ConnectionRedundancyArgs) ConnectionRedundancyPtrInput {
+	return (*connectionRedundancyPtrType)(v)
 }
 
-func (i ConnectionRedundancyArray) ToConnectionRedundancyArrayOutput() ConnectionRedundancyArrayOutput {
-	return i.ToConnectionRedundancyArrayOutputWithContext(context.Background())
+func (*connectionRedundancyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionRedundancy)(nil)).Elem()
 }
 
-func (i ConnectionRedundancyArray) ToConnectionRedundancyArrayOutputWithContext(ctx context.Context) ConnectionRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRedundancyArrayOutput)
+func (i *connectionRedundancyPtrType) ToConnectionRedundancyPtrOutput() ConnectionRedundancyPtrOutput {
+	return i.ToConnectionRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionRedundancyPtrType) ToConnectionRedundancyPtrOutputWithContext(ctx context.Context) ConnectionRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionRedundancyPtrOutput)
 }
 
 type ConnectionRedundancyOutput struct{ *pulumi.OutputState }
@@ -2844,6 +4193,16 @@ func (o ConnectionRedundancyOutput) ToConnectionRedundancyOutputWithContext(ctx 
 	return o
 }
 
+func (o ConnectionRedundancyOutput) ToConnectionRedundancyPtrOutput() ConnectionRedundancyPtrOutput {
+	return o.ToConnectionRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionRedundancyOutput) ToConnectionRedundancyPtrOutputWithContext(ctx context.Context) ConnectionRedundancyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionRedundancy) *ConnectionRedundancy {
+		return &v
+	}).(ConnectionRedundancyPtrOutput)
+}
+
 // Redundancy group identifier
 func (o ConnectionRedundancyOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionRedundancy) *string { return v.Group }).(pulumi.StringPtrOutput)
@@ -2854,33 +4213,57 @@ func (o ConnectionRedundancyOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionRedundancy) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionRedundancyArrayOutput struct{ *pulumi.OutputState }
+type ConnectionRedundancyPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionRedundancy)(nil)).Elem()
+func (ConnectionRedundancyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionRedundancy)(nil)).Elem()
 }
 
-func (o ConnectionRedundancyArrayOutput) ToConnectionRedundancyArrayOutput() ConnectionRedundancyArrayOutput {
+func (o ConnectionRedundancyPtrOutput) ToConnectionRedundancyPtrOutput() ConnectionRedundancyPtrOutput {
 	return o
 }
 
-func (o ConnectionRedundancyArrayOutput) ToConnectionRedundancyArrayOutputWithContext(ctx context.Context) ConnectionRedundancyArrayOutput {
+func (o ConnectionRedundancyPtrOutput) ToConnectionRedundancyPtrOutputWithContext(ctx context.Context) ConnectionRedundancyPtrOutput {
 	return o
 }
 
-func (o ConnectionRedundancyArrayOutput) Index(i pulumi.IntInput) ConnectionRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionRedundancy {
-		return vs[0].([]ConnectionRedundancy)[vs[1].(int)]
+func (o ConnectionRedundancyPtrOutput) Elem() ConnectionRedundancyOutput {
+	return o.ApplyT(func(v *ConnectionRedundancy) ConnectionRedundancy {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionRedundancy
+		return ret
 	}).(ConnectionRedundancyOutput)
+}
+
+// Redundancy group identifier
+func (o ConnectionRedundancyPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// Priority type- PRIMARY, SECONDARY
+func (o ConnectionRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSide struct {
 	// Point of access details
-	AccessPoints []ConnectionZSideAccessPoint `pulumi:"accessPoints"`
+	AccessPoint *ConnectionZSideAccessPoint `pulumi:"accessPoint"`
 	// Connection side additional information
-	AdditionalInfos []ConnectionZSideAdditionalInfo `pulumi:"additionalInfos"`
+	AdditionalInfo []ConnectionZSideAdditionalInfo `pulumi:"additionalInfo"`
 	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-	ServiceTokens []ConnectionZSideServiceToken `pulumi:"serviceTokens"`
+	ServiceToken *ConnectionZSideServiceToken `pulumi:"serviceToken"`
 }
 
 // ConnectionZSideInput is an input type that accepts ConnectionZSideArgs and ConnectionZSideOutput values.
@@ -2896,11 +4279,11 @@ type ConnectionZSideInput interface {
 
 type ConnectionZSideArgs struct {
 	// Point of access details
-	AccessPoints ConnectionZSideAccessPointArrayInput `pulumi:"accessPoints"`
+	AccessPoint ConnectionZSideAccessPointPtrInput `pulumi:"accessPoint"`
 	// Connection side additional information
-	AdditionalInfos ConnectionZSideAdditionalInfoArrayInput `pulumi:"additionalInfos"`
+	AdditionalInfo ConnectionZSideAdditionalInfoArrayInput `pulumi:"additionalInfo"`
 	// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-	ServiceTokens ConnectionZSideServiceTokenArrayInput `pulumi:"serviceTokens"`
+	ServiceToken ConnectionZSideServiceTokenPtrInput `pulumi:"serviceToken"`
 }
 
 func (ConnectionZSideArgs) ElementType() reflect.Type {
@@ -2915,29 +4298,45 @@ func (i ConnectionZSideArgs) ToConnectionZSideOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideOutput)
 }
 
-// ConnectionZSideArrayInput is an input type that accepts ConnectionZSideArray and ConnectionZSideArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideArrayInput` via:
+func (i ConnectionZSideArgs) ToConnectionZSidePtrOutput() ConnectionZSidePtrOutput {
+	return i.ToConnectionZSidePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideArgs) ToConnectionZSidePtrOutputWithContext(ctx context.Context) ConnectionZSidePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideOutput).ToConnectionZSidePtrOutputWithContext(ctx)
+}
+
+// ConnectionZSidePtrInput is an input type that accepts ConnectionZSideArgs, ConnectionZSidePtr and ConnectionZSidePtrOutput values.
+// You can construct a concrete instance of `ConnectionZSidePtrInput` via:
 //
-//	ConnectionZSideArray{ ConnectionZSideArgs{...} }
-type ConnectionZSideArrayInput interface {
+//	        ConnectionZSideArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSidePtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideArrayOutput() ConnectionZSideArrayOutput
-	ToConnectionZSideArrayOutputWithContext(context.Context) ConnectionZSideArrayOutput
+	ToConnectionZSidePtrOutput() ConnectionZSidePtrOutput
+	ToConnectionZSidePtrOutputWithContext(context.Context) ConnectionZSidePtrOutput
 }
 
-type ConnectionZSideArray []ConnectionZSideInput
+type connectionZSidePtrType ConnectionZSideArgs
 
-func (ConnectionZSideArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSide)(nil)).Elem()
+func ConnectionZSidePtr(v *ConnectionZSideArgs) ConnectionZSidePtrInput {
+	return (*connectionZSidePtrType)(v)
 }
 
-func (i ConnectionZSideArray) ToConnectionZSideArrayOutput() ConnectionZSideArrayOutput {
-	return i.ToConnectionZSideArrayOutputWithContext(context.Background())
+func (*connectionZSidePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSide)(nil)).Elem()
 }
 
-func (i ConnectionZSideArray) ToConnectionZSideArrayOutputWithContext(ctx context.Context) ConnectionZSideArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideArrayOutput)
+func (i *connectionZSidePtrType) ToConnectionZSidePtrOutput() ConnectionZSidePtrOutput {
+	return i.ToConnectionZSidePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSidePtrType) ToConnectionZSidePtrOutputWithContext(ctx context.Context) ConnectionZSidePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSidePtrOutput)
 }
 
 type ConnectionZSideOutput struct{ *pulumi.OutputState }
@@ -2954,58 +4353,102 @@ func (o ConnectionZSideOutput) ToConnectionZSideOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ConnectionZSideOutput) ToConnectionZSidePtrOutput() ConnectionZSidePtrOutput {
+	return o.ToConnectionZSidePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideOutput) ToConnectionZSidePtrOutputWithContext(ctx context.Context) ConnectionZSidePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSide) *ConnectionZSide {
+		return &v
+	}).(ConnectionZSidePtrOutput)
+}
+
 // Point of access details
-func (o ConnectionZSideOutput) AccessPoints() ConnectionZSideAccessPointArrayOutput {
-	return o.ApplyT(func(v ConnectionZSide) []ConnectionZSideAccessPoint { return v.AccessPoints }).(ConnectionZSideAccessPointArrayOutput)
+func (o ConnectionZSideOutput) AccessPoint() ConnectionZSideAccessPointPtrOutput {
+	return o.ApplyT(func(v ConnectionZSide) *ConnectionZSideAccessPoint { return v.AccessPoint }).(ConnectionZSideAccessPointPtrOutput)
 }
 
 // Connection side additional information
-func (o ConnectionZSideOutput) AdditionalInfos() ConnectionZSideAdditionalInfoArrayOutput {
-	return o.ApplyT(func(v ConnectionZSide) []ConnectionZSideAdditionalInfo { return v.AdditionalInfos }).(ConnectionZSideAdditionalInfoArrayOutput)
+func (o ConnectionZSideOutput) AdditionalInfo() ConnectionZSideAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v ConnectionZSide) []ConnectionZSideAdditionalInfo { return v.AdditionalInfo }).(ConnectionZSideAdditionalInfoArrayOutput)
 }
 
 // For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
-func (o ConnectionZSideOutput) ServiceTokens() ConnectionZSideServiceTokenArrayOutput {
-	return o.ApplyT(func(v ConnectionZSide) []ConnectionZSideServiceToken { return v.ServiceTokens }).(ConnectionZSideServiceTokenArrayOutput)
+func (o ConnectionZSideOutput) ServiceToken() ConnectionZSideServiceTokenPtrOutput {
+	return o.ApplyT(func(v ConnectionZSide) *ConnectionZSideServiceToken { return v.ServiceToken }).(ConnectionZSideServiceTokenPtrOutput)
 }
 
-type ConnectionZSideArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSidePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSide)(nil)).Elem()
+func (ConnectionZSidePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSide)(nil)).Elem()
 }
 
-func (o ConnectionZSideArrayOutput) ToConnectionZSideArrayOutput() ConnectionZSideArrayOutput {
+func (o ConnectionZSidePtrOutput) ToConnectionZSidePtrOutput() ConnectionZSidePtrOutput {
 	return o
 }
 
-func (o ConnectionZSideArrayOutput) ToConnectionZSideArrayOutputWithContext(ctx context.Context) ConnectionZSideArrayOutput {
+func (o ConnectionZSidePtrOutput) ToConnectionZSidePtrOutputWithContext(ctx context.Context) ConnectionZSidePtrOutput {
 	return o
 }
 
-func (o ConnectionZSideArrayOutput) Index(i pulumi.IntInput) ConnectionZSideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSide {
-		return vs[0].([]ConnectionZSide)[vs[1].(int)]
+func (o ConnectionZSidePtrOutput) Elem() ConnectionZSideOutput {
+	return o.ApplyT(func(v *ConnectionZSide) ConnectionZSide {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSide
+		return ret
 	}).(ConnectionZSideOutput)
+}
+
+// Point of access details
+func (o ConnectionZSidePtrOutput) AccessPoint() ConnectionZSideAccessPointPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSide) *ConnectionZSideAccessPoint {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPoint
+	}).(ConnectionZSideAccessPointPtrOutput)
+}
+
+// Connection side additional information
+func (o ConnectionZSidePtrOutput) AdditionalInfo() ConnectionZSideAdditionalInfoArrayOutput {
+	return o.ApplyT(func(v *ConnectionZSide) []ConnectionZSideAdditionalInfo {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ConnectionZSideAdditionalInfoArrayOutput)
+}
+
+// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+func (o ConnectionZSidePtrOutput) ServiceToken() ConnectionZSideServiceTokenPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSide) *ConnectionZSideServiceToken {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceToken
+	}).(ConnectionZSideServiceTokenPtrOutput)
 }
 
 type ConnectionZSideAccessPoint struct {
 	// Customer account information that is associated with this connection
-	Accounts             []ConnectionZSideAccessPointAccount         `pulumi:"accounts"`
+	Account              *ConnectionZSideAccessPointAccount          `pulumi:"account"`
 	AuthenticationKey    *string                                     `pulumi:"authenticationKey"`
-	Gateways             []ConnectionZSideAccessPointGateway         `pulumi:"gateways"`
-	Interfaces           []ConnectionZSideAccessPointInterface       `pulumi:"interfaces"`
-	LinkProtocols        *string                                     `pulumi:"linkProtocols"`
-	Locations            []ConnectionZSideAccessPointLocation        `pulumi:"locations"`
+	Gateway              *ConnectionZSideAccessPointGateway          `pulumi:"gateway"`
+	Interface            *ConnectionZSideAccessPointInterface        `pulumi:"interface"`
+	LinkProtocol         *ConnectionZSideAccessPointLinkProtocol     `pulumi:"linkProtocol"`
+	Location             *ConnectionZSideAccessPointLocation         `pulumi:"location"`
 	PeeringType          *string                                     `pulumi:"peeringType"`
-	Ports                []ConnectionZSideAccessPointPort            `pulumi:"ports"`
-	Profiles             *string                                     `pulumi:"profiles"`
+	Port                 *ConnectionZSideAccessPointPort             `pulumi:"port"`
+	Profile              *ConnectionZSideAccessPointProfile          `pulumi:"profile"`
 	ProviderConnectionId *string                                     `pulumi:"providerConnectionId"`
 	RoutingProtocols     []ConnectionZSideAccessPointRoutingProtocol `pulumi:"routingProtocols"`
 	SellerRegion         *string                                     `pulumi:"sellerRegion"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-	Type           *string                                   `pulumi:"type"`
-	VirtualDevices []ConnectionZSideAccessPointVirtualDevice `pulumi:"virtualDevices"`
+	Type          *string                                  `pulumi:"type"`
+	VirtualDevice *ConnectionZSideAccessPointVirtualDevice `pulumi:"virtualDevice"`
 }
 
 // ConnectionZSideAccessPointInput is an input type that accepts ConnectionZSideAccessPointArgs and ConnectionZSideAccessPointOutput values.
@@ -3021,21 +4464,21 @@ type ConnectionZSideAccessPointInput interface {
 
 type ConnectionZSideAccessPointArgs struct {
 	// Customer account information that is associated with this connection
-	Accounts             ConnectionZSideAccessPointAccountArrayInput         `pulumi:"accounts"`
+	Account              ConnectionZSideAccessPointAccountPtrInput           `pulumi:"account"`
 	AuthenticationKey    pulumi.StringPtrInput                               `pulumi:"authenticationKey"`
-	Gateways             ConnectionZSideAccessPointGatewayArrayInput         `pulumi:"gateways"`
-	Interfaces           ConnectionZSideAccessPointInterfaceArrayInput       `pulumi:"interfaces"`
-	LinkProtocols        pulumi.StringPtrInput                               `pulumi:"linkProtocols"`
-	Locations            ConnectionZSideAccessPointLocationArrayInput        `pulumi:"locations"`
+	Gateway              ConnectionZSideAccessPointGatewayPtrInput           `pulumi:"gateway"`
+	Interface            ConnectionZSideAccessPointInterfacePtrInput         `pulumi:"interface"`
+	LinkProtocol         ConnectionZSideAccessPointLinkProtocolPtrInput      `pulumi:"linkProtocol"`
+	Location             ConnectionZSideAccessPointLocationPtrInput          `pulumi:"location"`
 	PeeringType          pulumi.StringPtrInput                               `pulumi:"peeringType"`
-	Ports                ConnectionZSideAccessPointPortArrayInput            `pulumi:"ports"`
-	Profiles             pulumi.StringPtrInput                               `pulumi:"profiles"`
+	Port                 ConnectionZSideAccessPointPortPtrInput              `pulumi:"port"`
+	Profile              ConnectionZSideAccessPointProfilePtrInput           `pulumi:"profile"`
 	ProviderConnectionId pulumi.StringPtrInput                               `pulumi:"providerConnectionId"`
 	RoutingProtocols     ConnectionZSideAccessPointRoutingProtocolArrayInput `pulumi:"routingProtocols"`
 	SellerRegion         pulumi.StringPtrInput                               `pulumi:"sellerRegion"`
 	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-	Type           pulumi.StringPtrInput                             `pulumi:"type"`
-	VirtualDevices ConnectionZSideAccessPointVirtualDeviceArrayInput `pulumi:"virtualDevices"`
+	Type          pulumi.StringPtrInput                           `pulumi:"type"`
+	VirtualDevice ConnectionZSideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
 }
 
 func (ConnectionZSideAccessPointArgs) ElementType() reflect.Type {
@@ -3050,29 +4493,45 @@ func (i ConnectionZSideAccessPointArgs) ToConnectionZSideAccessPointOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointOutput)
 }
 
-// ConnectionZSideAccessPointArrayInput is an input type that accepts ConnectionZSideAccessPointArray and ConnectionZSideAccessPointArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointArrayInput` via:
+func (i ConnectionZSideAccessPointArgs) ToConnectionZSideAccessPointPtrOutput() ConnectionZSideAccessPointPtrOutput {
+	return i.ToConnectionZSideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointArgs) ToConnectionZSideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointOutput).ToConnectionZSideAccessPointPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointPtrInput is an input type that accepts ConnectionZSideAccessPointArgs, ConnectionZSideAccessPointPtr and ConnectionZSideAccessPointPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointPtrInput` via:
 //
-//	ConnectionZSideAccessPointArray{ ConnectionZSideAccessPointArgs{...} }
-type ConnectionZSideAccessPointArrayInput interface {
+//	        ConnectionZSideAccessPointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointArrayOutput() ConnectionZSideAccessPointArrayOutput
-	ToConnectionZSideAccessPointArrayOutputWithContext(context.Context) ConnectionZSideAccessPointArrayOutput
+	ToConnectionZSideAccessPointPtrOutput() ConnectionZSideAccessPointPtrOutput
+	ToConnectionZSideAccessPointPtrOutputWithContext(context.Context) ConnectionZSideAccessPointPtrOutput
 }
 
-type ConnectionZSideAccessPointArray []ConnectionZSideAccessPointInput
+type connectionZSideAccessPointPtrType ConnectionZSideAccessPointArgs
 
-func (ConnectionZSideAccessPointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPoint)(nil)).Elem()
+func ConnectionZSideAccessPointPtr(v *ConnectionZSideAccessPointArgs) ConnectionZSideAccessPointPtrInput {
+	return (*connectionZSideAccessPointPtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointArray) ToConnectionZSideAccessPointArrayOutput() ConnectionZSideAccessPointArrayOutput {
-	return i.ToConnectionZSideAccessPointArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPoint)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointArray) ToConnectionZSideAccessPointArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointArrayOutput)
+func (i *connectionZSideAccessPointPtrType) ToConnectionZSideAccessPointPtrOutput() ConnectionZSideAccessPointPtrOutput {
+	return i.ToConnectionZSideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointPtrType) ToConnectionZSideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPtrOutput)
 }
 
 type ConnectionZSideAccessPointOutput struct{ *pulumi.OutputState }
@@ -3089,41 +4548,51 @@ func (o ConnectionZSideAccessPointOutput) ToConnectionZSideAccessPointOutputWith
 	return o
 }
 
+func (o ConnectionZSideAccessPointOutput) ToConnectionZSideAccessPointPtrOutput() ConnectionZSideAccessPointPtrOutput {
+	return o.ToConnectionZSideAccessPointPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointOutput) ToConnectionZSideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPoint) *ConnectionZSideAccessPoint {
+		return &v
+	}).(ConnectionZSideAccessPointPtrOutput)
+}
+
 // Customer account information that is associated with this connection
-func (o ConnectionZSideAccessPointOutput) Accounts() ConnectionZSideAccessPointAccountArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointAccount { return v.Accounts }).(ConnectionZSideAccessPointAccountArrayOutput)
+func (o ConnectionZSideAccessPointOutput) Account() ConnectionZSideAccessPointAccountPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointAccount { return v.Account }).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
 func (o ConnectionZSideAccessPointOutput) AuthenticationKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.AuthenticationKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) Gateways() ConnectionZSideAccessPointGatewayArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointGateway { return v.Gateways }).(ConnectionZSideAccessPointGatewayArrayOutput)
+func (o ConnectionZSideAccessPointOutput) Gateway() ConnectionZSideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointGateway { return v.Gateway }).(ConnectionZSideAccessPointGatewayPtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) Interfaces() ConnectionZSideAccessPointInterfaceArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointInterface { return v.Interfaces }).(ConnectionZSideAccessPointInterfaceArrayOutput)
+func (o ConnectionZSideAccessPointOutput) Interface() ConnectionZSideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointInterface { return v.Interface }).(ConnectionZSideAccessPointInterfacePtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) LinkProtocols() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.LinkProtocols }).(pulumi.StringPtrOutput)
+func (o ConnectionZSideAccessPointOutput) LinkProtocol() ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointLinkProtocol { return v.LinkProtocol }).(ConnectionZSideAccessPointLinkProtocolPtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) Locations() ConnectionZSideAccessPointLocationArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointLocation { return v.Locations }).(ConnectionZSideAccessPointLocationArrayOutput)
+func (o ConnectionZSideAccessPointOutput) Location() ConnectionZSideAccessPointLocationPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointLocation { return v.Location }).(ConnectionZSideAccessPointLocationPtrOutput)
 }
 
 func (o ConnectionZSideAccessPointOutput) PeeringType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.PeeringType }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) Ports() ConnectionZSideAccessPointPortArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointPort { return v.Ports }).(ConnectionZSideAccessPointPortArrayOutput)
+func (o ConnectionZSideAccessPointOutput) Port() ConnectionZSideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointPort { return v.Port }).(ConnectionZSideAccessPointPortPtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) Profiles() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Profiles }).(pulumi.StringPtrOutput)
+func (o ConnectionZSideAccessPointOutput) Profile() ConnectionZSideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointProfile { return v.Profile }).(ConnectionZSideAccessPointProfilePtrOutput)
 }
 
 func (o ConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
@@ -3145,28 +4614,160 @@ func (o ConnectionZSideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionZSideAccessPointOutput) VirtualDevices() ConnectionZSideAccessPointVirtualDeviceArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPoint) []ConnectionZSideAccessPointVirtualDevice { return v.VirtualDevices }).(ConnectionZSideAccessPointVirtualDeviceArrayOutput)
+func (o ConnectionZSideAccessPointOutput) VirtualDevice() ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointVirtualDevice { return v.VirtualDevice }).(ConnectionZSideAccessPointVirtualDevicePtrOutput)
 }
 
-type ConnectionZSideAccessPointArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPoint)(nil)).Elem()
+func (ConnectionZSideAccessPointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPoint)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointArrayOutput) ToConnectionZSideAccessPointArrayOutput() ConnectionZSideAccessPointArrayOutput {
+func (o ConnectionZSideAccessPointPtrOutput) ToConnectionZSideAccessPointPtrOutput() ConnectionZSideAccessPointPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointArrayOutput) ToConnectionZSideAccessPointArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointArrayOutput {
+func (o ConnectionZSideAccessPointPtrOutput) ToConnectionZSideAccessPointPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPoint {
-		return vs[0].([]ConnectionZSideAccessPoint)[vs[1].(int)]
+func (o ConnectionZSideAccessPointPtrOutput) Elem() ConnectionZSideAccessPointOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) ConnectionZSideAccessPoint {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPoint
+		return ret
 	}).(ConnectionZSideAccessPointOutput)
+}
+
+// Customer account information that is associated with this connection
+func (o ConnectionZSideAccessPointPtrOutput) Account() ConnectionZSideAccessPointAccountPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointAccount {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(ConnectionZSideAccessPointAccountPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) AuthenticationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) Gateway() ConnectionZSideAccessPointGatewayPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(ConnectionZSideAccessPointGatewayPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) Interface() ConnectionZSideAccessPointInterfacePtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointInterface {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(ConnectionZSideAccessPointInterfacePtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) LinkProtocol() ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointLinkProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.LinkProtocol
+	}).(ConnectionZSideAccessPointLinkProtocolPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) Location() ConnectionZSideAccessPointLocationPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(ConnectionZSideAccessPointLocationPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) PeeringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeeringType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) Port() ConnectionZSideAccessPointPortPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointPort {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(ConnectionZSideAccessPointPortPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) Profile() ConnectionZSideAccessPointProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointProfile {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(ConnectionZSideAccessPointProfilePtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) RoutingProtocols() ConnectionZSideAccessPointRoutingProtocolArrayOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) []ConnectionZSideAccessPointRoutingProtocol {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingProtocols
+	}).(ConnectionZSideAccessPointRoutingProtocolArrayOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SellerRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionZSideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointPtrOutput) VirtualDevice() ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointVirtualDevice {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualDevice
+	}).(ConnectionZSideAccessPointVirtualDevicePtrOutput)
 }
 
 type ConnectionZSideAccessPointAccount struct {
@@ -3212,29 +4813,45 @@ func (i ConnectionZSideAccessPointAccountArgs) ToConnectionZSideAccessPointAccou
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointAccountOutput)
 }
 
-// ConnectionZSideAccessPointAccountArrayInput is an input type that accepts ConnectionZSideAccessPointAccountArray and ConnectionZSideAccessPointAccountArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointAccountArrayInput` via:
+func (i ConnectionZSideAccessPointAccountArgs) ToConnectionZSideAccessPointAccountPtrOutput() ConnectionZSideAccessPointAccountPtrOutput {
+	return i.ToConnectionZSideAccessPointAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointAccountArgs) ToConnectionZSideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointAccountOutput).ToConnectionZSideAccessPointAccountPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointAccountPtrInput is an input type that accepts ConnectionZSideAccessPointAccountArgs, ConnectionZSideAccessPointAccountPtr and ConnectionZSideAccessPointAccountPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointAccountPtrInput` via:
 //
-//	ConnectionZSideAccessPointAccountArray{ ConnectionZSideAccessPointAccountArgs{...} }
-type ConnectionZSideAccessPointAccountArrayInput interface {
+//	        ConnectionZSideAccessPointAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointAccountPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointAccountArrayOutput() ConnectionZSideAccessPointAccountArrayOutput
-	ToConnectionZSideAccessPointAccountArrayOutputWithContext(context.Context) ConnectionZSideAccessPointAccountArrayOutput
+	ToConnectionZSideAccessPointAccountPtrOutput() ConnectionZSideAccessPointAccountPtrOutput
+	ToConnectionZSideAccessPointAccountPtrOutputWithContext(context.Context) ConnectionZSideAccessPointAccountPtrOutput
 }
 
-type ConnectionZSideAccessPointAccountArray []ConnectionZSideAccessPointAccountInput
+type connectionZSideAccessPointAccountPtrType ConnectionZSideAccessPointAccountArgs
 
-func (ConnectionZSideAccessPointAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointAccount)(nil)).Elem()
+func ConnectionZSideAccessPointAccountPtr(v *ConnectionZSideAccessPointAccountArgs) ConnectionZSideAccessPointAccountPtrInput {
+	return (*connectionZSideAccessPointAccountPtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointAccountArray) ToConnectionZSideAccessPointAccountArrayOutput() ConnectionZSideAccessPointAccountArrayOutput {
-	return i.ToConnectionZSideAccessPointAccountArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointAccount)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointAccountArray) ToConnectionZSideAccessPointAccountArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointAccountArrayOutput)
+func (i *connectionZSideAccessPointAccountPtrType) ToConnectionZSideAccessPointAccountPtrOutput() ConnectionZSideAccessPointAccountPtrOutput {
+	return i.ToConnectionZSideAccessPointAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointAccountPtrType) ToConnectionZSideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
 type ConnectionZSideAccessPointAccountOutput struct{ *pulumi.OutputState }
@@ -3249,6 +4866,16 @@ func (o ConnectionZSideAccessPointAccountOutput) ToConnectionZSideAccessPointAcc
 
 func (o ConnectionZSideAccessPointAccountOutput) ToConnectionZSideAccessPointAccountOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountOutput {
 	return o
+}
+
+func (o ConnectionZSideAccessPointAccountOutput) ToConnectionZSideAccessPointAccountPtrOutput() ConnectionZSideAccessPointAccountPtrOutput {
+	return o.ToConnectionZSideAccessPointAccountPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointAccountOutput) ToConnectionZSideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointAccount) *ConnectionZSideAccessPointAccount {
+		return &v
+	}).(ConnectionZSideAccessPointAccountPtrOutput)
 }
 
 func (o ConnectionZSideAccessPointAccountOutput) AccountName() pulumi.StringPtrOutput {
@@ -3279,24 +4906,91 @@ func (o ConnectionZSideAccessPointAccountOutput) OrganizationName() pulumi.Strin
 	return o.ApplyT(func(v ConnectionZSideAccessPointAccount) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointAccountArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointAccountPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointAccount)(nil)).Elem()
+func (ConnectionZSideAccessPointAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointAccount)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointAccountArrayOutput) ToConnectionZSideAccessPointAccountArrayOutput() ConnectionZSideAccessPointAccountArrayOutput {
+func (o ConnectionZSideAccessPointAccountPtrOutput) ToConnectionZSideAccessPointAccountPtrOutput() ConnectionZSideAccessPointAccountPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointAccountArrayOutput) ToConnectionZSideAccessPointAccountArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountArrayOutput {
+func (o ConnectionZSideAccessPointAccountPtrOutput) ToConnectionZSideAccessPointAccountPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointAccountPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointAccountArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointAccount {
-		return vs[0].([]ConnectionZSideAccessPointAccount)[vs[1].(int)]
+func (o ConnectionZSideAccessPointAccountPtrOutput) Elem() ConnectionZSideAccessPointAccountOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) ConnectionZSideAccessPointAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointAccount
+		return ret
 	}).(ConnectionZSideAccessPointAccountOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalCustId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointAccountPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointGateway struct {
@@ -3334,29 +5028,45 @@ func (i ConnectionZSideAccessPointGatewayArgs) ToConnectionZSideAccessPointGatew
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointGatewayOutput)
 }
 
-// ConnectionZSideAccessPointGatewayArrayInput is an input type that accepts ConnectionZSideAccessPointGatewayArray and ConnectionZSideAccessPointGatewayArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointGatewayArrayInput` via:
+func (i ConnectionZSideAccessPointGatewayArgs) ToConnectionZSideAccessPointGatewayPtrOutput() ConnectionZSideAccessPointGatewayPtrOutput {
+	return i.ToConnectionZSideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointGatewayArgs) ToConnectionZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointGatewayOutput).ToConnectionZSideAccessPointGatewayPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointGatewayPtrInput is an input type that accepts ConnectionZSideAccessPointGatewayArgs, ConnectionZSideAccessPointGatewayPtr and ConnectionZSideAccessPointGatewayPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointGatewayPtrInput` via:
 //
-//	ConnectionZSideAccessPointGatewayArray{ ConnectionZSideAccessPointGatewayArgs{...} }
-type ConnectionZSideAccessPointGatewayArrayInput interface {
+//	        ConnectionZSideAccessPointGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointGatewayPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointGatewayArrayOutput() ConnectionZSideAccessPointGatewayArrayOutput
-	ToConnectionZSideAccessPointGatewayArrayOutputWithContext(context.Context) ConnectionZSideAccessPointGatewayArrayOutput
+	ToConnectionZSideAccessPointGatewayPtrOutput() ConnectionZSideAccessPointGatewayPtrOutput
+	ToConnectionZSideAccessPointGatewayPtrOutputWithContext(context.Context) ConnectionZSideAccessPointGatewayPtrOutput
 }
 
-type ConnectionZSideAccessPointGatewayArray []ConnectionZSideAccessPointGatewayInput
+type connectionZSideAccessPointGatewayPtrType ConnectionZSideAccessPointGatewayArgs
 
-func (ConnectionZSideAccessPointGatewayArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointGateway)(nil)).Elem()
+func ConnectionZSideAccessPointGatewayPtr(v *ConnectionZSideAccessPointGatewayArgs) ConnectionZSideAccessPointGatewayPtrInput {
+	return (*connectionZSideAccessPointGatewayPtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointGatewayArray) ToConnectionZSideAccessPointGatewayArrayOutput() ConnectionZSideAccessPointGatewayArrayOutput {
-	return i.ToConnectionZSideAccessPointGatewayArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointGateway)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointGatewayArray) ToConnectionZSideAccessPointGatewayArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointGatewayArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointGatewayArrayOutput)
+func (i *connectionZSideAccessPointGatewayPtrType) ToConnectionZSideAccessPointGatewayPtrOutput() ConnectionZSideAccessPointGatewayPtrOutput {
+	return i.ToConnectionZSideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointGatewayPtrType) ToConnectionZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointGatewayPtrOutput)
 }
 
 type ConnectionZSideAccessPointGatewayOutput struct{ *pulumi.OutputState }
@@ -3373,6 +5083,16 @@ func (o ConnectionZSideAccessPointGatewayOutput) ToConnectionZSideAccessPointGat
 	return o
 }
 
+func (o ConnectionZSideAccessPointGatewayOutput) ToConnectionZSideAccessPointGatewayPtrOutput() ConnectionZSideAccessPointGatewayPtrOutput {
+	return o.ToConnectionZSideAccessPointGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointGatewayOutput) ToConnectionZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointGateway) *ConnectionZSideAccessPointGateway {
+		return &v
+	}).(ConnectionZSideAccessPointGatewayPtrOutput)
+}
+
 // Connection URI information
 func (o ConnectionZSideAccessPointGatewayOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointGateway) *string { return v.Href }).(pulumi.StringPtrOutput)
@@ -3382,24 +5102,47 @@ func (o ConnectionZSideAccessPointGatewayOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointGateway) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointGatewayArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointGatewayPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointGatewayArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointGateway)(nil)).Elem()
+func (ConnectionZSideAccessPointGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointGateway)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointGatewayArrayOutput) ToConnectionZSideAccessPointGatewayArrayOutput() ConnectionZSideAccessPointGatewayArrayOutput {
+func (o ConnectionZSideAccessPointGatewayPtrOutput) ToConnectionZSideAccessPointGatewayPtrOutput() ConnectionZSideAccessPointGatewayPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointGatewayArrayOutput) ToConnectionZSideAccessPointGatewayArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointGatewayArrayOutput {
+func (o ConnectionZSideAccessPointGatewayPtrOutput) ToConnectionZSideAccessPointGatewayPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointGatewayPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointGatewayArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointGateway {
-		return vs[0].([]ConnectionZSideAccessPointGateway)[vs[1].(int)]
+func (o ConnectionZSideAccessPointGatewayPtrOutput) Elem() ConnectionZSideAccessPointGatewayOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointGateway) ConnectionZSideAccessPointGateway {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointGateway
+		return ret
 	}).(ConnectionZSideAccessPointGatewayOutput)
+}
+
+// Connection URI information
+func (o ConnectionZSideAccessPointGatewayPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointGatewayPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointInterface struct {
@@ -3441,29 +5184,45 @@ func (i ConnectionZSideAccessPointInterfaceArgs) ToConnectionZSideAccessPointInt
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointInterfaceOutput)
 }
 
-// ConnectionZSideAccessPointInterfaceArrayInput is an input type that accepts ConnectionZSideAccessPointInterfaceArray and ConnectionZSideAccessPointInterfaceArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointInterfaceArrayInput` via:
+func (i ConnectionZSideAccessPointInterfaceArgs) ToConnectionZSideAccessPointInterfacePtrOutput() ConnectionZSideAccessPointInterfacePtrOutput {
+	return i.ToConnectionZSideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointInterfaceArgs) ToConnectionZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointInterfaceOutput).ToConnectionZSideAccessPointInterfacePtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointInterfacePtrInput is an input type that accepts ConnectionZSideAccessPointInterfaceArgs, ConnectionZSideAccessPointInterfacePtr and ConnectionZSideAccessPointInterfacePtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointInterfacePtrInput` via:
 //
-//	ConnectionZSideAccessPointInterfaceArray{ ConnectionZSideAccessPointInterfaceArgs{...} }
-type ConnectionZSideAccessPointInterfaceArrayInput interface {
+//	        ConnectionZSideAccessPointInterfaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointInterfacePtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointInterfaceArrayOutput() ConnectionZSideAccessPointInterfaceArrayOutput
-	ToConnectionZSideAccessPointInterfaceArrayOutputWithContext(context.Context) ConnectionZSideAccessPointInterfaceArrayOutput
+	ToConnectionZSideAccessPointInterfacePtrOutput() ConnectionZSideAccessPointInterfacePtrOutput
+	ToConnectionZSideAccessPointInterfacePtrOutputWithContext(context.Context) ConnectionZSideAccessPointInterfacePtrOutput
 }
 
-type ConnectionZSideAccessPointInterfaceArray []ConnectionZSideAccessPointInterfaceInput
+type connectionZSideAccessPointInterfacePtrType ConnectionZSideAccessPointInterfaceArgs
 
-func (ConnectionZSideAccessPointInterfaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointInterface)(nil)).Elem()
+func ConnectionZSideAccessPointInterfacePtr(v *ConnectionZSideAccessPointInterfaceArgs) ConnectionZSideAccessPointInterfacePtrInput {
+	return (*connectionZSideAccessPointInterfacePtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointInterfaceArray) ToConnectionZSideAccessPointInterfaceArrayOutput() ConnectionZSideAccessPointInterfaceArrayOutput {
-	return i.ToConnectionZSideAccessPointInterfaceArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointInterfacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointInterface)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointInterfaceArray) ToConnectionZSideAccessPointInterfaceArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointInterfaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointInterfaceArrayOutput)
+func (i *connectionZSideAccessPointInterfacePtrType) ToConnectionZSideAccessPointInterfacePtrOutput() ConnectionZSideAccessPointInterfacePtrOutput {
+	return i.ToConnectionZSideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointInterfacePtrType) ToConnectionZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointInterfacePtrOutput)
 }
 
 type ConnectionZSideAccessPointInterfaceOutput struct{ *pulumi.OutputState }
@@ -3480,6 +5239,16 @@ func (o ConnectionZSideAccessPointInterfaceOutput) ToConnectionZSideAccessPointI
 	return o
 }
 
+func (o ConnectionZSideAccessPointInterfaceOutput) ToConnectionZSideAccessPointInterfacePtrOutput() ConnectionZSideAccessPointInterfacePtrOutput {
+	return o.ToConnectionZSideAccessPointInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointInterfaceOutput) ToConnectionZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointInterface) *ConnectionZSideAccessPointInterface {
+		return &v
+	}).(ConnectionZSideAccessPointInterfacePtrOutput)
+}
+
 // The ID of this resource.
 func (o ConnectionZSideAccessPointInterfaceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3494,24 +5263,57 @@ func (o ConnectionZSideAccessPointInterfaceOutput) Uuid() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionZSideAccessPointInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointInterfaceArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointInterfacePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointInterfaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointInterface)(nil)).Elem()
+func (ConnectionZSideAccessPointInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointInterface)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointInterfaceArrayOutput) ToConnectionZSideAccessPointInterfaceArrayOutput() ConnectionZSideAccessPointInterfaceArrayOutput {
+func (o ConnectionZSideAccessPointInterfacePtrOutput) ToConnectionZSideAccessPointInterfacePtrOutput() ConnectionZSideAccessPointInterfacePtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointInterfaceArrayOutput) ToConnectionZSideAccessPointInterfaceArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointInterfaceArrayOutput {
+func (o ConnectionZSideAccessPointInterfacePtrOutput) ToConnectionZSideAccessPointInterfacePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointInterfacePtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointInterfaceArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointInterface {
-		return vs[0].([]ConnectionZSideAccessPointInterface)[vs[1].(int)]
+func (o ConnectionZSideAccessPointInterfacePtrOutput) Elem() ConnectionZSideAccessPointInterfaceOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) ConnectionZSideAccessPointInterface {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointInterface
+		return ret
 	}).(ConnectionZSideAccessPointInterfaceOutput)
+}
+
+// The ID of this resource.
+func (o ConnectionZSideAccessPointInterfacePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionZSideAccessPointInterfacePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointLinkProtocol struct {
@@ -3553,6 +5355,47 @@ func (i ConnectionZSideAccessPointLinkProtocolArgs) ToConnectionZSideAccessPoint
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLinkProtocolOutput)
 }
 
+func (i ConnectionZSideAccessPointLinkProtocolArgs) ToConnectionZSideAccessPointLinkProtocolPtrOutput() ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return i.ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointLinkProtocolArgs) ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLinkProtocolOutput).ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointLinkProtocolPtrInput is an input type that accepts ConnectionZSideAccessPointLinkProtocolArgs, ConnectionZSideAccessPointLinkProtocolPtr and ConnectionZSideAccessPointLinkProtocolPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointLinkProtocolPtrInput` via:
+//
+//	        ConnectionZSideAccessPointLinkProtocolArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointLinkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToConnectionZSideAccessPointLinkProtocolPtrOutput() ConnectionZSideAccessPointLinkProtocolPtrOutput
+	ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(context.Context) ConnectionZSideAccessPointLinkProtocolPtrOutput
+}
+
+type connectionZSideAccessPointLinkProtocolPtrType ConnectionZSideAccessPointLinkProtocolArgs
+
+func ConnectionZSideAccessPointLinkProtocolPtr(v *ConnectionZSideAccessPointLinkProtocolArgs) ConnectionZSideAccessPointLinkProtocolPtrInput {
+	return (*connectionZSideAccessPointLinkProtocolPtrType)(v)
+}
+
+func (*connectionZSideAccessPointLinkProtocolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (i *connectionZSideAccessPointLinkProtocolPtrType) ToConnectionZSideAccessPointLinkProtocolPtrOutput() ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return i.ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointLinkProtocolPtrType) ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLinkProtocolPtrOutput)
+}
+
 type ConnectionZSideAccessPointLinkProtocolOutput struct{ *pulumi.OutputState }
 
 func (ConnectionZSideAccessPointLinkProtocolOutput) ElementType() reflect.Type {
@@ -3565,6 +5408,16 @@ func (o ConnectionZSideAccessPointLinkProtocolOutput) ToConnectionZSideAccessPoi
 
 func (o ConnectionZSideAccessPointLinkProtocolOutput) ToConnectionZSideAccessPointLinkProtocolOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolOutput {
 	return o
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolOutput) ToConnectionZSideAccessPointLinkProtocolPtrOutput() ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return o.ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolOutput) ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointLinkProtocol) *ConnectionZSideAccessPointLinkProtocol {
+		return &v
+	}).(ConnectionZSideAccessPointLinkProtocolPtrOutput)
 }
 
 // Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
@@ -3582,6 +5435,67 @@ func (o ConnectionZSideAccessPointLinkProtocolOutput) VlanSTag() pulumi.IntPtrOu
 
 func (o ConnectionZSideAccessPointLinkProtocolOutput) VlanTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointLinkProtocol) *int { return v.VlanTag }).(pulumi.IntPtrOutput)
+}
+
+type ConnectionZSideAccessPointLinkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionZSideAccessPointLinkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointLinkProtocol)(nil)).Elem()
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) ToConnectionZSideAccessPointLinkProtocolPtrOutput() ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) ToConnectionZSideAccessPointLinkProtocolPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLinkProtocolPtrOutput {
+	return o
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) Elem() ConnectionZSideAccessPointLinkProtocolOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLinkProtocol) ConnectionZSideAccessPointLinkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointLinkProtocol
+		return ret
+	}).(ConnectionZSideAccessPointLinkProtocolOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLinkProtocol) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) VlanCTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanCTag
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) VlanSTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanSTag
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) VlanTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLinkProtocol) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanTag
+	}).(pulumi.IntPtrOutput)
 }
 
 type ConnectionZSideAccessPointLocation struct {
@@ -3621,29 +5535,45 @@ func (i ConnectionZSideAccessPointLocationArgs) ToConnectionZSideAccessPointLoca
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLocationOutput)
 }
 
-// ConnectionZSideAccessPointLocationArrayInput is an input type that accepts ConnectionZSideAccessPointLocationArray and ConnectionZSideAccessPointLocationArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointLocationArrayInput` via:
+func (i ConnectionZSideAccessPointLocationArgs) ToConnectionZSideAccessPointLocationPtrOutput() ConnectionZSideAccessPointLocationPtrOutput {
+	return i.ToConnectionZSideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointLocationArgs) ToConnectionZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLocationOutput).ToConnectionZSideAccessPointLocationPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointLocationPtrInput is an input type that accepts ConnectionZSideAccessPointLocationArgs, ConnectionZSideAccessPointLocationPtr and ConnectionZSideAccessPointLocationPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointLocationPtrInput` via:
 //
-//	ConnectionZSideAccessPointLocationArray{ ConnectionZSideAccessPointLocationArgs{...} }
-type ConnectionZSideAccessPointLocationArrayInput interface {
+//	        ConnectionZSideAccessPointLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointLocationPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointLocationArrayOutput() ConnectionZSideAccessPointLocationArrayOutput
-	ToConnectionZSideAccessPointLocationArrayOutputWithContext(context.Context) ConnectionZSideAccessPointLocationArrayOutput
+	ToConnectionZSideAccessPointLocationPtrOutput() ConnectionZSideAccessPointLocationPtrOutput
+	ToConnectionZSideAccessPointLocationPtrOutputWithContext(context.Context) ConnectionZSideAccessPointLocationPtrOutput
 }
 
-type ConnectionZSideAccessPointLocationArray []ConnectionZSideAccessPointLocationInput
+type connectionZSideAccessPointLocationPtrType ConnectionZSideAccessPointLocationArgs
 
-func (ConnectionZSideAccessPointLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointLocation)(nil)).Elem()
+func ConnectionZSideAccessPointLocationPtr(v *ConnectionZSideAccessPointLocationArgs) ConnectionZSideAccessPointLocationPtrInput {
+	return (*connectionZSideAccessPointLocationPtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointLocationArray) ToConnectionZSideAccessPointLocationArrayOutput() ConnectionZSideAccessPointLocationArrayOutput {
-	return i.ToConnectionZSideAccessPointLocationArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointLocation)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointLocationArray) ToConnectionZSideAccessPointLocationArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLocationArrayOutput)
+func (i *connectionZSideAccessPointLocationPtrType) ToConnectionZSideAccessPointLocationPtrOutput() ConnectionZSideAccessPointLocationPtrOutput {
+	return i.ToConnectionZSideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointLocationPtrType) ToConnectionZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointLocationPtrOutput)
 }
 
 type ConnectionZSideAccessPointLocationOutput struct{ *pulumi.OutputState }
@@ -3658,6 +5588,16 @@ func (o ConnectionZSideAccessPointLocationOutput) ToConnectionZSideAccessPointLo
 
 func (o ConnectionZSideAccessPointLocationOutput) ToConnectionZSideAccessPointLocationOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationOutput {
 	return o
+}
+
+func (o ConnectionZSideAccessPointLocationOutput) ToConnectionZSideAccessPointLocationPtrOutput() ConnectionZSideAccessPointLocationPtrOutput {
+	return o.ToConnectionZSideAccessPointLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointLocationOutput) ToConnectionZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointLocation) *ConnectionZSideAccessPointLocation {
+		return &v
+	}).(ConnectionZSideAccessPointLocationPtrOutput)
 }
 
 func (o ConnectionZSideAccessPointLocationOutput) Ibx() pulumi.StringPtrOutput {
@@ -3676,24 +5616,64 @@ func (o ConnectionZSideAccessPointLocationOutput) Region() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ConnectionZSideAccessPointLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointLocationArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointLocationPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointLocation)(nil)).Elem()
+func (ConnectionZSideAccessPointLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointLocation)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointLocationArrayOutput) ToConnectionZSideAccessPointLocationArrayOutput() ConnectionZSideAccessPointLocationArrayOutput {
+func (o ConnectionZSideAccessPointLocationPtrOutput) ToConnectionZSideAccessPointLocationPtrOutput() ConnectionZSideAccessPointLocationPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointLocationArrayOutput) ToConnectionZSideAccessPointLocationArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationArrayOutput {
+func (o ConnectionZSideAccessPointLocationPtrOutput) ToConnectionZSideAccessPointLocationPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointLocationPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointLocationArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointLocation {
-		return vs[0].([]ConnectionZSideAccessPointLocation)[vs[1].(int)]
+func (o ConnectionZSideAccessPointLocationPtrOutput) Elem() ConnectionZSideAccessPointLocationOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLocation) ConnectionZSideAccessPointLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointLocation
+		return ret
 	}).(ConnectionZSideAccessPointLocationOutput)
+}
+
+func (o ConnectionZSideAccessPointLocationPtrOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointLocationPtrOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointPort struct {
@@ -3739,29 +5719,45 @@ func (i ConnectionZSideAccessPointPortArgs) ToConnectionZSideAccessPointPortOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortOutput)
 }
 
-// ConnectionZSideAccessPointPortArrayInput is an input type that accepts ConnectionZSideAccessPointPortArray and ConnectionZSideAccessPointPortArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointPortArrayInput` via:
+func (i ConnectionZSideAccessPointPortArgs) ToConnectionZSideAccessPointPortPtrOutput() ConnectionZSideAccessPointPortPtrOutput {
+	return i.ToConnectionZSideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointPortArgs) ToConnectionZSideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortOutput).ToConnectionZSideAccessPointPortPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointPortPtrInput is an input type that accepts ConnectionZSideAccessPointPortArgs, ConnectionZSideAccessPointPortPtr and ConnectionZSideAccessPointPortPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointPortPtrInput` via:
 //
-//	ConnectionZSideAccessPointPortArray{ ConnectionZSideAccessPointPortArgs{...} }
-type ConnectionZSideAccessPointPortArrayInput interface {
+//	        ConnectionZSideAccessPointPortArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointPortPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointPortArrayOutput() ConnectionZSideAccessPointPortArrayOutput
-	ToConnectionZSideAccessPointPortArrayOutputWithContext(context.Context) ConnectionZSideAccessPointPortArrayOutput
+	ToConnectionZSideAccessPointPortPtrOutput() ConnectionZSideAccessPointPortPtrOutput
+	ToConnectionZSideAccessPointPortPtrOutputWithContext(context.Context) ConnectionZSideAccessPointPortPtrOutput
 }
 
-type ConnectionZSideAccessPointPortArray []ConnectionZSideAccessPointPortInput
+type connectionZSideAccessPointPortPtrType ConnectionZSideAccessPointPortArgs
 
-func (ConnectionZSideAccessPointPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointPort)(nil)).Elem()
+func ConnectionZSideAccessPointPortPtr(v *ConnectionZSideAccessPointPortArgs) ConnectionZSideAccessPointPortPtrInput {
+	return (*connectionZSideAccessPointPortPtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointPortArray) ToConnectionZSideAccessPointPortArrayOutput() ConnectionZSideAccessPointPortArrayOutput {
-	return i.ToConnectionZSideAccessPointPortArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointPortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointPort)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointPortArray) ToConnectionZSideAccessPointPortArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortArrayOutput)
+func (i *connectionZSideAccessPointPortPtrType) ToConnectionZSideAccessPointPortPtrOutput() ConnectionZSideAccessPointPortPtrOutput {
+	return i.ToConnectionZSideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointPortPtrType) ToConnectionZSideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortPtrOutput)
 }
 
 type ConnectionZSideAccessPointPortOutput struct{ *pulumi.OutputState }
@@ -3776,6 +5772,16 @@ func (o ConnectionZSideAccessPointPortOutput) ToConnectionZSideAccessPointPortOu
 
 func (o ConnectionZSideAccessPointPortOutput) ToConnectionZSideAccessPointPortOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortOutput {
 	return o
+}
+
+func (o ConnectionZSideAccessPointPortOutput) ToConnectionZSideAccessPointPortPtrOutput() ConnectionZSideAccessPointPortPtrOutput {
+	return o.ToConnectionZSideAccessPointPortPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointPortOutput) ToConnectionZSideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointPort) *ConnectionZSideAccessPointPort {
+		return &v
+	}).(ConnectionZSideAccessPointPortPtrOutput)
 }
 
 // Connection URI information
@@ -3799,24 +5805,67 @@ func (o ConnectionZSideAccessPointPortOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointPort) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointPortArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointPortPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointPort)(nil)).Elem()
+func (ConnectionZSideAccessPointPortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointPort)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointPortArrayOutput) ToConnectionZSideAccessPointPortArrayOutput() ConnectionZSideAccessPointPortArrayOutput {
+func (o ConnectionZSideAccessPointPortPtrOutput) ToConnectionZSideAccessPointPortPtrOutput() ConnectionZSideAccessPointPortPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointPortArrayOutput) ToConnectionZSideAccessPointPortArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortArrayOutput {
+func (o ConnectionZSideAccessPointPortPtrOutput) ToConnectionZSideAccessPointPortPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointPortArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointPort {
-		return vs[0].([]ConnectionZSideAccessPointPort)[vs[1].(int)]
+func (o ConnectionZSideAccessPointPortPtrOutput) Elem() ConnectionZSideAccessPointPortOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) ConnectionZSideAccessPointPort {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointPort
+		return ret
 	}).(ConnectionZSideAccessPointPortOutput)
+}
+
+// Connection URI information
+func (o ConnectionZSideAccessPointPortPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o ConnectionZSideAccessPointPortPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redundancy Information
+func (o ConnectionZSideAccessPointPortPtrOutput) Redundancies() ConnectionZSideAccessPointPortRedundancyArrayOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) []ConnectionZSideAccessPointPortRedundancy {
+		if v == nil {
+			return nil
+		}
+		return v.Redundancies
+	}).(ConnectionZSideAccessPointPortRedundancyArrayOutput)
+}
+
+func (o ConnectionZSideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointPortRedundancy struct {
@@ -3963,6 +6012,47 @@ func (i ConnectionZSideAccessPointProfileArgs) ToConnectionZSideAccessPointProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointProfileOutput)
 }
 
+func (i ConnectionZSideAccessPointProfileArgs) ToConnectionZSideAccessPointProfilePtrOutput() ConnectionZSideAccessPointProfilePtrOutput {
+	return i.ToConnectionZSideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointProfileArgs) ToConnectionZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointProfileOutput).ToConnectionZSideAccessPointProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointProfilePtrInput is an input type that accepts ConnectionZSideAccessPointProfileArgs, ConnectionZSideAccessPointProfilePtr and ConnectionZSideAccessPointProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointProfilePtrInput` via:
+//
+//	        ConnectionZSideAccessPointProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionZSideAccessPointProfilePtrOutput() ConnectionZSideAccessPointProfilePtrOutput
+	ToConnectionZSideAccessPointProfilePtrOutputWithContext(context.Context) ConnectionZSideAccessPointProfilePtrOutput
+}
+
+type connectionZSideAccessPointProfilePtrType ConnectionZSideAccessPointProfileArgs
+
+func ConnectionZSideAccessPointProfilePtr(v *ConnectionZSideAccessPointProfileArgs) ConnectionZSideAccessPointProfilePtrInput {
+	return (*connectionZSideAccessPointProfilePtrType)(v)
+}
+
+func (*connectionZSideAccessPointProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointProfile)(nil)).Elem()
+}
+
+func (i *connectionZSideAccessPointProfilePtrType) ToConnectionZSideAccessPointProfilePtrOutput() ConnectionZSideAccessPointProfilePtrOutput {
+	return i.ToConnectionZSideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointProfilePtrType) ToConnectionZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointProfilePtrOutput)
+}
+
 type ConnectionZSideAccessPointProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionZSideAccessPointProfileOutput) ElementType() reflect.Type {
@@ -3975,6 +6065,16 @@ func (o ConnectionZSideAccessPointProfileOutput) ToConnectionZSideAccessPointPro
 
 func (o ConnectionZSideAccessPointProfileOutput) ToConnectionZSideAccessPointProfileOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfileOutput {
 	return o
+}
+
+func (o ConnectionZSideAccessPointProfileOutput) ToConnectionZSideAccessPointProfilePtrOutput() ConnectionZSideAccessPointProfilePtrOutput {
+	return o.ToConnectionZSideAccessPointProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointProfileOutput) ToConnectionZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointProfile) *ConnectionZSideAccessPointProfile {
+		return &v
+	}).(ConnectionZSideAccessPointProfilePtrOutput)
 }
 
 func (o ConnectionZSideAccessPointProfileOutput) AccessPointTypeConfigs() ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
@@ -4004,6 +6104,87 @@ func (o ConnectionZSideAccessPointProfileOutput) Type() pulumi.StringOutput {
 
 func (o ConnectionZSideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type ConnectionZSideAccessPointProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionZSideAccessPointProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointProfile)(nil)).Elem()
+}
+
+func (o ConnectionZSideAccessPointProfilePtrOutput) ToConnectionZSideAccessPointProfilePtrOutput() ConnectionZSideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionZSideAccessPointProfilePtrOutput) ToConnectionZSideAccessPointProfilePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionZSideAccessPointProfilePtrOutput) Elem() ConnectionZSideAccessPointProfileOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) ConnectionZSideAccessPointProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointProfile
+		return ret
+	}).(ConnectionZSideAccessPointProfileOutput)
+}
+
+func (o ConnectionZSideAccessPointProfilePtrOutput) AccessPointTypeConfigs() ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) []ConnectionZSideAccessPointProfileAccessPointTypeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AccessPointTypeConfigs
+	}).(ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayOutput)
+}
+
+func (o ConnectionZSideAccessPointProfilePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URI information
+func (o ConnectionZSideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+func (o ConnectionZSideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionZSideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointProfileAccessPointTypeConfig struct {
@@ -4260,29 +6441,45 @@ func (i ConnectionZSideAccessPointVirtualDeviceArgs) ToConnectionZSideAccessPoin
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointVirtualDeviceOutput)
 }
 
-// ConnectionZSideAccessPointVirtualDeviceArrayInput is an input type that accepts ConnectionZSideAccessPointVirtualDeviceArray and ConnectionZSideAccessPointVirtualDeviceArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointVirtualDeviceArrayInput` via:
+func (i ConnectionZSideAccessPointVirtualDeviceArgs) ToConnectionZSideAccessPointVirtualDevicePtrOutput() ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return i.ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointVirtualDeviceArgs) ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointVirtualDeviceOutput).ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointVirtualDevicePtrInput is an input type that accepts ConnectionZSideAccessPointVirtualDeviceArgs, ConnectionZSideAccessPointVirtualDevicePtr and ConnectionZSideAccessPointVirtualDevicePtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointVirtualDevicePtrInput` via:
 //
-//	ConnectionZSideAccessPointVirtualDeviceArray{ ConnectionZSideAccessPointVirtualDeviceArgs{...} }
-type ConnectionZSideAccessPointVirtualDeviceArrayInput interface {
+//	        ConnectionZSideAccessPointVirtualDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointVirtualDevicePtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointVirtualDeviceArrayOutput() ConnectionZSideAccessPointVirtualDeviceArrayOutput
-	ToConnectionZSideAccessPointVirtualDeviceArrayOutputWithContext(context.Context) ConnectionZSideAccessPointVirtualDeviceArrayOutput
+	ToConnectionZSideAccessPointVirtualDevicePtrOutput() ConnectionZSideAccessPointVirtualDevicePtrOutput
+	ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(context.Context) ConnectionZSideAccessPointVirtualDevicePtrOutput
 }
 
-type ConnectionZSideAccessPointVirtualDeviceArray []ConnectionZSideAccessPointVirtualDeviceInput
+type connectionZSideAccessPointVirtualDevicePtrType ConnectionZSideAccessPointVirtualDeviceArgs
 
-func (ConnectionZSideAccessPointVirtualDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointVirtualDevice)(nil)).Elem()
+func ConnectionZSideAccessPointVirtualDevicePtr(v *ConnectionZSideAccessPointVirtualDeviceArgs) ConnectionZSideAccessPointVirtualDevicePtrInput {
+	return (*connectionZSideAccessPointVirtualDevicePtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointVirtualDeviceArray) ToConnectionZSideAccessPointVirtualDeviceArrayOutput() ConnectionZSideAccessPointVirtualDeviceArrayOutput {
-	return i.ToConnectionZSideAccessPointVirtualDeviceArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointVirtualDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointVirtualDevice)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointVirtualDeviceArray) ToConnectionZSideAccessPointVirtualDeviceArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointVirtualDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointVirtualDeviceArrayOutput)
+func (i *connectionZSideAccessPointVirtualDevicePtrType) ToConnectionZSideAccessPointVirtualDevicePtrOutput() ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return i.ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointVirtualDevicePtrType) ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointVirtualDevicePtrOutput)
 }
 
 type ConnectionZSideAccessPointVirtualDeviceOutput struct{ *pulumi.OutputState }
@@ -4299,6 +6496,16 @@ func (o ConnectionZSideAccessPointVirtualDeviceOutput) ToConnectionZSideAccessPo
 	return o
 }
 
+func (o ConnectionZSideAccessPointVirtualDeviceOutput) ToConnectionZSideAccessPointVirtualDevicePtrOutput() ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return o.ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointVirtualDeviceOutput) ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointVirtualDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointVirtualDevice) *ConnectionZSideAccessPointVirtualDevice {
+		return &v
+	}).(ConnectionZSideAccessPointVirtualDevicePtrOutput)
+}
+
 // Connection URI information
 func (o ConnectionZSideAccessPointVirtualDeviceOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
@@ -4313,24 +6520,57 @@ func (o ConnectionZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointVirtualDeviceArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointVirtualDevicePtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointVirtualDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointVirtualDevice)(nil)).Elem()
+func (ConnectionZSideAccessPointVirtualDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointVirtualDevice)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointVirtualDeviceArrayOutput) ToConnectionZSideAccessPointVirtualDeviceArrayOutput() ConnectionZSideAccessPointVirtualDeviceArrayOutput {
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) ToConnectionZSideAccessPointVirtualDevicePtrOutput() ConnectionZSideAccessPointVirtualDevicePtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointVirtualDeviceArrayOutput) ToConnectionZSideAccessPointVirtualDeviceArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointVirtualDeviceArrayOutput {
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) ToConnectionZSideAccessPointVirtualDevicePtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointVirtualDevicePtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointVirtualDeviceArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointVirtualDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointVirtualDevice {
-		return vs[0].([]ConnectionZSideAccessPointVirtualDevice)[vs[1].(int)]
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Elem() ConnectionZSideAccessPointVirtualDeviceOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) ConnectionZSideAccessPointVirtualDevice {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointVirtualDevice
+		return ret
 	}).(ConnectionZSideAccessPointVirtualDeviceOutput)
+}
+
+// Connection URI information
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAdditionalInfo struct {
@@ -4480,29 +6720,45 @@ func (i ConnectionZSideServiceTokenArgs) ToConnectionZSideServiceTokenOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideServiceTokenOutput)
 }
 
-// ConnectionZSideServiceTokenArrayInput is an input type that accepts ConnectionZSideServiceTokenArray and ConnectionZSideServiceTokenArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideServiceTokenArrayInput` via:
+func (i ConnectionZSideServiceTokenArgs) ToConnectionZSideServiceTokenPtrOutput() ConnectionZSideServiceTokenPtrOutput {
+	return i.ToConnectionZSideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideServiceTokenArgs) ToConnectionZSideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideServiceTokenOutput).ToConnectionZSideServiceTokenPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideServiceTokenPtrInput is an input type that accepts ConnectionZSideServiceTokenArgs, ConnectionZSideServiceTokenPtr and ConnectionZSideServiceTokenPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideServiceTokenPtrInput` via:
 //
-//	ConnectionZSideServiceTokenArray{ ConnectionZSideServiceTokenArgs{...} }
-type ConnectionZSideServiceTokenArrayInput interface {
+//	        ConnectionZSideServiceTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideServiceTokenPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideServiceTokenArrayOutput() ConnectionZSideServiceTokenArrayOutput
-	ToConnectionZSideServiceTokenArrayOutputWithContext(context.Context) ConnectionZSideServiceTokenArrayOutput
+	ToConnectionZSideServiceTokenPtrOutput() ConnectionZSideServiceTokenPtrOutput
+	ToConnectionZSideServiceTokenPtrOutputWithContext(context.Context) ConnectionZSideServiceTokenPtrOutput
 }
 
-type ConnectionZSideServiceTokenArray []ConnectionZSideServiceTokenInput
+type connectionZSideServiceTokenPtrType ConnectionZSideServiceTokenArgs
 
-func (ConnectionZSideServiceTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideServiceToken)(nil)).Elem()
+func ConnectionZSideServiceTokenPtr(v *ConnectionZSideServiceTokenArgs) ConnectionZSideServiceTokenPtrInput {
+	return (*connectionZSideServiceTokenPtrType)(v)
 }
 
-func (i ConnectionZSideServiceTokenArray) ToConnectionZSideServiceTokenArrayOutput() ConnectionZSideServiceTokenArrayOutput {
-	return i.ToConnectionZSideServiceTokenArrayOutputWithContext(context.Background())
+func (*connectionZSideServiceTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideServiceToken)(nil)).Elem()
 }
 
-func (i ConnectionZSideServiceTokenArray) ToConnectionZSideServiceTokenArrayOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideServiceTokenArrayOutput)
+func (i *connectionZSideServiceTokenPtrType) ToConnectionZSideServiceTokenPtrOutput() ConnectionZSideServiceTokenPtrOutput {
+	return i.ToConnectionZSideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideServiceTokenPtrType) ToConnectionZSideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideServiceTokenPtrOutput)
 }
 
 type ConnectionZSideServiceTokenOutput struct{ *pulumi.OutputState }
@@ -4517,6 +6773,16 @@ func (o ConnectionZSideServiceTokenOutput) ToConnectionZSideServiceTokenOutput()
 
 func (o ConnectionZSideServiceTokenOutput) ToConnectionZSideServiceTokenOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenOutput {
 	return o
+}
+
+func (o ConnectionZSideServiceTokenOutput) ToConnectionZSideServiceTokenPtrOutput() ConnectionZSideServiceTokenPtrOutput {
+	return o.ToConnectionZSideServiceTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideServiceTokenOutput) ToConnectionZSideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideServiceToken) *ConnectionZSideServiceToken {
+		return &v
+	}).(ConnectionZSideServiceTokenPtrOutput)
 }
 
 func (o ConnectionZSideServiceTokenOutput) Description() pulumi.StringPtrOutput {
@@ -4537,24 +6803,66 @@ func (o ConnectionZSideServiceTokenOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideServiceToken) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideServiceTokenArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideServiceTokenPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideServiceTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideServiceToken)(nil)).Elem()
+func (ConnectionZSideServiceTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideServiceToken)(nil)).Elem()
 }
 
-func (o ConnectionZSideServiceTokenArrayOutput) ToConnectionZSideServiceTokenArrayOutput() ConnectionZSideServiceTokenArrayOutput {
+func (o ConnectionZSideServiceTokenPtrOutput) ToConnectionZSideServiceTokenPtrOutput() ConnectionZSideServiceTokenPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideServiceTokenArrayOutput) ToConnectionZSideServiceTokenArrayOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenArrayOutput {
+func (o ConnectionZSideServiceTokenPtrOutput) ToConnectionZSideServiceTokenPtrOutputWithContext(ctx context.Context) ConnectionZSideServiceTokenPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideServiceTokenArrayOutput) Index(i pulumi.IntInput) ConnectionZSideServiceTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideServiceToken {
-		return vs[0].([]ConnectionZSideServiceToken)[vs[1].(int)]
+func (o ConnectionZSideServiceTokenPtrOutput) Elem() ConnectionZSideServiceTokenOutput {
+	return o.ApplyT(func(v *ConnectionZSideServiceToken) ConnectionZSideServiceToken {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideServiceToken
+		return ret
 	}).(ConnectionZSideServiceTokenOutput)
+}
+
+func (o ConnectionZSideServiceTokenPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection URI information
+func (o ConnectionZSideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+func (o ConnectionZSideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionZSideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceProfileAccessPointTypeConfig struct {
@@ -4567,9 +6875,9 @@ type ServiceProfileAccessPointTypeConfig struct {
 	// Setting to allow or prohibit remote connections to the service profile
 	AllowRemoteConnections *bool `pulumi:"allowRemoteConnections"`
 	// Api configuration details
-	ApiConfigs []ServiceProfileAccessPointTypeConfigApiConfig `pulumi:"apiConfigs"`
+	ApiConfig *ServiceProfileAccessPointTypeConfigApiConfig `pulumi:"apiConfig"`
 	// Authentication key details
-	AuthenticationKeys []ServiceProfileAccessPointTypeConfigAuthenticationKey `pulumi:"authenticationKeys"`
+	AuthenticationKey *ServiceProfileAccessPointTypeConfigAuthenticationKey `pulumi:"authenticationKey"`
 	// Percentage of port bandwidth at which an allocation alert is generated
 	BandwidthAlertThreshold *float64 `pulumi:"bandwidthAlertThreshold"`
 	// Custom name for Connection
@@ -4579,7 +6887,7 @@ type ServiceProfileAccessPointTypeConfig struct {
 	// Enable auto generate service key
 	EnableAutoGenerateServiceKey *bool `pulumi:"enableAutoGenerateServiceKey"`
 	// Link protocol configuration details
-	LinkProtocolConfigs []ServiceProfileAccessPointTypeConfigLinkProtocolConfig `pulumi:"linkProtocolConfigs"`
+	LinkProtocolConfig *ServiceProfileAccessPointTypeConfigLinkProtocolConfig `pulumi:"linkProtocolConfig"`
 	// Supported bandwidths
 	SupportedBandwidths []int `pulumi:"supportedBandwidths"`
 	// Type of access point type config - VD, COLO
@@ -4609,9 +6917,9 @@ type ServiceProfileAccessPointTypeConfigArgs struct {
 	// Setting to allow or prohibit remote connections to the service profile
 	AllowRemoteConnections pulumi.BoolPtrInput `pulumi:"allowRemoteConnections"`
 	// Api configuration details
-	ApiConfigs ServiceProfileAccessPointTypeConfigApiConfigArrayInput `pulumi:"apiConfigs"`
+	ApiConfig ServiceProfileAccessPointTypeConfigApiConfigPtrInput `pulumi:"apiConfig"`
 	// Authentication key details
-	AuthenticationKeys ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayInput `pulumi:"authenticationKeys"`
+	AuthenticationKey ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrInput `pulumi:"authenticationKey"`
 	// Percentage of port bandwidth at which an allocation alert is generated
 	BandwidthAlertThreshold pulumi.Float64PtrInput `pulumi:"bandwidthAlertThreshold"`
 	// Custom name for Connection
@@ -4621,7 +6929,7 @@ type ServiceProfileAccessPointTypeConfigArgs struct {
 	// Enable auto generate service key
 	EnableAutoGenerateServiceKey pulumi.BoolPtrInput `pulumi:"enableAutoGenerateServiceKey"`
 	// Link protocol configuration details
-	LinkProtocolConfigs ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayInput `pulumi:"linkProtocolConfigs"`
+	LinkProtocolConfig ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrInput `pulumi:"linkProtocolConfig"`
 	// Supported bandwidths
 	SupportedBandwidths pulumi.IntArrayInput `pulumi:"supportedBandwidths"`
 	// Type of access point type config - VD, COLO
@@ -4702,17 +7010,17 @@ func (o ServiceProfileAccessPointTypeConfigOutput) AllowRemoteConnections() pulu
 }
 
 // Api configuration details
-func (o ServiceProfileAccessPointTypeConfigOutput) ApiConfigs() ServiceProfileAccessPointTypeConfigApiConfigArrayOutput {
-	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfig) []ServiceProfileAccessPointTypeConfigApiConfig {
-		return v.ApiConfigs
-	}).(ServiceProfileAccessPointTypeConfigApiConfigArrayOutput)
+func (o ServiceProfileAccessPointTypeConfigOutput) ApiConfig() ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfig) *ServiceProfileAccessPointTypeConfigApiConfig {
+		return v.ApiConfig
+	}).(ServiceProfileAccessPointTypeConfigApiConfigPtrOutput)
 }
 
 // Authentication key details
-func (o ServiceProfileAccessPointTypeConfigOutput) AuthenticationKeys() ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput {
-	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfig) []ServiceProfileAccessPointTypeConfigAuthenticationKey {
-		return v.AuthenticationKeys
-	}).(ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput)
+func (o ServiceProfileAccessPointTypeConfigOutput) AuthenticationKey() ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfig) *ServiceProfileAccessPointTypeConfigAuthenticationKey {
+		return v.AuthenticationKey
+	}).(ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput)
 }
 
 // Percentage of port bandwidth at which an allocation alert is generated
@@ -4736,10 +7044,10 @@ func (o ServiceProfileAccessPointTypeConfigOutput) EnableAutoGenerateServiceKey(
 }
 
 // Link protocol configuration details
-func (o ServiceProfileAccessPointTypeConfigOutput) LinkProtocolConfigs() ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput {
-	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfig) []ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
-		return v.LinkProtocolConfigs
-	}).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput)
+func (o ServiceProfileAccessPointTypeConfigOutput) LinkProtocolConfig() ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfig) *ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
+		return v.LinkProtocolConfig
+	}).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput)
 }
 
 // Supported bandwidths
@@ -4820,29 +7128,45 @@ func (i ServiceProfileAccessPointTypeConfigApiConfigArgs) ToServiceProfileAccess
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigApiConfigOutput)
 }
 
-// ServiceProfileAccessPointTypeConfigApiConfigArrayInput is an input type that accepts ServiceProfileAccessPointTypeConfigApiConfigArray and ServiceProfileAccessPointTypeConfigApiConfigArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileAccessPointTypeConfigApiConfigArrayInput` via:
+func (i ServiceProfileAccessPointTypeConfigApiConfigArgs) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutput() ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return i.ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileAccessPointTypeConfigApiConfigArgs) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigApiConfigOutput).ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileAccessPointTypeConfigApiConfigPtrInput is an input type that accepts ServiceProfileAccessPointTypeConfigApiConfigArgs, ServiceProfileAccessPointTypeConfigApiConfigPtr and ServiceProfileAccessPointTypeConfigApiConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileAccessPointTypeConfigApiConfigPtrInput` via:
 //
-//	ServiceProfileAccessPointTypeConfigApiConfigArray{ ServiceProfileAccessPointTypeConfigApiConfigArgs{...} }
-type ServiceProfileAccessPointTypeConfigApiConfigArrayInput interface {
+//	        ServiceProfileAccessPointTypeConfigApiConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileAccessPointTypeConfigApiConfigPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileAccessPointTypeConfigApiConfigArrayOutput() ServiceProfileAccessPointTypeConfigApiConfigArrayOutput
-	ToServiceProfileAccessPointTypeConfigApiConfigArrayOutputWithContext(context.Context) ServiceProfileAccessPointTypeConfigApiConfigArrayOutput
+	ToServiceProfileAccessPointTypeConfigApiConfigPtrOutput() ServiceProfileAccessPointTypeConfigApiConfigPtrOutput
+	ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(context.Context) ServiceProfileAccessPointTypeConfigApiConfigPtrOutput
 }
 
-type ServiceProfileAccessPointTypeConfigApiConfigArray []ServiceProfileAccessPointTypeConfigApiConfigInput
+type serviceProfileAccessPointTypeConfigApiConfigPtrType ServiceProfileAccessPointTypeConfigApiConfigArgs
 
-func (ServiceProfileAccessPointTypeConfigApiConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccessPointTypeConfigApiConfig)(nil)).Elem()
+func ServiceProfileAccessPointTypeConfigApiConfigPtr(v *ServiceProfileAccessPointTypeConfigApiConfigArgs) ServiceProfileAccessPointTypeConfigApiConfigPtrInput {
+	return (*serviceProfileAccessPointTypeConfigApiConfigPtrType)(v)
 }
 
-func (i ServiceProfileAccessPointTypeConfigApiConfigArray) ToServiceProfileAccessPointTypeConfigApiConfigArrayOutput() ServiceProfileAccessPointTypeConfigApiConfigArrayOutput {
-	return i.ToServiceProfileAccessPointTypeConfigApiConfigArrayOutputWithContext(context.Background())
+func (*serviceProfileAccessPointTypeConfigApiConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccessPointTypeConfigApiConfig)(nil)).Elem()
 }
 
-func (i ServiceProfileAccessPointTypeConfigApiConfigArray) ToServiceProfileAccessPointTypeConfigApiConfigArrayOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigApiConfigArrayOutput)
+func (i *serviceProfileAccessPointTypeConfigApiConfigPtrType) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutput() ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return i.ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileAccessPointTypeConfigApiConfigPtrType) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigApiConfigPtrOutput)
 }
 
 type ServiceProfileAccessPointTypeConfigApiConfigOutput struct{ *pulumi.OutputState }
@@ -4857,6 +7181,16 @@ func (o ServiceProfileAccessPointTypeConfigApiConfigOutput) ToServiceProfileAcce
 
 func (o ServiceProfileAccessPointTypeConfigApiConfigOutput) ToServiceProfileAccessPointTypeConfigApiConfigOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigOutput {
 	return o
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigOutput) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutput() ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return o.ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigOutput) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileAccessPointTypeConfigApiConfig) *ServiceProfileAccessPointTypeConfigApiConfig {
+		return &v
+	}).(ServiceProfileAccessPointTypeConfigApiConfigPtrOutput)
 }
 
 func (o ServiceProfileAccessPointTypeConfigApiConfigOutput) AllowOverSubscription() pulumi.BoolPtrOutput {
@@ -4887,24 +7221,91 @@ func (o ServiceProfileAccessPointTypeConfigApiConfigOutput) OverSubscriptionLimi
 	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfigApiConfig) *int { return v.OverSubscriptionLimit }).(pulumi.IntPtrOutput)
 }
 
-type ServiceProfileAccessPointTypeConfigApiConfigArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileAccessPointTypeConfigApiConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileAccessPointTypeConfigApiConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccessPointTypeConfigApiConfig)(nil)).Elem()
+func (ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccessPointTypeConfigApiConfig)(nil)).Elem()
 }
 
-func (o ServiceProfileAccessPointTypeConfigApiConfigArrayOutput) ToServiceProfileAccessPointTypeConfigApiConfigArrayOutput() ServiceProfileAccessPointTypeConfigApiConfigArrayOutput {
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutput() ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccessPointTypeConfigApiConfigArrayOutput) ToServiceProfileAccessPointTypeConfigApiConfigArrayOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigArrayOutput {
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) ToServiceProfileAccessPointTypeConfigApiConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigApiConfigPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccessPointTypeConfigApiConfigArrayOutput) Index(i pulumi.IntInput) ServiceProfileAccessPointTypeConfigApiConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileAccessPointTypeConfigApiConfig {
-		return vs[0].([]ServiceProfileAccessPointTypeConfigApiConfig)[vs[1].(int)]
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) Elem() ServiceProfileAccessPointTypeConfigApiConfigOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) ServiceProfileAccessPointTypeConfigApiConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileAccessPointTypeConfigApiConfig
+		return ret
 	}).(ServiceProfileAccessPointTypeConfigApiConfigOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) AllowOverSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOverSubscription
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) ApiAvailable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApiAvailable
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) BandwidthFromApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BandwidthFromApi
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) EquinixManagedPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EquinixManagedPort
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) EquinixManagedVlan() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EquinixManagedVlan
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) IntegrationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigApiConfigPtrOutput) OverSubscriptionLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigApiConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OverSubscriptionLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceProfileAccessPointTypeConfigAuthenticationKey struct {
@@ -4944,29 +7345,45 @@ func (i ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs) ToServiceProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput)
 }
 
-// ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayInput is an input type that accepts ServiceProfileAccessPointTypeConfigAuthenticationKeyArray and ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayInput` via:
+func (i ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return i.ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput).ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrInput is an input type that accepts ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs, ServiceProfileAccessPointTypeConfigAuthenticationKeyPtr and ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrInput` via:
 //
-//	ServiceProfileAccessPointTypeConfigAuthenticationKeyArray{ ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{...} }
-type ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayInput interface {
+//	        ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput
-	ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput
+	ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput
+	ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput
 }
 
-type ServiceProfileAccessPointTypeConfigAuthenticationKeyArray []ServiceProfileAccessPointTypeConfigAuthenticationKeyInput
+type serviceProfileAccessPointTypeConfigAuthenticationKeyPtrType ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs
 
-func (ServiceProfileAccessPointTypeConfigAuthenticationKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
+func ServiceProfileAccessPointTypeConfigAuthenticationKeyPtr(v *ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs) ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrInput {
+	return (*serviceProfileAccessPointTypeConfigAuthenticationKeyPtrType)(v)
 }
 
-func (i ServiceProfileAccessPointTypeConfigAuthenticationKeyArray) ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput {
-	return i.ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(context.Background())
+func (*serviceProfileAccessPointTypeConfigAuthenticationKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
 }
 
-func (i ServiceProfileAccessPointTypeConfigAuthenticationKeyArray) ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput)
+func (i *serviceProfileAccessPointTypeConfigAuthenticationKeyPtrType) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return i.ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileAccessPointTypeConfigAuthenticationKeyPtrType) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput)
 }
 
 type ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput struct{ *pulumi.OutputState }
@@ -4983,6 +7400,16 @@ func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput) ToServicePro
 	return o
 }
 
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return o.ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileAccessPointTypeConfigAuthenticationKey) *ServiceProfileAccessPointTypeConfigAuthenticationKey {
+		return &v
+	}).(ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput)
+}
+
 // User-provided service description
 func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfigAuthenticationKey) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -4996,24 +7423,56 @@ func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput) Required() p
 	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfigAuthenticationKey) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-type ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
+func (ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
 }
 
-func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput) ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput {
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput() ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput) ToServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput {
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) ToServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput) Index(i pulumi.IntInput) ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileAccessPointTypeConfigAuthenticationKey {
-		return vs[0].([]ServiceProfileAccessPointTypeConfigAuthenticationKey)[vs[1].(int)]
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) Elem() ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigAuthenticationKey) ServiceProfileAccessPointTypeConfigAuthenticationKey {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileAccessPointTypeConfigAuthenticationKey
+		return ret
 	}).(ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput)
+}
+
+// User-provided service description
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigAuthenticationKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigAuthenticationKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigAuthenticationKey) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceProfileAccessPointTypeConfigLinkProtocolConfig struct {
@@ -5051,29 +7510,45 @@ func (i ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs) ToServiceProf
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput)
 }
 
-// ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayInput is an input type that accepts ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray and ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayInput` via:
+func (i ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return i.ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput).ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrInput is an input type that accepts ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs, ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtr and ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrInput` via:
 //
-//	ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray{ ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{...} }
-type ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayInput interface {
+//	        ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput
-	ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput
+	ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput
+	ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput
 }
 
-type ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray []ServiceProfileAccessPointTypeConfigLinkProtocolConfigInput
+type serviceProfileAccessPointTypeConfigLinkProtocolConfigPtrType ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs
 
-func (ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
+func ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtr(v *ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs) ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrInput {
+	return (*serviceProfileAccessPointTypeConfigLinkProtocolConfigPtrType)(v)
 }
 
-func (i ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput {
-	return i.ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(context.Background())
+func (*serviceProfileAccessPointTypeConfigLinkProtocolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
 }
 
-func (i ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput)
+func (i *serviceProfileAccessPointTypeConfigLinkProtocolConfigPtrType) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return i.ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileAccessPointTypeConfigLinkProtocolConfigPtrType) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput)
 }
 
 type ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput struct{ *pulumi.OutputState }
@@ -5090,6 +7565,16 @@ func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput) ToServicePr
 	return o
 }
 
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return o.ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileAccessPointTypeConfigLinkProtocolConfig) *ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
+		return &v
+	}).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput)
+}
+
 func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput) Encapsulation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfigLinkProtocolConfig) *string { return v.Encapsulation }).(pulumi.StringPtrOutput)
 }
@@ -5102,24 +7587,55 @@ func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput) ReuseVlanST
 	return o.ApplyT(func(v ServiceProfileAccessPointTypeConfigLinkProtocolConfig) *bool { return v.ReuseVlanSTag }).(pulumi.BoolPtrOutput)
 }
 
-type ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
+func (ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
 }
 
-func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput() ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) ToServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutputWithContext(ctx context.Context) ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput) Index(i pulumi.IntInput) ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
-		return vs[0].([]ServiceProfileAccessPointTypeConfigLinkProtocolConfig)[vs[1].(int)]
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) Elem() ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigLinkProtocolConfig) ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileAccessPointTypeConfigLinkProtocolConfig
+		return ret
 	}).(ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) Encapsulation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigLinkProtocolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encapsulation
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) EncapsulationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigLinkProtocolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncapsulationStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput) ReuseVlanSTag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccessPointTypeConfigLinkProtocolConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReuseVlanSTag
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceProfileAccount struct {
@@ -5183,29 +7699,45 @@ func (i ServiceProfileAccountArgs) ToServiceProfileAccountOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccountOutput)
 }
 
-// ServiceProfileAccountArrayInput is an input type that accepts ServiceProfileAccountArray and ServiceProfileAccountArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileAccountArrayInput` via:
+func (i ServiceProfileAccountArgs) ToServiceProfileAccountPtrOutput() ServiceProfileAccountPtrOutput {
+	return i.ToServiceProfileAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileAccountArgs) ToServiceProfileAccountPtrOutputWithContext(ctx context.Context) ServiceProfileAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccountOutput).ToServiceProfileAccountPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileAccountPtrInput is an input type that accepts ServiceProfileAccountArgs, ServiceProfileAccountPtr and ServiceProfileAccountPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileAccountPtrInput` via:
 //
-//	ServiceProfileAccountArray{ ServiceProfileAccountArgs{...} }
-type ServiceProfileAccountArrayInput interface {
+//	        ServiceProfileAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileAccountPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileAccountArrayOutput() ServiceProfileAccountArrayOutput
-	ToServiceProfileAccountArrayOutputWithContext(context.Context) ServiceProfileAccountArrayOutput
+	ToServiceProfileAccountPtrOutput() ServiceProfileAccountPtrOutput
+	ToServiceProfileAccountPtrOutputWithContext(context.Context) ServiceProfileAccountPtrOutput
 }
 
-type ServiceProfileAccountArray []ServiceProfileAccountInput
+type serviceProfileAccountPtrType ServiceProfileAccountArgs
 
-func (ServiceProfileAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccount)(nil)).Elem()
+func ServiceProfileAccountPtr(v *ServiceProfileAccountArgs) ServiceProfileAccountPtrInput {
+	return (*serviceProfileAccountPtrType)(v)
 }
 
-func (i ServiceProfileAccountArray) ToServiceProfileAccountArrayOutput() ServiceProfileAccountArrayOutput {
-	return i.ToServiceProfileAccountArrayOutputWithContext(context.Background())
+func (*serviceProfileAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccount)(nil)).Elem()
 }
 
-func (i ServiceProfileAccountArray) ToServiceProfileAccountArrayOutputWithContext(ctx context.Context) ServiceProfileAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccountArrayOutput)
+func (i *serviceProfileAccountPtrType) ToServiceProfileAccountPtrOutput() ServiceProfileAccountPtrOutput {
+	return i.ToServiceProfileAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileAccountPtrType) ToServiceProfileAccountPtrOutputWithContext(ctx context.Context) ServiceProfileAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileAccountPtrOutput)
 }
 
 type ServiceProfileAccountOutput struct{ *pulumi.OutputState }
@@ -5220,6 +7752,16 @@ func (o ServiceProfileAccountOutput) ToServiceProfileAccountOutput() ServiceProf
 
 func (o ServiceProfileAccountOutput) ToServiceProfileAccountOutputWithContext(ctx context.Context) ServiceProfileAccountOutput {
 	return o
+}
+
+func (o ServiceProfileAccountOutput) ToServiceProfileAccountPtrOutput() ServiceProfileAccountPtrOutput {
+	return o.ToServiceProfileAccountPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileAccountOutput) ToServiceProfileAccountPtrOutputWithContext(ctx context.Context) ServiceProfileAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileAccount) *ServiceProfileAccount {
+		return &v
+	}).(ServiceProfileAccountPtrOutput)
 }
 
 // Account Name
@@ -5262,24 +7804,108 @@ func (o ServiceProfileAccountOutput) UcmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfileAccount) *string { return v.UcmId }).(pulumi.StringPtrOutput)
 }
 
-type ServiceProfileAccountArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileAccountPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileAccount)(nil)).Elem()
+func (ServiceProfileAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileAccount)(nil)).Elem()
 }
 
-func (o ServiceProfileAccountArrayOutput) ToServiceProfileAccountArrayOutput() ServiceProfileAccountArrayOutput {
+func (o ServiceProfileAccountPtrOutput) ToServiceProfileAccountPtrOutput() ServiceProfileAccountPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccountArrayOutput) ToServiceProfileAccountArrayOutputWithContext(ctx context.Context) ServiceProfileAccountArrayOutput {
+func (o ServiceProfileAccountPtrOutput) ToServiceProfileAccountPtrOutputWithContext(ctx context.Context) ServiceProfileAccountPtrOutput {
 	return o
 }
 
-func (o ServiceProfileAccountArrayOutput) Index(i pulumi.IntInput) ServiceProfileAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileAccount {
-		return vs[0].([]ServiceProfileAccount)[vs[1].(int)]
+func (o ServiceProfileAccountPtrOutput) Elem() ServiceProfileAccountOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) ServiceProfileAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileAccount
+		return ret
 	}).(ServiceProfileAccountOutput)
+}
+
+// Account Name
+func (o ServiceProfileAccountPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Account Number
+func (o ServiceProfileAccountPtrOutput) AccountNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AccountNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Global Customer organization identifier
+func (o ServiceProfileAccountPtrOutput) GlobalCustId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalCustId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Global organization identifier
+func (o ServiceProfileAccountPtrOutput) GlobalOrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrgId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Global organization name
+func (o ServiceProfileAccountPtrOutput) GlobalOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer organization identifier
+func (o ServiceProfileAccountPtrOutput) OrgId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OrgId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Customer organization name
+func (o ServiceProfileAccountPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enterprise datastore id
+func (o ServiceProfileAccountPtrOutput) UcmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UcmId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceProfileChangeLog struct {
@@ -5335,29 +7961,45 @@ func (i ServiceProfileChangeLogArgs) ToServiceProfileChangeLogOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileChangeLogOutput)
 }
 
-// ServiceProfileChangeLogArrayInput is an input type that accepts ServiceProfileChangeLogArray and ServiceProfileChangeLogArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileChangeLogArrayInput` via:
+func (i ServiceProfileChangeLogArgs) ToServiceProfileChangeLogPtrOutput() ServiceProfileChangeLogPtrOutput {
+	return i.ToServiceProfileChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileChangeLogArgs) ToServiceProfileChangeLogPtrOutputWithContext(ctx context.Context) ServiceProfileChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileChangeLogOutput).ToServiceProfileChangeLogPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileChangeLogPtrInput is an input type that accepts ServiceProfileChangeLogArgs, ServiceProfileChangeLogPtr and ServiceProfileChangeLogPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileChangeLogPtrInput` via:
 //
-//	ServiceProfileChangeLogArray{ ServiceProfileChangeLogArgs{...} }
-type ServiceProfileChangeLogArrayInput interface {
+//	        ServiceProfileChangeLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileChangeLogPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileChangeLogArrayOutput() ServiceProfileChangeLogArrayOutput
-	ToServiceProfileChangeLogArrayOutputWithContext(context.Context) ServiceProfileChangeLogArrayOutput
+	ToServiceProfileChangeLogPtrOutput() ServiceProfileChangeLogPtrOutput
+	ToServiceProfileChangeLogPtrOutputWithContext(context.Context) ServiceProfileChangeLogPtrOutput
 }
 
-type ServiceProfileChangeLogArray []ServiceProfileChangeLogInput
+type serviceProfileChangeLogPtrType ServiceProfileChangeLogArgs
 
-func (ServiceProfileChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileChangeLog)(nil)).Elem()
+func ServiceProfileChangeLogPtr(v *ServiceProfileChangeLogArgs) ServiceProfileChangeLogPtrInput {
+	return (*serviceProfileChangeLogPtrType)(v)
 }
 
-func (i ServiceProfileChangeLogArray) ToServiceProfileChangeLogArrayOutput() ServiceProfileChangeLogArrayOutput {
-	return i.ToServiceProfileChangeLogArrayOutputWithContext(context.Background())
+func (*serviceProfileChangeLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileChangeLog)(nil)).Elem()
 }
 
-func (i ServiceProfileChangeLogArray) ToServiceProfileChangeLogArrayOutputWithContext(ctx context.Context) ServiceProfileChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileChangeLogArrayOutput)
+func (i *serviceProfileChangeLogPtrType) ToServiceProfileChangeLogPtrOutput() ServiceProfileChangeLogPtrOutput {
+	return i.ToServiceProfileChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileChangeLogPtrType) ToServiceProfileChangeLogPtrOutputWithContext(ctx context.Context) ServiceProfileChangeLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileChangeLogPtrOutput)
 }
 
 type ServiceProfileChangeLogOutput struct{ *pulumi.OutputState }
@@ -5372,6 +8014,16 @@ func (o ServiceProfileChangeLogOutput) ToServiceProfileChangeLogOutput() Service
 
 func (o ServiceProfileChangeLogOutput) ToServiceProfileChangeLogOutputWithContext(ctx context.Context) ServiceProfileChangeLogOutput {
 	return o
+}
+
+func (o ServiceProfileChangeLogOutput) ToServiceProfileChangeLogPtrOutput() ServiceProfileChangeLogPtrOutput {
+	return o.ToServiceProfileChangeLogPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileChangeLogOutput) ToServiceProfileChangeLogPtrOutputWithContext(ctx context.Context) ServiceProfileChangeLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileChangeLog) *ServiceProfileChangeLog {
+		return &v
+	}).(ServiceProfileChangeLogPtrOutput)
 }
 
 func (o ServiceProfileChangeLogOutput) CreatedBy() pulumi.StringPtrOutput {
@@ -5422,24 +8074,136 @@ func (o ServiceProfileChangeLogOutput) UpdatedDateTime() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ServiceProfileChangeLog) *string { return v.UpdatedDateTime }).(pulumi.StringPtrOutput)
 }
 
-type ServiceProfileChangeLogArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileChangeLogPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileChangeLog)(nil)).Elem()
+func (ServiceProfileChangeLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileChangeLog)(nil)).Elem()
 }
 
-func (o ServiceProfileChangeLogArrayOutput) ToServiceProfileChangeLogArrayOutput() ServiceProfileChangeLogArrayOutput {
+func (o ServiceProfileChangeLogPtrOutput) ToServiceProfileChangeLogPtrOutput() ServiceProfileChangeLogPtrOutput {
 	return o
 }
 
-func (o ServiceProfileChangeLogArrayOutput) ToServiceProfileChangeLogArrayOutputWithContext(ctx context.Context) ServiceProfileChangeLogArrayOutput {
+func (o ServiceProfileChangeLogPtrOutput) ToServiceProfileChangeLogPtrOutputWithContext(ctx context.Context) ServiceProfileChangeLogPtrOutput {
 	return o
 }
 
-func (o ServiceProfileChangeLogArrayOutput) Index(i pulumi.IntInput) ServiceProfileChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileChangeLog {
-		return vs[0].([]ServiceProfileChangeLog)[vs[1].(int)]
+func (o ServiceProfileChangeLogPtrOutput) Elem() ServiceProfileChangeLogOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) ServiceProfileChangeLog {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileChangeLog
+		return ret
 	}).(ServiceProfileChangeLogOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) CreatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) CreatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) CreatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) DeletedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) DeletedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) DeletedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) DeletedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedDateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) UpdatedByEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) UpdatedByFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedByFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileChangeLogPtrOutput) UpdatedDateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileChangeLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedDateTime
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceProfileCustomField struct {
@@ -5625,29 +8389,45 @@ func (i ServiceProfileMarketingInfoArgs) ToServiceProfileMarketingInfoOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileMarketingInfoOutput)
 }
 
-// ServiceProfileMarketingInfoArrayInput is an input type that accepts ServiceProfileMarketingInfoArray and ServiceProfileMarketingInfoArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileMarketingInfoArrayInput` via:
+func (i ServiceProfileMarketingInfoArgs) ToServiceProfileMarketingInfoPtrOutput() ServiceProfileMarketingInfoPtrOutput {
+	return i.ToServiceProfileMarketingInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileMarketingInfoArgs) ToServiceProfileMarketingInfoPtrOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileMarketingInfoOutput).ToServiceProfileMarketingInfoPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileMarketingInfoPtrInput is an input type that accepts ServiceProfileMarketingInfoArgs, ServiceProfileMarketingInfoPtr and ServiceProfileMarketingInfoPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileMarketingInfoPtrInput` via:
 //
-//	ServiceProfileMarketingInfoArray{ ServiceProfileMarketingInfoArgs{...} }
-type ServiceProfileMarketingInfoArrayInput interface {
+//	        ServiceProfileMarketingInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileMarketingInfoPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileMarketingInfoArrayOutput() ServiceProfileMarketingInfoArrayOutput
-	ToServiceProfileMarketingInfoArrayOutputWithContext(context.Context) ServiceProfileMarketingInfoArrayOutput
+	ToServiceProfileMarketingInfoPtrOutput() ServiceProfileMarketingInfoPtrOutput
+	ToServiceProfileMarketingInfoPtrOutputWithContext(context.Context) ServiceProfileMarketingInfoPtrOutput
 }
 
-type ServiceProfileMarketingInfoArray []ServiceProfileMarketingInfoInput
+type serviceProfileMarketingInfoPtrType ServiceProfileMarketingInfoArgs
 
-func (ServiceProfileMarketingInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileMarketingInfo)(nil)).Elem()
+func ServiceProfileMarketingInfoPtr(v *ServiceProfileMarketingInfoArgs) ServiceProfileMarketingInfoPtrInput {
+	return (*serviceProfileMarketingInfoPtrType)(v)
 }
 
-func (i ServiceProfileMarketingInfoArray) ToServiceProfileMarketingInfoArrayOutput() ServiceProfileMarketingInfoArrayOutput {
-	return i.ToServiceProfileMarketingInfoArrayOutputWithContext(context.Background())
+func (*serviceProfileMarketingInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileMarketingInfo)(nil)).Elem()
 }
 
-func (i ServiceProfileMarketingInfoArray) ToServiceProfileMarketingInfoArrayOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileMarketingInfoArrayOutput)
+func (i *serviceProfileMarketingInfoPtrType) ToServiceProfileMarketingInfoPtrOutput() ServiceProfileMarketingInfoPtrOutput {
+	return i.ToServiceProfileMarketingInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileMarketingInfoPtrType) ToServiceProfileMarketingInfoPtrOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileMarketingInfoPtrOutput)
 }
 
 type ServiceProfileMarketingInfoOutput struct{ *pulumi.OutputState }
@@ -5662,6 +8442,16 @@ func (o ServiceProfileMarketingInfoOutput) ToServiceProfileMarketingInfoOutput()
 
 func (o ServiceProfileMarketingInfoOutput) ToServiceProfileMarketingInfoOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoOutput {
 	return o
+}
+
+func (o ServiceProfileMarketingInfoOutput) ToServiceProfileMarketingInfoPtrOutput() ServiceProfileMarketingInfoPtrOutput {
+	return o.ToServiceProfileMarketingInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileMarketingInfoOutput) ToServiceProfileMarketingInfoPtrOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileMarketingInfo) *ServiceProfileMarketingInfo {
+		return &v
+	}).(ServiceProfileMarketingInfoPtrOutput)
 }
 
 // Logo
@@ -5679,24 +8469,58 @@ func (o ServiceProfileMarketingInfoOutput) Promotion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceProfileMarketingInfo) *bool { return v.Promotion }).(pulumi.BoolPtrOutput)
 }
 
-type ServiceProfileMarketingInfoArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileMarketingInfoPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileMarketingInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileMarketingInfo)(nil)).Elem()
+func (ServiceProfileMarketingInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileMarketingInfo)(nil)).Elem()
 }
 
-func (o ServiceProfileMarketingInfoArrayOutput) ToServiceProfileMarketingInfoArrayOutput() ServiceProfileMarketingInfoArrayOutput {
+func (o ServiceProfileMarketingInfoPtrOutput) ToServiceProfileMarketingInfoPtrOutput() ServiceProfileMarketingInfoPtrOutput {
 	return o
 }
 
-func (o ServiceProfileMarketingInfoArrayOutput) ToServiceProfileMarketingInfoArrayOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoArrayOutput {
+func (o ServiceProfileMarketingInfoPtrOutput) ToServiceProfileMarketingInfoPtrOutputWithContext(ctx context.Context) ServiceProfileMarketingInfoPtrOutput {
 	return o
 }
 
-func (o ServiceProfileMarketingInfoArrayOutput) Index(i pulumi.IntInput) ServiceProfileMarketingInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileMarketingInfo {
-		return vs[0].([]ServiceProfileMarketingInfo)[vs[1].(int)]
+func (o ServiceProfileMarketingInfoPtrOutput) Elem() ServiceProfileMarketingInfoOutput {
+	return o.ApplyT(func(v *ServiceProfileMarketingInfo) ServiceProfileMarketingInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileMarketingInfo
+		return ret
 	}).(ServiceProfileMarketingInfoOutput)
+}
+
+// Logo
+func (o ServiceProfileMarketingInfoPtrOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileMarketingInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Process Step
+func (o ServiceProfileMarketingInfoPtrOutput) ProcessSteps() ServiceProfileMarketingInfoProcessStepArrayOutput {
+	return o.ApplyT(func(v *ServiceProfileMarketingInfo) []ServiceProfileMarketingInfoProcessStep {
+		if v == nil {
+			return nil
+		}
+		return v.ProcessSteps
+	}).(ServiceProfileMarketingInfoProcessStepArrayOutput)
+}
+
+// Promotion
+func (o ServiceProfileMarketingInfoPtrOutput) Promotion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileMarketingInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Promotion
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceProfileMarketingInfoProcessStep struct {
@@ -6356,29 +9180,45 @@ func (i ServiceProfileProjectArgs) ToServiceProfileProjectOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileProjectOutput)
 }
 
-// ServiceProfileProjectArrayInput is an input type that accepts ServiceProfileProjectArray and ServiceProfileProjectArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileProjectArrayInput` via:
+func (i ServiceProfileProjectArgs) ToServiceProfileProjectPtrOutput() ServiceProfileProjectPtrOutput {
+	return i.ToServiceProfileProjectPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileProjectArgs) ToServiceProfileProjectPtrOutputWithContext(ctx context.Context) ServiceProfileProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileProjectOutput).ToServiceProfileProjectPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileProjectPtrInput is an input type that accepts ServiceProfileProjectArgs, ServiceProfileProjectPtr and ServiceProfileProjectPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileProjectPtrInput` via:
 //
-//	ServiceProfileProjectArray{ ServiceProfileProjectArgs{...} }
-type ServiceProfileProjectArrayInput interface {
+//	        ServiceProfileProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileProjectPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileProjectArrayOutput() ServiceProfileProjectArrayOutput
-	ToServiceProfileProjectArrayOutputWithContext(context.Context) ServiceProfileProjectArrayOutput
+	ToServiceProfileProjectPtrOutput() ServiceProfileProjectPtrOutput
+	ToServiceProfileProjectPtrOutputWithContext(context.Context) ServiceProfileProjectPtrOutput
 }
 
-type ServiceProfileProjectArray []ServiceProfileProjectInput
+type serviceProfileProjectPtrType ServiceProfileProjectArgs
 
-func (ServiceProfileProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileProject)(nil)).Elem()
+func ServiceProfileProjectPtr(v *ServiceProfileProjectArgs) ServiceProfileProjectPtrInput {
+	return (*serviceProfileProjectPtrType)(v)
 }
 
-func (i ServiceProfileProjectArray) ToServiceProfileProjectArrayOutput() ServiceProfileProjectArrayOutput {
-	return i.ToServiceProfileProjectArrayOutputWithContext(context.Background())
+func (*serviceProfileProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileProject)(nil)).Elem()
 }
 
-func (i ServiceProfileProjectArray) ToServiceProfileProjectArrayOutputWithContext(ctx context.Context) ServiceProfileProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileProjectArrayOutput)
+func (i *serviceProfileProjectPtrType) ToServiceProfileProjectPtrOutput() ServiceProfileProjectPtrOutput {
+	return i.ToServiceProfileProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileProjectPtrType) ToServiceProfileProjectPtrOutputWithContext(ctx context.Context) ServiceProfileProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileProjectPtrOutput)
 }
 
 type ServiceProfileProjectOutput struct{ *pulumi.OutputState }
@@ -6395,6 +9235,16 @@ func (o ServiceProfileProjectOutput) ToServiceProfileProjectOutputWithContext(ct
 	return o
 }
 
+func (o ServiceProfileProjectOutput) ToServiceProfileProjectPtrOutput() ServiceProfileProjectPtrOutput {
+	return o.ToServiceProfileProjectPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileProjectOutput) ToServiceProfileProjectPtrOutputWithContext(ctx context.Context) ServiceProfileProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileProject) *ServiceProfileProject {
+		return &v
+	}).(ServiceProfileProjectPtrOutput)
+}
+
 // Unique Resource URL
 func (o ServiceProfileProjectOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfileProject) *string { return v.Href }).(pulumi.StringPtrOutput)
@@ -6405,31 +9255,55 @@ func (o ServiceProfileProjectOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfileProject) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-type ServiceProfileProjectArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileProjectPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileProject)(nil)).Elem()
+func (ServiceProfileProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileProject)(nil)).Elem()
 }
 
-func (o ServiceProfileProjectArrayOutput) ToServiceProfileProjectArrayOutput() ServiceProfileProjectArrayOutput {
+func (o ServiceProfileProjectPtrOutput) ToServiceProfileProjectPtrOutput() ServiceProfileProjectPtrOutput {
 	return o
 }
 
-func (o ServiceProfileProjectArrayOutput) ToServiceProfileProjectArrayOutputWithContext(ctx context.Context) ServiceProfileProjectArrayOutput {
+func (o ServiceProfileProjectPtrOutput) ToServiceProfileProjectPtrOutputWithContext(ctx context.Context) ServiceProfileProjectPtrOutput {
 	return o
 }
 
-func (o ServiceProfileProjectArrayOutput) Index(i pulumi.IntInput) ServiceProfileProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileProject {
-		return vs[0].([]ServiceProfileProject)[vs[1].(int)]
+func (o ServiceProfileProjectPtrOutput) Elem() ServiceProfileProjectOutput {
+	return o.ApplyT(func(v *ServiceProfileProject) ServiceProfileProject {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileProject
+		return ret
 	}).(ServiceProfileProjectOutput)
+}
+
+// Unique Resource URL
+func (o ServiceProfileProjectPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project Id
+func (o ServiceProfileProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceProfileVirtualDevice struct {
 	// Device Interface Uuid
 	InterfaceUuid *string `pulumi:"interfaceUuid"`
 	// Device Location
-	Locations []ServiceProfileVirtualDeviceLocation `pulumi:"locations"`
+	Location *ServiceProfileVirtualDeviceLocation `pulumi:"location"`
 	// Virtual Device Type
 	Type string `pulumi:"type"`
 	// Virtual Device Uuid
@@ -6451,7 +9325,7 @@ type ServiceProfileVirtualDeviceArgs struct {
 	// Device Interface Uuid
 	InterfaceUuid pulumi.StringPtrInput `pulumi:"interfaceUuid"`
 	// Device Location
-	Locations ServiceProfileVirtualDeviceLocationArrayInput `pulumi:"locations"`
+	Location ServiceProfileVirtualDeviceLocationPtrInput `pulumi:"location"`
 	// Virtual Device Type
 	Type pulumi.StringInput `pulumi:"type"`
 	// Virtual Device Uuid
@@ -6515,8 +9389,8 @@ func (o ServiceProfileVirtualDeviceOutput) InterfaceUuid() pulumi.StringPtrOutpu
 }
 
 // Device Location
-func (o ServiceProfileVirtualDeviceOutput) Locations() ServiceProfileVirtualDeviceLocationArrayOutput {
-	return o.ApplyT(func(v ServiceProfileVirtualDevice) []ServiceProfileVirtualDeviceLocation { return v.Locations }).(ServiceProfileVirtualDeviceLocationArrayOutput)
+func (o ServiceProfileVirtualDeviceOutput) Location() ServiceProfileVirtualDeviceLocationPtrOutput {
+	return o.ApplyT(func(v ServiceProfileVirtualDevice) *ServiceProfileVirtualDeviceLocation { return v.Location }).(ServiceProfileVirtualDeviceLocationPtrOutput)
 }
 
 // Virtual Device Type
@@ -6586,29 +9460,45 @@ func (i ServiceProfileVirtualDeviceLocationArgs) ToServiceProfileVirtualDeviceLo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileVirtualDeviceLocationOutput)
 }
 
-// ServiceProfileVirtualDeviceLocationArrayInput is an input type that accepts ServiceProfileVirtualDeviceLocationArray and ServiceProfileVirtualDeviceLocationArrayOutput values.
-// You can construct a concrete instance of `ServiceProfileVirtualDeviceLocationArrayInput` via:
+func (i ServiceProfileVirtualDeviceLocationArgs) ToServiceProfileVirtualDeviceLocationPtrOutput() ServiceProfileVirtualDeviceLocationPtrOutput {
+	return i.ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfileVirtualDeviceLocationArgs) ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileVirtualDeviceLocationOutput).ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(ctx)
+}
+
+// ServiceProfileVirtualDeviceLocationPtrInput is an input type that accepts ServiceProfileVirtualDeviceLocationArgs, ServiceProfileVirtualDeviceLocationPtr and ServiceProfileVirtualDeviceLocationPtrOutput values.
+// You can construct a concrete instance of `ServiceProfileVirtualDeviceLocationPtrInput` via:
 //
-//	ServiceProfileVirtualDeviceLocationArray{ ServiceProfileVirtualDeviceLocationArgs{...} }
-type ServiceProfileVirtualDeviceLocationArrayInput interface {
+//	        ServiceProfileVirtualDeviceLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfileVirtualDeviceLocationPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfileVirtualDeviceLocationArrayOutput() ServiceProfileVirtualDeviceLocationArrayOutput
-	ToServiceProfileVirtualDeviceLocationArrayOutputWithContext(context.Context) ServiceProfileVirtualDeviceLocationArrayOutput
+	ToServiceProfileVirtualDeviceLocationPtrOutput() ServiceProfileVirtualDeviceLocationPtrOutput
+	ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(context.Context) ServiceProfileVirtualDeviceLocationPtrOutput
 }
 
-type ServiceProfileVirtualDeviceLocationArray []ServiceProfileVirtualDeviceLocationInput
+type serviceProfileVirtualDeviceLocationPtrType ServiceProfileVirtualDeviceLocationArgs
 
-func (ServiceProfileVirtualDeviceLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileVirtualDeviceLocation)(nil)).Elem()
+func ServiceProfileVirtualDeviceLocationPtr(v *ServiceProfileVirtualDeviceLocationArgs) ServiceProfileVirtualDeviceLocationPtrInput {
+	return (*serviceProfileVirtualDeviceLocationPtrType)(v)
 }
 
-func (i ServiceProfileVirtualDeviceLocationArray) ToServiceProfileVirtualDeviceLocationArrayOutput() ServiceProfileVirtualDeviceLocationArrayOutput {
-	return i.ToServiceProfileVirtualDeviceLocationArrayOutputWithContext(context.Background())
+func (*serviceProfileVirtualDeviceLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileVirtualDeviceLocation)(nil)).Elem()
 }
 
-func (i ServiceProfileVirtualDeviceLocationArray) ToServiceProfileVirtualDeviceLocationArrayOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileVirtualDeviceLocationArrayOutput)
+func (i *serviceProfileVirtualDeviceLocationPtrType) ToServiceProfileVirtualDeviceLocationPtrOutput() ServiceProfileVirtualDeviceLocationPtrOutput {
+	return i.ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfileVirtualDeviceLocationPtrType) ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileVirtualDeviceLocationPtrOutput)
 }
 
 type ServiceProfileVirtualDeviceLocationOutput struct{ *pulumi.OutputState }
@@ -6623,6 +9513,16 @@ func (o ServiceProfileVirtualDeviceLocationOutput) ToServiceProfileVirtualDevice
 
 func (o ServiceProfileVirtualDeviceLocationOutput) ToServiceProfileVirtualDeviceLocationOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationOutput {
 	return o
+}
+
+func (o ServiceProfileVirtualDeviceLocationOutput) ToServiceProfileVirtualDeviceLocationPtrOutput() ServiceProfileVirtualDeviceLocationPtrOutput {
+	return o.ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfileVirtualDeviceLocationOutput) ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfileVirtualDeviceLocation) *ServiceProfileVirtualDeviceLocation {
+		return &v
+	}).(ServiceProfileVirtualDeviceLocationPtrOutput)
 }
 
 func (o ServiceProfileVirtualDeviceLocationOutput) Ibx() pulumi.StringPtrOutput {
@@ -6641,29 +9541,69 @@ func (o ServiceProfileVirtualDeviceLocationOutput) Region() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ServiceProfileVirtualDeviceLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-type ServiceProfileVirtualDeviceLocationArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfileVirtualDeviceLocationPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfileVirtualDeviceLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfileVirtualDeviceLocation)(nil)).Elem()
+func (ServiceProfileVirtualDeviceLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfileVirtualDeviceLocation)(nil)).Elem()
 }
 
-func (o ServiceProfileVirtualDeviceLocationArrayOutput) ToServiceProfileVirtualDeviceLocationArrayOutput() ServiceProfileVirtualDeviceLocationArrayOutput {
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) ToServiceProfileVirtualDeviceLocationPtrOutput() ServiceProfileVirtualDeviceLocationPtrOutput {
 	return o
 }
 
-func (o ServiceProfileVirtualDeviceLocationArrayOutput) ToServiceProfileVirtualDeviceLocationArrayOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationArrayOutput {
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) ToServiceProfileVirtualDeviceLocationPtrOutputWithContext(ctx context.Context) ServiceProfileVirtualDeviceLocationPtrOutput {
 	return o
 }
 
-func (o ServiceProfileVirtualDeviceLocationArrayOutput) Index(i pulumi.IntInput) ServiceProfileVirtualDeviceLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfileVirtualDeviceLocation {
-		return vs[0].([]ServiceProfileVirtualDeviceLocation)[vs[1].(int)]
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) Elem() ServiceProfileVirtualDeviceLocationOutput {
+	return o.ApplyT(func(v *ServiceProfileVirtualDeviceLocation) ServiceProfileVirtualDeviceLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfileVirtualDeviceLocation
+		return ret
 	}).(ServiceProfileVirtualDeviceLocationOutput)
 }
 
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileVirtualDeviceLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileVirtualDeviceLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileVirtualDeviceLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfileVirtualDeviceLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfileVirtualDeviceLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetConnectionASide struct {
-	AccessPoints  []GetConnectionASideAccessPoint  `pulumi:"accessPoints"`
-	ServiceTokens []GetConnectionASideServiceToken `pulumi:"serviceTokens"`
+	AccessPoint  GetConnectionASideAccessPoint  `pulumi:"accessPoint"`
+	ServiceToken GetConnectionASideServiceToken `pulumi:"serviceToken"`
 }
 
 // GetConnectionASideInput is an input type that accepts GetConnectionASideArgs and GetConnectionASideOutput values.
@@ -6678,8 +9618,8 @@ type GetConnectionASideInput interface {
 }
 
 type GetConnectionASideArgs struct {
-	AccessPoints  GetConnectionASideAccessPointArrayInput  `pulumi:"accessPoints"`
-	ServiceTokens GetConnectionASideServiceTokenArrayInput `pulumi:"serviceTokens"`
+	AccessPoint  GetConnectionASideAccessPointInput  `pulumi:"accessPoint"`
+	ServiceToken GetConnectionASideServiceTokenInput `pulumi:"serviceToken"`
 }
 
 func (GetConnectionASideArgs) ElementType() reflect.Type {
@@ -6692,31 +9632,6 @@ func (i GetConnectionASideArgs) ToGetConnectionASideOutput() GetConnectionASideO
 
 func (i GetConnectionASideArgs) ToGetConnectionASideOutputWithContext(ctx context.Context) GetConnectionASideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionASideOutput)
-}
-
-// GetConnectionASideArrayInput is an input type that accepts GetConnectionASideArray and GetConnectionASideArrayOutput values.
-// You can construct a concrete instance of `GetConnectionASideArrayInput` via:
-//
-//	GetConnectionASideArray{ GetConnectionASideArgs{...} }
-type GetConnectionASideArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionASideArrayOutput() GetConnectionASideArrayOutput
-	ToGetConnectionASideArrayOutputWithContext(context.Context) GetConnectionASideArrayOutput
-}
-
-type GetConnectionASideArray []GetConnectionASideInput
-
-func (GetConnectionASideArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionASide)(nil)).Elem()
-}
-
-func (i GetConnectionASideArray) ToGetConnectionASideArrayOutput() GetConnectionASideArrayOutput {
-	return i.ToGetConnectionASideArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionASideArray) ToGetConnectionASideArrayOutputWithContext(ctx context.Context) GetConnectionASideArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionASideArrayOutput)
 }
 
 type GetConnectionASideOutput struct{ *pulumi.OutputState }
@@ -6733,32 +9648,12 @@ func (o GetConnectionASideOutput) ToGetConnectionASideOutputWithContext(ctx cont
 	return o
 }
 
-func (o GetConnectionASideOutput) AccessPoints() GetConnectionASideAccessPointArrayOutput {
-	return o.ApplyT(func(v GetConnectionASide) []GetConnectionASideAccessPoint { return v.AccessPoints }).(GetConnectionASideAccessPointArrayOutput)
+func (o GetConnectionASideOutput) AccessPoint() GetConnectionASideAccessPointOutput {
+	return o.ApplyT(func(v GetConnectionASide) GetConnectionASideAccessPoint { return v.AccessPoint }).(GetConnectionASideAccessPointOutput)
 }
 
-func (o GetConnectionASideOutput) ServiceTokens() GetConnectionASideServiceTokenArrayOutput {
-	return o.ApplyT(func(v GetConnectionASide) []GetConnectionASideServiceToken { return v.ServiceTokens }).(GetConnectionASideServiceTokenArrayOutput)
-}
-
-type GetConnectionASideArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionASideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionASide)(nil)).Elem()
-}
-
-func (o GetConnectionASideArrayOutput) ToGetConnectionASideArrayOutput() GetConnectionASideArrayOutput {
-	return o
-}
-
-func (o GetConnectionASideArrayOutput) ToGetConnectionASideArrayOutputWithContext(ctx context.Context) GetConnectionASideArrayOutput {
-	return o
-}
-
-func (o GetConnectionASideArrayOutput) Index(i pulumi.IntInput) GetConnectionASideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionASide {
-		return vs[0].([]GetConnectionASide)[vs[1].(int)]
-	}).(GetConnectionASideOutput)
+func (o GetConnectionASideOutput) ServiceToken() GetConnectionASideServiceTokenOutput {
+	return o.ApplyT(func(v GetConnectionASide) GetConnectionASideServiceToken { return v.ServiceToken }).(GetConnectionASideServiceTokenOutput)
 }
 
 type GetConnectionASideAccessPoint struct {
@@ -6818,31 +9713,6 @@ func (i GetConnectionASideAccessPointArgs) ToGetConnectionASideAccessPointOutput
 
 func (i GetConnectionASideAccessPointArgs) ToGetConnectionASideAccessPointOutputWithContext(ctx context.Context) GetConnectionASideAccessPointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionASideAccessPointOutput)
-}
-
-// GetConnectionASideAccessPointArrayInput is an input type that accepts GetConnectionASideAccessPointArray and GetConnectionASideAccessPointArrayOutput values.
-// You can construct a concrete instance of `GetConnectionASideAccessPointArrayInput` via:
-//
-//	GetConnectionASideAccessPointArray{ GetConnectionASideAccessPointArgs{...} }
-type GetConnectionASideAccessPointArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionASideAccessPointArrayOutput() GetConnectionASideAccessPointArrayOutput
-	ToGetConnectionASideAccessPointArrayOutputWithContext(context.Context) GetConnectionASideAccessPointArrayOutput
-}
-
-type GetConnectionASideAccessPointArray []GetConnectionASideAccessPointInput
-
-func (GetConnectionASideAccessPointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionASideAccessPoint)(nil)).Elem()
-}
-
-func (i GetConnectionASideAccessPointArray) ToGetConnectionASideAccessPointArrayOutput() GetConnectionASideAccessPointArrayOutput {
-	return i.ToGetConnectionASideAccessPointArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionASideAccessPointArray) ToGetConnectionASideAccessPointArrayOutputWithContext(ctx context.Context) GetConnectionASideAccessPointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionASideAccessPointArrayOutput)
 }
 
 type GetConnectionASideAccessPointOutput struct{ *pulumi.OutputState }
@@ -6915,26 +9785,6 @@ func (o GetConnectionASideAccessPointOutput) VirtualDevices() GetConnectionASide
 	return o.ApplyT(func(v GetConnectionASideAccessPoint) []GetConnectionASideAccessPointVirtualDevice {
 		return v.VirtualDevices
 	}).(GetConnectionASideAccessPointVirtualDeviceArrayOutput)
-}
-
-type GetConnectionASideAccessPointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionASideAccessPointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionASideAccessPoint)(nil)).Elem()
-}
-
-func (o GetConnectionASideAccessPointArrayOutput) ToGetConnectionASideAccessPointArrayOutput() GetConnectionASideAccessPointArrayOutput {
-	return o
-}
-
-func (o GetConnectionASideAccessPointArrayOutput) ToGetConnectionASideAccessPointArrayOutputWithContext(ctx context.Context) GetConnectionASideAccessPointArrayOutput {
-	return o
-}
-
-func (o GetConnectionASideAccessPointArrayOutput) Index(i pulumi.IntInput) GetConnectionASideAccessPointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionASideAccessPoint {
-		return vs[0].([]GetConnectionASideAccessPoint)[vs[1].(int)]
-	}).(GetConnectionASideAccessPointOutput)
 }
 
 type GetConnectionASideAccessPointAccount struct {
@@ -8617,31 +11467,6 @@ func (i GetConnectionASideServiceTokenArgs) ToGetConnectionASideServiceTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionASideServiceTokenOutput)
 }
 
-// GetConnectionASideServiceTokenArrayInput is an input type that accepts GetConnectionASideServiceTokenArray and GetConnectionASideServiceTokenArrayOutput values.
-// You can construct a concrete instance of `GetConnectionASideServiceTokenArrayInput` via:
-//
-//	GetConnectionASideServiceTokenArray{ GetConnectionASideServiceTokenArgs{...} }
-type GetConnectionASideServiceTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionASideServiceTokenArrayOutput() GetConnectionASideServiceTokenArrayOutput
-	ToGetConnectionASideServiceTokenArrayOutputWithContext(context.Context) GetConnectionASideServiceTokenArrayOutput
-}
-
-type GetConnectionASideServiceTokenArray []GetConnectionASideServiceTokenInput
-
-func (GetConnectionASideServiceTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionASideServiceToken)(nil)).Elem()
-}
-
-func (i GetConnectionASideServiceTokenArray) ToGetConnectionASideServiceTokenArrayOutput() GetConnectionASideServiceTokenArrayOutput {
-	return i.ToGetConnectionASideServiceTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionASideServiceTokenArray) ToGetConnectionASideServiceTokenArrayOutputWithContext(ctx context.Context) GetConnectionASideServiceTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionASideServiceTokenArrayOutput)
-}
-
 type GetConnectionASideServiceTokenOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionASideServiceTokenOutput) ElementType() reflect.Type {
@@ -8674,26 +11499,6 @@ func (o GetConnectionASideServiceTokenOutput) Type() pulumi.StringOutput {
 // Equinix-assigned connection identifier
 func (o GetConnectionASideServiceTokenOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideServiceToken) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetConnectionASideServiceTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionASideServiceTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionASideServiceToken)(nil)).Elem()
-}
-
-func (o GetConnectionASideServiceTokenArrayOutput) ToGetConnectionASideServiceTokenArrayOutput() GetConnectionASideServiceTokenArrayOutput {
-	return o
-}
-
-func (o GetConnectionASideServiceTokenArrayOutput) ToGetConnectionASideServiceTokenArrayOutputWithContext(ctx context.Context) GetConnectionASideServiceTokenArrayOutput {
-	return o
-}
-
-func (o GetConnectionASideServiceTokenArrayOutput) Index(i pulumi.IntInput) GetConnectionASideServiceTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionASideServiceToken {
-		return vs[0].([]GetConnectionASideServiceToken)[vs[1].(int)]
-	}).(GetConnectionASideServiceTokenOutput)
 }
 
 type GetConnectionAccount struct {
@@ -8739,31 +11544,6 @@ func (i GetConnectionAccountArgs) ToGetConnectionAccountOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionAccountOutput)
 }
 
-// GetConnectionAccountArrayInput is an input type that accepts GetConnectionAccountArray and GetConnectionAccountArrayOutput values.
-// You can construct a concrete instance of `GetConnectionAccountArrayInput` via:
-//
-//	GetConnectionAccountArray{ GetConnectionAccountArgs{...} }
-type GetConnectionAccountArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionAccountArrayOutput() GetConnectionAccountArrayOutput
-	ToGetConnectionAccountArrayOutputWithContext(context.Context) GetConnectionAccountArrayOutput
-}
-
-type GetConnectionAccountArray []GetConnectionAccountInput
-
-func (GetConnectionAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionAccount)(nil)).Elem()
-}
-
-func (i GetConnectionAccountArray) ToGetConnectionAccountArrayOutput() GetConnectionAccountArrayOutput {
-	return i.ToGetConnectionAccountArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionAccountArray) ToGetConnectionAccountArrayOutputWithContext(ctx context.Context) GetConnectionAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionAccountArrayOutput)
-}
-
 type GetConnectionAccountOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionAccountOutput) ElementType() reflect.Type {
@@ -8804,26 +11584,6 @@ func (o GetConnectionAccountOutput) OrgId() pulumi.IntOutput {
 
 func (o GetConnectionAccountOutput) OrganizationName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
-}
-
-type GetConnectionAccountArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionAccount)(nil)).Elem()
-}
-
-func (o GetConnectionAccountArrayOutput) ToGetConnectionAccountArrayOutput() GetConnectionAccountArrayOutput {
-	return o
-}
-
-func (o GetConnectionAccountArrayOutput) ToGetConnectionAccountArrayOutputWithContext(ctx context.Context) GetConnectionAccountArrayOutput {
-	return o
-}
-
-func (o GetConnectionAccountArrayOutput) Index(i pulumi.IntInput) GetConnectionAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionAccount {
-		return vs[0].([]GetConnectionAccount)[vs[1].(int)]
-	}).(GetConnectionAccountOutput)
 }
 
 type GetConnectionAdditionalInfo struct {
@@ -8979,31 +11739,6 @@ func (i GetConnectionChangeLogArgs) ToGetConnectionChangeLogOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionChangeLogOutput)
 }
 
-// GetConnectionChangeLogArrayInput is an input type that accepts GetConnectionChangeLogArray and GetConnectionChangeLogArrayOutput values.
-// You can construct a concrete instance of `GetConnectionChangeLogArrayInput` via:
-//
-//	GetConnectionChangeLogArray{ GetConnectionChangeLogArgs{...} }
-type GetConnectionChangeLogArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionChangeLogArrayOutput() GetConnectionChangeLogArrayOutput
-	ToGetConnectionChangeLogArrayOutputWithContext(context.Context) GetConnectionChangeLogArrayOutput
-}
-
-type GetConnectionChangeLogArray []GetConnectionChangeLogInput
-
-func (GetConnectionChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionChangeLog)(nil)).Elem()
-}
-
-func (i GetConnectionChangeLogArray) ToGetConnectionChangeLogArrayOutput() GetConnectionChangeLogArrayOutput {
-	return i.ToGetConnectionChangeLogArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionChangeLogArray) ToGetConnectionChangeLogArrayOutputWithContext(ctx context.Context) GetConnectionChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionChangeLogArrayOutput)
-}
-
 type GetConnectionChangeLogOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionChangeLogOutput) ElementType() reflect.Type {
@@ -9064,26 +11799,6 @@ func (o GetConnectionChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
 
 func (o GetConnectionChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
-type GetConnectionChangeLogArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionChangeLog)(nil)).Elem()
-}
-
-func (o GetConnectionChangeLogArrayOutput) ToGetConnectionChangeLogArrayOutput() GetConnectionChangeLogArrayOutput {
-	return o
-}
-
-func (o GetConnectionChangeLogArrayOutput) ToGetConnectionChangeLogArrayOutputWithContext(ctx context.Context) GetConnectionChangeLogArrayOutput {
-	return o
-}
-
-func (o GetConnectionChangeLogArrayOutput) Index(i pulumi.IntInput) GetConnectionChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionChangeLog {
-		return vs[0].([]GetConnectionChangeLog)[vs[1].(int)]
-	}).(GetConnectionChangeLogOutput)
 }
 
 type GetConnectionNotification struct {
@@ -9230,31 +11945,6 @@ func (i GetConnectionOperationArgs) ToGetConnectionOperationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOperationOutput)
 }
 
-// GetConnectionOperationArrayInput is an input type that accepts GetConnectionOperationArray and GetConnectionOperationArrayOutput values.
-// You can construct a concrete instance of `GetConnectionOperationArrayInput` via:
-//
-//	GetConnectionOperationArray{ GetConnectionOperationArgs{...} }
-type GetConnectionOperationArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionOperationArrayOutput() GetConnectionOperationArrayOutput
-	ToGetConnectionOperationArrayOutputWithContext(context.Context) GetConnectionOperationArrayOutput
-}
-
-type GetConnectionOperationArray []GetConnectionOperationInput
-
-func (GetConnectionOperationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionOperation)(nil)).Elem()
-}
-
-func (i GetConnectionOperationArray) ToGetConnectionOperationArrayOutput() GetConnectionOperationArrayOutput {
-	return i.ToGetConnectionOperationArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionOperationArray) ToGetConnectionOperationArrayOutputWithContext(ctx context.Context) GetConnectionOperationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOperationArrayOutput)
-}
-
 type GetConnectionOperationOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionOperationOutput) ElementType() reflect.Type {
@@ -9279,26 +11969,6 @@ func (o GetConnectionOperationOutput) Errors() GetConnectionOperationErrorArrayO
 
 func (o GetConnectionOperationOutput) ProviderStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOperation) string { return v.ProviderStatus }).(pulumi.StringOutput)
-}
-
-type GetConnectionOperationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionOperationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionOperation)(nil)).Elem()
-}
-
-func (o GetConnectionOperationArrayOutput) ToGetConnectionOperationArrayOutput() GetConnectionOperationArrayOutput {
-	return o
-}
-
-func (o GetConnectionOperationArrayOutput) ToGetConnectionOperationArrayOutputWithContext(ctx context.Context) GetConnectionOperationArrayOutput {
-	return o
-}
-
-func (o GetConnectionOperationArrayOutput) Index(i pulumi.IntInput) GetConnectionOperationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOperation {
-		return vs[0].([]GetConnectionOperation)[vs[1].(int)]
-	}).(GetConnectionOperationOutput)
 }
 
 type GetConnectionOperationError struct {
@@ -9567,31 +12237,6 @@ func (i GetConnectionOrderArgs) ToGetConnectionOrderOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOrderOutput)
 }
 
-// GetConnectionOrderArrayInput is an input type that accepts GetConnectionOrderArray and GetConnectionOrderArrayOutput values.
-// You can construct a concrete instance of `GetConnectionOrderArrayInput` via:
-//
-//	GetConnectionOrderArray{ GetConnectionOrderArgs{...} }
-type GetConnectionOrderArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionOrderArrayOutput() GetConnectionOrderArrayOutput
-	ToGetConnectionOrderArrayOutputWithContext(context.Context) GetConnectionOrderArrayOutput
-}
-
-type GetConnectionOrderArray []GetConnectionOrderInput
-
-func (GetConnectionOrderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionOrder)(nil)).Elem()
-}
-
-func (i GetConnectionOrderArray) ToGetConnectionOrderArrayOutput() GetConnectionOrderArrayOutput {
-	return i.ToGetConnectionOrderArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionOrderArray) ToGetConnectionOrderArrayOutputWithContext(ctx context.Context) GetConnectionOrderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOrderArrayOutput)
-}
-
 type GetConnectionOrderOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionOrderOutput) ElementType() reflect.Type {
@@ -9620,26 +12265,6 @@ func (o GetConnectionOrderOutput) OrderNumber() pulumi.StringOutput {
 
 func (o GetConnectionOrderOutput) PurchaseOrderNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOrder) string { return v.PurchaseOrderNumber }).(pulumi.StringOutput)
-}
-
-type GetConnectionOrderArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionOrderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionOrder)(nil)).Elem()
-}
-
-func (o GetConnectionOrderArrayOutput) ToGetConnectionOrderArrayOutput() GetConnectionOrderArrayOutput {
-	return o
-}
-
-func (o GetConnectionOrderArrayOutput) ToGetConnectionOrderArrayOutputWithContext(ctx context.Context) GetConnectionOrderArrayOutput {
-	return o
-}
-
-func (o GetConnectionOrderArrayOutput) Index(i pulumi.IntInput) GetConnectionOrderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOrder {
-		return vs[0].([]GetConnectionOrder)[vs[1].(int)]
-	}).(GetConnectionOrderOutput)
 }
 
 type GetConnectionProject struct {
@@ -9679,29 +12304,45 @@ func (i GetConnectionProjectArgs) ToGetConnectionProjectOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProjectOutput)
 }
 
-// GetConnectionProjectArrayInput is an input type that accepts GetConnectionProjectArray and GetConnectionProjectArrayOutput values.
-// You can construct a concrete instance of `GetConnectionProjectArrayInput` via:
+func (i GetConnectionProjectArgs) ToGetConnectionProjectPtrOutput() GetConnectionProjectPtrOutput {
+	return i.ToGetConnectionProjectPtrOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProjectArgs) ToGetConnectionProjectPtrOutputWithContext(ctx context.Context) GetConnectionProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProjectOutput).ToGetConnectionProjectPtrOutputWithContext(ctx)
+}
+
+// GetConnectionProjectPtrInput is an input type that accepts GetConnectionProjectArgs, GetConnectionProjectPtr and GetConnectionProjectPtrOutput values.
+// You can construct a concrete instance of `GetConnectionProjectPtrInput` via:
 //
-//	GetConnectionProjectArray{ GetConnectionProjectArgs{...} }
-type GetConnectionProjectArrayInput interface {
+//	        GetConnectionProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetConnectionProjectPtrInput interface {
 	pulumi.Input
 
-	ToGetConnectionProjectArrayOutput() GetConnectionProjectArrayOutput
-	ToGetConnectionProjectArrayOutputWithContext(context.Context) GetConnectionProjectArrayOutput
+	ToGetConnectionProjectPtrOutput() GetConnectionProjectPtrOutput
+	ToGetConnectionProjectPtrOutputWithContext(context.Context) GetConnectionProjectPtrOutput
 }
 
-type GetConnectionProjectArray []GetConnectionProjectInput
+type getConnectionProjectPtrType GetConnectionProjectArgs
 
-func (GetConnectionProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionProject)(nil)).Elem()
+func GetConnectionProjectPtr(v *GetConnectionProjectArgs) GetConnectionProjectPtrInput {
+	return (*getConnectionProjectPtrType)(v)
 }
 
-func (i GetConnectionProjectArray) ToGetConnectionProjectArrayOutput() GetConnectionProjectArrayOutput {
-	return i.ToGetConnectionProjectArrayOutputWithContext(context.Background())
+func (*getConnectionProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionProject)(nil)).Elem()
 }
 
-func (i GetConnectionProjectArray) ToGetConnectionProjectArrayOutputWithContext(ctx context.Context) GetConnectionProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProjectArrayOutput)
+func (i *getConnectionProjectPtrType) ToGetConnectionProjectPtrOutput() GetConnectionProjectPtrOutput {
+	return i.ToGetConnectionProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *getConnectionProjectPtrType) ToGetConnectionProjectPtrOutputWithContext(ctx context.Context) GetConnectionProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProjectPtrOutput)
 }
 
 type GetConnectionProjectOutput struct{ *pulumi.OutputState }
@@ -9718,6 +12359,16 @@ func (o GetConnectionProjectOutput) ToGetConnectionProjectOutputWithContext(ctx 
 	return o
 }
 
+func (o GetConnectionProjectOutput) ToGetConnectionProjectPtrOutput() GetConnectionProjectPtrOutput {
+	return o.ToGetConnectionProjectPtrOutputWithContext(context.Background())
+}
+
+func (o GetConnectionProjectOutput) ToGetConnectionProjectPtrOutputWithContext(ctx context.Context) GetConnectionProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetConnectionProject) *GetConnectionProject {
+		return &v
+	}).(GetConnectionProjectPtrOutput)
+}
+
 // Unique Resource URL
 func (o GetConnectionProjectOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionProject) string { return v.Href }).(pulumi.StringOutput)
@@ -9728,24 +12379,48 @@ func (o GetConnectionProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionProject) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-type GetConnectionProjectArrayOutput struct{ *pulumi.OutputState }
+type GetConnectionProjectPtrOutput struct{ *pulumi.OutputState }
 
-func (GetConnectionProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionProject)(nil)).Elem()
+func (GetConnectionProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetConnectionProject)(nil)).Elem()
 }
 
-func (o GetConnectionProjectArrayOutput) ToGetConnectionProjectArrayOutput() GetConnectionProjectArrayOutput {
+func (o GetConnectionProjectPtrOutput) ToGetConnectionProjectPtrOutput() GetConnectionProjectPtrOutput {
 	return o
 }
 
-func (o GetConnectionProjectArrayOutput) ToGetConnectionProjectArrayOutputWithContext(ctx context.Context) GetConnectionProjectArrayOutput {
+func (o GetConnectionProjectPtrOutput) ToGetConnectionProjectPtrOutputWithContext(ctx context.Context) GetConnectionProjectPtrOutput {
 	return o
 }
 
-func (o GetConnectionProjectArrayOutput) Index(i pulumi.IntInput) GetConnectionProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProject {
-		return vs[0].([]GetConnectionProject)[vs[1].(int)]
+func (o GetConnectionProjectPtrOutput) Elem() GetConnectionProjectOutput {
+	return o.ApplyT(func(v *GetConnectionProject) GetConnectionProject {
+		if v != nil {
+			return *v
+		}
+		var ret GetConnectionProject
+		return ret
 	}).(GetConnectionProjectOutput)
+}
+
+// Unique Resource URL
+func (o GetConnectionProjectPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project Id
+func (o GetConnectionProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetConnectionProject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetConnectionRedundancy struct {
@@ -9781,31 +12456,6 @@ func (i GetConnectionRedundancyArgs) ToGetConnectionRedundancyOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRedundancyOutput)
 }
 
-// GetConnectionRedundancyArrayInput is an input type that accepts GetConnectionRedundancyArray and GetConnectionRedundancyArrayOutput values.
-// You can construct a concrete instance of `GetConnectionRedundancyArrayInput` via:
-//
-//	GetConnectionRedundancyArray{ GetConnectionRedundancyArgs{...} }
-type GetConnectionRedundancyArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionRedundancyArrayOutput() GetConnectionRedundancyArrayOutput
-	ToGetConnectionRedundancyArrayOutputWithContext(context.Context) GetConnectionRedundancyArrayOutput
-}
-
-type GetConnectionRedundancyArray []GetConnectionRedundancyInput
-
-func (GetConnectionRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionRedundancy)(nil)).Elem()
-}
-
-func (i GetConnectionRedundancyArray) ToGetConnectionRedundancyArrayOutput() GetConnectionRedundancyArrayOutput {
-	return i.ToGetConnectionRedundancyArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionRedundancyArray) ToGetConnectionRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionRedundancyArrayOutput)
-}
-
 type GetConnectionRedundancyOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionRedundancyOutput) ElementType() reflect.Type {
@@ -9828,29 +12478,9 @@ func (o GetConnectionRedundancyOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionRedundancy) string { return v.Priority }).(pulumi.StringOutput)
 }
 
-type GetConnectionRedundancyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionRedundancy)(nil)).Elem()
-}
-
-func (o GetConnectionRedundancyArrayOutput) ToGetConnectionRedundancyArrayOutput() GetConnectionRedundancyArrayOutput {
-	return o
-}
-
-func (o GetConnectionRedundancyArrayOutput) ToGetConnectionRedundancyArrayOutputWithContext(ctx context.Context) GetConnectionRedundancyArrayOutput {
-	return o
-}
-
-func (o GetConnectionRedundancyArrayOutput) Index(i pulumi.IntInput) GetConnectionRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionRedundancy {
-		return vs[0].([]GetConnectionRedundancy)[vs[1].(int)]
-	}).(GetConnectionRedundancyOutput)
-}
-
 type GetConnectionZSide struct {
-	AccessPoints  []GetConnectionZSideAccessPoint  `pulumi:"accessPoints"`
-	ServiceTokens []GetConnectionZSideServiceToken `pulumi:"serviceTokens"`
+	AccessPoint  GetConnectionZSideAccessPoint  `pulumi:"accessPoint"`
+	ServiceToken GetConnectionZSideServiceToken `pulumi:"serviceToken"`
 }
 
 // GetConnectionZSideInput is an input type that accepts GetConnectionZSideArgs and GetConnectionZSideOutput values.
@@ -9865,8 +12495,8 @@ type GetConnectionZSideInput interface {
 }
 
 type GetConnectionZSideArgs struct {
-	AccessPoints  GetConnectionZSideAccessPointArrayInput  `pulumi:"accessPoints"`
-	ServiceTokens GetConnectionZSideServiceTokenArrayInput `pulumi:"serviceTokens"`
+	AccessPoint  GetConnectionZSideAccessPointInput  `pulumi:"accessPoint"`
+	ServiceToken GetConnectionZSideServiceTokenInput `pulumi:"serviceToken"`
 }
 
 func (GetConnectionZSideArgs) ElementType() reflect.Type {
@@ -9879,31 +12509,6 @@ func (i GetConnectionZSideArgs) ToGetConnectionZSideOutput() GetConnectionZSideO
 
 func (i GetConnectionZSideArgs) ToGetConnectionZSideOutputWithContext(ctx context.Context) GetConnectionZSideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionZSideOutput)
-}
-
-// GetConnectionZSideArrayInput is an input type that accepts GetConnectionZSideArray and GetConnectionZSideArrayOutput values.
-// You can construct a concrete instance of `GetConnectionZSideArrayInput` via:
-//
-//	GetConnectionZSideArray{ GetConnectionZSideArgs{...} }
-type GetConnectionZSideArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionZSideArrayOutput() GetConnectionZSideArrayOutput
-	ToGetConnectionZSideArrayOutputWithContext(context.Context) GetConnectionZSideArrayOutput
-}
-
-type GetConnectionZSideArray []GetConnectionZSideInput
-
-func (GetConnectionZSideArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionZSide)(nil)).Elem()
-}
-
-func (i GetConnectionZSideArray) ToGetConnectionZSideArrayOutput() GetConnectionZSideArrayOutput {
-	return i.ToGetConnectionZSideArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionZSideArray) ToGetConnectionZSideArrayOutputWithContext(ctx context.Context) GetConnectionZSideArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionZSideArrayOutput)
 }
 
 type GetConnectionZSideOutput struct{ *pulumi.OutputState }
@@ -9920,32 +12525,12 @@ func (o GetConnectionZSideOutput) ToGetConnectionZSideOutputWithContext(ctx cont
 	return o
 }
 
-func (o GetConnectionZSideOutput) AccessPoints() GetConnectionZSideAccessPointArrayOutput {
-	return o.ApplyT(func(v GetConnectionZSide) []GetConnectionZSideAccessPoint { return v.AccessPoints }).(GetConnectionZSideAccessPointArrayOutput)
+func (o GetConnectionZSideOutput) AccessPoint() GetConnectionZSideAccessPointOutput {
+	return o.ApplyT(func(v GetConnectionZSide) GetConnectionZSideAccessPoint { return v.AccessPoint }).(GetConnectionZSideAccessPointOutput)
 }
 
-func (o GetConnectionZSideOutput) ServiceTokens() GetConnectionZSideServiceTokenArrayOutput {
-	return o.ApplyT(func(v GetConnectionZSide) []GetConnectionZSideServiceToken { return v.ServiceTokens }).(GetConnectionZSideServiceTokenArrayOutput)
-}
-
-type GetConnectionZSideArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionZSideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionZSide)(nil)).Elem()
-}
-
-func (o GetConnectionZSideArrayOutput) ToGetConnectionZSideArrayOutput() GetConnectionZSideArrayOutput {
-	return o
-}
-
-func (o GetConnectionZSideArrayOutput) ToGetConnectionZSideArrayOutputWithContext(ctx context.Context) GetConnectionZSideArrayOutput {
-	return o
-}
-
-func (o GetConnectionZSideArrayOutput) Index(i pulumi.IntInput) GetConnectionZSideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionZSide {
-		return vs[0].([]GetConnectionZSide)[vs[1].(int)]
-	}).(GetConnectionZSideOutput)
+func (o GetConnectionZSideOutput) ServiceToken() GetConnectionZSideServiceTokenOutput {
+	return o.ApplyT(func(v GetConnectionZSide) GetConnectionZSideServiceToken { return v.ServiceToken }).(GetConnectionZSideServiceTokenOutput)
 }
 
 type GetConnectionZSideAccessPoint struct {
@@ -10005,31 +12590,6 @@ func (i GetConnectionZSideAccessPointArgs) ToGetConnectionZSideAccessPointOutput
 
 func (i GetConnectionZSideAccessPointArgs) ToGetConnectionZSideAccessPointOutputWithContext(ctx context.Context) GetConnectionZSideAccessPointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionZSideAccessPointOutput)
-}
-
-// GetConnectionZSideAccessPointArrayInput is an input type that accepts GetConnectionZSideAccessPointArray and GetConnectionZSideAccessPointArrayOutput values.
-// You can construct a concrete instance of `GetConnectionZSideAccessPointArrayInput` via:
-//
-//	GetConnectionZSideAccessPointArray{ GetConnectionZSideAccessPointArgs{...} }
-type GetConnectionZSideAccessPointArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionZSideAccessPointArrayOutput() GetConnectionZSideAccessPointArrayOutput
-	ToGetConnectionZSideAccessPointArrayOutputWithContext(context.Context) GetConnectionZSideAccessPointArrayOutput
-}
-
-type GetConnectionZSideAccessPointArray []GetConnectionZSideAccessPointInput
-
-func (GetConnectionZSideAccessPointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionZSideAccessPoint)(nil)).Elem()
-}
-
-func (i GetConnectionZSideAccessPointArray) ToGetConnectionZSideAccessPointArrayOutput() GetConnectionZSideAccessPointArrayOutput {
-	return i.ToGetConnectionZSideAccessPointArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionZSideAccessPointArray) ToGetConnectionZSideAccessPointArrayOutputWithContext(ctx context.Context) GetConnectionZSideAccessPointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionZSideAccessPointArrayOutput)
 }
 
 type GetConnectionZSideAccessPointOutput struct{ *pulumi.OutputState }
@@ -10102,26 +12662,6 @@ func (o GetConnectionZSideAccessPointOutput) VirtualDevices() GetConnectionZSide
 	return o.ApplyT(func(v GetConnectionZSideAccessPoint) []GetConnectionZSideAccessPointVirtualDevice {
 		return v.VirtualDevices
 	}).(GetConnectionZSideAccessPointVirtualDeviceArrayOutput)
-}
-
-type GetConnectionZSideAccessPointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionZSideAccessPointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionZSideAccessPoint)(nil)).Elem()
-}
-
-func (o GetConnectionZSideAccessPointArrayOutput) ToGetConnectionZSideAccessPointArrayOutput() GetConnectionZSideAccessPointArrayOutput {
-	return o
-}
-
-func (o GetConnectionZSideAccessPointArrayOutput) ToGetConnectionZSideAccessPointArrayOutputWithContext(ctx context.Context) GetConnectionZSideAccessPointArrayOutput {
-	return o
-}
-
-func (o GetConnectionZSideAccessPointArrayOutput) Index(i pulumi.IntInput) GetConnectionZSideAccessPointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionZSideAccessPoint {
-		return vs[0].([]GetConnectionZSideAccessPoint)[vs[1].(int)]
-	}).(GetConnectionZSideAccessPointOutput)
 }
 
 type GetConnectionZSideAccessPointAccount struct {
@@ -11804,31 +14344,6 @@ func (i GetConnectionZSideServiceTokenArgs) ToGetConnectionZSideServiceTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionZSideServiceTokenOutput)
 }
 
-// GetConnectionZSideServiceTokenArrayInput is an input type that accepts GetConnectionZSideServiceTokenArray and GetConnectionZSideServiceTokenArrayOutput values.
-// You can construct a concrete instance of `GetConnectionZSideServiceTokenArrayInput` via:
-//
-//	GetConnectionZSideServiceTokenArray{ GetConnectionZSideServiceTokenArgs{...} }
-type GetConnectionZSideServiceTokenArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionZSideServiceTokenArrayOutput() GetConnectionZSideServiceTokenArrayOutput
-	ToGetConnectionZSideServiceTokenArrayOutputWithContext(context.Context) GetConnectionZSideServiceTokenArrayOutput
-}
-
-type GetConnectionZSideServiceTokenArray []GetConnectionZSideServiceTokenInput
-
-func (GetConnectionZSideServiceTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionZSideServiceToken)(nil)).Elem()
-}
-
-func (i GetConnectionZSideServiceTokenArray) ToGetConnectionZSideServiceTokenArrayOutput() GetConnectionZSideServiceTokenArrayOutput {
-	return i.ToGetConnectionZSideServiceTokenArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionZSideServiceTokenArray) ToGetConnectionZSideServiceTokenArrayOutputWithContext(ctx context.Context) GetConnectionZSideServiceTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionZSideServiceTokenArrayOutput)
-}
-
 type GetConnectionZSideServiceTokenOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionZSideServiceTokenOutput) ElementType() reflect.Type {
@@ -11861,26 +14376,6 @@ func (o GetConnectionZSideServiceTokenOutput) Type() pulumi.StringOutput {
 // Equinix-assigned connection identifier
 func (o GetConnectionZSideServiceTokenOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideServiceToken) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetConnectionZSideServiceTokenArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionZSideServiceTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionZSideServiceToken)(nil)).Elem()
-}
-
-func (o GetConnectionZSideServiceTokenArrayOutput) ToGetConnectionZSideServiceTokenArrayOutput() GetConnectionZSideServiceTokenArrayOutput {
-	return o
-}
-
-func (o GetConnectionZSideServiceTokenArrayOutput) ToGetConnectionZSideServiceTokenArrayOutputWithContext(ctx context.Context) GetConnectionZSideServiceTokenArrayOutput {
-	return o
-}
-
-func (o GetConnectionZSideServiceTokenArrayOutput) Index(i pulumi.IntInput) GetConnectionZSideServiceTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionZSideServiceToken {
-		return vs[0].([]GetConnectionZSideServiceToken)[vs[1].(int)]
-	}).(GetConnectionZSideServiceTokenOutput)
 }
 
 type GetPortAccount struct {
@@ -11926,31 +14421,6 @@ func (i GetPortAccountArgs) ToGetPortAccountOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortAccountOutput)
 }
 
-// GetPortAccountArrayInput is an input type that accepts GetPortAccountArray and GetPortAccountArrayOutput values.
-// You can construct a concrete instance of `GetPortAccountArrayInput` via:
-//
-//	GetPortAccountArray{ GetPortAccountArgs{...} }
-type GetPortAccountArrayInput interface {
-	pulumi.Input
-
-	ToGetPortAccountArrayOutput() GetPortAccountArrayOutput
-	ToGetPortAccountArrayOutputWithContext(context.Context) GetPortAccountArrayOutput
-}
-
-type GetPortAccountArray []GetPortAccountInput
-
-func (GetPortAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortAccount)(nil)).Elem()
-}
-
-func (i GetPortAccountArray) ToGetPortAccountArrayOutput() GetPortAccountArrayOutput {
-	return i.ToGetPortAccountArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortAccountArray) ToGetPortAccountArrayOutputWithContext(ctx context.Context) GetPortAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortAccountArrayOutput)
-}
-
 type GetPortAccountOutput struct{ *pulumi.OutputState }
 
 func (GetPortAccountOutput) ElementType() reflect.Type {
@@ -11991,26 +14461,6 @@ func (o GetPortAccountOutput) OrgId() pulumi.IntOutput {
 
 func (o GetPortAccountOutput) OrganizationName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
-}
-
-type GetPortAccountArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortAccount)(nil)).Elem()
-}
-
-func (o GetPortAccountArrayOutput) ToGetPortAccountArrayOutput() GetPortAccountArrayOutput {
-	return o
-}
-
-func (o GetPortAccountArrayOutput) ToGetPortAccountArrayOutputWithContext(ctx context.Context) GetPortAccountArrayOutput {
-	return o
-}
-
-func (o GetPortAccountArrayOutput) Index(i pulumi.IntInput) GetPortAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortAccount {
-		return vs[0].([]GetPortAccount)[vs[1].(int)]
-	}).(GetPortAccountOutput)
 }
 
 type GetPortChangeLog struct {
@@ -12064,31 +14514,6 @@ func (i GetPortChangeLogArgs) ToGetPortChangeLogOutput() GetPortChangeLogOutput 
 
 func (i GetPortChangeLogArgs) ToGetPortChangeLogOutputWithContext(ctx context.Context) GetPortChangeLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortChangeLogOutput)
-}
-
-// GetPortChangeLogArrayInput is an input type that accepts GetPortChangeLogArray and GetPortChangeLogArrayOutput values.
-// You can construct a concrete instance of `GetPortChangeLogArrayInput` via:
-//
-//	GetPortChangeLogArray{ GetPortChangeLogArgs{...} }
-type GetPortChangeLogArrayInput interface {
-	pulumi.Input
-
-	ToGetPortChangeLogArrayOutput() GetPortChangeLogArrayOutput
-	ToGetPortChangeLogArrayOutputWithContext(context.Context) GetPortChangeLogArrayOutput
-}
-
-type GetPortChangeLogArray []GetPortChangeLogInput
-
-func (GetPortChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortChangeLog)(nil)).Elem()
-}
-
-func (i GetPortChangeLogArray) ToGetPortChangeLogArrayOutput() GetPortChangeLogArrayOutput {
-	return i.ToGetPortChangeLogArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortChangeLogArray) ToGetPortChangeLogArrayOutputWithContext(ctx context.Context) GetPortChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortChangeLogArrayOutput)
 }
 
 type GetPortChangeLogOutput struct{ *pulumi.OutputState }
@@ -12153,26 +14578,6 @@ func (o GetPortChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
 }
 
-type GetPortChangeLogArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortChangeLog)(nil)).Elem()
-}
-
-func (o GetPortChangeLogArrayOutput) ToGetPortChangeLogArrayOutput() GetPortChangeLogArrayOutput {
-	return o
-}
-
-func (o GetPortChangeLogArrayOutput) ToGetPortChangeLogArrayOutputWithContext(ctx context.Context) GetPortChangeLogArrayOutput {
-	return o
-}
-
-func (o GetPortChangeLogArrayOutput) Index(i pulumi.IntInput) GetPortChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortChangeLog {
-		return vs[0].([]GetPortChangeLog)[vs[1].(int)]
-	}).(GetPortChangeLogOutput)
-}
-
 type GetPortDevice struct {
 	// Port name
 	Name string `pulumi:"name"`
@@ -12210,31 +14615,6 @@ func (i GetPortDeviceArgs) ToGetPortDeviceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortDeviceOutput)
 }
 
-// GetPortDeviceArrayInput is an input type that accepts GetPortDeviceArray and GetPortDeviceArrayOutput values.
-// You can construct a concrete instance of `GetPortDeviceArrayInput` via:
-//
-//	GetPortDeviceArray{ GetPortDeviceArgs{...} }
-type GetPortDeviceArrayInput interface {
-	pulumi.Input
-
-	ToGetPortDeviceArrayOutput() GetPortDeviceArrayOutput
-	ToGetPortDeviceArrayOutputWithContext(context.Context) GetPortDeviceArrayOutput
-}
-
-type GetPortDeviceArray []GetPortDeviceInput
-
-func (GetPortDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortDevice)(nil)).Elem()
-}
-
-func (i GetPortDeviceArray) ToGetPortDeviceArrayOutput() GetPortDeviceArrayOutput {
-	return i.ToGetPortDeviceArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortDeviceArray) ToGetPortDeviceArrayOutputWithContext(ctx context.Context) GetPortDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortDeviceArrayOutput)
-}
-
 type GetPortDeviceOutput struct{ *pulumi.OutputState }
 
 func (GetPortDeviceOutput) ElementType() reflect.Type {
@@ -12257,26 +14637,6 @@ func (o GetPortDeviceOutput) Name() pulumi.StringOutput {
 // Port redundancy information
 func (o GetPortDeviceOutput) Redundancies() GetPortDeviceRedundancyArrayOutput {
 	return o.ApplyT(func(v GetPortDevice) []GetPortDeviceRedundancy { return v.Redundancies }).(GetPortDeviceRedundancyArrayOutput)
-}
-
-type GetPortDeviceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortDevice)(nil)).Elem()
-}
-
-func (o GetPortDeviceArrayOutput) ToGetPortDeviceArrayOutput() GetPortDeviceArrayOutput {
-	return o
-}
-
-func (o GetPortDeviceArrayOutput) ToGetPortDeviceArrayOutputWithContext(ctx context.Context) GetPortDeviceArrayOutput {
-	return o
-}
-
-func (o GetPortDeviceArrayOutput) Index(i pulumi.IntInput) GetPortDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortDevice {
-		return vs[0].([]GetPortDevice)[vs[1].(int)]
-	}).(GetPortDeviceOutput)
 }
 
 type GetPortDeviceRedundancy struct {
@@ -12414,31 +14774,6 @@ func (i GetPortEncapsulationArgs) ToGetPortEncapsulationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortEncapsulationOutput)
 }
 
-// GetPortEncapsulationArrayInput is an input type that accepts GetPortEncapsulationArray and GetPortEncapsulationArrayOutput values.
-// You can construct a concrete instance of `GetPortEncapsulationArrayInput` via:
-//
-//	GetPortEncapsulationArray{ GetPortEncapsulationArgs{...} }
-type GetPortEncapsulationArrayInput interface {
-	pulumi.Input
-
-	ToGetPortEncapsulationArrayOutput() GetPortEncapsulationArrayOutput
-	ToGetPortEncapsulationArrayOutputWithContext(context.Context) GetPortEncapsulationArrayOutput
-}
-
-type GetPortEncapsulationArray []GetPortEncapsulationInput
-
-func (GetPortEncapsulationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortEncapsulation)(nil)).Elem()
-}
-
-func (i GetPortEncapsulationArray) ToGetPortEncapsulationArrayOutput() GetPortEncapsulationArrayOutput {
-	return i.ToGetPortEncapsulationArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortEncapsulationArray) ToGetPortEncapsulationArrayOutputWithContext(ctx context.Context) GetPortEncapsulationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortEncapsulationArrayOutput)
-}
-
 type GetPortEncapsulationOutput struct{ *pulumi.OutputState }
 
 func (GetPortEncapsulationOutput) ElementType() reflect.Type {
@@ -12460,26 +14795,6 @@ func (o GetPortEncapsulationOutput) TagProtocolId() pulumi.StringOutput {
 // Port type
 func (o GetPortEncapsulationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortEncapsulation) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetPortEncapsulationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortEncapsulationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortEncapsulation)(nil)).Elem()
-}
-
-func (o GetPortEncapsulationArrayOutput) ToGetPortEncapsulationArrayOutput() GetPortEncapsulationArrayOutput {
-	return o
-}
-
-func (o GetPortEncapsulationArrayOutput) ToGetPortEncapsulationArrayOutputWithContext(ctx context.Context) GetPortEncapsulationArrayOutput {
-	return o
-}
-
-func (o GetPortEncapsulationArrayOutput) Index(i pulumi.IntInput) GetPortEncapsulationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortEncapsulation {
-		return vs[0].([]GetPortEncapsulation)[vs[1].(int)]
-	}).(GetPortEncapsulationOutput)
 }
 
 type GetPortLag struct {
@@ -12523,31 +14838,6 @@ func (i GetPortLagArgs) ToGetPortLagOutputWithContext(ctx context.Context) GetPo
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortLagOutput)
 }
 
-// GetPortLagArrayInput is an input type that accepts GetPortLagArray and GetPortLagArrayOutput values.
-// You can construct a concrete instance of `GetPortLagArrayInput` via:
-//
-//	GetPortLagArray{ GetPortLagArgs{...} }
-type GetPortLagArrayInput interface {
-	pulumi.Input
-
-	ToGetPortLagArrayOutput() GetPortLagArrayOutput
-	ToGetPortLagArrayOutputWithContext(context.Context) GetPortLagArrayOutput
-}
-
-type GetPortLagArray []GetPortLagInput
-
-func (GetPortLagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortLag)(nil)).Elem()
-}
-
-func (i GetPortLagArray) ToGetPortLagArrayOutput() GetPortLagArrayOutput {
-	return i.ToGetPortLagArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortLagArray) ToGetPortLagArrayOutputWithContext(ctx context.Context) GetPortLagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortLagArrayOutput)
-}
-
 type GetPortLagOutput struct{ *pulumi.OutputState }
 
 func (GetPortLagOutput) ElementType() reflect.Type {
@@ -12578,26 +14868,6 @@ func (o GetPortLagOutput) MemberStatus() pulumi.StringOutput {
 // Port name
 func (o GetPortLagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortLag) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetPortLagArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortLagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortLag)(nil)).Elem()
-}
-
-func (o GetPortLagArrayOutput) ToGetPortLagArrayOutput() GetPortLagArrayOutput {
-	return o
-}
-
-func (o GetPortLagArrayOutput) ToGetPortLagArrayOutputWithContext(ctx context.Context) GetPortLagArrayOutput {
-	return o
-}
-
-func (o GetPortLagArrayOutput) Index(i pulumi.IntInput) GetPortLagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortLag {
-		return vs[0].([]GetPortLag)[vs[1].(int)]
-	}).(GetPortLagOutput)
 }
 
 type GetPortLocation struct {
@@ -12641,31 +14911,6 @@ func (i GetPortLocationArgs) ToGetPortLocationOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortLocationOutput)
 }
 
-// GetPortLocationArrayInput is an input type that accepts GetPortLocationArray and GetPortLocationArrayOutput values.
-// You can construct a concrete instance of `GetPortLocationArrayInput` via:
-//
-//	GetPortLocationArray{ GetPortLocationArgs{...} }
-type GetPortLocationArrayInput interface {
-	pulumi.Input
-
-	ToGetPortLocationArrayOutput() GetPortLocationArrayOutput
-	ToGetPortLocationArrayOutputWithContext(context.Context) GetPortLocationArrayOutput
-}
-
-type GetPortLocationArray []GetPortLocationInput
-
-func (GetPortLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortLocation)(nil)).Elem()
-}
-
-func (i GetPortLocationArray) ToGetPortLocationArrayOutput() GetPortLocationArrayOutput {
-	return i.ToGetPortLocationArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortLocationArray) ToGetPortLocationArrayOutputWithContext(ctx context.Context) GetPortLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortLocationArrayOutput)
-}
-
 type GetPortLocationOutput struct{ *pulumi.OutputState }
 
 func (GetPortLocationOutput) ElementType() reflect.Type {
@@ -12699,26 +14944,6 @@ func (o GetPortLocationOutput) MetroName() pulumi.StringOutput {
 
 func (o GetPortLocationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortLocation) string { return v.Region }).(pulumi.StringOutput)
-}
-
-type GetPortLocationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortLocation)(nil)).Elem()
-}
-
-func (o GetPortLocationArrayOutput) ToGetPortLocationArrayOutput() GetPortLocationArrayOutput {
-	return o
-}
-
-func (o GetPortLocationArrayOutput) ToGetPortLocationArrayOutputWithContext(ctx context.Context) GetPortLocationArrayOutput {
-	return o
-}
-
-func (o GetPortLocationArrayOutput) Index(i pulumi.IntInput) GetPortLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortLocation {
-		return vs[0].([]GetPortLocation)[vs[1].(int)]
-	}).(GetPortLocationOutput)
 }
 
 type GetPortOperation struct {
@@ -12756,31 +14981,6 @@ func (i GetPortOperationArgs) ToGetPortOperationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortOperationOutput)
 }
 
-// GetPortOperationArrayInput is an input type that accepts GetPortOperationArray and GetPortOperationArrayOutput values.
-// You can construct a concrete instance of `GetPortOperationArrayInput` via:
-//
-//	GetPortOperationArray{ GetPortOperationArgs{...} }
-type GetPortOperationArrayInput interface {
-	pulumi.Input
-
-	ToGetPortOperationArrayOutput() GetPortOperationArrayOutput
-	ToGetPortOperationArrayOutputWithContext(context.Context) GetPortOperationArrayOutput
-}
-
-type GetPortOperationArray []GetPortOperationInput
-
-func (GetPortOperationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortOperation)(nil)).Elem()
-}
-
-func (i GetPortOperationArray) ToGetPortOperationArrayOutput() GetPortOperationArrayOutput {
-	return i.ToGetPortOperationArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortOperationArray) ToGetPortOperationArrayOutputWithContext(ctx context.Context) GetPortOperationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortOperationArrayOutput)
-}
-
 type GetPortOperationOutput struct{ *pulumi.OutputState }
 
 func (GetPortOperationOutput) ElementType() reflect.Type {
@@ -12805,26 +15005,6 @@ func (o GetPortOperationOutput) OpStatusChangedAt() pulumi.StringOutput {
 
 func (o GetPortOperationOutput) OperationalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortOperation) string { return v.OperationalStatus }).(pulumi.StringOutput)
-}
-
-type GetPortOperationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortOperationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortOperation)(nil)).Elem()
-}
-
-func (o GetPortOperationArrayOutput) ToGetPortOperationArrayOutput() GetPortOperationArrayOutput {
-	return o
-}
-
-func (o GetPortOperationArrayOutput) ToGetPortOperationArrayOutputWithContext(ctx context.Context) GetPortOperationArrayOutput {
-	return o
-}
-
-func (o GetPortOperationArrayOutput) Index(i pulumi.IntInput) GetPortOperationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortOperation {
-		return vs[0].([]GetPortOperation)[vs[1].(int)]
-	}).(GetPortOperationOutput)
 }
 
 type GetPortRedundancy struct {
@@ -12862,31 +15042,6 @@ func (i GetPortRedundancyArgs) ToGetPortRedundancyOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortRedundancyOutput)
 }
 
-// GetPortRedundancyArrayInput is an input type that accepts GetPortRedundancyArray and GetPortRedundancyArrayOutput values.
-// You can construct a concrete instance of `GetPortRedundancyArrayInput` via:
-//
-//	GetPortRedundancyArray{ GetPortRedundancyArgs{...} }
-type GetPortRedundancyArrayInput interface {
-	pulumi.Input
-
-	ToGetPortRedundancyArrayOutput() GetPortRedundancyArrayOutput
-	ToGetPortRedundancyArrayOutputWithContext(context.Context) GetPortRedundancyArrayOutput
-}
-
-type GetPortRedundancyArray []GetPortRedundancyInput
-
-func (GetPortRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortRedundancy)(nil)).Elem()
-}
-
-func (i GetPortRedundancyArray) ToGetPortRedundancyArrayOutput() GetPortRedundancyArrayOutput {
-	return i.ToGetPortRedundancyArrayOutputWithContext(context.Background())
-}
-
-func (i GetPortRedundancyArray) ToGetPortRedundancyArrayOutputWithContext(ctx context.Context) GetPortRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortRedundancyArrayOutput)
-}
-
 type GetPortRedundancyOutput struct{ *pulumi.OutputState }
 
 func (GetPortRedundancyOutput) ElementType() reflect.Type {
@@ -12913,223 +15068,203 @@ func (o GetPortRedundancyOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortRedundancy) string { return v.Priority }).(pulumi.StringOutput)
 }
 
-type GetPortRedundancyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetPortRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortRedundancy)(nil)).Elem()
+type GetPortsDatum struct {
+	Accounts           []GetPortsDatumAccount       `pulumi:"accounts"`
+	AvailableBandwidth int                          `pulumi:"availableBandwidth"`
+	Bandwidth          int                          `pulumi:"bandwidth"`
+	ChangeLogs         []GetPortsDatumChangeLog     `pulumi:"changeLogs"`
+	Description        string                       `pulumi:"description"`
+	Devices            []GetPortsDatumDevice        `pulumi:"devices"`
+	Encapsulations     []GetPortsDatumEncapsulation `pulumi:"encapsulations"`
+	Href               string                       `pulumi:"href"`
+	Lags               []GetPortsDatumLag           `pulumi:"lags"`
+	Locations          []GetPortsDatumLocation      `pulumi:"locations"`
+	Name               string                       `pulumi:"name"`
+	Operations         []GetPortsDatumOperation     `pulumi:"operations"`
+	Redundancies       []GetPortsDatumRedundancy    `pulumi:"redundancies"`
+	ServiceType        string                       `pulumi:"serviceType"`
+	State              string                       `pulumi:"state"`
+	Type               string                       `pulumi:"type"`
+	UsedBandwidth      int                          `pulumi:"usedBandwidth"`
+	Uuid               *string                      `pulumi:"uuid"`
 }
 
-func (o GetPortRedundancyArrayOutput) ToGetPortRedundancyArrayOutput() GetPortRedundancyArrayOutput {
-	return o
-}
-
-func (o GetPortRedundancyArrayOutput) ToGetPortRedundancyArrayOutputWithContext(ctx context.Context) GetPortRedundancyArrayOutput {
-	return o
-}
-
-func (o GetPortRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortRedundancy {
-		return vs[0].([]GetPortRedundancy)[vs[1].(int)]
-	}).(GetPortRedundancyOutput)
-}
-
-type GetPortsData struct {
-	Accounts           []GetPortsDataAccount       `pulumi:"accounts"`
-	AvailableBandwidth int                         `pulumi:"availableBandwidth"`
-	Bandwidth          int                         `pulumi:"bandwidth"`
-	ChangeLogs         []GetPortsDataChangeLog     `pulumi:"changeLogs"`
-	Description        string                      `pulumi:"description"`
-	Devices            []GetPortsDataDevice        `pulumi:"devices"`
-	Encapsulations     []GetPortsDataEncapsulation `pulumi:"encapsulations"`
-	Href               string                      `pulumi:"href"`
-	Lags               []GetPortsDataLag           `pulumi:"lags"`
-	Locations          []GetPortsDataLocation      `pulumi:"locations"`
-	Name               string                      `pulumi:"name"`
-	Operations         []GetPortsDataOperation     `pulumi:"operations"`
-	Redundancies       []GetPortsDataRedundancy    `pulumi:"redundancies"`
-	ServiceType        string                      `pulumi:"serviceType"`
-	State              string                      `pulumi:"state"`
-	Type               string                      `pulumi:"type"`
-	UsedBandwidth      int                         `pulumi:"usedBandwidth"`
-	Uuid               *string                     `pulumi:"uuid"`
-}
-
-// GetPortsDataInput is an input type that accepts GetPortsDataArgs and GetPortsDataOutput values.
-// You can construct a concrete instance of `GetPortsDataInput` via:
+// GetPortsDatumInput is an input type that accepts GetPortsDatumArgs and GetPortsDatumOutput values.
+// You can construct a concrete instance of `GetPortsDatumInput` via:
 //
-//	GetPortsDataArgs{...}
-type GetPortsDataInput interface {
+//	GetPortsDatumArgs{...}
+type GetPortsDatumInput interface {
 	pulumi.Input
 
-	ToGetPortsDataOutput() GetPortsDataOutput
-	ToGetPortsDataOutputWithContext(context.Context) GetPortsDataOutput
+	ToGetPortsDatumOutput() GetPortsDatumOutput
+	ToGetPortsDatumOutputWithContext(context.Context) GetPortsDatumOutput
 }
 
-type GetPortsDataArgs struct {
-	Accounts           GetPortsDataAccountArrayInput       `pulumi:"accounts"`
-	AvailableBandwidth pulumi.IntInput                     `pulumi:"availableBandwidth"`
-	Bandwidth          pulumi.IntInput                     `pulumi:"bandwidth"`
-	ChangeLogs         GetPortsDataChangeLogArrayInput     `pulumi:"changeLogs"`
-	Description        pulumi.StringInput                  `pulumi:"description"`
-	Devices            GetPortsDataDeviceArrayInput        `pulumi:"devices"`
-	Encapsulations     GetPortsDataEncapsulationArrayInput `pulumi:"encapsulations"`
-	Href               pulumi.StringInput                  `pulumi:"href"`
-	Lags               GetPortsDataLagArrayInput           `pulumi:"lags"`
-	Locations          GetPortsDataLocationArrayInput      `pulumi:"locations"`
-	Name               pulumi.StringInput                  `pulumi:"name"`
-	Operations         GetPortsDataOperationArrayInput     `pulumi:"operations"`
-	Redundancies       GetPortsDataRedundancyArrayInput    `pulumi:"redundancies"`
-	ServiceType        pulumi.StringInput                  `pulumi:"serviceType"`
-	State              pulumi.StringInput                  `pulumi:"state"`
-	Type               pulumi.StringInput                  `pulumi:"type"`
-	UsedBandwidth      pulumi.IntInput                     `pulumi:"usedBandwidth"`
-	Uuid               pulumi.StringPtrInput               `pulumi:"uuid"`
+type GetPortsDatumArgs struct {
+	Accounts           GetPortsDatumAccountArrayInput       `pulumi:"accounts"`
+	AvailableBandwidth pulumi.IntInput                      `pulumi:"availableBandwidth"`
+	Bandwidth          pulumi.IntInput                      `pulumi:"bandwidth"`
+	ChangeLogs         GetPortsDatumChangeLogArrayInput     `pulumi:"changeLogs"`
+	Description        pulumi.StringInput                   `pulumi:"description"`
+	Devices            GetPortsDatumDeviceArrayInput        `pulumi:"devices"`
+	Encapsulations     GetPortsDatumEncapsulationArrayInput `pulumi:"encapsulations"`
+	Href               pulumi.StringInput                   `pulumi:"href"`
+	Lags               GetPortsDatumLagArrayInput           `pulumi:"lags"`
+	Locations          GetPortsDatumLocationArrayInput      `pulumi:"locations"`
+	Name               pulumi.StringInput                   `pulumi:"name"`
+	Operations         GetPortsDatumOperationArrayInput     `pulumi:"operations"`
+	Redundancies       GetPortsDatumRedundancyArrayInput    `pulumi:"redundancies"`
+	ServiceType        pulumi.StringInput                   `pulumi:"serviceType"`
+	State              pulumi.StringInput                   `pulumi:"state"`
+	Type               pulumi.StringInput                   `pulumi:"type"`
+	UsedBandwidth      pulumi.IntInput                      `pulumi:"usedBandwidth"`
+	Uuid               pulumi.StringPtrInput                `pulumi:"uuid"`
 }
 
-func (GetPortsDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsData)(nil)).Elem()
+func (GetPortsDatumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatum)(nil)).Elem()
 }
 
-func (i GetPortsDataArgs) ToGetPortsDataOutput() GetPortsDataOutput {
-	return i.ToGetPortsDataOutputWithContext(context.Background())
+func (i GetPortsDatumArgs) ToGetPortsDatumOutput() GetPortsDatumOutput {
+	return i.ToGetPortsDatumOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataArgs) ToGetPortsDataOutputWithContext(ctx context.Context) GetPortsDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataOutput)
+func (i GetPortsDatumArgs) ToGetPortsDatumOutputWithContext(ctx context.Context) GetPortsDatumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumOutput)
 }
 
-// GetPortsDataArrayInput is an input type that accepts GetPortsDataArray and GetPortsDataArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataArrayInput` via:
+// GetPortsDatumArrayInput is an input type that accepts GetPortsDatumArray and GetPortsDatumArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumArrayInput` via:
 //
-//	GetPortsDataArray{ GetPortsDataArgs{...} }
-type GetPortsDataArrayInput interface {
+//	GetPortsDatumArray{ GetPortsDatumArgs{...} }
+type GetPortsDatumArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataArrayOutput() GetPortsDataArrayOutput
-	ToGetPortsDataArrayOutputWithContext(context.Context) GetPortsDataArrayOutput
+	ToGetPortsDatumArrayOutput() GetPortsDatumArrayOutput
+	ToGetPortsDatumArrayOutputWithContext(context.Context) GetPortsDatumArrayOutput
 }
 
-type GetPortsDataArray []GetPortsDataInput
+type GetPortsDatumArray []GetPortsDatumInput
 
-func (GetPortsDataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsData)(nil)).Elem()
+func (GetPortsDatumArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatum)(nil)).Elem()
 }
 
-func (i GetPortsDataArray) ToGetPortsDataArrayOutput() GetPortsDataArrayOutput {
-	return i.ToGetPortsDataArrayOutputWithContext(context.Background())
+func (i GetPortsDatumArray) ToGetPortsDatumArrayOutput() GetPortsDatumArrayOutput {
+	return i.ToGetPortsDatumArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataArray) ToGetPortsDataArrayOutputWithContext(ctx context.Context) GetPortsDataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataArrayOutput)
+func (i GetPortsDatumArray) ToGetPortsDatumArrayOutputWithContext(ctx context.Context) GetPortsDatumArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumArrayOutput)
 }
 
-type GetPortsDataOutput struct{ *pulumi.OutputState }
+type GetPortsDatumOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsData)(nil)).Elem()
+func (GetPortsDatumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatum)(nil)).Elem()
 }
 
-func (o GetPortsDataOutput) ToGetPortsDataOutput() GetPortsDataOutput {
+func (o GetPortsDatumOutput) ToGetPortsDatumOutput() GetPortsDatumOutput {
 	return o
 }
 
-func (o GetPortsDataOutput) ToGetPortsDataOutputWithContext(ctx context.Context) GetPortsDataOutput {
+func (o GetPortsDatumOutput) ToGetPortsDatumOutputWithContext(ctx context.Context) GetPortsDatumOutput {
 	return o
 }
 
-func (o GetPortsDataOutput) Accounts() GetPortsDataAccountArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataAccount { return v.Accounts }).(GetPortsDataAccountArrayOutput)
+func (o GetPortsDatumOutput) Accounts() GetPortsDatumAccountArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumAccount { return v.Accounts }).(GetPortsDatumAccountArrayOutput)
 }
 
-func (o GetPortsDataOutput) AvailableBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsData) int { return v.AvailableBandwidth }).(pulumi.IntOutput)
+func (o GetPortsDatumOutput) AvailableBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatum) int { return v.AvailableBandwidth }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsData) int { return v.Bandwidth }).(pulumi.IntOutput)
+func (o GetPortsDatumOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatum) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataOutput) ChangeLogs() GetPortsDataChangeLogArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataChangeLog { return v.ChangeLogs }).(GetPortsDataChangeLogArrayOutput)
+func (o GetPortsDatumOutput) ChangeLogs() GetPortsDatumChangeLogArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumChangeLog { return v.ChangeLogs }).(GetPortsDatumChangeLogArrayOutput)
 }
 
-func (o GetPortsDataOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsData) string { return v.Description }).(pulumi.StringOutput)
+func (o GetPortsDatumOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatum) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOutput) Devices() GetPortsDataDeviceArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataDevice { return v.Devices }).(GetPortsDataDeviceArrayOutput)
+func (o GetPortsDatumOutput) Devices() GetPortsDatumDeviceArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumDevice { return v.Devices }).(GetPortsDatumDeviceArrayOutput)
 }
 
-func (o GetPortsDataOutput) Encapsulations() GetPortsDataEncapsulationArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataEncapsulation { return v.Encapsulations }).(GetPortsDataEncapsulationArrayOutput)
+func (o GetPortsDatumOutput) Encapsulations() GetPortsDatumEncapsulationArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumEncapsulation { return v.Encapsulations }).(GetPortsDatumEncapsulationArrayOutput)
 }
 
-func (o GetPortsDataOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsData) string { return v.Href }).(pulumi.StringOutput)
+func (o GetPortsDatumOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatum) string { return v.Href }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOutput) Lags() GetPortsDataLagArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataLag { return v.Lags }).(GetPortsDataLagArrayOutput)
+func (o GetPortsDatumOutput) Lags() GetPortsDatumLagArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumLag { return v.Lags }).(GetPortsDatumLagArrayOutput)
 }
 
-func (o GetPortsDataOutput) Locations() GetPortsDataLocationArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataLocation { return v.Locations }).(GetPortsDataLocationArrayOutput)
+func (o GetPortsDatumOutput) Locations() GetPortsDatumLocationArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumLocation { return v.Locations }).(GetPortsDatumLocationArrayOutput)
 }
 
-func (o GetPortsDataOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsData) string { return v.Name }).(pulumi.StringOutput)
+func (o GetPortsDatumOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatum) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOutput) Operations() GetPortsDataOperationArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataOperation { return v.Operations }).(GetPortsDataOperationArrayOutput)
+func (o GetPortsDatumOutput) Operations() GetPortsDatumOperationArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumOperation { return v.Operations }).(GetPortsDatumOperationArrayOutput)
 }
 
-func (o GetPortsDataOutput) Redundancies() GetPortsDataRedundancyArrayOutput {
-	return o.ApplyT(func(v GetPortsData) []GetPortsDataRedundancy { return v.Redundancies }).(GetPortsDataRedundancyArrayOutput)
+func (o GetPortsDatumOutput) Redundancies() GetPortsDatumRedundancyArrayOutput {
+	return o.ApplyT(func(v GetPortsDatum) []GetPortsDatumRedundancy { return v.Redundancies }).(GetPortsDatumRedundancyArrayOutput)
 }
 
-func (o GetPortsDataOutput) ServiceType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsData) string { return v.ServiceType }).(pulumi.StringOutput)
+func (o GetPortsDatumOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatum) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsData) string { return v.State }).(pulumi.StringOutput)
+func (o GetPortsDatumOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatum) string { return v.State }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsData) string { return v.Type }).(pulumi.StringOutput)
+func (o GetPortsDatumOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatum) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOutput) UsedBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsData) int { return v.UsedBandwidth }).(pulumi.IntOutput)
+func (o GetPortsDatumOutput) UsedBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatum) int { return v.UsedBandwidth }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetPortsData) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetPortsDatumOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPortsDatum) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-type GetPortsDataArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsData)(nil)).Elem()
+func (GetPortsDatumArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatum)(nil)).Elem()
 }
 
-func (o GetPortsDataArrayOutput) ToGetPortsDataArrayOutput() GetPortsDataArrayOutput {
+func (o GetPortsDatumArrayOutput) ToGetPortsDatumArrayOutput() GetPortsDatumArrayOutput {
 	return o
 }
 
-func (o GetPortsDataArrayOutput) ToGetPortsDataArrayOutputWithContext(ctx context.Context) GetPortsDataArrayOutput {
+func (o GetPortsDatumArrayOutput) ToGetPortsDatumArrayOutputWithContext(ctx context.Context) GetPortsDatumArrayOutput {
 	return o
 }
 
-func (o GetPortsDataArrayOutput) Index(i pulumi.IntInput) GetPortsDataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsData {
-		return vs[0].([]GetPortsData)[vs[1].(int)]
-	}).(GetPortsDataOutput)
+func (o GetPortsDatumArrayOutput) Index(i pulumi.IntInput) GetPortsDatumOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatum {
+		return vs[0].([]GetPortsDatum)[vs[1].(int)]
+	}).(GetPortsDatumOutput)
 }
 
-type GetPortsDataAccount struct {
+type GetPortsDatumAccount struct {
 	AccountName            string `pulumi:"accountName"`
 	AccountNumber          int    `pulumi:"accountNumber"`
 	GlobalCustId           string `pulumi:"globalCustId"`
@@ -13139,18 +15274,18 @@ type GetPortsDataAccount struct {
 	OrganizationName       string `pulumi:"organizationName"`
 }
 
-// GetPortsDataAccountInput is an input type that accepts GetPortsDataAccountArgs and GetPortsDataAccountOutput values.
-// You can construct a concrete instance of `GetPortsDataAccountInput` via:
+// GetPortsDatumAccountInput is an input type that accepts GetPortsDatumAccountArgs and GetPortsDatumAccountOutput values.
+// You can construct a concrete instance of `GetPortsDatumAccountInput` via:
 //
-//	GetPortsDataAccountArgs{...}
-type GetPortsDataAccountInput interface {
+//	GetPortsDatumAccountArgs{...}
+type GetPortsDatumAccountInput interface {
 	pulumi.Input
 
-	ToGetPortsDataAccountOutput() GetPortsDataAccountOutput
-	ToGetPortsDataAccountOutputWithContext(context.Context) GetPortsDataAccountOutput
+	ToGetPortsDatumAccountOutput() GetPortsDatumAccountOutput
+	ToGetPortsDatumAccountOutputWithContext(context.Context) GetPortsDatumAccountOutput
 }
 
-type GetPortsDataAccountArgs struct {
+type GetPortsDatumAccountArgs struct {
 	AccountName            pulumi.StringInput `pulumi:"accountName"`
 	AccountNumber          pulumi.IntInput    `pulumi:"accountNumber"`
 	GlobalCustId           pulumi.StringInput `pulumi:"globalCustId"`
@@ -13160,106 +15295,106 @@ type GetPortsDataAccountArgs struct {
 	OrganizationName       pulumi.StringInput `pulumi:"organizationName"`
 }
 
-func (GetPortsDataAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataAccount)(nil)).Elem()
+func (GetPortsDatumAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumAccount)(nil)).Elem()
 }
 
-func (i GetPortsDataAccountArgs) ToGetPortsDataAccountOutput() GetPortsDataAccountOutput {
-	return i.ToGetPortsDataAccountOutputWithContext(context.Background())
+func (i GetPortsDatumAccountArgs) ToGetPortsDatumAccountOutput() GetPortsDatumAccountOutput {
+	return i.ToGetPortsDatumAccountOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataAccountArgs) ToGetPortsDataAccountOutputWithContext(ctx context.Context) GetPortsDataAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataAccountOutput)
+func (i GetPortsDatumAccountArgs) ToGetPortsDatumAccountOutputWithContext(ctx context.Context) GetPortsDatumAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumAccountOutput)
 }
 
-// GetPortsDataAccountArrayInput is an input type that accepts GetPortsDataAccountArray and GetPortsDataAccountArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataAccountArrayInput` via:
+// GetPortsDatumAccountArrayInput is an input type that accepts GetPortsDatumAccountArray and GetPortsDatumAccountArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumAccountArrayInput` via:
 //
-//	GetPortsDataAccountArray{ GetPortsDataAccountArgs{...} }
-type GetPortsDataAccountArrayInput interface {
+//	GetPortsDatumAccountArray{ GetPortsDatumAccountArgs{...} }
+type GetPortsDatumAccountArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataAccountArrayOutput() GetPortsDataAccountArrayOutput
-	ToGetPortsDataAccountArrayOutputWithContext(context.Context) GetPortsDataAccountArrayOutput
+	ToGetPortsDatumAccountArrayOutput() GetPortsDatumAccountArrayOutput
+	ToGetPortsDatumAccountArrayOutputWithContext(context.Context) GetPortsDatumAccountArrayOutput
 }
 
-type GetPortsDataAccountArray []GetPortsDataAccountInput
+type GetPortsDatumAccountArray []GetPortsDatumAccountInput
 
-func (GetPortsDataAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataAccount)(nil)).Elem()
+func (GetPortsDatumAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumAccount)(nil)).Elem()
 }
 
-func (i GetPortsDataAccountArray) ToGetPortsDataAccountArrayOutput() GetPortsDataAccountArrayOutput {
-	return i.ToGetPortsDataAccountArrayOutputWithContext(context.Background())
+func (i GetPortsDatumAccountArray) ToGetPortsDatumAccountArrayOutput() GetPortsDatumAccountArrayOutput {
+	return i.ToGetPortsDatumAccountArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataAccountArray) ToGetPortsDataAccountArrayOutputWithContext(ctx context.Context) GetPortsDataAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataAccountArrayOutput)
+func (i GetPortsDatumAccountArray) ToGetPortsDatumAccountArrayOutputWithContext(ctx context.Context) GetPortsDatumAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumAccountArrayOutput)
 }
 
-type GetPortsDataAccountOutput struct{ *pulumi.OutputState }
+type GetPortsDatumAccountOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataAccount)(nil)).Elem()
+func (GetPortsDatumAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumAccount)(nil)).Elem()
 }
 
-func (o GetPortsDataAccountOutput) ToGetPortsDataAccountOutput() GetPortsDataAccountOutput {
+func (o GetPortsDatumAccountOutput) ToGetPortsDatumAccountOutput() GetPortsDatumAccountOutput {
 	return o
 }
 
-func (o GetPortsDataAccountOutput) ToGetPortsDataAccountOutputWithContext(ctx context.Context) GetPortsDataAccountOutput {
+func (o GetPortsDatumAccountOutput) ToGetPortsDatumAccountOutputWithContext(ctx context.Context) GetPortsDatumAccountOutput {
 	return o
 }
 
-func (o GetPortsDataAccountOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) string { return v.AccountName }).(pulumi.StringOutput)
+func (o GetPortsDatumAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataAccountOutput) AccountNumber() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+func (o GetPortsDatumAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataAccountOutput) GlobalCustId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+func (o GetPortsDatumAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataAccountOutput) GlobalOrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+func (o GetPortsDatumAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+func (o GetPortsDatumAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataAccountOutput) OrgId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) int { return v.OrgId }).(pulumi.IntOutput)
+func (o GetPortsDatumAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) int { return v.OrgId }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataAccountOutput) OrganizationName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+func (o GetPortsDatumAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
 }
 
-type GetPortsDataAccountArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumAccountArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataAccount)(nil)).Elem()
+func (GetPortsDatumAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumAccount)(nil)).Elem()
 }
 
-func (o GetPortsDataAccountArrayOutput) ToGetPortsDataAccountArrayOutput() GetPortsDataAccountArrayOutput {
+func (o GetPortsDatumAccountArrayOutput) ToGetPortsDatumAccountArrayOutput() GetPortsDatumAccountArrayOutput {
 	return o
 }
 
-func (o GetPortsDataAccountArrayOutput) ToGetPortsDataAccountArrayOutputWithContext(ctx context.Context) GetPortsDataAccountArrayOutput {
+func (o GetPortsDatumAccountArrayOutput) ToGetPortsDatumAccountArrayOutputWithContext(ctx context.Context) GetPortsDatumAccountArrayOutput {
 	return o
 }
 
-func (o GetPortsDataAccountArrayOutput) Index(i pulumi.IntInput) GetPortsDataAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataAccount {
-		return vs[0].([]GetPortsDataAccount)[vs[1].(int)]
-	}).(GetPortsDataAccountOutput)
+func (o GetPortsDatumAccountArrayOutput) Index(i pulumi.IntInput) GetPortsDatumAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumAccount {
+		return vs[0].([]GetPortsDatumAccount)[vs[1].(int)]
+	}).(GetPortsDatumAccountOutput)
 }
 
-type GetPortsDataChangeLog struct {
+type GetPortsDatumChangeLog struct {
 	CreatedBy         string `pulumi:"createdBy"`
 	CreatedByEmail    string `pulumi:"createdByEmail"`
 	CreatedByFullName string `pulumi:"createdByFullName"`
@@ -13274,18 +15409,18 @@ type GetPortsDataChangeLog struct {
 	UpdatedDateTime   string `pulumi:"updatedDateTime"`
 }
 
-// GetPortsDataChangeLogInput is an input type that accepts GetPortsDataChangeLogArgs and GetPortsDataChangeLogOutput values.
-// You can construct a concrete instance of `GetPortsDataChangeLogInput` via:
+// GetPortsDatumChangeLogInput is an input type that accepts GetPortsDatumChangeLogArgs and GetPortsDatumChangeLogOutput values.
+// You can construct a concrete instance of `GetPortsDatumChangeLogInput` via:
 //
-//	GetPortsDataChangeLogArgs{...}
-type GetPortsDataChangeLogInput interface {
+//	GetPortsDatumChangeLogArgs{...}
+type GetPortsDatumChangeLogInput interface {
 	pulumi.Input
 
-	ToGetPortsDataChangeLogOutput() GetPortsDataChangeLogOutput
-	ToGetPortsDataChangeLogOutputWithContext(context.Context) GetPortsDataChangeLogOutput
+	ToGetPortsDatumChangeLogOutput() GetPortsDatumChangeLogOutput
+	ToGetPortsDatumChangeLogOutputWithContext(context.Context) GetPortsDatumChangeLogOutput
 }
 
-type GetPortsDataChangeLogArgs struct {
+type GetPortsDatumChangeLogArgs struct {
 	CreatedBy         pulumi.StringInput `pulumi:"createdBy"`
 	CreatedByEmail    pulumi.StringInput `pulumi:"createdByEmail"`
 	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
@@ -13300,426 +15435,426 @@ type GetPortsDataChangeLogArgs struct {
 	UpdatedDateTime   pulumi.StringInput `pulumi:"updatedDateTime"`
 }
 
-func (GetPortsDataChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataChangeLog)(nil)).Elem()
+func (GetPortsDatumChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumChangeLog)(nil)).Elem()
 }
 
-func (i GetPortsDataChangeLogArgs) ToGetPortsDataChangeLogOutput() GetPortsDataChangeLogOutput {
-	return i.ToGetPortsDataChangeLogOutputWithContext(context.Background())
+func (i GetPortsDatumChangeLogArgs) ToGetPortsDatumChangeLogOutput() GetPortsDatumChangeLogOutput {
+	return i.ToGetPortsDatumChangeLogOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataChangeLogArgs) ToGetPortsDataChangeLogOutputWithContext(ctx context.Context) GetPortsDataChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataChangeLogOutput)
+func (i GetPortsDatumChangeLogArgs) ToGetPortsDatumChangeLogOutputWithContext(ctx context.Context) GetPortsDatumChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumChangeLogOutput)
 }
 
-// GetPortsDataChangeLogArrayInput is an input type that accepts GetPortsDataChangeLogArray and GetPortsDataChangeLogArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataChangeLogArrayInput` via:
+// GetPortsDatumChangeLogArrayInput is an input type that accepts GetPortsDatumChangeLogArray and GetPortsDatumChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumChangeLogArrayInput` via:
 //
-//	GetPortsDataChangeLogArray{ GetPortsDataChangeLogArgs{...} }
-type GetPortsDataChangeLogArrayInput interface {
+//	GetPortsDatumChangeLogArray{ GetPortsDatumChangeLogArgs{...} }
+type GetPortsDatumChangeLogArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataChangeLogArrayOutput() GetPortsDataChangeLogArrayOutput
-	ToGetPortsDataChangeLogArrayOutputWithContext(context.Context) GetPortsDataChangeLogArrayOutput
+	ToGetPortsDatumChangeLogArrayOutput() GetPortsDatumChangeLogArrayOutput
+	ToGetPortsDatumChangeLogArrayOutputWithContext(context.Context) GetPortsDatumChangeLogArrayOutput
 }
 
-type GetPortsDataChangeLogArray []GetPortsDataChangeLogInput
+type GetPortsDatumChangeLogArray []GetPortsDatumChangeLogInput
 
-func (GetPortsDataChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataChangeLog)(nil)).Elem()
+func (GetPortsDatumChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumChangeLog)(nil)).Elem()
 }
 
-func (i GetPortsDataChangeLogArray) ToGetPortsDataChangeLogArrayOutput() GetPortsDataChangeLogArrayOutput {
-	return i.ToGetPortsDataChangeLogArrayOutputWithContext(context.Background())
+func (i GetPortsDatumChangeLogArray) ToGetPortsDatumChangeLogArrayOutput() GetPortsDatumChangeLogArrayOutput {
+	return i.ToGetPortsDatumChangeLogArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataChangeLogArray) ToGetPortsDataChangeLogArrayOutputWithContext(ctx context.Context) GetPortsDataChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataChangeLogArrayOutput)
+func (i GetPortsDatumChangeLogArray) ToGetPortsDatumChangeLogArrayOutputWithContext(ctx context.Context) GetPortsDatumChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumChangeLogArrayOutput)
 }
 
-type GetPortsDataChangeLogOutput struct{ *pulumi.OutputState }
+type GetPortsDatumChangeLogOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataChangeLog)(nil)).Elem()
+func (GetPortsDatumChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumChangeLog)(nil)).Elem()
 }
 
-func (o GetPortsDataChangeLogOutput) ToGetPortsDataChangeLogOutput() GetPortsDataChangeLogOutput {
+func (o GetPortsDatumChangeLogOutput) ToGetPortsDatumChangeLogOutput() GetPortsDatumChangeLogOutput {
 	return o
 }
 
-func (o GetPortsDataChangeLogOutput) ToGetPortsDataChangeLogOutputWithContext(ctx context.Context) GetPortsDataChangeLogOutput {
+func (o GetPortsDatumChangeLogOutput) ToGetPortsDatumChangeLogOutputWithContext(ctx context.Context) GetPortsDatumChangeLogOutput {
 	return o
 }
 
-func (o GetPortsDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+func (o GetPortsDatumChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
 }
 
-type GetPortsDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumChangeLogArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataChangeLog)(nil)).Elem()
+func (GetPortsDatumChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumChangeLog)(nil)).Elem()
 }
 
-func (o GetPortsDataChangeLogArrayOutput) ToGetPortsDataChangeLogArrayOutput() GetPortsDataChangeLogArrayOutput {
+func (o GetPortsDatumChangeLogArrayOutput) ToGetPortsDatumChangeLogArrayOutput() GetPortsDatumChangeLogArrayOutput {
 	return o
 }
 
-func (o GetPortsDataChangeLogArrayOutput) ToGetPortsDataChangeLogArrayOutputWithContext(ctx context.Context) GetPortsDataChangeLogArrayOutput {
+func (o GetPortsDatumChangeLogArrayOutput) ToGetPortsDatumChangeLogArrayOutputWithContext(ctx context.Context) GetPortsDatumChangeLogArrayOutput {
 	return o
 }
 
-func (o GetPortsDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetPortsDataChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataChangeLog {
-		return vs[0].([]GetPortsDataChangeLog)[vs[1].(int)]
-	}).(GetPortsDataChangeLogOutput)
+func (o GetPortsDatumChangeLogArrayOutput) Index(i pulumi.IntInput) GetPortsDatumChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumChangeLog {
+		return vs[0].([]GetPortsDatumChangeLog)[vs[1].(int)]
+	}).(GetPortsDatumChangeLogOutput)
 }
 
-type GetPortsDataDevice struct {
-	Name         string                         `pulumi:"name"`
-	Redundancies []GetPortsDataDeviceRedundancy `pulumi:"redundancies"`
+type GetPortsDatumDevice struct {
+	Name         string                          `pulumi:"name"`
+	Redundancies []GetPortsDatumDeviceRedundancy `pulumi:"redundancies"`
 }
 
-// GetPortsDataDeviceInput is an input type that accepts GetPortsDataDeviceArgs and GetPortsDataDeviceOutput values.
-// You can construct a concrete instance of `GetPortsDataDeviceInput` via:
+// GetPortsDatumDeviceInput is an input type that accepts GetPortsDatumDeviceArgs and GetPortsDatumDeviceOutput values.
+// You can construct a concrete instance of `GetPortsDatumDeviceInput` via:
 //
-//	GetPortsDataDeviceArgs{...}
-type GetPortsDataDeviceInput interface {
+//	GetPortsDatumDeviceArgs{...}
+type GetPortsDatumDeviceInput interface {
 	pulumi.Input
 
-	ToGetPortsDataDeviceOutput() GetPortsDataDeviceOutput
-	ToGetPortsDataDeviceOutputWithContext(context.Context) GetPortsDataDeviceOutput
+	ToGetPortsDatumDeviceOutput() GetPortsDatumDeviceOutput
+	ToGetPortsDatumDeviceOutputWithContext(context.Context) GetPortsDatumDeviceOutput
 }
 
-type GetPortsDataDeviceArgs struct {
-	Name         pulumi.StringInput                     `pulumi:"name"`
-	Redundancies GetPortsDataDeviceRedundancyArrayInput `pulumi:"redundancies"`
+type GetPortsDatumDeviceArgs struct {
+	Name         pulumi.StringInput                      `pulumi:"name"`
+	Redundancies GetPortsDatumDeviceRedundancyArrayInput `pulumi:"redundancies"`
 }
 
-func (GetPortsDataDeviceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataDevice)(nil)).Elem()
+func (GetPortsDatumDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumDevice)(nil)).Elem()
 }
 
-func (i GetPortsDataDeviceArgs) ToGetPortsDataDeviceOutput() GetPortsDataDeviceOutput {
-	return i.ToGetPortsDataDeviceOutputWithContext(context.Background())
+func (i GetPortsDatumDeviceArgs) ToGetPortsDatumDeviceOutput() GetPortsDatumDeviceOutput {
+	return i.ToGetPortsDatumDeviceOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataDeviceArgs) ToGetPortsDataDeviceOutputWithContext(ctx context.Context) GetPortsDataDeviceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataDeviceOutput)
+func (i GetPortsDatumDeviceArgs) ToGetPortsDatumDeviceOutputWithContext(ctx context.Context) GetPortsDatumDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumDeviceOutput)
 }
 
-// GetPortsDataDeviceArrayInput is an input type that accepts GetPortsDataDeviceArray and GetPortsDataDeviceArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataDeviceArrayInput` via:
+// GetPortsDatumDeviceArrayInput is an input type that accepts GetPortsDatumDeviceArray and GetPortsDatumDeviceArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumDeviceArrayInput` via:
 //
-//	GetPortsDataDeviceArray{ GetPortsDataDeviceArgs{...} }
-type GetPortsDataDeviceArrayInput interface {
+//	GetPortsDatumDeviceArray{ GetPortsDatumDeviceArgs{...} }
+type GetPortsDatumDeviceArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataDeviceArrayOutput() GetPortsDataDeviceArrayOutput
-	ToGetPortsDataDeviceArrayOutputWithContext(context.Context) GetPortsDataDeviceArrayOutput
+	ToGetPortsDatumDeviceArrayOutput() GetPortsDatumDeviceArrayOutput
+	ToGetPortsDatumDeviceArrayOutputWithContext(context.Context) GetPortsDatumDeviceArrayOutput
 }
 
-type GetPortsDataDeviceArray []GetPortsDataDeviceInput
+type GetPortsDatumDeviceArray []GetPortsDatumDeviceInput
 
-func (GetPortsDataDeviceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataDevice)(nil)).Elem()
+func (GetPortsDatumDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumDevice)(nil)).Elem()
 }
 
-func (i GetPortsDataDeviceArray) ToGetPortsDataDeviceArrayOutput() GetPortsDataDeviceArrayOutput {
-	return i.ToGetPortsDataDeviceArrayOutputWithContext(context.Background())
+func (i GetPortsDatumDeviceArray) ToGetPortsDatumDeviceArrayOutput() GetPortsDatumDeviceArrayOutput {
+	return i.ToGetPortsDatumDeviceArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataDeviceArray) ToGetPortsDataDeviceArrayOutputWithContext(ctx context.Context) GetPortsDataDeviceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataDeviceArrayOutput)
+func (i GetPortsDatumDeviceArray) ToGetPortsDatumDeviceArrayOutputWithContext(ctx context.Context) GetPortsDatumDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumDeviceArrayOutput)
 }
 
-type GetPortsDataDeviceOutput struct{ *pulumi.OutputState }
+type GetPortsDatumDeviceOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataDeviceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataDevice)(nil)).Elem()
+func (GetPortsDatumDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumDevice)(nil)).Elem()
 }
 
-func (o GetPortsDataDeviceOutput) ToGetPortsDataDeviceOutput() GetPortsDataDeviceOutput {
+func (o GetPortsDatumDeviceOutput) ToGetPortsDatumDeviceOutput() GetPortsDatumDeviceOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceOutput) ToGetPortsDataDeviceOutputWithContext(ctx context.Context) GetPortsDataDeviceOutput {
+func (o GetPortsDatumDeviceOutput) ToGetPortsDatumDeviceOutputWithContext(ctx context.Context) GetPortsDatumDeviceOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataDevice) string { return v.Name }).(pulumi.StringOutput)
+func (o GetPortsDatumDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumDevice) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataDeviceOutput) Redundancies() GetPortsDataDeviceRedundancyArrayOutput {
-	return o.ApplyT(func(v GetPortsDataDevice) []GetPortsDataDeviceRedundancy { return v.Redundancies }).(GetPortsDataDeviceRedundancyArrayOutput)
+func (o GetPortsDatumDeviceOutput) Redundancies() GetPortsDatumDeviceRedundancyArrayOutput {
+	return o.ApplyT(func(v GetPortsDatumDevice) []GetPortsDatumDeviceRedundancy { return v.Redundancies }).(GetPortsDatumDeviceRedundancyArrayOutput)
 }
 
-type GetPortsDataDeviceArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumDeviceArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataDeviceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataDevice)(nil)).Elem()
+func (GetPortsDatumDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumDevice)(nil)).Elem()
 }
 
-func (o GetPortsDataDeviceArrayOutput) ToGetPortsDataDeviceArrayOutput() GetPortsDataDeviceArrayOutput {
+func (o GetPortsDatumDeviceArrayOutput) ToGetPortsDatumDeviceArrayOutput() GetPortsDatumDeviceArrayOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceArrayOutput) ToGetPortsDataDeviceArrayOutputWithContext(ctx context.Context) GetPortsDataDeviceArrayOutput {
+func (o GetPortsDatumDeviceArrayOutput) ToGetPortsDatumDeviceArrayOutputWithContext(ctx context.Context) GetPortsDatumDeviceArrayOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceArrayOutput) Index(i pulumi.IntInput) GetPortsDataDeviceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataDevice {
-		return vs[0].([]GetPortsDataDevice)[vs[1].(int)]
-	}).(GetPortsDataDeviceOutput)
+func (o GetPortsDatumDeviceArrayOutput) Index(i pulumi.IntInput) GetPortsDatumDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumDevice {
+		return vs[0].([]GetPortsDatumDevice)[vs[1].(int)]
+	}).(GetPortsDatumDeviceOutput)
 }
 
-type GetPortsDataDeviceRedundancy struct {
+type GetPortsDatumDeviceRedundancy struct {
 	Group    string `pulumi:"group"`
 	Priority string `pulumi:"priority"`
 }
 
-// GetPortsDataDeviceRedundancyInput is an input type that accepts GetPortsDataDeviceRedundancyArgs and GetPortsDataDeviceRedundancyOutput values.
-// You can construct a concrete instance of `GetPortsDataDeviceRedundancyInput` via:
+// GetPortsDatumDeviceRedundancyInput is an input type that accepts GetPortsDatumDeviceRedundancyArgs and GetPortsDatumDeviceRedundancyOutput values.
+// You can construct a concrete instance of `GetPortsDatumDeviceRedundancyInput` via:
 //
-//	GetPortsDataDeviceRedundancyArgs{...}
-type GetPortsDataDeviceRedundancyInput interface {
+//	GetPortsDatumDeviceRedundancyArgs{...}
+type GetPortsDatumDeviceRedundancyInput interface {
 	pulumi.Input
 
-	ToGetPortsDataDeviceRedundancyOutput() GetPortsDataDeviceRedundancyOutput
-	ToGetPortsDataDeviceRedundancyOutputWithContext(context.Context) GetPortsDataDeviceRedundancyOutput
+	ToGetPortsDatumDeviceRedundancyOutput() GetPortsDatumDeviceRedundancyOutput
+	ToGetPortsDatumDeviceRedundancyOutputWithContext(context.Context) GetPortsDatumDeviceRedundancyOutput
 }
 
-type GetPortsDataDeviceRedundancyArgs struct {
+type GetPortsDatumDeviceRedundancyArgs struct {
 	Group    pulumi.StringInput `pulumi:"group"`
 	Priority pulumi.StringInput `pulumi:"priority"`
 }
 
-func (GetPortsDataDeviceRedundancyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataDeviceRedundancy)(nil)).Elem()
+func (GetPortsDatumDeviceRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumDeviceRedundancy)(nil)).Elem()
 }
 
-func (i GetPortsDataDeviceRedundancyArgs) ToGetPortsDataDeviceRedundancyOutput() GetPortsDataDeviceRedundancyOutput {
-	return i.ToGetPortsDataDeviceRedundancyOutputWithContext(context.Background())
+func (i GetPortsDatumDeviceRedundancyArgs) ToGetPortsDatumDeviceRedundancyOutput() GetPortsDatumDeviceRedundancyOutput {
+	return i.ToGetPortsDatumDeviceRedundancyOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataDeviceRedundancyArgs) ToGetPortsDataDeviceRedundancyOutputWithContext(ctx context.Context) GetPortsDataDeviceRedundancyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataDeviceRedundancyOutput)
+func (i GetPortsDatumDeviceRedundancyArgs) ToGetPortsDatumDeviceRedundancyOutputWithContext(ctx context.Context) GetPortsDatumDeviceRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumDeviceRedundancyOutput)
 }
 
-// GetPortsDataDeviceRedundancyArrayInput is an input type that accepts GetPortsDataDeviceRedundancyArray and GetPortsDataDeviceRedundancyArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataDeviceRedundancyArrayInput` via:
+// GetPortsDatumDeviceRedundancyArrayInput is an input type that accepts GetPortsDatumDeviceRedundancyArray and GetPortsDatumDeviceRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumDeviceRedundancyArrayInput` via:
 //
-//	GetPortsDataDeviceRedundancyArray{ GetPortsDataDeviceRedundancyArgs{...} }
-type GetPortsDataDeviceRedundancyArrayInput interface {
+//	GetPortsDatumDeviceRedundancyArray{ GetPortsDatumDeviceRedundancyArgs{...} }
+type GetPortsDatumDeviceRedundancyArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataDeviceRedundancyArrayOutput() GetPortsDataDeviceRedundancyArrayOutput
-	ToGetPortsDataDeviceRedundancyArrayOutputWithContext(context.Context) GetPortsDataDeviceRedundancyArrayOutput
+	ToGetPortsDatumDeviceRedundancyArrayOutput() GetPortsDatumDeviceRedundancyArrayOutput
+	ToGetPortsDatumDeviceRedundancyArrayOutputWithContext(context.Context) GetPortsDatumDeviceRedundancyArrayOutput
 }
 
-type GetPortsDataDeviceRedundancyArray []GetPortsDataDeviceRedundancyInput
+type GetPortsDatumDeviceRedundancyArray []GetPortsDatumDeviceRedundancyInput
 
-func (GetPortsDataDeviceRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataDeviceRedundancy)(nil)).Elem()
+func (GetPortsDatumDeviceRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumDeviceRedundancy)(nil)).Elem()
 }
 
-func (i GetPortsDataDeviceRedundancyArray) ToGetPortsDataDeviceRedundancyArrayOutput() GetPortsDataDeviceRedundancyArrayOutput {
-	return i.ToGetPortsDataDeviceRedundancyArrayOutputWithContext(context.Background())
+func (i GetPortsDatumDeviceRedundancyArray) ToGetPortsDatumDeviceRedundancyArrayOutput() GetPortsDatumDeviceRedundancyArrayOutput {
+	return i.ToGetPortsDatumDeviceRedundancyArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataDeviceRedundancyArray) ToGetPortsDataDeviceRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDataDeviceRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataDeviceRedundancyArrayOutput)
+func (i GetPortsDatumDeviceRedundancyArray) ToGetPortsDatumDeviceRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDatumDeviceRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumDeviceRedundancyArrayOutput)
 }
 
-type GetPortsDataDeviceRedundancyOutput struct{ *pulumi.OutputState }
+type GetPortsDatumDeviceRedundancyOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataDeviceRedundancyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataDeviceRedundancy)(nil)).Elem()
+func (GetPortsDatumDeviceRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumDeviceRedundancy)(nil)).Elem()
 }
 
-func (o GetPortsDataDeviceRedundancyOutput) ToGetPortsDataDeviceRedundancyOutput() GetPortsDataDeviceRedundancyOutput {
+func (o GetPortsDatumDeviceRedundancyOutput) ToGetPortsDatumDeviceRedundancyOutput() GetPortsDatumDeviceRedundancyOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceRedundancyOutput) ToGetPortsDataDeviceRedundancyOutputWithContext(ctx context.Context) GetPortsDataDeviceRedundancyOutput {
+func (o GetPortsDatumDeviceRedundancyOutput) ToGetPortsDatumDeviceRedundancyOutputWithContext(ctx context.Context) GetPortsDatumDeviceRedundancyOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceRedundancyOutput) Group() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataDeviceRedundancy) string { return v.Group }).(pulumi.StringOutput)
+func (o GetPortsDatumDeviceRedundancyOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumDeviceRedundancy) string { return v.Group }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataDeviceRedundancyOutput) Priority() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataDeviceRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+func (o GetPortsDatumDeviceRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumDeviceRedundancy) string { return v.Priority }).(pulumi.StringOutput)
 }
 
-type GetPortsDataDeviceRedundancyArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumDeviceRedundancyArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataDeviceRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataDeviceRedundancy)(nil)).Elem()
+func (GetPortsDatumDeviceRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumDeviceRedundancy)(nil)).Elem()
 }
 
-func (o GetPortsDataDeviceRedundancyArrayOutput) ToGetPortsDataDeviceRedundancyArrayOutput() GetPortsDataDeviceRedundancyArrayOutput {
+func (o GetPortsDatumDeviceRedundancyArrayOutput) ToGetPortsDatumDeviceRedundancyArrayOutput() GetPortsDatumDeviceRedundancyArrayOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceRedundancyArrayOutput) ToGetPortsDataDeviceRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDataDeviceRedundancyArrayOutput {
+func (o GetPortsDatumDeviceRedundancyArrayOutput) ToGetPortsDatumDeviceRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDatumDeviceRedundancyArrayOutput {
 	return o
 }
 
-func (o GetPortsDataDeviceRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortsDataDeviceRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataDeviceRedundancy {
-		return vs[0].([]GetPortsDataDeviceRedundancy)[vs[1].(int)]
-	}).(GetPortsDataDeviceRedundancyOutput)
+func (o GetPortsDatumDeviceRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortsDatumDeviceRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumDeviceRedundancy {
+		return vs[0].([]GetPortsDatumDeviceRedundancy)[vs[1].(int)]
+	}).(GetPortsDatumDeviceRedundancyOutput)
 }
 
-type GetPortsDataEncapsulation struct {
+type GetPortsDatumEncapsulation struct {
 	TagProtocolId string `pulumi:"tagProtocolId"`
 	Type          string `pulumi:"type"`
 }
 
-// GetPortsDataEncapsulationInput is an input type that accepts GetPortsDataEncapsulationArgs and GetPortsDataEncapsulationOutput values.
-// You can construct a concrete instance of `GetPortsDataEncapsulationInput` via:
+// GetPortsDatumEncapsulationInput is an input type that accepts GetPortsDatumEncapsulationArgs and GetPortsDatumEncapsulationOutput values.
+// You can construct a concrete instance of `GetPortsDatumEncapsulationInput` via:
 //
-//	GetPortsDataEncapsulationArgs{...}
-type GetPortsDataEncapsulationInput interface {
+//	GetPortsDatumEncapsulationArgs{...}
+type GetPortsDatumEncapsulationInput interface {
 	pulumi.Input
 
-	ToGetPortsDataEncapsulationOutput() GetPortsDataEncapsulationOutput
-	ToGetPortsDataEncapsulationOutputWithContext(context.Context) GetPortsDataEncapsulationOutput
+	ToGetPortsDatumEncapsulationOutput() GetPortsDatumEncapsulationOutput
+	ToGetPortsDatumEncapsulationOutputWithContext(context.Context) GetPortsDatumEncapsulationOutput
 }
 
-type GetPortsDataEncapsulationArgs struct {
+type GetPortsDatumEncapsulationArgs struct {
 	TagProtocolId pulumi.StringInput `pulumi:"tagProtocolId"`
 	Type          pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetPortsDataEncapsulationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataEncapsulation)(nil)).Elem()
+func (GetPortsDatumEncapsulationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumEncapsulation)(nil)).Elem()
 }
 
-func (i GetPortsDataEncapsulationArgs) ToGetPortsDataEncapsulationOutput() GetPortsDataEncapsulationOutput {
-	return i.ToGetPortsDataEncapsulationOutputWithContext(context.Background())
+func (i GetPortsDatumEncapsulationArgs) ToGetPortsDatumEncapsulationOutput() GetPortsDatumEncapsulationOutput {
+	return i.ToGetPortsDatumEncapsulationOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataEncapsulationArgs) ToGetPortsDataEncapsulationOutputWithContext(ctx context.Context) GetPortsDataEncapsulationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataEncapsulationOutput)
+func (i GetPortsDatumEncapsulationArgs) ToGetPortsDatumEncapsulationOutputWithContext(ctx context.Context) GetPortsDatumEncapsulationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumEncapsulationOutput)
 }
 
-// GetPortsDataEncapsulationArrayInput is an input type that accepts GetPortsDataEncapsulationArray and GetPortsDataEncapsulationArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataEncapsulationArrayInput` via:
+// GetPortsDatumEncapsulationArrayInput is an input type that accepts GetPortsDatumEncapsulationArray and GetPortsDatumEncapsulationArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumEncapsulationArrayInput` via:
 //
-//	GetPortsDataEncapsulationArray{ GetPortsDataEncapsulationArgs{...} }
-type GetPortsDataEncapsulationArrayInput interface {
+//	GetPortsDatumEncapsulationArray{ GetPortsDatumEncapsulationArgs{...} }
+type GetPortsDatumEncapsulationArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataEncapsulationArrayOutput() GetPortsDataEncapsulationArrayOutput
-	ToGetPortsDataEncapsulationArrayOutputWithContext(context.Context) GetPortsDataEncapsulationArrayOutput
+	ToGetPortsDatumEncapsulationArrayOutput() GetPortsDatumEncapsulationArrayOutput
+	ToGetPortsDatumEncapsulationArrayOutputWithContext(context.Context) GetPortsDatumEncapsulationArrayOutput
 }
 
-type GetPortsDataEncapsulationArray []GetPortsDataEncapsulationInput
+type GetPortsDatumEncapsulationArray []GetPortsDatumEncapsulationInput
 
-func (GetPortsDataEncapsulationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataEncapsulation)(nil)).Elem()
+func (GetPortsDatumEncapsulationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumEncapsulation)(nil)).Elem()
 }
 
-func (i GetPortsDataEncapsulationArray) ToGetPortsDataEncapsulationArrayOutput() GetPortsDataEncapsulationArrayOutput {
-	return i.ToGetPortsDataEncapsulationArrayOutputWithContext(context.Background())
+func (i GetPortsDatumEncapsulationArray) ToGetPortsDatumEncapsulationArrayOutput() GetPortsDatumEncapsulationArrayOutput {
+	return i.ToGetPortsDatumEncapsulationArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataEncapsulationArray) ToGetPortsDataEncapsulationArrayOutputWithContext(ctx context.Context) GetPortsDataEncapsulationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataEncapsulationArrayOutput)
+func (i GetPortsDatumEncapsulationArray) ToGetPortsDatumEncapsulationArrayOutputWithContext(ctx context.Context) GetPortsDatumEncapsulationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumEncapsulationArrayOutput)
 }
 
-type GetPortsDataEncapsulationOutput struct{ *pulumi.OutputState }
+type GetPortsDatumEncapsulationOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataEncapsulationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataEncapsulation)(nil)).Elem()
+func (GetPortsDatumEncapsulationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumEncapsulation)(nil)).Elem()
 }
 
-func (o GetPortsDataEncapsulationOutput) ToGetPortsDataEncapsulationOutput() GetPortsDataEncapsulationOutput {
+func (o GetPortsDatumEncapsulationOutput) ToGetPortsDatumEncapsulationOutput() GetPortsDatumEncapsulationOutput {
 	return o
 }
 
-func (o GetPortsDataEncapsulationOutput) ToGetPortsDataEncapsulationOutputWithContext(ctx context.Context) GetPortsDataEncapsulationOutput {
+func (o GetPortsDatumEncapsulationOutput) ToGetPortsDatumEncapsulationOutputWithContext(ctx context.Context) GetPortsDatumEncapsulationOutput {
 	return o
 }
 
-func (o GetPortsDataEncapsulationOutput) TagProtocolId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataEncapsulation) string { return v.TagProtocolId }).(pulumi.StringOutput)
+func (o GetPortsDatumEncapsulationOutput) TagProtocolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumEncapsulation) string { return v.TagProtocolId }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataEncapsulationOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataEncapsulation) string { return v.Type }).(pulumi.StringOutput)
+func (o GetPortsDatumEncapsulationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumEncapsulation) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetPortsDataEncapsulationArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumEncapsulationArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataEncapsulationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataEncapsulation)(nil)).Elem()
+func (GetPortsDatumEncapsulationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumEncapsulation)(nil)).Elem()
 }
 
-func (o GetPortsDataEncapsulationArrayOutput) ToGetPortsDataEncapsulationArrayOutput() GetPortsDataEncapsulationArrayOutput {
+func (o GetPortsDatumEncapsulationArrayOutput) ToGetPortsDatumEncapsulationArrayOutput() GetPortsDatumEncapsulationArrayOutput {
 	return o
 }
 
-func (o GetPortsDataEncapsulationArrayOutput) ToGetPortsDataEncapsulationArrayOutputWithContext(ctx context.Context) GetPortsDataEncapsulationArrayOutput {
+func (o GetPortsDatumEncapsulationArrayOutput) ToGetPortsDatumEncapsulationArrayOutputWithContext(ctx context.Context) GetPortsDatumEncapsulationArrayOutput {
 	return o
 }
 
-func (o GetPortsDataEncapsulationArrayOutput) Index(i pulumi.IntInput) GetPortsDataEncapsulationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataEncapsulation {
-		return vs[0].([]GetPortsDataEncapsulation)[vs[1].(int)]
-	}).(GetPortsDataEncapsulationOutput)
+func (o GetPortsDatumEncapsulationArrayOutput) Index(i pulumi.IntInput) GetPortsDatumEncapsulationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumEncapsulation {
+		return vs[0].([]GetPortsDatumEncapsulation)[vs[1].(int)]
+	}).(GetPortsDatumEncapsulationOutput)
 }
 
-type GetPortsDataLag struct {
+type GetPortsDatumLag struct {
 	Enabled bool `pulumi:"enabled"`
 	// The ID of this resource.
 	Id           string `pulumi:"id"`
@@ -13727,18 +15862,18 @@ type GetPortsDataLag struct {
 	Name         string `pulumi:"name"`
 }
 
-// GetPortsDataLagInput is an input type that accepts GetPortsDataLagArgs and GetPortsDataLagOutput values.
-// You can construct a concrete instance of `GetPortsDataLagInput` via:
+// GetPortsDatumLagInput is an input type that accepts GetPortsDatumLagArgs and GetPortsDatumLagOutput values.
+// You can construct a concrete instance of `GetPortsDatumLagInput` via:
 //
-//	GetPortsDataLagArgs{...}
-type GetPortsDataLagInput interface {
+//	GetPortsDatumLagArgs{...}
+type GetPortsDatumLagInput interface {
 	pulumi.Input
 
-	ToGetPortsDataLagOutput() GetPortsDataLagOutput
-	ToGetPortsDataLagOutputWithContext(context.Context) GetPortsDataLagOutput
+	ToGetPortsDatumLagOutput() GetPortsDatumLagOutput
+	ToGetPortsDatumLagOutputWithContext(context.Context) GetPortsDatumLagOutput
 }
 
-type GetPortsDataLagArgs struct {
+type GetPortsDatumLagArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The ID of this resource.
 	Id           pulumi.StringInput `pulumi:"id"`
@@ -13746,95 +15881,95 @@ type GetPortsDataLagArgs struct {
 	Name         pulumi.StringInput `pulumi:"name"`
 }
 
-func (GetPortsDataLagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataLag)(nil)).Elem()
+func (GetPortsDatumLagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumLag)(nil)).Elem()
 }
 
-func (i GetPortsDataLagArgs) ToGetPortsDataLagOutput() GetPortsDataLagOutput {
-	return i.ToGetPortsDataLagOutputWithContext(context.Background())
+func (i GetPortsDatumLagArgs) ToGetPortsDatumLagOutput() GetPortsDatumLagOutput {
+	return i.ToGetPortsDatumLagOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataLagArgs) ToGetPortsDataLagOutputWithContext(ctx context.Context) GetPortsDataLagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataLagOutput)
+func (i GetPortsDatumLagArgs) ToGetPortsDatumLagOutputWithContext(ctx context.Context) GetPortsDatumLagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumLagOutput)
 }
 
-// GetPortsDataLagArrayInput is an input type that accepts GetPortsDataLagArray and GetPortsDataLagArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataLagArrayInput` via:
+// GetPortsDatumLagArrayInput is an input type that accepts GetPortsDatumLagArray and GetPortsDatumLagArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumLagArrayInput` via:
 //
-//	GetPortsDataLagArray{ GetPortsDataLagArgs{...} }
-type GetPortsDataLagArrayInput interface {
+//	GetPortsDatumLagArray{ GetPortsDatumLagArgs{...} }
+type GetPortsDatumLagArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataLagArrayOutput() GetPortsDataLagArrayOutput
-	ToGetPortsDataLagArrayOutputWithContext(context.Context) GetPortsDataLagArrayOutput
+	ToGetPortsDatumLagArrayOutput() GetPortsDatumLagArrayOutput
+	ToGetPortsDatumLagArrayOutputWithContext(context.Context) GetPortsDatumLagArrayOutput
 }
 
-type GetPortsDataLagArray []GetPortsDataLagInput
+type GetPortsDatumLagArray []GetPortsDatumLagInput
 
-func (GetPortsDataLagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataLag)(nil)).Elem()
+func (GetPortsDatumLagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumLag)(nil)).Elem()
 }
 
-func (i GetPortsDataLagArray) ToGetPortsDataLagArrayOutput() GetPortsDataLagArrayOutput {
-	return i.ToGetPortsDataLagArrayOutputWithContext(context.Background())
+func (i GetPortsDatumLagArray) ToGetPortsDatumLagArrayOutput() GetPortsDatumLagArrayOutput {
+	return i.ToGetPortsDatumLagArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataLagArray) ToGetPortsDataLagArrayOutputWithContext(ctx context.Context) GetPortsDataLagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataLagArrayOutput)
+func (i GetPortsDatumLagArray) ToGetPortsDatumLagArrayOutputWithContext(ctx context.Context) GetPortsDatumLagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumLagArrayOutput)
 }
 
-type GetPortsDataLagOutput struct{ *pulumi.OutputState }
+type GetPortsDatumLagOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataLagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataLag)(nil)).Elem()
+func (GetPortsDatumLagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumLag)(nil)).Elem()
 }
 
-func (o GetPortsDataLagOutput) ToGetPortsDataLagOutput() GetPortsDataLagOutput {
+func (o GetPortsDatumLagOutput) ToGetPortsDatumLagOutput() GetPortsDatumLagOutput {
 	return o
 }
 
-func (o GetPortsDataLagOutput) ToGetPortsDataLagOutputWithContext(ctx context.Context) GetPortsDataLagOutput {
+func (o GetPortsDatumLagOutput) ToGetPortsDatumLagOutputWithContext(ctx context.Context) GetPortsDatumLagOutput {
 	return o
 }
 
-func (o GetPortsDataLagOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPortsDataLag) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetPortsDatumLagOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPortsDatumLag) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The ID of this resource.
-func (o GetPortsDataLagOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLag) string { return v.Id }).(pulumi.StringOutput)
+func (o GetPortsDatumLagOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLag) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataLagOutput) MemberStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLag) string { return v.MemberStatus }).(pulumi.StringOutput)
+func (o GetPortsDatumLagOutput) MemberStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLag) string { return v.MemberStatus }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataLagOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLag) string { return v.Name }).(pulumi.StringOutput)
+func (o GetPortsDatumLagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLag) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetPortsDataLagArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumLagArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataLagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataLag)(nil)).Elem()
+func (GetPortsDatumLagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumLag)(nil)).Elem()
 }
 
-func (o GetPortsDataLagArrayOutput) ToGetPortsDataLagArrayOutput() GetPortsDataLagArrayOutput {
+func (o GetPortsDatumLagArrayOutput) ToGetPortsDatumLagArrayOutput() GetPortsDatumLagArrayOutput {
 	return o
 }
 
-func (o GetPortsDataLagArrayOutput) ToGetPortsDataLagArrayOutputWithContext(ctx context.Context) GetPortsDataLagArrayOutput {
+func (o GetPortsDatumLagArrayOutput) ToGetPortsDatumLagArrayOutputWithContext(ctx context.Context) GetPortsDatumLagArrayOutput {
 	return o
 }
 
-func (o GetPortsDataLagArrayOutput) Index(i pulumi.IntInput) GetPortsDataLagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataLag {
-		return vs[0].([]GetPortsDataLag)[vs[1].(int)]
-	}).(GetPortsDataLagOutput)
+func (o GetPortsDatumLagArrayOutput) Index(i pulumi.IntInput) GetPortsDatumLagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumLag {
+		return vs[0].([]GetPortsDatumLag)[vs[1].(int)]
+	}).(GetPortsDatumLagOutput)
 }
 
-type GetPortsDataLocation struct {
+type GetPortsDatumLocation struct {
 	Href      string `pulumi:"href"`
 	Ibx       string `pulumi:"ibx"`
 	MetroCode string `pulumi:"metroCode"`
@@ -13842,18 +15977,18 @@ type GetPortsDataLocation struct {
 	Region    string `pulumi:"region"`
 }
 
-// GetPortsDataLocationInput is an input type that accepts GetPortsDataLocationArgs and GetPortsDataLocationOutput values.
-// You can construct a concrete instance of `GetPortsDataLocationInput` via:
+// GetPortsDatumLocationInput is an input type that accepts GetPortsDatumLocationArgs and GetPortsDatumLocationOutput values.
+// You can construct a concrete instance of `GetPortsDatumLocationInput` via:
 //
-//	GetPortsDataLocationArgs{...}
-type GetPortsDataLocationInput interface {
+//	GetPortsDatumLocationArgs{...}
+type GetPortsDatumLocationInput interface {
 	pulumi.Input
 
-	ToGetPortsDataLocationOutput() GetPortsDataLocationOutput
-	ToGetPortsDataLocationOutputWithContext(context.Context) GetPortsDataLocationOutput
+	ToGetPortsDatumLocationOutput() GetPortsDatumLocationOutput
+	ToGetPortsDatumLocationOutputWithContext(context.Context) GetPortsDatumLocationOutput
 }
 
-type GetPortsDataLocationArgs struct {
+type GetPortsDatumLocationArgs struct {
 	Href      pulumi.StringInput `pulumi:"href"`
 	Ibx       pulumi.StringInput `pulumi:"ibx"`
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
@@ -13861,307 +15996,307 @@ type GetPortsDataLocationArgs struct {
 	Region    pulumi.StringInput `pulumi:"region"`
 }
 
-func (GetPortsDataLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataLocation)(nil)).Elem()
+func (GetPortsDatumLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumLocation)(nil)).Elem()
 }
 
-func (i GetPortsDataLocationArgs) ToGetPortsDataLocationOutput() GetPortsDataLocationOutput {
-	return i.ToGetPortsDataLocationOutputWithContext(context.Background())
+func (i GetPortsDatumLocationArgs) ToGetPortsDatumLocationOutput() GetPortsDatumLocationOutput {
+	return i.ToGetPortsDatumLocationOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataLocationArgs) ToGetPortsDataLocationOutputWithContext(ctx context.Context) GetPortsDataLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataLocationOutput)
+func (i GetPortsDatumLocationArgs) ToGetPortsDatumLocationOutputWithContext(ctx context.Context) GetPortsDatumLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumLocationOutput)
 }
 
-// GetPortsDataLocationArrayInput is an input type that accepts GetPortsDataLocationArray and GetPortsDataLocationArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataLocationArrayInput` via:
+// GetPortsDatumLocationArrayInput is an input type that accepts GetPortsDatumLocationArray and GetPortsDatumLocationArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumLocationArrayInput` via:
 //
-//	GetPortsDataLocationArray{ GetPortsDataLocationArgs{...} }
-type GetPortsDataLocationArrayInput interface {
+//	GetPortsDatumLocationArray{ GetPortsDatumLocationArgs{...} }
+type GetPortsDatumLocationArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataLocationArrayOutput() GetPortsDataLocationArrayOutput
-	ToGetPortsDataLocationArrayOutputWithContext(context.Context) GetPortsDataLocationArrayOutput
+	ToGetPortsDatumLocationArrayOutput() GetPortsDatumLocationArrayOutput
+	ToGetPortsDatumLocationArrayOutputWithContext(context.Context) GetPortsDatumLocationArrayOutput
 }
 
-type GetPortsDataLocationArray []GetPortsDataLocationInput
+type GetPortsDatumLocationArray []GetPortsDatumLocationInput
 
-func (GetPortsDataLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataLocation)(nil)).Elem()
+func (GetPortsDatumLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumLocation)(nil)).Elem()
 }
 
-func (i GetPortsDataLocationArray) ToGetPortsDataLocationArrayOutput() GetPortsDataLocationArrayOutput {
-	return i.ToGetPortsDataLocationArrayOutputWithContext(context.Background())
+func (i GetPortsDatumLocationArray) ToGetPortsDatumLocationArrayOutput() GetPortsDatumLocationArrayOutput {
+	return i.ToGetPortsDatumLocationArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataLocationArray) ToGetPortsDataLocationArrayOutputWithContext(ctx context.Context) GetPortsDataLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataLocationArrayOutput)
+func (i GetPortsDatumLocationArray) ToGetPortsDatumLocationArrayOutputWithContext(ctx context.Context) GetPortsDatumLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumLocationArrayOutput)
 }
 
-type GetPortsDataLocationOutput struct{ *pulumi.OutputState }
+type GetPortsDatumLocationOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataLocation)(nil)).Elem()
+func (GetPortsDatumLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumLocation)(nil)).Elem()
 }
 
-func (o GetPortsDataLocationOutput) ToGetPortsDataLocationOutput() GetPortsDataLocationOutput {
+func (o GetPortsDatumLocationOutput) ToGetPortsDatumLocationOutput() GetPortsDatumLocationOutput {
 	return o
 }
 
-func (o GetPortsDataLocationOutput) ToGetPortsDataLocationOutputWithContext(ctx context.Context) GetPortsDataLocationOutput {
+func (o GetPortsDatumLocationOutput) ToGetPortsDatumLocationOutputWithContext(ctx context.Context) GetPortsDatumLocationOutput {
 	return o
 }
 
-func (o GetPortsDataLocationOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLocation) string { return v.Href }).(pulumi.StringOutput)
+func (o GetPortsDatumLocationOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLocation) string { return v.Href }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataLocationOutput) Ibx() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLocation) string { return v.Ibx }).(pulumi.StringOutput)
+func (o GetPortsDatumLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLocation) string { return v.Ibx }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataLocationOutput) MetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+func (o GetPortsDatumLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLocation) string { return v.MetroCode }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataLocationOutput) MetroName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLocation) string { return v.MetroName }).(pulumi.StringOutput)
+func (o GetPortsDatumLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLocation) string { return v.MetroName }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataLocationOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataLocation) string { return v.Region }).(pulumi.StringOutput)
+func (o GetPortsDatumLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetPortsDataLocationArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumLocationArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataLocation)(nil)).Elem()
+func (GetPortsDatumLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumLocation)(nil)).Elem()
 }
 
-func (o GetPortsDataLocationArrayOutput) ToGetPortsDataLocationArrayOutput() GetPortsDataLocationArrayOutput {
+func (o GetPortsDatumLocationArrayOutput) ToGetPortsDatumLocationArrayOutput() GetPortsDatumLocationArrayOutput {
 	return o
 }
 
-func (o GetPortsDataLocationArrayOutput) ToGetPortsDataLocationArrayOutputWithContext(ctx context.Context) GetPortsDataLocationArrayOutput {
+func (o GetPortsDatumLocationArrayOutput) ToGetPortsDatumLocationArrayOutputWithContext(ctx context.Context) GetPortsDatumLocationArrayOutput {
 	return o
 }
 
-func (o GetPortsDataLocationArrayOutput) Index(i pulumi.IntInput) GetPortsDataLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataLocation {
-		return vs[0].([]GetPortsDataLocation)[vs[1].(int)]
-	}).(GetPortsDataLocationOutput)
+func (o GetPortsDatumLocationArrayOutput) Index(i pulumi.IntInput) GetPortsDatumLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumLocation {
+		return vs[0].([]GetPortsDatumLocation)[vs[1].(int)]
+	}).(GetPortsDatumLocationOutput)
 }
 
-type GetPortsDataOperation struct {
+type GetPortsDatumOperation struct {
 	ConnectionCount   int    `pulumi:"connectionCount"`
 	OpStatusChangedAt string `pulumi:"opStatusChangedAt"`
 	OperationalStatus string `pulumi:"operationalStatus"`
 }
 
-// GetPortsDataOperationInput is an input type that accepts GetPortsDataOperationArgs and GetPortsDataOperationOutput values.
-// You can construct a concrete instance of `GetPortsDataOperationInput` via:
+// GetPortsDatumOperationInput is an input type that accepts GetPortsDatumOperationArgs and GetPortsDatumOperationOutput values.
+// You can construct a concrete instance of `GetPortsDatumOperationInput` via:
 //
-//	GetPortsDataOperationArgs{...}
-type GetPortsDataOperationInput interface {
+//	GetPortsDatumOperationArgs{...}
+type GetPortsDatumOperationInput interface {
 	pulumi.Input
 
-	ToGetPortsDataOperationOutput() GetPortsDataOperationOutput
-	ToGetPortsDataOperationOutputWithContext(context.Context) GetPortsDataOperationOutput
+	ToGetPortsDatumOperationOutput() GetPortsDatumOperationOutput
+	ToGetPortsDatumOperationOutputWithContext(context.Context) GetPortsDatumOperationOutput
 }
 
-type GetPortsDataOperationArgs struct {
+type GetPortsDatumOperationArgs struct {
 	ConnectionCount   pulumi.IntInput    `pulumi:"connectionCount"`
 	OpStatusChangedAt pulumi.StringInput `pulumi:"opStatusChangedAt"`
 	OperationalStatus pulumi.StringInput `pulumi:"operationalStatus"`
 }
 
-func (GetPortsDataOperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataOperation)(nil)).Elem()
+func (GetPortsDatumOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumOperation)(nil)).Elem()
 }
 
-func (i GetPortsDataOperationArgs) ToGetPortsDataOperationOutput() GetPortsDataOperationOutput {
-	return i.ToGetPortsDataOperationOutputWithContext(context.Background())
+func (i GetPortsDatumOperationArgs) ToGetPortsDatumOperationOutput() GetPortsDatumOperationOutput {
+	return i.ToGetPortsDatumOperationOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataOperationArgs) ToGetPortsDataOperationOutputWithContext(ctx context.Context) GetPortsDataOperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataOperationOutput)
+func (i GetPortsDatumOperationArgs) ToGetPortsDatumOperationOutputWithContext(ctx context.Context) GetPortsDatumOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumOperationOutput)
 }
 
-// GetPortsDataOperationArrayInput is an input type that accepts GetPortsDataOperationArray and GetPortsDataOperationArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataOperationArrayInput` via:
+// GetPortsDatumOperationArrayInput is an input type that accepts GetPortsDatumOperationArray and GetPortsDatumOperationArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumOperationArrayInput` via:
 //
-//	GetPortsDataOperationArray{ GetPortsDataOperationArgs{...} }
-type GetPortsDataOperationArrayInput interface {
+//	GetPortsDatumOperationArray{ GetPortsDatumOperationArgs{...} }
+type GetPortsDatumOperationArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataOperationArrayOutput() GetPortsDataOperationArrayOutput
-	ToGetPortsDataOperationArrayOutputWithContext(context.Context) GetPortsDataOperationArrayOutput
+	ToGetPortsDatumOperationArrayOutput() GetPortsDatumOperationArrayOutput
+	ToGetPortsDatumOperationArrayOutputWithContext(context.Context) GetPortsDatumOperationArrayOutput
 }
 
-type GetPortsDataOperationArray []GetPortsDataOperationInput
+type GetPortsDatumOperationArray []GetPortsDatumOperationInput
 
-func (GetPortsDataOperationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataOperation)(nil)).Elem()
+func (GetPortsDatumOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumOperation)(nil)).Elem()
 }
 
-func (i GetPortsDataOperationArray) ToGetPortsDataOperationArrayOutput() GetPortsDataOperationArrayOutput {
-	return i.ToGetPortsDataOperationArrayOutputWithContext(context.Background())
+func (i GetPortsDatumOperationArray) ToGetPortsDatumOperationArrayOutput() GetPortsDatumOperationArrayOutput {
+	return i.ToGetPortsDatumOperationArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataOperationArray) ToGetPortsDataOperationArrayOutputWithContext(ctx context.Context) GetPortsDataOperationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataOperationArrayOutput)
+func (i GetPortsDatumOperationArray) ToGetPortsDatumOperationArrayOutputWithContext(ctx context.Context) GetPortsDatumOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumOperationArrayOutput)
 }
 
-type GetPortsDataOperationOutput struct{ *pulumi.OutputState }
+type GetPortsDatumOperationOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataOperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataOperation)(nil)).Elem()
+func (GetPortsDatumOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumOperation)(nil)).Elem()
 }
 
-func (o GetPortsDataOperationOutput) ToGetPortsDataOperationOutput() GetPortsDataOperationOutput {
+func (o GetPortsDatumOperationOutput) ToGetPortsDatumOperationOutput() GetPortsDatumOperationOutput {
 	return o
 }
 
-func (o GetPortsDataOperationOutput) ToGetPortsDataOperationOutputWithContext(ctx context.Context) GetPortsDataOperationOutput {
+func (o GetPortsDatumOperationOutput) ToGetPortsDatumOperationOutputWithContext(ctx context.Context) GetPortsDatumOperationOutput {
 	return o
 }
 
-func (o GetPortsDataOperationOutput) ConnectionCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsDataOperation) int { return v.ConnectionCount }).(pulumi.IntOutput)
+func (o GetPortsDatumOperationOutput) ConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatumOperation) int { return v.ConnectionCount }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataOperationOutput) OpStatusChangedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataOperation) string { return v.OpStatusChangedAt }).(pulumi.StringOutput)
+func (o GetPortsDatumOperationOutput) OpStatusChangedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumOperation) string { return v.OpStatusChangedAt }).(pulumi.StringOutput)
 }
 
-func (o GetPortsDataOperationOutput) OperationalStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataOperation) string { return v.OperationalStatus }).(pulumi.StringOutput)
+func (o GetPortsDatumOperationOutput) OperationalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumOperation) string { return v.OperationalStatus }).(pulumi.StringOutput)
 }
 
-type GetPortsDataOperationArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumOperationArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataOperationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataOperation)(nil)).Elem()
+func (GetPortsDatumOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumOperation)(nil)).Elem()
 }
 
-func (o GetPortsDataOperationArrayOutput) ToGetPortsDataOperationArrayOutput() GetPortsDataOperationArrayOutput {
+func (o GetPortsDatumOperationArrayOutput) ToGetPortsDatumOperationArrayOutput() GetPortsDatumOperationArrayOutput {
 	return o
 }
 
-func (o GetPortsDataOperationArrayOutput) ToGetPortsDataOperationArrayOutputWithContext(ctx context.Context) GetPortsDataOperationArrayOutput {
+func (o GetPortsDatumOperationArrayOutput) ToGetPortsDatumOperationArrayOutputWithContext(ctx context.Context) GetPortsDatumOperationArrayOutput {
 	return o
 }
 
-func (o GetPortsDataOperationArrayOutput) Index(i pulumi.IntInput) GetPortsDataOperationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataOperation {
-		return vs[0].([]GetPortsDataOperation)[vs[1].(int)]
-	}).(GetPortsDataOperationOutput)
+func (o GetPortsDatumOperationArrayOutput) Index(i pulumi.IntInput) GetPortsDatumOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumOperation {
+		return vs[0].([]GetPortsDatumOperation)[vs[1].(int)]
+	}).(GetPortsDatumOperationOutput)
 }
 
-type GetPortsDataRedundancy struct {
+type GetPortsDatumRedundancy struct {
 	Enabled  bool   `pulumi:"enabled"`
 	Group    int    `pulumi:"group"`
 	Priority string `pulumi:"priority"`
 }
 
-// GetPortsDataRedundancyInput is an input type that accepts GetPortsDataRedundancyArgs and GetPortsDataRedundancyOutput values.
-// You can construct a concrete instance of `GetPortsDataRedundancyInput` via:
+// GetPortsDatumRedundancyInput is an input type that accepts GetPortsDatumRedundancyArgs and GetPortsDatumRedundancyOutput values.
+// You can construct a concrete instance of `GetPortsDatumRedundancyInput` via:
 //
-//	GetPortsDataRedundancyArgs{...}
-type GetPortsDataRedundancyInput interface {
+//	GetPortsDatumRedundancyArgs{...}
+type GetPortsDatumRedundancyInput interface {
 	pulumi.Input
 
-	ToGetPortsDataRedundancyOutput() GetPortsDataRedundancyOutput
-	ToGetPortsDataRedundancyOutputWithContext(context.Context) GetPortsDataRedundancyOutput
+	ToGetPortsDatumRedundancyOutput() GetPortsDatumRedundancyOutput
+	ToGetPortsDatumRedundancyOutputWithContext(context.Context) GetPortsDatumRedundancyOutput
 }
 
-type GetPortsDataRedundancyArgs struct {
+type GetPortsDatumRedundancyArgs struct {
 	Enabled  pulumi.BoolInput   `pulumi:"enabled"`
 	Group    pulumi.IntInput    `pulumi:"group"`
 	Priority pulumi.StringInput `pulumi:"priority"`
 }
 
-func (GetPortsDataRedundancyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataRedundancy)(nil)).Elem()
+func (GetPortsDatumRedundancyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumRedundancy)(nil)).Elem()
 }
 
-func (i GetPortsDataRedundancyArgs) ToGetPortsDataRedundancyOutput() GetPortsDataRedundancyOutput {
-	return i.ToGetPortsDataRedundancyOutputWithContext(context.Background())
+func (i GetPortsDatumRedundancyArgs) ToGetPortsDatumRedundancyOutput() GetPortsDatumRedundancyOutput {
+	return i.ToGetPortsDatumRedundancyOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataRedundancyArgs) ToGetPortsDataRedundancyOutputWithContext(ctx context.Context) GetPortsDataRedundancyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataRedundancyOutput)
+func (i GetPortsDatumRedundancyArgs) ToGetPortsDatumRedundancyOutputWithContext(ctx context.Context) GetPortsDatumRedundancyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumRedundancyOutput)
 }
 
-// GetPortsDataRedundancyArrayInput is an input type that accepts GetPortsDataRedundancyArray and GetPortsDataRedundancyArrayOutput values.
-// You can construct a concrete instance of `GetPortsDataRedundancyArrayInput` via:
+// GetPortsDatumRedundancyArrayInput is an input type that accepts GetPortsDatumRedundancyArray and GetPortsDatumRedundancyArrayOutput values.
+// You can construct a concrete instance of `GetPortsDatumRedundancyArrayInput` via:
 //
-//	GetPortsDataRedundancyArray{ GetPortsDataRedundancyArgs{...} }
-type GetPortsDataRedundancyArrayInput interface {
+//	GetPortsDatumRedundancyArray{ GetPortsDatumRedundancyArgs{...} }
+type GetPortsDatumRedundancyArrayInput interface {
 	pulumi.Input
 
-	ToGetPortsDataRedundancyArrayOutput() GetPortsDataRedundancyArrayOutput
-	ToGetPortsDataRedundancyArrayOutputWithContext(context.Context) GetPortsDataRedundancyArrayOutput
+	ToGetPortsDatumRedundancyArrayOutput() GetPortsDatumRedundancyArrayOutput
+	ToGetPortsDatumRedundancyArrayOutputWithContext(context.Context) GetPortsDatumRedundancyArrayOutput
 }
 
-type GetPortsDataRedundancyArray []GetPortsDataRedundancyInput
+type GetPortsDatumRedundancyArray []GetPortsDatumRedundancyInput
 
-func (GetPortsDataRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataRedundancy)(nil)).Elem()
+func (GetPortsDatumRedundancyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumRedundancy)(nil)).Elem()
 }
 
-func (i GetPortsDataRedundancyArray) ToGetPortsDataRedundancyArrayOutput() GetPortsDataRedundancyArrayOutput {
-	return i.ToGetPortsDataRedundancyArrayOutputWithContext(context.Background())
+func (i GetPortsDatumRedundancyArray) ToGetPortsDatumRedundancyArrayOutput() GetPortsDatumRedundancyArrayOutput {
+	return i.ToGetPortsDatumRedundancyArrayOutputWithContext(context.Background())
 }
 
-func (i GetPortsDataRedundancyArray) ToGetPortsDataRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDataRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDataRedundancyArrayOutput)
+func (i GetPortsDatumRedundancyArray) ToGetPortsDatumRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDatumRedundancyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsDatumRedundancyArrayOutput)
 }
 
-type GetPortsDataRedundancyOutput struct{ *pulumi.OutputState }
+type GetPortsDatumRedundancyOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataRedundancyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPortsDataRedundancy)(nil)).Elem()
+func (GetPortsDatumRedundancyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortsDatumRedundancy)(nil)).Elem()
 }
 
-func (o GetPortsDataRedundancyOutput) ToGetPortsDataRedundancyOutput() GetPortsDataRedundancyOutput {
+func (o GetPortsDatumRedundancyOutput) ToGetPortsDatumRedundancyOutput() GetPortsDatumRedundancyOutput {
 	return o
 }
 
-func (o GetPortsDataRedundancyOutput) ToGetPortsDataRedundancyOutputWithContext(ctx context.Context) GetPortsDataRedundancyOutput {
+func (o GetPortsDatumRedundancyOutput) ToGetPortsDatumRedundancyOutputWithContext(ctx context.Context) GetPortsDatumRedundancyOutput {
 	return o
 }
 
-func (o GetPortsDataRedundancyOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetPortsDataRedundancy) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetPortsDatumRedundancyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPortsDatumRedundancy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o GetPortsDataRedundancyOutput) Group() pulumi.IntOutput {
-	return o.ApplyT(func(v GetPortsDataRedundancy) int { return v.Group }).(pulumi.IntOutput)
+func (o GetPortsDatumRedundancyOutput) Group() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortsDatumRedundancy) int { return v.Group }).(pulumi.IntOutput)
 }
 
-func (o GetPortsDataRedundancyOutput) Priority() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPortsDataRedundancy) string { return v.Priority }).(pulumi.StringOutput)
+func (o GetPortsDatumRedundancyOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortsDatumRedundancy) string { return v.Priority }).(pulumi.StringOutput)
 }
 
-type GetPortsDataRedundancyArrayOutput struct{ *pulumi.OutputState }
+type GetPortsDatumRedundancyArrayOutput struct{ *pulumi.OutputState }
 
-func (GetPortsDataRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsDataRedundancy)(nil)).Elem()
+func (GetPortsDatumRedundancyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortsDatumRedundancy)(nil)).Elem()
 }
 
-func (o GetPortsDataRedundancyArrayOutput) ToGetPortsDataRedundancyArrayOutput() GetPortsDataRedundancyArrayOutput {
+func (o GetPortsDatumRedundancyArrayOutput) ToGetPortsDatumRedundancyArrayOutput() GetPortsDatumRedundancyArrayOutput {
 	return o
 }
 
-func (o GetPortsDataRedundancyArrayOutput) ToGetPortsDataRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDataRedundancyArrayOutput {
+func (o GetPortsDatumRedundancyArrayOutput) ToGetPortsDatumRedundancyArrayOutputWithContext(ctx context.Context) GetPortsDatumRedundancyArrayOutput {
 	return o
 }
 
-func (o GetPortsDataRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortsDataRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDataRedundancy {
-		return vs[0].([]GetPortsDataRedundancy)[vs[1].(int)]
-	}).(GetPortsDataRedundancyOutput)
+func (o GetPortsDatumRedundancyArrayOutput) Index(i pulumi.IntInput) GetPortsDatumRedundancyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsDatumRedundancy {
+		return vs[0].([]GetPortsDatumRedundancy)[vs[1].(int)]
+	}).(GetPortsDatumRedundancyOutput)
 }
 
 type GetPortsFilter struct {
@@ -14197,29 +16332,45 @@ func (i GetPortsFilterArgs) ToGetPortsFilterOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterOutput)
 }
 
-// GetPortsFilterArrayInput is an input type that accepts GetPortsFilterArray and GetPortsFilterArrayOutput values.
-// You can construct a concrete instance of `GetPortsFilterArrayInput` via:
+func (i GetPortsFilterArgs) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
+	return i.ToGetPortsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetPortsFilterArgs) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterOutput).ToGetPortsFilterPtrOutputWithContext(ctx)
+}
+
+// GetPortsFilterPtrInput is an input type that accepts GetPortsFilterArgs, GetPortsFilterPtr and GetPortsFilterPtrOutput values.
+// You can construct a concrete instance of `GetPortsFilterPtrInput` via:
 //
-//	GetPortsFilterArray{ GetPortsFilterArgs{...} }
-type GetPortsFilterArrayInput interface {
+//	        GetPortsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPortsFilterPtrInput interface {
 	pulumi.Input
 
-	ToGetPortsFilterArrayOutput() GetPortsFilterArrayOutput
-	ToGetPortsFilterArrayOutputWithContext(context.Context) GetPortsFilterArrayOutput
+	ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput
+	ToGetPortsFilterPtrOutputWithContext(context.Context) GetPortsFilterPtrOutput
 }
 
-type GetPortsFilterArray []GetPortsFilterInput
+type getPortsFilterPtrType GetPortsFilterArgs
 
-func (GetPortsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsFilter)(nil)).Elem()
+func GetPortsFilterPtr(v *GetPortsFilterArgs) GetPortsFilterPtrInput {
+	return (*getPortsFilterPtrType)(v)
 }
 
-func (i GetPortsFilterArray) ToGetPortsFilterArrayOutput() GetPortsFilterArrayOutput {
-	return i.ToGetPortsFilterArrayOutputWithContext(context.Background())
+func (*getPortsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPortsFilter)(nil)).Elem()
 }
 
-func (i GetPortsFilterArray) ToGetPortsFilterArrayOutputWithContext(ctx context.Context) GetPortsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterArrayOutput)
+func (i *getPortsFilterPtrType) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
+	return i.ToGetPortsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getPortsFilterPtrType) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortsFilterPtrOutput)
 }
 
 type GetPortsFilterOutput struct{ *pulumi.OutputState }
@@ -14236,29 +16387,53 @@ func (o GetPortsFilterOutput) ToGetPortsFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetPortsFilterOutput) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
+	return o.ToGetPortsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetPortsFilterOutput) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPortsFilter) *GetPortsFilter {
+		return &v
+	}).(GetPortsFilterPtrOutput)
+}
+
 // Query Parameter to Get Ports By Name
 func (o GetPortsFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPortsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type GetPortsFilterArrayOutput struct{ *pulumi.OutputState }
+type GetPortsFilterPtrOutput struct{ *pulumi.OutputState }
 
-func (GetPortsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetPortsFilter)(nil)).Elem()
+func (GetPortsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPortsFilter)(nil)).Elem()
 }
 
-func (o GetPortsFilterArrayOutput) ToGetPortsFilterArrayOutput() GetPortsFilterArrayOutput {
+func (o GetPortsFilterPtrOutput) ToGetPortsFilterPtrOutput() GetPortsFilterPtrOutput {
 	return o
 }
 
-func (o GetPortsFilterArrayOutput) ToGetPortsFilterArrayOutputWithContext(ctx context.Context) GetPortsFilterArrayOutput {
+func (o GetPortsFilterPtrOutput) ToGetPortsFilterPtrOutputWithContext(ctx context.Context) GetPortsFilterPtrOutput {
 	return o
 }
 
-func (o GetPortsFilterArrayOutput) Index(i pulumi.IntInput) GetPortsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortsFilter {
-		return vs[0].([]GetPortsFilter)[vs[1].(int)]
+func (o GetPortsFilterPtrOutput) Elem() GetPortsFilterOutput {
+	return o.ApplyT(func(v *GetPortsFilter) GetPortsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetPortsFilter
+		return ret
 	}).(GetPortsFilterOutput)
+}
+
+// Query Parameter to Get Ports By Name
+func (o GetPortsFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPortsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServiceProfileAccessPointTypeConfig struct {
@@ -14837,31 +17012,6 @@ func (i GetServiceProfileAccountArgs) ToGetServiceProfileAccountOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileAccountOutput)
 }
 
-// GetServiceProfileAccountArrayInput is an input type that accepts GetServiceProfileAccountArray and GetServiceProfileAccountArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfileAccountArrayInput` via:
-//
-//	GetServiceProfileAccountArray{ GetServiceProfileAccountArgs{...} }
-type GetServiceProfileAccountArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceProfileAccountArrayOutput() GetServiceProfileAccountArrayOutput
-	ToGetServiceProfileAccountArrayOutputWithContext(context.Context) GetServiceProfileAccountArrayOutput
-}
-
-type GetServiceProfileAccountArray []GetServiceProfileAccountInput
-
-func (GetServiceProfileAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileAccount)(nil)).Elem()
-}
-
-func (i GetServiceProfileAccountArray) ToGetServiceProfileAccountArrayOutput() GetServiceProfileAccountArrayOutput {
-	return i.ToGetServiceProfileAccountArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceProfileAccountArray) ToGetServiceProfileAccountArrayOutputWithContext(ctx context.Context) GetServiceProfileAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileAccountArrayOutput)
-}
-
 type GetServiceProfileAccountOutput struct{ *pulumi.OutputState }
 
 func (GetServiceProfileAccountOutput) ElementType() reflect.Type {
@@ -14906,26 +17056,6 @@ func (o GetServiceProfileAccountOutput) OrganizationName() pulumi.StringOutput {
 
 func (o GetServiceProfileAccountOutput) UcmId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfileAccount) string { return v.UcmId }).(pulumi.StringOutput)
-}
-
-type GetServiceProfileAccountArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceProfileAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileAccount)(nil)).Elem()
-}
-
-func (o GetServiceProfileAccountArrayOutput) ToGetServiceProfileAccountArrayOutput() GetServiceProfileAccountArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileAccountArrayOutput) ToGetServiceProfileAccountArrayOutputWithContext(ctx context.Context) GetServiceProfileAccountArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileAccountArrayOutput) Index(i pulumi.IntInput) GetServiceProfileAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfileAccount {
-		return vs[0].([]GetServiceProfileAccount)[vs[1].(int)]
-	}).(GetServiceProfileAccountOutput)
 }
 
 type GetServiceProfileChangeLog struct {
@@ -14979,31 +17109,6 @@ func (i GetServiceProfileChangeLogArgs) ToGetServiceProfileChangeLogOutput() Get
 
 func (i GetServiceProfileChangeLogArgs) ToGetServiceProfileChangeLogOutputWithContext(ctx context.Context) GetServiceProfileChangeLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileChangeLogOutput)
-}
-
-// GetServiceProfileChangeLogArrayInput is an input type that accepts GetServiceProfileChangeLogArray and GetServiceProfileChangeLogArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfileChangeLogArrayInput` via:
-//
-//	GetServiceProfileChangeLogArray{ GetServiceProfileChangeLogArgs{...} }
-type GetServiceProfileChangeLogArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceProfileChangeLogArrayOutput() GetServiceProfileChangeLogArrayOutput
-	ToGetServiceProfileChangeLogArrayOutputWithContext(context.Context) GetServiceProfileChangeLogArrayOutput
-}
-
-type GetServiceProfileChangeLogArray []GetServiceProfileChangeLogInput
-
-func (GetServiceProfileChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileChangeLog)(nil)).Elem()
-}
-
-func (i GetServiceProfileChangeLogArray) ToGetServiceProfileChangeLogArrayOutput() GetServiceProfileChangeLogArrayOutput {
-	return i.ToGetServiceProfileChangeLogArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceProfileChangeLogArray) ToGetServiceProfileChangeLogArrayOutputWithContext(ctx context.Context) GetServiceProfileChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileChangeLogArrayOutput)
 }
 
 type GetServiceProfileChangeLogOutput struct{ *pulumi.OutputState }
@@ -15066,26 +17171,6 @@ func (o GetServiceProfileChangeLogOutput) UpdatedByFullName() pulumi.StringOutpu
 
 func (o GetServiceProfileChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfileChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
-}
-
-type GetServiceProfileChangeLogArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceProfileChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileChangeLog)(nil)).Elem()
-}
-
-func (o GetServiceProfileChangeLogArrayOutput) ToGetServiceProfileChangeLogArrayOutput() GetServiceProfileChangeLogArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileChangeLogArrayOutput) ToGetServiceProfileChangeLogArrayOutputWithContext(ctx context.Context) GetServiceProfileChangeLogArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileChangeLogArrayOutput) Index(i pulumi.IntInput) GetServiceProfileChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfileChangeLog {
-		return vs[0].([]GetServiceProfileChangeLog)[vs[1].(int)]
-	}).(GetServiceProfileChangeLogOutput)
 }
 
 type GetServiceProfileCustomField struct {
@@ -15250,31 +17335,6 @@ func (i GetServiceProfileMarketingInfoArgs) ToGetServiceProfileMarketingInfoOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileMarketingInfoOutput)
 }
 
-// GetServiceProfileMarketingInfoArrayInput is an input type that accepts GetServiceProfileMarketingInfoArray and GetServiceProfileMarketingInfoArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfileMarketingInfoArrayInput` via:
-//
-//	GetServiceProfileMarketingInfoArray{ GetServiceProfileMarketingInfoArgs{...} }
-type GetServiceProfileMarketingInfoArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceProfileMarketingInfoArrayOutput() GetServiceProfileMarketingInfoArrayOutput
-	ToGetServiceProfileMarketingInfoArrayOutputWithContext(context.Context) GetServiceProfileMarketingInfoArrayOutput
-}
-
-type GetServiceProfileMarketingInfoArray []GetServiceProfileMarketingInfoInput
-
-func (GetServiceProfileMarketingInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileMarketingInfo)(nil)).Elem()
-}
-
-func (i GetServiceProfileMarketingInfoArray) ToGetServiceProfileMarketingInfoArrayOutput() GetServiceProfileMarketingInfoArrayOutput {
-	return i.ToGetServiceProfileMarketingInfoArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceProfileMarketingInfoArray) ToGetServiceProfileMarketingInfoArrayOutputWithContext(ctx context.Context) GetServiceProfileMarketingInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileMarketingInfoArrayOutput)
-}
-
 type GetServiceProfileMarketingInfoOutput struct{ *pulumi.OutputState }
 
 func (GetServiceProfileMarketingInfoOutput) ElementType() reflect.Type {
@@ -15301,26 +17361,6 @@ func (o GetServiceProfileMarketingInfoOutput) ProcessSteps() GetServiceProfileMa
 
 func (o GetServiceProfileMarketingInfoOutput) Promotion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceProfileMarketingInfo) bool { return v.Promotion }).(pulumi.BoolOutput)
-}
-
-type GetServiceProfileMarketingInfoArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceProfileMarketingInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileMarketingInfo)(nil)).Elem()
-}
-
-func (o GetServiceProfileMarketingInfoArrayOutput) ToGetServiceProfileMarketingInfoArrayOutput() GetServiceProfileMarketingInfoArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileMarketingInfoArrayOutput) ToGetServiceProfileMarketingInfoArrayOutputWithContext(ctx context.Context) GetServiceProfileMarketingInfoArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileMarketingInfoArrayOutput) Index(i pulumi.IntInput) GetServiceProfileMarketingInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfileMarketingInfo {
-		return vs[0].([]GetServiceProfileMarketingInfo)[vs[1].(int)]
-	}).(GetServiceProfileMarketingInfoOutput)
 }
 
 type GetServiceProfileMarketingInfoProcessStep struct {
@@ -15945,31 +17985,6 @@ func (i GetServiceProfileProjectArgs) ToGetServiceProfileProjectOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileProjectOutput)
 }
 
-// GetServiceProfileProjectArrayInput is an input type that accepts GetServiceProfileProjectArray and GetServiceProfileProjectArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfileProjectArrayInput` via:
-//
-//	GetServiceProfileProjectArray{ GetServiceProfileProjectArgs{...} }
-type GetServiceProfileProjectArrayInput interface {
-	pulumi.Input
-
-	ToGetServiceProfileProjectArrayOutput() GetServiceProfileProjectArrayOutput
-	ToGetServiceProfileProjectArrayOutputWithContext(context.Context) GetServiceProfileProjectArrayOutput
-}
-
-type GetServiceProfileProjectArray []GetServiceProfileProjectInput
-
-func (GetServiceProfileProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileProject)(nil)).Elem()
-}
-
-func (i GetServiceProfileProjectArray) ToGetServiceProfileProjectArrayOutput() GetServiceProfileProjectArrayOutput {
-	return i.ToGetServiceProfileProjectArrayOutputWithContext(context.Background())
-}
-
-func (i GetServiceProfileProjectArray) ToGetServiceProfileProjectArrayOutputWithContext(ctx context.Context) GetServiceProfileProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfileProjectArrayOutput)
-}
-
 type GetServiceProfileProjectOutput struct{ *pulumi.OutputState }
 
 func (GetServiceProfileProjectOutput) ElementType() reflect.Type {
@@ -15993,409 +18008,389 @@ func (o GetServiceProfileProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfileProject) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-type GetServiceProfileProjectArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServiceProfileProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfileProject)(nil)).Elem()
+type GetServiceProfilesDatum struct {
+	AccessPointTypeConfigs []GetServiceProfilesDatumAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
+	Accounts               []GetServiceProfilesDatumAccount               `pulumi:"accounts"`
+	AllowedEmails          []string                                       `pulumi:"allowedEmails"`
+	ChangeLogs             []GetServiceProfilesDatumChangeLog             `pulumi:"changeLogs"`
+	CustomFields           []GetServiceProfilesDatumCustomField           `pulumi:"customFields"`
+	Description            string                                         `pulumi:"description"`
+	Href                   string                                         `pulumi:"href"`
+	MarketingInfos         []GetServiceProfilesDatumMarketingInfo         `pulumi:"marketingInfos"`
+	Metros                 []GetServiceProfilesDatumMetro                 `pulumi:"metros"`
+	Name                   string                                         `pulumi:"name"`
+	Notifications          []GetServiceProfilesDatumNotification          `pulumi:"notifications"`
+	Ports                  []GetServiceProfilesDatumPort                  `pulumi:"ports"`
+	Projects               []GetServiceProfilesDatumProject               `pulumi:"projects"`
+	SelfProfile            bool                                           `pulumi:"selfProfile"`
+	State                  *string                                        `pulumi:"state"`
+	Tags                   []string                                       `pulumi:"tags"`
+	Type                   string                                         `pulumi:"type"`
+	Uuid                   *string                                        `pulumi:"uuid"`
+	Visibility             string                                         `pulumi:"visibility"`
 }
 
-func (o GetServiceProfileProjectArrayOutput) ToGetServiceProfileProjectArrayOutput() GetServiceProfileProjectArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileProjectArrayOutput) ToGetServiceProfileProjectArrayOutputWithContext(ctx context.Context) GetServiceProfileProjectArrayOutput {
-	return o
-}
-
-func (o GetServiceProfileProjectArrayOutput) Index(i pulumi.IntInput) GetServiceProfileProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfileProject {
-		return vs[0].([]GetServiceProfileProject)[vs[1].(int)]
-	}).(GetServiceProfileProjectOutput)
-}
-
-type GetServiceProfilesData struct {
-	AccessPointTypeConfigs []GetServiceProfilesDataAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
-	Accounts               []GetServiceProfilesDataAccount               `pulumi:"accounts"`
-	AllowedEmails          []string                                      `pulumi:"allowedEmails"`
-	ChangeLogs             []GetServiceProfilesDataChangeLog             `pulumi:"changeLogs"`
-	CustomFields           []GetServiceProfilesDataCustomField           `pulumi:"customFields"`
-	Description            string                                        `pulumi:"description"`
-	Href                   string                                        `pulumi:"href"`
-	MarketingInfos         []GetServiceProfilesDataMarketingInfo         `pulumi:"marketingInfos"`
-	Metros                 []GetServiceProfilesDataMetro                 `pulumi:"metros"`
-	Name                   string                                        `pulumi:"name"`
-	Notifications          []GetServiceProfilesDataNotification          `pulumi:"notifications"`
-	Ports                  []GetServiceProfilesDataPort                  `pulumi:"ports"`
-	Projects               []GetServiceProfilesDataProject               `pulumi:"projects"`
-	SelfProfile            bool                                          `pulumi:"selfProfile"`
-	State                  *string                                       `pulumi:"state"`
-	Tags                   []string                                      `pulumi:"tags"`
-	Type                   string                                        `pulumi:"type"`
-	Uuid                   *string                                       `pulumi:"uuid"`
-	Visibility             string                                        `pulumi:"visibility"`
-}
-
-// GetServiceProfilesDataInput is an input type that accepts GetServiceProfilesDataArgs and GetServiceProfilesDataOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataInput` via:
+// GetServiceProfilesDatumInput is an input type that accepts GetServiceProfilesDatumArgs and GetServiceProfilesDatumOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumInput` via:
 //
-//	GetServiceProfilesDataArgs{...}
-type GetServiceProfilesDataInput interface {
+//	GetServiceProfilesDatumArgs{...}
+type GetServiceProfilesDatumInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataOutput() GetServiceProfilesDataOutput
-	ToGetServiceProfilesDataOutputWithContext(context.Context) GetServiceProfilesDataOutput
+	ToGetServiceProfilesDatumOutput() GetServiceProfilesDatumOutput
+	ToGetServiceProfilesDatumOutputWithContext(context.Context) GetServiceProfilesDatumOutput
 }
 
-type GetServiceProfilesDataArgs struct {
-	AccessPointTypeConfigs GetServiceProfilesDataAccessPointTypeConfigArrayInput `pulumi:"accessPointTypeConfigs"`
-	Accounts               GetServiceProfilesDataAccountArrayInput               `pulumi:"accounts"`
-	AllowedEmails          pulumi.StringArrayInput                               `pulumi:"allowedEmails"`
-	ChangeLogs             GetServiceProfilesDataChangeLogArrayInput             `pulumi:"changeLogs"`
-	CustomFields           GetServiceProfilesDataCustomFieldArrayInput           `pulumi:"customFields"`
-	Description            pulumi.StringInput                                    `pulumi:"description"`
-	Href                   pulumi.StringInput                                    `pulumi:"href"`
-	MarketingInfos         GetServiceProfilesDataMarketingInfoArrayInput         `pulumi:"marketingInfos"`
-	Metros                 GetServiceProfilesDataMetroArrayInput                 `pulumi:"metros"`
-	Name                   pulumi.StringInput                                    `pulumi:"name"`
-	Notifications          GetServiceProfilesDataNotificationArrayInput          `pulumi:"notifications"`
-	Ports                  GetServiceProfilesDataPortArrayInput                  `pulumi:"ports"`
-	Projects               GetServiceProfilesDataProjectArrayInput               `pulumi:"projects"`
-	SelfProfile            pulumi.BoolInput                                      `pulumi:"selfProfile"`
-	State                  pulumi.StringPtrInput                                 `pulumi:"state"`
-	Tags                   pulumi.StringArrayInput                               `pulumi:"tags"`
-	Type                   pulumi.StringInput                                    `pulumi:"type"`
-	Uuid                   pulumi.StringPtrInput                                 `pulumi:"uuid"`
-	Visibility             pulumi.StringInput                                    `pulumi:"visibility"`
+type GetServiceProfilesDatumArgs struct {
+	AccessPointTypeConfigs GetServiceProfilesDatumAccessPointTypeConfigArrayInput `pulumi:"accessPointTypeConfigs"`
+	Accounts               GetServiceProfilesDatumAccountArrayInput               `pulumi:"accounts"`
+	AllowedEmails          pulumi.StringArrayInput                                `pulumi:"allowedEmails"`
+	ChangeLogs             GetServiceProfilesDatumChangeLogArrayInput             `pulumi:"changeLogs"`
+	CustomFields           GetServiceProfilesDatumCustomFieldArrayInput           `pulumi:"customFields"`
+	Description            pulumi.StringInput                                     `pulumi:"description"`
+	Href                   pulumi.StringInput                                     `pulumi:"href"`
+	MarketingInfos         GetServiceProfilesDatumMarketingInfoArrayInput         `pulumi:"marketingInfos"`
+	Metros                 GetServiceProfilesDatumMetroArrayInput                 `pulumi:"metros"`
+	Name                   pulumi.StringInput                                     `pulumi:"name"`
+	Notifications          GetServiceProfilesDatumNotificationArrayInput          `pulumi:"notifications"`
+	Ports                  GetServiceProfilesDatumPortArrayInput                  `pulumi:"ports"`
+	Projects               GetServiceProfilesDatumProjectArrayInput               `pulumi:"projects"`
+	SelfProfile            pulumi.BoolInput                                       `pulumi:"selfProfile"`
+	State                  pulumi.StringPtrInput                                  `pulumi:"state"`
+	Tags                   pulumi.StringArrayInput                                `pulumi:"tags"`
+	Type                   pulumi.StringInput                                     `pulumi:"type"`
+	Uuid                   pulumi.StringPtrInput                                  `pulumi:"uuid"`
+	Visibility             pulumi.StringInput                                     `pulumi:"visibility"`
 }
 
-func (GetServiceProfilesDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesData)(nil)).Elem()
+func (GetServiceProfilesDatumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatum)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataArgs) ToGetServiceProfilesDataOutput() GetServiceProfilesDataOutput {
-	return i.ToGetServiceProfilesDataOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumArgs) ToGetServiceProfilesDatumOutput() GetServiceProfilesDatumOutput {
+	return i.ToGetServiceProfilesDatumOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataArgs) ToGetServiceProfilesDataOutputWithContext(ctx context.Context) GetServiceProfilesDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataOutput)
+func (i GetServiceProfilesDatumArgs) ToGetServiceProfilesDatumOutputWithContext(ctx context.Context) GetServiceProfilesDatumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumOutput)
 }
 
-// GetServiceProfilesDataArrayInput is an input type that accepts GetServiceProfilesDataArray and GetServiceProfilesDataArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataArrayInput` via:
+// GetServiceProfilesDatumArrayInput is an input type that accepts GetServiceProfilesDatumArray and GetServiceProfilesDatumArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumArrayInput` via:
 //
-//	GetServiceProfilesDataArray{ GetServiceProfilesDataArgs{...} }
-type GetServiceProfilesDataArrayInput interface {
+//	GetServiceProfilesDatumArray{ GetServiceProfilesDatumArgs{...} }
+type GetServiceProfilesDatumArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataArrayOutput() GetServiceProfilesDataArrayOutput
-	ToGetServiceProfilesDataArrayOutputWithContext(context.Context) GetServiceProfilesDataArrayOutput
+	ToGetServiceProfilesDatumArrayOutput() GetServiceProfilesDatumArrayOutput
+	ToGetServiceProfilesDatumArrayOutputWithContext(context.Context) GetServiceProfilesDatumArrayOutput
 }
 
-type GetServiceProfilesDataArray []GetServiceProfilesDataInput
+type GetServiceProfilesDatumArray []GetServiceProfilesDatumInput
 
-func (GetServiceProfilesDataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesData)(nil)).Elem()
+func (GetServiceProfilesDatumArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatum)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataArray) ToGetServiceProfilesDataArrayOutput() GetServiceProfilesDataArrayOutput {
-	return i.ToGetServiceProfilesDataArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumArray) ToGetServiceProfilesDatumArrayOutput() GetServiceProfilesDatumArrayOutput {
+	return i.ToGetServiceProfilesDatumArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataArray) ToGetServiceProfilesDataArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataArrayOutput)
+func (i GetServiceProfilesDatumArray) ToGetServiceProfilesDatumArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumArrayOutput)
 }
 
-type GetServiceProfilesDataOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesData)(nil)).Elem()
+func (GetServiceProfilesDatumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatum)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataOutput) ToGetServiceProfilesDataOutput() GetServiceProfilesDataOutput {
+func (o GetServiceProfilesDatumOutput) ToGetServiceProfilesDatumOutput() GetServiceProfilesDatumOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataOutput) ToGetServiceProfilesDataOutputWithContext(ctx context.Context) GetServiceProfilesDataOutput {
+func (o GetServiceProfilesDatumOutput) ToGetServiceProfilesDatumOutputWithContext(ctx context.Context) GetServiceProfilesDatumOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataOutput) AccessPointTypeConfigs() GetServiceProfilesDataAccessPointTypeConfigArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataAccessPointTypeConfig {
+func (o GetServiceProfilesDatumOutput) AccessPointTypeConfigs() GetServiceProfilesDatumAccessPointTypeConfigArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumAccessPointTypeConfig {
 		return v.AccessPointTypeConfigs
-	}).(GetServiceProfilesDataAccessPointTypeConfigArrayOutput)
+	}).(GetServiceProfilesDatumAccessPointTypeConfigArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Accounts() GetServiceProfilesDataAccountArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataAccount { return v.Accounts }).(GetServiceProfilesDataAccountArrayOutput)
+func (o GetServiceProfilesDatumOutput) Accounts() GetServiceProfilesDatumAccountArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumAccount { return v.Accounts }).(GetServiceProfilesDatumAccountArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) AllowedEmails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []string { return v.AllowedEmails }).(pulumi.StringArrayOutput)
+func (o GetServiceProfilesDatumOutput) AllowedEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []string { return v.AllowedEmails }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) ChangeLogs() GetServiceProfilesDataChangeLogArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataChangeLog { return v.ChangeLogs }).(GetServiceProfilesDataChangeLogArrayOutput)
+func (o GetServiceProfilesDatumOutput) ChangeLogs() GetServiceProfilesDatumChangeLogArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumChangeLog { return v.ChangeLogs }).(GetServiceProfilesDatumChangeLogArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) CustomFields() GetServiceProfilesDataCustomFieldArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataCustomField { return v.CustomFields }).(GetServiceProfilesDataCustomFieldArrayOutput)
+func (o GetServiceProfilesDatumOutput) CustomFields() GetServiceProfilesDatumCustomFieldArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumCustomField { return v.CustomFields }).(GetServiceProfilesDatumCustomFieldArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) string { return v.Description }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) string { return v.Href }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Href }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataOutput) MarketingInfos() GetServiceProfilesDataMarketingInfoArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataMarketingInfo { return v.MarketingInfos }).(GetServiceProfilesDataMarketingInfoArrayOutput)
+func (o GetServiceProfilesDatumOutput) MarketingInfos() GetServiceProfilesDatumMarketingInfoArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumMarketingInfo { return v.MarketingInfos }).(GetServiceProfilesDatumMarketingInfoArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Metros() GetServiceProfilesDataMetroArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataMetro { return v.Metros }).(GetServiceProfilesDataMetroArrayOutput)
+func (o GetServiceProfilesDatumOutput) Metros() GetServiceProfilesDatumMetroArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumMetro { return v.Metros }).(GetServiceProfilesDatumMetroArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) string { return v.Name }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Notifications() GetServiceProfilesDataNotificationArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataNotification { return v.Notifications }).(GetServiceProfilesDataNotificationArrayOutput)
+func (o GetServiceProfilesDatumOutput) Notifications() GetServiceProfilesDatumNotificationArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumNotification { return v.Notifications }).(GetServiceProfilesDatumNotificationArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Ports() GetServiceProfilesDataPortArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataPort { return v.Ports }).(GetServiceProfilesDataPortArrayOutput)
+func (o GetServiceProfilesDatumOutput) Ports() GetServiceProfilesDatumPortArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumPort { return v.Ports }).(GetServiceProfilesDatumPortArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Projects() GetServiceProfilesDataProjectArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []GetServiceProfilesDataProject { return v.Projects }).(GetServiceProfilesDataProjectArrayOutput)
+func (o GetServiceProfilesDatumOutput) Projects() GetServiceProfilesDatumProjectArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []GetServiceProfilesDatumProject { return v.Projects }).(GetServiceProfilesDatumProjectArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) SelfProfile() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) bool { return v.SelfProfile }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumOutput) SelfProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) bool { return v.SelfProfile }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o GetServiceProfilesDatumOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) []string { return v.Tags }).(pulumi.StringArrayOutput)
+func (o GetServiceProfilesDatumOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) string { return v.Type }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o GetServiceProfilesDatumOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceProfilesDataOutput) Visibility() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesData) string { return v.Visibility }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Visibility }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesData)(nil)).Elem()
+func (GetServiceProfilesDatumArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatum)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataArrayOutput) ToGetServiceProfilesDataArrayOutput() GetServiceProfilesDataArrayOutput {
+func (o GetServiceProfilesDatumArrayOutput) ToGetServiceProfilesDatumArrayOutput() GetServiceProfilesDatumArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataArrayOutput) ToGetServiceProfilesDataArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataArrayOutput {
+func (o GetServiceProfilesDatumArrayOutput) ToGetServiceProfilesDatumArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesData {
-		return vs[0].([]GetServiceProfilesData)[vs[1].(int)]
-	}).(GetServiceProfilesDataOutput)
+func (o GetServiceProfilesDatumArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatum {
+		return vs[0].([]GetServiceProfilesDatum)[vs[1].(int)]
+	}).(GetServiceProfilesDatumOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfig struct {
-	AllowBandwidthAutoApproval   bool                                                            `pulumi:"allowBandwidthAutoApproval"`
-	AllowBandwidthUpgrade        bool                                                            `pulumi:"allowBandwidthUpgrade"`
-	AllowCustomBandwidth         bool                                                            `pulumi:"allowCustomBandwidth"`
-	AllowRemoteConnections       bool                                                            `pulumi:"allowRemoteConnections"`
-	ApiConfigs                   []GetServiceProfilesDataAccessPointTypeConfigApiConfig          `pulumi:"apiConfigs"`
-	AuthenticationKeys           []GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey  `pulumi:"authenticationKeys"`
-	BandwidthAlertThreshold      float64                                                         `pulumi:"bandwidthAlertThreshold"`
-	ConnectionLabel              string                                                          `pulumi:"connectionLabel"`
-	ConnectionRedundancyRequired bool                                                            `pulumi:"connectionRedundancyRequired"`
-	EnableAutoGenerateServiceKey bool                                                            `pulumi:"enableAutoGenerateServiceKey"`
-	LinkProtocolConfigs          []GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig `pulumi:"linkProtocolConfigs"`
-	SupportedBandwidths          []int                                                           `pulumi:"supportedBandwidths"`
-	Type                         string                                                          `pulumi:"type"`
-	Uuid                         string                                                          `pulumi:"uuid"`
+type GetServiceProfilesDatumAccessPointTypeConfig struct {
+	AllowBandwidthAutoApproval   bool                                                             `pulumi:"allowBandwidthAutoApproval"`
+	AllowBandwidthUpgrade        bool                                                             `pulumi:"allowBandwidthUpgrade"`
+	AllowCustomBandwidth         bool                                                             `pulumi:"allowCustomBandwidth"`
+	AllowRemoteConnections       bool                                                             `pulumi:"allowRemoteConnections"`
+	ApiConfigs                   []GetServiceProfilesDatumAccessPointTypeConfigApiConfig          `pulumi:"apiConfigs"`
+	AuthenticationKeys           []GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey  `pulumi:"authenticationKeys"`
+	BandwidthAlertThreshold      float64                                                          `pulumi:"bandwidthAlertThreshold"`
+	ConnectionLabel              string                                                           `pulumi:"connectionLabel"`
+	ConnectionRedundancyRequired bool                                                             `pulumi:"connectionRedundancyRequired"`
+	EnableAutoGenerateServiceKey bool                                                             `pulumi:"enableAutoGenerateServiceKey"`
+	LinkProtocolConfigs          []GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig `pulumi:"linkProtocolConfigs"`
+	SupportedBandwidths          []int                                                            `pulumi:"supportedBandwidths"`
+	Type                         string                                                           `pulumi:"type"`
+	Uuid                         string                                                           `pulumi:"uuid"`
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigArgs and GetServiceProfilesDataAccessPointTypeConfigOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigArgs and GetServiceProfilesDatumAccessPointTypeConfigOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigArgs{...}
-type GetServiceProfilesDataAccessPointTypeConfigInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigArgs{...}
+type GetServiceProfilesDatumAccessPointTypeConfigInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigOutput() GetServiceProfilesDataAccessPointTypeConfigOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigArgs struct {
-	AllowBandwidthAutoApproval   pulumi.BoolInput                                                        `pulumi:"allowBandwidthAutoApproval"`
-	AllowBandwidthUpgrade        pulumi.BoolInput                                                        `pulumi:"allowBandwidthUpgrade"`
-	AllowCustomBandwidth         pulumi.BoolInput                                                        `pulumi:"allowCustomBandwidth"`
-	AllowRemoteConnections       pulumi.BoolInput                                                        `pulumi:"allowRemoteConnections"`
-	ApiConfigs                   GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayInput          `pulumi:"apiConfigs"`
-	AuthenticationKeys           GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayInput  `pulumi:"authenticationKeys"`
-	BandwidthAlertThreshold      pulumi.Float64Input                                                     `pulumi:"bandwidthAlertThreshold"`
-	ConnectionLabel              pulumi.StringInput                                                      `pulumi:"connectionLabel"`
-	ConnectionRedundancyRequired pulumi.BoolInput                                                        `pulumi:"connectionRedundancyRequired"`
-	EnableAutoGenerateServiceKey pulumi.BoolInput                                                        `pulumi:"enableAutoGenerateServiceKey"`
-	LinkProtocolConfigs          GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayInput `pulumi:"linkProtocolConfigs"`
-	SupportedBandwidths          pulumi.IntArrayInput                                                    `pulumi:"supportedBandwidths"`
-	Type                         pulumi.StringInput                                                      `pulumi:"type"`
-	Uuid                         pulumi.StringInput                                                      `pulumi:"uuid"`
+type GetServiceProfilesDatumAccessPointTypeConfigArgs struct {
+	AllowBandwidthAutoApproval   pulumi.BoolInput                                                         `pulumi:"allowBandwidthAutoApproval"`
+	AllowBandwidthUpgrade        pulumi.BoolInput                                                         `pulumi:"allowBandwidthUpgrade"`
+	AllowCustomBandwidth         pulumi.BoolInput                                                         `pulumi:"allowCustomBandwidth"`
+	AllowRemoteConnections       pulumi.BoolInput                                                         `pulumi:"allowRemoteConnections"`
+	ApiConfigs                   GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayInput          `pulumi:"apiConfigs"`
+	AuthenticationKeys           GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayInput  `pulumi:"authenticationKeys"`
+	BandwidthAlertThreshold      pulumi.Float64Input                                                      `pulumi:"bandwidthAlertThreshold"`
+	ConnectionLabel              pulumi.StringInput                                                       `pulumi:"connectionLabel"`
+	ConnectionRedundancyRequired pulumi.BoolInput                                                         `pulumi:"connectionRedundancyRequired"`
+	EnableAutoGenerateServiceKey pulumi.BoolInput                                                         `pulumi:"enableAutoGenerateServiceKey"`
+	LinkProtocolConfigs          GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayInput `pulumi:"linkProtocolConfigs"`
+	SupportedBandwidths          pulumi.IntArrayInput                                                     `pulumi:"supportedBandwidths"`
+	Type                         pulumi.StringInput                                                       `pulumi:"type"`
+	Uuid                         pulumi.StringInput                                                       `pulumi:"uuid"`
 }
 
-func (GetServiceProfilesDataAccessPointTypeConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfig)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigArgs) ToGetServiceProfilesDataAccessPointTypeConfigOutput() GetServiceProfilesDataAccessPointTypeConfigOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigArgs) ToGetServiceProfilesDatumAccessPointTypeConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigArgs) ToGetServiceProfilesDataAccessPointTypeConfigOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigArgs) ToGetServiceProfilesDatumAccessPointTypeConfigOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigOutput)
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigArrayInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigArray and GetServiceProfilesDataAccessPointTypeConfigArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigArrayInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigArrayInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigArray and GetServiceProfilesDatumAccessPointTypeConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigArrayInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigArray{ GetServiceProfilesDataAccessPointTypeConfigArgs{...} }
-type GetServiceProfilesDataAccessPointTypeConfigArrayInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigArray{ GetServiceProfilesDatumAccessPointTypeConfigArgs{...} }
+type GetServiceProfilesDatumAccessPointTypeConfigArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigArrayOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigArrayOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigArrayOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigArray []GetServiceProfilesDataAccessPointTypeConfigInput
+type GetServiceProfilesDatumAccessPointTypeConfigArray []GetServiceProfilesDatumAccessPointTypeConfigInput
 
-func (GetServiceProfilesDataAccessPointTypeConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfig)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigArray) ToGetServiceProfilesDataAccessPointTypeConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigArrayOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigArray) ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigArrayOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigArray) ToGetServiceProfilesDataAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigArrayOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigArray) ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigArrayOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfig)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) ToGetServiceProfilesDataAccessPointTypeConfigOutput() GetServiceProfilesDataAccessPointTypeConfigOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) ToGetServiceProfilesDatumAccessPointTypeConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) ToGetServiceProfilesDataAccessPointTypeConfigOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) ToGetServiceProfilesDatumAccessPointTypeConfigOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) AllowBandwidthAutoApproval() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) bool { return v.AllowBandwidthAutoApproval }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) AllowBandwidthAutoApproval() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) bool { return v.AllowBandwidthAutoApproval }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) AllowBandwidthUpgrade() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) bool { return v.AllowBandwidthUpgrade }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) AllowBandwidthUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) bool { return v.AllowBandwidthUpgrade }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) AllowCustomBandwidth() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) bool { return v.AllowCustomBandwidth }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) AllowCustomBandwidth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) bool { return v.AllowCustomBandwidth }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) AllowRemoteConnections() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) bool { return v.AllowRemoteConnections }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) AllowRemoteConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) bool { return v.AllowRemoteConnections }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) ApiConfigs() GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) []GetServiceProfilesDataAccessPointTypeConfigApiConfig {
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) ApiConfigs() GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) []GetServiceProfilesDatumAccessPointTypeConfigApiConfig {
 		return v.ApiConfigs
-	}).(GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput)
+	}).(GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) AuthenticationKeys() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) []GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey {
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) AuthenticationKeys() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) []GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey {
 		return v.AuthenticationKeys
-	}).(GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput)
+	}).(GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) BandwidthAlertThreshold() pulumi.Float64Output {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) float64 { return v.BandwidthAlertThreshold }).(pulumi.Float64Output)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) BandwidthAlertThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) float64 { return v.BandwidthAlertThreshold }).(pulumi.Float64Output)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) ConnectionLabel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) string { return v.ConnectionLabel }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) ConnectionLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) string { return v.ConnectionLabel }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) ConnectionRedundancyRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) bool { return v.ConnectionRedundancyRequired }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) ConnectionRedundancyRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) bool { return v.ConnectionRedundancyRequired }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) EnableAutoGenerateServiceKey() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) bool { return v.EnableAutoGenerateServiceKey }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) EnableAutoGenerateServiceKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) bool { return v.EnableAutoGenerateServiceKey }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) LinkProtocolConfigs() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) []GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig {
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) LinkProtocolConfigs() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) []GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig {
 		return v.LinkProtocolConfigs
-	}).(GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput)
+	}).(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) SupportedBandwidths() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) []int { return v.SupportedBandwidths }).(pulumi.IntArrayOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) SupportedBandwidths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) []int { return v.SupportedBandwidths }).(pulumi.IntArrayOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfig)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataAccessPointTypeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataAccessPointTypeConfig {
-		return vs[0].([]GetServiceProfilesDataAccessPointTypeConfig)[vs[1].(int)]
-	}).(GetServiceProfilesDataAccessPointTypeConfigOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumAccessPointTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumAccessPointTypeConfig {
+		return vs[0].([]GetServiceProfilesDatumAccessPointTypeConfig)[vs[1].(int)]
+	}).(GetServiceProfilesDatumAccessPointTypeConfigOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigApiConfig struct {
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfig struct {
 	AllowOverSubscription bool   `pulumi:"allowOverSubscription"`
 	ApiAvailable          bool   `pulumi:"apiAvailable"`
 	BandwidthFromApi      bool   `pulumi:"bandwidthFromApi"`
@@ -16405,18 +18400,18 @@ type GetServiceProfilesDataAccessPointTypeConfigApiConfig struct {
 	OverSubscriptionLimit int    `pulumi:"overSubscriptionLimit"`
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigApiConfigInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs and GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigApiConfigInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigApiConfigInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs and GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigApiConfigInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs{...}
-type GetServiceProfilesDataAccessPointTypeConfigApiConfigInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs{...}
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfigInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutput() GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs struct {
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs struct {
 	AllowOverSubscription pulumi.BoolInput   `pulumi:"allowOverSubscription"`
 	ApiAvailable          pulumi.BoolInput   `pulumi:"apiAvailable"`
 	BandwidthFromApi      pulumi.BoolInput   `pulumi:"bandwidthFromApi"`
@@ -16426,320 +18421,320 @@ type GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs struct {
 	OverSubscriptionLimit pulumi.IntInput    `pulumi:"overSubscriptionLimit"`
 }
 
-func (GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigApiConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigApiConfig)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutput() GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput)
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigApiConfigArray and GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray and GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigApiConfigArray{ GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs{...} }
-type GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray{ GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs{...} }
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigApiConfigArray []GetServiceProfilesDataAccessPointTypeConfigApiConfigInput
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray []GetServiceProfilesDatumAccessPointTypeConfigApiConfigInput
 
-func (GetServiceProfilesDataAccessPointTypeConfigApiConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfigApiConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfigApiConfig)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigApiConfigArray) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigApiConfigArray) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigApiConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigApiConfig)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutput() GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) AllowOverSubscription() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) bool { return v.AllowOverSubscription }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) AllowOverSubscription() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) bool { return v.AllowOverSubscription }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) ApiAvailable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) bool { return v.ApiAvailable }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) ApiAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) bool { return v.ApiAvailable }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) BandwidthFromApi() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) bool { return v.BandwidthFromApi }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) BandwidthFromApi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) bool { return v.BandwidthFromApi }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) EquinixManagedPort() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) bool { return v.EquinixManagedPort }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) EquinixManagedPort() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) bool { return v.EquinixManagedPort }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) EquinixManagedVlan() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) bool { return v.EquinixManagedVlan }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) EquinixManagedVlan() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) bool { return v.EquinixManagedVlan }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) IntegrationId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) string { return v.IntegrationId }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput) OverSubscriptionLimit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigApiConfig) int { return v.OverSubscriptionLimit }).(pulumi.IntOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput) OverSubscriptionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigApiConfig) int { return v.OverSubscriptionLimit }).(pulumi.IntOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfigApiConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfigApiConfig)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataAccessPointTypeConfigApiConfig {
-		return vs[0].([]GetServiceProfilesDataAccessPointTypeConfigApiConfig)[vs[1].(int)]
-	}).(GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumAccessPointTypeConfigApiConfig {
+		return vs[0].([]GetServiceProfilesDatumAccessPointTypeConfigApiConfig)[vs[1].(int)]
+	}).(GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey struct {
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey struct {
 	Description string `pulumi:"description"`
 	Label       string `pulumi:"label"`
 	Required    bool   `pulumi:"required"`
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs and GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs and GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs{...}
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs{...}
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs struct {
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	Label       pulumi.StringInput `pulumi:"label"`
 	Required    pulumi.BoolInput   `pulumi:"required"`
 }
 
-func (GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput)
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray and GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray and GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray{ GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs{...} }
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray{ GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs{...} }
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray []GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyInput
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray []GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyInput
 
-func (GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey) string { return v.Description }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey) string { return v.Label }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey) string { return v.Label }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey) bool { return v.Required }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey) bool { return v.Required }).(pulumi.BoolOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput() GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey {
-		return vs[0].([]GetServiceProfilesDataAccessPointTypeConfigAuthenticationKey)[vs[1].(int)]
-	}).(GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey {
+		return vs[0].([]GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKey)[vs[1].(int)]
+	}).(GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig struct {
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig struct {
 	Encapsulation         string `pulumi:"encapsulation"`
 	EncapsulationStrategy string `pulumi:"encapsulationStrategy"`
 	ReuseVlanSTag         bool   `pulumi:"reuseVlanSTag"`
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs and GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs and GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs{...}
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs{...}
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs struct {
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs struct {
 	Encapsulation         pulumi.StringInput `pulumi:"encapsulation"`
 	EncapsulationStrategy pulumi.StringInput `pulumi:"encapsulationStrategy"`
 	ReuseVlanSTag         pulumi.BoolInput   `pulumi:"reuseVlanSTag"`
 }
 
-func (GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput)
 }
 
-// GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayInput is an input type that accepts GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray and GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayInput` via:
+// GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayInput is an input type that accepts GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray and GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayInput` via:
 //
-//	GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray{ GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs{...} }
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayInput interface {
+//	GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray{ GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs{...} }
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput
-	ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(context.Context) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput
+	ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(context.Context) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray []GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigInput
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray []GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigInput
 
-func (GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput {
-	return i.ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+	return i.ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput)
+func (i GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput) Encapsulation() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig) string { return v.Encapsulation }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput) Encapsulation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig) string { return v.Encapsulation }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput) EncapsulationStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig) string {
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput) EncapsulationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig) string {
 		return v.EncapsulationStrategy
 	}).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput) ReuseVlanSTag() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig) bool { return v.ReuseVlanSTag }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput) ReuseVlanSTag() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig) bool { return v.ReuseVlanSTag }).(pulumi.BoolOutput)
 }
 
-type GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
+func (GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput() GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput() GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput) ToGetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput {
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput) ToGetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig {
-		return vs[0].([]GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfig)[vs[1].(int)]
-	}).(GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput)
+func (o GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig {
+		return vs[0].([]GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig)[vs[1].(int)]
+	}).(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput)
 }
 
-type GetServiceProfilesDataAccount struct {
+type GetServiceProfilesDatumAccount struct {
 	AccountName            string `pulumi:"accountName"`
 	AccountNumber          int    `pulumi:"accountNumber"`
 	GlobalCustId           string `pulumi:"globalCustId"`
@@ -16750,18 +18745,18 @@ type GetServiceProfilesDataAccount struct {
 	UcmId                  string `pulumi:"ucmId"`
 }
 
-// GetServiceProfilesDataAccountInput is an input type that accepts GetServiceProfilesDataAccountArgs and GetServiceProfilesDataAccountOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccountInput` via:
+// GetServiceProfilesDatumAccountInput is an input type that accepts GetServiceProfilesDatumAccountArgs and GetServiceProfilesDatumAccountOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccountInput` via:
 //
-//	GetServiceProfilesDataAccountArgs{...}
-type GetServiceProfilesDataAccountInput interface {
+//	GetServiceProfilesDatumAccountArgs{...}
+type GetServiceProfilesDatumAccountInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccountOutput() GetServiceProfilesDataAccountOutput
-	ToGetServiceProfilesDataAccountOutputWithContext(context.Context) GetServiceProfilesDataAccountOutput
+	ToGetServiceProfilesDatumAccountOutput() GetServiceProfilesDatumAccountOutput
+	ToGetServiceProfilesDatumAccountOutputWithContext(context.Context) GetServiceProfilesDatumAccountOutput
 }
 
-type GetServiceProfilesDataAccountArgs struct {
+type GetServiceProfilesDatumAccountArgs struct {
 	AccountName            pulumi.StringInput `pulumi:"accountName"`
 	AccountNumber          pulumi.IntInput    `pulumi:"accountNumber"`
 	GlobalCustId           pulumi.StringInput `pulumi:"globalCustId"`
@@ -16772,110 +18767,110 @@ type GetServiceProfilesDataAccountArgs struct {
 	UcmId                  pulumi.StringInput `pulumi:"ucmId"`
 }
 
-func (GetServiceProfilesDataAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccount)(nil)).Elem()
+func (GetServiceProfilesDatumAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccount)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccountArgs) ToGetServiceProfilesDataAccountOutput() GetServiceProfilesDataAccountOutput {
-	return i.ToGetServiceProfilesDataAccountOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccountArgs) ToGetServiceProfilesDatumAccountOutput() GetServiceProfilesDatumAccountOutput {
+	return i.ToGetServiceProfilesDatumAccountOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccountArgs) ToGetServiceProfilesDataAccountOutputWithContext(ctx context.Context) GetServiceProfilesDataAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccountOutput)
+func (i GetServiceProfilesDatumAccountArgs) ToGetServiceProfilesDatumAccountOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccountOutput)
 }
 
-// GetServiceProfilesDataAccountArrayInput is an input type that accepts GetServiceProfilesDataAccountArray and GetServiceProfilesDataAccountArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataAccountArrayInput` via:
+// GetServiceProfilesDatumAccountArrayInput is an input type that accepts GetServiceProfilesDatumAccountArray and GetServiceProfilesDatumAccountArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumAccountArrayInput` via:
 //
-//	GetServiceProfilesDataAccountArray{ GetServiceProfilesDataAccountArgs{...} }
-type GetServiceProfilesDataAccountArrayInput interface {
+//	GetServiceProfilesDatumAccountArray{ GetServiceProfilesDatumAccountArgs{...} }
+type GetServiceProfilesDatumAccountArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataAccountArrayOutput() GetServiceProfilesDataAccountArrayOutput
-	ToGetServiceProfilesDataAccountArrayOutputWithContext(context.Context) GetServiceProfilesDataAccountArrayOutput
+	ToGetServiceProfilesDatumAccountArrayOutput() GetServiceProfilesDatumAccountArrayOutput
+	ToGetServiceProfilesDatumAccountArrayOutputWithContext(context.Context) GetServiceProfilesDatumAccountArrayOutput
 }
 
-type GetServiceProfilesDataAccountArray []GetServiceProfilesDataAccountInput
+type GetServiceProfilesDatumAccountArray []GetServiceProfilesDatumAccountInput
 
-func (GetServiceProfilesDataAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccount)(nil)).Elem()
+func (GetServiceProfilesDatumAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccount)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataAccountArray) ToGetServiceProfilesDataAccountArrayOutput() GetServiceProfilesDataAccountArrayOutput {
-	return i.ToGetServiceProfilesDataAccountArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumAccountArray) ToGetServiceProfilesDatumAccountArrayOutput() GetServiceProfilesDatumAccountArrayOutput {
+	return i.ToGetServiceProfilesDatumAccountArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataAccountArray) ToGetServiceProfilesDataAccountArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccountArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataAccountArrayOutput)
+func (i GetServiceProfilesDatumAccountArray) ToGetServiceProfilesDatumAccountArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumAccountArrayOutput)
 }
 
-type GetServiceProfilesDataAccountOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccountOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataAccount)(nil)).Elem()
+func (GetServiceProfilesDatumAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumAccount)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccountOutput) ToGetServiceProfilesDataAccountOutput() GetServiceProfilesDataAccountOutput {
+func (o GetServiceProfilesDatumAccountOutput) ToGetServiceProfilesDatumAccountOutput() GetServiceProfilesDatumAccountOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccountOutput) ToGetServiceProfilesDataAccountOutputWithContext(ctx context.Context) GetServiceProfilesDataAccountOutput {
+func (o GetServiceProfilesDatumAccountOutput) ToGetServiceProfilesDatumAccountOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccountOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccountOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) string { return v.AccountName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccountOutput) AccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) AccountNumber() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
+func (o GetServiceProfilesDatumAccountOutput) AccountNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) int { return v.AccountNumber }).(pulumi.IntOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) GlobalCustId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccountOutput) GlobalCustId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) string { return v.GlobalCustId }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) GlobalOrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccountOutput) GlobalOrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) string { return v.GlobalOrgId }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccountOutput) GlobalOrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) string { return v.GlobalOrganizationName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) OrgId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) int { return v.OrgId }).(pulumi.IntOutput)
+func (o GetServiceProfilesDatumAccountOutput) OrgId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) int { return v.OrgId }).(pulumi.IntOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) OrganizationName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccountOutput) OrganizationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) string { return v.OrganizationName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataAccountOutput) UcmId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataAccount) string { return v.UcmId }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumAccountOutput) UcmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumAccount) string { return v.UcmId }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataAccountArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumAccountArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataAccountArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataAccount)(nil)).Elem()
+func (GetServiceProfilesDatumAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumAccount)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataAccountArrayOutput) ToGetServiceProfilesDataAccountArrayOutput() GetServiceProfilesDataAccountArrayOutput {
+func (o GetServiceProfilesDatumAccountArrayOutput) ToGetServiceProfilesDatumAccountArrayOutput() GetServiceProfilesDatumAccountArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccountArrayOutput) ToGetServiceProfilesDataAccountArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataAccountArrayOutput {
+func (o GetServiceProfilesDatumAccountArrayOutput) ToGetServiceProfilesDatumAccountArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumAccountArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataAccountArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataAccountOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataAccount {
-		return vs[0].([]GetServiceProfilesDataAccount)[vs[1].(int)]
-	}).(GetServiceProfilesDataAccountOutput)
+func (o GetServiceProfilesDatumAccountArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumAccount {
+		return vs[0].([]GetServiceProfilesDatumAccount)[vs[1].(int)]
+	}).(GetServiceProfilesDatumAccountOutput)
 }
 
-type GetServiceProfilesDataChangeLog struct {
+type GetServiceProfilesDatumChangeLog struct {
 	CreatedBy         string `pulumi:"createdBy"`
 	CreatedByEmail    string `pulumi:"createdByEmail"`
 	CreatedByFullName string `pulumi:"createdByFullName"`
@@ -16890,18 +18885,18 @@ type GetServiceProfilesDataChangeLog struct {
 	UpdatedDateTime   string `pulumi:"updatedDateTime"`
 }
 
-// GetServiceProfilesDataChangeLogInput is an input type that accepts GetServiceProfilesDataChangeLogArgs and GetServiceProfilesDataChangeLogOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataChangeLogInput` via:
+// GetServiceProfilesDatumChangeLogInput is an input type that accepts GetServiceProfilesDatumChangeLogArgs and GetServiceProfilesDatumChangeLogOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumChangeLogInput` via:
 //
-//	GetServiceProfilesDataChangeLogArgs{...}
-type GetServiceProfilesDataChangeLogInput interface {
+//	GetServiceProfilesDatumChangeLogArgs{...}
+type GetServiceProfilesDatumChangeLogInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataChangeLogOutput() GetServiceProfilesDataChangeLogOutput
-	ToGetServiceProfilesDataChangeLogOutputWithContext(context.Context) GetServiceProfilesDataChangeLogOutput
+	ToGetServiceProfilesDatumChangeLogOutput() GetServiceProfilesDatumChangeLogOutput
+	ToGetServiceProfilesDatumChangeLogOutputWithContext(context.Context) GetServiceProfilesDatumChangeLogOutput
 }
 
-type GetServiceProfilesDataChangeLogArgs struct {
+type GetServiceProfilesDatumChangeLogArgs struct {
 	CreatedBy         pulumi.StringInput `pulumi:"createdBy"`
 	CreatedByEmail    pulumi.StringInput `pulumi:"createdByEmail"`
 	CreatedByFullName pulumi.StringInput `pulumi:"createdByFullName"`
@@ -16916,126 +18911,126 @@ type GetServiceProfilesDataChangeLogArgs struct {
 	UpdatedDateTime   pulumi.StringInput `pulumi:"updatedDateTime"`
 }
 
-func (GetServiceProfilesDataChangeLogArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataChangeLog)(nil)).Elem()
+func (GetServiceProfilesDatumChangeLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumChangeLog)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataChangeLogArgs) ToGetServiceProfilesDataChangeLogOutput() GetServiceProfilesDataChangeLogOutput {
-	return i.ToGetServiceProfilesDataChangeLogOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumChangeLogArgs) ToGetServiceProfilesDatumChangeLogOutput() GetServiceProfilesDatumChangeLogOutput {
+	return i.ToGetServiceProfilesDatumChangeLogOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataChangeLogArgs) ToGetServiceProfilesDataChangeLogOutputWithContext(ctx context.Context) GetServiceProfilesDataChangeLogOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataChangeLogOutput)
+func (i GetServiceProfilesDatumChangeLogArgs) ToGetServiceProfilesDatumChangeLogOutputWithContext(ctx context.Context) GetServiceProfilesDatumChangeLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumChangeLogOutput)
 }
 
-// GetServiceProfilesDataChangeLogArrayInput is an input type that accepts GetServiceProfilesDataChangeLogArray and GetServiceProfilesDataChangeLogArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataChangeLogArrayInput` via:
+// GetServiceProfilesDatumChangeLogArrayInput is an input type that accepts GetServiceProfilesDatumChangeLogArray and GetServiceProfilesDatumChangeLogArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumChangeLogArrayInput` via:
 //
-//	GetServiceProfilesDataChangeLogArray{ GetServiceProfilesDataChangeLogArgs{...} }
-type GetServiceProfilesDataChangeLogArrayInput interface {
+//	GetServiceProfilesDatumChangeLogArray{ GetServiceProfilesDatumChangeLogArgs{...} }
+type GetServiceProfilesDatumChangeLogArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataChangeLogArrayOutput() GetServiceProfilesDataChangeLogArrayOutput
-	ToGetServiceProfilesDataChangeLogArrayOutputWithContext(context.Context) GetServiceProfilesDataChangeLogArrayOutput
+	ToGetServiceProfilesDatumChangeLogArrayOutput() GetServiceProfilesDatumChangeLogArrayOutput
+	ToGetServiceProfilesDatumChangeLogArrayOutputWithContext(context.Context) GetServiceProfilesDatumChangeLogArrayOutput
 }
 
-type GetServiceProfilesDataChangeLogArray []GetServiceProfilesDataChangeLogInput
+type GetServiceProfilesDatumChangeLogArray []GetServiceProfilesDatumChangeLogInput
 
-func (GetServiceProfilesDataChangeLogArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataChangeLog)(nil)).Elem()
+func (GetServiceProfilesDatumChangeLogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumChangeLog)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataChangeLogArray) ToGetServiceProfilesDataChangeLogArrayOutput() GetServiceProfilesDataChangeLogArrayOutput {
-	return i.ToGetServiceProfilesDataChangeLogArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumChangeLogArray) ToGetServiceProfilesDatumChangeLogArrayOutput() GetServiceProfilesDatumChangeLogArrayOutput {
+	return i.ToGetServiceProfilesDatumChangeLogArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataChangeLogArray) ToGetServiceProfilesDataChangeLogArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataChangeLogArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataChangeLogArrayOutput)
+func (i GetServiceProfilesDatumChangeLogArray) ToGetServiceProfilesDatumChangeLogArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumChangeLogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumChangeLogArrayOutput)
 }
 
-type GetServiceProfilesDataChangeLogOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumChangeLogOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataChangeLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataChangeLog)(nil)).Elem()
+func (GetServiceProfilesDatumChangeLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumChangeLog)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) ToGetServiceProfilesDataChangeLogOutput() GetServiceProfilesDataChangeLogOutput {
+func (o GetServiceProfilesDatumChangeLogOutput) ToGetServiceProfilesDatumChangeLogOutput() GetServiceProfilesDatumChangeLogOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) ToGetServiceProfilesDataChangeLogOutputWithContext(ctx context.Context) GetServiceProfilesDataChangeLogOutput {
+func (o GetServiceProfilesDatumChangeLogOutput) ToGetServiceProfilesDatumChangeLogOutputWithContext(ctx context.Context) GetServiceProfilesDatumChangeLogOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.CreatedByEmail }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) CreatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.CreatedByFullName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) CreatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) DeletedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) DeletedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.DeletedBy }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) DeletedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.DeletedByEmail }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) DeletedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.DeletedByFullName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) DeletedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.DeletedDateTime }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) UpdatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.UpdatedByEmail }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) UpdatedByFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.UpdatedByFullName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumChangeLogOutput) UpdatedDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumChangeLog) string { return v.UpdatedDateTime }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataChangeLogArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumChangeLogArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataChangeLogArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataChangeLog)(nil)).Elem()
+func (GetServiceProfilesDatumChangeLogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumChangeLog)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataChangeLogArrayOutput) ToGetServiceProfilesDataChangeLogArrayOutput() GetServiceProfilesDataChangeLogArrayOutput {
+func (o GetServiceProfilesDatumChangeLogArrayOutput) ToGetServiceProfilesDatumChangeLogArrayOutput() GetServiceProfilesDatumChangeLogArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataChangeLogArrayOutput) ToGetServiceProfilesDataChangeLogArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataChangeLogArrayOutput {
+func (o GetServiceProfilesDatumChangeLogArrayOutput) ToGetServiceProfilesDatumChangeLogArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumChangeLogArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataChangeLogArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataChangeLogOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataChangeLog {
-		return vs[0].([]GetServiceProfilesDataChangeLog)[vs[1].(int)]
-	}).(GetServiceProfilesDataChangeLogOutput)
+func (o GetServiceProfilesDatumChangeLogArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumChangeLogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumChangeLog {
+		return vs[0].([]GetServiceProfilesDatumChangeLog)[vs[1].(int)]
+	}).(GetServiceProfilesDatumChangeLogOutput)
 }
 
-type GetServiceProfilesDataCustomField struct {
+type GetServiceProfilesDatumCustomField struct {
 	CaptureInEmail bool     `pulumi:"captureInEmail"`
 	DataType       string   `pulumi:"dataType"`
 	Description    string   `pulumi:"description"`
@@ -17044,18 +19039,18 @@ type GetServiceProfilesDataCustomField struct {
 	Required       bool     `pulumi:"required"`
 }
 
-// GetServiceProfilesDataCustomFieldInput is an input type that accepts GetServiceProfilesDataCustomFieldArgs and GetServiceProfilesDataCustomFieldOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataCustomFieldInput` via:
+// GetServiceProfilesDatumCustomFieldInput is an input type that accepts GetServiceProfilesDatumCustomFieldArgs and GetServiceProfilesDatumCustomFieldOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumCustomFieldInput` via:
 //
-//	GetServiceProfilesDataCustomFieldArgs{...}
-type GetServiceProfilesDataCustomFieldInput interface {
+//	GetServiceProfilesDatumCustomFieldArgs{...}
+type GetServiceProfilesDatumCustomFieldInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataCustomFieldOutput() GetServiceProfilesDataCustomFieldOutput
-	ToGetServiceProfilesDataCustomFieldOutputWithContext(context.Context) GetServiceProfilesDataCustomFieldOutput
+	ToGetServiceProfilesDatumCustomFieldOutput() GetServiceProfilesDatumCustomFieldOutput
+	ToGetServiceProfilesDatumCustomFieldOutputWithContext(context.Context) GetServiceProfilesDatumCustomFieldOutput
 }
 
-type GetServiceProfilesDataCustomFieldArgs struct {
+type GetServiceProfilesDatumCustomFieldArgs struct {
 	CaptureInEmail pulumi.BoolInput        `pulumi:"captureInEmail"`
 	DataType       pulumi.StringInput      `pulumi:"dataType"`
 	Description    pulumi.StringInput      `pulumi:"description"`
@@ -17064,316 +19059,316 @@ type GetServiceProfilesDataCustomFieldArgs struct {
 	Required       pulumi.BoolInput        `pulumi:"required"`
 }
 
-func (GetServiceProfilesDataCustomFieldArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataCustomField)(nil)).Elem()
+func (GetServiceProfilesDatumCustomFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumCustomField)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataCustomFieldArgs) ToGetServiceProfilesDataCustomFieldOutput() GetServiceProfilesDataCustomFieldOutput {
-	return i.ToGetServiceProfilesDataCustomFieldOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumCustomFieldArgs) ToGetServiceProfilesDatumCustomFieldOutput() GetServiceProfilesDatumCustomFieldOutput {
+	return i.ToGetServiceProfilesDatumCustomFieldOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataCustomFieldArgs) ToGetServiceProfilesDataCustomFieldOutputWithContext(ctx context.Context) GetServiceProfilesDataCustomFieldOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataCustomFieldOutput)
+func (i GetServiceProfilesDatumCustomFieldArgs) ToGetServiceProfilesDatumCustomFieldOutputWithContext(ctx context.Context) GetServiceProfilesDatumCustomFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumCustomFieldOutput)
 }
 
-// GetServiceProfilesDataCustomFieldArrayInput is an input type that accepts GetServiceProfilesDataCustomFieldArray and GetServiceProfilesDataCustomFieldArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataCustomFieldArrayInput` via:
+// GetServiceProfilesDatumCustomFieldArrayInput is an input type that accepts GetServiceProfilesDatumCustomFieldArray and GetServiceProfilesDatumCustomFieldArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumCustomFieldArrayInput` via:
 //
-//	GetServiceProfilesDataCustomFieldArray{ GetServiceProfilesDataCustomFieldArgs{...} }
-type GetServiceProfilesDataCustomFieldArrayInput interface {
+//	GetServiceProfilesDatumCustomFieldArray{ GetServiceProfilesDatumCustomFieldArgs{...} }
+type GetServiceProfilesDatumCustomFieldArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataCustomFieldArrayOutput() GetServiceProfilesDataCustomFieldArrayOutput
-	ToGetServiceProfilesDataCustomFieldArrayOutputWithContext(context.Context) GetServiceProfilesDataCustomFieldArrayOutput
+	ToGetServiceProfilesDatumCustomFieldArrayOutput() GetServiceProfilesDatumCustomFieldArrayOutput
+	ToGetServiceProfilesDatumCustomFieldArrayOutputWithContext(context.Context) GetServiceProfilesDatumCustomFieldArrayOutput
 }
 
-type GetServiceProfilesDataCustomFieldArray []GetServiceProfilesDataCustomFieldInput
+type GetServiceProfilesDatumCustomFieldArray []GetServiceProfilesDatumCustomFieldInput
 
-func (GetServiceProfilesDataCustomFieldArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataCustomField)(nil)).Elem()
+func (GetServiceProfilesDatumCustomFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumCustomField)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataCustomFieldArray) ToGetServiceProfilesDataCustomFieldArrayOutput() GetServiceProfilesDataCustomFieldArrayOutput {
-	return i.ToGetServiceProfilesDataCustomFieldArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumCustomFieldArray) ToGetServiceProfilesDatumCustomFieldArrayOutput() GetServiceProfilesDatumCustomFieldArrayOutput {
+	return i.ToGetServiceProfilesDatumCustomFieldArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataCustomFieldArray) ToGetServiceProfilesDataCustomFieldArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataCustomFieldArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataCustomFieldArrayOutput)
+func (i GetServiceProfilesDatumCustomFieldArray) ToGetServiceProfilesDatumCustomFieldArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumCustomFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumCustomFieldArrayOutput)
 }
 
-type GetServiceProfilesDataCustomFieldOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumCustomFieldOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataCustomFieldOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataCustomField)(nil)).Elem()
+func (GetServiceProfilesDatumCustomFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumCustomField)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) ToGetServiceProfilesDataCustomFieldOutput() GetServiceProfilesDataCustomFieldOutput {
+func (o GetServiceProfilesDatumCustomFieldOutput) ToGetServiceProfilesDatumCustomFieldOutput() GetServiceProfilesDatumCustomFieldOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) ToGetServiceProfilesDataCustomFieldOutputWithContext(ctx context.Context) GetServiceProfilesDataCustomFieldOutput {
+func (o GetServiceProfilesDatumCustomFieldOutput) ToGetServiceProfilesDatumCustomFieldOutputWithContext(ctx context.Context) GetServiceProfilesDatumCustomFieldOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) CaptureInEmail() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataCustomField) bool { return v.CaptureInEmail }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumCustomFieldOutput) CaptureInEmail() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumCustomField) bool { return v.CaptureInEmail }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) DataType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataCustomField) string { return v.DataType }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumCustomFieldOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumCustomField) string { return v.DataType }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataCustomField) string { return v.Description }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumCustomFieldOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumCustomField) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataCustomField) string { return v.Label }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumCustomFieldOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumCustomField) string { return v.Label }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) Options() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataCustomField) []string { return v.Options }).(pulumi.StringArrayOutput)
+func (o GetServiceProfilesDatumCustomFieldOutput) Options() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumCustomField) []string { return v.Options }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceProfilesDataCustomFieldOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataCustomField) bool { return v.Required }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumCustomFieldOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumCustomField) bool { return v.Required }).(pulumi.BoolOutput)
 }
 
-type GetServiceProfilesDataCustomFieldArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumCustomFieldArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataCustomFieldArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataCustomField)(nil)).Elem()
+func (GetServiceProfilesDatumCustomFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumCustomField)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataCustomFieldArrayOutput) ToGetServiceProfilesDataCustomFieldArrayOutput() GetServiceProfilesDataCustomFieldArrayOutput {
+func (o GetServiceProfilesDatumCustomFieldArrayOutput) ToGetServiceProfilesDatumCustomFieldArrayOutput() GetServiceProfilesDatumCustomFieldArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataCustomFieldArrayOutput) ToGetServiceProfilesDataCustomFieldArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataCustomFieldArrayOutput {
+func (o GetServiceProfilesDatumCustomFieldArrayOutput) ToGetServiceProfilesDatumCustomFieldArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumCustomFieldArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataCustomFieldArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataCustomFieldOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataCustomField {
-		return vs[0].([]GetServiceProfilesDataCustomField)[vs[1].(int)]
-	}).(GetServiceProfilesDataCustomFieldOutput)
+func (o GetServiceProfilesDatumCustomFieldArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumCustomFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumCustomField {
+		return vs[0].([]GetServiceProfilesDatumCustomField)[vs[1].(int)]
+	}).(GetServiceProfilesDatumCustomFieldOutput)
 }
 
-type GetServiceProfilesDataMarketingInfo struct {
-	Logo         string                                           `pulumi:"logo"`
-	ProcessSteps []GetServiceProfilesDataMarketingInfoProcessStep `pulumi:"processSteps"`
-	Promotion    bool                                             `pulumi:"promotion"`
+type GetServiceProfilesDatumMarketingInfo struct {
+	Logo         string                                            `pulumi:"logo"`
+	ProcessSteps []GetServiceProfilesDatumMarketingInfoProcessStep `pulumi:"processSteps"`
+	Promotion    bool                                              `pulumi:"promotion"`
 }
 
-// GetServiceProfilesDataMarketingInfoInput is an input type that accepts GetServiceProfilesDataMarketingInfoArgs and GetServiceProfilesDataMarketingInfoOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataMarketingInfoInput` via:
+// GetServiceProfilesDatumMarketingInfoInput is an input type that accepts GetServiceProfilesDatumMarketingInfoArgs and GetServiceProfilesDatumMarketingInfoOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumMarketingInfoInput` via:
 //
-//	GetServiceProfilesDataMarketingInfoArgs{...}
-type GetServiceProfilesDataMarketingInfoInput interface {
+//	GetServiceProfilesDatumMarketingInfoArgs{...}
+type GetServiceProfilesDatumMarketingInfoInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataMarketingInfoOutput() GetServiceProfilesDataMarketingInfoOutput
-	ToGetServiceProfilesDataMarketingInfoOutputWithContext(context.Context) GetServiceProfilesDataMarketingInfoOutput
+	ToGetServiceProfilesDatumMarketingInfoOutput() GetServiceProfilesDatumMarketingInfoOutput
+	ToGetServiceProfilesDatumMarketingInfoOutputWithContext(context.Context) GetServiceProfilesDatumMarketingInfoOutput
 }
 
-type GetServiceProfilesDataMarketingInfoArgs struct {
-	Logo         pulumi.StringInput                                       `pulumi:"logo"`
-	ProcessSteps GetServiceProfilesDataMarketingInfoProcessStepArrayInput `pulumi:"processSteps"`
-	Promotion    pulumi.BoolInput                                         `pulumi:"promotion"`
+type GetServiceProfilesDatumMarketingInfoArgs struct {
+	Logo         pulumi.StringInput                                        `pulumi:"logo"`
+	ProcessSteps GetServiceProfilesDatumMarketingInfoProcessStepArrayInput `pulumi:"processSteps"`
+	Promotion    pulumi.BoolInput                                          `pulumi:"promotion"`
 }
 
-func (GetServiceProfilesDataMarketingInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataMarketingInfo)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumMarketingInfo)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataMarketingInfoArgs) ToGetServiceProfilesDataMarketingInfoOutput() GetServiceProfilesDataMarketingInfoOutput {
-	return i.ToGetServiceProfilesDataMarketingInfoOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumMarketingInfoArgs) ToGetServiceProfilesDatumMarketingInfoOutput() GetServiceProfilesDatumMarketingInfoOutput {
+	return i.ToGetServiceProfilesDatumMarketingInfoOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataMarketingInfoArgs) ToGetServiceProfilesDataMarketingInfoOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataMarketingInfoOutput)
+func (i GetServiceProfilesDatumMarketingInfoArgs) ToGetServiceProfilesDatumMarketingInfoOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumMarketingInfoOutput)
 }
 
-// GetServiceProfilesDataMarketingInfoArrayInput is an input type that accepts GetServiceProfilesDataMarketingInfoArray and GetServiceProfilesDataMarketingInfoArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataMarketingInfoArrayInput` via:
+// GetServiceProfilesDatumMarketingInfoArrayInput is an input type that accepts GetServiceProfilesDatumMarketingInfoArray and GetServiceProfilesDatumMarketingInfoArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumMarketingInfoArrayInput` via:
 //
-//	GetServiceProfilesDataMarketingInfoArray{ GetServiceProfilesDataMarketingInfoArgs{...} }
-type GetServiceProfilesDataMarketingInfoArrayInput interface {
+//	GetServiceProfilesDatumMarketingInfoArray{ GetServiceProfilesDatumMarketingInfoArgs{...} }
+type GetServiceProfilesDatumMarketingInfoArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataMarketingInfoArrayOutput() GetServiceProfilesDataMarketingInfoArrayOutput
-	ToGetServiceProfilesDataMarketingInfoArrayOutputWithContext(context.Context) GetServiceProfilesDataMarketingInfoArrayOutput
+	ToGetServiceProfilesDatumMarketingInfoArrayOutput() GetServiceProfilesDatumMarketingInfoArrayOutput
+	ToGetServiceProfilesDatumMarketingInfoArrayOutputWithContext(context.Context) GetServiceProfilesDatumMarketingInfoArrayOutput
 }
 
-type GetServiceProfilesDataMarketingInfoArray []GetServiceProfilesDataMarketingInfoInput
+type GetServiceProfilesDatumMarketingInfoArray []GetServiceProfilesDatumMarketingInfoInput
 
-func (GetServiceProfilesDataMarketingInfoArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataMarketingInfo)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumMarketingInfo)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataMarketingInfoArray) ToGetServiceProfilesDataMarketingInfoArrayOutput() GetServiceProfilesDataMarketingInfoArrayOutput {
-	return i.ToGetServiceProfilesDataMarketingInfoArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumMarketingInfoArray) ToGetServiceProfilesDatumMarketingInfoArrayOutput() GetServiceProfilesDatumMarketingInfoArrayOutput {
+	return i.ToGetServiceProfilesDatumMarketingInfoArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataMarketingInfoArray) ToGetServiceProfilesDataMarketingInfoArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataMarketingInfoArrayOutput)
+func (i GetServiceProfilesDatumMarketingInfoArray) ToGetServiceProfilesDatumMarketingInfoArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumMarketingInfoArrayOutput)
 }
 
-type GetServiceProfilesDataMarketingInfoOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumMarketingInfoOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataMarketingInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataMarketingInfo)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumMarketingInfo)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataMarketingInfoOutput) ToGetServiceProfilesDataMarketingInfoOutput() GetServiceProfilesDataMarketingInfoOutput {
+func (o GetServiceProfilesDatumMarketingInfoOutput) ToGetServiceProfilesDatumMarketingInfoOutput() GetServiceProfilesDatumMarketingInfoOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoOutput) ToGetServiceProfilesDataMarketingInfoOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoOutput {
+func (o GetServiceProfilesDatumMarketingInfoOutput) ToGetServiceProfilesDatumMarketingInfoOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoOutput) Logo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMarketingInfo) string { return v.Logo }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMarketingInfoOutput) Logo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMarketingInfo) string { return v.Logo }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataMarketingInfoOutput) ProcessSteps() GetServiceProfilesDataMarketingInfoProcessStepArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMarketingInfo) []GetServiceProfilesDataMarketingInfoProcessStep {
+func (o GetServiceProfilesDatumMarketingInfoOutput) ProcessSteps() GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMarketingInfo) []GetServiceProfilesDatumMarketingInfoProcessStep {
 		return v.ProcessSteps
-	}).(GetServiceProfilesDataMarketingInfoProcessStepArrayOutput)
+	}).(GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput)
 }
 
-func (o GetServiceProfilesDataMarketingInfoOutput) Promotion() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMarketingInfo) bool { return v.Promotion }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumMarketingInfoOutput) Promotion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMarketingInfo) bool { return v.Promotion }).(pulumi.BoolOutput)
 }
 
-type GetServiceProfilesDataMarketingInfoArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumMarketingInfoArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataMarketingInfoArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataMarketingInfo)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumMarketingInfo)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataMarketingInfoArrayOutput) ToGetServiceProfilesDataMarketingInfoArrayOutput() GetServiceProfilesDataMarketingInfoArrayOutput {
+func (o GetServiceProfilesDatumMarketingInfoArrayOutput) ToGetServiceProfilesDatumMarketingInfoArrayOutput() GetServiceProfilesDatumMarketingInfoArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoArrayOutput) ToGetServiceProfilesDataMarketingInfoArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoArrayOutput {
+func (o GetServiceProfilesDatumMarketingInfoArrayOutput) ToGetServiceProfilesDatumMarketingInfoArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataMarketingInfoOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataMarketingInfo {
-		return vs[0].([]GetServiceProfilesDataMarketingInfo)[vs[1].(int)]
-	}).(GetServiceProfilesDataMarketingInfoOutput)
+func (o GetServiceProfilesDatumMarketingInfoArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumMarketingInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumMarketingInfo {
+		return vs[0].([]GetServiceProfilesDatumMarketingInfo)[vs[1].(int)]
+	}).(GetServiceProfilesDatumMarketingInfoOutput)
 }
 
-type GetServiceProfilesDataMarketingInfoProcessStep struct {
+type GetServiceProfilesDatumMarketingInfoProcessStep struct {
 	Description string `pulumi:"description"`
 	SubTitle    string `pulumi:"subTitle"`
 	Title       string `pulumi:"title"`
 }
 
-// GetServiceProfilesDataMarketingInfoProcessStepInput is an input type that accepts GetServiceProfilesDataMarketingInfoProcessStepArgs and GetServiceProfilesDataMarketingInfoProcessStepOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataMarketingInfoProcessStepInput` via:
+// GetServiceProfilesDatumMarketingInfoProcessStepInput is an input type that accepts GetServiceProfilesDatumMarketingInfoProcessStepArgs and GetServiceProfilesDatumMarketingInfoProcessStepOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumMarketingInfoProcessStepInput` via:
 //
-//	GetServiceProfilesDataMarketingInfoProcessStepArgs{...}
-type GetServiceProfilesDataMarketingInfoProcessStepInput interface {
+//	GetServiceProfilesDatumMarketingInfoProcessStepArgs{...}
+type GetServiceProfilesDatumMarketingInfoProcessStepInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataMarketingInfoProcessStepOutput() GetServiceProfilesDataMarketingInfoProcessStepOutput
-	ToGetServiceProfilesDataMarketingInfoProcessStepOutputWithContext(context.Context) GetServiceProfilesDataMarketingInfoProcessStepOutput
+	ToGetServiceProfilesDatumMarketingInfoProcessStepOutput() GetServiceProfilesDatumMarketingInfoProcessStepOutput
+	ToGetServiceProfilesDatumMarketingInfoProcessStepOutputWithContext(context.Context) GetServiceProfilesDatumMarketingInfoProcessStepOutput
 }
 
-type GetServiceProfilesDataMarketingInfoProcessStepArgs struct {
+type GetServiceProfilesDatumMarketingInfoProcessStepArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	SubTitle    pulumi.StringInput `pulumi:"subTitle"`
 	Title       pulumi.StringInput `pulumi:"title"`
 }
 
-func (GetServiceProfilesDataMarketingInfoProcessStepArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataMarketingInfoProcessStep)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoProcessStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumMarketingInfoProcessStep)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataMarketingInfoProcessStepArgs) ToGetServiceProfilesDataMarketingInfoProcessStepOutput() GetServiceProfilesDataMarketingInfoProcessStepOutput {
-	return i.ToGetServiceProfilesDataMarketingInfoProcessStepOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumMarketingInfoProcessStepArgs) ToGetServiceProfilesDatumMarketingInfoProcessStepOutput() GetServiceProfilesDatumMarketingInfoProcessStepOutput {
+	return i.ToGetServiceProfilesDatumMarketingInfoProcessStepOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataMarketingInfoProcessStepArgs) ToGetServiceProfilesDataMarketingInfoProcessStepOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoProcessStepOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataMarketingInfoProcessStepOutput)
+func (i GetServiceProfilesDatumMarketingInfoProcessStepArgs) ToGetServiceProfilesDatumMarketingInfoProcessStepOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoProcessStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumMarketingInfoProcessStepOutput)
 }
 
-// GetServiceProfilesDataMarketingInfoProcessStepArrayInput is an input type that accepts GetServiceProfilesDataMarketingInfoProcessStepArray and GetServiceProfilesDataMarketingInfoProcessStepArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataMarketingInfoProcessStepArrayInput` via:
+// GetServiceProfilesDatumMarketingInfoProcessStepArrayInput is an input type that accepts GetServiceProfilesDatumMarketingInfoProcessStepArray and GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumMarketingInfoProcessStepArrayInput` via:
 //
-//	GetServiceProfilesDataMarketingInfoProcessStepArray{ GetServiceProfilesDataMarketingInfoProcessStepArgs{...} }
-type GetServiceProfilesDataMarketingInfoProcessStepArrayInput interface {
+//	GetServiceProfilesDatumMarketingInfoProcessStepArray{ GetServiceProfilesDatumMarketingInfoProcessStepArgs{...} }
+type GetServiceProfilesDatumMarketingInfoProcessStepArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutput() GetServiceProfilesDataMarketingInfoProcessStepArrayOutput
-	ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutputWithContext(context.Context) GetServiceProfilesDataMarketingInfoProcessStepArrayOutput
+	ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutput() GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput
+	ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutputWithContext(context.Context) GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput
 }
 
-type GetServiceProfilesDataMarketingInfoProcessStepArray []GetServiceProfilesDataMarketingInfoProcessStepInput
+type GetServiceProfilesDatumMarketingInfoProcessStepArray []GetServiceProfilesDatumMarketingInfoProcessStepInput
 
-func (GetServiceProfilesDataMarketingInfoProcessStepArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataMarketingInfoProcessStep)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoProcessStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumMarketingInfoProcessStep)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataMarketingInfoProcessStepArray) ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutput() GetServiceProfilesDataMarketingInfoProcessStepArrayOutput {
-	return i.ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumMarketingInfoProcessStepArray) ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutput() GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput {
+	return i.ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataMarketingInfoProcessStepArray) ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoProcessStepArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataMarketingInfoProcessStepArrayOutput)
+func (i GetServiceProfilesDatumMarketingInfoProcessStepArray) ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput)
 }
 
-type GetServiceProfilesDataMarketingInfoProcessStepOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumMarketingInfoProcessStepOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataMarketingInfoProcessStepOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataMarketingInfoProcessStep)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoProcessStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumMarketingInfoProcessStep)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepOutput) ToGetServiceProfilesDataMarketingInfoProcessStepOutput() GetServiceProfilesDataMarketingInfoProcessStepOutput {
+func (o GetServiceProfilesDatumMarketingInfoProcessStepOutput) ToGetServiceProfilesDatumMarketingInfoProcessStepOutput() GetServiceProfilesDatumMarketingInfoProcessStepOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepOutput) ToGetServiceProfilesDataMarketingInfoProcessStepOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoProcessStepOutput {
+func (o GetServiceProfilesDatumMarketingInfoProcessStepOutput) ToGetServiceProfilesDatumMarketingInfoProcessStepOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoProcessStepOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMarketingInfoProcessStep) string { return v.Description }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMarketingInfoProcessStepOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMarketingInfoProcessStep) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepOutput) SubTitle() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMarketingInfoProcessStep) string { return v.SubTitle }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMarketingInfoProcessStepOutput) SubTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMarketingInfoProcessStep) string { return v.SubTitle }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMarketingInfoProcessStep) string { return v.Title }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMarketingInfoProcessStepOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMarketingInfoProcessStep) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataMarketingInfoProcessStepArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataMarketingInfoProcessStepArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataMarketingInfoProcessStep)(nil)).Elem()
+func (GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumMarketingInfoProcessStep)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepArrayOutput) ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutput() GetServiceProfilesDataMarketingInfoProcessStepArrayOutput {
+func (o GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput) ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutput() GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepArrayOutput) ToGetServiceProfilesDataMarketingInfoProcessStepArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataMarketingInfoProcessStepArrayOutput {
+func (o GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput) ToGetServiceProfilesDatumMarketingInfoProcessStepArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMarketingInfoProcessStepArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataMarketingInfoProcessStepOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataMarketingInfoProcessStep {
-		return vs[0].([]GetServiceProfilesDataMarketingInfoProcessStep)[vs[1].(int)]
-	}).(GetServiceProfilesDataMarketingInfoProcessStepOutput)
+func (o GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumMarketingInfoProcessStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumMarketingInfoProcessStep {
+		return vs[0].([]GetServiceProfilesDatumMarketingInfoProcessStep)[vs[1].(int)]
+	}).(GetServiceProfilesDatumMarketingInfoProcessStepOutput)
 }
 
-type GetServiceProfilesDataMetro struct {
+type GetServiceProfilesDatumMetro struct {
 	Code          string            `pulumi:"code"`
 	DisplayName   string            `pulumi:"displayName"`
 	Ibxs          []string          `pulumi:"ibxs"`
@@ -17382,18 +19377,18 @@ type GetServiceProfilesDataMetro struct {
 	SellerRegions map[string]string `pulumi:"sellerRegions"`
 }
 
-// GetServiceProfilesDataMetroInput is an input type that accepts GetServiceProfilesDataMetroArgs and GetServiceProfilesDataMetroOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataMetroInput` via:
+// GetServiceProfilesDatumMetroInput is an input type that accepts GetServiceProfilesDatumMetroArgs and GetServiceProfilesDatumMetroOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumMetroInput` via:
 //
-//	GetServiceProfilesDataMetroArgs{...}
-type GetServiceProfilesDataMetroInput interface {
+//	GetServiceProfilesDatumMetroArgs{...}
+type GetServiceProfilesDatumMetroInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataMetroOutput() GetServiceProfilesDataMetroOutput
-	ToGetServiceProfilesDataMetroOutputWithContext(context.Context) GetServiceProfilesDataMetroOutput
+	ToGetServiceProfilesDatumMetroOutput() GetServiceProfilesDatumMetroOutput
+	ToGetServiceProfilesDatumMetroOutputWithContext(context.Context) GetServiceProfilesDatumMetroOutput
 }
 
-type GetServiceProfilesDataMetroArgs struct {
+type GetServiceProfilesDatumMetroArgs struct {
 	Code          pulumi.StringInput      `pulumi:"code"`
 	DisplayName   pulumi.StringInput      `pulumi:"displayName"`
 	Ibxs          pulumi.StringArrayInput `pulumi:"ibxs"`
@@ -17402,541 +19397,541 @@ type GetServiceProfilesDataMetroArgs struct {
 	SellerRegions pulumi.StringMapInput   `pulumi:"sellerRegions"`
 }
 
-func (GetServiceProfilesDataMetroArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataMetro)(nil)).Elem()
+func (GetServiceProfilesDatumMetroArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumMetro)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataMetroArgs) ToGetServiceProfilesDataMetroOutput() GetServiceProfilesDataMetroOutput {
-	return i.ToGetServiceProfilesDataMetroOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumMetroArgs) ToGetServiceProfilesDatumMetroOutput() GetServiceProfilesDatumMetroOutput {
+	return i.ToGetServiceProfilesDatumMetroOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataMetroArgs) ToGetServiceProfilesDataMetroOutputWithContext(ctx context.Context) GetServiceProfilesDataMetroOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataMetroOutput)
+func (i GetServiceProfilesDatumMetroArgs) ToGetServiceProfilesDatumMetroOutputWithContext(ctx context.Context) GetServiceProfilesDatumMetroOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumMetroOutput)
 }
 
-// GetServiceProfilesDataMetroArrayInput is an input type that accepts GetServiceProfilesDataMetroArray and GetServiceProfilesDataMetroArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataMetroArrayInput` via:
+// GetServiceProfilesDatumMetroArrayInput is an input type that accepts GetServiceProfilesDatumMetroArray and GetServiceProfilesDatumMetroArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumMetroArrayInput` via:
 //
-//	GetServiceProfilesDataMetroArray{ GetServiceProfilesDataMetroArgs{...} }
-type GetServiceProfilesDataMetroArrayInput interface {
+//	GetServiceProfilesDatumMetroArray{ GetServiceProfilesDatumMetroArgs{...} }
+type GetServiceProfilesDatumMetroArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataMetroArrayOutput() GetServiceProfilesDataMetroArrayOutput
-	ToGetServiceProfilesDataMetroArrayOutputWithContext(context.Context) GetServiceProfilesDataMetroArrayOutput
+	ToGetServiceProfilesDatumMetroArrayOutput() GetServiceProfilesDatumMetroArrayOutput
+	ToGetServiceProfilesDatumMetroArrayOutputWithContext(context.Context) GetServiceProfilesDatumMetroArrayOutput
 }
 
-type GetServiceProfilesDataMetroArray []GetServiceProfilesDataMetroInput
+type GetServiceProfilesDatumMetroArray []GetServiceProfilesDatumMetroInput
 
-func (GetServiceProfilesDataMetroArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataMetro)(nil)).Elem()
+func (GetServiceProfilesDatumMetroArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumMetro)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataMetroArray) ToGetServiceProfilesDataMetroArrayOutput() GetServiceProfilesDataMetroArrayOutput {
-	return i.ToGetServiceProfilesDataMetroArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumMetroArray) ToGetServiceProfilesDatumMetroArrayOutput() GetServiceProfilesDatumMetroArrayOutput {
+	return i.ToGetServiceProfilesDatumMetroArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataMetroArray) ToGetServiceProfilesDataMetroArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataMetroArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataMetroArrayOutput)
+func (i GetServiceProfilesDatumMetroArray) ToGetServiceProfilesDatumMetroArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumMetroArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumMetroArrayOutput)
 }
 
-type GetServiceProfilesDataMetroOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumMetroOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataMetroOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataMetro)(nil)).Elem()
+func (GetServiceProfilesDatumMetroOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumMetro)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataMetroOutput) ToGetServiceProfilesDataMetroOutput() GetServiceProfilesDataMetroOutput {
+func (o GetServiceProfilesDatumMetroOutput) ToGetServiceProfilesDatumMetroOutput() GetServiceProfilesDatumMetroOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMetroOutput) ToGetServiceProfilesDataMetroOutputWithContext(ctx context.Context) GetServiceProfilesDataMetroOutput {
+func (o GetServiceProfilesDatumMetroOutput) ToGetServiceProfilesDatumMetroOutputWithContext(ctx context.Context) GetServiceProfilesDatumMetroOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMetroOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMetro) string { return v.Code }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMetroOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMetro) string { return v.Code }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataMetroOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMetro) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMetroOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMetro) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataMetroOutput) Ibxs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMetro) []string { return v.Ibxs }).(pulumi.StringArrayOutput)
+func (o GetServiceProfilesDatumMetroOutput) Ibxs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMetro) []string { return v.Ibxs }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceProfilesDataMetroOutput) InTrail() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMetro) bool { return v.InTrail }).(pulumi.BoolOutput)
+func (o GetServiceProfilesDatumMetroOutput) InTrail() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMetro) bool { return v.InTrail }).(pulumi.BoolOutput)
 }
 
-func (o GetServiceProfilesDataMetroOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMetro) string { return v.Name }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumMetroOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMetro) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataMetroOutput) SellerRegions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataMetro) map[string]string { return v.SellerRegions }).(pulumi.StringMapOutput)
+func (o GetServiceProfilesDatumMetroOutput) SellerRegions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumMetro) map[string]string { return v.SellerRegions }).(pulumi.StringMapOutput)
 }
 
-type GetServiceProfilesDataMetroArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumMetroArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataMetroArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataMetro)(nil)).Elem()
+func (GetServiceProfilesDatumMetroArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumMetro)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataMetroArrayOutput) ToGetServiceProfilesDataMetroArrayOutput() GetServiceProfilesDataMetroArrayOutput {
+func (o GetServiceProfilesDatumMetroArrayOutput) ToGetServiceProfilesDatumMetroArrayOutput() GetServiceProfilesDatumMetroArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMetroArrayOutput) ToGetServiceProfilesDataMetroArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataMetroArrayOutput {
+func (o GetServiceProfilesDatumMetroArrayOutput) ToGetServiceProfilesDatumMetroArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumMetroArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataMetroArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataMetroOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataMetro {
-		return vs[0].([]GetServiceProfilesDataMetro)[vs[1].(int)]
-	}).(GetServiceProfilesDataMetroOutput)
+func (o GetServiceProfilesDatumMetroArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumMetroOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumMetro {
+		return vs[0].([]GetServiceProfilesDatumMetro)[vs[1].(int)]
+	}).(GetServiceProfilesDatumMetroOutput)
 }
 
-type GetServiceProfilesDataNotification struct {
+type GetServiceProfilesDatumNotification struct {
 	Emails       []string `pulumi:"emails"`
 	SendInterval string   `pulumi:"sendInterval"`
 	Type         string   `pulumi:"type"`
 }
 
-// GetServiceProfilesDataNotificationInput is an input type that accepts GetServiceProfilesDataNotificationArgs and GetServiceProfilesDataNotificationOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataNotificationInput` via:
+// GetServiceProfilesDatumNotificationInput is an input type that accepts GetServiceProfilesDatumNotificationArgs and GetServiceProfilesDatumNotificationOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumNotificationInput` via:
 //
-//	GetServiceProfilesDataNotificationArgs{...}
-type GetServiceProfilesDataNotificationInput interface {
+//	GetServiceProfilesDatumNotificationArgs{...}
+type GetServiceProfilesDatumNotificationInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataNotificationOutput() GetServiceProfilesDataNotificationOutput
-	ToGetServiceProfilesDataNotificationOutputWithContext(context.Context) GetServiceProfilesDataNotificationOutput
+	ToGetServiceProfilesDatumNotificationOutput() GetServiceProfilesDatumNotificationOutput
+	ToGetServiceProfilesDatumNotificationOutputWithContext(context.Context) GetServiceProfilesDatumNotificationOutput
 }
 
-type GetServiceProfilesDataNotificationArgs struct {
+type GetServiceProfilesDatumNotificationArgs struct {
 	Emails       pulumi.StringArrayInput `pulumi:"emails"`
 	SendInterval pulumi.StringInput      `pulumi:"sendInterval"`
 	Type         pulumi.StringInput      `pulumi:"type"`
 }
 
-func (GetServiceProfilesDataNotificationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataNotification)(nil)).Elem()
+func (GetServiceProfilesDatumNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumNotification)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataNotificationArgs) ToGetServiceProfilesDataNotificationOutput() GetServiceProfilesDataNotificationOutput {
-	return i.ToGetServiceProfilesDataNotificationOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumNotificationArgs) ToGetServiceProfilesDatumNotificationOutput() GetServiceProfilesDatumNotificationOutput {
+	return i.ToGetServiceProfilesDatumNotificationOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataNotificationArgs) ToGetServiceProfilesDataNotificationOutputWithContext(ctx context.Context) GetServiceProfilesDataNotificationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataNotificationOutput)
+func (i GetServiceProfilesDatumNotificationArgs) ToGetServiceProfilesDatumNotificationOutputWithContext(ctx context.Context) GetServiceProfilesDatumNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumNotificationOutput)
 }
 
-// GetServiceProfilesDataNotificationArrayInput is an input type that accepts GetServiceProfilesDataNotificationArray and GetServiceProfilesDataNotificationArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataNotificationArrayInput` via:
+// GetServiceProfilesDatumNotificationArrayInput is an input type that accepts GetServiceProfilesDatumNotificationArray and GetServiceProfilesDatumNotificationArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumNotificationArrayInput` via:
 //
-//	GetServiceProfilesDataNotificationArray{ GetServiceProfilesDataNotificationArgs{...} }
-type GetServiceProfilesDataNotificationArrayInput interface {
+//	GetServiceProfilesDatumNotificationArray{ GetServiceProfilesDatumNotificationArgs{...} }
+type GetServiceProfilesDatumNotificationArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataNotificationArrayOutput() GetServiceProfilesDataNotificationArrayOutput
-	ToGetServiceProfilesDataNotificationArrayOutputWithContext(context.Context) GetServiceProfilesDataNotificationArrayOutput
+	ToGetServiceProfilesDatumNotificationArrayOutput() GetServiceProfilesDatumNotificationArrayOutput
+	ToGetServiceProfilesDatumNotificationArrayOutputWithContext(context.Context) GetServiceProfilesDatumNotificationArrayOutput
 }
 
-type GetServiceProfilesDataNotificationArray []GetServiceProfilesDataNotificationInput
+type GetServiceProfilesDatumNotificationArray []GetServiceProfilesDatumNotificationInput
 
-func (GetServiceProfilesDataNotificationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataNotification)(nil)).Elem()
+func (GetServiceProfilesDatumNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumNotification)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataNotificationArray) ToGetServiceProfilesDataNotificationArrayOutput() GetServiceProfilesDataNotificationArrayOutput {
-	return i.ToGetServiceProfilesDataNotificationArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumNotificationArray) ToGetServiceProfilesDatumNotificationArrayOutput() GetServiceProfilesDatumNotificationArrayOutput {
+	return i.ToGetServiceProfilesDatumNotificationArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataNotificationArray) ToGetServiceProfilesDataNotificationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataNotificationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataNotificationArrayOutput)
+func (i GetServiceProfilesDatumNotificationArray) ToGetServiceProfilesDatumNotificationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumNotificationArrayOutput)
 }
 
-type GetServiceProfilesDataNotificationOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumNotificationOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataNotificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataNotification)(nil)).Elem()
+func (GetServiceProfilesDatumNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumNotification)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataNotificationOutput) ToGetServiceProfilesDataNotificationOutput() GetServiceProfilesDataNotificationOutput {
+func (o GetServiceProfilesDatumNotificationOutput) ToGetServiceProfilesDatumNotificationOutput() GetServiceProfilesDatumNotificationOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataNotificationOutput) ToGetServiceProfilesDataNotificationOutputWithContext(ctx context.Context) GetServiceProfilesDataNotificationOutput {
+func (o GetServiceProfilesDatumNotificationOutput) ToGetServiceProfilesDatumNotificationOutputWithContext(ctx context.Context) GetServiceProfilesDatumNotificationOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataNotificationOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
+func (o GetServiceProfilesDatumNotificationOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumNotification) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServiceProfilesDataNotificationOutput) SendInterval() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataNotification) string { return v.SendInterval }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumNotificationOutput) SendInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumNotification) string { return v.SendInterval }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataNotificationOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataNotification) string { return v.Type }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumNotificationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumNotification) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataNotificationArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumNotificationArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataNotificationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataNotification)(nil)).Elem()
+func (GetServiceProfilesDatumNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumNotification)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataNotificationArrayOutput) ToGetServiceProfilesDataNotificationArrayOutput() GetServiceProfilesDataNotificationArrayOutput {
+func (o GetServiceProfilesDatumNotificationArrayOutput) ToGetServiceProfilesDatumNotificationArrayOutput() GetServiceProfilesDatumNotificationArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataNotificationArrayOutput) ToGetServiceProfilesDataNotificationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataNotificationArrayOutput {
+func (o GetServiceProfilesDatumNotificationArrayOutput) ToGetServiceProfilesDatumNotificationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumNotificationArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataNotificationArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataNotificationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataNotification {
-		return vs[0].([]GetServiceProfilesDataNotification)[vs[1].(int)]
-	}).(GetServiceProfilesDataNotificationOutput)
+func (o GetServiceProfilesDatumNotificationArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumNotification {
+		return vs[0].([]GetServiceProfilesDatumNotification)[vs[1].(int)]
+	}).(GetServiceProfilesDatumNotificationOutput)
 }
 
-type GetServiceProfilesDataPort struct {
-	CrossConnectId          string                               `pulumi:"crossConnectId"`
-	Locations               []GetServiceProfilesDataPortLocation `pulumi:"locations"`
-	SellerRegion            string                               `pulumi:"sellerRegion"`
-	SellerRegionDescription string                               `pulumi:"sellerRegionDescription"`
-	Type                    string                               `pulumi:"type"`
-	Uuid                    string                               `pulumi:"uuid"`
+type GetServiceProfilesDatumPort struct {
+	CrossConnectId          string                                `pulumi:"crossConnectId"`
+	Locations               []GetServiceProfilesDatumPortLocation `pulumi:"locations"`
+	SellerRegion            string                                `pulumi:"sellerRegion"`
+	SellerRegionDescription string                                `pulumi:"sellerRegionDescription"`
+	Type                    string                                `pulumi:"type"`
+	Uuid                    string                                `pulumi:"uuid"`
 }
 
-// GetServiceProfilesDataPortInput is an input type that accepts GetServiceProfilesDataPortArgs and GetServiceProfilesDataPortOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataPortInput` via:
+// GetServiceProfilesDatumPortInput is an input type that accepts GetServiceProfilesDatumPortArgs and GetServiceProfilesDatumPortOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumPortInput` via:
 //
-//	GetServiceProfilesDataPortArgs{...}
-type GetServiceProfilesDataPortInput interface {
+//	GetServiceProfilesDatumPortArgs{...}
+type GetServiceProfilesDatumPortInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataPortOutput() GetServiceProfilesDataPortOutput
-	ToGetServiceProfilesDataPortOutputWithContext(context.Context) GetServiceProfilesDataPortOutput
+	ToGetServiceProfilesDatumPortOutput() GetServiceProfilesDatumPortOutput
+	ToGetServiceProfilesDatumPortOutputWithContext(context.Context) GetServiceProfilesDatumPortOutput
 }
 
-type GetServiceProfilesDataPortArgs struct {
-	CrossConnectId          pulumi.StringInput                           `pulumi:"crossConnectId"`
-	Locations               GetServiceProfilesDataPortLocationArrayInput `pulumi:"locations"`
-	SellerRegion            pulumi.StringInput                           `pulumi:"sellerRegion"`
-	SellerRegionDescription pulumi.StringInput                           `pulumi:"sellerRegionDescription"`
-	Type                    pulumi.StringInput                           `pulumi:"type"`
-	Uuid                    pulumi.StringInput                           `pulumi:"uuid"`
+type GetServiceProfilesDatumPortArgs struct {
+	CrossConnectId          pulumi.StringInput                            `pulumi:"crossConnectId"`
+	Locations               GetServiceProfilesDatumPortLocationArrayInput `pulumi:"locations"`
+	SellerRegion            pulumi.StringInput                            `pulumi:"sellerRegion"`
+	SellerRegionDescription pulumi.StringInput                            `pulumi:"sellerRegionDescription"`
+	Type                    pulumi.StringInput                            `pulumi:"type"`
+	Uuid                    pulumi.StringInput                            `pulumi:"uuid"`
 }
 
-func (GetServiceProfilesDataPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataPort)(nil)).Elem()
+func (GetServiceProfilesDatumPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumPort)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataPortArgs) ToGetServiceProfilesDataPortOutput() GetServiceProfilesDataPortOutput {
-	return i.ToGetServiceProfilesDataPortOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumPortArgs) ToGetServiceProfilesDatumPortOutput() GetServiceProfilesDatumPortOutput {
+	return i.ToGetServiceProfilesDatumPortOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataPortArgs) ToGetServiceProfilesDataPortOutputWithContext(ctx context.Context) GetServiceProfilesDataPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataPortOutput)
+func (i GetServiceProfilesDatumPortArgs) ToGetServiceProfilesDatumPortOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumPortOutput)
 }
 
-// GetServiceProfilesDataPortArrayInput is an input type that accepts GetServiceProfilesDataPortArray and GetServiceProfilesDataPortArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataPortArrayInput` via:
+// GetServiceProfilesDatumPortArrayInput is an input type that accepts GetServiceProfilesDatumPortArray and GetServiceProfilesDatumPortArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumPortArrayInput` via:
 //
-//	GetServiceProfilesDataPortArray{ GetServiceProfilesDataPortArgs{...} }
-type GetServiceProfilesDataPortArrayInput interface {
+//	GetServiceProfilesDatumPortArray{ GetServiceProfilesDatumPortArgs{...} }
+type GetServiceProfilesDatumPortArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataPortArrayOutput() GetServiceProfilesDataPortArrayOutput
-	ToGetServiceProfilesDataPortArrayOutputWithContext(context.Context) GetServiceProfilesDataPortArrayOutput
+	ToGetServiceProfilesDatumPortArrayOutput() GetServiceProfilesDatumPortArrayOutput
+	ToGetServiceProfilesDatumPortArrayOutputWithContext(context.Context) GetServiceProfilesDatumPortArrayOutput
 }
 
-type GetServiceProfilesDataPortArray []GetServiceProfilesDataPortInput
+type GetServiceProfilesDatumPortArray []GetServiceProfilesDatumPortInput
 
-func (GetServiceProfilesDataPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataPort)(nil)).Elem()
+func (GetServiceProfilesDatumPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumPort)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataPortArray) ToGetServiceProfilesDataPortArrayOutput() GetServiceProfilesDataPortArrayOutput {
-	return i.ToGetServiceProfilesDataPortArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumPortArray) ToGetServiceProfilesDatumPortArrayOutput() GetServiceProfilesDatumPortArrayOutput {
+	return i.ToGetServiceProfilesDatumPortArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataPortArray) ToGetServiceProfilesDataPortArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataPortArrayOutput)
+func (i GetServiceProfilesDatumPortArray) ToGetServiceProfilesDatumPortArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumPortArrayOutput)
 }
 
-type GetServiceProfilesDataPortOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumPortOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataPort)(nil)).Elem()
+func (GetServiceProfilesDatumPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumPort)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataPortOutput) ToGetServiceProfilesDataPortOutput() GetServiceProfilesDataPortOutput {
+func (o GetServiceProfilesDatumPortOutput) ToGetServiceProfilesDatumPortOutput() GetServiceProfilesDatumPortOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortOutput) ToGetServiceProfilesDataPortOutputWithContext(ctx context.Context) GetServiceProfilesDataPortOutput {
+func (o GetServiceProfilesDatumPortOutput) ToGetServiceProfilesDatumPortOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortOutput) CrossConnectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPort) string { return v.CrossConnectId }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortOutput) CrossConnectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPort) string { return v.CrossConnectId }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortOutput) Locations() GetServiceProfilesDataPortLocationArrayOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPort) []GetServiceProfilesDataPortLocation { return v.Locations }).(GetServiceProfilesDataPortLocationArrayOutput)
+func (o GetServiceProfilesDatumPortOutput) Locations() GetServiceProfilesDatumPortLocationArrayOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPort) []GetServiceProfilesDatumPortLocation { return v.Locations }).(GetServiceProfilesDatumPortLocationArrayOutput)
 }
 
-func (o GetServiceProfilesDataPortOutput) SellerRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPort) string { return v.SellerRegion }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortOutput) SellerRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPort) string { return v.SellerRegion }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortOutput) SellerRegionDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPort) string { return v.SellerRegionDescription }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortOutput) SellerRegionDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPort) string { return v.SellerRegionDescription }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPort) string { return v.Type }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPort) string { return v.Type }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPort) string { return v.Uuid }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPort) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataPortArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumPortArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataPort)(nil)).Elem()
+func (GetServiceProfilesDatumPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumPort)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataPortArrayOutput) ToGetServiceProfilesDataPortArrayOutput() GetServiceProfilesDataPortArrayOutput {
+func (o GetServiceProfilesDatumPortArrayOutput) ToGetServiceProfilesDatumPortArrayOutput() GetServiceProfilesDatumPortArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortArrayOutput) ToGetServiceProfilesDataPortArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataPortArrayOutput {
+func (o GetServiceProfilesDatumPortArrayOutput) ToGetServiceProfilesDatumPortArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataPort {
-		return vs[0].([]GetServiceProfilesDataPort)[vs[1].(int)]
-	}).(GetServiceProfilesDataPortOutput)
+func (o GetServiceProfilesDatumPortArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumPort {
+		return vs[0].([]GetServiceProfilesDatumPort)[vs[1].(int)]
+	}).(GetServiceProfilesDatumPortOutput)
 }
 
-type GetServiceProfilesDataPortLocation struct {
+type GetServiceProfilesDatumPortLocation struct {
 	Ibx       string `pulumi:"ibx"`
 	MetroCode string `pulumi:"metroCode"`
 	MetroName string `pulumi:"metroName"`
 	Region    string `pulumi:"region"`
 }
 
-// GetServiceProfilesDataPortLocationInput is an input type that accepts GetServiceProfilesDataPortLocationArgs and GetServiceProfilesDataPortLocationOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataPortLocationInput` via:
+// GetServiceProfilesDatumPortLocationInput is an input type that accepts GetServiceProfilesDatumPortLocationArgs and GetServiceProfilesDatumPortLocationOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumPortLocationInput` via:
 //
-//	GetServiceProfilesDataPortLocationArgs{...}
-type GetServiceProfilesDataPortLocationInput interface {
+//	GetServiceProfilesDatumPortLocationArgs{...}
+type GetServiceProfilesDatumPortLocationInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataPortLocationOutput() GetServiceProfilesDataPortLocationOutput
-	ToGetServiceProfilesDataPortLocationOutputWithContext(context.Context) GetServiceProfilesDataPortLocationOutput
+	ToGetServiceProfilesDatumPortLocationOutput() GetServiceProfilesDatumPortLocationOutput
+	ToGetServiceProfilesDatumPortLocationOutputWithContext(context.Context) GetServiceProfilesDatumPortLocationOutput
 }
 
-type GetServiceProfilesDataPortLocationArgs struct {
+type GetServiceProfilesDatumPortLocationArgs struct {
 	Ibx       pulumi.StringInput `pulumi:"ibx"`
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
 	MetroName pulumi.StringInput `pulumi:"metroName"`
 	Region    pulumi.StringInput `pulumi:"region"`
 }
 
-func (GetServiceProfilesDataPortLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataPortLocation)(nil)).Elem()
+func (GetServiceProfilesDatumPortLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumPortLocation)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataPortLocationArgs) ToGetServiceProfilesDataPortLocationOutput() GetServiceProfilesDataPortLocationOutput {
-	return i.ToGetServiceProfilesDataPortLocationOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumPortLocationArgs) ToGetServiceProfilesDatumPortLocationOutput() GetServiceProfilesDatumPortLocationOutput {
+	return i.ToGetServiceProfilesDatumPortLocationOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataPortLocationArgs) ToGetServiceProfilesDataPortLocationOutputWithContext(ctx context.Context) GetServiceProfilesDataPortLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataPortLocationOutput)
+func (i GetServiceProfilesDatumPortLocationArgs) ToGetServiceProfilesDatumPortLocationOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumPortLocationOutput)
 }
 
-// GetServiceProfilesDataPortLocationArrayInput is an input type that accepts GetServiceProfilesDataPortLocationArray and GetServiceProfilesDataPortLocationArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataPortLocationArrayInput` via:
+// GetServiceProfilesDatumPortLocationArrayInput is an input type that accepts GetServiceProfilesDatumPortLocationArray and GetServiceProfilesDatumPortLocationArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumPortLocationArrayInput` via:
 //
-//	GetServiceProfilesDataPortLocationArray{ GetServiceProfilesDataPortLocationArgs{...} }
-type GetServiceProfilesDataPortLocationArrayInput interface {
+//	GetServiceProfilesDatumPortLocationArray{ GetServiceProfilesDatumPortLocationArgs{...} }
+type GetServiceProfilesDatumPortLocationArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataPortLocationArrayOutput() GetServiceProfilesDataPortLocationArrayOutput
-	ToGetServiceProfilesDataPortLocationArrayOutputWithContext(context.Context) GetServiceProfilesDataPortLocationArrayOutput
+	ToGetServiceProfilesDatumPortLocationArrayOutput() GetServiceProfilesDatumPortLocationArrayOutput
+	ToGetServiceProfilesDatumPortLocationArrayOutputWithContext(context.Context) GetServiceProfilesDatumPortLocationArrayOutput
 }
 
-type GetServiceProfilesDataPortLocationArray []GetServiceProfilesDataPortLocationInput
+type GetServiceProfilesDatumPortLocationArray []GetServiceProfilesDatumPortLocationInput
 
-func (GetServiceProfilesDataPortLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataPortLocation)(nil)).Elem()
+func (GetServiceProfilesDatumPortLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumPortLocation)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataPortLocationArray) ToGetServiceProfilesDataPortLocationArrayOutput() GetServiceProfilesDataPortLocationArrayOutput {
-	return i.ToGetServiceProfilesDataPortLocationArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumPortLocationArray) ToGetServiceProfilesDatumPortLocationArrayOutput() GetServiceProfilesDatumPortLocationArrayOutput {
+	return i.ToGetServiceProfilesDatumPortLocationArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataPortLocationArray) ToGetServiceProfilesDataPortLocationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataPortLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataPortLocationArrayOutput)
+func (i GetServiceProfilesDatumPortLocationArray) ToGetServiceProfilesDatumPortLocationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumPortLocationArrayOutput)
 }
 
-type GetServiceProfilesDataPortLocationOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumPortLocationOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataPortLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataPortLocation)(nil)).Elem()
+func (GetServiceProfilesDatumPortLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumPortLocation)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataPortLocationOutput) ToGetServiceProfilesDataPortLocationOutput() GetServiceProfilesDataPortLocationOutput {
+func (o GetServiceProfilesDatumPortLocationOutput) ToGetServiceProfilesDatumPortLocationOutput() GetServiceProfilesDatumPortLocationOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortLocationOutput) ToGetServiceProfilesDataPortLocationOutputWithContext(ctx context.Context) GetServiceProfilesDataPortLocationOutput {
+func (o GetServiceProfilesDatumPortLocationOutput) ToGetServiceProfilesDatumPortLocationOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortLocationOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortLocationOutput) Ibx() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPortLocation) string { return v.Ibx }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortLocationOutput) Ibx() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPortLocation) string { return v.Ibx }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortLocationOutput) MetroCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPortLocation) string { return v.MetroCode }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortLocationOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPortLocation) string { return v.MetroCode }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortLocationOutput) MetroName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPortLocation) string { return v.MetroName }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortLocationOutput) MetroName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPortLocation) string { return v.MetroName }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataPortLocationOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataPortLocation) string { return v.Region }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumPortLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumPortLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataPortLocationArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumPortLocationArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataPortLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataPortLocation)(nil)).Elem()
+func (GetServiceProfilesDatumPortLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumPortLocation)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataPortLocationArrayOutput) ToGetServiceProfilesDataPortLocationArrayOutput() GetServiceProfilesDataPortLocationArrayOutput {
+func (o GetServiceProfilesDatumPortLocationArrayOutput) ToGetServiceProfilesDatumPortLocationArrayOutput() GetServiceProfilesDatumPortLocationArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortLocationArrayOutput) ToGetServiceProfilesDataPortLocationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataPortLocationArrayOutput {
+func (o GetServiceProfilesDatumPortLocationArrayOutput) ToGetServiceProfilesDatumPortLocationArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumPortLocationArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataPortLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataPortLocation {
-		return vs[0].([]GetServiceProfilesDataPortLocation)[vs[1].(int)]
-	}).(GetServiceProfilesDataPortLocationOutput)
+func (o GetServiceProfilesDatumPortLocationArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumPortLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumPortLocation {
+		return vs[0].([]GetServiceProfilesDatumPortLocation)[vs[1].(int)]
+	}).(GetServiceProfilesDatumPortLocationOutput)
 }
 
-type GetServiceProfilesDataProject struct {
+type GetServiceProfilesDatumProject struct {
 	Href      string `pulumi:"href"`
 	ProjectId string `pulumi:"projectId"`
 }
 
-// GetServiceProfilesDataProjectInput is an input type that accepts GetServiceProfilesDataProjectArgs and GetServiceProfilesDataProjectOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataProjectInput` via:
+// GetServiceProfilesDatumProjectInput is an input type that accepts GetServiceProfilesDatumProjectArgs and GetServiceProfilesDatumProjectOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumProjectInput` via:
 //
-//	GetServiceProfilesDataProjectArgs{...}
-type GetServiceProfilesDataProjectInput interface {
+//	GetServiceProfilesDatumProjectArgs{...}
+type GetServiceProfilesDatumProjectInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataProjectOutput() GetServiceProfilesDataProjectOutput
-	ToGetServiceProfilesDataProjectOutputWithContext(context.Context) GetServiceProfilesDataProjectOutput
+	ToGetServiceProfilesDatumProjectOutput() GetServiceProfilesDatumProjectOutput
+	ToGetServiceProfilesDatumProjectOutputWithContext(context.Context) GetServiceProfilesDatumProjectOutput
 }
 
-type GetServiceProfilesDataProjectArgs struct {
+type GetServiceProfilesDatumProjectArgs struct {
 	Href      pulumi.StringInput `pulumi:"href"`
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
-func (GetServiceProfilesDataProjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataProject)(nil)).Elem()
+func (GetServiceProfilesDatumProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumProject)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataProjectArgs) ToGetServiceProfilesDataProjectOutput() GetServiceProfilesDataProjectOutput {
-	return i.ToGetServiceProfilesDataProjectOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumProjectArgs) ToGetServiceProfilesDatumProjectOutput() GetServiceProfilesDatumProjectOutput {
+	return i.ToGetServiceProfilesDatumProjectOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataProjectArgs) ToGetServiceProfilesDataProjectOutputWithContext(ctx context.Context) GetServiceProfilesDataProjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataProjectOutput)
+func (i GetServiceProfilesDatumProjectArgs) ToGetServiceProfilesDatumProjectOutputWithContext(ctx context.Context) GetServiceProfilesDatumProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumProjectOutput)
 }
 
-// GetServiceProfilesDataProjectArrayInput is an input type that accepts GetServiceProfilesDataProjectArray and GetServiceProfilesDataProjectArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesDataProjectArrayInput` via:
+// GetServiceProfilesDatumProjectArrayInput is an input type that accepts GetServiceProfilesDatumProjectArray and GetServiceProfilesDatumProjectArrayOutput values.
+// You can construct a concrete instance of `GetServiceProfilesDatumProjectArrayInput` via:
 //
-//	GetServiceProfilesDataProjectArray{ GetServiceProfilesDataProjectArgs{...} }
-type GetServiceProfilesDataProjectArrayInput interface {
+//	GetServiceProfilesDatumProjectArray{ GetServiceProfilesDatumProjectArgs{...} }
+type GetServiceProfilesDatumProjectArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesDataProjectArrayOutput() GetServiceProfilesDataProjectArrayOutput
-	ToGetServiceProfilesDataProjectArrayOutputWithContext(context.Context) GetServiceProfilesDataProjectArrayOutput
+	ToGetServiceProfilesDatumProjectArrayOutput() GetServiceProfilesDatumProjectArrayOutput
+	ToGetServiceProfilesDatumProjectArrayOutputWithContext(context.Context) GetServiceProfilesDatumProjectArrayOutput
 }
 
-type GetServiceProfilesDataProjectArray []GetServiceProfilesDataProjectInput
+type GetServiceProfilesDatumProjectArray []GetServiceProfilesDatumProjectInput
 
-func (GetServiceProfilesDataProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataProject)(nil)).Elem()
+func (GetServiceProfilesDatumProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumProject)(nil)).Elem()
 }
 
-func (i GetServiceProfilesDataProjectArray) ToGetServiceProfilesDataProjectArrayOutput() GetServiceProfilesDataProjectArrayOutput {
-	return i.ToGetServiceProfilesDataProjectArrayOutputWithContext(context.Background())
+func (i GetServiceProfilesDatumProjectArray) ToGetServiceProfilesDatumProjectArrayOutput() GetServiceProfilesDatumProjectArrayOutput {
+	return i.ToGetServiceProfilesDatumProjectArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceProfilesDataProjectArray) ToGetServiceProfilesDataProjectArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDataProjectArrayOutput)
+func (i GetServiceProfilesDatumProjectArray) ToGetServiceProfilesDatumProjectArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesDatumProjectArrayOutput)
 }
 
-type GetServiceProfilesDataProjectOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumProjectOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceProfilesDataProject)(nil)).Elem()
+func (GetServiceProfilesDatumProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceProfilesDatumProject)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataProjectOutput) ToGetServiceProfilesDataProjectOutput() GetServiceProfilesDataProjectOutput {
+func (o GetServiceProfilesDatumProjectOutput) ToGetServiceProfilesDatumProjectOutput() GetServiceProfilesDatumProjectOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataProjectOutput) ToGetServiceProfilesDataProjectOutputWithContext(ctx context.Context) GetServiceProfilesDataProjectOutput {
+func (o GetServiceProfilesDatumProjectOutput) ToGetServiceProfilesDatumProjectOutputWithContext(ctx context.Context) GetServiceProfilesDatumProjectOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataProjectOutput) Href() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataProject) string { return v.Href }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumProjectOutput) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumProject) string { return v.Href }).(pulumi.StringOutput)
 }
 
-func (o GetServiceProfilesDataProjectOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServiceProfilesDataProject) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GetServiceProfilesDatumProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatumProject) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-type GetServiceProfilesDataProjectArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesDatumProjectArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesDataProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesDataProject)(nil)).Elem()
+func (GetServiceProfilesDatumProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceProfilesDatumProject)(nil)).Elem()
 }
 
-func (o GetServiceProfilesDataProjectArrayOutput) ToGetServiceProfilesDataProjectArrayOutput() GetServiceProfilesDataProjectArrayOutput {
+func (o GetServiceProfilesDatumProjectArrayOutput) ToGetServiceProfilesDatumProjectArrayOutput() GetServiceProfilesDatumProjectArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataProjectArrayOutput) ToGetServiceProfilesDataProjectArrayOutputWithContext(ctx context.Context) GetServiceProfilesDataProjectArrayOutput {
+func (o GetServiceProfilesDatumProjectArrayOutput) ToGetServiceProfilesDatumProjectArrayOutputWithContext(ctx context.Context) GetServiceProfilesDatumProjectArrayOutput {
 	return o
 }
 
-func (o GetServiceProfilesDataProjectArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDataProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDataProject {
-		return vs[0].([]GetServiceProfilesDataProject)[vs[1].(int)]
-	}).(GetServiceProfilesDataProjectOutput)
+func (o GetServiceProfilesDatumProjectArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesDatumProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesDatumProject {
+		return vs[0].([]GetServiceProfilesDatumProject)[vs[1].(int)]
+	}).(GetServiceProfilesDatumProjectOutput)
 }
 
 type GetServiceProfilesFilter struct {
@@ -17980,29 +19975,45 @@ func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterOutput)
 }
 
-// GetServiceProfilesFilterArrayInput is an input type that accepts GetServiceProfilesFilterArray and GetServiceProfilesFilterArrayOutput values.
-// You can construct a concrete instance of `GetServiceProfilesFilterArrayInput` via:
+func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
+	return i.ToGetServiceProfilesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetServiceProfilesFilterArgs) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterOutput).ToGetServiceProfilesFilterPtrOutputWithContext(ctx)
+}
+
+// GetServiceProfilesFilterPtrInput is an input type that accepts GetServiceProfilesFilterArgs, GetServiceProfilesFilterPtr and GetServiceProfilesFilterPtrOutput values.
+// You can construct a concrete instance of `GetServiceProfilesFilterPtrInput` via:
 //
-//	GetServiceProfilesFilterArray{ GetServiceProfilesFilterArgs{...} }
-type GetServiceProfilesFilterArrayInput interface {
+//	        GetServiceProfilesFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServiceProfilesFilterPtrInput interface {
 	pulumi.Input
 
-	ToGetServiceProfilesFilterArrayOutput() GetServiceProfilesFilterArrayOutput
-	ToGetServiceProfilesFilterArrayOutputWithContext(context.Context) GetServiceProfilesFilterArrayOutput
+	ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput
+	ToGetServiceProfilesFilterPtrOutputWithContext(context.Context) GetServiceProfilesFilterPtrOutput
 }
 
-type GetServiceProfilesFilterArray []GetServiceProfilesFilterInput
+type getServiceProfilesFilterPtrType GetServiceProfilesFilterArgs
 
-func (GetServiceProfilesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesFilter)(nil)).Elem()
+func GetServiceProfilesFilterPtr(v *GetServiceProfilesFilterArgs) GetServiceProfilesFilterPtrInput {
+	return (*getServiceProfilesFilterPtrType)(v)
 }
 
-func (i GetServiceProfilesFilterArray) ToGetServiceProfilesFilterArrayOutput() GetServiceProfilesFilterArrayOutput {
-	return i.ToGetServiceProfilesFilterArrayOutputWithContext(context.Background())
+func (*getServiceProfilesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceProfilesFilter)(nil)).Elem()
 }
 
-func (i GetServiceProfilesFilterArray) ToGetServiceProfilesFilterArrayOutputWithContext(ctx context.Context) GetServiceProfilesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterArrayOutput)
+func (i *getServiceProfilesFilterPtrType) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
+	return i.ToGetServiceProfilesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getServiceProfilesFilterPtrType) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceProfilesFilterPtrOutput)
 }
 
 type GetServiceProfilesFilterOutput struct{ *pulumi.OutputState }
@@ -18017,6 +20028,16 @@ func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterOutput() GetSe
 
 func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterOutputWithContext(ctx context.Context) GetServiceProfilesFilterOutput {
 	return o
+}
+
+func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
+	return o.ToGetServiceProfilesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetServiceProfilesFilterOutput) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServiceProfilesFilter) *GetServiceProfilesFilter {
+		return &v
+	}).(GetServiceProfilesFilterPtrOutput)
 }
 
 // Possible operator to use on filters = - equal
@@ -18034,24 +20055,58 @@ func (o GetServiceProfilesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type GetServiceProfilesFilterArrayOutput struct{ *pulumi.OutputState }
+type GetServiceProfilesFilterPtrOutput struct{ *pulumi.OutputState }
 
-func (GetServiceProfilesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceProfilesFilter)(nil)).Elem()
+func (GetServiceProfilesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServiceProfilesFilter)(nil)).Elem()
 }
 
-func (o GetServiceProfilesFilterArrayOutput) ToGetServiceProfilesFilterArrayOutput() GetServiceProfilesFilterArrayOutput {
+func (o GetServiceProfilesFilterPtrOutput) ToGetServiceProfilesFilterPtrOutput() GetServiceProfilesFilterPtrOutput {
 	return o
 }
 
-func (o GetServiceProfilesFilterArrayOutput) ToGetServiceProfilesFilterArrayOutputWithContext(ctx context.Context) GetServiceProfilesFilterArrayOutput {
+func (o GetServiceProfilesFilterPtrOutput) ToGetServiceProfilesFilterPtrOutputWithContext(ctx context.Context) GetServiceProfilesFilterPtrOutput {
 	return o
 }
 
-func (o GetServiceProfilesFilterArrayOutput) Index(i pulumi.IntInput) GetServiceProfilesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceProfilesFilter {
-		return vs[0].([]GetServiceProfilesFilter)[vs[1].(int)]
+func (o GetServiceProfilesFilterPtrOutput) Elem() GetServiceProfilesFilterOutput {
+	return o.ApplyT(func(v *GetServiceProfilesFilter) GetServiceProfilesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetServiceProfilesFilter
+		return ret
 	}).(GetServiceProfilesFilterOutput)
+}
+
+// Possible operator to use on filters = - equal
+func (o GetServiceProfilesFilterPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceProfilesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
+func (o GetServiceProfilesFilterPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServiceProfilesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// Values
+func (o GetServiceProfilesFilterPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetServiceProfilesFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetServiceProfilesSort struct {
@@ -18162,97 +20217,101 @@ func (o GetServiceProfilesSortArrayOutput) Index(i pulumi.IntInput) GetServicePr
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideInput)(nil)).Elem(), ConnectionASideArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideArrayInput)(nil)).Elem(), ConnectionASideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASidePtrInput)(nil)).Elem(), ConnectionASideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInput)(nil)).Elem(), ConnectionASideAccessPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointArrayInput)(nil)).Elem(), ConnectionASideAccessPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPtrInput)(nil)).Elem(), ConnectionASideAccessPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointAccountInput)(nil)).Elem(), ConnectionASideAccessPointAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointAccountArrayInput)(nil)).Elem(), ConnectionASideAccessPointAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointAccountPtrInput)(nil)).Elem(), ConnectionASideAccessPointAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointGatewayInput)(nil)).Elem(), ConnectionASideAccessPointGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointGatewayArrayInput)(nil)).Elem(), ConnectionASideAccessPointGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointGatewayPtrInput)(nil)).Elem(), ConnectionASideAccessPointGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInterfaceInput)(nil)).Elem(), ConnectionASideAccessPointInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInterfaceArrayInput)(nil)).Elem(), ConnectionASideAccessPointInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInterfacePtrInput)(nil)).Elem(), ConnectionASideAccessPointInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLinkProtocolInput)(nil)).Elem(), ConnectionASideAccessPointLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLinkProtocolPtrInput)(nil)).Elem(), ConnectionASideAccessPointLinkProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLocationInput)(nil)).Elem(), ConnectionASideAccessPointLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLocationArrayInput)(nil)).Elem(), ConnectionASideAccessPointLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointLocationPtrInput)(nil)).Elem(), ConnectionASideAccessPointLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortInput)(nil)).Elem(), ConnectionASideAccessPointPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortArrayInput)(nil)).Elem(), ConnectionASideAccessPointPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortPtrInput)(nil)).Elem(), ConnectionASideAccessPointPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyArrayInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileInput)(nil)).Elem(), ConnectionASideAccessPointProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfilePtrInput)(nil)).Elem(), ConnectionASideAccessPointProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), ConnectionASideAccessPointProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), ConnectionASideAccessPointProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointRoutingProtocolInput)(nil)).Elem(), ConnectionASideAccessPointRoutingProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointRoutingProtocolArrayInput)(nil)).Elem(), ConnectionASideAccessPointRoutingProtocolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointVirtualDeviceInput)(nil)).Elem(), ConnectionASideAccessPointVirtualDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointVirtualDeviceArrayInput)(nil)).Elem(), ConnectionASideAccessPointVirtualDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointVirtualDevicePtrInput)(nil)).Elem(), ConnectionASideAccessPointVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAdditionalInfoInput)(nil)).Elem(), ConnectionASideAdditionalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAdditionalInfoArrayInput)(nil)).Elem(), ConnectionASideAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideServiceTokenInput)(nil)).Elem(), ConnectionASideServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideServiceTokenArrayInput)(nil)).Elem(), ConnectionASideServiceTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideServiceTokenPtrInput)(nil)).Elem(), ConnectionASideServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAccountInput)(nil)).Elem(), ConnectionAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAccountArrayInput)(nil)).Elem(), ConnectionAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAccountPtrInput)(nil)).Elem(), ConnectionAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAdditionalInfoInput)(nil)).Elem(), ConnectionAdditionalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAdditionalInfoArrayInput)(nil)).Elem(), ConnectionAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionChangeLogInput)(nil)).Elem(), ConnectionChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionChangeLogArrayInput)(nil)).Elem(), ConnectionChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionChangeLogPtrInput)(nil)).Elem(), ConnectionChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionNotificationInput)(nil)).Elem(), ConnectionNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionNotificationArrayInput)(nil)).Elem(), ConnectionNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationInput)(nil)).Elem(), ConnectionOperationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationArrayInput)(nil)).Elem(), ConnectionOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationPtrInput)(nil)).Elem(), ConnectionOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationErrorInput)(nil)).Elem(), ConnectionOperationErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationErrorArrayInput)(nil)).Elem(), ConnectionOperationErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationErrorAdditionalInfoInput)(nil)).Elem(), ConnectionOperationErrorAdditionalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOperationErrorAdditionalInfoArrayInput)(nil)).Elem(), ConnectionOperationErrorAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOrderInput)(nil)).Elem(), ConnectionOrderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOrderArrayInput)(nil)).Elem(), ConnectionOrderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOrderPtrInput)(nil)).Elem(), ConnectionOrderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProjectInput)(nil)).Elem(), ConnectionProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProjectArrayInput)(nil)).Elem(), ConnectionProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProjectPtrInput)(nil)).Elem(), ConnectionProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRedundancyInput)(nil)).Elem(), ConnectionRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRedundancyArrayInput)(nil)).Elem(), ConnectionRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionRedundancyPtrInput)(nil)).Elem(), ConnectionRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideInput)(nil)).Elem(), ConnectionZSideArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideArrayInput)(nil)).Elem(), ConnectionZSideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSidePtrInput)(nil)).Elem(), ConnectionZSideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInput)(nil)).Elem(), ConnectionZSideAccessPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointArrayInput)(nil)).Elem(), ConnectionZSideAccessPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPtrInput)(nil)).Elem(), ConnectionZSideAccessPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointAccountInput)(nil)).Elem(), ConnectionZSideAccessPointAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointAccountArrayInput)(nil)).Elem(), ConnectionZSideAccessPointAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointAccountPtrInput)(nil)).Elem(), ConnectionZSideAccessPointAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointGatewayInput)(nil)).Elem(), ConnectionZSideAccessPointGatewayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointGatewayArrayInput)(nil)).Elem(), ConnectionZSideAccessPointGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointGatewayPtrInput)(nil)).Elem(), ConnectionZSideAccessPointGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInterfaceInput)(nil)).Elem(), ConnectionZSideAccessPointInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInterfaceArrayInput)(nil)).Elem(), ConnectionZSideAccessPointInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointInterfacePtrInput)(nil)).Elem(), ConnectionZSideAccessPointInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLinkProtocolInput)(nil)).Elem(), ConnectionZSideAccessPointLinkProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLinkProtocolPtrInput)(nil)).Elem(), ConnectionZSideAccessPointLinkProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLocationInput)(nil)).Elem(), ConnectionZSideAccessPointLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLocationArrayInput)(nil)).Elem(), ConnectionZSideAccessPointLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointLocationPtrInput)(nil)).Elem(), ConnectionZSideAccessPointLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortInput)(nil)).Elem(), ConnectionZSideAccessPointPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortArrayInput)(nil)).Elem(), ConnectionZSideAccessPointPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortPtrInput)(nil)).Elem(), ConnectionZSideAccessPointPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyArrayInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileInput)(nil)).Elem(), ConnectionZSideAccessPointProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfilePtrInput)(nil)).Elem(), ConnectionZSideAccessPointProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), ConnectionZSideAccessPointProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointRoutingProtocolInput)(nil)).Elem(), ConnectionZSideAccessPointRoutingProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointRoutingProtocolArrayInput)(nil)).Elem(), ConnectionZSideAccessPointRoutingProtocolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointVirtualDeviceInput)(nil)).Elem(), ConnectionZSideAccessPointVirtualDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointVirtualDeviceArrayInput)(nil)).Elem(), ConnectionZSideAccessPointVirtualDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointVirtualDevicePtrInput)(nil)).Elem(), ConnectionZSideAccessPointVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAdditionalInfoInput)(nil)).Elem(), ConnectionZSideAdditionalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAdditionalInfoArrayInput)(nil)).Elem(), ConnectionZSideAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideServiceTokenInput)(nil)).Elem(), ConnectionZSideServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideServiceTokenArrayInput)(nil)).Elem(), ConnectionZSideServiceTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideServiceTokenPtrInput)(nil)).Elem(), ConnectionZSideServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigApiConfigInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigApiConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigApiConfigArrayInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigApiConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigApiConfigPtrInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigAuthenticationKeyInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigAuthenticationKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigLinkProtocolConfigInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigLinkProtocolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrInput)(nil)).Elem(), ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccountInput)(nil)).Elem(), ServiceProfileAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccountArrayInput)(nil)).Elem(), ServiceProfileAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileAccountPtrInput)(nil)).Elem(), ServiceProfileAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileChangeLogInput)(nil)).Elem(), ServiceProfileChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileChangeLogArrayInput)(nil)).Elem(), ServiceProfileChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileChangeLogPtrInput)(nil)).Elem(), ServiceProfileChangeLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileCustomFieldInput)(nil)).Elem(), ServiceProfileCustomFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileCustomFieldArrayInput)(nil)).Elem(), ServiceProfileCustomFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileMarketingInfoInput)(nil)).Elem(), ServiceProfileMarketingInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileMarketingInfoArrayInput)(nil)).Elem(), ServiceProfileMarketingInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileMarketingInfoPtrInput)(nil)).Elem(), ServiceProfileMarketingInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileMarketingInfoProcessStepInput)(nil)).Elem(), ServiceProfileMarketingInfoProcessStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileMarketingInfoProcessStepArrayInput)(nil)).Elem(), ServiceProfileMarketingInfoProcessStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileMetroInput)(nil)).Elem(), ServiceProfileMetroArgs{})
@@ -18264,15 +20323,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortLocationInput)(nil)).Elem(), ServiceProfilePortLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortLocationArrayInput)(nil)).Elem(), ServiceProfilePortLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileProjectInput)(nil)).Elem(), ServiceProfileProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileProjectArrayInput)(nil)).Elem(), ServiceProfileProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileProjectPtrInput)(nil)).Elem(), ServiceProfileProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceInput)(nil)).Elem(), ServiceProfileVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceArrayInput)(nil)).Elem(), ServiceProfileVirtualDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceLocationInput)(nil)).Elem(), ServiceProfileVirtualDeviceLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceLocationArrayInput)(nil)).Elem(), ServiceProfileVirtualDeviceLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceLocationPtrInput)(nil)).Elem(), ServiceProfileVirtualDeviceLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideInput)(nil)).Elem(), GetConnectionASideArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideArrayInput)(nil)).Elem(), GetConnectionASideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointInput)(nil)).Elem(), GetConnectionASideAccessPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointArrayInput)(nil)).Elem(), GetConnectionASideAccessPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointAccountInput)(nil)).Elem(), GetConnectionASideAccessPointAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointAccountArrayInput)(nil)).Elem(), GetConnectionASideAccessPointAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointGatewayInput)(nil)).Elem(), GetConnectionASideAccessPointGatewayArgs{})
@@ -18300,31 +20357,23 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointVirtualDeviceInput)(nil)).Elem(), GetConnectionASideAccessPointVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideAccessPointVirtualDeviceArrayInput)(nil)).Elem(), GetConnectionASideAccessPointVirtualDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideServiceTokenInput)(nil)).Elem(), GetConnectionASideServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionASideServiceTokenArrayInput)(nil)).Elem(), GetConnectionASideServiceTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAccountInput)(nil)).Elem(), GetConnectionAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAccountArrayInput)(nil)).Elem(), GetConnectionAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAdditionalInfoInput)(nil)).Elem(), GetConnectionAdditionalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAdditionalInfoArrayInput)(nil)).Elem(), GetConnectionAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionChangeLogInput)(nil)).Elem(), GetConnectionChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionChangeLogArrayInput)(nil)).Elem(), GetConnectionChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionNotificationInput)(nil)).Elem(), GetConnectionNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionNotificationArrayInput)(nil)).Elem(), GetConnectionNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOperationInput)(nil)).Elem(), GetConnectionOperationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOperationArrayInput)(nil)).Elem(), GetConnectionOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOperationErrorInput)(nil)).Elem(), GetConnectionOperationErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOperationErrorArrayInput)(nil)).Elem(), GetConnectionOperationErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOperationErrorAdditionalInfoInput)(nil)).Elem(), GetConnectionOperationErrorAdditionalInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOperationErrorAdditionalInfoArrayInput)(nil)).Elem(), GetConnectionOperationErrorAdditionalInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOrderInput)(nil)).Elem(), GetConnectionOrderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOrderArrayInput)(nil)).Elem(), GetConnectionOrderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProjectInput)(nil)).Elem(), GetConnectionProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProjectArrayInput)(nil)).Elem(), GetConnectionProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProjectPtrInput)(nil)).Elem(), GetConnectionProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRedundancyInput)(nil)).Elem(), GetConnectionRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionRedundancyArrayInput)(nil)).Elem(), GetConnectionRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideInput)(nil)).Elem(), GetConnectionZSideArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideArrayInput)(nil)).Elem(), GetConnectionZSideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointInput)(nil)).Elem(), GetConnectionZSideAccessPointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointArrayInput)(nil)).Elem(), GetConnectionZSideAccessPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointAccountInput)(nil)).Elem(), GetConnectionZSideAccessPointAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointAccountArrayInput)(nil)).Elem(), GetConnectionZSideAccessPointAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointGatewayInput)(nil)).Elem(), GetConnectionZSideAccessPointGatewayArgs{})
@@ -18352,47 +20401,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointVirtualDeviceInput)(nil)).Elem(), GetConnectionZSideAccessPointVirtualDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideAccessPointVirtualDeviceArrayInput)(nil)).Elem(), GetConnectionZSideAccessPointVirtualDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideServiceTokenInput)(nil)).Elem(), GetConnectionZSideServiceTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionZSideServiceTokenArrayInput)(nil)).Elem(), GetConnectionZSideServiceTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAccountInput)(nil)).Elem(), GetPortAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAccountArrayInput)(nil)).Elem(), GetPortAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortChangeLogInput)(nil)).Elem(), GetPortChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortChangeLogArrayInput)(nil)).Elem(), GetPortChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceInput)(nil)).Elem(), GetPortDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceArrayInput)(nil)).Elem(), GetPortDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceRedundancyInput)(nil)).Elem(), GetPortDeviceRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortDeviceRedundancyArrayInput)(nil)).Elem(), GetPortDeviceRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortEncapsulationInput)(nil)).Elem(), GetPortEncapsulationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortEncapsulationArrayInput)(nil)).Elem(), GetPortEncapsulationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLagInput)(nil)).Elem(), GetPortLagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLagArrayInput)(nil)).Elem(), GetPortLagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLocationInput)(nil)).Elem(), GetPortLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortLocationArrayInput)(nil)).Elem(), GetPortLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortOperationInput)(nil)).Elem(), GetPortOperationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortOperationArrayInput)(nil)).Elem(), GetPortOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortRedundancyInput)(nil)).Elem(), GetPortRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortRedundancyArrayInput)(nil)).Elem(), GetPortRedundancyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataInput)(nil)).Elem(), GetPortsDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataArrayInput)(nil)).Elem(), GetPortsDataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataAccountInput)(nil)).Elem(), GetPortsDataAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataAccountArrayInput)(nil)).Elem(), GetPortsDataAccountArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataChangeLogInput)(nil)).Elem(), GetPortsDataChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataChangeLogArrayInput)(nil)).Elem(), GetPortsDataChangeLogArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataDeviceInput)(nil)).Elem(), GetPortsDataDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataDeviceArrayInput)(nil)).Elem(), GetPortsDataDeviceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataDeviceRedundancyInput)(nil)).Elem(), GetPortsDataDeviceRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataDeviceRedundancyArrayInput)(nil)).Elem(), GetPortsDataDeviceRedundancyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataEncapsulationInput)(nil)).Elem(), GetPortsDataEncapsulationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataEncapsulationArrayInput)(nil)).Elem(), GetPortsDataEncapsulationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataLagInput)(nil)).Elem(), GetPortsDataLagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataLagArrayInput)(nil)).Elem(), GetPortsDataLagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataLocationInput)(nil)).Elem(), GetPortsDataLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataLocationArrayInput)(nil)).Elem(), GetPortsDataLocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataOperationInput)(nil)).Elem(), GetPortsDataOperationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataOperationArrayInput)(nil)).Elem(), GetPortsDataOperationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataRedundancyInput)(nil)).Elem(), GetPortsDataRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDataRedundancyArrayInput)(nil)).Elem(), GetPortsDataRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumInput)(nil)).Elem(), GetPortsDatumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumArrayInput)(nil)).Elem(), GetPortsDatumArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumAccountInput)(nil)).Elem(), GetPortsDatumAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumAccountArrayInput)(nil)).Elem(), GetPortsDatumAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumChangeLogInput)(nil)).Elem(), GetPortsDatumChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumChangeLogArrayInput)(nil)).Elem(), GetPortsDatumChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumDeviceInput)(nil)).Elem(), GetPortsDatumDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumDeviceArrayInput)(nil)).Elem(), GetPortsDatumDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumDeviceRedundancyInput)(nil)).Elem(), GetPortsDatumDeviceRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumDeviceRedundancyArrayInput)(nil)).Elem(), GetPortsDatumDeviceRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumEncapsulationInput)(nil)).Elem(), GetPortsDatumEncapsulationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumEncapsulationArrayInput)(nil)).Elem(), GetPortsDatumEncapsulationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumLagInput)(nil)).Elem(), GetPortsDatumLagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumLagArrayInput)(nil)).Elem(), GetPortsDatumLagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumLocationInput)(nil)).Elem(), GetPortsDatumLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumLocationArrayInput)(nil)).Elem(), GetPortsDatumLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumOperationInput)(nil)).Elem(), GetPortsDatumOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumOperationArrayInput)(nil)).Elem(), GetPortsDatumOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyInput)(nil)).Elem(), GetPortsDatumRedundancyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsDatumRedundancyArrayInput)(nil)).Elem(), GetPortsDatumRedundancyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterInput)(nil)).Elem(), GetPortsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterArrayInput)(nil)).Elem(), GetPortsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortsFilterPtrInput)(nil)).Elem(), GetPortsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigArrayInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigApiConfigInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigApiConfigArgs{})
@@ -18402,13 +20442,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigLinkProtocolConfigInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayInput)(nil)).Elem(), GetServiceProfileAccessPointTypeConfigLinkProtocolConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccountInput)(nil)).Elem(), GetServiceProfileAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileAccountArrayInput)(nil)).Elem(), GetServiceProfileAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileChangeLogInput)(nil)).Elem(), GetServiceProfileChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileChangeLogArrayInput)(nil)).Elem(), GetServiceProfileChangeLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileCustomFieldInput)(nil)).Elem(), GetServiceProfileCustomFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileCustomFieldArrayInput)(nil)).Elem(), GetServiceProfileCustomFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileMarketingInfoInput)(nil)).Elem(), GetServiceProfileMarketingInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileMarketingInfoArrayInput)(nil)).Elem(), GetServiceProfileMarketingInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileMarketingInfoProcessStepInput)(nil)).Elem(), GetServiceProfileMarketingInfoProcessStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileMarketingInfoProcessStepArrayInput)(nil)).Elem(), GetServiceProfileMarketingInfoProcessStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileMetroInput)(nil)).Elem(), GetServiceProfileMetroArgs{})
@@ -18420,133 +20457,136 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilePortLocationInput)(nil)).Elem(), GetServiceProfilePortLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilePortLocationArrayInput)(nil)).Elem(), GetServiceProfilePortLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileProjectInput)(nil)).Elem(), GetServiceProfileProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfileProjectArrayInput)(nil)).Elem(), GetServiceProfileProjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataInput)(nil)).Elem(), GetServiceProfilesDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataArrayInput)(nil)).Elem(), GetServiceProfilesDataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigArrayInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigApiConfigInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigApiConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigApiConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayInput)(nil)).Elem(), GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccountInput)(nil)).Elem(), GetServiceProfilesDataAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataAccountArrayInput)(nil)).Elem(), GetServiceProfilesDataAccountArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataChangeLogInput)(nil)).Elem(), GetServiceProfilesDataChangeLogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataChangeLogArrayInput)(nil)).Elem(), GetServiceProfilesDataChangeLogArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataCustomFieldInput)(nil)).Elem(), GetServiceProfilesDataCustomFieldArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataCustomFieldArrayInput)(nil)).Elem(), GetServiceProfilesDataCustomFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataMarketingInfoInput)(nil)).Elem(), GetServiceProfilesDataMarketingInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataMarketingInfoArrayInput)(nil)).Elem(), GetServiceProfilesDataMarketingInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataMarketingInfoProcessStepInput)(nil)).Elem(), GetServiceProfilesDataMarketingInfoProcessStepArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataMarketingInfoProcessStepArrayInput)(nil)).Elem(), GetServiceProfilesDataMarketingInfoProcessStepArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataMetroInput)(nil)).Elem(), GetServiceProfilesDataMetroArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataMetroArrayInput)(nil)).Elem(), GetServiceProfilesDataMetroArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataNotificationInput)(nil)).Elem(), GetServiceProfilesDataNotificationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataNotificationArrayInput)(nil)).Elem(), GetServiceProfilesDataNotificationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataPortInput)(nil)).Elem(), GetServiceProfilesDataPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataPortArrayInput)(nil)).Elem(), GetServiceProfilesDataPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataPortLocationInput)(nil)).Elem(), GetServiceProfilesDataPortLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataPortLocationArrayInput)(nil)).Elem(), GetServiceProfilesDataPortLocationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataProjectInput)(nil)).Elem(), GetServiceProfilesDataProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDataProjectArrayInput)(nil)).Elem(), GetServiceProfilesDataProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumInput)(nil)).Elem(), GetServiceProfilesDatumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumArrayInput)(nil)).Elem(), GetServiceProfilesDatumArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigArrayInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigApiConfigInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigApiConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayInput)(nil)).Elem(), GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccountInput)(nil)).Elem(), GetServiceProfilesDatumAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumAccountArrayInput)(nil)).Elem(), GetServiceProfilesDatumAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumChangeLogInput)(nil)).Elem(), GetServiceProfilesDatumChangeLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumChangeLogArrayInput)(nil)).Elem(), GetServiceProfilesDatumChangeLogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumCustomFieldInput)(nil)).Elem(), GetServiceProfilesDatumCustomFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumCustomFieldArrayInput)(nil)).Elem(), GetServiceProfilesDatumCustomFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumMarketingInfoInput)(nil)).Elem(), GetServiceProfilesDatumMarketingInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumMarketingInfoArrayInput)(nil)).Elem(), GetServiceProfilesDatumMarketingInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumMarketingInfoProcessStepInput)(nil)).Elem(), GetServiceProfilesDatumMarketingInfoProcessStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumMarketingInfoProcessStepArrayInput)(nil)).Elem(), GetServiceProfilesDatumMarketingInfoProcessStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumMetroInput)(nil)).Elem(), GetServiceProfilesDatumMetroArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumMetroArrayInput)(nil)).Elem(), GetServiceProfilesDatumMetroArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumNotificationInput)(nil)).Elem(), GetServiceProfilesDatumNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumNotificationArrayInput)(nil)).Elem(), GetServiceProfilesDatumNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumPortInput)(nil)).Elem(), GetServiceProfilesDatumPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumPortArrayInput)(nil)).Elem(), GetServiceProfilesDatumPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumPortLocationInput)(nil)).Elem(), GetServiceProfilesDatumPortLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumPortLocationArrayInput)(nil)).Elem(), GetServiceProfilesDatumPortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumProjectInput)(nil)).Elem(), GetServiceProfilesDatumProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesDatumProjectArrayInput)(nil)).Elem(), GetServiceProfilesDatumProjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesFilterInput)(nil)).Elem(), GetServiceProfilesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesFilterArrayInput)(nil)).Elem(), GetServiceProfilesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesFilterPtrInput)(nil)).Elem(), GetServiceProfilesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesSortInput)(nil)).Elem(), GetServiceProfilesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceProfilesSortArrayInput)(nil)).Elem(), GetServiceProfilesSortArray{})
 	pulumi.RegisterOutputType(ConnectionASideOutput{})
-	pulumi.RegisterOutputType(ConnectionASideArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASidePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointAccountOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointAccountArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointAccountPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointGatewayOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointGatewayArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointGatewayPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointInterfaceOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointInterfacePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointLinkProtocolOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointLinkProtocolPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointLocationOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointLocationArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointLocationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointPortArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointPortPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointRoutingProtocolOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointRoutingProtocolArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointVirtualDeviceOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointVirtualDeviceArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointVirtualDevicePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAdditionalInfoOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionASideServiceTokenOutput{})
-	pulumi.RegisterOutputType(ConnectionASideServiceTokenArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideServiceTokenPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionAccountOutput{})
-	pulumi.RegisterOutputType(ConnectionAccountArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionAccountPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionAdditionalInfoOutput{})
 	pulumi.RegisterOutputType(ConnectionAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionChangeLogOutput{})
-	pulumi.RegisterOutputType(ConnectionChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionChangeLogPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionNotificationOutput{})
 	pulumi.RegisterOutputType(ConnectionNotificationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOperationOutput{})
-	pulumi.RegisterOutputType(ConnectionOperationArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOperationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOperationErrorOutput{})
 	pulumi.RegisterOutputType(ConnectionOperationErrorArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOperationErrorAdditionalInfoOutput{})
 	pulumi.RegisterOutputType(ConnectionOperationErrorAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOrderOutput{})
-	pulumi.RegisterOutputType(ConnectionOrderArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOrderPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProjectOutput{})
-	pulumi.RegisterOutputType(ConnectionProjectArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionProjectPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionRedundancyOutput{})
-	pulumi.RegisterOutputType(ConnectionRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionRedundancyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSidePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointAccountOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointAccountArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointAccountPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointGatewayOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointGatewayArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointGatewayPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointInterfaceOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointInterfacePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointLinkProtocolOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointLinkProtocolPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointLocationOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointLocationArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointLocationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointRoutingProtocolOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointRoutingProtocolArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointVirtualDeviceOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointVirtualDeviceArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointVirtualDevicePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAdditionalInfoOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideServiceTokenOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideServiceTokenArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideServiceTokenPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigApiConfigOutput{})
-	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigApiConfigArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigApiConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigAuthenticationKeyOutput{})
-	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigAuthenticationKeyArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigAuthenticationKeyPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput{})
-	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileAccessPointTypeConfigLinkProtocolConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileAccountOutput{})
-	pulumi.RegisterOutputType(ServiceProfileAccountArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileAccountPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileChangeLogOutput{})
-	pulumi.RegisterOutputType(ServiceProfileChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileChangeLogPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileCustomFieldOutput{})
 	pulumi.RegisterOutputType(ServiceProfileCustomFieldArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfileMarketingInfoOutput{})
-	pulumi.RegisterOutputType(ServiceProfileMarketingInfoArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileMarketingInfoPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileMarketingInfoProcessStepOutput{})
 	pulumi.RegisterOutputType(ServiceProfileMarketingInfoProcessStepArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfileMetroOutput{})
@@ -18558,15 +20598,13 @@ func init() {
 	pulumi.RegisterOutputType(ServiceProfilePortLocationOutput{})
 	pulumi.RegisterOutputType(ServiceProfilePortLocationArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfileProjectOutput{})
-	pulumi.RegisterOutputType(ServiceProfileProjectArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileProjectPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceOutput{})
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceLocationOutput{})
-	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceLocationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceLocationPtrOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideOutput{})
-	pulumi.RegisterOutputType(GetConnectionASideArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointOutput{})
-	pulumi.RegisterOutputType(GetConnectionASideAccessPointArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointAccountOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointGatewayOutput{})
@@ -18594,31 +20632,23 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointVirtualDeviceOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideAccessPointVirtualDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionASideServiceTokenOutput{})
-	pulumi.RegisterOutputType(GetConnectionASideServiceTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionAccountOutput{})
-	pulumi.RegisterOutputType(GetConnectionAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionAdditionalInfoOutput{})
 	pulumi.RegisterOutputType(GetConnectionAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionChangeLogOutput{})
-	pulumi.RegisterOutputType(GetConnectionChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionNotificationOutput{})
 	pulumi.RegisterOutputType(GetConnectionNotificationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOperationOutput{})
-	pulumi.RegisterOutputType(GetConnectionOperationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOperationErrorOutput{})
 	pulumi.RegisterOutputType(GetConnectionOperationErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOperationErrorAdditionalInfoOutput{})
 	pulumi.RegisterOutputType(GetConnectionOperationErrorAdditionalInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOrderOutput{})
-	pulumi.RegisterOutputType(GetConnectionOrderArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionProjectOutput{})
-	pulumi.RegisterOutputType(GetConnectionProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProjectPtrOutput{})
 	pulumi.RegisterOutputType(GetConnectionRedundancyOutput{})
-	pulumi.RegisterOutputType(GetConnectionRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideOutput{})
-	pulumi.RegisterOutputType(GetConnectionZSideArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointOutput{})
-	pulumi.RegisterOutputType(GetConnectionZSideAccessPointArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointAccountOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointGatewayOutput{})
@@ -18646,47 +20676,38 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointVirtualDeviceOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideAccessPointVirtualDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionZSideServiceTokenOutput{})
-	pulumi.RegisterOutputType(GetConnectionZSideServiceTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetPortAccountOutput{})
-	pulumi.RegisterOutputType(GetPortAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetPortChangeLogOutput{})
-	pulumi.RegisterOutputType(GetPortChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(GetPortDeviceOutput{})
-	pulumi.RegisterOutputType(GetPortDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetPortDeviceRedundancyOutput{})
 	pulumi.RegisterOutputType(GetPortDeviceRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetPortEncapsulationOutput{})
-	pulumi.RegisterOutputType(GetPortEncapsulationArrayOutput{})
 	pulumi.RegisterOutputType(GetPortLagOutput{})
-	pulumi.RegisterOutputType(GetPortLagArrayOutput{})
 	pulumi.RegisterOutputType(GetPortLocationOutput{})
-	pulumi.RegisterOutputType(GetPortLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetPortOperationOutput{})
-	pulumi.RegisterOutputType(GetPortOperationArrayOutput{})
 	pulumi.RegisterOutputType(GetPortRedundancyOutput{})
-	pulumi.RegisterOutputType(GetPortRedundancyArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataOutput{})
-	pulumi.RegisterOutputType(GetPortsDataArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataAccountOutput{})
-	pulumi.RegisterOutputType(GetPortsDataAccountArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataChangeLogOutput{})
-	pulumi.RegisterOutputType(GetPortsDataChangeLogArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataDeviceOutput{})
-	pulumi.RegisterOutputType(GetPortsDataDeviceArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataDeviceRedundancyOutput{})
-	pulumi.RegisterOutputType(GetPortsDataDeviceRedundancyArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataEncapsulationOutput{})
-	pulumi.RegisterOutputType(GetPortsDataEncapsulationArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataLagOutput{})
-	pulumi.RegisterOutputType(GetPortsDataLagArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataLocationOutput{})
-	pulumi.RegisterOutputType(GetPortsDataLocationArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataOperationOutput{})
-	pulumi.RegisterOutputType(GetPortsDataOperationArrayOutput{})
-	pulumi.RegisterOutputType(GetPortsDataRedundancyOutput{})
-	pulumi.RegisterOutputType(GetPortsDataRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumAccountOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumChangeLogOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumDeviceOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumDeviceRedundancyOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumDeviceRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumEncapsulationOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumEncapsulationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumLagOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumLagArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumLocationOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumOperationOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumOperationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumRedundancyOutput{})
+	pulumi.RegisterOutputType(GetPortsDatumRedundancyArrayOutput{})
 	pulumi.RegisterOutputType(GetPortsFilterOutput{})
-	pulumi.RegisterOutputType(GetPortsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPortsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigApiConfigOutput{})
@@ -18696,13 +20717,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigLinkProtocolConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccessPointTypeConfigLinkProtocolConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileAccountOutput{})
-	pulumi.RegisterOutputType(GetServiceProfileAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileChangeLogOutput{})
-	pulumi.RegisterOutputType(GetServiceProfileChangeLogArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileCustomFieldOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileCustomFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileMarketingInfoOutput{})
-	pulumi.RegisterOutputType(GetServiceProfileMarketingInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileMarketingInfoProcessStepOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileMarketingInfoProcessStepArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileMetroOutput{})
@@ -18714,39 +20732,38 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceProfilePortLocationOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilePortLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfileProjectOutput{})
-	pulumi.RegisterOutputType(GetServiceProfileProjectArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigApiConfigOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigApiConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigAuthenticationKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccessPointTypeConfigLinkProtocolConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccountOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataAccountArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataChangeLogOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataChangeLogArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataCustomFieldOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataCustomFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataMarketingInfoOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataMarketingInfoArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataMarketingInfoProcessStepOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataMarketingInfoProcessStepArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataMetroOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataMetroArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataNotificationOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataNotificationArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataPortOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataPortArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataPortLocationOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataPortLocationArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataProjectOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesDataProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigApiConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigApiConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccountOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumChangeLogOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumChangeLogArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumCustomFieldOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumCustomFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumMarketingInfoOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumMarketingInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumMarketingInfoProcessStepOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumMarketingInfoProcessStepArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumMetroOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumMetroArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumNotificationOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumNotificationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumPortOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumPortArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumPortLocationOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumPortLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumProjectOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesDatumProjectArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesFilterOutput{})
-	pulumi.RegisterOutputType(GetServiceProfilesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceProfilesFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesSortOutput{})
 	pulumi.RegisterOutputType(GetServiceProfilesSortArrayOutput{})
 }
