@@ -22,15 +22,12 @@ import javax.annotation.Nullable;
  * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
  * 
  * ## Example Usage
- * 
- * Create a VRF in your desired metro and project with any IP ranges that you want the VRF to route and forward.
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Project;
  * import com.pulumi.equinix.metal.Vrf;
  * import com.pulumi.equinix.metal.VrfArgs;
  * import java.util.List;
@@ -46,126 +43,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleProject = new Project(&#34;exampleProject&#34;);
- * 
- *         var exampleVrf = new Vrf(&#34;exampleVrf&#34;, VrfArgs.builder()        
- *             .description(&#34;VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25&#34;)
- *             .metro(&#34;da&#34;)
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;DA&#34;);
+ *         var vrf = new Vrf(&#34;vrf&#34;, VrfArgs.builder()        
+ *             .description(&#34;VRF with ASN 65000 and a pool of address space&#34;)
+ *             .name(&#34;example-vrf&#34;)
+ *             .metro(metro)
  *             .localAsn(&#34;65000&#34;)
  *             .ipRanges(            
  *                 &#34;192.168.100.0/25&#34;,
  *                 &#34;192.168.200.0/25&#34;)
- *             .projectId(exampleProject.id())
+ *             .projectId(projectId)
  *             .build());
  * 
- *     }
- * }
- * ```
- * 
- * Create IP reservations and assign them to a Metal Gateway resources. The Gateway will be assigned the first address in the block.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.ReservedIpBlock;
- * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
- * import com.pulumi.equinix.metal.Gateway;
- * import com.pulumi.equinix.metal.GatewayArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleReservedIpBlock = new ReservedIpBlock(&#34;exampleReservedIpBlock&#34;, ReservedIpBlockArgs.builder()        
- *             .description(&#34;Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF&#39;s pool of address space.&#34;)
- *             .projectId(equinix_metal_project.example().id())
- *             .metro(equinix_metal_vrf.example().metro())
- *             .type(&#34;vrf&#34;)
- *             .vrfId(equinix_metal_vrf.example().id())
- *             .cidr(29)
- *             .network(&#34;192.168.100.0&#34;)
- *             .build());
- * 
- *         var exampleVlan = new Vlan(&#34;exampleVlan&#34;, VlanArgs.builder()        
- *             .description(&#34;A VLAN for Layer2 and Hybrid Metal devices&#34;)
- *             .metro(equinix_metal_vrf.example().metro())
- *             .projectId(equinix_metal_project.example().id())
- *             .build());
- * 
- *         var exampleGateway = new Gateway(&#34;exampleGateway&#34;, GatewayArgs.builder()        
- *             .projectId(equinix_metal_project.example().id())
- *             .vlanId(exampleVlan.id())
- *             .ipReservationId(exampleReservedIpBlock.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * Attach a Virtual Circuit from a Dedicated Metal Connection to the Metal Gateway.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.MetalFunctions;
- * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
- * import com.pulumi.equinix.metal.VirtualCircuit;
- * import com.pulumi.equinix.metal.VirtualCircuitArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleInterconnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
- *             .connectionId(var_.metal_dedicated_connection_id())
- *             .build());
- * 
- *         var exampleVirtualCircuit = new VirtualCircuit(&#34;exampleVirtualCircuit&#34;, VirtualCircuitArgs.builder()        
- *             .description(&#34;Virtual Circuit&#34;)
- *             .connectionId(exampleInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.id()))
- *             .projectId(equinix_metal_project.example().id())
- *             .portId(exampleInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[0].id()))
- *             .nniVlan(1024)
- *             .vrfId(equinix_metal_vrf.example().id())
- *             .peerAsn(65530)
- *             .subnet(&#34;192.168.100.16/31&#34;)
- *             .metalIp(&#34;192.168.100.16&#34;)
- *             .customerIp(&#34;192.168.100.17&#34;)
- *             .build());
- * 
+ *         ctx.export(&#34;vrfId&#34;, vrf.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing VRF ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}
- * ```
+ * This resource can be imported using an existing VRF ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/vrf:Vrf")

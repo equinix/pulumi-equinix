@@ -40,25 +40,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var john = new SshUser(&#34;john&#34;, SshUserArgs.builder()        
- *             .username(&#34;john&#34;)
- *             .password(&#34;secret&#34;)
+ *         final var config = ctx.config();
+ *         final var device1Id = config.get(&#34;device1Id&#34;);
+ *         final var device2Id = config.get(&#34;device2Id&#34;);
+ *         var sshUser = new SshUser(&#34;sshUser&#34;, SshUserArgs.builder()        
+ *             .username(&#34;johnKent&#34;)
  *             .deviceIds(            
- *                 equinix_network_device.csr1000v-ha().uuid(),
- *                 equinix_network_device.csr1000v-ha().redundant_uuid())
+ *                 device1Id,
+ *                 device2Id)
  *             .build());
  * 
+ *         ctx.export(&#34;sshUserId&#34;, sshUser.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID
- * 
- * ```sh
- *  $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/sshUser:SshUser")

@@ -15,6 +15,29 @@ namespace Pulumi.Equinix.Metal
     /// You need to have BGP config enabled in your project.
     /// 
     /// BGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal's upstream routers.
+    /// 
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var deviceId = config.Require("deviceId");
+    ///     var bgp = new Equinix.Metal.BgpSession("bgp", new()
+    ///     {
+    ///         DeviceId = deviceId,
+    ///         AddressFamily = "ipv4",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["bgpSessionStatus"] = bgp.Status,
+    ///     };
+    /// });
+    /// ```
     /// </summary>
     [EquinixResourceType("equinix:metal/bgpSession:BgpSession")]
     public partial class BgpSession : global::Pulumi.CustomResource
@@ -66,7 +89,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -15,39 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
- * const testVlan = new equinix.metal.Vlan("testVlan", {
- *     description: "test VLAN in SV",
- *     metro: "sv",
- *     projectId: local.project_id,
- * });
- * const testGateway = new equinix.metal.Gateway("testGateway", {
- *     projectId: local.project_id,
- *     vlanId: testVlan.id,
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const vlanId = config.require("vlanId");
+ * const gateway = new equinix.metal.Gateway("gateway", {
+ *     projectId: projectId,
+ *     vlanId: vlanId,
  *     privateIpv4SubnetSize: 8,
  * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * // Create Metal Gateway for a VLAN and reserved IP address block
- * const testVlan = new equinix.metal.Vlan("testVlan", {
- *     description: "test VLAN in SV",
- *     metro: "sv",
- *     projectId: local.project_id,
- * });
- * const testReservedIpBlock = new equinix.metal.ReservedIpBlock("testReservedIpBlock", {
- *     projectId: local.project_id,
- *     metro: "sv",
- *     quantity: 2,
- * });
- * const testGateway = new equinix.metal.Gateway("testGateway", {
- *     projectId: local.project_id,
- *     vlanId: testVlan.id,
- *     ipReservationId: testReservedIpBlock.id,
- * });
+ * export const gatewayState = gateway.state;
  * ```
  */
 export class Gateway extends pulumi.CustomResource {

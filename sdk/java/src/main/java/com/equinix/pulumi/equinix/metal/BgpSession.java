@@ -22,6 +22,40 @@ import javax.annotation.Nullable;
  * 
  * BGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal&#39;s upstream routers.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.BgpSession;
+ * import com.pulumi.equinix.metal.BgpSessionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var deviceId = config.get(&#34;deviceId&#34;);
+ *         var bgp = new BgpSession(&#34;bgp&#34;, BgpSessionArgs.builder()        
+ *             .deviceId(deviceId)
+ *             .addressFamily(&#34;ipv4&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;bgpSessionStatus&#34;, bgp.status());
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="equinix:metal/bgpSession:BgpSession")
 public class BgpSession extends com.pulumi.resources.CustomResource {

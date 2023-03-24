@@ -305,27 +305,24 @@ class Bgp(pulumi.CustomResource):
         Edge BGP peering configurations.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        test = equinix.networkedge.Bgp("test",
-            authentication_key="secret",
+        bgp = equinix.networkedge.Bgp("bgp",
             connection_id="54014acf-9730-4b55-a791-459283d05fb1",
-            local_asn=12345,
             local_ip_address="10.1.1.1/30",
+            local_asn=12345,
+            remote_ip_address="10.1.1.2",
             remote_asn=66123,
-            remote_ip_address="10.1.1.2")
+            authentication_key="secret")
+        pulumi.export("state", bgp.state)
+        pulumi.export("provisioningStatus", bgp.provisioning_status)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -348,27 +345,24 @@ class Bgp(pulumi.CustomResource):
         Edge BGP peering configurations.
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        test = equinix.networkedge.Bgp("test",
-            authentication_key="secret",
+        bgp = equinix.networkedge.Bgp("bgp",
             connection_id="54014acf-9730-4b55-a791-459283d05fb1",
-            local_asn=12345,
             local_ip_address="10.1.1.1/30",
+            local_asn=12345,
+            remote_ip_address="10.1.1.2",
             remote_asn=66123,
-            remote_ip_address="10.1.1.2")
+            authentication_key="secret")
+        pulumi.export("state", bgp.state)
+        pulumi.export("provisioningStatus", bgp.provisioning_status)
         ```
 
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param BgpArgs args: The arguments to use to populate this resource's properties.

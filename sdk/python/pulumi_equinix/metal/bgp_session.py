@@ -153,6 +153,19 @@ class BgpSession(pulumi.CustomResource):
 
         BGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal's upstream routers.
 
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        bgp = equinix.metal.BgpSession("bgp",
+            device_id=device_id,
+            address_family="ipv4")
+        pulumi.export("bgpSessionStatus", bgp.status)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: `ipv4` or `ipv6`.
@@ -171,6 +184,19 @@ class BgpSession(pulumi.CustomResource):
         You need to have BGP config enabled in your project.
 
         BGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal's upstream routers.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        bgp = equinix.metal.BgpSession("bgp",
+            device_id=device_id,
+            address_family="ipv4")
+        pulumi.export("bgpSessionStatus", bgp.status)
+        ```
 
         :param str resource_name: The name of the resource.
         :param BgpSessionArgs args: The arguments to use to populate this resource's properties.

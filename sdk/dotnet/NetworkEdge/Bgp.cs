@@ -14,7 +14,6 @@ namespace Pulumi.Equinix.NetworkEdge
     /// Edge BGP peering configurations.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -22,26 +21,27 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Equinix.NetworkEdge.Bgp("test", new()
+    ///     var bgp = new Equinix.NetworkEdge.Bgp("bgp", new()
     ///     {
-    ///         AuthenticationKey = "secret",
     ///         ConnectionId = "54014acf-9730-4b55-a791-459283d05fb1",
-    ///         LocalAsn = 12345,
     ///         LocalIpAddress = "10.1.1.1/30",
-    ///         RemoteAsn = 66123,
+    ///         LocalAsn = 12345,
     ///         RemoteIpAddress = "10.1.1.2",
+    ///         RemoteAsn = 66123,
+    ///         AuthenticationKey = "secret",
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["state"] = bgp.State,
+    ///         ["provisioningStatus"] = bgp.ProvisioningStatus,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id}
-    /// ```
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/bgp:Bgp")]
     public partial class Bgp : global::Pulumi.CustomResource
@@ -133,7 +133,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
                 AdditionalSecretOutputs =
                 {
                     "authenticationKey",

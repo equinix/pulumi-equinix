@@ -17,10 +17,6 @@ import (
 // > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 //
 // ## Example Usage
-//
-// Pick an existing Project and dedicated Connection, create a VLAN and use `metal.VirtualCircuit`
-// to associate it with a Primary Port of the Connection.
-//
 // ```go
 // package main
 //
@@ -28,36 +24,31 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			projectId := "52000fb2-ee46-4673-93a8-de2c2bdba33c"
-//			connId := "73f12f29-3e19-43a0-8e90-ae81580db1e0"
-//			testInterconnection, err := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
-//				ConnectionId: connId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			testVlan, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
-//				ProjectId: pulumi.String(projectId),
-//				Metro:     *pulumi.String(testInterconnection.Metro),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.NewVirtualCircuit(ctx, "testVirtualCircuit", &metal.VirtualCircuitArgs{
-//				ConnectionId: pulumi.String(connId),
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			connectionId := cfg.Require("connectionId")
+//			vlanId := cfg.Require("vlanId")
+//			portId := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
+//				ConnectionId: connectionId,
+//			}, nil).Ports[0].Id
+//			vc, err := metal.NewVirtualCircuit(ctx, "vc", &metal.VirtualCircuitArgs{
+//				ConnectionId: pulumi.String(connectionId),
 //				ProjectId:    pulumi.String(projectId),
-//				PortId:       *pulumi.String(testInterconnection.Ports[0].Id),
-//				VlanId:       testVlan.ID(),
+//				PortId:       *pulumi.String(portId),
+//				VlanId:       pulumi.String(vlanId),
 //				NniVlan:      pulumi.Int(1056),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("vcStatus", vc.Status)
+//			ctx.Export("vcVnid", vc.Vnid)
 //			return nil
 //		})
 //	}
@@ -66,13 +57,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing Virtual Circuit ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
-//
-// ```
+// This resource can be imported using an existing Virtual Circuit ID: <break><break>```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
 type VirtualCircuit struct {
 	pulumi.CustomResourceState
 

@@ -320,16 +320,19 @@ class SpotMarketRequest(pulumi.CustomResource):
         see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a spot market request
-        req = equinix.metal.SpotMarketRequest("req",
-            project_id=local["project_id"],
-            max_bid_price=0.03,
-            facilities=["ny5"],
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "FR"
+        request = equinix.metal.SpotMarketRequest("request",
+            project_id=project_id,
+            metro=metro,
+            max_bid_price=0.75,
             devices_min=1,
             devices_max=1,
             instance_parameters=equinix.metal.SpotMarketRequestInstanceParametersArgs(
@@ -338,15 +341,12 @@ class SpotMarketRequest(pulumi.CustomResource):
                 operating_system="ubuntu_20_04",
                 plan="c3.small.x86",
             ))
+        pulumi.export("requestId", request.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing spot market request ID
-
-        ```sh
-         $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
-        ```
+        This resource can be imported using an existing spot market request ID: <break><break>```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -376,16 +376,19 @@ class SpotMarketRequest(pulumi.CustomResource):
         see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 
         ## Example Usage
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        # Create a spot market request
-        req = equinix.metal.SpotMarketRequest("req",
-            project_id=local["project_id"],
-            max_bid_price=0.03,
-            facilities=["ny5"],
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "FR"
+        request = equinix.metal.SpotMarketRequest("request",
+            project_id=project_id,
+            metro=metro,
+            max_bid_price=0.75,
             devices_min=1,
             devices_max=1,
             instance_parameters=equinix.metal.SpotMarketRequestInstanceParametersArgs(
@@ -394,15 +397,12 @@ class SpotMarketRequest(pulumi.CustomResource):
                 operating_system="ubuntu_20_04",
                 plan="c3.small.x86",
             ))
+        pulumi.export("requestId", request.id)
         ```
 
         ## Import
 
-        This resource can be imported using an existing spot market request ID
-
-        ```sh
-         $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
-        ```
+        This resource can be imported using an existing spot market request ID: <break><break>```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param SpotMarketRequestArgs args: The arguments to use to populate this resource's properties.

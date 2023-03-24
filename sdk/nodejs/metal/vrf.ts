@@ -11,82 +11,30 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Create a VRF in your desired metro and project with any IP ranges that you want the VRF to route and forward.
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const exampleProject = new equinix.metal.Project("exampleProject", {});
- * const exampleVrf = new equinix.metal.Vrf("exampleVrf", {
- *     description: "VRF with ASN 65000 and a pool of address space that includes 192.168.100.0/25",
- *     metro: "da",
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const metro = config.get("metro") || "DA";
+ * const vrf = new equinix.metal.Vrf("vrf", {
+ *     description: "VRF with ASN 65000 and a pool of address space",
+ *     name: "example-vrf",
+ *     metro: metro,
  *     localAsn: 65000,
  *     ipRanges: [
  *         "192.168.100.0/25",
  *         "192.168.200.0/25",
  *     ],
- *     projectId: exampleProject.id,
+ *     projectId: projectId,
  * });
- * ```
- *
- * Create IP reservations and assign them to a Metal Gateway resources. The Gateway will be assigned the first address in the block.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const exampleReservedIpBlock = new equinix.metal.ReservedIpBlock("exampleReservedIpBlock", {
- *     description: "Reserved IP block (192.168.100.0/29) taken from on of the ranges in the VRF's pool of address space.",
- *     projectId: equinix_metal_project.example.id,
- *     metro: equinix_metal_vrf.example.metro,
- *     type: "vrf",
- *     vrfId: equinix_metal_vrf.example.id,
- *     cidr: 29,
- *     network: "192.168.100.0",
- * });
- * const exampleVlan = new equinix.metal.Vlan("exampleVlan", {
- *     description: "A VLAN for Layer2 and Hybrid Metal devices",
- *     metro: equinix_metal_vrf.example.metro,
- *     projectId: equinix_metal_project.example.id,
- * });
- * const exampleGateway = new equinix.metal.Gateway("exampleGateway", {
- *     projectId: equinix_metal_project.example.id,
- *     vlanId: exampleVlan.id,
- *     ipReservationId: exampleReservedIpBlock.id,
- * });
- * ```
- *
- * Attach a Virtual Circuit from a Dedicated Metal Connection to the Metal Gateway.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const exampleInterconnection = equinix.metal.getInterconnection({
- *     connectionId: _var.metal_dedicated_connection_id,
- * });
- * const exampleVirtualCircuit = new equinix.metal.VirtualCircuit("exampleVirtualCircuit", {
- *     description: "Virtual Circuit",
- *     connectionId: exampleInterconnection.then(exampleInterconnection => exampleInterconnection.id),
- *     projectId: equinix_metal_project.example.id,
- *     portId: exampleInterconnection.then(exampleInterconnection => exampleInterconnection.ports?.[0]?.id),
- *     nniVlan: 1024,
- *     vrfId: equinix_metal_vrf.example.id,
- *     peerAsn: 65530,
- *     subnet: "192.168.100.16/31",
- *     metalIp: "192.168.100.16",
- *     customerIp: "192.168.100.17",
- * });
+ * export const vrfId = vrf.id;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing VRF ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}
- * ```
+ * This resource can be imported using an existing VRF ID: <break><break>```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
  */
 export class Vrf extends pulumi.CustomResource {
     /**

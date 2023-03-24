@@ -533,7 +533,35 @@ class Interconnection(pulumi.CustomResource):
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        Create a Interconnection resource with the given unique name, props, and options.
+        Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+
+        > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "SV"
+        speed_in_mbps = config.get_int("speedInMbps")
+        if speed_in_mbps is None:
+            speed_in_mbps = 200
+        connection = equinix.metal.Interconnection("connection",
+            name="fabric-port-to-metal",
+            project_id=project_id,
+            type="shared",
+            redundancy="primary",
+            metro=metro,
+            speed=f"{speed_in_mbps}Mbps",
+            service_token_type="z_side")
+        pulumi.export("connectionStatus", connection.status)
+        pulumi.export("connectionTokens", connection.service_tokens)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description for the connection resource.
@@ -557,7 +585,35 @@ class Interconnection(pulumi.CustomResource):
                  args: InterconnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Interconnection resource with the given unique name, props, and options.
+        Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+
+        > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        metro = config.get("metro")
+        if metro is None:
+            metro = "SV"
+        speed_in_mbps = config.get_int("speedInMbps")
+        if speed_in_mbps is None:
+            speed_in_mbps = 200
+        connection = equinix.metal.Interconnection("connection",
+            name="fabric-port-to-metal",
+            project_id=project_id,
+            type="shared",
+            redundancy="primary",
+            metro=metro,
+            speed=f"{speed_in_mbps}Mbps",
+            service_token_type="z_side")
+        pulumi.export("connectionStatus", connection.status)
+        pulumi.export("connectionTokens", connection.service_tokens)
+        ```
+
         :param str resource_name: The name of the resource.
         :param InterconnectionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

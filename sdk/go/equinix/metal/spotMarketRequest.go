@@ -16,7 +16,6 @@ import (
 // see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -24,19 +23,24 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewSpotMarketRequest(ctx, "req", &metal.SpotMarketRequestArgs{
-//				ProjectId:   pulumi.Any(local.Project_id),
-//				MaxBidPrice: pulumi.Float64(0.03),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("ny5"),
-//				},
-//				DevicesMin: pulumi.Int(1),
-//				DevicesMax: pulumi.Int(1),
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			metro := "FR"
+//			if param := cfg.Get("metro"); param != "" {
+//				metro = param
+//			}
+//			request, err := metal.NewSpotMarketRequest(ctx, "request", &metal.SpotMarketRequestArgs{
+//				ProjectId:   pulumi.String(projectId),
+//				Metro:       pulumi.String(metro),
+//				MaxBidPrice: pulumi.Float64(0.75),
+//				DevicesMin:  pulumi.Int(1),
+//				DevicesMax:  pulumi.Int(1),
 //				InstanceParameters: &metal.SpotMarketRequestInstanceParametersArgs{
 //					Hostname:        pulumi.String("testspot"),
 //					BillingCycle:    pulumi.String("hourly"),
@@ -47,6 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("requestId", request.ID())
 //			return nil
 //		})
 //	}
@@ -55,13 +60,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing spot market request ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
-//
-// ```
+// This resource can be imported using an existing spot market request ID: <break><break>```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
 type SpotMarketRequest struct {
 	pulumi.CustomResourceState
 

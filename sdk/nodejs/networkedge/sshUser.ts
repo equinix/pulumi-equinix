@@ -14,25 +14,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * // Create SSH user with password auth method and associate it with
- * // two virtual network devices
- * const john = new equinix.networkedge.SshUser("john", {
- *     username: "john",
- *     password: "secret",
+ * const config = new pulumi.Config();
+ * const device1Id = config.require("device1Id");
+ * const device2Id = config.require("device2Id");
+ * const sshUser = new equinix.networkedge.SshUser("sshUser", {
+ *     username: "johnKent",
  *     deviceIds: [
- *         equinix_network_device["csr1000v-ha"].uuid,
- *         equinix_network_device["csr1000v-ha"].redundant_uuid,
+ *         device1Id,
+ *         device2Id,
  *     ],
  * });
+ * export const sshUserId = sshUser.id;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing ID
- *
- * ```sh
- *  $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
  */
 export class SshUser extends pulumi.CustomResource {
     /**

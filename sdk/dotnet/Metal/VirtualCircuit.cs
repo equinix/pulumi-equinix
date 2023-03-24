@@ -16,10 +16,6 @@ namespace Pulumi.Equinix.Metal
     /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
     /// 
     /// ## Example Usage
-    /// 
-    /// Pick an existing Project and dedicated Connection, create a VLAN and use `equinix.metal.VirtualCircuit`
-    /// to associate it with a Primary Port of the Connection.
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -27,40 +23,35 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
-    /// 
-    ///     var connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
-    /// 
-    ///     var testInterconnection = Equinix.Metal.GetInterconnection.Invoke(new()
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var connectionId = config.Require("connectionId");
+    ///     var vlanId = config.Require("vlanId");
+    ///     var portId = Equinix.Metal.GetInterconnection.Invoke(new()
     ///     {
-    ///         ConnectionId = connId,
-    ///     });
+    ///         ConnectionId = connectionId,
+    ///     }).Apply(invoke =&gt; invoke.Ports[0]?.Id);
     /// 
-    ///     var testVlan = new Equinix.Metal.Vlan("testVlan", new()
+    ///     var vc = new Equinix.Metal.VirtualCircuit("vc", new()
     ///     {
+    ///         ConnectionId = connectionId,
     ///         ProjectId = projectId,
-    ///         Metro = testInterconnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Metro),
-    ///     });
-    /// 
-    ///     var testVirtualCircuit = new Equinix.Metal.VirtualCircuit("testVirtualCircuit", new()
-    ///     {
-    ///         ConnectionId = connId,
-    ///         ProjectId = projectId,
-    ///         PortId = testInterconnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[0]?.Id),
-    ///         VlanId = testVlan.Id,
+    ///         PortId = portId,
+    ///         VlanId = vlanId,
     ///         NniVlan = 1056,
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["vcStatus"] = vc.Status,
+    ///         ["vcVnid"] = vc.Vnid,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing Virtual Circuit ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
-    /// ```
+    /// This resource can be imported using an existing Virtual Circuit ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/virtualCircuit:VirtualCircuit")]
     public partial class VirtualCircuit : global::Pulumi.CustomResource
@@ -200,7 +191,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
                 AdditionalSecretOutputs =
                 {
                     "md5",

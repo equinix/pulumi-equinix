@@ -28,6 +28,42 @@ import javax.annotation.Nullable;
  * 
  * Device and reserved block must be in the same facility.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.IpAttachment;
+ * import com.pulumi.equinix.metal.IpAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var deviceId = config.get(&#34;deviceId&#34;);
+ *         final var subnetCidr = config.get(&#34;subnetCidr&#34;).orElse(&#34;147.229.10.152/31&#34;);
+ *         var ipAttachResource = new IpAttachment(&#34;ipAttachResource&#34;, IpAttachmentArgs.builder()        
+ *             .deviceId(deviceId)
+ *             .cidrNotation(subnetCidr)
+ *             .build());
+ * 
+ *         ctx.export(&#34;ipAttach&#34;, ipAttachResource.id());
+ *         ctx.export(&#34;ipNetmask&#34;, ipAttachResource.netmask());
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="equinix:metal/ipAttachment:IpAttachment")
 public class IpAttachment extends com.pulumi.resources.CustomResource {

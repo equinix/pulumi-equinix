@@ -8,13 +8,32 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an Equinix Metal project resource to allow you manage devices
+ * in your projects.
+ *
+ * > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
+ * `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your
+ * Equinix Metal bill simple and easy to review, please re-use your existing projects.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const organizationId = config.require("organizationId");
+ * const name = config.get("name") || "Default Project";
+ * const projectResource = new equinix.metal.Project("project", {
+ *     name: name,
+ *     organizationId: organizationId,
+ * });
+ * export const projectId = projectResource.id;
+ * ```
+ *
  * ## Import
  *
- * This resource can be imported using an existing project ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
- * ```
+ * This resource can be imported using an existing project ID: <break><break>```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
  */
 export class Project extends pulumi.CustomResource {
     /**

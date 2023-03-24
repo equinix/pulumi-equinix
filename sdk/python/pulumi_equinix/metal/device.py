@@ -1150,161 +1150,25 @@ class Device(pulumi.CustomResource):
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
-
-        Create a device and add it to cool_project
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        web1 = equinix.metal.Device("web1",
-            hostname="tf.coreos2",
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        web = equinix.metal.Device("web",
+            hostname="webserver1",
             plan="c3.small.x86",
-            metro="sv",
             operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"])
-        ```
-
-        Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
-            plan="c3.small.x86",
             metro="sv",
-            operating_system="custom_ipxe",
             billing_cycle="hourly",
-            project_id=local["project_id"],
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=data["ignition_config"]["example"]["rendered"])
-        ```
-
-        Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        web1 = equinix.metal.Device("web1",
-            hostname="tf.coreos2",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
-                type="private_ipv4",
-                cidr=30,
-            )])
-        ```
-
-        Deploy device on next-available reserved hardware and do custom partitioning.
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        web1 = equinix.metal.Device("web1",
-            hostname="tftest",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            hardware_reservation_id="next-available",
-            storage=\"\"\"{
-          "disks": [
-            {
-              "device": "/dev/sda",
-              "wipeTable": true,
-              "partitions": [
-                {
-                  "label": "BIOS",
-                  "number": 1,
-                  "size": "4096"
-                },
-                {
-                  "label": "SWAP",
-                  "number": 2,
-                  "size": "3993600"
-                },
-                {
-                  "label": "ROOT",
-                  "number": 3,
-                  "size": "0"
-                }
-              ]
-            }
-          ],
-          "filesystems": [
-            {
-              "mount": {
-                "device": "/dev/sda3",
-                "format": "ext4",
-                "point": "/",
-                "create": {
-                  "options": [
-                    "-L",
-                    "ROOT"
-                  ]
-                }
-              }
-            },
-            {
-              "mount": {
-                "device": "/dev/sda2",
-                "format": "swap",
-                "point": "none",
-                "create": {
-                  "options": [
-                    "-L",
-                    "SWAP"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
-        Create a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
-            plan="c3.small.x86",
-            metro="sv",
-            operating_system="custom_ipxe",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=local["user_data"],
-            custom_data=local["custom_data"],
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
-                    "custom_data",
-                    "user_data",
-                ],
-            ))
+            project_id=project_id)
+        pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
         ```
 
         ## Import
 
-        This resource can be imported using an existing device ID
-
-        ```sh
-         $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
-        ```
+        This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1373,161 +1237,25 @@ class Device(pulumi.CustomResource):
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
-
-        Create a device and add it to cool_project
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        web1 = equinix.metal.Device("web1",
-            hostname="tf.coreos2",
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        web = equinix.metal.Device("web",
+            hostname="webserver1",
             plan="c3.small.x86",
-            metro="sv",
             operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"])
-        ```
-
-        Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
-            plan="c3.small.x86",
             metro="sv",
-            operating_system="custom_ipxe",
             billing_cycle="hourly",
-            project_id=local["project_id"],
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=data["ignition_config"]["example"]["rendered"])
-        ```
-
-        Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        web1 = equinix.metal.Device("web1",
-            hostname="tf.coreos2",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            ip_addresses=[equinix.metal.DeviceIpAddressArgs(
-                type="private_ipv4",
-                cidr=30,
-            )])
-        ```
-
-        Deploy device on next-available reserved hardware and do custom partitioning.
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        web1 = equinix.metal.Device("web1",
-            hostname="tftest",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            hardware_reservation_id="next-available",
-            storage=\"\"\"{
-          "disks": [
-            {
-              "device": "/dev/sda",
-              "wipeTable": true,
-              "partitions": [
-                {
-                  "label": "BIOS",
-                  "number": 1,
-                  "size": "4096"
-                },
-                {
-                  "label": "SWAP",
-                  "number": 2,
-                  "size": "3993600"
-                },
-                {
-                  "label": "ROOT",
-                  "number": 3,
-                  "size": "0"
-                }
-              ]
-            }
-          ],
-          "filesystems": [
-            {
-              "mount": {
-                "device": "/dev/sda3",
-                "format": "ext4",
-                "point": "/",
-                "create": {
-                  "options": [
-                    "-L",
-                    "ROOT"
-                  ]
-                }
-              }
-            },
-            {
-              "mount": {
-                "device": "/dev/sda2",
-                "format": "swap",
-                "point": "none",
-                "create": {
-                  "options": [
-                    "-L",
-                    "SWAP"
-                  ]
-                }
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
-        Create a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        pxe1 = equinix.metal.Device("pxe1",
-            hostname="tf.coreos2-pxe",
-            plan="c3.small.x86",
-            metro="sv",
-            operating_system="custom_ipxe",
-            billing_cycle="hourly",
-            project_id=local["project_id"],
-            ipxe_script_url="https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
-            always_pxe=False,
-            user_data=local["user_data"],
-            custom_data=local["custom_data"],
-            behavior=equinix.metal.DeviceBehaviorArgs(
-                allow_changes=[
-                    "custom_data",
-                    "user_data",
-                ],
-            ))
+            project_id=project_id)
+        pulumi.export("webPublicIp", web.access_public_ipv4.apply(lambda access_public_ipv4: f"http://{access_public_ipv4}"))
         ```
 
         ## Import
 
-        This resource can be imported using an existing device ID
-
-        ```sh
-         $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
-        ```
+        This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param DeviceArgs args: The arguments to use to populate this resource's properties.

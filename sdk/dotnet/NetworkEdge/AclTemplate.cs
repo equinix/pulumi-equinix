@@ -17,7 +17,6 @@ namespace Pulumi.Equinix.NetworkEdge
     /// traffic. Templates can be assigned to the network devices.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -25,40 +24,41 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Creates ACL template and assigns it to the network device
-    ///     var myacl = new Equinix.NetworkEdge.AclTemplate("myacl", new()
+    ///     var aclTemplate = new Equinix.NetworkEdge.AclTemplate("aclTemplate", new()
     ///     {
+    ///         Name = "test",
     ///         Description = "Test ACL template",
     ///         InboundRules = new[]
     ///         {
     ///             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
     ///             {
-    ///                 Description = "inbound rule description",
-    ///                 DstPort = "any",
+    ///                 Subnet = "1.1.1.1/32",
     ///                 Protocol = "IP",
     ///                 SrcPort = "any",
-    ///                 Subnet = "1.1.1.1/32",
+    ///                 DstPort = "any",
+    ///                 Description = "inbound rule description",
     ///             },
     ///             new Equinix.NetworkEdge.Inputs.AclTemplateInboundRuleArgs
     ///             {
-    ///                 DstPort = "53,1045,2041",
-    ///                 Protocol = "UDP",
+    ///                 Subnet = "2.2.2.2/28",
+    ///                 Protocol = "TCP",
     ///                 SrcPort = "any",
-    ///                 Subnet = "172.16.25.0/24",
+    ///                 DstPort = "any",
+    ///                 Description = "inbound rule description",
     ///             },
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["templateId"] = aclTemplate.Id,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id}
-    /// ```
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/aclTemplate:AclTemplate")]
     public partial class AclTemplate : global::Pulumi.CustomResource
@@ -136,7 +136,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

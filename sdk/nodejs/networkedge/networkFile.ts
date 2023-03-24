@@ -10,15 +10,31 @@ import * as utilities from "../utilities";
 /**
  * Resource `equinix.networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
  *
- * ## Import
+ * ## Example Usage
  *
- * This resource can be imported using an existing ID
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as fs from "fs";
  *
- * ```sh
- *  $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+ * const config = new pulumi.Config();
+ * const metro = config.get("metro") || "SV";
+ * const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
+ *     fileName: "Aviatrix-ZTP-file",
+ *     content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt"),
+ *     metroCode: metro,
+ *     deviceTypeCode: "AVIATRIX_EDGE",
+ *     processType: "CLOUD_INIT",
+ *     selfManaged: true,
+ *     byol: true,
+ * });
+ * export const networkFileId = networkFile.id;
+ * export const networkFileStatus = networkFile.status;
  * ```
  *
- *  The `content`, `self_managed` and `byol` fields can not be imported.
+ * ## Import
+ *
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.
  */
 export class NetworkFile extends pulumi.CustomResource {
     /**

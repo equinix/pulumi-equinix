@@ -47,35 +47,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myacl = new AclTemplate(&#34;myacl&#34;, AclTemplateArgs.builder()        
+ *         var aclTemplate = new AclTemplate(&#34;aclTemplate&#34;, AclTemplateArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .description(&#34;Test ACL template&#34;)
  *             .inboundRules(            
  *                 AclTemplateInboundRuleArgs.builder()
- *                     .description(&#34;inbound rule description&#34;)
- *                     .dstPort(&#34;any&#34;)
+ *                     .subnet(&#34;1.1.1.1/32&#34;)
  *                     .protocol(&#34;IP&#34;)
  *                     .srcPort(&#34;any&#34;)
- *                     .subnet(&#34;1.1.1.1/32&#34;)
+ *                     .dstPort(&#34;any&#34;)
+ *                     .description(&#34;inbound rule description&#34;)
  *                     .build(),
  *                 AclTemplateInboundRuleArgs.builder()
- *                     .dstPort(&#34;53,1045,2041&#34;)
- *                     .protocol(&#34;UDP&#34;)
+ *                     .subnet(&#34;2.2.2.2/28&#34;)
+ *                     .protocol(&#34;TCP&#34;)
  *                     .srcPort(&#34;any&#34;)
- *                     .subnet(&#34;172.16.25.0/24&#34;)
+ *                     .dstPort(&#34;any&#34;)
+ *                     .description(&#34;inbound rule description&#34;)
  *                     .build())
  *             .build());
  * 
+ *         ctx.export(&#34;templateId&#34;, aclTemplate.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID
- * 
- * ```sh
- *  $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/aclTemplate:AclTemplate")

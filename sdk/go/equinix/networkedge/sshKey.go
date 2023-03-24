@@ -13,15 +13,46 @@ import (
 
 // Resource `networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
 //
-// ## Import
+// ## Example Usage
+// ```go
+// package main
 //
-// # This resource can be imported using an existing ID
+// import (
 //
-// ```sh
+//	"os"
 //
-//	$ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sshKey, err := networkedge.NewSshKey(ctx, "sshKey", &networkedge.SshKeyArgs{
+//				Name:      pulumi.String("johnKent"),
+//				PublicKey: readFileOrPanic("/Users/John/.ssh/ne_rsa.pub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("sshKeyId", sshKey.ID())
+//			return nil
+//		})
+//	}
 //
 // ```
+//
+// ## Import
+//
+// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
 type SshKey struct {
 	pulumi.CustomResourceState
 

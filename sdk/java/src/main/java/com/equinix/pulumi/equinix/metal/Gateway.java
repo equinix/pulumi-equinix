@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
  * import com.pulumi.equinix.metal.Gateway;
  * import com.pulumi.equinix.metal.GatewayArgs;
  * import java.util.List;
@@ -44,64 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
- *             .description(&#34;test VLAN in SV&#34;)
- *             .metro(&#34;sv&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var testGateway = new Gateway(&#34;testGateway&#34;, GatewayArgs.builder()        
- *             .projectId(local.project_id())
- *             .vlanId(testVlan.id())
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var vlanId = config.get(&#34;vlanId&#34;);
+ *         var gateway = new Gateway(&#34;gateway&#34;, GatewayArgs.builder()        
+ *             .projectId(projectId)
+ *             .vlanId(vlanId)
  *             .privateIpv4SubnetSize(8)
  *             .build());
  * 
- *     }
- * }
- * ```
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
- * import com.pulumi.equinix.metal.ReservedIpBlock;
- * import com.pulumi.equinix.metal.ReservedIpBlockArgs;
- * import com.pulumi.equinix.metal.Gateway;
- * import com.pulumi.equinix.metal.GatewayArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
- *             .description(&#34;test VLAN in SV&#34;)
- *             .metro(&#34;sv&#34;)
- *             .projectId(local.project_id())
- *             .build());
- * 
- *         var testReservedIpBlock = new ReservedIpBlock(&#34;testReservedIpBlock&#34;, ReservedIpBlockArgs.builder()        
- *             .projectId(local.project_id())
- *             .metro(&#34;sv&#34;)
- *             .quantity(2)
- *             .build());
- * 
- *         var testGateway = new Gateway(&#34;testGateway&#34;, GatewayArgs.builder()        
- *             .projectId(local.project_id())
- *             .vlanId(testVlan.id())
- *             .ipReservationId(testReservedIpBlock.id())
- *             .build());
- * 
+ *         ctx.export(&#34;gatewayState&#34;, gateway.state());
  *     }
  * }
  * ```

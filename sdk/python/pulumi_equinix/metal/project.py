@@ -241,13 +241,32 @@ class Project(pulumi.CustomResource):
                  payment_method_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides an Equinix Metal project resource to allow you manage devices
+        in your projects.
+
+        > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
+        `metal.Project` resources will affect the rendered invoice. If you want to keep your
+        Equinix Metal bill simple and easy to review, please re-use your existing projects.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        organization_id = config.require("organizationId")
+        name = config.get("name")
+        if name is None:
+            name = "Default Project"
+        project_resource = equinix.metal.Project("project",
+            name=name,
+            organization_id=organization_id)
+        pulumi.export("projectId", project_resource.id)
+        ```
+
         ## Import
 
-        This resource can be imported using an existing project ID
-
-        ```sh
-         $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
-        ```
+        This resource can be imported using an existing project ID: <break><break>```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -266,13 +285,32 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an Equinix Metal project resource to allow you manage devices
+        in your projects.
+
+        > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
+        `metal.Project` resources will affect the rendered invoice. If you want to keep your
+        Equinix Metal bill simple and easy to review, please re-use your existing projects.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        organization_id = config.require("organizationId")
+        name = config.get("name")
+        if name is None:
+            name = "Default Project"
+        project_resource = equinix.metal.Project("project",
+            name=name,
+            organization_id=organization_id)
+        pulumi.export("projectId", project_resource.id)
+        ```
+
         ## Import
 
-        This resource can be imported using an existing project ID
-
-        ```sh
-         $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
-        ```
+        This resource can be imported using an existing project ID: <break><break>```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

@@ -255,67 +255,6 @@ class PortVlanAttachment(pulumi.CustomResource):
         * <https://metal.equinix.com/developers/docs/networking/layer2/>
         * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
 
-        ## Example Usage
-        ### Hybrid network type
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test_vlan = equinix.metal.Vlan("testVlan",
-            description="VLAN in New Jersey",
-            facility="ny5",
-            project_id=local["project_id"])
-        test_device = equinix.metal.Device("testDevice",
-            hostname="test",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"])
-        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
-            device_id=test_device.id,
-            type="hybrid")
-        test_port_vlan_attachment = equinix.metal.PortVlanAttachment("testPortVlanAttachment",
-            device_id=test_device_network_type.id,
-            port_name="eth1",
-            vlan_vnid=test_vlan.vxlan)
-        ```
-        ### Layer 2 network
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test_device = equinix.metal.Device("testDevice",
-            hostname="test",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"])
-        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
-            device_id=test_device.id,
-            type="layer2-individual")
-        test1_vlan = equinix.metal.Vlan("test1Vlan",
-            description="VLAN in New Jersey",
-            facility="ny5",
-            project_id=local["project_id"])
-        test2_vlan = equinix.metal.Vlan("test2Vlan",
-            description="VLAN in New Jersey",
-            facility="ny5",
-            project_id=local["project_id"])
-        test1_port_vlan_attachment = equinix.metal.PortVlanAttachment("test1PortVlanAttachment",
-            device_id=test_device_network_type.id,
-            vlan_vnid=test1_vlan.vxlan,
-            port_name="eth1")
-        test2_port_vlan_attachment = equinix.metal.PortVlanAttachment("test2PortVlanAttachment",
-            device_id=test_device_network_type.id,
-            vlan_vnid=test2_vlan.vxlan,
-            port_name="eth1",
-            native=True,
-            opts=pulumi.ResourceOptions(depends_on=["equinix_metal_port_vlan_attachment.test1"]))
-        ```
         ## Attribute Referece
 
         In addition to all arguments above, the following attributes are exported:
@@ -323,6 +262,27 @@ class PortVlanAttachment(pulumi.CustomResource):
         * `id` - UUID of device port used in the assignment.
         * `vlan_id` - UUID of VLAN API resource.
         * `port_id` - UUID of device port.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        port_name = config.get("portName")
+        if port_name is None:
+            port_name = "eth1"
+        vxlan_id = config.get_int("vxlanId")
+        if vxlan_id is None:
+            vxlan_id = 1004
+        attach = equinix.metal.PortVlanAttachment("attach",
+            device_id=device_id,
+            port_name=port_name,
+            vlan_vnid=vxlan_id)
+        pulumi.export("attachId", attach.id)
+        pulumi.export("portId", attach.port_id)
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -354,67 +314,6 @@ class PortVlanAttachment(pulumi.CustomResource):
         * <https://metal.equinix.com/developers/docs/networking/layer2/>
         * <https://metal.equinix.com/developers/docs/networking/layer2-configs/>
 
-        ## Example Usage
-        ### Hybrid network type
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test_vlan = equinix.metal.Vlan("testVlan",
-            description="VLAN in New Jersey",
-            facility="ny5",
-            project_id=local["project_id"])
-        test_device = equinix.metal.Device("testDevice",
-            hostname="test",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"])
-        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
-            device_id=test_device.id,
-            type="hybrid")
-        test_port_vlan_attachment = equinix.metal.PortVlanAttachment("testPortVlanAttachment",
-            device_id=test_device_network_type.id,
-            port_name="eth1",
-            vlan_vnid=test_vlan.vxlan)
-        ```
-        ### Layer 2 network
-
-        ```python
-        import pulumi
-        import pulumi_equinix as equinix
-
-        test_device = equinix.metal.Device("testDevice",
-            hostname="test",
-            plan="c3.small.x86",
-            facilities=["ny5"],
-            operating_system="ubuntu_20_04",
-            billing_cycle="hourly",
-            project_id=local["project_id"])
-        test_device_network_type = equinix.metal.DeviceNetworkType("testDeviceNetworkType",
-            device_id=test_device.id,
-            type="layer2-individual")
-        test1_vlan = equinix.metal.Vlan("test1Vlan",
-            description="VLAN in New Jersey",
-            facility="ny5",
-            project_id=local["project_id"])
-        test2_vlan = equinix.metal.Vlan("test2Vlan",
-            description="VLAN in New Jersey",
-            facility="ny5",
-            project_id=local["project_id"])
-        test1_port_vlan_attachment = equinix.metal.PortVlanAttachment("test1PortVlanAttachment",
-            device_id=test_device_network_type.id,
-            vlan_vnid=test1_vlan.vxlan,
-            port_name="eth1")
-        test2_port_vlan_attachment = equinix.metal.PortVlanAttachment("test2PortVlanAttachment",
-            device_id=test_device_network_type.id,
-            vlan_vnid=test2_vlan.vxlan,
-            port_name="eth1",
-            native=True,
-            opts=pulumi.ResourceOptions(depends_on=["equinix_metal_port_vlan_attachment.test1"]))
-        ```
         ## Attribute Referece
 
         In addition to all arguments above, the following attributes are exported:
@@ -422,6 +321,27 @@ class PortVlanAttachment(pulumi.CustomResource):
         * `id` - UUID of device port used in the assignment.
         * `vlan_id` - UUID of VLAN API resource.
         * `port_id` - UUID of device port.
+
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        device_id = config.require("deviceId")
+        port_name = config.get("portName")
+        if port_name is None:
+            port_name = "eth1"
+        vxlan_id = config.get_int("vxlanId")
+        if vxlan_id is None:
+            vxlan_id = 1004
+        attach = equinix.metal.PortVlanAttachment("attach",
+            device_id=device_id,
+            port_name=port_name,
+            vlan_vnid=vxlan_id)
+        pulumi.export("attachId", attach.id)
+        pulumi.export("portId", attach.port_id)
+        ```
 
         :param str resource_name: The name of the resource.
         :param PortVlanAttachmentArgs args: The arguments to use to populate this resource's properties.

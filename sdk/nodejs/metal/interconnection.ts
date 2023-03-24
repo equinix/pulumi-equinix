@@ -7,6 +7,34 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
+/**
+ * Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+ *
+ * > Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const metro = config.get("metro") || "SV";
+ * const speedInMbps = config.getNumber("speedInMbps") || 200;
+ * const connection = new equinix.metal.Interconnection("connection", {
+ *     name: "fabric-port-to-metal",
+ *     projectId: projectId,
+ *     type: "shared",
+ *     redundancy: "primary",
+ *     metro: metro,
+ *     speed: `${speedInMbps}Mbps`,
+ *     serviceTokenType: "z_side",
+ * });
+ * export const connectionStatus = connection.status;
+ * export const connectionTokens = connection.serviceTokens;
+ * ```
+ */
 export class Interconnection extends pulumi.CustomResource {
     /**
      * Get an existing Interconnection resource's state with the given name, ID, and optional extra

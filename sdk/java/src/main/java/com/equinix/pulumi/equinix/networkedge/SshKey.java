@@ -16,13 +16,41 @@ import javax.annotation.Nullable;
 /**
  * Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.SshKey;
+ * import com.pulumi.equinix.networkedge.SshKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sshKey = new SshKey(&#34;sshKey&#34;, SshKeyArgs.builder()        
+ *             .name(&#34;johnKent&#34;)
+ *             .publicKey(Files.readString(Paths.get(&#34;/Users/John/.ssh/ne_rsa.pub&#34;)))
+ *             .build());
+ * 
+ *         ctx.export(&#34;sshKeyId&#34;, sshKey.id());
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
- * This resource can be imported using an existing ID
- * 
- * ```sh
- *  $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/sshKey:SshKey")

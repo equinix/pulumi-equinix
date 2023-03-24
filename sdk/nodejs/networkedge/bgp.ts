@@ -14,23 +14,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const test = new equinix.networkedge.Bgp("test", {
- *     authenticationKey: "secret",
+ * const bgp = new equinix.networkedge.Bgp("bgp", {
  *     connectionId: "54014acf-9730-4b55-a791-459283d05fb1",
- *     localAsn: 12345,
  *     localIpAddress: "10.1.1.1/30",
- *     remoteAsn: 66123,
+ *     localAsn: 12345,
  *     remoteIpAddress: "10.1.1.2",
+ *     remoteAsn: 66123,
+ *     authenticationKey: "secret",
  * });
+ * export const state = bgp.state;
+ * export const provisioningStatus = bgp.provisioningStatus;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing ID
- *
- * ```sh
- *  $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id} <break>```<break><break>
  */
 export class Bgp extends pulumi.CustomResource {
     /**

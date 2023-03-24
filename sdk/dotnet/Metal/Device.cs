@@ -18,9 +18,6 @@ namespace Pulumi.Equinix.Metal
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// 
     /// ## Example Usage
-    /// 
-    /// Create a device and add it to cool_project
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -28,198 +25,28 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var web = new Equinix.Metal.Device("web", new()
     ///     {
-    ///         Hostname = "tf.coreos2",
+    ///         Hostname = "webserver1",
     ///         Plan = "c3.small.x86",
-    ///         Metro = "sv",
     ///         OperatingSystem = "ubuntu_20_04",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2-pxe",
-    ///         Plan = "c3.small.x86",
     ///         Metro = "sv",
-    ///         OperatingSystem = "custom_ipxe",
     ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
-    ///         AlwaysPxe = false,
-    ///         UserData = data.Ignition_config.Example.Rendered,
+    ///         ProjectId = projectId,
     ///     });
     /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         Hostname = "tf.coreos2",
-    ///         Plan = "c3.small.x86",
-    ///         Facilities = new[]
-    ///         {
-    ///             "ny5",
-    ///         },
-    ///         OperatingSystem = "ubuntu_20_04",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///         IpAddresses = new[]
-    ///         {
-    ///             new Equinix.Metal.Inputs.DeviceIpAddressArgs
-    ///             {
-    ///                 Type = "private_ipv4",
-    ///                 Cidr = 30,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Deploy device on next-available reserved hardware and do custom partitioning.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var web1 = new Equinix.Metal.Device("web1", new()
-    ///     {
-    ///         Hostname = "tftest",
-    ///         Plan = "c3.small.x86",
-    ///         Facilities = new[]
-    ///         {
-    ///             "ny5",
-    ///         },
-    ///         OperatingSystem = "ubuntu_20_04",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///         HardwareReservationId = "next-available",
-    ///         Storage = @"{
-    ///   ""disks"": [
-    ///     {
-    ///       ""device"": ""/dev/sda"",
-    ///       ""wipeTable"": true,
-    ///       ""partitions"": [
-    ///         {
-    ///           ""label"": ""BIOS"",
-    ///           ""number"": 1,
-    ///           ""size"": ""4096""
-    ///         },
-    ///         {
-    ///           ""label"": ""SWAP"",
-    ///           ""number"": 2,
-    ///           ""size"": ""3993600""
-    ///         },
-    ///         {
-    ///           ""label"": ""ROOT"",
-    ///           ""number"": 3,
-    ///           ""size"": ""0""
-    ///         }
-    ///       ]
-    ///     }
-    ///   ],
-    ///   ""filesystems"": [
-    ///     {
-    ///       ""mount"": {
-    ///         ""device"": ""/dev/sda3"",
-    ///         ""format"": ""ext4"",
-    ///         ""point"": ""/"",
-    ///         ""create"": {
-    ///           ""options"": [
-    ///             ""-L"",
-    ///             ""ROOT""
-    ///           ]
-    ///         }
-    ///       }
-    ///     },
-    ///     {
-    ///       ""mount"": {
-    ///         ""device"": ""/dev/sda2"",
-    ///         ""format"": ""swap"",
-    ///         ""point"": ""none"",
-    ///         ""create"": {
-    ///           ""options"": [
-    ///             ""-L"",
-    ///             ""SWAP""
-    ///           ]
-    ///         }
-    ///       }
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a device and allow the `user_data` and `custom_data` attributes to change in-place (i.e., without destroying and recreating the device):
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Equinix = Pulumi.Equinix;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pxe1 = new Equinix.Metal.Device("pxe1", new()
-    ///     {
-    ///         Hostname = "tf.coreos2-pxe",
-    ///         Plan = "c3.small.x86",
-    ///         Metro = "sv",
-    ///         OperatingSystem = "custom_ipxe",
-    ///         BillingCycle = "hourly",
-    ///         ProjectId = local.Project_id,
-    ///         IpxeScriptUrl = "https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
-    ///         AlwaysPxe = false,
-    ///         UserData = local.User_data,
-    ///         CustomData = local.Custom_data,
-    ///         Behavior = new Equinix.Metal.Inputs.DeviceBehaviorArgs
-    ///         {
-    ///             AllowChanges = new[]
-    ///             {
-    ///                 "custom_data",
-    ///                 "user_data",
-    ///             },
-    ///         },
-    ///     });
-    /// 
+    ///         ["webPublicIp"] = web.AccessPublicIpv4.Apply(accessPublicIpv4 =&gt; $"http://{accessPublicIpv4}"),
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing device ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
-    /// ```
+    /// This resource can be imported using an existing device ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/device:Device")]
     public partial class Device : global::Pulumi.CustomResource
@@ -504,7 +331,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
                 AdditionalSecretOutputs =
                 {
                     "customData",

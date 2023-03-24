@@ -10,13 +10,40 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
+    /// Provides an Equinix Metal project resource to allow you manage devices
+    /// in your projects.
+    /// 
+    /// &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
+    /// `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your
+    /// Equinix Metal bill simple and easy to review, please re-use your existing projects.
+    /// 
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var organizationId = config.Require("organizationId");
+    ///     var name = config.Get("name") ?? "Default Project";
+    ///     var projectResource = new Equinix.Metal.Project("project", new()
+    ///     {
+    ///         Name = name,
+    ///         OrganizationId = organizationId,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["projectId"] = projectResource.Id,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing project ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
-    /// ```
+    /// This resource can be imported using an existing project ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
@@ -88,7 +115,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

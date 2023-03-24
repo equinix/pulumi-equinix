@@ -17,165 +17,26 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Create a device and add it to coolProject
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const web1 = new equinix.metal.Device("web1", {
- *     hostname: "tf.coreos2",
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const web = new equinix.metal.Device("web", {
+ *     hostname: "webserver1",
  *     plan: "c3.small.x86",
- *     metro: "sv",
  *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- * });
- * ```
- *
- * Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const pxe1 = new equinix.metal.Device("pxe1", {
- *     hostname: "tf.coreos2-pxe",
- *     plan: "c3.small.x86",
  *     metro: "sv",
- *     operatingSystem: "custom_ipxe",
  *     billingCycle: "hourly",
- *     projectId: local.project_id,
- *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
- *     alwaysPxe: false,
- *     userData: data.ignition_config.example.rendered,
+ *     projectId: projectId,
  * });
- * ```
- *
- * Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const web1 = new equinix.metal.Device("web1", {
- *     hostname: "tf.coreos2",
- *     plan: "c3.small.x86",
- *     facilities: ["ny5"],
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- *     ipAddresses: [{
- *         type: "private_ipv4",
- *         cidr: 30,
- *     }],
- * });
- * ```
- *
- * Deploy device on next-available reserved hardware and do custom partitioning.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const web1 = new equinix.metal.Device("web1", {
- *     hostname: "tftest",
- *     plan: "c3.small.x86",
- *     facilities: ["ny5"],
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- *     hardwareReservationId: "next-available",
- *     storage: `{
- *   "disks": [
- *     {
- *       "device": "/dev/sda",
- *       "wipeTable": true,
- *       "partitions": [
- *         {
- *           "label": "BIOS",
- *           "number": 1,
- *           "size": "4096"
- *         },
- *         {
- *           "label": "SWAP",
- *           "number": 2,
- *           "size": "3993600"
- *         },
- *         {
- *           "label": "ROOT",
- *           "number": 3,
- *           "size": "0"
- *         }
- *       ]
- *     }
- *   ],
- *   "filesystems": [
- *     {
- *       "mount": {
- *         "device": "/dev/sda3",
- *         "format": "ext4",
- *         "point": "/",
- *         "create": {
- *           "options": [
- *             "-L",
- *             "ROOT"
- *           ]
- *         }
- *       }
- *     },
- *     {
- *       "mount": {
- *         "device": "/dev/sda2",
- *         "format": "swap",
- *         "point": "none",
- *         "create": {
- *           "options": [
- *             "-L",
- *             "SWAP"
- *           ]
- *         }
- *       }
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- *
- * Create a device and allow the `userData` and `customData` attributes to change in-place (i.e., without destroying and recreating the device):
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
- *
- * const pxe1 = new equinix.metal.Device("pxe1", {
- *     hostname: "tf.coreos2-pxe",
- *     plan: "c3.small.x86",
- *     metro: "sv",
- *     operatingSystem: "custom_ipxe",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- *     ipxeScriptUrl: "https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe",
- *     alwaysPxe: false,
- *     userData: local.user_data,
- *     customData: local.custom_data,
- *     behavior: {
- *         allowChanges: [
- *             "custom_data",
- *             "user_data",
- *         ],
- *     },
- * });
+ * export const webPublicIp = pulumi.interpolate`http://${web.accessPublicIpv4}`;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing device ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
- * ```
+ * This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
  */
 export class Device extends pulumi.CustomResource {
     /**

@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Equinix.Metal
 {
+    /// <summary>
+    /// Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+    /// 
+    /// &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+    /// 
+    /// ## Example Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Equinix = Pulumi.Equinix;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var metro = config.Get("metro") ?? "SV";
+    ///     var speedInMbps = config.GetNumber("speedInMbps") ?? 200;
+    ///     var connection = new Equinix.Metal.Interconnection("connection", new()
+    ///     {
+    ///         Name = "fabric-port-to-metal",
+    ///         ProjectId = projectId,
+    ///         Type = "shared",
+    ///         Redundancy = "primary",
+    ///         Metro = metro,
+    ///         Speed = $"{speedInMbps}Mbps",
+    ///         ServiceTokenType = "z_side",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["connectionStatus"] = connection.Status,
+    ///         ["connectionTokens"] = connection.ServiceTokens,
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [EquinixResourceType("equinix:metal/interconnection:Interconnection")]
     public partial class Interconnection : global::Pulumi.CustomResource
     {
@@ -139,7 +175,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

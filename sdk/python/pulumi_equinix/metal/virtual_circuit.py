@@ -596,35 +596,28 @@ class VirtualCircuit(pulumi.CustomResource):
         > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 
         ## Example Usage
-
-        Pick an existing Project and dedicated Connection, create a VLAN and use `metal.VirtualCircuit`
-        to associate it with a Primary Port of the Connection.
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        project_id = "52000fb2-ee46-4673-93a8-de2c2bdba33c"
-        conn_id = "73f12f29-3e19-43a0-8e90-ae81580db1e0"
-        test_interconnection = equinix.metal.get_interconnection(connection_id=conn_id)
-        test_vlan = equinix.metal.Vlan("testVlan",
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        connection_id = config.require("connectionId")
+        vlan_id = config.require("vlanId")
+        port_id = equinix.metal.get_interconnection(connection_id=connection_id).ports[0].id
+        vc = equinix.metal.VirtualCircuit("vc",
+            connection_id=connection_id,
             project_id=project_id,
-            metro=test_interconnection.metro)
-        test_virtual_circuit = equinix.metal.VirtualCircuit("testVirtualCircuit",
-            connection_id=conn_id,
-            project_id=project_id,
-            port_id=test_interconnection.ports[0].id,
-            vlan_id=test_vlan.id,
+            port_id=port_id,
+            vlan_id=vlan_id,
             nni_vlan=1056)
+        pulumi.export("vcStatus", vc.status)
+        pulumi.export("vcVnid", vc.vnid)
         ```
 
         ## Import
 
-        This resource can be imported using an existing Virtual Circuit ID
-
-        ```sh
-         $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
-        ```
+        This resource can be imported using an existing Virtual Circuit ID: <break><break>```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -661,35 +654,28 @@ class VirtualCircuit(pulumi.CustomResource):
         > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 
         ## Example Usage
-
-        Pick an existing Project and dedicated Connection, create a VLAN and use `metal.VirtualCircuit`
-        to associate it with a Primary Port of the Connection.
-
         ```python
         import pulumi
         import pulumi_equinix as equinix
 
-        project_id = "52000fb2-ee46-4673-93a8-de2c2bdba33c"
-        conn_id = "73f12f29-3e19-43a0-8e90-ae81580db1e0"
-        test_interconnection = equinix.metal.get_interconnection(connection_id=conn_id)
-        test_vlan = equinix.metal.Vlan("testVlan",
+        config = pulumi.Config()
+        project_id = config.require("projectId")
+        connection_id = config.require("connectionId")
+        vlan_id = config.require("vlanId")
+        port_id = equinix.metal.get_interconnection(connection_id=connection_id).ports[0].id
+        vc = equinix.metal.VirtualCircuit("vc",
+            connection_id=connection_id,
             project_id=project_id,
-            metro=test_interconnection.metro)
-        test_virtual_circuit = equinix.metal.VirtualCircuit("testVirtualCircuit",
-            connection_id=conn_id,
-            project_id=project_id,
-            port_id=test_interconnection.ports[0].id,
-            vlan_id=test_vlan.id,
+            port_id=port_id,
+            vlan_id=vlan_id,
             nni_vlan=1056)
+        pulumi.export("vcStatus", vc.status)
+        pulumi.export("vcVnid", vc.vnid)
         ```
 
         ## Import
 
-        This resource can be imported using an existing Virtual Circuit ID
-
-        ```sh
-         $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
-        ```
+        This resource can be imported using an existing Virtual Circuit ID: <break><break>```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param VirtualCircuitArgs args: The arguments to use to populate this resource's properties.

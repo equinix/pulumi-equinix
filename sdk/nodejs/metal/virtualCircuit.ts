@@ -12,38 +12,31 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Pick an existing Project and dedicated Connection, create a VLAN and use `equinix.metal.VirtualCircuit`
- * to associate it with a Primary Port of the Connection.
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix/pulumi-equinix";
  *
- * const projectId = "52000fb2-ee46-4673-93a8-de2c2bdba33c";
- * const connId = "73f12f29-3e19-43a0-8e90-ae81580db1e0";
- * const testInterconnection = equinix.metal.getInterconnection({
- *     connectionId: connId,
- * });
- * const testVlan = new equinix.metal.Vlan("testVlan", {
+ * const config = new pulumi.Config();
+ * const projectId = config.require("projectId");
+ * const connectionId = config.require("connectionId");
+ * const vlanId = config.require("vlanId");
+ * const portId = equinix.metal.getInterconnection({
+ *     connectionId: connectionId,
+ * }).then(invoke => invoke.ports?.[0]?.id);
+ * const vc = new equinix.metal.VirtualCircuit("vc", {
+ *     connectionId: connectionId,
  *     projectId: projectId,
- *     metro: testInterconnection.then(testInterconnection => testInterconnection.metro),
- * });
- * const testVirtualCircuit = new equinix.metal.VirtualCircuit("testVirtualCircuit", {
- *     connectionId: connId,
- *     projectId: projectId,
- *     portId: testInterconnection.then(testInterconnection => testInterconnection.ports?.[0]?.id),
- *     vlanId: testVlan.id,
+ *     portId: portId,
+ *     vlanId: vlanId,
  *     nniVlan: 1056,
  * });
+ * export const vcStatus = vc.status;
+ * export const vcVnid = vc.vnid;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing Virtual Circuit ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
- * ```
+ * This resource can be imported using an existing Virtual Circuit ID: <break><break>```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
  */
 export class VirtualCircuit extends pulumi.CustomResource {
     /**

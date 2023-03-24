@@ -15,7 +15,6 @@ import (
 // Edge SSH users.
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -23,22 +22,26 @@ import (
 //
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/networkedge"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkedge.NewSshUser(ctx, "john", &networkedge.SshUserArgs{
-//				Username: pulumi.String("john"),
-//				Password: pulumi.String("secret"),
+//			cfg := config.New(ctx, "")
+//			device1Id := cfg.Require("device1Id")
+//			device2Id := cfg.Require("device2Id")
+//			sshUser, err := networkedge.NewSshUser(ctx, "sshUser", &networkedge.SshUserArgs{
+//				Username: pulumi.String("johnKent"),
 //				DeviceIds: pulumi.StringArray{
-//					equinix_network_device.Csr1000vHa.Uuid,
-//					equinix_network_device.Csr1000vHa.Redundant_uuid,
+//					pulumi.String(device1Id),
+//					pulumi.String(device2Id),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("sshUserId", sshUser.ID())
 //			return nil
 //		})
 //	}
@@ -47,13 +50,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
-//
-// ```
+// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
 type SshUser struct {
 	pulumi.CustomResourceState
 

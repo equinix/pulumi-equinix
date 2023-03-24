@@ -14,7 +14,6 @@ namespace Pulumi.Equinix.NetworkEdge
     /// Network Edge virtual network device links.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -22,23 +21,43 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Example of device link with HA device pair
-    ///     // where each device is in different metro
-    ///     var test = new Equinix.NetworkEdge.DeviceLink("test", new()
+    ///     var config = new Config();
+    ///     var accountName = config.Require("accountName");
+    ///     var accountMetro = config.Require("accountMetro");
+    ///     var device1Id = config.Require("device1Id");
+    ///     var device2Id = config.Require("device2Id");
+    ///     var accountfNum = Equinix.NetworkEdge.GetAccount.Invoke(new()
     ///     {
+    ///         Name = accountName,
+    ///         MetroCode = accountMetro,
+    ///     }).Apply(invoke =&gt; invoke.Number);
+    /// 
+    ///     var device1Metro = Equinix.NetworkEdge.GetDevice.Invoke(new()
+    ///     {
+    ///         Uuid = device1Id,
+    ///     }).Apply(invoke =&gt; invoke.MetroCode);
+    /// 
+    ///     var device2Metro = Equinix.NetworkEdge.GetDevice.Invoke(new()
+    ///     {
+    ///         Uuid = device2Id,
+    ///     }).Apply(invoke =&gt; invoke.MetroCode);
+    /// 
+    ///     var deviceLink = new Equinix.NetworkEdge.DeviceLink("deviceLink", new()
+    ///     {
+    ///         Name = "test-link",
     ///         Subnet = "192.168.40.64/27",
     ///         Devices = new[]
     ///         {
     ///             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
     ///             {
-    ///                 Id = equinix_network_device.Test.Uuid,
-    ///                 Asn = equinix_network_device.Test.Asn &gt; 0 ? equinix_network_device.Test.Asn : 22111,
+    ///                 Id = "device1Id",
+    ///                 Asn = 22111,
     ///                 InterfaceId = 6,
     ///             },
     ///             new Equinix.NetworkEdge.Inputs.DeviceLinkDeviceArgs
     ///             {
-    ///                 Id = equinix_network_device.Test.Secondary_device[0].Uuid,
-    ///                 Asn = equinix_network_device.Test.Secondary_device[0].Asn &gt; 0 ? equinix_network_device.Test.Secondary_device[0].Asn : 22333,
+    ///                 Id = "device2Id",
+    ///                 Asn = 22333,
     ///                 InterfaceId = 7,
     ///             },
     ///         },
@@ -46,25 +65,26 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         {
     ///             new Equinix.NetworkEdge.Inputs.DeviceLinkLinkArgs
     ///             {
-    ///                 AccountNumber = equinix_network_device.Test.Account_number,
-    ///                 SrcMetroCode = equinix_network_device.Test.Metro_code,
-    ///                 DstMetroCode = equinix_network_device.Test.Secondary_device[0].Metro_code,
+    ///                 AccountNumber = accountfNum,
+    ///                 SrcMetroCode = device1Metro,
+    ///                 DstMetroCode = device2Metro,
     ///                 Throughput = "50",
     ///                 ThroughputUnit = "Mbps",
     ///             },
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["status"] = deviceLink.Status,
+    ///         ["devices"] = deviceLink.Devices,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
-    /// ```
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/deviceLink:DeviceLink")]
     public partial class DeviceLink : global::Pulumi.CustomResource
@@ -132,7 +152,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -132,6 +132,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Equinix Fabric v4
 			"equinix_fabric_connection":      {
 				Tok: makeEquinixResource(fabricMod, "Connection"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"a_side": {
 						MaxItemsOne: tfbridge.True(),
@@ -363,6 +366,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"equinix_fabric_service_profile": {
 				Tok: makeEquinixResource(fabricMod, "ServiceProfile"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
 						Type:     "string",
@@ -429,10 +435,23 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			// Equinix Metal v1
-			"equinix_metal_bgp_session": {Tok: makeEquinixResource(metalMod, "BgpSession")},
-			"equinix_metal_connection":  {Tok: makeEquinixResource(metalMod, "Interconnection")},
+			"equinix_metal_bgp_session": {
+				Tok: makeEquinixResource(metalMod, "BgpSession"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_connection":  {
+				Tok: makeEquinixResource(metalMod, "Interconnection"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_metal_device":      {
 				Tok: makeEquinixResource(metalMod, "Device"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"billing_cycle": {
 						Type:     "string",
@@ -467,32 +486,86 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_device_network_type":  {Tok: makeEquinixResource(metalMod, "DeviceNetworkType")},
-			"equinix_metal_gateway":      		  {Tok: makeEquinixResource(metalMod, "Gateway")},
-			"equinix_metal_ip_attachment":        {Tok: makeEquinixResource(metalMod, "IpAttachment")},
-			"equinix_metal_organization":      	  {
-				Tok: makeEquinixResource(metalMod, "Organization"),
+			"equinix_metal_device_network_type":  {
+				Tok: makeEquinixResource(metalMod, "DeviceNetworkType"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_gateway":      		  {
+				Tok: makeEquinixResource(metalMod, "Gateway"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_ip_attachment":        {
+				Tok: makeEquinixResource(metalMod, "IpAttachment"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"address": {
 						MaxItemsOne: tfbridge.True(),
 					},
 				},
 			},
-			"equinix_metal_organization_member":  {Tok: makeEquinixResource(metalMod, "OrganizationMember")},
-			"equinix_metal_port":      			  {Tok: makeEquinixResource(metalMod, "Port")},
-			"equinix_metal_port_vlan_attachment": {Tok: makeEquinixResource(metalMod, "PortVlanAttachment")},
+			"equinix_metal_organization":      	  {
+				Tok: makeEquinixResource(metalMod, "Organization"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"address": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"equinix_metal_organization_member":  {
+				Tok: makeEquinixResource(metalMod, "OrganizationMember"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_port":      			  {
+				Tok: makeEquinixResource(metalMod, "Port"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_port_vlan_attachment": {
+				Tok: makeEquinixResource(metalMod, "PortVlanAttachment"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_metal_project":      		  {
 				Tok: makeEquinixResource(metalMod, "Project"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"bgp_config": {
 						MaxItemsOne: tfbridge.True(),
 					},
 				},
 			},
-			"equinix_metal_project_api_key":      {Tok: makeEquinixResource(metalMod, "ProjectApiKey")},
-			"equinix_metal_project_ssh_key":      {Tok: makeEquinixResource(metalMod, "ProjectSshKey")},
+			"equinix_metal_project_api_key":      {
+				Tok: makeEquinixResource(metalMod, "ProjectApiKey"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_project_ssh_key":      {
+				Tok: makeEquinixResource(metalMod, "ProjectSshKey"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_metal_reserved_ip_block": {
 				Tok: makeEquinixResource(metalMod, "ReservedIpBlock"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"facility": {
 						Type:     "string",
@@ -504,12 +577,35 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_spot_market_request": {Tok: makeEquinixResource(metalMod, "SpotMarketRequest")},
-			"equinix_metal_ssh_key":      		 {Tok: makeEquinixResource(metalMod, "SshKey")},
-			"equinix_metal_user_api_key":      	 {Tok: makeEquinixResource(metalMod, "UserApiKey")},
-			"equinix_metal_virtual_circuit":     {Tok: makeEquinixResource(metalMod, "VirtualCircuit")},
+			"equinix_metal_spot_market_request": {
+				Tok: makeEquinixResource(metalMod, "SpotMarketRequest"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_ssh_key":      		 {
+				Tok: makeEquinixResource(metalMod, "SshKey"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_user_api_key":      	 {
+				Tok: makeEquinixResource(metalMod, "UserApiKey"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_metal_virtual_circuit":     {
+				Tok: makeEquinixResource(metalMod, "VirtualCircuit"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_metal_vlan":      			 {
 				Tok: makeEquinixResource(metalMod, "Vlan"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"facility": {
 						Type:     "string",
@@ -517,10 +613,18 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_vrf": {Tok: makeEquinixResource(metalMod, "Vrf")},
+			"equinix_metal_vrf": {
+				Tok: makeEquinixResource(metalMod, "Vrf"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			// Network Edge v1
 			"equinix_network_acl_template": {
 				Tok: makeEquinixResource(networkEdgeMod, "AclTemplate"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"inbound_rule": {
 						Elem: &tfbridge.SchemaInfo{
@@ -534,9 +638,17 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_network_bgp":    {Tok: makeEquinixResource(networkEdgeMod, "Bgp")},
+			"equinix_network_bgp":    {
+				Tok: makeEquinixResource(networkEdgeMod, "Bgp"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_network_device": {
 				Tok: makeEquinixResource(networkEdgeMod, "Device"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"throughput_unit": {
 						Type:     "string",
@@ -544,11 +656,29 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_network_device_link": {Tok: makeEquinixResource(networkEdgeMod, "DeviceLink")},
-			"equinix_network_ssh_key":     {Tok: makeEquinixResource(networkEdgeMod, "SshKey")},
-			"equinix_network_ssh_user":    {Tok: makeEquinixResource(networkEdgeMod, "SshUser")},
+			"equinix_network_device_link": {
+				Tok: makeEquinixResource(networkEdgeMod, "DeviceLink"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_network_ssh_key":     {
+				Tok: makeEquinixResource(networkEdgeMod, "SshKey"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_network_ssh_user":    {
+				Tok: makeEquinixResource(networkEdgeMod, "SshUser"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
 			"equinix_network_file":        {
 				Tok: makeEquinixResource(networkEdgeMod, "NetworkFile"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"metro_code": {
 						Type:     "string",

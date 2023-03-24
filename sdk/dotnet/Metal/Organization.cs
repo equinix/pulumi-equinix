@@ -13,7 +13,6 @@ namespace Pulumi.Equinix.Metal
     /// Provides a resource to manage organization resource in Equinix Metal.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -21,22 +20,31 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new Organization
-    ///     var tfOrganization1 = new Equinix.Metal.Organization("tfOrganization1", new()
+    ///     var config = new Config();
+    ///     var deviceId = config.Require("deviceId");
+    ///     var orgResource = new Equinix.Metal.Organization("org", new()
     ///     {
-    ///         Description = "quux",
+    ///         Name = "Foo Organization",
+    ///         Address = new Equinix.Metal.Inputs.OrganizationAddressArgs
+    ///         {
+    ///             Address = "org street",
+    ///             City = "london",
+    ///             Country = "GB",
+    ///             ZipCode = "12345",
+    ///         },
+    ///         Description = "An organization",
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["org"] = orgResource.Id,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing organization ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id}
-    /// ```
+    /// This resource can be imported using an existing organization ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/organization:Organization")]
     public partial class Organization : global::Pulumi.CustomResource
@@ -113,7 +121,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

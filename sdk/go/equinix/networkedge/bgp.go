@@ -15,7 +15,6 @@ import (
 // Edge BGP peering configurations.
 //
 // ## Example Usage
-//
 // ```go
 // package main
 //
@@ -28,17 +27,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkedge.NewBgp(ctx, "test", &networkedge.BgpArgs{
-//				AuthenticationKey: pulumi.String("secret"),
+//			bgp, err := networkedge.NewBgp(ctx, "bgp", &networkedge.BgpArgs{
 //				ConnectionId:      pulumi.String("54014acf-9730-4b55-a791-459283d05fb1"),
-//				LocalAsn:          pulumi.Int(12345),
 //				LocalIpAddress:    pulumi.String("10.1.1.1/30"),
-//				RemoteAsn:         pulumi.Int(66123),
+//				LocalAsn:          pulumi.Int(12345),
 //				RemoteIpAddress:   pulumi.String("10.1.1.2"),
+//				RemoteAsn:         pulumi.Int(66123),
+//				AuthenticationKey: pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("state", bgp.State)
+//			ctx.Export("provisioningStatus", bgp.ProvisioningStatus)
 //			return nil
 //		})
 //	}
@@ -47,13 +48,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:networkedge/bgp:Bgp example {existing_id}
-//
-// ```
+// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/bgp:Bgp example {existing_id} <break>```<break><break>
 type Bgp struct {
 	pulumi.CustomResourceState
 

@@ -7,13 +7,23 @@ import * as utilities from "../utilities";
 /**
  * Resource `equinix.networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as fs from "fs";
+ *
+ * const sshKey = new equinix.networkedge.SshKey("sshKey", {
+ *     name: "johnKent",
+ *     publicKey: fs.readFileSync("/Users/John/.ssh/ne_rsa.pub"),
+ * });
+ * export const sshKeyId = sshKey.id;
+ * ```
+ *
  * ## Import
  *
- * This resource can be imported using an existing ID
- *
- * ```sh
- *  $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
- * ```
+ * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
  */
 export class SshKey extends pulumi.CustomResource {
     /**

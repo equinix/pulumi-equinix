@@ -14,7 +14,6 @@ namespace Pulumi.Equinix.NetworkEdge
     /// Edge SSH users.
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -22,29 +21,29 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create SSH user with password auth method and associate it with
-    ///     // two virtual network devices
-    ///     var john = new Equinix.NetworkEdge.SshUser("john", new()
+    ///     var config = new Config();
+    ///     var device1Id = config.Require("device1Id");
+    ///     var device2Id = config.Require("device2Id");
+    ///     var sshUser = new Equinix.NetworkEdge.SshUser("sshUser", new()
     ///     {
-    ///         Username = "john",
-    ///         Password = "secret",
+    ///         Username = "johnKent",
     ///         DeviceIds = new[]
     ///         {
-    ///             equinix_network_device.Csr1000v_ha.Uuid,
-    ///             equinix_network_device.Csr1000v_ha.Redundant_uuid,
+    ///             device1Id,
+    ///             device2Id,
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["sshUserId"] = sshUser.Id,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
-    /// ```
+    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/sshUser:SshUser")]
     public partial class SshUser : global::Pulumi.CustomResource
@@ -96,7 +95,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
                 AdditionalSecretOutputs =
                 {
                     "password",

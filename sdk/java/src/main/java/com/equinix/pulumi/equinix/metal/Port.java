@@ -17,6 +17,44 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Port;
+ * import com.pulumi.equinix.metal.PortArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var portId = config.get(&#34;portId&#34;);
+ *         var org = new Port(&#34;org&#34;, PortArgs.builder()        
+ *             .portId(portId)
+ *             .bonded(true)
+ *             .layer2(true)
+ *             .build());
+ * 
+ *         ctx.export(&#34;portType&#34;, port.type());
+ *         ctx.export(&#34;portBondedNetworkType&#34;, port.networkType());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="equinix:metal/port:Port")
 public class Port extends com.pulumi.resources.CustomResource {
     /**

@@ -23,19 +23,12 @@ import javax.annotation.Nullable;
  * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
  * 
  * ## Example Usage
- * 
- * Pick an existing Project and dedicated Connection, create a VLAN and use `equinix.metal.VirtualCircuit`
- * to associate it with a Primary Port of the Connection.
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.equinix.metal.MetalFunctions;
- * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
- * import com.pulumi.equinix.metal.Vlan;
- * import com.pulumi.equinix.metal.VlanArgs;
  * import com.pulumi.equinix.metal.VirtualCircuit;
  * import com.pulumi.equinix.metal.VirtualCircuitArgs;
  * import java.util.List;
@@ -51,38 +44,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var projectId = &#34;52000fb2-ee46-4673-93a8-de2c2bdba33c&#34;;
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var connectionId = config.get(&#34;connectionId&#34;);
+ *         final var vlanId = config.get(&#34;vlanId&#34;);
+ *         final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
+ *             .connectionId(connectionId)
+ *             .build()).ports()[0].id();
  * 
- *         final var connId = &#34;73f12f29-3e19-43a0-8e90-ae81580db1e0&#34;;
- * 
- *         final var testInterconnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
- *             .connectionId(connId)
- *             .build());
- * 
- *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
+ *         var vc = new VirtualCircuit(&#34;vc&#34;, VirtualCircuitArgs.builder()        
+ *             .connectionId(connectionId)
  *             .projectId(projectId)
- *             .metro(testInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.metro()))
- *             .build());
- * 
- *         var testVirtualCircuit = new VirtualCircuit(&#34;testVirtualCircuit&#34;, VirtualCircuitArgs.builder()        
- *             .connectionId(connId)
- *             .projectId(projectId)
- *             .portId(testInterconnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[0].id()))
- *             .vlanId(testVlan.id())
+ *             .portId(portId)
+ *             .vlanId(vlanId)
  *             .nniVlan(1056)
  *             .build());
  * 
+ *         ctx.export(&#34;vcStatus&#34;, vc.status());
+ *         ctx.export(&#34;vcVnid&#34;, vc.vnid());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing Virtual Circuit ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
- * ```
+ * This resource can be imported using an existing Virtual Circuit ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/virtualCircuit:VirtualCircuit")

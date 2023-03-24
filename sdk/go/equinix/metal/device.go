@@ -21,181 +21,37 @@ import (
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 //
 // ## Example Usage
-//
-// # Create a device and add it to coolProject
-//
 // ```go
 // package main
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2"),
+//			cfg := config.New(ctx, "")
+//			projectId := cfg.Require("projectId")
+//			web, err := metal.NewDevice(ctx, "web", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("webserver1"),
 //				Plan:            pulumi.String("c3.small.x86"),
-//				Metro:           pulumi.String("sv"),
 //				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Same as above, but boot via iPXE initially, using the Ignition Provider for provisioning
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2-pxe"),
-//				Plan:            pulumi.String("c3.small.x86"),
 //				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String("custom_ipxe"),
 //				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe"),
-//				AlwaysPxe:       pulumi.Bool(false),
-//				UserData:        pulumi.Any(data.Ignition_config.Example.Rendered),
+//				ProjectId:       pulumi.String(projectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a device without a public IP address in facility ny5, with only a /30 private IPv4 subnet (4 IP addresses)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname: pulumi.String("tf.coreos2"),
-//				Plan:     pulumi.String("c3.small.x86"),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("ny5"),
-//				},
-//				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				IpAddresses: metal.DeviceIpAddressArray{
-//					&metal.DeviceIpAddressArgs{
-//						Type: pulumi.String("private_ipv4"),
-//						Cidr: pulumi.Int(30),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Deploy device on next-available reserved hardware and do custom partitioning.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "web1", &metal.DeviceArgs{
-//				Hostname: pulumi.String("tftest"),
-//				Plan:     pulumi.String("c3.small.x86"),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("ny5"),
-//				},
-//				OperatingSystem:       pulumi.String("ubuntu_20_04"),
-//				BillingCycle:          pulumi.String("hourly"),
-//				ProjectId:             pulumi.Any(local.Project_id),
-//				HardwareReservationId: pulumi.String("next-available"),
-//				Storage:               pulumi.String("{\n  \"disks\": [\n    {\n      \"device\": \"/dev/sda\",\n      \"wipeTable\": true,\n      \"partitions\": [\n        {\n          \"label\": \"BIOS\",\n          \"number\": 1,\n          \"size\": \"4096\"\n        },\n        {\n          \"label\": \"SWAP\",\n          \"number\": 2,\n          \"size\": \"3993600\"\n        },\n        {\n          \"label\": \"ROOT\",\n          \"number\": 3,\n          \"size\": \"0\"\n        }\n      ]\n    }\n  ],\n  \"filesystems\": [\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda3\",\n        \"format\": \"ext4\",\n        \"point\": \"/\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"ROOT\"\n          ]\n        }\n      }\n    },\n    {\n      \"mount\": {\n        \"device\": \"/dev/sda2\",\n        \"format\": \"swap\",\n        \"point\": \"none\",\n        \"create\": {\n          \"options\": [\n            \"-L\",\n            \"SWAP\"\n          ]\n        }\n      }\n    }\n  ]\n}\n"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Create a device and allow the `userData` and `customData` attributes to change in-place (i.e., without destroying and recreating the device):
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.NewDevice(ctx, "pxe1", &metal.DeviceArgs{
-//				Hostname:        pulumi.String("tf.coreos2-pxe"),
-//				Plan:            pulumi.String("c3.small.x86"),
-//				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String("custom_ipxe"),
-//				BillingCycle:    pulumi.String("hourly"),
-//				ProjectId:       pulumi.Any(local.Project_id),
-//				IpxeScriptUrl:   pulumi.String("https://rawgit.com/cloudnativelabs/pxe/master/metal/coreos-stable-metal.ipxe"),
-//				AlwaysPxe:       pulumi.Bool(false),
-//				UserData:        pulumi.Any(local.User_data),
-//				CustomData:      pulumi.Any(local.Custom_data),
-//				Behavior: &metal.DeviceBehaviorArgs{
-//					AllowChanges: pulumi.StringArray{
-//						pulumi.String("custom_data"),
-//						pulumi.String("user_data"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			ctx.Export("webPublicIp", web.AccessPublicIpv4.ApplyT(func(accessPublicIpv4 string) (string, error) {
+//				return fmt.Sprintf("http://%v", accessPublicIpv4), nil
+//			}).(pulumi.StringOutput))
 //			return nil
 //		})
 //	}
@@ -204,13 +60,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using an existing device ID
-//
-// ```sh
-//
-//	$ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
-//
-// ```
+// This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 type Device struct {
 	pulumi.CustomResourceState
 

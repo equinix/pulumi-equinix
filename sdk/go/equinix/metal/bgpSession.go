@@ -16,6 +16,36 @@ import (
 // You need to have BGP config enabled in your project.
 //
 // BGP session must be linked to a device running [BIRD](https://bird.network.cz) or other BGP routing daemon which will control route advertisements via the session to Equinix Metal's upstream routers.
+//
+// ## Example Usage
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			deviceId := cfg.Require("deviceId")
+//			bgp, err := metal.NewBgpSession(ctx, "bgp", &metal.BgpSessionArgs{
+//				DeviceId:      pulumi.String(deviceId),
+//				AddressFamily: pulumi.String("ipv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("bgpSessionStatus", bgp.Status)
+//			return nil
+//		})
+//	}
+//
+// ```
 type BgpSession struct {
 	pulumi.CustomResourceState
 

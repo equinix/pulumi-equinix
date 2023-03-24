@@ -10,15 +10,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// Provides an Equinix Metal project resource to allow you manage devices
+// in your projects.
 //
-// # This resource can be imported using an existing project ID
+// > **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
+// `metal.Project` resources will affect the rendered invoice. If you want to keep your
+// Equinix Metal bill simple and easy to review, please re-use your existing projects.
 //
-// ```sh
+// ## Example Usage
+// ```go
+// package main
 //
-//	$ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			organizationId := cfg.Require("organizationId")
+//			name := "Default Project"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			projectResource, err := metal.NewProject(ctx, "project", &metal.ProjectArgs{
+//				Name:           pulumi.String(name),
+//				OrganizationId: pulumi.String(organizationId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("projectId", projectResource.ID())
+//			return nil
+//		})
+//	}
 //
 // ```
+//
+// ## Import
+//
+// This resource can be imported using an existing project ID: <break><break>```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
 type Project struct {
 	pulumi.CustomResourceState
 

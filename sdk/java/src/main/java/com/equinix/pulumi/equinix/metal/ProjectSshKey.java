@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.ProjectSshKey;
  * import com.pulumi.equinix.metal.ProjectSshKeyArgs;
- * import com.pulumi.equinix.metal.Device;
- * import com.pulumi.equinix.metal.DeviceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,23 +40,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var projectId = &#34;&lt;UUID_of_your_project&gt;&#34;;
- * 
- *         var testProjectSshKey = new ProjectSshKey(&#34;testProjectSshKey&#34;, ProjectSshKeyArgs.builder()        
- *             .publicKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDM/unxJeFqxsTJcu6mhqsMHSaVlpu+Jj/P+44zrm6X/MAoHSX3X9oLgujEjjZ74yLfdfe0bJrbL2YgJzNaEkIQQ1VPMHB5EhTKUBGnzlPP0hHTnxsjAm9qDHgUPgvgFDQSAMzdJRJ0Cexo16Ph9VxCoLh3dxiE7s2gaM2FdVg7P8aSxKypsxAhYV3D0AwqzoOyT6WWhBoQ0xZ85XevOTnJCpImSemEGs6nVGEsWcEc1d1YvdxFjAK4SdsKUMkj4Dsy/leKsdi/DEAf356vbMT1UHsXXvy5TlHu/Pa6qF53v32Enz+nhKy7/8W2Yt2yWx8HnQcT2rug9lvCXagJO6oauqRTO77C4QZn13ZLMZgLT66S/tNh2EX0gi6vmIs5dth8uF+K6nxIyKJXbcA4ASg7F1OJrHKFZdTc5v1cPeq6PcbqGgc+8SrPYQmzvQqLoMBuxyos2hUkYOmw3aeWJj9nFa8Wu5WaN89mUeOqSkU4S5cgUzWUOmKey56B/j/s1sVys9rMhZapVs0wL4L9GBBM48N5jAQZnnpo85A8KsZq5ME22bTLqnxsDXqDYZvS7PSI6Dxi7eleOFE/NYYDkrgDLHTQri8ucDMVeVWHgoMY2bPXdn7KKy5jW5jKsf8EPARXg77A4gRYmgKrcwIKqJEUPqyxJBe0CPoGTqgXPRsUiQ== tomk@hp2&#34;)
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         var sshKey = new ProjectSshKey(&#34;sshKey&#34;, ProjectSshKeyArgs.builder()        
  *             .projectId(projectId)
+ *             .name(&#34;johnKent&#34;)
+ *             .publicKey(Files.readString(Paths.get(&#34;/Users/John/.ssh/metal_rsa.pub&#34;)))
  *             .build());
  * 
- *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
- *             .hostname(&#34;test&#34;)
- *             .plan(&#34;c3.medium.x86&#34;)
- *             .facilities(&#34;ny5&#34;)
- *             .operatingSystem(&#34;ubuntu_20_04&#34;)
- *             .billingCycle(&#34;hourly&#34;)
- *             .projectSshKeyIds(testProjectSshKey.id())
- *             .projectId(projectId)
- *             .build());
- * 
+ *         ctx.export(&#34;sshKeyId&#34;, sshKey.id());
  *     }
  * }
  * ```

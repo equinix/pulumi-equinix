@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.equinix.metal.Organization;
  * import com.pulumi.equinix.metal.OrganizationArgs;
+ * import com.pulumi.equinix.metal.inputs.OrganizationAddressArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -40,21 +41,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfOrganization1 = new Organization(&#34;tfOrganization1&#34;, OrganizationArgs.builder()        
- *             .description(&#34;quux&#34;)
+ *         final var config = ctx.config();
+ *         final var deviceId = config.get(&#34;deviceId&#34;);
+ *         var orgResource = new Organization(&#34;orgResource&#34;, OrganizationArgs.builder()        
+ *             .name(&#34;Foo Organization&#34;)
+ *             .address(OrganizationAddressArgs.builder()
+ *                 .address(&#34;org street&#34;)
+ *                 .city(&#34;london&#34;)
+ *                 .country(&#34;GB&#34;)
+ *                 .zipCode(&#34;12345&#34;)
+ *                 .build())
+ *             .description(&#34;An organization&#34;)
  *             .build());
  * 
+ *         ctx.export(&#34;org&#34;, orgResource.id());
  *     }
  * }
  * ```
  * 
  * ## Import
  * 
- * This resource can be imported using an existing organization ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id}
- * ```
+ * This resource can be imported using an existing organization ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/organization:Organization")

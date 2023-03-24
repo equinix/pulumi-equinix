@@ -18,15 +18,49 @@ import javax.annotation.Nullable;
 /**
  * Resource `equinix.networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
  * 
- * ## Import
+ * ## Example Usage
+ * ```java
+ * package generated_program;
  * 
- * This resource can be imported using an existing ID
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.networkedge.NetworkFile;
+ * import com.pulumi.equinix.networkedge.NetworkFileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- * ```sh
- *  $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
+ *         var networkFile = new NetworkFile(&#34;networkFile&#34;, NetworkFileArgs.builder()        
+ *             .fileName(&#34;Aviatrix-ZTP-file&#34;)
+ *             .content(Files.readString(Paths.get(&#34;./../assets/aviatrix-cloud-init.txt&#34;)))
+ *             .metroCode(metro)
+ *             .deviceTypeCode(&#34;AVIATRIX_EDGE&#34;)
+ *             .processType(&#34;CLOUD_INIT&#34;)
+ *             .selfManaged(true)
+ *             .byol(true)
+ *             .build());
+ * 
+ *         ctx.export(&#34;networkFileId&#34;, networkFile.id());
+ *         ctx.export(&#34;networkFileStatus&#34;, networkFile.status());
+ *     }
+ * }
  * ```
  * 
- *  The `content`, `self_managed` and `byol` fields can not be imported.
+ * ## Import
+ * 
+ * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `content`, `self_managed` and `byol` fields can not be imported.
  * 
  */
 @ResourceType(type="equinix:networkedge/networkFile:NetworkFile")

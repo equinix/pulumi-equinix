@@ -27,6 +27,107 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.fabric.Connection;
+ * import com.pulumi.equinix.fabric.ConnectionArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+ * import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
+ *         final var speedInMbps = config.get(&#34;speedInMbps&#34;).orElse(50);
+ *         final var fabricPortName = config.get(&#34;fabricPortName&#34;);
+ *         final var awsRegion = config.get(&#34;awsRegion&#34;).orElse(&#34;eu-central-1&#34;);
+ *         final var awsAccountId = config.get(&#34;awsAccountId&#34;);
+ *         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+ *             .filter(GetServiceProfilesFilterArgs.builder()
+ *                 .property(&#34;/name&#34;)
+ *                 .operator(&#34;=&#34;)
+ *                 .values(&#34;AWS Direct Connect&#34;)
+ *                 .build())
+ *             .build()).data()[0].uuid();
+ * 
+ *         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
+ *             .filter(GetPortsFilterArgs.builder()
+ *                 .name(fabricPortName)
+ *                 .build())
+ *             .build()).data()[0].uuid();
+ * 
+ *         var colo2Aws = new Connection(&#34;colo2Aws&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;Pulumi-colo2Aws&#34;)
+ *             .type(&#34;EVPL_VC&#34;)
+ *             .notifications(ConnectionNotificationArgs.builder()
+ *                 .type(&#34;ALL&#34;)
+ *                 .emails(&#34;example@equinix.com&#34;)
+ *                 .build())
+ *             .bandwidth(speedInMbps)
+ *             .redundancy(ConnectionRedundancyArgs.builder()
+ *                 .priority(&#34;PRIMARY&#34;)
+ *                 .build())
+ *             .aSide(ConnectionASideArgs.builder()
+ *                 .accessPoint(ConnectionASideAccessPointArgs.builder()
+ *                     .type(&#34;COLO&#34;)
+ *                     .port(ConnectionASideAccessPointPortArgs.builder()
+ *                         .uuid(portId)
+ *                         .build())
+ *                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
+ *                         .type(&#34;DOT1Q&#34;)
+ *                         .vlanTag(1234)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .zSide(ConnectionZSideArgs.builder()
+ *                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
+ *                     .type(&#34;SP&#34;)
+ *                     .authenticationKey(awsAccountId)
+ *                     .sellerRegion(awsRegion)
+ *                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
+ *                         .type(&#34;L2_PROFILE&#34;)
+ *                         .uuid(serviceProfileId)
+ *                         .build())
+ *                     .location(ConnectionZSideAccessPointLocationArgs.builder()
+ *                         .metroCode(metro)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export(&#34;connectionId&#34;, colo2Aws.id());
+ *         ctx.export(&#34;connectionStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.equinixStatus()));
+ *         ctx.export(&#34;connectionProviderStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.providerStatus()));
+ *         ctx.export(&#34;awsDirectConnectId&#34;, colo2Aws.zSide().applyValue(zSide -&gt; zSide.accessPoint().providerConnectionId()));
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="equinix:fabric/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**

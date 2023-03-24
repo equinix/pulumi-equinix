@@ -389,7 +389,21 @@ class Port(pulumi.CustomResource):
                  vxlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  __props__=None):
         """
-        Create a Port resource with the given unique name, props, and options.
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        port_id = config.require("portId")
+        org = equinix.metal.Port("org",
+            port_id=port_id,
+            bonded=True,
+            layer2=True)
+        pulumi.export("portType", port["type"])
+        pulumi.export("portBondedNetworkType", port["networkType"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bonded: Whether the port should be bonded.
@@ -410,7 +424,21 @@ class Port(pulumi.CustomResource):
                  args: PortArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Port resource with the given unique name, props, and options.
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        config = pulumi.Config()
+        port_id = config.require("portId")
+        org = equinix.metal.Port("org",
+            port_id=port_id,
+            bonded=True,
+            layer2=True)
+        pulumi.export("portType", port["type"])
+        pulumi.export("portBondedNetworkType", port["networkType"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param PortArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

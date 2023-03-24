@@ -15,7 +15,6 @@ namespace Pulumi.Equinix.Metal
     /// see [this article in Equinix Metal documentation](https://metal.equinix.com/developers/docs/deploy/spot-market/).
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -23,15 +22,14 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a spot market request
-    ///     var req = new Equinix.Metal.SpotMarketRequest("req", new()
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var metro = config.Get("metro") ?? "FR";
+    ///     var request = new Equinix.Metal.SpotMarketRequest("request", new()
     ///     {
-    ///         ProjectId = local.Project_id,
-    ///         MaxBidPrice = 0.03,
-    ///         Facilities = new[]
-    ///         {
-    ///             "ny5",
-    ///         },
+    ///         ProjectId = projectId,
+    ///         Metro = metro,
+    ///         MaxBidPrice = 0.75,
     ///         DevicesMin = 1,
     ///         DevicesMax = 1,
     ///         InstanceParameters = new Equinix.Metal.Inputs.SpotMarketRequestInstanceParametersArgs
@@ -43,16 +41,16 @@ namespace Pulumi.Equinix.Metal
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["requestId"] = request.Id,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing spot market request ID
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
-    /// ```
+    /// This resource can be imported using an existing spot market request ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/spotMarketRequest:SpotMarketRequest")]
     public partial class SpotMarketRequest : global::Pulumi.CustomResource
@@ -133,7 +131,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

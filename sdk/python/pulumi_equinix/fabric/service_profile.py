@@ -644,7 +644,56 @@ class ServiceProfile(pulumi.CustomResource):
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
         """
-        Create a ServiceProfile resource with the given unique name, props, and options.
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        profile = equinix.fabric.ServiceProfile("profile",
+            name="Example Cloud Provider",
+            description="50 to 500 Mbps Hosted Connection to Example Cloud",
+            type="L2_PROFILE",
+            access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
+                type="COLO",
+                supported_bandwidths=[
+                    50,
+                    100,
+                    200,
+                    500,
+                ],
+                allow_remote_connections=True,
+                allow_custom_bandwidth=False,
+                allow_bandwidth_auto_approval=False,
+                link_protocol_config=equinix.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs(
+                    encapsulation_strategy="CTAGED",
+                    reuse_vlan_s_tag=False,
+                    encapsulation="DOT1Q",
+                ),
+                enable_auto_generate_service_key="false,",
+                connection_redundancy_required="false,",
+                api_config=equinix.fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs(
+                    api_available=True,
+                    integration_id="Example-Connect-01",
+                    bandwidth_from_api=False,
+                ),
+                connection_label="Virtual Circuit Name",
+                authentication_key=equinix.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs(
+                    required=True,
+                    label="Example ACCOUNT ID",
+                ),
+            )],
+            account=equinix.fabric.ServiceProfileAccountArgs(
+                organization_name="Example Cloud",
+                global_organization_name="Example Global",
+            ),
+            metros=None,
+            visibility="PUBLIC",
+            marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(
+                promotion=True,
+            ))
+        pulumi.export("profileId", profile.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
@@ -672,7 +721,56 @@ class ServiceProfile(pulumi.CustomResource):
                  args: ServiceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServiceProfile resource with the given unique name, props, and options.
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        profile = equinix.fabric.ServiceProfile("profile",
+            name="Example Cloud Provider",
+            description="50 to 500 Mbps Hosted Connection to Example Cloud",
+            type="L2_PROFILE",
+            access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
+                type="COLO",
+                supported_bandwidths=[
+                    50,
+                    100,
+                    200,
+                    500,
+                ],
+                allow_remote_connections=True,
+                allow_custom_bandwidth=False,
+                allow_bandwidth_auto_approval=False,
+                link_protocol_config=equinix.fabric.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs(
+                    encapsulation_strategy="CTAGED",
+                    reuse_vlan_s_tag=False,
+                    encapsulation="DOT1Q",
+                ),
+                enable_auto_generate_service_key="false,",
+                connection_redundancy_required="false,",
+                api_config=equinix.fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs(
+                    api_available=True,
+                    integration_id="Example-Connect-01",
+                    bandwidth_from_api=False,
+                ),
+                connection_label="Virtual Circuit Name",
+                authentication_key=equinix.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs(
+                    required=True,
+                    label="Example ACCOUNT ID",
+                ),
+            )],
+            account=equinix.fabric.ServiceProfileAccountArgs(
+                organization_name="Example Cloud",
+                global_organization_name="Example Global",
+            ),
+            metros=None,
+            visibility="PUBLIC",
+            marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(
+                promotion=True,
+            ))
+        pulumi.export("profileId", profile.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServiceProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

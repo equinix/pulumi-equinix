@@ -121,13 +121,20 @@ class SshKey(pulumi.CustomResource):
         """
         Resource `networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
 
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        ssh_key = equinix.networkedge.SshKey("sshKey",
+            name="johnKent",
+            public_key=(lambda path: open(path).read())("/Users/John/.ssh/ne_rsa.pub"))
+        pulumi.export("sshKeyId", ssh_key.id)
+        ```
+
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,13 +151,20 @@ class SshKey(pulumi.CustomResource):
         """
         Resource `networkedge.SshKey` allows creation and management of Equinix Network Edge SSH keys.
 
+        ## Example Usage
+        ```python
+        import pulumi
+        import pulumi_equinix as equinix
+
+        ssh_key = equinix.networkedge.SshKey("sshKey",
+            name="johnKent",
+            public_key=(lambda path: open(path).read())("/Users/John/.ssh/ne_rsa.pub"))
+        pulumi.export("sshKeyId", ssh_key.id)
+        ```
+
         ## Import
 
-        This resource can be imported using an existing ID
-
-        ```sh
-         $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
-        ```
+        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.

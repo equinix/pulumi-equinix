@@ -18,7 +18,6 @@ namespace Pulumi.Equinix.Metal
     /// * &lt;https://metal.equinix.com/developers/docs/networking/layer2-configs/&gt;
     /// 
     /// ## Example Usage
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -26,33 +25,28 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new VLAN in facility "sv15"
-    ///     var vlan1Vlan = new Equinix.Metal.Vlan("vlan1Vlan", new()
+    ///     var config = new Config();
+    ///     var projectId = config.Require("projectId");
+    ///     var metro = config.Get("metro") ?? "DA";
+    ///     var vxlan = config.Require("vxlan");
+    ///     var vlan = new Equinix.Metal.Vlan("vlan", new()
     ///     {
-    ///         Description = "VLAN in New Jersey",
-    ///         Facility = "sv15",
-    ///         ProjectId = local.Project_id,
+    ///         Description = "VLAN in Dallas",
+    ///         ProjectId = projectId,
+    ///         Metro = metro,
+    ///         Vxlan = vxlan,
     ///     });
     /// 
-    ///     // Create a new VLAN in metro "esv"
-    ///     var vlan1Metal_vlanVlan = new Equinix.Metal.Vlan("vlan1Metal/vlanVlan", new()
+    ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         Description = "VLAN in New Jersey",
-    ///         Metro = "sv",
-    ///         ProjectId = local.Project_id,
-    ///         Vxlan = 1040,
-    ///     });
-    /// 
+    ///         ["vlanId"] = vlan.Id,
+    ///     };
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing VLAN ID (UUID)
-    /// 
-    /// ```sh
-    ///  $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
-    /// ```
+    /// This resource can be imported using an existing VLAN ID (UUID): &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/vlan:Vlan")]
     public partial class Vlan : global::Pulumi.CustomResource
@@ -107,7 +101,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679651896+b37a673a.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

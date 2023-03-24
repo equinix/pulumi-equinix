@@ -16,29 +16,16 @@ import * as utilities from "../utilities";
  * import * as equinix from "@equinix/pulumi-equinix";
  * import * as fs from "fs";
  *
- * // Create a new SSH key
- * const key1 = new equinix.metal.SshKey("key1", {publicKey: fs.readFileSync("/home/terraform/.ssh/id_rsa.pub")});
- * // Create new device with "key1" included. The device resource "depends_on" the
- * // key, in order to make sure the key is created before the device.
- * const test = new equinix.metal.Device("test", {
- *     hostname: "test-device",
- *     plan: "c3.small.x86",
- *     metro: "sv",
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
- *     projectId: local.project_id,
- * }, {
- *     dependsOn: ["equinix_metal_ssh_key.key1"],
+ * const sshKey = new equinix.metal.SshKey("sshKey", {
+ *     name: "johnKent",
+ *     publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub"),
  * });
+ * export const sshKeyId = sshKey.id;
  * ```
  *
  * ## Import
  *
- * This resource can be imported using an existing SSH Key ID
- *
- * ```sh
- *  $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id}
- * ```
+ * This resource can be imported using an existing SSH Key ID: <break><break>```sh<break> $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} <break>```<break><break>
  */
 export class SshKey extends pulumi.CustomResource {
     /**

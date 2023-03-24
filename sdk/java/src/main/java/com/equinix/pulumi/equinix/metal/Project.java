@@ -17,13 +17,51 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an Equinix Metal project resource to allow you manage devices
+ * in your projects.
+ * 
+ * &gt; **NOTE:** Keep in mind that Equinix Metal invoicing is per project, so creating many
+ * `equinix.metal.Project` resources will affect the rendered invoice. If you want to keep your
+ * Equinix Metal bill simple and easy to review, please re-use your existing projects.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Project;
+ * import com.pulumi.equinix.metal.ProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var organizationId = config.get(&#34;organizationId&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;Default Project&#34;);
+ *         var projectResource = new Project(&#34;projectResource&#34;, ProjectArgs.builder()        
+ *             .name(name)
+ *             .organizationId(organizationId)
+ *             .build());
+ * 
+ *         ctx.export(&#34;projectId&#34;, projectResource.id());
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
- * This resource can be imported using an existing project ID
- * 
- * ```sh
- *  $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
- * ```
+ * This resource can be imported using an existing project ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/project:Project")

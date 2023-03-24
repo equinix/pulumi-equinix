@@ -18,6 +18,54 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
+ * 
+ * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.equinix.metal.Interconnection;
+ * import com.pulumi.equinix.metal.InterconnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
+ *         final var speedInMbps = config.get(&#34;speedInMbps&#34;).orElse(200);
+ *         var connection = new Interconnection(&#34;connection&#34;, InterconnectionArgs.builder()        
+ *             .name(&#34;fabric-port-to-metal&#34;)
+ *             .projectId(projectId)
+ *             .type(&#34;shared&#34;)
+ *             .redundancy(&#34;primary&#34;)
+ *             .metro(metro)
+ *             .speed(String.format(&#34;%sMbps&#34;, speedInMbps))
+ *             .serviceTokenType(&#34;z_side&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;connectionStatus&#34;, connection.status());
+ *         ctx.export(&#34;connectionTokens&#34;, connection.serviceTokens());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="equinix:metal/interconnection:Interconnection")
 public class Interconnection extends com.pulumi.resources.CustomResource {
     /**
