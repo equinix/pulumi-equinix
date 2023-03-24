@@ -1,7 +1,3 @@
 name: equinix-fabric-service-profile
 runtime: python
 description: An Equinix Fabric service profile resource
-config:
-  speedInMbps:
-    type: integer
-    default: 50

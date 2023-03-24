@@ -1,2 +1,2 @@
 pulumi>=3.0.0,<4.0.0
-pulumi_equinix==0.0.1-alpha.1678463449+7a8d98d9.dirty
+pulumi_equinix==0.0.1-alpha.1679651896+b37a673a.dirty

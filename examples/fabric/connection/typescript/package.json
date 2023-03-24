@@ -6,6 +6,6 @@
 		"dependencies": {
 			"typescript": "^4.0.0",
 			"@pulumi/pulumi": "^3.0.0",
-			"@equinix/pulumi-equinix": "0.0.1-alpha.1678463449+7a8d98d9.dirty"
+			"@equinix/pulumi-equinix": "0.0.1-alpha.1679651896+b37a673a.dirty"
 		}
 }

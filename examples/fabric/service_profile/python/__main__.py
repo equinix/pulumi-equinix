@@ -1,13 +1,9 @@
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-speed_in_mbps = config.get_int("speedInMbps")
-if speed_in_mbps is None:
-    speed_in_mbps = 50
 profile = equinix.fabric.ServiceProfile("profile",
-    name="FOO Cloud",
-    description="50 to 500 Mbps Hosted Connection to Foo Cloud",
+    name="Example Cloud Provider",
+    description="50 to 500 Mbps Hosted Connection to Example Cloud",
     type="L2_PROFILE",
     access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
         type="COLO",
@@ -29,18 +25,18 @@ profile = equinix.fabric.ServiceProfile("profile",
         connection_redundancy_required="false,",
         api_config=equinix.fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs(
             api_available=True,
-            integration_id="Foo-Connect-01",
+            integration_id="Example-Connect-01",
             bandwidth_from_api=False,
         ),
         connection_label="Virtual Circuit Name",
         authentication_key=equinix.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs(
             required=True,
-            label="FOO ACCOUNT ID",
+            label="Example ACCOUNT ID",
         ),
     )],
     account=equinix.fabric.ServiceProfileAccountArgs(
-        organization_name="Foo",
-        global_organization_name="Foo Global",
+        organization_name="Example Cloud",
+        global_organization_name="Example Global",
     ),
     metros=None,
     visibility="PUBLIC",

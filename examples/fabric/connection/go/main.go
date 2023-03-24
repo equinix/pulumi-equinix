@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -11,54 +9,36 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		cfg := config.New(ctx, "")
+		metro := "FR"
+		if param := cfg.Get("metro"); param != "" {
+			metro = param
+		}
 		speedInMbps := 50
 		if param := cfg.GetInt("speedInMbps"); param != 0 {
 			speedInMbps = param
 		}
-		linkProtocolType := "QINQ"
-		if param := cfg.Get("linkProtocolType"); param != "" {
-			linkProtocolType = param
+		fabricPortName := cfg.Require("fabricPortName")
+		awsRegion := "eu-central-1"
+		if param := cfg.Get("awsRegion"); param != "" {
+			awsRegion = param
 		}
-		linkProtocolStag := 2019
-		if param := cfg.GetInt("linkProtocolStag"); param != 0 {
-			linkProtocolStag = param
-		}
-		linkProtocolCtag := 2112
-		if param := cfg.GetInt("linkProtocolCtag"); param != 0 {
-			linkProtocolCtag = param
-		}
-		portName := cfg.Require("portName")
-		serviceProfileName := "AWS Direct Connect"
-		if param := cfg.Get("serviceProfileName"); param != "" {
-			serviceProfileName = param
-		}
-		serviceProfileRegion := "us-west-1"
-		if param := cfg.Get("serviceProfileRegion"); param != "" {
-			serviceProfileRegion = param
-		}
-		serviceProfileMetro := "SV"
-		if param := cfg.Get("serviceProfileMetro"); param != "" {
-			serviceProfileMetro = param
-		}
-		serviceProfileAuthKey := cfg.Require("serviceProfileAuthKey")
+		awsAccountId := cfg.Require("awsAccountId")
 		serviceProfileId := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
 			Filter: fabric.GetServiceProfilesFilter{
 				Property: pulumi.StringRef("/name"),
 				Operator: pulumi.StringRef("="),
 				Values: []string{
-					serviceProfileName,
+					"AWS Direct Connect",
 				},
 			},
-		}, nil).Data.Uuid
+		}, nil).Data[0].Uuid
 		portId := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
-			Filters: []fabric.GetPortsFilter{
-				{
-					Name: pulumi.StringRef(portName),
-				},
+			Filter: fabric.GetPortsFilter{
+				Name: pulumi.StringRef(fabricPortName),
 			},
-		}, nil).Data.Uuid
+		}, nil).Data[0].Uuid
 		colo2Aws, err := fabric.NewConnection(ctx, "colo2Aws", &fabric.ConnectionArgs{
-			Name: pulumi.String("colo2Aws"),
+			Name: pulumi.String("Pulumi-colo2Aws"),
 			Type: pulumi.String("EVPL_VC"),
 			Notifications: fabric.ConnectionNotificationArray{
 				&fabric.ConnectionNotificationArgs{
@@ -76,26 +56,25 @@ func main() {
 				AccessPoint: &fabric.ConnectionASideAccessPointArgs{
 					Type: pulumi.String("COLO"),
 					Port: &fabric.ConnectionASideAccessPointPortArgs{
-						Uuid: fabric.GetPortsDatum(portId),
+						Uuid: *pulumi.String(portId),
 					},
 					LinkProtocol: &fabric.ConnectionASideAccessPointLinkProtocolArgs{
-						Type:     pulumi.String(linkProtocolType),
-						VlanSTag: pulumi.Int(linkProtocolStag),
-						VlanTag:  pulumi.Int(linkProtocolCtag),
+						Type:    pulumi.String("DOT1Q"),
+						VlanTag: pulumi.Int(1234),
 					},
 				},
 			},
 			ZSide: &fabric.ConnectionZSideArgs{
 				AccessPoint: &fabric.ConnectionZSideAccessPointArgs{
 					Type:              pulumi.String("SP"),
-					AuthenticationKey: pulumi.String(serviceProfileAuthKey),
-					SellerRegion:      pulumi.String(serviceProfileRegion),
+					AuthenticationKey: pulumi.String(awsAccountId),
+					SellerRegion:      pulumi.String(awsRegion),
 					Profile: &fabric.ConnectionZSideAccessPointProfileArgs{
 						Type: pulumi.String("L2_PROFILE"),
-						Uuid: fabric.GetServiceProfilesDatum(serviceProfileId),
+						Uuid: *pulumi.String(serviceProfileId),
 					},
 					Location: &fabric.ConnectionZSideAccessPointLocationArgs{
-						MetroCode: pulumi.String(serviceProfileMetro),
+						MetroCode: pulumi.String(metro),
 					},
 				},
 			},
@@ -103,9 +82,16 @@ func main() {
 		if err != nil {
 			return err
 		}
-		ctx.Export("connectionId", colo2Aws.ID().ApplyT(func(id string) (string, error) {
-			return fmt.Sprintf("http://%v", id), nil
-		}).(pulumi.StringOutput))
+		ctx.Export("connectionId", colo2Aws.ID())
+		ctx.Export("connectionStatus", colo2Aws.Operation.ApplyT(func(operation fabric.ConnectionOperation) (*string, error) {
+			return &operation.EquinixStatus, nil
+		}).(pulumi.StringPtrOutput))
+		ctx.Export("connectionProviderStatus", colo2Aws.Operation.ApplyT(func(operation fabric.ConnectionOperation) (*string, error) {
+			return &operation.ProviderStatus, nil
+		}).(pulumi.StringPtrOutput))
+		ctx.Export("awsDirectConnectId", colo2Aws.ZSide.ApplyT(func(zSide fabric.ConnectionZSide) (*string, error) {
+			return &zSide.AccessPoint.ProviderConnectionId, nil
+		}).(pulumi.StringPtrOutput))
 		return nil
 	})
 }

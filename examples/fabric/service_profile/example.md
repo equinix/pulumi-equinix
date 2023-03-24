@@ -6,11 +6,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
 
-const config = new pulumi.Config();
-const speedInMbps = config.getNumber("speedInMbps") || 50;
 const profile = new equinix.fabric.ServiceProfile("profile", {
-    name: "FOO Cloud",
-    description: "50 to 500 Mbps Hosted Connection to Foo Cloud",
+    name: "Example Cloud Provider",
+    description: "50 to 500 Mbps Hosted Connection to Example Cloud",
     type: "L2_PROFILE",
     accessPointTypeConfigs: [{
         type: "COLO",
@@ -32,18 +30,18 @@ const profile = new equinix.fabric.ServiceProfile("profile", {
         connectionRedundancyRequired: "false,",
         apiConfig: {
             apiAvailable: true,
-            integrationId: "Foo-Connect-01",
+            integrationId: "Example-Connect-01",
             bandwidthFromApi: false,
         },
         connectionLabel: "Virtual Circuit Name",
         authenticationKey: {
             required: true,
-            label: "FOO ACCOUNT ID",
+            label: "Example ACCOUNT ID",
         },
     }],
     account: {
-        organizationName: "Foo",
-        globalOrganizationName: "Foo Global",
+        organizationName: "Example Cloud",
+        globalOrganizationName: "Example Global",
     },
     metros: undefined,
     visibility: "PUBLIC",
@@ -62,13 +60,9 @@ export const profileId = profile.id;
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-speed_in_mbps = config.get_int("speedInMbps")
-if speed_in_mbps is None:
-    speed_in_mbps = 50
 profile = equinix.fabric.ServiceProfile("profile",
-    name="FOO Cloud",
-    description="50 to 500 Mbps Hosted Connection to Foo Cloud",
+    name="Example Cloud Provider",
+    description="50 to 500 Mbps Hosted Connection to Example Cloud",
     type="L2_PROFILE",
     access_point_type_configs=[equinix.fabric.ServiceProfileAccessPointTypeConfigArgs(
         type="COLO",
@@ -90,18 +84,18 @@ profile = equinix.fabric.ServiceProfile("profile",
         connection_redundancy_required="false,",
         api_config=equinix.fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs(
             api_available=True,
-            integration_id="Foo-Connect-01",
+            integration_id="Example-Connect-01",
             bandwidth_from_api=False,
         ),
         connection_label="Virtual Circuit Name",
         authentication_key=equinix.fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs(
             required=True,
-            label="FOO ACCOUNT ID",
+            label="Example ACCOUNT ID",
         ),
     )],
     account=equinix.fabric.ServiceProfileAccountArgs(
-        organization_name="Foo",
-        global_organization_name="Foo Global",
+        organization_name="Example Cloud",
+        global_organization_name="Example Global",
     ),
     metros=None,
     visibility="PUBLIC",
@@ -121,19 +115,13 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		speedInMbps := 50
-		if param := cfg.GetInt("speedInMbps"); param != 0 {
-			speedInMbps = param
-		}
 		profile, err := fabric.NewServiceProfile(ctx, "profile", &fabric.ServiceProfileArgs{
-			Name:        pulumi.String("FOO Cloud"),
-			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Foo Cloud"),
+			Name:        pulumi.String("Example Cloud Provider"),
+			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Example Cloud"),
 			Type:        pulumi.String("L2_PROFILE"),
 			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
 				&fabric.ServiceProfileAccessPointTypeConfigArgs{
@@ -156,19 +144,19 @@ func main() {
 					ConnectionRedundancyRequired: pulumi.Bool("false,"),
 					ApiConfig: &fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs{
 						ApiAvailable:     pulumi.Bool(true),
-						IntegrationId:    pulumi.String("Foo-Connect-01"),
+						IntegrationId:    pulumi.String("Example-Connect-01"),
 						BandwidthFromApi: pulumi.Bool(false),
 					},
 					ConnectionLabel: pulumi.String("Virtual Circuit Name"),
 					AuthenticationKey: &fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{
 						Required: pulumi.Bool(true),
-						Label:    pulumi.String("FOO ACCOUNT ID"),
+						Label:    pulumi.String("Example ACCOUNT ID"),
 					},
 				},
 			},
 			Account: &fabric.ServiceProfileAccountArgs{
-				OrganizationName:       pulumi.String("Foo"),
-				GlobalOrganizationName: pulumi.String("Foo Global"),
+				OrganizationName:       pulumi.String("Example Cloud"),
+				GlobalOrganizationName: pulumi.String("Example Global"),
 			},
 			Metros:     nil,
 			Visibility: pulumi.String("PUBLIC"),
@@ -196,12 +184,10 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var speedInMbps = config.GetNumber("speedInMbps") ?? 50;
     var profile = new Equinix.Fabric.ServiceProfile("profile", new()
     {
-        Name = "FOO Cloud",
-        Description = "50 to 500 Mbps Hosted Connection to Foo Cloud",
+        Name = "Example Cloud Provider",
+        Description = "50 to 500 Mbps Hosted Connection to Example Cloud",
         Type = "L2_PROFILE",
         AccessPointTypeConfigs = new[]
         {
@@ -229,21 +215,21 @@ return await Deployment.RunAsync(() =>
                 ApiConfig = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs
                 {
                     ApiAvailable = true,
-                    IntegrationId = "Foo-Connect-01",
+                    IntegrationId = "Example-Connect-01",
                     BandwidthFromApi = false,
                 },
                 ConnectionLabel = "Virtual Circuit Name",
                 AuthenticationKey = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs
                 {
                     Required = true,
-                    Label = "FOO ACCOUNT ID",
+                    Label = "Example ACCOUNT ID",
                 },
             },
         },
         Account = new Equinix.Fabric.Inputs.ServiceProfileAccountArgs
         {
-            OrganizationName = "Foo",
-            GlobalOrganizationName = "Foo Global",
+            OrganizationName = "Example Cloud",
+            GlobalOrganizationName = "Example Global",
         },
         Metros = null,
         Visibility = "PUBLIC",
@@ -291,11 +277,9 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var speedInMbps = config.get("speedInMbps").orElse(50);
         var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()        
-            .name("FOO Cloud")
-            .description("50 to 500 Mbps Hosted Connection to Foo Cloud")
+            .name("Example Cloud Provider")
+            .description("50 to 500 Mbps Hosted Connection to Example Cloud")
             .type("L2_PROFILE")
             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
                 .type("COLO")
@@ -316,18 +300,18 @@ public class App {
                 .connectionRedundancyRequired("false,")
                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
                     .apiAvailable(true)
-                    .integrationId("Foo-Connect-01")
+                    .integrationId("Example-Connect-01")
                     .bandwidthFromApi(false)
                     .build())
                 .connectionLabel("Virtual Circuit Name")
                 .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
                     .required(true)
-                    .label("FOO ACCOUNT ID")
+                    .label("Example ACCOUNT ID")
                     .build())
                 .build())
             .account(ServiceProfileAccountArgs.builder()
-                .organizationName("Foo")
-                .globalOrganizationName("Foo Global")
+                .organizationName("Example Cloud")
+                .globalOrganizationName("Example Global")
                 .build())
             .metros(null)
             .visibility("PUBLIC")
@@ -346,16 +330,12 @@ public class App {
 {{% choosable language yaml %}}
 
 ```yaml
-config:
-  speedInMbps:
-    type: integer
-    default: 50
 resources:
   profile:
     type: equinix:fabric:ServiceProfile
     properties:
-      name: FOO Cloud
-      description: 50 to 500 Mbps Hosted Connection to Foo Cloud
+      name: Example Cloud Provider
+      description: 50 to 500 Mbps Hosted Connection to Example Cloud
       type: L2_PROFILE
       accessPointTypeConfigs:
       - type: COLO
@@ -371,15 +351,15 @@ resources:
         connectionRedundancyRequired: false,
         apiConfig:
           apiAvailable: true
-          integrationId: Foo-Connect-01
+          integrationId: Example-Connect-01
           bandwidthFromApi: false
         connectionLabel: Virtual Circuit Name
         authenticationKey:
           required: true
-          label: FOO ACCOUNT ID
+          label: Example ACCOUNT ID
       account:
-        organizationName: Foo
-        globalOrganizationName: Foo Global
+        organizationName: Example Cloud
+        globalOrganizationName: Example Global
       metros:
       visibility: PUBLIC
       marketingInfo:

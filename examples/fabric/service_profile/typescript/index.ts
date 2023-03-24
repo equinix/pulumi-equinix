@@ -1,11 +1,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
 
-const config = new pulumi.Config();
-const speedInMbps = config.getNumber("speedInMbps") || 50;
 const profile = new equinix.fabric.ServiceProfile("profile", {
-    name: "FOO Cloud",
-    description: "50 to 500 Mbps Hosted Connection to Foo Cloud",
+    name: "Example Cloud Provider",
+    description: "50 to 500 Mbps Hosted Connection to Example Cloud",
     type: "L2_PROFILE",
     accessPointTypeConfigs: [{
         type: "COLO",
@@ -27,18 +25,18 @@ const profile = new equinix.fabric.ServiceProfile("profile", {
         connectionRedundancyRequired: "false,",
         apiConfig: {
             apiAvailable: true,
-            integrationId: "Foo-Connect-01",
+            integrationId: "Example-Connect-01",
             bandwidthFromApi: false,
         },
         connectionLabel: "Virtual Circuit Name",
         authenticationKey: {
             required: true,
-            label: "FOO ACCOUNT ID",
+            label: "Example ACCOUNT ID",
         },
     }],
     account: {
-        organizationName: "Foo",
-        globalOrganizationName: "Foo Global",
+        organizationName: "Example Cloud",
+        globalOrganizationName: "Example Global",
     },
     metros: undefined,
     visibility: "PUBLIC",

@@ -2,39 +2,27 @@ import pulumi
 import pulumi_equinix as equinix
 
 config = pulumi.Config()
+metro = config.get("metro")
+if metro is None:
+    metro = "FR"
 speed_in_mbps = config.get_int("speedInMbps")
 if speed_in_mbps is None:
     speed_in_mbps = 50
-link_protocol_type = config.get("linkProtocolType")
-if link_protocol_type is None:
-    link_protocol_type = "QINQ"
-link_protocol_stag = config.get_int("linkProtocolStag")
-if link_protocol_stag is None:
-    link_protocol_stag = 2019
-link_protocol_ctag = config.get_int("linkProtocolCtag")
-if link_protocol_ctag is None:
-    link_protocol_ctag = 2112
-port_name = config.require("portName")
-service_profile_name = config.get("serviceProfileName")
-if service_profile_name is None:
-    service_profile_name = "AWS Direct Connect"
-service_profile_region = config.get("serviceProfileRegion")
-if service_profile_region is None:
-    service_profile_region = "us-west-1"
-service_profile_metro = config.get("serviceProfileMetro")
-if service_profile_metro is None:
-    service_profile_metro = "SV"
-service_profile_auth_key = config.require("serviceProfileAuthKey")
+fabric_port_name = config.require("fabricPortName")
+aws_region = config.get("awsRegion")
+if aws_region is None:
+    aws_region = "eu-central-1"
+aws_account_id = config.require("awsAccountId")
 service_profile_id = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
     property="/name",
     operator="=",
-    values=[service_profile_name],
-)).data.uuid
-port_id = equinix.fabric.get_ports(filters=[equinix.fabric.GetPortsFilterArgs(
-    name=port_name,
-)]).data.uuid
+    values=["AWS Direct Connect"],
+)).data[0].uuid
+port_id = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+    name=fabric_port_name,
+)).data[0].uuid
 colo2_aws = equinix.fabric.Connection("colo2Aws",
-    name="colo2Aws",
+    name="Pulumi-colo2Aws",
     type="EVPL_VC",
     notifications=[equinix.fabric.ConnectionNotificationArgs(
         type="ALL",
@@ -51,24 +39,26 @@ colo2_aws = equinix.fabric.Connection("colo2Aws",
                 uuid=port_id,
             ),
             link_protocol=equinix.fabric.ConnectionASideAccessPointLinkProtocolArgs(
-                type=link_protocol_type,
-                vlan_s_tag=link_protocol_stag,
-                vlan_tag=link_protocol_ctag,
+                type="DOT1Q",
+                vlan_tag=1234,
             ),
         ),
     ),
     z_side=equinix.fabric.ConnectionZSideArgs(
         access_point=equinix.fabric.ConnectionZSideAccessPointArgs(
             type="SP",
-            authentication_key=service_profile_auth_key,
-            seller_region=service_profile_region,
+            authentication_key=aws_account_id,
+            seller_region=aws_region,
             profile=equinix.fabric.ConnectionZSideAccessPointProfileArgs(
                 type="L2_PROFILE",
                 uuid=service_profile_id,
             ),
             location=equinix.fabric.ConnectionZSideAccessPointLocationArgs(
-                metro_code=service_profile_metro,
+                metro_code=metro,
             ),
         ),
     ))
-pulumi.export("connectionId", colo2_aws.id.apply(lambda id: f"http://{id}"))
+pulumi.export("connectionId", colo2_aws.id)
+pulumi.export("connectionStatus", colo2_aws.operation.equinix_status)
+pulumi.export("connectionProviderStatus", colo2_aws.operation.provider_status)
+pulumi.export("awsDirectConnectId", colo2_aws.z_side.access_point.provider_connection_id)

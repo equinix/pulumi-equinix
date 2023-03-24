@@ -24,11 +24,9 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var speedInMbps = config.get("speedInMbps").orElse(50);
         var profile = new ServiceProfile("profile", ServiceProfileArgs.builder()        
-            .name("FOO Cloud")
-            .description("50 to 500 Mbps Hosted Connection to Foo Cloud")
+            .name("Example Cloud Provider")
+            .description("50 to 500 Mbps Hosted Connection to Example Cloud")
             .type("L2_PROFILE")
             .accessPointTypeConfigs(ServiceProfileAccessPointTypeConfigArgs.builder()
                 .type("COLO")
@@ -49,18 +47,18 @@ public class App {
                 .connectionRedundancyRequired("false,")
                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
                     .apiAvailable(true)
-                    .integrationId("Foo-Connect-01")
+                    .integrationId("Example-Connect-01")
                     .bandwidthFromApi(false)
                     .build())
                 .connectionLabel("Virtual Circuit Name")
                 .authenticationKey(ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs.builder()
                     .required(true)
-                    .label("FOO ACCOUNT ID")
+                    .label("Example ACCOUNT ID")
                     .build())
                 .build())
             .account(ServiceProfileAccountArgs.builder()
-                .organizationName("Foo")
-                .globalOrganizationName("Foo Global")
+                .organizationName("Example Cloud")
+                .globalOrganizationName("Example Global")
                 .build())
             .metros(null)
             .visibility("PUBLIC")

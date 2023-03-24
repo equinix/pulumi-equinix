@@ -3,19 +3,13 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		speedInMbps := 50
-		if param := cfg.GetInt("speedInMbps"); param != 0 {
-			speedInMbps = param
-		}
 		profile, err := fabric.NewServiceProfile(ctx, "profile", &fabric.ServiceProfileArgs{
-			Name:        pulumi.String("FOO Cloud"),
-			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Foo Cloud"),
+			Name:        pulumi.String("Example Cloud Provider"),
+			Description: pulumi.String("50 to 500 Mbps Hosted Connection to Example Cloud"),
 			Type:        pulumi.String("L2_PROFILE"),
 			AccessPointTypeConfigs: fabric.ServiceProfileAccessPointTypeConfigArray{
 				&fabric.ServiceProfileAccessPointTypeConfigArgs{
@@ -38,19 +32,19 @@ func main() {
 					ConnectionRedundancyRequired: pulumi.Bool("false,"),
 					ApiConfig: &fabric.ServiceProfileAccessPointTypeConfigApiConfigArgs{
 						ApiAvailable:     pulumi.Bool(true),
-						IntegrationId:    pulumi.String("Foo-Connect-01"),
+						IntegrationId:    pulumi.String("Example-Connect-01"),
 						BandwidthFromApi: pulumi.Bool(false),
 					},
 					ConnectionLabel: pulumi.String("Virtual Circuit Name"),
 					AuthenticationKey: &fabric.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs{
 						Required: pulumi.Bool(true),
-						Label:    pulumi.String("FOO ACCOUNT ID"),
+						Label:    pulumi.String("Example ACCOUNT ID"),
 					},
 				},
 			},
 			Account: &fabric.ServiceProfileAccountArgs{
-				OrganizationName:       pulumi.String("Foo"),
-				GlobalOrganizationName: pulumi.String("Foo Global"),
+				OrganizationName:       pulumi.String("Example Cloud"),
+				GlobalOrganizationName: pulumi.String("Example Global"),
 			},
 			Metros:     nil,
 			Visibility: pulumi.String("PUBLIC"),

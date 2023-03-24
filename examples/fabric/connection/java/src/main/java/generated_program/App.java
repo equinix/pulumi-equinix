@@ -29,31 +29,27 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
+        final var metro = config.get("metro").orElse("FR");
         final var speedInMbps = config.get("speedInMbps").orElse(50);
-        final var linkProtocolType = config.get("linkProtocolType").orElse("QINQ");
-        final var linkProtocolStag = config.get("linkProtocolStag").orElse(2019);
-        final var linkProtocolCtag = config.get("linkProtocolCtag").orElse(2112);
-        final var portName = config.get("portName");
-        final var serviceProfileName = config.get("serviceProfileName").orElse("AWS Direct Connect");
-        final var serviceProfileRegion = config.get("serviceProfileRegion").orElse("us-west-1");
-        final var serviceProfileMetro = config.get("serviceProfileMetro").orElse("SV");
-        final var serviceProfileAuthKey = config.get("serviceProfileAuthKey");
+        final var fabricPortName = config.get("fabricPortName");
+        final var awsRegion = config.get("awsRegion").orElse("eu-central-1");
+        final var awsAccountId = config.get("awsAccountId");
         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
             .filter(GetServiceProfilesFilterArgs.builder()
                 .property("/name")
                 .operator("=")
-                .values(serviceProfileName)
+                .values("AWS Direct Connect")
                 .build())
-            .build()).data().uuid();
+            .build()).data()[0].uuid();
 
         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
-            .filters(GetPortsFilterArgs.builder()
-                .name(portName)
+            .filter(GetPortsFilterArgs.builder()
+                .name(fabricPortName)
                 .build())
-            .build()).data().uuid();
+            .build()).data()[0].uuid();
 
         var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()        
-            .name("colo2Aws")
+            .name("Pulumi-colo2Aws")
             .type("EVPL_VC")
             .notifications(ConnectionNotificationArgs.builder()
                 .type("ALL")
@@ -70,28 +66,30 @@ public class App {
                         .uuid(portId)
                         .build())
                     .linkProtocol(ConnectionASideAccessPointLinkProtocolArgs.builder()
-                        .type(linkProtocolType)
-                        .vlanSTag(linkProtocolStag)
-                        .vlanTag(linkProtocolCtag)
+                        .type("DOT1Q")
+                        .vlanTag(1234)
                         .build())
                     .build())
                 .build())
             .zSide(ConnectionZSideArgs.builder()
                 .accessPoint(ConnectionZSideAccessPointArgs.builder()
                     .type("SP")
-                    .authenticationKey(serviceProfileAuthKey)
-                    .sellerRegion(serviceProfileRegion)
+                    .authenticationKey(awsAccountId)
+                    .sellerRegion(awsRegion)
                     .profile(ConnectionZSideAccessPointProfileArgs.builder()
                         .type("L2_PROFILE")
                         .uuid(serviceProfileId)
                         .build())
                     .location(ConnectionZSideAccessPointLocationArgs.builder()
-                        .metroCode(serviceProfileMetro)
+                        .metroCode(metro)
                         .build())
                     .build())
                 .build())
             .build());
 
-        ctx.export("connectionId", colo2Aws.id().applyValue(id -> String.format("http://%s", id)));
+        ctx.export("connectionId", colo2Aws.id());
+        ctx.export("connectionStatus", colo2Aws.operation().applyValue(operation -> operation.equinixStatus()));
+        ctx.export("connectionProviderStatus", colo2Aws.operation().applyValue(operation -> operation.providerStatus()));
+        ctx.export("awsDirectConnectId", colo2Aws.zSide().applyValue(zSide -> zSide.accessPoint().providerConnectionId()));
     }
 }

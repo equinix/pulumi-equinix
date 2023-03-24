@@ -3,29 +3,25 @@ import * as equinix from "@equinix/pulumi-equinix";
 import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
+const metro = config.get("metro") || "FR";
 const speedInMbps = config.getNumber("speedInMbps") || 50;
-const linkProtocolType = config.get("linkProtocolType") || "QINQ";
-const linkProtocolStag = config.getNumber("linkProtocolStag") || 2019;
-const linkProtocolCtag = config.getNumber("linkProtocolCtag") || 2112;
-const portName = config.require("portName");
-const serviceProfileName = config.get("serviceProfileName") || "AWS Direct Connect";
-const serviceProfileRegion = config.get("serviceProfileRegion") || "us-west-1";
-const serviceProfileMetro = config.get("serviceProfileMetro") || "SV";
-const serviceProfileAuthKey = config.require("serviceProfileAuthKey");
+const fabricPortName = config.require("fabricPortName");
+const awsRegion = config.get("awsRegion") || "eu-central-1";
+const awsAccountId = config.require("awsAccountId");
 const serviceProfileId = equinix.fabric.getServiceProfiles({
     filter: {
         property: "/name",
         operator: "=",
-        values: [serviceProfileName],
+        values: ["AWS Direct Connect"],
     },
-}).then(invoke => invoke.data?.uuid);
+}).then(invoke => invoke.data?.[0]?.uuid);
 const portId = equinix.fabric.getPorts({
-    filters: [{
-        name: portName,
-    }],
-}).then(invoke => invoke.data?.uuid);
+    filter: {
+        name: fabricPortName,
+    },
+}).then(invoke => invoke.data?.[0]?.uuid);
 const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
-    name: "colo2Aws",
+    name: "Pulumi-colo2Aws",
     type: "EVPL_VC",
     notifications: [{
         type: "ALL",
@@ -42,25 +38,27 @@ const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
                 uuid: portId,
             },
             linkProtocol: {
-                type: linkProtocolType,
-                vlanSTag: linkProtocolStag,
-                vlanTag: linkProtocolCtag,
+                type: "DOT1Q",
+                vlanTag: 1234,
             },
         },
     },
     zSide: {
         accessPoint: {
             type: "SP",
-            authenticationKey: serviceProfileAuthKey,
-            sellerRegion: serviceProfileRegion,
+            authenticationKey: awsAccountId,
+            sellerRegion: awsRegion,
             profile: {
                 type: "L2_PROFILE",
                 uuid: serviceProfileId,
             },
             location: {
-                metroCode: serviceProfileMetro,
+                metroCode: metro,
             },
         },
     },
 });
-export const connectionId = pulumi.interpolate`http://${colo2Aws.id}`;
+export const connectionId = colo2Aws.id;
+export const connectionStatus = colo2Aws.operation.apply(operation => operation.equinixStatus);
+export const connectionProviderStatus = colo2Aws.operation.apply(operation => operation.providerStatus);
+export const awsDirectConnectId = colo2Aws.zSide.apply(zSide => zSide.accessPoint?.providerConnectionId);

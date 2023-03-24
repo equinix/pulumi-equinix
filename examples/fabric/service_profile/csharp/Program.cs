@@ -4,12 +4,10 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var speedInMbps = config.GetNumber("speedInMbps") ?? 50;
     var profile = new Equinix.Fabric.ServiceProfile("profile", new()
     {
-        Name = "FOO Cloud",
-        Description = "50 to 500 Mbps Hosted Connection to Foo Cloud",
+        Name = "Example Cloud Provider",
+        Description = "50 to 500 Mbps Hosted Connection to Example Cloud",
         Type = "L2_PROFILE",
         AccessPointTypeConfigs = new[]
         {
@@ -37,21 +35,21 @@ return await Deployment.RunAsync(() =>
                 ApiConfig = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs
                 {
                     ApiAvailable = true,
-                    IntegrationId = "Foo-Connect-01",
+                    IntegrationId = "Example-Connect-01",
                     BandwidthFromApi = false,
                 },
                 ConnectionLabel = "Virtual Circuit Name",
                 AuthenticationKey = new Equinix.Fabric.Inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs
                 {
                     Required = true,
-                    Label = "FOO ACCOUNT ID",
+                    Label = "Example ACCOUNT ID",
                 },
             },
         },
         Account = new Equinix.Fabric.Inputs.ServiceProfileAccountArgs
         {
-            OrganizationName = "Foo",
-            GlobalOrganizationName = "Foo Global",
+            OrganizationName = "Example Cloud",
+            GlobalOrganizationName = "Example Global",
         },
         Metros = null,
         Visibility = "PUBLIC",

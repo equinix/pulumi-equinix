@@ -5,8 +5,8 @@ resources:
   profile:
     type: equinix:fabric:ServiceProfile
     properties:
-      name: FOO Cloud
-      description: 50 to 500 Mbps Hosted Connection to Foo Cloud
+      name: Example Cloud Provider
+      description: 50 to 500 Mbps Hosted Connection to Example Cloud
       type: L2_PROFILE
       accessPointTypeConfigs:
       - type: COLO
@@ -22,15 +22,15 @@ resources:
         connectionRedundancyRequired: false,
         apiConfig:
           apiAvailable: true
-          integrationId: Foo-Connect-01
+          integrationId: Example-Connect-01
           bandwidthFromApi: false
         connectionLabel: Virtual Circuit Name
         authenticationKey:
           required: true
-          label: FOO ACCOUNT ID
+          label: Example ACCOUNT ID
       account:
-        organizationName: Foo
-        globalOrganizationName: Foo Global
+        organizationName: Example Cloud
+        globalOrganizationName: Example Global
       metros:
       visibility: PUBLIC
       marketingInfo:

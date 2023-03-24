@@ -5,15 +5,11 @@ using Equinix = Pulumi.Equinix;
 return await Deployment.RunAsync(() => 
 {
     var config = new Config();
+    var metro = config.Get("metro") ?? "FR";
     var speedInMbps = config.GetNumber("speedInMbps") ?? 50;
-    var linkProtocolType = config.Get("linkProtocolType") ?? "QINQ";
-    var linkProtocolStag = config.GetNumber("linkProtocolStag") ?? 2019;
-    var linkProtocolCtag = config.GetNumber("linkProtocolCtag") ?? 2112;
-    var portName = config.Require("portName");
-    var serviceProfileName = config.Get("serviceProfileName") ?? "AWS Direct Connect";
-    var serviceProfileRegion = config.Get("serviceProfileRegion") ?? "us-west-1";
-    var serviceProfileMetro = config.Get("serviceProfileMetro") ?? "SV";
-    var serviceProfileAuthKey = config.Require("serviceProfileAuthKey");
+    var fabricPortName = config.Require("fabricPortName");
+    var awsRegion = config.Get("awsRegion") ?? "eu-central-1";
+    var awsAccountId = config.Require("awsAccountId");
     var serviceProfileId = Equinix.Fabric.GetServiceProfiles.Invoke(new()
     {
         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
@@ -22,25 +18,22 @@ return await Deployment.RunAsync(() =>
             Operator = "=",
             Values = new[]
             {
-                serviceProfileName,
+                "AWS Direct Connect",
             },
         },
-    }).Apply(invoke => invoke.Data?.Uuid);
+    }).Apply(invoke => invoke.Data[0]?.Uuid);
 
     var portId = Equinix.Fabric.GetPorts.Invoke(new()
     {
-        Filters = new[]
+        Filter = new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
         {
-            new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
-            {
-                Name = portName,
-            },
+            Name = fabricPortName,
         },
-    }).Apply(invoke => invoke.Data?.Uuid);
+    }).Apply(invoke => invoke.Data[0]?.Uuid);
 
     var colo2Aws = new Equinix.Fabric.Connection("colo2Aws", new()
     {
-        Name = "colo2Aws",
+        Name = "Pulumi-colo2Aws",
         Type = "EVPL_VC",
         Notifications = new[]
         {
@@ -69,9 +62,8 @@ return await Deployment.RunAsync(() =>
                 },
                 LinkProtocol = new Equinix.Fabric.Inputs.ConnectionASideAccessPointLinkProtocolArgs
                 {
-                    Type = linkProtocolType,
-                    VlanSTag = linkProtocolStag,
-                    VlanTag = linkProtocolCtag,
+                    Type = "DOT1Q",
+                    VlanTag = 1234,
                 },
             },
         },
@@ -80,8 +72,8 @@ return await Deployment.RunAsync(() =>
             AccessPoint = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointArgs
             {
                 Type = "SP",
-                AuthenticationKey = serviceProfileAuthKey,
-                SellerRegion = serviceProfileRegion,
+                AuthenticationKey = awsAccountId,
+                SellerRegion = awsRegion,
                 Profile = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointProfileArgs
                 {
                     Type = "L2_PROFILE",
@@ -89,7 +81,7 @@ return await Deployment.RunAsync(() =>
                 },
                 Location = new Equinix.Fabric.Inputs.ConnectionZSideAccessPointLocationArgs
                 {
-                    MetroCode = serviceProfileMetro,
+                    MetroCode = metro,
                 },
             },
         },
@@ -97,7 +89,10 @@ return await Deployment.RunAsync(() =>
 
     return new Dictionary<string, object?>
     {
-        ["connectionId"] = colo2Aws.Id.Apply(id => $"http://{id}"),
+        ["connectionId"] = colo2Aws.Id,
+        ["connectionStatus"] = colo2Aws.Operation.Apply(operation => operation.EquinixStatus),
+        ["connectionProviderStatus"] = colo2Aws.Operation.Apply(operation => operation.ProviderStatus),
+        ["awsDirectConnectId"] = colo2Aws.ZSide.Apply(zSide => zSide.AccessPoint?.ProviderConnectionId),
     };
 });
 
