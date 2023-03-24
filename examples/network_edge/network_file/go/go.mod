@@ -3,7 +3,7 @@ module equinix-networkedge-file
 go 1.17
 
 require (
-	github.com/equinix/pulumi-equinix v0.0.0-20230310155049-7a8d98d9bbfa
+	github.com/equinix/pulumi-equinix v0.1.0
 	github.com/pulumi/pulumi/sdk/v3 v3.30.0
 )
 
