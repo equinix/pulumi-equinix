@@ -1,0 +1,21 @@
+name: equinix-metal-vlan
+runtime: yaml
+description: An Equinix Metal VLAN resource
+config:
+  projectId:
+    type: string
+  metro:
+    type: string
+    default: DA
+  vxlan:
+    type: string
+resources:
+  vlan:
+    type: equinix:metal:Vlan
+    properties:
+      description: VLAN in Dallas
+      projectId: ${projectId}
+      metro: ${metro}
+      vxlan: ${vxlan}
+outputs:
+  vlanId: ${vlan.id}

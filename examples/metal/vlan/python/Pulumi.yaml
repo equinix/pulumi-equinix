@@ -1,0 +1,11 @@
+name: equinix-metal-vlan
+runtime: python
+description: An Equinix Metal VLAN resource
+config:
+  metro:
+    type: string
+    default: DA
+  projectId:
+    type: string
+  vxlan:
+    type: string
