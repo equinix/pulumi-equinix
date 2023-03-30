@@ -41,11 +41,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var portId = config.get(&#34;portId&#34;);
- *         var org = new Port(&#34;org&#34;, PortArgs.builder()        
+ *         final var portId = config.get(&#34;portId&#34;).get();
+ *         final var vlanId = config.get(&#34;vlanId&#34;).get();
+ *         var port = new Port(&#34;port&#34;, PortArgs.builder()        
  *             .portId(portId)
  *             .bonded(true)
- *             .layer2(true)
+ *             .layer2(false)
+ *             .vlanIds(vlanId)
  *             .build());
  * 
  *         ctx.export(&#34;portType&#34;, port.type());

@@ -28,15 +28,10 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
+ * import com.equinix.pulumi.metal.inputs.GetInterconnectionArgs;
+ * import com.equinix.pulumi.metal.MetalFunctions;
  * import com.equinix.pulumi.metal.VirtualCircuit;
  * import com.equinix.pulumi.metal.VirtualCircuitArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -45,12 +40,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;);
- *         final var connectionId = config.get(&#34;connectionId&#34;);
- *         final var vlanId = config.get(&#34;vlanId&#34;);
+ *         final var projectId = config.get(&#34;projectId&#34;).get();
+ *         final var connectionId = config.get(&#34;connectionId&#34;).get();
+ *         final var vlanId = config.get(&#34;vlanId&#34;).get();
  *         final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
  *             .connectionId(connectionId)
- *             .build()).ports()[0].id();
+ *             .build()).applyValue(data -&gt; data.ports().get(0).id());
  * 
  *         var vc = new VirtualCircuit(&#34;vc&#34;, VirtualCircuitArgs.builder()        
  *             .connectionId(connectionId)

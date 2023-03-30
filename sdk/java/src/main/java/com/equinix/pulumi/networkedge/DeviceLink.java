@@ -32,6 +32,9 @@ import javax.annotation.Nullable;
  * import com.equinix.pulumi.networkedge.DeviceLinkArgs;
  * import com.equinix.pulumi.networkedge.inputs.DeviceLinkDeviceArgs;
  * import com.equinix.pulumi.networkedge.inputs.DeviceLinkLinkArgs;
+ * import com.equinix.pulumi.networkedge.inputs.GetAccountArgs;
+ * import com.equinix.pulumi.networkedge.inputs.GetDeviceArgs;
+ * import com.equinix.pulumi.networkedge.NetworkedgeFunctions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,22 +49,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var accountName = config.get(&#34;accountName&#34;);
- *         final var accountMetro = config.get(&#34;accountMetro&#34;);
- *         final var device1Id = config.get(&#34;device1Id&#34;);
- *         final var device2Id = config.get(&#34;device2Id&#34;);
+ *         final var accountName = config.get(&#34;accountName&#34;).get();
+ *         final var accountMetro = config.get(&#34;accountMetro&#34;).get();
+ *         final var device1Id = config.get(&#34;device1Id&#34;).get();
+ *         final var device2Id = config.get(&#34;device2Id&#34;).get();
  *         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
  *             .name(accountName)
  *             .metroCode(accountMetro)
- *             .build()).number();
+ *             .build()).applyValue(account -&gt; account.number());
  * 
  *         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
  *             .uuid(device1Id)
- *             .build()).metroCode();
+ *             .build()).applyValue(device -&gt; device.metroCode());
  * 
  *         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
  *             .uuid(device2Id)
- *             .build()).metroCode();
+ *             .build()).applyValue(device -&gt; device.metroCode());
  * 
  *         var deviceLink = new DeviceLink(&#34;deviceLink&#34;, DeviceLinkArgs.builder()        
  *             .name(&#34;test-link&#34;)
@@ -81,7 +84,7 @@ import javax.annotation.Nullable;
  *                 .accountNumber(accountfNum)
  *                 .srcMetroCode(device1Metro)
  *                 .dstMetroCode(device2Metro)
- *                 .throughput(50)
+ *                 .throughput(&#34;50&#34;)
  *                 .throughputUnit(&#34;Mbps&#34;)
  *                 .build())
  *             .build());

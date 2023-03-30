@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
+ * import java.io.IOException;
  * import java.io.File;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
@@ -42,9 +43,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
+ * 
+ *         String content = null;
+ *         try {
+ *             content = Files.readString(Paths.get(&#34;./../assets/aviatrix-cloud-init.txt&#34;));
+ *         } catch (IOException e) {
+ *             e.printStackTrace();
+ *         }
+ * 
  *         var networkFile = new NetworkFile(&#34;networkFile&#34;, NetworkFileArgs.builder()        
  *             .fileName(&#34;Aviatrix-ZTP-file&#34;)
- *             .content(Files.readString(Paths.get(&#34;./../assets/aviatrix-cloud-init.txt&#34;)))
+ *             .content(content)
  *             .metroCode(metro)
  *             .deviceTypeCode(&#34;AVIATRIX_EDGE&#34;)
  *             .processType(&#34;CLOUD_INIT&#34;)

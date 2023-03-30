@@ -24,15 +24,8 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
  * import com.equinix.pulumi.metal.OrganizationMember;
  * import com.equinix.pulumi.metal.OrganizationMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -41,9 +34,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var organizationId = config.get(&#34;organizationId&#34;);
- *         final var projectId = config.get(&#34;projectId&#34;);
- *         final var userEmailAddress = config.get(&#34;userEmailAddress&#34;);
+ *         final var organizationId = config.get(&#34;organizationId&#34;).get();
+ *         final var projectId = config.get(&#34;projectId&#34;).get();
+ *         final var userEmailAddress = config.get(&#34;userEmailAddress&#34;).get();
  *         var member = new OrganizationMember(&#34;member&#34;, OrganizationMemberArgs.builder()        
  *             .invitee(userEmailAddress)
  *             .roles(&#34;limited_collaborator&#34;)

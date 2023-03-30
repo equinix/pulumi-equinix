@@ -39,15 +39,8 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
  * import com.equinix.pulumi.metal.ReservedIpBlock;
  * import com.equinix.pulumi.metal.ReservedIpBlockArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -56,13 +49,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var projectId = config.get(&#34;projectId&#34;).get();
  *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
  *         final var type = config.get(&#34;type&#34;).orElse(&#34;public_ipv4&#34;);
- *         final var quantity = config.get(&#34;quantity&#34;).orElse(1);
+ *         final var quantity = Integer.parseInt(config.get(&#34;quantity&#34;).orElse(&#34;1&#34;));
  *         var ipBlock = new ReservedIpBlock(&#34;ipBlock&#34;, ReservedIpBlockArgs.builder()        
  *             .projectId(projectId)
- *             .type(&#34;public_ipv4&#34;)
+ *             .type(type)
  *             .quantity(quantity)
  *             .metro(metro)
  *             .build());

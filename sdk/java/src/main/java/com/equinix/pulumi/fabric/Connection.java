@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
  * import com.equinix.pulumi.fabric.Connection;
  * import com.equinix.pulumi.fabric.ConnectionArgs;
  * import com.equinix.pulumi.fabric.inputs.ConnectionNotificationArgs;
@@ -47,12 +46,11 @@ import javax.annotation.Nullable;
  * import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointArgs;
  * import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
  * import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
+ * import com.equinix.pulumi.fabric.inputs.GetServiceProfilesArgs;
+ * import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilterArgs;
+ * import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
+ * import com.equinix.pulumi.fabric.inputs.GetPortsFilterArgs;
+ * import com.equinix.pulumi.fabric.FabricFunctions;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -62,23 +60,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;FR&#34;);
- *         final var speedInMbps = config.get(&#34;speedInMbps&#34;).orElse(50);
- *         final var fabricPortName = config.get(&#34;fabricPortName&#34;);
+ *         final var speedInMbps = Integer.parseInt(config.get(&#34;speedInMbps&#34;).orElse(&#34;50&#34;));
+ *         final var fabricPortName = config.get(&#34;fabricPortName&#34;).get().toString();
  *         final var awsRegion = config.get(&#34;awsRegion&#34;).orElse(&#34;eu-central-1&#34;);
- *         final var awsAccountId = config.get(&#34;awsAccountId&#34;);
+ *         final var awsAccountId = config.get(&#34;awsAccountId&#34;).get().toString();
+ *         System.out.println(System.getProperty(&#34;java.classpath&#34;));
  *         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
  *             .filter(GetServiceProfilesFilterArgs.builder()
  *                 .property(&#34;/name&#34;)
  *                 .operator(&#34;=&#34;)
  *                 .values(&#34;AWS Direct Connect&#34;)
  *                 .build())
- *             .build()).data()[0].uuid();
+ *             .build()).applyValue(data -&gt; data.data().get(0).uuid().get());
  * 
  *         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
  *             .filter(GetPortsFilterArgs.builder()
  *                 .name(fabricPortName)
  *                 .build())
- *             .build()).data()[0].uuid();
+ *             .build()).applyValue(data -&gt; data.data().get(0).uuid().get());
  * 
  *         var colo2Aws = new Connection(&#34;colo2Aws&#34;, ConnectionArgs.builder()        
  *             .name(&#34;Pulumi-colo2Aws&#34;)
@@ -122,7 +121,7 @@ import javax.annotation.Nullable;
  *         ctx.export(&#34;connectionId&#34;, colo2Aws.id());
  *         ctx.export(&#34;connectionStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.equinixStatus()));
  *         ctx.export(&#34;connectionProviderStatus&#34;, colo2Aws.operation().applyValue(operation -&gt; operation.providerStatus()));
- *         ctx.export(&#34;awsDirectConnectId&#34;, colo2Aws.zSide().applyValue(zSide -&gt; zSide.accessPoint().providerConnectionId()));
+ *         ctx.export(&#34;awsDirectConnectId&#34;, colo2Aws.zSide().applyValue(zSide -&gt; zSide.accessPoint().get().providerConnectionId()));
  *     }
  * }
  * ```

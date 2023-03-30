@@ -110,6 +110,7 @@ build_go:: # build the go sdk
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java:: bin/pulumi-java-gen patch_java_schema
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
+	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 build_java:: patch_java
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \

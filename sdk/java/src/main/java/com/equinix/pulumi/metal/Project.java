@@ -30,15 +30,8 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
  * import com.equinix.pulumi.metal.Project;
  * import com.equinix.pulumi.metal.ProjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -47,7 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var organizationId = config.get(&#34;organizationId&#34;);
+ *         final var organizationId = config.get(&#34;organizationId&#34;).get();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;Default Project&#34;);
  *         var projectResource = new Project(&#34;projectResource&#34;, ProjectArgs.builder()        
  *             .name(name)

@@ -41,8 +41,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var deviceId = config.get(&#34;deviceId&#34;);
  *         var orgResource = new Organization(&#34;orgResource&#34;, OrganizationArgs.builder()        
  *             .name(&#34;Foo Organization&#34;)
  *             .address(OrganizationAddressArgs.builder()

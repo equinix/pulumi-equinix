@@ -33,7 +33,6 @@ import javax.annotation.Nullable;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
  * import com.equinix.pulumi.fabric.ServiceProfile;
  * import com.equinix.pulumi.fabric.ServiceProfileArgs;
  * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
@@ -42,12 +41,6 @@ import javax.annotation.Nullable;
  * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
  * import com.equinix.pulumi.fabric.inputs.ServiceProfileAccountArgs;
  * import com.equinix.pulumi.fabric.inputs.ServiceProfileMarketingInfoArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -74,8 +67,8 @@ import javax.annotation.Nullable;
  *                     .reuseVlanSTag(false)
  *                     .encapsulation(&#34;DOT1Q&#34;)
  *                     .build())
- *                 .enableAutoGenerateServiceKey(&#34;false,&#34;)
- *                 .connectionRedundancyRequired(&#34;false,&#34;)
+ *                 .enableAutoGenerateServiceKey(false)
+ *                 .connectionRedundancyRequired(false)
  *                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
  *                     .apiAvailable(true)
  *                     .integrationId(&#34;Example-Connect-01&#34;)
@@ -91,7 +84,6 @@ import javax.annotation.Nullable;
  *                 .organizationName(&#34;Example Cloud&#34;)
  *                 .globalOrganizationName(&#34;Example Global&#34;)
  *                 .build())
- *             .metros(null)
  *             .visibility(&#34;PUBLIC&#34;)
  *             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
  *                 .promotion(true)

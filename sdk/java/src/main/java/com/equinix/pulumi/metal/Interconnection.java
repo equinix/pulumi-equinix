@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var projectId = config.get(&#34;projectId&#34;);
+ *         final var projectId = config.get(&#34;projectId&#34;).get();
  *         final var metro = config.get(&#34;metro&#34;).orElse(&#34;SV&#34;);
- *         final var speedInMbps = config.get(&#34;speedInMbps&#34;).orElse(200);
+ *         final var speedInMbps = Integer.parseInt(config.get(&#34;speedInMbps&#34;).orElse(&#34;200&#34;));
  *         var connection = new Interconnection(&#34;connection&#34;, InterconnectionArgs.builder()        
  *             .name(&#34;fabric-port-to-metal&#34;)
  *             .projectId(projectId)

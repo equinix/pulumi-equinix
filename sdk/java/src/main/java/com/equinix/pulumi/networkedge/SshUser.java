@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var device1Id = config.get(&#34;device1Id&#34;);
- *         final var device2Id = config.get(&#34;device2Id&#34;);
+ *         final var device1Id = config.get(&#34;device1Id&#34;).get();
+ *         final var device2Id = config.get(&#34;device2Id&#34;).get();
  *         var sshUser = new SshUser(&#34;sshUser&#34;, SshUserArgs.builder()        
  *             .username(&#34;johnKent&#34;)
  *             .deviceIds(            
