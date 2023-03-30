@@ -3,9 +3,9 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Organization;
-import com.pulumi.equinix.metal.OrganizationArgs;
-import com.pulumi.equinix.metal.inputs.OrganizationAddressArgs;
+import com.equinix.pulumi.metal.Organization;
+import com.equinix.pulumi.metal.OrganizationArgs;
+import com.equinix.pulumi.metal.inputs.OrganizationAddressArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,8 +19,6 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var deviceId = config.get("deviceId");
         var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
             .name("Foo Organization")
             .address(OrganizationAddressArgs.builder()

@@ -10,5 +10,5 @@ pluginManagement {
   }
 }
 
-rootProject.name = "com.equinix.pulumi.equinix"
+rootProject.name = "com.equinix.pulumi"
 include("lib")

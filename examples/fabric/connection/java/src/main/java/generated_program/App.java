@@ -2,25 +2,23 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.fabric.Connection;
-import com.pulumi.equinix.fabric.ConnectionArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionNotificationArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionRedundancyArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionASideArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointPortArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionZSideArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
-import com.pulumi.equinix.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.equinix.pulumi.fabric.Connection;
+import com.equinix.pulumi.fabric.ConnectionArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionNotificationArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionRedundancyArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionASideArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointPortArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionZSideArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointProfileArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointLocationArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceProfilesArgs;
+import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilterArgs;
+import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
+import com.equinix.pulumi.fabric.inputs.GetPortsFilterArgs;
+import com.equinix.pulumi.fabric.FabricFunctions;
 
 public class App {
     public static void main(String[] args) {
@@ -30,23 +28,24 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("FR");
-        final var speedInMbps = config.get("speedInMbps").orElse(50);
-        final var fabricPortName = config.get("fabricPortName");
+        final var speedInMbps = Integer.parseInt(config.get("speedInMbps").orElse("50"));
+        final var fabricPortName = config.get("fabricPortName").get().toString();
         final var awsRegion = config.get("awsRegion").orElse("eu-central-1");
-        final var awsAccountId = config.get("awsAccountId");
+        final var awsAccountId = config.get("awsAccountId").get().toString();
+        System.out.println(System.getProperty("java.classpath"));
         final var serviceProfileId = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
             .filter(GetServiceProfilesFilterArgs.builder()
                 .property("/name")
                 .operator("=")
                 .values("AWS Direct Connect")
                 .build())
-            .build()).data()[0].uuid();
+            .build()).applyValue(data -> data.data().get(0).uuid().get());
 
         final var portId = FabricFunctions.getPorts(GetPortsArgs.builder()
             .filter(GetPortsFilterArgs.builder()
                 .name(fabricPortName)
                 .build())
-            .build()).data()[0].uuid();
+            .build()).applyValue(data -> data.data().get(0).uuid().get());
 
         var colo2Aws = new Connection("colo2Aws", ConnectionArgs.builder()        
             .name("Pulumi-colo2Aws")
@@ -90,6 +89,6 @@ public class App {
         ctx.export("connectionId", colo2Aws.id());
         ctx.export("connectionStatus", colo2Aws.operation().applyValue(operation -> operation.equinixStatus()));
         ctx.export("connectionProviderStatus", colo2Aws.operation().applyValue(operation -> operation.providerStatus()));
-        ctx.export("awsDirectConnectId", colo2Aws.zSide().applyValue(zSide -> zSide.accessPoint().providerConnectionId()));
+        ctx.export("awsDirectConnectId", colo2Aws.zSide().applyValue(zSide -> zSide.accessPoint().get().providerConnectionId()));
     }
 }

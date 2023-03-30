@@ -1,8 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
 
-const config = new pulumi.Config();
-const deviceId = config.require("deviceId");
 const orgResource = new equinix.metal.Organization("org", {
     name: "Foo Organization",
     address: {

@@ -141,8 +141,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Interconnection;
-import com.pulumi.equinix.metal.InterconnectionArgs;
+import com.equinix.pulumi.metal.Interconnection;
+import com.equinix.pulumi.metal.InterconnectionArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -157,9 +157,10 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var projectId = config.get("projectId");
+        final var projectId = config.get("projectId").get();
         final var metro = config.get("metro").orElse("SV");
-        final var speedInMbps = config.get("speedInMbps").orElse(1000);
+        final var speedInMbps = Integer.parseInt(config.get("speedInMbps").orElse("1000"));
+
         var connection = new Interconnection("connection", InterconnectionArgs.builder()        
             .name("metal-to-cloudprovider")
             .projectId(projectId)

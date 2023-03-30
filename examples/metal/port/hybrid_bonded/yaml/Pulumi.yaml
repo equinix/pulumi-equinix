@@ -7,7 +7,7 @@ config:
   vlanId:
     type: string
 resources:
-  portBond0:
+  port:
     type: equinix:metal:Port
     properties:
       portId: ${portId}

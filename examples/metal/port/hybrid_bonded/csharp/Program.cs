@@ -7,7 +7,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var portId = config.Require("portId");
     var vlanId = config.Require("vlanId");
-    var portBond0 = new Equinix.Metal.Port("portBond0", new()
+    var port = new Equinix.Metal.Port("port", new()
     {
         PortId = portId,
         Bonded = true,

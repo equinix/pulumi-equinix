@@ -6,8 +6,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix/pulumi-equinix";
 
-const config = new pulumi.Config();
-const deviceId = config.require("deviceId");
 const orgResource = new equinix.metal.Organization("org", {
     name: "Foo Organization",
     address: {
@@ -29,8 +27,6 @@ export const org = orgResource.id;
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-device_id = config.require("deviceId")
 org_resource = equinix.metal.Organization("org",
     name="Foo Organization",
     address=equinix.metal.OrganizationAddressArgs(
@@ -53,13 +49,10 @@ package main
 import (
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		cfg := config.New(ctx, "")
-		deviceId := cfg.Require("deviceId")
 		orgResource, err := metal.NewOrganization(ctx, "org", &metal.OrganizationArgs{
 			Name: pulumi.String("Foo Organization"),
 			Address: &metal.OrganizationAddressArgs{
@@ -90,8 +83,6 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var deviceId = config.Require("deviceId");
     var orgResource = new Equinix.Metal.Organization("org", new()
     {
         Name = "Foo Organization",
@@ -122,9 +113,9 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Organization;
-import com.pulumi.equinix.metal.OrganizationArgs;
-import com.pulumi.equinix.metal.inputs.OrganizationAddressArgs;
+import com.equinix.pulumi.metal.Organization;
+import com.equinix.pulumi.metal.OrganizationArgs;
+import com.equinix.pulumi.metal.inputs.OrganizationAddressArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -138,8 +129,6 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var config = ctx.config();
-        final var deviceId = config.get("deviceId");
         var orgResource = new Organization("orgResource", OrganizationArgs.builder()        
             .name("Foo Organization")
             .address(OrganizationAddressArgs.builder()
@@ -161,9 +150,6 @@ public class App {
 {{% choosable language yaml %}}
 
 ```yaml
-config:
-  deviceId:
-    type: string
 resources:
   org:
     type: equinix:metal:Organization

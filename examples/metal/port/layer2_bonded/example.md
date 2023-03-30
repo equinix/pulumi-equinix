@@ -8,7 +8,7 @@ import * as equinix from "@equinix/pulumi-equinix";
 
 const config = new pulumi.Config();
 const portId = config.require("portId");
-const org = new equinix.metal.Port("org", {
+const port = new equinix.metal.Port("port", {
     portId: portId,
     bonded: true,
     layer2: true,
@@ -27,7 +27,7 @@ import pulumi_equinix as equinix
 
 config = pulumi.Config()
 port_id = config.require("portId")
-org = equinix.metal.Port("org",
+port = equinix.metal.Port("port",
     port_id=port_id,
     bonded=True,
     layer2=True)
@@ -52,7 +52,7 @@ func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		cfg := config.New(ctx, "")
 		portId := cfg.Require("portId")
-		_, err := metal.NewPort(ctx, "org", &metal.PortArgs{
+		port, err := metal.NewPort(ctx, "port", &metal.PortArgs{
 			PortId: pulumi.String(portId),
 			Bonded: pulumi.Bool(true),
 			Layer2: pulumi.Bool(true),
@@ -80,7 +80,7 @@ return await Deployment.RunAsync(() =>
 {
     var config = new Config();
     var portId = config.Require("portId");
-    var org = new Equinix.Metal.Port("org", new()
+    var port = new Equinix.Metal.Port("port", new()
     {
         PortId = portId,
         Bonded = true,
@@ -105,8 +105,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Port;
-import com.pulumi.equinix.metal.PortArgs;
+import com.equinix.pulumi.metal.Port;
+import com.equinix.pulumi.metal.PortArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -121,8 +121,8 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var portId = config.get("portId");
-        var org = new Port("org", PortArgs.builder()        
+        final var portId = config.get("portId").get();
+        var port = new Port("port", PortArgs.builder()        
             .portId(portId)
             .bonded(true)
             .layer2(true)
@@ -143,7 +143,7 @@ config:
   portId:
     type: string
 resources:
-  org:
+  port:
     type: equinix:metal:Port
     properties:
       portId: ${portId}

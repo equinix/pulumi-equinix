@@ -47,7 +47,7 @@ resources:
       - accountNumber: ${accountfNum}
         srcMetroCode: ${device1Metro}
         dstMetroCode: ${device2Metro}
-        throughput: 50
+        throughput: "50"
         throughputUnit: Mbps
 outputs:
   status: ${deviceLink.status}

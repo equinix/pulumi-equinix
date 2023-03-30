@@ -18,7 +18,7 @@ resources:
     type: equinix:metal:ReservedIpBlock
     properties:
       projectId: ${projectId}
-      type: public_ipv4
+      type: ${type}
       quantity: ${quantity}
       metro: ${metro}
 outputs:

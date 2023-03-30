@@ -11,7 +11,7 @@ func main() {
 		cfg := config.New(ctx, "")
 		portId := cfg.Require("portId")
 		vlanId := cfg.Require("vlanId")
-		_, err := metal.NewPort(ctx, "portBond0", &metal.PortArgs{
+		port, err := metal.NewPort(ctx, "port", &metal.PortArgs{
 			PortId: pulumi.String(portId),
 			Bonded: pulumi.Bool(true),
 			Layer2: pulumi.Bool(false),

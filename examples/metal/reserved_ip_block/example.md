@@ -13,7 +13,7 @@ const type = config.get("type") || "public_ipv4";
 const quantity = config.getNumber("quantity") || 1;
 const ipBlock = new equinix.metal.ReservedIpBlock("ipBlock", {
     projectId: projectId,
-    type: "public_ipv4",
+    type: type,
     quantity: quantity,
     metro: metro,
 });
@@ -34,15 +34,15 @@ project_id = config.require("projectId")
 metro = config.get("metro")
 if metro is None:
     metro = "FR"
-type = config.get("type")
-if type is None:
-    type = "public_ipv4"
+_type = config.get("type")
+if _type is None:
+    _type = "public_ipv4"
 quantity = config.get_int("quantity")
 if quantity is None:
     quantity = 1
 ip_block = equinix.metal.ReservedIpBlock("ipBlock",
     project_id=project_id,
-    type="public_ipv4",
+    type=_type,
     quantity=quantity,
     metro=metro)
 pulumi.export("ipBlockId", ip_block.id)
@@ -80,7 +80,7 @@ func main() {
 		}
 		ipBlock, err := metal.NewReservedIpBlock(ctx, "ipBlock", &metal.ReservedIpBlockArgs{
 			ProjectId: pulumi.String(projectId),
-			Type:      pulumi.String("public_ipv4"),
+			Type:      pulumi.String(_type),
 			Quantity:  pulumi.Int(quantity),
 			Metro:     pulumi.String(metro),
 		})
@@ -113,7 +113,7 @@ return await Deployment.RunAsync(() =>
     var ipBlock = new Equinix.Metal.ReservedIpBlock("ipBlock", new()
     {
         ProjectId = projectId,
-        Type = "public_ipv4",
+        Type = type,
         Quantity = quantity,
         Metro = metro,
     });
@@ -135,15 +135,8 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.ReservedIpBlock;
-import com.pulumi.equinix.metal.ReservedIpBlockArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.equinix.pulumi.metal.ReservedIpBlock;
+import com.equinix.pulumi.metal.ReservedIpBlockArgs;
 
 public class App {
     public static void main(String[] args) {
@@ -152,13 +145,13 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var projectId = config.get("projectId");
+        final var projectId = config.get("projectId").get();
         final var metro = config.get("metro").orElse("FR");
         final var type = config.get("type").orElse("public_ipv4");
-        final var quantity = config.get("quantity").orElse(1);
+        final var quantity = Integer.parseInt(config.get("quantity").orElse("1"));
         var ipBlock = new ReservedIpBlock("ipBlock", ReservedIpBlockArgs.builder()        
             .projectId(projectId)
-            .type("public_ipv4")
+            .type(type)
             .quantity(quantity)
             .metro(metro)
             .build());
@@ -191,7 +184,7 @@ resources:
     type: equinix:metal:ReservedIpBlock
     properties:
       projectId: ${projectId}
-      type: public_ipv4
+      type: ${type}
       quantity: ${quantity}
       metro: ${metro}
 outputs:

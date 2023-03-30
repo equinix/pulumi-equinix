@@ -8,5 +8,5 @@ config:
   projectId:
     type: string
   speedInMbps:
-    type: integer
-    default: 1000
+    type: string
+    default: "1000"

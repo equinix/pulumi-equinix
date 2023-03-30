@@ -2,13 +2,10 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.SshKey;
-import com.pulumi.equinix.metal.SshKeyArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
+import com.equinix.pulumi.metal.SshKey;
+import com.equinix.pulumi.metal.SshKeyArgs;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -18,9 +15,16 @@ public class App {
     }
 
     public static void stack(Context ctx) {
+        String content = null;
+        try {
+            content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         var sshKey = new SshKey("sshKey", SshKeyArgs.builder()        
             .name("johnKent")
-            .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
+            .publicKey(content)
             .build());
 
         ctx.export("sshKeyId", sshKey.id());

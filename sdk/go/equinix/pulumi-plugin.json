@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "equinix",
-  "server": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty"
-}

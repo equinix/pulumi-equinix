@@ -8,7 +8,7 @@ import * as equinix from "@equinix/pulumi-equinix";
 const config = new pulumi.Config();
 const projectId = config.require("projectId");
 const metro = config.get("metro") || "DA";
-const vxlan = config.require("vxlan");
+const vxlan = config.requireNumber("vxlan");
 const vlan = new equinix.metal.Vlan("vlan", {
     description: "VLAN in Dallas",
     projectId: projectId,
@@ -26,7 +26,7 @@ project_id = config.require("projectId")
 metro = config.get("metro")
 if metro is None:
     metro = "DA"
-vxlan = config.require("vxlan")
+vxlan = config.require_int("vxlan")
 vlan = equinix.metal.Vlan("vlan",
     description="VLAN in Dallas",
     project_id=project_id,
@@ -51,12 +51,12 @@ func main() {
 		if param := cfg.Get("metro"); param != "" {
 			metro = param
 		}
-		vxlan := cfg.Require("vxlan")
+		vxlan := cfg.RequireInt("vxlan")
 		vlan, err := metal.NewVlan(ctx, "vlan", &metal.VlanArgs{
 			Description: pulumi.String("VLAN in Dallas"),
 			ProjectId:   pulumi.String(projectId),
 			Metro:       pulumi.String(metro),
-			Vxlan:       pulumi.String(vxlan),
+			Vxlan:       pulumi.Int(vxlan),
 		})
 		if err != nil {
 			return err
@@ -76,7 +76,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var projectId = config.Require("projectId");
     var metro = config.Get("metro") ?? "DA";
-    var vxlan = config.Require("vxlan");
+    var vxlan = config.RequireNumber("vxlan");
     var vlan = new Equinix.Metal.Vlan("vlan", new()
     {
         Description = "VLAN in Dallas",
@@ -96,15 +96,8 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Vlan;
-import com.pulumi.equinix.metal.VlanArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.equinix.pulumi.metal.Vlan;
+import com.equinix.pulumi.metal.VlanArgs;
 
 public class App {
     public static void main(String[] args) {
@@ -113,9 +106,9 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var projectId = config.get("projectId");
+        final var projectId = config.get("projectId").get();
         final var metro = config.get("metro").orElse("DA");
-        final var vxlan = config.get("vxlan");
+        final var vxlan = Integer.parseInt(config.get("vxlan").get());
         var vlan = new Vlan("vlan", VlanArgs.builder()        
             .description("VLAN in Dallas")
             .projectId(projectId)
@@ -135,7 +128,7 @@ config:
     type: string
     default: DA
   vxlan:
-    type: string
+    type: integer
 resources:
   vlan:
     type: equinix:metal:Vlan

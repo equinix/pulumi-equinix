@@ -96,15 +96,8 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.BgpSession;
-import com.pulumi.equinix.metal.BgpSessionArgs;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import com.equinix.pulumi.metal.BgpSession;
+import com.equinix.pulumi.metal.BgpSessionArgs;
 
 public class App {
     public static void main(String[] args) {
@@ -113,7 +106,7 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var deviceId = config.get("deviceId");
+        final var deviceId = config.get("deviceId").get();
         var bgp = new BgpSession("bgp", BgpSessionArgs.builder()        
             .deviceId(deviceId)
             .addressFamily("ipv4")

@@ -66,7 +66,7 @@ provider:: tfgen install_plugins # build the provider binary
 build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
-build_nodejs:: install_plugins tfgen # build the node sdk
+build_nodejs:: # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 build_nodejs:: patch_nodejs # fix generated files
 build_nodejs::
@@ -86,7 +86,7 @@ patch_nodejs::
 		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 
 build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
-build_python:: install_plugins tfgen # build the python sdk
+build_python:: # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
@@ -97,27 +97,58 @@ build_python:: install_plugins tfgen # build the python sdk
         cd ./bin && python3 setup.py build sdist
 
 build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
-build_dotnet:: install_plugins tfgen # build the dotnet sdk
+build_dotnet:: # build the dotnet sdk
 	pulumictl get version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-build_go:: install_plugins tfgen # build the go sdk
+build_go:: # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
-build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java: bin/pulumi-java-gen
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
+build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+build_java:: bin/pulumi-java-gen patch_java_schema
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
+build_java:: patch_java
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
+		gradle --console=plain build
+
+patch_java_schema::
+	echo "patch_java_schema: copy schema.json to schema-java.json " && \
+		cp provider/cmd/$(PROVIDER)/schema.json provider/cmd/$(PROVIDER)/schema-java.json
+	echo "patch_java_schema: update schema-java.json to generate the SDK with pulumi as root package" && \
+		sed -i.bak -e 's/"name": "equinix",/"name": "pulumi",/g' \
+			-e 's/equinix:index/pulumi:index/g' \
+			-e 's/"equinix": "Equinix",/"pulumi": "Pulumi",/g' \
+			-e 's/equinix:metal/pulumi:metal/g' \
+			-e 's/equinix:fabric/pulumi:fabric/g' \
+			-e 's/equinix:networkedge/pulumi:networkedge/g' ./provider/cmd/$(PROVIDER)/schema-java.json && \
+		rm -f ./provider/cmd/$(PROVIDER)/schema-java.json.bak
+
+patch_java::
+	echo "patch_java: find and replace invocations of pulumi:fabric/metal/networkedge" && \
+		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java" -print -exec sed -i.bak 's/pulumi:fabric/equinix:fabric/g; s/pulumi:metal/equinix:metal/g; s/pulumi:networkedge/equinix:networkedge/g' {} \;
+	echo "patch_java: remove backup files" && \
+		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java.bak" -exec /bin/rm {} \;
+
+	echo "patch_java: replace pulumi provider refs added in patch_java_schema" && \
+		cd sdk/java/src/main/java/com/equinix/pulumi/ && \
+		sed -i.bak -e 's/pulumi:providers:pulumi/pulumi:providers:equinix/g' \
+			-e 's/"pulumi", name/"equinix", name/g' ./Provider.java && \
+		rm -f Provider.java.bak && \
+		sed -i.bak -e 's/"pulumi"/"equinix"/g' ./Config.java && \
+		rm -f Config.java.bak && \
+		sed -i.bak -e 's/pulumi\/pulumi/equinix\/pulumi/g' ./Utilities.java && \
+		rm -f Utilities.java.bak
+	echo "patch_java: update gradle info" && \
+		cd ./sdk/java/ && \
 		sed -i.bak -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' \
 			-e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' \
 			-e 's/inceptionYear = .*/inceptionYear = "2023"/g' \
 			-e 's/description = .*/description = "A Pulumi package for creating and managing equinix cloud resources."/g' ./build.gradle && \
 		sed -i.bak -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle && \
-		gradle --console=plain build && \
 		rm -f build.gradle.bak
 
 lint_provider:: provider # lint the provider code

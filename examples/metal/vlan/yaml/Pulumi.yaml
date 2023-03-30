@@ -8,7 +8,7 @@ config:
     type: string
     default: DA
   vxlan:
-    type: string
+    type: integer
 resources:
   vlan:
     type: equinix:metal:Vlan

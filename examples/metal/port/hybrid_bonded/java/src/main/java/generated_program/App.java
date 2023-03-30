@@ -3,8 +3,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Port;
-import com.pulumi.equinix.metal.PortArgs;
+import com.equinix.pulumi.metal.Port;
+import com.equinix.pulumi.metal.PortArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,9 +19,9 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var portId = config.get("portId");
-        final var vlanId = config.get("vlanId");
-        var portBond0 = new Port("portBond0", PortArgs.builder()        
+        final var portId = config.get("portId").get();
+        final var vlanId = config.get("vlanId").get();
+        var port = new Port("port", PortArgs.builder()        
             .portId(portId)
             .bonded(true)
             .layer2(false)

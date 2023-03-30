@@ -5,7 +5,7 @@ config:
   portId:
     type: string
 resources:
-  org:
+  port:
     type: equinix:metal:Port
     properties:
       portId: ${portId}

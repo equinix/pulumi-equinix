@@ -1,8 +1,6 @@
 import pulumi
 import pulumi_equinix as equinix
 
-config = pulumi.Config()
-device_id = config.require("deviceId")
 org_resource = equinix.metal.Organization("org",
     name="Foo Organization",
     address=equinix.metal.OrganizationAddressArgs(

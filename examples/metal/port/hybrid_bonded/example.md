@@ -9,7 +9,7 @@ import * as equinix from "@equinix/pulumi-equinix";
 const config = new pulumi.Config();
 const portId = config.require("portId");
 const vlanId = config.require("vlanId");
-const portBond0 = new equinix.metal.Port("portBond0", {
+const port = new equinix.metal.Port("port", {
     portId: portId,
     bonded: true,
     layer2: false,
@@ -30,7 +30,7 @@ import pulumi_equinix as equinix
 config = pulumi.Config()
 port_id = config.require("portId")
 vlan_id = config.require("vlanId")
-port_bond0 = equinix.metal.Port("portBond0",
+port = equinix.metal.Port("port",
     port_id=port_id,
     bonded=True,
     layer2=False,
@@ -57,7 +57,7 @@ func main() {
 		cfg := config.New(ctx, "")
 		portId := cfg.Require("portId")
 		vlanId := cfg.Require("vlanId")
-		_, err := metal.NewPort(ctx, "portBond0", &metal.PortArgs{
+		port, err := metal.NewPort(ctx, "port", &metal.PortArgs{
 			PortId: pulumi.String(portId),
 			Bonded: pulumi.Bool(true),
 			Layer2: pulumi.Bool(false),
@@ -89,7 +89,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var portId = config.Require("portId");
     var vlanId = config.Require("vlanId");
-    var portBond0 = new Equinix.Metal.Port("portBond0", new()
+    var port = new Equinix.Metal.Port("port", new()
     {
         PortId = portId,
         Bonded = true,
@@ -118,8 +118,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.metal.Port;
-import com.pulumi.equinix.metal.PortArgs;
+import com.equinix.pulumi.metal.Port;
+import com.equinix.pulumi.metal.PortArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -134,9 +134,9 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var portId = config.get("portId");
-        final var vlanId = config.get("vlanId");
-        var portBond0 = new Port("portBond0", PortArgs.builder()        
+        final var portId = config.get("portId").get();
+        final var vlanId = config.get("vlanId").get();
+        var port = new Port("port", PortArgs.builder()        
             .portId(portId)
             .bonded(true)
             .layer2(false)
@@ -160,7 +160,7 @@ config:
   vlanId:
     type: string
 resources:
-  portBond0:
+  port:
     type: equinix:metal:Port
     properties:
       portId: ${portId}

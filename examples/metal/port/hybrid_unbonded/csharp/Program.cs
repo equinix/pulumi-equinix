@@ -6,7 +6,7 @@ return await Deployment.RunAsync(() =>
 {
     var config = new Config();
     var portId = config.Require("portId");
-    var org = new Equinix.Metal.Port("org", new()
+    var port = new Equinix.Metal.Port("port", new()
     {
         PortId = portId,
         Bonded = false,
