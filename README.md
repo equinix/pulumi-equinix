@@ -53,6 +53,20 @@ To use from .NET, install using `dotnet add package`:
 dotnet add package Pulumi.Equinix
 ```
 
+### Java
+
+**PLEASE NOTE:** Java is currently in preview. For more details check out [pulumi java documentation](https://www.pulumi.com/docs/intro/languages/java/#how-to-use-java-with-pulumi).
+
+To use from Java, add the dependency below to your `pom.xml` file:
+
+```
+<dependency>
+    <groupId>com.equinix.pulumi</groupId>
+    <artifactId>equinix</artifactId>
+    <version>[0.1.0,)</version>
+</dependency>
+```
+
 ## Configuration
 
 For information about obtaining API key and secret required for Equinix Fabric and Network Edge refer to [Generating Client ID and Client Secret key](https://developer.equinix.com/dev-docs/fabric/getting-started/getting-access-token#generating-client-id-and-client-secret) from [Equinix Developer Platform portal](https://developer.equinix.com/).
