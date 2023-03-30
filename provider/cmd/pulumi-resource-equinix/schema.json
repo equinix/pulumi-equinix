@@ -11,7 +11,8 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`equinix` Terraform Provider](https://github.com/equinix/terraform-provider-equinix).",
     "repository": "https://github.com/equinix/pulumi-equinix",
-    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1680197579+b252741a.dirty",
+    "logoUrl": "https://raw.githubusercontent.com/equinix/pulumi-equinix/main/assets/logo.png",
+    "pluginDownloadURL": "https://github.com/equinix/pulumi-equinix/releases/",
     "publisher": "Equinix",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"

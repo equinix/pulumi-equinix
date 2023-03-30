@@ -105,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: fmt.Sprintf("https://github.com/equinix/pulumi-equinix/releases/download/%s", version.Version),
+		PluginDownloadURL: "https://github.com/equinix/pulumi-equinix/releases/",
 		Description:       "A Pulumi package for creating and managing equinix cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
