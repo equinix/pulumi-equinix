@@ -3,9 +3,11 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.Device;
-import com.pulumi.equinix.networkedge.DeviceArgs;
-import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
+import com.equinix.pulumi.networkedge.Device;
+import com.equinix.pulumi.networkedge.DeviceArgs;
+import com.equinix.pulumi.networkedge.inputs.DeviceSshKeyArgs;
+import com.equinix.pulumi.networkedge.inputs.GetAccountArgs;
+import com.equinix.pulumi.networkedge.NetworkedgeFunctions;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -20,21 +22,21 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var accountName = config.get("accountName");
-        final var licenseToken = config.get("licenseToken");
-        final var sshUserName = config.get("sshUserName");
-        final var sshKeyName = config.get("sshKeyName");
-        final var aclTemplateId = config.get("aclTemplateId");
+        final var accountName = config.get("accountName").get();
+        final var licenseToken = config.get("licenseToken").get();
+        final var sshUserName = config.get("sshUserName").get();
+        final var sshKeyName = config.get("sshKeyName").get();
+        final var aclTemplateId = config.get("aclTemplateId").get();
         final var metro = config.get("metro").orElse("SV");
         final var devicePackageCode = config.get("devicePackageCode").orElse("network-essentials");
         final var deviceVersion = config.get("deviceVersion").orElse("17.06.01a");
-        final var sizeInCores = config.get("sizeInCores").orElse(2);
-        final var termLength = config.get("termLength").orElse(6);
-        final var additionalBandwidth = config.get("additionalBandwidth").orElse(5);
+        final var sizeInCores = Integer.parseInt(config.get("sizeInCores").orElse("2"));
+        final var termLength = Integer.parseInt(config.get("termLength").orElse("6"));
+        final var additionalBandwidth = Integer.parseInt(config.get("additionalBandwidth").orElse("5"));
         final var accountNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
             .name(accountName)
             .metroCode(metro)
-            .build()).number();
+            .build()).applyValue(account -> account.number());
 
         var c8KRouter = new Device("c8KRouter", DeviceArgs.builder()        
             .name("catalystRouter")
@@ -46,7 +48,7 @@ public class App {
             .notifications("example@equinix.com")
             .hostname("C8KV")
             .accountNumber(accountNum)
-            .version(version)
+            .version(deviceVersion)
             .coreCount(sizeInCores)
             .termLength(termLength)
             .licenseToken(licenseToken)

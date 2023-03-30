@@ -12,7 +12,7 @@ return await Deployment.RunAsync(() =>
     var ipBlock = new Equinix.Metal.ReservedIpBlock("ipBlock", new()
     {
         ProjectId = projectId,
-        Type = "public_ipv4",
+        Type = type,
         Quantity = quantity,
         Metro = metro,
     });

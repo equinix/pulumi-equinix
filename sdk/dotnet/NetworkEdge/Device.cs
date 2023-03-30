@@ -68,7 +68,7 @@ namespace Pulumi.Equinix.NetworkEdge
     ///         },
     ///         Hostname = "C8KV",
     ///         AccountNumber = accountNum,
-    ///         Version = version,
+    ///         Version = deviceVersion,
     ///         CoreCount = sizeInCores,
     ///         TermLength = termLength,
     ///         LicenseToken = licenseToken,
@@ -383,7 +383,7 @@ namespace Pulumi.Equinix.NetworkEdge
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1679677797+354405ae.dirty",
+                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1680197579+b252741a.dirty",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

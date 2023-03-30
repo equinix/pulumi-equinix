@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *     notifications: ["example@equinix.com"],
  *     hostname: "C8KV",
  *     accountNumber: accountNum,
- *     version: version,
+ *     version: deviceVersion,
  *     coreCount: sizeInCores,
  *     termLength: termLength,
  *     licenseToken: licenseToken,

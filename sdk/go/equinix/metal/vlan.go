@@ -38,12 +38,12 @@ import (
 //			if param := cfg.Get("metro"); param != "" {
 //				metro = param
 //			}
-//			vxlan := cfg.Require("vxlan")
+//			vxlan := cfg.RequireInt("vxlan")
 //			vlan, err := metal.NewVlan(ctx, "vlan", &metal.VlanArgs{
 //				Description: pulumi.String("VLAN in Dallas"),
 //				ProjectId:   pulumi.String(projectId),
 //				Metro:       pulumi.String(metro),
-//				Vxlan:       pulumi.String(vxlan),
+//				Vxlan:       pulumi.Int(vxlan),
 //			})
 //			if err != nil {
 //				return err

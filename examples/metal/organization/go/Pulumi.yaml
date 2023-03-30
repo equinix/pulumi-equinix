@@ -1,6 +1,3 @@
 name: equinix-metal-organization
 runtime: go
 description: An Equinix Metal Organization resource
-config:
-  deviceId:
-    type: string

@@ -103,13 +103,13 @@ return await Deployment.RunAsync(() =>
 {{% choosable language java %}}
 
 ```java
-package generated_program;
+ppackage generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.equinix.networkedge.Bgp;
-import com.pulumi.equinix.networkedge.BgpArgs;
+import com.equinix.pulumi.networkedge.Bgp;
+import com.equinix.pulumi.networkedge.BgpArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;

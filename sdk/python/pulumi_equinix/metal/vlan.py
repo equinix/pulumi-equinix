@@ -208,7 +208,7 @@ class Vlan(pulumi.CustomResource):
         metro = config.get("metro")
         if metro is None:
             metro = "DA"
-        vxlan = config.require("vxlan")
+        vxlan = config.require_int("vxlan")
         vlan = equinix.metal.Vlan("vlan",
             description="VLAN in Dallas",
             project_id=project_id,
@@ -252,7 +252,7 @@ class Vlan(pulumi.CustomResource):
         metro = config.get("metro")
         if metro is None:
             metro = "DA"
-        vxlan = config.require("vxlan")
+        vxlan = config.require_int("vxlan")
         vlan = equinix.metal.Vlan("vlan",
             description="VLAN in Dallas",
             project_id=project_id,

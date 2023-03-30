@@ -3,7 +3,7 @@ import * as equinix from "@equinix/pulumi-equinix";
 
 const config = new pulumi.Config();
 const portId = config.require("portId");
-const org = new equinix.metal.Port("org", {
+const port = new equinix.metal.Port("port", {
     portId: portId,
     bonded: true,
     layer2: true,

@@ -1,9 +1,6 @@
 name: equinix-metal-organization
 runtime: yaml
 description: An Equinix Metal Organization resource
-config:
-  deviceId:
-    type: string
 resources:
   org:
     type: equinix:metal:Organization

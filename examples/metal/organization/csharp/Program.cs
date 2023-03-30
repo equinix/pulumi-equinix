@@ -4,8 +4,6 @@ using Equinix = Pulumi.Equinix;
 
 return await Deployment.RunAsync(() => 
 {
-    var config = new Config();
-    var deviceId = config.Require("deviceId");
     var orgResource = new Equinix.Metal.Organization("org", new()
     {
         Name = "Foo Organization",

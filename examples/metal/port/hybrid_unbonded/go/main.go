@@ -10,7 +10,7 @@ func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		cfg := config.New(ctx, "")
 		portId := cfg.Require("portId")
-		_, err := metal.NewPort(ctx, "org", &metal.PortArgs{
+		port, err := metal.NewPort(ctx, "port", &metal.PortArgs{
 			PortId: pulumi.String(portId),
 			Bonded: pulumi.Bool(false),
 		})

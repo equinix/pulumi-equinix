@@ -36,7 +36,7 @@ return await Deployment.RunAsync(() =>
         },
         Hostname = "C8KV",
         AccountNumber = accountNum,
-        Version = version,
+        Version = deviceVersion,
         CoreCount = sizeInCores,
         TermLength = termLength,
         LicenseToken = licenseToken,
@@ -57,4 +57,3 @@ return await Deployment.RunAsync(() =>
         ["sshIpAddress"] = c8KRouter.SshIpAddress,
     };
 });
-

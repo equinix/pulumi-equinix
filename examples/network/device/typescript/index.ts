@@ -27,7 +27,7 @@ const c8KRouter = new equinix.networkedge.Device("c8kRouter", {
     notifications: ["example@equinix.com"],
     hostname: "C8KV",
     accountNumber: accountNum,
-    version: version,
+    version: deviceVersion,
     coreCount: sizeInCores,
     termLength: termLength,
     licenseToken: licenseToken,

@@ -24,7 +24,7 @@ func main() {
 		}
 		ipBlock, err := metal.NewReservedIpBlock(ctx, "ipBlock", &metal.ReservedIpBlockArgs{
 			ProjectId: pulumi.String(projectId),
-			Type:      pulumi.String("public_ipv4"),
+			Type:      pulumi.String(_type),
 			Quantity:  pulumi.Int(quantity),
 			Metro:     pulumi.String(metro),
 		})
