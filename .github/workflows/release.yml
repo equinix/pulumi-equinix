@@ -38,6 +38,7 @@ env:
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
   PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
   PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+  PUBLISH_NRM: true
 jobs:
   publish_binary:
     name: publish
@@ -62,56 +63,6 @@ jobs:
         with:
           args: -p 3 release --rm-dist --timeout 150m0s
           version: latest
-    strategy:
-      fail-fast: true
-  publish_java_sdk:
-    continue-on-error: true
-    name: publish_java_sdk
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-      - name: Checkout Scripts Repo
-        uses: actions/checkout@v3
-        with:
-          path: ci-scripts
-          repository: pulumi/scripts
-      - name: Unshallow clone for tags
-        run: git fetch --prune --unshallow --tags
-      - name: Install Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{ env.GOVERSION }}
-      - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
-        with:
-          repo: pulumi/pulumictl
-      - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v2
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          cache: gradle
-          distribution: temurin
-          java-version: ${{ env.JAVAVERSION }}
-      - name: Download java SDK
-        uses: actions/download-artifact@v2
-        with:
-          name: java-sdk.tar.gz
-          path: ${{ github.workspace}}/sdk/
-      - name: Uncompress java SDK
-        run: tar -zxf ${{github.workspace}}/sdk/java.tar.gz -C
-          ${{github.workspace}}/sdk/java
-      - name: Set PACKAGE_VERSION to Env
-        run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
-          $GITHUB_ENV
-      - name: Publish Java SDK
-        uses: gradle/gradle-build-action@9b814496b50909128c6a52622b416c5ffa04db49
-        with:
-          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
-          build-root-directory: ./sdk/java
-          gradle-version: 7.4.1
     strategy:
       fail-fast: true
   publish_sdk:
@@ -152,6 +103,11 @@ jobs:
           cache: gradle
           distribution: temurin
           java-version: ${{ env.JAVAVERSION }}
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          # Pin to known good version until #2262 is resolved
+          gradle-version: "7.6"
       - name: Build SDK
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
@@ -181,6 +137,17 @@ jobs:
         run: |
           dotnet nuget push ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg -s ${{ env.NUGET_FEED_URL }} -k ${{ env.NUGET_PUBLISH_KEY }}
           echo "done publishing packages"
+      - if: ${{ matrix.language == 'java' && env.PUBLISH_NRM == 'true' }}
+        name: Set PACKAGE_VERSION to Env for Java SDK
+        run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
+          $GITHUB_ENV
+      - if: ${{ matrix.language == 'java' && env.PUBLISH_NRM == 'true' }}
+        name: Publish Java SDK
+        uses: gradle/gradle-build-action@9b814496b50909128c6a52622b416c5ffa04db49
+        with:
+          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
+          build-root-directory: ./sdk/java
+          gradle-version: 7.4.1
     strategy:
       fail-fast: true
       matrix:

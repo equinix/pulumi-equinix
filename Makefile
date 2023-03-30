@@ -66,7 +66,7 @@ provider:: tfgen install_plugins # build the provider binary
 build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
 build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
-build_nodejs:: # build the node sdk
+build_nodejs:: install_plugins tfgen # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 build_nodejs:: patch_nodejs # fix generated files
 build_nodejs::
@@ -86,7 +86,7 @@ patch_nodejs::
 		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 
 build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
-build_python:: # build the python sdk
+build_python:: install_plugins tfgen # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
         cp ../../README.md . && \
@@ -97,18 +97,18 @@ build_python:: # build the python sdk
         cd ./bin && python3 setup.py build sdist
 
 build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
-build_dotnet:: # build the dotnet sdk
+build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	pulumictl get version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-build_go:: # build the go sdk
+build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java:: bin/pulumi-java-gen patch_java_schema
+build_java:: install_plugins tfgen bin/pulumi-java-gen patch_java_schema # build the java sdk
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 build_java:: patch_java
