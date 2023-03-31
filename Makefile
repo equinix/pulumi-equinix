@@ -79,9 +79,9 @@ build_nodejs::
 
 patch_nodejs::
 	echo "patch_nodejs: find and replace wrong imports in examples" && \
-		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}\/${NODE_PACK}"/g' {} \;
+		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g' {} \;
 	echo "patch_nodejs: delete duplicate imports in examples" && \
-		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i.bak '/@${ORG}\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
+		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -exec sed -i.bak '/@${ORG}-labs\/${NODE_PACK}/N;/^\(.*\)\n\1$$/!P; D' {} \;
 	echo "patch_nodejs: remove backup files" && \
 		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 
