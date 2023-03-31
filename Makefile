@@ -145,7 +145,10 @@ patch_java::
 		rm -f Utilities.java.bak
 	echo "patch_java: update gradle info" && \
 		cd ./sdk/java/ && \
-		sed -i.bak -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' \
+		awk '/def resolvedVersion/ && !x {print "group = \"$(JAVA_GROUP_ID)\"\n";x=1}1' ./build.gradle > ./build.gradle.tmp && \
+		mv build.gradle.tmp build.gradle && \
+		sed -i.bak -e 's/info.metaClass.name = .*/info.metaClass.name = "$(JAVA_ARTIFACT_ID)"/g' \
+			-e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' \
 			-e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' \
 			-e 's/inceptionYear = .*/inceptionYear = "2023"/g' \
 			-e 's/description = .*/description = "A Pulumi package for creating and managing equinix cloud resources."/g' ./build.gradle && \
