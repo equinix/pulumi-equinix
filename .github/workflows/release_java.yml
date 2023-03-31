@@ -45,6 +45,11 @@ jobs:
           cache: gradle
           distribution: temurin
           java-version: ${{ env.JAVAVERSION }}
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          # Pin to known good version until #2262 is resolved
+          gradle-version: "7.6"
       - name: Build SDK
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
@@ -66,7 +71,7 @@ jobs:
         with:
           arguments: --stacktrace --debug publishToSonatype closeAndReleaseSonatypeStagingRepository
           build-root-directory: ./sdk/java
-          gradle-version: 7.4.1
+          gradle-version: 7.6.1
     strategy:
       fail-fast: true
       matrix:
