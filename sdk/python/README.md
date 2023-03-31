@@ -1,7 +1,7 @@
 [![Actions Status](https://github.com/equinix/pulumi-equinix/workflows/main/badge.svg)](https://github.com/equinix/pulumi-equinix/actions)
-[![NPM version](https://badge.fury.io/js/%40pulumi%2Fequinix.svg)](https://www.npmjs.com/package/@equinix/equinix)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fequinix.svg)](https://www.npmjs.com/package/@equinix/pulumi-equinix)
 [![Python version](https://badge.fury.io/py/pulumi-equinix.svg)](https://pypi.org/project/pulumi-equinix)
-[![NuGet version](https://badge.fury.io/nu/pulumi.equinix.svg)](https://badge.fury.io/nu/equinix.equinix)
+[![NuGet version](https://badge.fury.io/nu/pulumi.equinix.svg)](https://badge.fury.io/nu/pulumi.equinix)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/equinix/pulumi-equinix/sdk/go)](https://pkg.go.dev/github.com/equinix/pulumi-equinix/sdk/go)
 [![License](https://img.shields.io/github/license/equinix/pulumi-equinix)](https://github.com/equinix/pulumi-equinix/blob/main/LICENSE)
 
@@ -51,6 +51,20 @@ To use from .NET, install using `dotnet add package`:
 
 ```bash
 dotnet add package Pulumi.Equinix
+```
+
+### Java
+
+**PLEASE NOTE:** Java is currently in preview. For more details check out [pulumi java documentation](https://www.pulumi.com/docs/intro/languages/java/#how-to-use-java-with-pulumi).
+
+To use from Java, add the dependency below to your `pom.xml` file:
+
+```
+<dependency>
+    <groupId>com.equinix.pulumi</groupId>
+    <artifactId>equinix</artifactId>
+    <version>[0.1.0,)</version>
+</dependency>
 ```
 
 ## Configuration

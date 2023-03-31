@@ -191,7 +191,7 @@ namespace Pulumi.Equinix.Metal
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/equinix/pulumi-equinix/releases/download/0.0.1-alpha.1680197579+b252741a.dirty",
+                PluginDownloadURL = "github://api.github.com/equinix",
                 AdditionalSecretOutputs =
                 {
                     "md5",
