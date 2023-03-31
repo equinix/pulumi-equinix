@@ -4,7 +4,7 @@
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix/pulumi-equinix";
+import * as equinix from "@equinix-labs/pulumi-equinix";
 
 const bgp = new equinix.networkedge.Bgp("bgp", {
     connectionId: "54014acf-9730-4b55-a791-459283d05fb1",

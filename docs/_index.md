@@ -18,7 +18,7 @@ The Equinix provider must be configured with credentials to create and update re
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix/pulumi-equinix";
+import * as equinix from "@equinix-labs/pulumi-equinix";
 
 const config = new pulumi.Config();
 const projectId = config.require("projectId");

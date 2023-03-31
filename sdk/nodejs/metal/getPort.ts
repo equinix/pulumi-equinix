@@ -14,7 +14,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const projectId = "<UUID_of_your_project>";
  * const testDevice = new equinix.metal.Device("testDevice", {
@@ -123,7 +124,8 @@ export interface GetPortResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const projectId = "<UUID_of_your_project>";
  * const testDevice = new equinix.metal.Device("testDevice", {

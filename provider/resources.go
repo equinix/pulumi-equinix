@@ -1443,7 +1443,7 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_network_device_type":     {Tok: makeEquinixDataSource(networkEdgeMod, "DeviceType")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			PackageName: "@equinix/pulumi-equinix",
+			PackageName: "@equinix-labs/pulumi-equinix",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",

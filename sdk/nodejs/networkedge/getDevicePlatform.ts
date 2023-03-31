@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const csrLarge = equinix.networkedge.getDevicePlatform({
  *     deviceType: "CSR1000V",
@@ -100,7 +100,7 @@ export interface GetDevicePlatformResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const csrLarge = equinix.networkedge.getDevicePlatform({
  *     deviceType: "CSR1000V",

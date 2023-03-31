@@ -11,7 +11,8 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getOperatingSystem({
  *     distro: "ubuntu",
@@ -22,7 +23,7 @@ import * as utilities from "../utilities";
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
  *     facilities: ["ny5"],
- *     operatingSystem: example.then(example => example.id).apply((x) => @equinix/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
+ *     operatingSystem: example.then(example => example.id).apply((x) => @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,
  * });
@@ -86,7 +87,8 @@ export interface GetOperatingSystemResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getOperatingSystem({
  *     distro: "ubuntu",
@@ -97,7 +99,7 @@ export interface GetOperatingSystemResult {
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
  *     facilities: ["ny5"],
- *     operatingSystem: example.then(example => example.id).apply((x) => @equinix/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
+ *     operatingSystem: example.then(example => example.id).apply((x) => @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,
  * });

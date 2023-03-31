@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const exampleVrf = equinix.metal.getVrf({
  *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",
@@ -81,7 +81,7 @@ export interface GetVrfResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const exampleVrf = equinix.metal.getVrf({
  *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",

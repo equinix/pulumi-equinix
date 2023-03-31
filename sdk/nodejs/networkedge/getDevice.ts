@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const byUuid = equinix.networkedge.getDevice({
  *     uuid: "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee",
@@ -179,7 +179,7 @@ export interface GetDeviceResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const byUuid = equinix.networkedge.getDevice({
  *     uuid: "f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee",

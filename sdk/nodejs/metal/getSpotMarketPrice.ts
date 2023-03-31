@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getSpotMarketPrice({
  *     facility: "ny5",
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getSpotMarketPrice({
  *     metro: "sv",
@@ -86,7 +86,7 @@ export interface GetSpotMarketPriceResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getSpotMarketPrice({
  *     facility: "ny5",
@@ -98,7 +98,7 @@ export interface GetSpotMarketPriceResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getSpotMarketPrice({
  *     metro: "sv",

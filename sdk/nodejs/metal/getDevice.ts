@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const test = equinix.metal.getDevice({
  *     projectId: local.project_id,
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const test = equinix.metal.getDevice({
  *     deviceId: "4c641195-25e5-4c3c-b2b7-4cd7a42c7b40",
@@ -163,7 +163,7 @@ export interface GetDeviceResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const test = equinix.metal.getDevice({
  *     projectId: local.project_id,
@@ -174,7 +174,7 @@ export interface GetDeviceResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const test = equinix.metal.getDevice({
  *     deviceId: "4c641195-25e5-4c3c-b2b7-4cd7a42c7b40",

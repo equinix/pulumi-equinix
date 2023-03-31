@@ -1,5 +1,5 @@
 [![Actions Status](https://github.com/equinix/pulumi-equinix/workflows/main/badge.svg)](https://github.com/equinix/pulumi-equinix/actions)
-[![NPM version](https://badge.fury.io/js/%40pulumi%2Fequinix.svg)](https://www.npmjs.com/package/@equinix/pulumi-equinix)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fequinix.svg)](https://www.npmjs.com/package/@equinix-labs/pulumi-equinix)
 [![Python version](https://badge.fury.io/py/pulumi-equinix.svg)](https://pypi.org/project/pulumi-equinix)
 [![NuGet version](https://badge.fury.io/nu/pulumi.equinix.svg)](https://badge.fury.io/nu/pulumi.equinix)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/equinix/pulumi-equinix/sdk/go)](https://pkg.go.dev/github.com/equinix/pulumi-equinix/sdk/go)
@@ -20,13 +20,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @equinix/pulumi-equinix
+npm install @equinix-labs/pulumi-equinix
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @equinix/pulumi-equinix
+yarn add @equinix-labs/pulumi-equinix
 ```
 
 ### Python

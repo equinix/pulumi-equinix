@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getHardwareReservation({
  *     id: "4347e805-eb46-4699-9eb9-5c116e6a0172",
@@ -100,7 +100,7 @@ export interface GetHardwareReservationResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getHardwareReservation({
  *     id: "4347e805-eb46-4699-9eb9-5c116e6a0172",

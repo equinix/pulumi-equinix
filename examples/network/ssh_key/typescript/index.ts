@@ -1,5 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as equinix from "@equinix/pulumi-equinix";
+import * as equinix from "@equinix-labs/pulumi-equinix";
 import * as fs from "fs";
 
 const sshKey = new equinix.networkedge.SshKey("sshKey", {

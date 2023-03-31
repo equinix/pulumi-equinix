@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getInterconnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
@@ -130,7 +130,7 @@ export interface GetInterconnectionResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix/pulumi-equinix";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
  *
  * const example = equinix.metal.getInterconnection({
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
