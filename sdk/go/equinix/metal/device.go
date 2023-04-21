@@ -81,18 +81,21 @@ type Device struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
-	// The facility where the device is deployed.
+	// The facility where the device is deployed
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	DeployedFacility pulumi.StringOutput `pulumi:"deployedFacility"`
 	// ID of hardware reservation where this device was deployed.
 	// It is useful when using the `next-available` hardware reservation.
 	DeployedHardwareReservationId pulumi.StringOutput `pulumi:"deployedHardwareReservationId"`
 	// The device description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of facility codes with deployment preferences. Equinix Metal API will go
-	// through the list and will deploy your device to first facility with free capacity. List items must
-	// be facility codes or `any` (a wildcard). To find the facility code, visit
-	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+	// top of the page and see JSON from the API response. Conflicts with metro
+	//
+	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayOutput `pulumi:"facilities"`
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
@@ -245,18 +248,21 @@ type deviceState struct {
 	Created *string `pulumi:"created"`
 	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData *string `pulumi:"customData"`
-	// The facility where the device is deployed.
+	// The facility where the device is deployed
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	DeployedFacility *string `pulumi:"deployedFacility"`
 	// ID of hardware reservation where this device was deployed.
 	// It is useful when using the `next-available` hardware reservation.
 	DeployedHardwareReservationId *string `pulumi:"deployedHardwareReservationId"`
 	// The device description.
 	Description *string `pulumi:"description"`
-	// List of facility codes with deployment preferences. Equinix Metal API will go
-	// through the list and will deploy your device to first facility with free capacity. List items must
-	// be facility codes or `any` (a wildcard). To find the facility code, visit
-	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+	// top of the page and see JSON from the API response. Conflicts with metro
+	//
+	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
@@ -359,18 +365,21 @@ type DeviceState struct {
 	Created pulumi.StringPtrInput
 	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrInput
-	// The facility where the device is deployed.
+	// The facility where the device is deployed
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	DeployedFacility pulumi.StringPtrInput
 	// ID of hardware reservation where this device was deployed.
 	// It is useful when using the `next-available` hardware reservation.
 	DeployedHardwareReservationId pulumi.StringPtrInput
 	// The device description.
 	Description pulumi.StringPtrInput
-	// List of facility codes with deployment preferences. Equinix Metal API will go
-	// through the list and will deploy your device to first facility with free capacity. List items must
-	// be facility codes or `any` (a wildcard). To find the facility code, visit
-	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+	// top of the page and see JSON from the API response. Conflicts with metro
+	//
+	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
@@ -471,11 +480,12 @@ type deviceArgs struct {
 	CustomData *string `pulumi:"customData"`
 	// The device description.
 	Description *string `pulumi:"description"`
-	// List of facility codes with deployment preferences. Equinix Metal API will go
-	// through the list and will deploy your device to first facility with free capacity. List items must
-	// be facility codes or `any` (a wildcard). To find the facility code, visit
-	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+	// top of the page and see JSON from the API response. Conflicts with metro
+	//
+	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
@@ -547,11 +557,12 @@ type DeviceArgs struct {
 	CustomData pulumi.StringPtrInput
 	// The device description.
 	Description pulumi.StringPtrInput
-	// List of facility codes with deployment preferences. Equinix Metal API will go
-	// through the list and will deploy your device to first facility with free capacity. List items must
-	// be facility codes or `any` (a wildcard). To find the facility code, visit
-	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+	// top of the page and see JSON from the API response. Conflicts with metro
+	//
+	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
@@ -738,7 +749,9 @@ func (o DeviceOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
 }
 
-// The facility where the device is deployed.
+// The facility where the device is deployed
+//
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o DeviceOutput) DeployedFacility() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DeployedFacility }).(pulumi.StringOutput)
 }
@@ -754,11 +767,12 @@ func (o DeviceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of facility codes with deployment preferences. Equinix Metal API will go
-// through the list and will deploy your device to first facility with free capacity. List items must
-// be facility codes or `any` (a wildcard). To find the facility code, visit
-// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+// top of the page and see JSON from the API response. Conflicts with metro
+//
+// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o DeviceOutput) Facilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.Facilities }).(pulumi.StringArrayOutput)
 }

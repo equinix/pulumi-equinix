@@ -36,6 +36,10 @@ class GetSpotMarketRequestResult:
         pulumi.set(__self__, "end_at", end_at)
         if facilities and not isinstance(facilities, list):
             raise TypeError("Expected argument 'facilities' to be a list")
+        if facilities is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facilities", facilities)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -91,9 +95,6 @@ class GetSpotMarketRequestResult:
     @property
     @pulumi.getter
     def facilities(self) -> Sequence[str]:
-        """
-        Facility IDs where devices should be created.
-        """
         return pulumi.get(self, "facilities")
 
     @property

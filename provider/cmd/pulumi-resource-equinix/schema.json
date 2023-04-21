@@ -2887,11 +2887,8 @@
                         }
                     }
                 },
-                "locations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ServiceProfilePortLocation:ServiceProfilePortLocation"
-                    },
+                "location": {
+                    "$ref": "#/types/equinix:fabric/ServiceProfilePortLocation:ServiceProfilePortLocation",
                     "description": "Colo/Port Location\n",
                     "language": {
                         "python": {
@@ -9757,7 +9754,7 @@
                 },
                 "deploymentType": {
                     "type": "string",
-                    "description": "`private` or `public`, the `private` is likely to be usable immediately, the\n`public` will need to be reviewed by Equinix Metal engineers.\n",
+                    "description": "`local` or `global`, the `local` is likely to be usable immediately, the\n`global` will need to be reviewed by Equinix Metal engineers.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10697,7 +10694,7 @@
                 },
                 "quantity": {
                     "type": "integer",
-                    "description": "Minimun number of devices that must be available in selected location.\nDefault is `1`.\n",
+                    "description": "Minimum number of devices that must be available in selected location.\nDefault is `1`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10827,7 +10824,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of facilities where the plan is available\n",
+                    "description": "list of metros where the plan is available\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10839,7 +10836,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of facilities where the plan is available\n",
+                    "description": "(**Deprecated**) list of facilities where the plan is available\n",
+                    "deprecationMessage": "Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14335,7 +14333,8 @@
                 },
                 "deployedFacility": {
                     "type": "string",
-                    "description": "The facility where the device is deployed.\n"
+                    "description": "The facility where the device is deployed\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                 },
                 "deployedHardwareReservationId": {
                     "type": "string",
@@ -14350,7 +14349,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of facility codes with deployment preferences. Equinix Metal API will go\nthrough the list and will deploy your device to first facility with free capacity. List items must\nbe facility codes or `any` (a wildcard). To find the facility code, visit\n[Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth\ntoken in the top of the page and see JSON from the API response. Conflicts with `metro`.\n"
+                    "description": "List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your\ndevice to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility\ncode, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the\ntop of the page and see JSON from the API response. Conflicts with metro\n",
+                    "deprecationMessage": "Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                 },
                 "forceDetachVolumes": {
                     "type": "boolean",
@@ -14544,7 +14544,8 @@
                             }
                         ]
                     },
-                    "description": "List of facility codes with deployment preferences. Equinix Metal API will go\nthrough the list and will deploy your device to first facility with free capacity. List items must\nbe facility codes or `any` (a wildcard). To find the facility code, visit\n[Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth\ntoken in the top of the page and see JSON from the API response. Conflicts with `metro`.\n",
+                    "description": "List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your\ndevice to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility\ncode, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the\ntop of the page and see JSON from the API response. Conflicts with metro\n",
+                    "deprecationMessage": "Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                     "willReplaceOnChanges": true
                 },
                 "forceDetachVolumes": {
@@ -14707,7 +14708,8 @@
                     },
                     "deployedFacility": {
                         "type": "string",
-                        "description": "The facility where the device is deployed.\n"
+                        "description": "The facility where the device is deployed\n",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "deployedHardwareReservationId": {
                         "type": "string",
@@ -14731,7 +14733,8 @@
                                 }
                             ]
                         },
-                        "description": "List of facility codes with deployment preferences. Equinix Metal API will go\nthrough the list and will deploy your device to first facility with free capacity. List items must\nbe facility codes or `any` (a wildcard). To find the facility code, visit\n[Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth\ntoken in the top of the page and see JSON from the API response. Conflicts with `metro`.\n",
+                        "description": "List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your\ndevice to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility\ncode, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the\ntop of the page and see JSON from the API response. Conflicts with metro\n",
+                        "deprecationMessage": "Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                         "willReplaceOnChanges": true
                     },
                     "forceDetachVolumes": {
@@ -15048,7 +15051,8 @@
                 },
                 "facility": {
                     "type": "string",
-                    "description": "Facility where the connection will be created.\n"
+                    "description": "Facility where the connection will be created\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                 },
                 "metro": {
                     "type": "string",
@@ -15144,7 +15148,8 @@
                 },
                 "facility": {
                     "type": "string",
-                    "description": "Facility where the connection will be created.\n",
+                    "description": "Facility where the connection will be created\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                     "willReplaceOnChanges": true
                 },
                 "metro": {
@@ -15217,7 +15222,8 @@
                     },
                     "facility": {
                         "type": "string",
-                        "description": "Facility where the connection will be created.\n",
+                        "description": "Facility where the connection will be created\n",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                         "willReplaceOnChanges": true
                     },
                     "metro": {
@@ -15303,7 +15309,7 @@
             }
         },
         "equinix:metal/ipAttachment:IpAttachment": {
-            "description": "{{% examples %}}\nProvides a resource to attach elastic IP subnets to devices.\n\nTo attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR\nbelonging to one of your reserved blocks in the same project and facility as the target device.\n\nFor example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign\neither the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and\n`147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets\nis [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).\n\nDevice and reserved block must be in the same facility.\n\n## Example Usage\n\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst config = new pulumi.Config();\nconst deviceId = config.require(\"deviceId\");\nconst subnetCidr = config.get(\"subnetCidr\") || \"147.229.10.152/31\";\nconst ipAttachResource = new equinix.metal.IpAttachment(\"ipAttach\", {\n    deviceId: deviceId,\n    cidrNotation: subnetCidr,\n});\nexport const ipAttach = ipAttachResource.id;\nexport const ipNetmask = ipAttachResource.netmask;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\ndevice_id = config.require(\"deviceId\")\nsubnet_cidr = config.get(\"subnetCidr\")\nif subnet_cidr is None:\n    subnet_cidr = \"147.229.10.152/31\"\nip_attach_resource = equinix.metal.IpAttachment(\"ipAttach\",\n    device_id=device_id,\n    cidr_notation=subnet_cidr)\npulumi.export(\"ipAttach\", ip_attach_resource.id)\npulumi.export(\"ipNetmask\", ip_attach_resource.netmask)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tdeviceId := cfg.Require(\"deviceId\")\n\t\tsubnetCidr := \"147.229.10.152/31\"\n\t\tif param := cfg.Get(\"subnetCidr\"); param != \"\" {\n\t\t\tsubnetCidr = param\n\t\t}\n\t\tipAttachResource, err := metal.NewIpAttachment(ctx, \"ipAttach\", \u0026metal.IpAttachmentArgs{\n\t\t\tDeviceId:     pulumi.String(deviceId),\n\t\t\tCidrNotation: pulumi.String(subnetCidr),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ipAttach\", ipAttachResource.ID())\n\t\tctx.Export(\"ipNetmask\", ipAttachResource.Netmask)\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var deviceId = config.Require(\"deviceId\");\n    var subnetCidr = config.Get(\"subnetCidr\") ?? \"147.229.10.152/31\";\n    var ipAttachResource = new Equinix.Metal.IpAttachment(\"ipAttach\", new()\n    {\n        DeviceId = deviceId,\n        CidrNotation = subnetCidr,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ipAttach\"] = ipAttachResource.Id,\n        [\"ipNetmask\"] = ipAttachResource.Netmask,\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.equinix.pulumi.metal.IpAttachment;\nimport com.equinix.pulumi.metal.IpAttachmentArgs;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var deviceId = config.get(\"deviceId\").get();\n        final var subnetCidr = config.get(\"subnetCidr\").orElse(\"147.229.10.152/31\");\n        var ipAttachResource = new IpAttachment(\"ipAttachResource\", IpAttachmentArgs.builder()        \n            .deviceId(deviceId)\n            .cidrNotation(subnetCidr)\n            .build());\n\n        ctx.export(\"ipAttach\", ipAttachResource.id());\n        ctx.export(\"ipNetmask\", ipAttachResource.netmask());\n    }\n}\n```\n```yaml\nconfig:\n  deviceId:\n    type: string\n  subnetCidr:\n    type: string\n    default: 147.229.10.152/31\nresources:\n  ipAttach:\n    type: equinix:metal:IpAttachment\n    properties:\n      deviceId: ${deviceId}\n      cidrNotation: ${subnetCidr}\noutputs:\n  ipAttach: ${ipAttach.id}\n  ipNetmask: ${ipAttach.netmask}\n```\n{{% /example %}}\n\n{{% /examples %}}",
+            "description": "{{% examples %}}\nProvides a resource to attach elastic IP subnets to devices.\n\nTo attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR\nbelonging to one of your reserved blocks in the same project and metro as the target device.\n\nFor example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign\neither the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and\n`147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets\nis [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).\n\nDevice and reserved block must be in the same metro.\n\n## Example Usage\n\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst config = new pulumi.Config();\nconst deviceId = config.require(\"deviceId\");\nconst subnetCidr = config.get(\"subnetCidr\") || \"147.229.10.152/31\";\nconst ipAttachResource = new equinix.metal.IpAttachment(\"ipAttach\", {\n    deviceId: deviceId,\n    cidrNotation: subnetCidr,\n});\nexport const ipAttach = ipAttachResource.id;\nexport const ipNetmask = ipAttachResource.netmask;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\ndevice_id = config.require(\"deviceId\")\nsubnet_cidr = config.get(\"subnetCidr\")\nif subnet_cidr is None:\n    subnet_cidr = \"147.229.10.152/31\"\nip_attach_resource = equinix.metal.IpAttachment(\"ipAttach\",\n    device_id=device_id,\n    cidr_notation=subnet_cidr)\npulumi.export(\"ipAttach\", ip_attach_resource.id)\npulumi.export(\"ipNetmask\", ip_attach_resource.netmask)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tdeviceId := cfg.Require(\"deviceId\")\n\t\tsubnetCidr := \"147.229.10.152/31\"\n\t\tif param := cfg.Get(\"subnetCidr\"); param != \"\" {\n\t\t\tsubnetCidr = param\n\t\t}\n\t\tipAttachResource, err := metal.NewIpAttachment(ctx, \"ipAttach\", \u0026metal.IpAttachmentArgs{\n\t\t\tDeviceId:     pulumi.String(deviceId),\n\t\t\tCidrNotation: pulumi.String(subnetCidr),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ipAttach\", ipAttachResource.ID())\n\t\tctx.Export(\"ipNetmask\", ipAttachResource.Netmask)\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var deviceId = config.Require(\"deviceId\");\n    var subnetCidr = config.Get(\"subnetCidr\") ?? \"147.229.10.152/31\";\n    var ipAttachResource = new Equinix.Metal.IpAttachment(\"ipAttach\", new()\n    {\n        DeviceId = deviceId,\n        CidrNotation = subnetCidr,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ipAttach\"] = ipAttachResource.Id,\n        [\"ipNetmask\"] = ipAttachResource.Netmask,\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.equinix.pulumi.metal.IpAttachment;\nimport com.equinix.pulumi.metal.IpAttachmentArgs;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var deviceId = config.get(\"deviceId\").get();\n        final var subnetCidr = config.get(\"subnetCidr\").orElse(\"147.229.10.152/31\");\n        var ipAttachResource = new IpAttachment(\"ipAttachResource\", IpAttachmentArgs.builder()        \n            .deviceId(deviceId)\n            .cidrNotation(subnetCidr)\n            .build());\n\n        ctx.export(\"ipAttach\", ipAttachResource.id());\n        ctx.export(\"ipNetmask\", ipAttachResource.netmask());\n    }\n}\n```\n```yaml\nconfig:\n  deviceId:\n    type: string\n  subnetCidr:\n    type: string\n    default: 147.229.10.152/31\nresources:\n  ipAttach:\n    type: equinix:metal:IpAttachment\n    properties:\n      deviceId: ${deviceId}\n      cidrNotation: ${subnetCidr}\noutputs:\n  ipAttach: ${ipAttach.id}\n  ipNetmask: ${ipAttach.netmask}\n```\n{{% /example %}}\n\n{{% /examples %}}",
             "properties": {
                 "address": {
                     "type": "string"
@@ -15318,7 +15324,7 @@
                 },
                 "cidrNotation": {
                     "type": "string",
-                    "description": "CIDR notation of subnet from block reserved in the same project\nand facility as the device.\n"
+                    "description": "CIDR notation of subnet from block reserved in the same project\nand metro as the device.\n"
                 },
                 "deviceId": {
                     "type": "string",
@@ -15372,7 +15378,7 @@
             "inputProperties": {
                 "cidrNotation": {
                     "type": "string",
-                    "description": "CIDR notation of subnet from block reserved in the same project\nand facility as the device.\n",
+                    "description": "CIDR notation of subnet from block reserved in the same project\nand metro as the device.\n",
                     "willReplaceOnChanges": true
                 },
                 "deviceId": {
@@ -15401,7 +15407,7 @@
                     },
                     "cidrNotation": {
                         "type": "string",
-                        "description": "CIDR notation of subnet from block reserved in the same project\nand facility as the device.\n",
+                        "description": "CIDR notation of subnet from block reserved in the same project\nand metro as the device.\n",
                         "willReplaceOnChanges": true
                     },
                     "deviceId": {
@@ -15901,7 +15907,7 @@
             }
         },
         "equinix:metal/portVlanAttachment:PortVlanAttachment": {
-            "description": "{{% examples %}}\nProvides a resource to attach device ports to VLANs.\n\nDevice and VLAN must be in the same facility.\n\nIf you need this resource to add the port back to bond on removal, set `force_bond = true`.\n\nTo learn more about Layer 2 networking in Equinix Metal, refer to\n\n* \u003chttps://metal.equinix.com/developers/docs/networking/layer2/\u003e\n* \u003chttps://metal.equinix.com/developers/docs/networking/layer2-configs/\u003e\n\n## Attribute Referece\n\nIn addition to all arguments above, the following attributes are exported:\n\n* `id` - UUID of device port used in the assignment.\n* `vlan_id` - UUID of VLAN API resource.\n* `port_id` - UUID of device port.\n\n## Example Usage\n\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst config = new pulumi.Config();\nconst deviceId = config.require(\"deviceId\");\nconst portName = config.get(\"portName\") || \"eth1\";\nconst vxlanId = config.getNumber(\"vxlanId\") || 1004;\nconst attach = new equinix.metal.PortVlanAttachment(\"attach\", {\n    deviceId: deviceId,\n    portName: portName,\n    vlanVnid: vxlanId,\n});\nexport const attachId = attach.id;\nexport const portId = attach.portId;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\ndevice_id = config.require(\"deviceId\")\nport_name = config.get(\"portName\")\nif port_name is None:\n    port_name = \"eth1\"\nvxlan_id = config.get_int(\"vxlanId\")\nif vxlan_id is None:\n    vxlan_id = 1004\nattach = equinix.metal.PortVlanAttachment(\"attach\",\n    device_id=device_id,\n    port_name=port_name,\n    vlan_vnid=vxlan_id)\npulumi.export(\"attachId\", attach.id)\npulumi.export(\"portId\", attach.port_id)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tdeviceId := cfg.Require(\"deviceId\")\n\t\tportName := \"eth1\"\n\t\tif param := cfg.Get(\"portName\"); param != \"\" {\n\t\t\tportName = param\n\t\t}\n\t\tvxlanId := 1004\n\t\tif param := cfg.GetInt(\"vxlanId\"); param != 0 {\n\t\t\tvxlanId = param\n\t\t}\n\t\tattach, err := metal.NewPortVlanAttachment(ctx, \"attach\", \u0026metal.PortVlanAttachmentArgs{\n\t\t\tDeviceId: pulumi.String(deviceId),\n\t\t\tPortName: pulumi.String(portName),\n\t\t\tVlanVnid: pulumi.Int(vxlanId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"attachId\", attach.ID())\n\t\tctx.Export(\"portId\", attach.PortId)\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var deviceId = config.Require(\"deviceId\");\n    var portName = config.Get(\"portName\") ?? \"eth1\";\n    var vxlanId = config.GetNumber(\"vxlanId\") ?? 1004;\n    var attach = new Equinix.Metal.PortVlanAttachment(\"attach\", new()\n    {\n        DeviceId = deviceId,\n        PortName = portName,\n        VlanVnid = vxlanId,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"attachId\"] = attach.Id,\n        [\"portId\"] = attach.PortId,\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.equinix.pulumi.metal.PortVlanAttachment;\nimport com.equinix.pulumi.metal.PortVlanAttachmentArgs;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var deviceId = config.get(\"deviceId\").get();\n        final var portName = config.get(\"portName\").orElse(\"eth1\");\n        final var vxlanId = Integer.parseInt(config.get(\"vxlanId\").orElse(\"1004\"));\n\n        var attach = new PortVlanAttachment(\"attach\", PortVlanAttachmentArgs.builder()        \n            .deviceId(deviceId)\n            .portName(portName)\n            .vlanVnid(vxlanId)\n            .build());\n\n        ctx.export(\"attachId\", attach.id());\n        ctx.export(\"portId\", attach.portId());\n    }\n}\n```\n```yaml\nconfig:\n  deviceId:\n    type: string\n  portName:\n    type: string\n    default: eth1\n  vxlanId:\n    type: integer\n    default: 1004\nresources:\n  attach:\n    type: equinix:metal:PortVlanAttachment\n    properties:\n      deviceId: ${deviceId}\n      portName: ${portName}\n      vlanVnid: ${vxlanId}\noutputs:\n  attachId: ${attach.id}\n  portId: ${attach.portId}\n```\n{{% /example %}}\n\n{{% /examples %}}",
+            "description": "{{% examples %}}\nProvides a resource to attach device ports to VLANs.\n\nDevice and VLAN must be in the same metro.\n\nIf you need this resource to add the port back to bond on removal, set `force_bond = true`.\n\nTo learn more about Layer 2 networking in Equinix Metal, refer to\n\n* \u003chttps://metal.equinix.com/developers/docs/networking/layer2/\u003e\n* \u003chttps://metal.equinix.com/developers/docs/networking/layer2-configs/\u003e\n\n## Attribute Referece\n\nIn addition to all arguments above, the following attributes are exported:\n\n* `id` - UUID of device port used in the assignment.\n* `vlan_id` - UUID of VLAN API resource.\n* `port_id` - UUID of device port.\n\n## Example Usage\n\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst config = new pulumi.Config();\nconst deviceId = config.require(\"deviceId\");\nconst portName = config.get(\"portName\") || \"eth1\";\nconst vxlanId = config.getNumber(\"vxlanId\") || 1004;\nconst attach = new equinix.metal.PortVlanAttachment(\"attach\", {\n    deviceId: deviceId,\n    portName: portName,\n    vlanVnid: vxlanId,\n});\nexport const attachId = attach.id;\nexport const portId = attach.portId;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\ndevice_id = config.require(\"deviceId\")\nport_name = config.get(\"portName\")\nif port_name is None:\n    port_name = \"eth1\"\nvxlan_id = config.get_int(\"vxlanId\")\nif vxlan_id is None:\n    vxlan_id = 1004\nattach = equinix.metal.PortVlanAttachment(\"attach\",\n    device_id=device_id,\n    port_name=port_name,\n    vlan_vnid=vxlan_id)\npulumi.export(\"attachId\", attach.id)\npulumi.export(\"portId\", attach.port_id)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tdeviceId := cfg.Require(\"deviceId\")\n\t\tportName := \"eth1\"\n\t\tif param := cfg.Get(\"portName\"); param != \"\" {\n\t\t\tportName = param\n\t\t}\n\t\tvxlanId := 1004\n\t\tif param := cfg.GetInt(\"vxlanId\"); param != 0 {\n\t\t\tvxlanId = param\n\t\t}\n\t\tattach, err := metal.NewPortVlanAttachment(ctx, \"attach\", \u0026metal.PortVlanAttachmentArgs{\n\t\t\tDeviceId: pulumi.String(deviceId),\n\t\t\tPortName: pulumi.String(portName),\n\t\t\tVlanVnid: pulumi.Int(vxlanId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"attachId\", attach.ID())\n\t\tctx.Export(\"portId\", attach.PortId)\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var deviceId = config.Require(\"deviceId\");\n    var portName = config.Get(\"portName\") ?? \"eth1\";\n    var vxlanId = config.GetNumber(\"vxlanId\") ?? 1004;\n    var attach = new Equinix.Metal.PortVlanAttachment(\"attach\", new()\n    {\n        DeviceId = deviceId,\n        PortName = portName,\n        VlanVnid = vxlanId,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"attachId\"] = attach.Id,\n        [\"portId\"] = attach.PortId,\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.equinix.pulumi.metal.PortVlanAttachment;\nimport com.equinix.pulumi.metal.PortVlanAttachmentArgs;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var deviceId = config.get(\"deviceId\").get();\n        final var portName = config.get(\"portName\").orElse(\"eth1\");\n        final var vxlanId = Integer.parseInt(config.get(\"vxlanId\").orElse(\"1004\"));\n\n        var attach = new PortVlanAttachment(\"attach\", PortVlanAttachmentArgs.builder()        \n            .deviceId(deviceId)\n            .portName(portName)\n            .vlanVnid(vxlanId)\n            .build());\n\n        ctx.export(\"attachId\", attach.id());\n        ctx.export(\"portId\", attach.portId());\n    }\n}\n```\n```yaml\nconfig:\n  deviceId:\n    type: string\n  portName:\n    type: string\n    default: eth1\n  vxlanId:\n    type: integer\n    default: 1004\nresources:\n  attach:\n    type: equinix:metal:PortVlanAttachment\n    properties:\n      deviceId: ${deviceId}\n      portName: ${portName}\n      vlanVnid: ${vxlanId}\noutputs:\n  attachId: ${attach.id}\n  portId: ${attach.portId}\n```\n{{% /example %}}\n\n{{% /examples %}}",
             "properties": {
                 "deviceId": {
                     "type": "string",
@@ -16282,7 +16288,7 @@
             }
         },
         "equinix:metal/reservedIpBlock:ReservedIpBlock": {
-            "description": "{{% examples %}}\nProvides a resource to create and manage blocks of reserved IP addresses in a project.\n\nWhen a user provisions first device in a facility, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.\nThe new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.\nEvery new device in the project and facility will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.\nThe IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.\n\nPublic blocks are allocated in a facility. Addresses from public blocks can only be assigned to devices in the facility. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the facility argument.\n\nAddresses from global blocks can be assigned in any facility. Global blocks can have mask from /30 (4 addresses), to /32 (1 address). If you create global block with this resource, you must specify type = \"global_ipv4\" and you must omit the facility argument.\n\nOnce IP block is allocated or imported, an address from it can be assigned to device with the `equinix.metal.IpAttachment` resource.\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n## Example Usage\n\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst config = new pulumi.Config();\nconst projectId = config.require(\"projectId\");\nconst metro = config.get(\"metro\") || \"FR\";\nconst type = config.get(\"type\") || \"public_ipv4\";\nconst quantity = config.getNumber(\"quantity\") || 1;\nconst ipBlock = new equinix.metal.ReservedIpBlock(\"ipBlock\", {\n    projectId: projectId,\n    type: \"public_ipv4\",\n    quantity: quantity,\n    metro: metro,\n});\nexport const ipBlockId = ipBlock.id;\nexport const ipBlockSubent = ipBlock.cidrNotation;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\nproject_id = config.require(\"projectId\")\nmetro = config.get(\"metro\")\nif metro is None:\n    metro = \"FR\"\ntype = config.get(\"type\")\nif type is None:\n    type = \"public_ipv4\"\nquantity = config.get_int(\"quantity\")\nif quantity is None:\n    quantity = 1\nip_block = equinix.metal.ReservedIpBlock(\"ipBlock\",\n    project_id=project_id,\n    type=\"public_ipv4\",\n    quantity=quantity,\n    metro=metro)\npulumi.export(\"ipBlockId\", ip_block.id)\npulumi.export(\"ipBlockSubent\", ip_block.cidr_notation)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tprojectId := cfg.Require(\"projectId\")\n\t\tmetro := \"FR\"\n\t\tif param := cfg.Get(\"metro\"); param != \"\" {\n\t\t\tmetro = param\n\t\t}\n\t\t_type := \"public_ipv4\"\n\t\tif param := cfg.Get(\"type\"); param != \"\" {\n\t\t\t_type = param\n\t\t}\n\t\tquantity := 1\n\t\tif param := cfg.GetInt(\"quantity\"); param != 0 {\n\t\t\tquantity = param\n\t\t}\n\t\tipBlock, err := metal.NewReservedIpBlock(ctx, \"ipBlock\", \u0026metal.ReservedIpBlockArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tType:      pulumi.String(\"public_ipv4\"),\n\t\t\tQuantity:  pulumi.Int(quantity),\n\t\t\tMetro:     pulumi.String(metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ipBlockId\", ipBlock.ID())\n\t\tctx.Export(\"ipBlockSubent\", ipBlock.CidrNotation)\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var projectId = config.Require(\"projectId\");\n    var metro = config.Get(\"metro\") ?? \"FR\";\n    var type = config.Get(\"type\") ?? \"public_ipv4\";\n    var quantity = config.GetNumber(\"quantity\") ?? 1;\n    var ipBlock = new Equinix.Metal.ReservedIpBlock(\"ipBlock\", new()\n    {\n        ProjectId = projectId,\n        Type = \"public_ipv4\",\n        Quantity = quantity,\n        Metro = metro,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ipBlockId\"] = ipBlock.Id,\n        [\"ipBlockSubent\"] = ipBlock.CidrNotation,\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.equinix.pulumi.metal.ReservedIpBlock;\nimport com.equinix.pulumi.metal.ReservedIpBlockArgs;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var projectId = config.get(\"projectId\").get();\n        final var metro = config.get(\"metro\").orElse(\"FR\");\n        final var type = config.get(\"type\").orElse(\"public_ipv4\");\n        final var quantity = Integer.parseInt(config.get(\"quantity\").orElse(\"1\"));\n        var ipBlock = new ReservedIpBlock(\"ipBlock\", ReservedIpBlockArgs.builder()        \n            .projectId(projectId)\n            .type(type)\n            .quantity(quantity)\n            .metro(metro)\n            .build());\n\n        ctx.export(\"ipBlockId\", ipBlock.id());\n        ctx.export(\"ipBlockSubent\", ipBlock.cidrNotation());\n    }\n}\n```\n```yaml\nconfig:\n  projectId:\n    type: string\n  metro:\n    type: string\n    default: FR\n  type:\n    type: string\n    default: public_ipv4\n  quantity:\n    type: integer\n    default: 1\nresources:\n  ipBlock:\n    type: equinix:metal:ReservedIpBlock\n    properties:\n      projectId: ${projectId}\n      type: public_ipv4\n      quantity: ${quantity}\n      metro: ${metro}\noutputs:\n  ipBlockId: ${ipBlock.id}\n  ipBlockSubent: ${ipBlock.cidrNotation}\n```\n{{% /example %}}\n\n## Import\n\nThis resource can be imported using an existing IP reservation ID: \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n\n{{% /examples %}}",
+            "description": "{{% examples %}}\nProvides a resource to create and manage blocks of reserved IP addresses in a project.\n\nWhen a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.\nThe new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.\nEvery new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.\nThe IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.\n\nPublic blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.\n\nAddresses from global blocks can be assigned in any metro. Global blocks can have mask from /30 (4 addresses), to /32 (1 address). If you create global block with this resource, you must specify type = \"global_ipv4\" and you must omit the metro argument.\n\nOnce IP block is allocated or imported, an address from it can be assigned to device with the `equinix.metal.IpAttachment` resource.\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n## Example Usage\n\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\n\nconst config = new pulumi.Config();\nconst projectId = config.require(\"projectId\");\nconst metro = config.get(\"metro\") || \"FR\";\nconst type = config.get(\"type\") || \"public_ipv4\";\nconst quantity = config.getNumber(\"quantity\") || 1;\nconst ipBlock = new equinix.metal.ReservedIpBlock(\"ipBlock\", {\n    projectId: projectId,\n    type: \"public_ipv4\",\n    quantity: quantity,\n    metro: metro,\n});\nexport const ipBlockId = ipBlock.id;\nexport const ipBlockSubent = ipBlock.cidrNotation;\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\nproject_id = config.require(\"projectId\")\nmetro = config.get(\"metro\")\nif metro is None:\n    metro = \"FR\"\ntype = config.get(\"type\")\nif type is None:\n    type = \"public_ipv4\"\nquantity = config.get_int(\"quantity\")\nif quantity is None:\n    quantity = 1\nip_block = equinix.metal.ReservedIpBlock(\"ipBlock\",\n    project_id=project_id,\n    type=\"public_ipv4\",\n    quantity=quantity,\n    metro=metro)\npulumi.export(\"ipBlockId\", ip_block.id)\npulumi.export(\"ipBlockSubent\", ip_block.cidr_notation)\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tprojectId := cfg.Require(\"projectId\")\n\t\tmetro := \"FR\"\n\t\tif param := cfg.Get(\"metro\"); param != \"\" {\n\t\t\tmetro = param\n\t\t}\n\t\t_type := \"public_ipv4\"\n\t\tif param := cfg.Get(\"type\"); param != \"\" {\n\t\t\t_type = param\n\t\t}\n\t\tquantity := 1\n\t\tif param := cfg.GetInt(\"quantity\"); param != 0 {\n\t\t\tquantity = param\n\t\t}\n\t\tipBlock, err := metal.NewReservedIpBlock(ctx, \"ipBlock\", \u0026metal.ReservedIpBlockArgs{\n\t\t\tProjectId: pulumi.String(projectId),\n\t\t\tType:      pulumi.String(\"public_ipv4\"),\n\t\t\tQuantity:  pulumi.Int(quantity),\n\t\t\tMetro:     pulumi.String(metro),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ipBlockId\", ipBlock.ID())\n\t\tctx.Export(\"ipBlockSubent\", ipBlock.CidrNotation)\n\t\treturn nil\n\t})\n}\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var projectId = config.Require(\"projectId\");\n    var metro = config.Get(\"metro\") ?? \"FR\";\n    var type = config.Get(\"type\") ?? \"public_ipv4\";\n    var quantity = config.GetNumber(\"quantity\") ?? 1;\n    var ipBlock = new Equinix.Metal.ReservedIpBlock(\"ipBlock\", new()\n    {\n        ProjectId = projectId,\n        Type = \"public_ipv4\",\n        Quantity = quantity,\n        Metro = metro,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ipBlockId\"] = ipBlock.Id,\n        [\"ipBlockSubent\"] = ipBlock.CidrNotation,\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.equinix.pulumi.metal.ReservedIpBlock;\nimport com.equinix.pulumi.metal.ReservedIpBlockArgs;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var projectId = config.get(\"projectId\").get();\n        final var metro = config.get(\"metro\").orElse(\"FR\");\n        final var type = config.get(\"type\").orElse(\"public_ipv4\");\n        final var quantity = Integer.parseInt(config.get(\"quantity\").orElse(\"1\"));\n        var ipBlock = new ReservedIpBlock(\"ipBlock\", ReservedIpBlockArgs.builder()        \n            .projectId(projectId)\n            .type(type)\n            .quantity(quantity)\n            .metro(metro)\n            .build());\n\n        ctx.export(\"ipBlockId\", ipBlock.id());\n        ctx.export(\"ipBlockSubent\", ipBlock.cidrNotation());\n    }\n}\n```\n```yaml\nconfig:\n  projectId:\n    type: string\n  metro:\n    type: string\n    default: FR\n  type:\n    type: string\n    default: public_ipv4\n  quantity:\n    type: integer\n    default: 1\nresources:\n  ipBlock:\n    type: equinix:metal:ReservedIpBlock\n    properties:\n      projectId: ${projectId}\n      type: public_ipv4\n      quantity: ${quantity}\n      metro: ${metro}\noutputs:\n  ipBlockId: ${ipBlock.id}\n  ipBlockSubent: ${ipBlock.cidrNotation}\n```\n{{% /example %}}\n\n## Import\n\nThis resource can be imported using an existing IP reservation ID: \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e\n\n{{% /examples %}}",
             "properties": {
                 "address": {
                     "type": "string"
@@ -16309,14 +16315,14 @@
                 },
                 "facility": {
                     "type": "string",
-                    "description": "Facility where to allocate the public IP address block, makes sense only\nif type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.\n"
+                    "description": "Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for\ntype==global_ipv4, conflicts with metro\n"
                 },
                 "gateway": {
                     "type": "string"
                 },
                 "global": {
                     "type": "boolean",
-                    "description": "Boolean flag whether addresses from a block are global (i.e. can be assigned in any\nfacility).\n"
+                    "description": "Boolean flag whether addresses from a block are global (i.e. can be assigned in any\nmetro).\n"
                 },
                 "manageable": {
                     "type": "boolean"
@@ -16408,7 +16414,7 @@
                             "$ref": "#/types/equinix:metal/facility:Facility"
                         }
                     ],
-                    "description": "Facility where to allocate the public IP address block, makes sense only\nif type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.\n",
+                    "description": "Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for\ntype==global_ipv4, conflicts with metro\n",
                     "willReplaceOnChanges": true
                 },
                 "metro": {
@@ -16503,7 +16509,7 @@
                                 "$ref": "#/types/equinix:metal/facility:Facility"
                             }
                         ],
-                        "description": "Facility where to allocate the public IP address block, makes sense only\nif type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.\n",
+                        "description": "Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for\ntype==global_ipv4, conflicts with metro\n",
                         "willReplaceOnChanges": true
                     },
                     "gateway": {
@@ -16511,7 +16517,7 @@
                     },
                     "global": {
                         "type": "boolean",
-                        "description": "Boolean flag whether addresses from a block are global (i.e. can be assigned in any\nfacility).\n"
+                        "description": "Boolean flag whether addresses from a block are global (i.e. can be assigned in any\nmetro).\n"
                     },
                     "manageable": {
                         "type": "boolean"
@@ -16597,7 +16603,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Facility IDs where devices should be created.\n"
+                    "description": "Facility IDs where devices should be created\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                 },
                 "instanceParameters": {
                     "$ref": "#/types/equinix:metal/SpotMarketRequestInstanceParameters:SpotMarketRequestInstanceParameters",
@@ -16644,7 +16651,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Facility IDs where devices should be created.\n",
+                    "description": "Facility IDs where devices should be created\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                     "willReplaceOnChanges": true
                 },
                 "instanceParameters": {
@@ -16698,7 +16706,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Facility IDs where devices should be created.\n",
+                        "description": "Facility IDs where devices should be created\n",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                         "willReplaceOnChanges": true
                     },
                     "instanceParameters": {
@@ -17146,10 +17155,12 @@
                 },
                 "facility": {
                     "type": "string",
-                    "description": "Facility where to create the VLAN.\n"
+                    "description": "Facility where to create the VLAN\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                 },
                 "metro": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Metro in which to create the VLAN\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -17181,11 +17192,13 @@
                             "$ref": "#/types/equinix:metal/facility:Facility"
                         }
                     ],
-                    "description": "Facility where to create the VLAN.\n",
+                    "description": "Facility where to create the VLAN\n",
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                     "willReplaceOnChanges": true
                 },
                 "metro": {
                     "type": "string",
+                    "description": "Metro in which to create the VLAN\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
@@ -17221,11 +17234,13 @@
                                 "$ref": "#/types/equinix:metal/facility:Facility"
                             }
                         ],
-                        "description": "Facility where to create the VLAN.\n",
+                        "description": "Facility where to create the VLAN\n",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
                         "willReplaceOnChanges": true
                     },
                     "metro": {
                         "type": "string",
+                        "description": "Metro in which to create the VLAN\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
@@ -18494,6 +18509,10 @@
                     "type": "string",
                     "description": "The SSH public key. If this is a file, it can be read using the file\ninterpolation function.\n"
                 },
+                "type": {
+                    "type": "string",
+                    "description": "The type of SSH key: `RSA` (default) or `DSA`.\n"
+                },
                 "uuid": {
                     "type": "string",
                     "description": "The unique identifier of the key\n"
@@ -18514,6 +18533,11 @@
                     "type": "string",
                     "description": "The SSH public key. If this is a file, it can be read using the file\ninterpolation function.\n",
                     "willReplaceOnChanges": true
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of SSH key: `RSA` (default) or `DSA`.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -18530,6 +18554,11 @@
                     "publicKey": {
                         "type": "string",
                         "description": "The SSH public key. If this is a file, it can be read using the file\ninterpolation function.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of SSH key: `RSA` (default) or `DSA`.\n",
                         "willReplaceOnChanges": true
                     },
                     "uuid": {
@@ -19157,7 +19186,7 @@
                     },
                     "facility": {
                         "type": "string",
-                        "description": "The facility where the device is deployed.\n"
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "hardwareReservationId": {
                         "type": "string",
@@ -19304,7 +19333,6 @@
             }
         },
         "equinix:metal/getFacility:getFacility": {
-            "description": "Provides an Equinix Metal facility datasource.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getFacility.\n",
                 "properties": {
@@ -19468,7 +19496,7 @@
                     },
                     "facility": {
                         "type": "string",
-                        "description": "Plan type for the reservation.\n"
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "id": {
                         "type": "string",
@@ -19540,7 +19568,7 @@
                     },
                     "facility": {
                         "type": "string",
-                        "description": "Slug of a facility to which the connection belongs.\n"
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "id": {
                         "type": "string",
@@ -19651,7 +19679,7 @@
                 "properties": {
                     "facility": {
                         "type": "string",
-                        "description": "Facility code filtering the IP blocks. Global IPv4 blocks will be listed\nanyway. If you omit this and metro, all the block from the project will be listed.\n"
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "metro": {
                         "type": "string",
@@ -19671,7 +19699,8 @@
                 "description": "A collection of values returned by getIpBlockRanges.\n",
                 "properties": {
                     "facility": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "globalIpv4s": {
                         "type": "array",
@@ -19733,11 +19762,11 @@
                         "items": {
                             "$ref": "#/types/equinix:metal/getMetroCapacity:getMetroCapacity"
                         },
-                        "description": "One or more device plans for which the facility must have capacity.\n"
+                        "description": "One or more device plans for which the metro must have capacity.\n"
                     },
                     "code": {
                         "type": "string",
-                        "description": "The facility code to search for facilities.\n"
+                        "description": "The metro code to search for.\n"
                     }
                 },
                 "type": "object",
@@ -19780,7 +19809,7 @@
             }
         },
         "equinix:metal/getOperatingSystem:getOperatingSystem": {
-            "description": "Use this data source to get Equinix Metal Operating System image.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getOperatingSystem({\n    distro: \"ubuntu\",\n    version: \"20.04\",\n    provisionableOn: \"c3.medium.x86\",\n});\nconst server = new equinix.metal.Device(\"server\", {\n    hostname: \"tf.ubuntu\",\n    plan: \"c3.medium.x86\",\n    facilities: [\"ny5\"],\n    operatingSystem: example.then(example =\u003e example.id).apply((x) =\u003e @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_operating_system(distro=\"ubuntu\",\n    version=\"20.04\",\n    provisionable_on=\"c3.medium.x86\")\nserver = equinix.metal.Device(\"server\",\n    hostname=\"tf.ubuntu\",\n    plan=\"c3.medium.x86\",\n    facilities=[\"ny5\"],\n    operating_system=example.id.apply(lambda x: equinix.metal/operatingsystem.OperatingSystem(x)),\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetOperatingSystem.Invoke(new()\n    {\n        Distro = \"ubuntu\",\n        Version = \"20.04\",\n        ProvisionableOn = \"c3.medium.x86\",\n    });\n\n    var server = new Equinix.Metal.Device(\"server\", new()\n    {\n        Hostname = \"tf.ubuntu\",\n        Plan = \"c3.medium.x86\",\n        Facilities = new[]\n        {\n            \"ny5\",\n        },\n        OperatingSystem = example.Apply(getOperatingSystemResult =\u003e getOperatingSystemResult.Id).Apply(System.Enum.Parse\u003cEquinix.Metal/operatingSystem.OperatingSystem\u003e),\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetOperatingSystem(ctx, \u0026metal.GetOperatingSystemArgs{\n\t\t\tDistro:          pulumi.StringRef(\"ubuntu\"),\n\t\t\tVersion:         pulumi.StringRef(\"20.04\"),\n\t\t\tProvisionableOn: pulumi.StringRef(\"c3.medium.x86\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewDevice(ctx, \"server\", \u0026metal.DeviceArgs{\n\t\t\tHostname: pulumi.String(\"tf.ubuntu\"),\n\t\t\tPlan:     pulumi.String(\"c3.medium.x86\"),\n\t\t\tFacilities: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ny5\"),\n\t\t\t},\n\t\t\tOperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetOperatingSystemArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()\n            .distro(\"ubuntu\")\n            .version(\"20.04\")\n            .provisionableOn(\"c3.medium.x86\")\n            .build());\n\n        var server = new Device(\"server\", DeviceArgs.builder()        \n            .hostname(\"tf.ubuntu\")\n            .plan(\"c3.medium.x86\")\n            .facilities(\"ny5\")\n            .operatingSystem(example.applyValue(getOperatingSystemResult -\u003e getOperatingSystemResult.id()))\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  server:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.ubuntu\n      plan: c3.medium.x86\n      facilities:\n        - ny5\n      operatingSystem: ${example.id}\n      billingCycle: hourly\n      projectId: ${local.project_id}\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getOperatingSystem\n      Arguments:\n        distro: ubuntu\n        version: '20.04'\n        provisionableOn: c3.medium.x86\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to get Equinix Metal Operating System image.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getOperatingSystem({\n    distro: \"ubuntu\",\n    version: \"20.04\",\n    provisionableOn: \"c3.medium.x86\",\n});\nconst server = new equinix.metal.Device(\"server\", {\n    hostname: \"tf.ubuntu\",\n    plan: \"c3.medium.x86\",\n    metro: \"ny\",\n    operatingSystem: example.then(example =\u003e example.id).apply((x) =\u003e @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_operating_system(distro=\"ubuntu\",\n    version=\"20.04\",\n    provisionable_on=\"c3.medium.x86\")\nserver = equinix.metal.Device(\"server\",\n    hostname=\"tf.ubuntu\",\n    plan=\"c3.medium.x86\",\n    metro=\"ny\",\n    operating_system=example.id.apply(lambda x: equinix.metal/operatingsystem.OperatingSystem(x)),\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetOperatingSystem.Invoke(new()\n    {\n        Distro = \"ubuntu\",\n        Version = \"20.04\",\n        ProvisionableOn = \"c3.medium.x86\",\n    });\n\n    var server = new Equinix.Metal.Device(\"server\", new()\n    {\n        Hostname = \"tf.ubuntu\",\n        Plan = \"c3.medium.x86\",\n        Metro = \"ny\",\n        OperatingSystem = example.Apply(getOperatingSystemResult =\u003e getOperatingSystemResult.Id).Apply(System.Enum.Parse\u003cEquinix.Metal/operatingSystem.OperatingSystem\u003e),\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetOperatingSystem(ctx, \u0026metal.GetOperatingSystemArgs{\n\t\t\tDistro:          pulumi.StringRef(\"ubuntu\"),\n\t\t\tVersion:         pulumi.StringRef(\"20.04\"),\n\t\t\tProvisionableOn: pulumi.StringRef(\"c3.medium.x86\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewDevice(ctx, \"server\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.ubuntu\"),\n\t\t\tPlan:            pulumi.String(\"c3.medium.x86\"),\n\t\t\tMetro:           pulumi.String(\"ny\"),\n\t\t\tOperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetOperatingSystemArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()\n            .distro(\"ubuntu\")\n            .version(\"20.04\")\n            .provisionableOn(\"c3.medium.x86\")\n            .build());\n\n        var server = new Device(\"server\", DeviceArgs.builder()        \n            .hostname(\"tf.ubuntu\")\n            .plan(\"c3.medium.x86\")\n            .metro(\"ny\")\n            .operatingSystem(example.applyValue(getOperatingSystemResult -\u003e getOperatingSystemResult.id()))\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  server:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.ubuntu\n      plan: c3.medium.x86\n      metro: ny\n      operatingSystem: ${example.id}\n      billingCycle: hourly\n      projectId: ${local.project_id}\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getOperatingSystem\n      Arguments:\n        distro: ubuntu\n        version: '20.04'\n        provisionableOn: c3.medium.x86\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getOperatingSystem.\n",
                 "properties": {
@@ -19943,8 +19972,7 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/equinix:metal/getPlansPlan:getPlansPlan"
-                        },
-                        "description": "The ID of the facility\n"
+                        }
                     },
                     "sorts": {
                         "type": "array",
@@ -19961,7 +19989,7 @@
             }
         },
         "equinix:metal/getPort:getPort": {
-            "description": "Use this data source to read ports of existing devices. You can read port by either its UUID,\nor by a device UUID and port name.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a device and read it's eth0 port to the datasource.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"\u003cUUID_of_your_project\u003e\";\nconst testDevice = new equinix.metal.Device(\"testDevice\", {\n    hostname: \"tfacc-test-device-port\",\n    plan: \"c3.medium.x86\",\n    facilities: [\"sv15\"],\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: projectId,\n});\nconst testPort = equinix.metal.getPortOutput({\n    deviceId: testDevice.id,\n    name: \"eth0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"\u003cUUID_of_your_project\u003e\"\ntest_device = equinix.metal.Device(\"testDevice\",\n    hostname=\"tfacc-test-device-port\",\n    plan=\"c3.medium.x86\",\n    facilities=[\"sv15\"],\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=project_id)\ntest_port = equinix.metal.get_port_output(device_id=test_device.id,\n    name=\"eth0\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n    var testDevice = new Equinix.Metal.Device(\"testDevice\", new()\n    {\n        Hostname = \"tfacc-test-device-port\",\n        Plan = \"c3.medium.x86\",\n        Facilities = new[]\n        {\n            \"sv15\",\n        },\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = projectId,\n    });\n\n    var testPort = Equinix.Metal.GetPort.Invoke(new()\n    {\n        DeviceId = testDevice.Id,\n        Name = \"eth0\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"\u003cUUID_of_your_project\u003e\"\n\t\ttestDevice, err := metal.NewDevice(ctx, \"testDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname: pulumi.String(\"tfacc-test-device-port\"),\n\t\t\tPlan:     pulumi.String(\"c3.medium.x86\"),\n\t\t\tFacilities: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sv15\"),\n\t\t\t},\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.String(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = metal.LookupPortOutput(ctx, metal.GetPortOutputArgs{\n\t\t\tDeviceId: testDevice.ID(),\n\t\t\tName:     pulumi.String(\"eth0\"),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPortArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n        var testDevice = new Device(\"testDevice\", DeviceArgs.builder()        \n            .hostname(\"tfacc-test-device-port\")\n            .plan(\"c3.medium.x86\")\n            .facilities(\"sv15\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n        final var testPort = MetalFunctions.getPort(GetPortArgs.builder()\n            .deviceId(testDevice.id())\n            .name(\"eth0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: tfacc-test-device-port\n      plan: c3.medium.x86\n      facilities:\n        - sv15\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${projectId}\nvariables:\n  projectId: \u003cUUID_of_your_project\u003e\n  testPort:\n    fn::invoke:\n      Function: equinix:metal:getPort\n      Arguments:\n        deviceId: ${testDevice.id}\n        name: eth0\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to read ports of existing devices. You can read port by either its UUID,\nor by a device UUID and port name.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a device and read it's eth0 port to the datasource.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"\u003cUUID_of_your_project\u003e\";\nconst testDevice = new equinix.metal.Device(\"testDevice\", {\n    hostname: \"tfacc-test-device-port\",\n    plan: \"c3.medium.x86\",\n    metro: \"sv\",\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: projectId,\n});\nconst testPort = equinix.metal.getPortOutput({\n    deviceId: testDevice.id,\n    name: \"eth0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"\u003cUUID_of_your_project\u003e\"\ntest_device = equinix.metal.Device(\"testDevice\",\n    hostname=\"tfacc-test-device-port\",\n    plan=\"c3.medium.x86\",\n    metro=\"sv\",\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=project_id)\ntest_port = equinix.metal.get_port_output(device_id=test_device.id,\n    name=\"eth0\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n    var testDevice = new Equinix.Metal.Device(\"testDevice\", new()\n    {\n        Hostname = \"tfacc-test-device-port\",\n        Plan = \"c3.medium.x86\",\n        Metro = \"sv\",\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = projectId,\n    });\n\n    var testPort = Equinix.Metal.GetPort.Invoke(new()\n    {\n        DeviceId = testDevice.Id,\n        Name = \"eth0\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"\u003cUUID_of_your_project\u003e\"\n\t\ttestDevice, err := metal.NewDevice(ctx, \"testDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tfacc-test-device-port\"),\n\t\t\tPlan:            pulumi.String(\"c3.medium.x86\"),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.String(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = metal.LookupPortOutput(ctx, metal.GetPortOutputArgs{\n\t\t\tDeviceId: testDevice.ID(),\n\t\t\tName:     pulumi.String(\"eth0\"),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPortArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n        var testDevice = new Device(\"testDevice\", DeviceArgs.builder()        \n            .hostname(\"tfacc-test-device-port\")\n            .plan(\"c3.medium.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n        final var testPort = MetalFunctions.getPort(GetPortArgs.builder()\n            .deviceId(testDevice.id())\n            .name(\"eth0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: tfacc-test-device-port\n      plan: c3.medium.x86\n      metro: sv\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${projectId}\nvariables:\n  projectId: \u003cUUID_of_your_project\u003e\n  testPort:\n    fn::invoke:\n      Function: equinix:metal:getPort\n      Arguments:\n        deviceId: ${testDevice.id}\n        name: eth0\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getPort.\n",
                 "properties": {
@@ -20074,8 +20102,7 @@
                         "description": "4 or 6, depending on which block you are looking for.\n"
                     },
                     "facility": {
-                        "type": "string",
-                        "description": "Facility of the searched block. (for non-global blocks).\n"
+                        "type": "string"
                     },
                     "global": {
                         "type": "boolean",
@@ -20368,7 +20395,8 @@
                         "type": "string"
                     },
                     "facility": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "gateway": {
                         "type": "string"
@@ -20438,13 +20466,13 @@
             }
         },
         "equinix:metal/getSpotMarketPrice:getSpotMarketPrice": {
-            "description": "Use this data source to get Equinix Metal Spot Market Price for a plan.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nLookup by facility:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getSpotMarketPrice({\n    facility: \"ny5\",\n    plan: \"c3.small.x86\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_spot_market_price(facility=\"ny5\",\n    plan=\"c3.small.x86\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetSpotMarketPrice.Invoke(new()\n    {\n        Facility = \"ny5\",\n        Plan = \"c3.small.x86\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.GetSpotMarketPrice(ctx, \u0026metal.GetSpotMarketPriceArgs{\n\t\t\tFacility: pulumi.StringRef(\"ny5\"),\n\t\t\tPlan:     \"c3.small.x86\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()\n            .facility(\"ny5\")\n            .plan(\"c3.small.x86\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getSpotMarketPrice\n      Arguments:\n        facility: ny5\n        plan: c3.small.x86\n```\n\nLookup by metro:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getSpotMarketPrice({\n    metro: \"sv\",\n    plan: \"c3.small.x86\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_spot_market_price(metro=\"sv\",\n    plan=\"c3.small.x86\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetSpotMarketPrice.Invoke(new()\n    {\n        Metro = \"sv\",\n        Plan = \"c3.small.x86\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.GetSpotMarketPrice(ctx, \u0026metal.GetSpotMarketPriceArgs{\n\t\t\tMetro: pulumi.StringRef(\"sv\"),\n\t\t\tPlan:  \"c3.small.x86\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()\n            .metro(\"sv\")\n            .plan(\"c3.small.x86\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getSpotMarketPrice\n      Arguments:\n        metro: sv\n        plan: c3.small.x86\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to get Equinix Metal Spot Market Price for a plan.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nLookup by metro:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getSpotMarketPrice({\n    metro: \"sv\",\n    plan: \"c3.small.x86\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_spot_market_price(metro=\"sv\",\n    plan=\"c3.small.x86\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetSpotMarketPrice.Invoke(new()\n    {\n        Metro = \"sv\",\n        Plan = \"c3.small.x86\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metal.GetSpotMarketPrice(ctx, \u0026metal.GetSpotMarketPriceArgs{\n\t\t\tMetro: pulumi.StringRef(\"sv\"),\n\t\t\tPlan:  \"c3.small.x86\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()\n            .metro(\"sv\")\n            .plan(\"c3.small.x86\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getSpotMarketPrice\n      Arguments:\n        metro: sv\n        plan: c3.small.x86\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getSpotMarketPrice.\n",
                 "properties": {
                     "facility": {
                         "type": "string",
-                        "description": "Name of the facility.\n"
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "metro": {
                         "type": "string",
@@ -20464,7 +20492,8 @@
                 "description": "A collection of values returned by getSpotMarketPrice.\n",
                 "properties": {
                     "facility": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "id": {
                         "type": "string",
@@ -20530,7 +20559,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Facility IDs where devices should be created.\n"
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "id": {
                         "type": "string",
@@ -20703,7 +20732,8 @@
                 "properties": {
                     "facility": {
                         "type": "string",
-                        "description": "Facility where the VLAN is deployed.\n"
+                        "description": "Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros\n",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "metro": {
                         "type": "string",
@@ -20739,7 +20769,8 @@
                         "description": "Description text of the VLAN resource.\n"
                     },
                     "facility": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "id": {
                         "type": "string",

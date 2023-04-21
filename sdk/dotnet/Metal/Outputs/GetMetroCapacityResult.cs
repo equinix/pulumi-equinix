@@ -18,7 +18,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// Minimun number of devices that must be available in selected location.
+        /// Minimum number of devices that must be available in selected location.
         /// Default is `1`.
         /// </summary>
         public readonly int? Quantity;

@@ -65,7 +65,9 @@ type Interconnection struct {
 
 	// Description for the connection resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Facility where the connection will be created.
+	// Facility where the connection will be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringOutput `pulumi:"facility"`
 	// Metro where the connection will be created.
 	Metro pulumi.StringOutput `pulumi:"metro"`
@@ -144,7 +146,9 @@ func GetInterconnection(ctx *pulumi.Context,
 type interconnectionState struct {
 	// Description for the connection resource.
 	Description *string `pulumi:"description"`
-	// Facility where the connection will be created.
+	// Facility where the connection will be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Metro where the connection will be created.
 	Metro *string `pulumi:"metro"`
@@ -185,7 +189,9 @@ type interconnectionState struct {
 type InterconnectionState struct {
 	// Description for the connection resource.
 	Description pulumi.StringPtrInput
-	// Facility where the connection will be created.
+	// Facility where the connection will be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput
 	// Metro where the connection will be created.
 	Metro pulumi.StringPtrInput
@@ -230,7 +236,9 @@ func (InterconnectionState) ElementType() reflect.Type {
 type interconnectionArgs struct {
 	// Description for the connection resource.
 	Description *string `pulumi:"description"`
-	// Facility where the connection will be created.
+	// Facility where the connection will be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Metro where the connection will be created.
 	Metro *string `pulumi:"metro"`
@@ -260,7 +268,9 @@ type interconnectionArgs struct {
 type InterconnectionArgs struct {
 	// Description for the connection resource.
 	Description pulumi.StringPtrInput
-	// Facility where the connection will be created.
+	// Facility where the connection will be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput
 	// Metro where the connection will be created.
 	Metro pulumi.StringPtrInput
@@ -378,7 +388,9 @@ func (o InterconnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Facility where the connection will be created.
+// Facility where the connection will be created
+//
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o InterconnectionOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Facility }).(pulumi.StringOutput)
 }

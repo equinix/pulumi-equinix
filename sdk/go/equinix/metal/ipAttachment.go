@@ -14,14 +14,14 @@ import (
 // Provides a resource to attach elastic IP subnets to devices.
 //
 // To attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR
-// belonging to one of your reserved blocks in the same project and facility as the target device.
+// belonging to one of your reserved blocks in the same project and metro as the target device.
 //
 // For example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign
 // either the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and
 // `147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets
 // is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
 //
-// Device and reserved block must be in the same facility.
+// Device and reserved block must be in the same metro.
 //
 // ## Example Usage
 // ```go
@@ -66,7 +66,7 @@ type IpAttachment struct {
 	// Length of CIDR prefix of the subnet as integer.
 	Cidr pulumi.IntOutput `pulumi:"cidr"`
 	// CIDR notation of subnet from block reserved in the same project
-	// and facility as the device.
+	// and metro as the device.
 	CidrNotation pulumi.StringOutput `pulumi:"cidrNotation"`
 	// ID of device to which to assign the subnet.
 	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
@@ -127,7 +127,7 @@ type ipAttachmentState struct {
 	// Length of CIDR prefix of the subnet as integer.
 	Cidr *int `pulumi:"cidr"`
 	// CIDR notation of subnet from block reserved in the same project
-	// and facility as the device.
+	// and metro as the device.
 	CidrNotation *string `pulumi:"cidrNotation"`
 	// ID of device to which to assign the subnet.
 	DeviceId *string `pulumi:"deviceId"`
@@ -153,7 +153,7 @@ type IpAttachmentState struct {
 	// Length of CIDR prefix of the subnet as integer.
 	Cidr pulumi.IntPtrInput
 	// CIDR notation of subnet from block reserved in the same project
-	// and facility as the device.
+	// and metro as the device.
 	CidrNotation pulumi.StringPtrInput
 	// ID of device to which to assign the subnet.
 	DeviceId pulumi.StringPtrInput
@@ -178,7 +178,7 @@ func (IpAttachmentState) ElementType() reflect.Type {
 
 type ipAttachmentArgs struct {
 	// CIDR notation of subnet from block reserved in the same project
-	// and facility as the device.
+	// and metro as the device.
 	CidrNotation string `pulumi:"cidrNotation"`
 	// ID of device to which to assign the subnet.
 	DeviceId string `pulumi:"deviceId"`
@@ -187,7 +187,7 @@ type ipAttachmentArgs struct {
 // The set of arguments for constructing a IpAttachment resource.
 type IpAttachmentArgs struct {
 	// CIDR notation of subnet from block reserved in the same project
-	// and facility as the device.
+	// and metro as the device.
 	CidrNotation pulumi.StringInput
 	// ID of device to which to assign the subnet.
 	DeviceId pulumi.StringInput
@@ -295,7 +295,7 @@ func (o IpAttachmentOutput) Cidr() pulumi.IntOutput {
 }
 
 // CIDR notation of subnet from block reserved in the same project
-// and facility as the device.
+// and metro as the device.
 func (o IpAttachmentOutput) CidrNotation() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpAttachment) pulumi.StringOutput { return v.CidrNotation }).(pulumi.StringOutput)
 }

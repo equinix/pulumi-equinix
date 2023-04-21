@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpBlockRangesResult {
+    /**
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * 
+     */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private @Nullable String facility;
     /**
      * @return list of CIDR expressions for Global IPv4 blocks in the project.
@@ -42,6 +48,12 @@ public final class GetIpBlockRangesResult {
     private List<String> publicIpv4s;
 
     private GetIpBlockRangesResult() {}
+    /**
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * 
+     */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }

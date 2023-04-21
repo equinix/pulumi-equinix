@@ -7,7 +7,6 @@ import com.equinix.pulumi.fabric.inputs.ServiceProfilePortLocationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,15 +35,15 @@ public final class ServiceProfilePortArgs extends com.pulumi.resources.ResourceA
      * Colo/Port Location
      * 
      */
-    @Import(name="locations")
-    private @Nullable Output<List<ServiceProfilePortLocationArgs>> locations;
+    @Import(name="location")
+    private @Nullable Output<ServiceProfilePortLocationArgs> location;
 
     /**
      * @return Colo/Port Location
      * 
      */
-    public Optional<Output<List<ServiceProfilePortLocationArgs>>> locations() {
-        return Optional.ofNullable(this.locations);
+    public Optional<Output<ServiceProfilePortLocationArgs>> location() {
+        return Optional.ofNullable(this.location);
     }
 
     /**
@@ -111,7 +110,7 @@ public final class ServiceProfilePortArgs extends com.pulumi.resources.ResourceA
 
     private ServiceProfilePortArgs(ServiceProfilePortArgs $) {
         this.crossConnectId = $.crossConnectId;
-        this.locations = $.locations;
+        this.location = $.location;
         this.sellerRegion = $.sellerRegion;
         this.sellerRegionDescription = $.sellerRegionDescription;
         this.type = $.type;
@@ -158,34 +157,24 @@ public final class ServiceProfilePortArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param locations Colo/Port Location
+         * @param location Colo/Port Location
          * 
          * @return builder
          * 
          */
-        public Builder locations(@Nullable Output<List<ServiceProfilePortLocationArgs>> locations) {
-            $.locations = locations;
+        public Builder location(@Nullable Output<ServiceProfilePortLocationArgs> location) {
+            $.location = location;
             return this;
         }
 
         /**
-         * @param locations Colo/Port Location
+         * @param location Colo/Port Location
          * 
          * @return builder
          * 
          */
-        public Builder locations(List<ServiceProfilePortLocationArgs> locations) {
-            return locations(Output.of(locations));
-        }
-
-        /**
-         * @param locations Colo/Port Location
-         * 
-         * @return builder
-         * 
-         */
-        public Builder locations(ServiceProfilePortLocationArgs... locations) {
-            return locations(List.of(locations));
+        public Builder location(ServiceProfilePortLocationArgs location) {
+            return location(Output.of(location));
         }
 
         /**

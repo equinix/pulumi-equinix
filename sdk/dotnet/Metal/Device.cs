@@ -101,7 +101,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> CustomData { get; private set; } = null!;
 
         /// <summary>
-        /// The facility where the device is deployed.
+        /// The facility where the device is deployed
         /// </summary>
         [Output("deployedFacility")]
         public Output<string> DeployedFacility { get; private set; } = null!;
@@ -120,11 +120,10 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// List of facility codes with deployment preferences. Equinix Metal API will go
-        /// through the list and will deploy your device to first facility with free capacity. List items must
-        /// be facility codes or `any` (a wildcard). To find the facility code, visit
-        /// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        /// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+        /// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+        /// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+        /// top of the page and see JSON from the API response. Conflicts with metro
         /// </summary>
         [Output("facilities")]
         public Output<ImmutableArray<string>> Facilities { get; private set; } = null!;
@@ -406,12 +405,12 @@ namespace Pulumi.Equinix.Metal
         private InputList<Union<string, Pulumi.Equinix.Metal.Facility>>? _facilities;
 
         /// <summary>
-        /// List of facility codes with deployment preferences. Equinix Metal API will go
-        /// through the list and will deploy your device to first facility with free capacity. List items must
-        /// be facility codes or `any` (a wildcard). To find the facility code, visit
-        /// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        /// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+        /// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+        /// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+        /// top of the page and see JSON from the API response. Conflicts with metro
         /// </summary>
+        [Obsolete(@"Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<Union<string, Pulumi.Equinix.Metal.Facility>> Facilities
         {
             get => _facilities ?? (_facilities = new InputList<Union<string, Pulumi.Equinix.Metal.Facility>>());
@@ -643,7 +642,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// The facility where the device is deployed.
+        /// The facility where the device is deployed
         /// </summary>
         [Input("deployedFacility")]
         public Input<string>? DeployedFacility { get; set; }
@@ -665,12 +664,12 @@ namespace Pulumi.Equinix.Metal
         private InputList<Union<string, Pulumi.Equinix.Metal.Facility>>? _facilities;
 
         /// <summary>
-        /// List of facility codes with deployment preferences. Equinix Metal API will go
-        /// through the list and will deploy your device to first facility with free capacity. List items must
-        /// be facility codes or `any` (a wildcard). To find the facility code, visit
-        /// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        /// token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        /// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+        /// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+        /// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+        /// top of the page and see JSON from the API response. Conflicts with metro
         /// </summary>
+        [Obsolete(@"Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<Union<string, Pulumi.Equinix.Metal.Facility>> Facilities
         {
             get => _facilities ?? (_facilities = new InputList<Union<string, Pulumi.Equinix.Metal.Facility>>());

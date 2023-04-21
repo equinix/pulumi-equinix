@@ -18,24 +18,6 @@ namespace Pulumi.Equinix.Metal
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Lookup by facility:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Equinix.Metal.GetSpotMarketPrice.Invoke(new()
-        ///     {
-        ///         Facility = "ny5",
-        ///         Plan = "c3.small.x86",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
         /// Lookup by metro:
         /// 
         /// ```csharp
@@ -66,24 +48,6 @@ namespace Pulumi.Equinix.Metal
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Lookup by facility:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Equinix.Metal.GetSpotMarketPrice.Invoke(new()
-        ///     {
-        ///         Facility = "ny5",
-        ///         Plan = "c3.small.x86",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
         /// Lookup by metro:
         /// 
         /// ```csharp
@@ -111,9 +75,6 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetSpotMarketPriceArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Name of the facility.
-        /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
 
@@ -137,9 +98,6 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetSpotMarketPriceInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Name of the facility.
-        /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 

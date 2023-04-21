@@ -3505,14 +3505,14 @@ class ServiceProfilePort(dict):
                  type: str,
                  uuid: str,
                  cross_connect_id: Optional[str] = None,
-                 locations: Optional[Sequence['outputs.ServiceProfilePortLocation']] = None,
+                 location: Optional['outputs.ServiceProfilePortLocation'] = None,
                  seller_region: Optional[str] = None,
                  seller_region_description: Optional[str] = None):
         """
         :param str type: Colo/Port Type
         :param str uuid: Colo/Port Uuid
         :param str cross_connect_id: Cross Connect Id
-        :param Sequence['ServiceProfilePortLocationArgs'] locations: Colo/Port Location
+        :param 'ServiceProfilePortLocationArgs' location: Colo/Port Location
         :param str seller_region: Seller Region
         :param str seller_region_description: Seller Region details
         """
@@ -3520,8 +3520,8 @@ class ServiceProfilePort(dict):
         pulumi.set(__self__, "uuid", uuid)
         if cross_connect_id is not None:
             pulumi.set(__self__, "cross_connect_id", cross_connect_id)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if seller_region is not None:
             pulumi.set(__self__, "seller_region", seller_region)
         if seller_region_description is not None:
@@ -3553,11 +3553,11 @@ class ServiceProfilePort(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[Sequence['outputs.ServiceProfilePortLocation']]:
+    def location(self) -> Optional['outputs.ServiceProfilePortLocation']:
         """
         Colo/Port Location
         """
-        return pulumi.get(self, "locations")
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="sellerRegion")

@@ -809,7 +809,7 @@ export namespace fabric {
         /**
          * Colo/Port Location
          */
-        locations?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfilePortLocation>[]>;
+        location?: pulumi.Input<inputs.fabric.ServiceProfilePortLocation>;
         /**
          * Seller Region
          */
@@ -991,7 +991,7 @@ export namespace metal {
          */
         plan: string;
         /**
-         * Minimun number of devices that must be available in selected location.
+         * Minimum number of devices that must be available in selected location.
          * Default is `1`.
          */
         quantity?: number;
@@ -1003,7 +1003,7 @@ export namespace metal {
          */
         plan: pulumi.Input<string>;
         /**
-         * Minimun number of devices that must be available in selected location.
+         * Minimum number of devices that must be available in selected location.
          * Default is `1`.
          */
         quantity?: pulumi.Input<number>;
@@ -1129,8 +1129,8 @@ export namespace metal {
          */
         asn: pulumi.Input<number>;
         /**
-         * `private` or `public`, the `private` is likely to be usable immediately, the
-         * `public` will need to be reviewed by Equinix Metal engineers.
+         * `local` or `global`, the `local` is likely to be usable immediately, the
+         * `global` will need to be reviewed by Equinix Metal engineers.
          */
         deploymentType: pulumi.Input<string>;
         /**

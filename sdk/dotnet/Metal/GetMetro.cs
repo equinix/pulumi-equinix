@@ -31,7 +31,7 @@ namespace Pulumi.Equinix.Metal
         private List<Inputs.GetMetroCapacityArgs>? _capacities;
 
         /// <summary>
-        /// One or more device plans for which the facility must have capacity.
+        /// One or more device plans for which the metro must have capacity.
         /// </summary>
         public List<Inputs.GetMetroCapacityArgs> Capacities
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// The facility code to search for facilities.
+        /// The metro code to search for.
         /// </summary>
         [Input("code", required: true)]
         public string Code { get; set; } = null!;
@@ -57,7 +57,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<Inputs.GetMetroCapacityInputArgs>? _capacities;
 
         /// <summary>
-        /// One or more device plans for which the facility must have capacity.
+        /// One or more device plans for which the metro must have capacity.
         /// </summary>
         public InputList<Inputs.GetMetroCapacityInputArgs> Capacities
         {
@@ -66,7 +66,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// The facility code to search for facilities.
+        /// The metro code to search for.
         /// </summary>
         [Input("code", required: true)]
         public Input<string> Code { get; set; } = null!;

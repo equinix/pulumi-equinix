@@ -36,6 +36,10 @@ class GetReservedIpBlockResult:
         pulumi.set(__self__, "cidr_notation", cidr_notation)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facility", facility)
         if gateway and not isinstance(gateway, str):
             raise TypeError("Expected argument 'gateway' to be a str")

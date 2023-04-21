@@ -16,18 +16,20 @@ public final class GetIpBlockRangesArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetIpBlockRangesArgs Empty = new GetIpBlockRangesArgs();
 
     /**
-     * Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-     * anyway. If you omit this and metro, all the block from the project will be listed.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
     /**
-     * @return Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-     * anyway. If you omit this and metro, all the block from the project will be listed.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<Output<String>> facility() {
         return Optional.ofNullable(this.facility);
     }
@@ -91,24 +93,26 @@ public final class GetIpBlockRangesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param facility Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-         * anyway. If you omit this and metro, all the block from the project will be listed.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(@Nullable Output<String> facility) {
             $.facility = facility;
             return this;
         }
 
         /**
-         * @param facility Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-         * anyway. If you omit this and metro, all the block from the project will be listed.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(String facility) {
             return facility(Output.of(facility));
         }

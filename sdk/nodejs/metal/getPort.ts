@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const testDevice = new equinix.metal.Device("testDevice", {
  *     hostname: "tfacc-test-device-port",
  *     plan: "c3.medium.x86",
- *     facilities: ["sv15"],
+ *     metro: "sv",
  *     operatingSystem: "ubuntu_20_04",
  *     billingCycle: "hourly",
  *     projectId: projectId,
@@ -129,7 +129,7 @@ export interface GetPortResult {
  * const testDevice = new equinix.metal.Device("testDevice", {
  *     hostname: "tfacc-test-device-port",
  *     plan: "c3.medium.x86",
- *     facilities: ["sv15"],
+ *     metro: "sv",
  *     operatingSystem: "ubuntu_20_04",
  *     billingCycle: "hourly",
  *     projectId: projectId,

@@ -14,33 +14,6 @@ import (
 //
 // ## Example Usage
 //
-// Lookup by facility:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metal.GetSpotMarketPrice(ctx, &metal.GetSpotMarketPriceArgs{
-//				Facility: pulumi.StringRef("ny5"),
-//				Plan:     "c3.small.x86",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // Lookup by metro:
 //
 // ```go
@@ -79,7 +52,7 @@ func GetSpotMarketPrice(ctx *pulumi.Context, args *GetSpotMarketPriceArgs, opts 
 
 // A collection of arguments for invoking getSpotMarketPrice.
 type GetSpotMarketPriceArgs struct {
-	// Name of the facility.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Name of the metro.
 	Metro *string `pulumi:"metro"`
@@ -89,6 +62,7 @@ type GetSpotMarketPriceArgs struct {
 
 // A collection of values returned by getSpotMarketPrice.
 type GetSpotMarketPriceResult struct {
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// The provider-assigned unique ID for this managed resource.
 	Id    string  `pulumi:"id"`
@@ -113,7 +87,7 @@ func GetSpotMarketPriceOutput(ctx *pulumi.Context, args GetSpotMarketPriceOutput
 
 // A collection of arguments for invoking getSpotMarketPrice.
 type GetSpotMarketPriceOutputArgs struct {
-	// Name of the facility.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Name of the metro.
 	Metro pulumi.StringPtrInput `pulumi:"metro"`
@@ -140,6 +114,7 @@ func (o GetSpotMarketPriceResultOutput) ToGetSpotMarketPriceResultOutputWithCont
 	return o
 }
 
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetSpotMarketPriceResultOutput) Facility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSpotMarketPriceResult) *string { return v.Facility }).(pulumi.StringPtrOutput)
 }

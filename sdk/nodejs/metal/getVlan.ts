@@ -57,7 +57,9 @@ export function getVlan(args?: GetVlanArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetVlanArgs {
     /**
-     * Facility where the VLAN is deployed.
+     * Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: string;
     /**
@@ -90,6 +92,9 @@ export interface GetVlanResult {
      * Description text of the VLAN resource.
      */
     readonly description: string;
+    /**
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     */
     readonly facility: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -144,7 +149,9 @@ export function getVlanOutput(args?: GetVlanOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetVlanOutputArgs {
     /**
-     * Facility where the VLAN is deployed.
+     * Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: pulumi.Input<string>;
     /**

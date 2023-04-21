@@ -33,8 +33,7 @@ type GetPlansArgs struct {
 type GetPlansResult struct {
 	Filters []GetPlansFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The ID of the facility
+	Id    string         `pulumi:"id"`
 	Plans []GetPlansPlan `pulumi:"plans"`
 	Sorts []GetPlansSort `pulumi:"sorts"`
 }
@@ -89,7 +88,6 @@ func (o GetPlansResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the facility
 func (o GetPlansResultOutput) Plans() GetPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetPlansResult) []GetPlansPlan { return v.Plans }).(GetPlansPlanArrayOutput)
 }

@@ -13,14 +13,18 @@ import java.util.Objects;
 @CustomType
 public final class GetPlansPlan {
     /**
-     * @return list of facilities where the plan is available
+     * @return list of metros where the plan is available
      * 
      */
     private List<String> availableInMetros;
     /**
-     * @return list of facilities where the plan is available
+     * @return (**Deprecated**) list of facilities where the plan is available
+     * 
+     * @deprecated
+     * Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private List<String> availableIns;
     /**
      * @return plan class
@@ -75,16 +79,20 @@ public final class GetPlansPlan {
 
     private GetPlansPlan() {}
     /**
-     * @return list of facilities where the plan is available
+     * @return list of metros where the plan is available
      * 
      */
     public List<String> availableInMetros() {
         return this.availableInMetros;
     }
     /**
-     * @return list of facilities where the plan is available
+     * @return (**Deprecated**) list of facilities where the plan is available
+     * 
+     * @deprecated
+     * Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public List<String> availableIns() {
         return this.availableIns;
     }

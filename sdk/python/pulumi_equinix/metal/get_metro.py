@@ -95,8 +95,8 @@ def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityAr
     Provides an Equinix Metal metro datasource.
 
 
-    :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
-    :param str code: The facility code to search for facilities.
+    :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the metro must have capacity.
+    :param str code: The metro code to search for.
     """
     __args__ = dict()
     __args__['capacities'] = capacities
@@ -120,7 +120,7 @@ def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulumi.
     Provides an Equinix Metal metro datasource.
 
 
-    :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
-    :param str code: The facility code to search for facilities.
+    :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the metro must have capacity.
+    :param str code: The metro code to search for.
     """
     ...

@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Equinix Metal facility datasource.
 func GetFacility(ctx *pulumi.Context, args *GetFacilityArgs, opts ...pulumi.InvokeOption) (*GetFacilityResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetFacilityResult

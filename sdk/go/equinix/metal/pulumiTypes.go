@@ -1200,8 +1200,8 @@ func (o OrganizationAddressPtrOutput) ZipCode() pulumi.StringPtrOutput {
 type ProjectBgpConfig struct {
 	// Autonomous System Number for local BGP deployment.
 	Asn int `pulumi:"asn"`
-	// `private` or `public`, the `private` is likely to be usable immediately, the
-	// `public` will need to be reviewed by Equinix Metal engineers.
+	// `local` or `global`, the `local` is likely to be usable immediately, the
+	// `global` will need to be reviewed by Equinix Metal engineers.
 	DeploymentType string `pulumi:"deploymentType"`
 	// The maximum number of route filters allowed per server.
 	MaxPrefix *int `pulumi:"maxPrefix"`
@@ -1225,8 +1225,8 @@ type ProjectBgpConfigInput interface {
 type ProjectBgpConfigArgs struct {
 	// Autonomous System Number for local BGP deployment.
 	Asn pulumi.IntInput `pulumi:"asn"`
-	// `private` or `public`, the `private` is likely to be usable immediately, the
-	// `public` will need to be reviewed by Equinix Metal engineers.
+	// `local` or `global`, the `local` is likely to be usable immediately, the
+	// `global` will need to be reviewed by Equinix Metal engineers.
 	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
 	// The maximum number of route filters allowed per server.
 	MaxPrefix pulumi.IntPtrInput `pulumi:"maxPrefix"`
@@ -1318,8 +1318,8 @@ func (o ProjectBgpConfigOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v ProjectBgpConfig) int { return v.Asn }).(pulumi.IntOutput)
 }
 
-// `private` or `public`, the `private` is likely to be usable immediately, the
-// `public` will need to be reviewed by Equinix Metal engineers.
+// `local` or `global`, the `local` is likely to be usable immediately, the
+// `global` will need to be reviewed by Equinix Metal engineers.
 func (o ProjectBgpConfigOutput) DeploymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectBgpConfig) string { return v.DeploymentType }).(pulumi.StringOutput)
 }
@@ -1373,8 +1373,8 @@ func (o ProjectBgpConfigPtrOutput) Asn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// `private` or `public`, the `private` is likely to be usable immediately, the
-// `public` will need to be reviewed by Equinix Metal engineers.
+// `local` or `global`, the `local` is likely to be usable immediately, the
+// `global` will need to be reviewed by Equinix Metal engineers.
 func (o ProjectBgpConfigPtrOutput) DeploymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectBgpConfig) *string {
 		if v == nil {
@@ -2823,7 +2823,7 @@ func (o GetInterconnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) GetI
 type GetMetroCapacity struct {
 	// Device plan that must be available in selected location.
 	Plan string `pulumi:"plan"`
-	// Minimun number of devices that must be available in selected location.
+	// Minimum number of devices that must be available in selected location.
 	// Default is `1`.
 	Quantity *int `pulumi:"quantity"`
 }
@@ -2842,7 +2842,7 @@ type GetMetroCapacityInput interface {
 type GetMetroCapacityArgs struct {
 	// Device plan that must be available in selected location.
 	Plan pulumi.StringInput `pulumi:"plan"`
-	// Minimun number of devices that must be available in selected location.
+	// Minimum number of devices that must be available in selected location.
 	// Default is `1`.
 	Quantity pulumi.IntPtrInput `pulumi:"quantity"`
 }
@@ -2903,7 +2903,7 @@ func (o GetMetroCapacityOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetroCapacity) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Minimun number of devices that must be available in selected location.
+// Minimum number of devices that must be available in selected location.
 // Default is `1`.
 func (o GetMetroCapacityOutput) Quantity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMetroCapacity) *int { return v.Quantity }).(pulumi.IntPtrOutput)
@@ -3142,9 +3142,11 @@ func (o GetPlansFilterArrayOutput) Index(i pulumi.IntInput) GetPlansFilterOutput
 }
 
 type GetPlansPlan struct {
-	// list of facilities where the plan is available
+	// list of metros where the plan is available
 	AvailableInMetros []string `pulumi:"availableInMetros"`
-	// list of facilities where the plan is available
+	// (**Deprecated**) list of facilities where the plan is available
+	//
+	// Deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	AvailableIns []string `pulumi:"availableIns"`
 	// plan class
 	Class string `pulumi:"class"`
@@ -3180,9 +3182,11 @@ type GetPlansPlanInput interface {
 }
 
 type GetPlansPlanArgs struct {
-	// list of facilities where the plan is available
+	// list of metros where the plan is available
 	AvailableInMetros pulumi.StringArrayInput `pulumi:"availableInMetros"`
-	// list of facilities where the plan is available
+	// (**Deprecated**) list of facilities where the plan is available
+	//
+	// Deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	AvailableIns pulumi.StringArrayInput `pulumi:"availableIns"`
 	// plan class
 	Class pulumi.StringInput `pulumi:"class"`
@@ -3257,12 +3261,14 @@ func (o GetPlansPlanOutput) ToGetPlansPlanOutputWithContext(ctx context.Context)
 	return o
 }
 
-// list of facilities where the plan is available
+// list of metros where the plan is available
 func (o GetPlansPlanOutput) AvailableInMetros() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPlansPlan) []string { return v.AvailableInMetros }).(pulumi.StringArrayOutput)
 }
 
-// list of facilities where the plan is available
+// (**Deprecated**) list of facilities where the plan is available
+//
+// Deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetPlansPlanOutput) AvailableIns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPlansPlan) []string { return v.AvailableIns }).(pulumi.StringArrayOutput)
 }

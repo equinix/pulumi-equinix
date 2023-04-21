@@ -53,9 +53,6 @@ class GetPlansResult:
     @property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetPlansPlanResult']:
-        """
-        The ID of the facility
-        """
         return pulumi.get(self, "plans")
 
     @property

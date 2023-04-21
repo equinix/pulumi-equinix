@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const server = new equinix.metal.Device("server", {
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
- *     facilities: ["ny5"],
+ *     metro: "ny",
  *     operatingSystem: example.then(example => example.id).apply((x) => @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,
@@ -96,7 +96,7 @@ export interface GetOperatingSystemResult {
  * const server = new equinix.metal.Device("server", {
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
- *     facilities: ["ny5"],
+ *     metro: "ny",
  *     operatingSystem: example.then(example => example.id).apply((x) => @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,

@@ -104,7 +104,7 @@ type LookupDeviceResult struct {
 	// Description string for the device.
 	Description string `pulumi:"description"`
 	DeviceId    string `pulumi:"deviceId"`
-	// The facility where the device is deployed.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility string `pulumi:"facility"`
 	// The id of hardware reservation which this device occupies.
 	HardwareReservationId string `pulumi:"hardwareReservationId"`
@@ -214,7 +214,7 @@ func (o LookupDeviceResultOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// The facility where the device is deployed.
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupDeviceResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Facility }).(pulumi.StringOutput)
 }

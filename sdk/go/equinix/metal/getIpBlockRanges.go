@@ -55,8 +55,7 @@ func GetIpBlockRanges(ctx *pulumi.Context, args *GetIpBlockRangesArgs, opts ...p
 
 // A collection of arguments for invoking getIpBlockRanges.
 type GetIpBlockRangesArgs struct {
-	// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-	// anyway. If you omit this and metro, all the block from the project will be listed.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Metro code filtering the IP blocks. Global IPv4 blocks will be listed
 	// anyway. If you omit this and facility, all the block from the project will be listed.
@@ -67,6 +66,7 @@ type GetIpBlockRangesArgs struct {
 
 // A collection of values returned by getIpBlockRanges.
 type GetIpBlockRangesResult struct {
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// list of CIDR expressions for Global IPv4 blocks in the project.
 	GlobalIpv4s []string `pulumi:"globalIpv4s"`
@@ -97,8 +97,7 @@ func GetIpBlockRangesOutput(ctx *pulumi.Context, args GetIpBlockRangesOutputArgs
 
 // A collection of arguments for invoking getIpBlockRanges.
 type GetIpBlockRangesOutputArgs struct {
-	// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-	// anyway. If you omit this and metro, all the block from the project will be listed.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Metro code filtering the IP blocks. Global IPv4 blocks will be listed
 	// anyway. If you omit this and facility, all the block from the project will be listed.
@@ -126,6 +125,7 @@ func (o GetIpBlockRangesResultOutput) ToGetIpBlockRangesResultOutputWithContext(
 	return o
 }
 
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetIpBlockRangesResultOutput) Facility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIpBlockRangesResult) *string { return v.Facility }).(pulumi.StringPtrOutput)
 }

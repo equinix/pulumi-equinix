@@ -41,9 +41,6 @@ export interface GetPlansResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The ID of the facility
-     */
     readonly plans: outputs.metal.GetPlansPlan[];
     readonly sorts?: outputs.metal.GetPlansSort[];
 }

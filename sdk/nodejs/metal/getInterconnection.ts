@@ -51,7 +51,7 @@ export interface GetInterconnectionResult {
      */
     readonly description: string;
     /**
-     * Slug of a facility to which the connection belongs.
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     readonly facility: string;
     /**

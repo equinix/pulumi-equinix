@@ -18,14 +18,14 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetMetroArgs Empty = new GetMetroArgs();
 
     /**
-     * One or more device plans for which the facility must have capacity.
+     * One or more device plans for which the metro must have capacity.
      * 
      */
     @Import(name="capacities")
     private @Nullable Output<List<GetMetroCapacityArgs>> capacities;
 
     /**
-     * @return One or more device plans for which the facility must have capacity.
+     * @return One or more device plans for which the metro must have capacity.
      * 
      */
     public Optional<Output<List<GetMetroCapacityArgs>>> capacities() {
@@ -33,14 +33,14 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The facility code to search for facilities.
+     * The metro code to search for.
      * 
      */
     @Import(name="code", required=true)
     private Output<String> code;
 
     /**
-     * @return The facility code to search for facilities.
+     * @return The metro code to search for.
      * 
      */
     public Output<String> code() {
@@ -73,7 +73,7 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param capacities One or more device plans for which the facility must have capacity.
+         * @param capacities One or more device plans for which the metro must have capacity.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param capacities One or more device plans for which the facility must have capacity.
+         * @param capacities One or more device plans for which the metro must have capacity.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param capacities One or more device plans for which the facility must have capacity.
+         * @param capacities One or more device plans for which the metro must have capacity.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param code The facility code to search for facilities.
+         * @param code The metro code to search for.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetMetroArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param code The facility code to search for facilities.
+         * @param code The metro code to search for.
          * 
          * @return builder
          * 

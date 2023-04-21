@@ -32,17 +32,9 @@ public final class GetPrecreatedIpBlockArgs extends com.pulumi.resources.InvokeA
         return this.addressFamily;
     }
 
-    /**
-     * Facility of the searched block. (for non-global blocks).
-     * 
-     */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
-    /**
-     * @return Facility of the searched block. (for non-global blocks).
-     * 
-     */
     public Optional<Output<String>> facility() {
         return Optional.ofNullable(this.facility);
     }
@@ -157,23 +149,11 @@ public final class GetPrecreatedIpBlockArgs extends com.pulumi.resources.InvokeA
             return addressFamily(Output.of(addressFamily));
         }
 
-        /**
-         * @param facility Facility of the searched block. (for non-global blocks).
-         * 
-         * @return builder
-         * 
-         */
         public Builder facility(@Nullable Output<String> facility) {
             $.facility = facility;
             return this;
         }
 
-        /**
-         * @param facility Facility of the searched block. (for non-global blocks).
-         * 
-         * @return builder
-         * 
-         */
         public Builder facility(String facility) {
             return facility(Output.of(facility));
         }

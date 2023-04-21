@@ -71,9 +71,14 @@ export class Vlan extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Facility where to create the VLAN.
+     * Facility where to create the VLAN
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     public readonly facility!: pulumi.Output<string | undefined>;
+    /**
+     * Metro in which to create the VLAN
+     */
     public readonly metro!: pulumi.Output<string | undefined>;
     /**
      * ID of parent project.
@@ -127,9 +132,14 @@ export interface VlanState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where to create the VLAN.
+     * Facility where to create the VLAN
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: pulumi.Input<string | enums.metal.Facility>;
+    /**
+     * Metro in which to create the VLAN
+     */
     metro?: pulumi.Input<string>;
     /**
      * ID of parent project.
@@ -150,9 +160,14 @@ export interface VlanArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where to create the VLAN.
+     * Facility where to create the VLAN
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: pulumi.Input<string | enums.metal.Facility>;
+    /**
+     * Metro in which to create the VLAN
+     */
     metro?: pulumi.Input<string>;
     /**
      * ID of parent project.

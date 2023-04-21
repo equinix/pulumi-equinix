@@ -33,9 +33,11 @@ public final class GetSpotMarketRequestResult {
      */
     private String endAt;
     /**
-     * @return Facility IDs where devices should be created.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private List<String> facilities;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -94,9 +96,11 @@ public final class GetSpotMarketRequestResult {
         return this.endAt;
     }
     /**
-     * @return Facility IDs where devices should be created.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public List<String> facilities() {
         return this.facilities;
     }

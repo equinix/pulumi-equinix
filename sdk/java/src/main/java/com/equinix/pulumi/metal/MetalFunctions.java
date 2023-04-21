@@ -682,31 +682,15 @@ public final class MetalFunctions {
     public static CompletableFuture<GetDeviceBgpNeighborsResult> getDeviceBgpNeighborsPlain(GetDeviceBgpNeighborsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Provides an Equinix Metal facility datasource.
-     * 
-     */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args) {
         return getFacility(args, InvokeOptions.Empty);
     }
-    /**
-     * Provides an Equinix Metal facility datasource.
-     * 
-     */
     public static CompletableFuture<GetFacilityResult> getFacilityPlain(GetFacilityPlainArgs args) {
         return getFacilityPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * Provides an Equinix Metal facility datasource.
-     * 
-     */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * Provides an Equinix Metal facility datasource.
-     * 
-     */
     public static CompletableFuture<GetFacilityResult> getFacilityPlain(GetFacilityPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
@@ -1552,7 +1536,7 @@ public final class MetalFunctions {
      *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tf.ubuntu&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;ny5&#34;)
+     *             .metro(&#34;ny&#34;)
      *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(local.project_id())
@@ -1602,7 +1586,7 @@ public final class MetalFunctions {
      *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tf.ubuntu&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;ny5&#34;)
+     *             .metro(&#34;ny&#34;)
      *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(local.project_id())
@@ -1652,7 +1636,7 @@ public final class MetalFunctions {
      *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tf.ubuntu&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;ny5&#34;)
+     *             .metro(&#34;ny&#34;)
      *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(local.project_id())
@@ -1702,7 +1686,7 @@ public final class MetalFunctions {
      *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tf.ubuntu&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;ny5&#34;)
+     *             .metro(&#34;ny&#34;)
      *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(local.project_id())
@@ -1752,7 +1736,7 @@ public final class MetalFunctions {
      *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tf.ubuntu&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;ny5&#34;)
+     *             .metro(&#34;ny&#34;)
      *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(local.project_id())
@@ -1802,7 +1786,7 @@ public final class MetalFunctions {
      *         var server = new Device(&#34;server&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tf.ubuntu&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;ny5&#34;)
+     *             .metro(&#34;ny&#34;)
      *             .operatingSystem(example.applyValue(getOperatingSystemResult -&gt; getOperatingSystemResult.id()))
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(local.project_id())
@@ -2097,7 +2081,7 @@ public final class MetalFunctions {
      *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tfacc-test-device-port&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;sv15&#34;)
+     *             .metro(&#34;sv&#34;)
      *             .operatingSystem(&#34;ubuntu_20_04&#34;)
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(projectId)
@@ -2151,7 +2135,7 @@ public final class MetalFunctions {
      *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tfacc-test-device-port&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;sv15&#34;)
+     *             .metro(&#34;sv&#34;)
      *             .operatingSystem(&#34;ubuntu_20_04&#34;)
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(projectId)
@@ -2205,7 +2189,7 @@ public final class MetalFunctions {
      *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tfacc-test-device-port&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;sv15&#34;)
+     *             .metro(&#34;sv&#34;)
      *             .operatingSystem(&#34;ubuntu_20_04&#34;)
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(projectId)
@@ -2259,7 +2243,7 @@ public final class MetalFunctions {
      *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tfacc-test-device-port&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;sv15&#34;)
+     *             .metro(&#34;sv&#34;)
      *             .operatingSystem(&#34;ubuntu_20_04&#34;)
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(projectId)
@@ -2313,7 +2297,7 @@ public final class MetalFunctions {
      *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tfacc-test-device-port&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;sv15&#34;)
+     *             .metro(&#34;sv&#34;)
      *             .operatingSystem(&#34;ubuntu_20_04&#34;)
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(projectId)
@@ -2367,7 +2351,7 @@ public final class MetalFunctions {
      *         var testDevice = new Device(&#34;testDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;tfacc-test-device-port&#34;)
      *             .plan(&#34;c3.medium.x86&#34;)
-     *             .facilities(&#34;sv15&#34;)
+     *             .metro(&#34;sv&#34;)
      *             .operatingSystem(&#34;ubuntu_20_04&#34;)
      *             .billingCycle(&#34;hourly&#34;)
      *             .projectId(projectId)
@@ -2899,37 +2883,6 @@ public final class MetalFunctions {
      * 
      * ## Example Usage
      * 
-     * Lookup by facility:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .facility(&#34;ny5&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      * Lookup by metro:
      * ```java
      * package generated_program;
@@ -2969,37 +2922,6 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
-     * 
-     * Lookup by facility:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .facility(&#34;ny5&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * Lookup by metro:
      * ```java
@@ -3041,37 +2963,6 @@ public final class MetalFunctions {
      * 
      * ## Example Usage
      * 
-     * Lookup by facility:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .facility(&#34;ny5&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      * Lookup by metro:
      * ```java
      * package generated_program;
@@ -3111,37 +3002,6 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Spot Market Price for a plan.
      * 
      * ## Example Usage
-     * 
-     * Lookup by facility:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetSpotMarketPriceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = MetalFunctions.getSpotMarketPrice(GetSpotMarketPriceArgs.builder()
-     *             .facility(&#34;ny5&#34;)
-     *             .plan(&#34;c3.small.x86&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      * Lookup by metro:
      * ```java

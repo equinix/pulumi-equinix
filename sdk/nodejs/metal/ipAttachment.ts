@@ -8,14 +8,14 @@ import * as utilities from "../utilities";
  * Provides a resource to attach elastic IP subnets to devices.
  *
  * To attach an IP subnet from a reserved block to a provisioned device, you must derive a subnet CIDR
- * belonging to one of your reserved blocks in the same project and facility as the target device.
+ * belonging to one of your reserved blocks in the same project and metro as the target device.
  *
  * For example, you have reserved IPv4 address block `147.229.10.152/30`, you can choose to assign
  * either the whole block as one subnet to a device; or 2 subnets with CIDRs `147.229.10.152/31` and
  * `147.229.10.154/31`; or 4 subnets with mask prefix length `32`. More about the elastic IP subnets
  * is [here](https://metal.equinix.com/developers/docs/networking/elastic-ips/).
  *
- * Device and reserved block must be in the same facility.
+ * Device and reserved block must be in the same metro.
  *
  * ## Example Usage
  *
@@ -73,7 +73,7 @@ export class IpAttachment extends pulumi.CustomResource {
     public /*out*/ readonly cidr!: pulumi.Output<number>;
     /**
      * CIDR notation of subnet from block reserved in the same project
-     * and facility as the device.
+     * and metro as the device.
      */
     public readonly cidrNotation!: pulumi.Output<string>;
     /**
@@ -172,7 +172,7 @@ export interface IpAttachmentState {
     cidr?: pulumi.Input<number>;
     /**
      * CIDR notation of subnet from block reserved in the same project
-     * and facility as the device.
+     * and metro as the device.
      */
     cidrNotation?: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface IpAttachmentState {
 export interface IpAttachmentArgs {
     /**
      * CIDR notation of subnet from block reserved in the same project
-     * and facility as the device.
+     * and metro as the device.
      */
     cidrNotation: pulumi.Input<string>;
     /**

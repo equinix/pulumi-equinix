@@ -24,6 +24,10 @@ class GetIpBlockRangesResult:
     def __init__(__self__, facility=None, global_ipv4s=None, id=None, ipv6s=None, metro=None, private_ipv4s=None, project_id=None, public_ipv4s=None):
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facility", facility)
         if global_ipv4s and not isinstance(global_ipv4s, list):
             raise TypeError("Expected argument 'global_ipv4s' to be a list")
@@ -142,8 +146,6 @@ def get_ip_block_ranges(facility: Optional[str] = None,
     ```
 
 
-    :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-           anyway. If you omit this and metro, all the block from the project will be listed.
     :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed
            anyway. If you omit this and facility, all the block from the project will be listed.
     :param str project_id: ID of the project from which to list the blocks.
@@ -190,8 +192,6 @@ def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-           anyway. If you omit this and metro, all the block from the project will be listed.
     :param str metro: Metro code filtering the IP blocks. Global IPv4 blocks will be listed
            anyway. If you omit this and facility, all the block from the project will be listed.
     :param str project_id: ID of the project from which to list the blocks.

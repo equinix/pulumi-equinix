@@ -6,7 +6,6 @@ package com.equinix.pulumi.fabric.outputs;
 import com.equinix.pulumi.fabric.outputs.ServiceProfilePortLocation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,7 +21,7 @@ public final class ServiceProfilePort {
      * @return Colo/Port Location
      * 
      */
-    private @Nullable List<ServiceProfilePortLocation> locations;
+    private @Nullable ServiceProfilePortLocation location;
     /**
      * @return Seller Region
      * 
@@ -56,8 +55,8 @@ public final class ServiceProfilePort {
      * @return Colo/Port Location
      * 
      */
-    public List<ServiceProfilePortLocation> locations() {
-        return this.locations == null ? List.of() : this.locations;
+    public Optional<ServiceProfilePortLocation> location() {
+        return Optional.ofNullable(this.location);
     }
     /**
      * @return Seller Region
@@ -98,7 +97,7 @@ public final class ServiceProfilePort {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String crossConnectId;
-        private @Nullable List<ServiceProfilePortLocation> locations;
+        private @Nullable ServiceProfilePortLocation location;
         private @Nullable String sellerRegion;
         private @Nullable String sellerRegionDescription;
         private String type;
@@ -107,7 +106,7 @@ public final class ServiceProfilePort {
         public Builder(ServiceProfilePort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.crossConnectId = defaults.crossConnectId;
-    	      this.locations = defaults.locations;
+    	      this.location = defaults.location;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.sellerRegionDescription = defaults.sellerRegionDescription;
     	      this.type = defaults.type;
@@ -120,12 +119,9 @@ public final class ServiceProfilePort {
             return this;
         }
         @CustomType.Setter
-        public Builder locations(@Nullable List<ServiceProfilePortLocation> locations) {
-            this.locations = locations;
+        public Builder location(@Nullable ServiceProfilePortLocation location) {
+            this.location = location;
             return this;
-        }
-        public Builder locations(ServiceProfilePortLocation... locations) {
-            return locations(List.of(locations));
         }
         @CustomType.Setter
         public Builder sellerRegion(@Nullable String sellerRegion) {
@@ -150,7 +146,7 @@ public final class ServiceProfilePort {
         public ServiceProfilePort build() {
             final var o = new ServiceProfilePort();
             o.crossConnectId = crossConnectId;
-            o.locations = locations;
+            o.location = location;
             o.sellerRegion = sellerRegion;
             o.sellerRegionDescription = sellerRegionDescription;
             o.type = type;

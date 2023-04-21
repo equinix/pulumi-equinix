@@ -16,9 +16,11 @@ public final class GetHardwareReservationResult {
      */
     private String deviceId;
     /**
-     * @return Plan type for the reservation.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private String facility;
     /**
      * @return ID of the hardware reservation to look up.
@@ -68,9 +70,11 @@ public final class GetHardwareReservationResult {
         return this.deviceId;
     }
     /**
-     * @return Plan type for the reservation.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public String facility() {
         return this.facility;
     }

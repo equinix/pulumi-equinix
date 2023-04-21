@@ -246,7 +246,7 @@ class PortVlanAttachment(pulumi.CustomResource):
         """
         Provides a resource to attach device ports to VLANs.
 
-        Device and VLAN must be in the same facility.
+        Device and VLAN must be in the same metro.
 
         If you need this resource to add the port back to bond on removal, set `force_bond = true`.
 
@@ -305,7 +305,7 @@ class PortVlanAttachment(pulumi.CustomResource):
         """
         Provides a resource to attach device ports to VLANs.
 
-        Device and VLAN must be in the same facility.
+        Device and VLAN must be in the same metro.
 
         If you need this resource to add the port back to bond on removal, set `force_bond = true`.
 

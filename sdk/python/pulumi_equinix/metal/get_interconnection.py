@@ -31,6 +31,10 @@ class GetInterconnectionResult:
         pulumi.set(__self__, "description", description)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -101,9 +105,6 @@ class GetInterconnectionResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
-        """
-        Slug of a facility to which the connection belongs.
-        """
         return pulumi.get(self, "facility")
 
     @property

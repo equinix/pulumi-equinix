@@ -55,7 +55,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where the connection will be created.
+        /// Facility where the connection will be created
         /// </summary>
         [Output("facility")]
         public Output<string> Facility { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created.
+        /// Facility where the connection will be created
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created.
+        /// Facility where the connection will be created
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }

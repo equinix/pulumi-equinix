@@ -108,9 +108,6 @@ namespace Pulumi.Equinix.Metal
         /// Description of the connection resource.
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Slug of a facility to which the connection belongs.
-        /// </summary>
         public readonly string Facility;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -18,7 +18,7 @@ public final class GetMetroCapacity {
      */
     private String plan;
     /**
-     * @return Minimun number of devices that must be available in selected location.
+     * @return Minimum number of devices that must be available in selected location.
      * Default is `1`.
      * 
      */
@@ -33,7 +33,7 @@ public final class GetMetroCapacity {
         return this.plan;
     }
     /**
-     * @return Minimun number of devices that must be available in selected location.
+     * @return Minimum number of devices that must be available in selected location.
      * Default is `1`.
      * 
      */

@@ -85,7 +85,9 @@ func LookupVlan(ctx *pulumi.Context, args *LookupVlanArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getVlan.
 type LookupVlanArgs struct {
-	// Facility where the VLAN is deployed.
+	// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Metro where the VLAN is deployed.
 	Metro *string `pulumi:"metro"`
@@ -103,7 +105,8 @@ type LookupVlanResult struct {
 	AssignedDevicesIds []string `pulumi:"assignedDevicesIds"`
 	// Description text of the VLAN resource.
 	Description string `pulumi:"description"`
-	Facility    string `pulumi:"facility"`
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	Facility string `pulumi:"facility"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string `pulumi:"id"`
 	Metro     string `pulumi:"metro"`
@@ -127,7 +130,9 @@ func LookupVlanOutput(ctx *pulumi.Context, args LookupVlanOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getVlan.
 type LookupVlanOutputArgs struct {
-	// Facility where the VLAN is deployed.
+	// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Metro where the VLAN is deployed.
 	Metro pulumi.StringPtrInput `pulumi:"metro"`
@@ -168,6 +173,7 @@ func (o LookupVlanResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVlanResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupVlanResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVlanResult) string { return v.Facility }).(pulumi.StringOutput)
 }

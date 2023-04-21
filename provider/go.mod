@@ -5,7 +5,7 @@ go 1.18
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
 
 require (
-	github.com/equinix/terraform-provider-equinix v1.13.0
+	github.com/equinix/terraform-provider-equinix v1.14.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.1
 	github.com/pulumi/pulumi/pkg/v3 v3.57.0
 	github.com/pulumi/pulumi/sdk/v3 v3.57.0
@@ -84,7 +84,7 @@ require (
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/equinix-labs/fabric-go v0.4.0 // indirect
 	github.com/equinix/ecx-go/v2 v2.3.0 // indirect
-	github.com/equinix/ne-go v1.9.0 // indirect
+	github.com/equinix/ne-go v1.10.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect

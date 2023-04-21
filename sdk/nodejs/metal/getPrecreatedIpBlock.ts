@@ -35,9 +35,6 @@ export interface GetPrecreatedIpBlockArgs {
      * 4 or 6, depending on which block you are looking for.
      */
     addressFamily: number;
-    /**
-     * Facility of the searched block. (for non-global blocks).
-     */
     facility?: string;
     /**
      * Whether to look for global block. Default is false for backward compatibility.
@@ -108,9 +105,6 @@ export interface GetPrecreatedIpBlockOutputArgs {
      * 4 or 6, depending on which block you are looking for.
      */
     addressFamily: pulumi.Input<number>;
-    /**
-     * Facility of the searched block. (for non-global blocks).
-     */
     facility?: pulumi.Input<string>;
     /**
      * Whether to look for global block. Default is false for backward compatibility.

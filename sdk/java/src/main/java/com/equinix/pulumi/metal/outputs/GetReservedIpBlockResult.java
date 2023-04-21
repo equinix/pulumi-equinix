@@ -17,6 +17,12 @@ public final class GetReservedIpBlockResult {
     private Integer addressFamily;
     private Integer cidr;
     private String cidrNotation;
+    /**
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * 
+     */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private String facility;
     private String gateway;
     private Boolean global;
@@ -50,6 +56,12 @@ public final class GetReservedIpBlockResult {
     public String cidrNotation() {
         return this.cidrNotation;
     }
+    /**
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * 
+     */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public String facility() {
         return this.facility;
     }

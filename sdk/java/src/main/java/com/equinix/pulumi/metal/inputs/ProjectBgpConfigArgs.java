@@ -32,16 +32,16 @@ public final class ProjectBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * `private` or `public`, the `private` is likely to be usable immediately, the
-     * `public` will need to be reviewed by Equinix Metal engineers.
+     * `local` or `global`, the `local` is likely to be usable immediately, the
+     * `global` will need to be reviewed by Equinix Metal engineers.
      * 
      */
     @Import(name="deploymentType", required=true)
     private Output<String> deploymentType;
 
     /**
-     * @return `private` or `public`, the `private` is likely to be usable immediately, the
-     * `public` will need to be reviewed by Equinix Metal engineers.
+     * @return `local` or `global`, the `local` is likely to be usable immediately, the
+     * `global` will need to be reviewed by Equinix Metal engineers.
      * 
      */
     public Output<String> deploymentType() {
@@ -143,8 +143,8 @@ public final class ProjectBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deploymentType `private` or `public`, the `private` is likely to be usable immediately, the
-         * `public` will need to be reviewed by Equinix Metal engineers.
+         * @param deploymentType `local` or `global`, the `local` is likely to be usable immediately, the
+         * `global` will need to be reviewed by Equinix Metal engineers.
          * 
          * @return builder
          * 
@@ -155,8 +155,8 @@ public final class ProjectBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deploymentType `private` or `public`, the `private` is likely to be usable immediately, the
-         * `public` will need to be reviewed by Equinix Metal engineers.
+         * @param deploymentType `local` or `global`, the `local` is likely to be usable immediately, the
+         * `global` will need to be reviewed by Equinix Metal engineers.
          * 
          * @return builder
          * 

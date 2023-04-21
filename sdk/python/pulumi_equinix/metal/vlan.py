@@ -24,12 +24,16 @@ class VlanArgs:
         The set of arguments for constructing a Vlan resource.
         :param pulumi.Input[str] project_id: ID of parent project.
         :param pulumi.Input[str] description: Description string.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN
+        :param pulumi.Input[str] metro: Metro in which to create the VLAN
         :param pulumi.Input[int] vxlan: VLAN ID, must be unique in metro.
         """
         pulumi.set(__self__, "project_id", project_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
         if metro is not None:
@@ -65,7 +69,7 @@ class VlanArgs:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to create the VLAN.
+        Facility where to create the VLAN
         """
         return pulumi.get(self, "facility")
 
@@ -76,6 +80,9 @@ class VlanArgs:
     @property
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metro in which to create the VLAN
+        """
         return pulumi.get(self, "metro")
 
     @metro.setter
@@ -106,12 +113,16 @@ class _VlanState:
         """
         Input properties used for looking up and filtering Vlan resources.
         :param pulumi.Input[str] description: Description string.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN
+        :param pulumi.Input[str] metro: Metro in which to create the VLAN
         :param pulumi.Input[str] project_id: ID of parent project.
         :param pulumi.Input[int] vxlan: VLAN ID, must be unique in metro.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
         if metro is not None:
@@ -137,7 +148,7 @@ class _VlanState:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to create the VLAN.
+        Facility where to create the VLAN
         """
         return pulumi.get(self, "facility")
 
@@ -148,6 +159,9 @@ class _VlanState:
     @property
     @pulumi.getter
     def metro(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metro in which to create the VLAN
+        """
         return pulumi.get(self, "metro")
 
     @metro.setter
@@ -224,7 +238,8 @@ class Vlan(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description string.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN
+        :param pulumi.Input[str] metro: Metro in which to create the VLAN
         :param pulumi.Input[str] project_id: ID of parent project.
         :param pulumi.Input[int] vxlan: VLAN ID, must be unique in metro.
         """
@@ -295,6 +310,9 @@ class Vlan(pulumi.CustomResource):
             __props__ = VlanArgs.__new__(VlanArgs)
 
             __props__.__dict__["description"] = description
+            if facility is not None and not opts.urn:
+                warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+                pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
             __props__.__dict__["facility"] = facility
             __props__.__dict__["metro"] = metro
             if project_id is None and not opts.urn:
@@ -324,7 +342,8 @@ class Vlan(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description string.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to create the VLAN
+        :param pulumi.Input[str] metro: Metro in which to create the VLAN
         :param pulumi.Input[str] project_id: ID of parent project.
         :param pulumi.Input[int] vxlan: VLAN ID, must be unique in metro.
         """
@@ -351,13 +370,16 @@ class Vlan(pulumi.CustomResource):
     @pulumi.getter
     def facility(self) -> pulumi.Output[Optional[str]]:
         """
-        Facility where to create the VLAN.
+        Facility where to create the VLAN
         """
         return pulumi.get(self, "facility")
 
     @property
     @pulumi.getter
     def metro(self) -> pulumi.Output[Optional[str]]:
+        """
+        Metro in which to create the VLAN
+        """
         return pulumi.get(self, "metro")
 
     @property

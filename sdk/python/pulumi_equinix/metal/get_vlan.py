@@ -30,6 +30,10 @@ class GetVlanResult:
         pulumi.set(__self__, "description", description)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -150,7 +154,7 @@ def get_vlan(facility: Optional[str] = None,
     ```
 
 
-    :param str facility: Facility where the VLAN is deployed.
+    :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
     :param str metro: Metro where the VLAN is deployed.
     :param str project_id: UUID of parent project of the VLAN. Use together with the vxlan number and metro or facility.
     :param str vlan_id: Metal UUID of the VLAN resource to look up.
@@ -214,7 +218,7 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str facility: Facility where the VLAN is deployed.
+    :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
     :param str metro: Metro where the VLAN is deployed.
     :param str project_id: UUID of parent project of the VLAN. Use together with the vxlan number and metro or facility.
     :param str vlan_id: Metal UUID of the VLAN resource to look up.

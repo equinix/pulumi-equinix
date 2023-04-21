@@ -201,9 +201,6 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string Description;
         public readonly string DeviceId;
-        /// <summary>
-        /// The facility where the device is deployed.
-        /// </summary>
         public readonly string Facility;
         /// <summary>
         /// The id of hardware reservation which this device occupies.
