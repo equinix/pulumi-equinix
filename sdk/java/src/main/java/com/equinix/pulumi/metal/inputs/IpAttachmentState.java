@@ -56,7 +56,7 @@ public final class IpAttachmentState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * CIDR notation of subnet from block reserved in the same project
-     * and facility as the device.
+     * and metro as the device.
      * 
      */
     @Import(name="cidrNotation")
@@ -64,7 +64,7 @@ public final class IpAttachmentState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return CIDR notation of subnet from block reserved in the same project
-     * and facility as the device.
+     * and metro as the device.
      * 
      */
     public Optional<Output<String>> cidrNotation() {
@@ -271,7 +271,7 @@ public final class IpAttachmentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cidrNotation CIDR notation of subnet from block reserved in the same project
-         * and facility as the device.
+         * and metro as the device.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class IpAttachmentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cidrNotation CIDR notation of subnet from block reserved in the same project
-         * and facility as the device.
+         * and metro as the device.
          * 
          * @return builder
          * 

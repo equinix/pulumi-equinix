@@ -34,8 +34,8 @@ class ReservedIpBlockArgs:
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+               type==global_ipv4, conflicts with metro
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
@@ -123,8 +123,8 @@ class ReservedIpBlockArgs:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+        type==global_ipv4, conflicts with metro
         """
         return pulumi.get(self, "facility")
 
@@ -251,10 +251,10 @@ class _ReservedIpBlockState:
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+               type==global_ipv4, conflicts with metro
         :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-               facility).
+               metro).
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] netmask: Mask in decimal notation, e.g. `255.255.255.0`.
@@ -385,8 +385,8 @@ class _ReservedIpBlockState:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+        type==global_ipv4, conflicts with metro
         """
         return pulumi.get(self, "facility")
 
@@ -408,7 +408,7 @@ class _ReservedIpBlockState:
     def global_(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-        facility).
+        metro).
         """
         return pulumi.get(self, "global_")
 
@@ -578,14 +578,14 @@ class ReservedIpBlock(pulumi.CustomResource):
         """
         Provides a resource to create and manage blocks of reserved IP addresses in a project.
 
-        When a user provisions first device in a facility, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
+        When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
         The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
-        Every new device in the project and facility will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
+        Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
         The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
 
-        Public blocks are allocated in a facility. Addresses from public blocks can only be assigned to devices in the facility. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the facility argument.
+        Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
 
-        Addresses from global blocks can be assigned in any facility. Global blocks can have mask from /30 (4 addresses), to /32 (1 address). If you create global block with this resource, you must specify type = "global_ipv4" and you must omit the facility argument.
+        Addresses from global blocks can be assigned in any metro. Global blocks can have mask from /30 (4 addresses), to /32 (1 address). If you create global block with this resource, you must specify type = "global_ipv4" and you must omit the metro argument.
 
         Once IP block is allocated or imported, an address from it can be assigned to device with the `metal.IpAttachment` resource.
 
@@ -626,8 +626,8 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+               type==global_ipv4, conflicts with metro
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
@@ -648,14 +648,14 @@ class ReservedIpBlock(pulumi.CustomResource):
         """
         Provides a resource to create and manage blocks of reserved IP addresses in a project.
 
-        When a user provisions first device in a facility, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
+        When a user provisions first device in a metro, Equinix Metal API automatically allocates IPv6/56 and private IPv4/25 blocks.
         The new device then gets IPv6 and private IPv4 addresses from those block. It also gets a public IPv4/31 address.
-        Every new device in the project and facility will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
+        Every new device in the project and metro will automatically get IPv6 and private IPv4 addresses from these pre-allocated blocks.
         The IPv6 and private IPv4 blocks can't be created, only imported. With this resource, it's possible to create either public IPv4 blocks or global IPv4 blocks.
 
-        Public blocks are allocated in a facility. Addresses from public blocks can only be assigned to devices in the facility. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the facility argument.
+        Public blocks are allocated in a metro. Addresses from public blocks can only be assigned to devices in the metro. Public blocks can have mask from /24 (256 addresses) to /32 (1 address). If you create public block with this resource, you must fill the metro argument.
 
-        Addresses from global blocks can be assigned in any facility. Global blocks can have mask from /30 (4 addresses), to /32 (1 address). If you create global block with this resource, you must specify type = "global_ipv4" and you must omit the facility argument.
+        Addresses from global blocks can be assigned in any metro. Global blocks can have mask from /30 (4 addresses), to /32 (1 address). If you create global block with this resource, you must specify type = "global_ipv4" and you must omit the metro argument.
 
         Once IP block is allocated or imported, an address from it can be assigned to device with the `metal.IpAttachment` resource.
 
@@ -793,10 +793,10 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
-               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+               type==global_ipv4, conflicts with metro
         :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-               facility).
+               metro).
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] netmask: Mask in decimal notation, e.g. `255.255.255.0`.
@@ -887,8 +887,8 @@ class ReservedIpBlock(pulumi.CustomResource):
     @pulumi.getter
     def facility(self) -> pulumi.Output[Optional[str]]:
         """
-        Facility where to allocate the public IP address block, makes sense only
-        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`.
+        Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
+        type==global_ipv4, conflicts with metro
         """
         return pulumi.get(self, "facility")
 
@@ -902,7 +902,7 @@ class ReservedIpBlock(pulumi.CustomResource):
     def global_(self) -> pulumi.Output[bool]:
         """
         Boolean flag whether addresses from a block are global (i.e. can be assigned in any
-        facility).
+        metro).
         """
         return pulumi.get(self, "global_")
 

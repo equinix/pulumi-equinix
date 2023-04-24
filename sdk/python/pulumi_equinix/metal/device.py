@@ -55,11 +55,10 @@ class DeviceArgs:
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+               top of the page and see JSON from the API response. Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -105,6 +104,9 @@ class DeviceArgs:
             pulumi.set(__self__, "custom_data", custom_data)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if facilities is not None:
+            warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facilities is not None:
             pulumi.set(__self__, "facilities", facilities)
         if force_detach_volumes is not None:
@@ -241,11 +243,10 @@ class DeviceArgs:
     @pulumi.getter
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go
-        through the list and will deploy your device to first facility with free capacity. List items must
-        be facility codes or `any` (a wildcard). To find the facility code, visit
-        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+        device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+        code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+        top of the page and see JSON from the API response. Conflicts with metro
         """
         return pulumi.get(self, "facilities")
 
@@ -490,15 +491,14 @@ class _DeviceState:
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] created: The timestamp for when the device was created.
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed.
+        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
                It is useful when using the `next-available` hardware reservation.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+               top of the page and see JSON from the API response. Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -571,11 +571,17 @@ class _DeviceState:
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
         if deployed_facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""deployed_facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+        if deployed_facility is not None:
             pulumi.set(__self__, "deployed_facility", deployed_facility)
         if deployed_hardware_reservation_id is not None:
             pulumi.set(__self__, "deployed_hardware_reservation_id", deployed_hardware_reservation_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if facilities is not None:
+            warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facilities is not None:
             pulumi.set(__self__, "facilities", facilities)
         if force_detach_volumes is not None:
@@ -733,7 +739,7 @@ class _DeviceState:
     @pulumi.getter(name="deployedFacility")
     def deployed_facility(self) -> Optional[pulumi.Input[str]]:
         """
-        The facility where the device is deployed.
+        The facility where the device is deployed
         """
         return pulumi.get(self, "deployed_facility")
 
@@ -770,11 +776,10 @@ class _DeviceState:
     @pulumi.getter
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go
-        through the list and will deploy your device to first facility with free capacity. List items must
-        be facility codes or `any` (a wildcard). To find the facility code, visit
-        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+        device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+        code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+        top of the page and see JSON from the API response. Conflicts with metro
         """
         return pulumi.get(self, "facilities")
 
@@ -1178,11 +1183,10 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+               top of the page and see JSON from the API response. Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -1309,6 +1313,9 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["billing_cycle"] = billing_cycle
             __props__.__dict__["custom_data"] = None if custom_data is None else pulumi.Output.secret(custom_data)
             __props__.__dict__["description"] = description
+            if facilities is not None and not opts.urn:
+                warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+                pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
             __props__.__dict__["facilities"] = facilities
             __props__.__dict__["force_detach_volumes"] = force_detach_volumes
             __props__.__dict__["hardware_reservation_id"] = hardware_reservation_id
@@ -1412,15 +1419,14 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] created: The timestamp for when the device was created.
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed.
+        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
                It is useful when using the `next-available` hardware reservation.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
-               through the list and will deploy your device to first facility with free capacity. List items must
-               be facility codes or `any` (a wildcard). To find the facility code, visit
-               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-               token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+               top of the page and see JSON from the API response. Conflicts with metro
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -1588,7 +1594,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="deployedFacility")
     def deployed_facility(self) -> pulumi.Output[str]:
         """
-        The facility where the device is deployed.
+        The facility where the device is deployed
         """
         return pulumi.get(self, "deployed_facility")
 
@@ -1613,11 +1619,10 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def facilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go
-        through the list and will deploy your device to first facility with free capacity. List items must
-        be facility codes or `any` (a wildcard). To find the facility code, visit
-        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-        token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+        device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+        code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+        top of the page and see JSON from the API response. Conflicts with metro
         """
         return pulumi.get(self, "facilities")
 

@@ -61,6 +61,8 @@ type SshKey struct {
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
+	// The type of SSH key: `RSA` (default) or `DSA`.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The unique identifier of the key
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
@@ -103,6 +105,8 @@ type sshKeyState struct {
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey *string `pulumi:"publicKey"`
+	// The type of SSH key: `RSA` (default) or `DSA`.
+	Type *string `pulumi:"type"`
 	// The unique identifier of the key
 	Uuid *string `pulumi:"uuid"`
 }
@@ -113,6 +117,8 @@ type SshKeyState struct {
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey pulumi.StringPtrInput
+	// The type of SSH key: `RSA` (default) or `DSA`.
+	Type pulumi.StringPtrInput
 	// The unique identifier of the key
 	Uuid pulumi.StringPtrInput
 }
@@ -127,6 +133,8 @@ type sshKeyArgs struct {
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey string `pulumi:"publicKey"`
+	// The type of SSH key: `RSA` (default) or `DSA`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a SshKey resource.
@@ -136,6 +144,8 @@ type SshKeyArgs struct {
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey pulumi.StringInput
+	// The type of SSH key: `RSA` (default) or `DSA`.
+	Type pulumi.StringPtrInput
 }
 
 func (SshKeyArgs) ElementType() reflect.Type {
@@ -234,6 +244,11 @@ func (o SshKeyOutput) Name() pulumi.StringOutput {
 // interpolation function.
 func (o SshKeyOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// The type of SSH key: `RSA` (default) or `DSA`.
+func (o SshKeyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier of the key

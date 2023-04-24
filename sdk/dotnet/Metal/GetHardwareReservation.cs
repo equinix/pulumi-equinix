@@ -129,9 +129,6 @@ namespace Pulumi.Equinix.Metal
         /// UUID of device occupying the reservation.
         /// </summary>
         public readonly string DeviceId;
-        /// <summary>
-        /// Plan type for the reservation.
-        /// </summary>
         public readonly string Facility;
         /// <summary>
         /// ID of the hardware reservation to look up.

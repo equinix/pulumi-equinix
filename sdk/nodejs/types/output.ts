@@ -1745,7 +1745,7 @@ export namespace fabric {
         /**
          * Colo/Port Location
          */
-        locations?: outputs.fabric.ServiceProfilePortLocation[];
+        location?: outputs.fabric.ServiceProfilePortLocation;
         /**
          * Seller Region
          */
@@ -2082,7 +2082,7 @@ export namespace metal {
          */
         plan: string;
         /**
-         * Minimun number of devices that must be available in selected location.
+         * Minimum number of devices that must be available in selected location.
          * Default is `1`.
          */
         quantity?: number;
@@ -2132,11 +2132,13 @@ export namespace metal {
 
     export interface GetPlansPlan {
         /**
-         * list of facilities where the plan is available
+         * list of metros where the plan is available
          */
         availableInMetros: string[];
         /**
-         * list of facilities where the plan is available
+         * (**Deprecated**) list of facilities where the plan is available
+         *
+         * @deprecated Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
          */
         availableIns: string[];
         /**
@@ -2275,8 +2277,8 @@ export namespace metal {
          */
         asn: number;
         /**
-         * `private` or `public`, the `private` is likely to be usable immediately, the
-         * `public` will need to be reviewed by Equinix Metal engineers.
+         * `local` or `global`, the `local` is likely to be usable immediately, the
+         * `global` will need to be reviewed by Equinix Metal engineers.
          */
         deploymentType: string;
         /**

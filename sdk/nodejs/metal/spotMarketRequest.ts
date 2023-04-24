@@ -78,7 +78,9 @@ export class SpotMarketRequest extends pulumi.CustomResource {
      */
     public readonly devicesMin!: pulumi.Output<number>;
     /**
-     * Facility IDs where devices should be created.
+     * Facility IDs where devices should be created
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     public readonly facilities!: pulumi.Output<string[]>;
     /**
@@ -172,7 +174,9 @@ export interface SpotMarketRequestState {
      */
     devicesMin?: pulumi.Input<number>;
     /**
-     * Facility IDs where devices should be created.
+     * Facility IDs where devices should be created
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -215,7 +219,9 @@ export interface SpotMarketRequestArgs {
      */
     devicesMin: pulumi.Input<number>;
     /**
-     * Facility IDs where devices should be created.
+     * Facility IDs where devices should be created
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**

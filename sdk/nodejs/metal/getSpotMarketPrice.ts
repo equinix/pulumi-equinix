@@ -9,18 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * Lookup by facility:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const example = equinix.metal.getSpotMarketPrice({
- *     facility: "ny5",
- *     plan: "c3.small.x86",
- * });
- * ```
- *
  * Lookup by metro:
  *
  * ```typescript
@@ -48,7 +36,7 @@ export function getSpotMarketPrice(args: GetSpotMarketPriceArgs, opts?: pulumi.I
  */
 export interface GetSpotMarketPriceArgs {
     /**
-     * Name of the facility.
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: string;
     /**
@@ -65,6 +53,9 @@ export interface GetSpotMarketPriceArgs {
  * A collection of values returned by getSpotMarketPrice.
  */
 export interface GetSpotMarketPriceResult {
+    /**
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     */
     readonly facility?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -81,18 +72,6 @@ export interface GetSpotMarketPriceResult {
  * Use this data source to get Equinix Metal Spot Market Price for a plan.
  *
  * ## Example Usage
- *
- * Lookup by facility:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const example = equinix.metal.getSpotMarketPrice({
- *     facility: "ny5",
- *     plan: "c3.small.x86",
- * });
- * ```
  *
  * Lookup by metro:
  *
@@ -115,7 +94,7 @@ export function getSpotMarketPriceOutput(args: GetSpotMarketPriceOutputArgs, opt
  */
 export interface GetSpotMarketPriceOutputArgs {
     /**
-     * Name of the facility.
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: pulumi.Input<string>;
     /**

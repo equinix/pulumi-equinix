@@ -47,11 +47,27 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
         return this.publicKey;
     }
 
+    /**
+     * The type of SSH key: `RSA` (default) or `DSA`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of SSH key: `RSA` (default) or `DSA`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private SshKeyArgs() {}
 
     private SshKeyArgs(SshKeyArgs $) {
         this.name = $.name;
         this.publicKey = $.publicKey;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -114,6 +130,27 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder publicKey(String publicKey) {
             return publicKey(Output.of(publicKey));
+        }
+
+        /**
+         * @param type The type of SSH key: `RSA` (default) or `DSA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of SSH key: `RSA` (default) or `DSA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public SshKeyArgs build() {

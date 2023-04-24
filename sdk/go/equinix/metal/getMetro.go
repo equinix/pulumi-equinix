@@ -23,9 +23,9 @@ func GetMetro(ctx *pulumi.Context, args *GetMetroArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getMetro.
 type GetMetroArgs struct {
-	// One or more device plans for which the facility must have capacity.
+	// One or more device plans for which the metro must have capacity.
 	Capacities []GetMetroCapacity `pulumi:"capacities"`
-	// The facility code to search for facilities.
+	// The metro code to search for.
 	Code string `pulumi:"code"`
 }
 
@@ -56,9 +56,9 @@ func GetMetroOutput(ctx *pulumi.Context, args GetMetroOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getMetro.
 type GetMetroOutputArgs struct {
-	// One or more device plans for which the facility must have capacity.
+	// One or more device plans for which the metro must have capacity.
 	Capacities GetMetroCapacityArrayInput `pulumi:"capacities"`
-	// The facility code to search for facilities.
+	// The metro code to search for.
 	Code pulumi.StringInput `pulumi:"code"`
 }
 

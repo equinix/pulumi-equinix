@@ -114,8 +114,7 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
                  features_requireds: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFacilityResult:
     """
-    Provides an Equinix Metal facility datasource.
-
+    Use this data source to access information about an existing resource.
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
@@ -145,8 +144,7 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFacilityResult]:
     """
-    Provides an Equinix Metal facility datasource.
-
+    Use this data source to access information about an existing resource.
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.

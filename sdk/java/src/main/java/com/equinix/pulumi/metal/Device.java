@@ -182,14 +182,18 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customData);
     }
     /**
-     * The facility where the device is deployed.
+     * The facility where the device is deployed
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Export(name="deployedFacility", refs={String.class}, tree="[0]")
     private Output<String> deployedFacility;
 
     /**
-     * @return The facility where the device is deployed.
+     * @return The facility where the device is deployed
      * 
      */
     public Output<String> deployedFacility() {
@@ -226,22 +230,24 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+     * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+     * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+     * top of the page and see JSON from the API response. Conflicts with metro
+     * 
+     * @deprecated
+     * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Export(name="facilities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> facilities;
 
     /**
-     * @return List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+     * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+     * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+     * top of the page and see JSON from the API response. Conflicts with metro
      * 
      */
     public Output<Optional<List<String>>> facilities() {

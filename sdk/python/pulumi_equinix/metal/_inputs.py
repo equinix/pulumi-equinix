@@ -620,8 +620,8 @@ class ProjectBgpConfigArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] asn: Autonomous System Number for local BGP deployment.
-        :param pulumi.Input[str] deployment_type: `private` or `public`, the `private` is likely to be usable immediately, the
-               `public` will need to be reviewed by Equinix Metal engineers.
+        :param pulumi.Input[str] deployment_type: `local` or `global`, the `local` is likely to be usable immediately, the
+               `global` will need to be reviewed by Equinix Metal engineers.
         :param pulumi.Input[int] max_prefix: The maximum number of route filters allowed per server.
         :param pulumi.Input[str] md5: Password for BGP session in plaintext (not a checksum).
         :param pulumi.Input[str] status: status of BGP configuration in the project.
@@ -651,8 +651,8 @@ class ProjectBgpConfigArgs:
     @pulumi.getter(name="deploymentType")
     def deployment_type(self) -> pulumi.Input[str]:
         """
-        `private` or `public`, the `private` is likely to be usable immediately, the
-        `public` will need to be reviewed by Equinix Metal engineers.
+        `local` or `global`, the `local` is likely to be usable immediately, the
+        `global` will need to be reviewed by Equinix Metal engineers.
         """
         return pulumi.get(self, "deployment_type")
 
@@ -931,7 +931,7 @@ class GetMetroCapacityArgs:
                  quantity: Optional[int] = None):
         """
         :param str plan: Device plan that must be available in selected location.
-        :param int quantity: Minimun number of devices that must be available in selected location.
+        :param int quantity: Minimum number of devices that must be available in selected location.
                Default is `1`.
         """
         pulumi.set(__self__, "plan", plan)
@@ -954,7 +954,7 @@ class GetMetroCapacityArgs:
     @pulumi.getter
     def quantity(self) -> Optional[int]:
         """
-        Minimun number of devices that must be available in selected location.
+        Minimum number of devices that must be available in selected location.
         Default is `1`.
         """
         return pulumi.get(self, "quantity")

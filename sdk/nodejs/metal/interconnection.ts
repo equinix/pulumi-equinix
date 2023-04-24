@@ -68,7 +68,9 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Facility where the connection will be created.
+     * Facility where the connection will be created
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     public readonly facility!: pulumi.Output<string>;
     /**
@@ -209,7 +211,9 @@ export interface InterconnectionState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where the connection will be created.
+     * Facility where the connection will be created
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: pulumi.Input<string>;
     /**
@@ -287,7 +291,9 @@ export interface InterconnectionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where the connection will be created.
+     * Facility where the connection will be created
+     *
+     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     facility?: pulumi.Input<string>;
     /**

@@ -31,11 +31,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			projectId := "<UUID_of_your_project>"
 //			testDevice, err := metal.NewDevice(ctx, "testDevice", &metal.DeviceArgs{
-//				Hostname: pulumi.String("tfacc-test-device-port"),
-//				Plan:     pulumi.String("c3.medium.x86"),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("sv15"),
-//				},
+//				Hostname:        pulumi.String("tfacc-test-device-port"),
+//				Plan:            pulumi.String("c3.medium.x86"),
+//				Metro:           pulumi.String("sv"),
 //				OperatingSystem: pulumi.String("ubuntu_20_04"),
 //				BillingCycle:    pulumi.String("hourly"),
 //				ProjectId:       pulumi.String(projectId),

@@ -34,23 +34,39 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Facility where to create the VLAN.
+     * Facility where to create the VLAN
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="facility")
     private @Nullable Output<Either<String,Facility>> facility;
 
     /**
-     * @return Facility where to create the VLAN.
+     * @return Facility where to create the VLAN
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<Output<Either<String,Facility>>> facility() {
         return Optional.ofNullable(this.facility);
     }
 
+    /**
+     * Metro in which to create the VLAN
+     * 
+     */
     @Import(name="metro")
     private @Nullable Output<String> metro;
 
+    /**
+     * @return Metro in which to create the VLAN
+     * 
+     */
     public Optional<Output<String>> metro() {
         return Optional.ofNullable(this.metro);
     }
@@ -135,51 +151,79 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facility Facility where to create the VLAN.
+         * @param facility Facility where to create the VLAN
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(@Nullable Output<Either<String,Facility>> facility) {
             $.facility = facility;
             return this;
         }
 
         /**
-         * @param facility Facility where to create the VLAN.
+         * @param facility Facility where to create the VLAN
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(Either<String,Facility> facility) {
             return facility(Output.of(facility));
         }
 
         /**
-         * @param facility Facility where to create the VLAN.
+         * @param facility Facility where to create the VLAN
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(String facility) {
             return facility(Either.ofLeft(facility));
         }
 
         /**
-         * @param facility Facility where to create the VLAN.
+         * @param facility Facility where to create the VLAN
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(Facility facility) {
             return facility(Either.ofRight(facility));
         }
 
+        /**
+         * @param metro Metro in which to create the VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder metro(@Nullable Output<String> metro) {
             $.metro = metro;
             return this;
         }
 
+        /**
+         * @param metro Metro in which to create the VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder metro(String metro) {
             return metro(Output.of(metro));
         }

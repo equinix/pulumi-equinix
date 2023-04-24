@@ -63,6 +63,10 @@ export class SshKey extends pulumi.CustomResource {
      */
     public readonly publicKey!: pulumi.Output<string>;
     /**
+     * The type of SSH key: `RSA` (default) or `DSA`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
      * The unique identifier of the key
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
@@ -82,6 +86,7 @@ export class SshKey extends pulumi.CustomResource {
             const state = argsOrState as SshKeyState | undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as SshKeyArgs | undefined;
@@ -90,6 +95,7 @@ export class SshKey extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -111,6 +117,10 @@ export interface SshKeyState {
      */
     publicKey?: pulumi.Input<string>;
     /**
+     * The type of SSH key: `RSA` (default) or `DSA`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * The unique identifier of the key
      */
     uuid?: pulumi.Input<string>;
@@ -129,4 +139,8 @@ export interface SshKeyArgs {
      * interpolation function.
      */
     publicKey: pulumi.Input<string>;
+    /**
+     * The type of SSH key: `RSA` (default) or `DSA`.
+     */
+    type?: pulumi.Input<string>;
 }

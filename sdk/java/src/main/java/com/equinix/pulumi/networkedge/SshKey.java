@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -92,6 +93,20 @@ public class SshKey extends com.pulumi.resources.CustomResource {
      */
     public Output<String> publicKey() {
         return this.publicKey;
+    }
+    /**
+     * The type of SSH key: `RSA` (default) or `DSA`.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return The type of SSH key: `RSA` (default) or `DSA`.
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * The unique identifier of the key

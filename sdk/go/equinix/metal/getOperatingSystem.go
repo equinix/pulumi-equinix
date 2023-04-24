@@ -35,11 +35,9 @@ import (
 //				return err
 //			}
 //			_, err = metal.NewDevice(ctx, "server", &metal.DeviceArgs{
-//				Hostname: pulumi.String("tf.ubuntu"),
-//				Plan:     pulumi.String("c3.medium.x86"),
-//				Facilities: pulumi.StringArray{
-//					pulumi.String("ny5"),
-//				},
+//				Hostname:        pulumi.String("tf.ubuntu"),
+//				Plan:            pulumi.String("c3.medium.x86"),
+//				Metro:           pulumi.String("ny"),
 //				OperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),
 //				BillingCycle:    pulumi.String("hourly"),
 //				ProjectId:       pulumi.Any(local.Project_id),

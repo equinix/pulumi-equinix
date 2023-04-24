@@ -18,17 +18,11 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("crossConnectId")]
         public Input<string>? CrossConnectId { get; set; }
 
-        [Input("locations")]
-        private InputList<Inputs.ServiceProfilePortLocationGetArgs>? _locations;
-
         /// <summary>
         /// Colo/Port Location
         /// </summary>
-        public InputList<Inputs.ServiceProfilePortLocationGetArgs> Locations
-        {
-            get => _locations ?? (_locations = new InputList<Inputs.ServiceProfilePortLocationGetArgs>());
-            set => _locations = value;
-        }
+        [Input("location")]
+        public Input<Inputs.ServiceProfilePortLocationGetArgs>? Location { get; set; }
 
         /// <summary>
         /// Seller Region

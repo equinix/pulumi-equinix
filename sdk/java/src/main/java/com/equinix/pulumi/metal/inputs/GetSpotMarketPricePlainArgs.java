@@ -15,16 +15,20 @@ public final class GetSpotMarketPricePlainArgs extends com.pulumi.resources.Invo
     public static final GetSpotMarketPricePlainArgs Empty = new GetSpotMarketPricePlainArgs();
 
     /**
-     * Name of the facility.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="facility")
     private @Nullable String facility;
 
     /**
-     * @return Name of the facility.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }
@@ -86,11 +90,13 @@ public final class GetSpotMarketPricePlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param facility Name of the facility.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(@Nullable String facility) {
             $.facility = facility;
             return this;

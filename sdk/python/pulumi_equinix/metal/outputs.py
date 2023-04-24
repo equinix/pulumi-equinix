@@ -618,8 +618,8 @@ class ProjectBgpConfig(dict):
                  status: Optional[str] = None):
         """
         :param int asn: Autonomous System Number for local BGP deployment.
-        :param str deployment_type: `private` or `public`, the `private` is likely to be usable immediately, the
-               `public` will need to be reviewed by Equinix Metal engineers.
+        :param str deployment_type: `local` or `global`, the `local` is likely to be usable immediately, the
+               `global` will need to be reviewed by Equinix Metal engineers.
         :param int max_prefix: The maximum number of route filters allowed per server.
         :param str md5: Password for BGP session in plaintext (not a checksum).
         :param str status: status of BGP configuration in the project.
@@ -645,8 +645,8 @@ class ProjectBgpConfig(dict):
     @pulumi.getter(name="deploymentType")
     def deployment_type(self) -> str:
         """
-        `private` or `public`, the `private` is likely to be usable immediately, the
-        `public` will need to be reviewed by Equinix Metal engineers.
+        `local` or `global`, the `local` is likely to be usable immediately, the
+        `global` will need to be reviewed by Equinix Metal engineers.
         """
         return pulumi.get(self, "deployment_type")
 
@@ -1323,7 +1323,7 @@ class GetMetroCapacityResult(dict):
                  quantity: Optional[int] = None):
         """
         :param str plan: Device plan that must be available in selected location.
-        :param int quantity: Minimun number of devices that must be available in selected location.
+        :param int quantity: Minimum number of devices that must be available in selected location.
                Default is `1`.
         """
         pulumi.set(__self__, "plan", plan)
@@ -1342,7 +1342,7 @@ class GetMetroCapacityResult(dict):
     @pulumi.getter
     def quantity(self) -> Optional[int]:
         """
-        Minimun number of devices that must be available in selected location.
+        Minimum number of devices that must be available in selected location.
         Default is `1`.
         """
         return pulumi.get(self, "quantity")
@@ -1479,8 +1479,8 @@ class GetPlansPlanResult(dict):
                  pricing_month: float,
                  slug: str):
         """
-        :param Sequence[str] available_in_metros: list of facilities where the plan is available
-        :param Sequence[str] available_ins: list of facilities where the plan is available
+        :param Sequence[str] available_in_metros: list of metros where the plan is available
+        :param Sequence[str] available_ins: (**Deprecated**) list of facilities where the plan is available
         :param str class_: plan class
         :param Sequence[str] deployment_types: list of deployment types, e.g. on_demand, spot_market
         :param str description: description of the plan
@@ -1509,7 +1509,7 @@ class GetPlansPlanResult(dict):
     @pulumi.getter(name="availableInMetros")
     def available_in_metros(self) -> Sequence[str]:
         """
-        list of facilities where the plan is available
+        list of metros where the plan is available
         """
         return pulumi.get(self, "available_in_metros")
 
@@ -1517,7 +1517,7 @@ class GetPlansPlanResult(dict):
     @pulumi.getter(name="availableIns")
     def available_ins(self) -> Sequence[str]:
         """
-        list of facilities where the plan is available
+        (**Deprecated**) list of facilities where the plan is available
         """
         return pulumi.get(self, "available_ins")
 

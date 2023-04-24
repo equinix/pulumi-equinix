@@ -24,11 +24,11 @@ export function getMetro(args: GetMetroArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetMetroArgs {
     /**
-     * One or more device plans for which the facility must have capacity.
+     * One or more device plans for which the metro must have capacity.
      */
     capacities?: inputs.metal.GetMetroCapacity[];
     /**
-     * The facility code to search for facilities.
+     * The metro code to search for.
      */
     code: string;
 }
@@ -64,11 +64,11 @@ export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetMetroOutputArgs {
     /**
-     * One or more device plans for which the facility must have capacity.
+     * One or more device plans for which the metro must have capacity.
      */
     capacities?: pulumi.Input<pulumi.Input<inputs.metal.GetMetroCapacityArgs>[]>;
     /**
-     * The facility code to search for facilities.
+     * The metro code to search for.
      */
     code: pulumi.Input<string>;
 }

@@ -8893,7 +8893,7 @@ type ServiceProfilePort struct {
 	// Cross Connect Id
 	CrossConnectId *string `pulumi:"crossConnectId"`
 	// Colo/Port Location
-	Locations []ServiceProfilePortLocation `pulumi:"locations"`
+	Location *ServiceProfilePortLocation `pulumi:"location"`
 	// Seller Region
 	SellerRegion *string `pulumi:"sellerRegion"`
 	// Seller Region details
@@ -8919,7 +8919,7 @@ type ServiceProfilePortArgs struct {
 	// Cross Connect Id
 	CrossConnectId pulumi.StringPtrInput `pulumi:"crossConnectId"`
 	// Colo/Port Location
-	Locations ServiceProfilePortLocationArrayInput `pulumi:"locations"`
+	Location ServiceProfilePortLocationPtrInput `pulumi:"location"`
 	// Seller Region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
 	// Seller Region details
@@ -8987,8 +8987,8 @@ func (o ServiceProfilePortOutput) CrossConnectId() pulumi.StringPtrOutput {
 }
 
 // Colo/Port Location
-func (o ServiceProfilePortOutput) Locations() ServiceProfilePortLocationArrayOutput {
-	return o.ApplyT(func(v ServiceProfilePort) []ServiceProfilePortLocation { return v.Locations }).(ServiceProfilePortLocationArrayOutput)
+func (o ServiceProfilePortOutput) Location() ServiceProfilePortLocationPtrOutput {
+	return o.ApplyT(func(v ServiceProfilePort) *ServiceProfilePortLocation { return v.Location }).(ServiceProfilePortLocationPtrOutput)
 }
 
 // Seller Region
@@ -9068,29 +9068,45 @@ func (i ServiceProfilePortLocationArgs) ToServiceProfilePortLocationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfilePortLocationOutput)
 }
 
-// ServiceProfilePortLocationArrayInput is an input type that accepts ServiceProfilePortLocationArray and ServiceProfilePortLocationArrayOutput values.
-// You can construct a concrete instance of `ServiceProfilePortLocationArrayInput` via:
+func (i ServiceProfilePortLocationArgs) ToServiceProfilePortLocationPtrOutput() ServiceProfilePortLocationPtrOutput {
+	return i.ToServiceProfilePortLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceProfilePortLocationArgs) ToServiceProfilePortLocationPtrOutputWithContext(ctx context.Context) ServiceProfilePortLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfilePortLocationOutput).ToServiceProfilePortLocationPtrOutputWithContext(ctx)
+}
+
+// ServiceProfilePortLocationPtrInput is an input type that accepts ServiceProfilePortLocationArgs, ServiceProfilePortLocationPtr and ServiceProfilePortLocationPtrOutput values.
+// You can construct a concrete instance of `ServiceProfilePortLocationPtrInput` via:
 //
-//	ServiceProfilePortLocationArray{ ServiceProfilePortLocationArgs{...} }
-type ServiceProfilePortLocationArrayInput interface {
+//	        ServiceProfilePortLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceProfilePortLocationPtrInput interface {
 	pulumi.Input
 
-	ToServiceProfilePortLocationArrayOutput() ServiceProfilePortLocationArrayOutput
-	ToServiceProfilePortLocationArrayOutputWithContext(context.Context) ServiceProfilePortLocationArrayOutput
+	ToServiceProfilePortLocationPtrOutput() ServiceProfilePortLocationPtrOutput
+	ToServiceProfilePortLocationPtrOutputWithContext(context.Context) ServiceProfilePortLocationPtrOutput
 }
 
-type ServiceProfilePortLocationArray []ServiceProfilePortLocationInput
+type serviceProfilePortLocationPtrType ServiceProfilePortLocationArgs
 
-func (ServiceProfilePortLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfilePortLocation)(nil)).Elem()
+func ServiceProfilePortLocationPtr(v *ServiceProfilePortLocationArgs) ServiceProfilePortLocationPtrInput {
+	return (*serviceProfilePortLocationPtrType)(v)
 }
 
-func (i ServiceProfilePortLocationArray) ToServiceProfilePortLocationArrayOutput() ServiceProfilePortLocationArrayOutput {
-	return i.ToServiceProfilePortLocationArrayOutputWithContext(context.Background())
+func (*serviceProfilePortLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfilePortLocation)(nil)).Elem()
 }
 
-func (i ServiceProfilePortLocationArray) ToServiceProfilePortLocationArrayOutputWithContext(ctx context.Context) ServiceProfilePortLocationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfilePortLocationArrayOutput)
+func (i *serviceProfilePortLocationPtrType) ToServiceProfilePortLocationPtrOutput() ServiceProfilePortLocationPtrOutput {
+	return i.ToServiceProfilePortLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceProfilePortLocationPtrType) ToServiceProfilePortLocationPtrOutputWithContext(ctx context.Context) ServiceProfilePortLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfilePortLocationPtrOutput)
 }
 
 type ServiceProfilePortLocationOutput struct{ *pulumi.OutputState }
@@ -9105,6 +9121,16 @@ func (o ServiceProfilePortLocationOutput) ToServiceProfilePortLocationOutput() S
 
 func (o ServiceProfilePortLocationOutput) ToServiceProfilePortLocationOutputWithContext(ctx context.Context) ServiceProfilePortLocationOutput {
 	return o
+}
+
+func (o ServiceProfilePortLocationOutput) ToServiceProfilePortLocationPtrOutput() ServiceProfilePortLocationPtrOutput {
+	return o.ToServiceProfilePortLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceProfilePortLocationOutput) ToServiceProfilePortLocationPtrOutputWithContext(ctx context.Context) ServiceProfilePortLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceProfilePortLocation) *ServiceProfilePortLocation {
+		return &v
+	}).(ServiceProfilePortLocationPtrOutput)
 }
 
 func (o ServiceProfilePortLocationOutput) Ibx() pulumi.StringPtrOutput {
@@ -9123,24 +9149,64 @@ func (o ServiceProfilePortLocationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfilePortLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-type ServiceProfilePortLocationArrayOutput struct{ *pulumi.OutputState }
+type ServiceProfilePortLocationPtrOutput struct{ *pulumi.OutputState }
 
-func (ServiceProfilePortLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServiceProfilePortLocation)(nil)).Elem()
+func (ServiceProfilePortLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceProfilePortLocation)(nil)).Elem()
 }
 
-func (o ServiceProfilePortLocationArrayOutput) ToServiceProfilePortLocationArrayOutput() ServiceProfilePortLocationArrayOutput {
+func (o ServiceProfilePortLocationPtrOutput) ToServiceProfilePortLocationPtrOutput() ServiceProfilePortLocationPtrOutput {
 	return o
 }
 
-func (o ServiceProfilePortLocationArrayOutput) ToServiceProfilePortLocationArrayOutputWithContext(ctx context.Context) ServiceProfilePortLocationArrayOutput {
+func (o ServiceProfilePortLocationPtrOutput) ToServiceProfilePortLocationPtrOutputWithContext(ctx context.Context) ServiceProfilePortLocationPtrOutput {
 	return o
 }
 
-func (o ServiceProfilePortLocationArrayOutput) Index(i pulumi.IntInput) ServiceProfilePortLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProfilePortLocation {
-		return vs[0].([]ServiceProfilePortLocation)[vs[1].(int)]
+func (o ServiceProfilePortLocationPtrOutput) Elem() ServiceProfilePortLocationOutput {
+	return o.ApplyT(func(v *ServiceProfilePortLocation) ServiceProfilePortLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceProfilePortLocation
+		return ret
 	}).(ServiceProfilePortLocationOutput)
+}
+
+func (o ServiceProfilePortLocationPtrOutput) Ibx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfilePortLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ibx
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfilePortLocationPtrOutput) MetroCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfilePortLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroCode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfilePortLocationPtrOutput) MetroName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfilePortLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetroName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceProfilePortLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfilePortLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceProfileProject struct {
@@ -20321,7 +20387,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortInput)(nil)).Elem(), ServiceProfilePortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortArrayInput)(nil)).Elem(), ServiceProfilePortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortLocationInput)(nil)).Elem(), ServiceProfilePortLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortLocationArrayInput)(nil)).Elem(), ServiceProfilePortLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfilePortLocationPtrInput)(nil)).Elem(), ServiceProfilePortLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileProjectInput)(nil)).Elem(), ServiceProfileProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileProjectPtrInput)(nil)).Elem(), ServiceProfileProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceProfileVirtualDeviceInput)(nil)).Elem(), ServiceProfileVirtualDeviceArgs{})
@@ -20596,7 +20662,7 @@ func init() {
 	pulumi.RegisterOutputType(ServiceProfilePortOutput{})
 	pulumi.RegisterOutputType(ServiceProfilePortArrayOutput{})
 	pulumi.RegisterOutputType(ServiceProfilePortLocationOutput{})
-	pulumi.RegisterOutputType(ServiceProfilePortLocationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceProfilePortLocationPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileProjectOutput{})
 	pulumi.RegisterOutputType(ServiceProfileProjectPtrOutput{})
 	pulumi.RegisterOutputType(ServiceProfileVirtualDeviceOutput{})

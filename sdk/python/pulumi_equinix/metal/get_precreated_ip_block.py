@@ -219,7 +219,6 @@ def get_precreated_ip_block(address_family: Optional[int] = None,
 
 
     :param int address_family: 4 or 6, depending on which block you are looking for.
-    :param str facility: Facility of the searched block. (for non-global blocks).
     :param bool global_: Whether to look for global block. Default is false for backward compatibility.
     :param str metro: Metro of the searched block (for non-global blocks).
     :param str project_id: ID of the project where the searched block should be.
@@ -276,7 +275,6 @@ def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] =
 
 
     :param int address_family: 4 or 6, depending on which block you are looking for.
-    :param str facility: Facility of the searched block. (for non-global blocks).
     :param bool global_: Whether to look for global block. Default is false for backward compatibility.
     :param str metro: Metro of the searched block (for non-global blocks).
     :param str project_id: ID of the project where the searched block should be.

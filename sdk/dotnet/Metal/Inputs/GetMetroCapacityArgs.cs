@@ -19,7 +19,7 @@ namespace Pulumi.Equinix.Metal.Inputs
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Minimun number of devices that must be available in selected location.
+        /// Minimum number of devices that must be available in selected location.
         /// Default is `1`.
         /// </summary>
         [Input("quantity")]

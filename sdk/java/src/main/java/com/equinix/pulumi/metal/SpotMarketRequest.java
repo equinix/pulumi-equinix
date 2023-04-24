@@ -98,14 +98,18 @@ public class SpotMarketRequest extends com.pulumi.resources.CustomResource {
         return this.devicesMin;
     }
     /**
-     * Facility IDs where devices should be created.
+     * Facility IDs where devices should be created
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Export(name="facilities", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> facilities;
 
     /**
-     * @return Facility IDs where devices should be created.
+     * @return Facility IDs where devices should be created
      * 
      */
     public Output<List<String>> facilities() {

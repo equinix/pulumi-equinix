@@ -68,7 +68,9 @@ type SpotMarketRequest struct {
 	DevicesMax pulumi.IntOutput `pulumi:"devicesMax"`
 	// Miniumum number devices to be created.
 	DevicesMin pulumi.IntOutput `pulumi:"devicesMin"`
-	// Facility IDs where devices should be created.
+	// Facility IDs where devices should be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayOutput `pulumi:"facilities"`
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
@@ -136,7 +138,9 @@ type spotMarketRequestState struct {
 	DevicesMax *int `pulumi:"devicesMax"`
 	// Miniumum number devices to be created.
 	DevicesMin *int `pulumi:"devicesMin"`
-	// Facility IDs where devices should be created.
+	// Facility IDs where devices should be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
@@ -160,7 +164,9 @@ type SpotMarketRequestState struct {
 	DevicesMax pulumi.IntPtrInput
 	// Miniumum number devices to be created.
 	DevicesMin pulumi.IntPtrInput
-	// Facility IDs where devices should be created.
+	// Facility IDs where devices should be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
@@ -188,7 +194,9 @@ type spotMarketRequestArgs struct {
 	DevicesMax int `pulumi:"devicesMax"`
 	// Miniumum number devices to be created.
 	DevicesMin int `pulumi:"devicesMin"`
-	// Facility IDs where devices should be created.
+	// Facility IDs where devices should be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
@@ -213,7 +221,9 @@ type SpotMarketRequestArgs struct {
 	DevicesMax pulumi.IntInput
 	// Miniumum number devices to be created.
 	DevicesMin pulumi.IntInput
-	// Facility IDs where devices should be created.
+	// Facility IDs where devices should be created
+	//
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
@@ -329,7 +339,9 @@ func (o SpotMarketRequestOutput) DevicesMin() pulumi.IntOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.IntOutput { return v.DevicesMin }).(pulumi.IntOutput)
 }
 
-// Facility IDs where devices should be created.
+// Facility IDs where devices should be created
+//
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o SpotMarketRequestOutput) Facilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.StringArrayOutput { return v.Facilities }).(pulumi.StringArrayOutput)
 }

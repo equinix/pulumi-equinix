@@ -46,6 +46,10 @@ class GetDeviceResult:
         pulumi.set(__self__, "device_id", device_id)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facility", facility)
         if hardware_reservation_id and not isinstance(hardware_reservation_id, str):
             raise TypeError("Expected argument 'hardware_reservation_id' to be a str")
@@ -149,9 +153,6 @@ class GetDeviceResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
-        """
-        The facility where the device is deployed.
-        """
         return pulumi.get(self, "facility")
 
     @property

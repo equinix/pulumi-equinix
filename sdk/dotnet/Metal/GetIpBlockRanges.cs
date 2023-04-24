@@ -89,10 +89,6 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetIpBlockRangesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-        /// anyway. If you omit this and metro, all the block from the project will be listed.
-        /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
 
@@ -117,10 +113,6 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetIpBlockRangesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
-        /// anyway. If you omit this and metro, all the block from the project will be listed.
-        /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 

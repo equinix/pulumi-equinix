@@ -34,10 +34,7 @@ namespace Pulumi.Equinix.Metal
         ///     {
         ///         Hostname = "tfacc-test-device-port",
         ///         Plan = "c3.medium.x86",
-        ///         Facilities = new[]
-        ///         {
-        ///             "sv15",
-        ///         },
+        ///         Metro = "sv",
         ///         OperatingSystem = "ubuntu_20_04",
         ///         BillingCycle = "hourly",
         ///         ProjectId = projectId,
@@ -80,10 +77,7 @@ namespace Pulumi.Equinix.Metal
         ///     {
         ///         Hostname = "tfacc-test-device-port",
         ///         Plan = "c3.medium.x86",
-        ///         Facilities = new[]
-        ///         {
-        ///             "sv15",
-        ///         },
+        ///         Metro = "sv",
         ///         OperatingSystem = "ubuntu_20_04",
         ///         BillingCycle = "hourly",
         ///         ProjectId = projectId,

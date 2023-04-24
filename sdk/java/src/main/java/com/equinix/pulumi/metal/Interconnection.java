@@ -83,14 +83,18 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Facility where the connection will be created.
+     * Facility where the connection will be created
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Export(name="facility", refs={String.class}, tree="[0]")
     private Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created.
+     * @return Facility where the connection will be created
      * 
      */
     public Output<String> facility() {

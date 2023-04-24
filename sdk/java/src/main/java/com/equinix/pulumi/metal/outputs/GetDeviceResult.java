@@ -41,9 +41,11 @@ public final class GetDeviceResult {
     private String description;
     private String deviceId;
     /**
-     * @return The facility where the device is deployed.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private String facility;
     /**
      * @return The id of hardware reservation which this device occupies.
@@ -156,9 +158,11 @@ public final class GetDeviceResult {
         return this.deviceId;
     }
     /**
-     * @return The facility where the device is deployed.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public String facility() {
         return this.facility;
     }

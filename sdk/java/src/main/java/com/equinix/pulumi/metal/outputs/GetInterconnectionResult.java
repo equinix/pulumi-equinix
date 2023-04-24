@@ -20,9 +20,11 @@ public final class GetInterconnectionResult {
      */
     private String description;
     /**
-     * @return Slug of a facility to which the connection belongs.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private String facility;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -121,9 +123,11 @@ public final class GetInterconnectionResult {
         return this.description;
     }
     /**
-     * @return Slug of a facility to which the connection belongs.
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public String facility() {
         return this.facility;
     }

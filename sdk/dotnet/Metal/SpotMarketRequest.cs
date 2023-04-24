@@ -68,7 +68,7 @@ namespace Pulumi.Equinix.Metal
         public Output<int> DevicesMin { get; private set; } = null!;
 
         /// <summary>
-        /// Facility IDs where devices should be created.
+        /// Facility IDs where devices should be created
         /// </summary>
         [Output("facilities")]
         public Output<ImmutableArray<string>> Facilities { get; private set; } = null!;
@@ -171,8 +171,9 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _facilities;
 
         /// <summary>
-        /// Facility IDs where devices should be created.
+        /// Facility IDs where devices should be created
         /// </summary>
+        [Obsolete(@"Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<string> Facilities
         {
             get => _facilities ?? (_facilities = new InputList<string>());
@@ -238,8 +239,9 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _facilities;
 
         /// <summary>
-        /// Facility IDs where devices should be created.
+        /// Facility IDs where devices should be created
         /// </summary>
+        [Obsolete(@"Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<string> Facilities
         {
             get => _facilities ?? (_facilities = new InputList<string>());

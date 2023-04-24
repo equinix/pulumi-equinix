@@ -32,7 +32,7 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Minimun number of devices that must be available in selected location.
+     * Minimum number of devices that must be available in selected location.
      * Default is `1`.
      * 
      */
@@ -40,7 +40,7 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Integer> quantity;
 
     /**
-     * @return Minimun number of devices that must be available in selected location.
+     * @return Minimum number of devices that must be available in selected location.
      * Default is `1`.
      * 
      */
@@ -95,7 +95,7 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantity Minimun number of devices that must be available in selected location.
+         * @param quantity Minimum number of devices that must be available in selected location.
          * Default is `1`.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class GetMetroCapacityArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quantity Minimun number of devices that must be available in selected location.
+         * @param quantity Minimum number of devices that must be available in selected location.
          * Default is `1`.
          * 
          * @return builder

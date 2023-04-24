@@ -151,16 +151,24 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The facility where the device is deployed.
+     * The facility where the device is deployed
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="deployedFacility")
     private @Nullable Output<String> deployedFacility;
 
     /**
-     * @return The facility where the device is deployed.
+     * @return The facility where the device is deployed
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<Output<String>> deployedFacility() {
         return Optional.ofNullable(this.deployedFacility);
     }
@@ -198,24 +206,30 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+     * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+     * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+     * top of the page and see JSON from the API response. Conflicts with metro
+     * 
+     * @deprecated
+     * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="facilities")
     private @Nullable Output<List<Either<String,Facility>>> facilities;
 
     /**
-     * @return List of facility codes with deployment preferences. Equinix Metal API will go
-     * through the list and will deploy your device to first facility with free capacity. List items must
-     * be facility codes or `any` (a wildcard). To find the facility code, visit
-     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+     * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+     * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+     * top of the page and see JSON from the API response. Conflicts with metro
+     * 
+     * @deprecated
+     * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<Output<List<Either<String,Facility>>>> facilities() {
         return Optional.ofNullable(this.facilities);
     }
@@ -912,22 +926,30 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedFacility The facility where the device is deployed.
+         * @param deployedFacility The facility where the device is deployed
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder deployedFacility(@Nullable Output<String> deployedFacility) {
             $.deployedFacility = deployedFacility;
             return this;
         }
 
         /**
-         * @param deployedFacility The facility where the device is deployed.
+         * @param deployedFacility The facility where the device is deployed
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder deployedFacility(String deployedFacility) {
             return deployedFacility(Output.of(deployedFacility));
         }
@@ -977,44 +999,53 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
-         * through the list and will deploy your device to first facility with free capacity. List items must
-         * be facility codes or `any` (a wildcard). To find the facility code, visit
-         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+         * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+         * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+         * top of the page and see JSON from the API response. Conflicts with metro
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facilities(@Nullable Output<List<Either<String,Facility>>> facilities) {
             $.facilities = facilities;
             return this;
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
-         * through the list and will deploy your device to first facility with free capacity. List items must
-         * be facility codes or `any` (a wildcard). To find the facility code, visit
-         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+         * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+         * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+         * top of the page and see JSON from the API response. Conflicts with metro
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facilities(List<Either<String,Facility>> facilities) {
             return facilities(Output.of(facilities));
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
-         * through the list and will deploy your device to first facility with free capacity. List items must
-         * be facility codes or `any` (a wildcard). To find the facility code, visit
-         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
-         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
+         * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
+         * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
+         * top of the page and see JSON from the API response. Conflicts with metro
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facilities(Either<String,Facility>... facilities) {
             return facilities(List.of(facilities));
         }

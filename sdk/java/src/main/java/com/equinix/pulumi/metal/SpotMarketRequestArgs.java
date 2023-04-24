@@ -51,16 +51,24 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Facility IDs where devices should be created.
+     * Facility IDs where devices should be created
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="facilities")
     private @Nullable Output<List<String>> facilities;
 
     /**
-     * @return Facility IDs where devices should be created.
+     * @return Facility IDs where devices should be created
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<Output<List<String>>> facilities() {
         return Optional.ofNullable(this.facilities);
     }
@@ -224,32 +232,44 @@ public final class SpotMarketRequestArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param facilities Facility IDs where devices should be created.
+         * @param facilities Facility IDs where devices should be created
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facilities(@Nullable Output<List<String>> facilities) {
             $.facilities = facilities;
             return this;
         }
 
         /**
-         * @param facilities Facility IDs where devices should be created.
+         * @param facilities Facility IDs where devices should be created
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facilities(List<String> facilities) {
             return facilities(Output.of(facilities));
         }
 
         /**
-         * @param facilities Facility IDs where devices should be created.
+         * @param facilities Facility IDs where devices should be created
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facilities(String... facilities) {
             return facilities(List.of(facilities));
         }

@@ -17,16 +17,24 @@ public final class GetVlanArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetVlanArgs Empty = new GetVlanArgs();
 
     /**
-     * Facility where the VLAN is deployed.
+     * Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
     /**
-     * @return Facility where the VLAN is deployed.
+     * @return Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
+     * 
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
      */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<Output<String>> facility() {
         return Optional.ofNullable(this.facility);
     }
@@ -120,22 +128,30 @@ public final class GetVlanArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param facility Facility where the VLAN is deployed.
+         * @param facility Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(@Nullable Output<String> facility) {
             $.facility = facility;
             return this;
         }
 
         /**
-         * @param facility Facility where the VLAN is deployed.
+         * @param facility Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * 
          */
+        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
         public Builder facility(String facility) {
             return facility(Output.of(facility));
         }

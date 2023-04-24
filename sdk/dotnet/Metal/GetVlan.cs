@@ -128,7 +128,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVlanArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Facility where the VLAN is deployed.
+        /// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
         /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetVlanInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Facility where the VLAN is deployed.
+        /// Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }

@@ -35,7 +35,7 @@ class InterconnectionArgs:
         :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created.
+        :param pulumi.Input[str] facility: Facility where the connection will be created
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -50,6 +50,9 @@ class InterconnectionArgs:
         pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
         if metro is not None:
@@ -121,7 +124,7 @@ class InterconnectionArgs:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[str]]:
         """
-        Facility where the connection will be created.
+        Facility where the connection will be created
         """
         return pulumi.get(self, "facility")
 
@@ -249,7 +252,7 @@ class _InterconnectionState:
         """
         Input properties used for looking up and filtering Interconnection resources.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created.
+        :param pulumi.Input[str] facility: Facility where the connection will be created
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -270,6 +273,9 @@ class _InterconnectionState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
         if metro is not None:
@@ -322,7 +328,7 @@ class _InterconnectionState:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[str]]:
         """
-        Facility where the connection will be created.
+        Facility where the connection will be created
         """
         return pulumi.get(self, "facility")
 
@@ -565,7 +571,7 @@ class Interconnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created.
+        :param pulumi.Input[str] facility: Facility where the connection will be created
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -652,6 +658,9 @@ class Interconnection(pulumi.CustomResource):
             __props__ = InterconnectionArgs.__new__(InterconnectionArgs)
 
             __props__.__dict__["description"] = description
+            if facility is not None and not opts.urn:
+                warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+                pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
             __props__.__dict__["facility"] = facility
             __props__.__dict__["metro"] = metro
             __props__.__dict__["mode"] = mode
@@ -709,7 +718,7 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created.
+        :param pulumi.Input[str] facility: Facility where the connection will be created
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -763,7 +772,7 @@ class Interconnection(pulumi.CustomResource):
     @pulumi.getter
     def facility(self) -> pulumi.Output[str]:
         """
-        Facility where the connection will be created.
+        Facility where the connection will be created
         """
         return pulumi.get(self, "facility")
 

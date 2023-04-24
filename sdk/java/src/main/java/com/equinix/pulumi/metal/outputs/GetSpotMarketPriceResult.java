@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSpotMarketPriceResult {
+    /**
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * 
+     */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private @Nullable String facility;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,6 +33,12 @@ public final class GetSpotMarketPriceResult {
     private Double price;
 
     private GetSpotMarketPriceResult() {}
+    /**
+     * @deprecated
+     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * 
+     */
+    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }

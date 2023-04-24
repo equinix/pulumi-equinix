@@ -55,6 +55,12 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string> PublicKey { get; private set; } = null!;
 
         /// <summary>
+        /// The type of SSH key: `RSA` (default) or `DSA`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier of the key
         /// </summary>
         [Output("uuid")]
@@ -120,6 +126,12 @@ namespace Pulumi.Equinix.NetworkEdge
         [Input("publicKey", required: true)]
         public Input<string> PublicKey { get; set; } = null!;
 
+        /// <summary>
+        /// The type of SSH key: `RSA` (default) or `DSA`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public SshKeyArgs()
         {
         }
@@ -140,6 +152,12 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
+
+        /// <summary>
+        /// The type of SSH key: `RSA` (default) or `DSA`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The unique identifier of the key

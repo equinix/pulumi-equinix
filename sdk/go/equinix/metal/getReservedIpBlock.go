@@ -38,23 +38,24 @@ type LookupReservedIpBlockArgs struct {
 
 // A collection of values returned by getReservedIpBlock.
 type LookupReservedIpBlockResult struct {
-	Address       string  `pulumi:"address"`
-	AddressFamily int     `pulumi:"addressFamily"`
-	Cidr          int     `pulumi:"cidr"`
-	CidrNotation  string  `pulumi:"cidrNotation"`
-	Facility      string  `pulumi:"facility"`
-	Gateway       string  `pulumi:"gateway"`
-	Global        bool    `pulumi:"global"`
-	Id            string  `pulumi:"id"`
-	IpAddress     *string `pulumi:"ipAddress"`
-	Manageable    bool    `pulumi:"manageable"`
-	Management    bool    `pulumi:"management"`
-	Metro         string  `pulumi:"metro"`
-	Netmask       string  `pulumi:"netmask"`
-	Network       string  `pulumi:"network"`
-	ProjectId     string  `pulumi:"projectId"`
-	Public        bool    `pulumi:"public"`
-	Quantity      int     `pulumi:"quantity"`
+	Address       string `pulumi:"address"`
+	AddressFamily int    `pulumi:"addressFamily"`
+	Cidr          int    `pulumi:"cidr"`
+	CidrNotation  string `pulumi:"cidrNotation"`
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	Facility   string  `pulumi:"facility"`
+	Gateway    string  `pulumi:"gateway"`
+	Global     bool    `pulumi:"global"`
+	Id         string  `pulumi:"id"`
+	IpAddress  *string `pulumi:"ipAddress"`
+	Manageable bool    `pulumi:"manageable"`
+	Management bool    `pulumi:"management"`
+	Metro      string  `pulumi:"metro"`
+	Netmask    string  `pulumi:"netmask"`
+	Network    string  `pulumi:"network"`
+	ProjectId  string  `pulumi:"projectId"`
+	Public     bool    `pulumi:"public"`
+	Quantity   int     `pulumi:"quantity"`
 	// One of `globalIpv4`, `publicIpv4`, `privateIpv4`, `publicIpv6`,or `vrf`
 	Type  string `pulumi:"type"`
 	VrfId int    `pulumi:"vrfId"`
@@ -118,6 +119,7 @@ func (o LookupReservedIpBlockResultOutput) CidrNotation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpBlockResult) string { return v.CidrNotation }).(pulumi.StringOutput)
 }
 
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupReservedIpBlockResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpBlockResult) string { return v.Facility }).(pulumi.StringOutput)
 }

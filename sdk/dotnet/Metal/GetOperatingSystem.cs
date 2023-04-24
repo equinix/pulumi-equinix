@@ -36,10 +36,7 @@ namespace Pulumi.Equinix.Metal
         ///     {
         ///         Hostname = "tf.ubuntu",
         ///         Plan = "c3.medium.x86",
-        ///         Facilities = new[]
-        ///         {
-        ///             "ny5",
-        ///         },
+        ///         Metro = "ny",
         ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal/operatingSystem.OperatingSystem&gt;),
         ///         BillingCycle = "hourly",
         ///         ProjectId = local.Project_id,
@@ -78,10 +75,7 @@ namespace Pulumi.Equinix.Metal
         ///     {
         ///         Hostname = "tf.ubuntu",
         ///         Plan = "c3.medium.x86",
-        ///         Facilities = new[]
-        ///         {
-        ///             "ny5",
-        ///         },
+        ///         Metro = "ny",
         ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal/operatingSystem.OperatingSystem&gt;),
         ///         BillingCycle = "hourly",
         ///         ProjectId = local.Project_id,

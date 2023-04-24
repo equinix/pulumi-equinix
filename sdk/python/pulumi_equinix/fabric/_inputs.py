@@ -3647,14 +3647,14 @@ class ServiceProfilePortArgs:
                  type: pulumi.Input[str],
                  uuid: pulumi.Input[str],
                  cross_connect_id: Optional[pulumi.Input[str]] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortLocationArgs']]]] = None,
+                 location: Optional[pulumi.Input['ServiceProfilePortLocationArgs']] = None,
                  seller_region: Optional[pulumi.Input[str]] = None,
                  seller_region_description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Colo/Port Type
         :param pulumi.Input[str] uuid: Colo/Port Uuid
         :param pulumi.Input[str] cross_connect_id: Cross Connect Id
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortLocationArgs']]] locations: Colo/Port Location
+        :param pulumi.Input['ServiceProfilePortLocationArgs'] location: Colo/Port Location
         :param pulumi.Input[str] seller_region: Seller Region
         :param pulumi.Input[str] seller_region_description: Seller Region details
         """
@@ -3662,8 +3662,8 @@ class ServiceProfilePortArgs:
         pulumi.set(__self__, "uuid", uuid)
         if cross_connect_id is not None:
             pulumi.set(__self__, "cross_connect_id", cross_connect_id)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if seller_region is not None:
             pulumi.set(__self__, "seller_region", seller_region)
         if seller_region_description is not None:
@@ -3707,15 +3707,15 @@ class ServiceProfilePortArgs:
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortLocationArgs']]]]:
+    def location(self) -> Optional[pulumi.Input['ServiceProfilePortLocationArgs']]:
         """
         Colo/Port Location
         """
-        return pulumi.get(self, "locations")
+        return pulumi.get(self, "location")
 
-    @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortLocationArgs']]]]):
-        pulumi.set(self, "locations", value)
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['ServiceProfilePortLocationArgs']]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="sellerRegion")

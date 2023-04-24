@@ -47,9 +47,6 @@ namespace Pulumi.Equinix.Metal
         [Input("addressFamily", required: true)]
         public int AddressFamily { get; set; }
 
-        /// <summary>
-        /// Facility of the searched block. (for non-global blocks).
-        /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
 
@@ -91,9 +88,6 @@ namespace Pulumi.Equinix.Metal
         [Input("addressFamily", required: true)]
         public Input<int> AddressFamily { get; set; } = null!;
 
-        /// <summary>
-        /// Facility of the searched block. (for non-global blocks).
-        /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 

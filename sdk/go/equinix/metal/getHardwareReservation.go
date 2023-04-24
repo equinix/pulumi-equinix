@@ -67,7 +67,7 @@ type GetHardwareReservationArgs struct {
 type GetHardwareReservationResult struct {
 	// UUID of device occupying the reservation.
 	DeviceId string `pulumi:"deviceId"`
-	// Plan type for the reservation.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility string `pulumi:"facility"`
 	// ID of the hardware reservation to look up.
 	Id string `pulumi:"id"`
@@ -133,7 +133,7 @@ func (o GetHardwareReservationResultOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// Plan type for the reservation.
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetHardwareReservationResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.Facility }).(pulumi.StringOutput)
 }

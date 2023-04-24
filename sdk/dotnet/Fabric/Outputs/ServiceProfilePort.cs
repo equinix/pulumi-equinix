@@ -20,7 +20,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Colo/Port Location
         /// </summary>
-        public readonly ImmutableArray<Outputs.ServiceProfilePortLocation> Locations;
+        public readonly Outputs.ServiceProfilePortLocation? Location;
         /// <summary>
         /// Seller Region
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         private ServiceProfilePort(
             string? crossConnectId,
 
-            ImmutableArray<Outputs.ServiceProfilePortLocation> locations,
+            Outputs.ServiceProfilePortLocation? location,
 
             string? sellerRegion,
 
@@ -53,7 +53,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             string uuid)
         {
             CrossConnectId = crossConnectId;
-            Locations = locations;
+            Location = location;
             SellerRegion = sellerRegion;
             SellerRegionDescription = sellerRegionDescription;
             Type = type;

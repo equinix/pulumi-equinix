@@ -31,9 +31,8 @@ func GetPrecreatedIpBlock(ctx *pulumi.Context, args *GetPrecreatedIpBlockArgs, o
 // A collection of arguments for invoking getPrecreatedIpBlock.
 type GetPrecreatedIpBlockArgs struct {
 	// 4 or 6, depending on which block you are looking for.
-	AddressFamily int `pulumi:"addressFamily"`
-	// Facility of the searched block. (for non-global blocks).
-	Facility *string `pulumi:"facility"`
+	AddressFamily int     `pulumi:"addressFamily"`
+	Facility      *string `pulumi:"facility"`
 	// Whether to look for global block. Default is false for backward compatibility.
 	Global *bool `pulumi:"global"`
 	// Metro of the searched block (for non-global blocks).
@@ -84,9 +83,8 @@ func GetPrecreatedIpBlockOutput(ctx *pulumi.Context, args GetPrecreatedIpBlockOu
 // A collection of arguments for invoking getPrecreatedIpBlock.
 type GetPrecreatedIpBlockOutputArgs struct {
 	// 4 or 6, depending on which block you are looking for.
-	AddressFamily pulumi.IntInput `pulumi:"addressFamily"`
-	// Facility of the searched block. (for non-global blocks).
-	Facility pulumi.StringPtrInput `pulumi:"facility"`
+	AddressFamily pulumi.IntInput       `pulumi:"addressFamily"`
+	Facility      pulumi.StringPtrInput `pulumi:"facility"`
 	// Whether to look for global block. Default is false for backward compatibility.
 	Global pulumi.BoolPtrInput `pulumi:"global"`
 	// Metro of the searched block (for non-global blocks).

@@ -20,10 +20,6 @@ public final class GetPlansResult {
      * 
      */
     private String id;
-    /**
-     * @return The ID of the facility
-     * 
-     */
     private List<GetPlansPlan> plans;
     private @Nullable List<GetPlansSort> sorts;
 
@@ -38,10 +34,6 @@ public final class GetPlansResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The ID of the facility
-     * 
-     */
     public List<GetPlansPlan> plans() {
         return this.plans;
     }

@@ -24,6 +24,10 @@ class GetSpotMarketPriceResult:
     def __init__(__self__, facility=None, id=None, metro=None, plan=None, price=None):
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
+        if facility is not None:
+            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -92,16 +96,6 @@ def get_spot_market_price(facility: Optional[str] = None,
 
     ## Example Usage
 
-    Lookup by facility:
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    example = equinix.metal.get_spot_market_price(facility="ny5",
-        plan="c3.small.x86")
-    ```
-
     Lookup by metro:
 
     ```python
@@ -113,7 +107,6 @@ def get_spot_market_price(facility: Optional[str] = None,
     ```
 
 
-    :param str facility: Name of the facility.
     :param str metro: Name of the metro.
     :param str plan: Name of the plan.
     """
@@ -142,16 +135,6 @@ def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
-    Lookup by facility:
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    example = equinix.metal.get_spot_market_price(facility="ny5",
-        plan="c3.small.x86")
-    ```
-
     Lookup by metro:
 
     ```python
@@ -163,7 +146,6 @@ def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]]
     ```
 
 
-    :param str facility: Name of the facility.
     :param str metro: Name of the metro.
     :param str plan: Name of the plan.
     """

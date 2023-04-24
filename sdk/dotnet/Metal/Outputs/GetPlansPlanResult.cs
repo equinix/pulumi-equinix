@@ -14,11 +14,11 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class GetPlansPlanResult
     {
         /// <summary>
-        /// list of facilities where the plan is available
+        /// list of metros where the plan is available
         /// </summary>
         public readonly ImmutableArray<string> AvailableInMetros;
         /// <summary>
-        /// list of facilities where the plan is available
+        /// (**Deprecated**) list of facilities where the plan is available
         /// </summary>
         public readonly ImmutableArray<string> AvailableIns;
         /// <summary>

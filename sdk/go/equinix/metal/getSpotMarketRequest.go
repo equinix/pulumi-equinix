@@ -36,7 +36,7 @@ type LookupSpotMarketRequestResult struct {
 	DevicesMin int `pulumi:"devicesMin"`
 	// Date and time When the spot market request will be ended.
 	EndAt string `pulumi:"endAt"`
-	// Facility IDs where devices should be created.
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -109,7 +109,7 @@ func (o LookupSpotMarketRequestResultOutput) EndAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpotMarketRequestResult) string { return v.EndAt }).(pulumi.StringOutput)
 }
 
-// Facility IDs where devices should be created.
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupSpotMarketRequestResultOutput) Facilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSpotMarketRequestResult) []string { return v.Facilities }).(pulumi.StringArrayOutput)
 }
