@@ -107,5 +107,5 @@ resources:
       addressFamily: ipv4
 outputs:
   bgpSessionStatus: ${bgp.status}
-```{{% /example %}}
-
+```
+{{% /example %}}
