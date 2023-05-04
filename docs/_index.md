@@ -10,7 +10,7 @@ The Equinix provider must be configured with credentials to create and update re
 
 ## Example
 
-{{< chooser language "typescript,python,go,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 
 {{% choosable language typescript %}}
 
