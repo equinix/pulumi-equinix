@@ -12,10 +12,6 @@ import java.util.Objects;
 public final class GetConnectionNotification {
     private List<String> emails;
     private String sendInterval;
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     private String type;
 
     private GetConnectionNotification() {}
@@ -25,10 +21,6 @@ public final class GetConnectionNotification {
     public String sendInterval() {
         return this.sendInterval;
     }
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     public String type() {
         return this.type;
     }

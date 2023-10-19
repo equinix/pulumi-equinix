@@ -14,9 +14,12 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionZSideAccessPointGateway
     {
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         public readonly string? Href;
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         public readonly string? Uuid;
 
         [OutputConstructor]

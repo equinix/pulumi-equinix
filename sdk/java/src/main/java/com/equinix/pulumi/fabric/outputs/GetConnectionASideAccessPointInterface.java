@@ -9,41 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointInterface {
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private String id;
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     private String type;
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     private String uuid;
 
     private GetConnectionASideAccessPointInterface() {}
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

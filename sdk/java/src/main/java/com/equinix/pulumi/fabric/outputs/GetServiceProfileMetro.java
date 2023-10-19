@@ -16,10 +16,6 @@ public final class GetServiceProfileMetro {
     private String displayName;
     private List<String> ibxs;
     private Boolean inTrail;
-    /**
-     * @return Customer-assigned service profile name
-     * 
-     */
     private String name;
     private Map<String,String> sellerRegions;
 
@@ -36,10 +32,6 @@ public final class GetServiceProfileMetro {
     public Boolean inTrail() {
         return this.inTrail;
     }
-    /**
-     * @return Customer-assigned service profile name
-     * 
-     */
     public String name() {
         return this.name;
     }

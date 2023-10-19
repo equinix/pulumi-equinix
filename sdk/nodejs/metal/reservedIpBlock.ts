@@ -99,8 +99,8 @@ export class ReservedIpBlock extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * Facility where to allocate the public IP address block, makes sense only
+     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      */
     public readonly facility!: pulumi.Output<string | undefined>;
     public /*out*/ readonly gateway!: pulumi.Output<string>;
@@ -247,8 +247,8 @@ export interface ReservedIpBlockState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * Facility where to allocate the public IP address block, makes sense only
+     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      */
     facility?: pulumi.Input<string | enums.metal.Facility>;
     gateway?: pulumi.Input<string>;
@@ -321,8 +321,8 @@ export interface ReservedIpBlockArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * Facility where to allocate the public IP address block, makes sense only
+     * if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      */
     facility?: pulumi.Input<string | enums.metal.Facility>;
     /**

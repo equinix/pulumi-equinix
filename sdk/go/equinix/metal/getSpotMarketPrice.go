@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Metal Spot Market Price for a plan.
@@ -41,7 +43,7 @@ import (
 //
 // ```
 func GetSpotMarketPrice(ctx *pulumi.Context, args *GetSpotMarketPriceArgs, opts ...pulumi.InvokeOption) (*GetSpotMarketPriceResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpotMarketPriceResult
 	err := ctx.Invoke("equinix:metal/getSpotMarketPrice:getSpotMarketPrice", args, &rv, opts...)
 	if err != nil {
@@ -52,6 +54,8 @@ func GetSpotMarketPrice(ctx *pulumi.Context, args *GetSpotMarketPriceArgs, opts 
 
 // A collection of arguments for invoking getSpotMarketPrice.
 type GetSpotMarketPriceArgs struct {
+	// Name of the facility. Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Name of the metro.
@@ -87,6 +91,8 @@ func GetSpotMarketPriceOutput(ctx *pulumi.Context, args GetSpotMarketPriceOutput
 
 // A collection of arguments for invoking getSpotMarketPrice.
 type GetSpotMarketPriceOutputArgs struct {
+	// Name of the facility. Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Name of the metro.
@@ -112,6 +118,12 @@ func (o GetSpotMarketPriceResultOutput) ToGetSpotMarketPriceResultOutput() GetSp
 
 func (o GetSpotMarketPriceResultOutput) ToGetSpotMarketPriceResultOutputWithContext(ctx context.Context) GetSpotMarketPriceResultOutput {
 	return o
+}
+
+func (o GetSpotMarketPriceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSpotMarketPriceResult] {
+	return pulumix.Output[GetSpotMarketPriceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices

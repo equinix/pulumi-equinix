@@ -39,6 +39,12 @@ namespace Pulumi.Equinix.Fabric
             set => _sort = value;
         }
 
+        /// <summary>
+        /// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        /// </summary>
+        [Input("viewPoint")]
+        public string? ViewPoint { get; set; }
+
         public GetServiceProfilesArgs()
         {
         }
@@ -64,6 +70,12 @@ namespace Pulumi.Equinix.Fabric
             get => _sort ?? (_sort = new InputList<Inputs.GetServiceProfilesSortInputArgs>());
             set => _sort = value;
         }
+
+        /// <summary>
+        /// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        /// </summary>
+        [Input("viewPoint")]
+        public Input<string>? ViewPoint { get; set; }
 
         public GetServiceProfilesInvokeArgs()
         {
@@ -91,6 +103,10 @@ namespace Pulumi.Equinix.Fabric
         /// Service Profile Sort criteria for Search Request response payload
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesSortResult> Sort;
+        /// <summary>
+        /// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        /// </summary>
+        public readonly string? ViewPoint;
 
         [OutputConstructor]
         private GetServiceProfilesResult(
@@ -100,12 +116,15 @@ namespace Pulumi.Equinix.Fabric
 
             string id,
 
-            ImmutableArray<Outputs.GetServiceProfilesSortResult> sort)
+            ImmutableArray<Outputs.GetServiceProfilesSortResult> sort,
+
+            string? viewPoint)
         {
             Data = data;
             Filter = filter;
             Id = id;
             Sort = sort;
+            ViewPoint = viewPoint;
         }
     }
 }

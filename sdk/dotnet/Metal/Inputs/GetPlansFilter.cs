@@ -14,6 +14,8 @@ namespace Pulumi.Equinix.Metal.Inputs
     {
         /// <summary>
         /// If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+        /// 
+        /// All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
         /// </summary>
         [Input("all")]
         public bool? All { get; set; }

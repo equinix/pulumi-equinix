@@ -33,12 +33,16 @@ public final class GetProjectSshKeyArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The Equinix Metal project id of the Equinix Metal SSH Key.
      * 
+     * &gt; **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
+     * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
      * @return The Equinix Metal project id of the Equinix Metal SSH Key.
+     * 
+     * &gt; **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
      * 
      */
     public Output<String> projectId() {
@@ -112,6 +116,8 @@ public final class GetProjectSshKeyArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param projectId The Equinix Metal project id of the Equinix Metal SSH Key.
          * 
+         * &gt; **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
+         * 
          * @return builder
          * 
          */
@@ -122,6 +128,8 @@ public final class GetProjectSshKeyArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param projectId The Equinix Metal project id of the Equinix Metal SSH Key.
+         * 
+         * &gt; **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
          * 
          * @return builder
          * 

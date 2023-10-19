@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a virtual circuit resource from
@@ -47,7 +49,7 @@ import (
 //
 // ```
 func LookupVirtualCircuit(ctx *pulumi.Context, args *LookupVirtualCircuitArgs, opts ...pulumi.InvokeOption) (*LookupVirtualCircuitResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualCircuitResult
 	err := ctx.Invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", args, &rv, opts...)
 	if err != nil {
@@ -143,6 +145,12 @@ func (o LookupVirtualCircuitResultOutput) ToLookupVirtualCircuitResultOutput() L
 
 func (o LookupVirtualCircuitResultOutput) ToLookupVirtualCircuitResultOutputWithContext(ctx context.Context) LookupVirtualCircuitResultOutput {
 	return o
+}
+
+func (o LookupVirtualCircuitResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualCircuitResult] {
+	return pulumix.Output[LookupVirtualCircuitResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // UUID of Connection where the VC is scoped to.

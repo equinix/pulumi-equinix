@@ -18,14 +18,14 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
     public static final ConnectionOperationErrorArgs Empty = new ConnectionOperationErrorArgs();
 
     /**
-     * Connection additional information
+     * Connection side additional information
      * 
      */
     @Import(name="additionalInfo")
     private @Nullable Output<List<ConnectionOperationErrorAdditionalInfoArgs>> additionalInfo;
 
     /**
-     * @return Connection additional information
+     * @return Connection side additional information
      * 
      */
     public Optional<Output<List<ConnectionOperationErrorAdditionalInfoArgs>>> additionalInfo() {
@@ -97,7 +97,7 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 

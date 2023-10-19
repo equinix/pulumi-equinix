@@ -7,11 +7,11 @@ import com.equinix.pulumi.fabric.outputs.GetPortAccount;
 import com.equinix.pulumi.fabric.outputs.GetPortChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetPortDevice;
 import com.equinix.pulumi.fabric.outputs.GetPortEncapsulation;
-import com.equinix.pulumi.fabric.outputs.GetPortLag;
 import com.equinix.pulumi.fabric.outputs.GetPortLocation;
 import com.equinix.pulumi.fabric.outputs.GetPortOperation;
 import com.equinix.pulumi.fabric.outputs.GetPortRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -63,11 +63,7 @@ public final class GetPortResult {
      * 
      */
     private String id;
-    /**
-     * @return Port Lag
-     * 
-     */
-    private GetPortLag lag;
+    private Boolean lagEnabled;
     /**
      * @return Port location information
      * 
@@ -178,12 +174,8 @@ public final class GetPortResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Port Lag
-     * 
-     */
-    public GetPortLag lag() {
-        return this.lag;
+    public Boolean lagEnabled() {
+        return this.lagEnabled;
     }
     /**
      * @return Port location information
@@ -267,7 +259,7 @@ public final class GetPortResult {
         private GetPortEncapsulation encapsulation;
         private String href;
         private String id;
-        private GetPortLag lag;
+        private Boolean lagEnabled;
         private GetPortLocation location;
         private String name;
         private GetPortOperation operation;
@@ -289,7 +281,7 @@ public final class GetPortResult {
     	      this.encapsulation = defaults.encapsulation;
     	      this.href = defaults.href;
     	      this.id = defaults.id;
-    	      this.lag = defaults.lag;
+    	      this.lagEnabled = defaults.lagEnabled;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.operation = defaults.operation;
@@ -347,8 +339,8 @@ public final class GetPortResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lag(GetPortLag lag) {
-            this.lag = Objects.requireNonNull(lag);
+        public Builder lagEnabled(Boolean lagEnabled) {
+            this.lagEnabled = Objects.requireNonNull(lagEnabled);
             return this;
         }
         @CustomType.Setter
@@ -407,7 +399,7 @@ public final class GetPortResult {
             o.encapsulation = encapsulation;
             o.href = href;
             o.id = id;
-            o.lag = lag;
+            o.lagEnabled = lagEnabled;
             o.location = location;
             o.name = name;
             o.operation = operation;

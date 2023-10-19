@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointResult
     {
-        /// <summary>
-        /// Customer account information that is associated with this connection
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointAccountResult> Accounts;
         public readonly string AuthenticationKey;
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointGatewayResult> Gateways;
@@ -26,10 +23,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointPortResult> Ports;
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileResult> Profiles;
         public readonly string ProviderConnectionId;
-        public readonly string SellerRegion;
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// CloudRouter; Replaces `gateway` attribute (Set of Object)
         /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointRouterResult> Routers;
+        public readonly string SellerRegion;
         public readonly string Type;
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointVirtualDeviceResult> VirtualDevices;
 
@@ -55,6 +53,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string providerConnectionId,
 
+            ImmutableArray<Outputs.GetConnectionZSideAccessPointRouterResult> routers,
+
             string sellerRegion,
 
             string type,
@@ -71,6 +71,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Ports = ports;
             Profiles = profiles;
             ProviderConnectionId = providerConnectionId;
+            Routers = routers;
             SellerRegion = sellerRegion;
             Type = type;
             VirtualDevices = virtualDevices;

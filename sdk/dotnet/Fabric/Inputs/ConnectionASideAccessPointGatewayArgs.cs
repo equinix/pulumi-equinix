@@ -13,11 +13,14 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionASideAccessPointGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 

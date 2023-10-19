@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionZSideAccessPointProfileAccessPointTypeConfig {
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     private @Nullable String uuid;
 
     private ConnectionZSideAccessPointProfileAccessPointTypeConfig() {}
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }

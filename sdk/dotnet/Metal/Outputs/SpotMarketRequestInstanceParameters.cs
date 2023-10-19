@@ -28,6 +28,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         public readonly string Plan;
         public readonly ImmutableArray<string> ProjectSshKeys;
         public readonly ImmutableArray<string> Tags;
+        public readonly string? TerminationTime;
         public readonly string? TermintationTime;
         public readonly ImmutableArray<string> UserSshKeys;
         public readonly string? Userdata;
@@ -58,6 +59,8 @@ namespace Pulumi.Equinix.Metal.Outputs
 
             ImmutableArray<string> tags,
 
+            string? terminationTime,
+
             string? termintationTime,
 
             ImmutableArray<string> userSshKeys,
@@ -76,6 +79,7 @@ namespace Pulumi.Equinix.Metal.Outputs
             Plan = plan;
             ProjectSshKeys = projectSshKeys;
             Tags = tags;
+            TerminationTime = terminationTime;
             TermintationTime = termintationTime;
             UserSshKeys = userSshKeys;
             Userdata = userdata;

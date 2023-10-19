@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetPortLocationResult
     {
-        /// <summary>
-        /// Port URI information
-        /// </summary>
         public readonly string Href;
         public readonly string Ibx;
         public readonly string MetroCode;

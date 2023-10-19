@@ -13,8 +13,17 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class ServiceProfileAccessPointTypeConfigLinkProtocolConfig
     {
+        /// <summary>
+        /// Port Encapsulation
+        /// </summary>
         public readonly string? Encapsulation;
+        /// <summary>
+        /// Encapsulation strategy
+        /// </summary>
         public readonly string? EncapsulationStrategy;
+        /// <summary>
+        /// Reuse vlan sTag
+        /// </summary>
         public readonly bool? ReuseVlanSTag;
 
         [OutputConstructor]

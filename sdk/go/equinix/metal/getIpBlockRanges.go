@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
@@ -44,7 +46,7 @@ import (
 //
 // ```
 func GetIpBlockRanges(ctx *pulumi.Context, args *GetIpBlockRangesArgs, opts ...pulumi.InvokeOption) (*GetIpBlockRangesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpBlockRangesResult
 	err := ctx.Invoke("equinix:metal/getIpBlockRanges:getIpBlockRanges", args, &rv, opts...)
 	if err != nil {
@@ -55,6 +57,9 @@ func GetIpBlockRanges(ctx *pulumi.Context, args *GetIpBlockRangesArgs, opts ...p
 
 // A collection of arguments for invoking getIpBlockRanges.
 type GetIpBlockRangesArgs struct {
+	// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
+	// anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Metro code filtering the IP blocks. Global IPv4 blocks will be listed
@@ -97,6 +102,9 @@ func GetIpBlockRangesOutput(ctx *pulumi.Context, args GetIpBlockRangesOutputArgs
 
 // A collection of arguments for invoking getIpBlockRanges.
 type GetIpBlockRangesOutputArgs struct {
+	// Facility code filtering the IP blocks. Global IPv4 blocks will be listed
+	// anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Metro code filtering the IP blocks. Global IPv4 blocks will be listed
@@ -123,6 +131,12 @@ func (o GetIpBlockRangesResultOutput) ToGetIpBlockRangesResultOutput() GetIpBloc
 
 func (o GetIpBlockRangesResultOutput) ToGetIpBlockRangesResultOutputWithContext(ctx context.Context) GetIpBlockRangesResultOutput {
 	return o
+}
+
+func (o GetIpBlockRangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpBlockRangesResult] {
+	return pulumix.Output[GetIpBlockRangesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices

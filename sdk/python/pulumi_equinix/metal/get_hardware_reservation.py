@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -27,10 +27,6 @@ class GetHardwareReservationResult:
         pulumi.set(__self__, "device_id", device_id)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
-        if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -65,6 +61,12 @@ class GetHardwareReservationResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
+        """
+        (**Deprecated**) Facility for the reservation. Use metro instead; read the facility to metro migration guide
+        """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -173,15 +175,15 @@ def get_hardware_reservation(device_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getHardwareReservation:getHardwareReservation', __args__, opts=opts, typ=GetHardwareReservationResult).value
 
     return AwaitableGetHardwareReservationResult(
-        device_id=__ret__.device_id,
-        facility=__ret__.facility,
-        id=__ret__.id,
-        plan=__ret__.plan,
-        project_id=__ret__.project_id,
-        provisionable=__ret__.provisionable,
-        short_id=__ret__.short_id,
-        spare=__ret__.spare,
-        switch_uuid=__ret__.switch_uuid)
+        device_id=pulumi.get(__ret__, 'device_id'),
+        facility=pulumi.get(__ret__, 'facility'),
+        id=pulumi.get(__ret__, 'id'),
+        plan=pulumi.get(__ret__, 'plan'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        provisionable=pulumi.get(__ret__, 'provisionable'),
+        short_id=pulumi.get(__ret__, 'short_id'),
+        spare=pulumi.get(__ret__, 'spare'),
+        switch_uuid=pulumi.get(__ret__, 'switch_uuid'))
 
 
 @_utilities.lift_output_func(get_hardware_reservation)

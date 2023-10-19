@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectApiKeyArgs', 'ProjectApiKey']
@@ -24,9 +24,28 @@ class ProjectApiKeyArgs:
         :param pulumi.Input[str] project_id: UUID of the project where the API key is scoped to.
         :param pulumi.Input[bool] read_only: Flag indicating whether the API key shoud be read-only
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "read_only", read_only)
+        ProjectApiKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            project_id=project_id,
+            read_only=read_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             project_id: pulumi.Input[str],
+             read_only: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
+        _setter("description", description)
+        _setter("project_id", project_id)
+        _setter("read_only", read_only)
 
     @property
     @pulumi.getter
@@ -81,14 +100,35 @@ class _ProjectApiKeyState:
         :param pulumi.Input[bool] read_only: Flag indicating whether the API key shoud be read-only
         :param pulumi.Input[str] token: API token which can be used in Equinix Metal API clients
         """
+        _ProjectApiKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            project_id=project_id,
+            read_only=read_only,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -222,6 +262,10 @@ class ProjectApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

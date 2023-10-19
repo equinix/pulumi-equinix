@@ -15,15 +15,7 @@ public final class GetServiceProfilePort {
     private List<GetServiceProfilePortLocation> locations;
     private String sellerRegion;
     private String sellerRegionDescription;
-    /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-     * 
-     */
     private String type;
-    /**
-     * @return Equinix assigned service profile identifier
-     * 
-     */
     private String uuid;
 
     private GetServiceProfilePort() {}
@@ -39,17 +31,9 @@ public final class GetServiceProfilePort {
     public String sellerRegionDescription() {
         return this.sellerRegionDescription;
     }
-    /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Equinix assigned service profile identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

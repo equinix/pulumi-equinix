@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceProfilePortLocation {
+    /**
+     * @return IBX Code
+     * 
+     */
     private @Nullable String ibx;
+    /**
+     * @return Access point metro code
+     * 
+     */
     private @Nullable String metroCode;
+    /**
+     * @return Access point metro name
+     * 
+     */
     private @Nullable String metroName;
+    /**
+     * @return Access point region
+     * 
+     */
     private @Nullable String region;
 
     private ServiceProfilePortLocation() {}
+    /**
+     * @return IBX Code
+     * 
+     */
     public Optional<String> ibx() {
         return Optional.ofNullable(this.ibx);
     }
+    /**
+     * @return Access point metro code
+     * 
+     */
     public Optional<String> metroCode() {
         return Optional.ofNullable(this.metroCode);
     }
+    /**
+     * @return Access point metro name
+     * 
+     */
     public Optional<String> metroName() {
         return Optional.ofNullable(this.metroName);
     }
+    /**
+     * @return Access point region
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

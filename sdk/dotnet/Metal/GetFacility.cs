@@ -11,9 +11,19 @@ namespace Pulumi.Equinix.Metal
 {
     public static class GetFacility
     {
+        /// <summary>
+        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+        /// 
+        /// Provides an Equinix Metal facility datasource.
+        /// </summary>
         public static Task<GetFacilityResult> InvokeAsync(GetFacilityArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+        /// 
+        /// Provides an Equinix Metal facility datasource.
+        /// </summary>
         public static Output<GetFacilityResult> Invoke(GetFacilityInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFacilityResult>("equinix:metal/getFacility:getFacility", args ?? new GetFacilityInvokeArgs(), options.WithDefaults());
     }

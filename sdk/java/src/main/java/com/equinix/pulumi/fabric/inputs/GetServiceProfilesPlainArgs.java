@@ -6,6 +6,7 @@ package com.equinix.pulumi.fabric.inputs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilter;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesSort;
 import com.pulumi.core.annotations.Import;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,11 +47,27 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.sort);
     }
 
+    /**
+     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * 
+     */
+    @Import(name="viewPoint")
+    private @Nullable String viewPoint;
+
+    /**
+     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * 
+     */
+    public Optional<String> viewPoint() {
+        return Optional.ofNullable(this.viewPoint);
+    }
+
     private GetServiceProfilesPlainArgs() {}
 
     private GetServiceProfilesPlainArgs(GetServiceProfilesPlainArgs $) {
         this.filter = $.filter;
         this.sort = $.sort;
+        this.viewPoint = $.viewPoint;
     }
 
     public static Builder builder() {
@@ -101,6 +118,17 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
          */
         public Builder sort(GetServiceProfilesSort... sort) {
             return sort(List.of(sort));
+        }
+
+        /**
+         * @param viewPoint Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(@Nullable String viewPoint) {
+            $.viewPoint = viewPoint;
+            return this;
         }
 
         public GetServiceProfilesPlainArgs build() {

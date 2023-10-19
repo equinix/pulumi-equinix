@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PortArgs', 'Port']
@@ -34,18 +34,51 @@ class PortArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
                ports.
         """
-        pulumi.set(__self__, "bonded", bonded)
-        pulumi.set(__self__, "port_id", port_id)
+        PortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bonded=bonded,
+            port_id=port_id,
+            layer2=layer2,
+            native_vlan_id=native_vlan_id,
+            reset_on_delete=reset_on_delete,
+            vlan_ids=vlan_ids,
+            vxlan_ids=vxlan_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bonded: pulumi.Input[bool],
+             port_id: pulumi.Input[str],
+             layer2: Optional[pulumi.Input[bool]] = None,
+             native_vlan_id: Optional[pulumi.Input[str]] = None,
+             reset_on_delete: Optional[pulumi.Input[bool]] = None,
+             vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vxlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if 'nativeVlanId' in kwargs:
+            native_vlan_id = kwargs['nativeVlanId']
+        if 'resetOnDelete' in kwargs:
+            reset_on_delete = kwargs['resetOnDelete']
+        if 'vlanIds' in kwargs:
+            vlan_ids = kwargs['vlanIds']
+        if 'vxlanIds' in kwargs:
+            vxlan_ids = kwargs['vxlanIds']
+
+        _setter("bonded", bonded)
+        _setter("port_id", port_id)
         if layer2 is not None:
-            pulumi.set(__self__, "layer2", layer2)
+            _setter("layer2", layer2)
         if native_vlan_id is not None:
-            pulumi.set(__self__, "native_vlan_id", native_vlan_id)
+            _setter("native_vlan_id", native_vlan_id)
         if reset_on_delete is not None:
-            pulumi.set(__self__, "reset_on_delete", reset_on_delete)
+            _setter("reset_on_delete", reset_on_delete)
         if vlan_ids is not None:
-            pulumi.set(__self__, "vlan_ids", vlan_ids)
+            _setter("vlan_ids", vlan_ids)
         if vxlan_ids is not None:
-            pulumi.set(__self__, "vxlan_ids", vxlan_ids)
+            _setter("vxlan_ids", vxlan_ids)
 
     @property
     @pulumi.getter
@@ -173,34 +206,89 @@ class _PortState:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vxlan_ids: List of VXLAN IDs to attach to the port, valid only for L2 and Hybrid
                ports.
         """
+        _PortState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bond_id=bond_id,
+            bond_name=bond_name,
+            bonded=bonded,
+            disbond_supported=disbond_supported,
+            layer2=layer2,
+            mac=mac,
+            name=name,
+            native_vlan_id=native_vlan_id,
+            network_type=network_type,
+            port_id=port_id,
+            reset_on_delete=reset_on_delete,
+            type=type,
+            vlan_ids=vlan_ids,
+            vxlan_ids=vxlan_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bond_id: Optional[pulumi.Input[str]] = None,
+             bond_name: Optional[pulumi.Input[str]] = None,
+             bonded: Optional[pulumi.Input[bool]] = None,
+             disbond_supported: Optional[pulumi.Input[bool]] = None,
+             layer2: Optional[pulumi.Input[bool]] = None,
+             mac: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             native_vlan_id: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             reset_on_delete: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vxlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bondId' in kwargs:
+            bond_id = kwargs['bondId']
+        if 'bondName' in kwargs:
+            bond_name = kwargs['bondName']
+        if 'disbondSupported' in kwargs:
+            disbond_supported = kwargs['disbondSupported']
+        if 'nativeVlanId' in kwargs:
+            native_vlan_id = kwargs['nativeVlanId']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if 'resetOnDelete' in kwargs:
+            reset_on_delete = kwargs['resetOnDelete']
+        if 'vlanIds' in kwargs:
+            vlan_ids = kwargs['vlanIds']
+        if 'vxlanIds' in kwargs:
+            vxlan_ids = kwargs['vxlanIds']
+
         if bond_id is not None:
-            pulumi.set(__self__, "bond_id", bond_id)
+            _setter("bond_id", bond_id)
         if bond_name is not None:
-            pulumi.set(__self__, "bond_name", bond_name)
+            _setter("bond_name", bond_name)
         if bonded is not None:
-            pulumi.set(__self__, "bonded", bonded)
+            _setter("bonded", bonded)
         if disbond_supported is not None:
-            pulumi.set(__self__, "disbond_supported", disbond_supported)
+            _setter("disbond_supported", disbond_supported)
         if layer2 is not None:
-            pulumi.set(__self__, "layer2", layer2)
+            _setter("layer2", layer2)
         if mac is not None:
-            pulumi.set(__self__, "mac", mac)
+            _setter("mac", mac)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if native_vlan_id is not None:
-            pulumi.set(__self__, "native_vlan_id", native_vlan_id)
+            _setter("native_vlan_id", native_vlan_id)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if port_id is not None:
-            pulumi.set(__self__, "port_id", port_id)
+            _setter("port_id", port_id)
         if reset_on_delete is not None:
-            pulumi.set(__self__, "reset_on_delete", reset_on_delete)
+            _setter("reset_on_delete", reset_on_delete)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vlan_ids is not None:
-            pulumi.set(__self__, "vlan_ids", vlan_ids)
+            _setter("vlan_ids", vlan_ids)
         if vxlan_ids is not None:
-            pulumi.set(__self__, "vxlan_ids", vxlan_ids)
+            _setter("vxlan_ids", vxlan_ids)
 
     @property
     @pulumi.getter(name="bondId")
@@ -449,6 +537,10 @@ class Port(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PortArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

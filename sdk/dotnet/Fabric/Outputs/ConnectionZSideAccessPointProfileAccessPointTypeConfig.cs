@@ -14,9 +14,12 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionZSideAccessPointProfileAccessPointTypeConfig
     {
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         public readonly string? Uuid;
 
         [OutputConstructor]

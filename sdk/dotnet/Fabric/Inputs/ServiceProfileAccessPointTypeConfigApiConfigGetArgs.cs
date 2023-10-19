@@ -12,24 +12,45 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ServiceProfileAccessPointTypeConfigApiConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Setting showing that oversubscription support is available (true) or not (false). The default is false
+        /// </summary>
         [Input("allowOverSubscription")]
         public Input<bool>? AllowOverSubscription { get; set; }
 
+        /// <summary>
+        /// Setting indicating whether the API is available (true) or not (false)
+        /// </summary>
         [Input("apiAvailable")]
         public Input<bool>? ApiAvailable { get; set; }
 
+        /// <summary>
+        /// Bandwidth from api
+        /// </summary>
         [Input("bandwidthFromApi")]
         public Input<bool>? BandwidthFromApi { get; set; }
 
+        /// <summary>
+        /// Setting indicating that the port is managed by Equinix (true) or not (false)
+        /// </summary>
         [Input("equinixManagedPort")]
         public Input<bool>? EquinixManagedPort { get; set; }
 
+        /// <summary>
+        /// Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        /// </summary>
         [Input("equinixManagedVlan")]
         public Input<bool>? EquinixManagedVlan { get; set; }
 
+        /// <summary>
+        /// Integration id
+        /// </summary>
         [Input("integrationId")]
         public Input<string>? IntegrationId { get; set; }
 
+        /// <summary>
+        /// A cap on over subscription
+        /// </summary>
         [Input("overSubscriptionLimit")]
         public Input<int>? OverSubscriptionLimit { get; set; }
 

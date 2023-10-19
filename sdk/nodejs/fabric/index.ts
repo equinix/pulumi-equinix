@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CloudRouterArgs, CloudRouterState } from "./cloudRouter";
+export type CloudRouter = import("./cloudRouter").CloudRouter;
+export const CloudRouter: typeof import("./cloudRouter").CloudRouter = null as any;
+utilities.lazyLoad(exports, ["CloudRouter"], () => require("./cloudRouter"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { GetCloudRouterArgs, GetCloudRouterResult, GetCloudRouterOutputArgs } from "./getCloudRouter";
+export const getCloudRouter: typeof import("./getCloudRouter").getCloudRouter = null as any;
+export const getCloudRouterOutput: typeof import("./getCloudRouter").getCloudRouterOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudRouter","getCloudRouterOutput"], () => require("./getCloudRouter"));
 
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
@@ -25,6 +35,11 @@ export const getPorts: typeof import("./getPorts").getPorts = null as any;
 export const getPortsOutput: typeof import("./getPorts").getPortsOutput = null as any;
 utilities.lazyLoad(exports, ["getPorts","getPortsOutput"], () => require("./getPorts"));
 
+export { GetRoutingProtocolArgs, GetRoutingProtocolResult, GetRoutingProtocolOutputArgs } from "./getRoutingProtocol";
+export const getRoutingProtocol: typeof import("./getRoutingProtocol").getRoutingProtocol = null as any;
+export const getRoutingProtocolOutput: typeof import("./getRoutingProtocol").getRoutingProtocolOutput = null as any;
+utilities.lazyLoad(exports, ["getRoutingProtocol","getRoutingProtocolOutput"], () => require("./getRoutingProtocol"));
+
 export { GetServiceProfileArgs, GetServiceProfileResult, GetServiceProfileOutputArgs } from "./getServiceProfile";
 export const getServiceProfile: typeof import("./getServiceProfile").getServiceProfile = null as any;
 export const getServiceProfileOutput: typeof import("./getServiceProfile").getServiceProfileOutput = null as any;
@@ -34,6 +49,11 @@ export { GetServiceProfilesArgs, GetServiceProfilesResult, GetServiceProfilesOut
 export const getServiceProfiles: typeof import("./getServiceProfiles").getServiceProfiles = null as any;
 export const getServiceProfilesOutput: typeof import("./getServiceProfiles").getServiceProfilesOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceProfiles","getServiceProfilesOutput"], () => require("./getServiceProfiles"));
+
+export { RoutingProtocolArgs, RoutingProtocolState } from "./routingProtocol";
+export type RoutingProtocol = import("./routingProtocol").RoutingProtocol;
+export const RoutingProtocol: typeof import("./routingProtocol").RoutingProtocol = null as any;
+utilities.lazyLoad(exports, ["RoutingProtocol"], () => require("./routingProtocol"));
 
 export { ServiceProfileArgs, ServiceProfileState } from "./serviceProfile";
 export type ServiceProfile = import("./serviceProfile").ServiceProfile;
@@ -48,8 +68,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "equinix:fabric/cloudRouter:CloudRouter":
+                return new CloudRouter(name, <any>undefined, { urn })
             case "equinix:fabric/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "equinix:fabric/routingProtocol:RoutingProtocol":
+                return new RoutingProtocol(name, <any>undefined, { urn })
             case "equinix:fabric/serviceProfile:ServiceProfile":
                 return new ServiceProfile(name, <any>undefined, { urn })
             default:
@@ -57,5 +81,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("equinix", "fabric/cloudRouter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)

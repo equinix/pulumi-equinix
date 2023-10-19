@@ -19,37 +19,61 @@ public final class ConnectionZSideAccessPointLinkProtocolArgs extends com.pulumi
     public static final ConnectionZSideAccessPointLinkProtocolArgs Empty = new ConnectionZSideAccessPointLinkProtocolArgs();
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,AccessPointLinkProtocolType>> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<Output<Either<String,AccessPointLinkProtocolType>>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+     * 
+     */
     @Import(name="vlanCTag")
     private @Nullable Output<Integer> vlanCTag;
 
+    /**
+     * @return Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+     * 
+     */
     public Optional<Output<Integer>> vlanCTag() {
         return Optional.ofNullable(this.vlanCTag);
     }
 
+    /**
+     * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+     * 
+     */
     @Import(name="vlanSTag")
     private @Nullable Output<Integer> vlanSTag;
 
+    /**
+     * @return Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+     * 
+     */
     public Optional<Output<Integer>> vlanSTag() {
         return Optional.ofNullable(this.vlanSTag);
     }
 
+    /**
+     * Vlan Tag information, vlanTag value specified for DOT1Q connections
+     * 
+     */
     @Import(name="vlanTag")
     private @Nullable Output<Integer> vlanTag;
 
+    /**
+     * @return Vlan Tag information, vlanTag value specified for DOT1Q connections
+     * 
+     */
     public Optional<Output<Integer>> vlanTag() {
         return Optional.ofNullable(this.vlanTag);
     }
@@ -82,7 +106,7 @@ public final class ConnectionZSideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -93,7 +117,7 @@ public final class ConnectionZSideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -103,7 +127,7 @@ public final class ConnectionZSideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -113,7 +137,7 @@ public final class ConnectionZSideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -122,29 +146,65 @@ public final class ConnectionZSideAccessPointLinkProtocolArgs extends com.pulumi
             return type(Either.ofRight(type));
         }
 
+        /**
+         * @param vlanCTag Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanCTag(@Nullable Output<Integer> vlanCTag) {
             $.vlanCTag = vlanCTag;
             return this;
         }
 
+        /**
+         * @param vlanCTag Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanCTag(Integer vlanCTag) {
             return vlanCTag(Output.of(vlanCTag));
         }
 
+        /**
+         * @param vlanSTag Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanSTag(@Nullable Output<Integer> vlanSTag) {
             $.vlanSTag = vlanSTag;
             return this;
         }
 
+        /**
+         * @param vlanSTag Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanSTag(Integer vlanSTag) {
             return vlanSTag(Output.of(vlanSTag));
         }
 
+        /**
+         * @param vlanTag Vlan Tag information, vlanTag value specified for DOT1Q connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanTag(@Nullable Output<Integer> vlanTag) {
             $.vlanTag = vlanTag;
             return this;
         }
 
+        /**
+         * @param vlanTag Vlan Tag information, vlanTag value specified for DOT1Q connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanTag(Integer vlanTag) {
             return vlanTag(Output.of(vlanTag));
         }

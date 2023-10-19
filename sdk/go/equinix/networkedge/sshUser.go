@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource `networkedge.SshUser` allows creation and management of Equinix Network
@@ -87,7 +89,7 @@ func NewSshUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SshUser
 	err := ctx.RegisterResource("equinix:networkedge/sshUser:SshUser", name, args, &resource, opts...)
 	if err != nil {
@@ -177,6 +179,12 @@ func (i *SshUser) ToSshUserOutputWithContext(ctx context.Context) SshUserOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SshUserOutput)
 }
 
+func (i *SshUser) ToOutput(ctx context.Context) pulumix.Output[*SshUser] {
+	return pulumix.Output[*SshUser]{
+		OutputState: i.ToSshUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SshUserArrayInput is an input type that accepts SshUserArray and SshUserArrayOutput values.
 // You can construct a concrete instance of `SshUserArrayInput` via:
 //
@@ -200,6 +208,12 @@ func (i SshUserArray) ToSshUserArrayOutput() SshUserArrayOutput {
 
 func (i SshUserArray) ToSshUserArrayOutputWithContext(ctx context.Context) SshUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SshUserArrayOutput)
+}
+
+func (i SshUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*SshUser] {
+	return pulumix.Output[[]*SshUser]{
+		OutputState: i.ToSshUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SshUserMapInput is an input type that accepts SshUserMap and SshUserMapOutput values.
@@ -227,6 +241,12 @@ func (i SshUserMap) ToSshUserMapOutputWithContext(ctx context.Context) SshUserMa
 	return pulumi.ToOutputWithContext(ctx, i).(SshUserMapOutput)
 }
 
+func (i SshUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SshUser] {
+	return pulumix.Output[map[string]*SshUser]{
+		OutputState: i.ToSshUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SshUserOutput struct{ *pulumi.OutputState }
 
 func (SshUserOutput) ElementType() reflect.Type {
@@ -239,6 +259,12 @@ func (o SshUserOutput) ToSshUserOutput() SshUserOutput {
 
 func (o SshUserOutput) ToSshUserOutputWithContext(ctx context.Context) SshUserOutput {
 	return o
+}
+
+func (o SshUserOutput) ToOutput(ctx context.Context) pulumix.Output[*SshUser] {
+	return pulumix.Output[*SshUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // list of device identifiers to which user will have access.
@@ -275,6 +301,12 @@ func (o SshUserArrayOutput) ToSshUserArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o SshUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SshUser] {
+	return pulumix.Output[[]*SshUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SshUserArrayOutput) Index(i pulumi.IntInput) SshUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SshUser {
 		return vs[0].([]*SshUser)[vs[1].(int)]
@@ -293,6 +325,12 @@ func (o SshUserMapOutput) ToSshUserMapOutput() SshUserMapOutput {
 
 func (o SshUserMapOutput) ToSshUserMapOutputWithContext(ctx context.Context) SshUserMapOutput {
 	return o
+}
+
+func (o SshUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SshUser] {
+	return pulumix.Output[map[string]*SshUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SshUserMapOutput) MapIndex(k pulumi.StringInput) SshUserOutput {

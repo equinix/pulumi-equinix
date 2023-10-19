@@ -13,13 +13,13 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionZSideAccessPointPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        /// Port name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -36,6 +36,9 @@ namespace Pulumi.Equinix.Fabric.Inputs
             set => _redundancies = value;
         }
 
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 

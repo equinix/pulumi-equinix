@@ -31,17 +31,9 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.project);
     }
 
-    /**
-     * Equinix-assigned connection identifier
-     * 
-     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -92,23 +84,11 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
             return project(Output.of(project));
         }
 
-        /**
-         * @param uuid Equinix-assigned connection identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
-        /**
-         * @param uuid Equinix-assigned connection identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

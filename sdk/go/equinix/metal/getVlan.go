@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
@@ -74,7 +76,7 @@ import (
 //
 // ```
 func LookupVlan(ctx *pulumi.Context, args *LookupVlanArgs, opts ...pulumi.InvokeOption) (*LookupVlanResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVlanResult
 	err := ctx.Invoke("equinix:metal/getVlan:getVlan", args, &rv, opts...)
 	if err != nil {
@@ -90,6 +92,8 @@ type LookupVlanArgs struct {
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
 	// Metro where the VLAN is deployed.
+	//
+	// > **NOTE:** You must set either `vlanId` or a combination of `vxlan`, `projectId`, and, `metro` or `facility`.
 	Metro *string `pulumi:"metro"`
 	// UUID of parent project of the VLAN. Use together with the vxlan number and metro or facility.
 	ProjectId *string `pulumi:"projectId"`
@@ -135,6 +139,8 @@ type LookupVlanOutputArgs struct {
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Metro where the VLAN is deployed.
+	//
+	// > **NOTE:** You must set either `vlanId` or a combination of `vxlan`, `projectId`, and, `metro` or `facility`.
 	Metro pulumi.StringPtrInput `pulumi:"metro"`
 	// UUID of parent project of the VLAN. Use together with the vxlan number and metro or facility.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
@@ -161,6 +167,12 @@ func (o LookupVlanResultOutput) ToLookupVlanResultOutput() LookupVlanResultOutpu
 
 func (o LookupVlanResultOutput) ToLookupVlanResultOutputWithContext(ctx context.Context) LookupVlanResultOutput {
 	return o
+}
+
+func (o LookupVlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVlanResult] {
+	return pulumix.Output[LookupVlanResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of device ID to which this VLAN is assigned.

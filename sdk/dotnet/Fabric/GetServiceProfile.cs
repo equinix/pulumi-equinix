@@ -37,9 +37,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("state")]
         public string? State { get; set; }
 
-        /// <summary>
-        /// Equinix assigned service profile identifier
-        /// </summary>
         [Input("uuid", required: true)]
         public string Uuid { get; set; } = null!;
 
@@ -57,9 +54,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        /// <summary>
-        /// Equinix assigned service profile identifier
-        /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 

@@ -13,53 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionZSideAccessPointProfile {
+    /**
+     * @return Access point config information
+     * 
+     */
     private @Nullable List<ConnectionZSideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs;
+    /**
+     * @return User-provided service description
+     * 
+     */
     private @Nullable String description;
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     private @Nullable String href;
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     private @Nullable String name;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     private String type;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     private String uuid;
 
     private ConnectionZSideAccessPointProfile() {}
+    /**
+     * @return Access point config information
+     * 
+     */
     public List<ConnectionZSideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs() {
         return this.accessPointTypeConfigs == null ? List.of() : this.accessPointTypeConfigs;
     }
+    /**
+     * @return User-provided service description
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

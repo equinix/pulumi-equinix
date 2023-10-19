@@ -49,13 +49,19 @@ namespace Pulumi.Equinix.Metal
     public partial class Interconnection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        /// </summary>
+        [Output("contactEmail")]
+        public Output<string> ContactEmail { get; private set; } = null!;
+
+        /// <summary>
         /// Description for the connection resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where the connection will be created
+        /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facility")]
         public Output<string> Facility { get; private set; } = null!;
@@ -200,13 +206,19 @@ namespace Pulumi.Equinix.Metal
     public sealed class InterconnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        /// </summary>
+        [Input("contactEmail")]
+        public Input<string>? ContactEmail { get; set; }
+
+        /// <summary>
         /// Description for the connection resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created
+        /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
@@ -256,8 +268,8 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
         /// </summary>
-        [Input("speed", required: true)]
-        public Input<string> Speed { get; set; } = null!;
+        [Input("speed")]
+        public Input<string>? Speed { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -298,13 +310,19 @@ namespace Pulumi.Equinix.Metal
     public sealed class InterconnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        /// </summary>
+        [Input("contactEmail")]
+        public Input<string>? ContactEmail { get; set; }
+
+        /// <summary>
         /// Description for the connection resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where the connection will be created
+        /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }

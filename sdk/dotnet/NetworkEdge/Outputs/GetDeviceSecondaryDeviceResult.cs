@@ -23,6 +23,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// Autonomous system number
         /// </summary>
         public readonly int Asn;
+        public readonly string CloudInitFileId;
         public readonly string Hostname;
         /// <summary>
         /// Device location Equinix Business Exchange name
@@ -52,6 +53,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// * APPLIED
         /// * WAITING_FOR_CLUSTER_SETUP
         /// * REGISTRATION_FAILED
+        /// * NA
         /// </summary>
         public readonly string LicenseStatus;
         public readonly string LicenseToken;
@@ -119,6 +121,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             int asn,
 
+            string cloudInitFileId,
+
             string hostname,
 
             string ibx,
@@ -167,6 +171,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             AclTemplateId = aclTemplateId;
             AdditionalBandwidth = additionalBandwidth;
             Asn = asn;
+            CloudInitFileId = cloudInitFileId;
             Hostname = hostname;
             Ibx = ibx;
             Interfaces = interfaces;

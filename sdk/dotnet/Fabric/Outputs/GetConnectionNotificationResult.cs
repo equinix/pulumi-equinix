@@ -15,9 +15,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     {
         public readonly ImmutableArray<string> Emails;
         public readonly string SendInterval;
-        /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

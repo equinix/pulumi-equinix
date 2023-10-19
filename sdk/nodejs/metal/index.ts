@@ -35,6 +35,11 @@ export const getDeviceBgpNeighbors: typeof import("./getDeviceBgpNeighbors").get
 export const getDeviceBgpNeighborsOutput: typeof import("./getDeviceBgpNeighbors").getDeviceBgpNeighborsOutput = null as any;
 utilities.lazyLoad(exports, ["getDeviceBgpNeighbors","getDeviceBgpNeighborsOutput"], () => require("./getDeviceBgpNeighbors"));
 
+export { GetDevicesArgs, GetDevicesResult, GetDevicesOutputArgs } from "./getDevices";
+export const getDevices: typeof import("./getDevices").getDevices = null as any;
+export const getDevicesOutput: typeof import("./getDevices").getDevicesOutput = null as any;
+utilities.lazyLoad(exports, ["getDevices","getDevicesOutput"], () => require("./getDevices"));
+
 export { GetFacilityArgs, GetFacilityResult, GetFacilityOutputArgs } from "./getFacility";
 export const getFacility: typeof import("./getFacility").getFacility = null as any;
 export const getFacilityOutput: typeof import("./getFacility").getFacilityOutput = null as any;

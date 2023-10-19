@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
+/**
+ * > **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+ *
+ * Provides an Equinix Metal facility datasource.
+ */
 export function getFacility(args: GetFacilityArgs, opts?: pulumi.InvokeOptions): Promise<GetFacilityResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,6 +65,11 @@ export interface GetFacilityResult {
      */
     readonly name: string;
 }
+/**
+ * > **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+ *
+ * Provides an Equinix Metal facility datasource.
+ */
 export function getFacilityOutput(args: GetFacilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFacilityResult> {
     return pulumi.output(args).apply((a: any) => getFacility(a, opts))
 }

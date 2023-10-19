@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
  *     metro: "ny",
- *     operatingSystem: example.then(example => example.id).apply((x) => @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
+ *     operatingSystem: example.then(example => example.id).apply((x) => equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,
  * });
@@ -97,7 +97,7 @@ export interface GetOperatingSystemResult {
  *     hostname: "tf.ubuntu",
  *     plan: "c3.medium.x86",
  *     metro: "ny",
- *     operatingSystem: example.then(example => example.id).apply((x) => @equinix-labs/pulumi-equinix.metal.operatingsystem.OperatingSystem[x]),
+ *     operatingSystem: example.then(example => example.id).apply((x) => equinix.metal.operatingsystem.OperatingSystem[x]),
  *     billingCycle: "hourly",
  *     projectId: local.project_id,
  * });

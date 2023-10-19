@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -22,7 +22,7 @@ class GetDeviceResult:
     """
     A collection of values returned by getDevice.
     """
-    def __init__(__self__, account_number=None, acl_template_id=None, additional_bandwidth=None, asn=None, byol=None, cluster_details=None, core_count=None, hostname=None, ibx=None, id=None, interface_count=None, interfaces=None, license_file=None, license_file_id=None, license_status=None, license_token=None, metro_code=None, mgmt_acl_template_uuid=None, name=None, notifications=None, order_reference=None, package_code=None, purchase_order_number=None, redundancy_type=None, redundant_id=None, region=None, secondary_devices=None, self_managed=None, ssh_ip_address=None, ssh_ip_fqdn=None, ssh_keys=None, status=None, term_length=None, throughput=None, throughput_unit=None, type_code=None, uuid=None, valid_status_list=None, vendor_configuration=None, version=None, wan_interface_id=None, zone_code=None):
+    def __init__(__self__, account_number=None, acl_template_id=None, additional_bandwidth=None, asn=None, byol=None, cluster_details=None, connectivity=None, core_count=None, hostname=None, ibx=None, id=None, interface_count=None, interfaces=None, license_file=None, license_file_id=None, license_status=None, license_token=None, metro_code=None, mgmt_acl_template_uuid=None, name=None, notifications=None, order_reference=None, package_code=None, purchase_order_number=None, redundancy_type=None, redundant_id=None, region=None, secondary_devices=None, self_managed=None, ssh_ip_address=None, ssh_ip_fqdn=None, ssh_keys=None, status=None, term_length=None, throughput=None, throughput_unit=None, type_code=None, uuid=None, valid_status_list=None, vendor_configuration=None, version=None, wan_interface_id=None, zone_code=None):
         if account_number and not isinstance(account_number, str):
             raise TypeError("Expected argument 'account_number' to be a str")
         pulumi.set(__self__, "account_number", account_number)
@@ -41,6 +41,9 @@ class GetDeviceResult:
         if cluster_details and not isinstance(cluster_details, list):
             raise TypeError("Expected argument 'cluster_details' to be a list")
         pulumi.set(__self__, "cluster_details", cluster_details)
+        if connectivity and not isinstance(connectivity, str):
+            raise TypeError("Expected argument 'connectivity' to be a str")
+        pulumi.set(__self__, "connectivity", connectivity)
         if core_count and not isinstance(core_count, int):
             raise TypeError("Expected argument 'core_count' to be a int")
         pulumi.set(__self__, "core_count", core_count)
@@ -187,6 +190,14 @@ class GetDeviceResult:
         return pulumi.get(self, "cluster_details")
 
     @property
+    @pulumi.getter
+    def connectivity(self) -> str:
+        """
+        Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+        """
+        return pulumi.get(self, "connectivity")
+
+    @property
     @pulumi.getter(name="coreCount")
     def core_count(self) -> int:
         return pulumi.get(self, "core_count")
@@ -256,6 +267,7 @@ class GetDeviceResult:
         * APPLIED
         * WAITING_FOR_CLUSTER_SETUP
         * REGISTRATION_FAILED
+        * NA
         """
         return pulumi.get(self, "license_status")
 
@@ -445,6 +457,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             asn=self.asn,
             byol=self.byol,
             cluster_details=self.cluster_details,
+            connectivity=self.connectivity,
             core_count=self.core_count,
             hostname=self.hostname,
             ibx=self.ibx,
@@ -504,6 +517,8 @@ def get_device(name: Optional[str] = None,
     :param str name: Name of an existing Equinix Network Edge device
     :param str uuid: UUID of an existing Equinix Network Edge device
     :param str valid_status_list: Device states to be considered valid when searching for a device by name
+           
+           NOTE: Exactly one of either `uuid` or `name` must be specified.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -513,48 +528,49 @@ def get_device(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:networkedge/getDevice:getDevice', __args__, opts=opts, typ=GetDeviceResult).value
 
     return AwaitableGetDeviceResult(
-        account_number=__ret__.account_number,
-        acl_template_id=__ret__.acl_template_id,
-        additional_bandwidth=__ret__.additional_bandwidth,
-        asn=__ret__.asn,
-        byol=__ret__.byol,
-        cluster_details=__ret__.cluster_details,
-        core_count=__ret__.core_count,
-        hostname=__ret__.hostname,
-        ibx=__ret__.ibx,
-        id=__ret__.id,
-        interface_count=__ret__.interface_count,
-        interfaces=__ret__.interfaces,
-        license_file=__ret__.license_file,
-        license_file_id=__ret__.license_file_id,
-        license_status=__ret__.license_status,
-        license_token=__ret__.license_token,
-        metro_code=__ret__.metro_code,
-        mgmt_acl_template_uuid=__ret__.mgmt_acl_template_uuid,
-        name=__ret__.name,
-        notifications=__ret__.notifications,
-        order_reference=__ret__.order_reference,
-        package_code=__ret__.package_code,
-        purchase_order_number=__ret__.purchase_order_number,
-        redundancy_type=__ret__.redundancy_type,
-        redundant_id=__ret__.redundant_id,
-        region=__ret__.region,
-        secondary_devices=__ret__.secondary_devices,
-        self_managed=__ret__.self_managed,
-        ssh_ip_address=__ret__.ssh_ip_address,
-        ssh_ip_fqdn=__ret__.ssh_ip_fqdn,
-        ssh_keys=__ret__.ssh_keys,
-        status=__ret__.status,
-        term_length=__ret__.term_length,
-        throughput=__ret__.throughput,
-        throughput_unit=__ret__.throughput_unit,
-        type_code=__ret__.type_code,
-        uuid=__ret__.uuid,
-        valid_status_list=__ret__.valid_status_list,
-        vendor_configuration=__ret__.vendor_configuration,
-        version=__ret__.version,
-        wan_interface_id=__ret__.wan_interface_id,
-        zone_code=__ret__.zone_code)
+        account_number=pulumi.get(__ret__, 'account_number'),
+        acl_template_id=pulumi.get(__ret__, 'acl_template_id'),
+        additional_bandwidth=pulumi.get(__ret__, 'additional_bandwidth'),
+        asn=pulumi.get(__ret__, 'asn'),
+        byol=pulumi.get(__ret__, 'byol'),
+        cluster_details=pulumi.get(__ret__, 'cluster_details'),
+        connectivity=pulumi.get(__ret__, 'connectivity'),
+        core_count=pulumi.get(__ret__, 'core_count'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        ibx=pulumi.get(__ret__, 'ibx'),
+        id=pulumi.get(__ret__, 'id'),
+        interface_count=pulumi.get(__ret__, 'interface_count'),
+        interfaces=pulumi.get(__ret__, 'interfaces'),
+        license_file=pulumi.get(__ret__, 'license_file'),
+        license_file_id=pulumi.get(__ret__, 'license_file_id'),
+        license_status=pulumi.get(__ret__, 'license_status'),
+        license_token=pulumi.get(__ret__, 'license_token'),
+        metro_code=pulumi.get(__ret__, 'metro_code'),
+        mgmt_acl_template_uuid=pulumi.get(__ret__, 'mgmt_acl_template_uuid'),
+        name=pulumi.get(__ret__, 'name'),
+        notifications=pulumi.get(__ret__, 'notifications'),
+        order_reference=pulumi.get(__ret__, 'order_reference'),
+        package_code=pulumi.get(__ret__, 'package_code'),
+        purchase_order_number=pulumi.get(__ret__, 'purchase_order_number'),
+        redundancy_type=pulumi.get(__ret__, 'redundancy_type'),
+        redundant_id=pulumi.get(__ret__, 'redundant_id'),
+        region=pulumi.get(__ret__, 'region'),
+        secondary_devices=pulumi.get(__ret__, 'secondary_devices'),
+        self_managed=pulumi.get(__ret__, 'self_managed'),
+        ssh_ip_address=pulumi.get(__ret__, 'ssh_ip_address'),
+        ssh_ip_fqdn=pulumi.get(__ret__, 'ssh_ip_fqdn'),
+        ssh_keys=pulumi.get(__ret__, 'ssh_keys'),
+        status=pulumi.get(__ret__, 'status'),
+        term_length=pulumi.get(__ret__, 'term_length'),
+        throughput=pulumi.get(__ret__, 'throughput'),
+        throughput_unit=pulumi.get(__ret__, 'throughput_unit'),
+        type_code=pulumi.get(__ret__, 'type_code'),
+        uuid=pulumi.get(__ret__, 'uuid'),
+        valid_status_list=pulumi.get(__ret__, 'valid_status_list'),
+        vendor_configuration=pulumi.get(__ret__, 'vendor_configuration'),
+        version=pulumi.get(__ret__, 'version'),
+        wan_interface_id=pulumi.get(__ret__, 'wan_interface_id'),
+        zone_code=pulumi.get(__ret__, 'zone_code'))
 
 
 @_utilities.lift_output_func(get_device)
@@ -579,5 +595,7 @@ def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: Name of an existing Equinix Network Edge device
     :param str uuid: UUID of an existing Equinix Network Edge device
     :param str valid_status_list: Device states to be considered valid when searching for a device by name
+           
+           NOTE: Exactly one of either `uuid` or `name` must be specified.
     """
     ...

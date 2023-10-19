@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
@@ -19,7 +21,7 @@ import (
 //
 // > Public IPv4 blocks auto-assigned (management) to a device cannot be retrieved. If you need that information, consider using the metal.Device data source instead.
 func GetPrecreatedIpBlock(ctx *pulumi.Context, args *GetPrecreatedIpBlockArgs, opts ...pulumi.InvokeOption) (*GetPrecreatedIpBlockResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrecreatedIpBlockResult
 	err := ctx.Invoke("equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock", args, &rv, opts...)
 	if err != nil {
@@ -31,8 +33,9 @@ func GetPrecreatedIpBlock(ctx *pulumi.Context, args *GetPrecreatedIpBlockArgs, o
 // A collection of arguments for invoking getPrecreatedIpBlock.
 type GetPrecreatedIpBlockArgs struct {
 	// 4 or 6, depending on which block you are looking for.
-	AddressFamily int     `pulumi:"addressFamily"`
-	Facility      *string `pulumi:"facility"`
+	AddressFamily int `pulumi:"addressFamily"`
+	// Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
+	Facility *string `pulumi:"facility"`
 	// Whether to look for global block. Default is false for backward compatibility.
 	Global *bool `pulumi:"global"`
 	// Metro of the searched block (for non-global blocks).
@@ -83,8 +86,9 @@ func GetPrecreatedIpBlockOutput(ctx *pulumi.Context, args GetPrecreatedIpBlockOu
 // A collection of arguments for invoking getPrecreatedIpBlock.
 type GetPrecreatedIpBlockOutputArgs struct {
 	// 4 or 6, depending on which block you are looking for.
-	AddressFamily pulumi.IntInput       `pulumi:"addressFamily"`
-	Facility      pulumi.StringPtrInput `pulumi:"facility"`
+	AddressFamily pulumi.IntInput `pulumi:"addressFamily"`
+	// Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
+	Facility pulumi.StringPtrInput `pulumi:"facility"`
 	// Whether to look for global block. Default is false for backward compatibility.
 	Global pulumi.BoolPtrInput `pulumi:"global"`
 	// Metro of the searched block (for non-global blocks).
@@ -112,6 +116,12 @@ func (o GetPrecreatedIpBlockResultOutput) ToGetPrecreatedIpBlockResultOutput() G
 
 func (o GetPrecreatedIpBlockResultOutput) ToGetPrecreatedIpBlockResultOutputWithContext(ctx context.Context) GetPrecreatedIpBlockResultOutput {
 	return o
+}
+
+func (o GetPrecreatedIpBlockResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrecreatedIpBlockResult] {
+	return pulumix.Output[GetPrecreatedIpBlockResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrecreatedIpBlockResultOutput) Address() pulumi.StringOutput {

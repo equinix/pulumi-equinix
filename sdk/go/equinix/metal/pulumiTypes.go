@@ -7,8 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type DeviceBehavior struct {
 	// List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
@@ -41,6 +45,12 @@ func (i DeviceBehaviorArgs) ToDeviceBehaviorOutput() DeviceBehaviorOutput {
 
 func (i DeviceBehaviorArgs) ToDeviceBehaviorOutputWithContext(ctx context.Context) DeviceBehaviorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceBehaviorOutput)
+}
+
+func (i DeviceBehaviorArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceBehavior] {
+	return pulumix.Output[DeviceBehavior]{
+		OutputState: i.ToDeviceBehaviorOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DeviceBehaviorArgs) ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOutput {
@@ -84,6 +94,12 @@ func (i *deviceBehaviorPtrType) ToDeviceBehaviorPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceBehaviorPtrOutput)
 }
 
+func (i *deviceBehaviorPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceBehavior] {
+	return pulumix.Output[*DeviceBehavior]{
+		OutputState: i.ToDeviceBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceBehaviorOutput struct{ *pulumi.OutputState }
 
 func (DeviceBehaviorOutput) ElementType() reflect.Type {
@@ -108,6 +124,12 @@ func (o DeviceBehaviorOutput) ToDeviceBehaviorPtrOutputWithContext(ctx context.C
 	}).(DeviceBehaviorPtrOutput)
 }
 
+func (o DeviceBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceBehavior] {
+	return pulumix.Output[DeviceBehavior]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of attributes that are allowed to change without recreating the instance. Supported attributes: `customData`, `userData`"
 func (o DeviceBehaviorOutput) AllowChanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceBehavior) []string { return v.AllowChanges }).(pulumi.StringArrayOutput)
@@ -125,6 +147,12 @@ func (o DeviceBehaviorPtrOutput) ToDeviceBehaviorPtrOutput() DeviceBehaviorPtrOu
 
 func (o DeviceBehaviorPtrOutput) ToDeviceBehaviorPtrOutputWithContext(ctx context.Context) DeviceBehaviorPtrOutput {
 	return o
+}
+
+func (o DeviceBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceBehavior] {
+	return pulumix.Output[*DeviceBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceBehaviorPtrOutput) Elem() DeviceBehaviorOutput {
@@ -152,6 +180,12 @@ type DeviceIpAddress struct {
 	Cidr *int `pulumi:"cidr"`
 	// List of UUIDs of IP block reservations
 	// from which the public IPv4 address should be taken.
+	//
+	// You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
+	// always pass a block for `privateIpv4`.
+	//
+	// To learn more about using the reserved IP addresses for new devices, see the examples in the
+	// metal.ReservedIpBlock documentation.
 	ReservationIds []string `pulumi:"reservationIds"`
 	// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
 	Type string `pulumi:"type"`
@@ -173,6 +207,12 @@ type DeviceIpAddressArgs struct {
 	Cidr pulumi.IntPtrInput `pulumi:"cidr"`
 	// List of UUIDs of IP block reservations
 	// from which the public IPv4 address should be taken.
+	//
+	// You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
+	// always pass a block for `privateIpv4`.
+	//
+	// To learn more about using the reserved IP addresses for new devices, see the examples in the
+	// metal.ReservedIpBlock documentation.
 	ReservationIds pulumi.StringArrayInput `pulumi:"reservationIds"`
 	// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -188,6 +228,12 @@ func (i DeviceIpAddressArgs) ToDeviceIpAddressOutput() DeviceIpAddressOutput {
 
 func (i DeviceIpAddressArgs) ToDeviceIpAddressOutputWithContext(ctx context.Context) DeviceIpAddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceIpAddressOutput)
+}
+
+func (i DeviceIpAddressArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceIpAddress] {
+	return pulumix.Output[DeviceIpAddress]{
+		OutputState: i.ToDeviceIpAddressOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DeviceIpAddressArrayInput is an input type that accepts DeviceIpAddressArray and DeviceIpAddressArrayOutput values.
@@ -215,6 +261,12 @@ func (i DeviceIpAddressArray) ToDeviceIpAddressArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceIpAddressArrayOutput)
 }
 
+func (i DeviceIpAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceIpAddress] {
+	return pulumix.Output[[]DeviceIpAddress]{
+		OutputState: i.ToDeviceIpAddressArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceIpAddressOutput struct{ *pulumi.OutputState }
 
 func (DeviceIpAddressOutput) ElementType() reflect.Type {
@@ -229,6 +281,12 @@ func (o DeviceIpAddressOutput) ToDeviceIpAddressOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DeviceIpAddressOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceIpAddress] {
+	return pulumix.Output[DeviceIpAddress]{
+		OutputState: o.OutputState,
+	}
+}
+
 // CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
 func (o DeviceIpAddressOutput) Cidr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceIpAddress) *int { return v.Cidr }).(pulumi.IntPtrOutput)
@@ -236,6 +294,12 @@ func (o DeviceIpAddressOutput) Cidr() pulumi.IntPtrOutput {
 
 // List of UUIDs of IP block reservations
 // from which the public IPv4 address should be taken.
+//
+// You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
+// always pass a block for `privateIpv4`.
+//
+// To learn more about using the reserved IP addresses for new devices, see the examples in the
+// metal.ReservedIpBlock documentation.
 func (o DeviceIpAddressOutput) ReservationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceIpAddress) []string { return v.ReservationIds }).(pulumi.StringArrayOutput)
 }
@@ -257,6 +321,12 @@ func (o DeviceIpAddressArrayOutput) ToDeviceIpAddressArrayOutput() DeviceIpAddre
 
 func (o DeviceIpAddressArrayOutput) ToDeviceIpAddressArrayOutputWithContext(ctx context.Context) DeviceIpAddressArrayOutput {
 	return o
+}
+
+func (o DeviceIpAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceIpAddress] {
+	return pulumix.Output[[]DeviceIpAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceIpAddressArrayOutput) Index(i pulumi.IntInput) DeviceIpAddressOutput {
@@ -314,6 +384,12 @@ func (i DeviceNetworkArgs) ToDeviceNetworkOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceNetworkOutput)
 }
 
+func (i DeviceNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceNetwork] {
+	return pulumix.Output[DeviceNetwork]{
+		OutputState: i.ToDeviceNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceNetworkArrayInput is an input type that accepts DeviceNetworkArray and DeviceNetworkArrayOutput values.
 // You can construct a concrete instance of `DeviceNetworkArrayInput` via:
 //
@@ -339,6 +415,12 @@ func (i DeviceNetworkArray) ToDeviceNetworkArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceNetworkArrayOutput)
 }
 
+func (i DeviceNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceNetwork] {
+	return pulumix.Output[[]DeviceNetwork]{
+		OutputState: i.ToDeviceNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceNetworkOutput struct{ *pulumi.OutputState }
 
 func (DeviceNetworkOutput) ElementType() reflect.Type {
@@ -351,6 +433,12 @@ func (o DeviceNetworkOutput) ToDeviceNetworkOutput() DeviceNetworkOutput {
 
 func (o DeviceNetworkOutput) ToDeviceNetworkOutputWithContext(ctx context.Context) DeviceNetworkOutput {
 	return o
+}
+
+func (o DeviceNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceNetwork] {
+	return pulumix.Output[DeviceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IPv4 or IPv6 address string.
@@ -390,6 +478,12 @@ func (o DeviceNetworkArrayOutput) ToDeviceNetworkArrayOutput() DeviceNetworkArra
 
 func (o DeviceNetworkArrayOutput) ToDeviceNetworkArrayOutputWithContext(ctx context.Context) DeviceNetworkArrayOutput {
 	return o
+}
+
+func (o DeviceNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceNetwork] {
+	return pulumix.Output[[]DeviceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceNetworkArrayOutput) Index(i pulumi.IntInput) DeviceNetworkOutput {
@@ -447,6 +541,12 @@ func (i DevicePortArgs) ToDevicePortOutputWithContext(ctx context.Context) Devic
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePortOutput)
 }
 
+func (i DevicePortArgs) ToOutput(ctx context.Context) pulumix.Output[DevicePort] {
+	return pulumix.Output[DevicePort]{
+		OutputState: i.ToDevicePortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DevicePortArrayInput is an input type that accepts DevicePortArray and DevicePortArrayOutput values.
 // You can construct a concrete instance of `DevicePortArrayInput` via:
 //
@@ -472,6 +572,12 @@ func (i DevicePortArray) ToDevicePortArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePortArrayOutput)
 }
 
+func (i DevicePortArray) ToOutput(ctx context.Context) pulumix.Output[[]DevicePort] {
+	return pulumix.Output[[]DevicePort]{
+		OutputState: i.ToDevicePortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevicePortOutput struct{ *pulumi.OutputState }
 
 func (DevicePortOutput) ElementType() reflect.Type {
@@ -484,6 +590,12 @@ func (o DevicePortOutput) ToDevicePortOutput() DevicePortOutput {
 
 func (o DevicePortOutput) ToDevicePortOutputWithContext(ctx context.Context) DevicePortOutput {
 	return o
+}
+
+func (o DevicePortOutput) ToOutput(ctx context.Context) pulumix.Output[DevicePort] {
+	return pulumix.Output[DevicePort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether this port is part of a bond in bonded network setup.
@@ -523,6 +635,12 @@ func (o DevicePortArrayOutput) ToDevicePortArrayOutput() DevicePortArrayOutput {
 
 func (o DevicePortArrayOutput) ToDevicePortArrayOutputWithContext(ctx context.Context) DevicePortArrayOutput {
 	return o
+}
+
+func (o DevicePortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DevicePort] {
+	return pulumix.Output[[]DevicePort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePortArrayOutput) Index(i pulumi.IntInput) DevicePortOutput {
@@ -578,6 +696,12 @@ func (i DeviceReinstallArgs) ToDeviceReinstallOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceReinstallOutput)
 }
 
+func (i DeviceReinstallArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceReinstall] {
+	return pulumix.Output[DeviceReinstall]{
+		OutputState: i.ToDeviceReinstallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceReinstallArgs) ToDeviceReinstallPtrOutput() DeviceReinstallPtrOutput {
 	return i.ToDeviceReinstallPtrOutputWithContext(context.Background())
 }
@@ -619,6 +743,12 @@ func (i *deviceReinstallPtrType) ToDeviceReinstallPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceReinstallPtrOutput)
 }
 
+func (i *deviceReinstallPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceReinstall] {
+	return pulumix.Output[*DeviceReinstall]{
+		OutputState: i.ToDeviceReinstallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceReinstallOutput struct{ *pulumi.OutputState }
 
 func (DeviceReinstallOutput) ElementType() reflect.Type {
@@ -641,6 +771,12 @@ func (o DeviceReinstallOutput) ToDeviceReinstallPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceReinstall) *DeviceReinstall {
 		return &v
 	}).(DeviceReinstallPtrOutput)
+}
+
+func (o DeviceReinstallOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceReinstall] {
+	return pulumix.Output[DeviceReinstall]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the OS disk should be filled with `00h` bytes before reinstall.
@@ -673,6 +809,12 @@ func (o DeviceReinstallPtrOutput) ToDeviceReinstallPtrOutput() DeviceReinstallPt
 
 func (o DeviceReinstallPtrOutput) ToDeviceReinstallPtrOutputWithContext(ctx context.Context) DeviceReinstallPtrOutput {
 	return o
+}
+
+func (o DeviceReinstallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceReinstall] {
+	return pulumix.Output[*DeviceReinstall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceReinstallPtrOutput) Elem() DeviceReinstallOutput {
@@ -767,6 +909,12 @@ func (i InterconnectionPortArgs) ToInterconnectionPortOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionPortOutput)
 }
 
+func (i InterconnectionPortArgs) ToOutput(ctx context.Context) pulumix.Output[InterconnectionPort] {
+	return pulumix.Output[InterconnectionPort]{
+		OutputState: i.ToInterconnectionPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterconnectionPortArrayInput is an input type that accepts InterconnectionPortArray and InterconnectionPortArrayOutput values.
 // You can construct a concrete instance of `InterconnectionPortArrayInput` via:
 //
@@ -792,6 +940,12 @@ func (i InterconnectionPortArray) ToInterconnectionPortArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionPortArrayOutput)
 }
 
+func (i InterconnectionPortArray) ToOutput(ctx context.Context) pulumix.Output[[]InterconnectionPort] {
+	return pulumix.Output[[]InterconnectionPort]{
+		OutputState: i.ToInterconnectionPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterconnectionPortOutput struct{ *pulumi.OutputState }
 
 func (InterconnectionPortOutput) ElementType() reflect.Type {
@@ -804,6 +958,12 @@ func (o InterconnectionPortOutput) ToInterconnectionPortOutput() Interconnection
 
 func (o InterconnectionPortOutput) ToInterconnectionPortOutputWithContext(ctx context.Context) InterconnectionPortOutput {
 	return o
+}
+
+func (o InterconnectionPortOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectionPort] {
+	return pulumix.Output[InterconnectionPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectionPortOutput) Id() pulumi.StringPtrOutput {
@@ -849,6 +1009,12 @@ func (o InterconnectionPortArrayOutput) ToInterconnectionPortArrayOutput() Inter
 
 func (o InterconnectionPortArrayOutput) ToInterconnectionPortArrayOutputWithContext(ctx context.Context) InterconnectionPortArrayOutput {
 	return o
+}
+
+func (o InterconnectionPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InterconnectionPort] {
+	return pulumix.Output[[]InterconnectionPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectionPortArrayOutput) Index(i pulumi.IntInput) InterconnectionPortOutput {
@@ -900,6 +1066,12 @@ func (i InterconnectionServiceTokenArgs) ToInterconnectionServiceTokenOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionServiceTokenOutput)
 }
 
+func (i InterconnectionServiceTokenArgs) ToOutput(ctx context.Context) pulumix.Output[InterconnectionServiceToken] {
+	return pulumix.Output[InterconnectionServiceToken]{
+		OutputState: i.ToInterconnectionServiceTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterconnectionServiceTokenArrayInput is an input type that accepts InterconnectionServiceTokenArray and InterconnectionServiceTokenArrayOutput values.
 // You can construct a concrete instance of `InterconnectionServiceTokenArrayInput` via:
 //
@@ -925,6 +1097,12 @@ func (i InterconnectionServiceTokenArray) ToInterconnectionServiceTokenArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionServiceTokenArrayOutput)
 }
 
+func (i InterconnectionServiceTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]InterconnectionServiceToken] {
+	return pulumix.Output[[]InterconnectionServiceToken]{
+		OutputState: i.ToInterconnectionServiceTokenArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterconnectionServiceTokenOutput struct{ *pulumi.OutputState }
 
 func (InterconnectionServiceTokenOutput) ElementType() reflect.Type {
@@ -937,6 +1115,12 @@ func (o InterconnectionServiceTokenOutput) ToInterconnectionServiceTokenOutput()
 
 func (o InterconnectionServiceTokenOutput) ToInterconnectionServiceTokenOutputWithContext(ctx context.Context) InterconnectionServiceTokenOutput {
 	return o
+}
+
+func (o InterconnectionServiceTokenOutput) ToOutput(ctx context.Context) pulumix.Output[InterconnectionServiceToken] {
+	return pulumix.Output[InterconnectionServiceToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectionServiceTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
@@ -976,6 +1160,12 @@ func (o InterconnectionServiceTokenArrayOutput) ToInterconnectionServiceTokenArr
 
 func (o InterconnectionServiceTokenArrayOutput) ToInterconnectionServiceTokenArrayOutputWithContext(ctx context.Context) InterconnectionServiceTokenArrayOutput {
 	return o
+}
+
+func (o InterconnectionServiceTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InterconnectionServiceToken] {
+	return pulumix.Output[[]InterconnectionServiceToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) InterconnectionServiceTokenOutput {
@@ -1033,6 +1223,12 @@ func (i OrganizationAddressArgs) ToOrganizationAddressOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAddressOutput)
 }
 
+func (i OrganizationAddressArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationAddress] {
+	return pulumix.Output[OrganizationAddress]{
+		OutputState: i.ToOrganizationAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OrganizationAddressArgs) ToOrganizationAddressPtrOutput() OrganizationAddressPtrOutput {
 	return i.ToOrganizationAddressPtrOutputWithContext(context.Background())
 }
@@ -1074,6 +1270,12 @@ func (i *organizationAddressPtrType) ToOrganizationAddressPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAddressPtrOutput)
 }
 
+func (i *organizationAddressPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddress] {
+	return pulumix.Output[*OrganizationAddress]{
+		OutputState: i.ToOrganizationAddressPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationAddressOutput struct{ *pulumi.OutputState }
 
 func (OrganizationAddressOutput) ElementType() reflect.Type {
@@ -1096,6 +1298,12 @@ func (o OrganizationAddressOutput) ToOrganizationAddressPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationAddress) *OrganizationAddress {
 		return &v
 	}).(OrganizationAddressPtrOutput)
+}
+
+func (o OrganizationAddressOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationAddress] {
+	return pulumix.Output[OrganizationAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Postal address.
@@ -1135,6 +1343,12 @@ func (o OrganizationAddressPtrOutput) ToOrganizationAddressPtrOutput() Organizat
 
 func (o OrganizationAddressPtrOutput) ToOrganizationAddressPtrOutputWithContext(ctx context.Context) OrganizationAddressPtrOutput {
 	return o
+}
+
+func (o OrganizationAddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationAddress] {
+	return pulumix.Output[*OrganizationAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationAddressPtrOutput) Elem() OrganizationAddressOutput {
@@ -1248,6 +1462,12 @@ func (i ProjectBgpConfigArgs) ToProjectBgpConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBgpConfigOutput)
 }
 
+func (i ProjectBgpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectBgpConfig] {
+	return pulumix.Output[ProjectBgpConfig]{
+		OutputState: i.ToProjectBgpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ProjectBgpConfigArgs) ToProjectBgpConfigPtrOutput() ProjectBgpConfigPtrOutput {
 	return i.ToProjectBgpConfigPtrOutputWithContext(context.Background())
 }
@@ -1289,6 +1509,12 @@ func (i *projectBgpConfigPtrType) ToProjectBgpConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectBgpConfigPtrOutput)
 }
 
+func (i *projectBgpConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectBgpConfig] {
+	return pulumix.Output[*ProjectBgpConfig]{
+		OutputState: i.ToProjectBgpConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectBgpConfigOutput) ElementType() reflect.Type {
@@ -1311,6 +1537,12 @@ func (o ProjectBgpConfigOutput) ToProjectBgpConfigPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectBgpConfig) *ProjectBgpConfig {
 		return &v
 	}).(ProjectBgpConfigPtrOutput)
+}
+
+func (o ProjectBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectBgpConfig] {
+	return pulumix.Output[ProjectBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Autonomous System Number for local BGP deployment.
@@ -1351,6 +1583,12 @@ func (o ProjectBgpConfigPtrOutput) ToProjectBgpConfigPtrOutput() ProjectBgpConfi
 
 func (o ProjectBgpConfigPtrOutput) ToProjectBgpConfigPtrOutputWithContext(ctx context.Context) ProjectBgpConfigPtrOutput {
 	return o
+}
+
+func (o ProjectBgpConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectBgpConfig] {
+	return pulumix.Output[*ProjectBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectBgpConfigPtrOutput) Elem() ProjectBgpConfigOutput {
@@ -1423,11 +1661,13 @@ type SpotMarketRequestInstanceParameters struct {
 	Hostname      string   `pulumi:"hostname"`
 	IpxeScriptUrl *string  `pulumi:"ipxeScriptUrl"`
 	// Blocks deletion of the SpotMarketRequest device until the lock is disabled.
-	Locked           *bool    `pulumi:"locked"`
-	OperatingSystem  string   `pulumi:"operatingSystem"`
-	Plan             string   `pulumi:"plan"`
-	ProjectSshKeys   []string `pulumi:"projectSshKeys"`
-	Tags             []string `pulumi:"tags"`
+	Locked          *bool    `pulumi:"locked"`
+	OperatingSystem string   `pulumi:"operatingSystem"`
+	Plan            string   `pulumi:"plan"`
+	ProjectSshKeys  []string `pulumi:"projectSshKeys"`
+	Tags            []string `pulumi:"tags"`
+	TerminationTime *string  `pulumi:"terminationTime"`
+	// Deprecated: Use instance_parameters.termination_time instead
 	TermintationTime *string  `pulumi:"termintationTime"`
 	UserSshKeys      []string `pulumi:"userSshKeys"`
 	Userdata         *string  `pulumi:"userdata"`
@@ -1453,11 +1693,13 @@ type SpotMarketRequestInstanceParametersArgs struct {
 	Hostname      pulumi.StringInput      `pulumi:"hostname"`
 	IpxeScriptUrl pulumi.StringPtrInput   `pulumi:"ipxeScriptUrl"`
 	// Blocks deletion of the SpotMarketRequest device until the lock is disabled.
-	Locked           pulumi.BoolPtrInput     `pulumi:"locked"`
-	OperatingSystem  pulumi.StringInput      `pulumi:"operatingSystem"`
-	Plan             pulumi.StringInput      `pulumi:"plan"`
-	ProjectSshKeys   pulumi.StringArrayInput `pulumi:"projectSshKeys"`
-	Tags             pulumi.StringArrayInput `pulumi:"tags"`
+	Locked          pulumi.BoolPtrInput     `pulumi:"locked"`
+	OperatingSystem pulumi.StringInput      `pulumi:"operatingSystem"`
+	Plan            pulumi.StringInput      `pulumi:"plan"`
+	ProjectSshKeys  pulumi.StringArrayInput `pulumi:"projectSshKeys"`
+	Tags            pulumi.StringArrayInput `pulumi:"tags"`
+	TerminationTime pulumi.StringPtrInput   `pulumi:"terminationTime"`
+	// Deprecated: Use instance_parameters.termination_time instead
 	TermintationTime pulumi.StringPtrInput   `pulumi:"termintationTime"`
 	UserSshKeys      pulumi.StringArrayInput `pulumi:"userSshKeys"`
 	Userdata         pulumi.StringPtrInput   `pulumi:"userdata"`
@@ -1473,6 +1715,12 @@ func (i SpotMarketRequestInstanceParametersArgs) ToSpotMarketRequestInstancePara
 
 func (i SpotMarketRequestInstanceParametersArgs) ToSpotMarketRequestInstanceParametersOutputWithContext(ctx context.Context) SpotMarketRequestInstanceParametersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestInstanceParametersOutput)
+}
+
+func (i SpotMarketRequestInstanceParametersArgs) ToOutput(ctx context.Context) pulumix.Output[SpotMarketRequestInstanceParameters] {
+	return pulumix.Output[SpotMarketRequestInstanceParameters]{
+		OutputState: i.ToSpotMarketRequestInstanceParametersOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i SpotMarketRequestInstanceParametersArgs) ToSpotMarketRequestInstanceParametersPtrOutput() SpotMarketRequestInstanceParametersPtrOutput {
@@ -1516,6 +1764,12 @@ func (i *spotMarketRequestInstanceParametersPtrType) ToSpotMarketRequestInstance
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestInstanceParametersPtrOutput)
 }
 
+func (i *spotMarketRequestInstanceParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpotMarketRequestInstanceParameters] {
+	return pulumix.Output[*SpotMarketRequestInstanceParameters]{
+		OutputState: i.ToSpotMarketRequestInstanceParametersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpotMarketRequestInstanceParametersOutput struct{ *pulumi.OutputState }
 
 func (SpotMarketRequestInstanceParametersOutput) ElementType() reflect.Type {
@@ -1538,6 +1792,12 @@ func (o SpotMarketRequestInstanceParametersOutput) ToSpotMarketRequestInstancePa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpotMarketRequestInstanceParameters) *SpotMarketRequestInstanceParameters {
 		return &v
 	}).(SpotMarketRequestInstanceParametersPtrOutput)
+}
+
+func (o SpotMarketRequestInstanceParametersOutput) ToOutput(ctx context.Context) pulumix.Output[SpotMarketRequestInstanceParameters] {
+	return pulumix.Output[SpotMarketRequestInstanceParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpotMarketRequestInstanceParametersOutput) AlwaysPxe() pulumi.BoolPtrOutput {
@@ -1589,6 +1849,11 @@ func (o SpotMarketRequestInstanceParametersOutput) Tags() pulumi.StringArrayOutp
 	return o.ApplyT(func(v SpotMarketRequestInstanceParameters) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+func (o SpotMarketRequestInstanceParametersOutput) TerminationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpotMarketRequestInstanceParameters) *string { return v.TerminationTime }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use instance_parameters.termination_time instead
 func (o SpotMarketRequestInstanceParametersOutput) TermintationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpotMarketRequestInstanceParameters) *string { return v.TermintationTime }).(pulumi.StringPtrOutput)
 }
@@ -1613,6 +1878,12 @@ func (o SpotMarketRequestInstanceParametersPtrOutput) ToSpotMarketRequestInstanc
 
 func (o SpotMarketRequestInstanceParametersPtrOutput) ToSpotMarketRequestInstanceParametersPtrOutputWithContext(ctx context.Context) SpotMarketRequestInstanceParametersPtrOutput {
 	return o
+}
+
+func (o SpotMarketRequestInstanceParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpotMarketRequestInstanceParameters] {
+	return pulumix.Output[*SpotMarketRequestInstanceParameters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpotMarketRequestInstanceParametersPtrOutput) Elem() SpotMarketRequestInstanceParametersOutput {
@@ -1734,6 +2005,16 @@ func (o SpotMarketRequestInstanceParametersPtrOutput) Tags() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o SpotMarketRequestInstanceParametersPtrOutput) TerminationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpotMarketRequestInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TerminationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use instance_parameters.termination_time instead
 func (o SpotMarketRequestInstanceParametersPtrOutput) TermintationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SpotMarketRequestInstanceParameters) *string {
 		if v == nil {
@@ -1830,6 +2111,12 @@ func (i GetDeviceBgpNeighborsBgpNeighborArgs) ToGetDeviceBgpNeighborsBgpNeighbor
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceBgpNeighborsBgpNeighborOutput)
 }
 
+func (i GetDeviceBgpNeighborsBgpNeighborArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsBgpNeighbor] {
+	return pulumix.Output[GetDeviceBgpNeighborsBgpNeighbor]{
+		OutputState: i.ToGetDeviceBgpNeighborsBgpNeighborOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceBgpNeighborsBgpNeighborArrayInput is an input type that accepts GetDeviceBgpNeighborsBgpNeighborArray and GetDeviceBgpNeighborsBgpNeighborArrayOutput values.
 // You can construct a concrete instance of `GetDeviceBgpNeighborsBgpNeighborArrayInput` via:
 //
@@ -1855,6 +2142,12 @@ func (i GetDeviceBgpNeighborsBgpNeighborArray) ToGetDeviceBgpNeighborsBgpNeighbo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceBgpNeighborsBgpNeighborArrayOutput)
 }
 
+func (i GetDeviceBgpNeighborsBgpNeighborArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighbor] {
+	return pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighbor]{
+		OutputState: i.ToGetDeviceBgpNeighborsBgpNeighborArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceBgpNeighborsBgpNeighborOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceBgpNeighborsBgpNeighborOutput) ElementType() reflect.Type {
@@ -1867,6 +2160,12 @@ func (o GetDeviceBgpNeighborsBgpNeighborOutput) ToGetDeviceBgpNeighborsBgpNeighb
 
 func (o GetDeviceBgpNeighborsBgpNeighborOutput) ToGetDeviceBgpNeighborsBgpNeighborOutputWithContext(ctx context.Context) GetDeviceBgpNeighborsBgpNeighborOutput {
 	return o
+}
+
+func (o GetDeviceBgpNeighborsBgpNeighborOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsBgpNeighbor] {
+	return pulumix.Output[GetDeviceBgpNeighborsBgpNeighbor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IP address version, 4 or 6.
@@ -1937,6 +2236,12 @@ func (o GetDeviceBgpNeighborsBgpNeighborArrayOutput) ToGetDeviceBgpNeighborsBgpN
 	return o
 }
 
+func (o GetDeviceBgpNeighborsBgpNeighborArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighbor] {
+	return pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighbor]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDeviceBgpNeighborsBgpNeighborArrayOutput) Index(i pulumi.IntInput) GetDeviceBgpNeighborsBgpNeighborOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceBgpNeighborsBgpNeighbor {
 		return vs[0].([]GetDeviceBgpNeighborsBgpNeighbor)[vs[1].(int)]
@@ -1980,6 +2285,12 @@ func (i GetDeviceBgpNeighborsBgpNeighborRoutesInArgs) ToGetDeviceBgpNeighborsBgp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceBgpNeighborsBgpNeighborRoutesInOutput)
 }
 
+func (i GetDeviceBgpNeighborsBgpNeighborRoutesInArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesIn] {
+	return pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesIn]{
+		OutputState: i.ToGetDeviceBgpNeighborsBgpNeighborRoutesInOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceBgpNeighborsBgpNeighborRoutesInArrayInput is an input type that accepts GetDeviceBgpNeighborsBgpNeighborRoutesInArray and GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput values.
 // You can construct a concrete instance of `GetDeviceBgpNeighborsBgpNeighborRoutesInArrayInput` via:
 //
@@ -2005,6 +2316,12 @@ func (i GetDeviceBgpNeighborsBgpNeighborRoutesInArray) ToGetDeviceBgpNeighborsBg
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput)
 }
 
+func (i GetDeviceBgpNeighborsBgpNeighborRoutesInArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesIn] {
+	return pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesIn]{
+		OutputState: i.ToGetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceBgpNeighborsBgpNeighborRoutesInOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceBgpNeighborsBgpNeighborRoutesInOutput) ElementType() reflect.Type {
@@ -2017,6 +2334,12 @@ func (o GetDeviceBgpNeighborsBgpNeighborRoutesInOutput) ToGetDeviceBgpNeighborsB
 
 func (o GetDeviceBgpNeighborsBgpNeighborRoutesInOutput) ToGetDeviceBgpNeighborsBgpNeighborRoutesInOutputWithContext(ctx context.Context) GetDeviceBgpNeighborsBgpNeighborRoutesInOutput {
 	return o
+}
+
+func (o GetDeviceBgpNeighborsBgpNeighborRoutesInOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesIn] {
+	return pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesIn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (bool) Whether the route is exact.
@@ -2041,6 +2364,12 @@ func (o GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput) ToGetDeviceBgpNeigh
 
 func (o GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput) ToGetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutputWithContext(ctx context.Context) GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput {
 	return o
+}
+
+func (o GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesIn] {
+	return pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesIn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceBgpNeighborsBgpNeighborRoutesInArrayOutput) Index(i pulumi.IntInput) GetDeviceBgpNeighborsBgpNeighborRoutesInOutput {
@@ -2086,6 +2415,12 @@ func (i GetDeviceBgpNeighborsBgpNeighborRoutesOutArgs) ToGetDeviceBgpNeighborsBg
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput)
 }
 
+func (i GetDeviceBgpNeighborsBgpNeighborRoutesOutArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesOut] {
+	return pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesOut]{
+		OutputState: i.ToGetDeviceBgpNeighborsBgpNeighborRoutesOutOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayInput is an input type that accepts GetDeviceBgpNeighborsBgpNeighborRoutesOutArray and GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput values.
 // You can construct a concrete instance of `GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayInput` via:
 //
@@ -2111,6 +2446,12 @@ func (i GetDeviceBgpNeighborsBgpNeighborRoutesOutArray) ToGetDeviceBgpNeighborsB
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput)
 }
 
+func (i GetDeviceBgpNeighborsBgpNeighborRoutesOutArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesOut] {
+	return pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesOut]{
+		OutputState: i.ToGetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput) ElementType() reflect.Type {
@@ -2123,6 +2464,12 @@ func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput) ToGetDeviceBgpNeighbors
 
 func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput) ToGetDeviceBgpNeighborsBgpNeighborRoutesOutOutputWithContext(ctx context.Context) GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput {
 	return o
+}
+
+func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesOut] {
+	return pulumix.Output[GetDeviceBgpNeighborsBgpNeighborRoutesOut]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (bool) Whether the route is exact.
@@ -2147,6 +2494,12 @@ func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput) ToGetDeviceBgpNeig
 
 func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput) ToGetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutputWithContext(ctx context.Context) GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput {
 	return o
+}
+
+func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesOut] {
+	return pulumix.Output[[]GetDeviceBgpNeighborsBgpNeighborRoutesOut]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceBgpNeighborsBgpNeighborRoutesOutArrayOutput) Index(i pulumi.IntInput) GetDeviceBgpNeighborsBgpNeighborRoutesOutOutput {
@@ -2204,6 +2557,12 @@ func (i GetDeviceNetworkArgs) ToGetDeviceNetworkOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceNetworkOutput)
 }
 
+func (i GetDeviceNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceNetwork] {
+	return pulumix.Output[GetDeviceNetwork]{
+		OutputState: i.ToGetDeviceNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceNetworkArrayInput is an input type that accepts GetDeviceNetworkArray and GetDeviceNetworkArrayOutput values.
 // You can construct a concrete instance of `GetDeviceNetworkArrayInput` via:
 //
@@ -2229,6 +2588,12 @@ func (i GetDeviceNetworkArray) ToGetDeviceNetworkArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceNetworkArrayOutput)
 }
 
+func (i GetDeviceNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceNetwork] {
+	return pulumix.Output[[]GetDeviceNetwork]{
+		OutputState: i.ToGetDeviceNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceNetworkOutput) ElementType() reflect.Type {
@@ -2241,6 +2606,12 @@ func (o GetDeviceNetworkOutput) ToGetDeviceNetworkOutput() GetDeviceNetworkOutpu
 
 func (o GetDeviceNetworkOutput) ToGetDeviceNetworkOutputWithContext(ctx context.Context) GetDeviceNetworkOutput {
 	return o
+}
+
+func (o GetDeviceNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceNetwork] {
+	return pulumix.Output[GetDeviceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IPv4 or IPv6 address string.
@@ -2280,6 +2651,12 @@ func (o GetDeviceNetworkArrayOutput) ToGetDeviceNetworkArrayOutput() GetDeviceNe
 
 func (o GetDeviceNetworkArrayOutput) ToGetDeviceNetworkArrayOutputWithContext(ctx context.Context) GetDeviceNetworkArrayOutput {
 	return o
+}
+
+func (o GetDeviceNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceNetwork] {
+	return pulumix.Output[[]GetDeviceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceNetworkArrayOutput) Index(i pulumi.IntInput) GetDeviceNetworkOutput {
@@ -2337,6 +2714,12 @@ func (i GetDevicePortArgs) ToGetDevicePortOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetDevicePortOutput)
 }
 
+func (i GetDevicePortArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicePort] {
+	return pulumix.Output[GetDevicePort]{
+		OutputState: i.ToGetDevicePortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDevicePortArrayInput is an input type that accepts GetDevicePortArray and GetDevicePortArrayOutput values.
 // You can construct a concrete instance of `GetDevicePortArrayInput` via:
 //
@@ -2362,6 +2745,12 @@ func (i GetDevicePortArray) ToGetDevicePortArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetDevicePortArrayOutput)
 }
 
+func (i GetDevicePortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicePort] {
+	return pulumix.Output[[]GetDevicePort]{
+		OutputState: i.ToGetDevicePortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDevicePortOutput struct{ *pulumi.OutputState }
 
 func (GetDevicePortOutput) ElementType() reflect.Type {
@@ -2374,6 +2763,12 @@ func (o GetDevicePortOutput) ToGetDevicePortOutput() GetDevicePortOutput {
 
 func (o GetDevicePortOutput) ToGetDevicePortOutputWithContext(ctx context.Context) GetDevicePortOutput {
 	return o
+}
+
+func (o GetDevicePortOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicePort] {
+	return pulumix.Output[GetDevicePort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether this port is part of a bond in bonded network setup.
@@ -2415,10 +2810,837 @@ func (o GetDevicePortArrayOutput) ToGetDevicePortArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o GetDevicePortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicePort] {
+	return pulumix.Output[[]GetDevicePort]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDevicePortArrayOutput) Index(i pulumi.IntInput) GetDevicePortOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicePort {
 		return vs[0].([]GetDevicePort)[vs[1].(int)]
 	}).(GetDevicePortOutput)
+}
+
+type GetDevicesDevice struct {
+	AccessPrivateIpv4 string `pulumi:"accessPrivateIpv4"`
+	AccessPublicIpv4  string `pulumi:"accessPublicIpv4"`
+	AccessPublicIpv6  string `pulumi:"accessPublicIpv6"`
+	AlwaysPxe         bool   `pulumi:"alwaysPxe"`
+	BillingCycle      string `pulumi:"billingCycle"`
+	Description       string `pulumi:"description"`
+	DeviceId          string `pulumi:"deviceId"`
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	Facility              string                    `pulumi:"facility"`
+	HardwareReservationId string                    `pulumi:"hardwareReservationId"`
+	Hostname              string                    `pulumi:"hostname"`
+	IpxeScriptUrl         string                    `pulumi:"ipxeScriptUrl"`
+	Metro                 string                    `pulumi:"metro"`
+	NetworkType           string                    `pulumi:"networkType"`
+	Networks              []GetDevicesDeviceNetwork `pulumi:"networks"`
+	OperatingSystem       string                    `pulumi:"operatingSystem"`
+	Plan                  string                    `pulumi:"plan"`
+	Ports                 []GetDevicesDevicePort    `pulumi:"ports"`
+	// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
+	ProjectId    string   `pulumi:"projectId"`
+	RootPassword string   `pulumi:"rootPassword"`
+	SshKeyIds    []string `pulumi:"sshKeyIds"`
+	State        string   `pulumi:"state"`
+	Storage      string   `pulumi:"storage"`
+	Tags         []string `pulumi:"tags"`
+}
+
+// GetDevicesDeviceInput is an input type that accepts GetDevicesDeviceArgs and GetDevicesDeviceOutput values.
+// You can construct a concrete instance of `GetDevicesDeviceInput` via:
+//
+//	GetDevicesDeviceArgs{...}
+type GetDevicesDeviceInput interface {
+	pulumi.Input
+
+	ToGetDevicesDeviceOutput() GetDevicesDeviceOutput
+	ToGetDevicesDeviceOutputWithContext(context.Context) GetDevicesDeviceOutput
+}
+
+type GetDevicesDeviceArgs struct {
+	AccessPrivateIpv4 pulumi.StringInput `pulumi:"accessPrivateIpv4"`
+	AccessPublicIpv4  pulumi.StringInput `pulumi:"accessPublicIpv4"`
+	AccessPublicIpv6  pulumi.StringInput `pulumi:"accessPublicIpv6"`
+	AlwaysPxe         pulumi.BoolInput   `pulumi:"alwaysPxe"`
+	BillingCycle      pulumi.StringInput `pulumi:"billingCycle"`
+	Description       pulumi.StringInput `pulumi:"description"`
+	DeviceId          pulumi.StringInput `pulumi:"deviceId"`
+	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	Facility              pulumi.StringInput                `pulumi:"facility"`
+	HardwareReservationId pulumi.StringInput                `pulumi:"hardwareReservationId"`
+	Hostname              pulumi.StringInput                `pulumi:"hostname"`
+	IpxeScriptUrl         pulumi.StringInput                `pulumi:"ipxeScriptUrl"`
+	Metro                 pulumi.StringInput                `pulumi:"metro"`
+	NetworkType           pulumi.StringInput                `pulumi:"networkType"`
+	Networks              GetDevicesDeviceNetworkArrayInput `pulumi:"networks"`
+	OperatingSystem       pulumi.StringInput                `pulumi:"operatingSystem"`
+	Plan                  pulumi.StringInput                `pulumi:"plan"`
+	Ports                 GetDevicesDevicePortArrayInput    `pulumi:"ports"`
+	// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
+	ProjectId    pulumi.StringInput      `pulumi:"projectId"`
+	RootPassword pulumi.StringInput      `pulumi:"rootPassword"`
+	SshKeyIds    pulumi.StringArrayInput `pulumi:"sshKeyIds"`
+	State        pulumi.StringInput      `pulumi:"state"`
+	Storage      pulumi.StringInput      `pulumi:"storage"`
+	Tags         pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetDevicesDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDevice)(nil)).Elem()
+}
+
+func (i GetDevicesDeviceArgs) ToGetDevicesDeviceOutput() GetDevicesDeviceOutput {
+	return i.ToGetDevicesDeviceOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDeviceArgs) ToGetDevicesDeviceOutputWithContext(ctx context.Context) GetDevicesDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDeviceOutput)
+}
+
+func (i GetDevicesDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicesDevice] {
+	return pulumix.Output[GetDevicesDevice]{
+		OutputState: i.ToGetDevicesDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDevicesDeviceArrayInput is an input type that accepts GetDevicesDeviceArray and GetDevicesDeviceArrayOutput values.
+// You can construct a concrete instance of `GetDevicesDeviceArrayInput` via:
+//
+//	GetDevicesDeviceArray{ GetDevicesDeviceArgs{...} }
+type GetDevicesDeviceArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicesDeviceArrayOutput() GetDevicesDeviceArrayOutput
+	ToGetDevicesDeviceArrayOutputWithContext(context.Context) GetDevicesDeviceArrayOutput
+}
+
+type GetDevicesDeviceArray []GetDevicesDeviceInput
+
+func (GetDevicesDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDevice)(nil)).Elem()
+}
+
+func (i GetDevicesDeviceArray) ToGetDevicesDeviceArrayOutput() GetDevicesDeviceArrayOutput {
+	return i.ToGetDevicesDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDeviceArray) ToGetDevicesDeviceArrayOutputWithContext(ctx context.Context) GetDevicesDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDeviceArrayOutput)
+}
+
+func (i GetDevicesDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesDevice] {
+	return pulumix.Output[[]GetDevicesDevice]{
+		OutputState: i.ToGetDevicesDeviceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDevicesDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDevice)(nil)).Elem()
+}
+
+func (o GetDevicesDeviceOutput) ToGetDevicesDeviceOutput() GetDevicesDeviceOutput {
+	return o
+}
+
+func (o GetDevicesDeviceOutput) ToGetDevicesDeviceOutputWithContext(ctx context.Context) GetDevicesDeviceOutput {
+	return o
+}
+
+func (o GetDevicesDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesDevice] {
+	return pulumix.Output[GetDevicesDevice]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesDeviceOutput) AccessPrivateIpv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.AccessPrivateIpv4 }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) AccessPublicIpv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.AccessPublicIpv4 }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) AccessPublicIpv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.AccessPublicIpv6 }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) AlwaysPxe() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDevicesDevice) bool { return v.AlwaysPxe }).(pulumi.BoolOutput)
+}
+
+func (o GetDevicesDeviceOutput) BillingCycle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.BillingCycle }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.DeviceId }).(pulumi.StringOutput)
+}
+
+// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+func (o GetDevicesDeviceOutput) Facility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.Facility }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) HardwareReservationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.HardwareReservationId }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) IpxeScriptUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.IpxeScriptUrl }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Metro() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.Metro }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Networks() GetDevicesDeviceNetworkArrayOutput {
+	return o.ApplyT(func(v GetDevicesDevice) []GetDevicesDeviceNetwork { return v.Networks }).(GetDevicesDeviceNetworkArrayOutput)
+}
+
+func (o GetDevicesDeviceOutput) OperatingSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.OperatingSystem }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.Plan }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Ports() GetDevicesDevicePortArrayOutput {
+	return o.ApplyT(func(v GetDevicesDevice) []GetDevicesDevicePort { return v.Ports }).(GetDevicesDevicePortArrayOutput)
+}
+
+// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
+func (o GetDevicesDeviceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) RootPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) SshKeyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDevicesDevice) []string { return v.SshKeyIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDevicesDeviceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Storage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.Storage }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDevicesDevice) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetDevicesDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDevice)(nil)).Elem()
+}
+
+func (o GetDevicesDeviceArrayOutput) ToGetDevicesDeviceArrayOutput() GetDevicesDeviceArrayOutput {
+	return o
+}
+
+func (o GetDevicesDeviceArrayOutput) ToGetDevicesDeviceArrayOutputWithContext(ctx context.Context) GetDevicesDeviceArrayOutput {
+	return o
+}
+
+func (o GetDevicesDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesDevice] {
+	return pulumix.Output[[]GetDevicesDevice]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesDeviceArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesDevice {
+		return vs[0].([]GetDevicesDevice)[vs[1].(int)]
+	}).(GetDevicesDeviceOutput)
+}
+
+type GetDevicesDeviceNetwork struct {
+	Address string `pulumi:"address"`
+	Cidr    int    `pulumi:"cidr"`
+	Family  int    `pulumi:"family"`
+	Gateway string `pulumi:"gateway"`
+	Public  bool   `pulumi:"public"`
+}
+
+// GetDevicesDeviceNetworkInput is an input type that accepts GetDevicesDeviceNetworkArgs and GetDevicesDeviceNetworkOutput values.
+// You can construct a concrete instance of `GetDevicesDeviceNetworkInput` via:
+//
+//	GetDevicesDeviceNetworkArgs{...}
+type GetDevicesDeviceNetworkInput interface {
+	pulumi.Input
+
+	ToGetDevicesDeviceNetworkOutput() GetDevicesDeviceNetworkOutput
+	ToGetDevicesDeviceNetworkOutputWithContext(context.Context) GetDevicesDeviceNetworkOutput
+}
+
+type GetDevicesDeviceNetworkArgs struct {
+	Address pulumi.StringInput `pulumi:"address"`
+	Cidr    pulumi.IntInput    `pulumi:"cidr"`
+	Family  pulumi.IntInput    `pulumi:"family"`
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	Public  pulumi.BoolInput   `pulumi:"public"`
+}
+
+func (GetDevicesDeviceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDeviceNetwork)(nil)).Elem()
+}
+
+func (i GetDevicesDeviceNetworkArgs) ToGetDevicesDeviceNetworkOutput() GetDevicesDeviceNetworkOutput {
+	return i.ToGetDevicesDeviceNetworkOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDeviceNetworkArgs) ToGetDevicesDeviceNetworkOutputWithContext(ctx context.Context) GetDevicesDeviceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDeviceNetworkOutput)
+}
+
+func (i GetDevicesDeviceNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicesDeviceNetwork] {
+	return pulumix.Output[GetDevicesDeviceNetwork]{
+		OutputState: i.ToGetDevicesDeviceNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDevicesDeviceNetworkArrayInput is an input type that accepts GetDevicesDeviceNetworkArray and GetDevicesDeviceNetworkArrayOutput values.
+// You can construct a concrete instance of `GetDevicesDeviceNetworkArrayInput` via:
+//
+//	GetDevicesDeviceNetworkArray{ GetDevicesDeviceNetworkArgs{...} }
+type GetDevicesDeviceNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicesDeviceNetworkArrayOutput() GetDevicesDeviceNetworkArrayOutput
+	ToGetDevicesDeviceNetworkArrayOutputWithContext(context.Context) GetDevicesDeviceNetworkArrayOutput
+}
+
+type GetDevicesDeviceNetworkArray []GetDevicesDeviceNetworkInput
+
+func (GetDevicesDeviceNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDeviceNetwork)(nil)).Elem()
+}
+
+func (i GetDevicesDeviceNetworkArray) ToGetDevicesDeviceNetworkArrayOutput() GetDevicesDeviceNetworkArrayOutput {
+	return i.ToGetDevicesDeviceNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDeviceNetworkArray) ToGetDevicesDeviceNetworkArrayOutputWithContext(ctx context.Context) GetDevicesDeviceNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDeviceNetworkArrayOutput)
+}
+
+func (i GetDevicesDeviceNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesDeviceNetwork] {
+	return pulumix.Output[[]GetDevicesDeviceNetwork]{
+		OutputState: i.ToGetDevicesDeviceNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDevicesDeviceNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDeviceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDeviceNetwork)(nil)).Elem()
+}
+
+func (o GetDevicesDeviceNetworkOutput) ToGetDevicesDeviceNetworkOutput() GetDevicesDeviceNetworkOutput {
+	return o
+}
+
+func (o GetDevicesDeviceNetworkOutput) ToGetDevicesDeviceNetworkOutputWithContext(ctx context.Context) GetDevicesDeviceNetworkOutput {
+	return o
+}
+
+func (o GetDevicesDeviceNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesDeviceNetwork] {
+	return pulumix.Output[GetDevicesDeviceNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesDeviceNetworkOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDeviceNetwork) string { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceNetworkOutput) Cidr() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDevicesDeviceNetwork) int { return v.Cidr }).(pulumi.IntOutput)
+}
+
+func (o GetDevicesDeviceNetworkOutput) Family() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDevicesDeviceNetwork) int { return v.Family }).(pulumi.IntOutput)
+}
+
+func (o GetDevicesDeviceNetworkOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDeviceNetwork) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceNetworkOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDevicesDeviceNetwork) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+type GetDevicesDeviceNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDeviceNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDeviceNetwork)(nil)).Elem()
+}
+
+func (o GetDevicesDeviceNetworkArrayOutput) ToGetDevicesDeviceNetworkArrayOutput() GetDevicesDeviceNetworkArrayOutput {
+	return o
+}
+
+func (o GetDevicesDeviceNetworkArrayOutput) ToGetDevicesDeviceNetworkArrayOutputWithContext(ctx context.Context) GetDevicesDeviceNetworkArrayOutput {
+	return o
+}
+
+func (o GetDevicesDeviceNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesDeviceNetwork] {
+	return pulumix.Output[[]GetDevicesDeviceNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesDeviceNetworkArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesDeviceNetwork {
+		return vs[0].([]GetDevicesDeviceNetwork)[vs[1].(int)]
+	}).(GetDevicesDeviceNetworkOutput)
+}
+
+type GetDevicesDevicePort struct {
+	Bonded bool   `pulumi:"bonded"`
+	Id     string `pulumi:"id"`
+	Mac    string `pulumi:"mac"`
+	Name   string `pulumi:"name"`
+	Type   string `pulumi:"type"`
+}
+
+// GetDevicesDevicePortInput is an input type that accepts GetDevicesDevicePortArgs and GetDevicesDevicePortOutput values.
+// You can construct a concrete instance of `GetDevicesDevicePortInput` via:
+//
+//	GetDevicesDevicePortArgs{...}
+type GetDevicesDevicePortInput interface {
+	pulumi.Input
+
+	ToGetDevicesDevicePortOutput() GetDevicesDevicePortOutput
+	ToGetDevicesDevicePortOutputWithContext(context.Context) GetDevicesDevicePortOutput
+}
+
+type GetDevicesDevicePortArgs struct {
+	Bonded pulumi.BoolInput   `pulumi:"bonded"`
+	Id     pulumi.StringInput `pulumi:"id"`
+	Mac    pulumi.StringInput `pulumi:"mac"`
+	Name   pulumi.StringInput `pulumi:"name"`
+	Type   pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDevicesDevicePortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDevicePort)(nil)).Elem()
+}
+
+func (i GetDevicesDevicePortArgs) ToGetDevicesDevicePortOutput() GetDevicesDevicePortOutput {
+	return i.ToGetDevicesDevicePortOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDevicePortArgs) ToGetDevicesDevicePortOutputWithContext(ctx context.Context) GetDevicesDevicePortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDevicePortOutput)
+}
+
+func (i GetDevicesDevicePortArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicesDevicePort] {
+	return pulumix.Output[GetDevicesDevicePort]{
+		OutputState: i.ToGetDevicesDevicePortOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDevicesDevicePortArrayInput is an input type that accepts GetDevicesDevicePortArray and GetDevicesDevicePortArrayOutput values.
+// You can construct a concrete instance of `GetDevicesDevicePortArrayInput` via:
+//
+//	GetDevicesDevicePortArray{ GetDevicesDevicePortArgs{...} }
+type GetDevicesDevicePortArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicesDevicePortArrayOutput() GetDevicesDevicePortArrayOutput
+	ToGetDevicesDevicePortArrayOutputWithContext(context.Context) GetDevicesDevicePortArrayOutput
+}
+
+type GetDevicesDevicePortArray []GetDevicesDevicePortInput
+
+func (GetDevicesDevicePortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDevicePort)(nil)).Elem()
+}
+
+func (i GetDevicesDevicePortArray) ToGetDevicesDevicePortArrayOutput() GetDevicesDevicePortArrayOutput {
+	return i.ToGetDevicesDevicePortArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDevicePortArray) ToGetDevicesDevicePortArrayOutputWithContext(ctx context.Context) GetDevicesDevicePortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDevicePortArrayOutput)
+}
+
+func (i GetDevicesDevicePortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesDevicePort] {
+	return pulumix.Output[[]GetDevicesDevicePort]{
+		OutputState: i.ToGetDevicesDevicePortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDevicesDevicePortOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDevicePortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDevicePort)(nil)).Elem()
+}
+
+func (o GetDevicesDevicePortOutput) ToGetDevicesDevicePortOutput() GetDevicesDevicePortOutput {
+	return o
+}
+
+func (o GetDevicesDevicePortOutput) ToGetDevicesDevicePortOutputWithContext(ctx context.Context) GetDevicesDevicePortOutput {
+	return o
+}
+
+func (o GetDevicesDevicePortOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesDevicePort] {
+	return pulumix.Output[GetDevicesDevicePort]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesDevicePortOutput) Bonded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDevicesDevicePort) bool { return v.Bonded }).(pulumi.BoolOutput)
+}
+
+func (o GetDevicesDevicePortOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDevicePortOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDevicePortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDevicePortOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDevicesDevicePortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDevicePortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDevicePort)(nil)).Elem()
+}
+
+func (o GetDevicesDevicePortArrayOutput) ToGetDevicesDevicePortArrayOutput() GetDevicesDevicePortArrayOutput {
+	return o
+}
+
+func (o GetDevicesDevicePortArrayOutput) ToGetDevicesDevicePortArrayOutputWithContext(ctx context.Context) GetDevicesDevicePortArrayOutput {
+	return o
+}
+
+func (o GetDevicesDevicePortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesDevicePort] {
+	return pulumix.Output[[]GetDevicesDevicePort]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesDevicePortArrayOutput) Index(i pulumi.IntInput) GetDevicesDevicePortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesDevicePort {
+		return vs[0].([]GetDevicesDevicePort)[vs[1].(int)]
+	}).(GetDevicesDevicePortOutput)
+}
+
+type GetDevicesFilter struct {
+	// If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+	//
+	// All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+	All *bool `pulumi:"all"`
+	// The attribute used to filter. Filter attributes are case-sensitive
+	Attribute string `pulumi:"attribute"`
+	// The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+	MatchBy *string `pulumi:"matchBy"`
+	// The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+	Values []string `pulumi:"values"`
+}
+
+// GetDevicesFilterInput is an input type that accepts GetDevicesFilterArgs and GetDevicesFilterOutput values.
+// You can construct a concrete instance of `GetDevicesFilterInput` via:
+//
+//	GetDevicesFilterArgs{...}
+type GetDevicesFilterInput interface {
+	pulumi.Input
+
+	ToGetDevicesFilterOutput() GetDevicesFilterOutput
+	ToGetDevicesFilterOutputWithContext(context.Context) GetDevicesFilterOutput
+}
+
+type GetDevicesFilterArgs struct {
+	// If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+	//
+	// All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// The attribute used to filter. Filter attributes are case-sensitive
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDevicesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesFilter)(nil)).Elem()
+}
+
+func (i GetDevicesFilterArgs) ToGetDevicesFilterOutput() GetDevicesFilterOutput {
+	return i.ToGetDevicesFilterOutputWithContext(context.Background())
+}
+
+func (i GetDevicesFilterArgs) ToGetDevicesFilterOutputWithContext(ctx context.Context) GetDevicesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesFilterOutput)
+}
+
+func (i GetDevicesFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicesFilter] {
+	return pulumix.Output[GetDevicesFilter]{
+		OutputState: i.ToGetDevicesFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDevicesFilterArrayInput is an input type that accepts GetDevicesFilterArray and GetDevicesFilterArrayOutput values.
+// You can construct a concrete instance of `GetDevicesFilterArrayInput` via:
+//
+//	GetDevicesFilterArray{ GetDevicesFilterArgs{...} }
+type GetDevicesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicesFilterArrayOutput() GetDevicesFilterArrayOutput
+	ToGetDevicesFilterArrayOutputWithContext(context.Context) GetDevicesFilterArrayOutput
+}
+
+type GetDevicesFilterArray []GetDevicesFilterInput
+
+func (GetDevicesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesFilter)(nil)).Elem()
+}
+
+func (i GetDevicesFilterArray) ToGetDevicesFilterArrayOutput() GetDevicesFilterArrayOutput {
+	return i.ToGetDevicesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicesFilterArray) ToGetDevicesFilterArrayOutputWithContext(ctx context.Context) GetDevicesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesFilterArrayOutput)
+}
+
+func (i GetDevicesFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesFilter] {
+	return pulumix.Output[[]GetDevicesFilter]{
+		OutputState: i.ToGetDevicesFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDevicesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesFilter)(nil)).Elem()
+}
+
+func (o GetDevicesFilterOutput) ToGetDevicesFilterOutput() GetDevicesFilterOutput {
+	return o
+}
+
+func (o GetDevicesFilterOutput) ToGetDevicesFilterOutputWithContext(ctx context.Context) GetDevicesFilterOutput {
+	return o
+}
+
+func (o GetDevicesFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesFilter] {
+	return pulumix.Output[GetDevicesFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+//
+// All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+func (o GetDevicesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDevicesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// The attribute used to filter. Filter attributes are case-sensitive
+func (o GetDevicesFilterOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesFilter) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+func (o GetDevicesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+func (o GetDevicesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDevicesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDevicesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesFilter)(nil)).Elem()
+}
+
+func (o GetDevicesFilterArrayOutput) ToGetDevicesFilterArrayOutput() GetDevicesFilterArrayOutput {
+	return o
+}
+
+func (o GetDevicesFilterArrayOutput) ToGetDevicesFilterArrayOutputWithContext(ctx context.Context) GetDevicesFilterArrayOutput {
+	return o
+}
+
+func (o GetDevicesFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesFilter] {
+	return pulumix.Output[[]GetDevicesFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesFilterArrayOutput) Index(i pulumi.IntInput) GetDevicesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesFilter {
+		return vs[0].([]GetDevicesFilter)[vs[1].(int)]
+	}).(GetDevicesFilterOutput)
+}
+
+type GetDevicesSort struct {
+	// The attribute used to filter. Filter attributes are case-sensitive
+	Attribute string  `pulumi:"attribute"`
+	Direction *string `pulumi:"direction"`
+}
+
+// GetDevicesSortInput is an input type that accepts GetDevicesSortArgs and GetDevicesSortOutput values.
+// You can construct a concrete instance of `GetDevicesSortInput` via:
+//
+//	GetDevicesSortArgs{...}
+type GetDevicesSortInput interface {
+	pulumi.Input
+
+	ToGetDevicesSortOutput() GetDevicesSortOutput
+	ToGetDevicesSortOutputWithContext(context.Context) GetDevicesSortOutput
+}
+
+type GetDevicesSortArgs struct {
+	// The attribute used to filter. Filter attributes are case-sensitive
+	Attribute pulumi.StringInput    `pulumi:"attribute"`
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+}
+
+func (GetDevicesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesSort)(nil)).Elem()
+}
+
+func (i GetDevicesSortArgs) ToGetDevicesSortOutput() GetDevicesSortOutput {
+	return i.ToGetDevicesSortOutputWithContext(context.Background())
+}
+
+func (i GetDevicesSortArgs) ToGetDevicesSortOutputWithContext(ctx context.Context) GetDevicesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesSortOutput)
+}
+
+func (i GetDevicesSortArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicesSort] {
+	return pulumix.Output[GetDevicesSort]{
+		OutputState: i.ToGetDevicesSortOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDevicesSortArrayInput is an input type that accepts GetDevicesSortArray and GetDevicesSortArrayOutput values.
+// You can construct a concrete instance of `GetDevicesSortArrayInput` via:
+//
+//	GetDevicesSortArray{ GetDevicesSortArgs{...} }
+type GetDevicesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicesSortArrayOutput() GetDevicesSortArrayOutput
+	ToGetDevicesSortArrayOutputWithContext(context.Context) GetDevicesSortArrayOutput
+}
+
+type GetDevicesSortArray []GetDevicesSortInput
+
+func (GetDevicesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesSort)(nil)).Elem()
+}
+
+func (i GetDevicesSortArray) ToGetDevicesSortArrayOutput() GetDevicesSortArrayOutput {
+	return i.ToGetDevicesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicesSortArray) ToGetDevicesSortArrayOutputWithContext(ctx context.Context) GetDevicesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesSortArrayOutput)
+}
+
+func (i GetDevicesSortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesSort] {
+	return pulumix.Output[[]GetDevicesSort]{
+		OutputState: i.ToGetDevicesSortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDevicesSortOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesSort)(nil)).Elem()
+}
+
+func (o GetDevicesSortOutput) ToGetDevicesSortOutput() GetDevicesSortOutput {
+	return o
+}
+
+func (o GetDevicesSortOutput) ToGetDevicesSortOutputWithContext(ctx context.Context) GetDevicesSortOutput {
+	return o
+}
+
+func (o GetDevicesSortOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesSort] {
+	return pulumix.Output[GetDevicesSort]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The attribute used to filter. Filter attributes are case-sensitive
+func (o GetDevicesSortOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesSort) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+type GetDevicesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesSort)(nil)).Elem()
+}
+
+func (o GetDevicesSortArrayOutput) ToGetDevicesSortArrayOutput() GetDevicesSortArrayOutput {
+	return o
+}
+
+func (o GetDevicesSortArrayOutput) ToGetDevicesSortArrayOutputWithContext(ctx context.Context) GetDevicesSortArrayOutput {
+	return o
+}
+
+func (o GetDevicesSortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicesSort] {
+	return pulumix.Output[[]GetDevicesSort]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicesSortArrayOutput) Index(i pulumi.IntInput) GetDevicesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesSort {
+		return vs[0].([]GetDevicesSort)[vs[1].(int)]
+	}).(GetDevicesSortOutput)
 }
 
 type GetFacilityCapacity struct {
@@ -2460,6 +3682,12 @@ func (i GetFacilityCapacityArgs) ToGetFacilityCapacityOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetFacilityCapacityOutput)
 }
 
+func (i GetFacilityCapacityArgs) ToOutput(ctx context.Context) pulumix.Output[GetFacilityCapacity] {
+	return pulumix.Output[GetFacilityCapacity]{
+		OutputState: i.ToGetFacilityCapacityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetFacilityCapacityArrayInput is an input type that accepts GetFacilityCapacityArray and GetFacilityCapacityArrayOutput values.
 // You can construct a concrete instance of `GetFacilityCapacityArrayInput` via:
 //
@@ -2485,6 +3713,12 @@ func (i GetFacilityCapacityArray) ToGetFacilityCapacityArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetFacilityCapacityArrayOutput)
 }
 
+func (i GetFacilityCapacityArray) ToOutput(ctx context.Context) pulumix.Output[[]GetFacilityCapacity] {
+	return pulumix.Output[[]GetFacilityCapacity]{
+		OutputState: i.ToGetFacilityCapacityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetFacilityCapacityOutput struct{ *pulumi.OutputState }
 
 func (GetFacilityCapacityOutput) ElementType() reflect.Type {
@@ -2497,6 +3731,12 @@ func (o GetFacilityCapacityOutput) ToGetFacilityCapacityOutput() GetFacilityCapa
 
 func (o GetFacilityCapacityOutput) ToGetFacilityCapacityOutputWithContext(ctx context.Context) GetFacilityCapacityOutput {
 	return o
+}
+
+func (o GetFacilityCapacityOutput) ToOutput(ctx context.Context) pulumix.Output[GetFacilityCapacity] {
+	return pulumix.Output[GetFacilityCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device plan that must be available in selected location.
@@ -2522,6 +3762,12 @@ func (o GetFacilityCapacityArrayOutput) ToGetFacilityCapacityArrayOutput() GetFa
 
 func (o GetFacilityCapacityArrayOutput) ToGetFacilityCapacityArrayOutputWithContext(ctx context.Context) GetFacilityCapacityArrayOutput {
 	return o
+}
+
+func (o GetFacilityCapacityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetFacilityCapacity] {
+	return pulumix.Output[[]GetFacilityCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFacilityCapacityArrayOutput) Index(i pulumi.IntInput) GetFacilityCapacityOutput {
@@ -2587,6 +3833,12 @@ func (i GetInterconnectionPortArgs) ToGetInterconnectionPortOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionPortOutput)
 }
 
+func (i GetInterconnectionPortArgs) ToOutput(ctx context.Context) pulumix.Output[GetInterconnectionPort] {
+	return pulumix.Output[GetInterconnectionPort]{
+		OutputState: i.ToGetInterconnectionPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInterconnectionPortArrayInput is an input type that accepts GetInterconnectionPortArray and GetInterconnectionPortArrayOutput values.
 // You can construct a concrete instance of `GetInterconnectionPortArrayInput` via:
 //
@@ -2612,6 +3864,12 @@ func (i GetInterconnectionPortArray) ToGetInterconnectionPortArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionPortArrayOutput)
 }
 
+func (i GetInterconnectionPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInterconnectionPort] {
+	return pulumix.Output[[]GetInterconnectionPort]{
+		OutputState: i.ToGetInterconnectionPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInterconnectionPortOutput struct{ *pulumi.OutputState }
 
 func (GetInterconnectionPortOutput) ElementType() reflect.Type {
@@ -2624,6 +3882,12 @@ func (o GetInterconnectionPortOutput) ToGetInterconnectionPortOutput() GetInterc
 
 func (o GetInterconnectionPortOutput) ToGetInterconnectionPortOutputWithContext(ctx context.Context) GetInterconnectionPortOutput {
 	return o
+}
+
+func (o GetInterconnectionPortOutput) ToOutput(ctx context.Context) pulumix.Output[GetInterconnectionPort] {
+	return pulumix.Output[GetInterconnectionPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port UUID.
@@ -2673,6 +3937,12 @@ func (o GetInterconnectionPortArrayOutput) ToGetInterconnectionPortArrayOutput()
 
 func (o GetInterconnectionPortArrayOutput) ToGetInterconnectionPortArrayOutputWithContext(ctx context.Context) GetInterconnectionPortArrayOutput {
 	return o
+}
+
+func (o GetInterconnectionPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInterconnectionPort] {
+	return pulumix.Output[[]GetInterconnectionPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInterconnectionPortArrayOutput) Index(i pulumi.IntInput) GetInterconnectionPortOutput {
@@ -2732,6 +4002,12 @@ func (i GetInterconnectionServiceTokenArgs) ToGetInterconnectionServiceTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionServiceTokenOutput)
 }
 
+func (i GetInterconnectionServiceTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GetInterconnectionServiceToken] {
+	return pulumix.Output[GetInterconnectionServiceToken]{
+		OutputState: i.ToGetInterconnectionServiceTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInterconnectionServiceTokenArrayInput is an input type that accepts GetInterconnectionServiceTokenArray and GetInterconnectionServiceTokenArrayOutput values.
 // You can construct a concrete instance of `GetInterconnectionServiceTokenArrayInput` via:
 //
@@ -2757,6 +4033,12 @@ func (i GetInterconnectionServiceTokenArray) ToGetInterconnectionServiceTokenArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetInterconnectionServiceTokenArrayOutput)
 }
 
+func (i GetInterconnectionServiceTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInterconnectionServiceToken] {
+	return pulumix.Output[[]GetInterconnectionServiceToken]{
+		OutputState: i.ToGetInterconnectionServiceTokenArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInterconnectionServiceTokenOutput struct{ *pulumi.OutputState }
 
 func (GetInterconnectionServiceTokenOutput) ElementType() reflect.Type {
@@ -2769,6 +4051,12 @@ func (o GetInterconnectionServiceTokenOutput) ToGetInterconnectionServiceTokenOu
 
 func (o GetInterconnectionServiceTokenOutput) ToGetInterconnectionServiceTokenOutputWithContext(ctx context.Context) GetInterconnectionServiceTokenOutput {
 	return o
+}
+
+func (o GetInterconnectionServiceTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GetInterconnectionServiceToken] {
+	return pulumix.Output[GetInterconnectionServiceToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expiration date of the service token.
@@ -2812,6 +4100,12 @@ func (o GetInterconnectionServiceTokenArrayOutput) ToGetInterconnectionServiceTo
 
 func (o GetInterconnectionServiceTokenArrayOutput) ToGetInterconnectionServiceTokenArrayOutputWithContext(ctx context.Context) GetInterconnectionServiceTokenArrayOutput {
 	return o
+}
+
+func (o GetInterconnectionServiceTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInterconnectionServiceToken] {
+	return pulumix.Output[[]GetInterconnectionServiceToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInterconnectionServiceTokenArrayOutput) Index(i pulumi.IntInput) GetInterconnectionServiceTokenOutput {
@@ -2859,6 +4153,12 @@ func (i GetMetroCapacityArgs) ToGetMetroCapacityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetroCapacityOutput)
 }
 
+func (i GetMetroCapacityArgs) ToOutput(ctx context.Context) pulumix.Output[GetMetroCapacity] {
+	return pulumix.Output[GetMetroCapacity]{
+		OutputState: i.ToGetMetroCapacityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMetroCapacityArrayInput is an input type that accepts GetMetroCapacityArray and GetMetroCapacityArrayOutput values.
 // You can construct a concrete instance of `GetMetroCapacityArrayInput` via:
 //
@@ -2884,6 +4184,12 @@ func (i GetMetroCapacityArray) ToGetMetroCapacityArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetMetroCapacityArrayOutput)
 }
 
+func (i GetMetroCapacityArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMetroCapacity] {
+	return pulumix.Output[[]GetMetroCapacity]{
+		OutputState: i.ToGetMetroCapacityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMetroCapacityOutput struct{ *pulumi.OutputState }
 
 func (GetMetroCapacityOutput) ElementType() reflect.Type {
@@ -2896,6 +4202,12 @@ func (o GetMetroCapacityOutput) ToGetMetroCapacityOutput() GetMetroCapacityOutpu
 
 func (o GetMetroCapacityOutput) ToGetMetroCapacityOutputWithContext(ctx context.Context) GetMetroCapacityOutput {
 	return o
+}
+
+func (o GetMetroCapacityOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetroCapacity] {
+	return pulumix.Output[GetMetroCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device plan that must be available in selected location.
@@ -2921,6 +4233,12 @@ func (o GetMetroCapacityArrayOutput) ToGetMetroCapacityArrayOutput() GetMetroCap
 
 func (o GetMetroCapacityArrayOutput) ToGetMetroCapacityArrayOutputWithContext(ctx context.Context) GetMetroCapacityArrayOutput {
 	return o
+}
+
+func (o GetMetroCapacityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMetroCapacity] {
+	return pulumix.Output[[]GetMetroCapacity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMetroCapacityArrayOutput) Index(i pulumi.IntInput) GetMetroCapacityOutput {
@@ -2978,6 +4296,12 @@ func (i GetOrganizationAddressArgs) ToGetOrganizationAddressOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressOutput)
 }
 
+func (i GetOrganizationAddressArgs) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationAddress] {
+	return pulumix.Output[GetOrganizationAddress]{
+		OutputState: i.ToGetOrganizationAddressOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetOrganizationAddressOutput struct{ *pulumi.OutputState }
 
 func (GetOrganizationAddressOutput) ElementType() reflect.Type {
@@ -2990,6 +4314,12 @@ func (o GetOrganizationAddressOutput) ToGetOrganizationAddressOutput() GetOrgani
 
 func (o GetOrganizationAddressOutput) ToGetOrganizationAddressOutputWithContext(ctx context.Context) GetOrganizationAddressOutput {
 	return o
+}
+
+func (o GetOrganizationAddressOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationAddress] {
+	return pulumix.Output[GetOrganizationAddress]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Postal address.
@@ -3019,6 +4349,8 @@ func (o GetOrganizationAddressOutput) ZipCode() pulumi.StringOutput {
 
 type GetPlansFilter struct {
 	// If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+	//
+	// All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
 	All *bool `pulumi:"all"`
 	// The attribute used to filter. Filter attributes are case-sensitive
 	Attribute string `pulumi:"attribute"`
@@ -3041,6 +4373,8 @@ type GetPlansFilterInput interface {
 
 type GetPlansFilterArgs struct {
 	// If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+	//
+	// All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
 	All pulumi.BoolPtrInput `pulumi:"all"`
 	// The attribute used to filter. Filter attributes are case-sensitive
 	Attribute pulumi.StringInput `pulumi:"attribute"`
@@ -3060,6 +4394,12 @@ func (i GetPlansFilterArgs) ToGetPlansFilterOutput() GetPlansFilterOutput {
 
 func (i GetPlansFilterArgs) ToGetPlansFilterOutputWithContext(ctx context.Context) GetPlansFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlansFilterOutput)
+}
+
+func (i GetPlansFilterArgs) ToOutput(ctx context.Context) pulumix.Output[GetPlansFilter] {
+	return pulumix.Output[GetPlansFilter]{
+		OutputState: i.ToGetPlansFilterOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GetPlansFilterArrayInput is an input type that accepts GetPlansFilterArray and GetPlansFilterArrayOutput values.
@@ -3087,6 +4427,12 @@ func (i GetPlansFilterArray) ToGetPlansFilterArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlansFilterArrayOutput)
 }
 
+func (i GetPlansFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPlansFilter] {
+	return pulumix.Output[[]GetPlansFilter]{
+		OutputState: i.ToGetPlansFilterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPlansFilterOutput struct{ *pulumi.OutputState }
 
 func (GetPlansFilterOutput) ElementType() reflect.Type {
@@ -3101,7 +4447,15 @@ func (o GetPlansFilterOutput) ToGetPlansFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetPlansFilterOutput) ToOutput(ctx context.Context) pulumix.Output[GetPlansFilter] {
+	return pulumix.Output[GetPlansFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+//
+// All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
 func (o GetPlansFilterOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPlansFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
@@ -3133,6 +4487,12 @@ func (o GetPlansFilterArrayOutput) ToGetPlansFilterArrayOutput() GetPlansFilterA
 
 func (o GetPlansFilterArrayOutput) ToGetPlansFilterArrayOutputWithContext(ctx context.Context) GetPlansFilterArrayOutput {
 	return o
+}
+
+func (o GetPlansFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPlansFilter] {
+	return pulumix.Output[[]GetPlansFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPlansFilterArrayOutput) Index(i pulumi.IntInput) GetPlansFilterOutput {
@@ -3222,6 +4582,12 @@ func (i GetPlansPlanArgs) ToGetPlansPlanOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlansPlanOutput)
 }
 
+func (i GetPlansPlanArgs) ToOutput(ctx context.Context) pulumix.Output[GetPlansPlan] {
+	return pulumix.Output[GetPlansPlan]{
+		OutputState: i.ToGetPlansPlanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPlansPlanArrayInput is an input type that accepts GetPlansPlanArray and GetPlansPlanArrayOutput values.
 // You can construct a concrete instance of `GetPlansPlanArrayInput` via:
 //
@@ -3247,6 +4613,12 @@ func (i GetPlansPlanArray) ToGetPlansPlanArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlansPlanArrayOutput)
 }
 
+func (i GetPlansPlanArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPlansPlan] {
+	return pulumix.Output[[]GetPlansPlan]{
+		OutputState: i.ToGetPlansPlanArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPlansPlanOutput struct{ *pulumi.OutputState }
 
 func (GetPlansPlanOutput) ElementType() reflect.Type {
@@ -3259,6 +4631,12 @@ func (o GetPlansPlanOutput) ToGetPlansPlanOutput() GetPlansPlanOutput {
 
 func (o GetPlansPlanOutput) ToGetPlansPlanOutputWithContext(ctx context.Context) GetPlansPlanOutput {
 	return o
+}
+
+func (o GetPlansPlanOutput) ToOutput(ctx context.Context) pulumix.Output[GetPlansPlan] {
+	return pulumix.Output[GetPlansPlan]{
+		OutputState: o.OutputState,
+	}
 }
 
 // list of metros where the plan is available
@@ -3337,6 +4715,12 @@ func (o GetPlansPlanArrayOutput) ToGetPlansPlanArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetPlansPlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPlansPlan] {
+	return pulumix.Output[[]GetPlansPlan]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetPlansPlanArrayOutput) Index(i pulumi.IntInput) GetPlansPlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPlansPlan {
 		return vs[0].([]GetPlansPlan)[vs[1].(int)]
@@ -3380,6 +4764,12 @@ func (i GetPlansSortArgs) ToGetPlansSortOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlansSortOutput)
 }
 
+func (i GetPlansSortArgs) ToOutput(ctx context.Context) pulumix.Output[GetPlansSort] {
+	return pulumix.Output[GetPlansSort]{
+		OutputState: i.ToGetPlansSortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPlansSortArrayInput is an input type that accepts GetPlansSortArray and GetPlansSortArrayOutput values.
 // You can construct a concrete instance of `GetPlansSortArrayInput` via:
 //
@@ -3405,6 +4795,12 @@ func (i GetPlansSortArray) ToGetPlansSortArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlansSortArrayOutput)
 }
 
+func (i GetPlansSortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPlansSort] {
+	return pulumix.Output[[]GetPlansSort]{
+		OutputState: i.ToGetPlansSortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPlansSortOutput struct{ *pulumi.OutputState }
 
 func (GetPlansSortOutput) ElementType() reflect.Type {
@@ -3417,6 +4813,12 @@ func (o GetPlansSortOutput) ToGetPlansSortOutput() GetPlansSortOutput {
 
 func (o GetPlansSortOutput) ToGetPlansSortOutputWithContext(ctx context.Context) GetPlansSortOutput {
 	return o
+}
+
+func (o GetPlansSortOutput) ToOutput(ctx context.Context) pulumix.Output[GetPlansSort] {
+	return pulumix.Output[GetPlansSort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The attribute used to filter. Filter attributes are case-sensitive
@@ -3441,6 +4843,12 @@ func (o GetPlansSortArrayOutput) ToGetPlansSortArrayOutput() GetPlansSortArrayOu
 
 func (o GetPlansSortArrayOutput) ToGetPlansSortArrayOutputWithContext(ctx context.Context) GetPlansSortArrayOutput {
 	return o
+}
+
+func (o GetPlansSortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPlansSort] {
+	return pulumix.Output[[]GetPlansSort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPlansSortArrayOutput) Index(i pulumi.IntInput) GetPlansSortOutput {
@@ -3498,6 +4906,12 @@ func (i GetProjectBgpConfigArgs) ToGetProjectBgpConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetProjectBgpConfigOutput)
 }
 
+func (i GetProjectBgpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetProjectBgpConfig] {
+	return pulumix.Output[GetProjectBgpConfig]{
+		OutputState: i.ToGetProjectBgpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetProjectBgpConfigOutput struct{ *pulumi.OutputState }
 
 func (GetProjectBgpConfigOutput) ElementType() reflect.Type {
@@ -3510,6 +4924,12 @@ func (o GetProjectBgpConfigOutput) ToGetProjectBgpConfigOutput() GetProjectBgpCo
 
 func (o GetProjectBgpConfigOutput) ToGetProjectBgpConfigOutputWithContext(ctx context.Context) GetProjectBgpConfigOutput {
 	return o
+}
+
+func (o GetProjectBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectBgpConfig] {
+	return pulumix.Output[GetProjectBgpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Autonomous System Number for local BGP deployment.
@@ -3568,6 +4988,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDeviceNetworkArrayInput)(nil)).Elem(), GetDeviceNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicePortInput)(nil)).Elem(), GetDevicePortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicePortArrayInput)(nil)).Elem(), GetDevicePortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceNetworkInput)(nil)).Elem(), GetDevicesDeviceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceNetworkArrayInput)(nil)).Elem(), GetDevicesDeviceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDevicePortInput)(nil)).Elem(), GetDevicesDevicePortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDevicePortArrayInput)(nil)).Elem(), GetDevicesDevicePortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesFilterInput)(nil)).Elem(), GetDevicesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesFilterArrayInput)(nil)).Elem(), GetDevicesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesSortInput)(nil)).Elem(), GetDevicesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesSortArrayInput)(nil)).Elem(), GetDevicesSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFacilityCapacityInput)(nil)).Elem(), GetFacilityCapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFacilityCapacityArrayInput)(nil)).Elem(), GetFacilityCapacityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectionPortInput)(nil)).Elem(), GetInterconnectionPortArgs{})
@@ -3614,6 +5044,16 @@ func init() {
 	pulumi.RegisterOutputType(GetDeviceNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicePortOutput{})
 	pulumi.RegisterOutputType(GetDevicePortArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
+	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicesDeviceNetworkOutput{})
+	pulumi.RegisterOutputType(GetDevicesDeviceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicesDevicePortOutput{})
+	pulumi.RegisterOutputType(GetDevicesDevicePortArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicesFilterOutput{})
+	pulumi.RegisterOutputType(GetDevicesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicesSortOutput{})
+	pulumi.RegisterOutputType(GetDevicesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetFacilityCapacityOutput{})
 	pulumi.RegisterOutputType(GetFacilityCapacityArrayOutput{})
 	pulumi.RegisterOutputType(GetInterconnectionPortOutput{})

@@ -13,28 +13,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionASideAccessPointLinkProtocol {
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+     * 
+     */
     private @Nullable Integer vlanCTag;
+    /**
+     * @return Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+     * 
+     */
     private @Nullable Integer vlanSTag;
+    /**
+     * @return Vlan Tag information, vlanTag value specified for DOT1Q connections
+     * 
+     */
     private @Nullable Integer vlanTag;
 
     private ConnectionASideAccessPointLinkProtocol() {}
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+     * 
+     */
     public Optional<Integer> vlanCTag() {
         return Optional.ofNullable(this.vlanCTag);
     }
+    /**
+     * @return Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+     * 
+     */
     public Optional<Integer> vlanSTag() {
         return Optional.ofNullable(this.vlanSTag);
     }
+    /**
+     * @return Vlan Tag information, vlanTag value specified for DOT1Q connections
+     * 
+     */
     public Optional<Integer> vlanTag() {
         return Optional.ofNullable(this.vlanTag);
     }

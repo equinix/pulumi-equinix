@@ -15,9 +15,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     {
         public readonly ImmutableArray<string> Emails;
         public readonly string SendInterval;
-        /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

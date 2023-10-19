@@ -16,14 +16,14 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
     public static final ConnectionZSideAccessPointRoutingProtocolArgs Empty = new ConnectionZSideAccessPointRoutingProtocolArgs();
 
     /**
-     * Connection overall state
+     * Routing protocol instance state
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Connection overall state
+     * @return Routing protocol instance state
      * 
      */
     public Optional<Output<String>> state() {
@@ -31,23 +31,31 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
     }
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Equinix-assigned interface identifier
+     * 
+     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -79,7 +87,7 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
         }
 
         /**
-         * @param state Connection overall state
+         * @param state Routing protocol instance state
          * 
          * @return builder
          * 
@@ -90,7 +98,7 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
         }
 
         /**
-         * @param state Connection overall state
+         * @param state Routing protocol instance state
          * 
          * @return builder
          * 
@@ -100,7 +108,7 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -111,7 +119,7 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -120,11 +128,23 @@ public final class ConnectionZSideAccessPointRoutingProtocolArgs extends com.pul
             return type(Output.of(type));
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

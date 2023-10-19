@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,10 +36,6 @@ class GetReservedIpBlockResult:
         pulumi.set(__self__, "cidr_notation", cidr_notation)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
-        if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facility", facility)
         if gateway and not isinstance(gateway, str):
             raise TypeError("Expected argument 'gateway' to be a str")
@@ -107,6 +103,9 @@ class GetReservedIpBlockResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -225,6 +224,8 @@ def get_reserved_ip_block(id: Optional[str] = None,
 
     :param str id: UUID of the IP address block to look up.
     :param str ip_address: Block containing this IP address will be returned.
+           
+           > **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
     :param str project_id: UUID of the project where the searched block should be.
     """
     __args__ = dict()
@@ -235,25 +236,25 @@ def get_reserved_ip_block(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getReservedIpBlock:getReservedIpBlock', __args__, opts=opts, typ=GetReservedIpBlockResult).value
 
     return AwaitableGetReservedIpBlockResult(
-        address=__ret__.address,
-        address_family=__ret__.address_family,
-        cidr=__ret__.cidr,
-        cidr_notation=__ret__.cidr_notation,
-        facility=__ret__.facility,
-        gateway=__ret__.gateway,
-        global_=__ret__.global_,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        manageable=__ret__.manageable,
-        management=__ret__.management,
-        metro=__ret__.metro,
-        netmask=__ret__.netmask,
-        network=__ret__.network,
-        project_id=__ret__.project_id,
-        public=__ret__.public,
-        quantity=__ret__.quantity,
-        type=__ret__.type,
-        vrf_id=__ret__.vrf_id)
+        address=pulumi.get(__ret__, 'address'),
+        address_family=pulumi.get(__ret__, 'address_family'),
+        cidr=pulumi.get(__ret__, 'cidr'),
+        cidr_notation=pulumi.get(__ret__, 'cidr_notation'),
+        facility=pulumi.get(__ret__, 'facility'),
+        gateway=pulumi.get(__ret__, 'gateway'),
+        global_=pulumi.get(__ret__, 'global_'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        manageable=pulumi.get(__ret__, 'manageable'),
+        management=pulumi.get(__ret__, 'management'),
+        metro=pulumi.get(__ret__, 'metro'),
+        netmask=pulumi.get(__ret__, 'netmask'),
+        network=pulumi.get(__ret__, 'network'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        public=pulumi.get(__ret__, 'public'),
+        quantity=pulumi.get(__ret__, 'quantity'),
+        type=pulumi.get(__ret__, 'type'),
+        vrf_id=pulumi.get(__ret__, 'vrf_id'))
 
 
 @_utilities.lift_output_func(get_reserved_ip_block)
@@ -272,6 +273,8 @@ def get_reserved_ip_block_output(id: Optional[pulumi.Input[Optional[str]]] = Non
 
     :param str id: UUID of the IP address block to look up.
     :param str ip_address: Block containing this IP address will be returned.
+           
+           > **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
     :param str project_id: UUID of the project where the searched block should be.
     """
     ...

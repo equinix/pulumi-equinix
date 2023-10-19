@@ -69,6 +69,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/interconnection:Interconnection")
 public class Interconnection extends com.pulumi.resources.CustomResource {
     /**
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * 
+     */
+    @Export(name="contactEmail", refs={String.class}, tree="[0]")
+    private Output<String> contactEmail;
+
+    /**
+     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * 
+     */
+    public Output<String> contactEmail() {
+        return this.contactEmail;
+    }
+    /**
      * Description for the connection resource.
      * 
      */
@@ -83,7 +97,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Facility where the connection will be created
+     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -94,7 +108,7 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
     private Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created
+     * @return Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      * 
      */
     public Output<String> facility() {

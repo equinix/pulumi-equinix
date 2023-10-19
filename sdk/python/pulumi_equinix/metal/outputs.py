@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -27,6 +27,11 @@ __all__ = [
     'GetDeviceBgpNeighborsBgpNeighborRoutesOutResult',
     'GetDeviceNetworkResult',
     'GetDevicePortResult',
+    'GetDevicesDeviceResult',
+    'GetDevicesDeviceNetworkResult',
+    'GetDevicesDevicePortResult',
+    'GetDevicesFilterResult',
+    'GetDevicesSortResult',
     'GetFacilityCapacityResult',
     'GetInterconnectionPortResult',
     'GetInterconnectionServiceTokenResult',
@@ -62,8 +67,21 @@ class DeviceBehavior(dict):
         """
         :param Sequence[str] allow_changes: List of attributes that are allowed to change without recreating the instance. Supported attributes: `custom_data`, `user_data`"
         """
+        DeviceBehavior._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_changes=allow_changes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_changes: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowChanges' in kwargs:
+            allow_changes = kwargs['allowChanges']
+
         if allow_changes is not None:
-            pulumi.set(__self__, "allow_changes", allow_changes)
+            _setter("allow_changes", allow_changes)
 
     @property
     @pulumi.getter(name="allowChanges")
@@ -102,12 +120,35 @@ class DeviceIpAddress(dict):
         :param int cidr: CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
         :param Sequence[str] reservation_ids: List of UUIDs of IP block reservations
                from which the public IPv4 address should be taken.
+               
+               You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
+               always pass a block for `private_ipv4`.
+               
+               To learn more about using the reserved IP addresses for new devices, see the examples in the
+               metal.ReservedIpBlock documentation.
         """
-        pulumi.set(__self__, "type", type)
+        DeviceIpAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            cidr=cidr,
+            reservation_ids=reservation_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             cidr: Optional[int] = None,
+             reservation_ids: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'reservationIds' in kwargs:
+            reservation_ids = kwargs['reservationIds']
+
+        _setter("type", type)
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if reservation_ids is not None:
-            pulumi.set(__self__, "reservation_ids", reservation_ids)
+            _setter("reservation_ids", reservation_ids)
 
     @property
     @pulumi.getter
@@ -131,6 +172,12 @@ class DeviceIpAddress(dict):
         """
         List of UUIDs of IP block reservations
         from which the public IPv4 address should be taken.
+
+        You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
+        always pass a block for `private_ipv4`.
+
+        To learn more about using the reserved IP addresses for new devices, see the examples in the
+        metal.ReservedIpBlock documentation.
         """
         return pulumi.get(self, "reservation_ids")
 
@@ -150,16 +197,35 @@ class DeviceNetwork(dict):
         :param str gateway: Address of router.
         :param bool public: Whether the address is routable from the Internet.
         """
+        DeviceNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            cidr=cidr,
+            family=family,
+            gateway=gateway,
+            public=public,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[str] = None,
+             cidr: Optional[int] = None,
+             family: Optional[int] = None,
+             gateway: Optional[str] = None,
+             public: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if family is not None:
-            pulumi.set(__self__, "family", family)
+            _setter("family", family)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
 
     @property
     @pulumi.getter
@@ -217,16 +283,35 @@ class DevicePort(dict):
         :param str name: Name of the port (e.g. `eth0`, or `bond0`).
         :param str type: One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
         """
+        DevicePort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bonded=bonded,
+            id=id,
+            mac=mac,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bonded: Optional[bool] = None,
+             id: Optional[str] = None,
+             mac: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bonded is not None:
-            pulumi.set(__self__, "bonded", bonded)
+            _setter("bonded", bonded)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if mac is not None:
-            pulumi.set(__self__, "mac", mac)
+            _setter("mac", mac)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -302,12 +387,31 @@ class DeviceReinstall(dict):
         :param bool preserve_data: Whether the non-OS disks should be kept or wiped during reinstall.
                Defaults to `false`.
         """
+        DeviceReinstall._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deprovision_fast=deprovision_fast,
+            enabled=enabled,
+            preserve_data=preserve_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deprovision_fast: Optional[bool] = None,
+             enabled: Optional[bool] = None,
+             preserve_data: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deprovisionFast' in kwargs:
+            deprovision_fast = kwargs['deprovisionFast']
+        if 'preserveData' in kwargs:
+            preserve_data = kwargs['preserveData']
+
         if deprovision_fast is not None:
-            pulumi.set(__self__, "deprovision_fast", deprovision_fast)
+            _setter("deprovision_fast", deprovision_fast)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if preserve_data is not None:
-            pulumi.set(__self__, "preserve_data", preserve_data)
+            _setter("preserve_data", preserve_data)
 
     @property
     @pulumi.getter(name="deprovisionFast")
@@ -371,20 +475,47 @@ class InterconnectionPort(dict):
         :param int speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
         :param str status: Status of the connection resource.
         """
+        InterconnectionPort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            link_status=link_status,
+            name=name,
+            role=role,
+            speed=speed,
+            status=status,
+            virtual_circuit_ids=virtual_circuit_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             link_status: Optional[str] = None,
+             name: Optional[str] = None,
+             role: Optional[str] = None,
+             speed: Optional[int] = None,
+             status: Optional[str] = None,
+             virtual_circuit_ids: Optional[Sequence[Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'linkStatus' in kwargs:
+            link_status = kwargs['linkStatus']
+        if 'virtualCircuitIds' in kwargs:
+            virtual_circuit_ids = kwargs['virtualCircuitIds']
+
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if link_status is not None:
-            pulumi.set(__self__, "link_status", link_status)
+            _setter("link_status", link_status)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if speed is not None:
-            pulumi.set(__self__, "speed", speed)
+            _setter("speed", speed)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if virtual_circuit_ids is not None:
-            pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
+            _setter("virtual_circuit_ids", virtual_circuit_ids)
 
     @property
     @pulumi.getter
@@ -462,18 +593,43 @@ class InterconnectionServiceToken(dict):
         """
         :param str type: Connection type - dedicated or shared.
         """
+        InterconnectionServiceToken._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expires_at=expires_at,
+            id=id,
+            max_allowed_speed=max_allowed_speed,
+            role=role,
+            state=state,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expires_at: Optional[str] = None,
+             id: Optional[str] = None,
+             max_allowed_speed: Optional[str] = None,
+             role: Optional[str] = None,
+             state: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if 'maxAllowedSpeed' in kwargs:
+            max_allowed_speed = kwargs['maxAllowedSpeed']
+
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if max_allowed_speed is not None:
-            pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
+            _setter("max_allowed_speed", max_allowed_speed)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -541,12 +697,33 @@ class OrganizationAddress(dict):
         :param str zip_code: Zip Code.
         :param str state: State name.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "city", city)
-        pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "zip_code", zip_code)
+        OrganizationAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            city=city,
+            country=country,
+            zip_code=zip_code,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             city: str,
+             country: str,
+             zip_code: str,
+             state: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zipCode' in kwargs:
+            zip_code = kwargs['zipCode']
+
+        _setter("address", address)
+        _setter("city", city)
+        _setter("country", country)
+        _setter("zip_code", zip_code)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter
@@ -624,14 +801,37 @@ class ProjectBgpConfig(dict):
         :param str md5: Password for BGP session in plaintext (not a checksum).
         :param str status: status of BGP configuration in the project.
         """
-        pulumi.set(__self__, "asn", asn)
-        pulumi.set(__self__, "deployment_type", deployment_type)
+        ProjectBgpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asn=asn,
+            deployment_type=deployment_type,
+            max_prefix=max_prefix,
+            md5=md5,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asn: int,
+             deployment_type: str,
+             max_prefix: Optional[int] = None,
+             md5: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deploymentType' in kwargs:
+            deployment_type = kwargs['deploymentType']
+        if 'maxPrefix' in kwargs:
+            max_prefix = kwargs['maxPrefix']
+
+        _setter("asn", asn)
+        _setter("deployment_type", deployment_type)
         if max_prefix is not None:
-            pulumi.set(__self__, "max_prefix", max_prefix)
+            _setter("max_prefix", max_prefix)
         if md5 is not None:
-            pulumi.set(__self__, "md5", md5)
+            _setter("md5", md5)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -690,6 +890,8 @@ class SpotMarketRequestInstanceParameters(dict):
             suggest = "ipxe_script_url"
         elif key == "projectSshKeys":
             suggest = "project_ssh_keys"
+        elif key == "terminationTime":
+            suggest = "termination_time"
         elif key == "termintationTime":
             suggest = "termintation_time"
         elif key == "userSshKeys":
@@ -719,38 +921,98 @@ class SpotMarketRequestInstanceParameters(dict):
                  locked: Optional[bool] = None,
                  project_ssh_keys: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence[str]] = None,
+                 termination_time: Optional[str] = None,
                  termintation_time: Optional[str] = None,
                  user_ssh_keys: Optional[Sequence[str]] = None,
                  userdata: Optional[str] = None):
         """
         :param bool locked: Blocks deletion of the SpotMarketRequest device until the lock is disabled.
         """
-        pulumi.set(__self__, "billing_cycle", billing_cycle)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "operating_system", operating_system)
-        pulumi.set(__self__, "plan", plan)
+        SpotMarketRequestInstanceParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            billing_cycle=billing_cycle,
+            hostname=hostname,
+            operating_system=operating_system,
+            plan=plan,
+            always_pxe=always_pxe,
+            customdata=customdata,
+            description=description,
+            features=features,
+            ipxe_script_url=ipxe_script_url,
+            locked=locked,
+            project_ssh_keys=project_ssh_keys,
+            tags=tags,
+            termination_time=termination_time,
+            termintation_time=termintation_time,
+            user_ssh_keys=user_ssh_keys,
+            userdata=userdata,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             billing_cycle: str,
+             hostname: str,
+             operating_system: str,
+             plan: str,
+             always_pxe: Optional[bool] = None,
+             customdata: Optional[str] = None,
+             description: Optional[str] = None,
+             features: Optional[Sequence[str]] = None,
+             ipxe_script_url: Optional[str] = None,
+             locked: Optional[bool] = None,
+             project_ssh_keys: Optional[Sequence[str]] = None,
+             tags: Optional[Sequence[str]] = None,
+             termination_time: Optional[str] = None,
+             termintation_time: Optional[str] = None,
+             user_ssh_keys: Optional[Sequence[str]] = None,
+             userdata: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'billingCycle' in kwargs:
+            billing_cycle = kwargs['billingCycle']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'alwaysPxe' in kwargs:
+            always_pxe = kwargs['alwaysPxe']
+        if 'ipxeScriptUrl' in kwargs:
+            ipxe_script_url = kwargs['ipxeScriptUrl']
+        if 'projectSshKeys' in kwargs:
+            project_ssh_keys = kwargs['projectSshKeys']
+        if 'terminationTime' in kwargs:
+            termination_time = kwargs['terminationTime']
+        if 'termintationTime' in kwargs:
+            termintation_time = kwargs['termintationTime']
+        if 'userSshKeys' in kwargs:
+            user_ssh_keys = kwargs['userSshKeys']
+
+        _setter("billing_cycle", billing_cycle)
+        _setter("hostname", hostname)
+        _setter("operating_system", operating_system)
+        _setter("plan", plan)
         if always_pxe is not None:
-            pulumi.set(__self__, "always_pxe", always_pxe)
+            _setter("always_pxe", always_pxe)
         if customdata is not None:
-            pulumi.set(__self__, "customdata", customdata)
+            _setter("customdata", customdata)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if ipxe_script_url is not None:
-            pulumi.set(__self__, "ipxe_script_url", ipxe_script_url)
+            _setter("ipxe_script_url", ipxe_script_url)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if project_ssh_keys is not None:
-            pulumi.set(__self__, "project_ssh_keys", project_ssh_keys)
+            _setter("project_ssh_keys", project_ssh_keys)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
+        if termination_time is not None:
+            _setter("termination_time", termination_time)
         if termintation_time is not None:
-            pulumi.set(__self__, "termintation_time", termintation_time)
+            _setter("termintation_time", termintation_time)
         if user_ssh_keys is not None:
-            pulumi.set(__self__, "user_ssh_keys", user_ssh_keys)
+            _setter("user_ssh_keys", user_ssh_keys)
         if userdata is not None:
-            pulumi.set(__self__, "userdata", userdata)
+            _setter("userdata", userdata)
 
     @property
     @pulumi.getter(name="billingCycle")
@@ -816,8 +1078,16 @@ class SpotMarketRequestInstanceParameters(dict):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[str]:
+        return pulumi.get(self, "termination_time")
+
+    @property
     @pulumi.getter(name="termintationTime")
     def termintation_time(self) -> Optional[str]:
+        warnings.warn("""Use instance_parameters.termination_time instead""", DeprecationWarning)
+        pulumi.log.warn("""termintation_time is deprecated: Use instance_parameters.termination_time instead""")
+
         return pulumi.get(self, "termintation_time")
 
     @property
@@ -856,17 +1126,64 @@ class GetDeviceBgpNeighborsBgpNeighborResult(dict):
         :param Sequence['GetDeviceBgpNeighborsBgpNeighborRoutesOutArgs'] routes_outs: Array of outgoing routes in the same format.
         :param Sequence[str] peer_ips: Array of IP addresses of this neighbor's peers.
         """
-        pulumi.set(__self__, "address_family", address_family)
-        pulumi.set(__self__, "customer_as", customer_as)
-        pulumi.set(__self__, "customer_ip", customer_ip)
-        pulumi.set(__self__, "md5_enabled", md5_enabled)
-        pulumi.set(__self__, "md5_password", md5_password)
-        pulumi.set(__self__, "multihop", multihop)
-        pulumi.set(__self__, "peer_as", peer_as)
-        pulumi.set(__self__, "routes_ins", routes_ins)
-        pulumi.set(__self__, "routes_outs", routes_outs)
+        GetDeviceBgpNeighborsBgpNeighborResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_family=address_family,
+            customer_as=customer_as,
+            customer_ip=customer_ip,
+            md5_enabled=md5_enabled,
+            md5_password=md5_password,
+            multihop=multihop,
+            peer_as=peer_as,
+            routes_ins=routes_ins,
+            routes_outs=routes_outs,
+            peer_ips=peer_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_family: int,
+             customer_as: int,
+             customer_ip: str,
+             md5_enabled: bool,
+             md5_password: str,
+             multihop: bool,
+             peer_as: int,
+             routes_ins: Sequence['outputs.GetDeviceBgpNeighborsBgpNeighborRoutesInResult'],
+             routes_outs: Sequence['outputs.GetDeviceBgpNeighborsBgpNeighborRoutesOutResult'],
+             peer_ips: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if 'customerAs' in kwargs:
+            customer_as = kwargs['customerAs']
+        if 'customerIp' in kwargs:
+            customer_ip = kwargs['customerIp']
+        if 'md5Enabled' in kwargs:
+            md5_enabled = kwargs['md5Enabled']
+        if 'md5Password' in kwargs:
+            md5_password = kwargs['md5Password']
+        if 'peerAs' in kwargs:
+            peer_as = kwargs['peerAs']
+        if 'routesIns' in kwargs:
+            routes_ins = kwargs['routesIns']
+        if 'routesOuts' in kwargs:
+            routes_outs = kwargs['routesOuts']
+        if 'peerIps' in kwargs:
+            peer_ips = kwargs['peerIps']
+
+        _setter("address_family", address_family)
+        _setter("customer_as", customer_as)
+        _setter("customer_ip", customer_ip)
+        _setter("md5_enabled", md5_enabled)
+        _setter("md5_password", md5_password)
+        _setter("multihop", multihop)
+        _setter("peer_as", peer_as)
+        _setter("routes_ins", routes_ins)
+        _setter("routes_outs", routes_outs)
         if peer_ips is not None:
-            pulumi.set(__self__, "peer_ips", peer_ips)
+            _setter("peer_ips", peer_ips)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -958,8 +1275,21 @@ class GetDeviceBgpNeighborsBgpNeighborRoutesInResult(dict):
         :param bool exact: (bool) Whether the route is exact.
         :param str route: CIDR expression of route (IP/mask).
         """
-        pulumi.set(__self__, "exact", exact)
-        pulumi.set(__self__, "route", route)
+        GetDeviceBgpNeighborsBgpNeighborRoutesInResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exact=exact,
+            route=route,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exact: bool,
+             route: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("exact", exact)
+        _setter("route", route)
 
     @property
     @pulumi.getter
@@ -987,8 +1317,21 @@ class GetDeviceBgpNeighborsBgpNeighborRoutesOutResult(dict):
         :param bool exact: (bool) Whether the route is exact.
         :param str route: CIDR expression of route (IP/mask).
         """
-        pulumi.set(__self__, "exact", exact)
-        pulumi.set(__self__, "route", route)
+        GetDeviceBgpNeighborsBgpNeighborRoutesOutResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exact=exact,
+            route=route,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exact: bool,
+             route: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("exact", exact)
+        _setter("route", route)
 
     @property
     @pulumi.getter
@@ -1022,11 +1365,30 @@ class GetDeviceNetworkResult(dict):
         :param str gateway: Address of router.
         :param bool public: Whether the address is routable from the Internet.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "family", family)
-        pulumi.set(__self__, "gateway", gateway)
-        pulumi.set(__self__, "public", public)
+        GetDeviceNetworkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            cidr=cidr,
+            family=family,
+            gateway=gateway,
+            public=public,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             cidr: int,
+             family: int,
+             gateway: str,
+             public: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("address", address)
+        _setter("cidr", cidr)
+        _setter("family", family)
+        _setter("gateway", gateway)
+        _setter("public", public)
 
     @property
     @pulumi.getter
@@ -1084,11 +1446,30 @@ class GetDevicePortResult(dict):
         :param str name: Name of the port (e.g. `eth0`, or `bond0`).
         :param str type: Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
         """
-        pulumi.set(__self__, "bonded", bonded)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mac", mac)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        GetDevicePortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bonded=bonded,
+            id=id,
+            mac=mac,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bonded: bool,
+             id: str,
+             mac: str,
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("bonded", bonded)
+        _setter("id", id)
+        _setter("mac", mac)
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1132,6 +1513,495 @@ class GetDevicePortResult(dict):
 
 
 @pulumi.output_type
+class GetDevicesDeviceResult(dict):
+    def __init__(__self__, *,
+                 access_private_ipv4: str,
+                 access_public_ipv4: str,
+                 access_public_ipv6: str,
+                 always_pxe: bool,
+                 billing_cycle: str,
+                 description: str,
+                 device_id: str,
+                 facility: str,
+                 hardware_reservation_id: str,
+                 hostname: str,
+                 ipxe_script_url: str,
+                 metro: str,
+                 network_type: str,
+                 networks: Sequence['outputs.GetDevicesDeviceNetworkResult'],
+                 operating_system: str,
+                 plan: str,
+                 ports: Sequence['outputs.GetDevicesDevicePortResult'],
+                 project_id: str,
+                 root_password: str,
+                 ssh_key_ids: Sequence[str],
+                 state: str,
+                 storage: str,
+                 tags: Sequence[str]):
+        """
+        :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
+        """
+        GetDevicesDeviceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_private_ipv4=access_private_ipv4,
+            access_public_ipv4=access_public_ipv4,
+            access_public_ipv6=access_public_ipv6,
+            always_pxe=always_pxe,
+            billing_cycle=billing_cycle,
+            description=description,
+            device_id=device_id,
+            facility=facility,
+            hardware_reservation_id=hardware_reservation_id,
+            hostname=hostname,
+            ipxe_script_url=ipxe_script_url,
+            metro=metro,
+            network_type=network_type,
+            networks=networks,
+            operating_system=operating_system,
+            plan=plan,
+            ports=ports,
+            project_id=project_id,
+            root_password=root_password,
+            ssh_key_ids=ssh_key_ids,
+            state=state,
+            storage=storage,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_private_ipv4: str,
+             access_public_ipv4: str,
+             access_public_ipv6: str,
+             always_pxe: bool,
+             billing_cycle: str,
+             description: str,
+             device_id: str,
+             facility: str,
+             hardware_reservation_id: str,
+             hostname: str,
+             ipxe_script_url: str,
+             metro: str,
+             network_type: str,
+             networks: Sequence['outputs.GetDevicesDeviceNetworkResult'],
+             operating_system: str,
+             plan: str,
+             ports: Sequence['outputs.GetDevicesDevicePortResult'],
+             project_id: str,
+             root_password: str,
+             ssh_key_ids: Sequence[str],
+             state: str,
+             storage: str,
+             tags: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPrivateIpv4' in kwargs:
+            access_private_ipv4 = kwargs['accessPrivateIpv4']
+        if 'accessPublicIpv4' in kwargs:
+            access_public_ipv4 = kwargs['accessPublicIpv4']
+        if 'accessPublicIpv6' in kwargs:
+            access_public_ipv6 = kwargs['accessPublicIpv6']
+        if 'alwaysPxe' in kwargs:
+            always_pxe = kwargs['alwaysPxe']
+        if 'billingCycle' in kwargs:
+            billing_cycle = kwargs['billingCycle']
+        if 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if 'hardwareReservationId' in kwargs:
+            hardware_reservation_id = kwargs['hardwareReservationId']
+        if 'ipxeScriptUrl' in kwargs:
+            ipxe_script_url = kwargs['ipxeScriptUrl']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if 'sshKeyIds' in kwargs:
+            ssh_key_ids = kwargs['sshKeyIds']
+
+        _setter("access_private_ipv4", access_private_ipv4)
+        _setter("access_public_ipv4", access_public_ipv4)
+        _setter("access_public_ipv6", access_public_ipv6)
+        _setter("always_pxe", always_pxe)
+        _setter("billing_cycle", billing_cycle)
+        _setter("description", description)
+        _setter("device_id", device_id)
+        _setter("facility", facility)
+        _setter("hardware_reservation_id", hardware_reservation_id)
+        _setter("hostname", hostname)
+        _setter("ipxe_script_url", ipxe_script_url)
+        _setter("metro", metro)
+        _setter("network_type", network_type)
+        _setter("networks", networks)
+        _setter("operating_system", operating_system)
+        _setter("plan", plan)
+        _setter("ports", ports)
+        _setter("project_id", project_id)
+        _setter("root_password", root_password)
+        _setter("ssh_key_ids", ssh_key_ids)
+        _setter("state", state)
+        _setter("storage", storage)
+        _setter("tags", tags)
+
+    @property
+    @pulumi.getter(name="accessPrivateIpv4")
+    def access_private_ipv4(self) -> str:
+        return pulumi.get(self, "access_private_ipv4")
+
+    @property
+    @pulumi.getter(name="accessPublicIpv4")
+    def access_public_ipv4(self) -> str:
+        return pulumi.get(self, "access_public_ipv4")
+
+    @property
+    @pulumi.getter(name="accessPublicIpv6")
+    def access_public_ipv6(self) -> str:
+        return pulumi.get(self, "access_public_ipv6")
+
+    @property
+    @pulumi.getter(name="alwaysPxe")
+    def always_pxe(self) -> bool:
+        return pulumi.get(self, "always_pxe")
+
+    @property
+    @pulumi.getter(name="billingCycle")
+    def billing_cycle(self) -> str:
+        return pulumi.get(self, "billing_cycle")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> str:
+        return pulumi.get(self, "device_id")
+
+    @property
+    @pulumi.getter
+    def facility(self) -> str:
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
+        return pulumi.get(self, "facility")
+
+    @property
+    @pulumi.getter(name="hardwareReservationId")
+    def hardware_reservation_id(self) -> str:
+        return pulumi.get(self, "hardware_reservation_id")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="ipxeScriptUrl")
+    def ipxe_script_url(self) -> str:
+        return pulumi.get(self, "ipxe_script_url")
+
+    @property
+    @pulumi.getter
+    def metro(self) -> str:
+        return pulumi.get(self, "metro")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Sequence['outputs.GetDevicesDeviceNetworkResult']:
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> str:
+        return pulumi.get(self, "operating_system")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> str:
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetDevicesDevicePortResult']:
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> str:
+        return pulumi.get(self, "root_password")
+
+    @property
+    @pulumi.getter(name="sshKeyIds")
+    def ssh_key_ids(self) -> Sequence[str]:
+        return pulumi.get(self, "ssh_key_ids")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def storage(self) -> str:
+        return pulumi.get(self, "storage")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetDevicesDeviceNetworkResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 cidr: int,
+                 family: int,
+                 gateway: str,
+                 public: bool):
+        GetDevicesDeviceNetworkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            cidr=cidr,
+            family=family,
+            gateway=gateway,
+            public=public,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             cidr: int,
+             family: int,
+             gateway: str,
+             public: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("address", address)
+        _setter("cidr", cidr)
+        _setter("family", family)
+        _setter("gateway", gateway)
+        _setter("public", public)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> int:
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter
+    def family(self) -> int:
+        return pulumi.get(self, "family")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> str:
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        return pulumi.get(self, "public")
+
+
+@pulumi.output_type
+class GetDevicesDevicePortResult(dict):
+    def __init__(__self__, *,
+                 bonded: bool,
+                 id: str,
+                 mac: str,
+                 name: str,
+                 type: str):
+        GetDevicesDevicePortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bonded=bonded,
+            id=id,
+            mac=mac,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bonded: bool,
+             id: str,
+             mac: str,
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("bonded", bonded)
+        _setter("id", id)
+        _setter("mac", mac)
+        _setter("name", name)
+        _setter("type", type)
+
+    @property
+    @pulumi.getter
+    def bonded(self) -> bool:
+        return pulumi.get(self, "bonded")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> str:
+        return pulumi.get(self, "mac")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDevicesFilterResult(dict):
+    def __init__(__self__, *,
+                 attribute: str,
+                 values: Sequence[str],
+                 all: Optional[bool] = None,
+                 match_by: Optional[str] = None):
+        """
+        :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
+        :param Sequence[str] values: The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+        :param bool all: If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+               
+               All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+        :param str match_by: The type of comparison to apply. One of: `in` , `re`, `substring`, `less_than`, `less_than_or_equal`, `greater_than`, `greater_than_or_equal`. Default is `in`.
+        """
+        GetDevicesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute=attribute,
+            values=values,
+            all=all,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute: str,
+             values: Sequence[str],
+             all: Optional[bool] = None,
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
+        _setter("attribute", attribute)
+        _setter("values", values)
+        if all is not None:
+            _setter("all", all)
+        if match_by is not None:
+            _setter("match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> str:
+        """
+        The attribute used to filter. Filter attributes are case-sensitive
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def all(self) -> Optional[bool]:
+        """
+        If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+
+        All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+        """
+        return pulumi.get(self, "all")
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[str]:
+        """
+        The type of comparison to apply. One of: `in` , `re`, `substring`, `less_than`, `less_than_or_equal`, `greater_than`, `greater_than_or_equal`. Default is `in`.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDevicesSortResult(dict):
+    def __init__(__self__, *,
+                 attribute: str,
+                 direction: Optional[str] = None):
+        """
+        :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
+        """
+        GetDevicesSortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute=attribute,
+            direction=direction,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute: str,
+             direction: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("attribute", attribute)
+        if direction is not None:
+            _setter("direction", direction)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> str:
+        """
+        The attribute used to filter. Filter attributes are case-sensitive
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
 class GetFacilityCapacityResult(dict):
     def __init__(__self__, *,
                  plan: str,
@@ -1141,9 +2011,22 @@ class GetFacilityCapacityResult(dict):
         :param int quantity: Minimun number of devices that must be available in selected location.
                Default is `1`.
         """
-        pulumi.set(__self__, "plan", plan)
+        GetFacilityCapacityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            quantity=quantity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: str,
+             quantity: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("plan", plan)
         if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
+            _setter("quantity", quantity)
 
     @property
     @pulumi.getter
@@ -1182,13 +2065,40 @@ class GetInterconnectionPortResult(dict):
         :param str status: Port status.
         :param Sequence[Any] virtual_circuit_ids: List of IDs of virtual cicruits attached to this port.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "link_status", link_status)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "speed", speed)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
+        GetInterconnectionPortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            link_status=link_status,
+            name=name,
+            role=role,
+            speed=speed,
+            status=status,
+            virtual_circuit_ids=virtual_circuit_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             link_status: str,
+             name: str,
+             role: str,
+             speed: int,
+             status: str,
+             virtual_circuit_ids: Sequence[Any],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'linkStatus' in kwargs:
+            link_status = kwargs['linkStatus']
+        if 'virtualCircuitIds' in kwargs:
+            virtual_circuit_ids = kwargs['virtualCircuitIds']
+
+        _setter("id", id)
+        _setter("link_status", link_status)
+        _setter("name", name)
+        _setter("role", role)
+        _setter("speed", speed)
+        _setter("status", status)
+        _setter("virtual_circuit_ids", virtual_circuit_ids)
 
     @property
     @pulumi.getter
@@ -1263,12 +2173,37 @@ class GetInterconnectionServiceTokenResult(dict):
         :param str role: Port role - primary or secondary.
         :param str type: Token type, `a_side` or `z_side`.
         """
-        pulumi.set(__self__, "expires_at", expires_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "type", type)
+        GetInterconnectionServiceTokenResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expires_at=expires_at,
+            id=id,
+            max_allowed_speed=max_allowed_speed,
+            role=role,
+            state=state,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expires_at: str,
+             id: str,
+             max_allowed_speed: str,
+             role: str,
+             state: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if 'maxAllowedSpeed' in kwargs:
+            max_allowed_speed = kwargs['maxAllowedSpeed']
+
+        _setter("expires_at", expires_at)
+        _setter("id", id)
+        _setter("max_allowed_speed", max_allowed_speed)
+        _setter("role", role)
+        _setter("state", state)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="expiresAt")
@@ -1326,9 +2261,22 @@ class GetMetroCapacityResult(dict):
         :param int quantity: Minimum number of devices that must be available in selected location.
                Default is `1`.
         """
-        pulumi.set(__self__, "plan", plan)
+        GetMetroCapacityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            plan=plan,
+            quantity=quantity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             plan: str,
+             quantity: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("plan", plan)
         if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
+            _setter("quantity", quantity)
 
     @property
     @pulumi.getter
@@ -1363,11 +2311,32 @@ class GetOrganizationAddressResult(dict):
         :param str state: State name.
         :param str zip_code: Zip Code.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "city", city)
-        pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "zip_code", zip_code)
+        GetOrganizationAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            city=city,
+            country=country,
+            state=state,
+            zip_code=zip_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             city: str,
+             country: str,
+             state: str,
+             zip_code: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zipCode' in kwargs:
+            zip_code = kwargs['zipCode']
+
+        _setter("address", address)
+        _setter("city", city)
+        _setter("country", country)
+        _setter("state", state)
+        _setter("zip_code", zip_code)
 
     @property
     @pulumi.getter
@@ -1421,14 +2390,35 @@ class GetPlansFilterResult(dict):
         :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
         :param Sequence[str] values: The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
         :param bool all: If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+               
+               All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
         :param str match_by: The type of comparison to apply. One of: `in` , `re`, `substring`, `less_than`, `less_than_or_equal`, `greater_than`, `greater_than_or_equal`. Default is `in`.
         """
-        pulumi.set(__self__, "attribute", attribute)
-        pulumi.set(__self__, "values", values)
+        GetPlansFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute=attribute,
+            values=values,
+            all=all,
+            match_by=match_by,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute: str,
+             values: Sequence[str],
+             all: Optional[bool] = None,
+             match_by: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'matchBy' in kwargs:
+            match_by = kwargs['matchBy']
+
+        _setter("attribute", attribute)
+        _setter("values", values)
         if all is not None:
-            pulumi.set(__self__, "all", all)
+            _setter("all", all)
         if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
+            _setter("match_by", match_by)
 
     @property
     @pulumi.getter
@@ -1451,6 +2441,8 @@ class GetPlansFilterResult(dict):
     def all(self) -> Optional[bool]:
         """
         If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+
+        All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
         """
         return pulumi.get(self, "all")
 
@@ -1492,18 +2484,63 @@ class GetPlansPlanResult(dict):
         :param float pricing_month: plan monthly price
         :param str slug: plan slug
         """
-        pulumi.set(__self__, "available_in_metros", available_in_metros)
-        pulumi.set(__self__, "available_ins", available_ins)
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "deployment_types", deployment_types)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "legacy", legacy)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "pricing_hour", pricing_hour)
-        pulumi.set(__self__, "pricing_month", pricing_month)
-        pulumi.set(__self__, "slug", slug)
+        GetPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_in_metros=available_in_metros,
+            available_ins=available_ins,
+            class_=class_,
+            deployment_types=deployment_types,
+            description=description,
+            id=id,
+            legacy=legacy,
+            line=line,
+            name=name,
+            pricing_hour=pricing_hour,
+            pricing_month=pricing_month,
+            slug=slug,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_in_metros: Sequence[str],
+             available_ins: Sequence[str],
+             class_: str,
+             deployment_types: Sequence[str],
+             description: str,
+             id: str,
+             legacy: bool,
+             line: str,
+             name: str,
+             pricing_hour: float,
+             pricing_month: float,
+             slug: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableInMetros' in kwargs:
+            available_in_metros = kwargs['availableInMetros']
+        if 'availableIns' in kwargs:
+            available_ins = kwargs['availableIns']
+        if 'class' in kwargs:
+            class_ = kwargs['class']
+        if 'deploymentTypes' in kwargs:
+            deployment_types = kwargs['deploymentTypes']
+        if 'pricingHour' in kwargs:
+            pricing_hour = kwargs['pricingHour']
+        if 'pricingMonth' in kwargs:
+            pricing_month = kwargs['pricingMonth']
+
+        _setter("available_in_metros", available_in_metros)
+        _setter("available_ins", available_ins)
+        _setter("class_", class_)
+        _setter("deployment_types", deployment_types)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("legacy", legacy)
+        _setter("line", line)
+        _setter("name", name)
+        _setter("pricing_hour", pricing_hour)
+        _setter("pricing_month", pricing_month)
+        _setter("slug", slug)
 
     @property
     @pulumi.getter(name="availableInMetros")
@@ -1519,6 +2556,9 @@ class GetPlansPlanResult(dict):
         """
         (**Deprecated**) list of facilities where the plan is available
         """
+        warnings.warn("""Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""available_ins is deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "available_ins")
 
     @property
@@ -1611,9 +2651,22 @@ class GetPlansSortResult(dict):
         :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
         :param str direction: Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
         """
-        pulumi.set(__self__, "attribute", attribute)
+        GetPlansSortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute=attribute,
+            direction=direction,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute: str,
+             direction: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("attribute", attribute)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
 
     @property
     @pulumi.getter
@@ -1647,12 +2700,35 @@ class GetProjectBgpConfigResult(dict):
         :param str status: Status of BGP configuration in the project.
         :param str md5: Password for BGP session in plaintext (not a checksum).
         """
-        pulumi.set(__self__, "asn", asn)
-        pulumi.set(__self__, "deployment_type", deployment_type)
-        pulumi.set(__self__, "max_prefix", max_prefix)
-        pulumi.set(__self__, "status", status)
+        GetProjectBgpConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            asn=asn,
+            deployment_type=deployment_type,
+            max_prefix=max_prefix,
+            status=status,
+            md5=md5,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             asn: int,
+             deployment_type: str,
+             max_prefix: int,
+             status: str,
+             md5: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deploymentType' in kwargs:
+            deployment_type = kwargs['deploymentType']
+        if 'maxPrefix' in kwargs:
+            max_prefix = kwargs['maxPrefix']
+
+        _setter("asn", asn)
+        _setter("deployment_type", deployment_type)
+        _setter("max_prefix", max_prefix)
+        _setter("status", status)
         if md5 is not None:
-            pulumi.set(__self__, "md5", md5)
+            _setter("md5", md5)
 
     @property
     @pulumi.getter

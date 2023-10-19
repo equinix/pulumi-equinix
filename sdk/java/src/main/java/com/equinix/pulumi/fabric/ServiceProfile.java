@@ -169,28 +169,28 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customFields);
     }
     /**
-     * User-provided service description
+     * Description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Service Profile URI response attribute
+     * Unique Resource URL
      * 
      */
     @Export(name="href", refs={String.class}, tree="[0]")
     private Output<String> href;
 
     /**
-     * @return Service Profile URI response attribute
+     * @return Unique Resource URL
      * 
      */
     public Output<String> href() {
@@ -225,14 +225,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metros);
     }
     /**
-     * Customer-assigned service profile name
+     * Metro Name
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Customer-assigned service profile name
+     * @return Metro Name
      * 
      */
     public Output<String> name() {
@@ -323,28 +323,28 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Type of access point type config - VD, COLO
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Type of access point type config - VD, COLO
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Equinix assigned service profile identifier
+     * Colo/Port Uuid
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return Equinix assigned service profile identifier
+     * @return Colo/Port Uuid
      * 
      */
     public Output<String> uuid() {

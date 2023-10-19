@@ -18,14 +18,14 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
     public static final ConnectionASideAccessPointPortArgs Empty = new ConnectionASideAccessPointPortArgs();
 
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<Output<String>> href() {
@@ -33,14 +33,14 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
     }
 
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,9 +62,17 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.redundancies);
     }
 
+    /**
+     * Equinix-assigned interface identifier
+     * 
+     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -97,7 +105,7 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -108,7 +116,7 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -118,7 +126,7 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -129,7 +137,7 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -169,11 +177,23 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
             return redundancies(List.of(redundancies));
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

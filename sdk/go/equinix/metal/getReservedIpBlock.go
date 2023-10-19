@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
@@ -17,7 +19,7 @@ import (
 //
 // > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 func LookupReservedIpBlock(ctx *pulumi.Context, args *LookupReservedIpBlockArgs, opts ...pulumi.InvokeOption) (*LookupReservedIpBlockResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReservedIpBlockResult
 	err := ctx.Invoke("equinix:metal/getReservedIpBlock:getReservedIpBlock", args, &rv, opts...)
 	if err != nil {
@@ -31,6 +33,8 @@ type LookupReservedIpBlockArgs struct {
 	// UUID of the IP address block to look up.
 	Id *string `pulumi:"id"`
 	// Block containing this IP address will be returned.
+	//
+	// > **NOTE:** You should pass either `id`, or both `projectId` and `ipAddress`.
 	IpAddress *string `pulumi:"ipAddress"`
 	// UUID of the project where the searched block should be.
 	ProjectId *string `pulumi:"projectId"`
@@ -79,6 +83,8 @@ type LookupReservedIpBlockOutputArgs struct {
 	// UUID of the IP address block to look up.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Block containing this IP address will be returned.
+	//
+	// > **NOTE:** You should pass either `id`, or both `projectId` and `ipAddress`.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// UUID of the project where the searched block should be.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
@@ -101,6 +107,12 @@ func (o LookupReservedIpBlockResultOutput) ToLookupReservedIpBlockResultOutput()
 
 func (o LookupReservedIpBlockResultOutput) ToLookupReservedIpBlockResultOutputWithContext(ctx context.Context) LookupReservedIpBlockResultOutput {
 	return o
+}
+
+func (o LookupReservedIpBlockResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReservedIpBlockResult] {
+	return pulumix.Output[LookupReservedIpBlockResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupReservedIpBlockResultOutput) Address() pulumi.StringOutput {

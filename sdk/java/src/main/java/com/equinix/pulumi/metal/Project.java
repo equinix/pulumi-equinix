@@ -76,12 +76,18 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
      * 
+     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
+     * the Equinix Metal API). It can be updated.
+     * 
      */
     @Export(name="bgpConfig", refs={ProjectBgpConfig.class}, tree="[0]")
     private Output</* @Nullable */ ProjectBgpConfig> bgpConfig;
 
     /**
      * @return Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     * 
+     * &gt; **NOTE:** Once you set the BGP config in a project, it can&#39;t be removed (due to a limitation in
+     * the Equinix Metal API). It can be updated.
      * 
      */
     public Output<Optional<ProjectBgpConfig>> bgpConfig() {
@@ -102,14 +108,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * The name of the project.
+     * The name of the project.  The maximum length is 80 characters
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the project.
+     * @return The name of the project.  The maximum length is 80 characters
      * 
      */
     public Output<String> name() {
@@ -117,7 +123,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be create under your the default organization of your account.
+     * leave it out, the project will be created under your the default organization of your account.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
@@ -125,7 +131,7 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be create under your the default organization of your account.
+     * leave it out, the project will be created under your the default organization of your account.
      * 
      */
     public Output<String> organizationId() {

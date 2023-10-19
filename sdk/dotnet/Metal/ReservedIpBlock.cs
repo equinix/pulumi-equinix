@@ -96,8 +96,8 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-        /// type==global_ipv4, conflicts with metro
+        /// Facility where to allocate the public IP address block, makes sense only
+        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facility")]
         public Output<string?> Facility { get; private set; } = null!;
@@ -247,8 +247,8 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-        /// type==global_ipv4, conflicts with metro
+        /// Facility where to allocate the public IP address block, makes sense only
+        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public InputUnion<string, Pulumi.Equinix.Metal.Facility>? Facility { get; set; }
@@ -352,8 +352,8 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-        /// type==global_ipv4, conflicts with metro
+        /// Facility where to allocate the public IP address block, makes sense only
+        /// if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public InputUnion<string, Pulumi.Equinix.Metal.Facility>? Facility { get; set; }

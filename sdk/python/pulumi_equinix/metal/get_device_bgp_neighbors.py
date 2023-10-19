@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -96,9 +96,9 @@ def get_device_bgp_neighbors(device_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors', __args__, opts=opts, typ=GetDeviceBgpNeighborsResult).value
 
     return AwaitableGetDeviceBgpNeighborsResult(
-        bgp_neighbors=__ret__.bgp_neighbors,
-        device_id=__ret__.device_id,
-        id=__ret__.id)
+        bgp_neighbors=pulumi.get(__ret__, 'bgp_neighbors'),
+        device_id=pulumi.get(__ret__, 'device_id'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_device_bgp_neighbors)

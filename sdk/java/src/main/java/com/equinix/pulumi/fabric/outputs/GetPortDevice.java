@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPortDevice {
-    /**
-     * @return Port name
-     * 
-     */
     private String name;
-    /**
-     * @return Port redundancy information
-     * 
-     */
     private List<GetPortDeviceRedundancy> redundancies;
 
     private GetPortDevice() {}
-    /**
-     * @return Port name
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Port redundancy information
-     * 
-     */
     public List<GetPortDeviceRedundancy> redundancies() {
         return this.redundancies;
     }

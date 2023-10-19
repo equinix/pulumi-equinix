@@ -11,53 +11,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointPort {
-    /**
-     * @return Connection URI information
-     * 
-     */
     private String href;
-    /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-     * 
-     */
     private String name;
-    /**
-     * @return Redundancy Information
-     * 
-     */
     private List<GetConnectionASideAccessPointPortRedundancy> redundancies;
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     private String uuid;
 
     private GetConnectionASideAccessPointPort() {}
-    /**
-     * @return Connection URI information
-     * 
-     */
     public String href() {
         return this.href;
     }
-    /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Redundancy Information
-     * 
-     */
     public List<GetConnectionASideAccessPointPortRedundancy> redundancies() {
         return this.redundancies;
     }
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

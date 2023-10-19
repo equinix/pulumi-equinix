@@ -58,7 +58,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Facility where to create the VLAN
+        /// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facility")]
         public Output<string?> Facility { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where to create the VLAN
+        /// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public InputUnion<string, Pulumi.Equinix.Metal.Facility>? Facility { get; set; }
@@ -173,7 +173,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Facility where to create the VLAN
+        /// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Input("facility")]
         public InputUnion<string, Pulumi.Equinix.Metal.Facility>? Facility { get; set; }

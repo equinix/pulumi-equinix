@@ -7,14 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 //
 // > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
 func LookupServiceProfile(ctx *pulumi.Context, args *LookupServiceProfileArgs, opts ...pulumi.InvokeOption) (*LookupServiceProfileResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceProfileResult
 	err := ctx.Invoke("equinix:fabric/getServiceProfile:getServiceProfile", args, &rv, opts...)
 	if err != nil {
@@ -27,8 +29,7 @@ func LookupServiceProfile(ctx *pulumi.Context, args *LookupServiceProfileArgs, o
 type LookupServiceProfileArgs struct {
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
-	// Equinix assigned service profile identifier
-	Uuid string `pulumi:"uuid"`
+	Uuid  string  `pulumi:"uuid"`
 }
 
 // A collection of values returned by getServiceProfile.
@@ -92,8 +93,7 @@ func LookupServiceProfileOutput(ctx *pulumi.Context, args LookupServiceProfileOu
 type LookupServiceProfileOutputArgs struct {
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// Equinix assigned service profile identifier
-	Uuid pulumi.StringInput `pulumi:"uuid"`
+	Uuid  pulumi.StringInput    `pulumi:"uuid"`
 }
 
 func (LookupServiceProfileOutputArgs) ElementType() reflect.Type {
@@ -113,6 +113,12 @@ func (o LookupServiceProfileResultOutput) ToLookupServiceProfileResultOutput() L
 
 func (o LookupServiceProfileResultOutput) ToLookupServiceProfileResultOutputWithContext(ctx context.Context) LookupServiceProfileResultOutput {
 	return o
+}
+
+func (o LookupServiceProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceProfileResult] {
+	return pulumix.Output[LookupServiceProfileResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access point config information

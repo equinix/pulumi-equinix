@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts ...pulumi.InvokeOption) (*GetServiceProfilesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceProfilesResult
 	err := ctx.Invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", args, &rv, opts...)
 	if err != nil {
@@ -26,6 +28,8 @@ type GetServiceProfilesArgs struct {
 	Filter *GetServiceProfilesFilter `pulumi:"filter"`
 	// Service Profile Sort criteria for Search Request response payload
 	Sort []GetServiceProfilesSort `pulumi:"sort"`
+	// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+	ViewPoint *string `pulumi:"viewPoint"`
 }
 
 // A collection of values returned by getServiceProfiles.
@@ -38,6 +42,8 @@ type GetServiceProfilesResult struct {
 	Id string `pulumi:"id"`
 	// Service Profile Sort criteria for Search Request response payload
 	Sort []GetServiceProfilesSort `pulumi:"sort"`
+	// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+	ViewPoint *string `pulumi:"viewPoint"`
 }
 
 func GetServiceProfilesOutput(ctx *pulumi.Context, args GetServiceProfilesOutputArgs, opts ...pulumi.InvokeOption) GetServiceProfilesResultOutput {
@@ -59,6 +65,8 @@ type GetServiceProfilesOutputArgs struct {
 	Filter GetServiceProfilesFilterPtrInput `pulumi:"filter"`
 	// Service Profile Sort criteria for Search Request response payload
 	Sort GetServiceProfilesSortArrayInput `pulumi:"sort"`
+	// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+	ViewPoint pulumi.StringPtrInput `pulumi:"viewPoint"`
 }
 
 func (GetServiceProfilesOutputArgs) ElementType() reflect.Type {
@@ -80,6 +88,12 @@ func (o GetServiceProfilesResultOutput) ToGetServiceProfilesResultOutputWithCont
 	return o
 }
 
+func (o GetServiceProfilesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceProfilesResult] {
+	return pulumix.Output[GetServiceProfilesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of  Service Profiles
 func (o GetServiceProfilesResultOutput) Data() GetServiceProfilesDatumArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesDatum { return v.Data }).(GetServiceProfilesDatumArrayOutput)
@@ -98,6 +112,11 @@ func (o GetServiceProfilesResultOutput) Id() pulumi.StringOutput {
 // Service Profile Sort criteria for Search Request response payload
 func (o GetServiceProfilesResultOutput) Sort() GetServiceProfilesSortArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesSort { return v.Sort }).(GetServiceProfilesSortArrayOutput)
+}
+
+// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+func (o GetServiceProfilesResultOutput) ViewPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceProfilesResult) *string { return v.ViewPoint }).(pulumi.StringPtrOutput)
 }
 
 func init() {

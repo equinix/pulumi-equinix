@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -167,15 +167,15 @@ def get_device_platform(core_count: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('equinix:networkedge/getDevicePlatform:getDevicePlatform', __args__, opts=opts, typ=GetDevicePlatformResult).value
 
     return AwaitableGetDevicePlatformResult(
-        core_count=__ret__.core_count,
-        device_type=__ret__.device_type,
-        flavor=__ret__.flavor,
-        id=__ret__.id,
-        license_options=__ret__.license_options,
-        management_types=__ret__.management_types,
-        memory=__ret__.memory,
-        memory_unit=__ret__.memory_unit,
-        packages=__ret__.packages)
+        core_count=pulumi.get(__ret__, 'core_count'),
+        device_type=pulumi.get(__ret__, 'device_type'),
+        flavor=pulumi.get(__ret__, 'flavor'),
+        id=pulumi.get(__ret__, 'id'),
+        license_options=pulumi.get(__ret__, 'license_options'),
+        management_types=pulumi.get(__ret__, 'management_types'),
+        memory=pulumi.get(__ret__, 'memory'),
+        memory_unit=pulumi.get(__ret__, 'memory_unit'),
+        packages=pulumi.get(__ret__, 'packages'))
 
 
 @_utilities.lift_output_func(get_device_platform)

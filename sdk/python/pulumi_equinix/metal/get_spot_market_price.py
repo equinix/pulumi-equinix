@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,10 +24,6 @@ class GetSpotMarketPriceResult:
     def __init__(__self__, facility=None, id=None, metro=None, plan=None, price=None):
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
-        if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -45,6 +41,9 @@ class GetSpotMarketPriceResult:
     @property
     @pulumi.getter
     def facility(self) -> Optional[str]:
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -107,6 +106,7 @@ def get_spot_market_price(facility: Optional[str] = None,
     ```
 
 
+    :param str facility: Name of the facility. Use metro instead; read the facility to metro migration guide
     :param str metro: Name of the metro.
     :param str plan: Name of the plan.
     """
@@ -118,11 +118,11 @@ def get_spot_market_price(facility: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getSpotMarketPrice:getSpotMarketPrice', __args__, opts=opts, typ=GetSpotMarketPriceResult).value
 
     return AwaitableGetSpotMarketPriceResult(
-        facility=__ret__.facility,
-        id=__ret__.id,
-        metro=__ret__.metro,
-        plan=__ret__.plan,
-        price=__ret__.price)
+        facility=pulumi.get(__ret__, 'facility'),
+        id=pulumi.get(__ret__, 'id'),
+        metro=pulumi.get(__ret__, 'metro'),
+        plan=pulumi.get(__ret__, 'plan'),
+        price=pulumi.get(__ret__, 'price'))
 
 
 @_utilities.lift_output_func(get_spot_market_price)
@@ -146,6 +146,7 @@ def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]]
     ```
 
 
+    :param str facility: Name of the facility. Use metro instead; read the facility to metro migration guide
     :param str metro: Name of the metro.
     :param str plan: Name of the plan.
     """

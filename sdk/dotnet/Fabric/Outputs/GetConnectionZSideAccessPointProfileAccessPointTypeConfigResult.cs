@@ -25,13 +25,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly bool EnableAutoGenerateServiceKey;
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult> LinkProtocolConfigs;
         public readonly ImmutableArray<int> SupportedBandwidths;
-        /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// Equinix-assigned connection identifier
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

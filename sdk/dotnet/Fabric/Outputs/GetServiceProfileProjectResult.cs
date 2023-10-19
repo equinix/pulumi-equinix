@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfileProjectResult
     {
-        /// <summary>
-        /// Service Profile URI response attribute
-        /// </summary>
         public readonly string Href;
         public readonly string ProjectId;
 

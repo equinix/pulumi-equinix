@@ -69,6 +69,9 @@ export class Project extends pulumi.CustomResource {
     public readonly backendTransfer!: pulumi.Output<boolean | undefined>;
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     *
+     * > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+     * the Equinix Metal API). It can be updated.
      */
     public readonly bgpConfig!: pulumi.Output<outputs.metal.ProjectBgpConfig | undefined>;
     /**
@@ -76,12 +79,12 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * The name of the project.
+     * The name of the project.  The maximum length is 80 characters
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be create under your the default organization of your account.
+     * leave it out, the project will be created under your the default organization of your account.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
@@ -139,6 +142,9 @@ export interface ProjectState {
     backendTransfer?: pulumi.Input<boolean>;
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     *
+     * > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+     * the Equinix Metal API). It can be updated.
      */
     bgpConfig?: pulumi.Input<inputs.metal.ProjectBgpConfig>;
     /**
@@ -146,12 +152,12 @@ export interface ProjectState {
      */
     created?: pulumi.Input<string>;
     /**
-     * The name of the project.
+     * The name of the project.  The maximum length is 80 characters
      */
     name?: pulumi.Input<string>;
     /**
      * The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be create under your the default organization of your account.
+     * leave it out, the project will be created under your the default organization of your account.
      */
     organizationId?: pulumi.Input<string>;
     /**
@@ -175,15 +181,18 @@ export interface ProjectArgs {
     backendTransfer?: pulumi.Input<boolean>;
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+     *
+     * > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+     * the Equinix Metal API). It can be updated.
      */
     bgpConfig?: pulumi.Input<inputs.metal.ProjectBgpConfig>;
     /**
-     * The name of the project.
+     * The name of the project.  The maximum length is 80 characters
      */
     name?: pulumi.Input<string>;
     /**
      * The UUID of organization under which you want to create the project. If you
-     * leave it out, the project will be create under your the default organization of your account.
+     * leave it out, the project will be created under your the default organization of your account.
      */
     organizationId?: pulumi.Input<string>;
     /**

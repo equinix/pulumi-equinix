@@ -14,11 +14,20 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionZSideAccessPointLinkProtocol
     {
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        /// </summary>
         public readonly int? VlanCTag;
+        /// <summary>
+        /// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        /// </summary>
         public readonly int? VlanSTag;
+        /// <summary>
+        /// Vlan Tag information, vlanTag value specified for DOT1Q connections
+        /// </summary>
         public readonly int? VlanTag;
 
         [OutputConstructor]

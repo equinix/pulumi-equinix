@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -174,16 +174,16 @@ def get_project(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        backend_transfer=__ret__.backend_transfer,
-        bgp_config=__ret__.bgp_config,
-        created=__ret__.created,
-        id=__ret__.id,
-        name=__ret__.name,
-        organization_id=__ret__.organization_id,
-        payment_method_id=__ret__.payment_method_id,
-        project_id=__ret__.project_id,
-        updated=__ret__.updated,
-        user_ids=__ret__.user_ids)
+        backend_transfer=pulumi.get(__ret__, 'backend_transfer'),
+        bgp_config=pulumi.get(__ret__, 'bgp_config'),
+        created=pulumi.get(__ret__, 'created'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        organization_id=pulumi.get(__ret__, 'organization_id'),
+        payment_method_id=pulumi.get(__ret__, 'payment_method_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        updated=pulumi.get(__ret__, 'updated'),
+        user_ids=pulumi.get(__ret__, 'user_ids'))
 
 
 @_utilities.lift_output_func(get_project)

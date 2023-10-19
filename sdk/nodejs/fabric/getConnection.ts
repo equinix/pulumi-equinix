@@ -25,9 +25,6 @@ export interface GetConnectionArgs {
      * Project information
      */
     project?: inputs.fabric.GetConnectionProject;
-    /**
-     * Equinix-assigned connection identifier
-     */
     uuid?: string;
 }
 
@@ -104,7 +101,7 @@ export interface GetConnectionResult {
      */
     readonly state: string;
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
      */
     readonly type: string;
     /**
@@ -128,8 +125,5 @@ export interface GetConnectionOutputArgs {
      * Project information
      */
     project?: pulumi.Input<inputs.fabric.GetConnectionProjectArgs>;
-    /**
-     * Equinix-assigned connection identifier
-     */
     uuid?: pulumi.Input<string>;
 }

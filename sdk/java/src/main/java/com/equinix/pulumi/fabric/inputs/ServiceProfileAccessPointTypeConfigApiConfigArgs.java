@@ -17,51 +17,107 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
 
     public static final ServiceProfileAccessPointTypeConfigApiConfigArgs Empty = new ServiceProfileAccessPointTypeConfigApiConfigArgs();
 
+    /**
+     * Setting showing that oversubscription support is available (true) or not (false). The default is false
+     * 
+     */
     @Import(name="allowOverSubscription")
     private @Nullable Output<Boolean> allowOverSubscription;
 
+    /**
+     * @return Setting showing that oversubscription support is available (true) or not (false). The default is false
+     * 
+     */
     public Optional<Output<Boolean>> allowOverSubscription() {
         return Optional.ofNullable(this.allowOverSubscription);
     }
 
+    /**
+     * Setting indicating whether the API is available (true) or not (false)
+     * 
+     */
     @Import(name="apiAvailable")
     private @Nullable Output<Boolean> apiAvailable;
 
+    /**
+     * @return Setting indicating whether the API is available (true) or not (false)
+     * 
+     */
     public Optional<Output<Boolean>> apiAvailable() {
         return Optional.ofNullable(this.apiAvailable);
     }
 
+    /**
+     * Bandwidth from api
+     * 
+     */
     @Import(name="bandwidthFromApi")
     private @Nullable Output<Boolean> bandwidthFromApi;
 
+    /**
+     * @return Bandwidth from api
+     * 
+     */
     public Optional<Output<Boolean>> bandwidthFromApi() {
         return Optional.ofNullable(this.bandwidthFromApi);
     }
 
+    /**
+     * Setting indicating that the port is managed by Equinix (true) or not (false)
+     * 
+     */
     @Import(name="equinixManagedPort")
     private @Nullable Output<Boolean> equinixManagedPort;
 
+    /**
+     * @return Setting indicating that the port is managed by Equinix (true) or not (false)
+     * 
+     */
     public Optional<Output<Boolean>> equinixManagedPort() {
         return Optional.ofNullable(this.equinixManagedPort);
     }
 
+    /**
+     * Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+     * 
+     */
     @Import(name="equinixManagedVlan")
     private @Nullable Output<Boolean> equinixManagedVlan;
 
+    /**
+     * @return Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+     * 
+     */
     public Optional<Output<Boolean>> equinixManagedVlan() {
         return Optional.ofNullable(this.equinixManagedVlan);
     }
 
+    /**
+     * Integration id
+     * 
+     */
     @Import(name="integrationId")
     private @Nullable Output<String> integrationId;
 
+    /**
+     * @return Integration id
+     * 
+     */
     public Optional<Output<String>> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }
 
+    /**
+     * A cap on over subscription
+     * 
+     */
     @Import(name="overSubscriptionLimit")
     private @Nullable Output<Integer> overSubscriptionLimit;
 
+    /**
+     * @return A cap on over subscription
+     * 
+     */
     public Optional<Output<Integer>> overSubscriptionLimit() {
         return Optional.ofNullable(this.overSubscriptionLimit);
     }
@@ -96,65 +152,149 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
             $ = new ServiceProfileAccessPointTypeConfigApiConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowOverSubscription Setting showing that oversubscription support is available (true) or not (false). The default is false
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowOverSubscription(@Nullable Output<Boolean> allowOverSubscription) {
             $.allowOverSubscription = allowOverSubscription;
             return this;
         }
 
+        /**
+         * @param allowOverSubscription Setting showing that oversubscription support is available (true) or not (false). The default is false
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowOverSubscription(Boolean allowOverSubscription) {
             return allowOverSubscription(Output.of(allowOverSubscription));
         }
 
+        /**
+         * @param apiAvailable Setting indicating whether the API is available (true) or not (false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiAvailable(@Nullable Output<Boolean> apiAvailable) {
             $.apiAvailable = apiAvailable;
             return this;
         }
 
+        /**
+         * @param apiAvailable Setting indicating whether the API is available (true) or not (false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiAvailable(Boolean apiAvailable) {
             return apiAvailable(Output.of(apiAvailable));
         }
 
+        /**
+         * @param bandwidthFromApi Bandwidth from api
+         * 
+         * @return builder
+         * 
+         */
         public Builder bandwidthFromApi(@Nullable Output<Boolean> bandwidthFromApi) {
             $.bandwidthFromApi = bandwidthFromApi;
             return this;
         }
 
+        /**
+         * @param bandwidthFromApi Bandwidth from api
+         * 
+         * @return builder
+         * 
+         */
         public Builder bandwidthFromApi(Boolean bandwidthFromApi) {
             return bandwidthFromApi(Output.of(bandwidthFromApi));
         }
 
+        /**
+         * @param equinixManagedPort Setting indicating that the port is managed by Equinix (true) or not (false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder equinixManagedPort(@Nullable Output<Boolean> equinixManagedPort) {
             $.equinixManagedPort = equinixManagedPort;
             return this;
         }
 
+        /**
+         * @param equinixManagedPort Setting indicating that the port is managed by Equinix (true) or not (false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder equinixManagedPort(Boolean equinixManagedPort) {
             return equinixManagedPort(Output.of(equinixManagedPort));
         }
 
+        /**
+         * @param equinixManagedVlan Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder equinixManagedVlan(@Nullable Output<Boolean> equinixManagedVlan) {
             $.equinixManagedVlan = equinixManagedVlan;
             return this;
         }
 
+        /**
+         * @param equinixManagedVlan Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder equinixManagedVlan(Boolean equinixManagedVlan) {
             return equinixManagedVlan(Output.of(equinixManagedVlan));
         }
 
+        /**
+         * @param integrationId Integration id
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationId(@Nullable Output<String> integrationId) {
             $.integrationId = integrationId;
             return this;
         }
 
+        /**
+         * @param integrationId Integration id
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationId(String integrationId) {
             return integrationId(Output.of(integrationId));
         }
 
+        /**
+         * @param overSubscriptionLimit A cap on over subscription
+         * 
+         * @return builder
+         * 
+         */
         public Builder overSubscriptionLimit(@Nullable Output<Integer> overSubscriptionLimit) {
             $.overSubscriptionLimit = overSubscriptionLimit;
             return this;
         }
 
+        /**
+         * @param overSubscriptionLimit A cap on over subscription
+         * 
+         * @return builder
+         * 
+         */
         public Builder overSubscriptionLimit(Integer overSubscriptionLimit) {
             return overSubscriptionLimit(Output.of(overSubscriptionLimit));
         }

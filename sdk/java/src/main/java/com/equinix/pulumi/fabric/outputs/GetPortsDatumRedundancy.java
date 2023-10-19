@@ -5,21 +5,20 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetPortsDatumRedundancy {
     private Boolean enabled;
-    private Integer group;
+    private String group;
     private String priority;
 
     private GetPortsDatumRedundancy() {}
     public Boolean enabled() {
         return this.enabled;
     }
-    public Integer group() {
+    public String group() {
         return this.group;
     }
     public String priority() {
@@ -36,7 +35,7 @@ public final class GetPortsDatumRedundancy {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-        private Integer group;
+        private String group;
         private String priority;
         public Builder() {}
         public Builder(GetPortsDatumRedundancy defaults) {
@@ -52,7 +51,7 @@ public final class GetPortsDatumRedundancy {
             return this;
         }
         @CustomType.Setter
-        public Builder group(Integer group) {
+        public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }

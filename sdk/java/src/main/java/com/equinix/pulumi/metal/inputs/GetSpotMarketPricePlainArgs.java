@@ -15,6 +15,8 @@ public final class GetSpotMarketPricePlainArgs extends com.pulumi.resources.Invo
     public static final GetSpotMarketPricePlainArgs Empty = new GetSpotMarketPricePlainArgs();
 
     /**
+     * Name of the facility. Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -24,6 +26,8 @@ public final class GetSpotMarketPricePlainArgs extends com.pulumi.resources.Invo
     private @Nullable String facility;
 
     /**
+     * @return Name of the facility. Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -90,6 +94,8 @@ public final class GetSpotMarketPricePlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
+         * @param facility Name of the facility. Use metro instead; read the facility to metro migration guide
+         * 
          * @return builder
          * 
          * @deprecated

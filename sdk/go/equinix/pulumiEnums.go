@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Metro string
@@ -129,6 +130,12 @@ func (o MetroOutput) ToMetroPtrOutputWithContext(ctx context.Context) MetroPtrOu
 	}).(MetroPtrOutput)
 }
 
+func (o MetroOutput) ToOutput(ctx context.Context) pulumix.Output[Metro] {
+	return pulumix.Output[Metro]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetroOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -162,6 +169,12 @@ func (o MetroPtrOutput) ToMetroPtrOutput() MetroPtrOutput {
 
 func (o MetroPtrOutput) ToMetroPtrOutputWithContext(ctx context.Context) MetroPtrOutput {
 	return o
+}
+
+func (o MetroPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Metro] {
+	return pulumix.Output[*Metro]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetroPtrOutput) Elem() MetroOutput {
@@ -224,6 +237,12 @@ func (in *metroPtr) ToMetroPtrOutput() MetroPtrOutput {
 
 func (in *metroPtr) ToMetroPtrOutputWithContext(ctx context.Context) MetroPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetroPtrOutput)
+}
+
+func (in *metroPtr) ToOutput(ctx context.Context) pulumix.Output[*Metro] {
+	return pulumix.Output[*Metro]{
+		OutputState: in.ToMetroPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

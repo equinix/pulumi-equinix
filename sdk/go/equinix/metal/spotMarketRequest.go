@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal Spot Market Request resource to allow you to
@@ -68,13 +70,13 @@ type SpotMarketRequest struct {
 	DevicesMax pulumi.IntOutput `pulumi:"devicesMax"`
 	// Miniumum number devices to be created.
 	DevicesMin pulumi.IntOutput `pulumi:"devicesMin"`
-	// Facility IDs where devices should be created
+	// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayOutput `pulumi:"facilities"`
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
 	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
 	// description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParametersOutput `pulumi:"instanceParameters"`
@@ -111,7 +113,7 @@ func NewSpotMarketRequest(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SpotMarketRequest
 	err := ctx.RegisterResource("equinix:metal/spotMarketRequest:SpotMarketRequest", name, args, &resource, opts...)
 	if err != nil {
@@ -138,13 +140,13 @@ type spotMarketRequestState struct {
 	DevicesMax *int `pulumi:"devicesMax"`
 	// Miniumum number devices to be created.
 	DevicesMin *int `pulumi:"devicesMin"`
-	// Facility IDs where devices should be created
+	// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
 	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
 	// description in metal.Device docs.
 	InstanceParameters *SpotMarketRequestInstanceParameters `pulumi:"instanceParameters"`
@@ -164,13 +166,13 @@ type SpotMarketRequestState struct {
 	DevicesMax pulumi.IntPtrInput
 	// Miniumum number devices to be created.
 	DevicesMin pulumi.IntPtrInput
-	// Facility IDs where devices should be created
+	// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
 	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
 	// description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParametersPtrInput
@@ -194,13 +196,13 @@ type spotMarketRequestArgs struct {
 	DevicesMax int `pulumi:"devicesMax"`
 	// Miniumum number devices to be created.
 	DevicesMin int `pulumi:"devicesMin"`
-	// Facility IDs where devices should be created
+	// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
 	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
 	// description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParameters `pulumi:"instanceParameters"`
@@ -221,13 +223,13 @@ type SpotMarketRequestArgs struct {
 	DevicesMax pulumi.IntInput
 	// Miniumum number devices to be created.
 	DevicesMin pulumi.IntInput
-	// Facility IDs where devices should be created
+	// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
 	// Key/Value pairs of parameters for devices provisioned from
 	// this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-	// `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+	// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
 	// `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
 	// description in metal.Device docs.
 	InstanceParameters SpotMarketRequestInstanceParametersInput
@@ -265,6 +267,12 @@ func (i *SpotMarketRequest) ToSpotMarketRequestOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestOutput)
 }
 
+func (i *SpotMarketRequest) ToOutput(ctx context.Context) pulumix.Output[*SpotMarketRequest] {
+	return pulumix.Output[*SpotMarketRequest]{
+		OutputState: i.ToSpotMarketRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SpotMarketRequestArrayInput is an input type that accepts SpotMarketRequestArray and SpotMarketRequestArrayOutput values.
 // You can construct a concrete instance of `SpotMarketRequestArrayInput` via:
 //
@@ -288,6 +296,12 @@ func (i SpotMarketRequestArray) ToSpotMarketRequestArrayOutput() SpotMarketReque
 
 func (i SpotMarketRequestArray) ToSpotMarketRequestArrayOutputWithContext(ctx context.Context) SpotMarketRequestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestArrayOutput)
+}
+
+func (i SpotMarketRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpotMarketRequest] {
+	return pulumix.Output[[]*SpotMarketRequest]{
+		OutputState: i.ToSpotMarketRequestArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SpotMarketRequestMapInput is an input type that accepts SpotMarketRequestMap and SpotMarketRequestMapOutput values.
@@ -315,6 +329,12 @@ func (i SpotMarketRequestMap) ToSpotMarketRequestMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestMapOutput)
 }
 
+func (i SpotMarketRequestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpotMarketRequest] {
+	return pulumix.Output[map[string]*SpotMarketRequest]{
+		OutputState: i.ToSpotMarketRequestMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpotMarketRequestOutput struct{ *pulumi.OutputState }
 
 func (SpotMarketRequestOutput) ElementType() reflect.Type {
@@ -329,6 +349,12 @@ func (o SpotMarketRequestOutput) ToSpotMarketRequestOutputWithContext(ctx contex
 	return o
 }
 
+func (o SpotMarketRequestOutput) ToOutput(ctx context.Context) pulumix.Output[*SpotMarketRequest] {
+	return pulumix.Output[*SpotMarketRequest]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Maximum number devices to be created.
 func (o SpotMarketRequestOutput) DevicesMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.IntOutput { return v.DevicesMax }).(pulumi.IntOutput)
@@ -339,7 +365,7 @@ func (o SpotMarketRequestOutput) DevicesMin() pulumi.IntOutput {
 	return o.ApplyT(func(v *SpotMarketRequest) pulumi.IntOutput { return v.DevicesMin }).(pulumi.IntOutput)
 }
 
-// Facility IDs where devices should be created
+// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
 //
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o SpotMarketRequestOutput) Facilities() pulumi.StringArrayOutput {
@@ -348,7 +374,7 @@ func (o SpotMarketRequestOutput) Facilities() pulumi.StringArrayOutput {
 
 // Key/Value pairs of parameters for devices provisioned from
 // this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-// `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+// `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
 // `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
 // description in metal.Device docs.
 func (o SpotMarketRequestOutput) InstanceParameters() SpotMarketRequestInstanceParametersOutput {
@@ -390,6 +416,12 @@ func (o SpotMarketRequestArrayOutput) ToSpotMarketRequestArrayOutputWithContext(
 	return o
 }
 
+func (o SpotMarketRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpotMarketRequest] {
+	return pulumix.Output[[]*SpotMarketRequest]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SpotMarketRequestArrayOutput) Index(i pulumi.IntInput) SpotMarketRequestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpotMarketRequest {
 		return vs[0].([]*SpotMarketRequest)[vs[1].(int)]
@@ -408,6 +440,12 @@ func (o SpotMarketRequestMapOutput) ToSpotMarketRequestMapOutput() SpotMarketReq
 
 func (o SpotMarketRequestMapOutput) ToSpotMarketRequestMapOutputWithContext(ctx context.Context) SpotMarketRequestMapOutput {
 	return o
+}
+
+func (o SpotMarketRequestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpotMarketRequest] {
+	return pulumix.Output[map[string]*SpotMarketRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpotMarketRequestMapOutput) MapIndex(k pulumi.StringInput) SpotMarketRequestOutput {

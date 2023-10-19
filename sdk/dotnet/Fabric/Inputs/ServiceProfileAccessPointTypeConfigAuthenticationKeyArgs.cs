@@ -13,14 +13,20 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User-provided service description
+        /// Description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Label
+        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// Required
+        /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 

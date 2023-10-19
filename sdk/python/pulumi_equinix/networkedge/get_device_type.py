@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -142,13 +142,13 @@ def get_device_type(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:networkedge/getDeviceType:getDeviceType', __args__, opts=opts, typ=GetDeviceTypeResult).value
 
     return AwaitableGetDeviceTypeResult(
-        category=__ret__.category,
-        code=__ret__.code,
-        description=__ret__.description,
-        id=__ret__.id,
-        metro_codes=__ret__.metro_codes,
-        name=__ret__.name,
-        vendor=__ret__.vendor)
+        category=pulumi.get(__ret__, 'category'),
+        code=pulumi.get(__ret__, 'code'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        metro_codes=pulumi.get(__ret__, 'metro_codes'),
+        name=pulumi.get(__ret__, 'name'),
+        vendor=pulumi.get(__ret__, 'vendor'))
 
 
 @_utilities.lift_output_func(get_device_type)

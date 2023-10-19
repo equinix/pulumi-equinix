@@ -78,7 +78,7 @@ export class SpotMarketRequest extends pulumi.CustomResource {
      */
     public readonly devicesMin!: pulumi.Output<number>;
     /**
-     * Facility IDs where devices should be created
+     * Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -86,7 +86,7 @@ export class SpotMarketRequest extends pulumi.CustomResource {
     /**
      * Key/Value pairs of parameters for devices provisioned from
      * this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-     * `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+     * `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
      * `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
      * description in equinix.metal.Device docs.
      */
@@ -174,7 +174,7 @@ export interface SpotMarketRequestState {
      */
     devicesMin?: pulumi.Input<number>;
     /**
-     * Facility IDs where devices should be created
+     * Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -182,7 +182,7 @@ export interface SpotMarketRequestState {
     /**
      * Key/Value pairs of parameters for devices provisioned from
      * this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-     * `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+     * `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
      * `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
      * description in equinix.metal.Device docs.
      */
@@ -219,7 +219,7 @@ export interface SpotMarketRequestArgs {
      */
     devicesMin: pulumi.Input<number>;
     /**
-     * Facility IDs where devices should be created
+     * Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -227,7 +227,7 @@ export interface SpotMarketRequestArgs {
     /**
      * Key/Value pairs of parameters for devices provisioned from
      * this request. Valid keys are: `billingCycle`, `plan`, `operatingSystem`, `hostname`,
-     * `termintationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
+     * `terminationTime`, `alwaysPxe`, `description`, `features`, `locked`, `projectSshKeys`,
      * `userSshKeys`, `userdata`, `customdata`, `ipxeScriptUrl`, `tags`. You can find each parameter
      * description in equinix.metal.Device docs.
      */

@@ -22,6 +22,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -51,6 +52,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -105,9 +107,16 @@ namespace Pulumi.Equinix.Metal
     {
         public readonly string ConnectionId;
         /// <summary>
+        /// The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+        /// </summary>
+        public readonly string ContactEmail;
+        /// <summary>
         /// Description of the connection resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+        /// </summary>
         public readonly string Facility;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -178,6 +187,8 @@ namespace Pulumi.Equinix.Metal
         private GetInterconnectionResult(
             string connectionId,
 
+            string contactEmail,
+
             string description,
 
             string facility,
@@ -215,6 +226,7 @@ namespace Pulumi.Equinix.Metal
             ImmutableArray<int> vlans)
         {
             ConnectionId = connectionId;
+            ContactEmail = contactEmail;
             Description = description;
             Facility = facility;
             Id = id;

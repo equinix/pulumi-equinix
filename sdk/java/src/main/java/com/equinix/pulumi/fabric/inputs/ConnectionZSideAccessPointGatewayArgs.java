@@ -16,23 +16,31 @@ public final class ConnectionZSideAccessPointGatewayArgs extends com.pulumi.reso
     public static final ConnectionZSideAccessPointGatewayArgs Empty = new ConnectionZSideAccessPointGatewayArgs();
 
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<Output<String>> href() {
         return Optional.ofNullable(this.href);
     }
 
+    /**
+     * Equinix-assigned interface identifier
+     * 
+     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -63,7 +71,7 @@ public final class ConnectionZSideAccessPointGatewayArgs extends com.pulumi.reso
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class ConnectionZSideAccessPointGatewayArgs extends com.pulumi.reso
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class ConnectionZSideAccessPointGatewayArgs extends com.pulumi.reso
             return href(Output.of(href));
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

@@ -145,6 +145,8 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      * One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
+     * The `inbound_rule` block has below fields:
+     * 
      */
     @Export(name="inboundRules", refs={List.class,AclTemplateInboundRule.class}, tree="[0,1]")
     private Output<List<AclTemplateInboundRule>> inboundRules;
@@ -152,6 +154,8 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * 
+     * The `inbound_rule` block has below fields:
      * 
      */
     public Output<List<AclTemplateInboundRule>> inboundRules() {

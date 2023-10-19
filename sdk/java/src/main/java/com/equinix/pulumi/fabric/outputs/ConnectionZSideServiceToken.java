@@ -11,37 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionZSideServiceToken {
+    /**
+     * @return User-provided service description
+     * 
+     */
     private @Nullable String description;
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     private @Nullable String href;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     private @Nullable String uuid;
 
     private ConnectionZSideServiceToken() {}
+    /**
+     * @return User-provided service description
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }

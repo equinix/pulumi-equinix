@@ -13,20 +13,29 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class ConnectionASideAccessPointProfile
     {
+        /// <summary>
+        /// Access point config information
+        /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig> AccessPointTypeConfigs;
+        /// <summary>
+        /// User-provided service description
+        /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         public readonly string? Href;
         /// <summary>
-        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        /// Port name
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

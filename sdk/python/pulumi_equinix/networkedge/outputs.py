@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -67,12 +67,29 @@ class AclTemplateDeviceDetail(dict):
         :param str name: ACL template name.
         :param str uuid: Device uuid.
         """
+        AclTemplateDeviceDetail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_status=acl_status,
+            name=name,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_status: Optional[str] = None,
+             name: Optional[str] = None,
+             uuid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclStatus' in kwargs:
+            acl_status = kwargs['aclStatus']
+
         if acl_status is not None:
-            pulumi.set(__self__, "acl_status", acl_status)
+            _setter("acl_status", acl_status)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="aclStatus")
@@ -144,19 +161,52 @@ class AclTemplateInboundRule(dict):
         :param str subnet: Inbound traffic source IP subnet in CIDR format.
         :param Sequence[str] subnets: Inbound traffic source IP subnets in CIDR format.
         """
-        pulumi.set(__self__, "dst_port", dst_port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "src_port", src_port)
+        AclTemplateInboundRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dst_port=dst_port,
+            protocol=protocol,
+            src_port=src_port,
+            description=description,
+            sequence_number=sequence_number,
+            source_type=source_type,
+            subnet=subnet,
+            subnets=subnets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dst_port: str,
+             protocol: str,
+             src_port: str,
+             description: Optional[str] = None,
+             sequence_number: Optional[int] = None,
+             source_type: Optional[str] = None,
+             subnet: Optional[str] = None,
+             subnets: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dstPort' in kwargs:
+            dst_port = kwargs['dstPort']
+        if 'srcPort' in kwargs:
+            src_port = kwargs['srcPort']
+        if 'sequenceNumber' in kwargs:
+            sequence_number = kwargs['sequenceNumber']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
+        _setter("dst_port", dst_port)
+        _setter("protocol", protocol)
+        _setter("src_port", src_port)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if sequence_number is not None:
-            pulumi.set(__self__, "sequence_number", sequence_number)
+            _setter("sequence_number", sequence_number)
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
+            _setter("subnets", subnets)
 
     @property
     @pulumi.getter(name="dstPort")
@@ -200,6 +250,9 @@ class AclTemplateInboundRule(dict):
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[str]:
+        warnings.warn("""Source Type will not be returned""", DeprecationWarning)
+        pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
+
         return pulumi.get(self, "source_type")
 
     @property
@@ -216,6 +269,9 @@ class AclTemplateInboundRule(dict):
         """
         Inbound traffic source IP subnets in CIDR format.
         """
+        warnings.warn("""Use Subnet instead""", DeprecationWarning)
+        pulumi.log.warn("""subnets is deprecated: Use Subnet instead""")
+
         return pulumi.get(self, "subnets")
 
 
@@ -257,13 +313,38 @@ class DeviceClusterDetails(dict):
         :param str cluster_id: The ID of the cluster.
         :param int num_of_nodes: The number of nodes in the cluster.
         """
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "node0", node0)
-        pulumi.set(__self__, "node1", node1)
+        DeviceClusterDetails._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_name=cluster_name,
+            node0=node0,
+            node1=node1,
+            cluster_id=cluster_id,
+            num_of_nodes=num_of_nodes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_name: str,
+             node0: 'outputs.DeviceClusterDetailsNode0',
+             node1: 'outputs.DeviceClusterDetailsNode1',
+             cluster_id: Optional[str] = None,
+             num_of_nodes: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'numOfNodes' in kwargs:
+            num_of_nodes = kwargs['numOfNodes']
+
+        _setter("cluster_name", cluster_name)
+        _setter("node0", node0)
+        _setter("node1", node1)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if num_of_nodes is not None:
-            pulumi.set(__self__, "num_of_nodes", num_of_nodes)
+            _setter("num_of_nodes", num_of_nodes)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -348,16 +429,41 @@ class DeviceClusterDetailsNode0(dict):
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         """
+        DeviceClusterDetailsNode0._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_file_id=license_file_id,
+            license_token=license_token,
+            name=name,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_file_id: Optional[str] = None,
+             license_token: Optional[str] = None,
+             name: Optional[str] = None,
+             uuid: Optional[str] = None,
+             vendor_configuration: Optional['outputs.DeviceClusterDetailsNode0VendorConfiguration'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+
         if license_file_id is not None:
-            pulumi.set(__self__, "license_file_id", license_file_id)
+            _setter("license_file_id", license_file_id)
         if license_token is not None:
-            pulumi.set(__self__, "license_token", license_token)
+            _setter("license_token", license_token)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vendor_configuration is not None:
-            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
+            _setter("vendor_configuration", vendor_configuration)
 
     @property
     @pulumi.getter(name="licenseFileId")
@@ -446,18 +552,47 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         :param str root_password: The CLI password of the device. This field is relevant only for the
                Velocloud SDWAN cluster.
         """
+        DeviceClusterDetailsNode0VendorConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_key=activation_key,
+            admin_password=admin_password,
+            controller1=controller1,
+            controller_fqdn=controller_fqdn,
+            hostname=hostname,
+            root_password=root_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_key: Optional[str] = None,
+             admin_password: Optional[str] = None,
+             controller1: Optional[str] = None,
+             controller_fqdn: Optional[str] = None,
+             hostname: Optional[str] = None,
+             root_password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activationKey' in kwargs:
+            activation_key = kwargs['activationKey']
+        if 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if 'controllerFqdn' in kwargs:
+            controller_fqdn = kwargs['controllerFqdn']
+        if 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
         if activation_key is not None:
-            pulumi.set(__self__, "activation_key", activation_key)
+            _setter("activation_key", activation_key)
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if controller1 is not None:
-            pulumi.set(__self__, "controller1", controller1)
+            _setter("controller1", controller1)
         if controller_fqdn is not None:
-            pulumi.set(__self__, "controller_fqdn", controller_fqdn)
+            _setter("controller_fqdn", controller_fqdn)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -550,16 +685,41 @@ class DeviceClusterDetailsNode1(dict):
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         """
+        DeviceClusterDetailsNode1._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_file_id=license_file_id,
+            license_token=license_token,
+            name=name,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_file_id: Optional[str] = None,
+             license_token: Optional[str] = None,
+             name: Optional[str] = None,
+             uuid: Optional[str] = None,
+             vendor_configuration: Optional['outputs.DeviceClusterDetailsNode1VendorConfiguration'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+
         if license_file_id is not None:
-            pulumi.set(__self__, "license_file_id", license_file_id)
+            _setter("license_file_id", license_file_id)
         if license_token is not None:
-            pulumi.set(__self__, "license_token", license_token)
+            _setter("license_token", license_token)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vendor_configuration is not None:
-            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
+            _setter("vendor_configuration", vendor_configuration)
 
     @property
     @pulumi.getter(name="licenseFileId")
@@ -648,18 +808,47 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         :param str root_password: The CLI password of the device. This field is relevant only for the
                Velocloud SDWAN cluster.
         """
+        DeviceClusterDetailsNode1VendorConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_key=activation_key,
+            admin_password=admin_password,
+            controller1=controller1,
+            controller_fqdn=controller_fqdn,
+            hostname=hostname,
+            root_password=root_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_key: Optional[str] = None,
+             admin_password: Optional[str] = None,
+             controller1: Optional[str] = None,
+             controller_fqdn: Optional[str] = None,
+             hostname: Optional[str] = None,
+             root_password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activationKey' in kwargs:
+            activation_key = kwargs['activationKey']
+        if 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if 'controllerFqdn' in kwargs:
+            controller_fqdn = kwargs['controllerFqdn']
+        if 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
         if activation_key is not None:
-            pulumi.set(__self__, "activation_key", activation_key)
+            _setter("activation_key", activation_key)
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if controller1 is not None:
-            pulumi.set(__self__, "controller1", controller1)
+            _setter("controller1", controller1)
         if controller_fqdn is not None:
-            pulumi.set(__self__, "controller_fqdn", controller_fqdn)
+            _setter("controller_fqdn", controller_fqdn)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -756,22 +945,55 @@ class DeviceInterface(dict):
         :param str status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param str type: interface type.
         """
+        DeviceInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assigned_type=assigned_type,
+            id=id,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            name=name,
+            operational_status=operational_status,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assigned_type: Optional[str] = None,
+             id: Optional[int] = None,
+             ip_address: Optional[str] = None,
+             mac_address: Optional[str] = None,
+             name: Optional[str] = None,
+             operational_status: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assignedType' in kwargs:
+            assigned_type = kwargs['assignedType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'operationalStatus' in kwargs:
+            operational_status = kwargs['operationalStatus']
+
         if assigned_type is not None:
-            pulumi.set(__self__, "assigned_type", assigned_type)
+            _setter("assigned_type", assigned_type)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if operational_status is not None:
-            pulumi.set(__self__, "operational_status", operational_status)
+            _setter("operational_status", operational_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="assignedType")
@@ -874,15 +1096,38 @@ class DeviceLinkDevice(dict):
         :param str status: device link provisioning status on a given device. One of `PROVISIONING`,
                `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         """
-        pulumi.set(__self__, "id", id)
+        DeviceLinkDevice._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            asn=asn,
+            interface_id=interface_id,
+            ip_address=ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             asn: Optional[int] = None,
+             interface_id: Optional[int] = None,
+             ip_address: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interfaceId' in kwargs:
+            interface_id = kwargs['interfaceId']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
+        _setter("id", id)
         if asn is not None:
-            pulumi.set(__self__, "asn", asn)
+            _setter("asn", asn)
         if interface_id is not None:
-            pulumi.set(__self__, "interface_id", interface_id)
+            _setter("interface_id", interface_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -974,15 +1219,50 @@ class DeviceLinkLink(dict):
         :param str dst_zone_code: connection destination zone code is not required.
         :param str src_zone_code: connection source zone code is not required.
         """
-        pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "dst_metro_code", dst_metro_code)
-        pulumi.set(__self__, "src_metro_code", src_metro_code)
-        pulumi.set(__self__, "throughput", throughput)
-        pulumi.set(__self__, "throughput_unit", throughput_unit)
+        DeviceLinkLink._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_number=account_number,
+            dst_metro_code=dst_metro_code,
+            src_metro_code=src_metro_code,
+            throughput=throughput,
+            throughput_unit=throughput_unit,
+            dst_zone_code=dst_zone_code,
+            src_zone_code=src_zone_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_number: str,
+             dst_metro_code: str,
+             src_metro_code: str,
+             throughput: str,
+             throughput_unit: str,
+             dst_zone_code: Optional[str] = None,
+             src_zone_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if 'dstMetroCode' in kwargs:
+            dst_metro_code = kwargs['dstMetroCode']
+        if 'srcMetroCode' in kwargs:
+            src_metro_code = kwargs['srcMetroCode']
+        if 'throughputUnit' in kwargs:
+            throughput_unit = kwargs['throughputUnit']
+        if 'dstZoneCode' in kwargs:
+            dst_zone_code = kwargs['dstZoneCode']
+        if 'srcZoneCode' in kwargs:
+            src_zone_code = kwargs['srcZoneCode']
+
+        _setter("account_number", account_number)
+        _setter("dst_metro_code", dst_metro_code)
+        _setter("src_metro_code", src_metro_code)
+        _setter("throughput", throughput)
+        _setter("throughput_unit", throughput_unit)
         if dst_zone_code is not None:
-            pulumi.set(__self__, "dst_zone_code", dst_zone_code)
+            _setter("dst_zone_code", dst_zone_code)
         if src_zone_code is not None:
-            pulumi.set(__self__, "src_zone_code", src_zone_code)
+            _setter("src_zone_code", src_zone_code)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -1031,6 +1311,9 @@ class DeviceLinkLink(dict):
         """
         connection destination zone code is not required.
         """
+        warnings.warn("""DestinationZoneCode is not required""", DeprecationWarning)
+        pulumi.log.warn("""dst_zone_code is deprecated: DestinationZoneCode is not required""")
+
         return pulumi.get(self, "dst_zone_code")
 
     @property
@@ -1039,6 +1322,9 @@ class DeviceLinkLink(dict):
         """
         connection source zone code is not required.
         """
+        warnings.warn("""SourceZoneCode is not required""", DeprecationWarning)
+        pulumi.log.warn("""src_zone_code is deprecated: SourceZoneCode is not required""")
+
         return pulumi.get(self, "src_zone_code")
 
 
@@ -1162,56 +1448,155 @@ class DeviceSecondaryDevice(dict):
                `systemIpAddress`.
         :param str zone_code: Device location zone code.
         """
-        pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "metro_code", metro_code)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notifications", notifications)
+        DeviceSecondaryDevice._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_number=account_number,
+            metro_code=metro_code,
+            name=name,
+            notifications=notifications,
+            acl_template_id=acl_template_id,
+            additional_bandwidth=additional_bandwidth,
+            asn=asn,
+            cloud_init_file_id=cloud_init_file_id,
+            hostname=hostname,
+            ibx=ibx,
+            interfaces=interfaces,
+            license_file=license_file,
+            license_file_id=license_file_id,
+            license_status=license_status,
+            license_token=license_token,
+            mgmt_acl_template_uuid=mgmt_acl_template_uuid,
+            redundancy_type=redundancy_type,
+            redundant_id=redundant_id,
+            region=region,
+            ssh_ip_address=ssh_ip_address,
+            ssh_ip_fqdn=ssh_ip_fqdn,
+            ssh_key=ssh_key,
+            status=status,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+            wan_interface_id=wan_interface_id,
+            zone_code=zone_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_number: str,
+             metro_code: str,
+             name: str,
+             notifications: Sequence[str],
+             acl_template_id: Optional[str] = None,
+             additional_bandwidth: Optional[int] = None,
+             asn: Optional[int] = None,
+             cloud_init_file_id: Optional[str] = None,
+             hostname: Optional[str] = None,
+             ibx: Optional[str] = None,
+             interfaces: Optional[Sequence['outputs.DeviceSecondaryDeviceInterface']] = None,
+             license_file: Optional[str] = None,
+             license_file_id: Optional[str] = None,
+             license_status: Optional[str] = None,
+             license_token: Optional[str] = None,
+             mgmt_acl_template_uuid: Optional[str] = None,
+             redundancy_type: Optional[str] = None,
+             redundant_id: Optional[str] = None,
+             region: Optional[str] = None,
+             ssh_ip_address: Optional[str] = None,
+             ssh_ip_fqdn: Optional[str] = None,
+             ssh_key: Optional['outputs.DeviceSecondaryDeviceSshKey'] = None,
+             status: Optional[str] = None,
+             uuid: Optional[str] = None,
+             vendor_configuration: Optional[Mapping[str, str]] = None,
+             wan_interface_id: Optional[str] = None,
+             zone_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if 'metroCode' in kwargs:
+            metro_code = kwargs['metroCode']
+        if 'aclTemplateId' in kwargs:
+            acl_template_id = kwargs['aclTemplateId']
+        if 'additionalBandwidth' in kwargs:
+            additional_bandwidth = kwargs['additionalBandwidth']
+        if 'cloudInitFileId' in kwargs:
+            cloud_init_file_id = kwargs['cloudInitFileId']
+        if 'licenseFile' in kwargs:
+            license_file = kwargs['licenseFile']
+        if 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if 'licenseStatus' in kwargs:
+            license_status = kwargs['licenseStatus']
+        if 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if 'mgmtAclTemplateUuid' in kwargs:
+            mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
+        if 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if 'redundantId' in kwargs:
+            redundant_id = kwargs['redundantId']
+        if 'sshIpAddress' in kwargs:
+            ssh_ip_address = kwargs['sshIpAddress']
+        if 'sshIpFqdn' in kwargs:
+            ssh_ip_fqdn = kwargs['sshIpFqdn']
+        if 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+        if 'wanInterfaceId' in kwargs:
+            wan_interface_id = kwargs['wanInterfaceId']
+        if 'zoneCode' in kwargs:
+            zone_code = kwargs['zoneCode']
+
+        _setter("account_number", account_number)
+        _setter("metro_code", metro_code)
+        _setter("name", name)
+        _setter("notifications", notifications)
         if acl_template_id is not None:
-            pulumi.set(__self__, "acl_template_id", acl_template_id)
+            _setter("acl_template_id", acl_template_id)
         if additional_bandwidth is not None:
-            pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
+            _setter("additional_bandwidth", additional_bandwidth)
         if asn is not None:
-            pulumi.set(__self__, "asn", asn)
+            _setter("asn", asn)
         if cloud_init_file_id is not None:
-            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
+            _setter("cloud_init_file_id", cloud_init_file_id)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ibx is not None:
-            pulumi.set(__self__, "ibx", ibx)
+            _setter("ibx", ibx)
         if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
+            _setter("interfaces", interfaces)
         if license_file is not None:
-            pulumi.set(__self__, "license_file", license_file)
+            _setter("license_file", license_file)
         if license_file_id is not None:
-            pulumi.set(__self__, "license_file_id", license_file_id)
+            _setter("license_file_id", license_file_id)
         if license_status is not None:
-            pulumi.set(__self__, "license_status", license_status)
+            _setter("license_status", license_status)
         if license_token is not None:
-            pulumi.set(__self__, "license_token", license_token)
+            _setter("license_token", license_token)
         if mgmt_acl_template_uuid is not None:
-            pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+            _setter("mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
+            _setter("redundancy_type", redundancy_type)
         if redundant_id is not None:
-            pulumi.set(__self__, "redundant_id", redundant_id)
+            _setter("redundant_id", redundant_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if ssh_ip_address is not None:
-            pulumi.set(__self__, "ssh_ip_address", ssh_ip_address)
+            _setter("ssh_ip_address", ssh_ip_address)
         if ssh_ip_fqdn is not None:
-            pulumi.set(__self__, "ssh_ip_fqdn", ssh_ip_fqdn)
+            _setter("ssh_ip_fqdn", ssh_ip_fqdn)
         if ssh_key is not None:
-            pulumi.set(__self__, "ssh_key", ssh_key)
+            _setter("ssh_key", ssh_key)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vendor_configuration is not None:
-            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
+            _setter("vendor_configuration", vendor_configuration)
         if wan_interface_id is not None:
-            pulumi.set(__self__, "wan_interface_id", wan_interface_id)
+            _setter("wan_interface_id", wan_interface_id)
         if zone_code is not None:
-            pulumi.set(__self__, "zone_code", zone_code)
+            _setter("zone_code", zone_code)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -1480,22 +1865,55 @@ class DeviceSecondaryDeviceInterface(dict):
         :param str status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param str type: interface type.
         """
+        DeviceSecondaryDeviceInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assigned_type=assigned_type,
+            id=id,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            name=name,
+            operational_status=operational_status,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assigned_type: Optional[str] = None,
+             id: Optional[int] = None,
+             ip_address: Optional[str] = None,
+             mac_address: Optional[str] = None,
+             name: Optional[str] = None,
+             operational_status: Optional[str] = None,
+             status: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assignedType' in kwargs:
+            assigned_type = kwargs['assignedType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'operationalStatus' in kwargs:
+            operational_status = kwargs['operationalStatus']
+
         if assigned_type is not None:
-            pulumi.set(__self__, "assigned_type", assigned_type)
+            _setter("assigned_type", assigned_type)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if operational_status is not None:
-            pulumi.set(__self__, "operational_status", operational_status)
+            _setter("operational_status", operational_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="assignedType")
@@ -1587,8 +2005,23 @@ class DeviceSecondaryDeviceSshKey(dict):
         """
         :param str username: username associated with given key.
         """
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "username", username)
+        DeviceSecondaryDeviceSshKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_name=key_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_name: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+
+        _setter("key_name", key_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="keyName")
@@ -1629,8 +2062,23 @@ class DeviceSshKey(dict):
         """
         :param str username: username associated with given key.
         """
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "username", username)
+        DeviceSshKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_name=key_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_name: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+
+        _setter("key_name", key_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="keyName")
@@ -1658,11 +2106,36 @@ class GetDeviceClusterDetailResult(dict):
         :param str cluster_id: The id of the cluster
         :param int num_of_nodes: The number of nodes in the cluster
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "node0s", node0s)
-        pulumi.set(__self__, "node1s", node1s)
-        pulumi.set(__self__, "num_of_nodes", num_of_nodes)
+        GetDeviceClusterDetailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            node0s=node0s,
+            node1s=node1s,
+            num_of_nodes=num_of_nodes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             cluster_name: str,
+             node0s: Sequence['outputs.GetDeviceClusterDetailNode0Result'],
+             node1s: Sequence['outputs.GetDeviceClusterDetailNode1Result'],
+             num_of_nodes: int,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'numOfNodes' in kwargs:
+            num_of_nodes = kwargs['numOfNodes']
+
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("node0s", node0s)
+        _setter("node1s", node1s)
+        _setter("num_of_nodes", num_of_nodes)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1709,11 +2182,36 @@ class GetDeviceClusterDetailNode0Result(dict):
         :param str name: Name of an existing Equinix Network Edge device
         :param str uuid: UUID of an existing Equinix Network Edge device
         """
-        pulumi.set(__self__, "license_file_id", license_file_id)
-        pulumi.set(__self__, "license_token", license_token)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "uuid", uuid)
-        pulumi.set(__self__, "vendor_configurations", vendor_configurations)
+        GetDeviceClusterDetailNode0Result._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_file_id=license_file_id,
+            license_token=license_token,
+            name=name,
+            uuid=uuid,
+            vendor_configurations=vendor_configurations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_file_id: str,
+             license_token: str,
+             name: str,
+             uuid: str,
+             vendor_configurations: Sequence['outputs.GetDeviceClusterDetailNode0VendorConfigurationResult'],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if 'vendorConfigurations' in kwargs:
+            vendor_configurations = kwargs['vendorConfigurations']
+
+        _setter("license_file_id", license_file_id)
+        _setter("license_token", license_token)
+        _setter("name", name)
+        _setter("uuid", uuid)
+        _setter("vendor_configurations", vendor_configurations)
 
     @property
     @pulumi.getter(name="licenseFileId")
@@ -1759,12 +2257,41 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
                  controller_fqdn: str,
                  hostname: str,
                  root_password: str):
-        pulumi.set(__self__, "activation_key", activation_key)
-        pulumi.set(__self__, "admin_password", admin_password)
-        pulumi.set(__self__, "controller1", controller1)
-        pulumi.set(__self__, "controller_fqdn", controller_fqdn)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "root_password", root_password)
+        GetDeviceClusterDetailNode0VendorConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_key=activation_key,
+            admin_password=admin_password,
+            controller1=controller1,
+            controller_fqdn=controller_fqdn,
+            hostname=hostname,
+            root_password=root_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_key: str,
+             admin_password: str,
+             controller1: str,
+             controller_fqdn: str,
+             hostname: str,
+             root_password: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activationKey' in kwargs:
+            activation_key = kwargs['activationKey']
+        if 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if 'controllerFqdn' in kwargs:
+            controller_fqdn = kwargs['controllerFqdn']
+        if 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
+        _setter("activation_key", activation_key)
+        _setter("admin_password", admin_password)
+        _setter("controller1", controller1)
+        _setter("controller_fqdn", controller_fqdn)
+        _setter("hostname", hostname)
+        _setter("root_password", root_password)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -1810,11 +2337,36 @@ class GetDeviceClusterDetailNode1Result(dict):
         :param str name: Name of an existing Equinix Network Edge device
         :param str uuid: UUID of an existing Equinix Network Edge device
         """
-        pulumi.set(__self__, "license_file_id", license_file_id)
-        pulumi.set(__self__, "license_token", license_token)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "uuid", uuid)
-        pulumi.set(__self__, "vendor_configurations", vendor_configurations)
+        GetDeviceClusterDetailNode1Result._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_file_id=license_file_id,
+            license_token=license_token,
+            name=name,
+            uuid=uuid,
+            vendor_configurations=vendor_configurations,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_file_id: str,
+             license_token: str,
+             name: str,
+             uuid: str,
+             vendor_configurations: Sequence['outputs.GetDeviceClusterDetailNode1VendorConfigurationResult'],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if 'vendorConfigurations' in kwargs:
+            vendor_configurations = kwargs['vendorConfigurations']
+
+        _setter("license_file_id", license_file_id)
+        _setter("license_token", license_token)
+        _setter("name", name)
+        _setter("uuid", uuid)
+        _setter("vendor_configurations", vendor_configurations)
 
     @property
     @pulumi.getter(name="licenseFileId")
@@ -1860,12 +2412,41 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
                  controller_fqdn: str,
                  hostname: str,
                  root_password: str):
-        pulumi.set(__self__, "activation_key", activation_key)
-        pulumi.set(__self__, "admin_password", admin_password)
-        pulumi.set(__self__, "controller1", controller1)
-        pulumi.set(__self__, "controller_fqdn", controller_fqdn)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "root_password", root_password)
+        GetDeviceClusterDetailNode1VendorConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_key=activation_key,
+            admin_password=admin_password,
+            controller1=controller1,
+            controller_fqdn=controller_fqdn,
+            hostname=hostname,
+            root_password=root_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_key: str,
+             admin_password: str,
+             controller1: str,
+             controller_fqdn: str,
+             hostname: str,
+             root_password: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activationKey' in kwargs:
+            activation_key = kwargs['activationKey']
+        if 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if 'controllerFqdn' in kwargs:
+            controller_fqdn = kwargs['controllerFqdn']
+        if 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
+        _setter("activation_key", activation_key)
+        _setter("admin_password", admin_password)
+        _setter("controller1", controller1)
+        _setter("controller_fqdn", controller_fqdn)
+        _setter("hostname", hostname)
+        _setter("root_password", root_password)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -1923,14 +2504,47 @@ class GetDeviceInterfaceResult(dict):
                * DEPROVISIONING
                * DEPROVISIONED
         """
-        pulumi.set(__self__, "assigned_type", assigned_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "mac_address", mac_address)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operational_status", operational_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetDeviceInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assigned_type=assigned_type,
+            id=id,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            name=name,
+            operational_status=operational_status,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assigned_type: str,
+             id: int,
+             ip_address: str,
+             mac_address: str,
+             name: str,
+             operational_status: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assignedType' in kwargs:
+            assigned_type = kwargs['assignedType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'operationalStatus' in kwargs:
+            operational_status = kwargs['operationalStatus']
+
+        _setter("assigned_type", assigned_type)
+        _setter("id", id)
+        _setter("ip_address", ip_address)
+        _setter("mac_address", mac_address)
+        _setter("name", name)
+        _setter("operational_status", operational_status)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="assignedType")
@@ -1996,6 +2610,7 @@ class GetDeviceSecondaryDeviceResult(dict):
                  acl_template_id: str,
                  additional_bandwidth: int,
                  asn: int,
+                 cloud_init_file_id: str,
                  hostname: str,
                  ibx: str,
                  interfaces: Sequence['outputs.GetDeviceSecondaryDeviceInterfaceResult'],
@@ -2038,6 +2653,7 @@ class GetDeviceSecondaryDeviceResult(dict):
                * APPLIED
                * WAITING_FOR_CLUSTER_SETUP
                * REGISTRATION_FAILED
+               * NA
         :param str name: Name of an existing Equinix Network Edge device
         :param str redundancy_type: Device redundancy type applicable for HA devices, either
                primary or secondary
@@ -2059,32 +2675,132 @@ class GetDeviceSecondaryDeviceResult(dict):
         :param str uuid: UUID of an existing Equinix Network Edge device
         :param str zone_code: Device location zone code
         """
-        pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "acl_template_id", acl_template_id)
-        pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
-        pulumi.set(__self__, "asn", asn)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "ibx", ibx)
-        pulumi.set(__self__, "interfaces", interfaces)
-        pulumi.set(__self__, "license_file", license_file)
-        pulumi.set(__self__, "license_file_id", license_file_id)
-        pulumi.set(__self__, "license_status", license_status)
-        pulumi.set(__self__, "license_token", license_token)
-        pulumi.set(__self__, "metro_code", metro_code)
-        pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notifications", notifications)
-        pulumi.set(__self__, "redundancy_type", redundancy_type)
-        pulumi.set(__self__, "redundant_id", redundant_id)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "ssh_ip_address", ssh_ip_address)
-        pulumi.set(__self__, "ssh_ip_fqdn", ssh_ip_fqdn)
-        pulumi.set(__self__, "ssh_keys", ssh_keys)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "uuid", uuid)
-        pulumi.set(__self__, "vendor_configuration", vendor_configuration)
-        pulumi.set(__self__, "wan_interface_id", wan_interface_id)
-        pulumi.set(__self__, "zone_code", zone_code)
+        GetDeviceSecondaryDeviceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_number=account_number,
+            acl_template_id=acl_template_id,
+            additional_bandwidth=additional_bandwidth,
+            asn=asn,
+            cloud_init_file_id=cloud_init_file_id,
+            hostname=hostname,
+            ibx=ibx,
+            interfaces=interfaces,
+            license_file=license_file,
+            license_file_id=license_file_id,
+            license_status=license_status,
+            license_token=license_token,
+            metro_code=metro_code,
+            mgmt_acl_template_uuid=mgmt_acl_template_uuid,
+            name=name,
+            notifications=notifications,
+            redundancy_type=redundancy_type,
+            redundant_id=redundant_id,
+            region=region,
+            ssh_ip_address=ssh_ip_address,
+            ssh_ip_fqdn=ssh_ip_fqdn,
+            ssh_keys=ssh_keys,
+            status=status,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+            wan_interface_id=wan_interface_id,
+            zone_code=zone_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_number: str,
+             acl_template_id: str,
+             additional_bandwidth: int,
+             asn: int,
+             cloud_init_file_id: str,
+             hostname: str,
+             ibx: str,
+             interfaces: Sequence['outputs.GetDeviceSecondaryDeviceInterfaceResult'],
+             license_file: str,
+             license_file_id: str,
+             license_status: str,
+             license_token: str,
+             metro_code: str,
+             mgmt_acl_template_uuid: str,
+             name: str,
+             notifications: Sequence[str],
+             redundancy_type: str,
+             redundant_id: str,
+             region: str,
+             ssh_ip_address: str,
+             ssh_ip_fqdn: str,
+             ssh_keys: Sequence['outputs.GetDeviceSecondaryDeviceSshKeyResult'],
+             status: str,
+             uuid: str,
+             vendor_configuration: Mapping[str, str],
+             wan_interface_id: str,
+             zone_code: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if 'aclTemplateId' in kwargs:
+            acl_template_id = kwargs['aclTemplateId']
+        if 'additionalBandwidth' in kwargs:
+            additional_bandwidth = kwargs['additionalBandwidth']
+        if 'cloudInitFileId' in kwargs:
+            cloud_init_file_id = kwargs['cloudInitFileId']
+        if 'licenseFile' in kwargs:
+            license_file = kwargs['licenseFile']
+        if 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if 'licenseStatus' in kwargs:
+            license_status = kwargs['licenseStatus']
+        if 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if 'metroCode' in kwargs:
+            metro_code = kwargs['metroCode']
+        if 'mgmtAclTemplateUuid' in kwargs:
+            mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
+        if 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if 'redundantId' in kwargs:
+            redundant_id = kwargs['redundantId']
+        if 'sshIpAddress' in kwargs:
+            ssh_ip_address = kwargs['sshIpAddress']
+        if 'sshIpFqdn' in kwargs:
+            ssh_ip_fqdn = kwargs['sshIpFqdn']
+        if 'sshKeys' in kwargs:
+            ssh_keys = kwargs['sshKeys']
+        if 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+        if 'wanInterfaceId' in kwargs:
+            wan_interface_id = kwargs['wanInterfaceId']
+        if 'zoneCode' in kwargs:
+            zone_code = kwargs['zoneCode']
+
+        _setter("account_number", account_number)
+        _setter("acl_template_id", acl_template_id)
+        _setter("additional_bandwidth", additional_bandwidth)
+        _setter("asn", asn)
+        _setter("cloud_init_file_id", cloud_init_file_id)
+        _setter("hostname", hostname)
+        _setter("ibx", ibx)
+        _setter("interfaces", interfaces)
+        _setter("license_file", license_file)
+        _setter("license_file_id", license_file_id)
+        _setter("license_status", license_status)
+        _setter("license_token", license_token)
+        _setter("metro_code", metro_code)
+        _setter("mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+        _setter("name", name)
+        _setter("notifications", notifications)
+        _setter("redundancy_type", redundancy_type)
+        _setter("redundant_id", redundant_id)
+        _setter("region", region)
+        _setter("ssh_ip_address", ssh_ip_address)
+        _setter("ssh_ip_fqdn", ssh_ip_fqdn)
+        _setter("ssh_keys", ssh_keys)
+        _setter("status", status)
+        _setter("uuid", uuid)
+        _setter("vendor_configuration", vendor_configuration)
+        _setter("wan_interface_id", wan_interface_id)
+        _setter("zone_code", zone_code)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -2111,6 +2827,11 @@ class GetDeviceSecondaryDeviceResult(dict):
         Autonomous system number
         """
         return pulumi.get(self, "asn")
+
+    @property
+    @pulumi.getter(name="cloudInitFileId")
+    def cloud_init_file_id(self) -> str:
+        return pulumi.get(self, "cloud_init_file_id")
 
     @property
     @pulumi.getter
@@ -2164,6 +2885,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         * APPLIED
         * WAITING_FOR_CLUSTER_SETUP
         * REGISTRATION_FAILED
+        * NA
         """
         return pulumi.get(self, "license_status")
 
@@ -2311,14 +3033,47 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
                * DEPROVISIONING
                * DEPROVISIONED
         """
-        pulumi.set(__self__, "assigned_type", assigned_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "mac_address", mac_address)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operational_status", operational_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetDeviceSecondaryDeviceInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assigned_type=assigned_type,
+            id=id,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            name=name,
+            operational_status=operational_status,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assigned_type: str,
+             id: int,
+             ip_address: str,
+             mac_address: str,
+             name: str,
+             operational_status: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assignedType' in kwargs:
+            assigned_type = kwargs['assignedType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if 'operationalStatus' in kwargs:
+            operational_status = kwargs['operationalStatus']
+
+        _setter("assigned_type", assigned_type)
+        _setter("id", id)
+        _setter("ip_address", ip_address)
+        _setter("mac_address", mac_address)
+        _setter("name", name)
+        _setter("operational_status", operational_status)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="assignedType")
@@ -2382,8 +3137,23 @@ class GetDeviceSecondaryDeviceSshKeyResult(dict):
     def __init__(__self__, *,
                  key_name: str,
                  username: str):
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "username", username)
+        GetDeviceSecondaryDeviceSshKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_name=key_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_name: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+
+        _setter("key_name", key_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="keyName")
@@ -2401,8 +3171,23 @@ class GetDeviceSshKeyResult(dict):
     def __init__(__self__, *,
                  key_name: str,
                  username: str):
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "username", username)
+        GetDeviceSshKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_name=key_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_name: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+
+        _setter("key_name", key_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="keyName")

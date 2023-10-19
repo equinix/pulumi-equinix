@@ -8,8 +8,10 @@ import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointGateway;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointInterface;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointLinkProtocol;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointLocation;
+import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointNetwork;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointPort;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointProfile;
+import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointRouter;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointRoutingProtocol;
 import com.equinix.pulumi.fabric.outputs.ConnectionASideAccessPointVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
@@ -22,76 +24,192 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionASideAccessPoint {
     /**
-     * @return Customer account information that is associated with this connection
+     * @return Account
      * 
      */
     private @Nullable ConnectionASideAccessPointAccount account;
+    /**
+     * @return Authentication key for provider based connections
+     * 
+     */
     private @Nullable String authenticationKey;
+    /**
+     * @deprecated
+     * use router attribute instead; gateway is no longer a part of the supported backend
+     * 
+     */
+    @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
     private @Nullable ConnectionASideAccessPointGateway gateway;
+    /**
+     * @return Virtual device interface
+     * 
+     */
     private @Nullable ConnectionASideAccessPointInterface interface_;
+    /**
+     * @return Connection link protocol
+     * 
+     */
     private @Nullable ConnectionASideAccessPointLinkProtocol linkProtocol;
+    /**
+     * @return Access point location
+     * 
+     */
     private @Nullable ConnectionASideAccessPointLocation location;
+    private @Nullable ConnectionASideAccessPointNetwork network;
+    /**
+     * @return Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+     * 
+     */
     private @Nullable String peeringType;
+    /**
+     * @return Port access point information
+     * 
+     */
     private @Nullable ConnectionASideAccessPointPort port;
+    /**
+     * @return Service Profile
+     * 
+     */
     private @Nullable ConnectionASideAccessPointProfile profile;
+    /**
+     * @return Provider assigned Connection Id
+     * 
+     */
     private @Nullable String providerConnectionId;
+    /**
+     * @return Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * 
+     */
+    private @Nullable ConnectionASideAccessPointRouter router;
+    /**
+     * @return Access point routing protocols configuration
+     * 
+     */
     private @Nullable List<ConnectionASideAccessPointRoutingProtocol> routingProtocols;
+    /**
+     * @return Access point seller region
+     * 
+     */
     private @Nullable String sellerRegion;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Virtual device
+     * 
+     */
     private @Nullable ConnectionASideAccessPointVirtualDevice virtualDevice;
 
     private ConnectionASideAccessPoint() {}
     /**
-     * @return Customer account information that is associated with this connection
+     * @return Account
      * 
      */
     public Optional<ConnectionASideAccessPointAccount> account() {
         return Optional.ofNullable(this.account);
     }
+    /**
+     * @return Authentication key for provider based connections
+     * 
+     */
     public Optional<String> authenticationKey() {
         return Optional.ofNullable(this.authenticationKey);
     }
+    /**
+     * @deprecated
+     * use router attribute instead; gateway is no longer a part of the supported backend
+     * 
+     */
+    @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
     public Optional<ConnectionASideAccessPointGateway> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return Virtual device interface
+     * 
+     */
     public Optional<ConnectionASideAccessPointInterface> interface_() {
         return Optional.ofNullable(this.interface_);
     }
+    /**
+     * @return Connection link protocol
+     * 
+     */
     public Optional<ConnectionASideAccessPointLinkProtocol> linkProtocol() {
         return Optional.ofNullable(this.linkProtocol);
     }
+    /**
+     * @return Access point location
+     * 
+     */
     public Optional<ConnectionASideAccessPointLocation> location() {
         return Optional.ofNullable(this.location);
     }
+    public Optional<ConnectionASideAccessPointNetwork> network() {
+        return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+     * 
+     */
     public Optional<String> peeringType() {
         return Optional.ofNullable(this.peeringType);
     }
+    /**
+     * @return Port access point information
+     * 
+     */
     public Optional<ConnectionASideAccessPointPort> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Service Profile
+     * 
+     */
     public Optional<ConnectionASideAccessPointProfile> profile() {
         return Optional.ofNullable(this.profile);
     }
+    /**
+     * @return Provider assigned Connection Id
+     * 
+     */
     public Optional<String> providerConnectionId() {
         return Optional.ofNullable(this.providerConnectionId);
     }
+    /**
+     * @return Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * 
+     */
+    public Optional<ConnectionASideAccessPointRouter> router() {
+        return Optional.ofNullable(this.router);
+    }
+    /**
+     * @return Access point routing protocols configuration
+     * 
+     */
     public List<ConnectionASideAccessPointRoutingProtocol> routingProtocols() {
         return this.routingProtocols == null ? List.of() : this.routingProtocols;
     }
+    /**
+     * @return Access point seller region
+     * 
+     */
     public Optional<String> sellerRegion() {
         return Optional.ofNullable(this.sellerRegion);
     }
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Virtual device
+     * 
+     */
     public Optional<ConnectionASideAccessPointVirtualDevice> virtualDevice() {
         return Optional.ofNullable(this.virtualDevice);
     }
@@ -111,10 +229,12 @@ public final class ConnectionASideAccessPoint {
         private @Nullable ConnectionASideAccessPointInterface interface_;
         private @Nullable ConnectionASideAccessPointLinkProtocol linkProtocol;
         private @Nullable ConnectionASideAccessPointLocation location;
+        private @Nullable ConnectionASideAccessPointNetwork network;
         private @Nullable String peeringType;
         private @Nullable ConnectionASideAccessPointPort port;
         private @Nullable ConnectionASideAccessPointProfile profile;
         private @Nullable String providerConnectionId;
+        private @Nullable ConnectionASideAccessPointRouter router;
         private @Nullable List<ConnectionASideAccessPointRoutingProtocol> routingProtocols;
         private @Nullable String sellerRegion;
         private @Nullable String type;
@@ -128,10 +248,12 @@ public final class ConnectionASideAccessPoint {
     	      this.interface_ = defaults.interface_;
     	      this.linkProtocol = defaults.linkProtocol;
     	      this.location = defaults.location;
+    	      this.network = defaults.network;
     	      this.peeringType = defaults.peeringType;
     	      this.port = defaults.port;
     	      this.profile = defaults.profile;
     	      this.providerConnectionId = defaults.providerConnectionId;
+    	      this.router = defaults.router;
     	      this.routingProtocols = defaults.routingProtocols;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.type = defaults.type;
@@ -169,6 +291,11 @@ public final class ConnectionASideAccessPoint {
             return this;
         }
         @CustomType.Setter
+        public Builder network(@Nullable ConnectionASideAccessPointNetwork network) {
+            this.network = network;
+            return this;
+        }
+        @CustomType.Setter
         public Builder peeringType(@Nullable String peeringType) {
             this.peeringType = peeringType;
             return this;
@@ -186,6 +313,11 @@ public final class ConnectionASideAccessPoint {
         @CustomType.Setter
         public Builder providerConnectionId(@Nullable String providerConnectionId) {
             this.providerConnectionId = providerConnectionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder router(@Nullable ConnectionASideAccessPointRouter router) {
+            this.router = router;
             return this;
         }
         @CustomType.Setter
@@ -219,10 +351,12 @@ public final class ConnectionASideAccessPoint {
             o.interface_ = interface_;
             o.linkProtocol = linkProtocol;
             o.location = location;
+            o.network = network;
             o.peeringType = peeringType;
             o.port = port;
             o.profile = profile;
             o.providerConnectionId = providerConnectionId;
+            o.router = router;
             o.routingProtocols = routingProtocols;
             o.sellerRegion = sellerRegion;
             o.type = type;

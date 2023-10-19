@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Network Edge device platform configuration details
@@ -44,7 +46,7 @@ import (
 //
 // ```
 func GetDevicePlatform(ctx *pulumi.Context, args *GetDevicePlatformArgs, opts ...pulumi.InvokeOption) (*GetDevicePlatformResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDevicePlatformResult
 	err := ctx.Invoke("equinix:networkedge/getDevicePlatform:getDevicePlatform", args, &rv, opts...)
 	if err != nil {
@@ -137,6 +139,12 @@ func (o GetDevicePlatformResultOutput) ToGetDevicePlatformResultOutput() GetDevi
 
 func (o GetDevicePlatformResultOutput) ToGetDevicePlatformResultOutputWithContext(ctx context.Context) GetDevicePlatformResultOutput {
 	return o
+}
+
+func (o GetDevicePlatformResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicePlatformResult] {
+	return pulumix.Output[GetDevicePlatformResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDevicePlatformResultOutput) CoreCount() pulumi.IntOutput {

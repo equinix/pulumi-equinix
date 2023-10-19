@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionZSideAccessPointGateway {
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     private @Nullable String href;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     private @Nullable String uuid;
 
     private ConnectionZSideAccessPointGateway() {}
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }

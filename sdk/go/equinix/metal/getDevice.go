@@ -7,10 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides an Equinix Metal device datasource.
+// The datasource can be used to fetch a single device.
+//
+// If you need to fetch a list of devices which meet filter criteria, you can use the metal.getDevices datasource.
 //
 // > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
 //
@@ -71,7 +75,7 @@ import (
 //
 // ```
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceResult
 	err := ctx.Invoke("equinix:metal/getDevice:getDevice", args, &rv, opts...)
 	if err != nil {
@@ -83,6 +87,8 @@ func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.In
 // A collection of arguments for invoking getDevice.
 type LookupDeviceArgs struct {
 	// Device ID.
+	//
+	// > **NOTE:** You should pass either `deviceId`, or both `projectId` and `hostname`.
 	DeviceId *string `pulumi:"deviceId"`
 	// The device name.
 	Hostname *string `pulumi:"hostname"`
@@ -104,6 +110,8 @@ type LookupDeviceResult struct {
 	// Description string for the device.
 	Description string `pulumi:"description"`
 	DeviceId    string `pulumi:"deviceId"`
+	// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility string `pulumi:"facility"`
 	// The id of hardware reservation which this device occupies.
@@ -155,6 +163,8 @@ func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts .
 // A collection of arguments for invoking getDevice.
 type LookupDeviceOutputArgs struct {
 	// Device ID.
+	//
+	// > **NOTE:** You should pass either `deviceId`, or both `projectId` and `hostname`.
 	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
 	// The device name.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
@@ -179,6 +189,12 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResul
 
 func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
 	return o
+}
+
+func (o LookupDeviceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceResult] {
+	return pulumix.Output[LookupDeviceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ipv4 private IP assigned to the device.
@@ -214,6 +230,8 @@ func (o LookupDeviceResultOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
+// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+//
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupDeviceResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Facility }).(pulumi.StringOutput)

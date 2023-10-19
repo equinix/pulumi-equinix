@@ -13,17 +13,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideAccessPointGatewayResult
     {
-        /// <summary>
-        /// Connection URI information
-        /// </summary>
         public readonly string Href;
-        /// <summary>
-        /// Connection overall state
-        /// </summary>
         public readonly string State;
-        /// <summary>
-        /// Equinix-assigned connection identifier
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

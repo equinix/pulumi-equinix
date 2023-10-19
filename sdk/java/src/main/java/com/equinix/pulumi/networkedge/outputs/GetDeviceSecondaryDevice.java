@@ -26,6 +26,7 @@ public final class GetDeviceSecondaryDevice {
      * 
      */
     private Integer asn;
+    private String cloudInitFileId;
     private String hostname;
     /**
      * @return Device location Equinix Business Exchange name
@@ -58,6 +59,7 @@ public final class GetDeviceSecondaryDevice {
      * * APPLIED
      * * WAITING_FOR_CLUSTER_SETUP
      * * REGISTRATION_FAILED
+     * * NA
      * 
      */
     private String licenseStatus;
@@ -146,6 +148,9 @@ public final class GetDeviceSecondaryDevice {
     public Integer asn() {
         return this.asn;
     }
+    public String cloudInitFileId() {
+        return this.cloudInitFileId;
+    }
     public String hostname() {
         return this.hostname;
     }
@@ -188,6 +193,7 @@ public final class GetDeviceSecondaryDevice {
      * * APPLIED
      * * WAITING_FOR_CLUSTER_SETUP
      * * REGISTRATION_FAILED
+     * * NA
      * 
      */
     public String licenseStatus() {
@@ -302,6 +308,7 @@ public final class GetDeviceSecondaryDevice {
         private String aclTemplateId;
         private Integer additionalBandwidth;
         private Integer asn;
+        private String cloudInitFileId;
         private String hostname;
         private String ibx;
         private List<GetDeviceSecondaryDeviceInterface> interfaces;
@@ -331,6 +338,7 @@ public final class GetDeviceSecondaryDevice {
     	      this.aclTemplateId = defaults.aclTemplateId;
     	      this.additionalBandwidth = defaults.additionalBandwidth;
     	      this.asn = defaults.asn;
+    	      this.cloudInitFileId = defaults.cloudInitFileId;
     	      this.hostname = defaults.hostname;
     	      this.ibx = defaults.ibx;
     	      this.interfaces = defaults.interfaces;
@@ -373,6 +381,11 @@ public final class GetDeviceSecondaryDevice {
         @CustomType.Setter
         public Builder asn(Integer asn) {
             this.asn = Objects.requireNonNull(asn);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudInitFileId(String cloudInitFileId) {
+            this.cloudInitFileId = Objects.requireNonNull(cloudInitFileId);
             return this;
         }
         @CustomType.Setter
@@ -500,6 +513,7 @@ public final class GetDeviceSecondaryDevice {
             o.aclTemplateId = aclTemplateId;
             o.additionalBandwidth = additionalBandwidth;
             o.asn = asn;
+            o.cloudInitFileId = cloudInitFileId;
             o.hostname = hostname;
             o.ibx = ibx;
             o.interfaces = interfaces;

@@ -20,6 +20,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -52,6 +53,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -93,6 +95,8 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Device states to be considered valid when searching for a device by name
+        /// 
+        /// NOTE: Exactly one of either `uuid` or `name` must be specified.
         /// </summary>
         [Input("validStatusList")]
         public string? ValidStatusList { get; set; }
@@ -119,6 +123,8 @@ namespace Pulumi.Equinix.NetworkEdge
 
         /// <summary>
         /// Device states to be considered valid when searching for a device by name
+        /// 
+        /// NOTE: Exactly one of either `uuid` or `name` must be specified.
         /// </summary>
         [Input("validStatusList")]
         public Input<string>? ValidStatusList { get; set; }
@@ -145,6 +151,10 @@ namespace Pulumi.Equinix.NetworkEdge
         public readonly int Asn;
         public readonly bool Byol;
         public readonly ImmutableArray<Outputs.GetDeviceClusterDetailResult> ClusterDetails;
+        /// <summary>
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+        /// </summary>
+        public readonly string Connectivity;
         public readonly int CoreCount;
         public readonly string Hostname;
         /// <summary>
@@ -180,6 +190,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// * APPLIED
         /// * WAITING_FOR_CLUSTER_SETUP
         /// * REGISTRATION_FAILED
+        /// * NA
         /// </summary>
         public readonly string LicenseStatus;
         public readonly string LicenseToken;
@@ -262,6 +273,8 @@ namespace Pulumi.Equinix.NetworkEdge
 
             ImmutableArray<Outputs.GetDeviceClusterDetailResult> clusterDetails,
 
+            string connectivity,
+
             int coreCount,
 
             string hostname,
@@ -340,6 +353,7 @@ namespace Pulumi.Equinix.NetworkEdge
             Asn = asn;
             Byol = byol;
             ClusterDetails = clusterDetails;
+            Connectivity = connectivity;
             CoreCount = coreCount;
             Hostname = hostname;
             Ibx = ibx;

@@ -20,12 +20,16 @@ public final class GetPlansFilterArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
      * 
+     * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
+     * 
      */
     @Import(name="all")
     private @Nullable Output<Boolean> all;
 
     /**
      * @return If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+     * 
+     * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
      * 
      */
     public Optional<Output<Boolean>> all() {
@@ -107,6 +111,8 @@ public final class GetPlansFilterArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param all If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
          * 
+         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
+         * 
          * @return builder
          * 
          */
@@ -117,6 +123,8 @@ public final class GetPlansFilterArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param all If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         * 
+         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
          * 
          * @return builder
          * 

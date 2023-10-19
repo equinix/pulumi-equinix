@@ -12,15 +12,27 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ConnectionZSideAccessPointLocationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IBX Code
+        /// </summary>
         [Input("ibx")]
         public Input<string>? Ibx { get; set; }
 
+        /// <summary>
+        /// Access point metro code
+        /// </summary>
         [Input("metroCode")]
         public InputUnion<string, Pulumi.Equinix.Metro>? MetroCode { get; set; }
 
+        /// <summary>
+        /// Access point metro name
+        /// </summary>
         [Input("metroName")]
         public Input<string>? MetroName { get; set; }
 
+        /// <summary>
+        /// Access point region
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -225,7 +225,7 @@ class GetConnectionResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
         """
         return pulumi.get(self, "type")
 
@@ -281,7 +281,6 @@ def get_connection(project: Optional[pulumi.InputType['GetConnectionProjectArgs'
     Use this data source to access information about an existing resource.
 
     :param pulumi.InputType['GetConnectionProjectArgs'] project: Project information
-    :param str uuid: Equinix-assigned connection identifier
     """
     __args__ = dict()
     __args__['project'] = project
@@ -290,26 +289,26 @@ def get_connection(project: Optional[pulumi.InputType['GetConnectionProjectArgs'
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
 
     return AwaitableGetConnectionResult(
-        a_side=__ret__.a_side,
-        account=__ret__.account,
-        additional_info=__ret__.additional_info,
-        bandwidth=__ret__.bandwidth,
-        change_log=__ret__.change_log,
-        description=__ret__.description,
-        direction=__ret__.direction,
-        href=__ret__.href,
-        id=__ret__.id,
-        is_remote=__ret__.is_remote,
-        name=__ret__.name,
-        notifications=__ret__.notifications,
-        operation=__ret__.operation,
-        order=__ret__.order,
-        project=__ret__.project,
-        redundancy=__ret__.redundancy,
-        state=__ret__.state,
-        type=__ret__.type,
-        uuid=__ret__.uuid,
-        z_side=__ret__.z_side)
+        a_side=pulumi.get(__ret__, 'a_side'),
+        account=pulumi.get(__ret__, 'account'),
+        additional_info=pulumi.get(__ret__, 'additional_info'),
+        bandwidth=pulumi.get(__ret__, 'bandwidth'),
+        change_log=pulumi.get(__ret__, 'change_log'),
+        description=pulumi.get(__ret__, 'description'),
+        direction=pulumi.get(__ret__, 'direction'),
+        href=pulumi.get(__ret__, 'href'),
+        id=pulumi.get(__ret__, 'id'),
+        is_remote=pulumi.get(__ret__, 'is_remote'),
+        name=pulumi.get(__ret__, 'name'),
+        notifications=pulumi.get(__ret__, 'notifications'),
+        operation=pulumi.get(__ret__, 'operation'),
+        order=pulumi.get(__ret__, 'order'),
+        project=pulumi.get(__ret__, 'project'),
+        redundancy=pulumi.get(__ret__, 'redundancy'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uuid=pulumi.get(__ret__, 'uuid'),
+        z_side=pulumi.get(__ret__, 'z_side'))
 
 
 @_utilities.lift_output_func(get_connection)
@@ -320,6 +319,5 @@ def get_connection_output(project: Optional[pulumi.Input[Optional[pulumi.InputTy
     Use this data source to access information about an existing resource.
 
     :param pulumi.InputType['GetConnectionProjectArgs'] project: Project information
-    :param str uuid: Equinix-assigned connection identifier
     """
     ...

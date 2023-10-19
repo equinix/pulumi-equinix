@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult
     {
-        /// <summary>
-        /// User-provided service description
-        /// </summary>
         public readonly string Description;
         public readonly string Label;
         public readonly bool Required;

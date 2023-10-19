@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -292,26 +292,26 @@ def get_virtual_circuit(virtual_circuit_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getVirtualCircuit:getVirtualCircuit', __args__, opts=opts, typ=GetVirtualCircuitResult).value
 
     return AwaitableGetVirtualCircuitResult(
-        connection_id=__ret__.connection_id,
-        customer_ip=__ret__.customer_ip,
-        description=__ret__.description,
-        id=__ret__.id,
-        md5=__ret__.md5,
-        metal_ip=__ret__.metal_ip,
-        name=__ret__.name,
-        nni_vlan=__ret__.nni_vlan,
-        nni_vnid=__ret__.nni_vnid,
-        peer_asn=__ret__.peer_asn,
-        port_id=__ret__.port_id,
-        project_id=__ret__.project_id,
-        speed=__ret__.speed,
-        status=__ret__.status,
-        subnet=__ret__.subnet,
-        tags=__ret__.tags,
-        virtual_circuit_id=__ret__.virtual_circuit_id,
-        vlan_id=__ret__.vlan_id,
-        vnid=__ret__.vnid,
-        vrf_id=__ret__.vrf_id)
+        connection_id=pulumi.get(__ret__, 'connection_id'),
+        customer_ip=pulumi.get(__ret__, 'customer_ip'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        md5=pulumi.get(__ret__, 'md5'),
+        metal_ip=pulumi.get(__ret__, 'metal_ip'),
+        name=pulumi.get(__ret__, 'name'),
+        nni_vlan=pulumi.get(__ret__, 'nni_vlan'),
+        nni_vnid=pulumi.get(__ret__, 'nni_vnid'),
+        peer_asn=pulumi.get(__ret__, 'peer_asn'),
+        port_id=pulumi.get(__ret__, 'port_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        speed=pulumi.get(__ret__, 'speed'),
+        status=pulumi.get(__ret__, 'status'),
+        subnet=pulumi.get(__ret__, 'subnet'),
+        tags=pulumi.get(__ret__, 'tags'),
+        virtual_circuit_id=pulumi.get(__ret__, 'virtual_circuit_id'),
+        vlan_id=pulumi.get(__ret__, 'vlan_id'),
+        vnid=pulumi.get(__ret__, 'vnid'),
+        vrf_id=pulumi.get(__ret__, 'vrf_id'))
 
 
 @_utilities.lift_output_func(get_virtual_circuit)

@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointLinkProtocolResult
     {
-        /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        /// </summary>
         public readonly string Type;
         public readonly int VlanCTag;
         public readonly int VlanSTag;

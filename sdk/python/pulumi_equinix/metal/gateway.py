@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -27,12 +27,37 @@ class GatewayArgs:
         :param pulumi.Input[int] private_ipv4_subnet_size: Size of the private IPv4 subnet to create for this metal
                gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ip_reservation_id`.
         """
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "vlan_id", vlan_id)
+        GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            vlan_id=vlan_id,
+            ip_reservation_id=ip_reservation_id,
+            private_ipv4_subnet_size=private_ipv4_subnet_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             vlan_id: pulumi.Input[str],
+             ip_reservation_id: Optional[pulumi.Input[str]] = None,
+             private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'ipReservationId' in kwargs:
+            ip_reservation_id = kwargs['ipReservationId']
+        if 'privateIpv4SubnetSize' in kwargs:
+            private_ipv4_subnet_size = kwargs['privateIpv4SubnetSize']
+
+        _setter("project_id", project_id)
+        _setter("vlan_id", vlan_id)
         if ip_reservation_id is not None:
-            pulumi.set(__self__, "ip_reservation_id", ip_reservation_id)
+            _setter("ip_reservation_id", ip_reservation_id)
         if private_ipv4_subnet_size is not None:
-            pulumi.set(__self__, "private_ipv4_subnet_size", private_ipv4_subnet_size)
+            _setter("private_ipv4_subnet_size", private_ipv4_subnet_size)
 
     @property
     @pulumi.getter(name="projectId")
@@ -105,18 +130,49 @@ class _GatewayState:
         :param pulumi.Input[str] vlan_id: UUID of the VLAN where the gateway is scoped to.
         :param pulumi.Input[str] vrf_id: UUID of the VRF associated with the IP Reservation
         """
+        _GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_reservation_id=ip_reservation_id,
+            private_ipv4_subnet_size=private_ipv4_subnet_size,
+            project_id=project_id,
+            state=state,
+            vlan_id=vlan_id,
+            vrf_id=vrf_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_reservation_id: Optional[pulumi.Input[str]] = None,
+             private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             vlan_id: Optional[pulumi.Input[str]] = None,
+             vrf_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipReservationId' in kwargs:
+            ip_reservation_id = kwargs['ipReservationId']
+        if 'privateIpv4SubnetSize' in kwargs:
+            private_ipv4_subnet_size = kwargs['privateIpv4SubnetSize']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'vrfId' in kwargs:
+            vrf_id = kwargs['vrfId']
+
         if ip_reservation_id is not None:
-            pulumi.set(__self__, "ip_reservation_id", ip_reservation_id)
+            _setter("ip_reservation_id", ip_reservation_id)
         if private_ipv4_subnet_size is not None:
-            pulumi.set(__self__, "private_ipv4_subnet_size", private_ipv4_subnet_size)
+            _setter("private_ipv4_subnet_size", private_ipv4_subnet_size)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if vlan_id is not None:
-            pulumi.set(__self__, "vlan_id", vlan_id)
+            _setter("vlan_id", vlan_id)
         if vrf_id is not None:
-            pulumi.set(__self__, "vrf_id", vrf_id)
+            _setter("vrf_id", vrf_id)
 
     @property
     @pulumi.getter(name="ipReservationId")
@@ -268,6 +324,10 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

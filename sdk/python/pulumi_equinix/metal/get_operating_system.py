@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -133,12 +133,12 @@ def get_operating_system(distro: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getOperatingSystem:getOperatingSystem', __args__, opts=opts, typ=GetOperatingSystemResult).value
 
     return AwaitableGetOperatingSystemResult(
-        distro=__ret__.distro,
-        id=__ret__.id,
-        name=__ret__.name,
-        provisionable_on=__ret__.provisionable_on,
-        slug=__ret__.slug,
-        version=__ret__.version)
+        distro=pulumi.get(__ret__, 'distro'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        provisionable_on=pulumi.get(__ret__, 'provisionable_on'),
+        slug=pulumi.get(__ret__, 'slug'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_operating_system)

@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Network Edge device software details for a given
@@ -45,7 +47,7 @@ import (
 //
 // ```
 func GetDeviceSoftware(ctx *pulumi.Context, args *GetDeviceSoftwareArgs, opts ...pulumi.InvokeOption) (*GetDeviceSoftwareResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeviceSoftwareResult
 	err := ctx.Invoke("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args, &rv, opts...)
 	if err != nil {
@@ -139,6 +141,12 @@ func (o GetDeviceSoftwareResultOutput) ToGetDeviceSoftwareResultOutput() GetDevi
 
 func (o GetDeviceSoftwareResultOutput) ToGetDeviceSoftwareResultOutputWithContext(ctx context.Context) GetDeviceSoftwareResultOutput {
 	return o
+}
+
+func (o GetDeviceSoftwareResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSoftwareResult] {
+	return pulumix.Output[GetDeviceSoftwareResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Version release date.

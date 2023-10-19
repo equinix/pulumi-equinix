@@ -13,21 +13,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointPortResult
     {
-        /// <summary>
-        /// Connection URI information
-        /// </summary>
         public readonly string Href;
-        /// <summary>
-        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Redundancy Information
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointPortRedundancyResult> Redundancies;
-        /// <summary>
-        /// Equinix-assigned connection identifier
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

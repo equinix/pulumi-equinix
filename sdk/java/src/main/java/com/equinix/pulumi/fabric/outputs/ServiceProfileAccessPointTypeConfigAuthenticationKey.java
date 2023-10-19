@@ -13,24 +13,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceProfileAccessPointTypeConfigAuthenticationKey {
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Label
+     * 
+     */
     private @Nullable String label;
+    /**
+     * @return Required
+     * 
+     */
     private @Nullable Boolean required;
 
     private ServiceProfileAccessPointTypeConfigAuthenticationKey() {}
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Label
+     * 
+     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
+    /**
+     * @return Required
+     * 
+     */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }

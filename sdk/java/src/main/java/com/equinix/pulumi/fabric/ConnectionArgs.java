@@ -5,7 +5,6 @@ package com.equinix.pulumi.fabric;
 
 import com.equinix.pulumi.fabric.enums.ConnectionType;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionAdditionalInfoArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionNotificationArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionOrderArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionProjectArgs;
@@ -15,8 +14,10 @@ import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -42,17 +43,17 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection additional information
+     * Connection side additional information
      * 
      */
     @Import(name="additionalInfo")
-    private @Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfo;
+    private @Nullable Output<List<Map<String,Object>>> additionalInfo;
 
     /**
-     * @return Connection additional information
+     * @return Connection side additional information
      * 
      */
-    public Optional<Output<List<ConnectionAdditionalInfoArgs>>> additionalInfo() {
+    public Optional<Output<List<Map<String,Object>>>> additionalInfo() {
         return Optional.ofNullable(this.additionalInfo);
     }
 
@@ -72,14 +73,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Optional<Output<String>> name() {
@@ -147,14 +148,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ConnectionType>> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Output<Either<String,ConnectionType>> type() {
@@ -231,33 +232,33 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfo(@Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfo) {
+        public Builder additionalInfo(@Nullable Output<List<Map<String,Object>>> additionalInfo) {
             $.additionalInfo = additionalInfo;
             return this;
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfo(List<ConnectionAdditionalInfoArgs> additionalInfo) {
+        public Builder additionalInfo(List<Map<String,Object>> additionalInfo) {
             return additionalInfo(Output.of(additionalInfo));
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfo(ConnectionAdditionalInfoArgs... additionalInfo) {
+        public Builder additionalInfo(Map<String,Object>... additionalInfo) {
             return additionalInfo(List.of(additionalInfo));
         }
 
@@ -283,7 +284,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -294,7 +295,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -398,7 +399,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -409,7 +410,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -419,7 +420,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -429,7 +430,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 

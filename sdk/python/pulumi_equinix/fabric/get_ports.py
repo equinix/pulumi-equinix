@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -83,9 +83,9 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getPorts:getPorts', __args__, opts=opts, typ=GetPortsResult).value
 
     return AwaitableGetPortsResult(
-        data=__ret__.data,
-        filter=__ret__.filter,
-        id=__ret__.id)
+        data=pulumi.get(__ret__, 'data'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_ports)

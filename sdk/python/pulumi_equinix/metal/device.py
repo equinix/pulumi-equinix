@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -55,10 +55,11 @@ class DeviceArgs:
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-               top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
+               through the list and will deploy your device to first facility with free capacity. List items must
+               be facility codes or `any` (a wildcard). To find the facility code, visit
+               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -70,10 +71,7 @@ class DeviceArgs:
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device.
-               If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-               you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-               created with the metal.ProjectSshKey resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         :param pulumi.Input['DeviceReinstallArgs'] reinstall: Whether the device should be reinstalled instead of destroyed when
                modifying user_data, custom_data, or operating system. See Reinstall below for more
                details.
@@ -86,57 +84,140 @@ class DeviceArgs:
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
                If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
                (about 4 minutes in August 2019).
         """
-        pulumi.set(__self__, "operating_system", operating_system)
-        pulumi.set(__self__, "plan", plan)
-        pulumi.set(__self__, "project_id", project_id)
+        DeviceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operating_system=operating_system,
+            plan=plan,
+            project_id=project_id,
+            always_pxe=always_pxe,
+            behavior=behavior,
+            billing_cycle=billing_cycle,
+            custom_data=custom_data,
+            description=description,
+            facilities=facilities,
+            force_detach_volumes=force_detach_volumes,
+            hardware_reservation_id=hardware_reservation_id,
+            hostname=hostname,
+            ip_addresses=ip_addresses,
+            ipxe_script_url=ipxe_script_url,
+            metro=metro,
+            project_ssh_key_ids=project_ssh_key_ids,
+            reinstall=reinstall,
+            storage=storage,
+            tags=tags,
+            termination_time=termination_time,
+            user_data=user_data,
+            user_ssh_key_ids=user_ssh_key_ids,
+            wait_for_reservation_deprovision=wait_for_reservation_deprovision,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operating_system: pulumi.Input[Union[str, 'OperatingSystem']],
+             plan: pulumi.Input[Union[str, 'Plan']],
+             project_id: pulumi.Input[str],
+             always_pxe: Optional[pulumi.Input[bool]] = None,
+             behavior: Optional[pulumi.Input['DeviceBehaviorArgs']] = None,
+             billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
+             custom_data: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             facilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]] = None,
+             force_detach_volumes: Optional[pulumi.Input[bool]] = None,
+             hardware_reservation_id: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]]] = None,
+             ipxe_script_url: Optional[pulumi.Input[str]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             project_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             reinstall: Optional[pulumi.Input['DeviceReinstallArgs']] = None,
+             storage: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             termination_time: Optional[pulumi.Input[str]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             user_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'alwaysPxe' in kwargs:
+            always_pxe = kwargs['alwaysPxe']
+        if 'billingCycle' in kwargs:
+            billing_cycle = kwargs['billingCycle']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'forceDetachVolumes' in kwargs:
+            force_detach_volumes = kwargs['forceDetachVolumes']
+        if 'hardwareReservationId' in kwargs:
+            hardware_reservation_id = kwargs['hardwareReservationId']
+        if 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if 'ipxeScriptUrl' in kwargs:
+            ipxe_script_url = kwargs['ipxeScriptUrl']
+        if 'projectSshKeyIds' in kwargs:
+            project_ssh_key_ids = kwargs['projectSshKeyIds']
+        if 'terminationTime' in kwargs:
+            termination_time = kwargs['terminationTime']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'userSshKeyIds' in kwargs:
+            user_ssh_key_ids = kwargs['userSshKeyIds']
+        if 'waitForReservationDeprovision' in kwargs:
+            wait_for_reservation_deprovision = kwargs['waitForReservationDeprovision']
+
+        _setter("operating_system", operating_system)
+        _setter("plan", plan)
+        _setter("project_id", project_id)
         if always_pxe is not None:
-            pulumi.set(__self__, "always_pxe", always_pxe)
+            _setter("always_pxe", always_pxe)
         if behavior is not None:
-            pulumi.set(__self__, "behavior", behavior)
+            _setter("behavior", behavior)
         if billing_cycle is not None:
-            pulumi.set(__self__, "billing_cycle", billing_cycle)
+            _setter("billing_cycle", billing_cycle)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if facilities is not None:
             warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facilities is not None:
-            pulumi.set(__self__, "facilities", facilities)
+            _setter("facilities", facilities)
         if force_detach_volumes is not None:
-            pulumi.set(__self__, "force_detach_volumes", force_detach_volumes)
+            _setter("force_detach_volumes", force_detach_volumes)
         if hardware_reservation_id is not None:
-            pulumi.set(__self__, "hardware_reservation_id", hardware_reservation_id)
+            _setter("hardware_reservation_id", hardware_reservation_id)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
+            _setter("ip_addresses", ip_addresses)
         if ipxe_script_url is not None:
-            pulumi.set(__self__, "ipxe_script_url", ipxe_script_url)
+            _setter("ipxe_script_url", ipxe_script_url)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if project_ssh_key_ids is not None:
-            pulumi.set(__self__, "project_ssh_key_ids", project_ssh_key_ids)
+            _setter("project_ssh_key_ids", project_ssh_key_ids)
         if reinstall is not None:
-            pulumi.set(__self__, "reinstall", reinstall)
+            _setter("reinstall", reinstall)
         if storage is not None:
-            pulumi.set(__self__, "storage", storage)
+            _setter("storage", storage)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_time is not None:
-            pulumi.set(__self__, "termination_time", termination_time)
+            _setter("termination_time", termination_time)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if user_ssh_key_ids is not None:
-            pulumi.set(__self__, "user_ssh_key_ids", user_ssh_key_ids)
+            _setter("user_ssh_key_ids", user_ssh_key_ids)
         if wait_for_reservation_deprovision is not None:
-            pulumi.set(__self__, "wait_for_reservation_deprovision", wait_for_reservation_deprovision)
+            _setter("wait_for_reservation_deprovision", wait_for_reservation_deprovision)
 
     @property
     @pulumi.getter(name="operatingSystem")
@@ -243,11 +324,15 @@ class DeviceArgs:
     @pulumi.getter
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-        device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-        code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-        top of the page and see JSON from the API response. Conflicts with metro
+        List of facility codes with deployment preferences. Equinix Metal API will go
+        through the list and will deploy your device to first facility with free capacity. List items must
+        be facility codes or `any` (a wildcard). To find the facility code, visit
+        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+        token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facilities")
 
     @facilities.setter
@@ -335,10 +420,7 @@ class DeviceArgs:
     @pulumi.getter(name="projectSshKeyIds")
     def project_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the project SSH keys which should be added to the device.
-        If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-        you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-        created with the metal.ProjectSshKey resource.
+        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         """
         return pulumi.get(self, "project_ssh_key_ids")
 
@@ -417,7 +499,7 @@ class DeviceArgs:
     @pulumi.getter(name="userSshKeyIds")
     def user_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         """
         return pulumi.get(self, "user_ssh_key_ids")
 
@@ -491,14 +573,15 @@ class _DeviceState:
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] created: The timestamp for when the device was created.
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
+        :param pulumi.Input[str] deployed_facility: (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
                It is useful when using the `next-available` hardware reservation.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-               top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
+               through the list and will deploy your device to first facility with free capacity. List items must
+               be facility codes or `any` (a wildcard). To find the facility code, visit
+               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -529,10 +612,7 @@ class _DeviceState:
         :param pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]] ports: List of ports assigned to the device. See Ports Attribute below for
                more details.
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device.
-               If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-               you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-               created with the metal.ProjectSshKey resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         :param pulumi.Input['DeviceReinstallArgs'] reinstall: Whether the device should be reinstalled instead of destroyed when
                modifying user_data, custom_data, or operating system. See Reinstall below for more
                details.
@@ -549,94 +629,221 @@ class _DeviceState:
                If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] updated: The timestamp for the last time the device was updated.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
                (about 4 minutes in August 2019).
         """
+        _DeviceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_private_ipv4=access_private_ipv4,
+            access_public_ipv4=access_public_ipv4,
+            access_public_ipv6=access_public_ipv6,
+            always_pxe=always_pxe,
+            behavior=behavior,
+            billing_cycle=billing_cycle,
+            created=created,
+            custom_data=custom_data,
+            deployed_facility=deployed_facility,
+            deployed_hardware_reservation_id=deployed_hardware_reservation_id,
+            description=description,
+            facilities=facilities,
+            force_detach_volumes=force_detach_volumes,
+            hardware_reservation_id=hardware_reservation_id,
+            hostname=hostname,
+            ip_addresses=ip_addresses,
+            ipxe_script_url=ipxe_script_url,
+            locked=locked,
+            metro=metro,
+            network=network,
+            network_type=network_type,
+            operating_system=operating_system,
+            plan=plan,
+            ports=ports,
+            project_id=project_id,
+            project_ssh_key_ids=project_ssh_key_ids,
+            reinstall=reinstall,
+            root_password=root_password,
+            ssh_key_ids=ssh_key_ids,
+            state=state,
+            storage=storage,
+            tags=tags,
+            termination_time=termination_time,
+            updated=updated,
+            user_data=user_data,
+            user_ssh_key_ids=user_ssh_key_ids,
+            wait_for_reservation_deprovision=wait_for_reservation_deprovision,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_private_ipv4: Optional[pulumi.Input[str]] = None,
+             access_public_ipv4: Optional[pulumi.Input[str]] = None,
+             access_public_ipv6: Optional[pulumi.Input[str]] = None,
+             always_pxe: Optional[pulumi.Input[bool]] = None,
+             behavior: Optional[pulumi.Input['DeviceBehaviorArgs']] = None,
+             billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
+             created: Optional[pulumi.Input[str]] = None,
+             custom_data: Optional[pulumi.Input[str]] = None,
+             deployed_facility: Optional[pulumi.Input[str]] = None,
+             deployed_hardware_reservation_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             facilities: Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]] = None,
+             force_detach_volumes: Optional[pulumi.Input[bool]] = None,
+             hardware_reservation_id: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]]] = None,
+             ipxe_script_url: Optional[pulumi.Input[str]] = None,
+             locked: Optional[pulumi.Input[bool]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]]] = None,
+             network_type: Optional[pulumi.Input[Union[str, 'NetworkType']]] = None,
+             operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
+             plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             project_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             reinstall: Optional[pulumi.Input['DeviceReinstallArgs']] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             storage: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             termination_time: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             user_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPrivateIpv4' in kwargs:
+            access_private_ipv4 = kwargs['accessPrivateIpv4']
+        if 'accessPublicIpv4' in kwargs:
+            access_public_ipv4 = kwargs['accessPublicIpv4']
+        if 'accessPublicIpv6' in kwargs:
+            access_public_ipv6 = kwargs['accessPublicIpv6']
+        if 'alwaysPxe' in kwargs:
+            always_pxe = kwargs['alwaysPxe']
+        if 'billingCycle' in kwargs:
+            billing_cycle = kwargs['billingCycle']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'deployedFacility' in kwargs:
+            deployed_facility = kwargs['deployedFacility']
+        if 'deployedHardwareReservationId' in kwargs:
+            deployed_hardware_reservation_id = kwargs['deployedHardwareReservationId']
+        if 'forceDetachVolumes' in kwargs:
+            force_detach_volumes = kwargs['forceDetachVolumes']
+        if 'hardwareReservationId' in kwargs:
+            hardware_reservation_id = kwargs['hardwareReservationId']
+        if 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if 'ipxeScriptUrl' in kwargs:
+            ipxe_script_url = kwargs['ipxeScriptUrl']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'operatingSystem' in kwargs:
+            operating_system = kwargs['operatingSystem']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'projectSshKeyIds' in kwargs:
+            project_ssh_key_ids = kwargs['projectSshKeyIds']
+        if 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+        if 'sshKeyIds' in kwargs:
+            ssh_key_ids = kwargs['sshKeyIds']
+        if 'terminationTime' in kwargs:
+            termination_time = kwargs['terminationTime']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'userSshKeyIds' in kwargs:
+            user_ssh_key_ids = kwargs['userSshKeyIds']
+        if 'waitForReservationDeprovision' in kwargs:
+            wait_for_reservation_deprovision = kwargs['waitForReservationDeprovision']
+
         if access_private_ipv4 is not None:
-            pulumi.set(__self__, "access_private_ipv4", access_private_ipv4)
+            _setter("access_private_ipv4", access_private_ipv4)
         if access_public_ipv4 is not None:
-            pulumi.set(__self__, "access_public_ipv4", access_public_ipv4)
+            _setter("access_public_ipv4", access_public_ipv4)
         if access_public_ipv6 is not None:
-            pulumi.set(__self__, "access_public_ipv6", access_public_ipv6)
+            _setter("access_public_ipv6", access_public_ipv6)
         if always_pxe is not None:
-            pulumi.set(__self__, "always_pxe", always_pxe)
+            _setter("always_pxe", always_pxe)
         if behavior is not None:
-            pulumi.set(__self__, "behavior", behavior)
+            _setter("behavior", behavior)
         if billing_cycle is not None:
-            pulumi.set(__self__, "billing_cycle", billing_cycle)
+            _setter("billing_cycle", billing_cycle)
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if deployed_facility is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""deployed_facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if deployed_facility is not None:
-            pulumi.set(__self__, "deployed_facility", deployed_facility)
+            _setter("deployed_facility", deployed_facility)
         if deployed_hardware_reservation_id is not None:
-            pulumi.set(__self__, "deployed_hardware_reservation_id", deployed_hardware_reservation_id)
+            _setter("deployed_hardware_reservation_id", deployed_hardware_reservation_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if facilities is not None:
             warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facilities is not None:
-            pulumi.set(__self__, "facilities", facilities)
+            _setter("facilities", facilities)
         if force_detach_volumes is not None:
-            pulumi.set(__self__, "force_detach_volumes", force_detach_volumes)
+            _setter("force_detach_volumes", force_detach_volumes)
         if hardware_reservation_id is not None:
-            pulumi.set(__self__, "hardware_reservation_id", hardware_reservation_id)
+            _setter("hardware_reservation_id", hardware_reservation_id)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
+            _setter("ip_addresses", ip_addresses)
         if ipxe_script_url is not None:
-            pulumi.set(__self__, "ipxe_script_url", ipxe_script_url)
+            _setter("ipxe_script_url", ipxe_script_url)
         if locked is not None:
-            pulumi.set(__self__, "locked", locked)
+            _setter("locked", locked)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if network_type is not None:
             warnings.warn("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""", DeprecationWarning)
             pulumi.log.warn("""network_type is deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if operating_system is not None:
-            pulumi.set(__self__, "operating_system", operating_system)
+            _setter("operating_system", operating_system)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if project_ssh_key_ids is not None:
-            pulumi.set(__self__, "project_ssh_key_ids", project_ssh_key_ids)
+            _setter("project_ssh_key_ids", project_ssh_key_ids)
         if reinstall is not None:
-            pulumi.set(__self__, "reinstall", reinstall)
+            _setter("reinstall", reinstall)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
         if ssh_key_ids is not None:
-            pulumi.set(__self__, "ssh_key_ids", ssh_key_ids)
+            _setter("ssh_key_ids", ssh_key_ids)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if storage is not None:
-            pulumi.set(__self__, "storage", storage)
+            _setter("storage", storage)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_time is not None:
-            pulumi.set(__self__, "termination_time", termination_time)
+            _setter("termination_time", termination_time)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if user_ssh_key_ids is not None:
-            pulumi.set(__self__, "user_ssh_key_ids", user_ssh_key_ids)
+            _setter("user_ssh_key_ids", user_ssh_key_ids)
         if wait_for_reservation_deprovision is not None:
-            pulumi.set(__self__, "wait_for_reservation_deprovision", wait_for_reservation_deprovision)
+            _setter("wait_for_reservation_deprovision", wait_for_reservation_deprovision)
 
     @property
     @pulumi.getter(name="accessPrivateIpv4")
@@ -739,8 +946,11 @@ class _DeviceState:
     @pulumi.getter(name="deployedFacility")
     def deployed_facility(self) -> Optional[pulumi.Input[str]]:
         """
-        The facility where the device is deployed
+        (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""deployed_facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "deployed_facility")
 
     @deployed_facility.setter
@@ -776,11 +986,15 @@ class _DeviceState:
     @pulumi.getter
     def facilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-        device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-        code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-        top of the page and see JSON from the API response. Conflicts with metro
+        List of facility codes with deployment preferences. Equinix Metal API will go
+        through the list and will deploy your device to first facility with free capacity. List items must
+        be facility codes or `any` (a wildcard). To find the facility code, visit
+        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+        token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facilities")
 
     @facilities.setter
@@ -901,6 +1115,9 @@ class _DeviceState:
         metal.Port datasource.
         See network_types guide for more info.
         """
+        warnings.warn("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""", DeprecationWarning)
+        pulumi.log.warn("""network_type is deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
+
         return pulumi.get(self, "network_type")
 
     @network_type.setter
@@ -964,10 +1181,7 @@ class _DeviceState:
     @pulumi.getter(name="projectSshKeyIds")
     def project_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the project SSH keys which should be added to the device.
-        If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-        you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-        created with the metal.ProjectSshKey resource.
+        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         """
         return pulumi.get(self, "project_ssh_key_ids")
 
@@ -1094,7 +1308,7 @@ class _DeviceState:
     @pulumi.getter(name="userSshKeyIds")
     def user_ssh_key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         """
         return pulumi.get(self, "user_ssh_key_ids")
 
@@ -1183,10 +1397,11 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-               top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
+               through the list and will deploy your device to first facility with free capacity. List items must
+               be facility codes or `any` (a wildcard). To find the facility code, visit
+               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -1205,10 +1420,7 @@ class Device(pulumi.CustomResource):
                [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
                top of the page and see JSON from the API response.
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device.
-               If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-               you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-               created with the metal.ProjectSshKey resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         :param pulumi.Input[pulumi.InputType['DeviceReinstallArgs']] reinstall: Whether the device should be reinstalled instead of destroyed when
                modifying user_data, custom_data, or operating system. See Reinstall below for more
                details.
@@ -1221,7 +1433,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] termination_time: Timestamp for device termination. For example `2021-09-03T16:32:00+03:00`.
                If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
                (about 4 minutes in August 2019).
@@ -1271,6 +1483,10 @@ class Device(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeviceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1309,13 +1525,15 @@ class Device(pulumi.CustomResource):
             __props__ = DeviceArgs.__new__(DeviceArgs)
 
             __props__.__dict__["always_pxe"] = always_pxe
+            if behavior is not None and not isinstance(behavior, DeviceBehaviorArgs):
+                behavior = behavior or {}
+                def _setter(key, value):
+                    behavior[key] = value
+                DeviceBehaviorArgs._configure(_setter, **behavior)
             __props__.__dict__["behavior"] = behavior
             __props__.__dict__["billing_cycle"] = billing_cycle
             __props__.__dict__["custom_data"] = None if custom_data is None else pulumi.Output.secret(custom_data)
             __props__.__dict__["description"] = description
-            if facilities is not None and not opts.urn:
-                warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-                pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
             __props__.__dict__["facilities"] = facilities
             __props__.__dict__["force_detach_volumes"] = force_detach_volumes
             __props__.__dict__["hardware_reservation_id"] = hardware_reservation_id
@@ -1333,6 +1551,11 @@ class Device(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["project_ssh_key_ids"] = project_ssh_key_ids
+            if reinstall is not None and not isinstance(reinstall, DeviceReinstallArgs):
+                reinstall = reinstall or {}
+                def _setter(key, value):
+                    reinstall[key] = value
+                DeviceReinstallArgs._configure(_setter, **reinstall)
             __props__.__dict__["reinstall"] = reinstall
             __props__.__dict__["storage"] = storage
             __props__.__dict__["tags"] = tags
@@ -1419,14 +1642,15 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'BillingCycle']] billing_cycle: monthly or hourly
         :param pulumi.Input[str] created: The timestamp for when the device was created.
         :param pulumi.Input[str] custom_data: A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"custom_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[str] deployed_facility: The facility where the device is deployed
+        :param pulumi.Input[str] deployed_facility: (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] deployed_hardware_reservation_id: ID of hardware reservation where this device was deployed.
                It is useful when using the `next-available` hardware reservation.
         :param pulumi.Input[str] description: The device description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-               device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-               code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-               top of the page and see JSON from the API response. Conflicts with metro
+        :param pulumi.Input[Sequence[pulumi.Input[Union[str, 'Facility']]]] facilities: List of facility codes with deployment preferences. Equinix Metal API will go
+               through the list and will deploy your device to first facility with free capacity. List items must
+               be facility codes or `any` (a wildcard). To find the facility code, visit
+               [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+               token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
         :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
@@ -1457,10 +1681,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]] ports: List of ports assigned to the device. See Ports Attribute below for
                more details.
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device.
-               If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-               you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-               created with the metal.ProjectSshKey resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         :param pulumi.Input[pulumi.InputType['DeviceReinstallArgs']] reinstall: Whether the device should be reinstalled instead of destroyed when
                modifying user_data, custom_data, or operating system. See Reinstall below for more
                details.
@@ -1477,7 +1698,7 @@ class Device(pulumi.CustomResource):
                If you don't supply timezone info, timestamp is assumed to be in UTC.
         :param pulumi.Input[str] updated: The timestamp for the last time the device was updated.
         :param pulumi.Input[str] user_data: A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"user_data"`, the device will be updated in-place instead of recreated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ssh_key_ids: Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         :param pulumi.Input[bool] wait_for_reservation_deprovision: Only used for devices in reserved hardware. If
                set, the deletion of this device will block until the hardware reservation is marked provisionable
                (about 4 minutes in August 2019).
@@ -1594,8 +1815,11 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="deployedFacility")
     def deployed_facility(self) -> pulumi.Output[str]:
         """
-        The facility where the device is deployed
+        (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""deployed_facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "deployed_facility")
 
     @property
@@ -1619,11 +1843,15 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def facilities(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-        device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-        code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-        top of the page and see JSON from the API response. Conflicts with metro
+        List of facility codes with deployment preferences. Equinix Metal API will go
+        through the list and will deploy your device to first facility with free capacity. List items must
+        be facility codes or `any` (a wildcard). To find the facility code, visit
+        [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+        token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facilities is deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facilities")
 
     @property
@@ -1708,6 +1936,9 @@ class Device(pulumi.CustomResource):
         metal.Port datasource.
         See network_types guide for more info.
         """
+        warnings.warn("""You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""", DeprecationWarning)
+        pulumi.log.warn("""network_type is deprecated: You should handle Network Type with one of 'equinix_metal_port' or 'equinix_metal_device_network_type' resources. See section 'Guides' for more info""")
+
         return pulumi.get(self, "network_type")
 
     @property
@@ -1751,10 +1982,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="projectSshKeyIds")
     def project_ssh_key_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Array of IDs of the project SSH keys which should be added to the device.
-        If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-        you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-        created with the metal.ProjectSshKey resource.
+        Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         """
         return pulumi.get(self, "project_ssh_key_ids")
 
@@ -1841,7 +2069,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="userSshKeyIds")
     def user_ssh_key_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+        Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
         """
         return pulumi.get(self, "user_ssh_key_ids")
 

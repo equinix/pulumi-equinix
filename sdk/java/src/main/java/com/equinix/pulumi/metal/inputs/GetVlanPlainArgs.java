@@ -41,12 +41,16 @@ public final class GetVlanPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Metro where the VLAN is deployed.
      * 
+     * &gt; **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
+     * 
      */
     @Import(name="metro")
     private @Nullable String metro;
 
     /**
      * @return Metro where the VLAN is deployed.
+     * 
+     * &gt; **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
      * 
      */
     public Optional<String> metro() {
@@ -143,6 +147,8 @@ public final class GetVlanPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param metro Metro where the VLAN is deployed.
+         * 
+         * &gt; **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
          * 
          * @return builder
          * 

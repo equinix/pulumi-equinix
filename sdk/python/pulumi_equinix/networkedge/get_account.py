@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -131,12 +131,12 @@ def get_account(metro_code: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:networkedge/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        id=__ret__.id,
-        metro_code=__ret__.metro_code,
-        name=__ret__.name,
-        number=__ret__.number,
-        status=__ret__.status,
-        ucm_id=__ret__.ucm_id)
+        id=pulumi.get(__ret__, 'id'),
+        metro_code=pulumi.get(__ret__, 'metro_code'),
+        name=pulumi.get(__ret__, 'name'),
+        number=pulumi.get(__ret__, 'number'),
+        status=pulumi.get(__ret__, 'status'),
+        ucm_id=pulumi.get(__ret__, 'ucm_id'))
 
 
 @_utilities.lift_output_func(get_account)

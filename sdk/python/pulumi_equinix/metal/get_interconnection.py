@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -22,19 +22,18 @@ class GetInterconnectionResult:
     """
     A collection of values returned by getInterconnection.
     """
-    def __init__(__self__, connection_id=None, description=None, facility=None, id=None, metro=None, mode=None, name=None, organization_id=None, ports=None, project_id=None, redundancy=None, service_token_type=None, service_tokens=None, speed=None, status=None, tags=None, token=None, type=None, vlans=None):
+    def __init__(__self__, connection_id=None, contact_email=None, description=None, facility=None, id=None, metro=None, mode=None, name=None, organization_id=None, ports=None, project_id=None, redundancy=None, service_token_type=None, service_tokens=None, speed=None, status=None, tags=None, token=None, type=None, vlans=None):
         if connection_id and not isinstance(connection_id, str):
             raise TypeError("Expected argument 'connection_id' to be a str")
         pulumi.set(__self__, "connection_id", connection_id)
+        if contact_email and not isinstance(contact_email, str):
+            raise TypeError("Expected argument 'contact_email' to be a str")
+        pulumi.set(__self__, "contact_email", contact_email)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
-        if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -77,10 +76,6 @@ class GetInterconnectionResult:
         pulumi.set(__self__, "tags", tags)
         if token and not isinstance(token, str):
             raise TypeError("Expected argument 'token' to be a str")
-        if token is not None:
-            warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
-            pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
-
         pulumi.set(__self__, "token", token)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
@@ -95,6 +90,14 @@ class GetInterconnectionResult:
         return pulumi.get(self, "connection_id")
 
     @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> str:
+        """
+        The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+        """
+        return pulumi.get(self, "contact_email")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -105,6 +108,12 @@ class GetInterconnectionResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
+        """
+        (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+        """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -217,6 +226,9 @@ class GetInterconnectionResult:
         """
         (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         """
+        warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
+
         return pulumi.get(self, "token")
 
     @property
@@ -243,6 +255,7 @@ class AwaitableGetInterconnectionResult(GetInterconnectionResult):
             yield self
         return GetInterconnectionResult(
             connection_id=self.connection_id,
+            contact_email=self.contact_email,
             description=self.description,
             facility=self.facility,
             id=self.id,
@@ -288,25 +301,26 @@ def get_interconnection(connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getInterconnection:getInterconnection', __args__, opts=opts, typ=GetInterconnectionResult).value
 
     return AwaitableGetInterconnectionResult(
-        connection_id=__ret__.connection_id,
-        description=__ret__.description,
-        facility=__ret__.facility,
-        id=__ret__.id,
-        metro=__ret__.metro,
-        mode=__ret__.mode,
-        name=__ret__.name,
-        organization_id=__ret__.organization_id,
-        ports=__ret__.ports,
-        project_id=__ret__.project_id,
-        redundancy=__ret__.redundancy,
-        service_token_type=__ret__.service_token_type,
-        service_tokens=__ret__.service_tokens,
-        speed=__ret__.speed,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        token=__ret__.token,
-        type=__ret__.type,
-        vlans=__ret__.vlans)
+        connection_id=pulumi.get(__ret__, 'connection_id'),
+        contact_email=pulumi.get(__ret__, 'contact_email'),
+        description=pulumi.get(__ret__, 'description'),
+        facility=pulumi.get(__ret__, 'facility'),
+        id=pulumi.get(__ret__, 'id'),
+        metro=pulumi.get(__ret__, 'metro'),
+        mode=pulumi.get(__ret__, 'mode'),
+        name=pulumi.get(__ret__, 'name'),
+        organization_id=pulumi.get(__ret__, 'organization_id'),
+        ports=pulumi.get(__ret__, 'ports'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        redundancy=pulumi.get(__ret__, 'redundancy'),
+        service_token_type=pulumi.get(__ret__, 'service_token_type'),
+        service_tokens=pulumi.get(__ret__, 'service_tokens'),
+        speed=pulumi.get(__ret__, 'speed'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        token=pulumi.get(__ret__, 'token'),
+        type=pulumi.get(__ret__, 'type'),
+        vlans=pulumi.get(__ret__, 'vlans'))
 
 
 @_utilities.lift_output_func(get_interconnection)

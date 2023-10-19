@@ -39,6 +39,8 @@ export interface GetProjectSshKeyArgs {
     id?: string;
     /**
      * The Equinix Metal project id of the Equinix Metal SSH Key.
+     *
+     * > **NOTE:** One of either `search` or `id` must be provided along with `projectId`.
      */
     projectId: string;
     /**
@@ -115,6 +117,8 @@ export interface GetProjectSshKeyOutputArgs {
     id?: pulumi.Input<string>;
     /**
      * The Equinix Metal project id of the Equinix Metal SSH Key.
+     *
+     * > **NOTE:** One of either `search` or `id` must be provided along with `projectId`.
      */
     projectId: pulumi.Input<string>;
     /**

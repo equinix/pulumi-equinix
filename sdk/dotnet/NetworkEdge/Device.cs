@@ -144,6 +144,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<Outputs.DeviceClusterDetails?> ClusterDetails { get; private set; } = null!;
 
         /// <summary>
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+        /// If not specified, default will be INTERNET-ACCESS
+        /// </summary>
+        [Output("connectivity")]
+        public Output<string?> Connectivity { get; private set; } = null!;
+
+        /// <summary>
         /// Number of CPU cores used by device.
         /// </summary>
         [Output("coreCount")]
@@ -447,6 +454,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<Inputs.DeviceClusterDetailsArgs>? ClusterDetails { get; set; }
 
         /// <summary>
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+        /// If not specified, default will be INTERNET-ACCESS
+        /// </summary>
+        [Input("connectivity")]
+        public Input<string>? Connectivity { get; set; }
+
+        /// <summary>
         /// Number of CPU cores used by device.
         /// </summary>
         [Input("coreCount", required: true)]
@@ -658,6 +672,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("clusterDetails")]
         public Input<Inputs.DeviceClusterDetailsGetArgs>? ClusterDetails { get; set; }
+
+        /// <summary>
+        /// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+        /// If not specified, default will be INTERNET-ACCESS
+        /// </summary>
+        [Input("connectivity")]
+        public Input<string>? Connectivity { get; set; }
 
         /// <summary>
         /// Number of CPU cores used by device.

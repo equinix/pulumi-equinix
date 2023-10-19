@@ -16,30 +16,46 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
     public static final ServiceProfileMarketingInfoProcessStepArgs Empty = new ServiceProfileMarketingInfoProcessStepArgs();
 
     /**
-     * User-provided service description
+     * Description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Sub Title
+     * 
+     */
     @Import(name="subTitle")
     private @Nullable Output<String> subTitle;
 
+    /**
+     * @return Sub Title
+     * 
+     */
     public Optional<Output<String>> subTitle() {
         return Optional.ofNullable(this.subTitle);
     }
 
+    /**
+     * Title
+     * 
+     */
     @Import(name="title")
     private @Nullable Output<String> title;
 
+    /**
+     * @return Title
+     * 
+     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
@@ -71,7 +87,7 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -91,20 +107,44 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
             return description(Output.of(description));
         }
 
+        /**
+         * @param subTitle Sub Title
+         * 
+         * @return builder
+         * 
+         */
         public Builder subTitle(@Nullable Output<String> subTitle) {
             $.subTitle = subTitle;
             return this;
         }
 
+        /**
+         * @param subTitle Sub Title
+         * 
+         * @return builder
+         * 
+         */
         public Builder subTitle(String subTitle) {
             return subTitle(Output.of(subTitle));
         }
 
+        /**
+         * @param title Title
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
+        /**
+         * @param title Title
+         * 
+         * @return builder
+         * 
+         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

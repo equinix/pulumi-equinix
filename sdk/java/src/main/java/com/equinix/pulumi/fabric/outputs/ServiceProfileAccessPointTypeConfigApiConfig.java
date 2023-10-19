@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceProfileAccessPointTypeConfigApiConfig {
+    /**
+     * @return Setting showing that oversubscription support is available (true) or not (false). The default is false
+     * 
+     */
     private @Nullable Boolean allowOverSubscription;
+    /**
+     * @return Setting indicating whether the API is available (true) or not (false)
+     * 
+     */
     private @Nullable Boolean apiAvailable;
+    /**
+     * @return Bandwidth from api
+     * 
+     */
     private @Nullable Boolean bandwidthFromApi;
+    /**
+     * @return Setting indicating that the port is managed by Equinix (true) or not (false)
+     * 
+     */
     private @Nullable Boolean equinixManagedPort;
+    /**
+     * @return Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+     * 
+     */
     private @Nullable Boolean equinixManagedVlan;
+    /**
+     * @return Integration id
+     * 
+     */
     private @Nullable String integrationId;
+    /**
+     * @return A cap on over subscription
+     * 
+     */
     private @Nullable Integer overSubscriptionLimit;
 
     private ServiceProfileAccessPointTypeConfigApiConfig() {}
+    /**
+     * @return Setting showing that oversubscription support is available (true) or not (false). The default is false
+     * 
+     */
     public Optional<Boolean> allowOverSubscription() {
         return Optional.ofNullable(this.allowOverSubscription);
     }
+    /**
+     * @return Setting indicating whether the API is available (true) or not (false)
+     * 
+     */
     public Optional<Boolean> apiAvailable() {
         return Optional.ofNullable(this.apiAvailable);
     }
+    /**
+     * @return Bandwidth from api
+     * 
+     */
     public Optional<Boolean> bandwidthFromApi() {
         return Optional.ofNullable(this.bandwidthFromApi);
     }
+    /**
+     * @return Setting indicating that the port is managed by Equinix (true) or not (false)
+     * 
+     */
     public Optional<Boolean> equinixManagedPort() {
         return Optional.ofNullable(this.equinixManagedPort);
     }
+    /**
+     * @return Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+     * 
+     */
     public Optional<Boolean> equinixManagedVlan() {
         return Optional.ofNullable(this.equinixManagedVlan);
     }
+    /**
+     * @return Integration id
+     * 
+     */
     public Optional<String> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }
+    /**
+     * @return A cap on over subscription
+     * 
+     */
     public Optional<Integer> overSubscriptionLimit() {
         return Optional.ofNullable(this.overSubscriptionLimit);
     }

@@ -20,6 +20,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -48,6 +49,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -79,6 +81,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// The Equinix Metal project id of the Equinix Metal SSH Key.
+        /// 
+        /// &gt; **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
         /// </summary>
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -106,6 +110,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// The Equinix Metal project id of the Equinix Metal SSH Key.
+        /// 
+        /// &gt; **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserApiKeyArgs', 'UserApiKey']
@@ -22,8 +22,23 @@ class UserApiKeyArgs:
                * `read-only` - (Required) Flag indicating whether the API key shoud be read-only.
         :param pulumi.Input[bool] read_only: Flag indicating whether the API key shoud be read-only
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "read_only", read_only)
+        UserApiKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            read_only=read_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             read_only: pulumi.Input[bool],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
+        _setter("description", description)
+        _setter("read_only", read_only)
 
     @property
     @pulumi.getter
@@ -66,14 +81,35 @@ class _UserApiKeyState:
         :param pulumi.Input[str] token: API token which can be used in Equinix Metal API clients.
         :param pulumi.Input[str] user_id: UUID of the owner of the API key.
         """
+        _UserApiKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            read_only=read_only,
+            token=token,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -207,6 +243,10 @@ class UserApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

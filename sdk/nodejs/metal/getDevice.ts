@@ -8,7 +8,9 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Equinix Metal device datasource.
+ * The datasource can be used to fetch a single device.
+ *
+ * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
  *
  * > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
  *  the raw state as plain-text.
@@ -54,6 +56,8 @@ export function getDevice(args?: GetDeviceArgs, opts?: pulumi.InvokeOptions): Pr
 export interface GetDeviceArgs {
     /**
      * Device ID.
+     *
+     * > **NOTE:** You should pass either `deviceId`, or both `projectId` and `hostname`.
      */
     deviceId?: string;
     /**
@@ -93,6 +97,8 @@ export interface GetDeviceResult {
     readonly description: string;
     readonly deviceId: string;
     /**
+     * (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+     *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     readonly facility: string;
@@ -153,7 +159,9 @@ export interface GetDeviceResult {
     readonly tags: string[];
 }
 /**
- * Provides an Equinix Metal device datasource.
+ * The datasource can be used to fetch a single device.
+ *
+ * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
  *
  * > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
  *  the raw state as plain-text.
@@ -192,6 +200,8 @@ export function getDeviceOutput(args?: GetDeviceOutputArgs, opts?: pulumi.Invoke
 export interface GetDeviceOutputArgs {
     /**
      * Device ID.
+     *
+     * > **NOTE:** You should pass either `deviceId`, or both `projectId` and `hostname`.
      */
     deviceId?: pulumi.Input<string>;
     /**

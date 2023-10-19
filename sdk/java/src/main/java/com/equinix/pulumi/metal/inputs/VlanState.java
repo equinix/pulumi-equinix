@@ -34,7 +34,7 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Facility where to create the VLAN
+     * Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -45,7 +45,7 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Either<String,Facility>> facility;
 
     /**
-     * @return Facility where to create the VLAN
+     * @return Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -151,7 +151,7 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facility Facility where to create the VLAN
+         * @param facility Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facility Facility where to create the VLAN
+         * @param facility Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facility Facility where to create the VLAN
+         * @param facility Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class VlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facility Facility where to create the VLAN
+         * @param facility Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 

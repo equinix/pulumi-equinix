@@ -24,6 +24,12 @@ namespace Pulumi.Equinix.Metal.Inputs
         /// <summary>
         /// List of UUIDs of IP block reservations
         /// from which the public IPv4 address should be taken.
+        /// 
+        /// You can supply one `ip_address` block per IP address type. If you use the `ip_address` you must
+        /// always pass a block for `private_ipv4`.
+        /// 
+        /// To learn more about using the reserved IP addresses for new devices, see the examples in the
+        /// equinix.metal.ReservedIpBlock documentation.
         /// </summary>
         public InputList<string> ReservationIds
         {

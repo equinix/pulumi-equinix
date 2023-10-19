@@ -15,11 +15,18 @@ import java.util.Objects;
 public final class GetInterconnectionResult {
     private String connectionId;
     /**
+     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+     * 
+     */
+    private String contactEmail;
+    /**
      * @return Description of the connection resource.
      * 
      */
     private String description;
     /**
+     * @return (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -116,6 +123,13 @@ public final class GetInterconnectionResult {
         return this.connectionId;
     }
     /**
+     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+     * 
+     */
+    public String contactEmail() {
+        return this.contactEmail;
+    }
+    /**
      * @return Description of the connection resource.
      * 
      */
@@ -123,6 +137,8 @@ public final class GetInterconnectionResult {
         return this.description;
     }
     /**
+     * @return (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -258,6 +274,7 @@ public final class GetInterconnectionResult {
     @CustomType.Builder
     public static final class Builder {
         private String connectionId;
+        private String contactEmail;
         private String description;
         private String facility;
         private String id;
@@ -280,6 +297,7 @@ public final class GetInterconnectionResult {
         public Builder(GetInterconnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionId = defaults.connectionId;
+    	      this.contactEmail = defaults.contactEmail;
     	      this.description = defaults.description;
     	      this.facility = defaults.facility;
     	      this.id = defaults.id;
@@ -303,6 +321,11 @@ public final class GetInterconnectionResult {
         @CustomType.Setter
         public Builder connectionId(String connectionId) {
             this.connectionId = Objects.requireNonNull(connectionId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contactEmail(String contactEmail) {
+            this.contactEmail = Objects.requireNonNull(contactEmail);
             return this;
         }
         @CustomType.Setter
@@ -410,6 +433,7 @@ public final class GetInterconnectionResult {
         public GetInterconnectionResult build() {
             final var o = new GetInterconnectionResult();
             o.connectionId = connectionId;
+            o.contactEmail = contactEmail;
             o.description = description;
             o.facility = facility;
             o.id = id;

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessPointLinkProtocolType string
@@ -79,6 +80,12 @@ func (o AccessPointLinkProtocolTypeOutput) ToAccessPointLinkProtocolTypePtrOutpu
 	}).(AccessPointLinkProtocolTypePtrOutput)
 }
 
+func (o AccessPointLinkProtocolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AccessPointLinkProtocolType] {
+	return pulumix.Output[AccessPointLinkProtocolType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPointLinkProtocolTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -112,6 +119,12 @@ func (o AccessPointLinkProtocolTypePtrOutput) ToAccessPointLinkProtocolTypePtrOu
 
 func (o AccessPointLinkProtocolTypePtrOutput) ToAccessPointLinkProtocolTypePtrOutputWithContext(ctx context.Context) AccessPointLinkProtocolTypePtrOutput {
 	return o
+}
+
+func (o AccessPointLinkProtocolTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPointLinkProtocolType] {
+	return pulumix.Output[*AccessPointLinkProtocolType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPointLinkProtocolTypePtrOutput) Elem() AccessPointLinkProtocolTypeOutput {
@@ -174,6 +187,12 @@ func (in *accessPointLinkProtocolTypePtr) ToAccessPointLinkProtocolTypePtrOutput
 
 func (in *accessPointLinkProtocolTypePtr) ToAccessPointLinkProtocolTypePtrOutputWithContext(ctx context.Context) AccessPointLinkProtocolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPointLinkProtocolTypePtrOutput)
+}
+
+func (in *accessPointLinkProtocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPointLinkProtocolType] {
+	return pulumix.Output[*AccessPointLinkProtocolType]{
+		OutputState: in.ToAccessPointLinkProtocolTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type AccessPointPeeringType string
@@ -244,6 +263,12 @@ func (o AccessPointPeeringTypeOutput) ToAccessPointPeeringTypePtrOutputWithConte
 	}).(AccessPointPeeringTypePtrOutput)
 }
 
+func (o AccessPointPeeringTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AccessPointPeeringType] {
+	return pulumix.Output[AccessPointPeeringType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPointPeeringTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -277,6 +302,12 @@ func (o AccessPointPeeringTypePtrOutput) ToAccessPointPeeringTypePtrOutput() Acc
 
 func (o AccessPointPeeringTypePtrOutput) ToAccessPointPeeringTypePtrOutputWithContext(ctx context.Context) AccessPointPeeringTypePtrOutput {
 	return o
+}
+
+func (o AccessPointPeeringTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPointPeeringType] {
+	return pulumix.Output[*AccessPointPeeringType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPointPeeringTypePtrOutput) Elem() AccessPointPeeringTypeOutput {
@@ -339,6 +370,12 @@ func (in *accessPointPeeringTypePtr) ToAccessPointPeeringTypePtrOutput() AccessP
 
 func (in *accessPointPeeringTypePtr) ToAccessPointPeeringTypePtrOutputWithContext(ctx context.Context) AccessPointPeeringTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPointPeeringTypePtrOutput)
+}
+
+func (in *accessPointPeeringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPointPeeringType] {
+	return pulumix.Output[*AccessPointPeeringType]{
+		OutputState: in.ToAccessPointPeeringTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type AccessPointType string
@@ -420,6 +457,12 @@ func (o AccessPointTypeOutput) ToAccessPointTypePtrOutputWithContext(ctx context
 	}).(AccessPointTypePtrOutput)
 }
 
+func (o AccessPointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AccessPointType] {
+	return pulumix.Output[AccessPointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -453,6 +496,12 @@ func (o AccessPointTypePtrOutput) ToAccessPointTypePtrOutput() AccessPointTypePt
 
 func (o AccessPointTypePtrOutput) ToAccessPointTypePtrOutputWithContext(ctx context.Context) AccessPointTypePtrOutput {
 	return o
+}
+
+func (o AccessPointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPointType] {
+	return pulumix.Output[*AccessPointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPointTypePtrOutput) Elem() AccessPointTypeOutput {
@@ -515,6 +564,12 @@ func (in *accessPointTypePtr) ToAccessPointTypePtrOutput() AccessPointTypePtrOut
 
 func (in *accessPointTypePtr) ToAccessPointTypePtrOutputWithContext(ctx context.Context) AccessPointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPointTypePtrOutput)
+}
+
+func (in *accessPointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPointType] {
+	return pulumix.Output[*AccessPointType]{
+		OutputState: in.ToAccessPointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ConnectionType string
@@ -592,6 +647,12 @@ func (o ConnectionTypeOutput) ToConnectionTypePtrOutputWithContext(ctx context.C
 	}).(ConnectionTypePtrOutput)
 }
 
+func (o ConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionType] {
+	return pulumix.Output[ConnectionType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -625,6 +686,12 @@ func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutput() ConnectionTypePtrOu
 
 func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return o
+}
+
+func (o ConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
+	return pulumix.Output[*ConnectionType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionTypePtrOutput) Elem() ConnectionTypeOutput {
@@ -687,6 +754,12 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutput() ConnectionTypePtrOutput
 
 func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionTypePtrOutput)
+}
+
+func (in *connectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
+	return pulumix.Output[*ConnectionType]{
+		OutputState: in.ToConnectionTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type NotificationsType string
@@ -758,6 +831,12 @@ func (o NotificationsTypeOutput) ToNotificationsTypePtrOutputWithContext(ctx con
 	}).(NotificationsTypePtrOutput)
 }
 
+func (o NotificationsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationsType] {
+	return pulumix.Output[NotificationsType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationsTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -791,6 +870,12 @@ func (o NotificationsTypePtrOutput) ToNotificationsTypePtrOutput() Notifications
 
 func (o NotificationsTypePtrOutput) ToNotificationsTypePtrOutputWithContext(ctx context.Context) NotificationsTypePtrOutput {
 	return o
+}
+
+func (o NotificationsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationsType] {
+	return pulumix.Output[*NotificationsType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationsTypePtrOutput) Elem() NotificationsTypeOutput {
@@ -853,6 +938,12 @@ func (in *notificationsTypePtr) ToNotificationsTypePtrOutput() NotificationsType
 
 func (in *notificationsTypePtr) ToNotificationsTypePtrOutputWithContext(ctx context.Context) NotificationsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationsTypePtrOutput)
+}
+
+func (in *notificationsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationsType] {
+	return pulumix.Output[*NotificationsType]{
+		OutputState: in.ToNotificationsTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ProfileAccessPointType string
@@ -924,6 +1015,12 @@ func (o ProfileAccessPointTypeOutput) ToProfileAccessPointTypePtrOutputWithConte
 	}).(ProfileAccessPointTypePtrOutput)
 }
 
+func (o ProfileAccessPointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ProfileAccessPointType] {
+	return pulumix.Output[ProfileAccessPointType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProfileAccessPointTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -957,6 +1054,12 @@ func (o ProfileAccessPointTypePtrOutput) ToProfileAccessPointTypePtrOutput() Pro
 
 func (o ProfileAccessPointTypePtrOutput) ToProfileAccessPointTypePtrOutputWithContext(ctx context.Context) ProfileAccessPointTypePtrOutput {
 	return o
+}
+
+func (o ProfileAccessPointTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfileAccessPointType] {
+	return pulumix.Output[*ProfileAccessPointType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProfileAccessPointTypePtrOutput) Elem() ProfileAccessPointTypeOutput {
@@ -1019,6 +1122,12 @@ func (in *profileAccessPointTypePtr) ToProfileAccessPointTypePtrOutput() Profile
 
 func (in *profileAccessPointTypePtr) ToProfileAccessPointTypePtrOutputWithContext(ctx context.Context) ProfileAccessPointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileAccessPointTypePtrOutput)
+}
+
+func (in *profileAccessPointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileAccessPointType] {
+	return pulumix.Output[*ProfileAccessPointType]{
+		OutputState: in.ToProfileAccessPointTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ProfileState string
@@ -1090,6 +1199,12 @@ func (o ProfileStateOutput) ToProfileStatePtrOutputWithContext(ctx context.Conte
 	}).(ProfileStatePtrOutput)
 }
 
+func (o ProfileStateOutput) ToOutput(ctx context.Context) pulumix.Output[ProfileState] {
+	return pulumix.Output[ProfileState]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProfileStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1123,6 +1238,12 @@ func (o ProfileStatePtrOutput) ToProfileStatePtrOutput() ProfileStatePtrOutput {
 
 func (o ProfileStatePtrOutput) ToProfileStatePtrOutputWithContext(ctx context.Context) ProfileStatePtrOutput {
 	return o
+}
+
+func (o ProfileStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfileState] {
+	return pulumix.Output[*ProfileState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProfileStatePtrOutput) Elem() ProfileStateOutput {
@@ -1185,6 +1306,12 @@ func (in *profileStatePtr) ToProfileStatePtrOutput() ProfileStatePtrOutput {
 
 func (in *profileStatePtr) ToProfileStatePtrOutputWithContext(ctx context.Context) ProfileStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileStatePtrOutput)
+}
+
+func (in *profileStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileState] {
+	return pulumix.Output[*ProfileState]{
+		OutputState: in.ToProfileStatePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ProfileType string
@@ -1254,6 +1381,12 @@ func (o ProfileTypeOutput) ToProfileTypePtrOutputWithContext(ctx context.Context
 	}).(ProfileTypePtrOutput)
 }
 
+func (o ProfileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ProfileType] {
+	return pulumix.Output[ProfileType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProfileTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1287,6 +1420,12 @@ func (o ProfileTypePtrOutput) ToProfileTypePtrOutput() ProfileTypePtrOutput {
 
 func (o ProfileTypePtrOutput) ToProfileTypePtrOutputWithContext(ctx context.Context) ProfileTypePtrOutput {
 	return o
+}
+
+func (o ProfileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfileType] {
+	return pulumix.Output[*ProfileType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProfileTypePtrOutput) Elem() ProfileTypeOutput {
@@ -1349,6 +1488,12 @@ func (in *profileTypePtr) ToProfileTypePtrOutput() ProfileTypePtrOutput {
 
 func (in *profileTypePtr) ToProfileTypePtrOutputWithContext(ctx context.Context) ProfileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileTypePtrOutput)
+}
+
+func (in *profileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileType] {
+	return pulumix.Output[*ProfileType]{
+		OutputState: in.ToProfileTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ProfileVisibility string
@@ -1418,6 +1563,12 @@ func (o ProfileVisibilityOutput) ToProfileVisibilityPtrOutputWithContext(ctx con
 	}).(ProfileVisibilityPtrOutput)
 }
 
+func (o ProfileVisibilityOutput) ToOutput(ctx context.Context) pulumix.Output[ProfileVisibility] {
+	return pulumix.Output[ProfileVisibility]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProfileVisibilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1451,6 +1602,12 @@ func (o ProfileVisibilityPtrOutput) ToProfileVisibilityPtrOutput() ProfileVisibi
 
 func (o ProfileVisibilityPtrOutput) ToProfileVisibilityPtrOutputWithContext(ctx context.Context) ProfileVisibilityPtrOutput {
 	return o
+}
+
+func (o ProfileVisibilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfileVisibility] {
+	return pulumix.Output[*ProfileVisibility]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProfileVisibilityPtrOutput) Elem() ProfileVisibilityOutput {
@@ -1513,6 +1670,12 @@ func (in *profileVisibilityPtr) ToProfileVisibilityPtrOutput() ProfileVisibility
 
 func (in *profileVisibilityPtr) ToProfileVisibilityPtrOutputWithContext(ctx context.Context) ProfileVisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileVisibilityPtrOutput)
+}
+
+func (in *profileVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileVisibility] {
+	return pulumix.Output[*ProfileVisibility]{
+		OutputState: in.ToProfileVisibilityPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ServiceTokenType string
@@ -1581,6 +1744,12 @@ func (o ServiceTokenTypeOutput) ToServiceTokenTypePtrOutputWithContext(ctx conte
 	}).(ServiceTokenTypePtrOutput)
 }
 
+func (o ServiceTokenTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTokenType] {
+	return pulumix.Output[ServiceTokenType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceTokenTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1614,6 +1783,12 @@ func (o ServiceTokenTypePtrOutput) ToServiceTokenTypePtrOutput() ServiceTokenTyp
 
 func (o ServiceTokenTypePtrOutput) ToServiceTokenTypePtrOutputWithContext(ctx context.Context) ServiceTokenTypePtrOutput {
 	return o
+}
+
+func (o ServiceTokenTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTokenType] {
+	return pulumix.Output[*ServiceTokenType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTokenTypePtrOutput) Elem() ServiceTokenTypeOutput {
@@ -1676,6 +1851,12 @@ func (in *serviceTokenTypePtr) ToServiceTokenTypePtrOutput() ServiceTokenTypePtr
 
 func (in *serviceTokenTypePtr) ToServiceTokenTypePtrOutputWithContext(ctx context.Context) ServiceTokenTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTokenTypePtrOutput)
+}
+
+func (in *serviceTokenTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceTokenType] {
+	return pulumix.Output[*ServiceTokenType]{
+		OutputState: in.ToServiceTokenTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

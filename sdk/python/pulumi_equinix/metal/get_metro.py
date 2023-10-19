@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -105,11 +105,11 @@ def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityAr
     __ret__ = pulumi.runtime.invoke('equinix:metal/getMetro:getMetro', __args__, opts=opts, typ=GetMetroResult).value
 
     return AwaitableGetMetroResult(
-        capacities=__ret__.capacities,
-        code=__ret__.code,
-        country=__ret__.country,
-        id=__ret__.id,
-        name=__ret__.name)
+        capacities=pulumi.get(__ret__, 'capacities'),
+        code=pulumi.get(__ret__, 'code'),
+        country=pulumi.get(__ret__, 'country'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_metro)

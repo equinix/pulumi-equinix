@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BgpArgs', 'Bgp']
@@ -30,13 +30,46 @@ class BgpArgs:
         :param pulumi.Input[str] remote_ip_address: IP address of remote peer.
         :param pulumi.Input[str] authentication_key: shared key used for BGP peer authentication.
         """
-        pulumi.set(__self__, "connection_id", connection_id)
-        pulumi.set(__self__, "local_asn", local_asn)
-        pulumi.set(__self__, "local_ip_address", local_ip_address)
-        pulumi.set(__self__, "remote_asn", remote_asn)
-        pulumi.set(__self__, "remote_ip_address", remote_ip_address)
+        BgpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_id=connection_id,
+            local_asn=local_asn,
+            local_ip_address=local_ip_address,
+            remote_asn=remote_asn,
+            remote_ip_address=remote_ip_address,
+            authentication_key=authentication_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_id: pulumi.Input[str],
+             local_asn: pulumi.Input[int],
+             local_ip_address: pulumi.Input[str],
+             remote_asn: pulumi.Input[int],
+             remote_ip_address: pulumi.Input[str],
+             authentication_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'localIpAddress' in kwargs:
+            local_ip_address = kwargs['localIpAddress']
+        if 'remoteAsn' in kwargs:
+            remote_asn = kwargs['remoteAsn']
+        if 'remoteIpAddress' in kwargs:
+            remote_ip_address = kwargs['remoteIpAddress']
+        if 'authenticationKey' in kwargs:
+            authentication_key = kwargs['authenticationKey']
+
+        _setter("connection_id", connection_id)
+        _setter("local_asn", local_asn)
+        _setter("local_ip_address", local_ip_address)
+        _setter("remote_asn", remote_asn)
+        _setter("remote_ip_address", remote_ip_address)
         if authentication_key is not None:
-            pulumi.set(__self__, "authentication_key", authentication_key)
+            _setter("authentication_key", authentication_key)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -142,26 +175,71 @@ class _BgpState:
                `Established`.
         :param pulumi.Input[str] uuid: BGP peering configuration unique identifier.
         """
+        _BgpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_key=authentication_key,
+            connection_id=connection_id,
+            device_id=device_id,
+            local_asn=local_asn,
+            local_ip_address=local_ip_address,
+            provisioning_status=provisioning_status,
+            remote_asn=remote_asn,
+            remote_ip_address=remote_ip_address,
+            state=state,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_key: Optional[pulumi.Input[str]] = None,
+             connection_id: Optional[pulumi.Input[str]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
+             local_asn: Optional[pulumi.Input[int]] = None,
+             local_ip_address: Optional[pulumi.Input[str]] = None,
+             provisioning_status: Optional[pulumi.Input[str]] = None,
+             remote_asn: Optional[pulumi.Input[int]] = None,
+             remote_ip_address: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticationKey' in kwargs:
+            authentication_key = kwargs['authenticationKey']
+        if 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'localIpAddress' in kwargs:
+            local_ip_address = kwargs['localIpAddress']
+        if 'provisioningStatus' in kwargs:
+            provisioning_status = kwargs['provisioningStatus']
+        if 'remoteAsn' in kwargs:
+            remote_asn = kwargs['remoteAsn']
+        if 'remoteIpAddress' in kwargs:
+            remote_ip_address = kwargs['remoteIpAddress']
+
         if authentication_key is not None:
-            pulumi.set(__self__, "authentication_key", authentication_key)
+            _setter("authentication_key", authentication_key)
         if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
+            _setter("connection_id", connection_id)
         if device_id is not None:
-            pulumi.set(__self__, "device_id", device_id)
+            _setter("device_id", device_id)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if local_ip_address is not None:
-            pulumi.set(__self__, "local_ip_address", local_ip_address)
+            _setter("local_ip_address", local_ip_address)
         if provisioning_status is not None:
-            pulumi.set(__self__, "provisioning_status", provisioning_status)
+            _setter("provisioning_status", provisioning_status)
         if remote_asn is not None:
-            pulumi.set(__self__, "remote_asn", remote_asn)
+            _setter("remote_asn", remote_asn)
         if remote_ip_address is not None:
-            pulumi.set(__self__, "remote_ip_address", remote_ip_address)
+            _setter("remote_ip_address", remote_ip_address)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="authenticationKey")
@@ -374,6 +452,10 @@ class Bgp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BgpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

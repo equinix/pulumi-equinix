@@ -98,7 +98,7 @@ public class SpotMarketRequest extends com.pulumi.resources.CustomResource {
         return this.devicesMin;
     }
     /**
-     * Facility IDs where devices should be created
+     * Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -109,7 +109,7 @@ public class SpotMarketRequest extends com.pulumi.resources.CustomResource {
     private Output<List<String>> facilities;
 
     /**
-     * @return Facility IDs where devices should be created
+     * @return Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
      * 
      */
     public Output<List<String>> facilities() {
@@ -118,7 +118,7 @@ public class SpotMarketRequest extends com.pulumi.resources.CustomResource {
     /**
      * Key/Value pairs of parameters for devices provisioned from
      * this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-     * `termintation_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
+     * `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
      * `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
      * description in equinix.metal.Device docs.
      * 
@@ -129,7 +129,7 @@ public class SpotMarketRequest extends com.pulumi.resources.CustomResource {
     /**
      * @return Key/Value pairs of parameters for devices provisioned from
      * this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-     * `termintation_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
+     * `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
      * `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
      * description in equinix.metal.Device docs.
      * 

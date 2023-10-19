@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -156,14 +156,14 @@ def get_gateway(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getGateway:getGateway', __args__, opts=opts, typ=GetGatewayResult).value
 
     return AwaitableGetGatewayResult(
-        gateway_id=__ret__.gateway_id,
-        id=__ret__.id,
-        ip_reservation_id=__ret__.ip_reservation_id,
-        private_ipv4_subnet_size=__ret__.private_ipv4_subnet_size,
-        project_id=__ret__.project_id,
-        state=__ret__.state,
-        vlan_id=__ret__.vlan_id,
-        vrf_id=__ret__.vrf_id)
+        gateway_id=pulumi.get(__ret__, 'gateway_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_reservation_id=pulumi.get(__ret__, 'ip_reservation_id'),
+        private_ipv4_subnet_size=pulumi.get(__ret__, 'private_ipv4_subnet_size'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        state=pulumi.get(__ret__, 'state'),
+        vlan_id=pulumi.get(__ret__, 'vlan_id'),
+        vrf_id=pulumi.get(__ret__, 'vrf_id'))
 
 
 @_utilities.lift_output_func(get_gateway)

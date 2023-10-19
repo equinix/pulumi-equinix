@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -30,10 +30,6 @@ class GetVlanResult:
         pulumi.set(__self__, "description", description)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
-        if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facility", facility)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -70,6 +66,9 @@ class GetVlanResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -156,6 +155,8 @@ def get_vlan(facility: Optional[str] = None,
 
     :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
     :param str metro: Metro where the VLAN is deployed.
+           
+           > **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
     :param str project_id: UUID of parent project of the VLAN. Use together with the vxlan number and metro or facility.
     :param str vlan_id: Metal UUID of the VLAN resource to look up.
     :param int vxlan: vxlan number of the VLAN to look up. Use together with the project_id and metro or facility.
@@ -170,14 +171,14 @@ def get_vlan(facility: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getVlan:getVlan', __args__, opts=opts, typ=GetVlanResult).value
 
     return AwaitableGetVlanResult(
-        assigned_devices_ids=__ret__.assigned_devices_ids,
-        description=__ret__.description,
-        facility=__ret__.facility,
-        id=__ret__.id,
-        metro=__ret__.metro,
-        project_id=__ret__.project_id,
-        vlan_id=__ret__.vlan_id,
-        vxlan=__ret__.vxlan)
+        assigned_devices_ids=pulumi.get(__ret__, 'assigned_devices_ids'),
+        description=pulumi.get(__ret__, 'description'),
+        facility=pulumi.get(__ret__, 'facility'),
+        id=pulumi.get(__ret__, 'id'),
+        metro=pulumi.get(__ret__, 'metro'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        vlan_id=pulumi.get(__ret__, 'vlan_id'),
+        vxlan=pulumi.get(__ret__, 'vxlan'))
 
 
 @_utilities.lift_output_func(get_vlan)
@@ -220,6 +221,8 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
     :param str metro: Metro where the VLAN is deployed.
+           
+           > **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
     :param str project_id: UUID of parent project of the VLAN. Use together with the vxlan number and metro or facility.
     :param str vlan_id: Metal UUID of the VLAN resource to look up.
     :param int vxlan: vxlan number of the VLAN to look up. Use together with the project_id and metro or facility.

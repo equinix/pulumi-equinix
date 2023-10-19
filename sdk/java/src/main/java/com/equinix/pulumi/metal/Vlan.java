@@ -76,7 +76,7 @@ public class Vlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Facility where to create the VLAN
+     * Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -87,7 +87,7 @@ public class Vlan extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> facility;
 
     /**
-     * @return Facility where to create the VLAN
+     * @return Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
      * 
      */
     public Output<Optional<String>> facility() {

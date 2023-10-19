@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -90,10 +90,10 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     __ret__ = pulumi.runtime.invoke('equinix:metal/getPlans:getPlans', __args__, opts=opts, typ=GetPlansResult).value
 
     return AwaitableGetPlansResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        plans=__ret__.plans,
-        sorts=__ret__.sorts)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        plans=pulumi.get(__ret__, 'plans'),
+        sorts=pulumi.get(__ret__, 'sorts'))
 
 
 @_utilities.lift_output_func(get_plans)

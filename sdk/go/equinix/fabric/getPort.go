@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortResult
 	err := ctx.Invoke("equinix:fabric/getPort:getPort", args, &rv, opts...)
 	if err != nil {
@@ -45,9 +47,8 @@ type GetPortResult struct {
 	// Port URI information
 	Href string `pulumi:"href"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Port Lag
-	Lag GetPortLag `pulumi:"lag"`
+	Id         string `pulumi:"id"`
+	LagEnabled bool   `pulumi:"lagEnabled"`
 	// Port location information
 	Location GetPortLocation `pulumi:"location"`
 	// Port name
@@ -106,6 +107,12 @@ func (o GetPortResultOutput) ToGetPortResultOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o GetPortResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortResult] {
+	return pulumix.Output[GetPortResult]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Customer account information that is associated with this port
 func (o GetPortResultOutput) Account() GetPortAccountOutput {
 	return o.ApplyT(func(v GetPortResult) GetPortAccount { return v.Account }).(GetPortAccountOutput)
@@ -151,9 +158,8 @@ func (o GetPortResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Port Lag
-func (o GetPortResultOutput) Lag() GetPortLagOutput {
-	return o.ApplyT(func(v GetPortResult) GetPortLag { return v.Lag }).(GetPortLagOutput)
+func (o GetPortResultOutput) LagEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPortResult) bool { return v.LagEnabled }).(pulumi.BoolOutput)
 }
 
 // Port location information

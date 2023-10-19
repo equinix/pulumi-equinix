@@ -7,6 +7,99 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
 export namespace fabric {
+    export interface CloudRouterAccount {
+        /**
+         * Account Number
+         */
+        accountNumber: number;
+    }
+
+    export interface CloudRouterChangeLog {
+        createdBy: string;
+        createdByEmail: string;
+        createdByFullName: string;
+        createdDateTime: string;
+        deletedBy: string;
+        deletedByEmail: string;
+        deletedByFullName: string;
+        deletedDateTime: string;
+        updatedBy: string;
+        updatedByEmail: string;
+        updatedByFullName: string;
+        updatedDateTime: string;
+    }
+
+    export interface CloudRouterLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface CloudRouterNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface CloudRouterOrder {
+        /**
+         * Billing tier for connection bandwidth
+         */
+        billingTier?: string;
+        /**
+         * Order Identification
+         */
+        orderId: string;
+        /**
+         * Order Reference Number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber?: string;
+    }
+
+    export interface CloudRouterPackage {
+        /**
+         * Fabric Cloud Router package code
+         */
+        code: string;
+    }
+
+    export interface CloudRouterProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
+    }
+
     export interface ConnectionASide {
         /**
          * Point of access details
@@ -24,24 +117,65 @@ export namespace fabric {
 
     export interface ConnectionASideAccessPoint {
         /**
-         * Customer account information that is associated with this connection
+         * Account
          */
         account: outputs.fabric.ConnectionASideAccessPointAccount;
+        /**
+         * Authentication key for provider based connections
+         */
         authenticationKey?: string;
+        /**
+         * @deprecated use router attribute instead; gateway is no longer a part of the supported backend
+         */
         gateway?: outputs.fabric.ConnectionASideAccessPointGateway;
+        /**
+         * Virtual device interface
+         */
         interface?: outputs.fabric.ConnectionASideAccessPointInterface;
+        /**
+         * Connection link protocol
+         */
         linkProtocol?: outputs.fabric.ConnectionASideAccessPointLinkProtocol;
+        /**
+         * Access point location
+         */
         location: outputs.fabric.ConnectionASideAccessPointLocation;
+        network?: outputs.fabric.ConnectionASideAccessPointNetwork;
+        /**
+         * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         */
         peeringType?: string;
+        /**
+         * Port access point information
+         */
         port?: outputs.fabric.ConnectionASideAccessPointPort;
+        /**
+         * Service Profile
+         */
         profile?: outputs.fabric.ConnectionASideAccessPointProfile;
+        /**
+         * Provider assigned Connection Id
+         */
         providerConnectionId?: string;
+        /**
+         * Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         */
+        router?: outputs.fabric.ConnectionASideAccessPointRouter;
+        /**
+         * Access point routing protocols configuration
+         */
         routingProtocols?: outputs.fabric.ConnectionASideAccessPointRoutingProtocol[];
+        /**
+         * Access point seller region
+         */
         sellerRegion?: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Virtual device
+         */
         virtualDevice?: outputs.fabric.ConnectionASideAccessPointVirtualDevice;
     }
 
@@ -57,54 +191,95 @@ export namespace fabric {
 
     export interface ConnectionASideAccessPointGateway {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
     export interface ConnectionASideAccessPointInterface {
         /**
-         * The ID of this resource.
+         * id
          */
         id: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
     export interface ConnectionASideAccessPointLinkProtocol {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
         vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
         vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
         vlanTag: number;
     }
 
     export interface ConnectionASideAccessPointLocation {
+        /**
+         * IBX Code
+         */
         ibx: string;
+        /**
+         * Access point metro code
+         */
         metroCode: string;
+        /**
+         * Access point metro name
+         */
         metroName: string;
+        /**
+         * Access point region
+         */
         region: string;
+    }
+
+    export interface ConnectionASideAccessPointNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: string;
     }
 
     export interface ConnectionASideAccessPointPort {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name: string;
         /**
          * Redundancy Information
          */
         redundancies: outputs.fabric.ConnectionASideAccessPointPortRedundancy[];
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: string;
     }
 
@@ -116,52 +291,81 @@ export namespace fabric {
     }
 
     export interface ConnectionASideAccessPointProfile {
+        /**
+         * Access point config information
+         */
         accessPointTypeConfigs: outputs.fabric.ConnectionASideAccessPointProfileAccessPointTypeConfig[];
+        /**
+         * User-provided service description
+         */
         description: string;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: string;
     }
 
     export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: string;
+    }
+
+    export interface ConnectionASideAccessPointRouter {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: string;
     }
 
     export interface ConnectionASideAccessPointRoutingProtocol {
         /**
-         * Connection overall state
+         * Routing protocol instance state
          */
         state?: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
     export interface ConnectionASideAccessPointVirtualDevice {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
@@ -177,15 +381,21 @@ export namespace fabric {
     }
 
     export interface ConnectionASideServiceToken {
+        /**
+         * User-provided service description
+         */
         description: string;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
@@ -197,17 +407,6 @@ export namespace fabric {
         globalOrganizationName: string;
         orgId: number;
         organizationName: string;
-    }
-
-    export interface ConnectionAdditionalInfo {
-        /**
-         * Additional information key
-         */
-        key?: string;
-        /**
-         * Additional information value
-         */
-        value?: string;
     }
 
     export interface ConnectionChangeLog {
@@ -248,7 +447,7 @@ export namespace fabric {
 
     export interface ConnectionOperationError {
         /**
-         * Connection additional information
+         * Connection side additional information
          */
         additionalInfo: outputs.fabric.ConnectionOperationErrorAdditionalInfo[];
         correlationId: string;
@@ -321,24 +520,65 @@ export namespace fabric {
 
     export interface ConnectionZSideAccessPoint {
         /**
-         * Customer account information that is associated with this connection
+         * Account
          */
         account: outputs.fabric.ConnectionZSideAccessPointAccount;
+        /**
+         * Authentication key for provider based connections
+         */
         authenticationKey?: string;
+        /**
+         * @deprecated use router attribute instead; gateway is no longer a part of the supported backend
+         */
         gateway?: outputs.fabric.ConnectionZSideAccessPointGateway;
+        /**
+         * Virtual device interface
+         */
         interface?: outputs.fabric.ConnectionZSideAccessPointInterface;
+        /**
+         * Connection link protocol
+         */
         linkProtocol?: outputs.fabric.ConnectionZSideAccessPointLinkProtocol;
+        /**
+         * Access point location
+         */
         location: outputs.fabric.ConnectionZSideAccessPointLocation;
+        network?: outputs.fabric.ConnectionZSideAccessPointNetwork;
+        /**
+         * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         */
         peeringType?: string;
+        /**
+         * Port access point information
+         */
         port?: outputs.fabric.ConnectionZSideAccessPointPort;
+        /**
+         * Service Profile
+         */
         profile?: outputs.fabric.ConnectionZSideAccessPointProfile;
+        /**
+         * Provider assigned Connection Id
+         */
         providerConnectionId?: string;
+        /**
+         * Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         */
+        router?: outputs.fabric.ConnectionZSideAccessPointRouter;
+        /**
+         * Access point routing protocols configuration
+         */
         routingProtocols?: outputs.fabric.ConnectionZSideAccessPointRoutingProtocol[];
+        /**
+         * Access point seller region
+         */
         sellerRegion?: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Virtual device
+         */
         virtualDevice?: outputs.fabric.ConnectionZSideAccessPointVirtualDevice;
     }
 
@@ -354,54 +594,95 @@ export namespace fabric {
 
     export interface ConnectionZSideAccessPointGateway {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
     export interface ConnectionZSideAccessPointInterface {
         /**
-         * The ID of this resource.
+         * id
          */
         id: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
     export interface ConnectionZSideAccessPointLinkProtocol {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
         vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
         vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
         vlanTag: number;
     }
 
     export interface ConnectionZSideAccessPointLocation {
+        /**
+         * IBX Code
+         */
         ibx: string;
+        /**
+         * Access point metro code
+         */
         metroCode: string;
+        /**
+         * Access point metro name
+         */
         metroName: string;
+        /**
+         * Access point region
+         */
         region: string;
+    }
+
+    export interface ConnectionZSideAccessPointNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: string;
     }
 
     export interface ConnectionZSideAccessPointPort {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name: string;
         /**
          * Redundancy Information
          */
         redundancies: outputs.fabric.ConnectionZSideAccessPointPortRedundancy[];
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: string;
     }
 
@@ -413,52 +694,81 @@ export namespace fabric {
     }
 
     export interface ConnectionZSideAccessPointProfile {
+        /**
+         * Access point config information
+         */
         accessPointTypeConfigs: outputs.fabric.ConnectionZSideAccessPointProfileAccessPointTypeConfig[];
+        /**
+         * User-provided service description
+         */
         description: string;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: string;
     }
 
     export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: string;
+    }
+
+    export interface ConnectionZSideAccessPointRouter {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: string;
     }
 
     export interface ConnectionZSideAccessPointRoutingProtocol {
         /**
-         * Connection overall state
+         * Routing protocol instance state
          */
         state?: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
     export interface ConnectionZSideAccessPointVirtualDevice {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
     }
 
@@ -474,16 +784,83 @@ export namespace fabric {
     }
 
     export interface ConnectionZSideServiceToken {
+        /**
+         * User-provided service description
+         */
         description: string;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: string;
+    }
+
+    export interface GetCloudRouterAccount {
+        accountName: string;
+        accountNumber: number;
+        globalCustId: string;
+        globalOrgId: string;
+        globalOrganizationName: string;
+        orgId: number;
+        organizationName: string;
+    }
+
+    export interface GetCloudRouterChangeLog {
+        createdBy: string;
+        createdByEmail: string;
+        createdByFullName: string;
+        createdDateTime: string;
+        deletedBy: string;
+        deletedByEmail: string;
+        deletedByFullName: string;
+        deletedDateTime: string;
+        updatedBy: string;
+        updatedByEmail: string;
+        updatedByFullName: string;
+        updatedDateTime: string;
+    }
+
+    export interface GetCloudRouterLocation {
+        href: string;
+        ibx: string;
+        metroCode: string;
+        metroName: string;
+        region: string;
+    }
+
+    export interface GetCloudRouterNotification {
+        emails: string[];
+        sendInterval: string;
+        type: string;
+    }
+
+    export interface GetCloudRouterOrder {
+        billingTier: string;
+        orderId: string;
+        orderNumber: string;
+        purchaseOrderNumber: string;
+    }
+
+    export interface GetCloudRouterPackage {
+        code: string;
+    }
+
+    export interface GetCloudRouterProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
     }
 
     export interface GetConnectionASide {
@@ -492,11 +869,11 @@ export namespace fabric {
     }
 
     export interface GetConnectionASideAccessPoint {
-        /**
-         * Customer account information that is associated with this connection
-         */
         accounts: outputs.fabric.GetConnectionASideAccessPointAccount[];
         authenticationKey: string;
+        /**
+         * @deprecated router attribute will be returned instead
+         */
         gateways: outputs.fabric.GetConnectionASideAccessPointGateway[];
         interfaces: outputs.fabric.GetConnectionASideAccessPointInterface[];
         linkProtocols: outputs.fabric.GetConnectionASideAccessPointLinkProtocol[];
@@ -505,10 +882,11 @@ export namespace fabric {
         ports: outputs.fabric.GetConnectionASideAccessPointPort[];
         profiles: outputs.fabric.GetConnectionASideAccessPointProfile[];
         providerConnectionId: string;
-        sellerRegion: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * CloudRouter; Replaces `gateway` attribute (Set of Object)
          */
+        routers: outputs.fabric.GetConnectionASideAccessPointRouter[];
+        sellerRegion: string;
         type: string;
         virtualDevices: outputs.fabric.GetConnectionASideAccessPointVirtualDevice[];
     }
@@ -524,39 +902,18 @@ export namespace fabric {
     }
 
     export interface GetConnectionASideAccessPointGateway {
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Connection overall state
-         */
         state: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
     export interface GetConnectionASideAccessPointInterface {
-        /**
-         * The ID of this resource.
-         */
         id: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
     export interface GetConnectionASideAccessPointLinkProtocol {
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
         vlanCTag: number;
         vlanSTag: number;
@@ -564,9 +921,6 @@ export namespace fabric {
     }
 
     export interface GetConnectionASideAccessPointLocation {
-        /**
-         * Connection URI information
-         */
         href: string;
         ibx: string;
         metroCode: string;
@@ -575,21 +929,9 @@ export namespace fabric {
     }
 
     export interface GetConnectionASideAccessPointPort {
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-         */
         name: string;
-        /**
-         * Redundancy Information
-         */
         redundancies: outputs.fabric.GetConnectionASideAccessPointPortRedundancy[];
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -599,25 +941,10 @@ export namespace fabric {
 
     export interface GetConnectionASideAccessPointProfile {
         accessPointTypeConfigs: outputs.fabric.GetConnectionASideAccessPointProfileAccessPointTypeConfig[];
-        /**
-         * Customer-provided connection description
-         */
         description: string;
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-         */
         name: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -634,13 +961,7 @@ export namespace fabric {
         enableAutoGenerateServiceKey: boolean;
         linkProtocolConfigs: outputs.fabric.GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig[];
         supportedBandwidths: number[];
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -655,9 +976,6 @@ export namespace fabric {
     }
 
     export interface GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey {
-        /**
-         * Customer-provided connection description
-         */
         description: string;
         label: string;
         required: boolean;
@@ -669,37 +987,22 @@ export namespace fabric {
         reuseVlanSTag: boolean;
     }
 
-    export interface GetConnectionASideAccessPointVirtualDevice {
-        /**
-         * Connection URI information
-         */
+    export interface GetConnectionASideAccessPointRouter {
         href: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
+        state: string;
+        uuid: string;
+    }
+
+    export interface GetConnectionASideAccessPointVirtualDevice {
+        href: string;
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
     export interface GetConnectionASideServiceToken {
-        /**
-         * Customer-provided connection description
-         */
         description: string;
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -736,9 +1039,6 @@ export namespace fabric {
     export interface GetConnectionNotification {
         emails: string[];
         sendInterval: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
     }
 
@@ -749,9 +1049,6 @@ export namespace fabric {
     }
 
     export interface GetConnectionOperationError {
-        /**
-         * Connection additional information
-         */
         additionalInfos: outputs.fabric.GetConnectionOperationErrorAdditionalInfo[];
         correlationId: string;
         details: string;
@@ -794,11 +1091,11 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSideAccessPoint {
-        /**
-         * Customer account information that is associated with this connection
-         */
         accounts: outputs.fabric.GetConnectionZSideAccessPointAccount[];
         authenticationKey: string;
+        /**
+         * @deprecated router attribute will be returned instead
+         */
         gateways: outputs.fabric.GetConnectionZSideAccessPointGateway[];
         interfaces: outputs.fabric.GetConnectionZSideAccessPointInterface[];
         linkProtocols: outputs.fabric.GetConnectionZSideAccessPointLinkProtocol[];
@@ -807,10 +1104,11 @@ export namespace fabric {
         ports: outputs.fabric.GetConnectionZSideAccessPointPort[];
         profiles: outputs.fabric.GetConnectionZSideAccessPointProfile[];
         providerConnectionId: string;
-        sellerRegion: string;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * CloudRouter; Replaces `gateway` attribute (Set of Object)
          */
+        routers: outputs.fabric.GetConnectionZSideAccessPointRouter[];
+        sellerRegion: string;
         type: string;
         virtualDevices: outputs.fabric.GetConnectionZSideAccessPointVirtualDevice[];
     }
@@ -826,39 +1124,18 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSideAccessPointGateway {
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Connection overall state
-         */
         state: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
     export interface GetConnectionZSideAccessPointInterface {
-        /**
-         * The ID of this resource.
-         */
         id: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
     export interface GetConnectionZSideAccessPointLinkProtocol {
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
         vlanCTag: number;
         vlanSTag: number;
@@ -866,9 +1143,6 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSideAccessPointLocation {
-        /**
-         * Connection URI information
-         */
         href: string;
         ibx: string;
         metroCode: string;
@@ -877,21 +1151,9 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSideAccessPointPort {
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-         */
         name: string;
-        /**
-         * Redundancy Information
-         */
         redundancies: outputs.fabric.GetConnectionZSideAccessPointPortRedundancy[];
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -901,25 +1163,10 @@ export namespace fabric {
 
     export interface GetConnectionZSideAccessPointProfile {
         accessPointTypeConfigs: outputs.fabric.GetConnectionZSideAccessPointProfileAccessPointTypeConfig[];
-        /**
-         * Customer-provided connection description
-         */
         description: string;
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-         */
         name: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -936,13 +1183,7 @@ export namespace fabric {
         enableAutoGenerateServiceKey: boolean;
         linkProtocolConfigs: outputs.fabric.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig[];
         supportedBandwidths: number[];
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -957,9 +1198,6 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKey {
-        /**
-         * Customer-provided connection description
-         */
         description: string;
         label: string;
         required: boolean;
@@ -971,37 +1209,22 @@ export namespace fabric {
         reuseVlanSTag: boolean;
     }
 
-    export interface GetConnectionZSideAccessPointVirtualDevice {
-        /**
-         * Connection URI information
-         */
+    export interface GetConnectionZSideAccessPointRouter {
         href: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
+        state: string;
+        uuid: string;
+    }
+
+    export interface GetConnectionZSideAccessPointVirtualDevice {
+        href: string;
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
     export interface GetConnectionZSideServiceToken {
-        /**
-         * Customer-provided connection description
-         */
         description: string;
-        /**
-         * Connection URI information
-         */
         href: string;
-        /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-         */
         type: string;
-        /**
-         * Equinix-assigned connection identifier
-         */
         uuid: string;
     }
 
@@ -1031,13 +1254,7 @@ export namespace fabric {
     }
 
     export interface GetPortDevice {
-        /**
-         * Port name
-         */
         name: string;
-        /**
-         * Port redundancy information
-         */
         redundancies: outputs.fabric.GetPortDeviceRedundancy[];
     }
 
@@ -1048,29 +1265,10 @@ export namespace fabric {
 
     export interface GetPortEncapsulation {
         tagProtocolId: string;
-        /**
-         * Port type
-         */
         type: string;
     }
 
-    export interface GetPortLag {
-        enabled: boolean;
-        /**
-         * The ID of this resource.
-         */
-        id: string;
-        memberStatus: string;
-        /**
-         * Port name
-         */
-        name: string;
-    }
-
     export interface GetPortLocation {
-        /**
-         * Port URI information
-         */
         href: string;
         ibx: string;
         metroCode: string;
@@ -1086,7 +1284,7 @@ export namespace fabric {
 
     export interface GetPortRedundancy {
         enabled: boolean;
-        group: number;
+        group: string;
         priority: string;
     }
 
@@ -1099,7 +1297,7 @@ export namespace fabric {
         devices: outputs.fabric.GetPortsDatumDevice[];
         encapsulations: outputs.fabric.GetPortsDatumEncapsulation[];
         href: string;
-        lags: outputs.fabric.GetPortsDatumLag[];
+        lagEnabled: boolean;
         locations: outputs.fabric.GetPortsDatumLocation[];
         name: string;
         operations: outputs.fabric.GetPortsDatumOperation[];
@@ -1151,16 +1349,6 @@ export namespace fabric {
         type: string;
     }
 
-    export interface GetPortsDatumLag {
-        enabled: boolean;
-        /**
-         * The ID of this resource.
-         */
-        id: string;
-        memberStatus: string;
-        name: string;
-    }
-
     export interface GetPortsDatumLocation {
         href: string;
         ibx: string;
@@ -1177,7 +1365,7 @@ export namespace fabric {
 
     export interface GetPortsDatumRedundancy {
         enabled: boolean;
-        group: number;
+        group: string;
         priority: string;
     }
 
@@ -1186,6 +1374,100 @@ export namespace fabric {
          * Query Parameter to Get Ports By Name
          */
         name?: string;
+    }
+
+    export interface GetRoutingProtocolBfd {
+        /**
+         * Bidirectional Forwarding Detection enablement
+         */
+        enabled: boolean;
+        /**
+         * Interval range between the received BFD control packets
+         */
+        interval?: string;
+    }
+
+    export interface GetRoutingProtocolBgpIpv4 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: string;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: boolean;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp: string;
+    }
+
+    export interface GetRoutingProtocolBgpIpv6 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: string;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: boolean;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp: string;
+    }
+
+    export interface GetRoutingProtocolChange {
+        href: string;
+        type: string;
+        uuid: string;
+    }
+
+    export interface GetRoutingProtocolChangeLog {
+        createdBy: string;
+        createdByEmail: string;
+        createdByFullName: string;
+        createdDateTime: string;
+        deletedBy: string;
+        deletedByEmail: string;
+        deletedByFullName: string;
+        deletedDateTime: string;
+        updatedBy: string;
+        updatedByEmail: string;
+        updatedByFullName: string;
+        updatedDateTime: string;
+    }
+
+    export interface GetRoutingProtocolDirectIpv4 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp: string;
+    }
+
+    export interface GetRoutingProtocolDirectIpv6 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp?: string;
+    }
+
+    export interface GetRoutingProtocolOperation {
+        errors: outputs.fabric.GetRoutingProtocolOperationError[];
+    }
+
+    export interface GetRoutingProtocolOperationError {
+        additionalInfos: outputs.fabric.GetRoutingProtocolOperationErrorAdditionalInfo[];
+        correlationId: string;
+        details: string;
+        errorCode: string;
+        errorMessage: string;
+        help: string;
+    }
+
+    export interface GetRoutingProtocolOperationErrorAdditionalInfo {
+        property: string;
+        reason: string;
     }
 
     export interface GetServiceProfileAccessPointTypeConfig {
@@ -1201,13 +1483,7 @@ export namespace fabric {
         enableAutoGenerateServiceKey: boolean;
         linkProtocolConfigs: outputs.fabric.GetServiceProfileAccessPointTypeConfigLinkProtocolConfig[];
         supportedBandwidths: number[];
-        /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-         */
         type: string;
-        /**
-         * Equinix assigned service profile identifier
-         */
         uuid: string;
     }
 
@@ -1222,9 +1498,6 @@ export namespace fabric {
     }
 
     export interface GetServiceProfileAccessPointTypeConfigAuthenticationKey {
-        /**
-         * User-provided service description
-         */
         description: string;
         label: string;
         required: boolean;
@@ -1265,9 +1538,6 @@ export namespace fabric {
     export interface GetServiceProfileCustomField {
         captureInEmail: boolean;
         dataType: string;
-        /**
-         * User-provided service description
-         */
         description: string;
         label: string;
         options: string[];
@@ -1281,9 +1551,6 @@ export namespace fabric {
     }
 
     export interface GetServiceProfileMarketingInfoProcessStep {
-        /**
-         * User-provided service description
-         */
         description: string;
         subTitle: string;
         title: string;
@@ -1294,9 +1561,6 @@ export namespace fabric {
         displayName: string;
         ibxs: string[];
         inTrail: boolean;
-        /**
-         * Customer-assigned service profile name
-         */
         name: string;
         sellerRegions: {[key: string]: string};
     }
@@ -1304,9 +1568,6 @@ export namespace fabric {
     export interface GetServiceProfileNotification {
         emails: string[];
         sendInterval: string;
-        /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-         */
         type: string;
     }
 
@@ -1315,13 +1576,7 @@ export namespace fabric {
         locations: outputs.fabric.GetServiceProfilePortLocation[];
         sellerRegion: string;
         sellerRegionDescription: string;
-        /**
-         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-         */
         type: string;
-        /**
-         * Equinix assigned service profile identifier
-         */
         uuid: string;
     }
 
@@ -1333,9 +1588,6 @@ export namespace fabric {
     }
 
     export interface GetServiceProfileProject {
-        /**
-         * Service Profile URI response attribute
-         */
         href: string;
         projectId: string;
     }
@@ -1510,6 +1762,100 @@ export namespace fabric {
         property?: string;
     }
 
+    export interface RoutingProtocolBfd {
+        /**
+         * Bidirectional Forwarding Detection enablement
+         */
+        enabled: boolean;
+        /**
+         * Interval range between the received BFD control packets
+         */
+        interval?: string;
+    }
+
+    export interface RoutingProtocolBgpIpv4 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: string;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: boolean;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp: string;
+    }
+
+    export interface RoutingProtocolBgpIpv6 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: string;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: boolean;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp: string;
+    }
+
+    export interface RoutingProtocolChange {
+        href: string;
+        type: string;
+        uuid: string;
+    }
+
+    export interface RoutingProtocolChangeLog {
+        createdBy: string;
+        createdByEmail: string;
+        createdByFullName: string;
+        createdDateTime: string;
+        deletedBy: string;
+        deletedByEmail: string;
+        deletedByFullName: string;
+        deletedDateTime: string;
+        updatedBy: string;
+        updatedByEmail: string;
+        updatedByFullName: string;
+        updatedDateTime: string;
+    }
+
+    export interface RoutingProtocolDirectIpv4 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp: string;
+    }
+
+    export interface RoutingProtocolDirectIpv6 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp?: string;
+    }
+
+    export interface RoutingProtocolOperation {
+        errors: outputs.fabric.RoutingProtocolOperationError[];
+    }
+
+    export interface RoutingProtocolOperationError {
+        additionalInfos: outputs.fabric.RoutingProtocolOperationErrorAdditionalInfo[];
+        correlationId: string;
+        details: string;
+        errorCode: string;
+        errorMessage: string;
+        help: string;
+    }
+
+    export interface RoutingProtocolOperationErrorAdditionalInfo {
+        property: string;
+        reason: string;
+    }
+
     export interface ServiceProfileAccessPointTypeConfig {
         /**
          * Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
@@ -1570,27 +1916,63 @@ export namespace fabric {
     }
 
     export interface ServiceProfileAccessPointTypeConfigApiConfig {
+        /**
+         * Setting showing that oversubscription support is available (true) or not (false). The default is false
+         */
         allowOverSubscription?: boolean;
+        /**
+         * Setting indicating whether the API is available (true) or not (false)
+         */
         apiAvailable?: boolean;
+        /**
+         * Bandwidth from api
+         */
         bandwidthFromApi?: boolean;
+        /**
+         * Setting indicating that the port is managed by Equinix (true) or not (false)
+         */
         equinixManagedPort?: boolean;
+        /**
+         * Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+         */
         equinixManagedVlan?: boolean;
+        /**
+         * Integration id
+         */
         integrationId?: string;
+        /**
+         * A cap on over subscription
+         */
         overSubscriptionLimit?: number;
     }
 
     export interface ServiceProfileAccessPointTypeConfigAuthenticationKey {
         /**
-         * User-provided service description
+         * Description
          */
         description?: string;
+        /**
+         * Label
+         */
         label?: string;
+        /**
+         * Required
+         */
         required?: boolean;
     }
 
     export interface ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
+        /**
+         * Port Encapsulation
+         */
         encapsulation?: string;
+        /**
+         * Encapsulation strategy
+         */
         encapsulationStrategy?: string;
+        /**
+         * Reuse vlan sTag
+         */
         reuseVlanSTag?: boolean;
     }
 
@@ -1688,10 +2070,16 @@ export namespace fabric {
 
     export interface ServiceProfileMarketingInfoProcessStep {
         /**
-         * User-provided service description
+         * Description
          */
         description?: string;
+        /**
+         * Sub Title
+         */
         subTitle?: string;
+        /**
+         * Title
+         */
         title?: string;
     }
 
@@ -1765,9 +2153,21 @@ export namespace fabric {
     }
 
     export interface ServiceProfilePortLocation {
+        /**
+         * IBX Code
+         */
         ibx: string;
+        /**
+         * Access point metro code
+         */
         metroCode: string;
+        /**
+         * Access point metro name
+         */
         metroName: string;
+        /**
+         * Access point region
+         */
         region: string;
     }
 
@@ -1802,9 +2202,21 @@ export namespace fabric {
     }
 
     export interface ServiceProfileVirtualDeviceLocation {
+        /**
+         * IBX Code
+         */
         ibx: string;
+        /**
+         * Access point metro code
+         */
         metroCode: string;
+        /**
+         * Access point metro name
+         */
         metroName: string;
+        /**
+         * Access point region
+         */
         region: string;
     }
 
@@ -1826,6 +2238,12 @@ export namespace metal {
         /**
          * List of UUIDs of IP block reservations
          * from which the public IPv4 address should be taken.
+         *
+         * You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
+         * always pass a block for `privateIpv4`.
+         *
+         * To learn more about using the reserved IP addresses for new devices, see the examples in the
+         * equinix.metal.ReservedIpBlock documentation.
          */
         reservationIds?: string[];
         /**
@@ -2009,6 +2427,83 @@ export namespace metal {
         type: string;
     }
 
+    export interface GetDevicesDevice {
+        accessPrivateIpv4: string;
+        accessPublicIpv4: string;
+        accessPublicIpv6: string;
+        alwaysPxe: boolean;
+        billingCycle: string;
+        description: string;
+        deviceId: string;
+        /**
+         * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         */
+        facility: string;
+        hardwareReservationId: string;
+        hostname: string;
+        ipxeScriptUrl: string;
+        metro: string;
+        networkType: string;
+        networks: outputs.metal.GetDevicesDeviceNetwork[];
+        operatingSystem: string;
+        plan: string;
+        ports: outputs.metal.GetDevicesDevicePort[];
+        /**
+         * ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
+         */
+        projectId: string;
+        rootPassword: string;
+        sshKeyIds: string[];
+        state: string;
+        storage: string;
+        tags: string[];
+    }
+
+    export interface GetDevicesDeviceNetwork {
+        address: string;
+        cidr: number;
+        family: number;
+        gateway: string;
+        public: boolean;
+    }
+
+    export interface GetDevicesDevicePort {
+        bonded: boolean;
+        id: string;
+        mac: string;
+        name: string;
+        type: string;
+    }
+
+    export interface GetDevicesFilter {
+        /**
+         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         *
+         * All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+         */
+        all?: boolean;
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: string;
+        /**
+         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+         */
+        matchBy?: string;
+        /**
+         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+         */
+        values: string[];
+    }
+
+    export interface GetDevicesSort {
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: string;
+        direction?: string;
+    }
+
     export interface GetFacilityCapacity {
         /**
          * Device plan that must be available in selected location.
@@ -2114,6 +2609,8 @@ export namespace metal {
     export interface GetPlansFilter {
         /**
          * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         *
+         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
          */
         all?: boolean;
         /**
@@ -2311,6 +2808,10 @@ export namespace metal {
         plan: string;
         projectSshKeys?: string[];
         tags?: string[];
+        terminationTime: string;
+        /**
+         * @deprecated Use instance_parameters.termination_time instead
+         */
         termintationTime: string;
         userSshKeys?: string[];
         userdata?: string;
@@ -2876,6 +3377,7 @@ export namespace networkedge {
          * Autonomous system number
          */
         asn: number;
+        cloudInitFileId: string;
         hostname: string;
         /**
          * Device location Equinix Business Exchange name
@@ -2905,6 +3407,7 @@ export namespace networkedge {
          * * APPLIED
          * * WAITING_FOR_CLUSTER_SETUP
          * * REGISTRATION_FAILED
+         * * NA
          */
         licenseStatus: string;
         licenseToken: string;

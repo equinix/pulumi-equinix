@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,7 +23,7 @@ class GetServiceProfilesResult:
     """
     A collection of values returned by getServiceProfiles.
     """
-    def __init__(__self__, data=None, filter=None, id=None, sort=None):
+    def __init__(__self__, data=None, filter=None, id=None, sort=None, view_point=None):
         if data and not isinstance(data, list):
             raise TypeError("Expected argument 'data' to be a list")
         pulumi.set(__self__, "data", data)
@@ -36,6 +36,9 @@ class GetServiceProfilesResult:
         if sort and not isinstance(sort, list):
             raise TypeError("Expected argument 'sort' to be a list")
         pulumi.set(__self__, "sort", sort)
+        if view_point and not isinstance(view_point, str):
+            raise TypeError("Expected argument 'view_point' to be a str")
+        pulumi.set(__self__, "view_point", view_point)
 
     @property
     @pulumi.getter
@@ -69,6 +72,14 @@ class GetServiceProfilesResult:
         """
         return pulumi.get(self, "sort")
 
+    @property
+    @pulumi.getter(name="viewPoint")
+    def view_point(self) -> Optional[str]:
+        """
+        Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        """
+        return pulumi.get(self, "view_point")
+
 
 class AwaitableGetServiceProfilesResult(GetServiceProfilesResult):
     # pylint: disable=using-constant-test
@@ -79,39 +90,46 @@ class AwaitableGetServiceProfilesResult(GetServiceProfilesResult):
             data=self.data,
             filter=self.filter,
             id=self.id,
-            sort=self.sort)
+            sort=self.sort,
+            view_point=self.view_point)
 
 
 def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFilterArgs']] = None,
                          sort: Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]] = None,
+                         view_point: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceProfilesResult:
     """
     Use this data source to access information about an existing resource.
 
     :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
     :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
+    :param str view_point: Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['sort'] = sort
+    __args__['viewPoint'] = view_point
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getServiceProfiles:getServiceProfiles', __args__, opts=opts, typ=GetServiceProfilesResult).value
 
     return AwaitableGetServiceProfilesResult(
-        data=__ret__.data,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        sort=__ret__.sort)
+        data=pulumi.get(__ret__, 'data'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        sort=pulumi.get(__ret__, 'sort'),
+        view_point=pulumi.get(__ret__, 'view_point'))
 
 
 @_utilities.lift_output_func(get_service_profiles)
 def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceProfilesFilterArgs']]]] = None,
                                 sort: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceProfilesSortArgs']]]]] = None,
+                                view_point: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
     """
     Use this data source to access information about an existing resource.
 
     :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
     :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
+    :param str view_point: Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
     """
     ...

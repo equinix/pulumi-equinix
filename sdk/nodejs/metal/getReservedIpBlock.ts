@@ -33,6 +33,8 @@ export interface GetReservedIpBlockArgs {
     id?: string;
     /**
      * Block containing this IP address will be returned.
+     *
+     * > **NOTE:** You should pass either `id`, or both `projectId` and `ipAddress`.
      */
     ipAddress?: string;
     /**
@@ -93,6 +95,8 @@ export interface GetReservedIpBlockOutputArgs {
     id?: pulumi.Input<string>;
     /**
      * Block containing this IP address will be returned.
+     *
+     * > **NOTE:** You should pass either `id`, or both `projectId` and `ipAddress`.
      */
     ipAddress?: pulumi.Input<string>;
     /**

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,10 +36,6 @@ class GetSpotMarketRequestResult:
         pulumi.set(__self__, "end_at", end_at)
         if facilities and not isinstance(facilities, list):
             raise TypeError("Expected argument 'facilities' to be a list")
-        if facilities is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facilities", facilities)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -95,6 +91,12 @@ class GetSpotMarketRequestResult:
     @property
     @pulumi.getter
     def facilities(self) -> Sequence[str]:
+        """
+        (**Deprecated**) Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
+        """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facilities")
 
     @property
@@ -175,17 +177,17 @@ def get_spot_market_request(request_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getSpotMarketRequest:getSpotMarketRequest', __args__, opts=opts, typ=GetSpotMarketRequestResult).value
 
     return AwaitableGetSpotMarketRequestResult(
-        device_ids=__ret__.device_ids,
-        devices_max=__ret__.devices_max,
-        devices_min=__ret__.devices_min,
-        end_at=__ret__.end_at,
-        facilities=__ret__.facilities,
-        id=__ret__.id,
-        max_bid_price=__ret__.max_bid_price,
-        metro=__ret__.metro,
-        plan=__ret__.plan,
-        project_id=__ret__.project_id,
-        request_id=__ret__.request_id)
+        device_ids=pulumi.get(__ret__, 'device_ids'),
+        devices_max=pulumi.get(__ret__, 'devices_max'),
+        devices_min=pulumi.get(__ret__, 'devices_min'),
+        end_at=pulumi.get(__ret__, 'end_at'),
+        facilities=pulumi.get(__ret__, 'facilities'),
+        id=pulumi.get(__ret__, 'id'),
+        max_bid_price=pulumi.get(__ret__, 'max_bid_price'),
+        metro=pulumi.get(__ret__, 'metro'),
+        plan=pulumi.get(__ret__, 'plan'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        request_id=pulumi.get(__ret__, 'request_id'))
 
 
 @_utilities.lift_output_func(get_spot_market_request)

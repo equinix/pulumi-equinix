@@ -91,14 +91,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * User-provided service description
+     * Description
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Output<String> description() {
@@ -136,14 +136,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Customer-assigned service profile name
+     * Metro Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Customer-assigned service profile name
+     * @return Metro Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -241,14 +241,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Type of access point type config - VD, COLO
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Type of access point type config - VD, COLO
      * 
      */
     public Output<Either<String,ProfileType>> type() {
@@ -440,7 +440,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Customer-assigned service profile name
+         * @param name Metro Name
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Customer-assigned service profile name
+         * @param name Metro Name
          * 
          * @return builder
          * 
@@ -710,7 +710,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -721,7 +721,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -731,7 +731,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -741,7 +741,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -154,6 +154,8 @@ def get_organization(name: Optional[str] = None,
 
     :param str name: The organization name.
     :param str organization_id: The UUID of the organization resource.
+           
+           Exactly one of `name` or `organization_id` must be given.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -162,15 +164,15 @@ def get_organization(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
-        address=__ret__.address,
-        description=__ret__.description,
-        id=__ret__.id,
-        logo=__ret__.logo,
-        name=__ret__.name,
-        organization_id=__ret__.organization_id,
-        project_ids=__ret__.project_ids,
-        twitter=__ret__.twitter,
-        website=__ret__.website)
+        address=pulumi.get(__ret__, 'address'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        logo=pulumi.get(__ret__, 'logo'),
+        name=pulumi.get(__ret__, 'name'),
+        organization_id=pulumi.get(__ret__, 'organization_id'),
+        project_ids=pulumi.get(__ret__, 'project_ids'),
+        twitter=pulumi.get(__ret__, 'twitter'),
+        website=pulumi.get(__ret__, 'website'))
 
 
 @_utilities.lift_output_func(get_organization)
@@ -193,5 +195,7 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str name: The organization name.
     :param str organization_id: The UUID of the organization resource.
+           
+           Exactly one of `name` or `organization_id` must be given.
     """
     ...

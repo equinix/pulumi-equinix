@@ -152,16 +152,16 @@ public class ReservedIpBlock extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * Facility where to allocate the public IP address block, makes sense only
+     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      * 
      */
     @Export(name="facility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> facility;
 
     /**
-     * @return Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * @return Facility where to allocate the public IP address block, makes sense only
+     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      * 
      */
     public Output<Optional<String>> facility() {

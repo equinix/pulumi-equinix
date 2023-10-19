@@ -33,6 +33,11 @@ public final class GetDeviceResult {
     private Integer asn;
     private Boolean byol;
     private List<GetDeviceClusterDetail> clusterDetails;
+    /**
+     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+     * 
+     */
+    private String connectivity;
     private Integer coreCount;
     private String hostname;
     /**
@@ -72,6 +77,7 @@ public final class GetDeviceResult {
      * * APPLIED
      * * WAITING_FOR_CLUSTER_SETUP
      * * REGISTRATION_FAILED
+     * * NA
      * 
      */
     private String licenseStatus;
@@ -177,6 +183,13 @@ public final class GetDeviceResult {
     public List<GetDeviceClusterDetail> clusterDetails() {
         return this.clusterDetails;
     }
+    /**
+     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+     * 
+     */
+    public String connectivity() {
+        return this.connectivity;
+    }
     public Integer coreCount() {
         return this.coreCount;
     }
@@ -232,6 +245,7 @@ public final class GetDeviceResult {
      * * APPLIED
      * * WAITING_FOR_CLUSTER_SETUP
      * * REGISTRATION_FAILED
+     * * NA
      * 
      */
     public String licenseStatus() {
@@ -381,6 +395,7 @@ public final class GetDeviceResult {
         private Integer asn;
         private Boolean byol;
         private List<GetDeviceClusterDetail> clusterDetails;
+        private String connectivity;
         private Integer coreCount;
         private String hostname;
         private String ibx;
@@ -426,6 +441,7 @@ public final class GetDeviceResult {
     	      this.asn = defaults.asn;
     	      this.byol = defaults.byol;
     	      this.clusterDetails = defaults.clusterDetails;
+    	      this.connectivity = defaults.connectivity;
     	      this.coreCount = defaults.coreCount;
     	      this.hostname = defaults.hostname;
     	      this.ibx = defaults.ibx;
@@ -496,6 +512,11 @@ public final class GetDeviceResult {
         }
         public Builder clusterDetails(GetDeviceClusterDetail... clusterDetails) {
             return clusterDetails(List.of(clusterDetails));
+        }
+        @CustomType.Setter
+        public Builder connectivity(String connectivity) {
+            this.connectivity = Objects.requireNonNull(connectivity);
+            return this;
         }
         @CustomType.Setter
         public Builder coreCount(Integer coreCount) {
@@ -697,6 +718,7 @@ public final class GetDeviceResult {
             o.asn = asn;
             o.byol = byol;
             o.clusterDetails = clusterDetails;
+            o.connectivity = connectivity;
             o.coreCount = coreCount;
             o.hostname = hostname;
             o.ibx = ibx;

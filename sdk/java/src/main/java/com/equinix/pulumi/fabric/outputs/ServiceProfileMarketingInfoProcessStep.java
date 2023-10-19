@@ -12,24 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceProfileMarketingInfoProcessStep {
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Sub Title
+     * 
+     */
     private @Nullable String subTitle;
+    /**
+     * @return Title
+     * 
+     */
     private @Nullable String title;
 
     private ServiceProfileMarketingInfoProcessStep() {}
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Sub Title
+     * 
+     */
     public Optional<String> subTitle() {
         return Optional.ofNullable(this.subTitle);
     }
+    /**
+     * @return Title
+     * 
+     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }

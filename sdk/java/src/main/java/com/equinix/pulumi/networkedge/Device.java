@@ -225,6 +225,22 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterDetails);
     }
     /**
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     * 
+     */
+    @Export(name="connectivity", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> connectivity;
+
+    /**
+     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     * 
+     */
+    public Output<Optional<String>> connectivity() {
+        return Codegen.optional(this.connectivity);
+    }
+    /**
      * Number of CPU cores used by device.
      * 
      */

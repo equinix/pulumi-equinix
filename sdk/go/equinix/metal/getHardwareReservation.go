@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
@@ -46,7 +48,7 @@ import (
 //
 // ```
 func GetHardwareReservation(ctx *pulumi.Context, args *GetHardwareReservationArgs, opts ...pulumi.InvokeOption) (*GetHardwareReservationResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHardwareReservationResult
 	err := ctx.Invoke("equinix:metal/getHardwareReservation:getHardwareReservation", args, &rv, opts...)
 	if err != nil {
@@ -67,6 +69,8 @@ type GetHardwareReservationArgs struct {
 type GetHardwareReservationResult struct {
 	// UUID of device occupying the reservation.
 	DeviceId string `pulumi:"deviceId"`
+	// (**Deprecated**) Facility for the reservation. Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility string `pulumi:"facility"`
 	// ID of the hardware reservation to look up.
@@ -128,11 +132,19 @@ func (o GetHardwareReservationResultOutput) ToGetHardwareReservationResultOutput
 	return o
 }
 
+func (o GetHardwareReservationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHardwareReservationResult] {
+	return pulumix.Output[GetHardwareReservationResult]{
+		OutputState: o.OutputState,
+	}
+}
+
 // UUID of device occupying the reservation.
 func (o GetHardwareReservationResultOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
+// (**Deprecated**) Facility for the reservation. Use metro instead; read the facility to metro migration guide
+//
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetHardwareReservationResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHardwareReservationResult) string { return v.Facility }).(pulumi.StringOutput)

@@ -56,6 +56,8 @@ export interface GetHardwareReservationResult {
      */
     readonly deviceId: string;
     /**
+     * (**Deprecated**) Facility for the reservation. Use metro instead; read the facility to metro migration guide
+     *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     readonly facility: string;

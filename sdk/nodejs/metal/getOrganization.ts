@@ -42,6 +42,8 @@ export interface GetOrganizationArgs {
     name?: string;
     /**
      * The UUID of the organization resource.
+     *
+     * Exactly one of `name` or `organizationId` must be given.
      */
     organizationId?: string;
 }
@@ -110,6 +112,8 @@ export interface GetOrganizationOutputArgs {
     name?: pulumi.Input<string>;
     /**
      * The UUID of the organization resource.
+     *
+     * Exactly one of `name` or `organizationId` must be given.
      */
     organizationId?: pulumi.Input<string>;
 }
