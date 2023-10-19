@@ -1,0 +1,9 @@
+name: equinix-fabric-cloud-router
+runtime: java
+description: An Equinix Fabric Cloud Router instance
+config:
+  accountNum:
+    type: integer
+  metro:
+    type: string
+    default: FR

@@ -1,0 +1,6 @@
+name: equinix-fabric-routing-protocol
+runtime: python
+description: Adds a routing protocol definition to a given Fabric Connection
+config:
+  connectionId:
+    type: string
