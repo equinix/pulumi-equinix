@@ -445,6 +445,35 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"equinix_fabric_cloud_router": {
+				Tok: makeEquinixResource(fabricMod, "CloudRouter"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+			},
+			"equinix_fabric_routing_protocol": {
+				Tok: makeEquinixResource(fabricMod, "RoutingProtocol"),
+				Docs: &tfbridge.DocInfo{
+					ReplaceExamplesSection: true,
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"direct_ipv4": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"direct_ipv6": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"bfd": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"bgp_ipv4": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"bgp_ipv6": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			// Equinix Metal v1
 			"equinix_metal_bgp_session": {
 				Tok: makeEquinixResource(metalMod, "BgpSession"),
@@ -1406,10 +1435,32 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"equinix_fabric_cloud_router":     {Tok: makeEquinixDataSource(fabricMod, "CloudRouter")},
+			"equinix_fabric_routing_protocol": {
+				Tok: makeEquinixDataSource(fabricMod, "RoutingProtocol"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"direct_ipv4": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"direct_ipv6": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"bfd": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"bgp_ipv4": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"bgp_ipv6": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			// Equinix Metal v1
 			"equinix_metal_connection":           {Tok: makeEquinixDataSource(metalMod, "Interconnection")},
 			"equinix_metal_device":               {Tok: makeEquinixDataSource(metalMod, "Device")},
 			"equinix_metal_device_bgp_neighbors": {Tok: makeEquinixDataSource(metalMod, "DeviceBgpNeighbors")},
+			"equinix_metal_devices":              {Tok: makeEquinixDataSource(metalMod, "Devices")},
 			"equinix_metal_facility":             {Tok: makeEquinixDataSource(metalMod, "Facility")},
 			"equinix_metal_gateway":              {Tok: makeEquinixDataSource(metalMod, "Gateway")},
 			"equinix_metal_hardware_reservation": {Tok: makeEquinixDataSource(metalMod, "HardwareReservation")},
