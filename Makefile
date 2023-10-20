@@ -71,6 +71,7 @@ build_nodejs:: install_plugins tfgen # build the node sdk
 build_nodejs:: patch_nodejs # fix generated files
 build_nodejs::
 	cd sdk/nodejs/ && \
+		printf "module fake_nodejs_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         yarn install && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
@@ -88,6 +89,7 @@ build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
 build_python:: install_plugins tfgen # build the python sdk
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
+		printf "module fake_python_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         cp ../../README.md . && \
         python3 setup.py clean --all 2>/dev/null && \
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
@@ -100,6 +102,7 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	pulumictl get version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
+		printf "module fake_dotnet_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
@@ -112,7 +115,7 @@ build_java:: install_plugins tfgen bin/pulumi-java-gen patch_java_schema # build
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
 build_java:: patch_java
 	cd sdk/java/ && \
-		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
+		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build
 
 patch_java_schema::
