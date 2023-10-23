@@ -41,7 +41,7 @@ const (
 	metalMod       = "Metal"       // Equinix Metal
 	networkEdgeMod = "NetworkEdge" // Equinix Network Edge
 	//
-	metalAPIDocs = "https://deploy.equinix.com/developers/api/metal"
+	metalAPIDocs = "https://deploy.equinix.com/developers/api/metal/"
 )
 
 var namespaceMap = map[string]string{
@@ -817,7 +817,7 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "EPL", Value: "EPL_VC", Description: "Ethernet Private Line"},
 					{Name: "GW", Value: "GW_VC", Description: "Fabric Gateway virtual connection"},
 					{Name: "AccessEPL", Value: "ACCESS_EPL_VC",
-						Description: "E-access, layer 2 connection between aQINQ port and an EPL port."},
+						Description: "E-access, layer 2 connection between a QINQ port and an EPL port."},
 				},
 			},
 			makeEquinixToken(fabricMod, "NotificationsType"): {
