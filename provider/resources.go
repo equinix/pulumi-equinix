@@ -41,7 +41,7 @@ const (
 	metalMod       = "Metal"       // Equinix Metal
 	networkEdgeMod = "NetworkEdge" // Equinix Network Edge
 	//
-	metalApiDocs = "https://deploy.equinix.com/developers/api/metal"
+	metalAPIDocs = "https://deploy.equinix.com/developers/api/metal"
 )
 
 var namespaceMap = map[string]string{
@@ -929,7 +929,7 @@ func Provider() tfbridge.ProviderInfo {
 			makeEquinixToken(metalMod, "Plan"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type:        "string",
-					Description: fmt.Sprintf("See %s#tag/Plans/operation/findPlans", metalApiDocs),
+					Description: fmt.Sprintf("See %s#tag/Plans/operation/findPlans", metalAPIDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "A3LargeX86", Value: "a3.large.x86"},
@@ -956,7 +956,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
 					Description: fmt.Sprintf("See "+
-						"%s#tag/OperatingSystems/operation/findOperatingSystems", metalApiDocs),
+						"%s#tag/OperatingSystems/operation/findOperatingSystems", metalAPIDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "Alma8", Value: "alma_8"},
@@ -1045,7 +1045,7 @@ func Provider() tfbridge.ProviderInfo {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
 					Description: fmt.Sprintf("See "+
-						"%s#tag/Facilities/operation/findFacilities", metalApiDocs),
+						"%s#tag/Facilities/operation/findFacilities", metalAPIDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "AM2", Value: "am2", Description: "Amsterdam 2"},
