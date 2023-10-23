@@ -32,9 +32,10 @@ jobs:
       continue-on-error: true # this fails if there are no go:embed directives
       run: |
         git grep -l 'go:embed' -- provider | xargs sed -i 's/go:embed/ goembed/g'
-    - name: prepare upstream
-      continue-on-error: true
-      run: make upstream
+    # TODO add upstream
+    # - name: prepare upstream
+    #   continue-on-error: true
+    #   run: make upstream
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v3
       with:
