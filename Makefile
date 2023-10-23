@@ -192,3 +192,8 @@ install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
 
+test_provider:
+	@echo ""
+	@echo "== test_provider ==================================================================="
+	@echo ""
+	cd provider && go test -v -short ./... -parallel $(TESTPARALLELISM)

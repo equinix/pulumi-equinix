@@ -36,10 +36,12 @@ const (
 	// registries for nodejs and python:
 	equinixPkg = "equinix"
 	// modules:
-	equinixMod 		= "index" 		// the equinix root module
-	fabricMod  		= "Fabric"  	// Equinix Fabric
-	metalMod		= "Metal"  		// Equinix Metal
-	networkEdgeMod 	= "NetworkEdge"	// Equinix Network Edge
+	equinixMod     = "index"       // the equinix root module
+	fabricMod      = "Fabric"      // Equinix Fabric
+	metalMod       = "Metal"       // Equinix Metal
+	networkEdgeMod = "NetworkEdge" // Equinix Network Edge
+	//
+	metalAPIDocs = "https://deploy.equinix.com/developers/api/metal/"
 )
 
 var namespaceMap = map[string]string{
@@ -53,7 +55,7 @@ func makeEquinixResource(moduleTitle, mem string) tokens.Type {
 	return tfbridge.MakeResource(equinixPkg, moduleName, mem)
 }
 
-// makeEquinixDataSource 
+// makeEquinixDataSource
 func makeEquinixDataSource(moduleTitle, mem string) tokens.ModuleMember {
 	moduleName := strings.ToLower(moduleTitle)
 	namespaceMap[moduleName] = moduleTitle
@@ -116,21 +118,21 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/equinix/pulumi-equinix",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "equinix",
-		Config:    map[string]*tfbridge.SchemaInfo{},
+		GitHubOrg:            "equinix",
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
 		IgnoreMappings: []string{
-			"equinix_ecx_l2_connection", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_connection
+			"equinix_ecx_l2_connection",          // to be deprecated in terraform. Use equinix_fabric_connection
 			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
-			"equinix_ecx_l2_serviceprofile", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile
-			"equinix_ecx_l2_sellerprofile", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile datasource
-			"equinix_ecx_l2_sellerprofiles", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profiles datasource
-			"equinix_ecx_port", // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_port datasource
+			"equinix_ecx_l2_serviceprofile",      // to be deprecated in tf. Use equinix_fabric_service_profile
+			"equinix_ecx_l2_sellerprofile",       // to be deprecated in tf. Use equinix_fabric_service_profile ds
+			"equinix_ecx_l2_sellerprofiles",      // to be deprecated in tf. Use equinix_fabric_service_profiles ds
+			"equinix_ecx_port",                   // to be deprecated in tf. Use equinix_fabric_port ds
 		},
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
-			"equinix_fabric_connection":      {
+			"equinix_fabric_connection": {
 				Tok: makeEquinixResource(fabricMod, "Connection"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -148,12 +150,14 @@ func Provider() tfbridge.ProviderInfo {
 												MaxItemsOne: tfbridge.True(),
 											},
 											"peering_type": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+												Type: "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+													"AccessPointPeeringType")},
 											},
 											"type": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
+												Type: "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+													"AccessPointType")},
 											},
 											"gateway": {
 												MaxItemsOne: tfbridge.True(),
@@ -166,8 +170,9 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+															Type: "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"AccessPointLinkProtocolType")},
 														},
 													},
 												},
@@ -177,8 +182,9 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
-															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+															Type: "string",
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod,
+																"Metro")},
 														},
 													},
 												},
@@ -196,8 +202,9 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+															Type: "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"ProfileType")},
 														},
 													},
 												},
@@ -285,8 +292,9 @@ func Provider() tfbridge.ProviderInfo {
 												MaxItemsOne: tfbridge.True(),
 											},
 											"peering_type": {
-												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+												Type: "string",
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+													"AccessPointPeeringType")},
 											},
 											"type": {
 												Type:     "string",
@@ -303,8 +311,9 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+															Type: "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"AccessPointLinkProtocolType")},
 														},
 													},
 												},
@@ -314,8 +323,9 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
-															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+															Type: "string",
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod,
+																"Metro")},
 														},
 													},
 												},
@@ -333,8 +343,9 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+															Type: "string",
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"ProfileType")},
 														},
 													},
 												},
@@ -441,13 +452,13 @@ func Provider() tfbridge.ProviderInfo {
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_connection":  {
+			"equinix_metal_connection": {
 				Tok: makeEquinixResource(metalMod, "Interconnection"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_device":      {
+			"equinix_metal_device": {
 				Tok: makeEquinixResource(metalMod, "Device"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -486,19 +497,19 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_device_network_type":  {
+			"equinix_metal_device_network_type": {
 				Tok: makeEquinixResource(metalMod, "DeviceNetworkType"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_gateway":      		  {
+			"equinix_metal_gateway": {
 				Tok: makeEquinixResource(metalMod, "Gateway"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_ip_attachment":        {
+			"equinix_metal_ip_attachment": {
 				Tok: makeEquinixResource(metalMod, "IpAttachment"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -509,7 +520,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_organization":      	  {
+			"equinix_metal_organization": {
 				Tok: makeEquinixResource(metalMod, "Organization"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -520,13 +531,13 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_organization_member":  {
+			"equinix_metal_organization_member": {
 				Tok: makeEquinixResource(metalMod, "OrganizationMember"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_port":      			  {
+			"equinix_metal_port": {
 				Tok: makeEquinixResource(metalMod, "Port"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -538,7 +549,7 @@ func Provider() tfbridge.ProviderInfo {
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_project":      		  {
+			"equinix_metal_project": {
 				Tok: makeEquinixResource(metalMod, "Project"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -549,13 +560,13 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_project_api_key":      {
+			"equinix_metal_project_api_key": {
 				Tok: makeEquinixResource(metalMod, "ProjectApiKey"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_project_ssh_key":      {
+			"equinix_metal_project_ssh_key": {
 				Tok: makeEquinixResource(metalMod, "ProjectSshKey"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -583,25 +594,25 @@ func Provider() tfbridge.ProviderInfo {
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_ssh_key":      		 {
+			"equinix_metal_ssh_key": {
 				Tok: makeEquinixResource(metalMod, "SshKey"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_user_api_key":      	 {
+			"equinix_metal_user_api_key": {
 				Tok: makeEquinixResource(metalMod, "UserApiKey"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_virtual_circuit":     {
+			"equinix_metal_virtual_circuit": {
 				Tok: makeEquinixResource(metalMod, "VirtualCircuit"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_metal_vlan":      			 {
+			"equinix_metal_vlan": {
 				Tok: makeEquinixResource(metalMod, "Vlan"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -638,7 +649,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_network_bgp":    {
+			"equinix_network_bgp": {
 				Tok: makeEquinixResource(networkEdgeMod, "Bgp"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -662,19 +673,19 @@ func Provider() tfbridge.ProviderInfo {
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_network_ssh_key":     {
+			"equinix_network_ssh_key": {
 				Tok: makeEquinixResource(networkEdgeMod, "SshKey"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_network_ssh_user":    {
+			"equinix_network_ssh_user": {
 				Tok: makeEquinixResource(networkEdgeMod, "SshUser"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
 				},
 			},
-			"equinix_network_file":        {
+			"equinix_network_file": {
 				Tok: makeEquinixResource(networkEdgeMod, "NetworkFile"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
@@ -805,7 +816,8 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "EVPL", Value: "EVPL_VC", Description: "Ethernet Virtual Private Line"},
 					{Name: "EPL", Value: "EPL_VC", Description: "Ethernet Private Line"},
 					{Name: "GW", Value: "GW_VC", Description: "Fabric Gateway virtual connection"},
-					{Name: "AccessEPL", Value: "ACCESS_EPL_VC", Description: "E-access, layer 2 connection between a QINQ port and an EPL port."},
+					{Name: "AccessEPL", Value: "ACCESS_EPL_VC",
+						Description: "E-access, layer 2 connection between a QINQ port and an EPL port."},
 				},
 			},
 			makeEquinixToken(fabricMod, "NotificationsType"): {
@@ -916,8 +928,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			makeEquinixToken(metalMod, "Plan"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
-					Type: "string",
-					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/Plans/operation/findPlans",
+					Type:        "string",
+					Description: fmt.Sprintf("See %s#tag/Plans/operation/findPlans", metalAPIDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "A3LargeX86", Value: "a3.large.x86"},
@@ -943,7 +955,8 @@ func Provider() tfbridge.ProviderInfo {
 			makeEquinixToken(metalMod, "OperatingSystem"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
-					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/OperatingSystems/operation/findOperatingSystems",
+					Description: fmt.Sprintf("See "+
+						"%s#tag/OperatingSystems/operation/findOperatingSystems", metalAPIDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "Alma8", Value: "alma_8"},
@@ -968,7 +981,7 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "FlatcarEdge", Value: "flatcar_edge"},
 					{Name: "FlatcarLTS", Value: "flatcar_lts"},
 					{Name: "FlatcarStable", Value: "flatcar_stable"},
-					{Name: "FreeBSD10_3", Value: "freebsd_10_3" },
+					{Name: "FreeBSD10_3", Value: "freebsd_10_3"},
 					{Name: "FreeBSD10_4", Value: "freebsd_10_4"},
 					{Name: "FreeBSD11_0", Value: "freebsd_11_0"},
 					{Name: "FreeBSD11_1", Value: "freebsd_11_1"},
@@ -1031,7 +1044,8 @@ func Provider() tfbridge.ProviderInfo {
 			makeEquinixToken(metalMod, "Facility"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type: "string",
-					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/Facilities/operation/findFacilities",
+					Description: fmt.Sprintf("See "+
+						"%s#tag/Facilities/operation/findFacilities", metalAPIDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "AM2", Value: "am2", Description: "Amsterdam 2"},
@@ -1225,7 +1239,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_fabric_port": {           
+			"equinix_fabric_port": {
 				Tok: makeEquinixDataSource(fabricMod, "Port"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"account": {
@@ -1263,7 +1277,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeEquinixDataSource(fabricMod, "Ports"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"filters": {
-						Name: "filter",
+						Name:        "filter",
 						MaxItemsOne: tfbridge.True(),
 					},
 					"data": {
@@ -1402,7 +1416,7 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_metal_ip_block_ranges":      {Tok: makeEquinixDataSource(metalMod, "IpBlockRanges")},
 			"equinix_metal_metro":                {Tok: makeEquinixDataSource(metalMod, "Metro")},
 			"equinix_metal_operating_system":     {Tok: makeEquinixDataSource(metalMod, "OperatingSystem")},
-			"equinix_metal_organization":         {
+			"equinix_metal_organization": {
 				Tok: makeEquinixDataSource(metalMod, "Organization"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"address": {
@@ -1410,10 +1424,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_plans":                {Tok: makeEquinixDataSource(metalMod, "Plans")},
-			"equinix_metal_port":                 {Tok: makeEquinixDataSource(metalMod, "Port")},
-			"equinix_metal_precreated_ip_block":  {Tok: makeEquinixDataSource(metalMod, "PrecreatedIpBlock")},
-			"equinix_metal_project":              {
+			"equinix_metal_plans":               {Tok: makeEquinixDataSource(metalMod, "Plans")},
+			"equinix_metal_port":                {Tok: makeEquinixDataSource(metalMod, "Port")},
+			"equinix_metal_precreated_ip_block": {Tok: makeEquinixDataSource(metalMod, "PrecreatedIpBlock")},
+			"equinix_metal_project": {
 				Tok: makeEquinixDataSource(metalMod, "Project"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"bgp_config": {
@@ -1421,16 +1435,16 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_metal_project_ssh_key":      {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
-			"equinix_metal_reserved_ip_block":    {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
-			"equinix_metal_spot_market_price":    {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
-			"equinix_metal_spot_market_request":  {Tok: makeEquinixDataSource(metalMod, "SpotMarketRequest")},
-			"equinix_metal_virtual_circuit":      {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
-			"equinix_metal_vlan":                 {Tok: makeEquinixDataSource(metalMod, "Vlan")},
-			"equinix_metal_vrf":                  {Tok: makeEquinixDataSource(metalMod, "Vrf")},
+			"equinix_metal_project_ssh_key":     {Tok: makeEquinixDataSource(metalMod, "ProjectSshKey")},
+			"equinix_metal_reserved_ip_block":   {Tok: makeEquinixDataSource(metalMod, "ReservedIpBlock")},
+			"equinix_metal_spot_market_price":   {Tok: makeEquinixDataSource(metalMod, "SpotMarketPrice")},
+			"equinix_metal_spot_market_request": {Tok: makeEquinixDataSource(metalMod, "SpotMarketRequest")},
+			"equinix_metal_virtual_circuit":     {Tok: makeEquinixDataSource(metalMod, "VirtualCircuit")},
+			"equinix_metal_vlan":                {Tok: makeEquinixDataSource(metalMod, "Vlan")},
+			"equinix_metal_vrf":                 {Tok: makeEquinixDataSource(metalMod, "Vrf")},
 			// Network Edge v1
-			"equinix_network_account":         {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
-			"equinix_network_device":          {
+			"equinix_network_account": {Tok: makeEquinixDataSource(networkEdgeMod, "Account")},
+			"equinix_network_device": {
 				Tok: makeEquinixDataSource(networkEdgeMod, "Device"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"valid_status_list": {
@@ -1482,7 +1496,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "com.equinix",
-			BuildFiles: "gradle",
+			BuildFiles:  "gradle",
 		},
 	}
 
