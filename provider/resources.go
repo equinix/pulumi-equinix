@@ -40,6 +40,8 @@ const (
 	fabricMod      = "Fabric"      // Equinix Fabric
 	metalMod       = "Metal"       // Equinix Metal
 	networkEdgeMod = "NetworkEdge" // Equinix Network Edge
+	//
+	metalApiDocs = "https://deploy.equinix.com/developers/api/metal"
 )
 
 var namespaceMap = map[string]string{
@@ -124,7 +126,7 @@ func Provider() tfbridge.ProviderInfo {
 			"equinix_ecx_l2_connection",          // to be deprecated in terraform. Use equinix_fabric_connection
 			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
 			"equinix_ecx_l2_serviceprofile",      // to be deprecated in tf. Use equinix_fabric_service_profile
-			"equinix_ecx_l2_sellerprofile",       // to be deprecated in tf. Use equinix_fabric_service_profile ds 
+			"equinix_ecx_l2_sellerprofile",       // to be deprecated in tf. Use equinix_fabric_service_profile ds
 			"equinix_ecx_l2_sellerprofiles",      // to be deprecated in tf. Use equinix_fabric_service_profiles ds
 			"equinix_ecx_port",                   // to be deprecated in tf. Use equinix_fabric_port ds
 		},
@@ -148,12 +150,12 @@ func Provider() tfbridge.ProviderInfo {
 												MaxItemsOne: tfbridge.True(),
 											},
 											"peering_type": {
-												Type:     "string",
+												Type: "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 													"AccessPointPeeringType")},
 											},
 											"type": {
-												Type:     "string",
+												Type: "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 													"AccessPointType")},
 											},
@@ -168,7 +170,7 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
+															Type: "string",
 															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 																"AccessPointLinkProtocolType")},
 														},
@@ -180,7 +182,7 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
-															Type:     "string",
+															Type: "string",
 															AltTypes: []tokens.Type{makeEquinixType(equinixMod,
 																"Metro")},
 														},
@@ -200,7 +202,7 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
+															Type: "string",
 															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 																"ProfileType")},
 														},
@@ -290,7 +292,7 @@ func Provider() tfbridge.ProviderInfo {
 												MaxItemsOne: tfbridge.True(),
 											},
 											"peering_type": {
-												Type:     "string",
+												Type: "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 													"AccessPointPeeringType")},
 											},
@@ -309,7 +311,7 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
+															Type: "string",
 															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 																"AccessPointLinkProtocolType")},
 														},
@@ -321,7 +323,7 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
-															Type:     "string",
+															Type: "string",
 															AltTypes: []tokens.Type{makeEquinixType(equinixMod,
 																"Metro")},
 														},
@@ -341,7 +343,7 @@ func Provider() tfbridge.ProviderInfo {
 												Elem: &tfbridge.SchemaInfo{
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
-															Type:     "string",
+															Type: "string",
 															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
 																"ProfileType")},
 														},
@@ -927,7 +929,7 @@ func Provider() tfbridge.ProviderInfo {
 			makeEquinixToken(metalMod, "Plan"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
 					Type:        "string",
-					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/Plans/operation/findPlans",
+					Description: fmt.Sprintf("See %s#tag/Plans/operation/findPlans", metalApiDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "A3LargeX86", Value: "a3.large.x86"},
@@ -952,8 +954,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			makeEquinixToken(metalMod, "OperatingSystem"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
-					Type:        "string",
-					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/OperatingSystems/operation/findOperatingSystems",
+					Type: "string",
+					Description: fmt.Sprintf("See "+
+						"%s#tag/OperatingSystems/operation/findOperatingSystems", metalApiDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "Alma8", Value: "alma_8"},
@@ -1040,8 +1043,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			makeEquinixToken(metalMod, "Facility"): {
 				ObjectTypeSpec: pulumiSchema.ObjectTypeSpec{
-					Type:        "string",
-					Description: "See https://deploy.equinix.com/developers/api/metal/#tag/Facilities/operation/findFacilities",
+					Type: "string",
+					Description: fmt.Sprintf("See "+
+						"%s#tag/Facilities/operation/findFacilities", metalApiDocs),
 				},
 				Enum: []pulumiSchema.EnumValueSpec{
 					{Name: "AM2", Value: "am2", Description: "Amsterdam 2"},
