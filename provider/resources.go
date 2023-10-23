@@ -121,12 +121,12 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
 		IgnoreMappings: []string{
-			"equinix_ecx_l2_connection",          // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_connection
+			"equinix_ecx_l2_connection",          // to be deprecated in terraform. Use equinix_fabric_connection
 			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
-			"equinix_ecx_l2_serviceprofile",      // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile
-			"equinix_ecx_l2_sellerprofile",       // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profile datasource
-			"equinix_ecx_l2_sellerprofiles",      // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_service_profiles datasource
-			"equinix_ecx_port",                   // to be deprecated in terraform in favor of Fabric v4 equinix_fabric_port datasource
+			"equinix_ecx_l2_serviceprofile",      // to be deprecated in tf. Use equinix_fabric_service_profile
+			"equinix_ecx_l2_sellerprofile",       // to be deprecated in tf. Use equinix_fabric_service_profile ds 
+			"equinix_ecx_l2_sellerprofiles",      // to be deprecated in tf. Use equinix_fabric_service_profiles ds
+			"equinix_ecx_port",                   // to be deprecated in tf. Use equinix_fabric_port ds
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Equinix Fabric v4
@@ -149,11 +149,13 @@ func Provider() tfbridge.ProviderInfo {
 											},
 											"peering_type": {
 												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+													"AccessPointPeeringType")},
 											},
 											"type": {
 												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointType")},
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+													"AccessPointType")},
 											},
 											"gateway": {
 												MaxItemsOne: tfbridge.True(),
@@ -167,7 +169,8 @@ func Provider() tfbridge.ProviderInfo {
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"AccessPointLinkProtocolType")},
 														},
 													},
 												},
@@ -178,7 +181,8 @@ func Provider() tfbridge.ProviderInfo {
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod,
+																"Metro")},
 														},
 													},
 												},
@@ -197,7 +201,8 @@ func Provider() tfbridge.ProviderInfo {
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"ProfileType")},
 														},
 													},
 												},
@@ -286,7 +291,8 @@ func Provider() tfbridge.ProviderInfo {
 											},
 											"peering_type": {
 												Type:     "string",
-												AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointPeeringType")},
+												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+													"AccessPointPeeringType")},
 											},
 											"type": {
 												Type:     "string",
@@ -304,7 +310,8 @@ func Provider() tfbridge.ProviderInfo {
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "AccessPointLinkProtocolType")},
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"AccessPointLinkProtocolType")},
 														},
 													},
 												},
@@ -315,7 +322,8 @@ func Provider() tfbridge.ProviderInfo {
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"metro_code": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(equinixMod, "Metro")},
+															AltTypes: []tokens.Type{makeEquinixType(equinixMod,
+																"Metro")},
 														},
 													},
 												},
@@ -334,7 +342,8 @@ func Provider() tfbridge.ProviderInfo {
 													Fields: map[string]*tfbridge.SchemaInfo{
 														"type": {
 															Type:     "string",
-															AltTypes: []tokens.Type{makeEquinixType(fabricMod, "ProfileType")},
+															AltTypes: []tokens.Type{makeEquinixType(fabricMod,
+																"ProfileType")},
 														},
 													},
 												},
@@ -805,7 +814,8 @@ func Provider() tfbridge.ProviderInfo {
 					{Name: "EVPL", Value: "EVPL_VC", Description: "Ethernet Virtual Private Line"},
 					{Name: "EPL", Value: "EPL_VC", Description: "Ethernet Private Line"},
 					{Name: "GW", Value: "GW_VC", Description: "Fabric Gateway virtual connection"},
-					{Name: "AccessEPL", Value: "ACCESS_EPL_VC", Description: "E-access, layer 2 connection between a QINQ port and an EPL port."},
+					{Name: "AccessEPL", Value: "ACCESS_EPL_VC",
+						Description: "E-access, layer 2 connection between aQINQ port and an EPL port."},
 				},
 			},
 			makeEquinixToken(fabricMod, "NotificationsType"): {
