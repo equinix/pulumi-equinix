@@ -53,7 +53,7 @@ class AclTemplateDeviceDetailArgs:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'aclStatus' in kwargs:
+        if acl_status is None and 'aclStatus' in kwargs:
             acl_status = kwargs['aclStatus']
 
         if acl_status is not None:
@@ -136,9 +136,9 @@ class AclTemplateInboundRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dst_port: pulumi.Input[str],
-             protocol: pulumi.Input[Union[str, 'AclRuleProtocolType']],
-             src_port: pulumi.Input[str],
+             dst_port: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[Union[str, 'AclRuleProtocolType']]] = None,
+             src_port: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              sequence_number: Optional[pulumi.Input[int]] = None,
              source_type: Optional[pulumi.Input[str]] = None,
@@ -146,13 +146,19 @@ class AclTemplateInboundRuleArgs:
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'dstPort' in kwargs:
+        if dst_port is None and 'dstPort' in kwargs:
             dst_port = kwargs['dstPort']
-        if 'srcPort' in kwargs:
+        if dst_port is None:
+            raise TypeError("Missing 'dst_port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if src_port is None and 'srcPort' in kwargs:
             src_port = kwargs['srcPort']
-        if 'sequenceNumber' in kwargs:
+        if src_port is None:
+            raise TypeError("Missing 'src_port' argument")
+        if sequence_number is None and 'sequenceNumber' in kwargs:
             sequence_number = kwargs['sequenceNumber']
-        if 'sourceType' in kwargs:
+        if source_type is None and 'sourceType' in kwargs:
             source_type = kwargs['sourceType']
 
         _setter("dst_port", dst_port)
@@ -302,18 +308,24 @@ class DeviceClusterDetailsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: pulumi.Input[str],
-             node0: pulumi.Input['DeviceClusterDetailsNode0Args'],
-             node1: pulumi.Input['DeviceClusterDetailsNode1Args'],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             node0: Optional[pulumi.Input['DeviceClusterDetailsNode0Args']] = None,
+             node1: Optional[pulumi.Input['DeviceClusterDetailsNode1Args']] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              num_of_nodes: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterId' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if node0 is None:
+            raise TypeError("Missing 'node0' argument")
+        if node1 is None:
+            raise TypeError("Missing 'node1' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'numOfNodes' in kwargs:
+        if num_of_nodes is None and 'numOfNodes' in kwargs:
             num_of_nodes = kwargs['numOfNodes']
 
         _setter("cluster_name", cluster_name)
@@ -424,11 +436,11 @@ class DeviceClusterDetailsNode0Args:
              vendor_configuration: Optional[pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'licenseFileId' in kwargs:
+        if license_file_id is None and 'licenseFileId' in kwargs:
             license_file_id = kwargs['licenseFileId']
-        if 'licenseToken' in kwargs:
+        if license_token is None and 'licenseToken' in kwargs:
             license_token = kwargs['licenseToken']
-        if 'vendorConfiguration' in kwargs:
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
             vendor_configuration = kwargs['vendorConfiguration']
 
         if license_file_id is not None:
@@ -546,13 +558,13 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
              root_password: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'activationKey' in kwargs:
+        if activation_key is None and 'activationKey' in kwargs:
             activation_key = kwargs['activationKey']
-        if 'adminPassword' in kwargs:
+        if admin_password is None and 'adminPassword' in kwargs:
             admin_password = kwargs['adminPassword']
-        if 'controllerFqdn' in kwargs:
+        if controller_fqdn is None and 'controllerFqdn' in kwargs:
             controller_fqdn = kwargs['controllerFqdn']
-        if 'rootPassword' in kwargs:
+        if root_password is None and 'rootPassword' in kwargs:
             root_password = kwargs['rootPassword']
 
         if activation_key is not None:
@@ -680,11 +692,11 @@ class DeviceClusterDetailsNode1Args:
              vendor_configuration: Optional[pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'licenseFileId' in kwargs:
+        if license_file_id is None and 'licenseFileId' in kwargs:
             license_file_id = kwargs['licenseFileId']
-        if 'licenseToken' in kwargs:
+        if license_token is None and 'licenseToken' in kwargs:
             license_token = kwargs['licenseToken']
-        if 'vendorConfiguration' in kwargs:
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
             vendor_configuration = kwargs['vendorConfiguration']
 
         if license_file_id is not None:
@@ -802,13 +814,13 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
              root_password: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'activationKey' in kwargs:
+        if activation_key is None and 'activationKey' in kwargs:
             activation_key = kwargs['activationKey']
-        if 'adminPassword' in kwargs:
+        if admin_password is None and 'adminPassword' in kwargs:
             admin_password = kwargs['adminPassword']
-        if 'controllerFqdn' in kwargs:
+        if controller_fqdn is None and 'controllerFqdn' in kwargs:
             controller_fqdn = kwargs['controllerFqdn']
-        if 'rootPassword' in kwargs:
+        if root_password is None and 'rootPassword' in kwargs:
             root_password = kwargs['rootPassword']
 
         if activation_key is not None:
@@ -944,13 +956,13 @@ class DeviceInterfaceArgs:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'assignedType' in kwargs:
+        if assigned_type is None and 'assignedType' in kwargs:
             assigned_type = kwargs['assignedType']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'macAddress' in kwargs:
+        if mac_address is None and 'macAddress' in kwargs:
             mac_address = kwargs['macAddress']
-        if 'operationalStatus' in kwargs:
+        if operational_status is None and 'operationalStatus' in kwargs:
             operational_status = kwargs['operationalStatus']
 
         if assigned_type is not None:
@@ -1095,16 +1107,18 @@ class DeviceLinkDeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
              asn: Optional[pulumi.Input[int]] = None,
              interface_id: Optional[pulumi.Input[int]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'interfaceId' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if interface_id is None and 'interfaceId' in kwargs:
             interface_id = kwargs['interfaceId']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
 
         _setter("id", id)
@@ -1213,26 +1227,36 @@ class DeviceLinkLinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_number: pulumi.Input[str],
-             dst_metro_code: pulumi.Input[str],
-             src_metro_code: pulumi.Input[str],
-             throughput: pulumi.Input[str],
-             throughput_unit: pulumi.Input[str],
+             account_number: Optional[pulumi.Input[str]] = None,
+             dst_metro_code: Optional[pulumi.Input[str]] = None,
+             src_metro_code: Optional[pulumi.Input[str]] = None,
+             throughput: Optional[pulumi.Input[str]] = None,
+             throughput_unit: Optional[pulumi.Input[str]] = None,
              dst_zone_code: Optional[pulumi.Input[str]] = None,
              src_zone_code: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'dstMetroCode' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if dst_metro_code is None and 'dstMetroCode' in kwargs:
             dst_metro_code = kwargs['dstMetroCode']
-        if 'srcMetroCode' in kwargs:
+        if dst_metro_code is None:
+            raise TypeError("Missing 'dst_metro_code' argument")
+        if src_metro_code is None and 'srcMetroCode' in kwargs:
             src_metro_code = kwargs['srcMetroCode']
-        if 'throughputUnit' in kwargs:
+        if src_metro_code is None:
+            raise TypeError("Missing 'src_metro_code' argument")
+        if throughput is None:
+            raise TypeError("Missing 'throughput' argument")
+        if throughput_unit is None and 'throughputUnit' in kwargs:
             throughput_unit = kwargs['throughputUnit']
-        if 'dstZoneCode' in kwargs:
+        if throughput_unit is None:
+            raise TypeError("Missing 'throughput_unit' argument")
+        if dst_zone_code is None and 'dstZoneCode' in kwargs:
             dst_zone_code = kwargs['dstZoneCode']
-        if 'srcZoneCode' in kwargs:
+        if src_zone_code is None and 'srcZoneCode' in kwargs:
             src_zone_code = kwargs['srcZoneCode']
 
         _setter("account_number", account_number)
@@ -1445,10 +1469,10 @@ class DeviceSecondaryDeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_number: pulumi.Input[str],
-             metro_code: pulumi.Input[str],
-             name: pulumi.Input[str],
-             notifications: pulumi.Input[Sequence[pulumi.Input[str]]],
+             account_number: Optional[pulumi.Input[str]] = None,
+             metro_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              acl_template_id: Optional[pulumi.Input[str]] = None,
              additional_bandwidth: Optional[pulumi.Input[int]] = None,
              asn: Optional[pulumi.Input[int]] = None,
@@ -1474,41 +1498,49 @@ class DeviceSecondaryDeviceArgs:
              zone_code: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'metroCode' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'aclTemplateId' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if acl_template_id is None and 'aclTemplateId' in kwargs:
             acl_template_id = kwargs['aclTemplateId']
-        if 'additionalBandwidth' in kwargs:
+        if additional_bandwidth is None and 'additionalBandwidth' in kwargs:
             additional_bandwidth = kwargs['additionalBandwidth']
-        if 'cloudInitFileId' in kwargs:
+        if cloud_init_file_id is None and 'cloudInitFileId' in kwargs:
             cloud_init_file_id = kwargs['cloudInitFileId']
-        if 'licenseFile' in kwargs:
+        if license_file is None and 'licenseFile' in kwargs:
             license_file = kwargs['licenseFile']
-        if 'licenseFileId' in kwargs:
+        if license_file_id is None and 'licenseFileId' in kwargs:
             license_file_id = kwargs['licenseFileId']
-        if 'licenseStatus' in kwargs:
+        if license_status is None and 'licenseStatus' in kwargs:
             license_status = kwargs['licenseStatus']
-        if 'licenseToken' in kwargs:
+        if license_token is None and 'licenseToken' in kwargs:
             license_token = kwargs['licenseToken']
-        if 'mgmtAclTemplateUuid' in kwargs:
+        if mgmt_acl_template_uuid is None and 'mgmtAclTemplateUuid' in kwargs:
             mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
-        if 'redundancyType' in kwargs:
+        if redundancy_type is None and 'redundancyType' in kwargs:
             redundancy_type = kwargs['redundancyType']
-        if 'redundantId' in kwargs:
+        if redundant_id is None and 'redundantId' in kwargs:
             redundant_id = kwargs['redundantId']
-        if 'sshIpAddress' in kwargs:
+        if ssh_ip_address is None and 'sshIpAddress' in kwargs:
             ssh_ip_address = kwargs['sshIpAddress']
-        if 'sshIpFqdn' in kwargs:
+        if ssh_ip_fqdn is None and 'sshIpFqdn' in kwargs:
             ssh_ip_fqdn = kwargs['sshIpFqdn']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'vendorConfiguration' in kwargs:
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
             vendor_configuration = kwargs['vendorConfiguration']
-        if 'wanInterfaceId' in kwargs:
+        if wan_interface_id is None and 'wanInterfaceId' in kwargs:
             wan_interface_id = kwargs['wanInterfaceId']
-        if 'zoneCode' in kwargs:
+        if zone_code is None and 'zoneCode' in kwargs:
             zone_code = kwargs['zoneCode']
 
         _setter("account_number", account_number)
@@ -1938,13 +1970,13 @@ class DeviceSecondaryDeviceInterfaceArgs:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'assignedType' in kwargs:
+        if assigned_type is None and 'assignedType' in kwargs:
             assigned_type = kwargs['assignedType']
-        if 'ipAddress' in kwargs:
+        if ip_address is None and 'ipAddress' in kwargs:
             ip_address = kwargs['ipAddress']
-        if 'macAddress' in kwargs:
+        if mac_address is None and 'macAddress' in kwargs:
             mac_address = kwargs['macAddress']
-        if 'operationalStatus' in kwargs:
+        if operational_status is None and 'operationalStatus' in kwargs:
             operational_status = kwargs['operationalStatus']
 
         if assigned_type is not None:
@@ -2077,12 +2109,16 @@ class DeviceSecondaryDeviceSshKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_name: pulumi.Input[str],
-             username: pulumi.Input[str],
+             key_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("key_name", key_name)
         _setter("username", username)
@@ -2125,12 +2161,16 @@ class DeviceSshKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key_name: pulumi.Input[str],
-             username: pulumi.Input[str],
+             key_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("key_name", key_name)
         _setter("username", username)

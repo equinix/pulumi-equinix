@@ -77,8 +77,8 @@ class ServiceProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             type: pulumi.Input[Union[str, 'ProfileType']],
+             description: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
              access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
              account: Optional[pulumi.Input['ServiceProfileAccountArgs']] = None,
              allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -96,17 +96,21 @@ class ServiceProfileArgs:
              visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
-        if 'allowedEmails' in kwargs:
+        if allowed_emails is None and 'allowedEmails' in kwargs:
             allowed_emails = kwargs['allowedEmails']
-        if 'customFields' in kwargs:
+        if custom_fields is None and 'customFields' in kwargs:
             custom_fields = kwargs['customFields']
-        if 'marketingInfo' in kwargs:
+        if marketing_info is None and 'marketingInfo' in kwargs:
             marketing_info = kwargs['marketingInfo']
-        if 'selfProfile' in kwargs:
+        if self_profile is None and 'selfProfile' in kwargs:
             self_profile = kwargs['selfProfile']
-        if 'virtualDevices' in kwargs:
+        if virtual_devices is None and 'virtualDevices' in kwargs:
             virtual_devices = kwargs['virtualDevices']
 
         _setter("description", description)
@@ -441,19 +445,19 @@ class _ServiceProfileState:
              visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
-        if 'allowedEmails' in kwargs:
+        if allowed_emails is None and 'allowedEmails' in kwargs:
             allowed_emails = kwargs['allowedEmails']
-        if 'changeLog' in kwargs:
+        if change_log is None and 'changeLog' in kwargs:
             change_log = kwargs['changeLog']
-        if 'customFields' in kwargs:
+        if custom_fields is None and 'customFields' in kwargs:
             custom_fields = kwargs['customFields']
-        if 'marketingInfo' in kwargs:
+        if marketing_info is None and 'marketingInfo' in kwargs:
             marketing_info = kwargs['marketingInfo']
-        if 'selfProfile' in kwargs:
+        if self_profile is None and 'selfProfile' in kwargs:
             self_profile = kwargs['selfProfile']
-        if 'virtualDevices' in kwargs:
+        if virtual_devices is None and 'virtualDevices' in kwargs:
             virtual_devices = kwargs['virtualDevices']
 
         if access_point_type_configs is not None:

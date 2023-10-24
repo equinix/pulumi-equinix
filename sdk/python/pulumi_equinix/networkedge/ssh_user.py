@@ -32,13 +32,19 @@ class SshUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
+             device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceIds' in kwargs:
+        if device_ids is None and 'deviceIds' in kwargs:
             device_ids = kwargs['deviceIds']
+        if device_ids is None:
+            raise TypeError("Missing 'device_ids' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
 
         _setter("device_ids", device_ids)
         _setter("password", password)
@@ -111,7 +117,7 @@ class _SshUserState:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceIds' in kwargs:
+        if device_ids is None and 'deviceIds' in kwargs:
             device_ids = kwargs['deviceIds']
 
         if device_ids is not None:

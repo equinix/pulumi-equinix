@@ -30,12 +30,16 @@ class UserApiKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             read_only: pulumi.Input[bool],
+             description: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'readOnly' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
+        if read_only is None:
+            raise TypeError("Missing 'read_only' argument")
 
         _setter("description", description)
         _setter("read_only", read_only)
@@ -97,9 +101,9 @@ class _UserApiKeyState:
              user_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if description is not None:

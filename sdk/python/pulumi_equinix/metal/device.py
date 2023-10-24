@@ -118,9 +118,9 @@ class DeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operating_system: pulumi.Input[Union[str, 'OperatingSystem']],
-             plan: pulumi.Input[Union[str, 'Plan']],
-             project_id: pulumi.Input[str],
+             operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
+             plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              always_pxe: Optional[pulumi.Input[bool]] = None,
              behavior: Optional[pulumi.Input['DeviceBehaviorArgs']] = None,
              billing_cycle: Optional[pulumi.Input[Union[str, 'BillingCycle']]] = None,
@@ -143,33 +143,39 @@ class DeviceArgs:
              wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'operatingSystem' in kwargs:
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'projectId' in kwargs:
+        if operating_system is None:
+            raise TypeError("Missing 'operating_system' argument")
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'alwaysPxe' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if always_pxe is None and 'alwaysPxe' in kwargs:
             always_pxe = kwargs['alwaysPxe']
-        if 'billingCycle' in kwargs:
+        if billing_cycle is None and 'billingCycle' in kwargs:
             billing_cycle = kwargs['billingCycle']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'forceDetachVolumes' in kwargs:
+        if force_detach_volumes is None and 'forceDetachVolumes' in kwargs:
             force_detach_volumes = kwargs['forceDetachVolumes']
-        if 'hardwareReservationId' in kwargs:
+        if hardware_reservation_id is None and 'hardwareReservationId' in kwargs:
             hardware_reservation_id = kwargs['hardwareReservationId']
-        if 'ipAddresses' in kwargs:
+        if ip_addresses is None and 'ipAddresses' in kwargs:
             ip_addresses = kwargs['ipAddresses']
-        if 'ipxeScriptUrl' in kwargs:
+        if ipxe_script_url is None and 'ipxeScriptUrl' in kwargs:
             ipxe_script_url = kwargs['ipxeScriptUrl']
-        if 'projectSshKeyIds' in kwargs:
+        if project_ssh_key_ids is None and 'projectSshKeyIds' in kwargs:
             project_ssh_key_ids = kwargs['projectSshKeyIds']
-        if 'terminationTime' in kwargs:
+        if termination_time is None and 'terminationTime' in kwargs:
             termination_time = kwargs['terminationTime']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'userSshKeyIds' in kwargs:
+        if user_ssh_key_ids is None and 'userSshKeyIds' in kwargs:
             user_ssh_key_ids = kwargs['userSshKeyIds']
-        if 'waitForReservationDeprovision' in kwargs:
+        if wait_for_reservation_deprovision is None and 'waitForReservationDeprovision' in kwargs:
             wait_for_reservation_deprovision = kwargs['waitForReservationDeprovision']
 
         _setter("operating_system", operating_system)
@@ -716,49 +722,49 @@ class _DeviceState:
              wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPrivateIpv4' in kwargs:
+        if access_private_ipv4 is None and 'accessPrivateIpv4' in kwargs:
             access_private_ipv4 = kwargs['accessPrivateIpv4']
-        if 'accessPublicIpv4' in kwargs:
+        if access_public_ipv4 is None and 'accessPublicIpv4' in kwargs:
             access_public_ipv4 = kwargs['accessPublicIpv4']
-        if 'accessPublicIpv6' in kwargs:
+        if access_public_ipv6 is None and 'accessPublicIpv6' in kwargs:
             access_public_ipv6 = kwargs['accessPublicIpv6']
-        if 'alwaysPxe' in kwargs:
+        if always_pxe is None and 'alwaysPxe' in kwargs:
             always_pxe = kwargs['alwaysPxe']
-        if 'billingCycle' in kwargs:
+        if billing_cycle is None and 'billingCycle' in kwargs:
             billing_cycle = kwargs['billingCycle']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'deployedFacility' in kwargs:
+        if deployed_facility is None and 'deployedFacility' in kwargs:
             deployed_facility = kwargs['deployedFacility']
-        if 'deployedHardwareReservationId' in kwargs:
+        if deployed_hardware_reservation_id is None and 'deployedHardwareReservationId' in kwargs:
             deployed_hardware_reservation_id = kwargs['deployedHardwareReservationId']
-        if 'forceDetachVolumes' in kwargs:
+        if force_detach_volumes is None and 'forceDetachVolumes' in kwargs:
             force_detach_volumes = kwargs['forceDetachVolumes']
-        if 'hardwareReservationId' in kwargs:
+        if hardware_reservation_id is None and 'hardwareReservationId' in kwargs:
             hardware_reservation_id = kwargs['hardwareReservationId']
-        if 'ipAddresses' in kwargs:
+        if ip_addresses is None and 'ipAddresses' in kwargs:
             ip_addresses = kwargs['ipAddresses']
-        if 'ipxeScriptUrl' in kwargs:
+        if ipxe_script_url is None and 'ipxeScriptUrl' in kwargs:
             ipxe_script_url = kwargs['ipxeScriptUrl']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'operatingSystem' in kwargs:
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'projectSshKeyIds' in kwargs:
+        if project_ssh_key_ids is None and 'projectSshKeyIds' in kwargs:
             project_ssh_key_ids = kwargs['projectSshKeyIds']
-        if 'rootPassword' in kwargs:
+        if root_password is None and 'rootPassword' in kwargs:
             root_password = kwargs['rootPassword']
-        if 'sshKeyIds' in kwargs:
+        if ssh_key_ids is None and 'sshKeyIds' in kwargs:
             ssh_key_ids = kwargs['sshKeyIds']
-        if 'terminationTime' in kwargs:
+        if termination_time is None and 'terminationTime' in kwargs:
             termination_time = kwargs['terminationTime']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'userSshKeyIds' in kwargs:
+        if user_ssh_key_ids is None and 'userSshKeyIds' in kwargs:
             user_ssh_key_ids = kwargs['userSshKeyIds']
-        if 'waitForReservationDeprovision' in kwargs:
+        if wait_for_reservation_deprovision is None and 'waitForReservationDeprovision' in kwargs:
             wait_for_reservation_deprovision = kwargs['waitForReservationDeprovision']
 
         if access_private_ipv4 is not None:

@@ -64,7 +64,7 @@ class ReservedIpBlockArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              cidr: Optional[pulumi.Input[int]] = None,
              custom_data: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -78,13 +78,15 @@ class ReservedIpBlockArgs:
              wait_for_state: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'customData' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'vrfId' in kwargs:
+        if vrf_id is None and 'vrfId' in kwargs:
             vrf_id = kwargs['vrfId']
-        if 'waitForState' in kwargs:
+        if wait_for_state is None and 'waitForState' in kwargs:
             wait_for_state = kwargs['waitForState']
 
         _setter("project_id", project_id)
@@ -359,19 +361,19 @@ class _ReservedIpBlockState:
              wait_for_state: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'cidrNotation' in kwargs:
+        if cidr_notation is None and 'cidrNotation' in kwargs:
             cidr_notation = kwargs['cidrNotation']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'vrfId' in kwargs:
+        if vrf_id is None and 'vrfId' in kwargs:
             vrf_id = kwargs['vrfId']
-        if 'waitForState' in kwargs:
+        if wait_for_state is None and 'waitForState' in kwargs:
             wait_for_state = kwargs['waitForState']
 
         if address is not None:

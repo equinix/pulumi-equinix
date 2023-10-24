@@ -30,14 +30,18 @@ class IpAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cidr_notation: pulumi.Input[str],
-             device_id: pulumi.Input[str],
+             cidr_notation: Optional[pulumi.Input[str]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'cidrNotation' in kwargs:
+        if cidr_notation is None and 'cidrNotation' in kwargs:
             cidr_notation = kwargs['cidrNotation']
-        if 'deviceId' in kwargs:
+        if cidr_notation is None:
+            raise TypeError("Missing 'cidr_notation' argument")
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
 
         _setter("cidr_notation", cidr_notation)
         _setter("device_id", device_id)
@@ -131,15 +135,15 @@ class _IpAttachmentState:
              vrf_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'cidrNotation' in kwargs:
+        if cidr_notation is None and 'cidrNotation' in kwargs:
             cidr_notation = kwargs['cidrNotation']
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'global' in kwargs:
+        if global_ is None and 'global' in kwargs:
             global_ = kwargs['global']
-        if 'vrfId' in kwargs:
+        if vrf_id is None and 'vrfId' in kwargs:
             vrf_id = kwargs['vrfId']
 
         if address is not None:

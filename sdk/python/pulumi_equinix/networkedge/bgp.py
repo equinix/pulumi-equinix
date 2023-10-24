@@ -42,25 +42,35 @@ class BgpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             local_asn: pulumi.Input[int],
-             local_ip_address: pulumi.Input[str],
-             remote_asn: pulumi.Input[int],
-             remote_ip_address: pulumi.Input[str],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             local_asn: Optional[pulumi.Input[int]] = None,
+             local_ip_address: Optional[pulumi.Input[str]] = None,
+             remote_asn: Optional[pulumi.Input[int]] = None,
+             remote_ip_address: Optional[pulumi.Input[str]] = None,
              authentication_key: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'connectionId' in kwargs:
+        if connection_id is None and 'connectionId' in kwargs:
             connection_id = kwargs['connectionId']
-        if 'localAsn' in kwargs:
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localIpAddress' in kwargs:
+        if local_asn is None:
+            raise TypeError("Missing 'local_asn' argument")
+        if local_ip_address is None and 'localIpAddress' in kwargs:
             local_ip_address = kwargs['localIpAddress']
-        if 'remoteAsn' in kwargs:
+        if local_ip_address is None:
+            raise TypeError("Missing 'local_ip_address' argument")
+        if remote_asn is None and 'remoteAsn' in kwargs:
             remote_asn = kwargs['remoteAsn']
-        if 'remoteIpAddress' in kwargs:
+        if remote_asn is None:
+            raise TypeError("Missing 'remote_asn' argument")
+        if remote_ip_address is None and 'remoteIpAddress' in kwargs:
             remote_ip_address = kwargs['remoteIpAddress']
-        if 'authenticationKey' in kwargs:
+        if remote_ip_address is None:
+            raise TypeError("Missing 'remote_ip_address' argument")
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
 
         _setter("connection_id", connection_id)
@@ -203,21 +213,21 @@ class _BgpState:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'connectionId' in kwargs:
+        if connection_id is None and 'connectionId' in kwargs:
             connection_id = kwargs['connectionId']
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'localIpAddress' in kwargs:
+        if local_ip_address is None and 'localIpAddress' in kwargs:
             local_ip_address = kwargs['localIpAddress']
-        if 'provisioningStatus' in kwargs:
+        if provisioning_status is None and 'provisioningStatus' in kwargs:
             provisioning_status = kwargs['provisioningStatus']
-        if 'remoteAsn' in kwargs:
+        if remote_asn is None and 'remoteAsn' in kwargs:
             remote_asn = kwargs['remoteAsn']
-        if 'remoteIpAddress' in kwargs:
+        if remote_ip_address is None and 'remoteIpAddress' in kwargs:
             remote_ip_address = kwargs['remoteIpAddress']
 
         if authentication_key is not None:

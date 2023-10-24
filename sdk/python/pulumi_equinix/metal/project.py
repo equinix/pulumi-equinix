@@ -52,13 +52,13 @@ class ProjectArgs:
              payment_method_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'backendTransfer' in kwargs:
+        if backend_transfer is None and 'backendTransfer' in kwargs:
             backend_transfer = kwargs['backendTransfer']
-        if 'bgpConfig' in kwargs:
+        if bgp_config is None and 'bgpConfig' in kwargs:
             bgp_config = kwargs['bgpConfig']
-        if 'organizationId' in kwargs:
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'paymentMethodId' in kwargs:
+        if payment_method_id is None and 'paymentMethodId' in kwargs:
             payment_method_id = kwargs['paymentMethodId']
 
         if backend_transfer is not None:
@@ -185,13 +185,13 @@ class _ProjectState:
              updated: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'backendTransfer' in kwargs:
+        if backend_transfer is None and 'backendTransfer' in kwargs:
             backend_transfer = kwargs['backendTransfer']
-        if 'bgpConfig' in kwargs:
+        if bgp_config is None and 'bgpConfig' in kwargs:
             bgp_config = kwargs['bgpConfig']
-        if 'organizationId' in kwargs:
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'paymentMethodId' in kwargs:
+        if payment_method_id is None and 'paymentMethodId' in kwargs:
             payment_method_id = kwargs['paymentMethodId']
 
         if backend_transfer is not None:

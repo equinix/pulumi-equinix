@@ -130,14 +130,14 @@ class DeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_number: pulumi.Input[str],
-             core_count: pulumi.Input[int],
-             metro_code: pulumi.Input[str],
-             notifications: pulumi.Input[Sequence[pulumi.Input[str]]],
-             package_code: pulumi.Input[str],
-             term_length: pulumi.Input[int],
-             type_code: pulumi.Input[str],
-             version: pulumi.Input[str],
+             account_number: Optional[pulumi.Input[str]] = None,
+             core_count: Optional[pulumi.Input[int]] = None,
+             metro_code: Optional[pulumi.Input[str]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             package_code: Optional[pulumi.Input[str]] = None,
+             term_length: Optional[pulumi.Input[int]] = None,
+             type_code: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              acl_template_id: Optional[pulumi.Input[str]] = None,
              additional_bandwidth: Optional[pulumi.Input[int]] = None,
              byol: Optional[pulumi.Input[bool]] = None,
@@ -162,51 +162,67 @@ class DeviceArgs:
              wan_interface_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'coreCount' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if core_count is None and 'coreCount' in kwargs:
             core_count = kwargs['coreCount']
-        if 'metroCode' in kwargs:
+        if core_count is None:
+            raise TypeError("Missing 'core_count' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'packageCode' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if package_code is None and 'packageCode' in kwargs:
             package_code = kwargs['packageCode']
-        if 'termLength' in kwargs:
+        if package_code is None:
+            raise TypeError("Missing 'package_code' argument")
+        if term_length is None and 'termLength' in kwargs:
             term_length = kwargs['termLength']
-        if 'typeCode' in kwargs:
+        if term_length is None:
+            raise TypeError("Missing 'term_length' argument")
+        if type_code is None and 'typeCode' in kwargs:
             type_code = kwargs['typeCode']
-        if 'aclTemplateId' in kwargs:
+        if type_code is None:
+            raise TypeError("Missing 'type_code' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if acl_template_id is None and 'aclTemplateId' in kwargs:
             acl_template_id = kwargs['aclTemplateId']
-        if 'additionalBandwidth' in kwargs:
+        if additional_bandwidth is None and 'additionalBandwidth' in kwargs:
             additional_bandwidth = kwargs['additionalBandwidth']
-        if 'cloudInitFileId' in kwargs:
+        if cloud_init_file_id is None and 'cloudInitFileId' in kwargs:
             cloud_init_file_id = kwargs['cloudInitFileId']
-        if 'clusterDetails' in kwargs:
+        if cluster_details is None and 'clusterDetails' in kwargs:
             cluster_details = kwargs['clusterDetails']
-        if 'interfaceCount' in kwargs:
+        if interface_count is None and 'interfaceCount' in kwargs:
             interface_count = kwargs['interfaceCount']
-        if 'licenseFile' in kwargs:
+        if license_file is None and 'licenseFile' in kwargs:
             license_file = kwargs['licenseFile']
-        if 'licenseFileId' in kwargs:
+        if license_file_id is None and 'licenseFileId' in kwargs:
             license_file_id = kwargs['licenseFileId']
-        if 'licenseToken' in kwargs:
+        if license_token is None and 'licenseToken' in kwargs:
             license_token = kwargs['licenseToken']
-        if 'mgmtAclTemplateUuid' in kwargs:
+        if mgmt_acl_template_uuid is None and 'mgmtAclTemplateUuid' in kwargs:
             mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
-        if 'orderReference' in kwargs:
+        if order_reference is None and 'orderReference' in kwargs:
             order_reference = kwargs['orderReference']
-        if 'purchaseOrderNumber' in kwargs:
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
-        if 'secondaryDevice' in kwargs:
+        if secondary_device is None and 'secondaryDevice' in kwargs:
             secondary_device = kwargs['secondaryDevice']
-        if 'selfManaged' in kwargs:
+        if self_managed is None and 'selfManaged' in kwargs:
             self_managed = kwargs['selfManaged']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'throughputUnit' in kwargs:
+        if throughput_unit is None and 'throughputUnit' in kwargs:
             throughput_unit = kwargs['throughputUnit']
-        if 'vendorConfiguration' in kwargs:
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
             vendor_configuration = kwargs['vendorConfiguration']
-        if 'wanInterfaceId' in kwargs:
+        if wan_interface_id is None and 'wanInterfaceId' in kwargs:
             wan_interface_id = kwargs['wanInterfaceId']
 
         _setter("account_number", account_number)
@@ -836,63 +852,63 @@ class _DeviceState:
              zone_code: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'aclTemplateId' in kwargs:
+        if acl_template_id is None and 'aclTemplateId' in kwargs:
             acl_template_id = kwargs['aclTemplateId']
-        if 'additionalBandwidth' in kwargs:
+        if additional_bandwidth is None and 'additionalBandwidth' in kwargs:
             additional_bandwidth = kwargs['additionalBandwidth']
-        if 'cloudInitFileId' in kwargs:
+        if cloud_init_file_id is None and 'cloudInitFileId' in kwargs:
             cloud_init_file_id = kwargs['cloudInitFileId']
-        if 'clusterDetails' in kwargs:
+        if cluster_details is None and 'clusterDetails' in kwargs:
             cluster_details = kwargs['clusterDetails']
-        if 'coreCount' in kwargs:
+        if core_count is None and 'coreCount' in kwargs:
             core_count = kwargs['coreCount']
-        if 'interfaceCount' in kwargs:
+        if interface_count is None and 'interfaceCount' in kwargs:
             interface_count = kwargs['interfaceCount']
-        if 'licenseFile' in kwargs:
+        if license_file is None and 'licenseFile' in kwargs:
             license_file = kwargs['licenseFile']
-        if 'licenseFileId' in kwargs:
+        if license_file_id is None and 'licenseFileId' in kwargs:
             license_file_id = kwargs['licenseFileId']
-        if 'licenseStatus' in kwargs:
+        if license_status is None and 'licenseStatus' in kwargs:
             license_status = kwargs['licenseStatus']
-        if 'licenseToken' in kwargs:
+        if license_token is None and 'licenseToken' in kwargs:
             license_token = kwargs['licenseToken']
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'mgmtAclTemplateUuid' in kwargs:
+        if mgmt_acl_template_uuid is None and 'mgmtAclTemplateUuid' in kwargs:
             mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
-        if 'orderReference' in kwargs:
+        if order_reference is None and 'orderReference' in kwargs:
             order_reference = kwargs['orderReference']
-        if 'packageCode' in kwargs:
+        if package_code is None and 'packageCode' in kwargs:
             package_code = kwargs['packageCode']
-        if 'purchaseOrderNumber' in kwargs:
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
-        if 'redundancyType' in kwargs:
+        if redundancy_type is None and 'redundancyType' in kwargs:
             redundancy_type = kwargs['redundancyType']
-        if 'redundantId' in kwargs:
+        if redundant_id is None and 'redundantId' in kwargs:
             redundant_id = kwargs['redundantId']
-        if 'secondaryDevice' in kwargs:
+        if secondary_device is None and 'secondaryDevice' in kwargs:
             secondary_device = kwargs['secondaryDevice']
-        if 'selfManaged' in kwargs:
+        if self_managed is None and 'selfManaged' in kwargs:
             self_managed = kwargs['selfManaged']
-        if 'sshIpAddress' in kwargs:
+        if ssh_ip_address is None and 'sshIpAddress' in kwargs:
             ssh_ip_address = kwargs['sshIpAddress']
-        if 'sshIpFqdn' in kwargs:
+        if ssh_ip_fqdn is None and 'sshIpFqdn' in kwargs:
             ssh_ip_fqdn = kwargs['sshIpFqdn']
-        if 'sshKey' in kwargs:
+        if ssh_key is None and 'sshKey' in kwargs:
             ssh_key = kwargs['sshKey']
-        if 'termLength' in kwargs:
+        if term_length is None and 'termLength' in kwargs:
             term_length = kwargs['termLength']
-        if 'throughputUnit' in kwargs:
+        if throughput_unit is None and 'throughputUnit' in kwargs:
             throughput_unit = kwargs['throughputUnit']
-        if 'typeCode' in kwargs:
+        if type_code is None and 'typeCode' in kwargs:
             type_code = kwargs['typeCode']
-        if 'vendorConfiguration' in kwargs:
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
             vendor_configuration = kwargs['vendorConfiguration']
-        if 'wanInterfaceId' in kwargs:
+        if wan_interface_id is None and 'wanInterfaceId' in kwargs:
             wan_interface_id = kwargs['wanInterfaceId']
-        if 'zoneCode' in kwargs:
+        if zone_code is None and 'zoneCode' in kwargs:
             zone_code = kwargs['zoneCode']
 
         if account_number is not None:

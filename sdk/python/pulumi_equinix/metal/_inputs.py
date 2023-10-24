@@ -46,7 +46,7 @@ class DeviceBehaviorArgs:
              allow_changes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowChanges' in kwargs:
+        if allow_changes is None and 'allowChanges' in kwargs:
             allow_changes = kwargs['allowChanges']
 
         if allow_changes is not None:
@@ -92,12 +92,14 @@ class DeviceIpAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              cidr: Optional[pulumi.Input[int]] = None,
              reservation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'reservationIds' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if reservation_ids is None and 'reservationIds' in kwargs:
             reservation_ids = kwargs['reservationIds']
 
         _setter("type", type)
@@ -390,9 +392,9 @@ class DeviceReinstallArgs:
              preserve_data: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deprovisionFast' in kwargs:
+        if deprovision_fast is None and 'deprovisionFast' in kwargs:
             deprovision_fast = kwargs['deprovisionFast']
-        if 'preserveData' in kwargs:
+        if preserve_data is None and 'preserveData' in kwargs:
             preserve_data = kwargs['preserveData']
 
         if deprovision_fast is not None:
@@ -479,9 +481,9 @@ class InterconnectionPortArgs:
              virtual_circuit_ids: Optional[pulumi.Input[Sequence[Any]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'linkStatus' in kwargs:
+        if link_status is None and 'linkStatus' in kwargs:
             link_status = kwargs['linkStatus']
-        if 'virtualCircuitIds' in kwargs:
+        if virtual_circuit_ids is None and 'virtualCircuitIds' in kwargs:
             virtual_circuit_ids = kwargs['virtualCircuitIds']
 
         if id is not None:
@@ -604,9 +606,9 @@ class InterconnectionServiceTokenArgs:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresAt' in kwargs:
+        if expires_at is None and 'expiresAt' in kwargs:
             expires_at = kwargs['expiresAt']
-        if 'maxAllowedSpeed' in kwargs:
+        if max_allowed_speed is None and 'maxAllowedSpeed' in kwargs:
             max_allowed_speed = kwargs['maxAllowedSpeed']
 
         if expires_at is not None:
@@ -706,15 +708,23 @@ class OrganizationAddressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             city: pulumi.Input[str],
-             country: pulumi.Input[str],
-             zip_code: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             city: Optional[pulumi.Input[str]] = None,
+             country: Optional[pulumi.Input[str]] = None,
+             zip_code: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zipCode' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if city is None:
+            raise TypeError("Missing 'city' argument")
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if zip_code is None and 'zipCode' in kwargs:
             zip_code = kwargs['zipCode']
+        if zip_code is None:
+            raise TypeError("Missing 'zip_code' argument")
 
         _setter("address", address)
         _setter("city", city)
@@ -811,16 +821,20 @@ class ProjectBgpConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asn: pulumi.Input[int],
-             deployment_type: pulumi.Input[str],
+             asn: Optional[pulumi.Input[int]] = None,
+             deployment_type: Optional[pulumi.Input[str]] = None,
              max_prefix: Optional[pulumi.Input[int]] = None,
              md5: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deploymentType' in kwargs:
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if deployment_type is None and 'deploymentType' in kwargs:
             deployment_type = kwargs['deploymentType']
-        if 'maxPrefix' in kwargs:
+        if deployment_type is None:
+            raise TypeError("Missing 'deployment_type' argument")
+        if max_prefix is None and 'maxPrefix' in kwargs:
             max_prefix = kwargs['maxPrefix']
 
         _setter("asn", asn)
@@ -938,10 +952,10 @@ class SpotMarketRequestInstanceParametersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_cycle: pulumi.Input[str],
-             hostname: pulumi.Input[str],
-             operating_system: pulumi.Input[str],
-             plan: pulumi.Input[str],
+             billing_cycle: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             operating_system: Optional[pulumi.Input[str]] = None,
+             plan: Optional[pulumi.Input[str]] = None,
              always_pxe: Optional[pulumi.Input[bool]] = None,
              customdata: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -956,21 +970,29 @@ class SpotMarketRequestInstanceParametersArgs:
              userdata: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingCycle' in kwargs:
+        if billing_cycle is None and 'billingCycle' in kwargs:
             billing_cycle = kwargs['billingCycle']
-        if 'operatingSystem' in kwargs:
+        if billing_cycle is None:
+            raise TypeError("Missing 'billing_cycle' argument")
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'alwaysPxe' in kwargs:
+        if operating_system is None:
+            raise TypeError("Missing 'operating_system' argument")
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if always_pxe is None and 'alwaysPxe' in kwargs:
             always_pxe = kwargs['alwaysPxe']
-        if 'ipxeScriptUrl' in kwargs:
+        if ipxe_script_url is None and 'ipxeScriptUrl' in kwargs:
             ipxe_script_url = kwargs['ipxeScriptUrl']
-        if 'projectSshKeys' in kwargs:
+        if project_ssh_keys is None and 'projectSshKeys' in kwargs:
             project_ssh_keys = kwargs['projectSshKeys']
-        if 'terminationTime' in kwargs:
+        if termination_time is None and 'terminationTime' in kwargs:
             termination_time = kwargs['terminationTime']
-        if 'termintationTime' in kwargs:
+        if termintation_time is None and 'termintationTime' in kwargs:
             termintation_time = kwargs['termintationTime']
-        if 'userSshKeys' in kwargs:
+        if user_ssh_keys is None and 'userSshKeys' in kwargs:
             user_ssh_keys = kwargs['userSshKeys']
 
         _setter("billing_cycle", billing_cycle)
@@ -1181,13 +1203,17 @@ class GetDevicesFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
-             values: Sequence[str],
+             attribute: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'matchBy' in kwargs:
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
             match_by = kwargs['matchBy']
 
         _setter("attribute", attribute)
@@ -1264,10 +1290,12 @@ class GetDevicesSortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
+             attribute: Optional[str] = None,
              direction: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
 
         _setter("attribute", attribute)
         if direction is not None:
@@ -1313,10 +1341,12 @@ class GetFacilityCapacityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: str,
+             plan: Optional[str] = None,
              quantity: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
 
         _setter("plan", plan)
         if quantity is not None:
@@ -1366,10 +1396,12 @@ class GetMetroCapacityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: str,
+             plan: Optional[str] = None,
              quantity: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
 
         _setter("plan", plan)
         if quantity is not None:
@@ -1426,13 +1458,17 @@ class GetPlansFilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
-             values: Sequence[str],
+             attribute: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'matchBy' in kwargs:
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
             match_by = kwargs['matchBy']
 
         _setter("attribute", attribute)
@@ -1510,10 +1546,12 @@ class GetPlansSortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
+             attribute: Optional[str] = None,
              direction: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
 
         _setter("attribute", attribute)
         if direction is not None:

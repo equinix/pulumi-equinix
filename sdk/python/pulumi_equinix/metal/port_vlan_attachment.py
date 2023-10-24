@@ -42,20 +42,26 @@ class PortVlanAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             device_id: pulumi.Input[str],
-             port_name: pulumi.Input[str],
-             vlan_vnid: pulumi.Input[int],
+             device_id: Optional[pulumi.Input[str]] = None,
+             port_name: Optional[pulumi.Input[str]] = None,
+             vlan_vnid: Optional[pulumi.Input[int]] = None,
              force_bond: Optional[pulumi.Input[bool]] = None,
              native: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'portName' in kwargs:
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
+        if port_name is None and 'portName' in kwargs:
             port_name = kwargs['portName']
-        if 'vlanVnid' in kwargs:
+        if port_name is None:
+            raise TypeError("Missing 'port_name' argument")
+        if vlan_vnid is None and 'vlanVnid' in kwargs:
             vlan_vnid = kwargs['vlanVnid']
-        if 'forceBond' in kwargs:
+        if vlan_vnid is None:
+            raise TypeError("Missing 'vlan_vnid' argument")
+        if force_bond is None and 'forceBond' in kwargs:
             force_bond = kwargs['forceBond']
 
         _setter("device_id", device_id)
@@ -177,17 +183,17 @@ class _PortVlanAttachmentState:
              vlan_vnid: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'forceBond' in kwargs:
+        if force_bond is None and 'forceBond' in kwargs:
             force_bond = kwargs['forceBond']
-        if 'portId' in kwargs:
+        if port_id is None and 'portId' in kwargs:
             port_id = kwargs['portId']
-        if 'portName' in kwargs:
+        if port_name is None and 'portName' in kwargs:
             port_name = kwargs['portName']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'vlanVnid' in kwargs:
+        if vlan_vnid is None and 'vlanVnid' in kwargs:
             vlan_vnid = kwargs['vlanVnid']
 
         if device_id is not None:

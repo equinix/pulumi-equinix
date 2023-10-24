@@ -44,7 +44,7 @@ class OrganizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input['OrganizationAddressArgs'],
+             address: Optional[pulumi.Input['OrganizationAddressArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              logo: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -52,6 +52,8 @@ class OrganizationArgs:
              website: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
 
         _setter("address", address)
         if description is not None:

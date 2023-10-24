@@ -60,19 +60,19 @@ class ProviderArgs:
              token: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authToken' in kwargs:
+        if auth_token is None and 'authToken' in kwargs:
             auth_token = kwargs['authToken']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'maxRetries' in kwargs:
+        if max_retries is None and 'maxRetries' in kwargs:
             max_retries = kwargs['maxRetries']
-        if 'maxRetryWaitSeconds' in kwargs:
+        if max_retry_wait_seconds is None and 'maxRetryWaitSeconds' in kwargs:
             max_retry_wait_seconds = kwargs['maxRetryWaitSeconds']
-        if 'requestTimeout' in kwargs:
+        if request_timeout is None and 'requestTimeout' in kwargs:
             request_timeout = kwargs['requestTimeout']
-        if 'responseMaxPageSize' in kwargs:
+        if response_max_page_size is None and 'responseMaxPageSize' in kwargs:
             response_max_page_size = kwargs['responseMaxPageSize']
 
         if auth_token is not None:

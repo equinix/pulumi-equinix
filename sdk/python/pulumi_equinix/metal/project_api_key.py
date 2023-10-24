@@ -33,15 +33,21 @@ class ProjectApiKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             project_id: pulumi.Input[str],
-             read_only: pulumi.Input[bool],
+             description: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'readOnly' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
+        if read_only is None:
+            raise TypeError("Missing 'read_only' argument")
 
         _setter("description", description)
         _setter("project_id", project_id)
@@ -116,9 +122,9 @@ class _ProjectApiKeyState:
              token: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if description is not None:

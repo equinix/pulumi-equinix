@@ -40,12 +40,14 @@ class DeviceLinkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             devices: pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]],
+             devices: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]] = None,
              links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              subnet: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if devices is None:
+            raise TypeError("Missing 'devices' argument")
 
         _setter("devices", devices)
         if links is not None:

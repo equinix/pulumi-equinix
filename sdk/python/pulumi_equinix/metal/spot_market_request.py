@@ -54,27 +54,37 @@ class SpotMarketRequestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             devices_max: pulumi.Input[int],
-             devices_min: pulumi.Input[int],
-             instance_parameters: pulumi.Input['SpotMarketRequestInstanceParametersArgs'],
-             max_bid_price: pulumi.Input[float],
-             project_id: pulumi.Input[str],
+             devices_max: Optional[pulumi.Input[int]] = None,
+             devices_min: Optional[pulumi.Input[int]] = None,
+             instance_parameters: Optional[pulumi.Input['SpotMarketRequestInstanceParametersArgs']] = None,
+             max_bid_price: Optional[pulumi.Input[float]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              facilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              metro: Optional[pulumi.Input[str]] = None,
              wait_for_devices: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'devicesMax' in kwargs:
+        if devices_max is None and 'devicesMax' in kwargs:
             devices_max = kwargs['devicesMax']
-        if 'devicesMin' in kwargs:
+        if devices_max is None:
+            raise TypeError("Missing 'devices_max' argument")
+        if devices_min is None and 'devicesMin' in kwargs:
             devices_min = kwargs['devicesMin']
-        if 'instanceParameters' in kwargs:
+        if devices_min is None:
+            raise TypeError("Missing 'devices_min' argument")
+        if instance_parameters is None and 'instanceParameters' in kwargs:
             instance_parameters = kwargs['instanceParameters']
-        if 'maxBidPrice' in kwargs:
+        if instance_parameters is None:
+            raise TypeError("Missing 'instance_parameters' argument")
+        if max_bid_price is None and 'maxBidPrice' in kwargs:
             max_bid_price = kwargs['maxBidPrice']
-        if 'projectId' in kwargs:
+        if max_bid_price is None:
+            raise TypeError("Missing 'max_bid_price' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'waitForDevices' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if wait_for_devices is None and 'waitForDevices' in kwargs:
             wait_for_devices = kwargs['waitForDevices']
 
         _setter("devices_max", devices_max)
@@ -248,17 +258,17 @@ class _SpotMarketRequestState:
              wait_for_devices: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'devicesMax' in kwargs:
+        if devices_max is None and 'devicesMax' in kwargs:
             devices_max = kwargs['devicesMax']
-        if 'devicesMin' in kwargs:
+        if devices_min is None and 'devicesMin' in kwargs:
             devices_min = kwargs['devicesMin']
-        if 'instanceParameters' in kwargs:
+        if instance_parameters is None and 'instanceParameters' in kwargs:
             instance_parameters = kwargs['instanceParameters']
-        if 'maxBidPrice' in kwargs:
+        if max_bid_price is None and 'maxBidPrice' in kwargs:
             max_bid_price = kwargs['maxBidPrice']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'waitForDevices' in kwargs:
+        if wait_for_devices is None and 'waitForDevices' in kwargs:
             wait_for_devices = kwargs['waitForDevices']
 
         if devices_max is not None:

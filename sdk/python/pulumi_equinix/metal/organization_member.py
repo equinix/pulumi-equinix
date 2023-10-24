@@ -38,17 +38,25 @@ class OrganizationMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             invitee: pulumi.Input[str],
-             organization_id: pulumi.Input[str],
-             projects_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             roles: pulumi.Input[Sequence[pulumi.Input[str]]],
+             invitee: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             projects_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              message: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'organizationId' in kwargs:
+        if invitee is None:
+            raise TypeError("Missing 'invitee' argument")
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'projectsIds' in kwargs:
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if projects_ids is None and 'projectsIds' in kwargs:
             projects_ids = kwargs['projectsIds']
+        if projects_ids is None:
+            raise TypeError("Missing 'projects_ids' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
 
         _setter("invitee", invitee)
         _setter("organization_id", organization_id)
@@ -172,11 +180,11 @@ class _OrganizationMemberState:
              updated: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'invitedBy' in kwargs:
+        if invited_by is None and 'invitedBy' in kwargs:
             invited_by = kwargs['invitedBy']
-        if 'organizationId' in kwargs:
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'projectsIds' in kwargs:
+        if projects_ids is None and 'projectsIds' in kwargs:
             projects_ids = kwargs['projectsIds']
 
         if created is not None:

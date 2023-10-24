@@ -235,7 +235,7 @@ class CloudRouterAccount(dict):
              account_number: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
 
         if account_number is not None:
@@ -336,29 +336,29 @@ class CloudRouterChangeLog(dict):
              updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -495,9 +495,9 @@ class CloudRouterLocation(dict):
              region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -579,12 +579,16 @@ class CloudRouterNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
              send_interval: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
 
         _setter("emails", emails)
@@ -669,13 +673,13 @@ class CloudRouterOrder(dict):
              purchase_order_number: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingTier' in kwargs:
+        if billing_tier is None and 'billingTier' in kwargs:
             billing_tier = kwargs['billingTier']
-        if 'orderId' in kwargs:
+        if order_id is None and 'orderId' in kwargs:
             order_id = kwargs['orderId']
-        if 'orderNumber' in kwargs:
+        if order_number is None and 'orderNumber' in kwargs:
             order_number = kwargs['orderNumber']
-        if 'purchaseOrderNumber' in kwargs:
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
 
         if billing_tier is not None:
@@ -734,9 +738,11 @@ class CloudRouterPackage(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: str,
+             code: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
 
         _setter("code", code)
 
@@ -787,7 +793,7 @@ class CloudRouterProject(dict):
              project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if href is not None:
@@ -858,11 +864,11 @@ class ConnectionASide(dict):
              service_token: Optional['outputs.ConnectionASideServiceToken'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPoint' in kwargs:
+        if access_point is None and 'accessPoint' in kwargs:
             access_point = kwargs['accessPoint']
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'serviceToken' in kwargs:
+        if service_token is None and 'serviceToken' in kwargs:
             service_token = kwargs['serviceToken']
 
         if access_point is not None:
@@ -1001,19 +1007,19 @@ class ConnectionASideAccessPoint(dict):
              virtual_device: Optional['outputs.ConnectionASideAccessPointVirtualDevice'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'linkProtocol' in kwargs:
+        if link_protocol is None and 'linkProtocol' in kwargs:
             link_protocol = kwargs['linkProtocol']
-        if 'peeringType' in kwargs:
+        if peering_type is None and 'peeringType' in kwargs:
             peering_type = kwargs['peeringType']
-        if 'providerConnectionId' in kwargs:
+        if provider_connection_id is None and 'providerConnectionId' in kwargs:
             provider_connection_id = kwargs['providerConnectionId']
-        if 'routingProtocols' in kwargs:
+        if routing_protocols is None and 'routingProtocols' in kwargs:
             routing_protocols = kwargs['routingProtocols']
-        if 'sellerRegion' in kwargs:
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'virtualDevice' in kwargs:
+        if virtual_device is None and 'virtualDevice' in kwargs:
             virtual_device = kwargs['virtualDevice']
 
         if account is not None:
@@ -1236,19 +1242,19 @@ class ConnectionASideAccessPointAccount(dict):
              organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
 
         if account_name is not None:
@@ -1454,11 +1460,11 @@ class ConnectionASideAccessPointLinkProtocol(dict):
              vlan_tag: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'vlanCTag' in kwargs:
+        if vlan_c_tag is None and 'vlanCTag' in kwargs:
             vlan_c_tag = kwargs['vlanCTag']
-        if 'vlanSTag' in kwargs:
+        if vlan_s_tag is None and 'vlanSTag' in kwargs:
             vlan_s_tag = kwargs['vlanSTag']
-        if 'vlanTag' in kwargs:
+        if vlan_tag is None and 'vlanTag' in kwargs:
             vlan_tag = kwargs['vlanTag']
 
         if type is not None:
@@ -1551,9 +1557,9 @@ class ConnectionASideAccessPointLocation(dict):
              region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -1790,15 +1796,19 @@ class ConnectionASideAccessPointProfile(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             uuid: str,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              access_point_type_configs: Optional[Sequence['outputs.ConnectionASideAccessPointProfileAccessPointTypeConfig']] = None,
              description: Optional[str] = None,
              href: Optional[str] = None,
              name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
 
         _setter("type", type)
@@ -2242,19 +2252,19 @@ class ConnectionAccount(dict):
              organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
 
         if account_name is not None:
@@ -2394,29 +2404,29 @@ class ConnectionChangeLog(dict):
              updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -2542,12 +2552,16 @@ class ConnectionNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
              send_interval: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
 
         _setter("emails", emails)
@@ -2619,9 +2633,9 @@ class ConnectionOperation(dict):
              provider_status: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixStatus' in kwargs:
+        if equinix_status is None and 'equinixStatus' in kwargs:
             equinix_status = kwargs['equinixStatus']
-        if 'providerStatus' in kwargs:
+        if provider_status is None and 'providerStatus' in kwargs:
             provider_status = kwargs['providerStatus']
 
         if equinix_status is not None:
@@ -2702,13 +2716,13 @@ class ConnectionOperationError(dict):
              help: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'correlationId' in kwargs:
+        if correlation_id is None and 'correlationId' in kwargs:
             correlation_id = kwargs['correlationId']
-        if 'errorCode' in kwargs:
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorMessage' in kwargs:
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
 
         if additional_info is not None:
@@ -2844,13 +2858,13 @@ class ConnectionOrder(dict):
              purchase_order_number: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingTier' in kwargs:
+        if billing_tier is None and 'billingTier' in kwargs:
             billing_tier = kwargs['billingTier']
-        if 'orderId' in kwargs:
+        if order_id is None and 'orderId' in kwargs:
             order_id = kwargs['orderId']
-        if 'orderNumber' in kwargs:
+        if order_number is None and 'orderNumber' in kwargs:
             order_number = kwargs['orderNumber']
-        if 'purchaseOrderNumber' in kwargs:
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
 
         if billing_tier is not None:
@@ -2933,7 +2947,7 @@ class ConnectionProject(dict):
              project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if href is not None:
@@ -3048,11 +3062,11 @@ class ConnectionZSide(dict):
              service_token: Optional['outputs.ConnectionZSideServiceToken'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPoint' in kwargs:
+        if access_point is None and 'accessPoint' in kwargs:
             access_point = kwargs['accessPoint']
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'serviceToken' in kwargs:
+        if service_token is None and 'serviceToken' in kwargs:
             service_token = kwargs['serviceToken']
 
         if access_point is not None:
@@ -3191,19 +3205,19 @@ class ConnectionZSideAccessPoint(dict):
              virtual_device: Optional['outputs.ConnectionZSideAccessPointVirtualDevice'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'linkProtocol' in kwargs:
+        if link_protocol is None and 'linkProtocol' in kwargs:
             link_protocol = kwargs['linkProtocol']
-        if 'peeringType' in kwargs:
+        if peering_type is None and 'peeringType' in kwargs:
             peering_type = kwargs['peeringType']
-        if 'providerConnectionId' in kwargs:
+        if provider_connection_id is None and 'providerConnectionId' in kwargs:
             provider_connection_id = kwargs['providerConnectionId']
-        if 'routingProtocols' in kwargs:
+        if routing_protocols is None and 'routingProtocols' in kwargs:
             routing_protocols = kwargs['routingProtocols']
-        if 'sellerRegion' in kwargs:
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'virtualDevice' in kwargs:
+        if virtual_device is None and 'virtualDevice' in kwargs:
             virtual_device = kwargs['virtualDevice']
 
         if account is not None:
@@ -3426,19 +3440,19 @@ class ConnectionZSideAccessPointAccount(dict):
              organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
 
         if account_name is not None:
@@ -3644,11 +3658,11 @@ class ConnectionZSideAccessPointLinkProtocol(dict):
              vlan_tag: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'vlanCTag' in kwargs:
+        if vlan_c_tag is None and 'vlanCTag' in kwargs:
             vlan_c_tag = kwargs['vlanCTag']
-        if 'vlanSTag' in kwargs:
+        if vlan_s_tag is None and 'vlanSTag' in kwargs:
             vlan_s_tag = kwargs['vlanSTag']
-        if 'vlanTag' in kwargs:
+        if vlan_tag is None and 'vlanTag' in kwargs:
             vlan_tag = kwargs['vlanTag']
 
         if type is not None:
@@ -3741,9 +3755,9 @@ class ConnectionZSideAccessPointLocation(dict):
              region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -3980,15 +3994,19 @@ class ConnectionZSideAccessPointProfile(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             uuid: str,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              access_point_type_configs: Optional[Sequence['outputs.ConnectionZSideAccessPointProfileAccessPointTypeConfig']] = None,
              description: Optional[str] = None,
              href: Optional[str] = None,
              name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
 
         _setter("type", type)
@@ -4388,10 +4406,12 @@ class RoutingProtocolBfd(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              interval: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
 
         _setter("enabled", enabled)
         if interval is not None:
@@ -4453,14 +4473,16 @@ class RoutingProtocolBgpIpv4(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: str,
+             customer_peer_ip: Optional[str] = None,
              enabled: Optional[bool] = None,
              equinix_peer_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
 
         _setter("customer_peer_ip", customer_peer_ip)
@@ -4533,14 +4555,16 @@ class RoutingProtocolBgpIpv6(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: str,
+             customer_peer_ip: Optional[str] = None,
              enabled: Optional[bool] = None,
              equinix_peer_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
 
         _setter("customer_peer_ip", customer_peer_ip)
@@ -4704,29 +4728,29 @@ class RoutingProtocolChangeLog(dict):
              updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -4846,11 +4870,13 @@ class RoutingProtocolDirectIpv4(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: str,
+             equinix_iface_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
+        if equinix_iface_ip is None:
+            raise TypeError("Missing 'equinix_iface_ip' argument")
 
         _setter("equinix_iface_ip", equinix_iface_ip)
 
@@ -4897,7 +4923,7 @@ class RoutingProtocolDirectIpv6(dict):
              equinix_iface_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
 
         if equinix_iface_ip is not None:
@@ -4988,13 +5014,13 @@ class RoutingProtocolOperationError(dict):
              help: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalInfos' in kwargs:
+        if additional_infos is None and 'additionalInfos' in kwargs:
             additional_infos = kwargs['additionalInfos']
-        if 'correlationId' in kwargs:
+        if correlation_id is None and 'correlationId' in kwargs:
             correlation_id = kwargs['correlationId']
-        if 'errorCode' in kwargs:
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorMessage' in kwargs:
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
 
         if additional_infos is not None:
@@ -5167,7 +5193,7 @@ class ServiceProfileAccessPointTypeConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              allow_bandwidth_auto_approval: Optional[bool] = None,
              allow_bandwidth_upgrade: Optional[bool] = None,
              allow_custom_bandwidth: Optional[bool] = None,
@@ -5183,29 +5209,31 @@ class ServiceProfileAccessPointTypeConfig(dict):
              uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowBandwidthAutoApproval' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
             allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if 'allowBandwidthUpgrade' in kwargs:
+        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
             allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if 'allowCustomBandwidth' in kwargs:
+        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
             allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if 'allowRemoteConnections' in kwargs:
+        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
             allow_remote_connections = kwargs['allowRemoteConnections']
-        if 'apiConfig' in kwargs:
+        if api_config is None and 'apiConfig' in kwargs:
             api_config = kwargs['apiConfig']
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'bandwidthAlertThreshold' in kwargs:
+        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
             bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if 'connectionLabel' in kwargs:
+        if connection_label is None and 'connectionLabel' in kwargs:
             connection_label = kwargs['connectionLabel']
-        if 'connectionRedundancyRequired' in kwargs:
+        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
             connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if 'enableAutoGenerateServiceKey' in kwargs:
+        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
             enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if 'linkProtocolConfig' in kwargs:
+        if link_protocol_config is None and 'linkProtocolConfig' in kwargs:
             link_protocol_config = kwargs['linkProtocolConfig']
-        if 'supportedBandwidths' in kwargs:
+        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
             supported_bandwidths = kwargs['supportedBandwidths']
 
         _setter("type", type)
@@ -5419,19 +5447,19 @@ class ServiceProfileAccessPointTypeConfigApiConfig(dict):
              over_subscription_limit: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverSubscription' in kwargs:
+        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
             allow_over_subscription = kwargs['allowOverSubscription']
-        if 'apiAvailable' in kwargs:
+        if api_available is None and 'apiAvailable' in kwargs:
             api_available = kwargs['apiAvailable']
-        if 'bandwidthFromApi' in kwargs:
+        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
             bandwidth_from_api = kwargs['bandwidthFromApi']
-        if 'equinixManagedPort' in kwargs:
+        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
             equinix_managed_port = kwargs['equinixManagedPort']
-        if 'equinixManagedVlan' in kwargs:
+        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
             equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if 'integrationId' in kwargs:
+        if integration_id is None and 'integrationId' in kwargs:
             integration_id = kwargs['integrationId']
-        if 'overSubscriptionLimit' in kwargs:
+        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
             over_subscription_limit = kwargs['overSubscriptionLimit']
 
         if allow_over_subscription is not None:
@@ -5608,9 +5636,9 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfig(dict):
              reuse_vlan_s_tag: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'encapsulationStrategy' in kwargs:
+        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
             encapsulation_strategy = kwargs['encapsulationStrategy']
-        if 'reuseVlanSTag' in kwargs:
+        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
             reuse_vlan_s_tag = kwargs['reuseVlanSTag']
 
         if encapsulation is not None:
@@ -5721,21 +5749,21 @@ class ServiceProfileAccount(dict):
              ucm_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
-        if 'ucmId' in kwargs:
+        if ucm_id is None and 'ucmId' in kwargs:
             ucm_id = kwargs['ucmId']
 
         if account_name is not None:
@@ -5906,29 +5934,29 @@ class ServiceProfileChangeLog(dict):
              updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -6065,17 +6093,23 @@ class ServiceProfileCustomField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_type: str,
-             label: str,
-             required: bool,
+             data_type: Optional[str] = None,
+             label: Optional[str] = None,
+             required: Optional[bool] = None,
              capture_in_email: Optional[bool] = None,
              description: Optional[str] = None,
              options: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'dataType' in kwargs:
+        if data_type is None and 'dataType' in kwargs:
             data_type = kwargs['dataType']
-        if 'captureInEmail' in kwargs:
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+        if capture_in_email is None and 'captureInEmail' in kwargs:
             capture_in_email = kwargs['captureInEmail']
 
         _setter("data_type", data_type)
@@ -6179,7 +6213,7 @@ class ServiceProfileMarketingInfo(dict):
              promotion: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'processSteps' in kwargs:
+        if process_steps is None and 'processSteps' in kwargs:
             process_steps = kwargs['processSteps']
 
         if logo is not None:
@@ -6256,7 +6290,7 @@ class ServiceProfileMarketingInfoProcessStep(dict):
              title: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'subTitle' in kwargs:
+        if sub_title is None and 'subTitle' in kwargs:
             sub_title = kwargs['subTitle']
 
         if description is not None:
@@ -6349,11 +6383,11 @@ class ServiceProfileMetro(dict):
              seller_regions: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'inTrail' in kwargs:
+        if in_trail is None and 'inTrail' in kwargs:
             in_trail = kwargs['inTrail']
-        if 'sellerRegions' in kwargs:
+        if seller_regions is None and 'sellerRegions' in kwargs:
             seller_regions = kwargs['sellerRegions']
 
         if code is not None:
@@ -6455,12 +6489,16 @@ class ServiceProfileNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
              send_interval: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
 
         _setter("emails", emails)
@@ -6543,19 +6581,23 @@ class ServiceProfilePort(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             uuid: str,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              cross_connect_id: Optional[str] = None,
              location: Optional['outputs.ServiceProfilePortLocation'] = None,
              seller_region: Optional[str] = None,
              seller_region_description: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'crossConnectId' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if cross_connect_id is None and 'crossConnectId' in kwargs:
             cross_connect_id = kwargs['crossConnectId']
-        if 'sellerRegion' in kwargs:
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'sellerRegionDescription' in kwargs:
+        if seller_region_description is None and 'sellerRegionDescription' in kwargs:
             seller_region_description = kwargs['sellerRegionDescription']
 
         _setter("type", type)
@@ -6666,9 +6708,9 @@ class ServiceProfilePortLocation(dict):
              region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -6751,7 +6793,7 @@ class ServiceProfileProject(dict):
              project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if href is not None:
@@ -6816,13 +6858,17 @@ class ServiceProfileVirtualDevice(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             uuid: str,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              interface_uuid: Optional[str] = None,
              location: Optional['outputs.ServiceProfileVirtualDeviceLocation'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'interfaceUuid' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if interface_uuid is None and 'interfaceUuid' in kwargs:
             interface_uuid = kwargs['interfaceUuid']
 
         _setter("type", type)
@@ -6913,9 +6959,9 @@ class ServiceProfileVirtualDeviceLocation(dict):
              region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -6983,29 +7029,43 @@ class GetCloudRouterAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -7084,44 +7144,68 @@ class GetCloudRouterChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -7216,17 +7300,27 @@ class GetCloudRouterLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             href: Optional[str] = None,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("href", href)
         _setter("ibx", ibx)
@@ -7275,13 +7369,19 @@ class GetCloudRouterNotificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             send_interval: str,
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             send_interval: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
+        if send_interval is None:
+            raise TypeError("Missing 'send_interval' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("emails", emails)
         _setter("send_interval", send_interval)
@@ -7320,20 +7420,28 @@ class GetCloudRouterOrderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_tier: str,
-             order_id: str,
-             order_number: str,
-             purchase_order_number: str,
+             billing_tier: Optional[str] = None,
+             order_id: Optional[str] = None,
+             order_number: Optional[str] = None,
+             purchase_order_number: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingTier' in kwargs:
+        if billing_tier is None and 'billingTier' in kwargs:
             billing_tier = kwargs['billingTier']
-        if 'orderId' in kwargs:
+        if billing_tier is None:
+            raise TypeError("Missing 'billing_tier' argument")
+        if order_id is None and 'orderId' in kwargs:
             order_id = kwargs['orderId']
-        if 'orderNumber' in kwargs:
+        if order_id is None:
+            raise TypeError("Missing 'order_id' argument")
+        if order_number is None and 'orderNumber' in kwargs:
             order_number = kwargs['orderNumber']
-        if 'purchaseOrderNumber' in kwargs:
+        if order_number is None:
+            raise TypeError("Missing 'order_number' argument")
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
+        if purchase_order_number is None:
+            raise TypeError("Missing 'purchase_order_number' argument")
 
         _setter("billing_tier", billing_tier)
         _setter("order_id", order_id)
@@ -7372,9 +7480,11 @@ class GetCloudRouterPackageResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: str,
+             code: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
 
         _setter("code", code)
 
@@ -7401,12 +7511,16 @@ class GetCloudRouterProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             project_id: str,
+             href: Optional[str] = None,
+             project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("href", href)
         _setter("project_id", project_id)
@@ -7441,14 +7555,18 @@ class GetConnectionASideResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point: 'outputs.GetConnectionASideAccessPointResult',
-             service_token: 'outputs.GetConnectionASideServiceTokenResult',
+             access_point: Optional['outputs.GetConnectionASideAccessPointResult'] = None,
+             service_token: Optional['outputs.GetConnectionASideServiceTokenResult'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPoint' in kwargs:
+        if access_point is None and 'accessPoint' in kwargs:
             access_point = kwargs['accessPoint']
-        if 'serviceToken' in kwargs:
+        if access_point is None:
+            raise TypeError("Missing 'access_point' argument")
+        if service_token is None and 'serviceToken' in kwargs:
             service_token = kwargs['serviceToken']
+        if service_token is None:
+            raise TypeError("Missing 'service_token' argument")
 
         _setter("access_point", access_point)
         _setter("service_token", service_token)
@@ -7504,34 +7622,62 @@ class GetConnectionASideAccessPointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accounts: Sequence['outputs.GetConnectionASideAccessPointAccountResult'],
-             authentication_key: str,
-             gateways: Sequence['outputs.GetConnectionASideAccessPointGatewayResult'],
-             interfaces: Sequence['outputs.GetConnectionASideAccessPointInterfaceResult'],
-             link_protocols: Sequence['outputs.GetConnectionASideAccessPointLinkProtocolResult'],
-             locations: Sequence['outputs.GetConnectionASideAccessPointLocationResult'],
-             peering_type: str,
-             ports: Sequence['outputs.GetConnectionASideAccessPointPortResult'],
-             profiles: Sequence['outputs.GetConnectionASideAccessPointProfileResult'],
-             provider_connection_id: str,
-             routers: Sequence['outputs.GetConnectionASideAccessPointRouterResult'],
-             seller_region: str,
-             type: str,
-             virtual_devices: Sequence['outputs.GetConnectionASideAccessPointVirtualDeviceResult'],
+             accounts: Optional[Sequence['outputs.GetConnectionASideAccessPointAccountResult']] = None,
+             authentication_key: Optional[str] = None,
+             gateways: Optional[Sequence['outputs.GetConnectionASideAccessPointGatewayResult']] = None,
+             interfaces: Optional[Sequence['outputs.GetConnectionASideAccessPointInterfaceResult']] = None,
+             link_protocols: Optional[Sequence['outputs.GetConnectionASideAccessPointLinkProtocolResult']] = None,
+             locations: Optional[Sequence['outputs.GetConnectionASideAccessPointLocationResult']] = None,
+             peering_type: Optional[str] = None,
+             ports: Optional[Sequence['outputs.GetConnectionASideAccessPointPortResult']] = None,
+             profiles: Optional[Sequence['outputs.GetConnectionASideAccessPointProfileResult']] = None,
+             provider_connection_id: Optional[str] = None,
+             routers: Optional[Sequence['outputs.GetConnectionASideAccessPointRouterResult']] = None,
+             seller_region: Optional[str] = None,
+             type: Optional[str] = None,
+             virtual_devices: Optional[Sequence['outputs.GetConnectionASideAccessPointVirtualDeviceResult']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if accounts is None:
+            raise TypeError("Missing 'accounts' argument")
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'linkProtocols' in kwargs:
+        if authentication_key is None:
+            raise TypeError("Missing 'authentication_key' argument")
+        if gateways is None:
+            raise TypeError("Missing 'gateways' argument")
+        if interfaces is None:
+            raise TypeError("Missing 'interfaces' argument")
+        if link_protocols is None and 'linkProtocols' in kwargs:
             link_protocols = kwargs['linkProtocols']
-        if 'peeringType' in kwargs:
+        if link_protocols is None:
+            raise TypeError("Missing 'link_protocols' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if peering_type is None and 'peeringType' in kwargs:
             peering_type = kwargs['peeringType']
-        if 'providerConnectionId' in kwargs:
+        if peering_type is None:
+            raise TypeError("Missing 'peering_type' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if profiles is None:
+            raise TypeError("Missing 'profiles' argument")
+        if provider_connection_id is None and 'providerConnectionId' in kwargs:
             provider_connection_id = kwargs['providerConnectionId']
-        if 'sellerRegion' in kwargs:
+        if provider_connection_id is None:
+            raise TypeError("Missing 'provider_connection_id' argument")
+        if routers is None:
+            raise TypeError("Missing 'routers' argument")
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'virtualDevices' in kwargs:
+        if seller_region is None:
+            raise TypeError("Missing 'seller_region' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if virtual_devices is None and 'virtualDevices' in kwargs:
             virtual_devices = kwargs['virtualDevices']
+        if virtual_devices is None:
+            raise TypeError("Missing 'virtual_devices' argument")
 
         _setter("accounts", accounts)
         _setter("authentication_key", authentication_key)
@@ -7648,29 +7794,43 @@ class GetConnectionASideAccessPointAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -7731,11 +7891,17 @@ class GetConnectionASideAccessPointGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             state: str,
-             uuid: str,
+             href: Optional[str] = None,
+             state: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("state", state)
@@ -7772,11 +7938,17 @@ class GetConnectionASideAccessPointInterfaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             type: str,
-             uuid: str,
+             id: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("id", id)
         _setter("type", type)
@@ -7815,18 +7987,26 @@ class GetConnectionASideAccessPointLinkProtocolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             vlan_c_tag: int,
-             vlan_s_tag: int,
-             vlan_tag: int,
+             type: Optional[str] = None,
+             vlan_c_tag: Optional[int] = None,
+             vlan_s_tag: Optional[int] = None,
+             vlan_tag: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'vlanCTag' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vlan_c_tag is None and 'vlanCTag' in kwargs:
             vlan_c_tag = kwargs['vlanCTag']
-        if 'vlanSTag' in kwargs:
+        if vlan_c_tag is None:
+            raise TypeError("Missing 'vlan_c_tag' argument")
+        if vlan_s_tag is None and 'vlanSTag' in kwargs:
             vlan_s_tag = kwargs['vlanSTag']
-        if 'vlanTag' in kwargs:
+        if vlan_s_tag is None:
+            raise TypeError("Missing 'vlan_s_tag' argument")
+        if vlan_tag is None and 'vlanTag' in kwargs:
             vlan_tag = kwargs['vlanTag']
+        if vlan_tag is None:
+            raise TypeError("Missing 'vlan_tag' argument")
 
         _setter("type", type)
         _setter("vlan_c_tag", vlan_c_tag)
@@ -7873,17 +8053,27 @@ class GetConnectionASideAccessPointLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             href: Optional[str] = None,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("href", href)
         _setter("ibx", ibx)
@@ -7934,12 +8124,20 @@ class GetConnectionASideAccessPointPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             name: str,
-             redundancies: Sequence['outputs.GetConnectionASideAccessPointPortRedundancyResult'],
-             uuid: str,
+             href: Optional[str] = None,
+             name: Optional[str] = None,
+             redundancies: Optional[Sequence['outputs.GetConnectionASideAccessPointPortRedundancyResult']] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if redundancies is None:
+            raise TypeError("Missing 'redundancies' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("name", name)
@@ -7978,9 +8176,11 @@ class GetConnectionASideAccessPointPortRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             priority: str,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("priority", priority)
 
@@ -8011,16 +8211,28 @@ class GetConnectionASideAccessPointProfileResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point_type_configs: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigResult'],
-             description: str,
-             href: str,
-             name: str,
-             type: str,
-             uuid: str,
+             access_point_type_configs: Optional[Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigResult']] = None,
+             description: Optional[str] = None,
+             href: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
+        if access_point_type_configs is None:
+            raise TypeError("Missing 'access_point_type_configs' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("access_point_type_configs", access_point_type_configs)
         _setter("description", description)
@@ -8097,46 +8309,74 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_bandwidth_auto_approval: bool,
-             allow_bandwidth_upgrade: bool,
-             allow_custom_bandwidth: bool,
-             allow_remote_connections: bool,
-             api_configs: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult'],
-             authentication_keys: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult'],
-             bandwidth_alert_threshold: float,
-             connection_label: str,
-             connection_redundancy_required: bool,
-             enable_auto_generate_service_key: bool,
-             link_protocol_configs: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult'],
-             supported_bandwidths: Sequence[int],
-             type: str,
-             uuid: str,
+             allow_bandwidth_auto_approval: Optional[bool] = None,
+             allow_bandwidth_upgrade: Optional[bool] = None,
+             allow_custom_bandwidth: Optional[bool] = None,
+             allow_remote_connections: Optional[bool] = None,
+             api_configs: Optional[Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult']] = None,
+             authentication_keys: Optional[Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult']] = None,
+             bandwidth_alert_threshold: Optional[float] = None,
+             connection_label: Optional[str] = None,
+             connection_redundancy_required: Optional[bool] = None,
+             enable_auto_generate_service_key: Optional[bool] = None,
+             link_protocol_configs: Optional[Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult']] = None,
+             supported_bandwidths: Optional[Sequence[int]] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowBandwidthAutoApproval' in kwargs:
+        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
             allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if 'allowBandwidthUpgrade' in kwargs:
+        if allow_bandwidth_auto_approval is None:
+            raise TypeError("Missing 'allow_bandwidth_auto_approval' argument")
+        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
             allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if 'allowCustomBandwidth' in kwargs:
+        if allow_bandwidth_upgrade is None:
+            raise TypeError("Missing 'allow_bandwidth_upgrade' argument")
+        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
             allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if 'allowRemoteConnections' in kwargs:
+        if allow_custom_bandwidth is None:
+            raise TypeError("Missing 'allow_custom_bandwidth' argument")
+        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
             allow_remote_connections = kwargs['allowRemoteConnections']
-        if 'apiConfigs' in kwargs:
+        if allow_remote_connections is None:
+            raise TypeError("Missing 'allow_remote_connections' argument")
+        if api_configs is None and 'apiConfigs' in kwargs:
             api_configs = kwargs['apiConfigs']
-        if 'authenticationKeys' in kwargs:
+        if api_configs is None:
+            raise TypeError("Missing 'api_configs' argument")
+        if authentication_keys is None and 'authenticationKeys' in kwargs:
             authentication_keys = kwargs['authenticationKeys']
-        if 'bandwidthAlertThreshold' in kwargs:
+        if authentication_keys is None:
+            raise TypeError("Missing 'authentication_keys' argument")
+        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
             bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if 'connectionLabel' in kwargs:
+        if bandwidth_alert_threshold is None:
+            raise TypeError("Missing 'bandwidth_alert_threshold' argument")
+        if connection_label is None and 'connectionLabel' in kwargs:
             connection_label = kwargs['connectionLabel']
-        if 'connectionRedundancyRequired' in kwargs:
+        if connection_label is None:
+            raise TypeError("Missing 'connection_label' argument")
+        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
             connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if 'enableAutoGenerateServiceKey' in kwargs:
+        if connection_redundancy_required is None:
+            raise TypeError("Missing 'connection_redundancy_required' argument")
+        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
             enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if 'linkProtocolConfigs' in kwargs:
+        if enable_auto_generate_service_key is None:
+            raise TypeError("Missing 'enable_auto_generate_service_key' argument")
+        if link_protocol_configs is None and 'linkProtocolConfigs' in kwargs:
             link_protocol_configs = kwargs['linkProtocolConfigs']
-        if 'supportedBandwidths' in kwargs:
+        if link_protocol_configs is None:
+            raise TypeError("Missing 'link_protocol_configs' argument")
+        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
             supported_bandwidths = kwargs['supportedBandwidths']
+        if supported_bandwidths is None:
+            raise TypeError("Missing 'supported_bandwidths' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
         _setter("allow_bandwidth_upgrade", allow_bandwidth_upgrade)
@@ -8247,29 +8487,43 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_over_subscription: bool,
-             api_available: bool,
-             bandwidth_from_api: bool,
-             equinix_managed_port: bool,
-             equinix_managed_vlan: bool,
-             integration_id: str,
-             over_subscription_limit: int,
+             allow_over_subscription: Optional[bool] = None,
+             api_available: Optional[bool] = None,
+             bandwidth_from_api: Optional[bool] = None,
+             equinix_managed_port: Optional[bool] = None,
+             equinix_managed_vlan: Optional[bool] = None,
+             integration_id: Optional[str] = None,
+             over_subscription_limit: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverSubscription' in kwargs:
+        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
             allow_over_subscription = kwargs['allowOverSubscription']
-        if 'apiAvailable' in kwargs:
+        if allow_over_subscription is None:
+            raise TypeError("Missing 'allow_over_subscription' argument")
+        if api_available is None and 'apiAvailable' in kwargs:
             api_available = kwargs['apiAvailable']
-        if 'bandwidthFromApi' in kwargs:
+        if api_available is None:
+            raise TypeError("Missing 'api_available' argument")
+        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
             bandwidth_from_api = kwargs['bandwidthFromApi']
-        if 'equinixManagedPort' in kwargs:
+        if bandwidth_from_api is None:
+            raise TypeError("Missing 'bandwidth_from_api' argument")
+        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
             equinix_managed_port = kwargs['equinixManagedPort']
-        if 'equinixManagedVlan' in kwargs:
+        if equinix_managed_port is None:
+            raise TypeError("Missing 'equinix_managed_port' argument")
+        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
             equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if 'integrationId' in kwargs:
+        if equinix_managed_vlan is None:
+            raise TypeError("Missing 'equinix_managed_vlan' argument")
+        if integration_id is None and 'integrationId' in kwargs:
             integration_id = kwargs['integrationId']
-        if 'overSubscriptionLimit' in kwargs:
+        if integration_id is None:
+            raise TypeError("Missing 'integration_id' argument")
+        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
             over_subscription_limit = kwargs['overSubscriptionLimit']
+        if over_subscription_limit is None:
+            raise TypeError("Missing 'over_subscription_limit' argument")
 
         _setter("allow_over_subscription", allow_over_subscription)
         _setter("api_available", api_available)
@@ -8330,11 +8584,17 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             label: str,
-             required: bool,
+             description: Optional[str] = None,
+             label: Optional[str] = None,
+             required: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("description", description)
         _setter("label", label)
@@ -8371,15 +8631,21 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfi
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             encapsulation: str,
-             encapsulation_strategy: str,
-             reuse_vlan_s_tag: bool,
+             encapsulation: Optional[str] = None,
+             encapsulation_strategy: Optional[str] = None,
+             reuse_vlan_s_tag: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'encapsulationStrategy' in kwargs:
+        if encapsulation is None:
+            raise TypeError("Missing 'encapsulation' argument")
+        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
             encapsulation_strategy = kwargs['encapsulationStrategy']
-        if 'reuseVlanSTag' in kwargs:
+        if encapsulation_strategy is None:
+            raise TypeError("Missing 'encapsulation_strategy' argument")
+        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
             reuse_vlan_s_tag = kwargs['reuseVlanSTag']
+        if reuse_vlan_s_tag is None:
+            raise TypeError("Missing 'reuse_vlan_s_tag' argument")
 
         _setter("encapsulation", encapsulation)
         _setter("encapsulation_strategy", encapsulation_strategy)
@@ -8416,11 +8682,17 @@ class GetConnectionASideAccessPointRouterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             state: str,
-             uuid: str,
+             href: Optional[str] = None,
+             state: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("state", state)
@@ -8457,11 +8729,17 @@ class GetConnectionASideAccessPointVirtualDeviceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             type: str,
-             uuid: str,
+             href: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("type", type)
@@ -8500,12 +8778,20 @@ class GetConnectionASideServiceTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             href: str,
-             type: str,
-             uuid: str,
+             description: Optional[str] = None,
+             href: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("description", description)
         _setter("href", href)
@@ -8556,29 +8842,43 @@ class GetConnectionAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -8637,10 +8937,14 @@ class GetConnectionAdditionalInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -8689,44 +8993,68 @@ class GetConnectionChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -8817,13 +9145,19 @@ class GetConnectionNotificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             send_interval: str,
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             send_interval: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
+        if send_interval is None:
+            raise TypeError("Missing 'send_interval' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("emails", emails)
         _setter("send_interval", send_interval)
@@ -8860,15 +9194,21 @@ class GetConnectionOperationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             equinix_status: str,
-             errors: Sequence['outputs.GetConnectionOperationErrorResult'],
-             provider_status: str,
+             equinix_status: Optional[str] = None,
+             errors: Optional[Sequence['outputs.GetConnectionOperationErrorResult']] = None,
+             provider_status: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixStatus' in kwargs:
+        if equinix_status is None and 'equinixStatus' in kwargs:
             equinix_status = kwargs['equinixStatus']
-        if 'providerStatus' in kwargs:
+        if equinix_status is None:
+            raise TypeError("Missing 'equinix_status' argument")
+        if errors is None:
+            raise TypeError("Missing 'errors' argument")
+        if provider_status is None and 'providerStatus' in kwargs:
             provider_status = kwargs['providerStatus']
+        if provider_status is None:
+            raise TypeError("Missing 'provider_status' argument")
 
         _setter("equinix_status", equinix_status)
         _setter("errors", errors)
@@ -8911,22 +9251,34 @@ class GetConnectionOperationErrorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             additional_infos: Sequence['outputs.GetConnectionOperationErrorAdditionalInfoResult'],
-             correlation_id: str,
-             details: str,
-             error_code: str,
-             error_message: str,
-             help: str,
+             additional_infos: Optional[Sequence['outputs.GetConnectionOperationErrorAdditionalInfoResult']] = None,
+             correlation_id: Optional[str] = None,
+             details: Optional[str] = None,
+             error_code: Optional[str] = None,
+             error_message: Optional[str] = None,
+             help: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalInfos' in kwargs:
+        if additional_infos is None and 'additionalInfos' in kwargs:
             additional_infos = kwargs['additionalInfos']
-        if 'correlationId' in kwargs:
+        if additional_infos is None:
+            raise TypeError("Missing 'additional_infos' argument")
+        if correlation_id is None and 'correlationId' in kwargs:
             correlation_id = kwargs['correlationId']
-        if 'errorCode' in kwargs:
+        if correlation_id is None:
+            raise TypeError("Missing 'correlation_id' argument")
+        if details is None:
+            raise TypeError("Missing 'details' argument")
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorMessage' in kwargs:
+        if error_code is None:
+            raise TypeError("Missing 'error_code' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if help is None:
+            raise TypeError("Missing 'help' argument")
 
         _setter("additional_infos", additional_infos)
         _setter("correlation_id", correlation_id)
@@ -8979,10 +9331,14 @@ class GetConnectionOperationErrorAdditionalInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             property: str,
-             reason: str,
+             property: Optional[str] = None,
+             reason: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if property is None:
+            raise TypeError("Missing 'property' argument")
+        if reason is None:
+            raise TypeError("Missing 'reason' argument")
 
         _setter("property", property)
         _setter("reason", reason)
@@ -9015,20 +9371,28 @@ class GetConnectionOrderResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_tier: str,
-             order_id: str,
-             order_number: str,
-             purchase_order_number: str,
+             billing_tier: Optional[str] = None,
+             order_id: Optional[str] = None,
+             order_number: Optional[str] = None,
+             purchase_order_number: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingTier' in kwargs:
+        if billing_tier is None and 'billingTier' in kwargs:
             billing_tier = kwargs['billingTier']
-        if 'orderId' in kwargs:
+        if billing_tier is None:
+            raise TypeError("Missing 'billing_tier' argument")
+        if order_id is None and 'orderId' in kwargs:
             order_id = kwargs['orderId']
-        if 'orderNumber' in kwargs:
+        if order_id is None:
+            raise TypeError("Missing 'order_id' argument")
+        if order_number is None and 'orderNumber' in kwargs:
             order_number = kwargs['orderNumber']
-        if 'purchaseOrderNumber' in kwargs:
+        if order_number is None:
+            raise TypeError("Missing 'order_number' argument")
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
+        if purchase_order_number is None:
+            raise TypeError("Missing 'purchase_order_number' argument")
 
         _setter("billing_tier", billing_tier)
         _setter("order_id", order_id)
@@ -9073,12 +9437,16 @@ class GetConnectionProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             project_id: str,
+             href: Optional[str] = None,
+             project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("href", href)
         _setter("project_id", project_id)
@@ -9113,10 +9481,14 @@ class GetConnectionRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: str,
-             priority: str,
+             group: Optional[str] = None,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("group", group)
         _setter("priority", priority)
@@ -9145,14 +9517,18 @@ class GetConnectionZSideResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point: 'outputs.GetConnectionZSideAccessPointResult',
-             service_token: 'outputs.GetConnectionZSideServiceTokenResult',
+             access_point: Optional['outputs.GetConnectionZSideAccessPointResult'] = None,
+             service_token: Optional['outputs.GetConnectionZSideServiceTokenResult'] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPoint' in kwargs:
+        if access_point is None and 'accessPoint' in kwargs:
             access_point = kwargs['accessPoint']
-        if 'serviceToken' in kwargs:
+        if access_point is None:
+            raise TypeError("Missing 'access_point' argument")
+        if service_token is None and 'serviceToken' in kwargs:
             service_token = kwargs['serviceToken']
+        if service_token is None:
+            raise TypeError("Missing 'service_token' argument")
 
         _setter("access_point", access_point)
         _setter("service_token", service_token)
@@ -9208,34 +9584,62 @@ class GetConnectionZSideAccessPointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accounts: Sequence['outputs.GetConnectionZSideAccessPointAccountResult'],
-             authentication_key: str,
-             gateways: Sequence['outputs.GetConnectionZSideAccessPointGatewayResult'],
-             interfaces: Sequence['outputs.GetConnectionZSideAccessPointInterfaceResult'],
-             link_protocols: Sequence['outputs.GetConnectionZSideAccessPointLinkProtocolResult'],
-             locations: Sequence['outputs.GetConnectionZSideAccessPointLocationResult'],
-             peering_type: str,
-             ports: Sequence['outputs.GetConnectionZSideAccessPointPortResult'],
-             profiles: Sequence['outputs.GetConnectionZSideAccessPointProfileResult'],
-             provider_connection_id: str,
-             routers: Sequence['outputs.GetConnectionZSideAccessPointRouterResult'],
-             seller_region: str,
-             type: str,
-             virtual_devices: Sequence['outputs.GetConnectionZSideAccessPointVirtualDeviceResult'],
+             accounts: Optional[Sequence['outputs.GetConnectionZSideAccessPointAccountResult']] = None,
+             authentication_key: Optional[str] = None,
+             gateways: Optional[Sequence['outputs.GetConnectionZSideAccessPointGatewayResult']] = None,
+             interfaces: Optional[Sequence['outputs.GetConnectionZSideAccessPointInterfaceResult']] = None,
+             link_protocols: Optional[Sequence['outputs.GetConnectionZSideAccessPointLinkProtocolResult']] = None,
+             locations: Optional[Sequence['outputs.GetConnectionZSideAccessPointLocationResult']] = None,
+             peering_type: Optional[str] = None,
+             ports: Optional[Sequence['outputs.GetConnectionZSideAccessPointPortResult']] = None,
+             profiles: Optional[Sequence['outputs.GetConnectionZSideAccessPointProfileResult']] = None,
+             provider_connection_id: Optional[str] = None,
+             routers: Optional[Sequence['outputs.GetConnectionZSideAccessPointRouterResult']] = None,
+             seller_region: Optional[str] = None,
+             type: Optional[str] = None,
+             virtual_devices: Optional[Sequence['outputs.GetConnectionZSideAccessPointVirtualDeviceResult']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if accounts is None:
+            raise TypeError("Missing 'accounts' argument")
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'linkProtocols' in kwargs:
+        if authentication_key is None:
+            raise TypeError("Missing 'authentication_key' argument")
+        if gateways is None:
+            raise TypeError("Missing 'gateways' argument")
+        if interfaces is None:
+            raise TypeError("Missing 'interfaces' argument")
+        if link_protocols is None and 'linkProtocols' in kwargs:
             link_protocols = kwargs['linkProtocols']
-        if 'peeringType' in kwargs:
+        if link_protocols is None:
+            raise TypeError("Missing 'link_protocols' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if peering_type is None and 'peeringType' in kwargs:
             peering_type = kwargs['peeringType']
-        if 'providerConnectionId' in kwargs:
+        if peering_type is None:
+            raise TypeError("Missing 'peering_type' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if profiles is None:
+            raise TypeError("Missing 'profiles' argument")
+        if provider_connection_id is None and 'providerConnectionId' in kwargs:
             provider_connection_id = kwargs['providerConnectionId']
-        if 'sellerRegion' in kwargs:
+        if provider_connection_id is None:
+            raise TypeError("Missing 'provider_connection_id' argument")
+        if routers is None:
+            raise TypeError("Missing 'routers' argument")
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'virtualDevices' in kwargs:
+        if seller_region is None:
+            raise TypeError("Missing 'seller_region' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if virtual_devices is None and 'virtualDevices' in kwargs:
             virtual_devices = kwargs['virtualDevices']
+        if virtual_devices is None:
+            raise TypeError("Missing 'virtual_devices' argument")
 
         _setter("accounts", accounts)
         _setter("authentication_key", authentication_key)
@@ -9352,29 +9756,43 @@ class GetConnectionZSideAccessPointAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -9435,11 +9853,17 @@ class GetConnectionZSideAccessPointGatewayResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             state: str,
-             uuid: str,
+             href: Optional[str] = None,
+             state: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("state", state)
@@ -9476,11 +9900,17 @@ class GetConnectionZSideAccessPointInterfaceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             type: str,
-             uuid: str,
+             id: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("id", id)
         _setter("type", type)
@@ -9519,18 +9949,26 @@ class GetConnectionZSideAccessPointLinkProtocolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             vlan_c_tag: int,
-             vlan_s_tag: int,
-             vlan_tag: int,
+             type: Optional[str] = None,
+             vlan_c_tag: Optional[int] = None,
+             vlan_s_tag: Optional[int] = None,
+             vlan_tag: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'vlanCTag' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if vlan_c_tag is None and 'vlanCTag' in kwargs:
             vlan_c_tag = kwargs['vlanCTag']
-        if 'vlanSTag' in kwargs:
+        if vlan_c_tag is None:
+            raise TypeError("Missing 'vlan_c_tag' argument")
+        if vlan_s_tag is None and 'vlanSTag' in kwargs:
             vlan_s_tag = kwargs['vlanSTag']
-        if 'vlanTag' in kwargs:
+        if vlan_s_tag is None:
+            raise TypeError("Missing 'vlan_s_tag' argument")
+        if vlan_tag is None and 'vlanTag' in kwargs:
             vlan_tag = kwargs['vlanTag']
+        if vlan_tag is None:
+            raise TypeError("Missing 'vlan_tag' argument")
 
         _setter("type", type)
         _setter("vlan_c_tag", vlan_c_tag)
@@ -9577,17 +10015,27 @@ class GetConnectionZSideAccessPointLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             href: Optional[str] = None,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("href", href)
         _setter("ibx", ibx)
@@ -9638,12 +10086,20 @@ class GetConnectionZSideAccessPointPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             name: str,
-             redundancies: Sequence['outputs.GetConnectionZSideAccessPointPortRedundancyResult'],
-             uuid: str,
+             href: Optional[str] = None,
+             name: Optional[str] = None,
+             redundancies: Optional[Sequence['outputs.GetConnectionZSideAccessPointPortRedundancyResult']] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if redundancies is None:
+            raise TypeError("Missing 'redundancies' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("name", name)
@@ -9682,9 +10138,11 @@ class GetConnectionZSideAccessPointPortRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             priority: str,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("priority", priority)
 
@@ -9715,16 +10173,28 @@ class GetConnectionZSideAccessPointProfileResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point_type_configs: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult'],
-             description: str,
-             href: str,
-             name: str,
-             type: str,
-             uuid: str,
+             access_point_type_configs: Optional[Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult']] = None,
+             description: Optional[str] = None,
+             href: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
+        if access_point_type_configs is None:
+            raise TypeError("Missing 'access_point_type_configs' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("access_point_type_configs", access_point_type_configs)
         _setter("description", description)
@@ -9801,46 +10271,74 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_bandwidth_auto_approval: bool,
-             allow_bandwidth_upgrade: bool,
-             allow_custom_bandwidth: bool,
-             allow_remote_connections: bool,
-             api_configs: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult'],
-             authentication_keys: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult'],
-             bandwidth_alert_threshold: float,
-             connection_label: str,
-             connection_redundancy_required: bool,
-             enable_auto_generate_service_key: bool,
-             link_protocol_configs: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult'],
-             supported_bandwidths: Sequence[int],
-             type: str,
-             uuid: str,
+             allow_bandwidth_auto_approval: Optional[bool] = None,
+             allow_bandwidth_upgrade: Optional[bool] = None,
+             allow_custom_bandwidth: Optional[bool] = None,
+             allow_remote_connections: Optional[bool] = None,
+             api_configs: Optional[Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult']] = None,
+             authentication_keys: Optional[Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult']] = None,
+             bandwidth_alert_threshold: Optional[float] = None,
+             connection_label: Optional[str] = None,
+             connection_redundancy_required: Optional[bool] = None,
+             enable_auto_generate_service_key: Optional[bool] = None,
+             link_protocol_configs: Optional[Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult']] = None,
+             supported_bandwidths: Optional[Sequence[int]] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowBandwidthAutoApproval' in kwargs:
+        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
             allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if 'allowBandwidthUpgrade' in kwargs:
+        if allow_bandwidth_auto_approval is None:
+            raise TypeError("Missing 'allow_bandwidth_auto_approval' argument")
+        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
             allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if 'allowCustomBandwidth' in kwargs:
+        if allow_bandwidth_upgrade is None:
+            raise TypeError("Missing 'allow_bandwidth_upgrade' argument")
+        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
             allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if 'allowRemoteConnections' in kwargs:
+        if allow_custom_bandwidth is None:
+            raise TypeError("Missing 'allow_custom_bandwidth' argument")
+        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
             allow_remote_connections = kwargs['allowRemoteConnections']
-        if 'apiConfigs' in kwargs:
+        if allow_remote_connections is None:
+            raise TypeError("Missing 'allow_remote_connections' argument")
+        if api_configs is None and 'apiConfigs' in kwargs:
             api_configs = kwargs['apiConfigs']
-        if 'authenticationKeys' in kwargs:
+        if api_configs is None:
+            raise TypeError("Missing 'api_configs' argument")
+        if authentication_keys is None and 'authenticationKeys' in kwargs:
             authentication_keys = kwargs['authenticationKeys']
-        if 'bandwidthAlertThreshold' in kwargs:
+        if authentication_keys is None:
+            raise TypeError("Missing 'authentication_keys' argument")
+        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
             bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if 'connectionLabel' in kwargs:
+        if bandwidth_alert_threshold is None:
+            raise TypeError("Missing 'bandwidth_alert_threshold' argument")
+        if connection_label is None and 'connectionLabel' in kwargs:
             connection_label = kwargs['connectionLabel']
-        if 'connectionRedundancyRequired' in kwargs:
+        if connection_label is None:
+            raise TypeError("Missing 'connection_label' argument")
+        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
             connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if 'enableAutoGenerateServiceKey' in kwargs:
+        if connection_redundancy_required is None:
+            raise TypeError("Missing 'connection_redundancy_required' argument")
+        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
             enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if 'linkProtocolConfigs' in kwargs:
+        if enable_auto_generate_service_key is None:
+            raise TypeError("Missing 'enable_auto_generate_service_key' argument")
+        if link_protocol_configs is None and 'linkProtocolConfigs' in kwargs:
             link_protocol_configs = kwargs['linkProtocolConfigs']
-        if 'supportedBandwidths' in kwargs:
+        if link_protocol_configs is None:
+            raise TypeError("Missing 'link_protocol_configs' argument")
+        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
             supported_bandwidths = kwargs['supportedBandwidths']
+        if supported_bandwidths is None:
+            raise TypeError("Missing 'supported_bandwidths' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
         _setter("allow_bandwidth_upgrade", allow_bandwidth_upgrade)
@@ -9951,29 +10449,43 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_over_subscription: bool,
-             api_available: bool,
-             bandwidth_from_api: bool,
-             equinix_managed_port: bool,
-             equinix_managed_vlan: bool,
-             integration_id: str,
-             over_subscription_limit: int,
+             allow_over_subscription: Optional[bool] = None,
+             api_available: Optional[bool] = None,
+             bandwidth_from_api: Optional[bool] = None,
+             equinix_managed_port: Optional[bool] = None,
+             equinix_managed_vlan: Optional[bool] = None,
+             integration_id: Optional[str] = None,
+             over_subscription_limit: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverSubscription' in kwargs:
+        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
             allow_over_subscription = kwargs['allowOverSubscription']
-        if 'apiAvailable' in kwargs:
+        if allow_over_subscription is None:
+            raise TypeError("Missing 'allow_over_subscription' argument")
+        if api_available is None and 'apiAvailable' in kwargs:
             api_available = kwargs['apiAvailable']
-        if 'bandwidthFromApi' in kwargs:
+        if api_available is None:
+            raise TypeError("Missing 'api_available' argument")
+        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
             bandwidth_from_api = kwargs['bandwidthFromApi']
-        if 'equinixManagedPort' in kwargs:
+        if bandwidth_from_api is None:
+            raise TypeError("Missing 'bandwidth_from_api' argument")
+        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
             equinix_managed_port = kwargs['equinixManagedPort']
-        if 'equinixManagedVlan' in kwargs:
+        if equinix_managed_port is None:
+            raise TypeError("Missing 'equinix_managed_port' argument")
+        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
             equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if 'integrationId' in kwargs:
+        if equinix_managed_vlan is None:
+            raise TypeError("Missing 'equinix_managed_vlan' argument")
+        if integration_id is None and 'integrationId' in kwargs:
             integration_id = kwargs['integrationId']
-        if 'overSubscriptionLimit' in kwargs:
+        if integration_id is None:
+            raise TypeError("Missing 'integration_id' argument")
+        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
             over_subscription_limit = kwargs['overSubscriptionLimit']
+        if over_subscription_limit is None:
+            raise TypeError("Missing 'over_subscription_limit' argument")
 
         _setter("allow_over_subscription", allow_over_subscription)
         _setter("api_available", api_available)
@@ -10034,11 +10546,17 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKey
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             label: str,
-             required: bool,
+             description: Optional[str] = None,
+             label: Optional[str] = None,
+             required: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("description", description)
         _setter("label", label)
@@ -10075,15 +10593,21 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfi
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             encapsulation: str,
-             encapsulation_strategy: str,
-             reuse_vlan_s_tag: bool,
+             encapsulation: Optional[str] = None,
+             encapsulation_strategy: Optional[str] = None,
+             reuse_vlan_s_tag: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'encapsulationStrategy' in kwargs:
+        if encapsulation is None:
+            raise TypeError("Missing 'encapsulation' argument")
+        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
             encapsulation_strategy = kwargs['encapsulationStrategy']
-        if 'reuseVlanSTag' in kwargs:
+        if encapsulation_strategy is None:
+            raise TypeError("Missing 'encapsulation_strategy' argument")
+        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
             reuse_vlan_s_tag = kwargs['reuseVlanSTag']
+        if reuse_vlan_s_tag is None:
+            raise TypeError("Missing 'reuse_vlan_s_tag' argument")
 
         _setter("encapsulation", encapsulation)
         _setter("encapsulation_strategy", encapsulation_strategy)
@@ -10120,11 +10644,17 @@ class GetConnectionZSideAccessPointRouterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             state: str,
-             uuid: str,
+             href: Optional[str] = None,
+             state: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("state", state)
@@ -10161,11 +10691,17 @@ class GetConnectionZSideAccessPointVirtualDeviceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             type: str,
-             uuid: str,
+             href: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("type", type)
@@ -10204,12 +10740,20 @@ class GetConnectionZSideServiceTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             href: str,
-             type: str,
-             uuid: str,
+             description: Optional[str] = None,
+             href: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("description", description)
         _setter("href", href)
@@ -10260,29 +10804,43 @@ class GetPortAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -10361,44 +10919,68 @@ class GetPortChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -10487,10 +11069,14 @@ class GetPortDeviceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             redundancies: Sequence['outputs.GetPortDeviceRedundancyResult'],
+             name: Optional[str] = None,
+             redundancies: Optional[Sequence['outputs.GetPortDeviceRedundancyResult']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if redundancies is None:
+            raise TypeError("Missing 'redundancies' argument")
 
         _setter("name", name)
         _setter("redundancies", redundancies)
@@ -10519,10 +11105,14 @@ class GetPortDeviceRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: str,
-             priority: str,
+             group: Optional[str] = None,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("group", group)
         _setter("priority", priority)
@@ -10551,12 +11141,16 @@ class GetPortEncapsulationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag_protocol_id: str,
-             type: str,
+             tag_protocol_id: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'tagProtocolId' in kwargs:
+        if tag_protocol_id is None and 'tagProtocolId' in kwargs:
             tag_protocol_id = kwargs['tagProtocolId']
+        if tag_protocol_id is None:
+            raise TypeError("Missing 'tag_protocol_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("tag_protocol_id", tag_protocol_id)
         _setter("type", type)
@@ -10591,17 +11185,27 @@ class GetPortLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             href: Optional[str] = None,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("href", href)
         _setter("ibx", ibx)
@@ -10650,17 +11254,23 @@ class GetPortOperationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_count: int,
-             op_status_changed_at: str,
-             operational_status: str,
+             connection_count: Optional[int] = None,
+             op_status_changed_at: Optional[str] = None,
+             operational_status: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'connectionCount' in kwargs:
+        if connection_count is None and 'connectionCount' in kwargs:
             connection_count = kwargs['connectionCount']
-        if 'opStatusChangedAt' in kwargs:
+        if connection_count is None:
+            raise TypeError("Missing 'connection_count' argument")
+        if op_status_changed_at is None and 'opStatusChangedAt' in kwargs:
             op_status_changed_at = kwargs['opStatusChangedAt']
-        if 'operationalStatus' in kwargs:
+        if op_status_changed_at is None:
+            raise TypeError("Missing 'op_status_changed_at' argument")
+        if operational_status is None and 'operationalStatus' in kwargs:
             operational_status = kwargs['operationalStatus']
+        if operational_status is None:
+            raise TypeError("Missing 'operational_status' argument")
 
         _setter("connection_count", connection_count)
         _setter("op_status_changed_at", op_status_changed_at)
@@ -10697,11 +11307,17 @@ class GetPortRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             group: str,
-             priority: str,
+             enabled: Optional[bool] = None,
+             group: Optional[str] = None,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("enabled", enabled)
         _setter("group", group)
@@ -10768,36 +11384,70 @@ class GetPortsDatumResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             accounts: Sequence['outputs.GetPortsDatumAccountResult'],
-             available_bandwidth: int,
-             bandwidth: int,
-             change_logs: Sequence['outputs.GetPortsDatumChangeLogResult'],
-             description: str,
-             devices: Sequence['outputs.GetPortsDatumDeviceResult'],
-             encapsulations: Sequence['outputs.GetPortsDatumEncapsulationResult'],
-             href: str,
-             lag_enabled: bool,
-             locations: Sequence['outputs.GetPortsDatumLocationResult'],
-             name: str,
-             operations: Sequence['outputs.GetPortsDatumOperationResult'],
-             redundancies: Sequence['outputs.GetPortsDatumRedundancyResult'],
-             service_type: str,
-             state: str,
-             type: str,
-             used_bandwidth: int,
+             accounts: Optional[Sequence['outputs.GetPortsDatumAccountResult']] = None,
+             available_bandwidth: Optional[int] = None,
+             bandwidth: Optional[int] = None,
+             change_logs: Optional[Sequence['outputs.GetPortsDatumChangeLogResult']] = None,
+             description: Optional[str] = None,
+             devices: Optional[Sequence['outputs.GetPortsDatumDeviceResult']] = None,
+             encapsulations: Optional[Sequence['outputs.GetPortsDatumEncapsulationResult']] = None,
+             href: Optional[str] = None,
+             lag_enabled: Optional[bool] = None,
+             locations: Optional[Sequence['outputs.GetPortsDatumLocationResult']] = None,
+             name: Optional[str] = None,
+             operations: Optional[Sequence['outputs.GetPortsDatumOperationResult']] = None,
+             redundancies: Optional[Sequence['outputs.GetPortsDatumRedundancyResult']] = None,
+             service_type: Optional[str] = None,
+             state: Optional[str] = None,
+             type: Optional[str] = None,
+             used_bandwidth: Optional[int] = None,
              uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'availableBandwidth' in kwargs:
+        if accounts is None:
+            raise TypeError("Missing 'accounts' argument")
+        if available_bandwidth is None and 'availableBandwidth' in kwargs:
             available_bandwidth = kwargs['availableBandwidth']
-        if 'changeLogs' in kwargs:
+        if available_bandwidth is None:
+            raise TypeError("Missing 'available_bandwidth' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if change_logs is None and 'changeLogs' in kwargs:
             change_logs = kwargs['changeLogs']
-        if 'lagEnabled' in kwargs:
+        if change_logs is None:
+            raise TypeError("Missing 'change_logs' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if devices is None:
+            raise TypeError("Missing 'devices' argument")
+        if encapsulations is None:
+            raise TypeError("Missing 'encapsulations' argument")
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if lag_enabled is None and 'lagEnabled' in kwargs:
             lag_enabled = kwargs['lagEnabled']
-        if 'serviceType' in kwargs:
+        if lag_enabled is None:
+            raise TypeError("Missing 'lag_enabled' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if operations is None:
+            raise TypeError("Missing 'operations' argument")
+        if redundancies is None:
+            raise TypeError("Missing 'redundancies' argument")
+        if service_type is None and 'serviceType' in kwargs:
             service_type = kwargs['serviceType']
-        if 'usedBandwidth' in kwargs:
+        if service_type is None:
+            raise TypeError("Missing 'service_type' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if used_bandwidth is None and 'usedBandwidth' in kwargs:
             used_bandwidth = kwargs['usedBandwidth']
+        if used_bandwidth is None:
+            raise TypeError("Missing 'used_bandwidth' argument")
 
         _setter("accounts", accounts)
         _setter("available_bandwidth", available_bandwidth)
@@ -10933,29 +11583,43 @@ class GetPortsDatumAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -11034,44 +11698,68 @@ class GetPortsDatumChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -11160,10 +11848,14 @@ class GetPortsDatumDeviceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             redundancies: Sequence['outputs.GetPortsDatumDeviceRedundancyResult'],
+             name: Optional[str] = None,
+             redundancies: Optional[Sequence['outputs.GetPortsDatumDeviceRedundancyResult']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if redundancies is None:
+            raise TypeError("Missing 'redundancies' argument")
 
         _setter("name", name)
         _setter("redundancies", redundancies)
@@ -11192,10 +11884,14 @@ class GetPortsDatumDeviceRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: str,
-             priority: str,
+             group: Optional[str] = None,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("group", group)
         _setter("priority", priority)
@@ -11224,12 +11920,16 @@ class GetPortsDatumEncapsulationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             tag_protocol_id: str,
-             type: str,
+             tag_protocol_id: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'tagProtocolId' in kwargs:
+        if tag_protocol_id is None and 'tagProtocolId' in kwargs:
             tag_protocol_id = kwargs['tagProtocolId']
+        if tag_protocol_id is None:
+            raise TypeError("Missing 'tag_protocol_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("tag_protocol_id", tag_protocol_id)
         _setter("type", type)
@@ -11264,17 +11964,27 @@ class GetPortsDatumLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             href: Optional[str] = None,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("href", href)
         _setter("ibx", ibx)
@@ -11323,17 +12033,23 @@ class GetPortsDatumOperationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_count: int,
-             op_status_changed_at: str,
-             operational_status: str,
+             connection_count: Optional[int] = None,
+             op_status_changed_at: Optional[str] = None,
+             operational_status: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'connectionCount' in kwargs:
+        if connection_count is None and 'connectionCount' in kwargs:
             connection_count = kwargs['connectionCount']
-        if 'opStatusChangedAt' in kwargs:
+        if connection_count is None:
+            raise TypeError("Missing 'connection_count' argument")
+        if op_status_changed_at is None and 'opStatusChangedAt' in kwargs:
             op_status_changed_at = kwargs['opStatusChangedAt']
-        if 'operationalStatus' in kwargs:
+        if op_status_changed_at is None:
+            raise TypeError("Missing 'op_status_changed_at' argument")
+        if operational_status is None and 'operationalStatus' in kwargs:
             operational_status = kwargs['operationalStatus']
+        if operational_status is None:
+            raise TypeError("Missing 'operational_status' argument")
 
         _setter("connection_count", connection_count)
         _setter("op_status_changed_at", op_status_changed_at)
@@ -11370,11 +12086,17 @@ class GetPortsDatumRedundancyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
-             group: str,
-             priority: str,
+             enabled: Optional[bool] = None,
+             group: Optional[str] = None,
+             priority: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
 
         _setter("enabled", enabled)
         _setter("group", group)
@@ -11443,10 +12165,12 @@ class GetRoutingProtocolBfdResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              interval: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
 
         _setter("enabled", enabled)
         if interval is not None:
@@ -11489,15 +12213,19 @@ class GetRoutingProtocolBgpIpv4Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: str,
-             equinix_peer_ip: str,
+             customer_peer_ip: Optional[str] = None,
+             equinix_peer_ip: Optional[str] = None,
              enabled: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
+        if equinix_peer_ip is None:
+            raise TypeError("Missing 'equinix_peer_ip' argument")
 
         _setter("customer_peer_ip", customer_peer_ip)
         _setter("equinix_peer_ip", equinix_peer_ip)
@@ -11549,15 +12277,19 @@ class GetRoutingProtocolBgpIpv6Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: str,
-             equinix_peer_ip: str,
+             customer_peer_ip: Optional[str] = None,
+             equinix_peer_ip: Optional[str] = None,
              enabled: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
+        if equinix_peer_ip is None:
+            raise TypeError("Missing 'equinix_peer_ip' argument")
 
         _setter("customer_peer_ip", customer_peer_ip)
         _setter("equinix_peer_ip", equinix_peer_ip)
@@ -11604,11 +12336,17 @@ class GetRoutingProtocolChangeResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             type: str,
-             uuid: str,
+             href: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("href", href)
         _setter("type", type)
@@ -11663,44 +12401,68 @@ class GetRoutingProtocolChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -11790,11 +12552,13 @@ class GetRoutingProtocolDirectIpv4Result(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: str,
+             equinix_iface_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
+        if equinix_iface_ip is None:
+            raise TypeError("Missing 'equinix_iface_ip' argument")
 
         _setter("equinix_iface_ip", equinix_iface_ip)
 
@@ -11824,7 +12588,7 @@ class GetRoutingProtocolDirectIpv6Result(dict):
              equinix_iface_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
 
         if equinix_iface_ip is not None:
@@ -11850,9 +12614,11 @@ class GetRoutingProtocolOperationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             errors: Sequence['outputs.GetRoutingProtocolOperationErrorResult'],
+             errors: Optional[Sequence['outputs.GetRoutingProtocolOperationErrorResult']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if errors is None:
+            raise TypeError("Missing 'errors' argument")
 
         _setter("errors", errors)
 
@@ -11883,22 +12649,34 @@ class GetRoutingProtocolOperationErrorResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             additional_infos: Sequence['outputs.GetRoutingProtocolOperationErrorAdditionalInfoResult'],
-             correlation_id: str,
-             details: str,
-             error_code: str,
-             error_message: str,
-             help: str,
+             additional_infos: Optional[Sequence['outputs.GetRoutingProtocolOperationErrorAdditionalInfoResult']] = None,
+             correlation_id: Optional[str] = None,
+             details: Optional[str] = None,
+             error_code: Optional[str] = None,
+             error_message: Optional[str] = None,
+             help: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalInfos' in kwargs:
+        if additional_infos is None and 'additionalInfos' in kwargs:
             additional_infos = kwargs['additionalInfos']
-        if 'correlationId' in kwargs:
+        if additional_infos is None:
+            raise TypeError("Missing 'additional_infos' argument")
+        if correlation_id is None and 'correlationId' in kwargs:
             correlation_id = kwargs['correlationId']
-        if 'errorCode' in kwargs:
+        if correlation_id is None:
+            raise TypeError("Missing 'correlation_id' argument")
+        if details is None:
+            raise TypeError("Missing 'details' argument")
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorMessage' in kwargs:
+        if error_code is None:
+            raise TypeError("Missing 'error_code' argument")
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
+        if error_message is None:
+            raise TypeError("Missing 'error_message' argument")
+        if help is None:
+            raise TypeError("Missing 'help' argument")
 
         _setter("additional_infos", additional_infos)
         _setter("correlation_id", correlation_id)
@@ -11951,10 +12729,14 @@ class GetRoutingProtocolOperationErrorAdditionalInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             property: str,
-             reason: str,
+             property: Optional[str] = None,
+             reason: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if property is None:
+            raise TypeError("Missing 'property' argument")
+        if reason is None:
+            raise TypeError("Missing 'reason' argument")
 
         _setter("property", property)
         _setter("reason", reason)
@@ -12007,46 +12789,74 @@ class GetServiceProfileAccessPointTypeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_bandwidth_auto_approval: bool,
-             allow_bandwidth_upgrade: bool,
-             allow_custom_bandwidth: bool,
-             allow_remote_connections: bool,
-             api_configs: Sequence['outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult'],
-             authentication_keys: Sequence['outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult'],
-             bandwidth_alert_threshold: float,
-             connection_label: str,
-             connection_redundancy_required: bool,
-             enable_auto_generate_service_key: bool,
-             link_protocol_configs: Sequence['outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult'],
-             supported_bandwidths: Sequence[int],
-             type: str,
-             uuid: str,
+             allow_bandwidth_auto_approval: Optional[bool] = None,
+             allow_bandwidth_upgrade: Optional[bool] = None,
+             allow_custom_bandwidth: Optional[bool] = None,
+             allow_remote_connections: Optional[bool] = None,
+             api_configs: Optional[Sequence['outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult']] = None,
+             authentication_keys: Optional[Sequence['outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult']] = None,
+             bandwidth_alert_threshold: Optional[float] = None,
+             connection_label: Optional[str] = None,
+             connection_redundancy_required: Optional[bool] = None,
+             enable_auto_generate_service_key: Optional[bool] = None,
+             link_protocol_configs: Optional[Sequence['outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult']] = None,
+             supported_bandwidths: Optional[Sequence[int]] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowBandwidthAutoApproval' in kwargs:
+        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
             allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if 'allowBandwidthUpgrade' in kwargs:
+        if allow_bandwidth_auto_approval is None:
+            raise TypeError("Missing 'allow_bandwidth_auto_approval' argument")
+        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
             allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if 'allowCustomBandwidth' in kwargs:
+        if allow_bandwidth_upgrade is None:
+            raise TypeError("Missing 'allow_bandwidth_upgrade' argument")
+        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
             allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if 'allowRemoteConnections' in kwargs:
+        if allow_custom_bandwidth is None:
+            raise TypeError("Missing 'allow_custom_bandwidth' argument")
+        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
             allow_remote_connections = kwargs['allowRemoteConnections']
-        if 'apiConfigs' in kwargs:
+        if allow_remote_connections is None:
+            raise TypeError("Missing 'allow_remote_connections' argument")
+        if api_configs is None and 'apiConfigs' in kwargs:
             api_configs = kwargs['apiConfigs']
-        if 'authenticationKeys' in kwargs:
+        if api_configs is None:
+            raise TypeError("Missing 'api_configs' argument")
+        if authentication_keys is None and 'authenticationKeys' in kwargs:
             authentication_keys = kwargs['authenticationKeys']
-        if 'bandwidthAlertThreshold' in kwargs:
+        if authentication_keys is None:
+            raise TypeError("Missing 'authentication_keys' argument")
+        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
             bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if 'connectionLabel' in kwargs:
+        if bandwidth_alert_threshold is None:
+            raise TypeError("Missing 'bandwidth_alert_threshold' argument")
+        if connection_label is None and 'connectionLabel' in kwargs:
             connection_label = kwargs['connectionLabel']
-        if 'connectionRedundancyRequired' in kwargs:
+        if connection_label is None:
+            raise TypeError("Missing 'connection_label' argument")
+        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
             connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if 'enableAutoGenerateServiceKey' in kwargs:
+        if connection_redundancy_required is None:
+            raise TypeError("Missing 'connection_redundancy_required' argument")
+        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
             enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if 'linkProtocolConfigs' in kwargs:
+        if enable_auto_generate_service_key is None:
+            raise TypeError("Missing 'enable_auto_generate_service_key' argument")
+        if link_protocol_configs is None and 'linkProtocolConfigs' in kwargs:
             link_protocol_configs = kwargs['linkProtocolConfigs']
-        if 'supportedBandwidths' in kwargs:
+        if link_protocol_configs is None:
+            raise TypeError("Missing 'link_protocol_configs' argument")
+        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
             supported_bandwidths = kwargs['supportedBandwidths']
+        if supported_bandwidths is None:
+            raise TypeError("Missing 'supported_bandwidths' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
         _setter("allow_bandwidth_upgrade", allow_bandwidth_upgrade)
@@ -12157,29 +12967,43 @@ class GetServiceProfileAccessPointTypeConfigApiConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_over_subscription: bool,
-             api_available: bool,
-             bandwidth_from_api: bool,
-             equinix_managed_port: bool,
-             equinix_managed_vlan: bool,
-             integration_id: str,
-             over_subscription_limit: int,
+             allow_over_subscription: Optional[bool] = None,
+             api_available: Optional[bool] = None,
+             bandwidth_from_api: Optional[bool] = None,
+             equinix_managed_port: Optional[bool] = None,
+             equinix_managed_vlan: Optional[bool] = None,
+             integration_id: Optional[str] = None,
+             over_subscription_limit: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverSubscription' in kwargs:
+        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
             allow_over_subscription = kwargs['allowOverSubscription']
-        if 'apiAvailable' in kwargs:
+        if allow_over_subscription is None:
+            raise TypeError("Missing 'allow_over_subscription' argument")
+        if api_available is None and 'apiAvailable' in kwargs:
             api_available = kwargs['apiAvailable']
-        if 'bandwidthFromApi' in kwargs:
+        if api_available is None:
+            raise TypeError("Missing 'api_available' argument")
+        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
             bandwidth_from_api = kwargs['bandwidthFromApi']
-        if 'equinixManagedPort' in kwargs:
+        if bandwidth_from_api is None:
+            raise TypeError("Missing 'bandwidth_from_api' argument")
+        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
             equinix_managed_port = kwargs['equinixManagedPort']
-        if 'equinixManagedVlan' in kwargs:
+        if equinix_managed_port is None:
+            raise TypeError("Missing 'equinix_managed_port' argument")
+        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
             equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if 'integrationId' in kwargs:
+        if equinix_managed_vlan is None:
+            raise TypeError("Missing 'equinix_managed_vlan' argument")
+        if integration_id is None and 'integrationId' in kwargs:
             integration_id = kwargs['integrationId']
-        if 'overSubscriptionLimit' in kwargs:
+        if integration_id is None:
+            raise TypeError("Missing 'integration_id' argument")
+        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
             over_subscription_limit = kwargs['overSubscriptionLimit']
+        if over_subscription_limit is None:
+            raise TypeError("Missing 'over_subscription_limit' argument")
 
         _setter("allow_over_subscription", allow_over_subscription)
         _setter("api_available", api_available)
@@ -12240,11 +13064,17 @@ class GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             label: str,
-             required: bool,
+             description: Optional[str] = None,
+             label: Optional[str] = None,
+             required: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("description", description)
         _setter("label", label)
@@ -12281,15 +13111,21 @@ class GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             encapsulation: str,
-             encapsulation_strategy: str,
-             reuse_vlan_s_tag: bool,
+             encapsulation: Optional[str] = None,
+             encapsulation_strategy: Optional[str] = None,
+             reuse_vlan_s_tag: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'encapsulationStrategy' in kwargs:
+        if encapsulation is None:
+            raise TypeError("Missing 'encapsulation' argument")
+        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
             encapsulation_strategy = kwargs['encapsulationStrategy']
-        if 'reuseVlanSTag' in kwargs:
+        if encapsulation_strategy is None:
+            raise TypeError("Missing 'encapsulation_strategy' argument")
+        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
             reuse_vlan_s_tag = kwargs['reuseVlanSTag']
+        if reuse_vlan_s_tag is None:
+            raise TypeError("Missing 'reuse_vlan_s_tag' argument")
 
         _setter("encapsulation", encapsulation)
         _setter("encapsulation_strategy", encapsulation_strategy)
@@ -12336,32 +13172,48 @@ class GetServiceProfileAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
-             ucm_id: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
+             ucm_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
-        if 'ucmId' in kwargs:
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
+        if ucm_id is None and 'ucmId' in kwargs:
             ucm_id = kwargs['ucmId']
+        if ucm_id is None:
+            raise TypeError("Missing 'ucm_id' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -12446,44 +13298,68 @@ class GetServiceProfileChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -12580,18 +13456,30 @@ class GetServiceProfileCustomFieldResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capture_in_email: bool,
-             data_type: str,
-             description: str,
-             label: str,
-             options: Sequence[str],
-             required: bool,
+             capture_in_email: Optional[bool] = None,
+             data_type: Optional[str] = None,
+             description: Optional[str] = None,
+             label: Optional[str] = None,
+             options: Optional[Sequence[str]] = None,
+             required: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'captureInEmail' in kwargs:
+        if capture_in_email is None and 'captureInEmail' in kwargs:
             capture_in_email = kwargs['captureInEmail']
-        if 'dataType' in kwargs:
+        if capture_in_email is None:
+            raise TypeError("Missing 'capture_in_email' argument")
+        if data_type is None and 'dataType' in kwargs:
             data_type = kwargs['dataType']
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("capture_in_email", capture_in_email)
         _setter("data_type", data_type)
@@ -12646,13 +13534,19 @@ class GetServiceProfileMarketingInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logo: str,
-             process_steps: Sequence['outputs.GetServiceProfileMarketingInfoProcessStepResult'],
-             promotion: bool,
+             logo: Optional[str] = None,
+             process_steps: Optional[Sequence['outputs.GetServiceProfileMarketingInfoProcessStepResult']] = None,
+             promotion: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'processSteps' in kwargs:
+        if logo is None:
+            raise TypeError("Missing 'logo' argument")
+        if process_steps is None and 'processSteps' in kwargs:
             process_steps = kwargs['processSteps']
+        if process_steps is None:
+            raise TypeError("Missing 'process_steps' argument")
+        if promotion is None:
+            raise TypeError("Missing 'promotion' argument")
 
         _setter("logo", logo)
         _setter("process_steps", process_steps)
@@ -12689,13 +13583,19 @@ class GetServiceProfileMarketingInfoProcessStepResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             sub_title: str,
-             title: str,
+             description: Optional[str] = None,
+             sub_title: Optional[str] = None,
+             title: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'subTitle' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if sub_title is None and 'subTitle' in kwargs:
             sub_title = kwargs['subTitle']
+        if sub_title is None:
+            raise TypeError("Missing 'sub_title' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
 
         _setter("description", description)
         _setter("sub_title", sub_title)
@@ -12738,20 +13638,32 @@ class GetServiceProfileMetroResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: str,
-             display_name: str,
-             ibxs: Sequence[str],
-             in_trail: bool,
-             name: str,
-             seller_regions: Mapping[str, str],
+             code: Optional[str] = None,
+             display_name: Optional[str] = None,
+             ibxs: Optional[Sequence[str]] = None,
+             in_trail: Optional[bool] = None,
+             name: Optional[str] = None,
+             seller_regions: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'inTrail' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if ibxs is None:
+            raise TypeError("Missing 'ibxs' argument")
+        if in_trail is None and 'inTrail' in kwargs:
             in_trail = kwargs['inTrail']
-        if 'sellerRegions' in kwargs:
+        if in_trail is None:
+            raise TypeError("Missing 'in_trail' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if seller_regions is None and 'sellerRegions' in kwargs:
             seller_regions = kwargs['sellerRegions']
+        if seller_regions is None:
+            raise TypeError("Missing 'seller_regions' argument")
 
         _setter("code", code)
         _setter("display_name", display_name)
@@ -12806,13 +13718,19 @@ class GetServiceProfileNotificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             send_interval: str,
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             send_interval: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
+        if send_interval is None:
+            raise TypeError("Missing 'send_interval' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("emails", emails)
         _setter("send_interval", send_interval)
@@ -12855,20 +13773,32 @@ class GetServiceProfilePortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cross_connect_id: str,
-             locations: Sequence['outputs.GetServiceProfilePortLocationResult'],
-             seller_region: str,
-             seller_region_description: str,
-             type: str,
-             uuid: str,
+             cross_connect_id: Optional[str] = None,
+             locations: Optional[Sequence['outputs.GetServiceProfilePortLocationResult']] = None,
+             seller_region: Optional[str] = None,
+             seller_region_description: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'crossConnectId' in kwargs:
+        if cross_connect_id is None and 'crossConnectId' in kwargs:
             cross_connect_id = kwargs['crossConnectId']
-        if 'sellerRegion' in kwargs:
+        if cross_connect_id is None:
+            raise TypeError("Missing 'cross_connect_id' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'sellerRegionDescription' in kwargs:
+        if seller_region is None:
+            raise TypeError("Missing 'seller_region' argument")
+        if seller_region_description is None and 'sellerRegionDescription' in kwargs:
             seller_region_description = kwargs['sellerRegionDescription']
+        if seller_region_description is None:
+            raise TypeError("Missing 'seller_region_description' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("cross_connect_id", cross_connect_id)
         _setter("locations", locations)
@@ -12925,16 +13855,24 @@ class GetServiceProfilePortLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("ibx", ibx)
         _setter("metro_code", metro_code)
@@ -12975,12 +13913,16 @@ class GetServiceProfileProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             project_id: str,
+             href: Optional[str] = None,
+             project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("href", href)
         _setter("project_id", project_id)
@@ -13043,39 +13985,73 @@ class GetServiceProfilesDatumResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_point_type_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigResult'],
-             accounts: Sequence['outputs.GetServiceProfilesDatumAccountResult'],
-             allowed_emails: Sequence[str],
-             change_logs: Sequence['outputs.GetServiceProfilesDatumChangeLogResult'],
-             custom_fields: Sequence['outputs.GetServiceProfilesDatumCustomFieldResult'],
-             description: str,
-             href: str,
-             marketing_infos: Sequence['outputs.GetServiceProfilesDatumMarketingInfoResult'],
-             metros: Sequence['outputs.GetServiceProfilesDatumMetroResult'],
-             name: str,
-             notifications: Sequence['outputs.GetServiceProfilesDatumNotificationResult'],
-             ports: Sequence['outputs.GetServiceProfilesDatumPortResult'],
-             projects: Sequence['outputs.GetServiceProfilesDatumProjectResult'],
-             self_profile: bool,
-             tags: Sequence[str],
-             type: str,
-             visibility: str,
+             access_point_type_configs: Optional[Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigResult']] = None,
+             accounts: Optional[Sequence['outputs.GetServiceProfilesDatumAccountResult']] = None,
+             allowed_emails: Optional[Sequence[str]] = None,
+             change_logs: Optional[Sequence['outputs.GetServiceProfilesDatumChangeLogResult']] = None,
+             custom_fields: Optional[Sequence['outputs.GetServiceProfilesDatumCustomFieldResult']] = None,
+             description: Optional[str] = None,
+             href: Optional[str] = None,
+             marketing_infos: Optional[Sequence['outputs.GetServiceProfilesDatumMarketingInfoResult']] = None,
+             metros: Optional[Sequence['outputs.GetServiceProfilesDatumMetroResult']] = None,
+             name: Optional[str] = None,
+             notifications: Optional[Sequence['outputs.GetServiceProfilesDatumNotificationResult']] = None,
+             ports: Optional[Sequence['outputs.GetServiceProfilesDatumPortResult']] = None,
+             projects: Optional[Sequence['outputs.GetServiceProfilesDatumProjectResult']] = None,
+             self_profile: Optional[bool] = None,
+             tags: Optional[Sequence[str]] = None,
+             type: Optional[str] = None,
+             visibility: Optional[str] = None,
              state: Optional[str] = None,
              uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
-        if 'allowedEmails' in kwargs:
+        if access_point_type_configs is None:
+            raise TypeError("Missing 'access_point_type_configs' argument")
+        if accounts is None:
+            raise TypeError("Missing 'accounts' argument")
+        if allowed_emails is None and 'allowedEmails' in kwargs:
             allowed_emails = kwargs['allowedEmails']
-        if 'changeLogs' in kwargs:
+        if allowed_emails is None:
+            raise TypeError("Missing 'allowed_emails' argument")
+        if change_logs is None and 'changeLogs' in kwargs:
             change_logs = kwargs['changeLogs']
-        if 'customFields' in kwargs:
+        if change_logs is None:
+            raise TypeError("Missing 'change_logs' argument")
+        if custom_fields is None and 'customFields' in kwargs:
             custom_fields = kwargs['customFields']
-        if 'marketingInfos' in kwargs:
+        if custom_fields is None:
+            raise TypeError("Missing 'custom_fields' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if marketing_infos is None and 'marketingInfos' in kwargs:
             marketing_infos = kwargs['marketingInfos']
-        if 'selfProfile' in kwargs:
+        if marketing_infos is None:
+            raise TypeError("Missing 'marketing_infos' argument")
+        if metros is None:
+            raise TypeError("Missing 'metros' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if projects is None:
+            raise TypeError("Missing 'projects' argument")
+        if self_profile is None and 'selfProfile' in kwargs:
             self_profile = kwargs['selfProfile']
+        if self_profile is None:
+            raise TypeError("Missing 'self_profile' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if visibility is None:
+            raise TypeError("Missing 'visibility' argument")
 
         _setter("access_point_type_configs", access_point_type_configs)
         _setter("accounts", accounts)
@@ -13232,46 +14208,74 @@ class GetServiceProfilesDatumAccessPointTypeConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_bandwidth_auto_approval: bool,
-             allow_bandwidth_upgrade: bool,
-             allow_custom_bandwidth: bool,
-             allow_remote_connections: bool,
-             api_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult'],
-             authentication_keys: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult'],
-             bandwidth_alert_threshold: float,
-             connection_label: str,
-             connection_redundancy_required: bool,
-             enable_auto_generate_service_key: bool,
-             link_protocol_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult'],
-             supported_bandwidths: Sequence[int],
-             type: str,
-             uuid: str,
+             allow_bandwidth_auto_approval: Optional[bool] = None,
+             allow_bandwidth_upgrade: Optional[bool] = None,
+             allow_custom_bandwidth: Optional[bool] = None,
+             allow_remote_connections: Optional[bool] = None,
+             api_configs: Optional[Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult']] = None,
+             authentication_keys: Optional[Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult']] = None,
+             bandwidth_alert_threshold: Optional[float] = None,
+             connection_label: Optional[str] = None,
+             connection_redundancy_required: Optional[bool] = None,
+             enable_auto_generate_service_key: Optional[bool] = None,
+             link_protocol_configs: Optional[Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult']] = None,
+             supported_bandwidths: Optional[Sequence[int]] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowBandwidthAutoApproval' in kwargs:
+        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
             allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if 'allowBandwidthUpgrade' in kwargs:
+        if allow_bandwidth_auto_approval is None:
+            raise TypeError("Missing 'allow_bandwidth_auto_approval' argument")
+        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
             allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if 'allowCustomBandwidth' in kwargs:
+        if allow_bandwidth_upgrade is None:
+            raise TypeError("Missing 'allow_bandwidth_upgrade' argument")
+        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
             allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if 'allowRemoteConnections' in kwargs:
+        if allow_custom_bandwidth is None:
+            raise TypeError("Missing 'allow_custom_bandwidth' argument")
+        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
             allow_remote_connections = kwargs['allowRemoteConnections']
-        if 'apiConfigs' in kwargs:
+        if allow_remote_connections is None:
+            raise TypeError("Missing 'allow_remote_connections' argument")
+        if api_configs is None and 'apiConfigs' in kwargs:
             api_configs = kwargs['apiConfigs']
-        if 'authenticationKeys' in kwargs:
+        if api_configs is None:
+            raise TypeError("Missing 'api_configs' argument")
+        if authentication_keys is None and 'authenticationKeys' in kwargs:
             authentication_keys = kwargs['authenticationKeys']
-        if 'bandwidthAlertThreshold' in kwargs:
+        if authentication_keys is None:
+            raise TypeError("Missing 'authentication_keys' argument")
+        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
             bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if 'connectionLabel' in kwargs:
+        if bandwidth_alert_threshold is None:
+            raise TypeError("Missing 'bandwidth_alert_threshold' argument")
+        if connection_label is None and 'connectionLabel' in kwargs:
             connection_label = kwargs['connectionLabel']
-        if 'connectionRedundancyRequired' in kwargs:
+        if connection_label is None:
+            raise TypeError("Missing 'connection_label' argument")
+        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
             connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if 'enableAutoGenerateServiceKey' in kwargs:
+        if connection_redundancy_required is None:
+            raise TypeError("Missing 'connection_redundancy_required' argument")
+        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
             enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if 'linkProtocolConfigs' in kwargs:
+        if enable_auto_generate_service_key is None:
+            raise TypeError("Missing 'enable_auto_generate_service_key' argument")
+        if link_protocol_configs is None and 'linkProtocolConfigs' in kwargs:
             link_protocol_configs = kwargs['linkProtocolConfigs']
-        if 'supportedBandwidths' in kwargs:
+        if link_protocol_configs is None:
+            raise TypeError("Missing 'link_protocol_configs' argument")
+        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
             supported_bandwidths = kwargs['supportedBandwidths']
+        if supported_bandwidths is None:
+            raise TypeError("Missing 'supported_bandwidths' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
         _setter("allow_bandwidth_upgrade", allow_bandwidth_upgrade)
@@ -13382,29 +14386,43 @@ class GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allow_over_subscription: bool,
-             api_available: bool,
-             bandwidth_from_api: bool,
-             equinix_managed_port: bool,
-             equinix_managed_vlan: bool,
-             integration_id: str,
-             over_subscription_limit: int,
+             allow_over_subscription: Optional[bool] = None,
+             api_available: Optional[bool] = None,
+             bandwidth_from_api: Optional[bool] = None,
+             equinix_managed_port: Optional[bool] = None,
+             equinix_managed_vlan: Optional[bool] = None,
+             integration_id: Optional[str] = None,
+             over_subscription_limit: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverSubscription' in kwargs:
+        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
             allow_over_subscription = kwargs['allowOverSubscription']
-        if 'apiAvailable' in kwargs:
+        if allow_over_subscription is None:
+            raise TypeError("Missing 'allow_over_subscription' argument")
+        if api_available is None and 'apiAvailable' in kwargs:
             api_available = kwargs['apiAvailable']
-        if 'bandwidthFromApi' in kwargs:
+        if api_available is None:
+            raise TypeError("Missing 'api_available' argument")
+        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
             bandwidth_from_api = kwargs['bandwidthFromApi']
-        if 'equinixManagedPort' in kwargs:
+        if bandwidth_from_api is None:
+            raise TypeError("Missing 'bandwidth_from_api' argument")
+        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
             equinix_managed_port = kwargs['equinixManagedPort']
-        if 'equinixManagedVlan' in kwargs:
+        if equinix_managed_port is None:
+            raise TypeError("Missing 'equinix_managed_port' argument")
+        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
             equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if 'integrationId' in kwargs:
+        if equinix_managed_vlan is None:
+            raise TypeError("Missing 'equinix_managed_vlan' argument")
+        if integration_id is None and 'integrationId' in kwargs:
             integration_id = kwargs['integrationId']
-        if 'overSubscriptionLimit' in kwargs:
+        if integration_id is None:
+            raise TypeError("Missing 'integration_id' argument")
+        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
             over_subscription_limit = kwargs['overSubscriptionLimit']
+        if over_subscription_limit is None:
+            raise TypeError("Missing 'over_subscription_limit' argument")
 
         _setter("allow_over_subscription", allow_over_subscription)
         _setter("api_available", api_available)
@@ -13465,11 +14483,17 @@ class GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             label: str,
-             required: bool,
+             description: Optional[str] = None,
+             label: Optional[str] = None,
+             required: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("description", description)
         _setter("label", label)
@@ -13506,15 +14530,21 @@ class GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             encapsulation: str,
-             encapsulation_strategy: str,
-             reuse_vlan_s_tag: bool,
+             encapsulation: Optional[str] = None,
+             encapsulation_strategy: Optional[str] = None,
+             reuse_vlan_s_tag: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'encapsulationStrategy' in kwargs:
+        if encapsulation is None:
+            raise TypeError("Missing 'encapsulation' argument")
+        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
             encapsulation_strategy = kwargs['encapsulationStrategy']
-        if 'reuseVlanSTag' in kwargs:
+        if encapsulation_strategy is None:
+            raise TypeError("Missing 'encapsulation_strategy' argument")
+        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
             reuse_vlan_s_tag = kwargs['reuseVlanSTag']
+        if reuse_vlan_s_tag is None:
+            raise TypeError("Missing 'reuse_vlan_s_tag' argument")
 
         _setter("encapsulation", encapsulation)
         _setter("encapsulation_strategy", encapsulation_strategy)
@@ -13561,32 +14591,48 @@ class GetServiceProfilesDatumAccountResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_name: str,
-             account_number: int,
-             global_cust_id: str,
-             global_org_id: str,
-             global_organization_name: str,
-             org_id: int,
-             organization_name: str,
-             ucm_id: str,
+             account_name: Optional[str] = None,
+             account_number: Optional[int] = None,
+             global_cust_id: Optional[str] = None,
+             global_org_id: Optional[str] = None,
+             global_organization_name: Optional[str] = None,
+             org_id: Optional[int] = None,
+             organization_name: Optional[str] = None,
+             ucm_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_name is None:
+            raise TypeError("Missing 'account_name' argument")
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_cust_id is None:
+            raise TypeError("Missing 'global_cust_id' argument")
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_org_id is None:
+            raise TypeError("Missing 'global_org_id' argument")
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if global_organization_name is None:
+            raise TypeError("Missing 'global_organization_name' argument")
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if org_id is None:
+            raise TypeError("Missing 'org_id' argument")
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
-        if 'ucmId' in kwargs:
+        if organization_name is None:
+            raise TypeError("Missing 'organization_name' argument")
+        if ucm_id is None and 'ucmId' in kwargs:
             ucm_id = kwargs['ucmId']
+        if ucm_id is None:
+            raise TypeError("Missing 'ucm_id' argument")
 
         _setter("account_name", account_name)
         _setter("account_number", account_number)
@@ -13671,44 +14717,68 @@ class GetServiceProfilesDatumChangeLogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_by: str,
-             created_by_email: str,
-             created_by_full_name: str,
-             created_date_time: str,
-             deleted_by: str,
-             deleted_by_email: str,
-             deleted_by_full_name: str,
-             deleted_date_time: str,
-             updated_by: str,
-             updated_by_email: str,
-             updated_by_full_name: str,
-             updated_date_time: str,
+             created_by: Optional[str] = None,
+             created_by_email: Optional[str] = None,
+             created_by_full_name: Optional[str] = None,
+             created_date_time: Optional[str] = None,
+             deleted_by: Optional[str] = None,
+             deleted_by_email: Optional[str] = None,
+             deleted_by_full_name: Optional[str] = None,
+             deleted_date_time: Optional[str] = None,
+             updated_by: Optional[str] = None,
+             updated_by_email: Optional[str] = None,
+             updated_by_full_name: Optional[str] = None,
+             updated_date_time: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by is None:
+            raise TypeError("Missing 'created_by' argument")
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_email is None:
+            raise TypeError("Missing 'created_by_email' argument")
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_by_full_name is None:
+            raise TypeError("Missing 'created_by_full_name' argument")
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if created_date_time is None:
+            raise TypeError("Missing 'created_date_time' argument")
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by is None:
+            raise TypeError("Missing 'deleted_by' argument")
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_email is None:
+            raise TypeError("Missing 'deleted_by_email' argument")
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_by_full_name is None:
+            raise TypeError("Missing 'deleted_by_full_name' argument")
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if deleted_date_time is None:
+            raise TypeError("Missing 'deleted_date_time' argument")
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by is None:
+            raise TypeError("Missing 'updated_by' argument")
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_email is None:
+            raise TypeError("Missing 'updated_by_email' argument")
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_by_full_name is None:
+            raise TypeError("Missing 'updated_by_full_name' argument")
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
+        if updated_date_time is None:
+            raise TypeError("Missing 'updated_date_time' argument")
 
         _setter("created_by", created_by)
         _setter("created_by_email", created_by_email)
@@ -13805,18 +14875,30 @@ class GetServiceProfilesDatumCustomFieldResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capture_in_email: bool,
-             data_type: str,
-             description: str,
-             label: str,
-             options: Sequence[str],
-             required: bool,
+             capture_in_email: Optional[bool] = None,
+             data_type: Optional[str] = None,
+             description: Optional[str] = None,
+             label: Optional[str] = None,
+             options: Optional[Sequence[str]] = None,
+             required: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'captureInEmail' in kwargs:
+        if capture_in_email is None and 'captureInEmail' in kwargs:
             capture_in_email = kwargs['captureInEmail']
-        if 'dataType' in kwargs:
+        if capture_in_email is None:
+            raise TypeError("Missing 'capture_in_email' argument")
+        if data_type is None and 'dataType' in kwargs:
             data_type = kwargs['dataType']
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
 
         _setter("capture_in_email", capture_in_email)
         _setter("data_type", data_type)
@@ -13871,13 +14953,19 @@ class GetServiceProfilesDatumMarketingInfoResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             logo: str,
-             process_steps: Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult'],
-             promotion: bool,
+             logo: Optional[str] = None,
+             process_steps: Optional[Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult']] = None,
+             promotion: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'processSteps' in kwargs:
+        if logo is None:
+            raise TypeError("Missing 'logo' argument")
+        if process_steps is None and 'processSteps' in kwargs:
             process_steps = kwargs['processSteps']
+        if process_steps is None:
+            raise TypeError("Missing 'process_steps' argument")
+        if promotion is None:
+            raise TypeError("Missing 'promotion' argument")
 
         _setter("logo", logo)
         _setter("process_steps", process_steps)
@@ -13914,13 +15002,19 @@ class GetServiceProfilesDatumMarketingInfoProcessStepResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             sub_title: str,
-             title: str,
+             description: Optional[str] = None,
+             sub_title: Optional[str] = None,
+             title: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'subTitle' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if sub_title is None and 'subTitle' in kwargs:
             sub_title = kwargs['subTitle']
+        if sub_title is None:
+            raise TypeError("Missing 'sub_title' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
 
         _setter("description", description)
         _setter("sub_title", sub_title)
@@ -13963,20 +15057,32 @@ class GetServiceProfilesDatumMetroResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: str,
-             display_name: str,
-             ibxs: Sequence[str],
-             in_trail: bool,
-             name: str,
-             seller_regions: Mapping[str, str],
+             code: Optional[str] = None,
+             display_name: Optional[str] = None,
+             ibxs: Optional[Sequence[str]] = None,
+             in_trail: Optional[bool] = None,
+             name: Optional[str] = None,
+             seller_regions: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if code is None:
+            raise TypeError("Missing 'code' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'inTrail' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if ibxs is None:
+            raise TypeError("Missing 'ibxs' argument")
+        if in_trail is None and 'inTrail' in kwargs:
             in_trail = kwargs['inTrail']
-        if 'sellerRegions' in kwargs:
+        if in_trail is None:
+            raise TypeError("Missing 'in_trail' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if seller_regions is None and 'sellerRegions' in kwargs:
             seller_regions = kwargs['sellerRegions']
+        if seller_regions is None:
+            raise TypeError("Missing 'seller_regions' argument")
 
         _setter("code", code)
         _setter("display_name", display_name)
@@ -14031,13 +15137,19 @@ class GetServiceProfilesDatumNotificationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: Sequence[str],
-             send_interval: str,
-             type: str,
+             emails: Optional[Sequence[str]] = None,
+             send_interval: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
+        if send_interval is None:
+            raise TypeError("Missing 'send_interval' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("emails", emails)
         _setter("send_interval", send_interval)
@@ -14080,20 +15192,32 @@ class GetServiceProfilesDatumPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cross_connect_id: str,
-             locations: Sequence['outputs.GetServiceProfilesDatumPortLocationResult'],
-             seller_region: str,
-             seller_region_description: str,
-             type: str,
-             uuid: str,
+             cross_connect_id: Optional[str] = None,
+             locations: Optional[Sequence['outputs.GetServiceProfilesDatumPortLocationResult']] = None,
+             seller_region: Optional[str] = None,
+             seller_region_description: Optional[str] = None,
+             type: Optional[str] = None,
+             uuid: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'crossConnectId' in kwargs:
+        if cross_connect_id is None and 'crossConnectId' in kwargs:
             cross_connect_id = kwargs['crossConnectId']
-        if 'sellerRegion' in kwargs:
+        if cross_connect_id is None:
+            raise TypeError("Missing 'cross_connect_id' argument")
+        if locations is None:
+            raise TypeError("Missing 'locations' argument")
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'sellerRegionDescription' in kwargs:
+        if seller_region is None:
+            raise TypeError("Missing 'seller_region' argument")
+        if seller_region_description is None and 'sellerRegionDescription' in kwargs:
             seller_region_description = kwargs['sellerRegionDescription']
+        if seller_region_description is None:
+            raise TypeError("Missing 'seller_region_description' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
 
         _setter("cross_connect_id", cross_connect_id)
         _setter("locations", locations)
@@ -14150,16 +15274,24 @@ class GetServiceProfilesDatumPortLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ibx: str,
-             metro_code: str,
-             metro_name: str,
-             region: str,
+             ibx: Optional[str] = None,
+             metro_code: Optional[str] = None,
+             metro_name: Optional[str] = None,
+             region: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if ibx is None:
+            raise TypeError("Missing 'ibx' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
+        if metro_name is None:
+            raise TypeError("Missing 'metro_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("ibx", ibx)
         _setter("metro_code", metro_code)
@@ -14200,12 +15332,16 @@ class GetServiceProfilesDatumProjectResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             project_id: str,
+             href: Optional[str] = None,
+             project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("href", href)
         _setter("project_id", project_id)

@@ -41,15 +41,17 @@ class AclTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             inbound_rules: pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]],
+             inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              metro_code: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'inboundRules' in kwargs:
+        if inbound_rules is None and 'inboundRules' in kwargs:
             inbound_rules = kwargs['inboundRules']
-        if 'metroCode' in kwargs:
+        if inbound_rules is None:
+            raise TypeError("Missing 'inbound_rules' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
 
         _setter("inbound_rules", inbound_rules)
@@ -168,15 +170,15 @@ class _AclTemplateState:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceAclStatus' in kwargs:
+        if device_acl_status is None and 'deviceAclStatus' in kwargs:
             device_acl_status = kwargs['deviceAclStatus']
-        if 'deviceDetails' in kwargs:
+        if device_details is None and 'deviceDetails' in kwargs:
             device_details = kwargs['deviceDetails']
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'inboundRules' in kwargs:
+        if inbound_rules is None and 'inboundRules' in kwargs:
             inbound_rules = kwargs['inboundRules']
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
 
         if description is not None:

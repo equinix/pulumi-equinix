@@ -61,7 +61,7 @@ class RoutingProtocolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_uuid: pulumi.Input[str],
+             connection_uuid: Optional[pulumi.Input[str]] = None,
              bfd: Optional[pulumi.Input['RoutingProtocolBfdArgs']] = None,
              bgp_auth_key: Optional[pulumi.Input[str]] = None,
              bgp_ipv4: Optional[pulumi.Input['RoutingProtocolBgpIpv4Args']] = None,
@@ -75,19 +75,21 @@ class RoutingProtocolArgs:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'connectionUuid' in kwargs:
+        if connection_uuid is None and 'connectionUuid' in kwargs:
             connection_uuid = kwargs['connectionUuid']
-        if 'bgpAuthKey' in kwargs:
+        if connection_uuid is None:
+            raise TypeError("Missing 'connection_uuid' argument")
+        if bgp_auth_key is None and 'bgpAuthKey' in kwargs:
             bgp_auth_key = kwargs['bgpAuthKey']
-        if 'bgpIpv4' in kwargs:
+        if bgp_ipv4 is None and 'bgpIpv4' in kwargs:
             bgp_ipv4 = kwargs['bgpIpv4']
-        if 'bgpIpv6' in kwargs:
+        if bgp_ipv6 is None and 'bgpIpv6' in kwargs:
             bgp_ipv6 = kwargs['bgpIpv6']
-        if 'customerAsn' in kwargs:
+        if customer_asn is None and 'customerAsn' in kwargs:
             customer_asn = kwargs['customerAsn']
-        if 'directIpv4' in kwargs:
+        if direct_ipv4 is None and 'directIpv4' in kwargs:
             direct_ipv4 = kwargs['directIpv4']
-        if 'directIpv6' in kwargs:
+        if direct_ipv6 is None and 'directIpv6' in kwargs:
             direct_ipv6 = kwargs['directIpv6']
 
         _setter("connection_uuid", connection_uuid)
@@ -345,23 +347,23 @@ class _RoutingProtocolState:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bgpAuthKey' in kwargs:
+        if bgp_auth_key is None and 'bgpAuthKey' in kwargs:
             bgp_auth_key = kwargs['bgpAuthKey']
-        if 'bgpIpv4' in kwargs:
+        if bgp_ipv4 is None and 'bgpIpv4' in kwargs:
             bgp_ipv4 = kwargs['bgpIpv4']
-        if 'bgpIpv6' in kwargs:
+        if bgp_ipv6 is None and 'bgpIpv6' in kwargs:
             bgp_ipv6 = kwargs['bgpIpv6']
-        if 'changeLogs' in kwargs:
+        if change_logs is None and 'changeLogs' in kwargs:
             change_logs = kwargs['changeLogs']
-        if 'connectionUuid' in kwargs:
+        if connection_uuid is None and 'connectionUuid' in kwargs:
             connection_uuid = kwargs['connectionUuid']
-        if 'customerAsn' in kwargs:
+        if customer_asn is None and 'customerAsn' in kwargs:
             customer_asn = kwargs['customerAsn']
-        if 'directIpv4' in kwargs:
+        if direct_ipv4 is None and 'directIpv4' in kwargs:
             direct_ipv4 = kwargs['directIpv4']
-        if 'directIpv6' in kwargs:
+        if direct_ipv6 is None and 'directIpv6' in kwargs:
             direct_ipv6 = kwargs['directIpv6']
-        if 'equinixAsn' in kwargs:
+        if equinix_asn is None and 'equinixAsn' in kwargs:
             equinix_asn = kwargs['equinixAsn']
 
         if bfd is not None:

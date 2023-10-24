@@ -41,19 +41,23 @@ class VrfArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metro: pulumi.Input[str],
-             project_id: pulumi.Input[str],
+             metro: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              local_asn: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if metro is None:
+            raise TypeError("Missing 'metro' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'ipRanges' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if ip_ranges is None and 'ipRanges' in kwargs:
             ip_ranges = kwargs['ipRanges']
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
 
         _setter("metro", metro)
@@ -178,11 +182,11 @@ class _VrfState:
              project_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'ipRanges' in kwargs:
+        if ip_ranges is None and 'ipRanges' in kwargs:
             ip_ranges = kwargs['ipRanges']
-        if 'localAsn' in kwargs:
+        if local_asn is None and 'localAsn' in kwargs:
             local_asn = kwargs['localAsn']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if description is not None:

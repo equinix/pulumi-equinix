@@ -52,10 +52,10 @@ class CloudRouterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: pulumi.Input['CloudRouterLocationArgs'],
-             notifications: pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]],
-             package: pulumi.Input['CloudRouterPackageArgs'],
-             type: pulumi.Input[str],
+             location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]]] = None,
+             package: Optional[pulumi.Input['CloudRouterPackageArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -63,6 +63,14 @@ class CloudRouterArgs:
              projects: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if package is None:
+            raise TypeError("Missing 'package' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("location", location)
         _setter("notifications", notifications)
@@ -254,9 +262,9 @@ class _CloudRouterState:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'changeLogs' in kwargs:
+        if change_logs is None and 'changeLogs' in kwargs:
             change_logs = kwargs['changeLogs']
-        if 'equinixAsn' in kwargs:
+        if equinix_asn is None and 'equinixAsn' in kwargs:
             equinix_asn = kwargs['equinixAsn']
 
         if account is not None:

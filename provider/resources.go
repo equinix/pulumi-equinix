@@ -1435,7 +1435,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"equinix_fabric_cloud_router":     {Tok: makeEquinixDataSource(fabricMod, "CloudRouter")},
+			"equinix_fabric_cloud_router": {Tok: makeEquinixDataSource(fabricMod, "CloudRouter")},
 			"equinix_fabric_routing_protocol": {
 				Tok: makeEquinixDataSource(fabricMod, "RoutingProtocol"),
 				Fields: map[string]*tfbridge.SchemaInfo{

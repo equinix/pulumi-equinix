@@ -37,19 +37,23 @@ class GatewayArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
-             vlan_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
+             vlan_id: Optional[pulumi.Input[str]] = None,
              ip_reservation_id: Optional[pulumi.Input[str]] = None,
              private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'vlanId' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'ipReservationId' in kwargs:
+        if vlan_id is None:
+            raise TypeError("Missing 'vlan_id' argument")
+        if ip_reservation_id is None and 'ipReservationId' in kwargs:
             ip_reservation_id = kwargs['ipReservationId']
-        if 'privateIpv4SubnetSize' in kwargs:
+        if private_ipv4_subnet_size is None and 'privateIpv4SubnetSize' in kwargs:
             private_ipv4_subnet_size = kwargs['privateIpv4SubnetSize']
 
         _setter("project_id", project_id)
@@ -150,15 +154,15 @@ class _GatewayState:
              vrf_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'ipReservationId' in kwargs:
+        if ip_reservation_id is None and 'ipReservationId' in kwargs:
             ip_reservation_id = kwargs['ipReservationId']
-        if 'privateIpv4SubnetSize' in kwargs:
+        if private_ipv4_subnet_size is None and 'privateIpv4SubnetSize' in kwargs:
             private_ipv4_subnet_size = kwargs['privateIpv4SubnetSize']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'vrfId' in kwargs:
+        if vrf_id is None and 'vrfId' in kwargs:
             vrf_id = kwargs['vrfId']
 
         if ip_reservation_id is not None:

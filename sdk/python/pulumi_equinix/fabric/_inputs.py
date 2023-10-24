@@ -117,7 +117,7 @@ class CloudRouterAccountArgs:
              account_number: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
 
         if account_number is not None:
@@ -183,29 +183,29 @@ class CloudRouterChangeLogArgs:
              updated_date_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -371,9 +371,9 @@ class CloudRouterLocationArgs:
              region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -454,12 +454,16 @@ class CloudRouterNotificationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: pulumi.Input[Sequence[pulumi.Input[str]]],
-             type: pulumi.Input[str],
+             emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              send_interval: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
 
         _setter("emails", emails)
@@ -533,13 +537,13 @@ class CloudRouterOrderArgs:
              purchase_order_number: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingTier' in kwargs:
+        if billing_tier is None and 'billingTier' in kwargs:
             billing_tier = kwargs['billingTier']
-        if 'orderId' in kwargs:
+        if order_id is None and 'orderId' in kwargs:
             order_id = kwargs['orderId']
-        if 'orderNumber' in kwargs:
+        if order_number is None and 'orderNumber' in kwargs:
             order_number = kwargs['orderNumber']
-        if 'purchaseOrderNumber' in kwargs:
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
 
         if billing_tier is not None:
@@ -614,9 +618,11 @@ class CloudRouterPackageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             code: pulumi.Input[str],
+             code: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if code is None:
+            raise TypeError("Missing 'code' argument")
 
         _setter("code", code)
 
@@ -654,7 +660,7 @@ class CloudRouterProjectArgs:
              project_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if href is not None:
@@ -712,11 +718,11 @@ class ConnectionASideArgs:
              service_token: Optional[pulumi.Input['ConnectionASideServiceTokenArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPoint' in kwargs:
+        if access_point is None and 'accessPoint' in kwargs:
             access_point = kwargs['accessPoint']
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'serviceToken' in kwargs:
+        if service_token is None and 'serviceToken' in kwargs:
             service_token = kwargs['serviceToken']
 
         if access_point is not None:
@@ -838,19 +844,19 @@ class ConnectionASideAccessPointArgs:
              virtual_device: Optional[pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'linkProtocol' in kwargs:
+        if link_protocol is None and 'linkProtocol' in kwargs:
             link_protocol = kwargs['linkProtocol']
-        if 'peeringType' in kwargs:
+        if peering_type is None and 'peeringType' in kwargs:
             peering_type = kwargs['peeringType']
-        if 'providerConnectionId' in kwargs:
+        if provider_connection_id is None and 'providerConnectionId' in kwargs:
             provider_connection_id = kwargs['providerConnectionId']
-        if 'routingProtocols' in kwargs:
+        if routing_protocols is None and 'routingProtocols' in kwargs:
             routing_protocols = kwargs['routingProtocols']
-        if 'sellerRegion' in kwargs:
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'virtualDevice' in kwargs:
+        if virtual_device is None and 'virtualDevice' in kwargs:
             virtual_device = kwargs['virtualDevice']
 
         if account is not None:
@@ -1111,19 +1117,19 @@ class ConnectionASideAccessPointAccountArgs:
              organization_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
 
         if account_name is not None:
@@ -1356,11 +1362,11 @@ class ConnectionASideAccessPointLinkProtocolArgs:
              vlan_tag: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'vlanCTag' in kwargs:
+        if vlan_c_tag is None and 'vlanCTag' in kwargs:
             vlan_c_tag = kwargs['vlanCTag']
-        if 'vlanSTag' in kwargs:
+        if vlan_s_tag is None and 'vlanSTag' in kwargs:
             vlan_s_tag = kwargs['vlanSTag']
-        if 'vlanTag' in kwargs:
+        if vlan_tag is None and 'vlanTag' in kwargs:
             vlan_tag = kwargs['vlanTag']
 
         if type is not None:
@@ -1450,9 +1456,9 @@ class ConnectionASideAccessPointLocationArgs:
              region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -1716,15 +1722,19 @@ class ConnectionASideAccessPointProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[Union[str, 'ProfileType']],
-             uuid: pulumi.Input[str],
+             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
              access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointProfileAccessPointTypeConfigArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              href: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
 
         _setter("type", type)
@@ -2227,19 +2237,19 @@ class ConnectionAccountArgs:
              organization_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
 
         if account_name is not None:
@@ -2368,29 +2378,29 @@ class ConnectionChangeLogArgs:
              updated_date_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -2547,12 +2557,16 @@ class ConnectionNotificationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: pulumi.Input[Sequence[pulumi.Input[str]]],
-             type: pulumi.Input[Union[str, 'NotificationsType']],
+             emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[Union[str, 'NotificationsType']]] = None,
              send_interval: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
 
         _setter("emails", emails)
@@ -2617,9 +2631,9 @@ class ConnectionOperationArgs:
              provider_status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixStatus' in kwargs:
+        if equinix_status is None and 'equinixStatus' in kwargs:
             equinix_status = kwargs['equinixStatus']
-        if 'providerStatus' in kwargs:
+        if provider_status is None and 'providerStatus' in kwargs:
             provider_status = kwargs['providerStatus']
 
         if equinix_status is not None:
@@ -2689,13 +2703,13 @@ class ConnectionOperationErrorArgs:
              help: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'correlationId' in kwargs:
+        if correlation_id is None and 'correlationId' in kwargs:
             correlation_id = kwargs['correlationId']
-        if 'errorCode' in kwargs:
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorMessage' in kwargs:
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
 
         if additional_info is not None:
@@ -2840,13 +2854,13 @@ class ConnectionOrderArgs:
              purchase_order_number: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingTier' in kwargs:
+        if billing_tier is None and 'billingTier' in kwargs:
             billing_tier = kwargs['billingTier']
-        if 'orderId' in kwargs:
+        if order_id is None and 'orderId' in kwargs:
             order_id = kwargs['orderId']
-        if 'orderNumber' in kwargs:
+        if order_number is None and 'orderNumber' in kwargs:
             order_number = kwargs['orderNumber']
-        if 'purchaseOrderNumber' in kwargs:
+        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
             purchase_order_number = kwargs['purchaseOrderNumber']
 
         if billing_tier is not None:
@@ -2928,7 +2942,7 @@ class ConnectionProjectArgs:
              project_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if href is not None:
@@ -3038,11 +3052,11 @@ class ConnectionZSideArgs:
              service_token: Optional[pulumi.Input['ConnectionZSideServiceTokenArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPoint' in kwargs:
+        if access_point is None and 'accessPoint' in kwargs:
             access_point = kwargs['accessPoint']
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'serviceToken' in kwargs:
+        if service_token is None and 'serviceToken' in kwargs:
             service_token = kwargs['serviceToken']
 
         if access_point is not None:
@@ -3164,19 +3178,19 @@ class ConnectionZSideAccessPointArgs:
              virtual_device: Optional[pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'linkProtocol' in kwargs:
+        if link_protocol is None and 'linkProtocol' in kwargs:
             link_protocol = kwargs['linkProtocol']
-        if 'peeringType' in kwargs:
+        if peering_type is None and 'peeringType' in kwargs:
             peering_type = kwargs['peeringType']
-        if 'providerConnectionId' in kwargs:
+        if provider_connection_id is None and 'providerConnectionId' in kwargs:
             provider_connection_id = kwargs['providerConnectionId']
-        if 'routingProtocols' in kwargs:
+        if routing_protocols is None and 'routingProtocols' in kwargs:
             routing_protocols = kwargs['routingProtocols']
-        if 'sellerRegion' in kwargs:
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'virtualDevice' in kwargs:
+        if virtual_device is None and 'virtualDevice' in kwargs:
             virtual_device = kwargs['virtualDevice']
 
         if account is not None:
@@ -3437,19 +3451,19 @@ class ConnectionZSideAccessPointAccountArgs:
              organization_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
 
         if account_name is not None:
@@ -3682,11 +3696,11 @@ class ConnectionZSideAccessPointLinkProtocolArgs:
              vlan_tag: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'vlanCTag' in kwargs:
+        if vlan_c_tag is None and 'vlanCTag' in kwargs:
             vlan_c_tag = kwargs['vlanCTag']
-        if 'vlanSTag' in kwargs:
+        if vlan_s_tag is None and 'vlanSTag' in kwargs:
             vlan_s_tag = kwargs['vlanSTag']
-        if 'vlanTag' in kwargs:
+        if vlan_tag is None and 'vlanTag' in kwargs:
             vlan_tag = kwargs['vlanTag']
 
         if type is not None:
@@ -3776,9 +3790,9 @@ class ConnectionZSideAccessPointLocationArgs:
              region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -4042,15 +4056,19 @@ class ConnectionZSideAccessPointProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[Union[str, 'ProfileType']],
-             uuid: pulumi.Input[str],
+             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
              access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              href: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPointTypeConfigs' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
             access_point_type_configs = kwargs['accessPointTypeConfigs']
 
         _setter("type", type)
@@ -4538,10 +4556,12 @@ class RoutingProtocolBfdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              interval: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
 
         _setter("enabled", enabled)
         if interval is not None:
@@ -4592,14 +4612,16 @@ class RoutingProtocolBgpIpv4Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: pulumi.Input[str],
+             customer_peer_ip: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              equinix_peer_ip: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
 
         _setter("customer_peer_ip", customer_peer_ip)
@@ -4665,14 +4687,16 @@ class RoutingProtocolBgpIpv6Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: pulumi.Input[str],
+             customer_peer_ip: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              equinix_peer_ip: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
 
         _setter("customer_peer_ip", customer_peer_ip)
@@ -4821,29 +4845,29 @@ class RoutingProtocolChangeLogArgs:
              updated_date_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -4994,11 +5018,13 @@ class RoutingProtocolDirectIpv4Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: pulumi.Input[str],
+             equinix_iface_ip: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
+        if equinix_iface_ip is None:
+            raise TypeError("Missing 'equinix_iface_ip' argument")
 
         _setter("equinix_iface_ip", equinix_iface_ip)
 
@@ -5032,7 +5058,7 @@ class RoutingProtocolDirectIpv6Args:
              equinix_iface_ip: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
 
         if equinix_iface_ip is not None:
@@ -5108,13 +5134,13 @@ class RoutingProtocolOperationErrorArgs:
              help: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalInfos' in kwargs:
+        if additional_infos is None and 'additionalInfos' in kwargs:
             additional_infos = kwargs['additionalInfos']
-        if 'correlationId' in kwargs:
+        if correlation_id is None and 'correlationId' in kwargs:
             correlation_id = kwargs['correlationId']
-        if 'errorCode' in kwargs:
+        if error_code is None and 'errorCode' in kwargs:
             error_code = kwargs['errorCode']
-        if 'errorMessage' in kwargs:
+        if error_message is None and 'errorMessage' in kwargs:
             error_message = kwargs['errorMessage']
 
         if additional_infos is not None:
@@ -5280,7 +5306,7 @@ class ServiceProfileAccessPointTypeConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[Union[str, 'ProfileAccessPointType']],
+             type: Optional[pulumi.Input[Union[str, 'ProfileAccessPointType']]] = None,
              allow_bandwidth_auto_approval: Optional[pulumi.Input[bool]] = None,
              allow_bandwidth_upgrade: Optional[pulumi.Input[bool]] = None,
              allow_custom_bandwidth: Optional[pulumi.Input[bool]] = None,
@@ -5296,29 +5322,31 @@ class ServiceProfileAccessPointTypeConfigArgs:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowBandwidthAutoApproval' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
             allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if 'allowBandwidthUpgrade' in kwargs:
+        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
             allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if 'allowCustomBandwidth' in kwargs:
+        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
             allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if 'allowRemoteConnections' in kwargs:
+        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
             allow_remote_connections = kwargs['allowRemoteConnections']
-        if 'apiConfig' in kwargs:
+        if api_config is None and 'apiConfig' in kwargs:
             api_config = kwargs['apiConfig']
-        if 'authenticationKey' in kwargs:
+        if authentication_key is None and 'authenticationKey' in kwargs:
             authentication_key = kwargs['authenticationKey']
-        if 'bandwidthAlertThreshold' in kwargs:
+        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
             bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if 'connectionLabel' in kwargs:
+        if connection_label is None and 'connectionLabel' in kwargs:
             connection_label = kwargs['connectionLabel']
-        if 'connectionRedundancyRequired' in kwargs:
+        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
             connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if 'enableAutoGenerateServiceKey' in kwargs:
+        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
             enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if 'linkProtocolConfig' in kwargs:
+        if link_protocol_config is None and 'linkProtocolConfig' in kwargs:
             link_protocol_config = kwargs['linkProtocolConfig']
-        if 'supportedBandwidths' in kwargs:
+        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
             supported_bandwidths = kwargs['supportedBandwidths']
 
         _setter("type", type)
@@ -5559,19 +5587,19 @@ class ServiceProfileAccessPointTypeConfigApiConfigArgs:
              over_subscription_limit: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverSubscription' in kwargs:
+        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
             allow_over_subscription = kwargs['allowOverSubscription']
-        if 'apiAvailable' in kwargs:
+        if api_available is None and 'apiAvailable' in kwargs:
             api_available = kwargs['apiAvailable']
-        if 'bandwidthFromApi' in kwargs:
+        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
             bandwidth_from_api = kwargs['bandwidthFromApi']
-        if 'equinixManagedPort' in kwargs:
+        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
             equinix_managed_port = kwargs['equinixManagedPort']
-        if 'equinixManagedVlan' in kwargs:
+        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
             equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if 'integrationId' in kwargs:
+        if integration_id is None and 'integrationId' in kwargs:
             integration_id = kwargs['integrationId']
-        if 'overSubscriptionLimit' in kwargs:
+        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
             over_subscription_limit = kwargs['overSubscriptionLimit']
 
         if allow_over_subscription is not None:
@@ -5769,9 +5797,9 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs:
              reuse_vlan_s_tag: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'encapsulationStrategy' in kwargs:
+        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
             encapsulation_strategy = kwargs['encapsulationStrategy']
-        if 'reuseVlanSTag' in kwargs:
+        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
             reuse_vlan_s_tag = kwargs['reuseVlanSTag']
 
         if encapsulation is not None:
@@ -5863,21 +5891,21 @@ class ServiceProfileAccountArgs:
              ucm_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountName' in kwargs:
+        if account_name is None and 'accountName' in kwargs:
             account_name = kwargs['accountName']
-        if 'accountNumber' in kwargs:
+        if account_number is None and 'accountNumber' in kwargs:
             account_number = kwargs['accountNumber']
-        if 'globalCustId' in kwargs:
+        if global_cust_id is None and 'globalCustId' in kwargs:
             global_cust_id = kwargs['globalCustId']
-        if 'globalOrgId' in kwargs:
+        if global_org_id is None and 'globalOrgId' in kwargs:
             global_org_id = kwargs['globalOrgId']
-        if 'globalOrganizationName' in kwargs:
+        if global_organization_name is None and 'globalOrganizationName' in kwargs:
             global_organization_name = kwargs['globalOrganizationName']
-        if 'orgId' in kwargs:
+        if org_id is None and 'orgId' in kwargs:
             org_id = kwargs['orgId']
-        if 'organizationName' in kwargs:
+        if organization_name is None and 'organizationName' in kwargs:
             organization_name = kwargs['organizationName']
-        if 'ucmId' in kwargs:
+        if ucm_id is None and 'ucmId' in kwargs:
             ucm_id = kwargs['ucmId']
 
         if account_name is not None:
@@ -6041,29 +6069,29 @@ class ServiceProfileChangeLogArgs:
              updated_date_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'createdByEmail' in kwargs:
+        if created_by_email is None and 'createdByEmail' in kwargs:
             created_by_email = kwargs['createdByEmail']
-        if 'createdByFullName' in kwargs:
+        if created_by_full_name is None and 'createdByFullName' in kwargs:
             created_by_full_name = kwargs['createdByFullName']
-        if 'createdDateTime' in kwargs:
+        if created_date_time is None and 'createdDateTime' in kwargs:
             created_date_time = kwargs['createdDateTime']
-        if 'deletedBy' in kwargs:
+        if deleted_by is None and 'deletedBy' in kwargs:
             deleted_by = kwargs['deletedBy']
-        if 'deletedByEmail' in kwargs:
+        if deleted_by_email is None and 'deletedByEmail' in kwargs:
             deleted_by_email = kwargs['deletedByEmail']
-        if 'deletedByFullName' in kwargs:
+        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
             deleted_by_full_name = kwargs['deletedByFullName']
-        if 'deletedDateTime' in kwargs:
+        if deleted_date_time is None and 'deletedDateTime' in kwargs:
             deleted_date_time = kwargs['deletedDateTime']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
-        if 'updatedByEmail' in kwargs:
+        if updated_by_email is None and 'updatedByEmail' in kwargs:
             updated_by_email = kwargs['updatedByEmail']
-        if 'updatedByFullName' in kwargs:
+        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
             updated_by_full_name = kwargs['updatedByFullName']
-        if 'updatedDateTime' in kwargs:
+        if updated_date_time is None and 'updatedDateTime' in kwargs:
             updated_date_time = kwargs['updatedDateTime']
 
         if created_by is not None:
@@ -6229,17 +6257,23 @@ class ServiceProfileCustomFieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_type: pulumi.Input[str],
-             label: pulumi.Input[str],
-             required: pulumi.Input[bool],
+             data_type: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             required: Optional[pulumi.Input[bool]] = None,
              capture_in_email: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'dataType' in kwargs:
+        if data_type is None and 'dataType' in kwargs:
             data_type = kwargs['dataType']
-        if 'captureInEmail' in kwargs:
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if required is None:
+            raise TypeError("Missing 'required' argument")
+        if capture_in_email is None and 'captureInEmail' in kwargs:
             capture_in_email = kwargs['captureInEmail']
 
         _setter("data_type", data_type)
@@ -6350,7 +6384,7 @@ class ServiceProfileMarketingInfoArgs:
              promotion: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'processSteps' in kwargs:
+        if process_steps is None and 'processSteps' in kwargs:
             process_steps = kwargs['processSteps']
 
         if logo is not None:
@@ -6422,7 +6456,7 @@ class ServiceProfileMarketingInfoProcessStepArgs:
              title: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'subTitle' in kwargs:
+        if sub_title is None and 'subTitle' in kwargs:
             sub_title = kwargs['subTitle']
 
         if description is not None:
@@ -6506,11 +6540,11 @@ class ServiceProfileMetroArgs:
              seller_regions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'inTrail' in kwargs:
+        if in_trail is None and 'inTrail' in kwargs:
             in_trail = kwargs['inTrail']
-        if 'sellerRegions' in kwargs:
+        if seller_regions is None and 'sellerRegions' in kwargs:
             seller_regions = kwargs['sellerRegions']
 
         if code is not None:
@@ -6619,12 +6653,16 @@ class ServiceProfileNotificationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             emails: pulumi.Input[Sequence[pulumi.Input[str]]],
-             type: pulumi.Input[Union[str, 'NotificationsType']],
+             emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[Union[str, 'NotificationsType']]] = None,
              send_interval: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sendInterval' in kwargs:
+        if emails is None:
+            raise TypeError("Missing 'emails' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if send_interval is None and 'sendInterval' in kwargs:
             send_interval = kwargs['sendInterval']
 
         _setter("emails", emails)
@@ -6698,19 +6736,23 @@ class ServiceProfilePortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             uuid: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
              cross_connect_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input['ServiceProfilePortLocationArgs']] = None,
              seller_region: Optional[pulumi.Input[str]] = None,
              seller_region_description: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'crossConnectId' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if cross_connect_id is None and 'crossConnectId' in kwargs:
             cross_connect_id = kwargs['crossConnectId']
-        if 'sellerRegion' in kwargs:
+        if seller_region is None and 'sellerRegion' in kwargs:
             seller_region = kwargs['sellerRegion']
-        if 'sellerRegionDescription' in kwargs:
+        if seller_region_description is None and 'sellerRegionDescription' in kwargs:
             seller_region_description = kwargs['sellerRegionDescription']
 
         _setter("type", type)
@@ -6826,9 +6868,9 @@ class ServiceProfilePortLocationArgs:
              region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -6910,7 +6952,7 @@ class ServiceProfileProjectArgs:
              project_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
 
         if href is not None:
@@ -6966,13 +7008,17 @@ class ServiceProfileVirtualDeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             uuid: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
              interface_uuid: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input['ServiceProfileVirtualDeviceLocationArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'interfaceUuid' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+        if interface_uuid is None and 'interfaceUuid' in kwargs:
             interface_uuid = kwargs['interfaceUuid']
 
         _setter("type", type)
@@ -7060,9 +7106,9 @@ class ServiceProfileVirtualDeviceLocationArgs:
              region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'metroName' in kwargs:
+        if metro_name is None and 'metroName' in kwargs:
             metro_name = kwargs['metroName']
 
         if ibx is not None:
@@ -7140,12 +7186,16 @@ class GetCloudRouterProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             project_id: str,
+             href: Optional[str] = None,
+             project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("href", href)
         _setter("project_id", project_id)
@@ -7192,12 +7242,16 @@ class GetConnectionProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             href: str,
-             project_id: str,
+             href: Optional[str] = None,
+             project_id: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'projectId' in kwargs:
+        if href is None:
+            raise TypeError("Missing 'href' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
 
         _setter("href", href)
         _setter("project_id", project_id)
@@ -7278,10 +7332,12 @@ class GetRoutingProtocolBfdArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              interval: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
 
         _setter("enabled", enabled)
         if interval is not None:
@@ -7332,15 +7388,19 @@ class GetRoutingProtocolBgpIpv4Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: str,
-             equinix_peer_ip: str,
+             customer_peer_ip: Optional[str] = None,
+             equinix_peer_ip: Optional[str] = None,
              enabled: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
+        if equinix_peer_ip is None:
+            raise TypeError("Missing 'equinix_peer_ip' argument")
 
         _setter("customer_peer_ip", customer_peer_ip)
         _setter("equinix_peer_ip", equinix_peer_ip)
@@ -7404,15 +7464,19 @@ class GetRoutingProtocolBgpIpv6Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             customer_peer_ip: str,
-             equinix_peer_ip: str,
+             customer_peer_ip: Optional[str] = None,
+             equinix_peer_ip: Optional[str] = None,
              enabled: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customerPeerIp' in kwargs:
+        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
             customer_peer_ip = kwargs['customerPeerIp']
-        if 'equinixPeerIp' in kwargs:
+        if customer_peer_ip is None:
+            raise TypeError("Missing 'customer_peer_ip' argument")
+        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
             equinix_peer_ip = kwargs['equinixPeerIp']
+        if equinix_peer_ip is None:
+            raise TypeError("Missing 'equinix_peer_ip' argument")
 
         _setter("customer_peer_ip", customer_peer_ip)
         _setter("equinix_peer_ip", equinix_peer_ip)
@@ -7470,11 +7534,13 @@ class GetRoutingProtocolDirectIpv4Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: str,
+             equinix_iface_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
+        if equinix_iface_ip is None:
+            raise TypeError("Missing 'equinix_iface_ip' argument")
 
         _setter("equinix_iface_ip", equinix_iface_ip)
 
@@ -7508,7 +7574,7 @@ class GetRoutingProtocolDirectIpv6Args:
              equinix_iface_ip: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'equinixIfaceIp' in kwargs:
+        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
             equinix_iface_ip = kwargs['equinixIfaceIp']
 
         if equinix_iface_ip is not None:

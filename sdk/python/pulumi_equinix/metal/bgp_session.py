@@ -32,16 +32,20 @@ class BgpSessionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_family: pulumi.Input[str],
-             device_id: pulumi.Input[str],
+             address_family: Optional[pulumi.Input[str]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
              default_route: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'deviceId' in kwargs:
+        if address_family is None:
+            raise TypeError("Missing 'address_family' argument")
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'defaultRoute' in kwargs:
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
+        if default_route is None and 'defaultRoute' in kwargs:
             default_route = kwargs['defaultRoute']
 
         _setter("address_family", address_family)
@@ -116,11 +120,11 @@ class _BgpSessionState:
              status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'defaultRoute' in kwargs:
+        if default_route is None and 'defaultRoute' in kwargs:
             default_route = kwargs['defaultRoute']
-        if 'deviceId' in kwargs:
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
 
         if address_family is not None:

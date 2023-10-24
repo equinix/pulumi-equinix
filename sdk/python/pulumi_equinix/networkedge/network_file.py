@@ -48,25 +48,39 @@ class NetworkFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             byol: pulumi.Input[bool],
-             content: pulumi.Input[str],
-             device_type_code: pulumi.Input[str],
-             file_name: pulumi.Input[str],
-             metro_code: pulumi.Input[Union[str, '_root_enums.Metro']],
-             process_type: pulumi.Input[Union[str, 'FileType']],
-             self_managed: pulumi.Input[bool],
+             byol: Optional[pulumi.Input[bool]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             device_type_code: Optional[pulumi.Input[str]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             metro_code: Optional[pulumi.Input[Union[str, '_root_enums.Metro']]] = None,
+             process_type: Optional[pulumi.Input[Union[str, 'FileType']]] = None,
+             self_managed: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceTypeCode' in kwargs:
+        if byol is None:
+            raise TypeError("Missing 'byol' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if device_type_code is None and 'deviceTypeCode' in kwargs:
             device_type_code = kwargs['deviceTypeCode']
-        if 'fileName' in kwargs:
+        if device_type_code is None:
+            raise TypeError("Missing 'device_type_code' argument")
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
-        if 'metroCode' in kwargs:
+        if file_name is None:
+            raise TypeError("Missing 'file_name' argument")
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'processType' in kwargs:
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if process_type is None and 'processType' in kwargs:
             process_type = kwargs['processType']
-        if 'selfManaged' in kwargs:
+        if process_type is None:
+            raise TypeError("Missing 'process_type' argument")
+        if self_managed is None and 'selfManaged' in kwargs:
             self_managed = kwargs['selfManaged']
+        if self_managed is None:
+            raise TypeError("Missing 'self_managed' argument")
 
         _setter("byol", byol)
         _setter("content", content)
@@ -215,15 +229,15 @@ class _NetworkFileState:
              uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceTypeCode' in kwargs:
+        if device_type_code is None and 'deviceTypeCode' in kwargs:
             device_type_code = kwargs['deviceTypeCode']
-        if 'fileName' in kwargs:
+        if file_name is None and 'fileName' in kwargs:
             file_name = kwargs['fileName']
-        if 'metroCode' in kwargs:
+        if metro_code is None and 'metroCode' in kwargs:
             metro_code = kwargs['metroCode']
-        if 'processType' in kwargs:
+        if process_type is None and 'processType' in kwargs:
             process_type = kwargs['processType']
-        if 'selfManaged' in kwargs:
+        if self_managed is None and 'selfManaged' in kwargs:
             self_managed = kwargs['selfManaged']
 
         if byol is not None:

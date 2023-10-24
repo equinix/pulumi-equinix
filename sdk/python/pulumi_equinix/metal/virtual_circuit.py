@@ -72,9 +72,9 @@ class VirtualCircuitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_id: pulumi.Input[str],
-             port_id: pulumi.Input[str],
-             project_id: pulumi.Input[str],
+             connection_id: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
              customer_ip: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              md5: Optional[pulumi.Input[str]] = None,
@@ -89,23 +89,29 @@ class VirtualCircuitArgs:
              vrf_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'connectionId' in kwargs:
+        if connection_id is None and 'connectionId' in kwargs:
             connection_id = kwargs['connectionId']
-        if 'portId' in kwargs:
+        if connection_id is None:
+            raise TypeError("Missing 'connection_id' argument")
+        if port_id is None and 'portId' in kwargs:
             port_id = kwargs['portId']
-        if 'projectId' in kwargs:
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'customerIp' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if customer_ip is None and 'customerIp' in kwargs:
             customer_ip = kwargs['customerIp']
-        if 'metalIp' in kwargs:
+        if metal_ip is None and 'metalIp' in kwargs:
             metal_ip = kwargs['metalIp']
-        if 'nniVlan' in kwargs:
+        if nni_vlan is None and 'nniVlan' in kwargs:
             nni_vlan = kwargs['nniVlan']
-        if 'peerAsn' in kwargs:
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'vrfId' in kwargs:
+        if vrf_id is None and 'vrfId' in kwargs:
             vrf_id = kwargs['vrfId']
 
         _setter("connection_id", connection_id)
@@ -411,25 +417,25 @@ class _VirtualCircuitState:
              vrf_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'connectionId' in kwargs:
+        if connection_id is None and 'connectionId' in kwargs:
             connection_id = kwargs['connectionId']
-        if 'customerIp' in kwargs:
+        if customer_ip is None and 'customerIp' in kwargs:
             customer_ip = kwargs['customerIp']
-        if 'metalIp' in kwargs:
+        if metal_ip is None and 'metalIp' in kwargs:
             metal_ip = kwargs['metalIp']
-        if 'nniVlan' in kwargs:
+        if nni_vlan is None and 'nniVlan' in kwargs:
             nni_vlan = kwargs['nniVlan']
-        if 'nniVnid' in kwargs:
+        if nni_vnid is None and 'nniVnid' in kwargs:
             nni_vnid = kwargs['nniVnid']
-        if 'peerAsn' in kwargs:
+        if peer_asn is None and 'peerAsn' in kwargs:
             peer_asn = kwargs['peerAsn']
-        if 'portId' in kwargs:
+        if port_id is None and 'portId' in kwargs:
             port_id = kwargs['portId']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'vlanId' in kwargs:
+        if vlan_id is None and 'vlanId' in kwargs:
             vlan_id = kwargs['vlanId']
-        if 'vrfId' in kwargs:
+        if vrf_id is None and 'vrfId' in kwargs:
             vrf_id = kwargs['vrfId']
 
         if connection_id is not None:

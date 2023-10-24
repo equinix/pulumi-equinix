@@ -47,8 +47,8 @@ class PortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bonded: pulumi.Input[bool],
-             port_id: pulumi.Input[str],
+             bonded: Optional[pulumi.Input[bool]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
              layer2: Optional[pulumi.Input[bool]] = None,
              native_vlan_id: Optional[pulumi.Input[str]] = None,
              reset_on_delete: Optional[pulumi.Input[bool]] = None,
@@ -56,15 +56,19 @@ class PortArgs:
              vxlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'portId' in kwargs:
+        if bonded is None:
+            raise TypeError("Missing 'bonded' argument")
+        if port_id is None and 'portId' in kwargs:
             port_id = kwargs['portId']
-        if 'nativeVlanId' in kwargs:
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if native_vlan_id is None and 'nativeVlanId' in kwargs:
             native_vlan_id = kwargs['nativeVlanId']
-        if 'resetOnDelete' in kwargs:
+        if reset_on_delete is None and 'resetOnDelete' in kwargs:
             reset_on_delete = kwargs['resetOnDelete']
-        if 'vlanIds' in kwargs:
+        if vlan_ids is None and 'vlanIds' in kwargs:
             vlan_ids = kwargs['vlanIds']
-        if 'vxlanIds' in kwargs:
+        if vxlan_ids is None and 'vxlanIds' in kwargs:
             vxlan_ids = kwargs['vxlanIds']
 
         _setter("bonded", bonded)
@@ -242,23 +246,23 @@ class _PortState:
              vxlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bondId' in kwargs:
+        if bond_id is None and 'bondId' in kwargs:
             bond_id = kwargs['bondId']
-        if 'bondName' in kwargs:
+        if bond_name is None and 'bondName' in kwargs:
             bond_name = kwargs['bondName']
-        if 'disbondSupported' in kwargs:
+        if disbond_supported is None and 'disbondSupported' in kwargs:
             disbond_supported = kwargs['disbondSupported']
-        if 'nativeVlanId' in kwargs:
+        if native_vlan_id is None and 'nativeVlanId' in kwargs:
             native_vlan_id = kwargs['nativeVlanId']
-        if 'networkType' in kwargs:
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'portId' in kwargs:
+        if port_id is None and 'portId' in kwargs:
             port_id = kwargs['portId']
-        if 'resetOnDelete' in kwargs:
+        if reset_on_delete is None and 'resetOnDelete' in kwargs:
             reset_on_delete = kwargs['resetOnDelete']
-        if 'vlanIds' in kwargs:
+        if vlan_ids is None and 'vlanIds' in kwargs:
             vlan_ids = kwargs['vlanIds']
-        if 'vxlanIds' in kwargs:
+        if vxlan_ids is None and 'vxlanIds' in kwargs:
             vxlan_ids = kwargs['vxlanIds']
 
         if bond_id is not None:

@@ -77,7 +77,7 @@ class DeviceBehavior(dict):
              allow_changes: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowChanges' in kwargs:
+        if allow_changes is None and 'allowChanges' in kwargs:
             allow_changes = kwargs['allowChanges']
 
         if allow_changes is not None:
@@ -136,12 +136,14 @@ class DeviceIpAddress(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              cidr: Optional[int] = None,
              reservation_ids: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'reservationIds' in kwargs:
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if reservation_ids is None and 'reservationIds' in kwargs:
             reservation_ids = kwargs['reservationIds']
 
         _setter("type", type)
@@ -401,9 +403,9 @@ class DeviceReinstall(dict):
              preserve_data: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deprovisionFast' in kwargs:
+        if deprovision_fast is None and 'deprovisionFast' in kwargs:
             deprovision_fast = kwargs['deprovisionFast']
-        if 'preserveData' in kwargs:
+        if preserve_data is None and 'preserveData' in kwargs:
             preserve_data = kwargs['preserveData']
 
         if deprovision_fast is not None:
@@ -497,9 +499,9 @@ class InterconnectionPort(dict):
              virtual_circuit_ids: Optional[Sequence[Any]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'linkStatus' in kwargs:
+        if link_status is None and 'linkStatus' in kwargs:
             link_status = kwargs['linkStatus']
-        if 'virtualCircuitIds' in kwargs:
+        if virtual_circuit_ids is None and 'virtualCircuitIds' in kwargs:
             virtual_circuit_ids = kwargs['virtualCircuitIds']
 
         if id is not None:
@@ -613,9 +615,9 @@ class InterconnectionServiceToken(dict):
              type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresAt' in kwargs:
+        if expires_at is None and 'expiresAt' in kwargs:
             expires_at = kwargs['expiresAt']
-        if 'maxAllowedSpeed' in kwargs:
+        if max_allowed_speed is None and 'maxAllowedSpeed' in kwargs:
             max_allowed_speed = kwargs['maxAllowedSpeed']
 
         if expires_at is not None:
@@ -708,15 +710,23 @@ class OrganizationAddress(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             city: str,
-             country: str,
-             zip_code: str,
+             address: Optional[str] = None,
+             city: Optional[str] = None,
+             country: Optional[str] = None,
+             zip_code: Optional[str] = None,
              state: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zipCode' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if city is None:
+            raise TypeError("Missing 'city' argument")
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if zip_code is None and 'zipCode' in kwargs:
             zip_code = kwargs['zipCode']
+        if zip_code is None:
+            raise TypeError("Missing 'zip_code' argument")
 
         _setter("address", address)
         _setter("city", city)
@@ -812,16 +822,20 @@ class ProjectBgpConfig(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asn: int,
-             deployment_type: str,
+             asn: Optional[int] = None,
+             deployment_type: Optional[str] = None,
              max_prefix: Optional[int] = None,
              md5: Optional[str] = None,
              status: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deploymentType' in kwargs:
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if deployment_type is None and 'deploymentType' in kwargs:
             deployment_type = kwargs['deploymentType']
-        if 'maxPrefix' in kwargs:
+        if deployment_type is None:
+            raise TypeError("Missing 'deployment_type' argument")
+        if max_prefix is None and 'maxPrefix' in kwargs:
             max_prefix = kwargs['maxPrefix']
 
         _setter("asn", asn)
@@ -950,10 +964,10 @@ class SpotMarketRequestInstanceParameters(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             billing_cycle: str,
-             hostname: str,
-             operating_system: str,
-             plan: str,
+             billing_cycle: Optional[str] = None,
+             hostname: Optional[str] = None,
+             operating_system: Optional[str] = None,
+             plan: Optional[str] = None,
              always_pxe: Optional[bool] = None,
              customdata: Optional[str] = None,
              description: Optional[str] = None,
@@ -968,21 +982,29 @@ class SpotMarketRequestInstanceParameters(dict):
              userdata: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'billingCycle' in kwargs:
+        if billing_cycle is None and 'billingCycle' in kwargs:
             billing_cycle = kwargs['billingCycle']
-        if 'operatingSystem' in kwargs:
+        if billing_cycle is None:
+            raise TypeError("Missing 'billing_cycle' argument")
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'alwaysPxe' in kwargs:
+        if operating_system is None:
+            raise TypeError("Missing 'operating_system' argument")
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if always_pxe is None and 'alwaysPxe' in kwargs:
             always_pxe = kwargs['alwaysPxe']
-        if 'ipxeScriptUrl' in kwargs:
+        if ipxe_script_url is None and 'ipxeScriptUrl' in kwargs:
             ipxe_script_url = kwargs['ipxeScriptUrl']
-        if 'projectSshKeys' in kwargs:
+        if project_ssh_keys is None and 'projectSshKeys' in kwargs:
             project_ssh_keys = kwargs['projectSshKeys']
-        if 'terminationTime' in kwargs:
+        if termination_time is None and 'terminationTime' in kwargs:
             termination_time = kwargs['terminationTime']
-        if 'termintationTime' in kwargs:
+        if termintation_time is None and 'termintationTime' in kwargs:
             termintation_time = kwargs['termintationTime']
-        if 'userSshKeys' in kwargs:
+        if user_ssh_keys is None and 'userSshKeys' in kwargs:
             user_ssh_keys = kwargs['userSshKeys']
 
         _setter("billing_cycle", billing_cycle)
@@ -1142,35 +1164,53 @@ class GetDeviceBgpNeighborsBgpNeighborResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_family: int,
-             customer_as: int,
-             customer_ip: str,
-             md5_enabled: bool,
-             md5_password: str,
-             multihop: bool,
-             peer_as: int,
-             routes_ins: Sequence['outputs.GetDeviceBgpNeighborsBgpNeighborRoutesInResult'],
-             routes_outs: Sequence['outputs.GetDeviceBgpNeighborsBgpNeighborRoutesOutResult'],
+             address_family: Optional[int] = None,
+             customer_as: Optional[int] = None,
+             customer_ip: Optional[str] = None,
+             md5_enabled: Optional[bool] = None,
+             md5_password: Optional[str] = None,
+             multihop: Optional[bool] = None,
+             peer_as: Optional[int] = None,
+             routes_ins: Optional[Sequence['outputs.GetDeviceBgpNeighborsBgpNeighborRoutesInResult']] = None,
+             routes_outs: Optional[Sequence['outputs.GetDeviceBgpNeighborsBgpNeighborRoutesOutResult']] = None,
              peer_ips: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'addressFamily' in kwargs:
+        if address_family is None and 'addressFamily' in kwargs:
             address_family = kwargs['addressFamily']
-        if 'customerAs' in kwargs:
+        if address_family is None:
+            raise TypeError("Missing 'address_family' argument")
+        if customer_as is None and 'customerAs' in kwargs:
             customer_as = kwargs['customerAs']
-        if 'customerIp' in kwargs:
+        if customer_as is None:
+            raise TypeError("Missing 'customer_as' argument")
+        if customer_ip is None and 'customerIp' in kwargs:
             customer_ip = kwargs['customerIp']
-        if 'md5Enabled' in kwargs:
+        if customer_ip is None:
+            raise TypeError("Missing 'customer_ip' argument")
+        if md5_enabled is None and 'md5Enabled' in kwargs:
             md5_enabled = kwargs['md5Enabled']
-        if 'md5Password' in kwargs:
+        if md5_enabled is None:
+            raise TypeError("Missing 'md5_enabled' argument")
+        if md5_password is None and 'md5Password' in kwargs:
             md5_password = kwargs['md5Password']
-        if 'peerAs' in kwargs:
+        if md5_password is None:
+            raise TypeError("Missing 'md5_password' argument")
+        if multihop is None:
+            raise TypeError("Missing 'multihop' argument")
+        if peer_as is None and 'peerAs' in kwargs:
             peer_as = kwargs['peerAs']
-        if 'routesIns' in kwargs:
+        if peer_as is None:
+            raise TypeError("Missing 'peer_as' argument")
+        if routes_ins is None and 'routesIns' in kwargs:
             routes_ins = kwargs['routesIns']
-        if 'routesOuts' in kwargs:
+        if routes_ins is None:
+            raise TypeError("Missing 'routes_ins' argument")
+        if routes_outs is None and 'routesOuts' in kwargs:
             routes_outs = kwargs['routesOuts']
-        if 'peerIps' in kwargs:
+        if routes_outs is None:
+            raise TypeError("Missing 'routes_outs' argument")
+        if peer_ips is None and 'peerIps' in kwargs:
             peer_ips = kwargs['peerIps']
 
         _setter("address_family", address_family)
@@ -1283,10 +1323,14 @@ class GetDeviceBgpNeighborsBgpNeighborRoutesInResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             exact: bool,
-             route: str,
+             exact: Optional[bool] = None,
+             route: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if exact is None:
+            raise TypeError("Missing 'exact' argument")
+        if route is None:
+            raise TypeError("Missing 'route' argument")
 
         _setter("exact", exact)
         _setter("route", route)
@@ -1325,10 +1369,14 @@ class GetDeviceBgpNeighborsBgpNeighborRoutesOutResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             exact: bool,
-             route: str,
+             exact: Optional[bool] = None,
+             route: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if exact is None:
+            raise TypeError("Missing 'exact' argument")
+        if route is None:
+            raise TypeError("Missing 'route' argument")
 
         _setter("exact", exact)
         _setter("route", route)
@@ -1376,13 +1424,23 @@ class GetDeviceNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             cidr: int,
-             family: int,
-             gateway: str,
-             public: bool,
+             address: Optional[str] = None,
+             cidr: Optional[int] = None,
+             family: Optional[int] = None,
+             gateway: Optional[str] = None,
+             public: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if family is None:
+            raise TypeError("Missing 'family' argument")
+        if gateway is None:
+            raise TypeError("Missing 'gateway' argument")
+        if public is None:
+            raise TypeError("Missing 'public' argument")
 
         _setter("address", address)
         _setter("cidr", cidr)
@@ -1457,13 +1515,23 @@ class GetDevicePortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bonded: bool,
-             id: str,
-             mac: str,
-             name: str,
-             type: str,
+             bonded: Optional[bool] = None,
+             id: Optional[str] = None,
+             mac: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if bonded is None:
+            raise TypeError("Missing 'bonded' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mac is None:
+            raise TypeError("Missing 'mac' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("bonded", bonded)
         _setter("id", id)
@@ -1570,57 +1638,103 @@ class GetDevicesDeviceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_private_ipv4: str,
-             access_public_ipv4: str,
-             access_public_ipv6: str,
-             always_pxe: bool,
-             billing_cycle: str,
-             description: str,
-             device_id: str,
-             facility: str,
-             hardware_reservation_id: str,
-             hostname: str,
-             ipxe_script_url: str,
-             metro: str,
-             network_type: str,
-             networks: Sequence['outputs.GetDevicesDeviceNetworkResult'],
-             operating_system: str,
-             plan: str,
-             ports: Sequence['outputs.GetDevicesDevicePortResult'],
-             project_id: str,
-             root_password: str,
-             ssh_key_ids: Sequence[str],
-             state: str,
-             storage: str,
-             tags: Sequence[str],
+             access_private_ipv4: Optional[str] = None,
+             access_public_ipv4: Optional[str] = None,
+             access_public_ipv6: Optional[str] = None,
+             always_pxe: Optional[bool] = None,
+             billing_cycle: Optional[str] = None,
+             description: Optional[str] = None,
+             device_id: Optional[str] = None,
+             facility: Optional[str] = None,
+             hardware_reservation_id: Optional[str] = None,
+             hostname: Optional[str] = None,
+             ipxe_script_url: Optional[str] = None,
+             metro: Optional[str] = None,
+             network_type: Optional[str] = None,
+             networks: Optional[Sequence['outputs.GetDevicesDeviceNetworkResult']] = None,
+             operating_system: Optional[str] = None,
+             plan: Optional[str] = None,
+             ports: Optional[Sequence['outputs.GetDevicesDevicePortResult']] = None,
+             project_id: Optional[str] = None,
+             root_password: Optional[str] = None,
+             ssh_key_ids: Optional[Sequence[str]] = None,
+             state: Optional[str] = None,
+             storage: Optional[str] = None,
+             tags: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accessPrivateIpv4' in kwargs:
+        if access_private_ipv4 is None and 'accessPrivateIpv4' in kwargs:
             access_private_ipv4 = kwargs['accessPrivateIpv4']
-        if 'accessPublicIpv4' in kwargs:
+        if access_private_ipv4 is None:
+            raise TypeError("Missing 'access_private_ipv4' argument")
+        if access_public_ipv4 is None and 'accessPublicIpv4' in kwargs:
             access_public_ipv4 = kwargs['accessPublicIpv4']
-        if 'accessPublicIpv6' in kwargs:
+        if access_public_ipv4 is None:
+            raise TypeError("Missing 'access_public_ipv4' argument")
+        if access_public_ipv6 is None and 'accessPublicIpv6' in kwargs:
             access_public_ipv6 = kwargs['accessPublicIpv6']
-        if 'alwaysPxe' in kwargs:
+        if access_public_ipv6 is None:
+            raise TypeError("Missing 'access_public_ipv6' argument")
+        if always_pxe is None and 'alwaysPxe' in kwargs:
             always_pxe = kwargs['alwaysPxe']
-        if 'billingCycle' in kwargs:
+        if always_pxe is None:
+            raise TypeError("Missing 'always_pxe' argument")
+        if billing_cycle is None and 'billingCycle' in kwargs:
             billing_cycle = kwargs['billingCycle']
-        if 'deviceId' in kwargs:
+        if billing_cycle is None:
+            raise TypeError("Missing 'billing_cycle' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if device_id is None and 'deviceId' in kwargs:
             device_id = kwargs['deviceId']
-        if 'hardwareReservationId' in kwargs:
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
+        if facility is None:
+            raise TypeError("Missing 'facility' argument")
+        if hardware_reservation_id is None and 'hardwareReservationId' in kwargs:
             hardware_reservation_id = kwargs['hardwareReservationId']
-        if 'ipxeScriptUrl' in kwargs:
+        if hardware_reservation_id is None:
+            raise TypeError("Missing 'hardware_reservation_id' argument")
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if ipxe_script_url is None and 'ipxeScriptUrl' in kwargs:
             ipxe_script_url = kwargs['ipxeScriptUrl']
-        if 'networkType' in kwargs:
+        if ipxe_script_url is None:
+            raise TypeError("Missing 'ipxe_script_url' argument")
+        if metro is None:
+            raise TypeError("Missing 'metro' argument")
+        if network_type is None and 'networkType' in kwargs:
             network_type = kwargs['networkType']
-        if 'operatingSystem' in kwargs:
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if networks is None:
+            raise TypeError("Missing 'networks' argument")
+        if operating_system is None and 'operatingSystem' in kwargs:
             operating_system = kwargs['operatingSystem']
-        if 'projectId' in kwargs:
+        if operating_system is None:
+            raise TypeError("Missing 'operating_system' argument")
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'rootPassword' in kwargs:
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if root_password is None and 'rootPassword' in kwargs:
             root_password = kwargs['rootPassword']
-        if 'sshKeyIds' in kwargs:
+        if root_password is None:
+            raise TypeError("Missing 'root_password' argument")
+        if ssh_key_ids is None and 'sshKeyIds' in kwargs:
             ssh_key_ids = kwargs['sshKeyIds']
+        if ssh_key_ids is None:
+            raise TypeError("Missing 'ssh_key_ids' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if storage is None:
+            raise TypeError("Missing 'storage' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
 
         _setter("access_private_ipv4", access_private_ipv4)
         _setter("access_public_ipv4", access_public_ipv4)
@@ -1787,13 +1901,23 @@ class GetDevicesDeviceNetworkResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             cidr: int,
-             family: int,
-             gateway: str,
-             public: bool,
+             address: Optional[str] = None,
+             cidr: Optional[int] = None,
+             family: Optional[int] = None,
+             gateway: Optional[str] = None,
+             public: Optional[bool] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if cidr is None:
+            raise TypeError("Missing 'cidr' argument")
+        if family is None:
+            raise TypeError("Missing 'family' argument")
+        if gateway is None:
+            raise TypeError("Missing 'gateway' argument")
+        if public is None:
+            raise TypeError("Missing 'public' argument")
 
         _setter("address", address)
         _setter("cidr", cidr)
@@ -1846,13 +1970,23 @@ class GetDevicesDevicePortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bonded: bool,
-             id: str,
-             mac: str,
-             name: str,
-             type: str,
+             bonded: Optional[bool] = None,
+             id: Optional[str] = None,
+             mac: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if bonded is None:
+            raise TypeError("Missing 'bonded' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if mac is None:
+            raise TypeError("Missing 'mac' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("bonded", bonded)
         _setter("id", id)
@@ -1911,13 +2045,17 @@ class GetDevicesFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
-             values: Sequence[str],
+             attribute: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'matchBy' in kwargs:
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
             match_by = kwargs['matchBy']
 
         _setter("attribute", attribute)
@@ -1978,10 +2116,12 @@ class GetDevicesSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
+             attribute: Optional[str] = None,
              direction: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
 
         _setter("attribute", attribute)
         if direction is not None:
@@ -2019,10 +2159,12 @@ class GetFacilityCapacityResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: str,
+             plan: Optional[str] = None,
              quantity: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
 
         _setter("plan", plan)
         if quantity is not None:
@@ -2078,19 +2220,33 @@ class GetInterconnectionPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             link_status: str,
-             name: str,
-             role: str,
-             speed: int,
-             status: str,
-             virtual_circuit_ids: Sequence[Any],
+             id: Optional[str] = None,
+             link_status: Optional[str] = None,
+             name: Optional[str] = None,
+             role: Optional[str] = None,
+             speed: Optional[int] = None,
+             status: Optional[str] = None,
+             virtual_circuit_ids: Optional[Sequence[Any]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'linkStatus' in kwargs:
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if link_status is None and 'linkStatus' in kwargs:
             link_status = kwargs['linkStatus']
-        if 'virtualCircuitIds' in kwargs:
+        if link_status is None:
+            raise TypeError("Missing 'link_status' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if speed is None:
+            raise TypeError("Missing 'speed' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if virtual_circuit_ids is None and 'virtualCircuitIds' in kwargs:
             virtual_circuit_ids = kwargs['virtualCircuitIds']
+        if virtual_circuit_ids is None:
+            raise TypeError("Missing 'virtual_circuit_ids' argument")
 
         _setter("id", id)
         _setter("link_status", link_status)
@@ -2185,18 +2341,30 @@ class GetInterconnectionServiceTokenResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expires_at: str,
-             id: str,
-             max_allowed_speed: str,
-             role: str,
-             state: str,
-             type: str,
+             expires_at: Optional[str] = None,
+             id: Optional[str] = None,
+             max_allowed_speed: Optional[str] = None,
+             role: Optional[str] = None,
+             state: Optional[str] = None,
+             type: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresAt' in kwargs:
+        if expires_at is None and 'expiresAt' in kwargs:
             expires_at = kwargs['expiresAt']
-        if 'maxAllowedSpeed' in kwargs:
+        if expires_at is None:
+            raise TypeError("Missing 'expires_at' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if max_allowed_speed is None and 'maxAllowedSpeed' in kwargs:
             max_allowed_speed = kwargs['maxAllowedSpeed']
+        if max_allowed_speed is None:
+            raise TypeError("Missing 'max_allowed_speed' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("expires_at", expires_at)
         _setter("id", id)
@@ -2269,10 +2437,12 @@ class GetMetroCapacityResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             plan: str,
+             plan: Optional[str] = None,
              quantity: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if plan is None:
+            raise TypeError("Missing 'plan' argument")
 
         _setter("plan", plan)
         if quantity is not None:
@@ -2322,15 +2492,25 @@ class GetOrganizationAddressResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             city: str,
-             country: str,
-             state: str,
-             zip_code: str,
+             address: Optional[str] = None,
+             city: Optional[str] = None,
+             country: Optional[str] = None,
+             state: Optional[str] = None,
+             zip_code: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zipCode' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if city is None:
+            raise TypeError("Missing 'city' argument")
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if zip_code is None and 'zipCode' in kwargs:
             zip_code = kwargs['zipCode']
+        if zip_code is None:
+            raise TypeError("Missing 'zip_code' argument")
 
         _setter("address", address)
         _setter("city", city)
@@ -2404,13 +2584,17 @@ class GetPlansFilterResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
-             values: Sequence[str],
+             attribute: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              all: Optional[bool] = None,
              match_by: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'matchBy' in kwargs:
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if match_by is None and 'matchBy' in kwargs:
             match_by = kwargs['matchBy']
 
         _setter("attribute", attribute)
@@ -2502,32 +2686,56 @@ class GetPlansPlanResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             available_in_metros: Sequence[str],
-             available_ins: Sequence[str],
-             class_: str,
-             deployment_types: Sequence[str],
-             description: str,
-             id: str,
-             legacy: bool,
-             line: str,
-             name: str,
-             pricing_hour: float,
-             pricing_month: float,
-             slug: str,
+             available_in_metros: Optional[Sequence[str]] = None,
+             available_ins: Optional[Sequence[str]] = None,
+             class_: Optional[str] = None,
+             deployment_types: Optional[Sequence[str]] = None,
+             description: Optional[str] = None,
+             id: Optional[str] = None,
+             legacy: Optional[bool] = None,
+             line: Optional[str] = None,
+             name: Optional[str] = None,
+             pricing_hour: Optional[float] = None,
+             pricing_month: Optional[float] = None,
+             slug: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'availableInMetros' in kwargs:
+        if available_in_metros is None and 'availableInMetros' in kwargs:
             available_in_metros = kwargs['availableInMetros']
-        if 'availableIns' in kwargs:
+        if available_in_metros is None:
+            raise TypeError("Missing 'available_in_metros' argument")
+        if available_ins is None and 'availableIns' in kwargs:
             available_ins = kwargs['availableIns']
-        if 'class' in kwargs:
+        if available_ins is None:
+            raise TypeError("Missing 'available_ins' argument")
+        if class_ is None and 'class' in kwargs:
             class_ = kwargs['class']
-        if 'deploymentTypes' in kwargs:
+        if class_ is None:
+            raise TypeError("Missing 'class_' argument")
+        if deployment_types is None and 'deploymentTypes' in kwargs:
             deployment_types = kwargs['deploymentTypes']
-        if 'pricingHour' in kwargs:
+        if deployment_types is None:
+            raise TypeError("Missing 'deployment_types' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if legacy is None:
+            raise TypeError("Missing 'legacy' argument")
+        if line is None:
+            raise TypeError("Missing 'line' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if pricing_hour is None and 'pricingHour' in kwargs:
             pricing_hour = kwargs['pricingHour']
-        if 'pricingMonth' in kwargs:
+        if pricing_hour is None:
+            raise TypeError("Missing 'pricing_hour' argument")
+        if pricing_month is None and 'pricingMonth' in kwargs:
             pricing_month = kwargs['pricingMonth']
+        if pricing_month is None:
+            raise TypeError("Missing 'pricing_month' argument")
+        if slug is None:
+            raise TypeError("Missing 'slug' argument")
 
         _setter("available_in_metros", available_in_metros)
         _setter("available_ins", available_ins)
@@ -2659,10 +2867,12 @@ class GetPlansSortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             attribute: str,
+             attribute: Optional[str] = None,
              direction: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if attribute is None:
+            raise TypeError("Missing 'attribute' argument")
 
         _setter("attribute", attribute)
         if direction is not None:
@@ -2711,17 +2921,25 @@ class GetProjectBgpConfigResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             asn: int,
-             deployment_type: str,
-             max_prefix: int,
-             status: str,
+             asn: Optional[int] = None,
+             deployment_type: Optional[str] = None,
+             max_prefix: Optional[int] = None,
+             status: Optional[str] = None,
              md5: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deploymentType' in kwargs:
+        if asn is None:
+            raise TypeError("Missing 'asn' argument")
+        if deployment_type is None and 'deploymentType' in kwargs:
             deployment_type = kwargs['deploymentType']
-        if 'maxPrefix' in kwargs:
+        if deployment_type is None:
+            raise TypeError("Missing 'deployment_type' argument")
+        if max_prefix is None and 'maxPrefix' in kwargs:
             max_prefix = kwargs['maxPrefix']
+        if max_prefix is None:
+            raise TypeError("Missing 'max_prefix' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
 
         _setter("asn", asn)
         _setter("deployment_type", deployment_type)

@@ -57,11 +57,11 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             a_side: pulumi.Input['ConnectionASideArgs'],
-             bandwidth: pulumi.Input[int],
-             notifications: pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]],
-             type: pulumi.Input[Union[str, 'ConnectionType']],
-             z_side: pulumi.Input['ConnectionZSideArgs'],
+             a_side: Optional[pulumi.Input['ConnectionASideArgs']] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]]] = None,
+             type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
+             z_side: Optional[pulumi.Input['ConnectionZSideArgs']] = None,
              additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
@@ -69,11 +69,21 @@ class ConnectionArgs:
              redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'aSide' in kwargs:
+        if a_side is None and 'aSide' in kwargs:
             a_side = kwargs['aSide']
-        if 'zSide' in kwargs:
+        if a_side is None:
+            raise TypeError("Missing 'a_side' argument")
+        if bandwidth is None:
+            raise TypeError("Missing 'bandwidth' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if z_side is None and 'zSide' in kwargs:
             z_side = kwargs['zSide']
-        if 'additionalInfo' in kwargs:
+        if z_side is None:
+            raise TypeError("Missing 'z_side' argument")
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
 
         _setter("a_side", a_side)
@@ -295,15 +305,15 @@ class _ConnectionState:
              z_side: Optional[pulumi.Input['ConnectionZSideArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'aSide' in kwargs:
+        if a_side is None and 'aSide' in kwargs:
             a_side = kwargs['aSide']
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'changeLog' in kwargs:
+        if change_log is None and 'changeLog' in kwargs:
             change_log = kwargs['changeLog']
-        if 'isRemote' in kwargs:
+        if is_remote is None and 'isRemote' in kwargs:
             is_remote = kwargs['isRemote']
-        if 'zSide' in kwargs:
+        if z_side is None and 'zSide' in kwargs:
             z_side = kwargs['zSide']
 
         if a_side is not None:

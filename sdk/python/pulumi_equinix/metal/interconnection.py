@@ -67,8 +67,8 @@ class InterconnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             redundancy: pulumi.Input[str],
-             type: pulumi.Input[str],
+             redundancy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              contact_email: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              facility: Optional[pulumi.Input[str]] = None,
@@ -83,13 +83,17 @@ class InterconnectionArgs:
              vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'contactEmail' in kwargs:
+        if redundancy is None:
+            raise TypeError("Missing 'redundancy' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if contact_email is None and 'contactEmail' in kwargs:
             contact_email = kwargs['contactEmail']
-        if 'organizationId' in kwargs:
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'serviceTokenType' in kwargs:
+        if service_token_type is None and 'serviceTokenType' in kwargs:
             service_token_type = kwargs['serviceTokenType']
 
         _setter("redundancy", redundancy)
@@ -382,15 +386,15 @@ class _InterconnectionState:
              vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'contactEmail' in kwargs:
+        if contact_email is None and 'contactEmail' in kwargs:
             contact_email = kwargs['contactEmail']
-        if 'organizationId' in kwargs:
+        if organization_id is None and 'organizationId' in kwargs:
             organization_id = kwargs['organizationId']
-        if 'projectId' in kwargs:
+        if project_id is None and 'projectId' in kwargs:
             project_id = kwargs['projectId']
-        if 'serviceTokenType' in kwargs:
+        if service_token_type is None and 'serviceTokenType' in kwargs:
             service_token_type = kwargs['serviceTokenType']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if contact_email is not None:
