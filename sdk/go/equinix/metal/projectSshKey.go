@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal project SSH key resource to manage project-specific SSH keys.
@@ -87,7 +89,7 @@ func NewProjectSshKey(ctx *pulumi.Context,
 	if args.PublicKey == nil {
 		return nil, errors.New("invalid value for required argument 'PublicKey'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectSshKey
 	err := ctx.RegisterResource("equinix:metal/projectSshKey:ProjectSshKey", name, args, &resource, opts...)
 	if err != nil {
@@ -189,6 +191,12 @@ func (i *ProjectSshKey) ToProjectSshKeyOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSshKeyOutput)
 }
 
+func (i *ProjectSshKey) ToOutput(ctx context.Context) pulumix.Output[*ProjectSshKey] {
+	return pulumix.Output[*ProjectSshKey]{
+		OutputState: i.ToProjectSshKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectSshKeyArrayInput is an input type that accepts ProjectSshKeyArray and ProjectSshKeyArrayOutput values.
 // You can construct a concrete instance of `ProjectSshKeyArrayInput` via:
 //
@@ -212,6 +220,12 @@ func (i ProjectSshKeyArray) ToProjectSshKeyArrayOutput() ProjectSshKeyArrayOutpu
 
 func (i ProjectSshKeyArray) ToProjectSshKeyArrayOutputWithContext(ctx context.Context) ProjectSshKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSshKeyArrayOutput)
+}
+
+func (i ProjectSshKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectSshKey] {
+	return pulumix.Output[[]*ProjectSshKey]{
+		OutputState: i.ToProjectSshKeyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectSshKeyMapInput is an input type that accepts ProjectSshKeyMap and ProjectSshKeyMapOutput values.
@@ -239,6 +253,12 @@ func (i ProjectSshKeyMap) ToProjectSshKeyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSshKeyMapOutput)
 }
 
+func (i ProjectSshKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectSshKey] {
+	return pulumix.Output[map[string]*ProjectSshKey]{
+		OutputState: i.ToProjectSshKeyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectSshKeyOutput struct{ *pulumi.OutputState }
 
 func (ProjectSshKeyOutput) ElementType() reflect.Type {
@@ -251,6 +271,12 @@ func (o ProjectSshKeyOutput) ToProjectSshKeyOutput() ProjectSshKeyOutput {
 
 func (o ProjectSshKeyOutput) ToProjectSshKeyOutputWithContext(ctx context.Context) ProjectSshKeyOutput {
 	return o
+}
+
+func (o ProjectSshKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSshKey] {
+	return pulumix.Output[*ProjectSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp for when the SSH key was created.
@@ -302,6 +328,12 @@ func (o ProjectSshKeyArrayOutput) ToProjectSshKeyArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ProjectSshKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectSshKey] {
+	return pulumix.Output[[]*ProjectSshKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectSshKeyArrayOutput) Index(i pulumi.IntInput) ProjectSshKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectSshKey {
 		return vs[0].([]*ProjectSshKey)[vs[1].(int)]
@@ -320,6 +352,12 @@ func (o ProjectSshKeyMapOutput) ToProjectSshKeyMapOutput() ProjectSshKeyMapOutpu
 
 func (o ProjectSshKeyMapOutput) ToProjectSshKeyMapOutputWithContext(ctx context.Context) ProjectSshKeyMapOutput {
 	return o
+}
+
+func (o ProjectSshKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectSshKey] {
+	return pulumix.Output[map[string]*ProjectSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectSshKeyMapOutput) MapIndex(k pulumi.StringInput) ProjectSshKeyOutput {

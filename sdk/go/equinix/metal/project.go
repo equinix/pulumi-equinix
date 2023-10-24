@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal project resource to allow you manage devices
@@ -60,13 +62,16 @@ type Project struct {
 	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
 	BackendTransfer pulumi.BoolPtrOutput `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	//
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+	// the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrOutput `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// The name of the project.
+	// The name of the project.  The maximum length is 80 characters
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be create under your the default organization of your account.
+	// leave it out, the project will be created under your the default organization of your account.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The UUID of payment method for this project. The payment method and the
 	// project need to belong to the same organization (passed with `organizationId`, or default).
@@ -82,7 +87,7 @@ func NewProject(ctx *pulumi.Context,
 		args = &ProjectArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
 	err := ctx.RegisterResource("equinix:metal/project:Project", name, args, &resource, opts...)
 	if err != nil {
@@ -108,13 +113,16 @@ type projectState struct {
 	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
 	BackendTransfer *bool `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	//
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+	// the Equinix Metal API). It can be updated.
 	BgpConfig *ProjectBgpConfig `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created *string `pulumi:"created"`
-	// The name of the project.
+	// The name of the project.  The maximum length is 80 characters
 	Name *string `pulumi:"name"`
 	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be create under your the default organization of your account.
+	// leave it out, the project will be created under your the default organization of your account.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The UUID of payment method for this project. The payment method and the
 	// project need to belong to the same organization (passed with `organizationId`, or default).
@@ -127,13 +135,16 @@ type ProjectState struct {
 	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
 	BackendTransfer pulumi.BoolPtrInput
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	//
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+	// the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrInput
 	// The timestamp for when the project was created.
 	Created pulumi.StringPtrInput
-	// The name of the project.
+	// The name of the project.  The maximum length is 80 characters
 	Name pulumi.StringPtrInput
 	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be create under your the default organization of your account.
+	// leave it out, the project will be created under your the default organization of your account.
 	OrganizationId pulumi.StringPtrInput
 	// The UUID of payment method for this project. The payment method and the
 	// project need to belong to the same organization (passed with `organizationId`, or default).
@@ -150,11 +161,14 @@ type projectArgs struct {
 	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
 	BackendTransfer *bool `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	//
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+	// the Equinix Metal API). It can be updated.
 	BgpConfig *ProjectBgpConfig `pulumi:"bgpConfig"`
-	// The name of the project.
+	// The name of the project.  The maximum length is 80 characters
 	Name *string `pulumi:"name"`
 	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be create under your the default organization of your account.
+	// leave it out, the project will be created under your the default organization of your account.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The UUID of payment method for this project. The payment method and the
 	// project need to belong to the same organization (passed with `organizationId`, or default).
@@ -166,11 +180,14 @@ type ProjectArgs struct {
 	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
 	BackendTransfer pulumi.BoolPtrInput
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+	//
+	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+	// the Equinix Metal API). It can be updated.
 	BgpConfig ProjectBgpConfigPtrInput
-	// The name of the project.
+	// The name of the project.  The maximum length is 80 characters
 	Name pulumi.StringPtrInput
 	// The UUID of organization under which you want to create the project. If you
-	// leave it out, the project will be create under your the default organization of your account.
+	// leave it out, the project will be created under your the default organization of your account.
 	OrganizationId pulumi.StringPtrInput
 	// The UUID of payment method for this project. The payment method and the
 	// project need to belong to the same organization (passed with `organizationId`, or default).
@@ -200,6 +217,12 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
+func (i *Project) ToOutput(ctx context.Context) pulumix.Output[*Project] {
+	return pulumix.Output[*Project]{
+		OutputState: i.ToProjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
@@ -223,6 +246,12 @@ func (i ProjectArray) ToProjectArrayOutput() ProjectArrayOutput {
 
 func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) ProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectArrayOutput)
+}
+
+func (i ProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
+	return pulumix.Output[[]*Project]{
+		OutputState: i.ToProjectArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
@@ -250,6 +279,12 @@ func (i ProjectMap) ToProjectMapOutputWithContext(ctx context.Context) ProjectMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMapOutput)
 }
 
+func (i ProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
+	return pulumix.Output[map[string]*Project]{
+		OutputState: i.ToProjectMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
@@ -264,12 +299,21 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
+	return pulumix.Output[*Project]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
 func (o ProjectOutput) BackendTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.BackendTransfer }).(pulumi.BoolPtrOutput)
 }
 
 // Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
+//
+// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
+// the Equinix Metal API). It can be updated.
 func (o ProjectOutput) BgpConfig() ProjectBgpConfigPtrOutput {
 	return o.ApplyT(func(v *Project) ProjectBgpConfigPtrOutput { return v.BgpConfig }).(ProjectBgpConfigPtrOutput)
 }
@@ -279,13 +323,13 @@ func (o ProjectOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// The name of the project.
+// The name of the project.  The maximum length is 80 characters
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The UUID of organization under which you want to create the project. If you
-// leave it out, the project will be create under your the default organization of your account.
+// leave it out, the project will be created under your the default organization of your account.
 func (o ProjectOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
@@ -315,6 +359,12 @@ func (o ProjectArrayOutput) ToProjectArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
+	return pulumix.Output[[]*Project]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectArrayOutput) Index(i pulumi.IntInput) ProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Project {
 		return vs[0].([]*Project)[vs[1].(int)]
@@ -333,6 +383,12 @@ func (o ProjectMapOutput) ToProjectMapOutput() ProjectMapOutput {
 
 func (o ProjectMapOutput) ToProjectMapOutputWithContext(ctx context.Context) ProjectMapOutput {
 	return o
+}
+
+func (o ProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
+	return pulumix.Output[map[string]*Project]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMapOutput) MapIndex(k pulumi.StringInput) ProjectOutput {

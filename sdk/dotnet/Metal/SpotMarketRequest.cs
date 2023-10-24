@@ -68,7 +68,7 @@ namespace Pulumi.Equinix.Metal
         public Output<int> DevicesMin { get; private set; } = null!;
 
         /// <summary>
-        /// Facility IDs where devices should be created
+        /// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facilities")]
         public Output<ImmutableArray<string>> Facilities { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Key/Value pairs of parameters for devices provisioned from
         /// this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        /// `termintation_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
+        /// `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
         /// `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
         /// description in equinix.metal.Device docs.
         /// </summary>
@@ -171,7 +171,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _facilities;
 
         /// <summary>
-        /// Facility IDs where devices should be created
+        /// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Obsolete(@"Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<string> Facilities
@@ -183,7 +183,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Key/Value pairs of parameters for devices provisioned from
         /// this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        /// `termintation_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
+        /// `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
         /// `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
         /// description in equinix.metal.Device docs.
         /// </summary>
@@ -239,7 +239,7 @@ namespace Pulumi.Equinix.Metal
         private InputList<string>? _facilities;
 
         /// <summary>
-        /// Facility IDs where devices should be created
+        /// Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Obsolete(@"Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices")]
         public InputList<string> Facilities
@@ -251,7 +251,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Key/Value pairs of parameters for devices provisioned from
         /// this request. Valid keys are: `billing_cycle`, `plan`, `operating_system`, `hostname`,
-        /// `termintation_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
+        /// `termination_time`, `always_pxe`, `description`, `features`, `locked`, `project_ssh_keys`,
         /// `user_ssh_keys`, `userdata`, `customdata`, `ipxe_script_url`, `tags`. You can find each parameter
         /// description in equinix.metal.Device docs.
         /// </summary>

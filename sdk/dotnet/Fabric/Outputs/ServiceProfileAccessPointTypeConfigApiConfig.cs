@@ -13,12 +13,33 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class ServiceProfileAccessPointTypeConfigApiConfig
     {
+        /// <summary>
+        /// Setting showing that oversubscription support is available (true) or not (false). The default is false
+        /// </summary>
         public readonly bool? AllowOverSubscription;
+        /// <summary>
+        /// Setting indicating whether the API is available (true) or not (false)
+        /// </summary>
         public readonly bool? ApiAvailable;
+        /// <summary>
+        /// Bandwidth from api
+        /// </summary>
         public readonly bool? BandwidthFromApi;
+        /// <summary>
+        /// Setting indicating that the port is managed by Equinix (true) or not (false)
+        /// </summary>
         public readonly bool? EquinixManagedPort;
+        /// <summary>
+        /// Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        /// </summary>
         public readonly bool? EquinixManagedVlan;
+        /// <summary>
+        /// Integration id
+        /// </summary>
         public readonly string? IntegrationId;
+        /// <summary>
+        /// A cap on over subscription
+        /// </summary>
         public readonly int? OverSubscriptionLimit;
 
         [OutputConstructor]

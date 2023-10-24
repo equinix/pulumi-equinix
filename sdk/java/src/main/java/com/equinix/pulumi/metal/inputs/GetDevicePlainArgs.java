@@ -17,12 +17,16 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Device ID.
      * 
+     * &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
+     * 
      */
     @Import(name="deviceId")
     private @Nullable String deviceId;
 
     /**
      * @return Device ID.
+     * 
+     * &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
      * 
      */
     public Optional<String> deviceId() {
@@ -87,6 +91,8 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param deviceId Device ID.
+         * 
+         * &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
          * 
          * @return builder
          * 

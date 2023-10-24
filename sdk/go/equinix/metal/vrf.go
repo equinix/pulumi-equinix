@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to manage a VRF.
@@ -89,7 +91,7 @@ func NewVrf(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vrf
 	err := ctx.RegisterResource("equinix:metal/vrf:Vrf", name, args, &resource, opts...)
 	if err != nil {
@@ -199,6 +201,12 @@ func (i *Vrf) ToVrfOutputWithContext(ctx context.Context) VrfOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrfOutput)
 }
 
+func (i *Vrf) ToOutput(ctx context.Context) pulumix.Output[*Vrf] {
+	return pulumix.Output[*Vrf]{
+		OutputState: i.ToVrfOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VrfArrayInput is an input type that accepts VrfArray and VrfArrayOutput values.
 // You can construct a concrete instance of `VrfArrayInput` via:
 //
@@ -222,6 +230,12 @@ func (i VrfArray) ToVrfArrayOutput() VrfArrayOutput {
 
 func (i VrfArray) ToVrfArrayOutputWithContext(ctx context.Context) VrfArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrfArrayOutput)
+}
+
+func (i VrfArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vrf] {
+	return pulumix.Output[[]*Vrf]{
+		OutputState: i.ToVrfArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VrfMapInput is an input type that accepts VrfMap and VrfMapOutput values.
@@ -249,6 +263,12 @@ func (i VrfMap) ToVrfMapOutputWithContext(ctx context.Context) VrfMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VrfMapOutput)
 }
 
+func (i VrfMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vrf] {
+	return pulumix.Output[map[string]*Vrf]{
+		OutputState: i.ToVrfMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VrfOutput struct{ *pulumi.OutputState }
 
 func (VrfOutput) ElementType() reflect.Type {
@@ -261,6 +281,12 @@ func (o VrfOutput) ToVrfOutput() VrfOutput {
 
 func (o VrfOutput) ToVrfOutputWithContext(ctx context.Context) VrfOutput {
 	return o
+}
+
+func (o VrfOutput) ToOutput(ctx context.Context) pulumix.Output[*Vrf] {
+	return pulumix.Output[*Vrf]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the VRF.
@@ -307,6 +333,12 @@ func (o VrfArrayOutput) ToVrfArrayOutputWithContext(ctx context.Context) VrfArra
 	return o
 }
 
+func (o VrfArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vrf] {
+	return pulumix.Output[[]*Vrf]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VrfArrayOutput) Index(i pulumi.IntInput) VrfOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vrf {
 		return vs[0].([]*Vrf)[vs[1].(int)]
@@ -325,6 +357,12 @@ func (o VrfMapOutput) ToVrfMapOutput() VrfMapOutput {
 
 func (o VrfMapOutput) ToVrfMapOutputWithContext(ctx context.Context) VrfMapOutput {
 	return o
+}
+
+func (o VrfMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vrf] {
+	return pulumix.Output[map[string]*Vrf]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VrfMapOutput) MapIndex(k pulumi.StringInput) VrfOutput {

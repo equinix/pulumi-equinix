@@ -7,11 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **Deprecated** Use `metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+//
+// Provides an Equinix Metal facility datasource.
 func GetFacility(ctx *pulumi.Context, args *GetFacilityArgs, opts ...pulumi.InvokeOption) (*GetFacilityResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFacilityResult
 	err := ctx.Invoke("equinix:metal/getFacility:getFacility", args, &rv, opts...)
 	if err != nil {
@@ -87,6 +92,12 @@ func (o GetFacilityResultOutput) ToGetFacilityResultOutput() GetFacilityResultOu
 
 func (o GetFacilityResultOutput) ToGetFacilityResultOutputWithContext(ctx context.Context) GetFacilityResultOutput {
 	return o
+}
+
+func (o GetFacilityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFacilityResult] {
+	return pulumix.Output[GetFacilityResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetFacilityResultOutput) Capacities() GetFacilityCapacityArrayOutput {

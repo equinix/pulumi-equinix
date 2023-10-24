@@ -22,6 +22,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -56,6 +57,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -129,6 +131,9 @@ namespace Pulumi.Equinix.Metal
         /// UUID of device occupying the reservation.
         /// </summary>
         public readonly string DeviceId;
+        /// <summary>
+        /// (**Deprecated**) Facility for the reservation. Use metro instead; read the facility to metro migration guide
+        /// </summary>
         public readonly string Facility;
         /// <summary>
         /// ID of the hardware reservation to look up.

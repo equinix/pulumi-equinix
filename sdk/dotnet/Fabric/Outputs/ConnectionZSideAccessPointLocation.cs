@@ -13,9 +13,21 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class ConnectionZSideAccessPointLocation
     {
+        /// <summary>
+        /// IBX Code
+        /// </summary>
         public readonly string? Ibx;
+        /// <summary>
+        /// Access point metro code
+        /// </summary>
         public readonly string? MetroCode;
+        /// <summary>
+        /// Access point metro name
+        /// </summary>
         public readonly string? MetroName;
+        /// <summary>
+        /// Access point region
+        /// </summary>
         public readonly string? Region;
 
         [OutputConstructor]

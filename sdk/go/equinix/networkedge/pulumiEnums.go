@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AclRuleProtocolType string
@@ -78,6 +79,12 @@ func (o AclRuleProtocolTypeOutput) ToAclRuleProtocolTypePtrOutputWithContext(ctx
 	}).(AclRuleProtocolTypePtrOutput)
 }
 
+func (o AclRuleProtocolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AclRuleProtocolType] {
+	return pulumix.Output[AclRuleProtocolType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AclRuleProtocolTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -111,6 +118,12 @@ func (o AclRuleProtocolTypePtrOutput) ToAclRuleProtocolTypePtrOutput() AclRulePr
 
 func (o AclRuleProtocolTypePtrOutput) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
 	return o
+}
+
+func (o AclRuleProtocolTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AclRuleProtocolType] {
+	return pulumix.Output[*AclRuleProtocolType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclRuleProtocolTypePtrOutput) Elem() AclRuleProtocolTypeOutput {
@@ -173,6 +186,12 @@ func (in *aclRuleProtocolTypePtr) ToAclRuleProtocolTypePtrOutput() AclRuleProtoc
 
 func (in *aclRuleProtocolTypePtr) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AclRuleProtocolTypePtrOutput)
+}
+
+func (in *aclRuleProtocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AclRuleProtocolType] {
+	return pulumix.Output[*AclRuleProtocolType]{
+		OutputState: in.ToAclRuleProtocolTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type FileType string
@@ -242,6 +261,12 @@ func (o FileTypeOutput) ToFileTypePtrOutputWithContext(ctx context.Context) File
 	}).(FileTypePtrOutput)
 }
 
+func (o FileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FileType] {
+	return pulumix.Output[FileType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FileTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -275,6 +300,12 @@ func (o FileTypePtrOutput) ToFileTypePtrOutput() FileTypePtrOutput {
 
 func (o FileTypePtrOutput) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
 	return o
+}
+
+func (o FileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileType] {
+	return pulumix.Output[*FileType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FileTypePtrOutput) Elem() FileTypeOutput {
@@ -337,6 +368,12 @@ func (in *fileTypePtr) ToFileTypePtrOutput() FileTypePtrOutput {
 
 func (in *fileTypePtr) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FileTypePtrOutput)
+}
+
+func (in *fileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileType] {
+	return pulumix.Output[*FileType]{
+		OutputState: in.ToFileTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 type ThroughputUnit string
@@ -406,6 +443,12 @@ func (o ThroughputUnitOutput) ToThroughputUnitPtrOutputWithContext(ctx context.C
 	}).(ThroughputUnitPtrOutput)
 }
 
+func (o ThroughputUnitOutput) ToOutput(ctx context.Context) pulumix.Output[ThroughputUnit] {
+	return pulumix.Output[ThroughputUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ThroughputUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -439,6 +482,12 @@ func (o ThroughputUnitPtrOutput) ToThroughputUnitPtrOutput() ThroughputUnitPtrOu
 
 func (o ThroughputUnitPtrOutput) ToThroughputUnitPtrOutputWithContext(ctx context.Context) ThroughputUnitPtrOutput {
 	return o
+}
+
+func (o ThroughputUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThroughputUnit] {
+	return pulumix.Output[*ThroughputUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ThroughputUnitPtrOutput) Elem() ThroughputUnitOutput {
@@ -501,6 +550,12 @@ func (in *throughputUnitPtr) ToThroughputUnitPtrOutput() ThroughputUnitPtrOutput
 
 func (in *throughputUnitPtr) ToThroughputUnitPtrOutputWithContext(ctx context.Context) ThroughputUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThroughputUnitPtrOutput)
+}
+
+func (in *throughputUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*ThroughputUnit] {
+	return pulumix.Output[*ThroughputUnit]{
+		OutputState: in.ToThroughputUnitPtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 func init() {

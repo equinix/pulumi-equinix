@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -46,10 +46,6 @@ class GetDeviceResult:
         pulumi.set(__self__, "device_id", device_id)
         if facility and not isinstance(facility, str):
             raise TypeError("Expected argument 'facility' to be a str")
-        if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
-
         pulumi.set(__self__, "facility", facility)
         if hardware_reservation_id and not isinstance(hardware_reservation_id, str):
             raise TypeError("Expected argument 'hardware_reservation_id' to be a str")
@@ -153,6 +149,12 @@ class GetDeviceResult:
     @property
     @pulumi.getter
     def facility(self) -> str:
+        """
+        (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+        """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -312,7 +314,9 @@ def get_device(device_id: Optional[str] = None,
                project_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceResult:
     """
-    Provides an Equinix Metal device datasource.
+    The datasource can be used to fetch a single device.
+
+    If you need to fetch a list of devices which meet filter criteria, you can use the metal_get_devices datasource.
 
     > **Note:** All arguments including the `root_password` and `user_data` will be stored in
      the raw state as plain-text.
@@ -339,6 +343,8 @@ def get_device(device_id: Optional[str] = None,
 
 
     :param str device_id: Device ID.
+           
+           > **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
     :param str hostname: The device name.
     :param str project_id: The id of the project in which the devices exists.
     """
@@ -350,30 +356,30 @@ def get_device(device_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getDevice:getDevice', __args__, opts=opts, typ=GetDeviceResult).value
 
     return AwaitableGetDeviceResult(
-        access_private_ipv4=__ret__.access_private_ipv4,
-        access_public_ipv4=__ret__.access_public_ipv4,
-        access_public_ipv6=__ret__.access_public_ipv6,
-        always_pxe=__ret__.always_pxe,
-        billing_cycle=__ret__.billing_cycle,
-        description=__ret__.description,
-        device_id=__ret__.device_id,
-        facility=__ret__.facility,
-        hardware_reservation_id=__ret__.hardware_reservation_id,
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        ipxe_script_url=__ret__.ipxe_script_url,
-        metro=__ret__.metro,
-        network_type=__ret__.network_type,
-        networks=__ret__.networks,
-        operating_system=__ret__.operating_system,
-        plan=__ret__.plan,
-        ports=__ret__.ports,
-        project_id=__ret__.project_id,
-        root_password=__ret__.root_password,
-        ssh_key_ids=__ret__.ssh_key_ids,
-        state=__ret__.state,
-        storage=__ret__.storage,
-        tags=__ret__.tags)
+        access_private_ipv4=pulumi.get(__ret__, 'access_private_ipv4'),
+        access_public_ipv4=pulumi.get(__ret__, 'access_public_ipv4'),
+        access_public_ipv6=pulumi.get(__ret__, 'access_public_ipv6'),
+        always_pxe=pulumi.get(__ret__, 'always_pxe'),
+        billing_cycle=pulumi.get(__ret__, 'billing_cycle'),
+        description=pulumi.get(__ret__, 'description'),
+        device_id=pulumi.get(__ret__, 'device_id'),
+        facility=pulumi.get(__ret__, 'facility'),
+        hardware_reservation_id=pulumi.get(__ret__, 'hardware_reservation_id'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        ipxe_script_url=pulumi.get(__ret__, 'ipxe_script_url'),
+        metro=pulumi.get(__ret__, 'metro'),
+        network_type=pulumi.get(__ret__, 'network_type'),
+        networks=pulumi.get(__ret__, 'networks'),
+        operating_system=pulumi.get(__ret__, 'operating_system'),
+        plan=pulumi.get(__ret__, 'plan'),
+        ports=pulumi.get(__ret__, 'ports'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        root_password=pulumi.get(__ret__, 'root_password'),
+        ssh_key_ids=pulumi.get(__ret__, 'ssh_key_ids'),
+        state=pulumi.get(__ret__, 'state'),
+        storage=pulumi.get(__ret__, 'storage'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_device)
@@ -382,7 +388,9 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
     """
-    Provides an Equinix Metal device datasource.
+    The datasource can be used to fetch a single device.
+
+    If you need to fetch a list of devices which meet filter criteria, you can use the metal_get_devices datasource.
 
     > **Note:** All arguments including the `root_password` and `user_data` will be stored in
      the raw state as plain-text.
@@ -409,6 +417,8 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str device_id: Device ID.
+           
+           > **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
     :param str hostname: The device name.
     :param str project_id: The id of the project in which the devices exists.
     """

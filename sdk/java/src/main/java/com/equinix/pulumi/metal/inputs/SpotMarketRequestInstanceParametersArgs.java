@@ -109,9 +109,28 @@ public final class SpotMarketRequestInstanceParametersArgs extends com.pulumi.re
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="terminationTime")
+    private @Nullable Output<String> terminationTime;
+
+    public Optional<Output<String>> terminationTime() {
+        return Optional.ofNullable(this.terminationTime);
+    }
+
+    /**
+     * @deprecated
+     * Use instance_parameters.termination_time instead
+     * 
+     */
+    @Deprecated /* Use instance_parameters.termination_time instead */
     @Import(name="termintationTime")
     private @Nullable Output<String> termintationTime;
 
+    /**
+     * @deprecated
+     * Use instance_parameters.termination_time instead
+     * 
+     */
+    @Deprecated /* Use instance_parameters.termination_time instead */
     public Optional<Output<String>> termintationTime() {
         return Optional.ofNullable(this.termintationTime);
     }
@@ -145,6 +164,7 @@ public final class SpotMarketRequestInstanceParametersArgs extends com.pulumi.re
         this.plan = $.plan;
         this.projectSshKeys = $.projectSshKeys;
         this.tags = $.tags;
+        this.terminationTime = $.terminationTime;
         this.termintationTime = $.termintationTime;
         this.userSshKeys = $.userSshKeys;
         this.userdata = $.userdata;
@@ -300,11 +320,36 @@ public final class SpotMarketRequestInstanceParametersArgs extends com.pulumi.re
             return tags(List.of(tags));
         }
 
+        public Builder terminationTime(@Nullable Output<String> terminationTime) {
+            $.terminationTime = terminationTime;
+            return this;
+        }
+
+        public Builder terminationTime(String terminationTime) {
+            return terminationTime(Output.of(terminationTime));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use instance_parameters.termination_time instead
+         * 
+         */
+        @Deprecated /* Use instance_parameters.termination_time instead */
         public Builder termintationTime(@Nullable Output<String> termintationTime) {
             $.termintationTime = termintationTime;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use instance_parameters.termination_time instead
+         * 
+         */
+        @Deprecated /* Use instance_parameters.termination_time instead */
         public Builder termintationTime(String termintationTime) {
             return termintationTime(Output.of(termintationTime));
         }

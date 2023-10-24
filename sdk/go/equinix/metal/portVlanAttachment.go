@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to attach device ports to VLANs.
@@ -108,7 +110,7 @@ func NewPortVlanAttachment(ctx *pulumi.Context,
 	if args.VlanVnid == nil {
 		return nil, errors.New("invalid value for required argument 'VlanVnid'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PortVlanAttachment
 	err := ctx.RegisterResource("equinix:metal/portVlanAttachment:PortVlanAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -234,6 +236,12 @@ func (i *PortVlanAttachment) ToPortVlanAttachmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PortVlanAttachmentOutput)
 }
 
+func (i *PortVlanAttachment) ToOutput(ctx context.Context) pulumix.Output[*PortVlanAttachment] {
+	return pulumix.Output[*PortVlanAttachment]{
+		OutputState: i.ToPortVlanAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PortVlanAttachmentArrayInput is an input type that accepts PortVlanAttachmentArray and PortVlanAttachmentArrayOutput values.
 // You can construct a concrete instance of `PortVlanAttachmentArrayInput` via:
 //
@@ -257,6 +265,12 @@ func (i PortVlanAttachmentArray) ToPortVlanAttachmentArrayOutput() PortVlanAttac
 
 func (i PortVlanAttachmentArray) ToPortVlanAttachmentArrayOutputWithContext(ctx context.Context) PortVlanAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortVlanAttachmentArrayOutput)
+}
+
+func (i PortVlanAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*PortVlanAttachment] {
+	return pulumix.Output[[]*PortVlanAttachment]{
+		OutputState: i.ToPortVlanAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PortVlanAttachmentMapInput is an input type that accepts PortVlanAttachmentMap and PortVlanAttachmentMapOutput values.
@@ -284,6 +298,12 @@ func (i PortVlanAttachmentMap) ToPortVlanAttachmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PortVlanAttachmentMapOutput)
 }
 
+func (i PortVlanAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PortVlanAttachment] {
+	return pulumix.Output[map[string]*PortVlanAttachment]{
+		OutputState: i.ToPortVlanAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PortVlanAttachmentOutput struct{ *pulumi.OutputState }
 
 func (PortVlanAttachmentOutput) ElementType() reflect.Type {
@@ -296,6 +316,12 @@ func (o PortVlanAttachmentOutput) ToPortVlanAttachmentOutput() PortVlanAttachmen
 
 func (o PortVlanAttachmentOutput) ToPortVlanAttachmentOutputWithContext(ctx context.Context) PortVlanAttachmentOutput {
 	return o
+}
+
+func (o PortVlanAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*PortVlanAttachment] {
+	return pulumix.Output[*PortVlanAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of device to be assigned to the VLAN.
@@ -351,6 +377,12 @@ func (o PortVlanAttachmentArrayOutput) ToPortVlanAttachmentArrayOutputWithContex
 	return o
 }
 
+func (o PortVlanAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PortVlanAttachment] {
+	return pulumix.Output[[]*PortVlanAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PortVlanAttachmentArrayOutput) Index(i pulumi.IntInput) PortVlanAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PortVlanAttachment {
 		return vs[0].([]*PortVlanAttachment)[vs[1].(int)]
@@ -369,6 +401,12 @@ func (o PortVlanAttachmentMapOutput) ToPortVlanAttachmentMapOutput() PortVlanAtt
 
 func (o PortVlanAttachmentMapOutput) ToPortVlanAttachmentMapOutputWithContext(ctx context.Context) PortVlanAttachmentMapOutput {
 	return o
+}
+
+func (o PortVlanAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PortVlanAttachment] {
+	return pulumix.Output[map[string]*PortVlanAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PortVlanAttachmentMapOutput) MapIndex(k pulumi.StringInput) PortVlanAttachmentOutput {

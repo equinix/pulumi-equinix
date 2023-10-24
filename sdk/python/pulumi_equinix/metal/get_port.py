@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -241,21 +241,21 @@ def get_port(device_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getPort:getPort', __args__, opts=opts, typ=GetPortResult).value
 
     return AwaitableGetPortResult(
-        bond_id=__ret__.bond_id,
-        bond_name=__ret__.bond_name,
-        bonded=__ret__.bonded,
-        device_id=__ret__.device_id,
-        disbond_supported=__ret__.disbond_supported,
-        id=__ret__.id,
-        layer2=__ret__.layer2,
-        mac=__ret__.mac,
-        name=__ret__.name,
-        native_vlan_id=__ret__.native_vlan_id,
-        network_type=__ret__.network_type,
-        port_id=__ret__.port_id,
-        type=__ret__.type,
-        vlan_ids=__ret__.vlan_ids,
-        vxlan_ids=__ret__.vxlan_ids)
+        bond_id=pulumi.get(__ret__, 'bond_id'),
+        bond_name=pulumi.get(__ret__, 'bond_name'),
+        bonded=pulumi.get(__ret__, 'bonded'),
+        device_id=pulumi.get(__ret__, 'device_id'),
+        disbond_supported=pulumi.get(__ret__, 'disbond_supported'),
+        id=pulumi.get(__ret__, 'id'),
+        layer2=pulumi.get(__ret__, 'layer2'),
+        mac=pulumi.get(__ret__, 'mac'),
+        name=pulumi.get(__ret__, 'name'),
+        native_vlan_id=pulumi.get(__ret__, 'native_vlan_id'),
+        network_type=pulumi.get(__ret__, 'network_type'),
+        port_id=pulumi.get(__ret__, 'port_id'),
+        type=pulumi.get(__ret__, 'type'),
+        vlan_ids=pulumi.get(__ret__, 'vlan_ids'),
+        vxlan_ids=pulumi.get(__ret__, 'vxlan_ids'))
 
 
 @_utilities.lift_output_func(get_port)

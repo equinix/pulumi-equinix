@@ -9,10 +9,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPortLocation {
-    /**
-     * @return Port URI information
-     * 
-     */
     private String href;
     private String ibx;
     private String metroCode;
@@ -20,10 +16,6 @@ public final class GetPortLocation {
     private String region;
 
     private GetPortLocation() {}
-    /**
-     * @return Port URI information
-     * 
-     */
     public String href() {
         return this.href;
     }

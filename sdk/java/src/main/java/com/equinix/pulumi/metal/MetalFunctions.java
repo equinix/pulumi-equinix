@@ -8,6 +8,8 @@ import com.equinix.pulumi.metal.inputs.GetDeviceArgs;
 import com.equinix.pulumi.metal.inputs.GetDeviceBgpNeighborsArgs;
 import com.equinix.pulumi.metal.inputs.GetDeviceBgpNeighborsPlainArgs;
 import com.equinix.pulumi.metal.inputs.GetDevicePlainArgs;
+import com.equinix.pulumi.metal.inputs.GetDevicesArgs;
+import com.equinix.pulumi.metal.inputs.GetDevicesPlainArgs;
 import com.equinix.pulumi.metal.inputs.GetFacilityArgs;
 import com.equinix.pulumi.metal.inputs.GetFacilityPlainArgs;
 import com.equinix.pulumi.metal.inputs.GetGatewayArgs;
@@ -48,6 +50,7 @@ import com.equinix.pulumi.metal.inputs.GetVrfArgs;
 import com.equinix.pulumi.metal.inputs.GetVrfPlainArgs;
 import com.equinix.pulumi.metal.outputs.GetDeviceBgpNeighborsResult;
 import com.equinix.pulumi.metal.outputs.GetDeviceResult;
+import com.equinix.pulumi.metal.outputs.GetDevicesResult;
 import com.equinix.pulumi.metal.outputs.GetFacilityResult;
 import com.equinix.pulumi.metal.outputs.GetGatewayResult;
 import com.equinix.pulumi.metal.outputs.GetHardwareReservationResult;
@@ -75,7 +78,9 @@ import java.util.concurrent.CompletableFuture;
 
 public final class MetalFunctions {
     /**
-     * Provides an Equinix Metal device datasource.
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
      * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
      *  the raw state as plain-text.
@@ -147,7 +152,9 @@ public final class MetalFunctions {
         return getDevice(GetDeviceArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal device datasource.
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
      * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
      *  the raw state as plain-text.
@@ -219,7 +226,9 @@ public final class MetalFunctions {
         return getDevicePlain(GetDevicePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal device datasource.
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
      * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
      *  the raw state as plain-text.
@@ -291,7 +300,9 @@ public final class MetalFunctions {
         return getDevice(args, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal device datasource.
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
      * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
      *  the raw state as plain-text.
@@ -363,7 +374,9 @@ public final class MetalFunctions {
         return getDevicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides an Equinix Metal device datasource.
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
      * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
      *  the raw state as plain-text.
@@ -435,7 +448,9 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides an Equinix Metal device datasource.
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
      * 
      * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
      *  the raw state as plain-text.
@@ -682,15 +697,537 @@ public final class MetalFunctions {
     public static CompletableFuture<GetDeviceBgpNeighborsResult> getDeviceBgpNeighborsPlain(GetDeviceBgpNeighborsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", TypeShape.of(GetDeviceBgpNeighborsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;plan&#34;)
+     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;metro&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search(&#34;database&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
+    public static Output<GetDevicesResult> getDevices() {
+        return getDevices(GetDevicesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;plan&#34;)
+     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;metro&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search(&#34;database&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
+    public static CompletableFuture<GetDevicesResult> getDevicesPlain() {
+        return getDevicesPlain(GetDevicesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;plan&#34;)
+     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;metro&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search(&#34;database&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
+    public static Output<GetDevicesResult> getDevices(GetDevicesArgs args) {
+        return getDevices(args, InvokeOptions.Empty);
+    }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;plan&#34;)
+     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;metro&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search(&#34;database&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
+    public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args) {
+        return getDevicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;plan&#34;)
+     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;metro&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search(&#34;database&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
+    public static Output<GetDevicesResult> getDevices(GetDevicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The datasource can be used to find a list of devices which meet filter criteria.
+     * 
+     * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .projectId(local.project_id())
+     *             .filters(            
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;plan&#34;)
+     *                     .values(&#34;c3.small.x86&#34;)
+     *                     .build(),
+     *                 GetDevicesFilterArgs.builder()
+     *                     .attribute(&#34;metro&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetDevicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getDevices(GetDevicesArgs.builder()
+     *             .search(&#34;database&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;devices&#34;, example.applyValue(getDevicesResult -&gt; getDevicesResult.devices()));
+     *     }
+     * }
+     * ```
+     * ## search vs filter
+     * 
+     * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
+     * 
+     */
+    public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:metal/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * 
+     * Provides an Equinix Metal facility datasource.
+     * 
+     */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args) {
         return getFacility(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * 
+     * Provides an Equinix Metal facility datasource.
+     * 
+     */
     public static CompletableFuture<GetFacilityResult> getFacilityPlain(GetFacilityPlainArgs args) {
         return getFacilityPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * 
+     * Provides an Equinix Metal facility datasource.
+     * 
+     */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
+     * 
+     * Provides an Equinix Metal facility datasource.
+     * 
+     */
     public static CompletableFuture<GetFacilityResult> getFacilityPlain(GetFacilityPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
     }

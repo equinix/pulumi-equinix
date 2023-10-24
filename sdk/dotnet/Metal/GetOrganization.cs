@@ -20,6 +20,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -51,6 +52,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -85,6 +87,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// The UUID of the organization resource.
+        /// 
+        /// Exactly one of `name` or `organization_id` must be given.
         /// </summary>
         [Input("organizationId")]
         public string? OrganizationId { get; set; }
@@ -105,6 +109,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// The UUID of the organization resource.
+        /// 
+        /// Exactly one of `name` or `organization_id` must be given.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }

@@ -8,7 +8,6 @@ import com.equinix.pulumi.fabric.ConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionState;
 import com.equinix.pulumi.fabric.outputs.ConnectionASide;
 import com.equinix.pulumi.fabric.outputs.ConnectionAccount;
-import com.equinix.pulumi.fabric.outputs.ConnectionAdditionalInfo;
 import com.equinix.pulumi.fabric.outputs.ConnectionChangeLog;
 import com.equinix.pulumi.fabric.outputs.ConnectionNotification;
 import com.equinix.pulumi.fabric.outputs.ConnectionOperation;
@@ -22,8 +21,10 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -144,31 +145,31 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.aSide;
     }
     /**
-     * Customer account information that is associated with this connection
+     * Account
      * 
      */
     @Export(name="account", refs={ConnectionAccount.class}, tree="[0]")
     private Output<ConnectionAccount> account;
 
     /**
-     * @return Customer account information that is associated with this connection
+     * @return Account
      * 
      */
     public Output<ConnectionAccount> account() {
         return this.account;
     }
     /**
-     * Connection additional information
+     * Connection side additional information
      * 
      */
-    @Export(name="additionalInfo", refs={List.class,ConnectionAdditionalInfo.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ConnectionAdditionalInfo>> additionalInfo;
+    @Export(name="additionalInfo", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
+    private Output</* @Nullable */ List<Map<String,Object>>> additionalInfo;
 
     /**
-     * @return Connection additional information
+     * @return Connection side additional information
      * 
      */
-    public Output<Optional<List<ConnectionAdditionalInfo>>> additionalInfo() {
+    public Output<Optional<List<Map<String,Object>>>> additionalInfo() {
         return Codegen.optional(this.additionalInfo);
     }
     /**
@@ -214,14 +215,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.direction;
     }
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      * 
      */
     @Export(name="href", refs={String.class}, tree="[0]")
     private Output<String> href;
 
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Output<String> href() {
@@ -242,14 +243,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.isRemote;
     }
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Output<String> name() {
@@ -326,28 +327,28 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redundancy);
     }
     /**
-     * Connection overall state
+     * Routing protocol instance state
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Connection overall state
+     * @return Routing protocol instance state
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Output<String> type() {

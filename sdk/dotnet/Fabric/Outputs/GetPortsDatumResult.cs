@@ -21,7 +21,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly ImmutableArray<Outputs.GetPortsDatumDeviceResult> Devices;
         public readonly ImmutableArray<Outputs.GetPortsDatumEncapsulationResult> Encapsulations;
         public readonly string Href;
-        public readonly ImmutableArray<Outputs.GetPortsDatumLagResult> Lags;
+        public readonly bool LagEnabled;
         public readonly ImmutableArray<Outputs.GetPortsDatumLocationResult> Locations;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetPortsDatumOperationResult> Operations;
@@ -50,7 +50,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string href,
 
-            ImmutableArray<Outputs.GetPortsDatumLagResult> lags,
+            bool lagEnabled,
 
             ImmutableArray<Outputs.GetPortsDatumLocationResult> locations,
 
@@ -78,7 +78,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Devices = devices;
             Encapsulations = encapsulations;
             Href = href;
-            Lags = lags;
+            LagEnabled = lagEnabled;
             Locations = locations;
             Name = name;
             Operations = operations;

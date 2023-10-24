@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -219,6 +219,7 @@ def get_precreated_ip_block(address_family: Optional[int] = None,
 
 
     :param int address_family: 4 or 6, depending on which block you are looking for.
+    :param str facility: Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
     :param bool global_: Whether to look for global block. Default is false for backward compatibility.
     :param str metro: Metro of the searched block (for non-global blocks).
     :param str project_id: ID of the project where the searched block should be.
@@ -235,24 +236,24 @@ def get_precreated_ip_block(address_family: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getPrecreatedIpBlock:getPrecreatedIpBlock', __args__, opts=opts, typ=GetPrecreatedIpBlockResult).value
 
     return AwaitableGetPrecreatedIpBlockResult(
-        address=__ret__.address,
-        address_family=__ret__.address_family,
-        cidr=__ret__.cidr,
-        cidr_notation=__ret__.cidr_notation,
-        facility=__ret__.facility,
-        gateway=__ret__.gateway,
-        global_=__ret__.global_,
-        id=__ret__.id,
-        manageable=__ret__.manageable,
-        management=__ret__.management,
-        metro=__ret__.metro,
-        netmask=__ret__.netmask,
-        network=__ret__.network,
-        project_id=__ret__.project_id,
-        public=__ret__.public,
-        quantity=__ret__.quantity,
-        type=__ret__.type,
-        vrf_id=__ret__.vrf_id)
+        address=pulumi.get(__ret__, 'address'),
+        address_family=pulumi.get(__ret__, 'address_family'),
+        cidr=pulumi.get(__ret__, 'cidr'),
+        cidr_notation=pulumi.get(__ret__, 'cidr_notation'),
+        facility=pulumi.get(__ret__, 'facility'),
+        gateway=pulumi.get(__ret__, 'gateway'),
+        global_=pulumi.get(__ret__, 'global_'),
+        id=pulumi.get(__ret__, 'id'),
+        manageable=pulumi.get(__ret__, 'manageable'),
+        management=pulumi.get(__ret__, 'management'),
+        metro=pulumi.get(__ret__, 'metro'),
+        netmask=pulumi.get(__ret__, 'netmask'),
+        network=pulumi.get(__ret__, 'network'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        public=pulumi.get(__ret__, 'public'),
+        quantity=pulumi.get(__ret__, 'quantity'),
+        type=pulumi.get(__ret__, 'type'),
+        vrf_id=pulumi.get(__ret__, 'vrf_id'))
 
 
 @_utilities.lift_output_func(get_precreated_ip_block)
@@ -275,6 +276,7 @@ def get_precreated_ip_block_output(address_family: Optional[pulumi.Input[int]] =
 
 
     :param int address_family: 4 or 6, depending on which block you are looking for.
+    :param str facility: Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
     :param bool global_: Whether to look for global block. Default is false for backward compatibility.
     :param str metro: Metro of the searched block (for non-global blocks).
     :param str project_id: ID of the project where the searched block should be.

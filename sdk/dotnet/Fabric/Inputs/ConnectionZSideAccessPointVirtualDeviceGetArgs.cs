@@ -13,17 +13,20 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionZSideAccessPointVirtualDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 

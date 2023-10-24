@@ -97,6 +97,8 @@ export class AclTemplate extends pulumi.CustomResource {
     /**
      * One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     *
+     * The `inboundRule` block has below fields:
      */
     public readonly inboundRules!: pulumi.Output<outputs.networkedge.AclTemplateInboundRule[]>;
     /**
@@ -180,6 +182,8 @@ export interface AclTemplateState {
     /**
      * One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     *
+     * The `inboundRule` block has below fields:
      */
     inboundRules?: pulumi.Input<pulumi.Input<inputs.networkedge.AclTemplateInboundRule>[]>;
     /**
@@ -209,6 +213,8 @@ export interface AclTemplateArgs {
     /**
      * One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     *
+     * The `inboundRule` block has below fields:
      */
     inboundRules: pulumi.Input<pulumi.Input<inputs.networkedge.AclTemplateInboundRule>[]>;
     /**

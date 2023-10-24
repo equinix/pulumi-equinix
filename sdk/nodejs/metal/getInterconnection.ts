@@ -47,10 +47,16 @@ export interface GetInterconnectionArgs {
 export interface GetInterconnectionResult {
     readonly connectionId: string;
     /**
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+     */
+    readonly contactEmail: string;
+    /**
      * Description of the connection resource.
      */
     readonly description: string;
     /**
+     * (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+     *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
     readonly facility: string;

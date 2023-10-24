@@ -10,19 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKey {
-    /**
-     * @return Customer-provided connection description
-     * 
-     */
     private String description;
     private String label;
     private Boolean required;
 
     private GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKey() {}
-    /**
-     * @return Customer-provided connection description
-     * 
-     */
     public String description() {
         return this.description;
     }

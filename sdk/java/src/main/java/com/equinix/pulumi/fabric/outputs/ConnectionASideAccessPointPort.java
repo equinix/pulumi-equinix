@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionASideAccessPointPort {
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     private @Nullable String href;
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     private @Nullable String name;
@@ -28,18 +28,22 @@ public final class ConnectionASideAccessPointPort {
      * 
      */
     private @Nullable List<ConnectionASideAccessPointPortRedundancy> redundancies;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     private @Nullable String uuid;
 
     private ConnectionASideAccessPointPort() {}
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Optional<String> name() {
@@ -52,6 +56,10 @@ public final class ConnectionASideAccessPointPort {
     public List<ConnectionASideAccessPointPortRedundancy> redundancies() {
         return this.redundancies == null ? List.of() : this.redundancies;
     }
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }

@@ -107,14 +107,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * User-provided service description
+     * Description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Optional<Output<String>> description() {
@@ -122,14 +122,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Service Profile URI response attribute
+     * Unique Resource URL
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Service Profile URI response attribute
+     * @return Unique Resource URL
      * 
      */
     public Optional<Output<String>> href() {
@@ -167,14 +167,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Customer-assigned service profile name
+     * Metro Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Customer-assigned service profile name
+     * @return Metro Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -272,14 +272,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Type of access point type config - VD, COLO
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * @return Type of access point type config - VD, COLO
      * 
      */
     public Optional<Output<Either<String,ProfileType>>> type() {
@@ -287,14 +287,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Equinix assigned service profile identifier
+     * Colo/Port Uuid
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix assigned service profile identifier
+     * @return Colo/Port Uuid
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -510,7 +510,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param href Service Profile URI response attribute
+         * @param href Unique Resource URL
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param href Service Profile URI response attribute
+         * @param href Unique Resource URL
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Customer-assigned service profile name
+         * @param name Metro Name
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Customer-assigned service profile name
+         * @param name Metro Name
          * 
          * @return builder
          * 
@@ -801,7 +801,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -812,7 +812,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -822,7 +822,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -832,7 +832,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid Equinix assigned service profile identifier
+         * @param uuid Colo/Port Uuid
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid Equinix assigned service profile identifier
+         * @param uuid Colo/Port Uuid
          * 
          * @return builder
          * 

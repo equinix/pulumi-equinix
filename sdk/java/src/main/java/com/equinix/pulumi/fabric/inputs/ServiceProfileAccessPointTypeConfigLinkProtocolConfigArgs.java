@@ -16,23 +16,47 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
 
     public static final ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs Empty = new ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs();
 
+    /**
+     * Port Encapsulation
+     * 
+     */
     @Import(name="encapsulation")
     private @Nullable Output<String> encapsulation;
 
+    /**
+     * @return Port Encapsulation
+     * 
+     */
     public Optional<Output<String>> encapsulation() {
         return Optional.ofNullable(this.encapsulation);
     }
 
+    /**
+     * Encapsulation strategy
+     * 
+     */
     @Import(name="encapsulationStrategy")
     private @Nullable Output<String> encapsulationStrategy;
 
+    /**
+     * @return Encapsulation strategy
+     * 
+     */
     public Optional<Output<String>> encapsulationStrategy() {
         return Optional.ofNullable(this.encapsulationStrategy);
     }
 
+    /**
+     * Reuse vlan sTag
+     * 
+     */
     @Import(name="reuseVlanSTag")
     private @Nullable Output<Boolean> reuseVlanSTag;
 
+    /**
+     * @return Reuse vlan sTag
+     * 
+     */
     public Optional<Output<Boolean>> reuseVlanSTag() {
         return Optional.ofNullable(this.reuseVlanSTag);
     }
@@ -63,29 +87,65 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
             $ = new ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param encapsulation Port Encapsulation
+         * 
+         * @return builder
+         * 
+         */
         public Builder encapsulation(@Nullable Output<String> encapsulation) {
             $.encapsulation = encapsulation;
             return this;
         }
 
+        /**
+         * @param encapsulation Port Encapsulation
+         * 
+         * @return builder
+         * 
+         */
         public Builder encapsulation(String encapsulation) {
             return encapsulation(Output.of(encapsulation));
         }
 
+        /**
+         * @param encapsulationStrategy Encapsulation strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder encapsulationStrategy(@Nullable Output<String> encapsulationStrategy) {
             $.encapsulationStrategy = encapsulationStrategy;
             return this;
         }
 
+        /**
+         * @param encapsulationStrategy Encapsulation strategy
+         * 
+         * @return builder
+         * 
+         */
         public Builder encapsulationStrategy(String encapsulationStrategy) {
             return encapsulationStrategy(Output.of(encapsulationStrategy));
         }
 
+        /**
+         * @param reuseVlanSTag Reuse vlan sTag
+         * 
+         * @return builder
+         * 
+         */
         public Builder reuseVlanSTag(@Nullable Output<Boolean> reuseVlanSTag) {
             $.reuseVlanSTag = reuseVlanSTag;
             return this;
         }
 
+        /**
+         * @param reuseVlanSTag Reuse vlan sTag
+         * 
+         * @return builder
+         * 
+         */
         public Builder reuseVlanSTag(Boolean reuseVlanSTag) {
             return reuseVlanSTag(Output.of(reuseVlanSTag));
         }

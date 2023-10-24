@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         private InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs>? _additionalInfo;
 
         /// <summary>
-        /// Connection additional information
+        /// Connection side additional information
         /// </summary>
         public InputList<Inputs.ConnectionOperationErrorAdditionalInfoGetArgs> AdditionalInfo
         {

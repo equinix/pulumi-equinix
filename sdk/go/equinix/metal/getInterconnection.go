@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
@@ -40,7 +42,7 @@ import (
 //
 // ```
 func LookupInterconnection(ctx *pulumi.Context, args *LookupInterconnectionArgs, opts ...pulumi.InvokeOption) (*LookupInterconnectionResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInterconnectionResult
 	err := ctx.Invoke("equinix:metal/getInterconnection:getInterconnection", args, &rv, opts...)
 	if err != nil {
@@ -58,8 +60,12 @@ type LookupInterconnectionArgs struct {
 // A collection of values returned by getInterconnection.
 type LookupInterconnectionResult struct {
 	ConnectionId string `pulumi:"connectionId"`
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+	ContactEmail string `pulumi:"contactEmail"`
 	// Description of the connection resource.
 	Description string `pulumi:"description"`
+	// (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility string `pulumi:"facility"`
 	// The provider-assigned unique ID for this managed resource.
@@ -136,8 +142,19 @@ func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutputWi
 	return o
 }
 
+func (o LookupInterconnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInterconnectionResult] {
+	return pulumix.Output[LookupInterconnectionResult]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LookupInterconnectionResultOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// The preferred email used for communication and notifications about the Equinix Fabric interconnection.
+func (o LookupInterconnectionResultOutput) ContactEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.ContactEmail }).(pulumi.StringOutput)
 }
 
 // Description of the connection resource.
@@ -145,6 +162,8 @@ func (o LookupInterconnectionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
+//
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o LookupInterconnectionResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.Facility }).(pulumi.StringOutput)

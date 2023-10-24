@@ -19,29 +19,45 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
 
     public static final ConnectionASideAccessPointProfileArgs Empty = new ConnectionASideAccessPointProfileArgs();
 
+    /**
+     * Access point config information
+     * 
+     */
     @Import(name="accessPointTypeConfigs")
     private @Nullable Output<List<ConnectionASideAccessPointProfileAccessPointTypeConfigArgs>> accessPointTypeConfigs;
 
+    /**
+     * @return Access point config information
+     * 
+     */
     public Optional<Output<List<ConnectionASideAccessPointProfileAccessPointTypeConfigArgs>>> accessPointTypeConfigs() {
         return Optional.ofNullable(this.accessPointTypeConfigs);
     }
 
+    /**
+     * User-provided service description
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return User-provided service description
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<Output<String>> href() {
@@ -49,14 +65,14 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,23 +80,31 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Output<Either<String,ProfileType>> type() {
         return this.type;
     }
 
+    /**
+     * Equinix-assigned interface identifier
+     * 
+     */
     @Import(name="uuid", required=true)
     private Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Output<String> uuid() {
         return this.uuid;
     }
@@ -114,30 +138,60 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
             $ = new ConnectionASideAccessPointProfileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessPointTypeConfigs Access point config information
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessPointTypeConfigs(@Nullable Output<List<ConnectionASideAccessPointProfileAccessPointTypeConfigArgs>> accessPointTypeConfigs) {
             $.accessPointTypeConfigs = accessPointTypeConfigs;
             return this;
         }
 
+        /**
+         * @param accessPointTypeConfigs Access point config information
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessPointTypeConfigs(List<ConnectionASideAccessPointProfileAccessPointTypeConfigArgs> accessPointTypeConfigs) {
             return accessPointTypeConfigs(Output.of(accessPointTypeConfigs));
         }
 
+        /**
+         * @param accessPointTypeConfigs Access point config information
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessPointTypeConfigs(ConnectionASideAccessPointProfileAccessPointTypeConfigArgs... accessPointTypeConfigs) {
             return accessPointTypeConfigs(List.of(accessPointTypeConfigs));
         }
 
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -148,7 +202,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -158,7 +212,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -169,7 +223,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -179,7 +233,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -190,7 +244,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -200,7 +254,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -210,7 +264,7 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -219,11 +273,23 @@ public final class ConnectionASideAccessPointProfileArgs extends com.pulumi.reso
             return type(Either.ofRight(type));
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

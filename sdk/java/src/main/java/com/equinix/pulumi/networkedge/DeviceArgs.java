@@ -121,6 +121,23 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     * 
+     */
+    @Import(name="connectivity")
+    private @Nullable Output<String> connectivity;
+
+    /**
+     * @return Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     * 
+     */
+    public Optional<Output<String>> connectivity() {
+        return Optional.ofNullable(this.connectivity);
+    }
+
+    /**
      * Number of CPU cores used by device.
      * 
      */
@@ -494,6 +511,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         this.byol = $.byol;
         this.cloudInitFileId = $.cloudInitFileId;
         this.clusterDetails = $.clusterDetails;
+        this.connectivity = $.connectivity;
         this.coreCount = $.coreCount;
         this.hostname = $.hostname;
         this.interfaceCount = $.interfaceCount;
@@ -667,6 +685,29 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterDetails(DeviceClusterDetailsArgs clusterDetails) {
             return clusterDetails(Output.of(clusterDetails));
+        }
+
+        /**
+         * @param connectivity Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+         * If not specified, default will be INTERNET-ACCESS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectivity(@Nullable Output<String> connectivity) {
+            $.connectivity = connectivity;
+            return this;
+        }
+
+        /**
+         * @param connectivity Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+         * If not specified, default will be INTERNET-ACCESS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectivity(String connectivity) {
+            return connectivity(Output.of(connectivity));
         }
 
         /**

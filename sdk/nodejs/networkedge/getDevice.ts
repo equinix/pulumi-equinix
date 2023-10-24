@@ -49,6 +49,8 @@ export interface GetDeviceArgs {
     uuid?: string;
     /**
      * Device states to be considered valid when searching for a device by name
+     *
+     * NOTE: Exactly one of either `uuid` or `name` must be specified.
      */
     validStatusList?: string;
 }
@@ -69,6 +71,10 @@ export interface GetDeviceResult {
     readonly asn: number;
     readonly byol: boolean;
     readonly clusterDetails: outputs.networkedge.GetDeviceClusterDetail[];
+    /**
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+     */
+    readonly connectivity: string;
     readonly coreCount: number;
     readonly hostname: string;
     /**
@@ -104,6 +110,7 @@ export interface GetDeviceResult {
      * * APPLIED
      * * WAITING_FOR_CLUSTER_SETUP
      * * REGISTRATION_FAILED
+     * * NA
      */
     readonly licenseStatus: string;
     readonly licenseToken: string;
@@ -207,6 +214,8 @@ export interface GetDeviceOutputArgs {
     uuid?: pulumi.Input<string>;
     /**
      * Device states to be considered valid when searching for a device by name
+     *
+     * NOTE: Exactly one of either `uuid` or `name` must be specified.
      */
     validStatusList?: pulumi.Input<string>;
 }

@@ -29,6 +29,13 @@ public final class SpotMarketRequestInstanceParameters {
     private String plan;
     private @Nullable List<String> projectSshKeys;
     private @Nullable List<String> tags;
+    private @Nullable String terminationTime;
+    /**
+     * @deprecated
+     * Use instance_parameters.termination_time instead
+     * 
+     */
+    @Deprecated /* Use instance_parameters.termination_time instead */
     private @Nullable String termintationTime;
     private @Nullable List<String> userSshKeys;
     private @Nullable String userdata;
@@ -74,6 +81,15 @@ public final class SpotMarketRequestInstanceParameters {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
+    public Optional<String> terminationTime() {
+        return Optional.ofNullable(this.terminationTime);
+    }
+    /**
+     * @deprecated
+     * Use instance_parameters.termination_time instead
+     * 
+     */
+    @Deprecated /* Use instance_parameters.termination_time instead */
     public Optional<String> termintationTime() {
         return Optional.ofNullable(this.termintationTime);
     }
@@ -105,6 +121,7 @@ public final class SpotMarketRequestInstanceParameters {
         private String plan;
         private @Nullable List<String> projectSshKeys;
         private @Nullable List<String> tags;
+        private @Nullable String terminationTime;
         private @Nullable String termintationTime;
         private @Nullable List<String> userSshKeys;
         private @Nullable String userdata;
@@ -123,6 +140,7 @@ public final class SpotMarketRequestInstanceParameters {
     	      this.plan = defaults.plan;
     	      this.projectSshKeys = defaults.projectSshKeys;
     	      this.tags = defaults.tags;
+    	      this.terminationTime = defaults.terminationTime;
     	      this.termintationTime = defaults.termintationTime;
     	      this.userSshKeys = defaults.userSshKeys;
     	      this.userdata = defaults.userdata;
@@ -198,6 +216,11 @@ public final class SpotMarketRequestInstanceParameters {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder terminationTime(@Nullable String terminationTime) {
+            this.terminationTime = terminationTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder termintationTime(@Nullable String termintationTime) {
             this.termintationTime = termintationTime;
             return this;
@@ -229,6 +252,7 @@ public final class SpotMarketRequestInstanceParameters {
             o.plan = plan;
             o.projectSshKeys = projectSshKeys;
             o.tags = tags;
+            o.terminationTime = terminationTime;
             o.termintationTime = termintationTime;
             o.userSshKeys = userSshKeys;
             o.userdata = userdata;

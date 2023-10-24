@@ -4,19 +4,25 @@
 package com.equinix.pulumi.fabric;
 
 import com.equinix.pulumi.Utilities;
+import com.equinix.pulumi.fabric.inputs.GetCloudRouterArgs;
+import com.equinix.pulumi.fabric.inputs.GetCloudRouterPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetRoutingProtocolArgs;
+import com.equinix.pulumi.fabric.inputs.GetRoutingProtocolPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfileArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilePlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPlainArgs;
+import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
 import com.equinix.pulumi.fabric.outputs.GetPortResult;
 import com.equinix.pulumi.fabric.outputs.GetPortsResult;
+import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileResult;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesResult;
 import com.pulumi.core.Output;
@@ -26,6 +32,24 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class FabricFunctions {
+    public static Output<GetCloudRouterResult> getCloudRouter() {
+        return getCloudRouter(GetCloudRouterArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain() {
+        return getCloudRouterPlain(GetCloudRouterPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args) {
+        return getCloudRouter(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args) {
+        return getCloudRouterPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getCloudRouter:getCloudRouter", TypeShape.of(GetCloudRouterResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getCloudRouter:getCloudRouter", TypeShape.of(GetCloudRouterResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetConnectionResult> getConnection() {
         return getConnection(GetConnectionArgs.Empty, InvokeOptions.Empty);
     }
@@ -73,6 +97,18 @@ public final class FabricFunctions {
     }
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args) {
+        return getRoutingProtocol(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRoutingProtocolResult> getRoutingProtocolPlain(GetRoutingProtocolPlainArgs args) {
+        return getRoutingProtocolPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getRoutingProtocol:getRoutingProtocol", TypeShape.of(GetRoutingProtocolResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetRoutingProtocolResult> getRoutingProtocolPlain(GetRoutingProtocolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getRoutingProtocol:getRoutingProtocol", TypeShape.of(GetRoutingProtocolResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria

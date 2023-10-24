@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "equinix:fabric/cloudRouter:CloudRouter":
+		r = &CloudRouter{}
 	case "equinix:fabric/connection:Connection":
 		r = &Connection{}
+	case "equinix:fabric/routingProtocol:RoutingProtocol":
+		r = &RoutingProtocol{}
 	case "equinix:fabric/serviceProfile:ServiceProfile":
 		r = &ServiceProfile{}
 	default:
@@ -34,13 +38,23 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := equinix.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
 	pulumi.RegisterResourceModule(
 		"equinix",
+		"fabric/cloudRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
 		"fabric/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"equinix",
+		"fabric/routingProtocol",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

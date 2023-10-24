@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from .. import _enums as _root_enums
 from ._enums import *
@@ -35,13 +35,60 @@ class NetworkFileArgs:
         :param pulumi.Input[bool] self_managed: Boolean value that determines device management mode, i.e.,
                `self-managed` or `Equinix-managed`.
         """
-        pulumi.set(__self__, "byol", byol)
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "device_type_code", device_type_code)
-        pulumi.set(__self__, "file_name", file_name)
-        pulumi.set(__self__, "metro_code", metro_code)
-        pulumi.set(__self__, "process_type", process_type)
-        pulumi.set(__self__, "self_managed", self_managed)
+        NetworkFileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            byol=byol,
+            content=content,
+            device_type_code=device_type_code,
+            file_name=file_name,
+            metro_code=metro_code,
+            process_type=process_type,
+            self_managed=self_managed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             byol: Optional[pulumi.Input[bool]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             device_type_code: Optional[pulumi.Input[str]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             metro_code: Optional[pulumi.Input[Union[str, '_root_enums.Metro']]] = None,
+             process_type: Optional[pulumi.Input[Union[str, 'FileType']]] = None,
+             self_managed: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if byol is None:
+            raise TypeError("Missing 'byol' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if device_type_code is None and 'deviceTypeCode' in kwargs:
+            device_type_code = kwargs['deviceTypeCode']
+        if device_type_code is None:
+            raise TypeError("Missing 'device_type_code' argument")
+        if file_name is None and 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if file_name is None:
+            raise TypeError("Missing 'file_name' argument")
+        if metro_code is None and 'metroCode' in kwargs:
+            metro_code = kwargs['metroCode']
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if process_type is None and 'processType' in kwargs:
+            process_type = kwargs['processType']
+        if process_type is None:
+            raise TypeError("Missing 'process_type' argument")
+        if self_managed is None and 'selfManaged' in kwargs:
+            self_managed = kwargs['selfManaged']
+        if self_managed is None:
+            raise TypeError("Missing 'self_managed' argument")
+
+        _setter("byol", byol)
+        _setter("content", content)
+        _setter("device_type_code", device_type_code)
+        _setter("file_name", file_name)
+        _setter("metro_code", metro_code)
+        _setter("process_type", process_type)
+        _setter("self_managed", self_managed)
 
     @property
     @pulumi.getter
@@ -156,24 +203,61 @@ class _NetworkFileState:
         :param pulumi.Input[str] status: File upload status.
         :param pulumi.Input[str] uuid: Unique identifier of file resource.
         """
+        _NetworkFileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            byol=byol,
+            content=content,
+            device_type_code=device_type_code,
+            file_name=file_name,
+            metro_code=metro_code,
+            process_type=process_type,
+            self_managed=self_managed,
+            status=status,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             byol: Optional[pulumi.Input[bool]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             device_type_code: Optional[pulumi.Input[str]] = None,
+             file_name: Optional[pulumi.Input[str]] = None,
+             metro_code: Optional[pulumi.Input[Union[str, '_root_enums.Metro']]] = None,
+             process_type: Optional[pulumi.Input[Union[str, 'FileType']]] = None,
+             self_managed: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_type_code is None and 'deviceTypeCode' in kwargs:
+            device_type_code = kwargs['deviceTypeCode']
+        if file_name is None and 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if metro_code is None and 'metroCode' in kwargs:
+            metro_code = kwargs['metroCode']
+        if process_type is None and 'processType' in kwargs:
+            process_type = kwargs['processType']
+        if self_managed is None and 'selfManaged' in kwargs:
+            self_managed = kwargs['selfManaged']
+
         if byol is not None:
-            pulumi.set(__self__, "byol", byol)
+            _setter("byol", byol)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if device_type_code is not None:
-            pulumi.set(__self__, "device_type_code", device_type_code)
+            _setter("device_type_code", device_type_code)
         if file_name is not None:
-            pulumi.set(__self__, "file_name", file_name)
+            _setter("file_name", file_name)
         if metro_code is not None:
-            pulumi.set(__self__, "metro_code", metro_code)
+            _setter("metro_code", metro_code)
         if process_type is not None:
-            pulumi.set(__self__, "process_type", process_type)
+            _setter("process_type", process_type)
         if self_managed is not None:
-            pulumi.set(__self__, "self_managed", self_managed)
+            _setter("self_managed", self_managed)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter
@@ -383,6 +467,10 @@ class NetworkFile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkFileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

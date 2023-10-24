@@ -31,9 +31,17 @@ public final class GetPrecreatedIpBlockPlainArgs extends com.pulumi.resources.In
         return this.addressFamily;
     }
 
+    /**
+     * Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
+     * 
+     */
     @Import(name="facility")
     private @Nullable String facility;
 
+    /**
+     * @return Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
+     * 
+     */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }
@@ -138,6 +146,12 @@ public final class GetPrecreatedIpBlockPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param facility Facility of the searched block. (for non-global blocks). Use metro instead; read the facility to metro migration guide
+         * 
+         * @return builder
+         * 
+         */
         public Builder facility(@Nullable String facility) {
             $.facility = facility;
             return this;

@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointLocationResult
     {
-        /// <summary>
-        /// Connection URI information
-        /// </summary>
         public readonly string Href;
         public readonly string Ibx;
         public readonly string MetroCode;

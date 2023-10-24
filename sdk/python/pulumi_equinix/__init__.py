@@ -29,10 +29,26 @@ _utilities.register(
 [
  {
   "pkg": "equinix",
+  "mod": "fabric/cloudRouter",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/cloudRouter:CloudRouter": "CloudRouter"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/connection",
   "fqn": "pulumi_equinix.fabric",
   "classes": {
    "equinix:fabric/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "equinix",
+  "mod": "fabric/routingProtocol",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/routingProtocol:RoutingProtocol": "RoutingProtocol"
   }
  },
  {

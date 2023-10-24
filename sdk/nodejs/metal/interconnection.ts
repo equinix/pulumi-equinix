@@ -64,11 +64,15 @@ export class Interconnection extends pulumi.CustomResource {
     }
 
     /**
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     */
+    public readonly contactEmail!: pulumi.Output<string>;
+    /**
      * Description for the connection resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Facility where the connection will be created
+     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -151,6 +155,7 @@ export class Interconnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectionState | undefined;
+            resourceInputs["contactEmail"] = state ? state.contactEmail : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["facility"] = state ? state.facility : undefined;
             resourceInputs["metro"] = state ? state.metro : undefined;
@@ -173,12 +178,10 @@ export class Interconnection extends pulumi.CustomResource {
             if ((!args || args.redundancy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'redundancy'");
             }
-            if ((!args || args.speed === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'speed'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["contactEmail"] = args ? args.contactEmail : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["facility"] = args ? args.facility : undefined;
             resourceInputs["metro"] = args ? args.metro : undefined;
@@ -207,11 +210,15 @@ export class Interconnection extends pulumi.CustomResource {
  */
 export interface InterconnectionState {
     /**
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     */
+    contactEmail?: pulumi.Input<string>;
+    /**
      * Description for the connection resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where the connection will be created
+     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -287,11 +294,15 @@ export interface InterconnectionState {
  */
 export interface InterconnectionArgs {
     /**
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     */
+    contactEmail?: pulumi.Input<string>;
+    /**
      * Description for the connection resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Facility where the connection will be created
+     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
@@ -327,7 +338,7 @@ export interface InterconnectionArgs {
     /**
      * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
      */
-    speed: pulumi.Input<string>;
+    speed?: pulumi.Input<string>;
     /**
      * String list of tags.
      */

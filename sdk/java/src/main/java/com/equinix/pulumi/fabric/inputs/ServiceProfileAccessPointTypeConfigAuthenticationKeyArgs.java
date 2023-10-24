@@ -17,30 +17,46 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
     public static final ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs Empty = new ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs();
 
     /**
-     * User-provided service description
+     * Description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Description
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Label
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return Label
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
 
+    /**
+     * Required
+     * 
+     */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
+    /**
+     * @return Required
+     * 
+     */
     public Optional<Output<Boolean>> required() {
         return Optional.ofNullable(this.required);
     }
@@ -72,7 +88,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -83,7 +99,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Description
          * 
          * @return builder
          * 
@@ -92,20 +108,44 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
             return description(Output.of(description));
         }
 
+        /**
+         * @param label Label
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label Label
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }
 
+        /**
+         * @param required Required
+         * 
+         * @return builder
+         * 
+         */
         public Builder required(@Nullable Output<Boolean> required) {
             $.required = required;
             return this;
         }
 
+        /**
+         * @param required Required
+         * 
+         * @return builder
+         * 
+         */
         public Builder required(Boolean required) {
             return required(Output.of(required));
         }

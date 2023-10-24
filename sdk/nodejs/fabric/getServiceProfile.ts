@@ -29,9 +29,6 @@ export interface GetServiceProfileArgs {
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */
     state?: string;
-    /**
-     * Equinix assigned service profile identifier
-     */
     uuid: string;
 }
 
@@ -137,8 +134,5 @@ export interface GetServiceProfileOutputArgs {
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */
     state?: pulumi.Input<string>;
-    /**
-     * Equinix assigned service profile identifier
-     */
     uuid: pulumi.Input<string>;
 }

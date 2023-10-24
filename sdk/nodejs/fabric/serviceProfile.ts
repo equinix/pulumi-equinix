@@ -109,11 +109,11 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly customFields!: pulumi.Output<outputs.fabric.ServiceProfileCustomField[] | undefined>;
     /**
-     * User-provided service description
+     * Description
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Service Profile URI response attribute
+     * Unique Resource URL
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
     /**
@@ -125,7 +125,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly metros!: pulumi.Output<outputs.fabric.ServiceProfileMetro[] | undefined>;
     /**
-     * Customer-assigned service profile name
+     * Metro Name
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -153,11 +153,11 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Type of access point type config - VD, COLO
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * Equinix assigned service profile identifier
+     * Colo/Port Uuid
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
@@ -261,11 +261,11 @@ export interface ServiceProfileState {
      */
     customFields?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileCustomField>[]>;
     /**
-     * User-provided service description
+     * Description
      */
     description?: pulumi.Input<string>;
     /**
-     * Service Profile URI response attribute
+     * Unique Resource URL
      */
     href?: pulumi.Input<string>;
     /**
@@ -277,7 +277,7 @@ export interface ServiceProfileState {
      */
     metros?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileMetro>[]>;
     /**
-     * Customer-assigned service profile name
+     * Metro Name
      */
     name?: pulumi.Input<string>;
     /**
@@ -305,11 +305,11 @@ export interface ServiceProfileState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Type of access point type config - VD, COLO
      */
     type?: pulumi.Input<string | enums.fabric.ProfileType>;
     /**
-     * Equinix assigned service profile identifier
+     * Colo/Port Uuid
      */
     uuid?: pulumi.Input<string>;
     /**
@@ -343,7 +343,7 @@ export interface ServiceProfileArgs {
      */
     customFields?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileCustomField>[]>;
     /**
-     * User-provided service description
+     * Description
      */
     description: pulumi.Input<string>;
     /**
@@ -355,7 +355,7 @@ export interface ServiceProfileArgs {
      */
     metros?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileMetro>[]>;
     /**
-     * Customer-assigned service profile name
+     * Metro Name
      */
     name?: pulumi.Input<string>;
     /**
@@ -383,7 +383,7 @@ export interface ServiceProfileArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+     * Type of access point type config - VD, COLO
      */
     type: pulumi.Input<string | enums.fabric.ProfileType>;
     /**

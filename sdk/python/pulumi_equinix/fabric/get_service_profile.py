@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -283,7 +283,6 @@ def get_service_profile(state: Optional[str] = None,
 
 
     :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-    :param str uuid: Equinix assigned service profile identifier
     """
     __args__ = dict()
     __args__['state'] = state
@@ -292,26 +291,26 @@ def get_service_profile(state: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getServiceProfile:getServiceProfile', __args__, opts=opts, typ=GetServiceProfileResult).value
 
     return AwaitableGetServiceProfileResult(
-        access_point_type_configs=__ret__.access_point_type_configs,
-        account=__ret__.account,
-        allowed_emails=__ret__.allowed_emails,
-        change_log=__ret__.change_log,
-        custom_fields=__ret__.custom_fields,
-        description=__ret__.description,
-        href=__ret__.href,
-        id=__ret__.id,
-        marketing_info=__ret__.marketing_info,
-        metros=__ret__.metros,
-        name=__ret__.name,
-        notifications=__ret__.notifications,
-        ports=__ret__.ports,
-        project=__ret__.project,
-        self_profile=__ret__.self_profile,
-        state=__ret__.state,
-        tags=__ret__.tags,
-        type=__ret__.type,
-        uuid=__ret__.uuid,
-        visibility=__ret__.visibility)
+        access_point_type_configs=pulumi.get(__ret__, 'access_point_type_configs'),
+        account=pulumi.get(__ret__, 'account'),
+        allowed_emails=pulumi.get(__ret__, 'allowed_emails'),
+        change_log=pulumi.get(__ret__, 'change_log'),
+        custom_fields=pulumi.get(__ret__, 'custom_fields'),
+        description=pulumi.get(__ret__, 'description'),
+        href=pulumi.get(__ret__, 'href'),
+        id=pulumi.get(__ret__, 'id'),
+        marketing_info=pulumi.get(__ret__, 'marketing_info'),
+        metros=pulumi.get(__ret__, 'metros'),
+        name=pulumi.get(__ret__, 'name'),
+        notifications=pulumi.get(__ret__, 'notifications'),
+        ports=pulumi.get(__ret__, 'ports'),
+        project=pulumi.get(__ret__, 'project'),
+        self_profile=pulumi.get(__ret__, 'self_profile'),
+        state=pulumi.get(__ret__, 'state'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'),
+        uuid=pulumi.get(__ret__, 'uuid'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_service_profile)
@@ -325,6 +324,5 @@ def get_service_profile_output(state: Optional[pulumi.Input[Optional[str]]] = No
 
 
     :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-    :param str uuid: Equinix assigned service profile identifier
     """
     ...

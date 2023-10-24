@@ -91,6 +91,8 @@ namespace Pulumi.Equinix.NetworkEdge
         /// <summary>
         /// One or more rules to specify allowed inbound traffic.
         /// Rules are ordered, matching traffic rule stops processing subsequent ones.
+        /// 
+        /// The `inbound_rule` block has below fields:
         /// </summary>
         [Output("inboundRules")]
         public Output<ImmutableArray<Outputs.AclTemplateInboundRule>> InboundRules { get; private set; } = null!;
@@ -172,6 +174,8 @@ namespace Pulumi.Equinix.NetworkEdge
         /// <summary>
         /// One or more rules to specify allowed inbound traffic.
         /// Rules are ordered, matching traffic rule stops processing subsequent ones.
+        /// 
+        /// The `inbound_rule` block has below fields:
         /// </summary>
         public InputList<Inputs.AclTemplateInboundRuleArgs> InboundRules
         {
@@ -236,6 +240,8 @@ namespace Pulumi.Equinix.NetworkEdge
         /// <summary>
         /// One or more rules to specify allowed inbound traffic.
         /// Rules are ordered, matching traffic rule stops processing subsequent ones.
+        /// 
+        /// The `inbound_rule` block has below fields:
         /// </summary>
         public InputList<Inputs.AclTemplateInboundRuleGetArgs> InboundRules
         {

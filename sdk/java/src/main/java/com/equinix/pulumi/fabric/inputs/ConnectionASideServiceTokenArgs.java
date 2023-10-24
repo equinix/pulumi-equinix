@@ -17,22 +17,30 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
 
     public static final ConnectionASideServiceTokenArgs Empty = new ConnectionASideServiceTokenArgs();
 
+    /**
+     * User-provided service description
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return User-provided service description
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<Output<String>> href() {
@@ -40,23 +48,31 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ServiceTokenType>> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<Output<Either<String,ServiceTokenType>>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Equinix-assigned interface identifier
+     * 
+     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -88,17 +104,29 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
             $ = new ConnectionASideServiceTokenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -109,7 +137,7 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -119,7 +147,7 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -130,7 +158,7 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -140,7 +168,7 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -150,7 +178,7 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -159,11 +187,23 @@ public final class ConnectionASideServiceTokenArgs extends com.pulumi.resources.
             return type(Either.ofRight(type));
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned interface identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

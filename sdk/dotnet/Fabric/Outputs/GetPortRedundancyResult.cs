@@ -14,14 +14,14 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetPortRedundancyResult
     {
         public readonly bool Enabled;
-        public readonly int Group;
+        public readonly string Group;
         public readonly string Priority;
 
         [OutputConstructor]
         private GetPortRedundancyResult(
             bool enabled,
 
-            int group,
+            string group,
 
             string priority)
         {

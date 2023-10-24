@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -17,8 +17,8 @@ __all__ = ['InterconnectionArgs', 'Interconnection']
 class InterconnectionArgs:
     def __init__(__self__, *,
                  redundancy: pulumi.Input[str],
-                 speed: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  facility: Optional[pulumi.Input[str]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
@@ -27,50 +27,104 @@ class InterconnectionArgs:
                  organization_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_token_type: Optional[pulumi.Input[str]] = None,
+                 speed: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a Interconnection resource.
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary.
-        :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
+        :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created
+        :param pulumi.Input[str] facility: Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
         :param pulumi.Input[str] organization_id: ID of the organization where the connection is scoped to.
         :param pulumi.Input[str] project_id: ID of the project where the connection is scoped to, must be set for.
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+        :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
         """
-        pulumi.set(__self__, "redundancy", redundancy)
-        pulumi.set(__self__, "speed", speed)
-        pulumi.set(__self__, "type", type)
+        InterconnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            redundancy=redundancy,
+            type=type,
+            contact_email=contact_email,
+            description=description,
+            facility=facility,
+            metro=metro,
+            mode=mode,
+            name=name,
+            organization_id=organization_id,
+            project_id=project_id,
+            service_token_type=service_token_type,
+            speed=speed,
+            tags=tags,
+            vlans=vlans,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             redundancy: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             contact_email: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             facility: Optional[pulumi.Input[str]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             service_token_type: Optional[pulumi.Input[str]] = None,
+             speed: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redundancy is None:
+            raise TypeError("Missing 'redundancy' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if contact_email is None and 'contactEmail' in kwargs:
+            contact_email = kwargs['contactEmail']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if service_token_type is None and 'serviceTokenType' in kwargs:
+            service_token_type = kwargs['serviceTokenType']
+
+        _setter("redundancy", redundancy)
+        _setter("type", type)
+        if contact_email is not None:
+            _setter("contact_email", contact_email)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if facility is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
-            pulumi.set(__self__, "facility", facility)
+            _setter("facility", facility)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if service_token_type is not None:
-            pulumi.set(__self__, "service_token_type", service_token_type)
+            _setter("service_token_type", service_token_type)
+        if speed is not None:
+            _setter("speed", speed)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vlans is not None:
-            pulumi.set(__self__, "vlans", vlans)
+            _setter("vlans", vlans)
 
     @property
     @pulumi.getter
@@ -86,18 +140,6 @@ class InterconnectionArgs:
 
     @property
     @pulumi.getter
-    def speed(self) -> pulumi.Input[str]:
-        """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-        """
-        return pulumi.get(self, "speed")
-
-    @speed.setter
-    def speed(self, value: pulumi.Input[str]):
-        pulumi.set(self, "speed", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
         Connection type - dedicated or shared.
@@ -107,6 +149,18 @@ class InterconnectionArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        """
+        return pulumi.get(self, "contact_email")
+
+    @contact_email.setter
+    def contact_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_email", value)
 
     @property
     @pulumi.getter
@@ -124,8 +178,11 @@ class InterconnectionArgs:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[str]]:
         """
-        Facility where the connection will be created
+        Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @facility.setter
@@ -206,6 +263,18 @@ class InterconnectionArgs:
 
     @property
     @pulumi.getter
+    def speed(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        """
+        return pulumi.get(self, "speed")
+
+    @speed.setter
+    def speed(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "speed", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         String list of tags.
@@ -232,6 +301,7 @@ class InterconnectionArgs:
 @pulumi.input_type
 class _InterconnectionState:
     def __init__(__self__, *,
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  facility: Optional[pulumi.Input[str]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
@@ -251,8 +321,9 @@ class _InterconnectionState:
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering Interconnection resources.
+        :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created
+        :param pulumi.Input[str] facility: Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -271,46 +342,115 @@ class _InterconnectionState:
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
         """
+        _InterconnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_email=contact_email,
+            description=description,
+            facility=facility,
+            metro=metro,
+            mode=mode,
+            name=name,
+            organization_id=organization_id,
+            ports=ports,
+            project_id=project_id,
+            redundancy=redundancy,
+            service_token_type=service_token_type,
+            service_tokens=service_tokens,
+            speed=speed,
+            status=status,
+            tags=tags,
+            token=token,
+            type=type,
+            vlans=vlans,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_email: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             facility: Optional[pulumi.Input[str]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectionPortArgs']]]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             redundancy: Optional[pulumi.Input[str]] = None,
+             service_token_type: Optional[pulumi.Input[str]] = None,
+             service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectionServiceTokenArgs']]]] = None,
+             speed: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if contact_email is None and 'contactEmail' in kwargs:
+            contact_email = kwargs['contactEmail']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if service_token_type is None and 'serviceTokenType' in kwargs:
+            service_token_type = kwargs['serviceTokenType']
+        if service_tokens is None and 'serviceTokens' in kwargs:
+            service_tokens = kwargs['serviceTokens']
+
+        if contact_email is not None:
+            _setter("contact_email", contact_email)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if facility is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
-            pulumi.set(__self__, "facility", facility)
+            _setter("facility", facility)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if redundancy is not None:
-            pulumi.set(__self__, "redundancy", redundancy)
+            _setter("redundancy", redundancy)
         if service_token_type is not None:
-            pulumi.set(__self__, "service_token_type", service_token_type)
+            _setter("service_token_type", service_token_type)
         if service_tokens is not None:
-            pulumi.set(__self__, "service_tokens", service_tokens)
+            _setter("service_tokens", service_tokens)
         if speed is not None:
-            pulumi.set(__self__, "speed", speed)
+            _setter("speed", speed)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if token is not None:
             warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vlans is not None:
-            pulumi.set(__self__, "vlans", vlans)
+            _setter("vlans", vlans)
+
+    @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        """
+        return pulumi.get(self, "contact_email")
+
+    @contact_email.setter
+    def contact_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_email", value)
 
     @property
     @pulumi.getter
@@ -328,8 +468,11 @@ class _InterconnectionState:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[str]]:
         """
-        Facility where the connection will be created
+        Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @facility.setter
@@ -488,6 +631,9 @@ class _InterconnectionState:
         """
         (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         """
+        warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
+
         return pulumi.get(self, "token")
 
     @token.setter
@@ -524,6 +670,7 @@ class Interconnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  facility: Optional[pulumi.Input[str]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
@@ -570,8 +717,9 @@ class Interconnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created
+        :param pulumi.Input[str] facility: Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -630,11 +778,16 @@ class Interconnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InterconnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  facility: Optional[pulumi.Input[str]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
@@ -657,10 +810,8 @@ class Interconnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InterconnectionArgs.__new__(InterconnectionArgs)
 
+            __props__.__dict__["contact_email"] = contact_email
             __props__.__dict__["description"] = description
-            if facility is not None and not opts.urn:
-                warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-                pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
             __props__.__dict__["facility"] = facility
             __props__.__dict__["metro"] = metro
             __props__.__dict__["mode"] = mode
@@ -671,8 +822,6 @@ class Interconnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'redundancy'")
             __props__.__dict__["redundancy"] = redundancy
             __props__.__dict__["service_token_type"] = service_token_type
-            if speed is None and not opts.urn:
-                raise TypeError("Missing required property 'speed'")
             __props__.__dict__["speed"] = speed
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
@@ -693,6 +842,7 @@ class Interconnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            contact_email: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             facility: Optional[pulumi.Input[str]] = None,
             metro: Optional[pulumi.Input[str]] = None,
@@ -717,8 +867,9 @@ class Interconnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         :param pulumi.Input[str] description: Description for the connection resource.
-        :param pulumi.Input[str] facility: Facility where the connection will be created
+        :param pulumi.Input[str] facility: Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where the connection will be created.
         :param pulumi.Input[str] mode: Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         :param pulumi.Input[str] name: Name of the connection resource
@@ -741,6 +892,7 @@ class Interconnection(pulumi.CustomResource):
 
         __props__ = _InterconnectionState.__new__(_InterconnectionState)
 
+        __props__.__dict__["contact_email"] = contact_email
         __props__.__dict__["description"] = description
         __props__.__dict__["facility"] = facility
         __props__.__dict__["metro"] = metro
@@ -761,6 +913,14 @@ class Interconnection(pulumi.CustomResource):
         return Interconnection(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> pulumi.Output[str]:
+        """
+        The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+        """
+        return pulumi.get(self, "contact_email")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
@@ -772,8 +932,11 @@ class Interconnection(pulumi.CustomResource):
     @pulumi.getter
     def facility(self) -> pulumi.Output[str]:
         """
-        Facility where the connection will be created
+        Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         """
+        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+
         return pulumi.get(self, "facility")
 
     @property
@@ -880,6 +1043,9 @@ class Interconnection(pulumi.CustomResource):
         """
         (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         """
+        warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
+        pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
+
         return pulumi.get(self, "token")
 
     @property

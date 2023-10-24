@@ -151,7 +151,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The facility where the device is deployed
+     * (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -162,7 +162,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> deployedFacility;
 
     /**
-     * @return The facility where the device is deployed
+     * @return (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -206,10 +206,11 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-     * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-     * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-     * top of the page and see JSON from the API response. Conflicts with metro
+     * List of facility codes with deployment preferences. Equinix Metal API will go
+     * through the list and will deploy your device to first facility with free capacity. List items must
+     * be facility codes or `any` (a wildcard). To find the facility code, visit
+     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -220,10 +221,11 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<Either<String,Facility>>> facilities;
 
     /**
-     * @return List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-     * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-     * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-     * top of the page and see JSON from the API response. Conflicts with metro
+     * @return List of facility codes with deployment preferences. Equinix Metal API will go
+     * through the list and will deploy your device to first facility with free capacity. List items must
+     * be facility codes or `any` (a wildcard). To find the facility code, visit
+     * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+     * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -472,20 +474,14 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Array of IDs of the project SSH keys which should be added to the device.
-     * If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-     * you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-     * created with the equinix.metal.ProjectSshKey resource.
+     * Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
      * 
      */
     @Import(name="projectSshKeyIds")
     private @Nullable Output<List<String>> projectSshKeyIds;
 
     /**
-     * @return Array of IDs of the project SSH keys which should be added to the device.
-     * If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-     * you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-     * created with the equinix.metal.ProjectSshKey resource.
+     * @return Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
      * 
      */
     public Optional<Output<List<String>>> projectSshKeyIds() {
@@ -642,14 +638,14 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the equinix.metal.SshKey resource
+     * Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
      * 
      */
     @Import(name="userSshKeyIds")
     private @Nullable Output<List<String>> userSshKeyIds;
 
     /**
-     * @return Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the equinix.metal.SshKey resource
+     * @return Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
      * 
      */
     public Optional<Output<List<String>>> userSshKeyIds() {
@@ -926,7 +922,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedFacility The facility where the device is deployed
+         * @param deployedFacility (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -941,7 +937,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedFacility The facility where the device is deployed
+         * @param deployedFacility (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -999,10 +995,11 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-         * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-         * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-         * top of the page and see JSON from the API response. Conflicts with metro
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
+         * through the list and will deploy your device to first facility with free capacity. List items must
+         * be facility codes or `any` (a wildcard). To find the facility code, visit
+         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -1017,10 +1014,11 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-         * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-         * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-         * top of the page and see JSON from the API response. Conflicts with metro
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
+         * through the list and will deploy your device to first facility with free capacity. List items must
+         * be facility codes or `any` (a wildcard). To find the facility code, visit
+         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -1034,10 +1032,11 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-         * device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-         * code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-         * top of the page and see JSON from the API response. Conflicts with metro
+         * @param facilities List of facility codes with deployment preferences. Equinix Metal API will go
+         * through the list and will deploy your device to first facility with free capacity. List items must
+         * be facility codes or `any` (a wildcard). To find the facility code, visit
+         * [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+         * token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -1487,10 +1486,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device.
-         * If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-         * you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-         * created with the equinix.metal.ProjectSshKey resource.
+         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
          * 
          * @return builder
          * 
@@ -1501,10 +1497,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device.
-         * If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-         * you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-         * created with the equinix.metal.ProjectSshKey resource.
+         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
          * 
          * @return builder
          * 
@@ -1514,10 +1507,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device.
-         * If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-         * you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-         * created with the equinix.metal.ProjectSshKey resource.
+         * @param projectSshKeyIds Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the equinix.metal.ProjectSshKey resource.
          * 
          * @return builder
          * 
@@ -1750,7 +1740,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userSshKeyIds Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the equinix.metal.SshKey resource
+         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
          * 
          * @return builder
          * 
@@ -1761,7 +1751,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userSshKeyIds Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the equinix.metal.SshKey resource
+         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
          * 
          * @return builder
          * 
@@ -1771,7 +1761,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userSshKeyIds Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the equinix.metal.SshKey resource
+         * @param userSshKeyIds Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users&#39; SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the equinix.metal.SshKey resource.
          * 
          * @return builder
          * 

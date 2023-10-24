@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
 	err := ctx.Invoke("equinix:fabric/getConnection:getConnection", args, &rv, opts...)
 	if err != nil {
@@ -24,8 +26,7 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 type LookupConnectionArgs struct {
 	// Project information
 	Project *GetConnectionProject `pulumi:"project"`
-	// Equinix-assigned connection identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid    *string               `pulumi:"uuid"`
 }
 
 // A collection of values returned by getConnection.
@@ -64,7 +65,7 @@ type LookupConnectionResult struct {
 	Redundancy GetConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State string `pulumi:"state"`
-	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
 	Type string `pulumi:"type"`
 	// Equinix-assigned connection identifier
 	Uuid *string `pulumi:"uuid"`
@@ -89,8 +90,7 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 type LookupConnectionOutputArgs struct {
 	// Project information
 	Project GetConnectionProjectPtrInput `pulumi:"project"`
-	// Equinix-assigned connection identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid    pulumi.StringPtrInput        `pulumi:"uuid"`
 }
 
 func (LookupConnectionOutputArgs) ElementType() reflect.Type {
@@ -110,6 +110,12 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupCon
 
 func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
 	return o
+}
+
+func (o LookupConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionResult] {
+	return pulumix.Output[LookupConnectionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Requester or Customer side connection configuration object of the multi-segment connection
@@ -197,7 +203,7 @@ func (o LookupConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
 func (o LookupConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

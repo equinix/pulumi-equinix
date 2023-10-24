@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from ._enums import *
 
@@ -34,8 +34,8 @@ class ReservedIpBlockArgs:
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-               type==global_ipv4, conflicts with metro
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
+               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
@@ -46,29 +46,72 @@ class ReservedIpBlockArgs:
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        ReservedIpBlockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            cidr=cidr,
+            custom_data=custom_data,
+            description=description,
+            facility=facility,
+            metro=metro,
+            network=network,
+            quantity=quantity,
+            tags=tags,
+            type=type,
+            vrf_id=vrf_id,
+            wait_for_state=wait_for_state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: Optional[pulumi.Input[str]] = None,
+             cidr: Optional[pulumi.Input[int]] = None,
+             custom_data: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             facility: Optional[pulumi.Input[Union[str, 'Facility']]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             quantity: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[Union[str, 'IpBlockType']]] = None,
+             vrf_id: Optional[pulumi.Input[str]] = None,
+             wait_for_state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if custom_data is None and 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if vrf_id is None and 'vrfId' in kwargs:
+            vrf_id = kwargs['vrfId']
+        if wait_for_state is None and 'waitForState' in kwargs:
+            wait_for_state = kwargs['waitForState']
+
+        _setter("project_id", project_id)
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if facility is not None:
-            pulumi.set(__self__, "facility", facility)
+            _setter("facility", facility)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
+            _setter("quantity", quantity)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vrf_id is not None:
-            pulumi.set(__self__, "vrf_id", vrf_id)
+            _setter("vrf_id", vrf_id)
         if wait_for_state is not None:
-            pulumi.set(__self__, "wait_for_state", wait_for_state)
+            _setter("wait_for_state", wait_for_state)
 
     @property
     @pulumi.getter(name="projectId")
@@ -123,8 +166,8 @@ class ReservedIpBlockArgs:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-        type==global_ipv4, conflicts with metro
+        Facility where to allocate the public IP address block, makes sense only
+        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         """
         return pulumi.get(self, "facility")
 
@@ -251,8 +294,8 @@ class _ReservedIpBlockState:
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-               type==global_ipv4, conflicts with metro
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
+               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any
                metro).
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
@@ -268,48 +311,113 @@ class _ReservedIpBlockState:
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
+        _ReservedIpBlockState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            address_family=address_family,
+            cidr=cidr,
+            cidr_notation=cidr_notation,
+            custom_data=custom_data,
+            description=description,
+            facility=facility,
+            gateway=gateway,
+            global_=global_,
+            manageable=manageable,
+            management=management,
+            metro=metro,
+            netmask=netmask,
+            network=network,
+            project_id=project_id,
+            public=public,
+            quantity=quantity,
+            tags=tags,
+            type=type,
+            vrf_id=vrf_id,
+            wait_for_state=wait_for_state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             address_family: Optional[pulumi.Input[int]] = None,
+             cidr: Optional[pulumi.Input[int]] = None,
+             cidr_notation: Optional[pulumi.Input[str]] = None,
+             custom_data: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             facility: Optional[pulumi.Input[Union[str, 'Facility']]] = None,
+             gateway: Optional[pulumi.Input[str]] = None,
+             global_: Optional[pulumi.Input[bool]] = None,
+             manageable: Optional[pulumi.Input[bool]] = None,
+             management: Optional[pulumi.Input[bool]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             netmask: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             quantity: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[Union[str, 'IpBlockType']]] = None,
+             vrf_id: Optional[pulumi.Input[str]] = None,
+             wait_for_state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_family is None and 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if cidr_notation is None and 'cidrNotation' in kwargs:
+            cidr_notation = kwargs['cidrNotation']
+        if custom_data is None and 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if global_ is None and 'global' in kwargs:
+            global_ = kwargs['global']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if vrf_id is None and 'vrfId' in kwargs:
+            vrf_id = kwargs['vrfId']
+        if wait_for_state is None and 'waitForState' in kwargs:
+            wait_for_state = kwargs['waitForState']
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if address_family is not None:
-            pulumi.set(__self__, "address_family", address_family)
+            _setter("address_family", address_family)
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if cidr_notation is not None:
-            pulumi.set(__self__, "cidr_notation", cidr_notation)
+            _setter("cidr_notation", cidr_notation)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if facility is not None:
-            pulumi.set(__self__, "facility", facility)
+            _setter("facility", facility)
         if gateway is not None:
-            pulumi.set(__self__, "gateway", gateway)
+            _setter("gateway", gateway)
         if global_ is not None:
-            pulumi.set(__self__, "global_", global_)
+            _setter("global_", global_)
         if manageable is not None:
-            pulumi.set(__self__, "manageable", manageable)
+            _setter("manageable", manageable)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if netmask is not None:
-            pulumi.set(__self__, "netmask", netmask)
+            _setter("netmask", netmask)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
+            _setter("quantity", quantity)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vrf_id is not None:
-            pulumi.set(__self__, "vrf_id", vrf_id)
+            _setter("vrf_id", vrf_id)
         if wait_for_state is not None:
-            pulumi.set(__self__, "wait_for_state", wait_for_state)
+            _setter("wait_for_state", wait_for_state)
 
     @property
     @pulumi.getter
@@ -385,8 +493,8 @@ class _ReservedIpBlockState:
     @pulumi.getter
     def facility(self) -> Optional[pulumi.Input[Union[str, 'Facility']]]:
         """
-        Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-        type==global_ipv4, conflicts with metro
+        Facility where to allocate the public IP address block, makes sense only
+        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         """
         return pulumi.get(self, "facility")
 
@@ -626,8 +734,8 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-               type==global_ipv4, conflicts with metro
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
+               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `facility`.
         :param pulumi.Input[str] network: Only valid as an argument and required when `type` is `vrf`. An unreserved network address from an existing `ip_range` in the specified VRF.
@@ -700,6 +808,10 @@ class ReservedIpBlock(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ReservedIpBlockArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -793,8 +905,8 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
                be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
-        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-               type==global_ipv4, conflicts with metro
+        :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
+               if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] global_: Boolean flag whether addresses from a block are global (i.e. can be assigned in any
                metro).
         :param pulumi.Input[str] metro: Metro where to allocate the public IP address block, makes sense only
@@ -887,8 +999,8 @@ class ReservedIpBlock(pulumi.CustomResource):
     @pulumi.getter
     def facility(self) -> pulumi.Output[Optional[str]]:
         """
-        Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-        type==global_ipv4, conflicts with metro
+        Facility where to allocate the public IP address block, makes sense only
+        if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
         """
         return pulumi.get(self, "facility")
 

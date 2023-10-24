@@ -28,15 +28,7 @@ public final class GetServiceProfileAccessPointTypeConfig {
     private Boolean enableAutoGenerateServiceKey;
     private List<GetServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
     private List<Integer> supportedBandwidths;
-    /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-     * 
-     */
     private String type;
-    /**
-     * @return Equinix assigned service profile identifier
-     * 
-     */
     private String uuid;
 
     private GetServiceProfileAccessPointTypeConfig() {}
@@ -76,17 +68,9 @@ public final class GetServiceProfileAccessPointTypeConfig {
     public List<Integer> supportedBandwidths() {
         return this.supportedBandwidths;
     }
-    /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Equinix assigned service profile identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

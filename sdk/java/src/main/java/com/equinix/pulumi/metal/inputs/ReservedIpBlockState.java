@@ -106,16 +106,16 @@ public final class ReservedIpBlockState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * Facility where to allocate the public IP address block, makes sense only
+     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      * 
      */
     @Import(name="facility")
     private @Nullable Output<Either<String,Facility>> facility;
 
     /**
-     * @return Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-     * type==global_ipv4, conflicts with metro
+     * @return Facility where to allocate the public IP address block, makes sense only
+     * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
      * 
      */
     public Optional<Output<Either<String,Facility>>> facility() {
@@ -475,8 +475,8 @@ public final class ReservedIpBlockState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param facility Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-         * type==global_ipv4, conflicts with metro
+         * @param facility Facility where to allocate the public IP address block, makes sense only
+         * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -487,8 +487,8 @@ public final class ReservedIpBlockState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param facility Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-         * type==global_ipv4, conflicts with metro
+         * @param facility Facility where to allocate the public IP address block, makes sense only
+         * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -498,8 +498,8 @@ public final class ReservedIpBlockState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param facility Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-         * type==global_ipv4, conflicts with metro
+         * @param facility Facility where to allocate the public IP address block, makes sense only
+         * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -509,8 +509,8 @@ public final class ReservedIpBlockState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param facility Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-         * type==global_ipv4, conflicts with metro
+         * @param facility Facility where to allocate the public IP address block, makes sense only
+         * if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 

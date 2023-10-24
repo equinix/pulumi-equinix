@@ -17,9 +17,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly string DisplayName;
         public readonly ImmutableArray<string> Ibxs;
         public readonly bool InTrail;
-        /// <summary>
-        /// Customer-assigned service profile name
-        /// </summary>
         public readonly string Name;
         public readonly ImmutableDictionary<string, string> SellerRegions;
 

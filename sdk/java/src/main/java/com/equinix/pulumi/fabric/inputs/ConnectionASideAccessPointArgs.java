@@ -10,8 +10,10 @@ import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointGatewayArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointInterfaceArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointLinkProtocolArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointLocationArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointNetworkArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointPortArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointProfileArgs;
+import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointRouterArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointRoutingProtocolArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
 import com.pulumi.core.Either;
@@ -29,115 +31,237 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     public static final ConnectionASideAccessPointArgs Empty = new ConnectionASideAccessPointArgs();
 
     /**
-     * Customer account information that is associated with this connection
+     * Account
      * 
      */
     @Import(name="account")
     private @Nullable Output<ConnectionASideAccessPointAccountArgs> account;
 
     /**
-     * @return Customer account information that is associated with this connection
+     * @return Account
      * 
      */
     public Optional<Output<ConnectionASideAccessPointAccountArgs>> account() {
         return Optional.ofNullable(this.account);
     }
 
+    /**
+     * Authentication key for provider based connections
+     * 
+     */
     @Import(name="authenticationKey")
     private @Nullable Output<String> authenticationKey;
 
+    /**
+     * @return Authentication key for provider based connections
+     * 
+     */
     public Optional<Output<String>> authenticationKey() {
         return Optional.ofNullable(this.authenticationKey);
     }
 
+    /**
+     * @deprecated
+     * use router attribute instead; gateway is no longer a part of the supported backend
+     * 
+     */
+    @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
     @Import(name="gateway")
     private @Nullable Output<ConnectionASideAccessPointGatewayArgs> gateway;
 
+    /**
+     * @deprecated
+     * use router attribute instead; gateway is no longer a part of the supported backend
+     * 
+     */
+    @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
     public Optional<Output<ConnectionASideAccessPointGatewayArgs>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * Virtual device interface
+     * 
+     */
     @Import(name="interface")
     private @Nullable Output<ConnectionASideAccessPointInterfaceArgs> interface_;
 
+    /**
+     * @return Virtual device interface
+     * 
+     */
     public Optional<Output<ConnectionASideAccessPointInterfaceArgs>> interface_() {
         return Optional.ofNullable(this.interface_);
     }
 
+    /**
+     * Connection link protocol
+     * 
+     */
     @Import(name="linkProtocol")
     private @Nullable Output<ConnectionASideAccessPointLinkProtocolArgs> linkProtocol;
 
+    /**
+     * @return Connection link protocol
+     * 
+     */
     public Optional<Output<ConnectionASideAccessPointLinkProtocolArgs>> linkProtocol() {
         return Optional.ofNullable(this.linkProtocol);
     }
 
+    /**
+     * Access point location
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<ConnectionASideAccessPointLocationArgs> location;
 
+    /**
+     * @return Access point location
+     * 
+     */
     public Optional<Output<ConnectionASideAccessPointLocationArgs>> location() {
         return Optional.ofNullable(this.location);
     }
 
+    @Import(name="network")
+    private @Nullable Output<ConnectionASideAccessPointNetworkArgs> network;
+
+    public Optional<Output<ConnectionASideAccessPointNetworkArgs>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+     * 
+     */
     @Import(name="peeringType")
     private @Nullable Output<Either<String,AccessPointPeeringType>> peeringType;
 
+    /**
+     * @return Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+     * 
+     */
     public Optional<Output<Either<String,AccessPointPeeringType>>> peeringType() {
         return Optional.ofNullable(this.peeringType);
     }
 
+    /**
+     * Port access point information
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<ConnectionASideAccessPointPortArgs> port;
 
+    /**
+     * @return Port access point information
+     * 
+     */
     public Optional<Output<ConnectionASideAccessPointPortArgs>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * Service Profile
+     * 
+     */
     @Import(name="profile")
     private @Nullable Output<ConnectionASideAccessPointProfileArgs> profile;
 
+    /**
+     * @return Service Profile
+     * 
+     */
     public Optional<Output<ConnectionASideAccessPointProfileArgs>> profile() {
         return Optional.ofNullable(this.profile);
     }
 
+    /**
+     * Provider assigned Connection Id
+     * 
+     */
     @Import(name="providerConnectionId")
     private @Nullable Output<String> providerConnectionId;
 
+    /**
+     * @return Provider assigned Connection Id
+     * 
+     */
     public Optional<Output<String>> providerConnectionId() {
         return Optional.ofNullable(this.providerConnectionId);
     }
 
+    /**
+     * Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * 
+     */
+    @Import(name="router")
+    private @Nullable Output<ConnectionASideAccessPointRouterArgs> router;
+
+    /**
+     * @return Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * 
+     */
+    public Optional<Output<ConnectionASideAccessPointRouterArgs>> router() {
+        return Optional.ofNullable(this.router);
+    }
+
+    /**
+     * Access point routing protocols configuration
+     * 
+     */
     @Import(name="routingProtocols")
     private @Nullable Output<List<ConnectionASideAccessPointRoutingProtocolArgs>> routingProtocols;
 
+    /**
+     * @return Access point routing protocols configuration
+     * 
+     */
     public Optional<Output<List<ConnectionASideAccessPointRoutingProtocolArgs>>> routingProtocols() {
         return Optional.ofNullable(this.routingProtocols);
     }
 
+    /**
+     * Access point seller region
+     * 
+     */
     @Import(name="sellerRegion")
     private @Nullable Output<String> sellerRegion;
 
+    /**
+     * @return Access point seller region
+     * 
+     */
     public Optional<Output<String>> sellerRegion() {
         return Optional.ofNullable(this.sellerRegion);
     }
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,AccessPointType>> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<Output<Either<String,AccessPointType>>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Virtual device
+     * 
+     */
     @Import(name="virtualDevice")
     private @Nullable Output<ConnectionASideAccessPointVirtualDeviceArgs> virtualDevice;
 
+    /**
+     * @return Virtual device
+     * 
+     */
     public Optional<Output<ConnectionASideAccessPointVirtualDeviceArgs>> virtualDevice() {
         return Optional.ofNullable(this.virtualDevice);
     }
@@ -151,10 +275,12 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         this.interface_ = $.interface_;
         this.linkProtocol = $.linkProtocol;
         this.location = $.location;
+        this.network = $.network;
         this.peeringType = $.peeringType;
         this.port = $.port;
         this.profile = $.profile;
         this.providerConnectionId = $.providerConnectionId;
+        this.router = $.router;
         this.routingProtocols = $.routingProtocols;
         this.sellerRegion = $.sellerRegion;
         this.type = $.type;
@@ -180,7 +306,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param account Customer account information that is associated with this connection
+         * @param account Account
          * 
          * @return builder
          * 
@@ -191,7 +317,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param account Customer account information that is associated with this connection
+         * @param account Account
          * 
          * @return builder
          * 
@@ -200,119 +326,303 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
             return account(Output.of(account));
         }
 
+        /**
+         * @param authenticationKey Authentication key for provider based connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder authenticationKey(@Nullable Output<String> authenticationKey) {
             $.authenticationKey = authenticationKey;
             return this;
         }
 
+        /**
+         * @param authenticationKey Authentication key for provider based connections
+         * 
+         * @return builder
+         * 
+         */
         public Builder authenticationKey(String authenticationKey) {
             return authenticationKey(Output.of(authenticationKey));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * use router attribute instead; gateway is no longer a part of the supported backend
+         * 
+         */
+        @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
         public Builder gateway(@Nullable Output<ConnectionASideAccessPointGatewayArgs> gateway) {
             $.gateway = gateway;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * use router attribute instead; gateway is no longer a part of the supported backend
+         * 
+         */
+        @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
         public Builder gateway(ConnectionASideAccessPointGatewayArgs gateway) {
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param interface_ Virtual device interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(@Nullable Output<ConnectionASideAccessPointInterfaceArgs> interface_) {
             $.interface_ = interface_;
             return this;
         }
 
+        /**
+         * @param interface_ Virtual device interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(ConnectionASideAccessPointInterfaceArgs interface_) {
             return interface_(Output.of(interface_));
         }
 
+        /**
+         * @param linkProtocol Connection link protocol
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkProtocol(@Nullable Output<ConnectionASideAccessPointLinkProtocolArgs> linkProtocol) {
             $.linkProtocol = linkProtocol;
             return this;
         }
 
+        /**
+         * @param linkProtocol Connection link protocol
+         * 
+         * @return builder
+         * 
+         */
         public Builder linkProtocol(ConnectionASideAccessPointLinkProtocolArgs linkProtocol) {
             return linkProtocol(Output.of(linkProtocol));
         }
 
+        /**
+         * @param location Access point location
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<ConnectionASideAccessPointLocationArgs> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location Access point location
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(ConnectionASideAccessPointLocationArgs location) {
             return location(Output.of(location));
         }
 
+        public Builder network(@Nullable Output<ConnectionASideAccessPointNetworkArgs> network) {
+            $.network = network;
+            return this;
+        }
+
+        public Builder network(ConnectionASideAccessPointNetworkArgs network) {
+            return network(Output.of(network));
+        }
+
+        /**
+         * @param peeringType Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         * 
+         * @return builder
+         * 
+         */
         public Builder peeringType(@Nullable Output<Either<String,AccessPointPeeringType>> peeringType) {
             $.peeringType = peeringType;
             return this;
         }
 
+        /**
+         * @param peeringType Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         * 
+         * @return builder
+         * 
+         */
         public Builder peeringType(Either<String,AccessPointPeeringType> peeringType) {
             return peeringType(Output.of(peeringType));
         }
 
+        /**
+         * @param peeringType Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         * 
+         * @return builder
+         * 
+         */
         public Builder peeringType(String peeringType) {
             return peeringType(Either.ofLeft(peeringType));
         }
 
+        /**
+         * @param peeringType Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         * 
+         * @return builder
+         * 
+         */
         public Builder peeringType(AccessPointPeeringType peeringType) {
             return peeringType(Either.ofRight(peeringType));
         }
 
+        /**
+         * @param port Port access point information
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<ConnectionASideAccessPointPortArgs> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Port access point information
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(ConnectionASideAccessPointPortArgs port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param profile Service Profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder profile(@Nullable Output<ConnectionASideAccessPointProfileArgs> profile) {
             $.profile = profile;
             return this;
         }
 
+        /**
+         * @param profile Service Profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder profile(ConnectionASideAccessPointProfileArgs profile) {
             return profile(Output.of(profile));
         }
 
+        /**
+         * @param providerConnectionId Provider assigned Connection Id
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConnectionId(@Nullable Output<String> providerConnectionId) {
             $.providerConnectionId = providerConnectionId;
             return this;
         }
 
+        /**
+         * @param providerConnectionId Provider assigned Connection Id
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerConnectionId(String providerConnectionId) {
             return providerConnectionId(Output.of(providerConnectionId));
         }
 
+        /**
+         * @param router Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder router(@Nullable Output<ConnectionASideAccessPointRouterArgs> router) {
+            $.router = router;
+            return this;
+        }
+
+        /**
+         * @param router Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder router(ConnectionASideAccessPointRouterArgs router) {
+            return router(Output.of(router));
+        }
+
+        /**
+         * @param routingProtocols Access point routing protocols configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder routingProtocols(@Nullable Output<List<ConnectionASideAccessPointRoutingProtocolArgs>> routingProtocols) {
             $.routingProtocols = routingProtocols;
             return this;
         }
 
+        /**
+         * @param routingProtocols Access point routing protocols configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder routingProtocols(List<ConnectionASideAccessPointRoutingProtocolArgs> routingProtocols) {
             return routingProtocols(Output.of(routingProtocols));
         }
 
+        /**
+         * @param routingProtocols Access point routing protocols configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder routingProtocols(ConnectionASideAccessPointRoutingProtocolArgs... routingProtocols) {
             return routingProtocols(List.of(routingProtocols));
         }
 
+        /**
+         * @param sellerRegion Access point seller region
+         * 
+         * @return builder
+         * 
+         */
         public Builder sellerRegion(@Nullable Output<String> sellerRegion) {
             $.sellerRegion = sellerRegion;
             return this;
         }
 
+        /**
+         * @param sellerRegion Access point seller region
+         * 
+         * @return builder
+         * 
+         */
         public Builder sellerRegion(String sellerRegion) {
             return sellerRegion(Output.of(sellerRegion));
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -323,7 +633,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -333,7 +643,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -343,7 +653,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -352,11 +662,23 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
             return type(Either.ofRight(type));
         }
 
+        /**
+         * @param virtualDevice Virtual device
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualDevice(@Nullable Output<ConnectionASideAccessPointVirtualDeviceArgs> virtualDevice) {
             $.virtualDevice = virtualDevice;
             return this;
         }
 
+        /**
+         * @param virtualDevice Virtual device
+         * 
+         * @return builder
+         * 
+         */
         public Builder virtualDevice(ConnectionASideAccessPointVirtualDeviceArgs virtualDevice) {
             return virtualDevice(Output.of(virtualDevice));
         }

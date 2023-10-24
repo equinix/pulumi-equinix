@@ -12,10 +12,6 @@ import java.util.Objects;
 public final class GetServiceProfileNotification {
     private List<String> emails;
     private String sendInterval;
-    /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-     * 
-     */
     private String type;
 
     private GetServiceProfileNotification() {}
@@ -25,10 +21,6 @@ public final class GetServiceProfileNotification {
     public String sendInterval() {
         return this.sendInterval;
     }
-    /**
-     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-     * 
-     */
     public String type() {
         return this.type;
     }

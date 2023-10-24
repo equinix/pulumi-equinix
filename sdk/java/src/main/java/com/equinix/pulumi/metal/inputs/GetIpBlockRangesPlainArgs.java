@@ -15,6 +15,9 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
     public static final GetIpBlockRangesPlainArgs Empty = new GetIpBlockRangesPlainArgs();
 
     /**
+     * Facility code filtering the IP blocks. Global IPv4 blocks will be listed
+     * anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -24,6 +27,9 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable String facility;
 
     /**
+     * @return Facility code filtering the IP blocks. Global IPv4 blocks will be listed
+     * anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -92,6 +98,9 @@ public final class GetIpBlockRangesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param facility Facility code filtering the IP blocks. Global IPv4 blocks will be listed
+         * anyway. If you omit this and metro, all the block from the project will be listed.   Use metro instead; read the facility to metro migration guide
+         * 
          * @return builder
          * 
          * @deprecated

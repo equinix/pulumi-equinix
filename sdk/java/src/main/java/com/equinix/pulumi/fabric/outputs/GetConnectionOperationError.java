@@ -11,10 +11,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOperationError {
-    /**
-     * @return Connection additional information
-     * 
-     */
     private List<GetConnectionOperationErrorAdditionalInfo> additionalInfos;
     private String correlationId;
     private String details;
@@ -23,10 +19,6 @@ public final class GetConnectionOperationError {
     private String help;
 
     private GetConnectionOperationError() {}
-    /**
-     * @return Connection additional information
-     * 
-     */
     public List<GetConnectionOperationErrorAdditionalInfo> additionalInfos() {
         return this.additionalInfos;
     }

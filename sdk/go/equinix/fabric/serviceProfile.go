@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -91,15 +93,15 @@ type ServiceProfile struct {
 	ChangeLog ServiceProfileChangeLogOutput `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayOutput `pulumi:"customFields"`
-	// User-provided service description
+	// Description
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Service Profile URI response attribute
+	// Unique Resource URL
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrOutput `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros ServiceProfileMetroArrayOutput `pulumi:"metros"`
-	// Customer-assigned service profile name
+	// Metro Name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ServiceProfileNotificationArrayOutput `pulumi:"notifications"`
@@ -113,9 +115,9 @@ type ServiceProfile struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Tags attached to the connection
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Equinix assigned service profile identifier
+	// Colo/Port Uuid
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 	// Virtual Devices
 	VirtualDevices ServiceProfileVirtualDeviceArrayOutput `pulumi:"virtualDevices"`
@@ -136,7 +138,7 @@ func NewServiceProfile(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceProfile
 	err := ctx.RegisterResource("equinix:fabric/serviceProfile:ServiceProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -169,15 +171,15 @@ type serviceProfileState struct {
 	ChangeLog *ServiceProfileChangeLog `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
-	// User-provided service description
+	// Description
 	Description *string `pulumi:"description"`
-	// Service Profile URI response attribute
+	// Unique Resource URL
 	Href *string `pulumi:"href"`
 	// Marketing Info
 	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []ServiceProfileMetro `pulumi:"metros"`
-	// Customer-assigned service profile name
+	// Metro Name
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ServiceProfileNotification `pulumi:"notifications"`
@@ -191,9 +193,9 @@ type serviceProfileState struct {
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Type of access point type config - VD, COLO
 	Type *string `pulumi:"type"`
-	// Equinix assigned service profile identifier
+	// Colo/Port Uuid
 	Uuid *string `pulumi:"uuid"`
 	// Virtual Devices
 	VirtualDevices []ServiceProfileVirtualDevice `pulumi:"virtualDevices"`
@@ -212,15 +214,15 @@ type ServiceProfileState struct {
 	ChangeLog ServiceProfileChangeLogPtrInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
-	// User-provided service description
+	// Description
 	Description pulumi.StringPtrInput
-	// Service Profile URI response attribute
+	// Unique Resource URL
 	Href pulumi.StringPtrInput
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrInput
 	// Access point config information
 	Metros ServiceProfileMetroArrayInput
-	// Customer-assigned service profile name
+	// Metro Name
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ServiceProfileNotificationArrayInput
@@ -234,9 +236,9 @@ type ServiceProfileState struct {
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringPtrInput
-	// Equinix assigned service profile identifier
+	// Colo/Port Uuid
 	Uuid pulumi.StringPtrInput
 	// Virtual Devices
 	VirtualDevices ServiceProfileVirtualDeviceArrayInput
@@ -257,13 +259,13 @@ type serviceProfileArgs struct {
 	AllowedEmails []string `pulumi:"allowedEmails"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
-	// User-provided service description
+	// Description
 	Description string `pulumi:"description"`
 	// Marketing Info
 	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []ServiceProfileMetro `pulumi:"metros"`
-	// Customer-assigned service profile name
+	// Metro Name
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ServiceProfileNotification `pulumi:"notifications"`
@@ -277,7 +279,7 @@ type serviceProfileArgs struct {
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Type of access point type config - VD, COLO
 	Type string `pulumi:"type"`
 	// Virtual Devices
 	VirtualDevices []ServiceProfileVirtualDevice `pulumi:"virtualDevices"`
@@ -295,13 +297,13 @@ type ServiceProfileArgs struct {
 	AllowedEmails pulumi.StringArrayInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
-	// User-provided service description
+	// Description
 	Description pulumi.StringInput
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrInput
 	// Access point config information
 	Metros ServiceProfileMetroArrayInput
-	// Customer-assigned service profile name
+	// Metro Name
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ServiceProfileNotificationArrayInput
@@ -315,7 +317,7 @@ type ServiceProfileArgs struct {
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringInput
 	// Virtual Devices
 	VirtualDevices ServiceProfileVirtualDeviceArrayInput
@@ -346,6 +348,12 @@ func (i *ServiceProfile) ToServiceProfileOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileOutput)
 }
 
+func (i *ServiceProfile) ToOutput(ctx context.Context) pulumix.Output[*ServiceProfile] {
+	return pulumix.Output[*ServiceProfile]{
+		OutputState: i.ToServiceProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceProfileArrayInput is an input type that accepts ServiceProfileArray and ServiceProfileArrayOutput values.
 // You can construct a concrete instance of `ServiceProfileArrayInput` via:
 //
@@ -369,6 +377,12 @@ func (i ServiceProfileArray) ToServiceProfileArrayOutput() ServiceProfileArrayOu
 
 func (i ServiceProfileArray) ToServiceProfileArrayOutputWithContext(ctx context.Context) ServiceProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileArrayOutput)
+}
+
+func (i ServiceProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceProfile] {
+	return pulumix.Output[[]*ServiceProfile]{
+		OutputState: i.ToServiceProfileArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceProfileMapInput is an input type that accepts ServiceProfileMap and ServiceProfileMapOutput values.
@@ -396,6 +410,12 @@ func (i ServiceProfileMap) ToServiceProfileMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileMapOutput)
 }
 
+func (i ServiceProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceProfile] {
+	return pulumix.Output[map[string]*ServiceProfile]{
+		OutputState: i.ToServiceProfileMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceProfileOutput struct{ *pulumi.OutputState }
 
 func (ServiceProfileOutput) ElementType() reflect.Type {
@@ -408,6 +428,12 @@ func (o ServiceProfileOutput) ToServiceProfileOutput() ServiceProfileOutput {
 
 func (o ServiceProfileOutput) ToServiceProfileOutputWithContext(ctx context.Context) ServiceProfileOutput {
 	return o
+}
+
+func (o ServiceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceProfile] {
+	return pulumix.Output[*ServiceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Access point config information
@@ -437,12 +463,12 @@ func (o ServiceProfileOutput) CustomFields() ServiceProfileCustomFieldArrayOutpu
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileCustomFieldArrayOutput { return v.CustomFields }).(ServiceProfileCustomFieldArrayOutput)
 }
 
-// User-provided service description
+// Description
 func (o ServiceProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Service Profile URI response attribute
+// Unique Resource URL
 func (o ServiceProfileOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Href }).(pulumi.StringOutput)
 }
@@ -457,7 +483,7 @@ func (o ServiceProfileOutput) Metros() ServiceProfileMetroArrayOutput {
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileMetroArrayOutput { return v.Metros }).(ServiceProfileMetroArrayOutput)
 }
 
-// Customer-assigned service profile name
+// Metro Name
 func (o ServiceProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -492,12 +518,12 @@ func (o ServiceProfileOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+// Type of access point type config - VD, COLO
 func (o ServiceProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix assigned service profile identifier
+// Colo/Port Uuid
 func (o ServiceProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -526,6 +552,12 @@ func (o ServiceProfileArrayOutput) ToServiceProfileArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ServiceProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceProfile] {
+	return pulumix.Output[[]*ServiceProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceProfileArrayOutput) Index(i pulumi.IntInput) ServiceProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceProfile {
 		return vs[0].([]*ServiceProfile)[vs[1].(int)]
@@ -544,6 +576,12 @@ func (o ServiceProfileMapOutput) ToServiceProfileMapOutput() ServiceProfileMapOu
 
 func (o ServiceProfileMapOutput) ToServiceProfileMapOutputWithContext(ctx context.Context) ServiceProfileMapOutput {
 	return o
+}
+
+func (o ServiceProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceProfile] {
+	return pulumix.Output[map[string]*ServiceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceProfileMapOutput) MapIndex(k pulumi.StringInput) ServiceProfileOutput {

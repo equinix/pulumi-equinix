@@ -32,12 +32,16 @@ public final class GetReservedIpBlockPlainArgs extends com.pulumi.resources.Invo
     /**
      * Block containing this IP address will be returned.
      * 
+     * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
+     * 
      */
     @Import(name="ipAddress")
     private @Nullable String ipAddress;
 
     /**
      * @return Block containing this IP address will be returned.
+     * 
+     * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
      * 
      */
     public Optional<String> ipAddress() {
@@ -98,6 +102,8 @@ public final class GetReservedIpBlockPlainArgs extends com.pulumi.resources.Invo
 
         /**
          * @param ipAddress Block containing this IP address will be returned.
+         * 
+         * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
          * 
          * @return builder
          * 

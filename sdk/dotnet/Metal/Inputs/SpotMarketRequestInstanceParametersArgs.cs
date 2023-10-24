@@ -66,6 +66,9 @@ namespace Pulumi.Equinix.Metal.Inputs
             set => _tags = value;
         }
 
+        [Input("terminationTime")]
+        public Input<string>? TerminationTime { get; set; }
+
         [Input("termintationTime")]
         public Input<string>? TermintationTime { get; set; }
 

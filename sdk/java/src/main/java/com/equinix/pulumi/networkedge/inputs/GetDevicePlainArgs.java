@@ -47,12 +47,16 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Device states to be considered valid when searching for a device by name
      * 
+     * NOTE: Exactly one of either `uuid` or `name` must be specified.
+     * 
      */
     @Import(name="validStatusList")
     private @Nullable String validStatusList;
 
     /**
      * @return Device states to be considered valid when searching for a device by name
+     * 
+     * NOTE: Exactly one of either `uuid` or `name` must be specified.
      * 
      */
     public Optional<String> validStatusList() {
@@ -109,6 +113,8 @@ public final class GetDevicePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param validStatusList Device states to be considered valid when searching for a device by name
+         * 
+         * NOTE: Exactly one of either `uuid` or `name` must be specified.
          * 
          * @return builder
          * 

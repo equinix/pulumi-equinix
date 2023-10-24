@@ -64,6 +64,8 @@ export interface GetVlanArgs {
     facility?: string;
     /**
      * Metro where the VLAN is deployed.
+     *
+     * > **NOTE:** You must set either `vlanId` or a combination of `vxlan`, `projectId`, and, `metro` or `facility`.
      */
     metro?: string;
     /**
@@ -156,6 +158,8 @@ export interface GetVlanOutputArgs {
     facility?: pulumi.Input<string>;
     /**
      * Metro where the VLAN is deployed.
+     *
+     * > **NOTE:** You must set either `vlanId` or a combination of `vxlan`, `projectId`, and, `metro` or `facility`.
      */
     metro?: pulumi.Input<string>;
     /**

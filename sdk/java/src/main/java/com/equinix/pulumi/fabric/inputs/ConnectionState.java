@@ -6,7 +6,6 @@ package com.equinix.pulumi.fabric.inputs;
 import com.equinix.pulumi.fabric.enums.ConnectionType;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionAccountArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionAdditionalInfoArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionChangeLogArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionNotificationArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionOperationArgs;
@@ -19,8 +18,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,14 +47,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Customer account information that is associated with this connection
+     * Account
      * 
      */
     @Import(name="account")
     private @Nullable Output<ConnectionAccountArgs> account;
 
     /**
-     * @return Customer account information that is associated with this connection
+     * @return Account
      * 
      */
     public Optional<Output<ConnectionAccountArgs>> account() {
@@ -61,17 +62,17 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection additional information
+     * Connection side additional information
      * 
      */
     @Import(name="additionalInfo")
-    private @Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfo;
+    private @Nullable Output<List<Map<String,Object>>> additionalInfo;
 
     /**
-     * @return Connection additional information
+     * @return Connection side additional information
      * 
      */
-    public Optional<Output<List<ConnectionAdditionalInfoArgs>>> additionalInfo() {
+    public Optional<Output<List<Map<String,Object>>>> additionalInfo() {
         return Optional.ofNullable(this.additionalInfo);
     }
 
@@ -121,14 +122,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Connection URI information
+     * @return Unique Resource Identifier
      * 
      */
     public Optional<Output<String>> href() {
@@ -151,14 +152,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * @return Port name
      * 
      */
     public Optional<Output<String>> name() {
@@ -241,14 +242,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection overall state
+     * Routing protocol instance state
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Connection overall state
+     * @return Routing protocol instance state
      * 
      */
     public Optional<Output<String>> state() {
@@ -256,14 +257,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ConnectionType>> type;
 
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<Output<Either<String,ConnectionType>>> type() {
@@ -347,7 +348,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param account Customer account information that is associated with this connection
+         * @param account Account
          * 
          * @return builder
          * 
@@ -358,7 +359,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param account Customer account information that is associated with this connection
+         * @param account Account
          * 
          * @return builder
          * 
@@ -368,33 +369,33 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfo(@Nullable Output<List<ConnectionAdditionalInfoArgs>> additionalInfo) {
+        public Builder additionalInfo(@Nullable Output<List<Map<String,Object>>> additionalInfo) {
             $.additionalInfo = additionalInfo;
             return this;
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfo(List<ConnectionAdditionalInfoArgs> additionalInfo) {
+        public Builder additionalInfo(List<Map<String,Object>> additionalInfo) {
             return additionalInfo(Output.of(additionalInfo));
         }
 
         /**
-         * @param additionalInfo Connection additional information
+         * @param additionalInfo Connection side additional information
          * 
          * @return builder
          * 
          */
-        public Builder additionalInfo(ConnectionAdditionalInfoArgs... additionalInfo) {
+        public Builder additionalInfo(Map<String,Object>... additionalInfo) {
             return additionalInfo(List.of(additionalInfo));
         }
 
@@ -462,7 +463,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -473,7 +474,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Connection URI information
+         * @param href Unique Resource Identifier
          * 
          * @return builder
          * 
@@ -504,7 +505,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -515,7 +516,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * @param name Port name
          * 
          * @return builder
          * 
@@ -640,7 +641,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Connection overall state
+         * @param state Routing protocol instance state
          * 
          * @return builder
          * 
@@ -651,7 +652,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Connection overall state
+         * @param state Routing protocol instance state
          * 
          * @return builder
          * 
@@ -661,7 +662,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -672,7 +673,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -682,7 +683,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 
@@ -692,7 +693,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * @param type Interface type
          * 
          * @return builder
          * 

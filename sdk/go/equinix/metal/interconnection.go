@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
@@ -63,9 +65,11 @@ import (
 type Interconnection struct {
 	pulumi.CustomResourceState
 
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	ContactEmail pulumi.StringOutput `pulumi:"contactEmail"`
 	// Description for the connection resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Facility where the connection will be created
+	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringOutput `pulumi:"facility"`
@@ -115,13 +119,10 @@ func NewInterconnection(ctx *pulumi.Context,
 	if args.Redundancy == nil {
 		return nil, errors.New("invalid value for required argument 'Redundancy'")
 	}
-	if args.Speed == nil {
-		return nil, errors.New("invalid value for required argument 'Speed'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Interconnection
 	err := ctx.RegisterResource("equinix:metal/interconnection:Interconnection", name, args, &resource, opts...)
 	if err != nil {
@@ -144,9 +145,11 @@ func GetInterconnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interconnection resources.
 type interconnectionState struct {
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	ContactEmail *string `pulumi:"contactEmail"`
 	// Description for the connection resource.
 	Description *string `pulumi:"description"`
-	// Facility where the connection will be created
+	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
@@ -187,9 +190,11 @@ type interconnectionState struct {
 }
 
 type InterconnectionState struct {
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	ContactEmail pulumi.StringPtrInput
 	// Description for the connection resource.
 	Description pulumi.StringPtrInput
-	// Facility where the connection will be created
+	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput
@@ -234,9 +239,11 @@ func (InterconnectionState) ElementType() reflect.Type {
 }
 
 type interconnectionArgs struct {
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	ContactEmail *string `pulumi:"contactEmail"`
 	// Description for the connection resource.
 	Description *string `pulumi:"description"`
-	// Facility where the connection will be created
+	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility *string `pulumi:"facility"`
@@ -255,7 +262,7 @@ type interconnectionArgs struct {
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
 	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-	Speed string `pulumi:"speed"`
+	Speed *string `pulumi:"speed"`
 	// String list of tags.
 	Tags []string `pulumi:"tags"`
 	// Connection type - dedicated or shared.
@@ -266,9 +273,11 @@ type interconnectionArgs struct {
 
 // The set of arguments for constructing a Interconnection resource.
 type InterconnectionArgs struct {
+	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+	ContactEmail pulumi.StringPtrInput
 	// Description for the connection resource.
 	Description pulumi.StringPtrInput
-	// Facility where the connection will be created
+	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facility pulumi.StringPtrInput
@@ -287,7 +296,7 @@ type InterconnectionArgs struct {
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType pulumi.StringPtrInput
 	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-	Speed pulumi.StringInput
+	Speed pulumi.StringPtrInput
 	// String list of tags.
 	Tags pulumi.StringArrayInput
 	// Connection type - dedicated or shared.
@@ -319,6 +328,12 @@ func (i *Interconnection) ToInterconnectionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionOutput)
 }
 
+func (i *Interconnection) ToOutput(ctx context.Context) pulumix.Output[*Interconnection] {
+	return pulumix.Output[*Interconnection]{
+		OutputState: i.ToInterconnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterconnectionArrayInput is an input type that accepts InterconnectionArray and InterconnectionArrayOutput values.
 // You can construct a concrete instance of `InterconnectionArrayInput` via:
 //
@@ -342,6 +357,12 @@ func (i InterconnectionArray) ToInterconnectionArrayOutput() InterconnectionArra
 
 func (i InterconnectionArray) ToInterconnectionArrayOutputWithContext(ctx context.Context) InterconnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionArrayOutput)
+}
+
+func (i InterconnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Interconnection] {
+	return pulumix.Output[[]*Interconnection]{
+		OutputState: i.ToInterconnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InterconnectionMapInput is an input type that accepts InterconnectionMap and InterconnectionMapOutput values.
@@ -369,6 +390,12 @@ func (i InterconnectionMap) ToInterconnectionMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionMapOutput)
 }
 
+func (i InterconnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Interconnection] {
+	return pulumix.Output[map[string]*Interconnection]{
+		OutputState: i.ToInterconnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterconnectionOutput struct{ *pulumi.OutputState }
 
 func (InterconnectionOutput) ElementType() reflect.Type {
@@ -383,12 +410,23 @@ func (o InterconnectionOutput) ToInterconnectionOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o InterconnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Interconnection] {
+	return pulumix.Output[*Interconnection]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+func (o InterconnectionOutput) ContactEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.ContactEmail }).(pulumi.StringOutput)
+}
+
 // Description for the connection resource.
 func (o InterconnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Facility where the connection will be created
+// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 //
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o InterconnectionOutput) Facility() pulumi.StringOutput {
@@ -488,6 +526,12 @@ func (o InterconnectionArrayOutput) ToInterconnectionArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o InterconnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Interconnection] {
+	return pulumix.Output[[]*Interconnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterconnectionArrayOutput) Index(i pulumi.IntInput) InterconnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Interconnection {
 		return vs[0].([]*Interconnection)[vs[1].(int)]
@@ -506,6 +550,12 @@ func (o InterconnectionMapOutput) ToInterconnectionMapOutput() InterconnectionMa
 
 func (o InterconnectionMapOutput) ToInterconnectionMapOutputWithContext(ctx context.Context) InterconnectionMapOutput {
 	return o
+}
+
+func (o InterconnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Interconnection] {
+	return pulumix.Output[map[string]*Interconnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterconnectionMapOutput) MapIndex(k pulumi.StringInput) InterconnectionOutput {

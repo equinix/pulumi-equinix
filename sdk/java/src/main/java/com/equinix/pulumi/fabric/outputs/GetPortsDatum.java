@@ -7,11 +7,11 @@ import com.equinix.pulumi.fabric.outputs.GetPortsDatumAccount;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumDevice;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumEncapsulation;
-import com.equinix.pulumi.fabric.outputs.GetPortsDatumLag;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumLocation;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumOperation;
 import com.equinix.pulumi.fabric.outputs.GetPortsDatumRedundancy;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -29,7 +29,7 @@ public final class GetPortsDatum {
     private List<GetPortsDatumDevice> devices;
     private List<GetPortsDatumEncapsulation> encapsulations;
     private String href;
-    private List<GetPortsDatumLag> lags;
+    private Boolean lagEnabled;
     private List<GetPortsDatumLocation> locations;
     private String name;
     private List<GetPortsDatumOperation> operations;
@@ -65,8 +65,8 @@ public final class GetPortsDatum {
     public String href() {
         return this.href;
     }
-    public List<GetPortsDatumLag> lags() {
-        return this.lags;
+    public Boolean lagEnabled() {
+        return this.lagEnabled;
     }
     public List<GetPortsDatumLocation> locations() {
         return this.locations;
@@ -113,7 +113,7 @@ public final class GetPortsDatum {
         private List<GetPortsDatumDevice> devices;
         private List<GetPortsDatumEncapsulation> encapsulations;
         private String href;
-        private List<GetPortsDatumLag> lags;
+        private Boolean lagEnabled;
         private List<GetPortsDatumLocation> locations;
         private String name;
         private List<GetPortsDatumOperation> operations;
@@ -134,7 +134,7 @@ public final class GetPortsDatum {
     	      this.devices = defaults.devices;
     	      this.encapsulations = defaults.encapsulations;
     	      this.href = defaults.href;
-    	      this.lags = defaults.lags;
+    	      this.lagEnabled = defaults.lagEnabled;
     	      this.locations = defaults.locations;
     	      this.name = defaults.name;
     	      this.operations = defaults.operations;
@@ -199,12 +199,9 @@ public final class GetPortsDatum {
             return this;
         }
         @CustomType.Setter
-        public Builder lags(List<GetPortsDatumLag> lags) {
-            this.lags = Objects.requireNonNull(lags);
+        public Builder lagEnabled(Boolean lagEnabled) {
+            this.lagEnabled = Objects.requireNonNull(lagEnabled);
             return this;
-        }
-        public Builder lags(GetPortsDatumLag... lags) {
-            return lags(List.of(lags));
         }
         @CustomType.Setter
         public Builder locations(List<GetPortsDatumLocation> locations) {
@@ -270,7 +267,7 @@ public final class GetPortsDatum {
             o.devices = devices;
             o.encapsulations = encapsulations;
             o.href = href;
-            o.lags = lags;
+            o.lagEnabled = lagEnabled;
             o.locations = locations;
             o.name = name;
             o.operations = operations;

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BgpSessionArgs', 'BgpSession']
@@ -23,10 +23,35 @@ class BgpSessionArgs:
         :param pulumi.Input[str] device_id: ID of device.
         :param pulumi.Input[bool] default_route: Boolean flag to set the default route policy. False by default.
         """
-        pulumi.set(__self__, "address_family", address_family)
-        pulumi.set(__self__, "device_id", device_id)
+        BgpSessionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_family=address_family,
+            device_id=device_id,
+            default_route=default_route,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_family: Optional[pulumi.Input[str]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
+             default_route: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_family is None and 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if address_family is None:
+            raise TypeError("Missing 'address_family' argument")
+        if device_id is None and 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
+        if default_route is None and 'defaultRoute' in kwargs:
+            default_route = kwargs['defaultRoute']
+
+        _setter("address_family", address_family)
+        _setter("device_id", device_id)
         if default_route is not None:
-            pulumi.set(__self__, "default_route", default_route)
+            _setter("default_route", default_route)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -79,14 +104,37 @@ class _BgpSessionState:
         :param pulumi.Input[str] device_id: ID of device.
         :param pulumi.Input[str] status: Status of the session - `up` or `down`
         """
+        _BgpSessionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_family=address_family,
+            default_route=default_route,
+            device_id=device_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_family: Optional[pulumi.Input[str]] = None,
+             default_route: Optional[pulumi.Input[bool]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address_family is None and 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if default_route is None and 'defaultRoute' in kwargs:
+            default_route = kwargs['defaultRoute']
+        if device_id is None and 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+
         if address_family is not None:
-            pulumi.set(__self__, "address_family", address_family)
+            _setter("address_family", address_family)
         if default_route is not None:
-            pulumi.set(__self__, "default_route", default_route)
+            _setter("default_route", default_route)
         if device_id is not None:
-            pulumi.set(__self__, "device_id", device_id)
+            _setter("device_id", device_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -208,6 +256,10 @@ class BgpSession(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BgpSessionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

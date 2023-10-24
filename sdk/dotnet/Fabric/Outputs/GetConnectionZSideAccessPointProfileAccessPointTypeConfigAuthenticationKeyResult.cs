@@ -13,9 +13,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult
     {
-        /// <summary>
-        /// Customer-provided connection description
-        /// </summary>
         public readonly string Description;
         public readonly string Label;
         public readonly bool Required;

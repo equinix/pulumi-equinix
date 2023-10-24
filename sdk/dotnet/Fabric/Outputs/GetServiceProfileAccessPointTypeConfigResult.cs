@@ -25,13 +25,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         public readonly bool EnableAutoGenerateServiceKey;
         public readonly ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult> LinkProtocolConfigs;
         public readonly ImmutableArray<int> SupportedBandwidths;
-        /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// Equinix assigned service profile identifier
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

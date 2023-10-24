@@ -9,18 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfileProject {
-    /**
-     * @return Service Profile URI response attribute
-     * 
-     */
     private String href;
     private String projectId;
 
     private GetServiceProfileProject() {}
-    /**
-     * @return Service Profile URI response attribute
-     * 
-     */
     public String href() {
         return this.href;
     }

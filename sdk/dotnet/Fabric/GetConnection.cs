@@ -27,9 +27,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("project")]
         public Inputs.GetConnectionProjectArgs? Project { get; set; }
 
-        /// <summary>
-        /// Equinix-assigned connection identifier
-        /// </summary>
         [Input("uuid")]
         public string? Uuid { get; set; }
 
@@ -47,9 +44,6 @@ namespace Pulumi.Equinix.Fabric
         [Input("project")]
         public Input<Inputs.GetConnectionProjectInputArgs>? Project { get; set; }
 
-        /// <summary>
-        /// Equinix-assigned connection identifier
-        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
@@ -132,7 +126,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
         /// </summary>
         public readonly string Type;
         /// <summary>

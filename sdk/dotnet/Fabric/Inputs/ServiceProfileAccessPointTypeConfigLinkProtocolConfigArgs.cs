@@ -12,12 +12,21 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Port Encapsulation
+        /// </summary>
         [Input("encapsulation")]
         public Input<string>? Encapsulation { get; set; }
 
+        /// <summary>
+        /// Encapsulation strategy
+        /// </summary>
         [Input("encapsulationStrategy")]
         public Input<string>? EncapsulationStrategy { get; set; }
 
+        /// <summary>
+        /// Reuse vlan sTag
+        /// </summary>
         [Input("reuseVlanSTag")]
         public Input<bool>? ReuseVlanSTag { get; set; }
 

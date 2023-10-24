@@ -92,6 +92,8 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
      * One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
      * 
+     * The `inbound_rule` block has below fields:
+     * 
      */
     @Import(name="inboundRules")
     private @Nullable Output<List<AclTemplateInboundRuleArgs>> inboundRules;
@@ -99,6 +101,8 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return One or more rules to specify allowed inbound traffic.
      * Rules are ordered, matching traffic rule stops processing subsequent ones.
+     * 
+     * The `inbound_rule` block has below fields:
      * 
      */
     public Optional<Output<List<AclTemplateInboundRuleArgs>>> inboundRules() {
@@ -297,6 +301,8 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
          * @param inboundRules One or more rules to specify allowed inbound traffic.
          * Rules are ordered, matching traffic rule stops processing subsequent ones.
          * 
+         * The `inbound_rule` block has below fields:
+         * 
          * @return builder
          * 
          */
@@ -309,6 +315,8 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
          * @param inboundRules One or more rules to specify allowed inbound traffic.
          * Rules are ordered, matching traffic rule stops processing subsequent ones.
          * 
+         * The `inbound_rule` block has below fields:
+         * 
          * @return builder
          * 
          */
@@ -319,6 +327,8 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param inboundRules One or more rules to specify allowed inbound traffic.
          * Rules are ordered, matching traffic rule stops processing subsequent ones.
+         * 
+         * The `inbound_rule` block has below fields:
          * 
          * @return builder
          * 

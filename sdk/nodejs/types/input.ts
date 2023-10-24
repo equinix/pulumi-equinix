@@ -7,6 +7,99 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
 export namespace fabric {
+    export interface CloudRouterAccount {
+        /**
+         * Account Number
+         */
+        accountNumber?: pulumi.Input<number>;
+    }
+
+    export interface CloudRouterChangeLog {
+        createdBy?: pulumi.Input<string>;
+        createdByEmail?: pulumi.Input<string>;
+        createdByFullName?: pulumi.Input<string>;
+        createdDateTime?: pulumi.Input<string>;
+        deletedBy?: pulumi.Input<string>;
+        deletedByEmail?: pulumi.Input<string>;
+        deletedByFullName?: pulumi.Input<string>;
+        deletedDateTime?: pulumi.Input<string>;
+        updatedBy?: pulumi.Input<string>;
+        updatedByEmail?: pulumi.Input<string>;
+        updatedByFullName?: pulumi.Input<string>;
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface CloudRouterLocation {
+        /**
+         * IBX Code
+         */
+        ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
+        metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
+        metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface CloudRouterNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Send interval
+         */
+        sendInterval?: pulumi.Input<string>;
+        /**
+         * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface CloudRouterOrder {
+        /**
+         * Billing tier for connection bandwidth
+         */
+        billingTier?: pulumi.Input<string>;
+        /**
+         * Order Identification
+         */
+        orderId?: pulumi.Input<string>;
+        /**
+         * Order Reference Number
+         */
+        orderNumber?: pulumi.Input<string>;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber?: pulumi.Input<string>;
+    }
+
+    export interface CloudRouterPackage {
+        /**
+         * Fabric Cloud Router package code
+         */
+        code: pulumi.Input<string>;
+    }
+
+    export interface CloudRouterProject {
+        /**
+         * Unique Resource URL
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Project Id
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
     export interface ConnectionASide {
         /**
          * Point of access details
@@ -24,24 +117,65 @@ export namespace fabric {
 
     export interface ConnectionASideAccessPoint {
         /**
-         * Customer account information that is associated with this connection
+         * Account
          */
         account?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointAccount>;
+        /**
+         * Authentication key for provider based connections
+         */
         authenticationKey?: pulumi.Input<string>;
+        /**
+         * @deprecated use router attribute instead; gateway is no longer a part of the supported backend
+         */
         gateway?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointGateway>;
+        /**
+         * Virtual device interface
+         */
         interface?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointInterface>;
+        /**
+         * Connection link protocol
+         */
         linkProtocol?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointLinkProtocol>;
+        /**
+         * Access point location
+         */
         location?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointLocation>;
+        network?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointNetwork>;
+        /**
+         * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         */
         peeringType?: pulumi.Input<string | enums.fabric.AccessPointPeeringType>;
+        /**
+         * Port access point information
+         */
         port?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointPort>;
+        /**
+         * Service Profile
+         */
         profile?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointProfile>;
+        /**
+         * Provider assigned Connection Id
+         */
         providerConnectionId?: pulumi.Input<string>;
+        /**
+         * Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         */
+        router?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointRouter>;
+        /**
+         * Access point routing protocols configuration
+         */
         routingProtocols?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointRoutingProtocol>[]>;
+        /**
+         * Access point seller region
+         */
         sellerRegion?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
+        /**
+         * Virtual device
+         */
         virtualDevice?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointVirtualDevice>;
     }
 
@@ -57,54 +191,95 @@ export namespace fabric {
 
     export interface ConnectionASideAccessPointGateway {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointInterface {
         /**
-         * The ID of this resource.
+         * id
          */
         id?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointLinkProtocol {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
         vlanCTag?: pulumi.Input<number>;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
         vlanSTag?: pulumi.Input<number>;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
         vlanTag?: pulumi.Input<number>;
     }
 
     export interface ConnectionASideAccessPointLocation {
+        /**
+         * IBX Code
+         */
         ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
         metroCode?: pulumi.Input<string | enums.Metro>;
+        /**
+         * Access point metro name
+         */
         metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
         region?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionASideAccessPointNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointPort {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name?: pulumi.Input<string>;
         /**
          * Redundancy Information
          */
         redundancies?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointPortRedundancy>[]>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
@@ -116,52 +291,81 @@ export namespace fabric {
     }
 
     export interface ConnectionASideAccessPointProfile {
+        /**
+         * Access point config information
+         */
         accessPointTypeConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointProfileAccessPointTypeConfig>[]>;
+        /**
+         * User-provided service description
+         */
         description?: pulumi.Input<string>;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type: pulumi.Input<string | enums.fabric.ProfileType>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionASideAccessPointRouter {
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointRoutingProtocol {
         /**
-         * Connection overall state
+         * Routing protocol instance state
          */
         state?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointVirtualDevice {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
@@ -177,15 +381,21 @@ export namespace fabric {
     }
 
     export interface ConnectionASideServiceToken {
+        /**
+         * User-provided service description
+         */
         description?: pulumi.Input<string>;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string | enums.fabric.ServiceTokenType>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
@@ -197,17 +407,6 @@ export namespace fabric {
         globalOrganizationName?: pulumi.Input<string>;
         orgId?: pulumi.Input<number>;
         organizationName?: pulumi.Input<string>;
-    }
-
-    export interface ConnectionAdditionalInfo {
-        /**
-         * Additional information key
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * Additional information value
-         */
-        value?: pulumi.Input<string>;
     }
 
     export interface ConnectionChangeLog {
@@ -248,7 +447,7 @@ export namespace fabric {
 
     export interface ConnectionOperationError {
         /**
-         * Connection additional information
+         * Connection side additional information
          */
         additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOperationErrorAdditionalInfo>[]>;
         correlationId?: pulumi.Input<string>;
@@ -321,24 +520,65 @@ export namespace fabric {
 
     export interface ConnectionZSideAccessPoint {
         /**
-         * Customer account information that is associated with this connection
+         * Account
          */
         account?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointAccount>;
+        /**
+         * Authentication key for provider based connections
+         */
         authenticationKey?: pulumi.Input<string>;
+        /**
+         * @deprecated use router attribute instead; gateway is no longer a part of the supported backend
+         */
         gateway?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointGateway>;
+        /**
+         * Virtual device interface
+         */
         interface?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointInterface>;
+        /**
+         * Connection link protocol
+         */
         linkProtocol?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointLinkProtocol>;
+        /**
+         * Access point location
+         */
         location?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointLocation>;
+        network?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointNetwork>;
+        /**
+         * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         */
         peeringType?: pulumi.Input<string | enums.fabric.AccessPointPeeringType>;
+        /**
+         * Port access point information
+         */
         port?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPort>;
+        /**
+         * Service Profile
+         */
         profile?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointProfile>;
+        /**
+         * Provider assigned Connection Id
+         */
         providerConnectionId?: pulumi.Input<string>;
+        /**
+         * Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         */
+        router?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointRouter>;
+        /**
+         * Access point routing protocols configuration
+         */
         routingProtocols?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointRoutingProtocol>[]>;
+        /**
+         * Access point seller region
+         */
         sellerRegion?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
+        /**
+         * Virtual device
+         */
         virtualDevice?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointVirtualDevice>;
     }
 
@@ -354,54 +594,95 @@ export namespace fabric {
 
     export interface ConnectionZSideAccessPointGateway {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointInterface {
         /**
-         * The ID of this resource.
+         * id
          */
         id?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointLinkProtocol {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
         vlanCTag?: pulumi.Input<number>;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
         vlanSTag?: pulumi.Input<number>;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
         vlanTag?: pulumi.Input<number>;
     }
 
     export interface ConnectionZSideAccessPointLocation {
+        /**
+         * IBX Code
+         */
         ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
         metroCode?: pulumi.Input<string | enums.Metro>;
+        /**
+         * Access point metro name
+         */
         metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
         region?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionZSideAccessPointNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointPort {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name?: pulumi.Input<string>;
         /**
          * Redundancy Information
          */
         redundancies?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPortRedundancy>[]>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
@@ -413,52 +694,81 @@ export namespace fabric {
     }
 
     export interface ConnectionZSideAccessPointProfile {
+        /**
+         * Access point config information
+         */
         accessPointTypeConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointProfileAccessPointTypeConfig>[]>;
+        /**
+         * User-provided service description
+         */
         description?: pulumi.Input<string>;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         * Port name
          */
         name?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type: pulumi.Input<string | enums.fabric.ProfileType>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionZSideAccessPointRouter {
+        /**
+         * Unique Resource Identifier
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointRoutingProtocol {
         /**
-         * Connection overall state
+         * Routing protocol instance state
          */
         state?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointVirtualDevice {
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
     }
 
@@ -474,16 +784,44 @@ export namespace fabric {
     }
 
     export interface ConnectionZSideServiceToken {
+        /**
+         * User-provided service description
+         */
         description?: pulumi.Input<string>;
         /**
-         * Connection URI information
+         * Unique Resource Identifier
          */
         href?: pulumi.Input<string>;
         /**
-         * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+         * Interface type
          */
         type?: pulumi.Input<string | enums.fabric.ServiceTokenType>;
+        /**
+         * Equinix-assigned interface identifier
+         */
         uuid?: pulumi.Input<string>;
+    }
+
+    export interface GetCloudRouterProject {
+        /**
+         * Unique Resource URL
+         */
+        href?: string;
+        /**
+         * Project Id
+         */
+        projectId?: string;
+    }
+
+    export interface GetCloudRouterProjectArgs {
+        /**
+         * Unique Resource URL
+         */
+        href?: pulumi.Input<string>;
+        /**
+         * Project Id
+         */
+        projectId?: pulumi.Input<string>;
     }
 
     export interface GetConnectionProject {
@@ -520,6 +858,116 @@ export namespace fabric {
          * Query Parameter to Get Ports By Name
          */
         name?: pulumi.Input<string>;
+    }
+
+    export interface GetRoutingProtocolBfd {
+        /**
+         * Bidirectional Forwarding Detection enablement
+         */
+        enabled: boolean;
+        /**
+         * Interval range between the received BFD control packets
+         */
+        interval?: string;
+    }
+
+    export interface GetRoutingProtocolBfdArgs {
+        /**
+         * Bidirectional Forwarding Detection enablement
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Interval range between the received BFD control packets
+         */
+        interval?: pulumi.Input<string>;
+    }
+
+    export interface GetRoutingProtocolBgpIpv4 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: string;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: boolean;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp?: string;
+    }
+
+    export interface GetRoutingProtocolBgpIpv4Args {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: pulumi.Input<string>;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp?: pulumi.Input<string>;
+    }
+
+    export interface GetRoutingProtocolBgpIpv6 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: string;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: boolean;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp?: string;
+    }
+
+    export interface GetRoutingProtocolBgpIpv6Args {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: pulumi.Input<string>;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp?: pulumi.Input<string>;
+    }
+
+    export interface GetRoutingProtocolDirectIpv4 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp: string;
+    }
+
+    export interface GetRoutingProtocolDirectIpv4Args {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp: pulumi.Input<string>;
+    }
+
+    export interface GetRoutingProtocolDirectIpv6 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp?: string;
+    }
+
+    export interface GetRoutingProtocolDirectIpv6Args {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp?: pulumi.Input<string>;
     }
 
     export interface GetServiceProfilesFilter {
@@ -572,6 +1020,100 @@ export namespace fabric {
          * Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
          */
         property?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolBfd {
+        /**
+         * Bidirectional Forwarding Detection enablement
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Interval range between the received BFD control packets
+         */
+        interval?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolBgpIpv4 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: pulumi.Input<string>;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolBgpIpv6 {
+        /**
+         * Customer side peering ip
+         */
+        customerPeerIp: pulumi.Input<string>;
+        /**
+         * Admin status for the BGP session
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Equinix side peering ip
+         */
+        equinixPeerIp?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolChange {
+        href?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolChangeLog {
+        createdBy?: pulumi.Input<string>;
+        createdByEmail?: pulumi.Input<string>;
+        createdByFullName?: pulumi.Input<string>;
+        createdDateTime?: pulumi.Input<string>;
+        deletedBy?: pulumi.Input<string>;
+        deletedByEmail?: pulumi.Input<string>;
+        deletedByFullName?: pulumi.Input<string>;
+        deletedDateTime?: pulumi.Input<string>;
+        updatedBy?: pulumi.Input<string>;
+        updatedByEmail?: pulumi.Input<string>;
+        updatedByFullName?: pulumi.Input<string>;
+        updatedDateTime?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolDirectIpv4 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolDirectIpv6 {
+        /**
+         * Equinix side Interface IP address
+         */
+        equinixIfaceIp?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolOperation {
+        errors?: pulumi.Input<pulumi.Input<inputs.fabric.RoutingProtocolOperationError>[]>;
+    }
+
+    export interface RoutingProtocolOperationError {
+        additionalInfos?: pulumi.Input<pulumi.Input<inputs.fabric.RoutingProtocolOperationErrorAdditionalInfo>[]>;
+        correlationId?: pulumi.Input<string>;
+        details?: pulumi.Input<string>;
+        errorCode?: pulumi.Input<string>;
+        errorMessage?: pulumi.Input<string>;
+        help?: pulumi.Input<string>;
+    }
+
+    export interface RoutingProtocolOperationErrorAdditionalInfo {
+        property?: pulumi.Input<string>;
+        reason?: pulumi.Input<string>;
     }
 
     export interface ServiceProfileAccessPointTypeConfig {
@@ -634,27 +1176,63 @@ export namespace fabric {
     }
 
     export interface ServiceProfileAccessPointTypeConfigApiConfig {
+        /**
+         * Setting showing that oversubscription support is available (true) or not (false). The default is false
+         */
         allowOverSubscription?: pulumi.Input<boolean>;
+        /**
+         * Setting indicating whether the API is available (true) or not (false)
+         */
         apiAvailable?: pulumi.Input<boolean>;
+        /**
+         * Bandwidth from api
+         */
         bandwidthFromApi?: pulumi.Input<boolean>;
+        /**
+         * Setting indicating that the port is managed by Equinix (true) or not (false)
+         */
         equinixManagedPort?: pulumi.Input<boolean>;
+        /**
+         * Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+         */
         equinixManagedVlan?: pulumi.Input<boolean>;
+        /**
+         * Integration id
+         */
         integrationId?: pulumi.Input<string>;
+        /**
+         * A cap on over subscription
+         */
         overSubscriptionLimit?: pulumi.Input<number>;
     }
 
     export interface ServiceProfileAccessPointTypeConfigAuthenticationKey {
         /**
-         * User-provided service description
+         * Description
          */
         description?: pulumi.Input<string>;
+        /**
+         * Label
+         */
         label?: pulumi.Input<string>;
+        /**
+         * Required
+         */
         required?: pulumi.Input<boolean>;
     }
 
     export interface ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
+        /**
+         * Port Encapsulation
+         */
         encapsulation?: pulumi.Input<string>;
+        /**
+         * Encapsulation strategy
+         */
         encapsulationStrategy?: pulumi.Input<string>;
+        /**
+         * Reuse vlan sTag
+         */
         reuseVlanSTag?: pulumi.Input<boolean>;
     }
 
@@ -752,10 +1330,16 @@ export namespace fabric {
 
     export interface ServiceProfileMarketingInfoProcessStep {
         /**
-         * User-provided service description
+         * Description
          */
         description?: pulumi.Input<string>;
+        /**
+         * Sub Title
+         */
         subTitle?: pulumi.Input<string>;
+        /**
+         * Title
+         */
         title?: pulumi.Input<string>;
     }
 
@@ -829,9 +1413,21 @@ export namespace fabric {
     }
 
     export interface ServiceProfilePortLocation {
+        /**
+         * IBX Code
+         */
         ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
         metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
         metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
         region?: pulumi.Input<string>;
     }
 
@@ -866,9 +1462,21 @@ export namespace fabric {
     }
 
     export interface ServiceProfileVirtualDeviceLocation {
+        /**
+         * IBX Code
+         */
         ibx?: pulumi.Input<string>;
+        /**
+         * Access point metro code
+         */
         metroCode?: pulumi.Input<string>;
+        /**
+         * Access point metro name
+         */
         metroName?: pulumi.Input<string>;
+        /**
+         * Access point region
+         */
         region?: pulumi.Input<string>;
     }
 }
@@ -889,6 +1497,12 @@ export namespace metal {
         /**
          * List of UUIDs of IP block reservations
          * from which the public IPv4 address should be taken.
+         *
+         * You can supply one `ipAddress` block per IP address type. If you use the `ipAddress` you must
+         * always pass a block for `privateIpv4`.
+         *
+         * To learn more about using the reserved IP addresses for new devices, see the examples in the
+         * equinix.metal.ReservedIpBlock documentation.
          */
         reservationIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -961,6 +1575,64 @@ export namespace metal {
         preserveData?: pulumi.Input<boolean>;
     }
 
+    export interface GetDevicesFilter {
+        /**
+         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         *
+         * All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+         */
+        all?: boolean;
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: string;
+        /**
+         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+         */
+        matchBy?: string;
+        /**
+         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+         */
+        values: string[];
+    }
+
+    export interface GetDevicesFilterArgs {
+        /**
+         * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         *
+         * All fields in the `devices` block defined below can be used as attribute for both `sort` and `filter` blocks.
+         */
+        all?: pulumi.Input<boolean>;
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: pulumi.Input<string>;
+        /**
+         * The type of comparison to apply. One of: `in` , `re`, `substring`, `lessThan`, `lessThanOrEqual`, `greaterThan`, `greaterThanOrEqual`. Default is `in`.
+         */
+        matchBy?: pulumi.Input<string>;
+        /**
+         * The filter values. Filter values are case-sensitive. If you specify multiple values for a filter, the values are joined with an OR by default, and the request returns all results that match any of the specified values
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetDevicesSort {
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: string;
+        direction?: string;
+    }
+
+    export interface GetDevicesSortArgs {
+        /**
+         * The attribute used to filter. Filter attributes are case-sensitive
+         */
+        attribute: pulumi.Input<string>;
+        direction?: pulumi.Input<string>;
+    }
+
     export interface GetFacilityCapacity {
         /**
          * Device plan that must be available in selected location.
@@ -1012,6 +1684,8 @@ export namespace metal {
     export interface GetPlansFilter {
         /**
          * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         *
+         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
          */
         all?: boolean;
         /**
@@ -1031,6 +1705,8 @@ export namespace metal {
     export interface GetPlansFilterArgs {
         /**
          * If is set to true, the values are joined with an AND, and the requests returns only the results that match all specified values. Default is `false`.
+         *
+         * All fields in the `plans` block defined below can be used as attribute for both `sort` and `filter` blocks.
          */
         all?: pulumi.Input<boolean>;
         /**
@@ -1163,6 +1839,10 @@ export namespace metal {
         plan: pulumi.Input<string>;
         projectSshKeys?: pulumi.Input<pulumi.Input<string>[]>;
         tags?: pulumi.Input<pulumi.Input<string>[]>;
+        terminationTime?: pulumi.Input<string>;
+        /**
+         * @deprecated Use instance_parameters.termination_time instead
+         */
         termintationTime?: pulumi.Input<string>;
         userSshKeys?: pulumi.Input<pulumi.Input<string>[]>;
         userdata?: pulumi.Input<string>;

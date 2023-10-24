@@ -9,10 +9,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointLocation {
-    /**
-     * @return Connection URI information
-     * 
-     */
     private String href;
     private String ibx;
     private String metroCode;
@@ -20,10 +16,6 @@ public final class GetConnectionASideAccessPointLocation {
     private String region;
 
     private GetConnectionASideAccessPointLocation() {}
-    /**
-     * @return Connection URI information
-     * 
-     */
     public String href() {
         return this.href;
     }

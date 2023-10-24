@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -22,7 +22,7 @@ class GetPortResult:
     """
     A collection of values returned by getPort.
     """
-    def __init__(__self__, account=None, available_bandwidth=None, bandwidth=None, change_log=None, description=None, device=None, encapsulation=None, href=None, id=None, lag=None, location=None, name=None, operation=None, redundancy=None, service_type=None, state=None, type=None, used_bandwidth=None, uuid=None):
+    def __init__(__self__, account=None, available_bandwidth=None, bandwidth=None, change_log=None, description=None, device=None, encapsulation=None, href=None, id=None, lag_enabled=None, location=None, name=None, operation=None, redundancy=None, service_type=None, state=None, type=None, used_bandwidth=None, uuid=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
@@ -50,9 +50,9 @@ class GetPortResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if lag and not isinstance(lag, dict):
-            raise TypeError("Expected argument 'lag' to be a dict")
-        pulumi.set(__self__, "lag", lag)
+        if lag_enabled and not isinstance(lag_enabled, bool):
+            raise TypeError("Expected argument 'lag_enabled' to be a bool")
+        pulumi.set(__self__, "lag_enabled", lag_enabled)
         if location and not isinstance(location, dict):
             raise TypeError("Expected argument 'location' to be a dict")
         pulumi.set(__self__, "location", location)
@@ -154,12 +154,9 @@ class GetPortResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter
-    def lag(self) -> 'outputs.GetPortLagResult':
-        """
-        Port Lag
-        """
-        return pulumi.get(self, "lag")
+    @pulumi.getter(name="lagEnabled")
+    def lag_enabled(self) -> bool:
+        return pulumi.get(self, "lag_enabled")
 
     @property
     @pulumi.getter
@@ -249,7 +246,7 @@ class AwaitableGetPortResult(GetPortResult):
             encapsulation=self.encapsulation,
             href=self.href,
             id=self.id,
-            lag=self.lag,
+            lag_enabled=self.lag_enabled,
             location=self.location,
             name=self.name,
             operation=self.operation,
@@ -274,25 +271,25 @@ def get_port(uuid: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getPort:getPort', __args__, opts=opts, typ=GetPortResult).value
 
     return AwaitableGetPortResult(
-        account=__ret__.account,
-        available_bandwidth=__ret__.available_bandwidth,
-        bandwidth=__ret__.bandwidth,
-        change_log=__ret__.change_log,
-        description=__ret__.description,
-        device=__ret__.device,
-        encapsulation=__ret__.encapsulation,
-        href=__ret__.href,
-        id=__ret__.id,
-        lag=__ret__.lag,
-        location=__ret__.location,
-        name=__ret__.name,
-        operation=__ret__.operation,
-        redundancy=__ret__.redundancy,
-        service_type=__ret__.service_type,
-        state=__ret__.state,
-        type=__ret__.type,
-        used_bandwidth=__ret__.used_bandwidth,
-        uuid=__ret__.uuid)
+        account=pulumi.get(__ret__, 'account'),
+        available_bandwidth=pulumi.get(__ret__, 'available_bandwidth'),
+        bandwidth=pulumi.get(__ret__, 'bandwidth'),
+        change_log=pulumi.get(__ret__, 'change_log'),
+        description=pulumi.get(__ret__, 'description'),
+        device=pulumi.get(__ret__, 'device'),
+        encapsulation=pulumi.get(__ret__, 'encapsulation'),
+        href=pulumi.get(__ret__, 'href'),
+        id=pulumi.get(__ret__, 'id'),
+        lag_enabled=pulumi.get(__ret__, 'lag_enabled'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        operation=pulumi.get(__ret__, 'operation'),
+        redundancy=pulumi.get(__ret__, 'redundancy'),
+        service_type=pulumi.get(__ret__, 'service_type'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        used_bandwidth=pulumi.get(__ret__, 'used_bandwidth'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_port)

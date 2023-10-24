@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to create and manage blocks of reserved IP addresses in a project.
@@ -89,8 +91,8 @@ type ReservedIpBlock struct {
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
 	// Arbitrary description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-	// type==global_ipv4, conflicts with metro
+	// Facility where to allocate the public IP address block, makes sense only
+	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility pulumi.StringPtrOutput `pulumi:"facility"`
 	Gateway  pulumi.StringOutput    `pulumi:"gateway"`
 	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
@@ -132,7 +134,7 @@ func NewReservedIpBlock(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ReservedIpBlock
 	err := ctx.RegisterResource("equinix:metal/reservedIpBlock:ReservedIpBlock", name, args, &resource, opts...)
 	if err != nil {
@@ -167,8 +169,8 @@ type reservedIpBlockState struct {
 	CustomData *string `pulumi:"customData"`
 	// Arbitrary description.
 	Description *string `pulumi:"description"`
-	// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-	// type==global_ipv4, conflicts with metro
+	// Facility where to allocate the public IP address block, makes sense only
+	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility *string `pulumi:"facility"`
 	Gateway  *string `pulumi:"gateway"`
 	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
@@ -213,8 +215,8 @@ type ReservedIpBlockState struct {
 	CustomData pulumi.StringPtrInput
 	// Arbitrary description.
 	Description pulumi.StringPtrInput
-	// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-	// type==global_ipv4, conflicts with metro
+	// Facility where to allocate the public IP address block, makes sense only
+	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility pulumi.StringPtrInput
 	Gateway  pulumi.StringPtrInput
 	// Boolean flag whether addresses from a block are global (i.e. can be assigned in any
@@ -258,8 +260,8 @@ type reservedIpBlockArgs struct {
 	CustomData *string `pulumi:"customData"`
 	// Arbitrary description.
 	Description *string `pulumi:"description"`
-	// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-	// type==global_ipv4, conflicts with metro
+	// Facility where to allocate the public IP address block, makes sense only
+	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility *string `pulumi:"facility"`
 	// Metro where to allocate the public IP address block, makes sense only
 	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
@@ -290,8 +292,8 @@ type ReservedIpBlockArgs struct {
 	CustomData pulumi.StringPtrInput
 	// Arbitrary description.
 	Description pulumi.StringPtrInput
-	// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-	// type==global_ipv4, conflicts with metro
+	// Facility where to allocate the public IP address block, makes sense only
+	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 	Facility pulumi.StringPtrInput
 	// Metro where to allocate the public IP address block, makes sense only
 	// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `facility`.
@@ -336,6 +338,12 @@ func (i *ReservedIpBlock) ToReservedIpBlockOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpBlockOutput)
 }
 
+func (i *ReservedIpBlock) ToOutput(ctx context.Context) pulumix.Output[*ReservedIpBlock] {
+	return pulumix.Output[*ReservedIpBlock]{
+		OutputState: i.ToReservedIpBlockOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReservedIpBlockArrayInput is an input type that accepts ReservedIpBlockArray and ReservedIpBlockArrayOutput values.
 // You can construct a concrete instance of `ReservedIpBlockArrayInput` via:
 //
@@ -359,6 +367,12 @@ func (i ReservedIpBlockArray) ToReservedIpBlockArrayOutput() ReservedIpBlockArra
 
 func (i ReservedIpBlockArray) ToReservedIpBlockArrayOutputWithContext(ctx context.Context) ReservedIpBlockArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpBlockArrayOutput)
+}
+
+func (i ReservedIpBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReservedIpBlock] {
+	return pulumix.Output[[]*ReservedIpBlock]{
+		OutputState: i.ToReservedIpBlockArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReservedIpBlockMapInput is an input type that accepts ReservedIpBlockMap and ReservedIpBlockMapOutput values.
@@ -386,6 +400,12 @@ func (i ReservedIpBlockMap) ToReservedIpBlockMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpBlockMapOutput)
 }
 
+func (i ReservedIpBlockMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservedIpBlock] {
+	return pulumix.Output[map[string]*ReservedIpBlock]{
+		OutputState: i.ToReservedIpBlockMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReservedIpBlockOutput struct{ *pulumi.OutputState }
 
 func (ReservedIpBlockOutput) ElementType() reflect.Type {
@@ -398,6 +418,12 @@ func (o ReservedIpBlockOutput) ToReservedIpBlockOutput() ReservedIpBlockOutput {
 
 func (o ReservedIpBlockOutput) ToReservedIpBlockOutputWithContext(ctx context.Context) ReservedIpBlockOutput {
 	return o
+}
+
+func (o ReservedIpBlockOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservedIpBlock] {
+	return pulumix.Output[*ReservedIpBlock]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservedIpBlockOutput) Address() pulumi.StringOutput {
@@ -430,8 +456,8 @@ func (o ReservedIpBlockOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Facility where to allocate the public IP address block, makes sense only for type==public_ipv4, must be empty for
-// type==global_ipv4, conflicts with metro
+// Facility where to allocate the public IP address block, makes sense only
+// if type is `publicIpv4` and must be empty if type is `globalIpv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
 func (o ReservedIpBlockOutput) Facility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.Facility }).(pulumi.StringPtrOutput)
 }
@@ -520,6 +546,12 @@ func (o ReservedIpBlockArrayOutput) ToReservedIpBlockArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ReservedIpBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReservedIpBlock] {
+	return pulumix.Output[[]*ReservedIpBlock]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReservedIpBlockArrayOutput) Index(i pulumi.IntInput) ReservedIpBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReservedIpBlock {
 		return vs[0].([]*ReservedIpBlock)[vs[1].(int)]
@@ -538,6 +570,12 @@ func (o ReservedIpBlockMapOutput) ToReservedIpBlockMapOutput() ReservedIpBlockMa
 
 func (o ReservedIpBlockMapOutput) ToReservedIpBlockMapOutputWithContext(ctx context.Context) ReservedIpBlockMapOutput {
 	return o
+}
+
+func (o ReservedIpBlockMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservedIpBlock] {
+	return pulumix.Output[map[string]*ReservedIpBlock]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservedIpBlockMapOutput) MapIndex(k pulumi.StringInput) ReservedIpBlockOutput {

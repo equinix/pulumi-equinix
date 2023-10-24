@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OrganizationMemberArgs', 'OrganizationMember']
@@ -27,12 +27,43 @@ class OrganizationMemberArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Organization roles (admin, collaborator, limited_collaborator, billing)
         :param pulumi.Input[str] message: A message to include in the emailed invitation.
         """
-        pulumi.set(__self__, "invitee", invitee)
-        pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "projects_ids", projects_ids)
-        pulumi.set(__self__, "roles", roles)
+        OrganizationMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            invitee=invitee,
+            organization_id=organization_id,
+            projects_ids=projects_ids,
+            roles=roles,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             invitee: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             projects_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if invitee is None:
+            raise TypeError("Missing 'invitee' argument")
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if organization_id is None:
+            raise TypeError("Missing 'organization_id' argument")
+        if projects_ids is None and 'projectsIds' in kwargs:
+            projects_ids = kwargs['projectsIds']
+        if projects_ids is None:
+            raise TypeError("Missing 'projects_ids' argument")
+        if roles is None:
+            raise TypeError("Missing 'roles' argument")
+
+        _setter("invitee", invitee)
+        _setter("organization_id", organization_id)
+        _setter("projects_ids", projects_ids)
+        _setter("roles", roles)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
 
     @property
     @pulumi.getter
@@ -121,26 +152,61 @@ class _OrganizationMemberState:
         :param pulumi.Input[str] state: The state of the membership ('invited' when an invitation is open, 'active' when the user is an organization member)
         :param pulumi.Input[str] updated: When the invitation was updated (only known in the invitation stage)
         """
+        _OrganizationMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            invited_by=invited_by,
+            invitee=invitee,
+            message=message,
+            nonce=nonce,
+            organization_id=organization_id,
+            projects_ids=projects_ids,
+            roles=roles,
+            state=state,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: Optional[pulumi.Input[str]] = None,
+             invited_by: Optional[pulumi.Input[str]] = None,
+             invitee: Optional[pulumi.Input[str]] = None,
+             message: Optional[pulumi.Input[str]] = None,
+             nonce: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             projects_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if invited_by is None and 'invitedBy' in kwargs:
+            invited_by = kwargs['invitedBy']
+        if organization_id is None and 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if projects_ids is None and 'projectsIds' in kwargs:
+            projects_ids = kwargs['projectsIds']
+
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if invited_by is not None:
-            pulumi.set(__self__, "invited_by", invited_by)
+            _setter("invited_by", invited_by)
         if invitee is not None:
-            pulumi.set(__self__, "invitee", invitee)
+            _setter("invitee", invitee)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if nonce is not None:
-            pulumi.set(__self__, "nonce", nonce)
+            _setter("nonce", nonce)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if projects_ids is not None:
-            pulumi.set(__self__, "projects_ids", projects_ids)
+            _setter("projects_ids", projects_ids)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
 
     @property
     @pulumi.getter
@@ -348,6 +414,10 @@ class OrganizationMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

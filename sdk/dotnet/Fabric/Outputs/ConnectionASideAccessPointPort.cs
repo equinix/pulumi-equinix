@@ -14,17 +14,20 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionASideAccessPointPort
     {
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         public readonly string? Href;
         /// <summary>
-        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        /// Port name
         /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Redundancy Information
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionASideAccessPointPortRedundancy> Redundancies;
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         public readonly string? Uuid;
 
         [OutputConstructor]

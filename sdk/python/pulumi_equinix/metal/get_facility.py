@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -114,7 +114,10 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
                  features_requireds: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFacilityResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Deprecated** Use `metal_get_metro` instead.  For more information, refer to the facility to metro migration guide.
+
+    Provides an Equinix Metal facility datasource.
+
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
@@ -129,13 +132,13 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
     __ret__ = pulumi.runtime.invoke('equinix:metal/getFacility:getFacility', __args__, opts=opts, typ=GetFacilityResult).value
 
     return AwaitableGetFacilityResult(
-        capacities=__ret__.capacities,
-        code=__ret__.code,
-        features=__ret__.features,
-        features_requireds=__ret__.features_requireds,
-        id=__ret__.id,
-        metro=__ret__.metro,
-        name=__ret__.name)
+        capacities=pulumi.get(__ret__, 'capacities'),
+        code=pulumi.get(__ret__, 'code'),
+        features=pulumi.get(__ret__, 'features'),
+        features_requireds=pulumi.get(__ret__, 'features_requireds'),
+        id=pulumi.get(__ret__, 'id'),
+        metro=pulumi.get(__ret__, 'metro'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_facility)
@@ -144,7 +147,10 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
                         features_requireds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFacilityResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Deprecated** Use `metal_get_metro` instead.  For more information, refer to the facility to metro migration guide.
+
+    Provides an Equinix Metal facility datasource.
+
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.

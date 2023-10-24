@@ -139,6 +139,11 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly clusterDetails!: pulumi.Output<outputs.networkedge.DeviceClusterDetails | undefined>;
     /**
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     */
+    public readonly connectivity!: pulumi.Output<string | undefined>;
+    /**
      * Number of CPU cores used by device.
      */
     public readonly coreCount!: pulumi.Output<number>;
@@ -308,6 +313,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["byol"] = state ? state.byol : undefined;
             resourceInputs["cloudInitFileId"] = state ? state.cloudInitFileId : undefined;
             resourceInputs["clusterDetails"] = state ? state.clusterDetails : undefined;
+            resourceInputs["connectivity"] = state ? state.connectivity : undefined;
             resourceInputs["coreCount"] = state ? state.coreCount : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ibx"] = state ? state.ibx : undefined;
@@ -374,6 +380,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["byol"] = args ? args.byol : undefined;
             resourceInputs["cloudInitFileId"] = args ? args.cloudInitFileId : undefined;
             resourceInputs["clusterDetails"] = args ? args.clusterDetails : undefined;
+            resourceInputs["connectivity"] = args ? args.connectivity : undefined;
             resourceInputs["coreCount"] = args ? args.coreCount : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["interfaceCount"] = args ? args.interfaceCount : undefined;
@@ -450,6 +457,11 @@ export interface DeviceState {
      * Cluster Details below for more details.
      */
     clusterDetails?: pulumi.Input<inputs.networkedge.DeviceClusterDetails>;
+    /**
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     */
+    connectivity?: pulumi.Input<string>;
     /**
      * Number of CPU cores used by device.
      */
@@ -632,6 +644,11 @@ export interface DeviceArgs {
      * Cluster Details below for more details.
      */
     clusterDetails?: pulumi.Input<inputs.networkedge.DeviceClusterDetails>;
+    /**
+     * Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
+     * If not specified, default will be INTERNET-ACCESS
+     */
+    connectivity?: pulumi.Input<string>;
     /**
      * Number of CPU cores used by device.
      */

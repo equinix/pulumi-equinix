@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource `networkedge.Bgp` allows creation and management of Equinix Network
@@ -107,7 +109,7 @@ func NewBgp(ctx *pulumi.Context,
 		"authenticationKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Bgp
 	err := ctx.RegisterResource("equinix:networkedge/bgp:Bgp", name, args, &resource, opts...)
 	if err != nil {
@@ -243,6 +245,12 @@ func (i *Bgp) ToBgpOutputWithContext(ctx context.Context) BgpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpOutput)
 }
 
+func (i *Bgp) ToOutput(ctx context.Context) pulumix.Output[*Bgp] {
+	return pulumix.Output[*Bgp]{
+		OutputState: i.ToBgpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BgpArrayInput is an input type that accepts BgpArray and BgpArrayOutput values.
 // You can construct a concrete instance of `BgpArrayInput` via:
 //
@@ -266,6 +274,12 @@ func (i BgpArray) ToBgpArrayOutput() BgpArrayOutput {
 
 func (i BgpArray) ToBgpArrayOutputWithContext(ctx context.Context) BgpArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpArrayOutput)
+}
+
+func (i BgpArray) ToOutput(ctx context.Context) pulumix.Output[[]*Bgp] {
+	return pulumix.Output[[]*Bgp]{
+		OutputState: i.ToBgpArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BgpMapInput is an input type that accepts BgpMap and BgpMapOutput values.
@@ -293,6 +307,12 @@ func (i BgpMap) ToBgpMapOutputWithContext(ctx context.Context) BgpMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BgpMapOutput)
 }
 
+func (i BgpMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Bgp] {
+	return pulumix.Output[map[string]*Bgp]{
+		OutputState: i.ToBgpMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BgpOutput struct{ *pulumi.OutputState }
 
 func (BgpOutput) ElementType() reflect.Type {
@@ -305,6 +325,12 @@ func (o BgpOutput) ToBgpOutput() BgpOutput {
 
 func (o BgpOutput) ToBgpOutputWithContext(ctx context.Context) BgpOutput {
 	return o
+}
+
+func (o BgpOutput) ToOutput(ctx context.Context) pulumix.Output[*Bgp] {
+	return pulumix.Output[*Bgp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // shared key used for BGP peer authentication.
@@ -375,6 +401,12 @@ func (o BgpArrayOutput) ToBgpArrayOutputWithContext(ctx context.Context) BgpArra
 	return o
 }
 
+func (o BgpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Bgp] {
+	return pulumix.Output[[]*Bgp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BgpArrayOutput) Index(i pulumi.IntInput) BgpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Bgp {
 		return vs[0].([]*Bgp)[vs[1].(int)]
@@ -393,6 +425,12 @@ func (o BgpMapOutput) ToBgpMapOutput() BgpMapOutput {
 
 func (o BgpMapOutput) ToBgpMapOutputWithContext(ctx context.Context) BgpMapOutput {
 	return o
+}
+
+func (o BgpMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Bgp] {
+	return pulumix.Output[map[string]*Bgp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BgpMapOutput) MapIndex(k pulumi.StringInput) BgpOutput {

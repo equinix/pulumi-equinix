@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -192,17 +192,17 @@ def get_device_software(device_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:networkedge/getDeviceSoftware:getDeviceSoftware', __args__, opts=opts, typ=GetDeviceSoftwareResult).value
 
     return AwaitableGetDeviceSoftwareResult(
-        date=__ret__.date,
-        device_type=__ret__.device_type,
-        id=__ret__.id,
-        image_name=__ret__.image_name,
-        most_recent=__ret__.most_recent,
-        packages=__ret__.packages,
-        release_notes_link=__ret__.release_notes_link,
-        stable=__ret__.stable,
-        status=__ret__.status,
-        version=__ret__.version,
-        version_regex=__ret__.version_regex)
+        date=pulumi.get(__ret__, 'date'),
+        device_type=pulumi.get(__ret__, 'device_type'),
+        id=pulumi.get(__ret__, 'id'),
+        image_name=pulumi.get(__ret__, 'image_name'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
+        packages=pulumi.get(__ret__, 'packages'),
+        release_notes_link=pulumi.get(__ret__, 'release_notes_link'),
+        stable=pulumi.get(__ret__, 'stable'),
+        status=pulumi.get(__ret__, 'status'),
+        version=pulumi.get(__ret__, 'version'),
+        version_regex=pulumi.get(__ret__, 'version_regex'))
 
 
 @_utilities.lift_output_func(get_device_software)

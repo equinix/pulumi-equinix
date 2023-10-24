@@ -13,14 +13,20 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ServiceProfileMarketingInfoProcessStepGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User-provided service description
+        /// Description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Sub Title
+        /// </summary>
         [Input("subTitle")]
         public Input<string>? SubTitle { get; set; }
 
+        /// <summary>
+        /// Title
+        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

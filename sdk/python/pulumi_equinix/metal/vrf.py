@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VrfArgs', 'Vrf']
@@ -29,16 +29,47 @@ class VrfArgs:
         :param pulumi.Input[int] local_asn: The 4-byte ASN set on the VRF.
         :param pulumi.Input[str] name: User-supplied name of the VRF, unique to the project
         """
-        pulumi.set(__self__, "metro", metro)
-        pulumi.set(__self__, "project_id", project_id)
+        VrfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metro=metro,
+            project_id=project_id,
+            description=description,
+            ip_ranges=ip_ranges,
+            local_asn=local_asn,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metro: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             local_asn: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metro is None:
+            raise TypeError("Missing 'metro' argument")
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if ip_ranges is None and 'ipRanges' in kwargs:
+            ip_ranges = kwargs['ipRanges']
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+
+        _setter("metro", metro)
+        _setter("project_id", project_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
+            _setter("ip_ranges", ip_ranges)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -131,18 +162,45 @@ class _VrfState:
         :param pulumi.Input[str] name: User-supplied name of the VRF, unique to the project
         :param pulumi.Input[str] project_id: Project ID where the VRF will be deployed.
         """
+        _VrfState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            ip_ranges=ip_ranges,
+            local_asn=local_asn,
+            metro=metro,
+            name=name,
+            project_id=project_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             local_asn: Optional[pulumi.Input[int]] = None,
+             metro: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if ip_ranges is None and 'ipRanges' in kwargs:
+            ip_ranges = kwargs['ipRanges']
+        if local_asn is None and 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
+            _setter("ip_ranges", ip_ranges)
         if local_asn is not None:
-            pulumi.set(__self__, "local_asn", local_asn)
+            _setter("local_asn", local_asn)
         if metro is not None:
-            pulumi.set(__self__, "metro", metro)
+            _setter("metro", metro)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
 
     @property
     @pulumi.getter
@@ -318,6 +376,10 @@ class Vrf(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VrfArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

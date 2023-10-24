@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get number and identifier of Equinix Network Edge
@@ -44,7 +46,7 @@ import (
 //
 // ```
 func GetAccount(ctx *pulumi.Context, args *GetAccountArgs, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountResult
 	err := ctx.Invoke("equinix:networkedge/getAccount:getAccount", args, &rv, opts...)
 	if err != nil {
@@ -118,6 +120,12 @@ func (o GetAccountResultOutput) ToGetAccountResultOutput() GetAccountResultOutpu
 
 func (o GetAccountResultOutput) ToGetAccountResultOutputWithContext(ctx context.Context) GetAccountResultOutput {
 	return o
+}
+
+func (o GetAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountResult] {
+	return pulumix.Output[GetAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

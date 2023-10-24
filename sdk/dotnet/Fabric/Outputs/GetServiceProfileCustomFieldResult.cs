@@ -15,9 +15,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     {
         public readonly bool CaptureInEmail;
         public readonly string DataType;
-        /// <summary>
-        /// User-provided service description
-        /// </summary>
         public readonly string Description;
         public readonly string Label;
         public readonly ImmutableArray<string> Options;

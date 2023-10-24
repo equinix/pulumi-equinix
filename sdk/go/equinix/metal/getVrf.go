@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a VRF resource.
@@ -40,7 +42,7 @@ import (
 //
 // ```
 func LookupVrf(ctx *pulumi.Context, args *LookupVrfArgs, opts ...pulumi.InvokeOption) (*LookupVrfResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVrfResult
 	err := ctx.Invoke("equinix:metal/getVrf:getVrf", args, &rv, opts...)
 	if err != nil {
@@ -110,6 +112,12 @@ func (o LookupVrfResultOutput) ToLookupVrfResultOutput() LookupVrfResultOutput {
 
 func (o LookupVrfResultOutput) ToLookupVrfResultOutputWithContext(ctx context.Context) LookupVrfResultOutput {
 	return o
+}
+
+func (o LookupVrfResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVrfResult] {
+	return pulumix.Output[LookupVrfResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the VRF.

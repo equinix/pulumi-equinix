@@ -87,10 +87,7 @@ namespace Pulumi.Equinix.Fabric
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Port Lag
-        /// </summary>
-        public readonly Outputs.GetPortLagResult Lag;
+        public readonly bool LagEnabled;
         /// <summary>
         /// Port location information
         /// </summary>
@@ -148,7 +145,7 @@ namespace Pulumi.Equinix.Fabric
 
             string id,
 
-            Outputs.GetPortLagResult lag,
+            bool lagEnabled,
 
             Outputs.GetPortLocationResult location,
 
@@ -177,7 +174,7 @@ namespace Pulumi.Equinix.Fabric
             Encapsulation = encapsulation;
             Href = href;
             Id = id;
-            Lag = lag;
+            LagEnabled = lagEnabled;
             Location = location;
             Name = name;
             Operation = operation;

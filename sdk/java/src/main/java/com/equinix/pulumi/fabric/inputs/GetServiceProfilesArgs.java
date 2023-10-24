@@ -7,6 +7,7 @@ import com.equinix.pulumi.fabric.inputs.GetServiceProfilesFilterArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesSortArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,11 +48,27 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.sort);
     }
 
+    /**
+     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * 
+     */
+    @Import(name="viewPoint")
+    private @Nullable Output<String> viewPoint;
+
+    /**
+     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * 
+     */
+    public Optional<Output<String>> viewPoint() {
+        return Optional.ofNullable(this.viewPoint);
+    }
+
     private GetServiceProfilesArgs() {}
 
     private GetServiceProfilesArgs(GetServiceProfilesArgs $) {
         this.filter = $.filter;
         this.sort = $.sort;
+        this.viewPoint = $.viewPoint;
     }
 
     public static Builder builder() {
@@ -122,6 +139,27 @@ public final class GetServiceProfilesArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder sort(GetServiceProfilesSortArgs... sort) {
             return sort(List.of(sort));
+        }
+
+        /**
+         * @param viewPoint Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(@Nullable Output<String> viewPoint) {
+            $.viewPoint = viewPoint;
+            return this;
+        }
+
+        /**
+         * @param viewPoint Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(String viewPoint) {
+            return viewPoint(Output.of(viewPoint));
         }
 
         public GetServiceProfilesArgs build() {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DeviceNetworkTypeArgs', 'DeviceNetworkType']
@@ -22,8 +22,27 @@ class DeviceNetworkTypeArgs:
         :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
                and `layer2-bonded`.
         """
-        pulumi.set(__self__, "device_id", device_id)
-        pulumi.set(__self__, "type", type)
+        DeviceNetworkTypeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device_id=device_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_id is None and 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if device_id is None:
+            raise TypeError("Missing 'device_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("device_id", device_id)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="deviceId")
@@ -62,10 +81,25 @@ class _DeviceNetworkTypeState:
         :param pulumi.Input[str] type: Network type to set. Must be one of `layer3`, `hybrid`, `hybrid-bonded`, `layer2-individual`
                and `layer2-bonded`.
         """
+        _DeviceNetworkTypeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device_id=device_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if device_id is None and 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+
         if device_id is not None:
-            pulumi.set(__self__, "device_id", device_id)
+            _setter("device_id", device_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="deviceId")
@@ -165,6 +199,10 @@ class DeviceNetworkType(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeviceNetworkTypeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

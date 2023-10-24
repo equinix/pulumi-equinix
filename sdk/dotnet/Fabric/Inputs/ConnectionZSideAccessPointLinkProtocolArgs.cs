@@ -13,17 +13,26 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionZSideAccessPointLinkProtocolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointLinkProtocolType>? Type { get; set; }
 
+        /// <summary>
+        /// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        /// </summary>
         [Input("vlanCTag")]
         public Input<int>? VlanCTag { get; set; }
 
+        /// <summary>
+        /// Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        /// </summary>
         [Input("vlanSTag")]
         public Input<int>? VlanSTag { get; set; }
 
+        /// <summary>
+        /// Vlan Tag information, vlanTag value specified for DOT1Q connections
+        /// </summary>
         [Input("vlanTag")]
         public Input<int>? VlanTag { get; set; }
 

@@ -33,12 +33,16 @@ public final class GetReservedIpBlockArgs extends com.pulumi.resources.InvokeArg
     /**
      * Block containing this IP address will be returned.
      * 
+     * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
+     * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
      * @return Block containing this IP address will be returned.
+     * 
+     * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -110,6 +114,8 @@ public final class GetReservedIpBlockArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param ipAddress Block containing this IP address will be returned.
          * 
+         * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
+         * 
          * @return builder
          * 
          */
@@ -120,6 +126,8 @@ public final class GetReservedIpBlockArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param ipAddress Block containing this IP address will be returned.
+         * 
+         * &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
          * 
          * @return builder
          * 

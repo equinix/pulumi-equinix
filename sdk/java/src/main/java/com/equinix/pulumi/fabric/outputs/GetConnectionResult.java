@@ -110,7 +110,7 @@ public final class GetConnectionResult {
      */
     private String state;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
      * 
      */
     private String type;
@@ -246,7 +246,7 @@ public final class GetConnectionResult {
         return this.state;
     }
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
      * 
      */
     public String type() {

@@ -14,24 +14,62 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionZSideAccessPoint
     {
         /// <summary>
-        /// Customer account information that is associated with this connection
+        /// Account
         /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointAccount? Account;
+        /// <summary>
+        /// Authentication key for provider based connections
+        /// </summary>
         public readonly string? AuthenticationKey;
         public readonly Outputs.ConnectionZSideAccessPointGateway? Gateway;
+        /// <summary>
+        /// Virtual device interface
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointInterface? Interface;
+        /// <summary>
+        /// Connection link protocol
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointLinkProtocol? LinkProtocol;
+        /// <summary>
+        /// Access point location
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointLocation? Location;
+        public readonly Outputs.ConnectionZSideAccessPointNetwork? Network;
+        /// <summary>
+        /// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        /// </summary>
         public readonly string? PeeringType;
+        /// <summary>
+        /// Port access point information
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointPort? Port;
+        /// <summary>
+        /// Service Profile
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointProfile? Profile;
+        /// <summary>
+        /// Provider assigned Connection Id
+        /// </summary>
         public readonly string? ProviderConnectionId;
+        /// <summary>
+        /// Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+        /// </summary>
+        public readonly Outputs.ConnectionZSideAccessPointRouter? Router;
+        /// <summary>
+        /// Access point routing protocols configuration
+        /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointRoutingProtocol> RoutingProtocols;
+        /// <summary>
+        /// Access point seller region
+        /// </summary>
         public readonly string? SellerRegion;
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Virtual device
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointVirtualDevice? VirtualDevice;
 
         [OutputConstructor]
@@ -48,6 +86,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             Outputs.ConnectionZSideAccessPointLocation? location,
 
+            Outputs.ConnectionZSideAccessPointNetwork? network,
+
             string? peeringType,
 
             Outputs.ConnectionZSideAccessPointPort? port,
@@ -55,6 +95,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Outputs.ConnectionZSideAccessPointProfile? profile,
 
             string? providerConnectionId,
+
+            Outputs.ConnectionZSideAccessPointRouter? router,
 
             ImmutableArray<Outputs.ConnectionZSideAccessPointRoutingProtocol> routingProtocols,
 
@@ -70,10 +112,12 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Interface = @interface;
             LinkProtocol = linkProtocol;
             Location = location;
+            Network = network;
             PeeringType = peeringType;
             Port = port;
             Profile = profile;
             ProviderConnectionId = providerConnectionId;
+            Router = router;
             RoutingProtocols = routingProtocols;
             SellerRegion = sellerRegion;
             Type = type;

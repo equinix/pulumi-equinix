@@ -67,6 +67,9 @@ namespace Pulumi.Equinix.Metal
         /// Date and time When the spot market request will be ended.
         /// </summary>
         public readonly string EndAt;
+        /// <summary>
+        /// (**Deprecated**) Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
+        /// </summary>
         public readonly ImmutableArray<string> Facilities;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

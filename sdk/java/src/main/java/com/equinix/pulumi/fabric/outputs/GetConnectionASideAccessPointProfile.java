@@ -12,68 +12,28 @@ import java.util.Objects;
 @CustomType
 public final class GetConnectionASideAccessPointProfile {
     private List<GetConnectionASideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs;
-    /**
-     * @return Customer-provided connection description
-     * 
-     */
     private String description;
-    /**
-     * @return Connection URI information
-     * 
-     */
     private String href;
-    /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-     * 
-     */
     private String name;
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     private String type;
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     private String uuid;
 
     private GetConnectionASideAccessPointProfile() {}
     public List<GetConnectionASideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs() {
         return this.accessPointTypeConfigs;
     }
-    /**
-     * @return Customer-provided connection description
-     * 
-     */
     public String description() {
         return this.description;
     }
-    /**
-     * @return Connection URI information
-     * 
-     */
     public String href() {
         return this.href;
     }
-    /**
-     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

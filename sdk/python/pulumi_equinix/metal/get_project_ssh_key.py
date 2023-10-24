@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -157,6 +157,8 @@ def get_project_ssh_key(id: Optional[str] = None,
 
     :param str id: The id of the SSH Key to search for in the Equinix Metal project.
     :param str project_id: The Equinix Metal project id of the Equinix Metal SSH Key.
+           
+           > **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
     :param str search: The name, fingerprint, or public_key of the SSH Key to search for
            in the Equinix Metal project.
     """
@@ -168,15 +170,15 @@ def get_project_ssh_key(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getProjectSshKey:getProjectSshKey', __args__, opts=opts, typ=GetProjectSshKeyResult).value
 
     return AwaitableGetProjectSshKeyResult(
-        created=__ret__.created,
-        fingerprint=__ret__.fingerprint,
-        id=__ret__.id,
-        name=__ret__.name,
-        owner_id=__ret__.owner_id,
-        project_id=__ret__.project_id,
-        public_key=__ret__.public_key,
-        search=__ret__.search,
-        updated=__ret__.updated)
+        created=pulumi.get(__ret__, 'created'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        owner_id=pulumi.get(__ret__, 'owner_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        public_key=pulumi.get(__ret__, 'public_key'),
+        search=pulumi.get(__ret__, 'search'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_project_ssh_key)
@@ -200,6 +202,8 @@ def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: The id of the SSH Key to search for in the Equinix Metal project.
     :param str project_id: The Equinix Metal project id of the Equinix Metal SSH Key.
+           
+           > **NOTE:** One of either `search` or `id` must be provided along with `project_id`.
     :param str search: The name, fingerprint, or public_key of the SSH Key to search for
            in the Equinix Metal project.
     """

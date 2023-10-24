@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -34,24 +34,65 @@ class ProviderArgs:
         :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses
         :param pulumi.Input[str] token: API token from the developer sandbox
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_token=auth_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            endpoint=endpoint,
+            max_retries=max_retries,
+            max_retry_wait_seconds=max_retry_wait_seconds,
+            request_timeout=request_timeout,
+            response_max_page_size=response_max_page_size,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_token: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             max_retries: Optional[pulumi.Input[int]] = None,
+             max_retry_wait_seconds: Optional[pulumi.Input[int]] = None,
+             request_timeout: Optional[pulumi.Input[int]] = None,
+             response_max_page_size: Optional[pulumi.Input[int]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_token is None and 'authToken' in kwargs:
+            auth_token = kwargs['authToken']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_secret is None and 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if max_retry_wait_seconds is None and 'maxRetryWaitSeconds' in kwargs:
+            max_retry_wait_seconds = kwargs['maxRetryWaitSeconds']
+        if request_timeout is None and 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+        if response_max_page_size is None and 'responseMaxPageSize' in kwargs:
+            response_max_page_size = kwargs['responseMaxPageSize']
+
         if auth_token is not None:
-            pulumi.set(__self__, "auth_token", auth_token)
+            _setter("auth_token", auth_token)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if max_retries is not None:
-            pulumi.set(__self__, "max_retries", max_retries)
+            _setter("max_retries", max_retries)
         if max_retry_wait_seconds is not None:
-            pulumi.set(__self__, "max_retry_wait_seconds", max_retry_wait_seconds)
+            _setter("max_retry_wait_seconds", max_retry_wait_seconds)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if response_max_page_size is not None:
-            pulumi.set(__self__, "response_max_page_size", response_max_page_size)
+            _setter("response_max_page_size", response_max_page_size)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter(name="authToken")
@@ -211,6 +252,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

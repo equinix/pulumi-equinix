@@ -14,9 +14,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetPortEncapsulationResult
     {
         public readonly string TagProtocolId;
-        /// <summary>
-        /// Port type
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

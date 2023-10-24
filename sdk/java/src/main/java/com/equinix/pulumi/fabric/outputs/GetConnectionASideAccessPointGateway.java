@@ -9,41 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointGateway {
-    /**
-     * @return Connection URI information
-     * 
-     */
     private String href;
-    /**
-     * @return Connection overall state
-     * 
-     */
     private String state;
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     private String uuid;
 
     private GetConnectionASideAccessPointGateway() {}
-    /**
-     * @return Connection URI information
-     * 
-     */
     public String href() {
         return this.href;
     }
-    /**
-     * @return Connection overall state
-     * 
-     */
     public String state() {
         return this.state;
     }
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

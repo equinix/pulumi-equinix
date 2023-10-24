@@ -22,6 +22,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -52,6 +53,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -75,6 +77,9 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetSpotMarketPriceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Name of the facility. Use metro instead; read the facility to metro migration guide
+        /// </summary>
         [Input("facility")]
         public string? Facility { get; set; }
 
@@ -98,6 +103,9 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetSpotMarketPriceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Name of the facility. Use metro instead; read the facility to metro migration guide
+        /// </summary>
         [Input("facility")]
         public Input<string>? Facility { get; set; }
 

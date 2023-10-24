@@ -14,10 +14,16 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ServiceProfileMarketingInfoProcessStep
     {
         /// <summary>
-        /// User-provided service description
+        /// Description
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Sub Title
+        /// </summary>
         public readonly string? SubTitle;
+        /// <summary>
+        /// Title
+        /// </summary>
         public readonly string? Title;
 
         [OutputConstructor]

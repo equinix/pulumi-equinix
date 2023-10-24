@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from ._enums import *
 
@@ -39,12 +39,29 @@ class AclTemplateDeviceDetailArgs:
         :param pulumi.Input[str] name: ACL template name.
         :param pulumi.Input[str] uuid: Device uuid.
         """
+        AclTemplateDeviceDetailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_status=acl_status,
+            name=name,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_status: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if acl_status is None and 'aclStatus' in kwargs:
+            acl_status = kwargs['aclStatus']
+
         if acl_status is not None:
-            pulumi.set(__self__, "acl_status", acl_status)
+            _setter("acl_status", acl_status)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="aclStatus")
@@ -105,25 +122,64 @@ class AclTemplateInboundRuleArgs:
         :param pulumi.Input[str] subnet: Inbound traffic source IP subnet in CIDR format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: Inbound traffic source IP subnets in CIDR format.
         """
-        pulumi.set(__self__, "dst_port", dst_port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "src_port", src_port)
+        AclTemplateInboundRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dst_port=dst_port,
+            protocol=protocol,
+            src_port=src_port,
+            description=description,
+            sequence_number=sequence_number,
+            source_type=source_type,
+            subnet=subnet,
+            subnets=subnets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dst_port: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[Union[str, 'AclRuleProtocolType']]] = None,
+             src_port: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             sequence_number: Optional[pulumi.Input[int]] = None,
+             source_type: Optional[pulumi.Input[str]] = None,
+             subnet: Optional[pulumi.Input[str]] = None,
+             subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dst_port is None and 'dstPort' in kwargs:
+            dst_port = kwargs['dstPort']
+        if dst_port is None:
+            raise TypeError("Missing 'dst_port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if src_port is None and 'srcPort' in kwargs:
+            src_port = kwargs['srcPort']
+        if src_port is None:
+            raise TypeError("Missing 'src_port' argument")
+        if sequence_number is None and 'sequenceNumber' in kwargs:
+            sequence_number = kwargs['sequenceNumber']
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
+        _setter("dst_port", dst_port)
+        _setter("protocol", protocol)
+        _setter("src_port", src_port)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if sequence_number is not None:
-            pulumi.set(__self__, "sequence_number", sequence_number)
+            _setter("sequence_number", sequence_number)
         if source_type is not None:
             warnings.warn("""Source Type will not be returned""", DeprecationWarning)
             pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
         if source_type is not None:
-            pulumi.set(__self__, "source_type", source_type)
+            _setter("source_type", source_type)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if subnets is not None:
             warnings.warn("""Use Subnet instead""", DeprecationWarning)
             pulumi.log.warn("""subnets is deprecated: Use Subnet instead""")
         if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
+            _setter("subnets", subnets)
 
     @property
     @pulumi.getter(name="dstPort")
@@ -187,6 +243,9 @@ class AclTemplateInboundRuleArgs:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Source Type will not be returned""", DeprecationWarning)
+        pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
+
         return pulumi.get(self, "source_type")
 
     @source_type.setter
@@ -211,6 +270,9 @@ class AclTemplateInboundRuleArgs:
         """
         Inbound traffic source IP subnets in CIDR format.
         """
+        warnings.warn("""Use Subnet instead""", DeprecationWarning)
+        pulumi.log.warn("""subnets is deprecated: Use Subnet instead""")
+
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -235,13 +297,44 @@ class DeviceClusterDetailsArgs:
         :param pulumi.Input[str] cluster_id: The ID of the cluster.
         :param pulumi.Input[int] num_of_nodes: The number of nodes in the cluster.
         """
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "node0", node0)
-        pulumi.set(__self__, "node1", node1)
+        DeviceClusterDetailsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_name=cluster_name,
+            node0=node0,
+            node1=node1,
+            cluster_id=cluster_id,
+            num_of_nodes=num_of_nodes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             node0: Optional[pulumi.Input['DeviceClusterDetailsNode0Args']] = None,
+             node1: Optional[pulumi.Input['DeviceClusterDetailsNode1Args']] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             num_of_nodes: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_name is None and 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if node0 is None:
+            raise TypeError("Missing 'node0' argument")
+        if node1 is None:
+            raise TypeError("Missing 'node1' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if num_of_nodes is None and 'numOfNodes' in kwargs:
+            num_of_nodes = kwargs['numOfNodes']
+
+        _setter("cluster_name", cluster_name)
+        _setter("node0", node0)
+        _setter("node1", node1)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if num_of_nodes is not None:
-            pulumi.set(__self__, "num_of_nodes", num_of_nodes)
+            _setter("num_of_nodes", num_of_nodes)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -325,16 +418,41 @@ class DeviceClusterDetailsNode0Args:
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         """
+        DeviceClusterDetailsNode0Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_file_id=license_file_id,
+            license_token=license_token,
+            name=name,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_file_id: Optional[pulumi.Input[str]] = None,
+             license_token: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             vendor_configuration: Optional[pulumi.Input['DeviceClusterDetailsNode0VendorConfigurationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if license_file_id is None and 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if license_token is None and 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+
         if license_file_id is not None:
-            pulumi.set(__self__, "license_file_id", license_file_id)
+            _setter("license_file_id", license_file_id)
         if license_token is not None:
-            pulumi.set(__self__, "license_token", license_token)
+            _setter("license_token", license_token)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vendor_configuration is not None:
-            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
+            _setter("vendor_configuration", vendor_configuration)
 
     @property
     @pulumi.getter(name="licenseFileId")
@@ -420,18 +538,47 @@ class DeviceClusterDetailsNode0VendorConfigurationArgs:
         :param pulumi.Input[str] root_password: The CLI password of the device. This field is relevant only for the
                Velocloud SDWAN cluster.
         """
+        DeviceClusterDetailsNode0VendorConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_key=activation_key,
+            admin_password=admin_password,
+            controller1=controller1,
+            controller_fqdn=controller_fqdn,
+            hostname=hostname,
+            root_password=root_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_key: Optional[pulumi.Input[str]] = None,
+             admin_password: Optional[pulumi.Input[str]] = None,
+             controller1: Optional[pulumi.Input[str]] = None,
+             controller_fqdn: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if activation_key is None and 'activationKey' in kwargs:
+            activation_key = kwargs['activationKey']
+        if admin_password is None and 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if controller_fqdn is None and 'controllerFqdn' in kwargs:
+            controller_fqdn = kwargs['controllerFqdn']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
         if activation_key is not None:
-            pulumi.set(__self__, "activation_key", activation_key)
+            _setter("activation_key", activation_key)
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if controller1 is not None:
-            pulumi.set(__self__, "controller1", controller1)
+            _setter("controller1", controller1)
         if controller_fqdn is not None:
-            pulumi.set(__self__, "controller_fqdn", controller_fqdn)
+            _setter("controller_fqdn", controller_fqdn)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -527,16 +674,41 @@ class DeviceClusterDetailsNode1Args:
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         """
+        DeviceClusterDetailsNode1Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            license_file_id=license_file_id,
+            license_token=license_token,
+            name=name,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             license_file_id: Optional[pulumi.Input[str]] = None,
+             license_token: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             vendor_configuration: Optional[pulumi.Input['DeviceClusterDetailsNode1VendorConfigurationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if license_file_id is None and 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if license_token is None and 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+
         if license_file_id is not None:
-            pulumi.set(__self__, "license_file_id", license_file_id)
+            _setter("license_file_id", license_file_id)
         if license_token is not None:
-            pulumi.set(__self__, "license_token", license_token)
+            _setter("license_token", license_token)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vendor_configuration is not None:
-            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
+            _setter("vendor_configuration", vendor_configuration)
 
     @property
     @pulumi.getter(name="licenseFileId")
@@ -622,18 +794,47 @@ class DeviceClusterDetailsNode1VendorConfigurationArgs:
         :param pulumi.Input[str] root_password: The CLI password of the device. This field is relevant only for the
                Velocloud SDWAN cluster.
         """
+        DeviceClusterDetailsNode1VendorConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_key=activation_key,
+            admin_password=admin_password,
+            controller1=controller1,
+            controller_fqdn=controller_fqdn,
+            hostname=hostname,
+            root_password=root_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_key: Optional[pulumi.Input[str]] = None,
+             admin_password: Optional[pulumi.Input[str]] = None,
+             controller1: Optional[pulumi.Input[str]] = None,
+             controller_fqdn: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             root_password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if activation_key is None and 'activationKey' in kwargs:
+            activation_key = kwargs['activationKey']
+        if admin_password is None and 'adminPassword' in kwargs:
+            admin_password = kwargs['adminPassword']
+        if controller_fqdn is None and 'controllerFqdn' in kwargs:
+            controller_fqdn = kwargs['controllerFqdn']
+        if root_password is None and 'rootPassword' in kwargs:
+            root_password = kwargs['rootPassword']
+
         if activation_key is not None:
-            pulumi.set(__self__, "activation_key", activation_key)
+            _setter("activation_key", activation_key)
         if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
+            _setter("admin_password", admin_password)
         if controller1 is not None:
-            pulumi.set(__self__, "controller1", controller1)
+            _setter("controller1", controller1)
         if controller_fqdn is not None:
-            pulumi.set(__self__, "controller_fqdn", controller_fqdn)
+            _setter("controller_fqdn", controller_fqdn)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if root_password is not None:
-            pulumi.set(__self__, "root_password", root_password)
+            _setter("root_password", root_password)
 
     @property
     @pulumi.getter(name="activationKey")
@@ -731,22 +932,55 @@ class DeviceInterfaceArgs:
         :param pulumi.Input[str] status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param pulumi.Input[str] type: interface type.
         """
+        DeviceInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assigned_type=assigned_type,
+            id=id,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            name=name,
+            operational_status=operational_status,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assigned_type: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             mac_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             operational_status: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assigned_type is None and 'assignedType' in kwargs:
+            assigned_type = kwargs['assignedType']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if mac_address is None and 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if operational_status is None and 'operationalStatus' in kwargs:
+            operational_status = kwargs['operationalStatus']
+
         if assigned_type is not None:
-            pulumi.set(__self__, "assigned_type", assigned_type)
+            _setter("assigned_type", assigned_type)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if operational_status is not None:
-            pulumi.set(__self__, "operational_status", operational_status)
+            _setter("operational_status", operational_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="assignedType")
@@ -862,15 +1096,40 @@ class DeviceLinkDeviceArgs:
         :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
                `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         """
-        pulumi.set(__self__, "id", id)
+        DeviceLinkDeviceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            asn=asn,
+            interface_id=interface_id,
+            ip_address=ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             asn: Optional[pulumi.Input[int]] = None,
+             interface_id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if interface_id is None and 'interfaceId' in kwargs:
+            interface_id = kwargs['interfaceId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
+        _setter("id", id)
         if asn is not None:
-            pulumi.set(__self__, "asn", asn)
+            _setter("asn", asn)
         if interface_id is not None:
-            pulumi.set(__self__, "interface_id", interface_id)
+            _setter("interface_id", interface_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -955,21 +1214,66 @@ class DeviceLinkLinkArgs:
         :param pulumi.Input[str] dst_zone_code: connection destination zone code is not required.
         :param pulumi.Input[str] src_zone_code: connection source zone code is not required.
         """
-        pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "dst_metro_code", dst_metro_code)
-        pulumi.set(__self__, "src_metro_code", src_metro_code)
-        pulumi.set(__self__, "throughput", throughput)
-        pulumi.set(__self__, "throughput_unit", throughput_unit)
+        DeviceLinkLinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_number=account_number,
+            dst_metro_code=dst_metro_code,
+            src_metro_code=src_metro_code,
+            throughput=throughput,
+            throughput_unit=throughput_unit,
+            dst_zone_code=dst_zone_code,
+            src_zone_code=src_zone_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_number: Optional[pulumi.Input[str]] = None,
+             dst_metro_code: Optional[pulumi.Input[str]] = None,
+             src_metro_code: Optional[pulumi.Input[str]] = None,
+             throughput: Optional[pulumi.Input[str]] = None,
+             throughput_unit: Optional[pulumi.Input[str]] = None,
+             dst_zone_code: Optional[pulumi.Input[str]] = None,
+             src_zone_code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_number is None and 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if dst_metro_code is None and 'dstMetroCode' in kwargs:
+            dst_metro_code = kwargs['dstMetroCode']
+        if dst_metro_code is None:
+            raise TypeError("Missing 'dst_metro_code' argument")
+        if src_metro_code is None and 'srcMetroCode' in kwargs:
+            src_metro_code = kwargs['srcMetroCode']
+        if src_metro_code is None:
+            raise TypeError("Missing 'src_metro_code' argument")
+        if throughput is None:
+            raise TypeError("Missing 'throughput' argument")
+        if throughput_unit is None and 'throughputUnit' in kwargs:
+            throughput_unit = kwargs['throughputUnit']
+        if throughput_unit is None:
+            raise TypeError("Missing 'throughput_unit' argument")
+        if dst_zone_code is None and 'dstZoneCode' in kwargs:
+            dst_zone_code = kwargs['dstZoneCode']
+        if src_zone_code is None and 'srcZoneCode' in kwargs:
+            src_zone_code = kwargs['srcZoneCode']
+
+        _setter("account_number", account_number)
+        _setter("dst_metro_code", dst_metro_code)
+        _setter("src_metro_code", src_metro_code)
+        _setter("throughput", throughput)
+        _setter("throughput_unit", throughput_unit)
         if dst_zone_code is not None:
             warnings.warn("""DestinationZoneCode is not required""", DeprecationWarning)
             pulumi.log.warn("""dst_zone_code is deprecated: DestinationZoneCode is not required""")
         if dst_zone_code is not None:
-            pulumi.set(__self__, "dst_zone_code", dst_zone_code)
+            _setter("dst_zone_code", dst_zone_code)
         if src_zone_code is not None:
             warnings.warn("""SourceZoneCode is not required""", DeprecationWarning)
             pulumi.log.warn("""src_zone_code is deprecated: SourceZoneCode is not required""")
         if src_zone_code is not None:
-            pulumi.set(__self__, "src_zone_code", src_zone_code)
+            _setter("src_zone_code", src_zone_code)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -1038,6 +1342,9 @@ class DeviceLinkLinkArgs:
         """
         connection destination zone code is not required.
         """
+        warnings.warn("""DestinationZoneCode is not required""", DeprecationWarning)
+        pulumi.log.warn("""dst_zone_code is deprecated: DestinationZoneCode is not required""")
+
         return pulumi.get(self, "dst_zone_code")
 
     @dst_zone_code.setter
@@ -1050,6 +1357,9 @@ class DeviceLinkLinkArgs:
         """
         connection source zone code is not required.
         """
+        warnings.warn("""SourceZoneCode is not required""", DeprecationWarning)
+        pulumi.log.warn("""src_zone_code is deprecated: SourceZoneCode is not required""")
+
         return pulumi.get(self, "src_zone_code")
 
     @src_zone_code.setter
@@ -1126,56 +1436,163 @@ class DeviceSecondaryDeviceArgs:
                `systemIpAddress`.
         :param pulumi.Input[str] zone_code: Device location zone code.
         """
-        pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "metro_code", metro_code)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notifications", notifications)
+        DeviceSecondaryDeviceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_number=account_number,
+            metro_code=metro_code,
+            name=name,
+            notifications=notifications,
+            acl_template_id=acl_template_id,
+            additional_bandwidth=additional_bandwidth,
+            asn=asn,
+            cloud_init_file_id=cloud_init_file_id,
+            hostname=hostname,
+            ibx=ibx,
+            interfaces=interfaces,
+            license_file=license_file,
+            license_file_id=license_file_id,
+            license_status=license_status,
+            license_token=license_token,
+            mgmt_acl_template_uuid=mgmt_acl_template_uuid,
+            redundancy_type=redundancy_type,
+            redundant_id=redundant_id,
+            region=region,
+            ssh_ip_address=ssh_ip_address,
+            ssh_ip_fqdn=ssh_ip_fqdn,
+            ssh_key=ssh_key,
+            status=status,
+            uuid=uuid,
+            vendor_configuration=vendor_configuration,
+            wan_interface_id=wan_interface_id,
+            zone_code=zone_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_number: Optional[pulumi.Input[str]] = None,
+             metro_code: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             acl_template_id: Optional[pulumi.Input[str]] = None,
+             additional_bandwidth: Optional[pulumi.Input[int]] = None,
+             asn: Optional[pulumi.Input[int]] = None,
+             cloud_init_file_id: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             ibx: Optional[pulumi.Input[str]] = None,
+             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceSecondaryDeviceInterfaceArgs']]]] = None,
+             license_file: Optional[pulumi.Input[str]] = None,
+             license_file_id: Optional[pulumi.Input[str]] = None,
+             license_status: Optional[pulumi.Input[str]] = None,
+             license_token: Optional[pulumi.Input[str]] = None,
+             mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
+             redundancy_type: Optional[pulumi.Input[str]] = None,
+             redundant_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             ssh_ip_address: Optional[pulumi.Input[str]] = None,
+             ssh_ip_fqdn: Optional[pulumi.Input[str]] = None,
+             ssh_key: Optional[pulumi.Input['DeviceSecondaryDeviceSshKeyArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             wan_interface_id: Optional[pulumi.Input[str]] = None,
+             zone_code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_number is None and 'accountNumber' in kwargs:
+            account_number = kwargs['accountNumber']
+        if account_number is None:
+            raise TypeError("Missing 'account_number' argument")
+        if metro_code is None and 'metroCode' in kwargs:
+            metro_code = kwargs['metroCode']
+        if metro_code is None:
+            raise TypeError("Missing 'metro_code' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notifications is None:
+            raise TypeError("Missing 'notifications' argument")
+        if acl_template_id is None and 'aclTemplateId' in kwargs:
+            acl_template_id = kwargs['aclTemplateId']
+        if additional_bandwidth is None and 'additionalBandwidth' in kwargs:
+            additional_bandwidth = kwargs['additionalBandwidth']
+        if cloud_init_file_id is None and 'cloudInitFileId' in kwargs:
+            cloud_init_file_id = kwargs['cloudInitFileId']
+        if license_file is None and 'licenseFile' in kwargs:
+            license_file = kwargs['licenseFile']
+        if license_file_id is None and 'licenseFileId' in kwargs:
+            license_file_id = kwargs['licenseFileId']
+        if license_status is None and 'licenseStatus' in kwargs:
+            license_status = kwargs['licenseStatus']
+        if license_token is None and 'licenseToken' in kwargs:
+            license_token = kwargs['licenseToken']
+        if mgmt_acl_template_uuid is None and 'mgmtAclTemplateUuid' in kwargs:
+            mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
+        if redundancy_type is None and 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if redundant_id is None and 'redundantId' in kwargs:
+            redundant_id = kwargs['redundantId']
+        if ssh_ip_address is None and 'sshIpAddress' in kwargs:
+            ssh_ip_address = kwargs['sshIpAddress']
+        if ssh_ip_fqdn is None and 'sshIpFqdn' in kwargs:
+            ssh_ip_fqdn = kwargs['sshIpFqdn']
+        if ssh_key is None and 'sshKey' in kwargs:
+            ssh_key = kwargs['sshKey']
+        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
+            vendor_configuration = kwargs['vendorConfiguration']
+        if wan_interface_id is None and 'wanInterfaceId' in kwargs:
+            wan_interface_id = kwargs['wanInterfaceId']
+        if zone_code is None and 'zoneCode' in kwargs:
+            zone_code = kwargs['zoneCode']
+
+        _setter("account_number", account_number)
+        _setter("metro_code", metro_code)
+        _setter("name", name)
+        _setter("notifications", notifications)
         if acl_template_id is not None:
-            pulumi.set(__self__, "acl_template_id", acl_template_id)
+            _setter("acl_template_id", acl_template_id)
         if additional_bandwidth is not None:
-            pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
+            _setter("additional_bandwidth", additional_bandwidth)
         if asn is not None:
-            pulumi.set(__self__, "asn", asn)
+            _setter("asn", asn)
         if cloud_init_file_id is not None:
-            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
+            _setter("cloud_init_file_id", cloud_init_file_id)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if ibx is not None:
-            pulumi.set(__self__, "ibx", ibx)
+            _setter("ibx", ibx)
         if interfaces is not None:
-            pulumi.set(__self__, "interfaces", interfaces)
+            _setter("interfaces", interfaces)
         if license_file is not None:
-            pulumi.set(__self__, "license_file", license_file)
+            _setter("license_file", license_file)
         if license_file_id is not None:
-            pulumi.set(__self__, "license_file_id", license_file_id)
+            _setter("license_file_id", license_file_id)
         if license_status is not None:
-            pulumi.set(__self__, "license_status", license_status)
+            _setter("license_status", license_status)
         if license_token is not None:
-            pulumi.set(__self__, "license_token", license_token)
+            _setter("license_token", license_token)
         if mgmt_acl_template_uuid is not None:
-            pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+            _setter("mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
+            _setter("redundancy_type", redundancy_type)
         if redundant_id is not None:
-            pulumi.set(__self__, "redundant_id", redundant_id)
+            _setter("redundant_id", redundant_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if ssh_ip_address is not None:
-            pulumi.set(__self__, "ssh_ip_address", ssh_ip_address)
+            _setter("ssh_ip_address", ssh_ip_address)
         if ssh_ip_fqdn is not None:
-            pulumi.set(__self__, "ssh_ip_fqdn", ssh_ip_fqdn)
+            _setter("ssh_ip_fqdn", ssh_ip_fqdn)
         if ssh_key is not None:
-            pulumi.set(__self__, "ssh_key", ssh_key)
+            _setter("ssh_key", ssh_key)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if vendor_configuration is not None:
-            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
+            _setter("vendor_configuration", vendor_configuration)
         if wan_interface_id is not None:
-            pulumi.set(__self__, "wan_interface_id", wan_interface_id)
+            _setter("wan_interface_id", wan_interface_id)
         if zone_code is not None:
-            pulumi.set(__self__, "zone_code", zone_code)
+            _setter("zone_code", zone_code)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -1529,22 +1946,55 @@ class DeviceSecondaryDeviceInterfaceArgs:
         :param pulumi.Input[str] status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param pulumi.Input[str] type: interface type.
         """
+        DeviceSecondaryDeviceInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assigned_type=assigned_type,
+            id=id,
+            ip_address=ip_address,
+            mac_address=mac_address,
+            name=name,
+            operational_status=operational_status,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assigned_type: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[int]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             mac_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             operational_status: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assigned_type is None and 'assignedType' in kwargs:
+            assigned_type = kwargs['assignedType']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if mac_address is None and 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if operational_status is None and 'operationalStatus' in kwargs:
+            operational_status = kwargs['operationalStatus']
+
         if assigned_type is not None:
-            pulumi.set(__self__, "assigned_type", assigned_type)
+            _setter("assigned_type", assigned_type)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if operational_status is not None:
-            pulumi.set(__self__, "operational_status", operational_status)
+            _setter("operational_status", operational_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="assignedType")
@@ -1651,8 +2101,27 @@ class DeviceSecondaryDeviceSshKeyArgs:
         """
         :param pulumi.Input[str] username: username associated with given key.
         """
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "username", username)
+        DeviceSecondaryDeviceSshKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_name=key_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_name is None and 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
+        _setter("key_name", key_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="keyName")
@@ -1684,8 +2153,27 @@ class DeviceSshKeyArgs:
         """
         :param pulumi.Input[str] username: username associated with given key.
         """
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "username", username)
+        DeviceSshKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_name=key_name,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_name: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key_name is None and 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if key_name is None:
+            raise TypeError("Missing 'key_name' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+
+        _setter("key_name", key_name)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="keyName")

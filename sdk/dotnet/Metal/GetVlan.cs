@@ -23,6 +23,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -47,6 +48,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -79,6 +81,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -103,6 +106,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -135,6 +139,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// Metro where the VLAN is deployed.
+        /// 
+        /// &gt; **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
         /// </summary>
         [Input("metro")]
         public string? Metro { get; set; }
@@ -173,6 +179,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// Metro where the VLAN is deployed.
+        /// 
+        /// &gt; **NOTE:** You must set either `vlan_id` or a combination of `vxlan`, `project_id`, and, `metro` or `facility`.
         /// </summary>
         [Input("metro")]
         public Input<string>? Metro { get; set; }

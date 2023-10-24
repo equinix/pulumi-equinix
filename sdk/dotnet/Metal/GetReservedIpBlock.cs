@@ -45,6 +45,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// Block containing this IP address will be returned.
+        /// 
+        /// &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
         /// </summary>
         [Input("ipAddress")]
         public string? IpAddress { get; set; }
@@ -71,6 +73,8 @@ namespace Pulumi.Equinix.Metal
 
         /// <summary>
         /// Block containing this IP address will be returned.
+        /// 
+        /// &gt; **NOTE:** You should pass either `id`, or both `project_id` and `ip_address`.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }

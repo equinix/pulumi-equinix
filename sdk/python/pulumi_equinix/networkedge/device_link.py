@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,13 +30,32 @@ class DeviceLinkArgs:
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
                between self configured devices.
         """
-        pulumi.set(__self__, "devices", devices)
+        DeviceLinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            devices=devices,
+            links=links,
+            name=name,
+            subnet=subnet,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             devices: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]] = None,
+             links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             subnet: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if devices is None:
+            raise TypeError("Missing 'devices' argument")
+
+        _setter("devices", devices)
         if links is not None:
-            pulumi.set(__self__, "links", links)
+            _setter("links", links)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
 
     @property
     @pulumi.getter
@@ -112,18 +131,39 @@ class _DeviceLinkState:
                between self configured devices.
         :param pulumi.Input[str] uuid: Device link unique identifier.
         """
+        _DeviceLinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            devices=devices,
+            links=links,
+            name=name,
+            status=status,
+            subnet=subnet,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             devices: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]] = None,
+             links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             subnet: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if devices is not None:
-            pulumi.set(__self__, "devices", devices)
+            _setter("devices", devices)
         if links is not None:
-            pulumi.set(__self__, "links", links)
+            _setter("links", links)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter
@@ -334,6 +374,10 @@ class DeviceLink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeviceLinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

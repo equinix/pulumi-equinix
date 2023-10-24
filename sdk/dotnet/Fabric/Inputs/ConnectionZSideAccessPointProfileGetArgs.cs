@@ -14,33 +14,43 @@ namespace Pulumi.Equinix.Fabric.Inputs
     {
         [Input("accessPointTypeConfigs")]
         private InputList<Inputs.ConnectionZSideAccessPointProfileAccessPointTypeConfigGetArgs>? _accessPointTypeConfigs;
+
+        /// <summary>
+        /// Access point config information
+        /// </summary>
         public InputList<Inputs.ConnectionZSideAccessPointProfileAccessPointTypeConfigGetArgs> AccessPointTypeConfigs
         {
             get => _accessPointTypeConfigs ?? (_accessPointTypeConfigs = new InputList<Inputs.ConnectionZSideAccessPointProfileAccessPointTypeConfigGetArgs>());
             set => _accessPointTypeConfigs = value;
         }
 
+        /// <summary>
+        /// User-provided service description
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Connection URI information
+        /// Unique Resource Identifier
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        /// Port name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+        /// Interface type
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Equinix-assigned interface identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 

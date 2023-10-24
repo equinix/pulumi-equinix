@@ -10,6 +10,7 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointLinkProtoc
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointLocation;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointPort;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointProfile;
+import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointRouter;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -18,12 +19,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionZSideAccessPoint {
-    /**
-     * @return Customer account information that is associated with this connection
-     * 
-     */
     private List<GetConnectionZSideAccessPointAccount> accounts;
     private String authenticationKey;
+    /**
+     * @deprecated
+     * router attribute will be returned instead
+     * 
+     */
+    @Deprecated /* router attribute will be returned instead */
     private List<GetConnectionZSideAccessPointGateway> gateways;
     private List<GetConnectionZSideAccessPointInterface> interfaces;
     private List<GetConnectionZSideAccessPointLinkProtocol> linkProtocols;
@@ -32,25 +35,28 @@ public final class GetConnectionZSideAccessPoint {
     private List<GetConnectionZSideAccessPointPort> ports;
     private List<GetConnectionZSideAccessPointProfile> profiles;
     private String providerConnectionId;
-    private String sellerRegion;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return CloudRouter; Replaces `gateway` attribute (Set of Object)
      * 
      */
+    private List<GetConnectionZSideAccessPointRouter> routers;
+    private String sellerRegion;
     private String type;
     private List<GetConnectionZSideAccessPointVirtualDevice> virtualDevices;
 
     private GetConnectionZSideAccessPoint() {}
-    /**
-     * @return Customer account information that is associated with this connection
-     * 
-     */
     public List<GetConnectionZSideAccessPointAccount> accounts() {
         return this.accounts;
     }
     public String authenticationKey() {
         return this.authenticationKey;
     }
+    /**
+     * @deprecated
+     * router attribute will be returned instead
+     * 
+     */
+    @Deprecated /* router attribute will be returned instead */
     public List<GetConnectionZSideAccessPointGateway> gateways() {
         return this.gateways;
     }
@@ -75,13 +81,16 @@ public final class GetConnectionZSideAccessPoint {
     public String providerConnectionId() {
         return this.providerConnectionId;
     }
+    /**
+     * @return CloudRouter; Replaces `gateway` attribute (Set of Object)
+     * 
+     */
+    public List<GetConnectionZSideAccessPointRouter> routers() {
+        return this.routers;
+    }
     public String sellerRegion() {
         return this.sellerRegion;
     }
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     public String type() {
         return this.type;
     }
@@ -108,6 +117,7 @@ public final class GetConnectionZSideAccessPoint {
         private List<GetConnectionZSideAccessPointPort> ports;
         private List<GetConnectionZSideAccessPointProfile> profiles;
         private String providerConnectionId;
+        private List<GetConnectionZSideAccessPointRouter> routers;
         private String sellerRegion;
         private String type;
         private List<GetConnectionZSideAccessPointVirtualDevice> virtualDevices;
@@ -124,6 +134,7 @@ public final class GetConnectionZSideAccessPoint {
     	      this.ports = defaults.ports;
     	      this.profiles = defaults.profiles;
     	      this.providerConnectionId = defaults.providerConnectionId;
+    	      this.routers = defaults.routers;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.type = defaults.type;
     	      this.virtualDevices = defaults.virtualDevices;
@@ -201,6 +212,14 @@ public final class GetConnectionZSideAccessPoint {
             return this;
         }
         @CustomType.Setter
+        public Builder routers(List<GetConnectionZSideAccessPointRouter> routers) {
+            this.routers = Objects.requireNonNull(routers);
+            return this;
+        }
+        public Builder routers(GetConnectionZSideAccessPointRouter... routers) {
+            return routers(List.of(routers));
+        }
+        @CustomType.Setter
         public Builder sellerRegion(String sellerRegion) {
             this.sellerRegion = Objects.requireNonNull(sellerRegion);
             return this;
@@ -230,6 +249,7 @@ public final class GetConnectionZSideAccessPoint {
             o.ports = ports;
             o.profiles = profiles;
             o.providerConnectionId = providerConnectionId;
+            o.routers = routers;
             o.sellerRegion = sellerRegion;
             o.type = type;
             o.virtualDevices = virtualDevices;

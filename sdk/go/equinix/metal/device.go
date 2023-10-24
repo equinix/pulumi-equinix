@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal device resource. This can be used to create,
@@ -81,7 +83,7 @@ type Device struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
-	// The facility where the device is deployed
+	// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	DeployedFacility pulumi.StringOutput `pulumi:"deployedFacility"`
@@ -90,10 +92,11 @@ type Device struct {
 	DeployedHardwareReservationId pulumi.StringOutput `pulumi:"deployedHardwareReservationId"`
 	// The device description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-	// top of the page and see JSON from the API response. Conflicts with metro
+	// List of facility codes with deployment preferences. Equinix Metal API will go
+	// through the list and will deploy your device to first facility with free capacity. List items must
+	// be facility codes or `any` (a wildcard). To find the facility code, visit
+	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayOutput `pulumi:"facilities"`
@@ -142,10 +145,7 @@ type Device struct {
 	Ports DevicePortArrayOutput `pulumi:"ports"`
 	// The ID of the project in which to create the device
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Array of IDs of the project SSH keys which should be added to the device.
-	// If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-	// you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-	// created with the metal.ProjectSshKey resource.
+	// Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
 	ProjectSshKeyIds pulumi.StringArrayOutput `pulumi:"projectSshKeyIds"`
 	// Whether the device should be reinstalled instead of destroyed when
 	// modifying user_data, custom_data, or operating system. See Reinstall below for more
@@ -172,7 +172,7 @@ type Device struct {
 	Updated pulumi.StringOutput `pulumi:"updated"`
 	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+	// Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
 	UserSshKeyIds pulumi.StringArrayOutput `pulumi:"userSshKeyIds"`
 	// Only used for devices in reserved hardware. If
 	// set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -208,7 +208,7 @@ func NewDevice(ctx *pulumi.Context,
 		"userData",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Device
 	err := ctx.RegisterResource("equinix:metal/device:Device", name, args, &resource, opts...)
 	if err != nil {
@@ -248,7 +248,7 @@ type deviceState struct {
 	Created *string `pulumi:"created"`
 	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData *string `pulumi:"customData"`
-	// The facility where the device is deployed
+	// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	DeployedFacility *string `pulumi:"deployedFacility"`
@@ -257,10 +257,11 @@ type deviceState struct {
 	DeployedHardwareReservationId *string `pulumi:"deployedHardwareReservationId"`
 	// The device description.
 	Description *string `pulumi:"description"`
-	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-	// top of the page and see JSON from the API response. Conflicts with metro
+	// List of facility codes with deployment preferences. Equinix Metal API will go
+	// through the list and will deploy your device to first facility with free capacity. List items must
+	// be facility codes or `any` (a wildcard). To find the facility code, visit
+	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
@@ -309,10 +310,7 @@ type deviceState struct {
 	Ports []DevicePort `pulumi:"ports"`
 	// The ID of the project in which to create the device
 	ProjectId *string `pulumi:"projectId"`
-	// Array of IDs of the project SSH keys which should be added to the device.
-	// If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-	// you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-	// created with the metal.ProjectSshKey resource.
+	// Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
 	ProjectSshKeyIds []string `pulumi:"projectSshKeyIds"`
 	// Whether the device should be reinstalled instead of destroyed when
 	// modifying user_data, custom_data, or operating system. See Reinstall below for more
@@ -339,7 +337,7 @@ type deviceState struct {
 	Updated *string `pulumi:"updated"`
 	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData *string `pulumi:"userData"`
-	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+	// Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
 	UserSshKeyIds []string `pulumi:"userSshKeyIds"`
 	// Only used for devices in reserved hardware. If
 	// set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -365,7 +363,7 @@ type DeviceState struct {
 	Created pulumi.StringPtrInput
 	// A string of the desired Custom Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"customData"`, the device will be updated in-place instead of recreated.
 	CustomData pulumi.StringPtrInput
-	// The facility where the device is deployed
+	// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	DeployedFacility pulumi.StringPtrInput
@@ -374,10 +372,11 @@ type DeviceState struct {
 	DeployedHardwareReservationId pulumi.StringPtrInput
 	// The device description.
 	Description pulumi.StringPtrInput
-	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-	// top of the page and see JSON from the API response. Conflicts with metro
+	// List of facility codes with deployment preferences. Equinix Metal API will go
+	// through the list and will deploy your device to first facility with free capacity. List items must
+	// be facility codes or `any` (a wildcard). To find the facility code, visit
+	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
@@ -426,10 +425,7 @@ type DeviceState struct {
 	Ports DevicePortArrayInput
 	// The ID of the project in which to create the device
 	ProjectId pulumi.StringPtrInput
-	// Array of IDs of the project SSH keys which should be added to the device.
-	// If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-	// you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-	// created with the metal.ProjectSshKey resource.
+	// Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
 	ProjectSshKeyIds pulumi.StringArrayInput
 	// Whether the device should be reinstalled instead of destroyed when
 	// modifying user_data, custom_data, or operating system. See Reinstall below for more
@@ -456,7 +452,7 @@ type DeviceState struct {
 	Updated pulumi.StringPtrInput
 	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData pulumi.StringPtrInput
-	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+	// Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
 	UserSshKeyIds pulumi.StringArrayInput
 	// Only used for devices in reserved hardware. If
 	// set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -480,10 +476,11 @@ type deviceArgs struct {
 	CustomData *string `pulumi:"customData"`
 	// The device description.
 	Description *string `pulumi:"description"`
-	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-	// top of the page and see JSON from the API response. Conflicts with metro
+	// List of facility codes with deployment preferences. Equinix Metal API will go
+	// through the list and will deploy your device to first facility with free capacity. List items must
+	// be facility codes or `any` (a wildcard). To find the facility code, visit
+	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities []string `pulumi:"facilities"`
@@ -514,10 +511,7 @@ type deviceArgs struct {
 	Plan string `pulumi:"plan"`
 	// The ID of the project in which to create the device
 	ProjectId string `pulumi:"projectId"`
-	// Array of IDs of the project SSH keys which should be added to the device.
-	// If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-	// you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-	// created with the metal.ProjectSshKey resource.
+	// Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
 	ProjectSshKeyIds []string `pulumi:"projectSshKeyIds"`
 	// Whether the device should be reinstalled instead of destroyed when
 	// modifying user_data, custom_data, or operating system. See Reinstall below for more
@@ -536,7 +530,7 @@ type deviceArgs struct {
 	TerminationTime *string `pulumi:"terminationTime"`
 	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData *string `pulumi:"userData"`
-	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+	// Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
 	UserSshKeyIds []string `pulumi:"userSshKeyIds"`
 	// Only used for devices in reserved hardware. If
 	// set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -557,10 +551,11 @@ type DeviceArgs struct {
 	CustomData pulumi.StringPtrInput
 	// The device description.
 	Description pulumi.StringPtrInput
-	// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-	// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-	// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-	// top of the page and see JSON from the API response. Conflicts with metro
+	// List of facility codes with deployment preferences. Equinix Metal API will go
+	// through the list and will deploy your device to first facility with free capacity. List items must
+	// be facility codes or `any` (a wildcard). To find the facility code, visit
+	// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+	// token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	Facilities pulumi.StringArrayInput
@@ -591,10 +586,7 @@ type DeviceArgs struct {
 	Plan pulumi.StringInput
 	// The ID of the project in which to create the device
 	ProjectId pulumi.StringInput
-	// Array of IDs of the project SSH keys which should be added to the device.
-	// If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-	// you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-	// created with the metal.ProjectSshKey resource.
+	// Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
 	ProjectSshKeyIds pulumi.StringArrayInput
 	// Whether the device should be reinstalled instead of destroyed when
 	// modifying user_data, custom_data, or operating system. See Reinstall below for more
@@ -613,7 +605,7 @@ type DeviceArgs struct {
 	TerminationTime pulumi.StringPtrInput
 	// A string of the desired User Data for the device.  By default, changing this attribute will cause the provider to destroy and recreate your device.  If `reinstall` is specified or `behavior.allow_changes` includes `"userData"`, the device will be updated in-place instead of recreated.
 	UserData pulumi.StringPtrInput
-	// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+	// Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
 	UserSshKeyIds pulumi.StringArrayInput
 	// Only used for devices in reserved hardware. If
 	// set, the deletion of this device will block until the hardware reservation is marked provisionable
@@ -644,6 +636,12 @@ func (i *Device) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceOutput)
 }
 
+func (i *Device) ToOutput(ctx context.Context) pulumix.Output[*Device] {
+	return pulumix.Output[*Device]{
+		OutputState: i.ToDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceArrayInput is an input type that accepts DeviceArray and DeviceArrayOutput values.
 // You can construct a concrete instance of `DeviceArrayInput` via:
 //
@@ -667,6 +665,12 @@ func (i DeviceArray) ToDeviceArrayOutput() DeviceArrayOutput {
 
 func (i DeviceArray) ToDeviceArrayOutputWithContext(ctx context.Context) DeviceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceArrayOutput)
+}
+
+func (i DeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Device] {
+	return pulumix.Output[[]*Device]{
+		OutputState: i.ToDeviceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DeviceMapInput is an input type that accepts DeviceMap and DeviceMapOutput values.
@@ -694,6 +698,12 @@ func (i DeviceMap) ToDeviceMapOutputWithContext(ctx context.Context) DeviceMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceMapOutput)
 }
 
+func (i DeviceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Device] {
+	return pulumix.Output[map[string]*Device]{
+		OutputState: i.ToDeviceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceOutput struct{ *pulumi.OutputState }
 
 func (DeviceOutput) ElementType() reflect.Type {
@@ -706,6 +716,12 @@ func (o DeviceOutput) ToDeviceOutput() DeviceOutput {
 
 func (o DeviceOutput) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
 	return o
+}
+
+func (o DeviceOutput) ToOutput(ctx context.Context) pulumix.Output[*Device] {
+	return pulumix.Output[*Device]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ipv4 private IP assigned to the device.
@@ -749,7 +765,7 @@ func (o DeviceOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
 }
 
-// The facility where the device is deployed
+// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
 //
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o DeviceOutput) DeployedFacility() pulumi.StringOutput {
@@ -767,10 +783,11 @@ func (o DeviceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of facility codes with deployment preferences. Equinix Metal API will go through the list and will deploy your
-// device to first facility with free capacity. List items must be facility codes or any (a wildcard). To find the facility
-// code, visit [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth token in the
-// top of the page and see JSON from the API response. Conflicts with metro
+// List of facility codes with deployment preferences. Equinix Metal API will go
+// through the list and will deploy your device to first facility with free capacity. List items must
+// be facility codes or `any` (a wildcard). To find the facility code, visit
+// [Facilities API docs](https://metal.equinix.com/developers/api/facilities/), set your API auth
+// token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
 //
 // Deprecated: Use metro instead of facilities.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o DeviceOutput) Facilities() pulumi.StringArrayOutput {
@@ -861,10 +878,7 @@ func (o DeviceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Array of IDs of the project SSH keys which should be added to the device.
-// If you omit this, SSH keys of all the members of the parent project will be added to the device. If
-// you specify this array, only the listed project SSH keys will be added. Project SSH keys can be
-// created with the metal.ProjectSshKey resource.
+// Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
 func (o DeviceOutput) ProjectSshKeyIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.ProjectSshKeyIds }).(pulumi.StringArrayOutput)
 }
@@ -921,7 +935,7 @@ func (o DeviceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
-// Array of IDs of the user SSH keys which should be added to the device. If you omit this, SSH keys of all the members of the parent project will be added to the device. If you specify this array, only the listed user SSH keys (and any project_ssh_key_ids) will be added. User SSH keys can be created with the metal.SshKey resource
+// Array of IDs of the users whose SSH keys should be added to the device. If you specify this array, only the listed users' SSH keys (and any project SSH keys specified in project_ssh_key_ids) will be added. If no SSH keys are specified (both userSshKeysIds and projectSshKeyIds are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included. User SSH keys can be created with the metal.SshKey resource.
 func (o DeviceOutput) UserSshKeyIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.UserSshKeyIds }).(pulumi.StringArrayOutput)
 }
@@ -947,6 +961,12 @@ func (o DeviceArrayOutput) ToDeviceArrayOutputWithContext(ctx context.Context) D
 	return o
 }
 
+func (o DeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Device] {
+	return pulumix.Output[[]*Device]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeviceArrayOutput) Index(i pulumi.IntInput) DeviceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Device {
 		return vs[0].([]*Device)[vs[1].(int)]
@@ -965,6 +985,12 @@ func (o DeviceMapOutput) ToDeviceMapOutput() DeviceMapOutput {
 
 func (o DeviceMapOutput) ToDeviceMapOutputWithContext(ctx context.Context) DeviceMapOutput {
 	return o
+}
+
+func (o DeviceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Device] {
+	return pulumix.Output[map[string]*Device]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceMapOutput) MapIndex(k pulumi.StringInput) DeviceOutput {

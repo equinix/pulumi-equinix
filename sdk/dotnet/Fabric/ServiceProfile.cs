@@ -114,13 +114,13 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.ServiceProfileCustomField>> CustomFields { get; private set; } = null!;
 
         /// <summary>
-        /// User-provided service description
+        /// Description
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Service Profile URI response attribute
+        /// Unique Resource URL
         /// </summary>
         [Output("href")]
         public Output<string> Href { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.ServiceProfileMetro>> Metros { get; private set; } = null!;
 
         /// <summary>
-        /// Customer-assigned service profile name
+        /// Metro Name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -180,13 +180,13 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Type of access point type config - VD, COLO
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Equinix assigned service profile identifier
+        /// Colo/Port Uuid
         /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// User-provided service description
+        /// Description
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -317,7 +317,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Customer-assigned service profile name
+        /// Metro Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Type of access point type config - VD, COLO
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
@@ -457,13 +457,13 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// User-provided service description
+        /// Description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Service Profile URI response attribute
+        /// Unique Resource URL
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
@@ -487,7 +487,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Customer-assigned service profile name
+        /// Metro Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -547,13 +547,13 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        /// Type of access point type config - VD, COLO
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Type { get; set; }
 
         /// <summary>
-        /// Equinix assigned service profile identifier
+        /// Colo/Port Uuid
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

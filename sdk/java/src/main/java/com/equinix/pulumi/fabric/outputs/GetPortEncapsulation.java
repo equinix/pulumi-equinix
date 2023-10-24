@@ -10,20 +10,12 @@ import java.util.Objects;
 @CustomType
 public final class GetPortEncapsulation {
     private String tagProtocolId;
-    /**
-     * @return Port type
-     * 
-     */
     private String type;
 
     private GetPortEncapsulation() {}
     public String tagProtocolId() {
         return this.tagProtocolId;
     }
-    /**
-     * @return Port type
-     * 
-     */
     public String type() {
         return this.type;
     }

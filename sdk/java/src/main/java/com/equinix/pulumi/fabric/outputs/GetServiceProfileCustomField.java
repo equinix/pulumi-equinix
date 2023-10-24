@@ -13,10 +13,6 @@ import java.util.Objects;
 public final class GetServiceProfileCustomField {
     private Boolean captureInEmail;
     private String dataType;
-    /**
-     * @return User-provided service description
-     * 
-     */
     private String description;
     private String label;
     private List<String> options;
@@ -29,10 +25,6 @@ public final class GetServiceProfileCustomField {
     public String dataType() {
         return this.dataType;
     }
-    /**
-     * @return User-provided service description
-     * 
-     */
     public String description() {
         return this.description;
     }

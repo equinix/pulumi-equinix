@@ -35,6 +35,11 @@ public final class GetServiceProfilesResult {
      * 
      */
     private @Nullable List<GetServiceProfilesSort> sort;
+    /**
+     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * 
+     */
+    private @Nullable String viewPoint;
 
     private GetServiceProfilesResult() {}
     /**
@@ -65,6 +70,13 @@ public final class GetServiceProfilesResult {
     public List<GetServiceProfilesSort> sort() {
         return this.sort == null ? List.of() : this.sort;
     }
+    /**
+     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * 
+     */
+    public Optional<String> viewPoint() {
+        return Optional.ofNullable(this.viewPoint);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -79,6 +91,7 @@ public final class GetServiceProfilesResult {
         private @Nullable GetServiceProfilesFilter filter;
         private String id;
         private @Nullable List<GetServiceProfilesSort> sort;
+        private @Nullable String viewPoint;
         public Builder() {}
         public Builder(GetServiceProfilesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -86,6 +99,7 @@ public final class GetServiceProfilesResult {
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.sort = defaults.sort;
+    	      this.viewPoint = defaults.viewPoint;
         }
 
         @CustomType.Setter
@@ -114,12 +128,18 @@ public final class GetServiceProfilesResult {
         public Builder sort(GetServiceProfilesSort... sort) {
             return sort(List.of(sort));
         }
+        @CustomType.Setter
+        public Builder viewPoint(@Nullable String viewPoint) {
+            this.viewPoint = viewPoint;
+            return this;
+        }
         public GetServiceProfilesResult build() {
             final var o = new GetServiceProfilesResult();
             o.data = data;
             o.filter = filter;
             o.id = id;
             o.sort = sort;
+            o.viewPoint = viewPoint;
             return o;
         }
     }

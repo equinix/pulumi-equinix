@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal organization datasource.
@@ -39,7 +41,7 @@ import (
 //
 // ```
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult
 	err := ctx.Invoke("equinix:metal/getOrganization:getOrganization", args, &rv, opts...)
 	if err != nil {
@@ -53,6 +55,8 @@ type LookupOrganizationArgs struct {
 	// The organization name.
 	Name *string `pulumi:"name"`
 	// The UUID of the organization resource.
+	//
+	// Exactly one of `name` or `organizationId` must be given.
 	OrganizationId *string `pulumi:"organizationId"`
 }
 
@@ -94,6 +98,8 @@ type LookupOrganizationOutputArgs struct {
 	// The organization name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The UUID of the organization resource.
+	//
+	// Exactly one of `name` or `organizationId` must be given.
 	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
 }
 
@@ -114,6 +120,12 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutput() Looku
 
 func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithContext(ctx context.Context) LookupOrganizationResultOutput {
 	return o
+}
+
+func (o LookupOrganizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationResult] {
+	return pulumix.Output[LookupOrganizationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Postal address.

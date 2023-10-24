@@ -13,21 +13,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideServiceTokenResult
     {
-        /// <summary>
-        /// Customer-provided connection description
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Connection URI information
-        /// </summary>
         public readonly string Href;
-        /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-        /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// Equinix-assigned connection identifier
-        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

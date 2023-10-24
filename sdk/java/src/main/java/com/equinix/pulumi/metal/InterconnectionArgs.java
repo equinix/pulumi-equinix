@@ -18,6 +18,21 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     public static final InterconnectionArgs Empty = new InterconnectionArgs();
 
     /**
+     * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * 
+     */
+    @Import(name="contactEmail")
+    private @Nullable Output<String> contactEmail;
+
+    /**
+     * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+     * 
+     */
+    public Optional<Output<String>> contactEmail() {
+        return Optional.ofNullable(this.contactEmail);
+    }
+
+    /**
      * Description for the connection resource.
      * 
      */
@@ -33,7 +48,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Facility where the connection will be created
+     * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -44,7 +59,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> facility;
 
     /**
-     * @return Facility where the connection will be created
+     * @return Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
@@ -164,15 +179,15 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
      * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
      * 
      */
-    @Import(name="speed", required=true)
-    private Output<String> speed;
+    @Import(name="speed")
+    private @Nullable Output<String> speed;
 
     /**
      * @return Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
      * 
      */
-    public Output<String> speed() {
-        return this.speed;
+    public Optional<Output<String>> speed() {
+        return Optional.ofNullable(this.speed);
     }
 
     /**
@@ -223,6 +238,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     private InterconnectionArgs() {}
 
     private InterconnectionArgs(InterconnectionArgs $) {
+        this.contactEmail = $.contactEmail;
         this.description = $.description;
         this.facility = $.facility;
         this.metro = $.metro;
@@ -257,6 +273,27 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param contactEmail The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contactEmail(@Nullable Output<String> contactEmail) {
+            $.contactEmail = contactEmail;
+            return this;
+        }
+
+        /**
+         * @param contactEmail The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contactEmail(String contactEmail) {
+            return contactEmail(Output.of(contactEmail));
+        }
+
+        /**
          * @param description Description for the connection resource.
          * 
          * @return builder
@@ -278,7 +315,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param facility Facility where the connection will be created
+         * @param facility Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -293,7 +330,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param facility Facility where the connection will be created
+         * @param facility Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
          * 
          * @return builder
          * 
@@ -459,7 +496,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder speed(Output<String> speed) {
+        public Builder speed(@Nullable Output<String> speed) {
             $.speed = speed;
             return this;
         }
@@ -559,7 +596,6 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
 
         public InterconnectionArgs build() {
             $.redundancy = Objects.requireNonNull($.redundancy, "expected parameter 'redundancy' to be non-null");
-            $.speed = Objects.requireNonNull($.speed, "expected parameter 'speed' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }

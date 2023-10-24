@@ -33,6 +33,8 @@ public final class GetSpotMarketRequestResult {
      */
     private String endAt;
     /**
+     * @return (**Deprecated**) Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 
@@ -96,6 +98,8 @@ public final class GetSpotMarketRequestResult {
         return this.endAt;
     }
     /**
+     * @return (**Deprecated**) Facility IDs where devices should be created. Use metro instead; read the facility to metro migration guide
+     * 
      * @deprecated
      * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      * 

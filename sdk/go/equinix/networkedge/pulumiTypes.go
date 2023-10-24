@@ -7,8 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AclTemplateDeviceDetail struct {
 	// Device ACL provisioning status where template was applied. One of `PROVISIONING`,
@@ -53,6 +57,12 @@ func (i AclTemplateDeviceDetailArgs) ToAclTemplateDeviceDetailOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateDeviceDetailOutput)
 }
 
+func (i AclTemplateDeviceDetailArgs) ToOutput(ctx context.Context) pulumix.Output[AclTemplateDeviceDetail] {
+	return pulumix.Output[AclTemplateDeviceDetail]{
+		OutputState: i.ToAclTemplateDeviceDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclTemplateDeviceDetailArrayInput is an input type that accepts AclTemplateDeviceDetailArray and AclTemplateDeviceDetailArrayOutput values.
 // You can construct a concrete instance of `AclTemplateDeviceDetailArrayInput` via:
 //
@@ -78,6 +88,12 @@ func (i AclTemplateDeviceDetailArray) ToAclTemplateDeviceDetailArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateDeviceDetailArrayOutput)
 }
 
+func (i AclTemplateDeviceDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]AclTemplateDeviceDetail] {
+	return pulumix.Output[[]AclTemplateDeviceDetail]{
+		OutputState: i.ToAclTemplateDeviceDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclTemplateDeviceDetailOutput struct{ *pulumi.OutputState }
 
 func (AclTemplateDeviceDetailOutput) ElementType() reflect.Type {
@@ -90,6 +106,12 @@ func (o AclTemplateDeviceDetailOutput) ToAclTemplateDeviceDetailOutput() AclTemp
 
 func (o AclTemplateDeviceDetailOutput) ToAclTemplateDeviceDetailOutputWithContext(ctx context.Context) AclTemplateDeviceDetailOutput {
 	return o
+}
+
+func (o AclTemplateDeviceDetailOutput) ToOutput(ctx context.Context) pulumix.Output[AclTemplateDeviceDetail] {
+	return pulumix.Output[AclTemplateDeviceDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device ACL provisioning status where template was applied. One of `PROVISIONING`,
@@ -120,6 +142,12 @@ func (o AclTemplateDeviceDetailArrayOutput) ToAclTemplateDeviceDetailArrayOutput
 
 func (o AclTemplateDeviceDetailArrayOutput) ToAclTemplateDeviceDetailArrayOutputWithContext(ctx context.Context) AclTemplateDeviceDetailArrayOutput {
 	return o
+}
+
+func (o AclTemplateDeviceDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclTemplateDeviceDetail] {
+	return pulumix.Output[[]AclTemplateDeviceDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclTemplateDeviceDetailArrayOutput) Index(i pulumi.IntInput) AclTemplateDeviceDetailOutput {
@@ -195,6 +223,12 @@ func (i AclTemplateInboundRuleArgs) ToAclTemplateInboundRuleOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateInboundRuleOutput)
 }
 
+func (i AclTemplateInboundRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AclTemplateInboundRule] {
+	return pulumix.Output[AclTemplateInboundRule]{
+		OutputState: i.ToAclTemplateInboundRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclTemplateInboundRuleArrayInput is an input type that accepts AclTemplateInboundRuleArray and AclTemplateInboundRuleArrayOutput values.
 // You can construct a concrete instance of `AclTemplateInboundRuleArrayInput` via:
 //
@@ -220,6 +254,12 @@ func (i AclTemplateInboundRuleArray) ToAclTemplateInboundRuleArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateInboundRuleArrayOutput)
 }
 
+func (i AclTemplateInboundRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AclTemplateInboundRule] {
+	return pulumix.Output[[]AclTemplateInboundRule]{
+		OutputState: i.ToAclTemplateInboundRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclTemplateInboundRuleOutput struct{ *pulumi.OutputState }
 
 func (AclTemplateInboundRuleOutput) ElementType() reflect.Type {
@@ -232,6 +272,12 @@ func (o AclTemplateInboundRuleOutput) ToAclTemplateInboundRuleOutput() AclTempla
 
 func (o AclTemplateInboundRuleOutput) ToAclTemplateInboundRuleOutputWithContext(ctx context.Context) AclTemplateInboundRuleOutput {
 	return o
+}
+
+func (o AclTemplateInboundRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AclTemplateInboundRule] {
+	return pulumix.Output[AclTemplateInboundRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Inbound rule description, up to 200 characters.
@@ -289,6 +335,12 @@ func (o AclTemplateInboundRuleArrayOutput) ToAclTemplateInboundRuleArrayOutput()
 
 func (o AclTemplateInboundRuleArrayOutput) ToAclTemplateInboundRuleArrayOutputWithContext(ctx context.Context) AclTemplateInboundRuleArrayOutput {
 	return o
+}
+
+func (o AclTemplateInboundRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclTemplateInboundRule] {
+	return pulumix.Output[[]AclTemplateInboundRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclTemplateInboundRuleArrayOutput) Index(i pulumi.IntInput) AclTemplateInboundRuleOutput {
@@ -350,6 +402,12 @@ func (i DeviceClusterDetailsArgs) ToDeviceClusterDetailsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsOutput)
 }
 
+func (i DeviceClusterDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetails] {
+	return pulumix.Output[DeviceClusterDetails]{
+		OutputState: i.ToDeviceClusterDetailsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceClusterDetailsArgs) ToDeviceClusterDetailsPtrOutput() DeviceClusterDetailsPtrOutput {
 	return i.ToDeviceClusterDetailsPtrOutputWithContext(context.Background())
 }
@@ -391,6 +449,12 @@ func (i *deviceClusterDetailsPtrType) ToDeviceClusterDetailsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsPtrOutput)
 }
 
+func (i *deviceClusterDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetails] {
+	return pulumix.Output[*DeviceClusterDetails]{
+		OutputState: i.ToDeviceClusterDetailsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceClusterDetailsOutput struct{ *pulumi.OutputState }
 
 func (DeviceClusterDetailsOutput) ElementType() reflect.Type {
@@ -413,6 +477,12 @@ func (o DeviceClusterDetailsOutput) ToDeviceClusterDetailsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceClusterDetails) *DeviceClusterDetails {
 		return &v
 	}).(DeviceClusterDetailsPtrOutput)
+}
+
+func (o DeviceClusterDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetails] {
+	return pulumix.Output[DeviceClusterDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the cluster.
@@ -454,6 +524,12 @@ func (o DeviceClusterDetailsPtrOutput) ToDeviceClusterDetailsPtrOutput() DeviceC
 
 func (o DeviceClusterDetailsPtrOutput) ToDeviceClusterDetailsPtrOutputWithContext(ctx context.Context) DeviceClusterDetailsPtrOutput {
 	return o
+}
+
+func (o DeviceClusterDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetails] {
+	return pulumix.Output[*DeviceClusterDetails]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceClusterDetailsPtrOutput) Elem() DeviceClusterDetailsOutput {
@@ -575,6 +651,12 @@ func (i DeviceClusterDetailsNode0Args) ToDeviceClusterDetailsNode0OutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode0Output)
 }
 
+func (i DeviceClusterDetailsNode0Args) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode0] {
+	return pulumix.Output[DeviceClusterDetailsNode0]{
+		OutputState: i.ToDeviceClusterDetailsNode0OutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceClusterDetailsNode0Args) ToDeviceClusterDetailsNode0PtrOutput() DeviceClusterDetailsNode0PtrOutput {
 	return i.ToDeviceClusterDetailsNode0PtrOutputWithContext(context.Background())
 }
@@ -616,6 +698,12 @@ func (i *deviceClusterDetailsNode0PtrType) ToDeviceClusterDetailsNode0PtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode0PtrOutput)
 }
 
+func (i *deviceClusterDetailsNode0PtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode0] {
+	return pulumix.Output[*DeviceClusterDetailsNode0]{
+		OutputState: i.ToDeviceClusterDetailsNode0PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceClusterDetailsNode0Output struct{ *pulumi.OutputState }
 
 func (DeviceClusterDetailsNode0Output) ElementType() reflect.Type {
@@ -638,6 +726,12 @@ func (o DeviceClusterDetailsNode0Output) ToDeviceClusterDetailsNode0PtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0 {
 		return &v
 	}).(DeviceClusterDetailsNode0PtrOutput)
+}
+
+func (o DeviceClusterDetailsNode0Output) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode0] {
+	return pulumix.Output[DeviceClusterDetailsNode0]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of a license file that will be applied on the device.
@@ -683,6 +777,12 @@ func (o DeviceClusterDetailsNode0PtrOutput) ToDeviceClusterDetailsNode0PtrOutput
 
 func (o DeviceClusterDetailsNode0PtrOutput) ToDeviceClusterDetailsNode0PtrOutputWithContext(ctx context.Context) DeviceClusterDetailsNode0PtrOutput {
 	return o
+}
+
+func (o DeviceClusterDetailsNode0PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode0] {
+	return pulumix.Output[*DeviceClusterDetailsNode0]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceClusterDetailsNode0PtrOutput) Elem() DeviceClusterDetailsNode0Output {
@@ -806,6 +906,12 @@ func (i DeviceClusterDetailsNode0VendorConfigurationArgs) ToDeviceClusterDetails
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode0VendorConfigurationOutput)
 }
 
+func (i DeviceClusterDetailsNode0VendorConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode0VendorConfiguration] {
+	return pulumix.Output[DeviceClusterDetailsNode0VendorConfiguration]{
+		OutputState: i.ToDeviceClusterDetailsNode0VendorConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceClusterDetailsNode0VendorConfigurationArgs) ToDeviceClusterDetailsNode0VendorConfigurationPtrOutput() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return i.ToDeviceClusterDetailsNode0VendorConfigurationPtrOutputWithContext(context.Background())
 }
@@ -847,6 +953,12 @@ func (i *deviceClusterDetailsNode0VendorConfigurationPtrType) ToDeviceClusterDet
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode0VendorConfigurationPtrOutput)
 }
 
+func (i *deviceClusterDetailsNode0VendorConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode0VendorConfiguration] {
+	return pulumix.Output[*DeviceClusterDetailsNode0VendorConfiguration]{
+		OutputState: i.ToDeviceClusterDetailsNode0VendorConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceClusterDetailsNode0VendorConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DeviceClusterDetailsNode0VendorConfigurationOutput) ElementType() reflect.Type {
@@ -869,6 +981,12 @@ func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ToDeviceClusterDetai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceClusterDetailsNode0VendorConfiguration) *DeviceClusterDetailsNode0VendorConfiguration {
 		return &v
 	}).(DeviceClusterDetailsNode0VendorConfigurationPtrOutput)
+}
+
+func (o DeviceClusterDetailsNode0VendorConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode0VendorConfiguration] {
+	return pulumix.Output[DeviceClusterDetailsNode0VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activation key. This is required for Velocloud clusters.
@@ -915,6 +1033,12 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ToDeviceClusterDe
 
 func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ToDeviceClusterDetailsNode0VendorConfigurationPtrOutputWithContext(ctx context.Context) DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o
+}
+
+func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode0VendorConfiguration] {
+	return pulumix.Output[*DeviceClusterDetailsNode0VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) Elem() DeviceClusterDetailsNode0VendorConfigurationOutput {
@@ -1046,6 +1170,12 @@ func (i DeviceClusterDetailsNode1Args) ToDeviceClusterDetailsNode1OutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode1Output)
 }
 
+func (i DeviceClusterDetailsNode1Args) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode1] {
+	return pulumix.Output[DeviceClusterDetailsNode1]{
+		OutputState: i.ToDeviceClusterDetailsNode1OutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceClusterDetailsNode1Args) ToDeviceClusterDetailsNode1PtrOutput() DeviceClusterDetailsNode1PtrOutput {
 	return i.ToDeviceClusterDetailsNode1PtrOutputWithContext(context.Background())
 }
@@ -1087,6 +1217,12 @@ func (i *deviceClusterDetailsNode1PtrType) ToDeviceClusterDetailsNode1PtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode1PtrOutput)
 }
 
+func (i *deviceClusterDetailsNode1PtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode1] {
+	return pulumix.Output[*DeviceClusterDetailsNode1]{
+		OutputState: i.ToDeviceClusterDetailsNode1PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceClusterDetailsNode1Output struct{ *pulumi.OutputState }
 
 func (DeviceClusterDetailsNode1Output) ElementType() reflect.Type {
@@ -1109,6 +1245,12 @@ func (o DeviceClusterDetailsNode1Output) ToDeviceClusterDetailsNode1PtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1 {
 		return &v
 	}).(DeviceClusterDetailsNode1PtrOutput)
+}
+
+func (o DeviceClusterDetailsNode1Output) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode1] {
+	return pulumix.Output[DeviceClusterDetailsNode1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier of a license file that will be applied on the device.
@@ -1154,6 +1296,12 @@ func (o DeviceClusterDetailsNode1PtrOutput) ToDeviceClusterDetailsNode1PtrOutput
 
 func (o DeviceClusterDetailsNode1PtrOutput) ToDeviceClusterDetailsNode1PtrOutputWithContext(ctx context.Context) DeviceClusterDetailsNode1PtrOutput {
 	return o
+}
+
+func (o DeviceClusterDetailsNode1PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode1] {
+	return pulumix.Output[*DeviceClusterDetailsNode1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceClusterDetailsNode1PtrOutput) Elem() DeviceClusterDetailsNode1Output {
@@ -1277,6 +1425,12 @@ func (i DeviceClusterDetailsNode1VendorConfigurationArgs) ToDeviceClusterDetails
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode1VendorConfigurationOutput)
 }
 
+func (i DeviceClusterDetailsNode1VendorConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode1VendorConfiguration] {
+	return pulumix.Output[DeviceClusterDetailsNode1VendorConfiguration]{
+		OutputState: i.ToDeviceClusterDetailsNode1VendorConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceClusterDetailsNode1VendorConfigurationArgs) ToDeviceClusterDetailsNode1VendorConfigurationPtrOutput() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return i.ToDeviceClusterDetailsNode1VendorConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1318,6 +1472,12 @@ func (i *deviceClusterDetailsNode1VendorConfigurationPtrType) ToDeviceClusterDet
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceClusterDetailsNode1VendorConfigurationPtrOutput)
 }
 
+func (i *deviceClusterDetailsNode1VendorConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode1VendorConfiguration] {
+	return pulumix.Output[*DeviceClusterDetailsNode1VendorConfiguration]{
+		OutputState: i.ToDeviceClusterDetailsNode1VendorConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceClusterDetailsNode1VendorConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DeviceClusterDetailsNode1VendorConfigurationOutput) ElementType() reflect.Type {
@@ -1340,6 +1500,12 @@ func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ToDeviceClusterDetai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceClusterDetailsNode1VendorConfiguration) *DeviceClusterDetailsNode1VendorConfiguration {
 		return &v
 	}).(DeviceClusterDetailsNode1VendorConfigurationPtrOutput)
+}
+
+func (o DeviceClusterDetailsNode1VendorConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceClusterDetailsNode1VendorConfiguration] {
+	return pulumix.Output[DeviceClusterDetailsNode1VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Activation key. This is required for Velocloud clusters.
@@ -1386,6 +1552,12 @@ func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ToDeviceClusterDe
 
 func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ToDeviceClusterDetailsNode1VendorConfigurationPtrOutputWithContext(ctx context.Context) DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o
+}
+
+func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceClusterDetailsNode1VendorConfiguration] {
+	return pulumix.Output[*DeviceClusterDetailsNode1VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceClusterDetailsNode1VendorConfigurationPtrOutput) Elem() DeviceClusterDetailsNode1VendorConfigurationOutput {
@@ -1521,6 +1693,12 @@ func (i DeviceInterfaceArgs) ToDeviceInterfaceOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceInterfaceOutput)
 }
 
+func (i DeviceInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceInterface] {
+	return pulumix.Output[DeviceInterface]{
+		OutputState: i.ToDeviceInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceInterfaceArrayInput is an input type that accepts DeviceInterfaceArray and DeviceInterfaceArrayOutput values.
 // You can construct a concrete instance of `DeviceInterfaceArrayInput` via:
 //
@@ -1546,6 +1724,12 @@ func (i DeviceInterfaceArray) ToDeviceInterfaceArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceInterfaceArrayOutput)
 }
 
+func (i DeviceInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceInterface] {
+	return pulumix.Output[[]DeviceInterface]{
+		OutputState: i.ToDeviceInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceInterfaceOutput struct{ *pulumi.OutputState }
 
 func (DeviceInterfaceOutput) ElementType() reflect.Type {
@@ -1558,6 +1742,12 @@ func (o DeviceInterfaceOutput) ToDeviceInterfaceOutput() DeviceInterfaceOutput {
 
 func (o DeviceInterfaceOutput) ToDeviceInterfaceOutputWithContext(ctx context.Context) DeviceInterfaceOutput {
 	return o
+}
+
+func (o DeviceInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceInterface] {
+	return pulumix.Output[DeviceInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // interface management type (Equinix Managed or empty).
@@ -1612,6 +1802,12 @@ func (o DeviceInterfaceArrayOutput) ToDeviceInterfaceArrayOutput() DeviceInterfa
 
 func (o DeviceInterfaceArrayOutput) ToDeviceInterfaceArrayOutputWithContext(ctx context.Context) DeviceInterfaceArrayOutput {
 	return o
+}
+
+func (o DeviceInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceInterface] {
+	return pulumix.Output[[]DeviceInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceInterfaceArrayOutput) Index(i pulumi.IntInput) DeviceInterfaceOutput {
@@ -1673,6 +1869,12 @@ func (i DeviceLinkDeviceArgs) ToDeviceLinkDeviceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkDeviceOutput)
 }
 
+func (i DeviceLinkDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceLinkDevice] {
+	return pulumix.Output[DeviceLinkDevice]{
+		OutputState: i.ToDeviceLinkDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceLinkDeviceArrayInput is an input type that accepts DeviceLinkDeviceArray and DeviceLinkDeviceArrayOutput values.
 // You can construct a concrete instance of `DeviceLinkDeviceArrayInput` via:
 //
@@ -1698,6 +1900,12 @@ func (i DeviceLinkDeviceArray) ToDeviceLinkDeviceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkDeviceArrayOutput)
 }
 
+func (i DeviceLinkDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceLinkDevice] {
+	return pulumix.Output[[]DeviceLinkDevice]{
+		OutputState: i.ToDeviceLinkDeviceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceLinkDeviceOutput struct{ *pulumi.OutputState }
 
 func (DeviceLinkDeviceOutput) ElementType() reflect.Type {
@@ -1710,6 +1918,12 @@ func (o DeviceLinkDeviceOutput) ToDeviceLinkDeviceOutput() DeviceLinkDeviceOutpu
 
 func (o DeviceLinkDeviceOutput) ToDeviceLinkDeviceOutputWithContext(ctx context.Context) DeviceLinkDeviceOutput {
 	return o
+}
+
+func (o DeviceLinkDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceLinkDevice] {
+	return pulumix.Output[DeviceLinkDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device ASN number. Not required for self configured devices.
@@ -1751,6 +1965,12 @@ func (o DeviceLinkDeviceArrayOutput) ToDeviceLinkDeviceArrayOutput() DeviceLinkD
 
 func (o DeviceLinkDeviceArrayOutput) ToDeviceLinkDeviceArrayOutputWithContext(ctx context.Context) DeviceLinkDeviceArrayOutput {
 	return o
+}
+
+func (o DeviceLinkDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceLinkDevice] {
+	return pulumix.Output[[]DeviceLinkDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceLinkDeviceArrayOutput) Index(i pulumi.IntInput) DeviceLinkDeviceOutput {
@@ -1826,6 +2046,12 @@ func (i DeviceLinkLinkArgs) ToDeviceLinkLinkOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkLinkOutput)
 }
 
+func (i DeviceLinkLinkArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceLinkLink] {
+	return pulumix.Output[DeviceLinkLink]{
+		OutputState: i.ToDeviceLinkLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceLinkLinkArrayInput is an input type that accepts DeviceLinkLinkArray and DeviceLinkLinkArrayOutput values.
 // You can construct a concrete instance of `DeviceLinkLinkArrayInput` via:
 //
@@ -1851,6 +2077,12 @@ func (i DeviceLinkLinkArray) ToDeviceLinkLinkArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkLinkArrayOutput)
 }
 
+func (i DeviceLinkLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceLinkLink] {
+	return pulumix.Output[[]DeviceLinkLink]{
+		OutputState: i.ToDeviceLinkLinkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceLinkLinkOutput struct{ *pulumi.OutputState }
 
 func (DeviceLinkLinkOutput) ElementType() reflect.Type {
@@ -1863,6 +2095,12 @@ func (o DeviceLinkLinkOutput) ToDeviceLinkLinkOutput() DeviceLinkLinkOutput {
 
 func (o DeviceLinkLinkOutput) ToDeviceLinkLinkOutputWithContext(ctx context.Context) DeviceLinkLinkOutput {
 	return o
+}
+
+func (o DeviceLinkLinkOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceLinkLink] {
+	return pulumix.Output[DeviceLinkLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // billing account number to be used for
@@ -1917,6 +2155,12 @@ func (o DeviceLinkLinkArrayOutput) ToDeviceLinkLinkArrayOutput() DeviceLinkLinkA
 
 func (o DeviceLinkLinkArrayOutput) ToDeviceLinkLinkArrayOutputWithContext(ctx context.Context) DeviceLinkLinkArrayOutput {
 	return o
+}
+
+func (o DeviceLinkLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceLinkLink] {
+	return pulumix.Output[[]DeviceLinkLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceLinkLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkLinkOutput {
@@ -2082,6 +2326,12 @@ func (i DeviceSecondaryDeviceArgs) ToDeviceSecondaryDeviceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecondaryDeviceOutput)
 }
 
+func (i DeviceSecondaryDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceSecondaryDevice] {
+	return pulumix.Output[DeviceSecondaryDevice]{
+		OutputState: i.ToDeviceSecondaryDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceSecondaryDeviceArgs) ToDeviceSecondaryDevicePtrOutput() DeviceSecondaryDevicePtrOutput {
 	return i.ToDeviceSecondaryDevicePtrOutputWithContext(context.Background())
 }
@@ -2123,6 +2373,12 @@ func (i *deviceSecondaryDevicePtrType) ToDeviceSecondaryDevicePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecondaryDevicePtrOutput)
 }
 
+func (i *deviceSecondaryDevicePtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceSecondaryDevice] {
+	return pulumix.Output[*DeviceSecondaryDevice]{
+		OutputState: i.ToDeviceSecondaryDevicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceSecondaryDeviceOutput struct{ *pulumi.OutputState }
 
 func (DeviceSecondaryDeviceOutput) ElementType() reflect.Type {
@@ -2145,6 +2401,12 @@ func (o DeviceSecondaryDeviceOutput) ToDeviceSecondaryDevicePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceSecondaryDevice) *DeviceSecondaryDevice {
 		return &v
 	}).(DeviceSecondaryDevicePtrOutput)
+}
+
+func (o DeviceSecondaryDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceSecondaryDevice] {
+	return pulumix.Output[DeviceSecondaryDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Billing account number for secondary device.
@@ -2304,6 +2566,12 @@ func (o DeviceSecondaryDevicePtrOutput) ToDeviceSecondaryDevicePtrOutput() Devic
 
 func (o DeviceSecondaryDevicePtrOutput) ToDeviceSecondaryDevicePtrOutputWithContext(ctx context.Context) DeviceSecondaryDevicePtrOutput {
 	return o
+}
+
+func (o DeviceSecondaryDevicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceSecondaryDevice] {
+	return pulumix.Output[*DeviceSecondaryDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceSecondaryDevicePtrOutput) Elem() DeviceSecondaryDeviceOutput {
@@ -2657,6 +2925,12 @@ func (i DeviceSecondaryDeviceInterfaceArgs) ToDeviceSecondaryDeviceInterfaceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecondaryDeviceInterfaceOutput)
 }
 
+func (i DeviceSecondaryDeviceInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceSecondaryDeviceInterface] {
+	return pulumix.Output[DeviceSecondaryDeviceInterface]{
+		OutputState: i.ToDeviceSecondaryDeviceInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceSecondaryDeviceInterfaceArrayInput is an input type that accepts DeviceSecondaryDeviceInterfaceArray and DeviceSecondaryDeviceInterfaceArrayOutput values.
 // You can construct a concrete instance of `DeviceSecondaryDeviceInterfaceArrayInput` via:
 //
@@ -2682,6 +2956,12 @@ func (i DeviceSecondaryDeviceInterfaceArray) ToDeviceSecondaryDeviceInterfaceArr
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecondaryDeviceInterfaceArrayOutput)
 }
 
+func (i DeviceSecondaryDeviceInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]DeviceSecondaryDeviceInterface] {
+	return pulumix.Output[[]DeviceSecondaryDeviceInterface]{
+		OutputState: i.ToDeviceSecondaryDeviceInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceSecondaryDeviceInterfaceOutput struct{ *pulumi.OutputState }
 
 func (DeviceSecondaryDeviceInterfaceOutput) ElementType() reflect.Type {
@@ -2694,6 +2974,12 @@ func (o DeviceSecondaryDeviceInterfaceOutput) ToDeviceSecondaryDeviceInterfaceOu
 
 func (o DeviceSecondaryDeviceInterfaceOutput) ToDeviceSecondaryDeviceInterfaceOutputWithContext(ctx context.Context) DeviceSecondaryDeviceInterfaceOutput {
 	return o
+}
+
+func (o DeviceSecondaryDeviceInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceSecondaryDeviceInterface] {
+	return pulumix.Output[DeviceSecondaryDeviceInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // interface management type (Equinix Managed or empty).
@@ -2750,6 +3036,12 @@ func (o DeviceSecondaryDeviceInterfaceArrayOutput) ToDeviceSecondaryDeviceInterf
 	return o
 }
 
+func (o DeviceSecondaryDeviceInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceSecondaryDeviceInterface] {
+	return pulumix.Output[[]DeviceSecondaryDeviceInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeviceSecondaryDeviceInterfaceArrayOutput) Index(i pulumi.IntInput) DeviceSecondaryDeviceInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceSecondaryDeviceInterface {
 		return vs[0].([]DeviceSecondaryDeviceInterface)[vs[1].(int)]
@@ -2789,6 +3081,12 @@ func (i DeviceSecondaryDeviceSshKeyArgs) ToDeviceSecondaryDeviceSshKeyOutput() D
 
 func (i DeviceSecondaryDeviceSshKeyArgs) ToDeviceSecondaryDeviceSshKeyOutputWithContext(ctx context.Context) DeviceSecondaryDeviceSshKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecondaryDeviceSshKeyOutput)
+}
+
+func (i DeviceSecondaryDeviceSshKeyArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[DeviceSecondaryDeviceSshKey]{
+		OutputState: i.ToDeviceSecondaryDeviceSshKeyOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DeviceSecondaryDeviceSshKeyArgs) ToDeviceSecondaryDeviceSshKeyPtrOutput() DeviceSecondaryDeviceSshKeyPtrOutput {
@@ -2832,6 +3130,12 @@ func (i *deviceSecondaryDeviceSshKeyPtrType) ToDeviceSecondaryDeviceSshKeyPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSecondaryDeviceSshKeyPtrOutput)
 }
 
+func (i *deviceSecondaryDeviceSshKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[*DeviceSecondaryDeviceSshKey]{
+		OutputState: i.ToDeviceSecondaryDeviceSshKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceSecondaryDeviceSshKeyOutput struct{ *pulumi.OutputState }
 
 func (DeviceSecondaryDeviceSshKeyOutput) ElementType() reflect.Type {
@@ -2856,6 +3160,12 @@ func (o DeviceSecondaryDeviceSshKeyOutput) ToDeviceSecondaryDeviceSshKeyPtrOutpu
 	}).(DeviceSecondaryDeviceSshKeyPtrOutput)
 }
 
+func (o DeviceSecondaryDeviceSshKeyOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[DeviceSecondaryDeviceSshKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeviceSecondaryDeviceSshKeyOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceSecondaryDeviceSshKey) string { return v.KeyName }).(pulumi.StringOutput)
 }
@@ -2877,6 +3187,12 @@ func (o DeviceSecondaryDeviceSshKeyPtrOutput) ToDeviceSecondaryDeviceSshKeyPtrOu
 
 func (o DeviceSecondaryDeviceSshKeyPtrOutput) ToDeviceSecondaryDeviceSshKeyPtrOutputWithContext(ctx context.Context) DeviceSecondaryDeviceSshKeyPtrOutput {
 	return o
+}
+
+func (o DeviceSecondaryDeviceSshKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[*DeviceSecondaryDeviceSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceSecondaryDeviceSshKeyPtrOutput) Elem() DeviceSecondaryDeviceSshKeyOutput {
@@ -2943,6 +3259,12 @@ func (i DeviceSshKeyArgs) ToDeviceSshKeyOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSshKeyOutput)
 }
 
+func (i DeviceSshKeyArgs) ToOutput(ctx context.Context) pulumix.Output[DeviceSshKey] {
+	return pulumix.Output[DeviceSshKey]{
+		OutputState: i.ToDeviceSshKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DeviceSshKeyArgs) ToDeviceSshKeyPtrOutput() DeviceSshKeyPtrOutput {
 	return i.ToDeviceSshKeyPtrOutputWithContext(context.Background())
 }
@@ -2984,6 +3306,12 @@ func (i *deviceSshKeyPtrType) ToDeviceSshKeyPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSshKeyPtrOutput)
 }
 
+func (i *deviceSshKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DeviceSshKey] {
+	return pulumix.Output[*DeviceSshKey]{
+		OutputState: i.ToDeviceSshKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceSshKeyOutput struct{ *pulumi.OutputState }
 
 func (DeviceSshKeyOutput) ElementType() reflect.Type {
@@ -3008,6 +3336,12 @@ func (o DeviceSshKeyOutput) ToDeviceSshKeyPtrOutputWithContext(ctx context.Conte
 	}).(DeviceSshKeyPtrOutput)
 }
 
+func (o DeviceSshKeyOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceSshKey] {
+	return pulumix.Output[DeviceSshKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeviceSshKeyOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceSshKey) string { return v.KeyName }).(pulumi.StringOutput)
 }
@@ -3029,6 +3363,12 @@ func (o DeviceSshKeyPtrOutput) ToDeviceSshKeyPtrOutput() DeviceSshKeyPtrOutput {
 
 func (o DeviceSshKeyPtrOutput) ToDeviceSshKeyPtrOutputWithContext(ctx context.Context) DeviceSshKeyPtrOutput {
 	return o
+}
+
+func (o DeviceSshKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceSshKey] {
+	return pulumix.Output[*DeviceSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceSshKeyPtrOutput) Elem() DeviceSshKeyOutput {
@@ -3103,6 +3443,12 @@ func (i GetDeviceClusterDetailArgs) ToGetDeviceClusterDetailOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailOutput)
 }
 
+func (i GetDeviceClusterDetailArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetail] {
+	return pulumix.Output[GetDeviceClusterDetail]{
+		OutputState: i.ToGetDeviceClusterDetailOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceClusterDetailArrayInput is an input type that accepts GetDeviceClusterDetailArray and GetDeviceClusterDetailArrayOutput values.
 // You can construct a concrete instance of `GetDeviceClusterDetailArrayInput` via:
 //
@@ -3128,6 +3474,12 @@ func (i GetDeviceClusterDetailArray) ToGetDeviceClusterDetailArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailArrayOutput)
 }
 
+func (i GetDeviceClusterDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetail] {
+	return pulumix.Output[[]GetDeviceClusterDetail]{
+		OutputState: i.ToGetDeviceClusterDetailArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceClusterDetailOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceClusterDetailOutput) ElementType() reflect.Type {
@@ -3140,6 +3492,12 @@ func (o GetDeviceClusterDetailOutput) ToGetDeviceClusterDetailOutput() GetDevice
 
 func (o GetDeviceClusterDetailOutput) ToGetDeviceClusterDetailOutputWithContext(ctx context.Context) GetDeviceClusterDetailOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetail] {
+	return pulumix.Output[GetDeviceClusterDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the cluster
@@ -3176,6 +3534,12 @@ func (o GetDeviceClusterDetailArrayOutput) ToGetDeviceClusterDetailArrayOutput()
 
 func (o GetDeviceClusterDetailArrayOutput) ToGetDeviceClusterDetailArrayOutputWithContext(ctx context.Context) GetDeviceClusterDetailArrayOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetail] {
+	return pulumix.Output[[]GetDeviceClusterDetail]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailArrayOutput) Index(i pulumi.IntInput) GetDeviceClusterDetailOutput {
@@ -3229,6 +3593,12 @@ func (i GetDeviceClusterDetailNode0Args) ToGetDeviceClusterDetailNode0OutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode0Output)
 }
 
+func (i GetDeviceClusterDetailNode0Args) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode0] {
+	return pulumix.Output[GetDeviceClusterDetailNode0]{
+		OutputState: i.ToGetDeviceClusterDetailNode0OutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceClusterDetailNode0ArrayInput is an input type that accepts GetDeviceClusterDetailNode0Array and GetDeviceClusterDetailNode0ArrayOutput values.
 // You can construct a concrete instance of `GetDeviceClusterDetailNode0ArrayInput` via:
 //
@@ -3254,6 +3624,12 @@ func (i GetDeviceClusterDetailNode0Array) ToGetDeviceClusterDetailNode0ArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode0ArrayOutput)
 }
 
+func (i GetDeviceClusterDetailNode0Array) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode0] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode0]{
+		OutputState: i.ToGetDeviceClusterDetailNode0ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceClusterDetailNode0Output struct{ *pulumi.OutputState }
 
 func (GetDeviceClusterDetailNode0Output) ElementType() reflect.Type {
@@ -3266,6 +3642,12 @@ func (o GetDeviceClusterDetailNode0Output) ToGetDeviceClusterDetailNode0Output()
 
 func (o GetDeviceClusterDetailNode0Output) ToGetDeviceClusterDetailNode0OutputWithContext(ctx context.Context) GetDeviceClusterDetailNode0Output {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode0Output) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode0] {
+	return pulumix.Output[GetDeviceClusterDetailNode0]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of applied license file
@@ -3305,6 +3687,12 @@ func (o GetDeviceClusterDetailNode0ArrayOutput) ToGetDeviceClusterDetailNode0Arr
 
 func (o GetDeviceClusterDetailNode0ArrayOutput) ToGetDeviceClusterDetailNode0ArrayOutputWithContext(ctx context.Context) GetDeviceClusterDetailNode0ArrayOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode0ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode0] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode0]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailNode0ArrayOutput) Index(i pulumi.IntInput) GetDeviceClusterDetailNode0Output {
@@ -3354,6 +3742,12 @@ func (i GetDeviceClusterDetailNode0VendorConfigurationArgs) ToGetDeviceClusterDe
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode0VendorConfigurationOutput)
 }
 
+func (i GetDeviceClusterDetailNode0VendorConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode0VendorConfiguration] {
+	return pulumix.Output[GetDeviceClusterDetailNode0VendorConfiguration]{
+		OutputState: i.ToGetDeviceClusterDetailNode0VendorConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceClusterDetailNode0VendorConfigurationArrayInput is an input type that accepts GetDeviceClusterDetailNode0VendorConfigurationArray and GetDeviceClusterDetailNode0VendorConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDeviceClusterDetailNode0VendorConfigurationArrayInput` via:
 //
@@ -3379,6 +3773,12 @@ func (i GetDeviceClusterDetailNode0VendorConfigurationArray) ToGetDeviceClusterD
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode0VendorConfigurationArrayOutput)
 }
 
+func (i GetDeviceClusterDetailNode0VendorConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode0VendorConfiguration] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode0VendorConfiguration]{
+		OutputState: i.ToGetDeviceClusterDetailNode0VendorConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceClusterDetailNode0VendorConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceClusterDetailNode0VendorConfigurationOutput) ElementType() reflect.Type {
@@ -3391,6 +3791,12 @@ func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) ToGetDeviceCluster
 
 func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) ToGetDeviceClusterDetailNode0VendorConfigurationOutputWithContext(ctx context.Context) GetDeviceClusterDetailNode0VendorConfigurationOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode0VendorConfiguration] {
+	return pulumix.Output[GetDeviceClusterDetailNode0VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailNode0VendorConfigurationOutput) ActivationKey() pulumi.StringOutput {
@@ -3429,6 +3835,12 @@ func (o GetDeviceClusterDetailNode0VendorConfigurationArrayOutput) ToGetDeviceCl
 
 func (o GetDeviceClusterDetailNode0VendorConfigurationArrayOutput) ToGetDeviceClusterDetailNode0VendorConfigurationArrayOutputWithContext(ctx context.Context) GetDeviceClusterDetailNode0VendorConfigurationArrayOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode0VendorConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode0VendorConfiguration] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode0VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailNode0VendorConfigurationArrayOutput) Index(i pulumi.IntInput) GetDeviceClusterDetailNode0VendorConfigurationOutput {
@@ -3482,6 +3894,12 @@ func (i GetDeviceClusterDetailNode1Args) ToGetDeviceClusterDetailNode1OutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode1Output)
 }
 
+func (i GetDeviceClusterDetailNode1Args) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode1] {
+	return pulumix.Output[GetDeviceClusterDetailNode1]{
+		OutputState: i.ToGetDeviceClusterDetailNode1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceClusterDetailNode1ArrayInput is an input type that accepts GetDeviceClusterDetailNode1Array and GetDeviceClusterDetailNode1ArrayOutput values.
 // You can construct a concrete instance of `GetDeviceClusterDetailNode1ArrayInput` via:
 //
@@ -3507,6 +3925,12 @@ func (i GetDeviceClusterDetailNode1Array) ToGetDeviceClusterDetailNode1ArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode1ArrayOutput)
 }
 
+func (i GetDeviceClusterDetailNode1Array) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode1] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode1]{
+		OutputState: i.ToGetDeviceClusterDetailNode1ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceClusterDetailNode1Output struct{ *pulumi.OutputState }
 
 func (GetDeviceClusterDetailNode1Output) ElementType() reflect.Type {
@@ -3519,6 +3943,12 @@ func (o GetDeviceClusterDetailNode1Output) ToGetDeviceClusterDetailNode1Output()
 
 func (o GetDeviceClusterDetailNode1Output) ToGetDeviceClusterDetailNode1OutputWithContext(ctx context.Context) GetDeviceClusterDetailNode1Output {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode1Output) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode1] {
+	return pulumix.Output[GetDeviceClusterDetailNode1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of applied license file
@@ -3558,6 +3988,12 @@ func (o GetDeviceClusterDetailNode1ArrayOutput) ToGetDeviceClusterDetailNode1Arr
 
 func (o GetDeviceClusterDetailNode1ArrayOutput) ToGetDeviceClusterDetailNode1ArrayOutputWithContext(ctx context.Context) GetDeviceClusterDetailNode1ArrayOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode1] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailNode1ArrayOutput) Index(i pulumi.IntInput) GetDeviceClusterDetailNode1Output {
@@ -3607,6 +4043,12 @@ func (i GetDeviceClusterDetailNode1VendorConfigurationArgs) ToGetDeviceClusterDe
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode1VendorConfigurationOutput)
 }
 
+func (i GetDeviceClusterDetailNode1VendorConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode1VendorConfiguration] {
+	return pulumix.Output[GetDeviceClusterDetailNode1VendorConfiguration]{
+		OutputState: i.ToGetDeviceClusterDetailNode1VendorConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceClusterDetailNode1VendorConfigurationArrayInput is an input type that accepts GetDeviceClusterDetailNode1VendorConfigurationArray and GetDeviceClusterDetailNode1VendorConfigurationArrayOutput values.
 // You can construct a concrete instance of `GetDeviceClusterDetailNode1VendorConfigurationArrayInput` via:
 //
@@ -3632,6 +4074,12 @@ func (i GetDeviceClusterDetailNode1VendorConfigurationArray) ToGetDeviceClusterD
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceClusterDetailNode1VendorConfigurationArrayOutput)
 }
 
+func (i GetDeviceClusterDetailNode1VendorConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode1VendorConfiguration] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode1VendorConfiguration]{
+		OutputState: i.ToGetDeviceClusterDetailNode1VendorConfigurationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceClusterDetailNode1VendorConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceClusterDetailNode1VendorConfigurationOutput) ElementType() reflect.Type {
@@ -3644,6 +4092,12 @@ func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) ToGetDeviceCluster
 
 func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) ToGetDeviceClusterDetailNode1VendorConfigurationOutputWithContext(ctx context.Context) GetDeviceClusterDetailNode1VendorConfigurationOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceClusterDetailNode1VendorConfiguration] {
+	return pulumix.Output[GetDeviceClusterDetailNode1VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailNode1VendorConfigurationOutput) ActivationKey() pulumi.StringOutput {
@@ -3682,6 +4136,12 @@ func (o GetDeviceClusterDetailNode1VendorConfigurationArrayOutput) ToGetDeviceCl
 
 func (o GetDeviceClusterDetailNode1VendorConfigurationArrayOutput) ToGetDeviceClusterDetailNode1VendorConfigurationArrayOutputWithContext(ctx context.Context) GetDeviceClusterDetailNode1VendorConfigurationArrayOutput {
 	return o
+}
+
+func (o GetDeviceClusterDetailNode1VendorConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceClusterDetailNode1VendorConfiguration] {
+	return pulumix.Output[[]GetDeviceClusterDetailNode1VendorConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceClusterDetailNode1VendorConfigurationArrayOutput) Index(i pulumi.IntInput) GetDeviceClusterDetailNode1VendorConfigurationOutput {
@@ -3759,6 +4219,12 @@ func (i GetDeviceInterfaceArgs) ToGetDeviceInterfaceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceInterfaceOutput)
 }
 
+func (i GetDeviceInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceInterface] {
+	return pulumix.Output[GetDeviceInterface]{
+		OutputState: i.ToGetDeviceInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceInterfaceArrayInput is an input type that accepts GetDeviceInterfaceArray and GetDeviceInterfaceArrayOutput values.
 // You can construct a concrete instance of `GetDeviceInterfaceArrayInput` via:
 //
@@ -3784,6 +4250,12 @@ func (i GetDeviceInterfaceArray) ToGetDeviceInterfaceArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceInterfaceArrayOutput)
 }
 
+func (i GetDeviceInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceInterface] {
+	return pulumix.Output[[]GetDeviceInterface]{
+		OutputState: i.ToGetDeviceInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceInterfaceOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceInterfaceOutput) ElementType() reflect.Type {
@@ -3796,6 +4268,12 @@ func (o GetDeviceInterfaceOutput) ToGetDeviceInterfaceOutput() GetDeviceInterfac
 
 func (o GetDeviceInterfaceOutput) ToGetDeviceInterfaceOutputWithContext(ctx context.Context) GetDeviceInterfaceOutput {
 	return o
+}
+
+func (o GetDeviceInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceInterface] {
+	return pulumix.Output[GetDeviceInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceInterfaceOutput) AssignedType() pulumi.StringOutput {
@@ -3856,6 +4334,12 @@ func (o GetDeviceInterfaceArrayOutput) ToGetDeviceInterfaceArrayOutputWithContex
 	return o
 }
 
+func (o GetDeviceInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceInterface] {
+	return pulumix.Output[[]GetDeviceInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDeviceInterfaceArrayOutput) Index(i pulumi.IntInput) GetDeviceInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceInterface {
 		return vs[0].([]GetDeviceInterface)[vs[1].(int)]
@@ -3868,8 +4352,9 @@ type GetDeviceSecondaryDevice struct {
 	AclTemplateId       string `pulumi:"aclTemplateId"`
 	AdditionalBandwidth int    `pulumi:"additionalBandwidth"`
 	// Autonomous system number
-	Asn      int    `pulumi:"asn"`
-	Hostname string `pulumi:"hostname"`
+	Asn             int    `pulumi:"asn"`
+	CloudInitFileId string `pulumi:"cloudInitFileId"`
+	Hostname        string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name
 	Ibx string `pulumi:"ibx"`
 	// List of device interfaces
@@ -3891,6 +4376,7 @@ type GetDeviceSecondaryDevice struct {
 	// * APPLIED
 	// * WAITING_FOR_CLUSTER_SETUP
 	// * REGISTRATION_FAILED
+	// * NA
 	LicenseStatus       string `pulumi:"licenseStatus"`
 	LicenseToken        string `pulumi:"licenseToken"`
 	MetroCode           string `pulumi:"metroCode"`
@@ -3947,8 +4433,9 @@ type GetDeviceSecondaryDeviceArgs struct {
 	AclTemplateId       pulumi.StringInput `pulumi:"aclTemplateId"`
 	AdditionalBandwidth pulumi.IntInput    `pulumi:"additionalBandwidth"`
 	// Autonomous system number
-	Asn      pulumi.IntInput    `pulumi:"asn"`
-	Hostname pulumi.StringInput `pulumi:"hostname"`
+	Asn             pulumi.IntInput    `pulumi:"asn"`
+	CloudInitFileId pulumi.StringInput `pulumi:"cloudInitFileId"`
+	Hostname        pulumi.StringInput `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name
 	Ibx pulumi.StringInput `pulumi:"ibx"`
 	// List of device interfaces
@@ -3970,6 +4457,7 @@ type GetDeviceSecondaryDeviceArgs struct {
 	// * APPLIED
 	// * WAITING_FOR_CLUSTER_SETUP
 	// * REGISTRATION_FAILED
+	// * NA
 	LicenseStatus       pulumi.StringInput `pulumi:"licenseStatus"`
 	LicenseToken        pulumi.StringInput `pulumi:"licenseToken"`
 	MetroCode           pulumi.StringInput `pulumi:"metroCode"`
@@ -4021,6 +4509,12 @@ func (i GetDeviceSecondaryDeviceArgs) ToGetDeviceSecondaryDeviceOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSecondaryDeviceOutput)
 }
 
+func (i GetDeviceSecondaryDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSecondaryDevice] {
+	return pulumix.Output[GetDeviceSecondaryDevice]{
+		OutputState: i.ToGetDeviceSecondaryDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceSecondaryDeviceArrayInput is an input type that accepts GetDeviceSecondaryDeviceArray and GetDeviceSecondaryDeviceArrayOutput values.
 // You can construct a concrete instance of `GetDeviceSecondaryDeviceArrayInput` via:
 //
@@ -4046,6 +4540,12 @@ func (i GetDeviceSecondaryDeviceArray) ToGetDeviceSecondaryDeviceArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSecondaryDeviceArrayOutput)
 }
 
+func (i GetDeviceSecondaryDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSecondaryDevice] {
+	return pulumix.Output[[]GetDeviceSecondaryDevice]{
+		OutputState: i.ToGetDeviceSecondaryDeviceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceSecondaryDeviceOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceSecondaryDeviceOutput) ElementType() reflect.Type {
@@ -4058,6 +4558,12 @@ func (o GetDeviceSecondaryDeviceOutput) ToGetDeviceSecondaryDeviceOutput() GetDe
 
 func (o GetDeviceSecondaryDeviceOutput) ToGetDeviceSecondaryDeviceOutputWithContext(ctx context.Context) GetDeviceSecondaryDeviceOutput {
 	return o
+}
+
+func (o GetDeviceSecondaryDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSecondaryDevice] {
+	return pulumix.Output[GetDeviceSecondaryDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceSecondaryDeviceOutput) AccountNumber() pulumi.StringOutput {
@@ -4076,6 +4582,10 @@ func (o GetDeviceSecondaryDeviceOutput) AdditionalBandwidth() pulumi.IntOutput {
 // Autonomous system number
 func (o GetDeviceSecondaryDeviceOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+func (o GetDeviceSecondaryDeviceOutput) CloudInitFileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDeviceSecondaryDevice) string { return v.CloudInitFileId }).(pulumi.StringOutput)
 }
 
 func (o GetDeviceSecondaryDeviceOutput) Hostname() pulumi.StringOutput {
@@ -4115,6 +4625,7 @@ func (o GetDeviceSecondaryDeviceOutput) LicenseFileId() pulumi.StringOutput {
 // * APPLIED
 // * WAITING_FOR_CLUSTER_SETUP
 // * REGISTRATION_FAILED
+// * NA
 func (o GetDeviceSecondaryDeviceOutput) LicenseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) string { return v.LicenseStatus }).(pulumi.StringOutput)
 }
@@ -4217,6 +4728,12 @@ func (o GetDeviceSecondaryDeviceArrayOutput) ToGetDeviceSecondaryDeviceArrayOutp
 	return o
 }
 
+func (o GetDeviceSecondaryDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSecondaryDevice] {
+	return pulumix.Output[[]GetDeviceSecondaryDevice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDeviceSecondaryDeviceArrayOutput) Index(i pulumi.IntInput) GetDeviceSecondaryDeviceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceSecondaryDevice {
 		return vs[0].([]GetDeviceSecondaryDevice)[vs[1].(int)]
@@ -4292,6 +4809,12 @@ func (i GetDeviceSecondaryDeviceInterfaceArgs) ToGetDeviceSecondaryDeviceInterfa
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSecondaryDeviceInterfaceOutput)
 }
 
+func (i GetDeviceSecondaryDeviceInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSecondaryDeviceInterface] {
+	return pulumix.Output[GetDeviceSecondaryDeviceInterface]{
+		OutputState: i.ToGetDeviceSecondaryDeviceInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceSecondaryDeviceInterfaceArrayInput is an input type that accepts GetDeviceSecondaryDeviceInterfaceArray and GetDeviceSecondaryDeviceInterfaceArrayOutput values.
 // You can construct a concrete instance of `GetDeviceSecondaryDeviceInterfaceArrayInput` via:
 //
@@ -4317,6 +4840,12 @@ func (i GetDeviceSecondaryDeviceInterfaceArray) ToGetDeviceSecondaryDeviceInterf
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSecondaryDeviceInterfaceArrayOutput)
 }
 
+func (i GetDeviceSecondaryDeviceInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSecondaryDeviceInterface] {
+	return pulumix.Output[[]GetDeviceSecondaryDeviceInterface]{
+		OutputState: i.ToGetDeviceSecondaryDeviceInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceSecondaryDeviceInterfaceOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceSecondaryDeviceInterfaceOutput) ElementType() reflect.Type {
@@ -4329,6 +4858,12 @@ func (o GetDeviceSecondaryDeviceInterfaceOutput) ToGetDeviceSecondaryDeviceInter
 
 func (o GetDeviceSecondaryDeviceInterfaceOutput) ToGetDeviceSecondaryDeviceInterfaceOutputWithContext(ctx context.Context) GetDeviceSecondaryDeviceInterfaceOutput {
 	return o
+}
+
+func (o GetDeviceSecondaryDeviceInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSecondaryDeviceInterface] {
+	return pulumix.Output[GetDeviceSecondaryDeviceInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceSecondaryDeviceInterfaceOutput) AssignedType() pulumi.StringOutput {
@@ -4389,6 +4924,12 @@ func (o GetDeviceSecondaryDeviceInterfaceArrayOutput) ToGetDeviceSecondaryDevice
 	return o
 }
 
+func (o GetDeviceSecondaryDeviceInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSecondaryDeviceInterface] {
+	return pulumix.Output[[]GetDeviceSecondaryDeviceInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetDeviceSecondaryDeviceInterfaceArrayOutput) Index(i pulumi.IntInput) GetDeviceSecondaryDeviceInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDeviceSecondaryDeviceInterface {
 		return vs[0].([]GetDeviceSecondaryDeviceInterface)[vs[1].(int)]
@@ -4428,6 +4969,12 @@ func (i GetDeviceSecondaryDeviceSshKeyArgs) ToGetDeviceSecondaryDeviceSshKeyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSecondaryDeviceSshKeyOutput)
 }
 
+func (i GetDeviceSecondaryDeviceSshKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[GetDeviceSecondaryDeviceSshKey]{
+		OutputState: i.ToGetDeviceSecondaryDeviceSshKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceSecondaryDeviceSshKeyArrayInput is an input type that accepts GetDeviceSecondaryDeviceSshKeyArray and GetDeviceSecondaryDeviceSshKeyArrayOutput values.
 // You can construct a concrete instance of `GetDeviceSecondaryDeviceSshKeyArrayInput` via:
 //
@@ -4453,6 +5000,12 @@ func (i GetDeviceSecondaryDeviceSshKeyArray) ToGetDeviceSecondaryDeviceSshKeyArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSecondaryDeviceSshKeyArrayOutput)
 }
 
+func (i GetDeviceSecondaryDeviceSshKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[[]GetDeviceSecondaryDeviceSshKey]{
+		OutputState: i.ToGetDeviceSecondaryDeviceSshKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceSecondaryDeviceSshKeyOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceSecondaryDeviceSshKeyOutput) ElementType() reflect.Type {
@@ -4465,6 +5018,12 @@ func (o GetDeviceSecondaryDeviceSshKeyOutput) ToGetDeviceSecondaryDeviceSshKeyOu
 
 func (o GetDeviceSecondaryDeviceSshKeyOutput) ToGetDeviceSecondaryDeviceSshKeyOutputWithContext(ctx context.Context) GetDeviceSecondaryDeviceSshKeyOutput {
 	return o
+}
+
+func (o GetDeviceSecondaryDeviceSshKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[GetDeviceSecondaryDeviceSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceSecondaryDeviceSshKeyOutput) KeyName() pulumi.StringOutput {
@@ -4487,6 +5046,12 @@ func (o GetDeviceSecondaryDeviceSshKeyArrayOutput) ToGetDeviceSecondaryDeviceSsh
 
 func (o GetDeviceSecondaryDeviceSshKeyArrayOutput) ToGetDeviceSecondaryDeviceSshKeyArrayOutputWithContext(ctx context.Context) GetDeviceSecondaryDeviceSshKeyArrayOutput {
 	return o
+}
+
+func (o GetDeviceSecondaryDeviceSshKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSecondaryDeviceSshKey] {
+	return pulumix.Output[[]GetDeviceSecondaryDeviceSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceSecondaryDeviceSshKeyArrayOutput) Index(i pulumi.IntInput) GetDeviceSecondaryDeviceSshKeyOutput {
@@ -4528,6 +5093,12 @@ func (i GetDeviceSshKeyArgs) ToGetDeviceSshKeyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSshKeyOutput)
 }
 
+func (i GetDeviceSshKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSshKey] {
+	return pulumix.Output[GetDeviceSshKey]{
+		OutputState: i.ToGetDeviceSshKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDeviceSshKeyArrayInput is an input type that accepts GetDeviceSshKeyArray and GetDeviceSshKeyArrayOutput values.
 // You can construct a concrete instance of `GetDeviceSshKeyArrayInput` via:
 //
@@ -4553,6 +5124,12 @@ func (i GetDeviceSshKeyArray) ToGetDeviceSshKeyArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDeviceSshKeyArrayOutput)
 }
 
+func (i GetDeviceSshKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSshKey] {
+	return pulumix.Output[[]GetDeviceSshKey]{
+		OutputState: i.ToGetDeviceSshKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDeviceSshKeyOutput struct{ *pulumi.OutputState }
 
 func (GetDeviceSshKeyOutput) ElementType() reflect.Type {
@@ -4565,6 +5142,12 @@ func (o GetDeviceSshKeyOutput) ToGetDeviceSshKeyOutput() GetDeviceSshKeyOutput {
 
 func (o GetDeviceSshKeyOutput) ToGetDeviceSshKeyOutputWithContext(ctx context.Context) GetDeviceSshKeyOutput {
 	return o
+}
+
+func (o GetDeviceSshKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceSshKey] {
+	return pulumix.Output[GetDeviceSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceSshKeyOutput) KeyName() pulumi.StringOutput {
@@ -4587,6 +5170,12 @@ func (o GetDeviceSshKeyArrayOutput) ToGetDeviceSshKeyArrayOutput() GetDeviceSshK
 
 func (o GetDeviceSshKeyArrayOutput) ToGetDeviceSshKeyArrayOutputWithContext(ctx context.Context) GetDeviceSshKeyArrayOutput {
 	return o
+}
+
+func (o GetDeviceSshKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDeviceSshKey] {
+	return pulumix.Output[[]GetDeviceSshKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDeviceSshKeyArrayOutput) Index(i pulumi.IntInput) GetDeviceSshKeyOutput {

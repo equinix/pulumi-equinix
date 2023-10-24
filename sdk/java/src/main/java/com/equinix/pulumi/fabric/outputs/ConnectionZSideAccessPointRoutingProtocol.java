@@ -12,32 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionZSideAccessPointRoutingProtocol {
     /**
-     * @return Connection overall state
+     * @return Routing protocol instance state
      * 
      */
     private @Nullable String state;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     private @Nullable String uuid;
 
     private ConnectionZSideAccessPointRoutingProtocol() {}
     /**
-     * @return Connection overall state
+     * @return Routing protocol instance state
      * 
      */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * @return Interface type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }

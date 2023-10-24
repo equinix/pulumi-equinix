@@ -1,0 +1,27 @@
+name: equinix-fabric-cloud-router
+runtime: yaml
+description: An Equinix Fabric Cloud Router instance
+config:
+  metro:
+    type: string
+    default: FR
+  accountNum:
+    type: integer
+resources:
+  router:
+    type: equinix:fabric:CloudRouter
+    properties:
+      name: My-Fabric-Cloud-Router
+      type: XF_ROUTER
+      location:
+        metroCode: ${metro}
+      package:
+        code: BASIC
+      notifications:
+      - type: ALL
+        emails:
+        - example@equinix.com
+      account:
+        accountNumber: 272010
+outputs:
+  routerId: ${router.id}

@@ -9,19 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfileMarketingInfoProcessStep {
-    /**
-     * @return User-provided service description
-     * 
-     */
     private String description;
     private String subTitle;
     private String title;
 
     private GetServiceProfileMarketingInfoProcessStep() {}
-    /**
-     * @return User-provided service description
-     * 
-     */
     public String description() {
         return this.description;
     }

@@ -109,13 +109,13 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly aSide!: pulumi.Output<outputs.fabric.ConnectionASide>;
     /**
-     * Customer account information that is associated with this connection
+     * Account
      */
     public /*out*/ readonly account!: pulumi.Output<outputs.fabric.ConnectionAccount>;
     /**
-     * Connection additional information
+     * Connection side additional information
      */
-    public readonly additionalInfo!: pulumi.Output<outputs.fabric.ConnectionAdditionalInfo[] | undefined>;
+    public readonly additionalInfo!: pulumi.Output<{[key: string]: any}[] | undefined>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -129,7 +129,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly direction!: pulumi.Output<string>;
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly isRemote!: pulumi.Output<boolean>;
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -161,11 +161,11 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly redundancy!: pulumi.Output<outputs.fabric.ConnectionRedundancy | undefined>;
     /**
-     * Connection overall state
+     * Routing protocol instance state
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -252,13 +252,13 @@ export interface ConnectionState {
      */
     aSide?: pulumi.Input<inputs.fabric.ConnectionASide>;
     /**
-     * Customer account information that is associated with this connection
+     * Account
      */
     account?: pulumi.Input<inputs.fabric.ConnectionAccount>;
     /**
-     * Connection additional information
+     * Connection side additional information
      */
-    additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAdditionalInfo>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
      * Connection bandwidth in Mbps
      */
@@ -272,7 +272,7 @@ export interface ConnectionState {
      */
     direction?: pulumi.Input<string>;
     /**
-     * Connection URI information
+     * Unique Resource Identifier
      */
     href?: pulumi.Input<string>;
     /**
@@ -280,7 +280,7 @@ export interface ConnectionState {
      */
     isRemote?: pulumi.Input<boolean>;
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      */
     name?: pulumi.Input<string>;
     /**
@@ -304,11 +304,11 @@ export interface ConnectionState {
      */
     redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
-     * Connection overall state
+     * Routing protocol instance state
      */
     state?: pulumi.Input<string>;
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      */
     type?: pulumi.Input<string | enums.fabric.ConnectionType>;
     /**
@@ -326,15 +326,15 @@ export interface ConnectionArgs {
      */
     aSide: pulumi.Input<inputs.fabric.ConnectionASide>;
     /**
-     * Connection additional information
+     * Connection side additional information
      */
-    additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionAdditionalInfo>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
      * Connection bandwidth in Mbps
      */
     bandwidth: pulumi.Input<number>;
     /**
-     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+     * Port name
      */
     name?: pulumi.Input<string>;
     /**
@@ -354,7 +354,7 @@ export interface ConnectionArgs {
      */
     redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
+     * Interface type
      */
     type: pulumi.Input<string | enums.fabric.ConnectionType>;
     /**

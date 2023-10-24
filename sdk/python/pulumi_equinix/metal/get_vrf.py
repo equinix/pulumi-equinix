@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -150,14 +150,14 @@ def get_vrf(vrf_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getVrf:getVrf', __args__, opts=opts, typ=GetVrfResult).value
 
     return AwaitableGetVrfResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_ranges=__ret__.ip_ranges,
-        local_asn=__ret__.local_asn,
-        metro=__ret__.metro,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        vrf_id=__ret__.vrf_id)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_ranges=pulumi.get(__ret__, 'ip_ranges'),
+        local_asn=pulumi.get(__ret__, 'local_asn'),
+        metro=pulumi.get(__ret__, 'metro'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        vrf_id=pulumi.get(__ret__, 'vrf_id'))
 
 
 @_utilities.lift_output_func(get_vrf)

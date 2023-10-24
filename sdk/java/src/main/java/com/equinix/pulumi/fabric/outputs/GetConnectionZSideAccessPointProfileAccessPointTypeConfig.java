@@ -28,15 +28,7 @@ public final class GetConnectionZSideAccessPointProfileAccessPointTypeConfig {
     private Boolean enableAutoGenerateServiceKey;
     private List<GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
     private List<Integer> supportedBandwidths;
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     private String type;
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     private String uuid;
 
     private GetConnectionZSideAccessPointProfileAccessPointTypeConfig() {}
@@ -76,17 +68,9 @@ public final class GetConnectionZSideAccessPointProfileAccessPointTypeConfig {
     public List<Integer> supportedBandwidths() {
         return this.supportedBandwidths;
     }
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Equinix-assigned connection identifier
-     * 
-     */
     public String uuid() {
         return this.uuid;
     }

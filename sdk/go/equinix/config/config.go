@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // The Equinix Metal API auth key for API operations
 func GetAuthToken(ctx *pulumi.Context) string {

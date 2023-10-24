@@ -12,6 +12,7 @@ from .device_network_type import *
 from .gateway import *
 from .get_device import *
 from .get_device_bgp_neighbors import *
+from .get_devices import *
 from .get_facility import *
 from .get_gateway import *
 from .get_hardware_reservation import *

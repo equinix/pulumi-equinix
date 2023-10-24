@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
+    /**
+     * @return Port Encapsulation
+     * 
+     */
     private @Nullable String encapsulation;
+    /**
+     * @return Encapsulation strategy
+     * 
+     */
     private @Nullable String encapsulationStrategy;
+    /**
+     * @return Reuse vlan sTag
+     * 
+     */
     private @Nullable Boolean reuseVlanSTag;
 
     private ServiceProfileAccessPointTypeConfigLinkProtocolConfig() {}
+    /**
+     * @return Port Encapsulation
+     * 
+     */
     public Optional<String> encapsulation() {
         return Optional.ofNullable(this.encapsulation);
     }
+    /**
+     * @return Encapsulation strategy
+     * 
+     */
     public Optional<String> encapsulationStrategy() {
         return Optional.ofNullable(this.encapsulationStrategy);
     }
+    /**
+     * @return Reuse vlan sTag
+     * 
+     */
     public Optional<Boolean> reuseVlanSTag() {
         return Optional.ofNullable(this.reuseVlanSTag);
     }

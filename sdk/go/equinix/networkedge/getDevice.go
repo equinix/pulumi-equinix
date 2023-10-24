@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Network Edge device details.
@@ -44,7 +46,7 @@ import (
 //
 // ```
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceResult
 	err := ctx.Invoke("equinix:networkedge/getDevice:getDevice", args, &rv, opts...)
 	if err != nil {
@@ -60,6 +62,8 @@ type LookupDeviceArgs struct {
 	// UUID of an existing Equinix Network Edge device
 	Uuid *string `pulumi:"uuid"`
 	// Device states to be considered valid when searching for a device by name
+	//
+	// NOTE: Exactly one of either `uuid` or `name` must be specified.
 	ValidStatusList *string `pulumi:"validStatusList"`
 }
 
@@ -73,8 +77,10 @@ type LookupDeviceResult struct {
 	Asn            int                      `pulumi:"asn"`
 	Byol           bool                     `pulumi:"byol"`
 	ClusterDetails []GetDeviceClusterDetail `pulumi:"clusterDetails"`
-	CoreCount      int                      `pulumi:"coreCount"`
-	Hostname       string                   `pulumi:"hostname"`
+	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+	Connectivity string `pulumi:"connectivity"`
+	CoreCount    int    `pulumi:"coreCount"`
+	Hostname     string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name
 	Ibx string `pulumi:"ibx"`
 	// The provider-assigned unique ID for this managed resource.
@@ -99,6 +105,7 @@ type LookupDeviceResult struct {
 	// * APPLIED
 	// * WAITING_FOR_CLUSTER_SETUP
 	// * REGISTRATION_FAILED
+	// * NA
 	LicenseStatus       string   `pulumi:"licenseStatus"`
 	LicenseToken        string   `pulumi:"licenseToken"`
 	MetroCode           string   `pulumi:"metroCode"`
@@ -169,6 +176,8 @@ type LookupDeviceOutputArgs struct {
 	// UUID of an existing Equinix Network Edge device
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 	// Device states to be considered valid when searching for a device by name
+	//
+	// NOTE: Exactly one of either `uuid` or `name` must be specified.
 	ValidStatusList pulumi.StringPtrInput `pulumi:"validStatusList"`
 }
 
@@ -189,6 +198,12 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResul
 
 func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
 	return o
+}
+
+func (o LookupDeviceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceResult] {
+	return pulumix.Output[LookupDeviceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupDeviceResultOutput) AccountNumber() pulumi.StringOutput {
@@ -215,6 +230,11 @@ func (o LookupDeviceResultOutput) Byol() pulumi.BoolOutput {
 
 func (o LookupDeviceResultOutput) ClusterDetails() GetDeviceClusterDetailArrayOutput {
 	return o.ApplyT(func(v LookupDeviceResult) []GetDeviceClusterDetail { return v.ClusterDetails }).(GetDeviceClusterDetailArrayOutput)
+}
+
+// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
+func (o LookupDeviceResultOutput) Connectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Connectivity }).(pulumi.StringOutput)
 }
 
 func (o LookupDeviceResultOutput) CoreCount() pulumi.IntOutput {
@@ -267,6 +287,7 @@ func (o LookupDeviceResultOutput) LicenseFileId() pulumi.StringOutput {
 // * APPLIED
 // * WAITING_FOR_CLUSTER_SETUP
 // * REGISTRATION_FAILED
+// * NA
 func (o LookupDeviceResultOutput) LicenseStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.LicenseStatus }).(pulumi.StringOutput)
 }

@@ -10,20 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionZSideAccessPointLinkProtocol {
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     private String type;
     private Integer vlanCTag;
     private Integer vlanSTag;
     private Integer vlanTag;
 
     private GetConnectionZSideAccessPointLinkProtocol() {}
-    /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, GW*VC, ACCESS*EPL_VC
-     * 
-     */
     public String type() {
         return this.type;
     }

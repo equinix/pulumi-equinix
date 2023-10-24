@@ -65,10 +65,7 @@ export interface GetPortResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Port Lag
-     */
-    readonly lag: outputs.fabric.GetPortLag;
+    readonly lagEnabled: boolean;
     /**
      * Port location information
      */

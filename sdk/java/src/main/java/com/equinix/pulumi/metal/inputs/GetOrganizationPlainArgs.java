@@ -32,12 +32,16 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * The UUID of the organization resource.
      * 
+     * Exactly one of `name` or `organization_id` must be given.
+     * 
      */
     @Import(name="organizationId")
     private @Nullable String organizationId;
 
     /**
      * @return The UUID of the organization resource.
+     * 
+     * Exactly one of `name` or `organization_id` must be given.
      * 
      */
     public Optional<String> organizationId() {
@@ -82,6 +86,8 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param organizationId The UUID of the organization resource.
+         * 
+         * Exactly one of `name` or `organization_id` must be given.
          * 
          * @return builder
          * 

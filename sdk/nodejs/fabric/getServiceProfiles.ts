@@ -14,6 +14,7 @@ export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", {
         "filter": args.filter,
         "sort": args.sort,
+        "viewPoint": args.viewPoint,
     }, opts);
 }
 
@@ -29,6 +30,10 @@ export interface GetServiceProfilesArgs {
      * Service Profile Sort criteria for Search Request response payload
      */
     sort?: inputs.fabric.GetServiceProfilesSort[];
+    /**
+     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     */
+    viewPoint?: string;
 }
 
 /**
@@ -51,6 +56,10 @@ export interface GetServiceProfilesResult {
      * Service Profile Sort criteria for Search Request response payload
      */
     readonly sort?: outputs.fabric.GetServiceProfilesSort[];
+    /**
+     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     */
+    readonly viewPoint?: string;
 }
 export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))
@@ -68,4 +77,8 @@ export interface GetServiceProfilesOutputArgs {
      * Service Profile Sort criteria for Search Request response payload
      */
     sort?: pulumi.Input<pulumi.Input<inputs.fabric.GetServiceProfilesSortArgs>[]>;
+    /**
+     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     */
+    viewPoint?: pulumi.Input<string>;
 }

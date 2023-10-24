@@ -10,19 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfileAccessPointTypeConfigAuthenticationKey {
-    /**
-     * @return User-provided service description
-     * 
-     */
     private String description;
     private String label;
     private Boolean required;
 
     private GetServiceProfileAccessPointTypeConfigAuthenticationKey() {}
-    /**
-     * @return User-provided service description
-     * 
-     */
     public String description() {
         return this.description;
     }

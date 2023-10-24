@@ -12,7 +12,9 @@ namespace Pulumi.Equinix.Metal
     public static class GetDevice
     {
         /// <summary>
-        /// Provides an Equinix Metal device datasource.
+        /// The datasource can be used to fetch a single device.
+        /// 
+        /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
         /// 
         /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
         ///  the raw state as plain-text.
@@ -24,6 +26,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -44,6 +47,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -67,7 +71,9 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("equinix:metal/getDevice:getDevice", args ?? new GetDeviceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides an Equinix Metal device datasource.
+        /// The datasource can be used to fetch a single device.
+        /// 
+        /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
         /// 
         /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
         ///  the raw state as plain-text.
@@ -79,6 +85,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -99,6 +106,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Equinix = Pulumi.Equinix;
         /// 
@@ -127,6 +135,8 @@ namespace Pulumi.Equinix.Metal
     {
         /// <summary>
         /// Device ID.
+        /// 
+        /// &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
         /// </summary>
         [Input("deviceId")]
         public string? DeviceId { get; set; }
@@ -153,6 +163,8 @@ namespace Pulumi.Equinix.Metal
     {
         /// <summary>
         /// Device ID.
+        /// 
+        /// &gt; **NOTE:** You should pass either `device_id`, or both `project_id` and `hostname`.
         /// </summary>
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
@@ -201,6 +213,9 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string Description;
         public readonly string DeviceId;
+        /// <summary>
+        /// (**Deprecated**) The facility where the device is deployed. Use metro instead; read the facility to metro migration guide
+        /// </summary>
         public readonly string Facility;
         /// <summary>
         /// The id of hardware reservation which this device occupies.
