@@ -25,34 +25,13 @@ WORKING_DIR     := $(shell pwd)
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
-prepare::
-	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
-	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
-	@if test ! -d "provider/cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz"; then "Project already prepared"; exit 1; fi
-
-	mv "provider/cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz" provider/cmd/pulumi-tfgen-${NAME}
-	mv "provider/cmd/pulumi-resource-x${EMPTY_TO_AVOID_SED}yz" provider/cmd/pulumi-resource-${NAME}
-
-	if [[ "${OS}" != "Darwin" ]]; then \
-		sed -i 's,github.com/pulumi/pulumi-equinix,${REPOSITORY},g' provider/go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
-	# In MacOS the -i parameter needs an empty string to execute in place.
-	if [[ "${OS}" == "Darwin" ]]; then \
-		sed -i '' 's,github.com/pulumi/pulumi-equinix,${REPOSITORY},g' provider/go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
-.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python build_java clean cleanup
-
-development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
+development: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
 # Required for the codegen action that runs in pulumi/pulumi and pulumi/pulumi-terraform-bridge
-build:: install_plugins provider build_sdks install_sdks
-only_build:: build
+build: install_plugins provider build_sdks install_sdks
+only_build: build
 
-tfgen:: install_plugins
+tfgen: install_plugins upstream
 	(cd provider && go build -o $(WORKING_DIR)/bin/${TFGEN} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${TFGEN})
 	$(WORKING_DIR)/bin/${TFGEN} schema --out provider/cmd/${PROVIDER}
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
@@ -60,16 +39,16 @@ tfgen:: install_plugins
 bin/pulumi-java-gen:
 	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java
 
-provider:: tfgen install_plugins # build the provider binary
+provider: tfgen install_plugins # build the provider binary
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})
 
-build_sdks:: install_plugins provider build_nodejs build_python build_go build_dotnet build_java # build all the sdks
+build_sdks: build_nodejs build_python build_go build_dotnet build_java # build all the sdks
 
-build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
-build_nodejs:: install_plugins tfgen # build the node sdk
+build_nodejs: VERSION := $(shell pulumictl get version --language javascript)
+build_nodejs: upstream
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
-build_nodejs:: patch_nodejs # fix generated files
-build_nodejs::
+build_nodejs: patch_nodejs # fix generated files
+build_nodejs:
 	cd sdk/nodejs/ && \
 		printf "module fake_nodejs_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
         yarn install && \
@@ -77,7 +56,7 @@ build_nodejs::
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
-patch_nodejs::
+patch_nodejs:
 	echo "patch_nodejs: find and replace wrong imports in examples" && \
 		find ./sdk/nodejs/ -type f -name "*.ts" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec sed -i.bak 's/import \* as ${PACK} from "@pulumi\/${PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g; s/import \* as ${NODE_PACK_ALIAS} from "@${ORG}\/${NODE_PACK}"/import \* as ${PACK} from "@${ORG}-labs\/${NODE_PACK}"/g' {} \;
 	echo "patch_nodejs: delete duplicate imports in examples" && \
@@ -85,8 +64,9 @@ patch_nodejs::
 	echo "patch_nodejs: remove backup files" && \
 		find ./sdk/nodejs/ -type f -name "*.ts.bak" -not \( -path "*/bin/*" -o -path "*/node_modules/*" -o -path "*/@types/*" \) -print -exec /bin/rm {} \;
 
-build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
-build_python:: install_plugins tfgen # build the python sdk
+build_python: PYPI_VERSION := $(shell pulumictl get version --language python)
+build_python: upstream
+	rm -rf sdk/python/
 	$(WORKING_DIR)/bin/$(TFGEN) python --overlays provider/overlays/python --out sdk/python/
 	cd sdk/python/ && \
 		printf "module fake_python_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
@@ -97,8 +77,8 @@ build_python:: install_plugins tfgen # build the python sdk
         rm ./bin/setup.py.bak && \
         cd ./bin && python3 setup.py build sdist
 
-build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
-build_dotnet:: install_plugins tfgen # build the dotnet sdk
+build_dotnet: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
+build_dotnet: upstream
 	pulumictl get version --language dotnet
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
@@ -106,19 +86,19 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 		echo "${DOTNET_VERSION}" >version.txt && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
-build_go:: install_plugins tfgen # build the go sdk
+build_go:: upstream
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
-build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java:: install_plugins tfgen bin/pulumi-java-gen patch_java_schema # build the java sdk
+build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+build_java: bin/pulumi-java-gen patch_java_schema upstream
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema-java.json --out sdk/java --build gradle-nexus
 	rm -f ./provider/cmd/$(PROVIDER)/schema-java.json
-build_java:: patch_java
+build_java: patch_java
 	cd sdk/java/ && \
 		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		gradle --console=plain build
 
-patch_java_schema::
+patch_java_schema:
 	echo "patch_java_schema: copy schema.json to schema-java.json " && \
 		cp provider/cmd/$(PROVIDER)/schema.json provider/cmd/$(PROVIDER)/schema-java.json
 	echo "patch_java_schema: update schema-java.json to generate the SDK with pulumi as root package" && \
@@ -130,7 +110,7 @@ patch_java_schema::
 			-e 's/equinix:networkedge/pulumi:networkedge/g' ./provider/cmd/$(PROVIDER)/schema-java.json && \
 		rm -f ./provider/cmd/$(PROVIDER)/schema-java.json.bak
 
-patch_java::
+patch_java:
 	echo "patch_java: find and replace invocations of pulumi:fabric/metal/networkedge" && \
 		find ./sdk/java/src/main/java/com/equinix/pulumi -type f -name "*.java" -print -exec sed -i.bak 's/pulumi:fabric/equinix:fabric/g; s/pulumi:metal/equinix:metal/g; s/pulumi:networkedge/equinix:networkedge/g' {} \;
 	echo "patch_java: remove backup files" && \
@@ -157,41 +137,41 @@ patch_java::
 		sed -i.bak -E '/inceptionYear/,/packaging/s/(name = ).*/\1"$(PACK)"/' ./build.gradle && \
 		rm -f build.gradle.bak
 
-lint_provider:: provider # lint the provider code
+lint_provider: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-cleanup:: # cleans up the temporary directory
+cleanup: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
 
-help::
+help:
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
  	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
  	expand -t20
 
-clean::
+clean:
 	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
-install_plugins::
-	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource random 4.3.1
+install_plugins: .pulumi/bin/pulumi
+	.pulumi/bin/pulumi plugin install resource tls 4.11.0
+	.pulumi/bin/pulumi plugin install resource random 4.14.0
 
-install_dotnet_sdk::
+install_dotnet_sdk:
 	mkdir -p $(WORKING_DIR)/nuget
 	find . -name '*.nupkg' -print -exec cp -p {} ${WORKING_DIR}/nuget \;
 
-install_python_sdk::
+install_python_sdk:
 
-install_go_sdk::
+install_go_sdk:
 
 install_java_sdk:
 
-install_nodejs_sdk::
+install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
-install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_java_sdk
+install_sdks: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_java_sdk
 
-test::
+test:
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
 
 test_provider:
@@ -199,3 +179,24 @@ test_provider:
 	@echo "== test_provider ==================================================================="
 	@echo ""
 	cd provider && go test -v -short ./... -parallel $(TESTPARALLELISM)
+
+upstream:
+ifneq ("$(wildcard upstream)","")
+	scripts/upstream.sh "$@" apply
+endif
+
+upstream.finalize:
+	scripts/upstream.sh "$@" end_rebase
+
+upstream.rebase:
+	scripts/upstream.sh "$@" start_rebase
+
+.pulumi/bin/pulumi: .pulumi/version
+	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
+
+# Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
+.pulumi/version:
+	@mkdir -p .pulumi
+	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
+
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase test_provider

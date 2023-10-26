@@ -1,5 +1,5 @@
 # WARNING: This file was build based on https://github.com/pulumi/ci-mgmt
-# but it is currently not in sync. Any updates may be done manually
+# but it is currently not in sync. Any update must be done manually
 
 name: run-acceptance-tests
 on:

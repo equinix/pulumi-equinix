@@ -119,6 +119,8 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:            "equinix",
+		UpstreamRepoPath:     "./upstream",
+		Version:              version.Version,
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
