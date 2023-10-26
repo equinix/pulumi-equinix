@@ -1,6 +1,12 @@
 # WARNING: This file was build based on https://github.com/pulumi/ci-mgmt
 # but it is currently not in sync. Any update must be done manually
 
+name: Upgrade provider
+on:
+  issues:
+    types:
+    - opened
+  workflow_dispatch: {}
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
