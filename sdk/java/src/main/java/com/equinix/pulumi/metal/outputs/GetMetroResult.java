@@ -112,13 +112,13 @@ public final class GetMetroResult {
             return this;
         }
         public GetMetroResult build() {
-            final var o = new GetMetroResult();
-            o.capacities = capacities;
-            o.code = code;
-            o.country = country;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetMetroResult();
+            _resultValue.capacities = capacities;
+            _resultValue.code = code;
+            _resultValue.country = country;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

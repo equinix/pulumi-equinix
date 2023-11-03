@@ -124,13 +124,13 @@ public final class OrganizationAddress {
             return this;
         }
         public OrganizationAddress build() {
-            final var o = new OrganizationAddress();
-            o.address = address;
-            o.city = city;
-            o.country = country;
-            o.state = state;
-            o.zipCode = zipCode;
-            return o;
+            final var _resultValue = new OrganizationAddress();
+            _resultValue.address = address;
+            _resultValue.city = city;
+            _resultValue.country = country;
+            _resultValue.state = state;
+            _resultValue.zipCode = zipCode;
+            return _resultValue;
         }
     }
 }

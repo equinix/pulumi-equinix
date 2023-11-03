@@ -90,11 +90,11 @@ public final class GetServiceProfilesFilter {
             return values(List.of(values));
         }
         public GetServiceProfilesFilter build() {
-            final var o = new GetServiceProfilesFilter();
-            o.operator = operator;
-            o.property = property;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetServiceProfilesFilter();
+            _resultValue.operator = operator;
+            _resultValue.property = property;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

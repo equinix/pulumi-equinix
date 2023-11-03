@@ -275,20 +275,20 @@ public final class GetPlansPlan {
             return this;
         }
         public GetPlansPlan build() {
-            final var o = new GetPlansPlan();
-            o.availableInMetros = availableInMetros;
-            o.availableIns = availableIns;
-            o.class_ = class_;
-            o.deploymentTypes = deploymentTypes;
-            o.description = description;
-            o.id = id;
-            o.legacy = legacy;
-            o.line = line;
-            o.name = name;
-            o.pricingHour = pricingHour;
-            o.pricingMonth = pricingMonth;
-            o.slug = slug;
-            return o;
+            final var _resultValue = new GetPlansPlan();
+            _resultValue.availableInMetros = availableInMetros;
+            _resultValue.availableIns = availableIns;
+            _resultValue.class_ = class_;
+            _resultValue.deploymentTypes = deploymentTypes;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.legacy = legacy;
+            _resultValue.line = line;
+            _resultValue.name = name;
+            _resultValue.pricingHour = pricingHour;
+            _resultValue.pricingMonth = pricingMonth;
+            _resultValue.slug = slug;
+            return _resultValue;
         }
     }
 }

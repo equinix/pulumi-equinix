@@ -111,13 +111,13 @@ public final class GetDeviceClusterDetailNode1 {
             return vendorConfigurations(List.of(vendorConfigurations));
         }
         public GetDeviceClusterDetailNode1 build() {
-            final var o = new GetDeviceClusterDetailNode1();
-            o.licenseFileId = licenseFileId;
-            o.licenseToken = licenseToken;
-            o.name = name;
-            o.uuid = uuid;
-            o.vendorConfigurations = vendorConfigurations;
-            return o;
+            final var _resultValue = new GetDeviceClusterDetailNode1();
+            _resultValue.licenseFileId = licenseFileId;
+            _resultValue.licenseToken = licenseToken;
+            _resultValue.name = name;
+            _resultValue.uuid = uuid;
+            _resultValue.vendorConfigurations = vendorConfigurations;
+            return _resultValue;
         }
     }
 }

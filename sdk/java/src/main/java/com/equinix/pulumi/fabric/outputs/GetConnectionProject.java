@@ -65,10 +65,10 @@ public final class GetConnectionProject {
             return this;
         }
         public GetConnectionProject build() {
-            final var o = new GetConnectionProject();
-            o.href = href;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetConnectionProject();
+            _resultValue.href = href;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

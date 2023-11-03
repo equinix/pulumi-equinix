@@ -90,11 +90,11 @@ public final class ConnectionNotification {
             return this;
         }
         public ConnectionNotification build() {
-            final var o = new ConnectionNotification();
-            o.emails = emails;
-            o.sendInterval = sendInterval;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionNotification();
+            _resultValue.emails = emails;
+            _resultValue.sendInterval = sendInterval;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

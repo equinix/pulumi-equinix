@@ -390,28 +390,28 @@ public final class GetVirtualCircuitResult {
             return this;
         }
         public GetVirtualCircuitResult build() {
-            final var o = new GetVirtualCircuitResult();
-            o.connectionId = connectionId;
-            o.customerIp = customerIp;
-            o.description = description;
-            o.id = id;
-            o.md5 = md5;
-            o.metalIp = metalIp;
-            o.name = name;
-            o.nniVlan = nniVlan;
-            o.nniVnid = nniVnid;
-            o.peerAsn = peerAsn;
-            o.portId = portId;
-            o.projectId = projectId;
-            o.speed = speed;
-            o.status = status;
-            o.subnet = subnet;
-            o.tags = tags;
-            o.virtualCircuitId = virtualCircuitId;
-            o.vlanId = vlanId;
-            o.vnid = vnid;
-            o.vrfId = vrfId;
-            return o;
+            final var _resultValue = new GetVirtualCircuitResult();
+            _resultValue.connectionId = connectionId;
+            _resultValue.customerIp = customerIp;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.md5 = md5;
+            _resultValue.metalIp = metalIp;
+            _resultValue.name = name;
+            _resultValue.nniVlan = nniVlan;
+            _resultValue.nniVnid = nniVnid;
+            _resultValue.peerAsn = peerAsn;
+            _resultValue.portId = portId;
+            _resultValue.projectId = projectId;
+            _resultValue.speed = speed;
+            _resultValue.status = status;
+            _resultValue.subnet = subnet;
+            _resultValue.tags = tags;
+            _resultValue.virtualCircuitId = virtualCircuitId;
+            _resultValue.vlanId = vlanId;
+            _resultValue.vnid = vnid;
+            _resultValue.vrfId = vrfId;
+            return _resultValue;
         }
     }
 }

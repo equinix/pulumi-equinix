@@ -127,13 +127,13 @@ public final class ProjectBgpConfig {
             return this;
         }
         public ProjectBgpConfig build() {
-            final var o = new ProjectBgpConfig();
-            o.asn = asn;
-            o.deploymentType = deploymentType;
-            o.maxPrefix = maxPrefix;
-            o.md5 = md5;
-            o.status = status;
-            return o;
+            final var _resultValue = new ProjectBgpConfig();
+            _resultValue.asn = asn;
+            _resultValue.deploymentType = deploymentType;
+            _resultValue.maxPrefix = maxPrefix;
+            _resultValue.md5 = md5;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

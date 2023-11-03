@@ -67,10 +67,10 @@ public final class CloudRouterProject {
             return this;
         }
         public CloudRouterProject build() {
-            final var o = new CloudRouterProject();
-            o.href = href;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new CloudRouterProject();
+            _resultValue.href = href;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

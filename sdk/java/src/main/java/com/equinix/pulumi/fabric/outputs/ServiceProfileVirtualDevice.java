@@ -106,12 +106,12 @@ public final class ServiceProfileVirtualDevice {
             return this;
         }
         public ServiceProfileVirtualDevice build() {
-            final var o = new ServiceProfileVirtualDevice();
-            o.interfaceUuid = interfaceUuid;
-            o.location = location;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ServiceProfileVirtualDevice();
+            _resultValue.interfaceUuid = interfaceUuid;
+            _resultValue.location = location;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

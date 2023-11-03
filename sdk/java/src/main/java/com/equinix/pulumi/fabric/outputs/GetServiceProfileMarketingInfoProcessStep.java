@@ -60,11 +60,11 @@ public final class GetServiceProfileMarketingInfoProcessStep {
             return this;
         }
         public GetServiceProfileMarketingInfoProcessStep build() {
-            final var o = new GetServiceProfileMarketingInfoProcessStep();
-            o.description = description;
-            o.subTitle = subTitle;
-            o.title = title;
-            return o;
+            final var _resultValue = new GetServiceProfileMarketingInfoProcessStep();
+            _resultValue.description = description;
+            _resultValue.subTitle = subTitle;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

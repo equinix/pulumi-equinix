@@ -159,20 +159,20 @@ public final class GetPortsDatumChangeLog {
             return this;
         }
         public GetPortsDatumChangeLog build() {
-            final var o = new GetPortsDatumChangeLog();
-            o.createdBy = createdBy;
-            o.createdByEmail = createdByEmail;
-            o.createdByFullName = createdByFullName;
-            o.createdDateTime = createdDateTime;
-            o.deletedBy = deletedBy;
-            o.deletedByEmail = deletedByEmail;
-            o.deletedByFullName = deletedByFullName;
-            o.deletedDateTime = deletedDateTime;
-            o.updatedBy = updatedBy;
-            o.updatedByEmail = updatedByEmail;
-            o.updatedByFullName = updatedByFullName;
-            o.updatedDateTime = updatedDateTime;
-            return o;
+            final var _resultValue = new GetPortsDatumChangeLog();
+            _resultValue.createdBy = createdBy;
+            _resultValue.createdByEmail = createdByEmail;
+            _resultValue.createdByFullName = createdByFullName;
+            _resultValue.createdDateTime = createdDateTime;
+            _resultValue.deletedBy = deletedBy;
+            _resultValue.deletedByEmail = deletedByEmail;
+            _resultValue.deletedByFullName = deletedByFullName;
+            _resultValue.deletedDateTime = deletedDateTime;
+            _resultValue.updatedBy = updatedBy;
+            _resultValue.updatedByEmail = updatedByEmail;
+            _resultValue.updatedByFullName = updatedByFullName;
+            _resultValue.updatedDateTime = updatedDateTime;
+            return _resultValue;
         }
     }
 }

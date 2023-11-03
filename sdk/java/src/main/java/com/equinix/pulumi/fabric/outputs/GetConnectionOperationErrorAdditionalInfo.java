@@ -49,10 +49,10 @@ public final class GetConnectionOperationErrorAdditionalInfo {
             return this;
         }
         public GetConnectionOperationErrorAdditionalInfo build() {
-            final var o = new GetConnectionOperationErrorAdditionalInfo();
-            o.property = property;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new GetConnectionOperationErrorAdditionalInfo();
+            _resultValue.property = property;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

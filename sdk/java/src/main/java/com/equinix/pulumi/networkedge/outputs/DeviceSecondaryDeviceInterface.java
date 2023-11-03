@@ -182,16 +182,16 @@ public final class DeviceSecondaryDeviceInterface {
             return this;
         }
         public DeviceSecondaryDeviceInterface build() {
-            final var o = new DeviceSecondaryDeviceInterface();
-            o.assignedType = assignedType;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.macAddress = macAddress;
-            o.name = name;
-            o.operationalStatus = operationalStatus;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new DeviceSecondaryDeviceInterface();
+            _resultValue.assignedType = assignedType;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.macAddress = macAddress;
+            _resultValue.name = name;
+            _resultValue.operationalStatus = operationalStatus;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

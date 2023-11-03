@@ -207,18 +207,18 @@ public final class GetProjectResult {
             return userIds(List.of(userIds));
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.backendTransfer = backendTransfer;
-            o.bgpConfig = bgpConfig;
-            o.created = created;
-            o.id = id;
-            o.name = name;
-            o.organizationId = organizationId;
-            o.paymentMethodId = paymentMethodId;
-            o.projectId = projectId;
-            o.updated = updated;
-            o.userIds = userIds;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.backendTransfer = backendTransfer;
+            _resultValue.bgpConfig = bgpConfig;
+            _resultValue.created = created;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.organizationId = organizationId;
+            _resultValue.paymentMethodId = paymentMethodId;
+            _resultValue.projectId = projectId;
+            _resultValue.updated = updated;
+            _resultValue.userIds = userIds;
+            return _resultValue;
         }
     }
 }

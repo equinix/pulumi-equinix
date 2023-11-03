@@ -203,19 +203,19 @@ public final class GetDeviceSoftwareResult {
             return this;
         }
         public GetDeviceSoftwareResult build() {
-            final var o = new GetDeviceSoftwareResult();
-            o.date = date;
-            o.deviceType = deviceType;
-            o.id = id;
-            o.imageName = imageName;
-            o.mostRecent = mostRecent;
-            o.packages = packages;
-            o.releaseNotesLink = releaseNotesLink;
-            o.stable = stable;
-            o.status = status;
-            o.version = version;
-            o.versionRegex = versionRegex;
-            return o;
+            final var _resultValue = new GetDeviceSoftwareResult();
+            _resultValue.date = date;
+            _resultValue.deviceType = deviceType;
+            _resultValue.id = id;
+            _resultValue.imageName = imageName;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.packages = packages;
+            _resultValue.releaseNotesLink = releaseNotesLink;
+            _resultValue.stable = stable;
+            _resultValue.status = status;
+            _resultValue.version = version;
+            _resultValue.versionRegex = versionRegex;
+            return _resultValue;
         }
     }
 }

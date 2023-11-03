@@ -153,6 +153,8 @@ type Device struct {
 	Reinstall DeviceReinstallPtrOutput `pulumi:"reinstall"`
 	// Root password to the server (disabled after 24 hours).
 	RootPassword pulumi.StringOutput `pulumi:"rootPassword"`
+	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	SosHostname pulumi.StringOutput `pulumi:"sosHostname"`
 	// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
 	SshKeyIds pulumi.StringArrayOutput `pulumi:"sshKeyIds"`
 	// The status of the device.
@@ -318,6 +320,8 @@ type deviceState struct {
 	Reinstall *DeviceReinstall `pulumi:"reinstall"`
 	// Root password to the server (disabled after 24 hours).
 	RootPassword *string `pulumi:"rootPassword"`
+	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	SosHostname *string `pulumi:"sosHostname"`
 	// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
 	SshKeyIds []string `pulumi:"sshKeyIds"`
 	// The status of the device.
@@ -433,6 +437,8 @@ type DeviceState struct {
 	Reinstall DeviceReinstallPtrInput
 	// Root password to the server (disabled after 24 hours).
 	RootPassword pulumi.StringPtrInput
+	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	SosHostname pulumi.StringPtrInput
 	// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
 	SshKeyIds pulumi.StringArrayInput
 	// The status of the device.
@@ -893,6 +899,11 @@ func (o DeviceOutput) Reinstall() DeviceReinstallPtrOutput {
 // Root password to the server (disabled after 24 hours).
 func (o DeviceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+func (o DeviceOutput) SosHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.SosHostname }).(pulumi.StringOutput)
 }
 
 // List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.

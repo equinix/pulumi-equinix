@@ -38,9 +38,9 @@ public final class GetConnectionZSideAccessPointPortRedundancy {
             return this;
         }
         public GetConnectionZSideAccessPointPortRedundancy build() {
-            final var o = new GetConnectionZSideAccessPointPortRedundancy();
-            o.priority = priority;
-            return o;
+            final var _resultValue = new GetConnectionZSideAccessPointPortRedundancy();
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

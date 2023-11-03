@@ -245,6 +245,12 @@ namespace Pulumi.Equinix.Metal
         public Output<string> RootPassword { get; private set; } = null!;
 
         /// <summary>
+        /// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        /// </summary>
+        [Output("sosHostname")]
+        public Output<string> SosHostname { get; private set; } = null!;
+
+        /// <summary>
         /// List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
         /// </summary>
         [Output("sshKeyIds")]
@@ -821,6 +827,12 @@ namespace Pulumi.Equinix.Metal
                 _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        /// </summary>
+        [Input("sosHostname")]
+        public Input<string>? SosHostname { get; set; }
 
         [Input("sshKeyIds")]
         private InputList<string>? _sshKeyIds;

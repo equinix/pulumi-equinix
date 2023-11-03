@@ -232,18 +232,18 @@ public final class GetDeviceBgpNeighborsBgpNeighbor {
             return routesOuts(List.of(routesOuts));
         }
         public GetDeviceBgpNeighborsBgpNeighbor build() {
-            final var o = new GetDeviceBgpNeighborsBgpNeighbor();
-            o.addressFamily = addressFamily;
-            o.customerAs = customerAs;
-            o.customerIp = customerIp;
-            o.md5Enabled = md5Enabled;
-            o.md5Password = md5Password;
-            o.multihop = multihop;
-            o.peerAs = peerAs;
-            o.peerIps = peerIps;
-            o.routesIns = routesIns;
-            o.routesOuts = routesOuts;
-            return o;
+            final var _resultValue = new GetDeviceBgpNeighborsBgpNeighbor();
+            _resultValue.addressFamily = addressFamily;
+            _resultValue.customerAs = customerAs;
+            _resultValue.customerIp = customerIp;
+            _resultValue.md5Enabled = md5Enabled;
+            _resultValue.md5Password = md5Password;
+            _resultValue.multihop = multihop;
+            _resultValue.peerAs = peerAs;
+            _resultValue.peerIps = peerIps;
+            _resultValue.routesIns = routesIns;
+            _resultValue.routesOuts = routesOuts;
+            return _resultValue;
         }
     }
 }

@@ -2453,6 +2453,7 @@ export namespace metal {
          */
         projectId: string;
         rootPassword: string;
+        sosHostname: string;
         sshKeyIds: string[];
         state: string;
         storage: string;

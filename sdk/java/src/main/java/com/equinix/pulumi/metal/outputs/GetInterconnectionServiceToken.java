@@ -133,14 +133,14 @@ public final class GetInterconnectionServiceToken {
             return this;
         }
         public GetInterconnectionServiceToken build() {
-            final var o = new GetInterconnectionServiceToken();
-            o.expiresAt = expiresAt;
-            o.id = id;
-            o.maxAllowedSpeed = maxAllowedSpeed;
-            o.role = role;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInterconnectionServiceToken();
+            _resultValue.expiresAt = expiresAt;
+            _resultValue.id = id;
+            _resultValue.maxAllowedSpeed = maxAllowedSpeed;
+            _resultValue.role = role;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

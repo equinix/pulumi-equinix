@@ -66,10 +66,10 @@ public final class GetDeviceBgpNeighborsBgpNeighborRoutesOut {
             return this;
         }
         public GetDeviceBgpNeighborsBgpNeighborRoutesOut build() {
-            final var o = new GetDeviceBgpNeighborsBgpNeighborRoutesOut();
-            o.exact = exact;
-            o.route = route;
-            return o;
+            final var _resultValue = new GetDeviceBgpNeighborsBgpNeighborRoutesOut();
+            _resultValue.exact = exact;
+            _resultValue.route = route;
+            return _resultValue;
         }
     }
 }

@@ -428,28 +428,28 @@ public final class GetConnectionResult {
             return this;
         }
         public GetConnectionResult build() {
-            final var o = new GetConnectionResult();
-            o.aSide = aSide;
-            o.account = account;
-            o.additionalInfo = additionalInfo;
-            o.bandwidth = bandwidth;
-            o.changeLog = changeLog;
-            o.description = description;
-            o.direction = direction;
-            o.href = href;
-            o.id = id;
-            o.isRemote = isRemote;
-            o.name = name;
-            o.notifications = notifications;
-            o.operation = operation;
-            o.order = order;
-            o.project = project;
-            o.redundancy = redundancy;
-            o.state = state;
-            o.type = type;
-            o.uuid = uuid;
-            o.zSide = zSide;
-            return o;
+            final var _resultValue = new GetConnectionResult();
+            _resultValue.aSide = aSide;
+            _resultValue.account = account;
+            _resultValue.additionalInfo = additionalInfo;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.changeLog = changeLog;
+            _resultValue.description = description;
+            _resultValue.direction = direction;
+            _resultValue.href = href;
+            _resultValue.id = id;
+            _resultValue.isRemote = isRemote;
+            _resultValue.name = name;
+            _resultValue.notifications = notifications;
+            _resultValue.operation = operation;
+            _resultValue.order = order;
+            _resultValue.project = project;
+            _resultValue.redundancy = redundancy;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            _resultValue.zSide = zSide;
+            return _resultValue;
         }
     }
 }

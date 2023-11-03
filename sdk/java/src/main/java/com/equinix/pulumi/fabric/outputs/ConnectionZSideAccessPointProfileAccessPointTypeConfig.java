@@ -67,10 +67,10 @@ public final class ConnectionZSideAccessPointProfileAccessPointTypeConfig {
             return this;
         }
         public ConnectionZSideAccessPointProfileAccessPointTypeConfig build() {
-            final var o = new ConnectionZSideAccessPointProfileAccessPointTypeConfig();
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointProfileAccessPointTypeConfig();
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

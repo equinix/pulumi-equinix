@@ -60,11 +60,11 @@ public final class GetRoutingProtocolChange {
             return this;
         }
         public GetRoutingProtocolChange build() {
-            final var o = new GetRoutingProtocolChange();
-            o.href = href;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetRoutingProtocolChange();
+            _resultValue.href = href;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

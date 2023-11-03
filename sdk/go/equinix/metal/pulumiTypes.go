@@ -2844,6 +2844,7 @@ type GetDevicesDevice struct {
 	// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
 	ProjectId    string   `pulumi:"projectId"`
 	RootPassword string   `pulumi:"rootPassword"`
+	SosHostname  string   `pulumi:"sosHostname"`
 	SshKeyIds    []string `pulumi:"sshKeyIds"`
 	State        string   `pulumi:"state"`
 	Storage      string   `pulumi:"storage"`
@@ -2883,6 +2884,7 @@ type GetDevicesDeviceArgs struct {
 	// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
 	ProjectId    pulumi.StringInput      `pulumi:"projectId"`
 	RootPassword pulumi.StringInput      `pulumi:"rootPassword"`
+	SosHostname  pulumi.StringInput      `pulumi:"sosHostname"`
 	SshKeyIds    pulumi.StringArrayInput `pulumi:"sshKeyIds"`
 	State        pulumi.StringInput      `pulumi:"state"`
 	Storage      pulumi.StringInput      `pulumi:"storage"`
@@ -3034,6 +3036,10 @@ func (o GetDevicesDeviceOutput) ProjectId() pulumi.StringOutput {
 
 func (o GetDevicesDeviceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+func (o GetDevicesDeviceOutput) SosHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicesDevice) string { return v.SosHostname }).(pulumi.StringOutput)
 }
 
 func (o GetDevicesDeviceOutput) SshKeyIds() pulumi.StringArrayOutput {

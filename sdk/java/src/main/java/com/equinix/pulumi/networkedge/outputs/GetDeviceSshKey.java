@@ -49,10 +49,10 @@ public final class GetDeviceSshKey {
             return this;
         }
         public GetDeviceSshKey build() {
-            final var o = new GetDeviceSshKey();
-            o.keyName = keyName;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetDeviceSshKey();
+            _resultValue.keyName = keyName;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

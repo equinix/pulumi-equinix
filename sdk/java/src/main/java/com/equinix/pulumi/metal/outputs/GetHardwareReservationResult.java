@@ -213,17 +213,17 @@ public final class GetHardwareReservationResult {
             return this;
         }
         public GetHardwareReservationResult build() {
-            final var o = new GetHardwareReservationResult();
-            o.deviceId = deviceId;
-            o.facility = facility;
-            o.id = id;
-            o.plan = plan;
-            o.projectId = projectId;
-            o.provisionable = provisionable;
-            o.shortId = shortId;
-            o.spare = spare;
-            o.switchUuid = switchUuid;
-            return o;
+            final var _resultValue = new GetHardwareReservationResult();
+            _resultValue.deviceId = deviceId;
+            _resultValue.facility = facility;
+            _resultValue.id = id;
+            _resultValue.plan = plan;
+            _resultValue.projectId = projectId;
+            _resultValue.provisionable = provisionable;
+            _resultValue.shortId = shortId;
+            _resultValue.spare = spare;
+            _resultValue.switchUuid = switchUuid;
+            return _resultValue;
         }
     }
 }

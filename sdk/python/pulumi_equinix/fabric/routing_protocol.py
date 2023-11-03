@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,78 +43,29 @@ class RoutingProtocolArgs:
         :param pulumi.Input[str] type: Defines the routing protocol type like BGP or DIRECT
         :param pulumi.Input[str] uuid: Equinix-assigned routing protocol identifier
         """
-        RoutingProtocolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_uuid=connection_uuid,
-            bfd=bfd,
-            bgp_auth_key=bgp_auth_key,
-            bgp_ipv4=bgp_ipv4,
-            bgp_ipv6=bgp_ipv6,
-            customer_asn=customer_asn,
-            description=description,
-            direct_ipv4=direct_ipv4,
-            direct_ipv6=direct_ipv6,
-            name=name,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_uuid: Optional[pulumi.Input[str]] = None,
-             bfd: Optional[pulumi.Input['RoutingProtocolBfdArgs']] = None,
-             bgp_auth_key: Optional[pulumi.Input[str]] = None,
-             bgp_ipv4: Optional[pulumi.Input['RoutingProtocolBgpIpv4Args']] = None,
-             bgp_ipv6: Optional[pulumi.Input['RoutingProtocolBgpIpv6Args']] = None,
-             customer_asn: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             direct_ipv4: Optional[pulumi.Input['RoutingProtocolDirectIpv4Args']] = None,
-             direct_ipv6: Optional[pulumi.Input['RoutingProtocolDirectIpv6Args']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if connection_uuid is None and 'connectionUuid' in kwargs:
-            connection_uuid = kwargs['connectionUuid']
-        if connection_uuid is None:
-            raise TypeError("Missing 'connection_uuid' argument")
-        if bgp_auth_key is None and 'bgpAuthKey' in kwargs:
-            bgp_auth_key = kwargs['bgpAuthKey']
-        if bgp_ipv4 is None and 'bgpIpv4' in kwargs:
-            bgp_ipv4 = kwargs['bgpIpv4']
-        if bgp_ipv6 is None and 'bgpIpv6' in kwargs:
-            bgp_ipv6 = kwargs['bgpIpv6']
-        if customer_asn is None and 'customerAsn' in kwargs:
-            customer_asn = kwargs['customerAsn']
-        if direct_ipv4 is None and 'directIpv4' in kwargs:
-            direct_ipv4 = kwargs['directIpv4']
-        if direct_ipv6 is None and 'directIpv6' in kwargs:
-            direct_ipv6 = kwargs['directIpv6']
-
-        _setter("connection_uuid", connection_uuid)
+        pulumi.set(__self__, "connection_uuid", connection_uuid)
         if bfd is not None:
-            _setter("bfd", bfd)
+            pulumi.set(__self__, "bfd", bfd)
         if bgp_auth_key is not None:
-            _setter("bgp_auth_key", bgp_auth_key)
+            pulumi.set(__self__, "bgp_auth_key", bgp_auth_key)
         if bgp_ipv4 is not None:
-            _setter("bgp_ipv4", bgp_ipv4)
+            pulumi.set(__self__, "bgp_ipv4", bgp_ipv4)
         if bgp_ipv6 is not None:
-            _setter("bgp_ipv6", bgp_ipv6)
+            pulumi.set(__self__, "bgp_ipv6", bgp_ipv6)
         if customer_asn is not None:
-            _setter("customer_asn", customer_asn)
+            pulumi.set(__self__, "customer_asn", customer_asn)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if direct_ipv4 is not None:
-            _setter("direct_ipv4", direct_ipv4)
+            pulumi.set(__self__, "direct_ipv4", direct_ipv4)
         if direct_ipv6 is not None:
-            _setter("direct_ipv6", direct_ipv6)
+            pulumi.set(__self__, "direct_ipv6", direct_ipv6)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter(name="connectionUuid")
@@ -303,105 +254,42 @@ class _RoutingProtocolState:
         :param pulumi.Input[str] type: Defines the routing protocol type like BGP or DIRECT
         :param pulumi.Input[str] uuid: Equinix-assigned routing protocol identifier
         """
-        _RoutingProtocolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bfd=bfd,
-            bgp_auth_key=bgp_auth_key,
-            bgp_ipv4=bgp_ipv4,
-            bgp_ipv6=bgp_ipv6,
-            change_logs=change_logs,
-            changes=changes,
-            connection_uuid=connection_uuid,
-            customer_asn=customer_asn,
-            description=description,
-            direct_ipv4=direct_ipv4,
-            direct_ipv6=direct_ipv6,
-            equinix_asn=equinix_asn,
-            href=href,
-            name=name,
-            operations=operations,
-            state=state,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bfd: Optional[pulumi.Input['RoutingProtocolBfdArgs']] = None,
-             bgp_auth_key: Optional[pulumi.Input[str]] = None,
-             bgp_ipv4: Optional[pulumi.Input['RoutingProtocolBgpIpv4Args']] = None,
-             bgp_ipv6: Optional[pulumi.Input['RoutingProtocolBgpIpv6Args']] = None,
-             change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolChangeLogArgs']]]] = None,
-             changes: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolChangeArgs']]]] = None,
-             connection_uuid: Optional[pulumi.Input[str]] = None,
-             customer_asn: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             direct_ipv4: Optional[pulumi.Input['RoutingProtocolDirectIpv4Args']] = None,
-             direct_ipv6: Optional[pulumi.Input['RoutingProtocolDirectIpv6Args']] = None,
-             equinix_asn: Optional[pulumi.Input[int]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             operations: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationArgs']]]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if bgp_auth_key is None and 'bgpAuthKey' in kwargs:
-            bgp_auth_key = kwargs['bgpAuthKey']
-        if bgp_ipv4 is None and 'bgpIpv4' in kwargs:
-            bgp_ipv4 = kwargs['bgpIpv4']
-        if bgp_ipv6 is None and 'bgpIpv6' in kwargs:
-            bgp_ipv6 = kwargs['bgpIpv6']
-        if change_logs is None and 'changeLogs' in kwargs:
-            change_logs = kwargs['changeLogs']
-        if connection_uuid is None and 'connectionUuid' in kwargs:
-            connection_uuid = kwargs['connectionUuid']
-        if customer_asn is None and 'customerAsn' in kwargs:
-            customer_asn = kwargs['customerAsn']
-        if direct_ipv4 is None and 'directIpv4' in kwargs:
-            direct_ipv4 = kwargs['directIpv4']
-        if direct_ipv6 is None and 'directIpv6' in kwargs:
-            direct_ipv6 = kwargs['directIpv6']
-        if equinix_asn is None and 'equinixAsn' in kwargs:
-            equinix_asn = kwargs['equinixAsn']
-
         if bfd is not None:
-            _setter("bfd", bfd)
+            pulumi.set(__self__, "bfd", bfd)
         if bgp_auth_key is not None:
-            _setter("bgp_auth_key", bgp_auth_key)
+            pulumi.set(__self__, "bgp_auth_key", bgp_auth_key)
         if bgp_ipv4 is not None:
-            _setter("bgp_ipv4", bgp_ipv4)
+            pulumi.set(__self__, "bgp_ipv4", bgp_ipv4)
         if bgp_ipv6 is not None:
-            _setter("bgp_ipv6", bgp_ipv6)
+            pulumi.set(__self__, "bgp_ipv6", bgp_ipv6)
         if change_logs is not None:
-            _setter("change_logs", change_logs)
+            pulumi.set(__self__, "change_logs", change_logs)
         if changes is not None:
-            _setter("changes", changes)
+            pulumi.set(__self__, "changes", changes)
         if connection_uuid is not None:
-            _setter("connection_uuid", connection_uuid)
+            pulumi.set(__self__, "connection_uuid", connection_uuid)
         if customer_asn is not None:
-            _setter("customer_asn", customer_asn)
+            pulumi.set(__self__, "customer_asn", customer_asn)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if direct_ipv4 is not None:
-            _setter("direct_ipv4", direct_ipv4)
+            pulumi.set(__self__, "direct_ipv4", direct_ipv4)
         if direct_ipv6 is not None:
-            _setter("direct_ipv6", direct_ipv6)
+            pulumi.set(__self__, "direct_ipv6", direct_ipv6)
         if equinix_asn is not None:
-            _setter("equinix_asn", equinix_asn)
+            pulumi.set(__self__, "equinix_asn", equinix_asn)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if operations is not None:
-            _setter("operations", operations)
+            pulumi.set(__self__, "operations", operations)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -709,10 +597,6 @@ class RoutingProtocol(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RoutingProtocolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -739,41 +623,16 @@ class RoutingProtocol(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RoutingProtocolArgs.__new__(RoutingProtocolArgs)
 
-            if bfd is not None and not isinstance(bfd, RoutingProtocolBfdArgs):
-                bfd = bfd or {}
-                def _setter(key, value):
-                    bfd[key] = value
-                RoutingProtocolBfdArgs._configure(_setter, **bfd)
             __props__.__dict__["bfd"] = bfd
             __props__.__dict__["bgp_auth_key"] = bgp_auth_key
-            if bgp_ipv4 is not None and not isinstance(bgp_ipv4, RoutingProtocolBgpIpv4Args):
-                bgp_ipv4 = bgp_ipv4 or {}
-                def _setter(key, value):
-                    bgp_ipv4[key] = value
-                RoutingProtocolBgpIpv4Args._configure(_setter, **bgp_ipv4)
             __props__.__dict__["bgp_ipv4"] = bgp_ipv4
-            if bgp_ipv6 is not None and not isinstance(bgp_ipv6, RoutingProtocolBgpIpv6Args):
-                bgp_ipv6 = bgp_ipv6 or {}
-                def _setter(key, value):
-                    bgp_ipv6[key] = value
-                RoutingProtocolBgpIpv6Args._configure(_setter, **bgp_ipv6)
             __props__.__dict__["bgp_ipv6"] = bgp_ipv6
             if connection_uuid is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_uuid'")
             __props__.__dict__["connection_uuid"] = connection_uuid
             __props__.__dict__["customer_asn"] = customer_asn
             __props__.__dict__["description"] = description
-            if direct_ipv4 is not None and not isinstance(direct_ipv4, RoutingProtocolDirectIpv4Args):
-                direct_ipv4 = direct_ipv4 or {}
-                def _setter(key, value):
-                    direct_ipv4[key] = value
-                RoutingProtocolDirectIpv4Args._configure(_setter, **direct_ipv4)
             __props__.__dict__["direct_ipv4"] = direct_ipv4
-            if direct_ipv6 is not None and not isinstance(direct_ipv6, RoutingProtocolDirectIpv6Args):
-                direct_ipv6 = direct_ipv6 or {}
-                def _setter(key, value):
-                    direct_ipv6[key] = value
-                RoutingProtocolDirectIpv6Args._configure(_setter, **direct_ipv6)
             __props__.__dict__["direct_ipv6"] = direct_ipv6
             __props__.__dict__["name"] = name
             __props__.__dict__["type"] = type

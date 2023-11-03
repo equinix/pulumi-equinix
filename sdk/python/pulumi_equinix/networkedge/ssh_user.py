@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SshUserArgs', 'SshUser']
@@ -23,32 +23,9 @@ class SshUserArgs:
         :param pulumi.Input[str] password: SSH user password.
         :param pulumi.Input[str] username: SSH user login name.
         """
-        SshUserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_ids=device_ids,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if device_ids is None and 'deviceIds' in kwargs:
-            device_ids = kwargs['deviceIds']
-        if device_ids is None:
-            raise TypeError("Missing 'device_ids' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-
-        _setter("device_ids", device_ids)
-        _setter("password", password)
-        _setter("username", username)
+        pulumi.set(__self__, "device_ids", device_ids)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="deviceIds")
@@ -101,33 +78,14 @@ class _SshUserState:
         :param pulumi.Input[str] username: SSH user login name.
         :param pulumi.Input[str] uuid: SSH user unique identifier.
         """
-        _SshUserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_ids=device_ids,
-            password=password,
-            username=username,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if device_ids is None and 'deviceIds' in kwargs:
-            device_ids = kwargs['deviceIds']
-
         if device_ids is not None:
-            _setter("device_ids", device_ids)
+            pulumi.set(__self__, "device_ids", device_ids)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter(name="deviceIds")
@@ -259,10 +217,6 @@ class SshUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SshUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

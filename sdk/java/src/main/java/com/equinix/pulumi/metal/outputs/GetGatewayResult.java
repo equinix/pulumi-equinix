@@ -174,16 +174,16 @@ public final class GetGatewayResult {
             return this;
         }
         public GetGatewayResult build() {
-            final var o = new GetGatewayResult();
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.ipReservationId = ipReservationId;
-            o.privateIpv4SubnetSize = privateIpv4SubnetSize;
-            o.projectId = projectId;
-            o.state = state;
-            o.vlanId = vlanId;
-            o.vrfId = vrfId;
-            return o;
+            final var _resultValue = new GetGatewayResult();
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.ipReservationId = ipReservationId;
+            _resultValue.privateIpv4SubnetSize = privateIpv4SubnetSize;
+            _resultValue.projectId = projectId;
+            _resultValue.state = state;
+            _resultValue.vlanId = vlanId;
+            _resultValue.vrfId = vrfId;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetPortDeviceRedundancy {
             return this;
         }
         public GetPortDeviceRedundancy build() {
-            final var o = new GetPortDeviceRedundancy();
-            o.group = group;
-            o.priority = priority;
-            return o;
+            final var _resultValue = new GetPortDeviceRedundancy();
+            _resultValue.group = group;
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

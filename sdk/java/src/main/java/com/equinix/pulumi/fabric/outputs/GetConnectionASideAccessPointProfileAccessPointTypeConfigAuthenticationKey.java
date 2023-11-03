@@ -61,11 +61,11 @@ public final class GetConnectionASideAccessPointProfileAccessPointTypeConfigAuth
             return this;
         }
         public GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey build() {
-            final var o = new GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey();
-            o.description = description;
-            o.label = label;
-            o.required = required;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey();
+            _resultValue.description = description;
+            _resultValue.label = label;
+            _resultValue.required = required;
+            return _resultValue;
         }
     }
 }

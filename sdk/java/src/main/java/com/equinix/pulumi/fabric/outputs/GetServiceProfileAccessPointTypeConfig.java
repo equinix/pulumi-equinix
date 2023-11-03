@@ -200,22 +200,22 @@ public final class GetServiceProfileAccessPointTypeConfig {
             return this;
         }
         public GetServiceProfileAccessPointTypeConfig build() {
-            final var o = new GetServiceProfileAccessPointTypeConfig();
-            o.allowBandwidthAutoApproval = allowBandwidthAutoApproval;
-            o.allowBandwidthUpgrade = allowBandwidthUpgrade;
-            o.allowCustomBandwidth = allowCustomBandwidth;
-            o.allowRemoteConnections = allowRemoteConnections;
-            o.apiConfigs = apiConfigs;
-            o.authenticationKeys = authenticationKeys;
-            o.bandwidthAlertThreshold = bandwidthAlertThreshold;
-            o.connectionLabel = connectionLabel;
-            o.connectionRedundancyRequired = connectionRedundancyRequired;
-            o.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            o.linkProtocolConfigs = linkProtocolConfigs;
-            o.supportedBandwidths = supportedBandwidths;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetServiceProfileAccessPointTypeConfig();
+            _resultValue.allowBandwidthAutoApproval = allowBandwidthAutoApproval;
+            _resultValue.allowBandwidthUpgrade = allowBandwidthUpgrade;
+            _resultValue.allowCustomBandwidth = allowCustomBandwidth;
+            _resultValue.allowRemoteConnections = allowRemoteConnections;
+            _resultValue.apiConfigs = apiConfigs;
+            _resultValue.authenticationKeys = authenticationKeys;
+            _resultValue.bandwidthAlertThreshold = bandwidthAlertThreshold;
+            _resultValue.connectionLabel = connectionLabel;
+            _resultValue.connectionRedundancyRequired = connectionRedundancyRequired;
+            _resultValue.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
+            _resultValue.linkProtocolConfigs = linkProtocolConfigs;
+            _resultValue.supportedBandwidths = supportedBandwidths;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

@@ -148,14 +148,14 @@ public final class ServiceProfileCustomField {
             return this;
         }
         public ServiceProfileCustomField build() {
-            final var o = new ServiceProfileCustomField();
-            o.captureInEmail = captureInEmail;
-            o.dataType = dataType;
-            o.description = description;
-            o.label = label;
-            o.options = options;
-            o.required = required;
-            return o;
+            final var _resultValue = new ServiceProfileCustomField();
+            _resultValue.captureInEmail = captureInEmail;
+            _resultValue.dataType = dataType;
+            _resultValue.description = description;
+            _resultValue.label = label;
+            _resultValue.options = options;
+            _resultValue.required = required;
+            return _resultValue;
         }
     }
 }

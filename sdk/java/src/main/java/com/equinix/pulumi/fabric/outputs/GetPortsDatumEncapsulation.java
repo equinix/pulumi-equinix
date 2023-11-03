@@ -49,10 +49,10 @@ public final class GetPortsDatumEncapsulation {
             return this;
         }
         public GetPortsDatumEncapsulation build() {
-            final var o = new GetPortsDatumEncapsulation();
-            o.tagProtocolId = tagProtocolId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPortsDatumEncapsulation();
+            _resultValue.tagProtocolId = tagProtocolId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

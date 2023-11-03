@@ -65,11 +65,11 @@ public final class GetConnectionOperation {
             return this;
         }
         public GetConnectionOperation build() {
-            final var o = new GetConnectionOperation();
-            o.equinixStatus = equinixStatus;
-            o.errors = errors;
-            o.providerStatus = providerStatus;
-            return o;
+            final var _resultValue = new GetConnectionOperation();
+            _resultValue.equinixStatus = equinixStatus;
+            _resultValue.errors = errors;
+            _resultValue.providerStatus = providerStatus;
+            return _resultValue;
         }
     }
 }

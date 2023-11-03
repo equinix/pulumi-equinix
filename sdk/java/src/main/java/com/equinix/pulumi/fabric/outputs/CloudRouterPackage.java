@@ -46,9 +46,9 @@ public final class CloudRouterPackage {
             return this;
         }
         public CloudRouterPackage build() {
-            final var o = new CloudRouterPackage();
-            o.code = code;
-            return o;
+            final var _resultValue = new CloudRouterPackage();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

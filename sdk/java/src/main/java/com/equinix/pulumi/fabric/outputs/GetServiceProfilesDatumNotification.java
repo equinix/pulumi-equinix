@@ -64,11 +64,11 @@ public final class GetServiceProfilesDatumNotification {
             return this;
         }
         public GetServiceProfilesDatumNotification build() {
-            final var o = new GetServiceProfilesDatumNotification();
-            o.emails = emails;
-            o.sendInterval = sendInterval;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceProfilesDatumNotification();
+            _resultValue.emails = emails;
+            _resultValue.sendInterval = sendInterval;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

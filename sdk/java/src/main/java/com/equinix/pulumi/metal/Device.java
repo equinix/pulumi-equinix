@@ -522,6 +522,20 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.rootPassword;
     }
     /**
+     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * 
+     */
+    @Export(name="sosHostname", refs={String.class}, tree="[0]")
+    private Output<String> sosHostname;
+
+    /**
+     * @return The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * 
+     */
+    public Output<String> sosHostname() {
+        return this.sosHostname;
+    }
+    /**
      * List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
      * 
      */

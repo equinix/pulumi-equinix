@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -94,189 +94,58 @@ class DeviceArgs:
                on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         """
-        DeviceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_number=account_number,
-            core_count=core_count,
-            metro_code=metro_code,
-            notifications=notifications,
-            package_code=package_code,
-            term_length=term_length,
-            type_code=type_code,
-            version=version,
-            acl_template_id=acl_template_id,
-            additional_bandwidth=additional_bandwidth,
-            byol=byol,
-            cloud_init_file_id=cloud_init_file_id,
-            cluster_details=cluster_details,
-            connectivity=connectivity,
-            hostname=hostname,
-            interface_count=interface_count,
-            license_file=license_file,
-            license_file_id=license_file_id,
-            license_token=license_token,
-            mgmt_acl_template_uuid=mgmt_acl_template_uuid,
-            name=name,
-            order_reference=order_reference,
-            purchase_order_number=purchase_order_number,
-            secondary_device=secondary_device,
-            self_managed=self_managed,
-            ssh_key=ssh_key,
-            throughput=throughput,
-            throughput_unit=throughput_unit,
-            vendor_configuration=vendor_configuration,
-            wan_interface_id=wan_interface_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_number: Optional[pulumi.Input[str]] = None,
-             core_count: Optional[pulumi.Input[int]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             package_code: Optional[pulumi.Input[str]] = None,
-             term_length: Optional[pulumi.Input[int]] = None,
-             type_code: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             acl_template_id: Optional[pulumi.Input[str]] = None,
-             additional_bandwidth: Optional[pulumi.Input[int]] = None,
-             byol: Optional[pulumi.Input[bool]] = None,
-             cloud_init_file_id: Optional[pulumi.Input[str]] = None,
-             cluster_details: Optional[pulumi.Input['DeviceClusterDetailsArgs']] = None,
-             connectivity: Optional[pulumi.Input[str]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             interface_count: Optional[pulumi.Input[int]] = None,
-             license_file: Optional[pulumi.Input[str]] = None,
-             license_file_id: Optional[pulumi.Input[str]] = None,
-             license_token: Optional[pulumi.Input[str]] = None,
-             mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             order_reference: Optional[pulumi.Input[str]] = None,
-             purchase_order_number: Optional[pulumi.Input[str]] = None,
-             secondary_device: Optional[pulumi.Input['DeviceSecondaryDeviceArgs']] = None,
-             self_managed: Optional[pulumi.Input[bool]] = None,
-             ssh_key: Optional[pulumi.Input['DeviceSshKeyArgs']] = None,
-             throughput: Optional[pulumi.Input[int]] = None,
-             throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
-             vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             wan_interface_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-        if account_number is None:
-            raise TypeError("Missing 'account_number' argument")
-        if core_count is None and 'coreCount' in kwargs:
-            core_count = kwargs['coreCount']
-        if core_count is None:
-            raise TypeError("Missing 'core_count' argument")
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if metro_code is None:
-            raise TypeError("Missing 'metro_code' argument")
-        if notifications is None:
-            raise TypeError("Missing 'notifications' argument")
-        if package_code is None and 'packageCode' in kwargs:
-            package_code = kwargs['packageCode']
-        if package_code is None:
-            raise TypeError("Missing 'package_code' argument")
-        if term_length is None and 'termLength' in kwargs:
-            term_length = kwargs['termLength']
-        if term_length is None:
-            raise TypeError("Missing 'term_length' argument")
-        if type_code is None and 'typeCode' in kwargs:
-            type_code = kwargs['typeCode']
-        if type_code is None:
-            raise TypeError("Missing 'type_code' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if acl_template_id is None and 'aclTemplateId' in kwargs:
-            acl_template_id = kwargs['aclTemplateId']
-        if additional_bandwidth is None and 'additionalBandwidth' in kwargs:
-            additional_bandwidth = kwargs['additionalBandwidth']
-        if cloud_init_file_id is None and 'cloudInitFileId' in kwargs:
-            cloud_init_file_id = kwargs['cloudInitFileId']
-        if cluster_details is None and 'clusterDetails' in kwargs:
-            cluster_details = kwargs['clusterDetails']
-        if interface_count is None and 'interfaceCount' in kwargs:
-            interface_count = kwargs['interfaceCount']
-        if license_file is None and 'licenseFile' in kwargs:
-            license_file = kwargs['licenseFile']
-        if license_file_id is None and 'licenseFileId' in kwargs:
-            license_file_id = kwargs['licenseFileId']
-        if license_token is None and 'licenseToken' in kwargs:
-            license_token = kwargs['licenseToken']
-        if mgmt_acl_template_uuid is None and 'mgmtAclTemplateUuid' in kwargs:
-            mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
-        if order_reference is None and 'orderReference' in kwargs:
-            order_reference = kwargs['orderReference']
-        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
-            purchase_order_number = kwargs['purchaseOrderNumber']
-        if secondary_device is None and 'secondaryDevice' in kwargs:
-            secondary_device = kwargs['secondaryDevice']
-        if self_managed is None and 'selfManaged' in kwargs:
-            self_managed = kwargs['selfManaged']
-        if ssh_key is None and 'sshKey' in kwargs:
-            ssh_key = kwargs['sshKey']
-        if throughput_unit is None and 'throughputUnit' in kwargs:
-            throughput_unit = kwargs['throughputUnit']
-        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
-            vendor_configuration = kwargs['vendorConfiguration']
-        if wan_interface_id is None and 'wanInterfaceId' in kwargs:
-            wan_interface_id = kwargs['wanInterfaceId']
-
-        _setter("account_number", account_number)
-        _setter("core_count", core_count)
-        _setter("metro_code", metro_code)
-        _setter("notifications", notifications)
-        _setter("package_code", package_code)
-        _setter("term_length", term_length)
-        _setter("type_code", type_code)
-        _setter("version", version)
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "core_count", core_count)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "package_code", package_code)
+        pulumi.set(__self__, "term_length", term_length)
+        pulumi.set(__self__, "type_code", type_code)
+        pulumi.set(__self__, "version", version)
         if acl_template_id is not None:
-            _setter("acl_template_id", acl_template_id)
+            pulumi.set(__self__, "acl_template_id", acl_template_id)
         if additional_bandwidth is not None:
-            _setter("additional_bandwidth", additional_bandwidth)
+            pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
         if byol is not None:
-            _setter("byol", byol)
+            pulumi.set(__self__, "byol", byol)
         if cloud_init_file_id is not None:
-            _setter("cloud_init_file_id", cloud_init_file_id)
+            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
         if cluster_details is not None:
-            _setter("cluster_details", cluster_details)
+            pulumi.set(__self__, "cluster_details", cluster_details)
         if connectivity is not None:
-            _setter("connectivity", connectivity)
+            pulumi.set(__self__, "connectivity", connectivity)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if interface_count is not None:
-            _setter("interface_count", interface_count)
+            pulumi.set(__self__, "interface_count", interface_count)
         if license_file is not None:
-            _setter("license_file", license_file)
+            pulumi.set(__self__, "license_file", license_file)
         if license_file_id is not None:
-            _setter("license_file_id", license_file_id)
+            pulumi.set(__self__, "license_file_id", license_file_id)
         if license_token is not None:
-            _setter("license_token", license_token)
+            pulumi.set(__self__, "license_token", license_token)
         if mgmt_acl_template_uuid is not None:
-            _setter("mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+            pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if order_reference is not None:
-            _setter("order_reference", order_reference)
+            pulumi.set(__self__, "order_reference", order_reference)
         if purchase_order_number is not None:
-            _setter("purchase_order_number", purchase_order_number)
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
         if secondary_device is not None:
-            _setter("secondary_device", secondary_device)
+            pulumi.set(__self__, "secondary_device", secondary_device)
         if self_managed is not None:
-            _setter("self_managed", self_managed)
+            pulumi.set(__self__, "self_managed", self_managed)
         if ssh_key is not None:
-            _setter("ssh_key", ssh_key)
+            pulumi.set(__self__, "ssh_key", ssh_key)
         if throughput is not None:
-            _setter("throughput", throughput)
+            pulumi.set(__self__, "throughput", throughput)
         if throughput_unit is not None:
-            _setter("throughput_unit", throughput_unit)
+            pulumi.set(__self__, "throughput_unit", throughput_unit)
         if vendor_configuration is not None:
-            _setter("vendor_configuration", vendor_configuration)
+            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
         if wan_interface_id is not None:
-            _setter("wan_interface_id", wan_interface_id)
+            pulumi.set(__self__, "wan_interface_id", wan_interface_id)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -760,241 +629,90 @@ class _DeviceState:
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         :param pulumi.Input[str] zone_code: Device location zone code.
         """
-        _DeviceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_number=account_number,
-            acl_template_id=acl_template_id,
-            additional_bandwidth=additional_bandwidth,
-            asn=asn,
-            byol=byol,
-            cloud_init_file_id=cloud_init_file_id,
-            cluster_details=cluster_details,
-            connectivity=connectivity,
-            core_count=core_count,
-            hostname=hostname,
-            ibx=ibx,
-            interface_count=interface_count,
-            interfaces=interfaces,
-            license_file=license_file,
-            license_file_id=license_file_id,
-            license_status=license_status,
-            license_token=license_token,
-            metro_code=metro_code,
-            mgmt_acl_template_uuid=mgmt_acl_template_uuid,
-            name=name,
-            notifications=notifications,
-            order_reference=order_reference,
-            package_code=package_code,
-            purchase_order_number=purchase_order_number,
-            redundancy_type=redundancy_type,
-            redundant_id=redundant_id,
-            region=region,
-            secondary_device=secondary_device,
-            self_managed=self_managed,
-            ssh_ip_address=ssh_ip_address,
-            ssh_ip_fqdn=ssh_ip_fqdn,
-            ssh_key=ssh_key,
-            status=status,
-            term_length=term_length,
-            throughput=throughput,
-            throughput_unit=throughput_unit,
-            type_code=type_code,
-            uuid=uuid,
-            vendor_configuration=vendor_configuration,
-            version=version,
-            wan_interface_id=wan_interface_id,
-            zone_code=zone_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_number: Optional[pulumi.Input[str]] = None,
-             acl_template_id: Optional[pulumi.Input[str]] = None,
-             additional_bandwidth: Optional[pulumi.Input[int]] = None,
-             asn: Optional[pulumi.Input[int]] = None,
-             byol: Optional[pulumi.Input[bool]] = None,
-             cloud_init_file_id: Optional[pulumi.Input[str]] = None,
-             cluster_details: Optional[pulumi.Input['DeviceClusterDetailsArgs']] = None,
-             connectivity: Optional[pulumi.Input[str]] = None,
-             core_count: Optional[pulumi.Input[int]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             ibx: Optional[pulumi.Input[str]] = None,
-             interface_count: Optional[pulumi.Input[int]] = None,
-             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceInterfaceArgs']]]] = None,
-             license_file: Optional[pulumi.Input[str]] = None,
-             license_file_id: Optional[pulumi.Input[str]] = None,
-             license_status: Optional[pulumi.Input[str]] = None,
-             license_token: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             order_reference: Optional[pulumi.Input[str]] = None,
-             package_code: Optional[pulumi.Input[str]] = None,
-             purchase_order_number: Optional[pulumi.Input[str]] = None,
-             redundancy_type: Optional[pulumi.Input[str]] = None,
-             redundant_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             secondary_device: Optional[pulumi.Input['DeviceSecondaryDeviceArgs']] = None,
-             self_managed: Optional[pulumi.Input[bool]] = None,
-             ssh_ip_address: Optional[pulumi.Input[str]] = None,
-             ssh_ip_fqdn: Optional[pulumi.Input[str]] = None,
-             ssh_key: Optional[pulumi.Input['DeviceSshKeyArgs']] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             term_length: Optional[pulumi.Input[int]] = None,
-             throughput: Optional[pulumi.Input[int]] = None,
-             throughput_unit: Optional[pulumi.Input[Union[str, 'ThroughputUnit']]] = None,
-             type_code: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             vendor_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             wan_interface_id: Optional[pulumi.Input[str]] = None,
-             zone_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-        if acl_template_id is None and 'aclTemplateId' in kwargs:
-            acl_template_id = kwargs['aclTemplateId']
-        if additional_bandwidth is None and 'additionalBandwidth' in kwargs:
-            additional_bandwidth = kwargs['additionalBandwidth']
-        if cloud_init_file_id is None and 'cloudInitFileId' in kwargs:
-            cloud_init_file_id = kwargs['cloudInitFileId']
-        if cluster_details is None and 'clusterDetails' in kwargs:
-            cluster_details = kwargs['clusterDetails']
-        if core_count is None and 'coreCount' in kwargs:
-            core_count = kwargs['coreCount']
-        if interface_count is None and 'interfaceCount' in kwargs:
-            interface_count = kwargs['interfaceCount']
-        if license_file is None and 'licenseFile' in kwargs:
-            license_file = kwargs['licenseFile']
-        if license_file_id is None and 'licenseFileId' in kwargs:
-            license_file_id = kwargs['licenseFileId']
-        if license_status is None and 'licenseStatus' in kwargs:
-            license_status = kwargs['licenseStatus']
-        if license_token is None and 'licenseToken' in kwargs:
-            license_token = kwargs['licenseToken']
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if mgmt_acl_template_uuid is None and 'mgmtAclTemplateUuid' in kwargs:
-            mgmt_acl_template_uuid = kwargs['mgmtAclTemplateUuid']
-        if order_reference is None and 'orderReference' in kwargs:
-            order_reference = kwargs['orderReference']
-        if package_code is None and 'packageCode' in kwargs:
-            package_code = kwargs['packageCode']
-        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
-            purchase_order_number = kwargs['purchaseOrderNumber']
-        if redundancy_type is None and 'redundancyType' in kwargs:
-            redundancy_type = kwargs['redundancyType']
-        if redundant_id is None and 'redundantId' in kwargs:
-            redundant_id = kwargs['redundantId']
-        if secondary_device is None and 'secondaryDevice' in kwargs:
-            secondary_device = kwargs['secondaryDevice']
-        if self_managed is None and 'selfManaged' in kwargs:
-            self_managed = kwargs['selfManaged']
-        if ssh_ip_address is None and 'sshIpAddress' in kwargs:
-            ssh_ip_address = kwargs['sshIpAddress']
-        if ssh_ip_fqdn is None and 'sshIpFqdn' in kwargs:
-            ssh_ip_fqdn = kwargs['sshIpFqdn']
-        if ssh_key is None and 'sshKey' in kwargs:
-            ssh_key = kwargs['sshKey']
-        if term_length is None and 'termLength' in kwargs:
-            term_length = kwargs['termLength']
-        if throughput_unit is None and 'throughputUnit' in kwargs:
-            throughput_unit = kwargs['throughputUnit']
-        if type_code is None and 'typeCode' in kwargs:
-            type_code = kwargs['typeCode']
-        if vendor_configuration is None and 'vendorConfiguration' in kwargs:
-            vendor_configuration = kwargs['vendorConfiguration']
-        if wan_interface_id is None and 'wanInterfaceId' in kwargs:
-            wan_interface_id = kwargs['wanInterfaceId']
-        if zone_code is None and 'zoneCode' in kwargs:
-            zone_code = kwargs['zoneCode']
-
         if account_number is not None:
-            _setter("account_number", account_number)
+            pulumi.set(__self__, "account_number", account_number)
         if acl_template_id is not None:
-            _setter("acl_template_id", acl_template_id)
+            pulumi.set(__self__, "acl_template_id", acl_template_id)
         if additional_bandwidth is not None:
-            _setter("additional_bandwidth", additional_bandwidth)
+            pulumi.set(__self__, "additional_bandwidth", additional_bandwidth)
         if asn is not None:
-            _setter("asn", asn)
+            pulumi.set(__self__, "asn", asn)
         if byol is not None:
-            _setter("byol", byol)
+            pulumi.set(__self__, "byol", byol)
         if cloud_init_file_id is not None:
-            _setter("cloud_init_file_id", cloud_init_file_id)
+            pulumi.set(__self__, "cloud_init_file_id", cloud_init_file_id)
         if cluster_details is not None:
-            _setter("cluster_details", cluster_details)
+            pulumi.set(__self__, "cluster_details", cluster_details)
         if connectivity is not None:
-            _setter("connectivity", connectivity)
+            pulumi.set(__self__, "connectivity", connectivity)
         if core_count is not None:
-            _setter("core_count", core_count)
+            pulumi.set(__self__, "core_count", core_count)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if ibx is not None:
-            _setter("ibx", ibx)
+            pulumi.set(__self__, "ibx", ibx)
         if interface_count is not None:
-            _setter("interface_count", interface_count)
+            pulumi.set(__self__, "interface_count", interface_count)
         if interfaces is not None:
-            _setter("interfaces", interfaces)
+            pulumi.set(__self__, "interfaces", interfaces)
         if license_file is not None:
-            _setter("license_file", license_file)
+            pulumi.set(__self__, "license_file", license_file)
         if license_file_id is not None:
-            _setter("license_file_id", license_file_id)
+            pulumi.set(__self__, "license_file_id", license_file_id)
         if license_status is not None:
-            _setter("license_status", license_status)
+            pulumi.set(__self__, "license_status", license_status)
         if license_token is not None:
-            _setter("license_token", license_token)
+            pulumi.set(__self__, "license_token", license_token)
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if mgmt_acl_template_uuid is not None:
-            _setter("mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+            pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if order_reference is not None:
-            _setter("order_reference", order_reference)
+            pulumi.set(__self__, "order_reference", order_reference)
         if package_code is not None:
-            _setter("package_code", package_code)
+            pulumi.set(__self__, "package_code", package_code)
         if purchase_order_number is not None:
-            _setter("purchase_order_number", purchase_order_number)
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
         if redundancy_type is not None:
-            _setter("redundancy_type", redundancy_type)
+            pulumi.set(__self__, "redundancy_type", redundancy_type)
         if redundant_id is not None:
-            _setter("redundant_id", redundant_id)
+            pulumi.set(__self__, "redundant_id", redundant_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if secondary_device is not None:
-            _setter("secondary_device", secondary_device)
+            pulumi.set(__self__, "secondary_device", secondary_device)
         if self_managed is not None:
-            _setter("self_managed", self_managed)
+            pulumi.set(__self__, "self_managed", self_managed)
         if ssh_ip_address is not None:
-            _setter("ssh_ip_address", ssh_ip_address)
+            pulumi.set(__self__, "ssh_ip_address", ssh_ip_address)
         if ssh_ip_fqdn is not None:
-            _setter("ssh_ip_fqdn", ssh_ip_fqdn)
+            pulumi.set(__self__, "ssh_ip_fqdn", ssh_ip_fqdn)
         if ssh_key is not None:
-            _setter("ssh_key", ssh_key)
+            pulumi.set(__self__, "ssh_key", ssh_key)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if term_length is not None:
-            _setter("term_length", term_length)
+            pulumi.set(__self__, "term_length", term_length)
         if throughput is not None:
-            _setter("throughput", throughput)
+            pulumi.set(__self__, "throughput", throughput)
         if throughput_unit is not None:
-            _setter("throughput_unit", throughput_unit)
+            pulumi.set(__self__, "throughput_unit", throughput_unit)
         if type_code is not None:
-            _setter("type_code", type_code)
+            pulumi.set(__self__, "type_code", type_code)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
         if vendor_configuration is not None:
-            _setter("vendor_configuration", vendor_configuration)
+            pulumi.set(__self__, "vendor_configuration", vendor_configuration)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
         if wan_interface_id is not None:
-            _setter("wan_interface_id", wan_interface_id)
+            pulumi.set(__self__, "wan_interface_id", wan_interface_id)
         if zone_code is not None:
-            _setter("zone_code", zone_code)
+            pulumi.set(__self__, "zone_code", zone_code)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -1777,10 +1495,6 @@ class Device(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DeviceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1832,11 +1546,6 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["additional_bandwidth"] = additional_bandwidth
             __props__.__dict__["byol"] = byol
             __props__.__dict__["cloud_init_file_id"] = cloud_init_file_id
-            if cluster_details is not None and not isinstance(cluster_details, DeviceClusterDetailsArgs):
-                cluster_details = cluster_details or {}
-                def _setter(key, value):
-                    cluster_details[key] = value
-                DeviceClusterDetailsArgs._configure(_setter, **cluster_details)
             __props__.__dict__["cluster_details"] = cluster_details
             __props__.__dict__["connectivity"] = connectivity
             if core_count is None and not opts.urn:
@@ -1860,18 +1569,8 @@ class Device(pulumi.CustomResource):
                 raise TypeError("Missing required property 'package_code'")
             __props__.__dict__["package_code"] = package_code
             __props__.__dict__["purchase_order_number"] = purchase_order_number
-            if secondary_device is not None and not isinstance(secondary_device, DeviceSecondaryDeviceArgs):
-                secondary_device = secondary_device or {}
-                def _setter(key, value):
-                    secondary_device[key] = value
-                DeviceSecondaryDeviceArgs._configure(_setter, **secondary_device)
             __props__.__dict__["secondary_device"] = secondary_device
             __props__.__dict__["self_managed"] = self_managed
-            if ssh_key is not None and not isinstance(ssh_key, DeviceSshKeyArgs):
-                ssh_key = ssh_key or {}
-                def _setter(key, value):
-                    ssh_key[key] = value
-                DeviceSshKeyArgs._configure(_setter, **ssh_key)
             __props__.__dict__["ssh_key"] = ssh_key
             if term_length is None and not opts.urn:
                 raise TypeError("Missing required property 'term_length'")

@@ -67,10 +67,10 @@ public final class ConnectionASideAccessPointNetwork {
             return this;
         }
         public ConnectionASideAccessPointNetwork build() {
-            final var o = new ConnectionASideAccessPointNetwork();
-            o.href = href;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionASideAccessPointNetwork();
+            _resultValue.href = href;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

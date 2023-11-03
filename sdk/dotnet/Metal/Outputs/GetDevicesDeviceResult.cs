@@ -35,6 +35,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// </summary>
         public readonly string ProjectId;
         public readonly string RootPassword;
+        public readonly string SosHostname;
         public readonly ImmutableArray<string> SshKeyIds;
         public readonly string State;
         public readonly string Storage;
@@ -80,6 +81,8 @@ namespace Pulumi.Equinix.Metal.Outputs
 
             string rootPassword,
 
+            string sosHostname,
+
             ImmutableArray<string> sshKeyIds,
 
             string state,
@@ -107,6 +110,7 @@ namespace Pulumi.Equinix.Metal.Outputs
             Ports = ports;
             ProjectId = projectId;
             RootPassword = rootPassword;
+            SosHostname = sosHostname;
             SshKeyIds = sshKeyIds;
             State = state;
             Storage = storage;

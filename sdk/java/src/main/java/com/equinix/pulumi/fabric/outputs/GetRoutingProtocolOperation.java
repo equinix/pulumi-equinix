@@ -42,9 +42,9 @@ public final class GetRoutingProtocolOperation {
             return errors(List.of(errors));
         }
         public GetRoutingProtocolOperation build() {
-            final var o = new GetRoutingProtocolOperation();
-            o.errors = errors;
-            return o;
+            final var _resultValue = new GetRoutingProtocolOperation();
+            _resultValue.errors = errors;
+            return _resultValue;
         }
     }
 }

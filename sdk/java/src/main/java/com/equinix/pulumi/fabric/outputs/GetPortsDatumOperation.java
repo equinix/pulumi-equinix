@@ -61,11 +61,11 @@ public final class GetPortsDatumOperation {
             return this;
         }
         public GetPortsDatumOperation build() {
-            final var o = new GetPortsDatumOperation();
-            o.connectionCount = connectionCount;
-            o.opStatusChangedAt = opStatusChangedAt;
-            o.operationalStatus = operationalStatus;
-            return o;
+            final var _resultValue = new GetPortsDatumOperation();
+            _resultValue.connectionCount = connectionCount;
+            _resultValue.opStatusChangedAt = opStatusChangedAt;
+            _resultValue.operationalStatus = operationalStatus;
+            return _resultValue;
         }
     }
 }

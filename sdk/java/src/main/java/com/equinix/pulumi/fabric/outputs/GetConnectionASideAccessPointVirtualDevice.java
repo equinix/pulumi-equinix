@@ -60,11 +60,11 @@ public final class GetConnectionASideAccessPointVirtualDevice {
             return this;
         }
         public GetConnectionASideAccessPointVirtualDevice build() {
-            final var o = new GetConnectionASideAccessPointVirtualDevice();
-            o.href = href;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointVirtualDevice();
+            _resultValue.href = href;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

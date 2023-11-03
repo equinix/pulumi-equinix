@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from ._enums import *
 
@@ -46,72 +46,29 @@ class ReservedIpBlockArgs:
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
-        ReservedIpBlockArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            cidr=cidr,
-            custom_data=custom_data,
-            description=description,
-            facility=facility,
-            metro=metro,
-            network=network,
-            quantity=quantity,
-            tags=tags,
-            type=type,
-            vrf_id=vrf_id,
-            wait_for_state=wait_for_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             cidr: Optional[pulumi.Input[int]] = None,
-             custom_data: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             facility: Optional[pulumi.Input[Union[str, 'Facility']]] = None,
-             metro: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             quantity: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[Union[str, 'IpBlockType']]] = None,
-             vrf_id: Optional[pulumi.Input[str]] = None,
-             wait_for_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if custom_data is None and 'customData' in kwargs:
-            custom_data = kwargs['customData']
-        if vrf_id is None and 'vrfId' in kwargs:
-            vrf_id = kwargs['vrfId']
-        if wait_for_state is None and 'waitForState' in kwargs:
-            wait_for_state = kwargs['waitForState']
-
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "project_id", project_id)
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if custom_data is not None:
-            _setter("custom_data", custom_data)
+            pulumi.set(__self__, "custom_data", custom_data)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if facility is not None:
-            _setter("facility", facility)
+            pulumi.set(__self__, "facility", facility)
         if metro is not None:
-            _setter("metro", metro)
+            pulumi.set(__self__, "metro", metro)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vrf_id is not None:
-            _setter("vrf_id", vrf_id)
+            pulumi.set(__self__, "vrf_id", vrf_id)
         if wait_for_state is not None:
-            _setter("wait_for_state", wait_for_state)
+            pulumi.set(__self__, "wait_for_state", wait_for_state)
 
     @property
     @pulumi.getter(name="projectId")
@@ -311,113 +268,48 @@ class _ReservedIpBlockState:
         :param pulumi.Input[str] vrf_id: Only valid and required when `type` is `vrf`. VRF ID for type=vrf reservations.
         :param pulumi.Input[str] wait_for_state: Wait for the IP reservation block to reach a desired state on resource creation. One of: `pending`, `created`. The `created` state is default and recommended if the addresses are needed within the configuration. An error will be returned if a timeout or the `denied` state is encountered.
         """
-        _ReservedIpBlockState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            address_family=address_family,
-            cidr=cidr,
-            cidr_notation=cidr_notation,
-            custom_data=custom_data,
-            description=description,
-            facility=facility,
-            gateway=gateway,
-            global_=global_,
-            manageable=manageable,
-            management=management,
-            metro=metro,
-            netmask=netmask,
-            network=network,
-            project_id=project_id,
-            public=public,
-            quantity=quantity,
-            tags=tags,
-            type=type,
-            vrf_id=vrf_id,
-            wait_for_state=wait_for_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             address_family: Optional[pulumi.Input[int]] = None,
-             cidr: Optional[pulumi.Input[int]] = None,
-             cidr_notation: Optional[pulumi.Input[str]] = None,
-             custom_data: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             facility: Optional[pulumi.Input[Union[str, 'Facility']]] = None,
-             gateway: Optional[pulumi.Input[str]] = None,
-             global_: Optional[pulumi.Input[bool]] = None,
-             manageable: Optional[pulumi.Input[bool]] = None,
-             management: Optional[pulumi.Input[bool]] = None,
-             metro: Optional[pulumi.Input[str]] = None,
-             netmask: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             public: Optional[pulumi.Input[bool]] = None,
-             quantity: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[Union[str, 'IpBlockType']]] = None,
-             vrf_id: Optional[pulumi.Input[str]] = None,
-             wait_for_state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if address_family is None and 'addressFamily' in kwargs:
-            address_family = kwargs['addressFamily']
-        if cidr_notation is None and 'cidrNotation' in kwargs:
-            cidr_notation = kwargs['cidrNotation']
-        if custom_data is None and 'customData' in kwargs:
-            custom_data = kwargs['customData']
-        if global_ is None and 'global' in kwargs:
-            global_ = kwargs['global']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if vrf_id is None and 'vrfId' in kwargs:
-            vrf_id = kwargs['vrfId']
-        if wait_for_state is None and 'waitForState' in kwargs:
-            wait_for_state = kwargs['waitForState']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if address_family is not None:
-            _setter("address_family", address_family)
+            pulumi.set(__self__, "address_family", address_family)
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if cidr_notation is not None:
-            _setter("cidr_notation", cidr_notation)
+            pulumi.set(__self__, "cidr_notation", cidr_notation)
         if custom_data is not None:
-            _setter("custom_data", custom_data)
+            pulumi.set(__self__, "custom_data", custom_data)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if facility is not None:
-            _setter("facility", facility)
+            pulumi.set(__self__, "facility", facility)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
         if global_ is not None:
-            _setter("global_", global_)
+            pulumi.set(__self__, "global_", global_)
         if manageable is not None:
-            _setter("manageable", manageable)
+            pulumi.set(__self__, "manageable", manageable)
         if management is not None:
-            _setter("management", management)
+            pulumi.set(__self__, "management", management)
         if metro is not None:
-            _setter("metro", metro)
+            pulumi.set(__self__, "metro", metro)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if public is not None:
-            _setter("public", public)
+            pulumi.set(__self__, "public", public)
         if quantity is not None:
-            _setter("quantity", quantity)
+            pulumi.set(__self__, "quantity", quantity)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vrf_id is not None:
-            _setter("vrf_id", vrf_id)
+            pulumi.set(__self__, "vrf_id", vrf_id)
         if wait_for_state is not None:
-            _setter("wait_for_state", wait_for_state)
+            pulumi.set(__self__, "wait_for_state", wait_for_state)
 
     @property
     @pulumi.getter
@@ -808,10 +700,6 @@ class ReservedIpBlock(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReservedIpBlockArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

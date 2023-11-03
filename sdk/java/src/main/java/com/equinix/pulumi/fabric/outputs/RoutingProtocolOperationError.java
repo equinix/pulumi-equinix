@@ -100,14 +100,14 @@ public final class RoutingProtocolOperationError {
             return this;
         }
         public RoutingProtocolOperationError build() {
-            final var o = new RoutingProtocolOperationError();
-            o.additionalInfos = additionalInfos;
-            o.correlationId = correlationId;
-            o.details = details;
-            o.errorCode = errorCode;
-            o.errorMessage = errorMessage;
-            o.help = help;
-            return o;
+            final var _resultValue = new RoutingProtocolOperationError();
+            _resultValue.additionalInfos = additionalInfos;
+            _resultValue.correlationId = correlationId;
+            _resultValue.details = details;
+            _resultValue.errorCode = errorCode;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.help = help;
+            return _resultValue;
         }
     }
 }

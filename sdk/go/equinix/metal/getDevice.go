@@ -138,6 +138,8 @@ type LookupDeviceResult struct {
 	ProjectId string          `pulumi:"projectId"`
 	// Root password to the server (if still available).
 	RootPassword string `pulumi:"rootPassword"`
+	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	SosHostname string `pulumi:"sosHostname"`
 	// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
 	SshKeyIds []string `pulumi:"sshKeyIds"`
 	// The state of the device.
@@ -295,6 +297,11 @@ func (o LookupDeviceResultOutput) ProjectId() pulumi.StringOutput {
 // Root password to the server (if still available).
 func (o LookupDeviceResultOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+func (o LookupDeviceResultOutput) SosHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.SosHostname }).(pulumi.StringOutput)
 }
 
 // List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.

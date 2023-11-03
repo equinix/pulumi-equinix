@@ -344,24 +344,24 @@ public final class ConnectionZSideAccessPoint {
             return this;
         }
         public ConnectionZSideAccessPoint build() {
-            final var o = new ConnectionZSideAccessPoint();
-            o.account = account;
-            o.authenticationKey = authenticationKey;
-            o.gateway = gateway;
-            o.interface_ = interface_;
-            o.linkProtocol = linkProtocol;
-            o.location = location;
-            o.network = network;
-            o.peeringType = peeringType;
-            o.port = port;
-            o.profile = profile;
-            o.providerConnectionId = providerConnectionId;
-            o.router = router;
-            o.routingProtocols = routingProtocols;
-            o.sellerRegion = sellerRegion;
-            o.type = type;
-            o.virtualDevice = virtualDevice;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPoint();
+            _resultValue.account = account;
+            _resultValue.authenticationKey = authenticationKey;
+            _resultValue.gateway = gateway;
+            _resultValue.interface_ = interface_;
+            _resultValue.linkProtocol = linkProtocol;
+            _resultValue.location = location;
+            _resultValue.network = network;
+            _resultValue.peeringType = peeringType;
+            _resultValue.port = port;
+            _resultValue.profile = profile;
+            _resultValue.providerConnectionId = providerConnectionId;
+            _resultValue.router = router;
+            _resultValue.routingProtocols = routingProtocols;
+            _resultValue.sellerRegion = sellerRegion;
+            _resultValue.type = type;
+            _resultValue.virtualDevice = virtualDevice;
+            return _resultValue;
         }
     }
 }

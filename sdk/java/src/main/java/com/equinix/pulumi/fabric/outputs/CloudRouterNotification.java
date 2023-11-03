@@ -90,11 +90,11 @@ public final class CloudRouterNotification {
             return this;
         }
         public CloudRouterNotification build() {
-            final var o = new CloudRouterNotification();
-            o.emails = emails;
-            o.sendInterval = sendInterval;
-            o.type = type;
-            return o;
+            final var _resultValue = new CloudRouterNotification();
+            _resultValue.emails = emails;
+            _resultValue.sendInterval = sendInterval;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

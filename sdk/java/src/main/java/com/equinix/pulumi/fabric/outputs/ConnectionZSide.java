@@ -92,11 +92,11 @@ public final class ConnectionZSide {
             return this;
         }
         public ConnectionZSide build() {
-            final var o = new ConnectionZSide();
-            o.accessPoint = accessPoint;
-            o.additionalInfo = additionalInfo;
-            o.serviceToken = serviceToken;
-            return o;
+            final var _resultValue = new ConnectionZSide();
+            _resultValue.accessPoint = accessPoint;
+            _resultValue.additionalInfo = additionalInfo;
+            _resultValue.serviceToken = serviceToken;
+            return _resultValue;
         }
     }
 }

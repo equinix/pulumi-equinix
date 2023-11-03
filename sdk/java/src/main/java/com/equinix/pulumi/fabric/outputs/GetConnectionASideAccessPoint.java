@@ -238,22 +238,22 @@ public final class GetConnectionASideAccessPoint {
             return virtualDevices(List.of(virtualDevices));
         }
         public GetConnectionASideAccessPoint build() {
-            final var o = new GetConnectionASideAccessPoint();
-            o.accounts = accounts;
-            o.authenticationKey = authenticationKey;
-            o.gateways = gateways;
-            o.interfaces = interfaces;
-            o.linkProtocols = linkProtocols;
-            o.locations = locations;
-            o.peeringType = peeringType;
-            o.ports = ports;
-            o.profiles = profiles;
-            o.providerConnectionId = providerConnectionId;
-            o.routers = routers;
-            o.sellerRegion = sellerRegion;
-            o.type = type;
-            o.virtualDevices = virtualDevices;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPoint();
+            _resultValue.accounts = accounts;
+            _resultValue.authenticationKey = authenticationKey;
+            _resultValue.gateways = gateways;
+            _resultValue.interfaces = interfaces;
+            _resultValue.linkProtocols = linkProtocols;
+            _resultValue.locations = locations;
+            _resultValue.peeringType = peeringType;
+            _resultValue.ports = ports;
+            _resultValue.profiles = profiles;
+            _resultValue.providerConnectionId = providerConnectionId;
+            _resultValue.routers = routers;
+            _resultValue.sellerRegion = sellerRegion;
+            _resultValue.type = type;
+            _resultValue.virtualDevices = virtualDevices;
+            return _resultValue;
         }
     }
 }

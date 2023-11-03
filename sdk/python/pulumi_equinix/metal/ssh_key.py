@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SshKeyArgs', 'SshKey']
@@ -22,26 +22,9 @@ class SshKeyArgs:
                can be read using the file interpolation function
         :param pulumi.Input[str] name: The name of the SSH key for identification
         """
-        SshKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            public_key=public_key,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             public_key: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if public_key is None:
-            raise TypeError("Missing 'public_key' argument")
-
-        _setter("public_key", public_key)
+        pulumi.set(__self__, "public_key", public_key)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -88,43 +71,18 @@ class _SshKeyState:
                can be read using the file interpolation function
         :param pulumi.Input[str] updated: The timestamp for the last time the SSH key was updated.
         """
-        _SshKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created=created,
-            fingerprint=fingerprint,
-            name=name,
-            owner_id=owner_id,
-            public_key=public_key,
-            updated=updated,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created: Optional[pulumi.Input[str]] = None,
-             fingerprint: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner_id: Optional[pulumi.Input[str]] = None,
-             public_key: Optional[pulumi.Input[str]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if owner_id is None and 'ownerId' in kwargs:
-            owner_id = kwargs['ownerId']
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if fingerprint is not None:
-            _setter("fingerprint", fingerprint)
+            pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner_id is not None:
-            _setter("owner_id", owner_id)
+            pulumi.set(__self__, "owner_id", owner_id)
         if public_key is not None:
-            _setter("public_key", public_key)
+            pulumi.set(__self__, "public_key", public_key)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
 
     @property
     @pulumi.getter
@@ -270,10 +228,6 @@ class SshKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SshKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -149,14 +149,14 @@ public final class ServiceProfileMetro {
             return this;
         }
         public ServiceProfileMetro build() {
-            final var o = new ServiceProfileMetro();
-            o.code = code;
-            o.displayName = displayName;
-            o.ibxs = ibxs;
-            o.inTrail = inTrail;
-            o.name = name;
-            o.sellerRegions = sellerRegions;
-            return o;
+            final var _resultValue = new ServiceProfileMetro();
+            _resultValue.code = code;
+            _resultValue.displayName = displayName;
+            _resultValue.ibxs = ibxs;
+            _resultValue.inTrail = inTrail;
+            _resultValue.name = name;
+            _resultValue.sellerRegions = sellerRegions;
+            return _resultValue;
         }
     }
 }

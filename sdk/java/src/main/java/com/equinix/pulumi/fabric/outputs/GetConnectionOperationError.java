@@ -98,14 +98,14 @@ public final class GetConnectionOperationError {
             return this;
         }
         public GetConnectionOperationError build() {
-            final var o = new GetConnectionOperationError();
-            o.additionalInfos = additionalInfos;
-            o.correlationId = correlationId;
-            o.details = details;
-            o.errorCode = errorCode;
-            o.errorMessage = errorMessage;
-            o.help = help;
-            return o;
+            final var _resultValue = new GetConnectionOperationError();
+            _resultValue.additionalInfos = additionalInfos;
+            _resultValue.correlationId = correlationId;
+            _resultValue.details = details;
+            _resultValue.errorCode = errorCode;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.help = help;
+            return _resultValue;
         }
     }
 }

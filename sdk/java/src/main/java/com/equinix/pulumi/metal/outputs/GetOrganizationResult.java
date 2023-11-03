@@ -187,17 +187,17 @@ public final class GetOrganizationResult {
             return this;
         }
         public GetOrganizationResult build() {
-            final var o = new GetOrganizationResult();
-            o.address = address;
-            o.description = description;
-            o.id = id;
-            o.logo = logo;
-            o.name = name;
-            o.organizationId = organizationId;
-            o.projectIds = projectIds;
-            o.twitter = twitter;
-            o.website = website;
-            return o;
+            final var _resultValue = new GetOrganizationResult();
+            _resultValue.address = address;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.logo = logo;
+            _resultValue.name = name;
+            _resultValue.organizationId = organizationId;
+            _resultValue.projectIds = projectIds;
+            _resultValue.twitter = twitter;
+            _resultValue.website = website;
+            return _resultValue;
         }
     }
 }

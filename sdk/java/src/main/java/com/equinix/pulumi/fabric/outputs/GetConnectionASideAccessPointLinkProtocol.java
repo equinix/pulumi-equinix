@@ -72,12 +72,12 @@ public final class GetConnectionASideAccessPointLinkProtocol {
             return this;
         }
         public GetConnectionASideAccessPointLinkProtocol build() {
-            final var o = new GetConnectionASideAccessPointLinkProtocol();
-            o.type = type;
-            o.vlanCTag = vlanCTag;
-            o.vlanSTag = vlanSTag;
-            o.vlanTag = vlanTag;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointLinkProtocol();
+            _resultValue.type = type;
+            _resultValue.vlanCTag = vlanCTag;
+            _resultValue.vlanSTag = vlanSTag;
+            _resultValue.vlanTag = vlanTag;
+            return _resultValue;
         }
     }
 }

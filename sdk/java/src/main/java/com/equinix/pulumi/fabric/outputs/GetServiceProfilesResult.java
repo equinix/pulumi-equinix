@@ -134,13 +134,13 @@ public final class GetServiceProfilesResult {
             return this;
         }
         public GetServiceProfilesResult build() {
-            final var o = new GetServiceProfilesResult();
-            o.data = data;
-            o.filter = filter;
-            o.id = id;
-            o.sort = sort;
-            o.viewPoint = viewPoint;
-            return o;
+            final var _resultValue = new GetServiceProfilesResult();
+            _resultValue.data = data;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.sort = sort;
+            _resultValue.viewPoint = viewPoint;
+            return _resultValue;
         }
     }
 }

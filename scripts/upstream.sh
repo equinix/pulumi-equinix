@@ -142,7 +142,12 @@ apply() {
   # Iterating over the patches folder in sorted order,
   # apply the patch using a 3-way merge strategy. This mirrors the default behavior of 'git merge'
   cd upstream
-  for patch in ../patches/*.patch; do
+  patch_folder="../patches"
+  if [ -z "$(ls -A $patch_folder/*.patch 2>/dev/null)" ]; then
+    echo "No patches found in $patch_folder. Exiting..."
+    exit 0
+  fi
+  for patch in $patch_folder/*.patch; do
     if ! git apply --3way "$patch"; then
       cat <<EOF
 

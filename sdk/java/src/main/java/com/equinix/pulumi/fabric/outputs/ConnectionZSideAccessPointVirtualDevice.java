@@ -86,11 +86,11 @@ public final class ConnectionZSideAccessPointVirtualDevice {
             return this;
         }
         public ConnectionZSideAccessPointVirtualDevice build() {
-            final var o = new ConnectionZSideAccessPointVirtualDevice();
-            o.href = href;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointVirtualDevice();
+            _resultValue.href = href;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

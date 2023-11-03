@@ -116,16 +116,16 @@ public final class GetServiceProfileAccount {
             return this;
         }
         public GetServiceProfileAccount build() {
-            final var o = new GetServiceProfileAccount();
-            o.accountName = accountName;
-            o.accountNumber = accountNumber;
-            o.globalCustId = globalCustId;
-            o.globalOrgId = globalOrgId;
-            o.globalOrganizationName = globalOrganizationName;
-            o.orgId = orgId;
-            o.organizationName = organizationName;
-            o.ucmId = ucmId;
-            return o;
+            final var _resultValue = new GetServiceProfileAccount();
+            _resultValue.accountName = accountName;
+            _resultValue.accountNumber = accountNumber;
+            _resultValue.globalCustId = globalCustId;
+            _resultValue.globalOrgId = globalOrgId;
+            _resultValue.globalOrganizationName = globalOrganizationName;
+            _resultValue.orgId = orgId;
+            _resultValue.organizationName = organizationName;
+            _resultValue.ucmId = ucmId;
+            return _resultValue;
         }
     }
 }

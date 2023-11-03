@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,67 +40,20 @@ class SpotMarketRequestArgs:
         :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active.
                On resource destruction wait until devices are removed.
         """
-        SpotMarketRequestArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            devices_max=devices_max,
-            devices_min=devices_min,
-            instance_parameters=instance_parameters,
-            max_bid_price=max_bid_price,
-            project_id=project_id,
-            facilities=facilities,
-            metro=metro,
-            wait_for_devices=wait_for_devices,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             devices_max: Optional[pulumi.Input[int]] = None,
-             devices_min: Optional[pulumi.Input[int]] = None,
-             instance_parameters: Optional[pulumi.Input['SpotMarketRequestInstanceParametersArgs']] = None,
-             max_bid_price: Optional[pulumi.Input[float]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             facilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             metro: Optional[pulumi.Input[str]] = None,
-             wait_for_devices: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if devices_max is None and 'devicesMax' in kwargs:
-            devices_max = kwargs['devicesMax']
-        if devices_max is None:
-            raise TypeError("Missing 'devices_max' argument")
-        if devices_min is None and 'devicesMin' in kwargs:
-            devices_min = kwargs['devicesMin']
-        if devices_min is None:
-            raise TypeError("Missing 'devices_min' argument")
-        if instance_parameters is None and 'instanceParameters' in kwargs:
-            instance_parameters = kwargs['instanceParameters']
-        if instance_parameters is None:
-            raise TypeError("Missing 'instance_parameters' argument")
-        if max_bid_price is None and 'maxBidPrice' in kwargs:
-            max_bid_price = kwargs['maxBidPrice']
-        if max_bid_price is None:
-            raise TypeError("Missing 'max_bid_price' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if wait_for_devices is None and 'waitForDevices' in kwargs:
-            wait_for_devices = kwargs['waitForDevices']
-
-        _setter("devices_max", devices_max)
-        _setter("devices_min", devices_min)
-        _setter("instance_parameters", instance_parameters)
-        _setter("max_bid_price", max_bid_price)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "devices_max", devices_max)
+        pulumi.set(__self__, "devices_min", devices_min)
+        pulumi.set(__self__, "instance_parameters", instance_parameters)
+        pulumi.set(__self__, "max_bid_price", max_bid_price)
+        pulumi.set(__self__, "project_id", project_id)
         if facilities is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facilities is not None:
-            _setter("facilities", facilities)
+            pulumi.set(__self__, "facilities", facilities)
         if metro is not None:
-            _setter("metro", metro)
+            pulumi.set(__self__, "metro", metro)
         if wait_for_devices is not None:
-            _setter("wait_for_devices", wait_for_devices)
+            pulumi.set(__self__, "wait_for_devices", wait_for_devices)
 
     @property
     @pulumi.getter(name="devicesMax")
@@ -234,62 +187,25 @@ class _SpotMarketRequestState:
         :param pulumi.Input[bool] wait_for_devices: On resource creation wait until all desired devices are active.
                On resource destruction wait until devices are removed.
         """
-        _SpotMarketRequestState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            devices_max=devices_max,
-            devices_min=devices_min,
-            facilities=facilities,
-            instance_parameters=instance_parameters,
-            max_bid_price=max_bid_price,
-            metro=metro,
-            project_id=project_id,
-            wait_for_devices=wait_for_devices,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             devices_max: Optional[pulumi.Input[int]] = None,
-             devices_min: Optional[pulumi.Input[int]] = None,
-             facilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_parameters: Optional[pulumi.Input['SpotMarketRequestInstanceParametersArgs']] = None,
-             max_bid_price: Optional[pulumi.Input[float]] = None,
-             metro: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             wait_for_devices: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if devices_max is None and 'devicesMax' in kwargs:
-            devices_max = kwargs['devicesMax']
-        if devices_min is None and 'devicesMin' in kwargs:
-            devices_min = kwargs['devicesMin']
-        if instance_parameters is None and 'instanceParameters' in kwargs:
-            instance_parameters = kwargs['instanceParameters']
-        if max_bid_price is None and 'maxBidPrice' in kwargs:
-            max_bid_price = kwargs['maxBidPrice']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if wait_for_devices is None and 'waitForDevices' in kwargs:
-            wait_for_devices = kwargs['waitForDevices']
-
         if devices_max is not None:
-            _setter("devices_max", devices_max)
+            pulumi.set(__self__, "devices_max", devices_max)
         if devices_min is not None:
-            _setter("devices_min", devices_min)
+            pulumi.set(__self__, "devices_min", devices_min)
         if facilities is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facilities is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facilities is not None:
-            _setter("facilities", facilities)
+            pulumi.set(__self__, "facilities", facilities)
         if instance_parameters is not None:
-            _setter("instance_parameters", instance_parameters)
+            pulumi.set(__self__, "instance_parameters", instance_parameters)
         if max_bid_price is not None:
-            _setter("max_bid_price", max_bid_price)
+            pulumi.set(__self__, "max_bid_price", max_bid_price)
         if metro is not None:
-            _setter("metro", metro)
+            pulumi.set(__self__, "metro", metro)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if wait_for_devices is not None:
-            _setter("wait_for_devices", wait_for_devices)
+            pulumi.set(__self__, "wait_for_devices", wait_for_devices)
 
     @property
     @pulumi.getter(name="devicesMax")
@@ -510,10 +426,6 @@ class SpotMarketRequest(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SpotMarketRequestArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -543,11 +455,6 @@ class SpotMarketRequest(pulumi.CustomResource):
                 raise TypeError("Missing required property 'devices_min'")
             __props__.__dict__["devices_min"] = devices_min
             __props__.__dict__["facilities"] = facilities
-            if instance_parameters is not None and not isinstance(instance_parameters, SpotMarketRequestInstanceParametersArgs):
-                instance_parameters = instance_parameters or {}
-                def _setter(key, value):
-                    instance_parameters[key] = value
-                SpotMarketRequestInstanceParametersArgs._configure(_setter, **instance_parameters)
             if instance_parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_parameters'")
             __props__.__dict__["instance_parameters"] = instance_parameters

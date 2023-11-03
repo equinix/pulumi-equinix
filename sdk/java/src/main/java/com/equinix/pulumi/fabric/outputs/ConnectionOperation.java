@@ -67,11 +67,11 @@ public final class ConnectionOperation {
             return this;
         }
         public ConnectionOperation build() {
-            final var o = new ConnectionOperation();
-            o.equinixStatus = equinixStatus;
-            o.errors = errors;
-            o.providerStatus = providerStatus;
-            return o;
+            final var _resultValue = new ConnectionOperation();
+            _resultValue.equinixStatus = equinixStatus;
+            _resultValue.errors = errors;
+            _resultValue.providerStatus = providerStatus;
+            return _resultValue;
         }
     }
 }

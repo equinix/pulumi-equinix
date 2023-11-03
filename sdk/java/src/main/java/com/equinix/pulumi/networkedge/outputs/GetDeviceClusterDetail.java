@@ -108,13 +108,13 @@ public final class GetDeviceClusterDetail {
             return this;
         }
         public GetDeviceClusterDetail build() {
-            final var o = new GetDeviceClusterDetail();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.node0s = node0s;
-            o.node1s = node1s;
-            o.numOfNodes = numOfNodes;
-            return o;
+            final var _resultValue = new GetDeviceClusterDetail();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.node0s = node0s;
+            _resultValue.node1s = node1s;
+            _resultValue.numOfNodes = numOfNodes;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetServiceProfileProject {
             return this;
         }
         public GetServiceProfileProject build() {
-            final var o = new GetServiceProfileProject();
-            o.href = href;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetServiceProfileProject();
+            _resultValue.href = href;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

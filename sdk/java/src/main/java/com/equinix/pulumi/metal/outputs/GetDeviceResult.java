@@ -101,6 +101,11 @@ public final class GetDeviceResult {
      */
     private String rootPassword;
     /**
+     * @return The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * 
+     */
+    private String sosHostname;
+    /**
      * @return List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
      * 
      */
@@ -246,6 +251,13 @@ public final class GetDeviceResult {
         return this.rootPassword;
     }
     /**
+     * @return The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * 
+     */
+    public String sosHostname() {
+        return this.sosHostname;
+    }
+    /**
      * @return List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
      * 
      */
@@ -299,6 +311,7 @@ public final class GetDeviceResult {
         private List<GetDevicePort> ports;
         private String projectId;
         private String rootPassword;
+        private String sosHostname;
         private List<String> sshKeyIds;
         private String state;
         private String storage;
@@ -326,6 +339,7 @@ public final class GetDeviceResult {
     	      this.ports = defaults.ports;
     	      this.projectId = defaults.projectId;
     	      this.rootPassword = defaults.rootPassword;
+    	      this.sosHostname = defaults.sosHostname;
     	      this.sshKeyIds = defaults.sshKeyIds;
     	      this.state = defaults.state;
     	      this.storage = defaults.storage;
@@ -439,6 +453,11 @@ public final class GetDeviceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sosHostname(String sosHostname) {
+            this.sosHostname = Objects.requireNonNull(sosHostname);
+            return this;
+        }
+        @CustomType.Setter
         public Builder sshKeyIds(List<String> sshKeyIds) {
             this.sshKeyIds = Objects.requireNonNull(sshKeyIds);
             return this;
@@ -465,32 +484,33 @@ public final class GetDeviceResult {
             return tags(List.of(tags));
         }
         public GetDeviceResult build() {
-            final var o = new GetDeviceResult();
-            o.accessPrivateIpv4 = accessPrivateIpv4;
-            o.accessPublicIpv4 = accessPublicIpv4;
-            o.accessPublicIpv6 = accessPublicIpv6;
-            o.alwaysPxe = alwaysPxe;
-            o.billingCycle = billingCycle;
-            o.description = description;
-            o.deviceId = deviceId;
-            o.facility = facility;
-            o.hardwareReservationId = hardwareReservationId;
-            o.hostname = hostname;
-            o.id = id;
-            o.ipxeScriptUrl = ipxeScriptUrl;
-            o.metro = metro;
-            o.networkType = networkType;
-            o.networks = networks;
-            o.operatingSystem = operatingSystem;
-            o.plan = plan;
-            o.ports = ports;
-            o.projectId = projectId;
-            o.rootPassword = rootPassword;
-            o.sshKeyIds = sshKeyIds;
-            o.state = state;
-            o.storage = storage;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetDeviceResult();
+            _resultValue.accessPrivateIpv4 = accessPrivateIpv4;
+            _resultValue.accessPublicIpv4 = accessPublicIpv4;
+            _resultValue.accessPublicIpv6 = accessPublicIpv6;
+            _resultValue.alwaysPxe = alwaysPxe;
+            _resultValue.billingCycle = billingCycle;
+            _resultValue.description = description;
+            _resultValue.deviceId = deviceId;
+            _resultValue.facility = facility;
+            _resultValue.hardwareReservationId = hardwareReservationId;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.ipxeScriptUrl = ipxeScriptUrl;
+            _resultValue.metro = metro;
+            _resultValue.networkType = networkType;
+            _resultValue.networks = networks;
+            _resultValue.operatingSystem = operatingSystem;
+            _resultValue.plan = plan;
+            _resultValue.ports = ports;
+            _resultValue.projectId = projectId;
+            _resultValue.rootPassword = rootPassword;
+            _resultValue.sosHostname = sosHostname;
+            _resultValue.sshKeyIds = sshKeyIds;
+            _resultValue.state = state;
+            _resultValue.storage = storage;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

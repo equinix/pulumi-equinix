@@ -389,27 +389,27 @@ public final class GetPortResult {
             return this;
         }
         public GetPortResult build() {
-            final var o = new GetPortResult();
-            o.account = account;
-            o.availableBandwidth = availableBandwidth;
-            o.bandwidth = bandwidth;
-            o.changeLog = changeLog;
-            o.description = description;
-            o.device = device;
-            o.encapsulation = encapsulation;
-            o.href = href;
-            o.id = id;
-            o.lagEnabled = lagEnabled;
-            o.location = location;
-            o.name = name;
-            o.operation = operation;
-            o.redundancy = redundancy;
-            o.serviceType = serviceType;
-            o.state = state;
-            o.type = type;
-            o.usedBandwidth = usedBandwidth;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetPortResult();
+            _resultValue.account = account;
+            _resultValue.availableBandwidth = availableBandwidth;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.changeLog = changeLog;
+            _resultValue.description = description;
+            _resultValue.device = device;
+            _resultValue.encapsulation = encapsulation;
+            _resultValue.href = href;
+            _resultValue.id = id;
+            _resultValue.lagEnabled = lagEnabled;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.operation = operation;
+            _resultValue.redundancy = redundancy;
+            _resultValue.serviceType = serviceType;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.usedBandwidth = usedBandwidth;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

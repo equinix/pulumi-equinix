@@ -148,14 +148,14 @@ public final class ConnectionZSideAccessPointProfile {
             return this;
         }
         public ConnectionZSideAccessPointProfile build() {
-            final var o = new ConnectionZSideAccessPointProfile();
-            o.accessPointTypeConfigs = accessPointTypeConfigs;
-            o.description = description;
-            o.href = href;
-            o.name = name;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointProfile();
+            _resultValue.accessPointTypeConfigs = accessPointTypeConfigs;
+            _resultValue.description = description;
+            _resultValue.href = href;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

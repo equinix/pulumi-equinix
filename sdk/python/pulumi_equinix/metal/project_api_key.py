@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ProjectApiKeyArgs', 'ProjectApiKey']
@@ -24,34 +24,9 @@ class ProjectApiKeyArgs:
         :param pulumi.Input[str] project_id: UUID of the project where the API key is scoped to.
         :param pulumi.Input[bool] read_only: Flag indicating whether the API key shoud be read-only
         """
-        ProjectApiKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            project_id=project_id,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-        if read_only is None:
-            raise TypeError("Missing 'read_only' argument")
-
-        _setter("description", description)
-        _setter("project_id", project_id)
-        _setter("read_only", read_only)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter
@@ -106,35 +81,14 @@ class _ProjectApiKeyState:
         :param pulumi.Input[bool] read_only: Flag indicating whether the API key shoud be read-only
         :param pulumi.Input[str] token: API token which can be used in Equinix Metal API clients
         """
-        _ProjectApiKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            project_id=project_id,
-            read_only=read_only,
-            token=token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
@@ -268,10 +222,6 @@ class ProjectApiKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectApiKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

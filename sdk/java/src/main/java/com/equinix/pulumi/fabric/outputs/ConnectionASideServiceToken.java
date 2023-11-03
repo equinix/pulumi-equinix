@@ -105,12 +105,12 @@ public final class ConnectionASideServiceToken {
             return this;
         }
         public ConnectionASideServiceToken build() {
-            final var o = new ConnectionASideServiceToken();
-            o.description = description;
-            o.href = href;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionASideServiceToken();
+            _resultValue.description = description;
+            _resultValue.href = href;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

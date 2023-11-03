@@ -86,11 +86,11 @@ public final class ConnectionZSideAccessPointRoutingProtocol {
             return this;
         }
         public ConnectionZSideAccessPointRoutingProtocol build() {
-            final var o = new ConnectionZSideAccessPointRoutingProtocol();
-            o.state = state;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointRoutingProtocol();
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

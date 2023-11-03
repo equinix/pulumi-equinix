@@ -49,10 +49,10 @@ public final class GetConnectionAdditionalInfo {
             return this;
         }
         public GetConnectionAdditionalInfo build() {
-            final var o = new GetConnectionAdditionalInfo();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetConnectionAdditionalInfo();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

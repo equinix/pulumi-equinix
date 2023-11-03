@@ -260,6 +260,10 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string RootPassword;
         /// <summary>
+        /// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        /// </summary>
+        public readonly string SosHostname;
+        /// <summary>
         /// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
         /// </summary>
         public readonly ImmutableArray<string> SshKeyIds;
@@ -315,6 +319,8 @@ namespace Pulumi.Equinix.Metal
 
             string rootPassword,
 
+            string sosHostname,
+
             ImmutableArray<string> sshKeyIds,
 
             string state,
@@ -343,6 +349,7 @@ namespace Pulumi.Equinix.Metal
             Ports = ports;
             ProjectId = projectId;
             RootPassword = rootPassword;
+            SosHostname = sosHostname;
             SshKeyIds = sshKeyIds;
             State = state;
             Storage = storage;

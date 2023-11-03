@@ -51,10 +51,10 @@ public final class RoutingProtocolOperationErrorAdditionalInfo {
             return this;
         }
         public RoutingProtocolOperationErrorAdditionalInfo build() {
-            final var o = new RoutingProtocolOperationErrorAdditionalInfo();
-            o.property = property;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new RoutingProtocolOperationErrorAdditionalInfo();
+            _resultValue.property = property;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

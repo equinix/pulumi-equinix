@@ -282,27 +282,27 @@ public final class GetServiceProfilesDatum {
             return this;
         }
         public GetServiceProfilesDatum build() {
-            final var o = new GetServiceProfilesDatum();
-            o.accessPointTypeConfigs = accessPointTypeConfigs;
-            o.accounts = accounts;
-            o.allowedEmails = allowedEmails;
-            o.changeLogs = changeLogs;
-            o.customFields = customFields;
-            o.description = description;
-            o.href = href;
-            o.marketingInfos = marketingInfos;
-            o.metros = metros;
-            o.name = name;
-            o.notifications = notifications;
-            o.ports = ports;
-            o.projects = projects;
-            o.selfProfile = selfProfile;
-            o.state = state;
-            o.tags = tags;
-            o.type = type;
-            o.uuid = uuid;
-            o.visibility = visibility;
-            return o;
+            final var _resultValue = new GetServiceProfilesDatum();
+            _resultValue.accessPointTypeConfigs = accessPointTypeConfigs;
+            _resultValue.accounts = accounts;
+            _resultValue.allowedEmails = allowedEmails;
+            _resultValue.changeLogs = changeLogs;
+            _resultValue.customFields = customFields;
+            _resultValue.description = description;
+            _resultValue.href = href;
+            _resultValue.marketingInfos = marketingInfos;
+            _resultValue.metros = metros;
+            _resultValue.name = name;
+            _resultValue.notifications = notifications;
+            _resultValue.ports = ports;
+            _resultValue.projects = projects;
+            _resultValue.selfProfile = selfProfile;
+            _resultValue.state = state;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            _resultValue.visibility = visibility;
+            return _resultValue;
         }
     }
 }

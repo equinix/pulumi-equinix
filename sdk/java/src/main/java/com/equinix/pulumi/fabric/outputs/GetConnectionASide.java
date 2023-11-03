@@ -50,10 +50,10 @@ public final class GetConnectionASide {
             return this;
         }
         public GetConnectionASide build() {
-            final var o = new GetConnectionASide();
-            o.accessPoint = accessPoint;
-            o.serviceToken = serviceToken;
-            return o;
+            final var _resultValue = new GetConnectionASide();
+            _resultValue.accessPoint = accessPoint;
+            _resultValue.serviceToken = serviceToken;
+            return _resultValue;
         }
     }
 }

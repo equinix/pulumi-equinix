@@ -107,15 +107,15 @@ public final class ConnectionAccount {
             return this;
         }
         public ConnectionAccount build() {
-            final var o = new ConnectionAccount();
-            o.accountName = accountName;
-            o.accountNumber = accountNumber;
-            o.globalCustId = globalCustId;
-            o.globalOrgId = globalOrgId;
-            o.globalOrganizationName = globalOrganizationName;
-            o.orgId = orgId;
-            o.organizationName = organizationName;
-            return o;
+            final var _resultValue = new ConnectionAccount();
+            _resultValue.accountName = accountName;
+            _resultValue.accountNumber = accountNumber;
+            _resultValue.globalCustId = globalCustId;
+            _resultValue.globalOrgId = globalOrgId;
+            _resultValue.globalOrganizationName = globalOrganizationName;
+            _resultValue.orgId = orgId;
+            _resultValue.organizationName = organizationName;
+            return _resultValue;
         }
     }
 }

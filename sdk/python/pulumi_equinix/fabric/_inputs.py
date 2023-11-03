@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from .. import _enums as _root_enums
 from ._enums import *
@@ -107,21 +107,8 @@ class CloudRouterAccountArgs:
         """
         :param pulumi.Input[int] account_number: Account Number
         """
-        CloudRouterAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_number=account_number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_number: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-
         if account_number is not None:
-            _setter("account_number", account_number)
+            pulumi.set(__self__, "account_number", account_number)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -151,87 +138,30 @@ class CloudRouterChangeLogArgs:
                  updated_by_email: Optional[pulumi.Input[str]] = None,
                  updated_by_full_name: Optional[pulumi.Input[str]] = None,
                  updated_date_time: Optional[pulumi.Input[str]] = None):
-        CloudRouterChangeLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_by=created_by,
-            created_by_email=created_by_email,
-            created_by_full_name=created_by_full_name,
-            created_date_time=created_date_time,
-            deleted_by=deleted_by,
-            deleted_by_email=deleted_by_email,
-            deleted_by_full_name=deleted_by_full_name,
-            deleted_date_time=deleted_date_time,
-            updated_by=updated_by,
-            updated_by_email=updated_by_email,
-            updated_by_full_name=updated_by_full_name,
-            updated_date_time=updated_date_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_by: Optional[pulumi.Input[str]] = None,
-             created_by_email: Optional[pulumi.Input[str]] = None,
-             created_by_full_name: Optional[pulumi.Input[str]] = None,
-             created_date_time: Optional[pulumi.Input[str]] = None,
-             deleted_by: Optional[pulumi.Input[str]] = None,
-             deleted_by_email: Optional[pulumi.Input[str]] = None,
-             deleted_by_full_name: Optional[pulumi.Input[str]] = None,
-             deleted_date_time: Optional[pulumi.Input[str]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             updated_by_email: Optional[pulumi.Input[str]] = None,
-             updated_by_full_name: Optional[pulumi.Input[str]] = None,
-             updated_date_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if created_by_email is None and 'createdByEmail' in kwargs:
-            created_by_email = kwargs['createdByEmail']
-        if created_by_full_name is None and 'createdByFullName' in kwargs:
-            created_by_full_name = kwargs['createdByFullName']
-        if created_date_time is None and 'createdDateTime' in kwargs:
-            created_date_time = kwargs['createdDateTime']
-        if deleted_by is None and 'deletedBy' in kwargs:
-            deleted_by = kwargs['deletedBy']
-        if deleted_by_email is None and 'deletedByEmail' in kwargs:
-            deleted_by_email = kwargs['deletedByEmail']
-        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
-            deleted_by_full_name = kwargs['deletedByFullName']
-        if deleted_date_time is None and 'deletedDateTime' in kwargs:
-            deleted_date_time = kwargs['deletedDateTime']
-        if updated_by is None and 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-        if updated_by_email is None and 'updatedByEmail' in kwargs:
-            updated_by_email = kwargs['updatedByEmail']
-        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
-            updated_by_full_name = kwargs['updatedByFullName']
-        if updated_date_time is None and 'updatedDateTime' in kwargs:
-            updated_date_time = kwargs['updatedDateTime']
-
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
-            _setter("created_by_email", created_by_email)
+            pulumi.set(__self__, "created_by_email", created_by_email)
         if created_by_full_name is not None:
-            _setter("created_by_full_name", created_by_full_name)
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
         if created_date_time is not None:
-            _setter("created_date_time", created_date_time)
+            pulumi.set(__self__, "created_date_time", created_date_time)
         if deleted_by is not None:
-            _setter("deleted_by", deleted_by)
+            pulumi.set(__self__, "deleted_by", deleted_by)
         if deleted_by_email is not None:
-            _setter("deleted_by_email", deleted_by_email)
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
         if deleted_by_full_name is not None:
-            _setter("deleted_by_full_name", deleted_by_full_name)
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
         if deleted_date_time is not None:
-            _setter("deleted_date_time", deleted_date_time)
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
         if updated_by_email is not None:
-            _setter("updated_by_email", updated_by_email)
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
         if updated_by_full_name is not None:
-            _setter("updated_by_full_name", updated_by_full_name)
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
         if updated_date_time is not None:
-            _setter("updated_date_time", updated_date_time)
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
 
     @property
     @pulumi.getter(name="createdBy")
@@ -355,35 +285,14 @@ class CloudRouterLocationArgs:
         :param pulumi.Input[str] metro_name: Access point metro name
         :param pulumi.Input[str] region: Access point region
         """
-        CloudRouterLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ibx=ibx,
-            metro_code=metro_code,
-            metro_name=metro_name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ibx: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             metro_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if metro_name is None and 'metroName' in kwargs:
-            metro_name = kwargs['metroName']
-
         if ibx is not None:
-            _setter("ibx", ibx)
+            pulumi.set(__self__, "ibx", ibx)
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if metro_name is not None:
-            _setter("metro_name", metro_name)
+            pulumi.set(__self__, "metro_name", metro_name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -445,31 +354,10 @@ class CloudRouterNotificationArgs:
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         :param pulumi.Input[str] send_interval: Send interval
         """
-        CloudRouterNotificationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            emails=emails,
-            type=type,
-            send_interval=send_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             send_interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if emails is None:
-            raise TypeError("Missing 'emails' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if send_interval is None and 'sendInterval' in kwargs:
-            send_interval = kwargs['sendInterval']
-
-        _setter("emails", emails)
-        _setter("type", type)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "type", type)
         if send_interval is not None:
-            _setter("send_interval", send_interval)
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
@@ -521,39 +409,14 @@ class CloudRouterOrderArgs:
         :param pulumi.Input[str] order_number: Order Reference Number
         :param pulumi.Input[str] purchase_order_number: Purchase order number
         """
-        CloudRouterOrderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_tier=billing_tier,
-            order_id=order_id,
-            order_number=order_number,
-            purchase_order_number=purchase_order_number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_tier: Optional[pulumi.Input[str]] = None,
-             order_id: Optional[pulumi.Input[str]] = None,
-             order_number: Optional[pulumi.Input[str]] = None,
-             purchase_order_number: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if billing_tier is None and 'billingTier' in kwargs:
-            billing_tier = kwargs['billingTier']
-        if order_id is None and 'orderId' in kwargs:
-            order_id = kwargs['orderId']
-        if order_number is None and 'orderNumber' in kwargs:
-            order_number = kwargs['orderNumber']
-        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
-            purchase_order_number = kwargs['purchaseOrderNumber']
-
         if billing_tier is not None:
-            _setter("billing_tier", billing_tier)
+            pulumi.set(__self__, "billing_tier", billing_tier)
         if order_id is not None:
-            _setter("order_id", order_id)
+            pulumi.set(__self__, "order_id", order_id)
         if order_number is not None:
-            _setter("order_number", order_number)
+            pulumi.set(__self__, "order_number", order_number)
         if purchase_order_number is not None:
-            _setter("purchase_order_number", purchase_order_number)
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
 
     @property
     @pulumi.getter(name="billingTier")
@@ -611,20 +474,7 @@ class CloudRouterPackageArgs:
         """
         :param pulumi.Input[str] code: Fabric Cloud Router package code
         """
-        CloudRouterPackageArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if code is None:
-            raise TypeError("Missing 'code' argument")
-
-        _setter("code", code)
+        pulumi.set(__self__, "code", code)
 
     @property
     @pulumi.getter
@@ -648,25 +498,10 @@ class CloudRouterProjectArgs:
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input[str] project_id: Project Id
         """
-        CloudRouterProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -704,33 +539,12 @@ class ConnectionASideArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionASideAdditionalInfoArgs']]] additional_info: Connection side additional information
         :param pulumi.Input['ConnectionASideServiceTokenArgs'] service_token: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         """
-        ConnectionASideArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point=access_point,
-            additional_info=additional_info,
-            service_token=service_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point: Optional[pulumi.Input['ConnectionASideAccessPointArgs']] = None,
-             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAdditionalInfoArgs']]]] = None,
-             service_token: Optional[pulumi.Input['ConnectionASideServiceTokenArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if access_point is None and 'accessPoint' in kwargs:
-            access_point = kwargs['accessPoint']
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-        if service_token is None and 'serviceToken' in kwargs:
-            service_token = kwargs['serviceToken']
-
         if access_point is not None:
-            _setter("access_point", access_point)
+            pulumi.set(__self__, "access_point", access_point)
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if service_token is not None:
-            _setter("service_token", service_token)
+            pulumi.set(__self__, "service_token", service_token)
 
     @property
     @pulumi.getter(name="accessPoint")
@@ -804,96 +618,41 @@ class ConnectionASideAccessPointArgs:
         :param pulumi.Input[Union[str, 'AccessPointType']] type: Interface type
         :param pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgs'] virtual_device: Virtual device
         """
-        ConnectionASideAccessPointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account=account,
-            authentication_key=authentication_key,
-            gateway=gateway,
-            interface=interface,
-            link_protocol=link_protocol,
-            location=location,
-            network=network,
-            peering_type=peering_type,
-            port=port,
-            profile=profile,
-            provider_connection_id=provider_connection_id,
-            router=router,
-            routing_protocols=routing_protocols,
-            seller_region=seller_region,
-            type=type,
-            virtual_device=virtual_device,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account: Optional[pulumi.Input['ConnectionASideAccessPointAccountArgs']] = None,
-             authentication_key: Optional[pulumi.Input[str]] = None,
-             gateway: Optional[pulumi.Input['ConnectionASideAccessPointGatewayArgs']] = None,
-             interface: Optional[pulumi.Input['ConnectionASideAccessPointInterfaceArgs']] = None,
-             link_protocol: Optional[pulumi.Input['ConnectionASideAccessPointLinkProtocolArgs']] = None,
-             location: Optional[pulumi.Input['ConnectionASideAccessPointLocationArgs']] = None,
-             network: Optional[pulumi.Input['ConnectionASideAccessPointNetworkArgs']] = None,
-             peering_type: Optional[pulumi.Input[Union[str, 'AccessPointPeeringType']]] = None,
-             port: Optional[pulumi.Input['ConnectionASideAccessPointPortArgs']] = None,
-             profile: Optional[pulumi.Input['ConnectionASideAccessPointProfileArgs']] = None,
-             provider_connection_id: Optional[pulumi.Input[str]] = None,
-             router: Optional[pulumi.Input['ConnectionASideAccessPointRouterArgs']] = None,
-             routing_protocols: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointRoutingProtocolArgs']]]] = None,
-             seller_region: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[Union[str, 'AccessPointType']]] = None,
-             virtual_device: Optional[pulumi.Input['ConnectionASideAccessPointVirtualDeviceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if authentication_key is None and 'authenticationKey' in kwargs:
-            authentication_key = kwargs['authenticationKey']
-        if link_protocol is None and 'linkProtocol' in kwargs:
-            link_protocol = kwargs['linkProtocol']
-        if peering_type is None and 'peeringType' in kwargs:
-            peering_type = kwargs['peeringType']
-        if provider_connection_id is None and 'providerConnectionId' in kwargs:
-            provider_connection_id = kwargs['providerConnectionId']
-        if routing_protocols is None and 'routingProtocols' in kwargs:
-            routing_protocols = kwargs['routingProtocols']
-        if seller_region is None and 'sellerRegion' in kwargs:
-            seller_region = kwargs['sellerRegion']
-        if virtual_device is None and 'virtualDevice' in kwargs:
-            virtual_device = kwargs['virtualDevice']
-
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if authentication_key is not None:
-            _setter("authentication_key", authentication_key)
+            pulumi.set(__self__, "authentication_key", authentication_key)
         if gateway is not None:
             warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
             pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
         if link_protocol is not None:
-            _setter("link_protocol", link_protocol)
+            pulumi.set(__self__, "link_protocol", link_protocol)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if peering_type is not None:
-            _setter("peering_type", peering_type)
+            pulumi.set(__self__, "peering_type", peering_type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if profile is not None:
-            _setter("profile", profile)
+            pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
-            _setter("provider_connection_id", provider_connection_id)
+            pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if router is not None:
-            _setter("router", router)
+            pulumi.set(__self__, "router", router)
         if routing_protocols is not None:
-            _setter("routing_protocols", routing_protocols)
+            pulumi.set(__self__, "routing_protocols", routing_protocols)
         if seller_region is not None:
-            _setter("seller_region", seller_region)
+            pulumi.set(__self__, "seller_region", seller_region)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if virtual_device is not None:
-            _setter("virtual_device", virtual_device)
+            pulumi.set(__self__, "virtual_device", virtual_device)
 
     @property
     @pulumi.getter
@@ -1095,57 +854,20 @@ class ConnectionASideAccessPointAccountArgs:
                  global_organization_name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[int]] = None,
                  organization_name: Optional[pulumi.Input[str]] = None):
-        ConnectionASideAccessPointAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_number=account_number,
-            global_cust_id=global_cust_id,
-            global_org_id=global_org_id,
-            global_organization_name=global_organization_name,
-            org_id=org_id,
-            organization_name=organization_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_number: Optional[pulumi.Input[int]] = None,
-             global_cust_id: Optional[pulumi.Input[str]] = None,
-             global_org_id: Optional[pulumi.Input[str]] = None,
-             global_organization_name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[int]] = None,
-             organization_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-        if global_cust_id is None and 'globalCustId' in kwargs:
-            global_cust_id = kwargs['globalCustId']
-        if global_org_id is None and 'globalOrgId' in kwargs:
-            global_org_id = kwargs['globalOrgId']
-        if global_organization_name is None and 'globalOrganizationName' in kwargs:
-            global_organization_name = kwargs['globalOrganizationName']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if organization_name is None and 'organizationName' in kwargs:
-            organization_name = kwargs['organizationName']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
-            _setter("account_number", account_number)
+            pulumi.set(__self__, "account_number", account_number)
         if global_cust_id is not None:
-            _setter("global_cust_id", global_cust_id)
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
         if global_org_id is not None:
-            _setter("global_org_id", global_org_id)
+            pulumi.set(__self__, "global_org_id", global_org_id)
         if global_organization_name is not None:
-            _setter("global_organization_name", global_organization_name)
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
-            _setter("organization_name", organization_name)
+            pulumi.set(__self__, "organization_name", organization_name)
 
     @property
     @pulumi.getter(name="accountName")
@@ -1220,23 +942,10 @@ class ConnectionASideAccessPointGatewayArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointGatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -1274,27 +983,12 @@ class ConnectionASideAccessPointInterfaceArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointInterfaceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -1346,37 +1040,14 @@ class ConnectionASideAccessPointLinkProtocolArgs:
         :param pulumi.Input[int] vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
         :param pulumi.Input[int] vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
         """
-        ConnectionASideAccessPointLinkProtocolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            vlan_c_tag=vlan_c_tag,
-            vlan_s_tag=vlan_s_tag,
-            vlan_tag=vlan_tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[Union[str, 'AccessPointLinkProtocolType']]] = None,
-             vlan_c_tag: Optional[pulumi.Input[int]] = None,
-             vlan_s_tag: Optional[pulumi.Input[int]] = None,
-             vlan_tag: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if vlan_c_tag is None and 'vlanCTag' in kwargs:
-            vlan_c_tag = kwargs['vlanCTag']
-        if vlan_s_tag is None and 'vlanSTag' in kwargs:
-            vlan_s_tag = kwargs['vlanSTag']
-        if vlan_tag is None and 'vlanTag' in kwargs:
-            vlan_tag = kwargs['vlanTag']
-
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vlan_c_tag is not None:
-            _setter("vlan_c_tag", vlan_c_tag)
+            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
         if vlan_s_tag is not None:
-            _setter("vlan_s_tag", vlan_s_tag)
+            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
         if vlan_tag is not None:
-            _setter("vlan_tag", vlan_tag)
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
 
     @property
     @pulumi.getter
@@ -1440,35 +1111,14 @@ class ConnectionASideAccessPointLocationArgs:
         :param pulumi.Input[str] metro_name: Access point metro name
         :param pulumi.Input[str] region: Access point region
         """
-        ConnectionASideAccessPointLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ibx=ibx,
-            metro_code=metro_code,
-            metro_name=metro_name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ibx: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[Union[str, '_root_enums.Metro']]] = None,
-             metro_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if metro_name is None and 'metroName' in kwargs:
-            metro_name = kwargs['metroName']
-
         if ibx is not None:
-            _setter("ibx", ibx)
+            pulumi.set(__self__, "ibx", ibx)
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if metro_name is not None:
-            _setter("metro_name", metro_name)
+            pulumi.set(__self__, "metro_name", metro_name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -1528,23 +1178,10 @@ class ConnectionASideAccessPointNetworkArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointNetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -1584,31 +1221,14 @@ class ConnectionASideAccessPointPortArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointPortRedundancyArgs']]] redundancies: Redundancy Information
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointPortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            name=name,
-            redundancies=redundancies,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             redundancies: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointPortRedundancyArgs']]]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if redundancies is not None:
-            _setter("redundancies", redundancies)
+            pulumi.set(__self__, "redundancies", redundancies)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -1666,19 +1286,8 @@ class ConnectionASideAccessPointPortRedundancyArgs:
         """
         :param pulumi.Input[str] priority: Priority type- PRIMARY, SECONDARY
         """
-        ConnectionASideAccessPointPortRedundancyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            priority=priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
@@ -1710,43 +1319,16 @@ class ConnectionASideAccessPointProfileArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] name: Port name
         """
-        ConnectionASideAccessPointProfileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            uuid=uuid,
-            access_point_type_configs=access_point_type_configs,
-            description=description,
-            href=href,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionASideAccessPointProfileAccessPointTypeConfigArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if uuid is None:
-            raise TypeError("Missing 'uuid' argument")
-        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
-            access_point_type_configs = kwargs['accessPointTypeConfigs']
-
-        _setter("type", type)
-        _setter("uuid", uuid)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
         if access_point_type_configs is not None:
-            _setter("access_point_type_configs", access_point_type_configs)
+            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1830,23 +1412,10 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointProfileAccessPointTypeConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -1882,23 +1451,10 @@ class ConnectionASideAccessPointRouterArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointRouterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -1936,27 +1492,12 @@ class ConnectionASideAccessPointRoutingProtocolArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointRoutingProtocolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            state=state,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -2006,27 +1547,12 @@ class ConnectionASideAccessPointVirtualDeviceArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideAccessPointVirtualDeviceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -2074,23 +1600,10 @@ class ConnectionASideAdditionalInfoArgs:
         :param pulumi.Input[str] key: Additional information key
         :param pulumi.Input[str] value: Additional information value
         """
-        ConnectionASideAdditionalInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2130,31 +1643,14 @@ class ConnectionASideServiceTokenArgs:
         :param pulumi.Input[Union[str, 'ServiceTokenType']] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionASideServiceTokenArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            href=href,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[Union[str, 'ServiceTokenType']]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -2215,57 +1711,20 @@ class ConnectionAccountArgs:
                  global_organization_name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[int]] = None,
                  organization_name: Optional[pulumi.Input[str]] = None):
-        ConnectionAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_number=account_number,
-            global_cust_id=global_cust_id,
-            global_org_id=global_org_id,
-            global_organization_name=global_organization_name,
-            org_id=org_id,
-            organization_name=organization_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_number: Optional[pulumi.Input[int]] = None,
-             global_cust_id: Optional[pulumi.Input[str]] = None,
-             global_org_id: Optional[pulumi.Input[str]] = None,
-             global_organization_name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[int]] = None,
-             organization_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-        if global_cust_id is None and 'globalCustId' in kwargs:
-            global_cust_id = kwargs['globalCustId']
-        if global_org_id is None and 'globalOrgId' in kwargs:
-            global_org_id = kwargs['globalOrgId']
-        if global_organization_name is None and 'globalOrganizationName' in kwargs:
-            global_organization_name = kwargs['globalOrganizationName']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if organization_name is None and 'organizationName' in kwargs:
-            organization_name = kwargs['organizationName']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
-            _setter("account_number", account_number)
+            pulumi.set(__self__, "account_number", account_number)
         if global_cust_id is not None:
-            _setter("global_cust_id", global_cust_id)
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
         if global_org_id is not None:
-            _setter("global_org_id", global_org_id)
+            pulumi.set(__self__, "global_org_id", global_org_id)
         if global_organization_name is not None:
-            _setter("global_organization_name", global_organization_name)
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
-            _setter("organization_name", organization_name)
+            pulumi.set(__self__, "organization_name", organization_name)
 
     @property
     @pulumi.getter(name="accountName")
@@ -2346,87 +1805,30 @@ class ConnectionChangeLogArgs:
                  updated_by_email: Optional[pulumi.Input[str]] = None,
                  updated_by_full_name: Optional[pulumi.Input[str]] = None,
                  updated_date_time: Optional[pulumi.Input[str]] = None):
-        ConnectionChangeLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_by=created_by,
-            created_by_email=created_by_email,
-            created_by_full_name=created_by_full_name,
-            created_date_time=created_date_time,
-            deleted_by=deleted_by,
-            deleted_by_email=deleted_by_email,
-            deleted_by_full_name=deleted_by_full_name,
-            deleted_date_time=deleted_date_time,
-            updated_by=updated_by,
-            updated_by_email=updated_by_email,
-            updated_by_full_name=updated_by_full_name,
-            updated_date_time=updated_date_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_by: Optional[pulumi.Input[str]] = None,
-             created_by_email: Optional[pulumi.Input[str]] = None,
-             created_by_full_name: Optional[pulumi.Input[str]] = None,
-             created_date_time: Optional[pulumi.Input[str]] = None,
-             deleted_by: Optional[pulumi.Input[str]] = None,
-             deleted_by_email: Optional[pulumi.Input[str]] = None,
-             deleted_by_full_name: Optional[pulumi.Input[str]] = None,
-             deleted_date_time: Optional[pulumi.Input[str]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             updated_by_email: Optional[pulumi.Input[str]] = None,
-             updated_by_full_name: Optional[pulumi.Input[str]] = None,
-             updated_date_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if created_by_email is None and 'createdByEmail' in kwargs:
-            created_by_email = kwargs['createdByEmail']
-        if created_by_full_name is None and 'createdByFullName' in kwargs:
-            created_by_full_name = kwargs['createdByFullName']
-        if created_date_time is None and 'createdDateTime' in kwargs:
-            created_date_time = kwargs['createdDateTime']
-        if deleted_by is None and 'deletedBy' in kwargs:
-            deleted_by = kwargs['deletedBy']
-        if deleted_by_email is None and 'deletedByEmail' in kwargs:
-            deleted_by_email = kwargs['deletedByEmail']
-        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
-            deleted_by_full_name = kwargs['deletedByFullName']
-        if deleted_date_time is None and 'deletedDateTime' in kwargs:
-            deleted_date_time = kwargs['deletedDateTime']
-        if updated_by is None and 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-        if updated_by_email is None and 'updatedByEmail' in kwargs:
-            updated_by_email = kwargs['updatedByEmail']
-        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
-            updated_by_full_name = kwargs['updatedByFullName']
-        if updated_date_time is None and 'updatedDateTime' in kwargs:
-            updated_date_time = kwargs['updatedDateTime']
-
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
-            _setter("created_by_email", created_by_email)
+            pulumi.set(__self__, "created_by_email", created_by_email)
         if created_by_full_name is not None:
-            _setter("created_by_full_name", created_by_full_name)
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
         if created_date_time is not None:
-            _setter("created_date_time", created_date_time)
+            pulumi.set(__self__, "created_date_time", created_date_time)
         if deleted_by is not None:
-            _setter("deleted_by", deleted_by)
+            pulumi.set(__self__, "deleted_by", deleted_by)
         if deleted_by_email is not None:
-            _setter("deleted_by_email", deleted_by_email)
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
         if deleted_by_full_name is not None:
-            _setter("deleted_by_full_name", deleted_by_full_name)
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
         if deleted_date_time is not None:
-            _setter("deleted_date_time", deleted_date_time)
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
         if updated_by_email is not None:
-            _setter("updated_by_email", updated_by_email)
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
         if updated_by_full_name is not None:
-            _setter("updated_by_full_name", updated_by_full_name)
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
         if updated_date_time is not None:
-            _setter("updated_date_time", updated_date_time)
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
 
     @property
     @pulumi.getter(name="createdBy")
@@ -2548,31 +1950,10 @@ class ConnectionNotificationArgs:
         :param pulumi.Input[Union[str, 'NotificationsType']] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         :param pulumi.Input[str] send_interval: Send interval
         """
-        ConnectionNotificationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            emails=emails,
-            type=type,
-            send_interval=send_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[Union[str, 'NotificationsType']]] = None,
-             send_interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if emails is None:
-            raise TypeError("Missing 'emails' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if send_interval is None and 'sendInterval' in kwargs:
-            send_interval = kwargs['sendInterval']
-
-        _setter("emails", emails)
-        _setter("type", type)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "type", type)
         if send_interval is not None:
-            _setter("send_interval", send_interval)
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
@@ -2617,31 +1998,12 @@ class ConnectionOperationArgs:
                  equinix_status: Optional[pulumi.Input[str]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationErrorArgs']]]] = None,
                  provider_status: Optional[pulumi.Input[str]] = None):
-        ConnectionOperationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            equinix_status=equinix_status,
-            errors=errors,
-            provider_status=provider_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             equinix_status: Optional[pulumi.Input[str]] = None,
-             errors: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationErrorArgs']]]] = None,
-             provider_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if equinix_status is None and 'equinixStatus' in kwargs:
-            equinix_status = kwargs['equinixStatus']
-        if provider_status is None and 'providerStatus' in kwargs:
-            provider_status = kwargs['providerStatus']
-
         if equinix_status is not None:
-            _setter("equinix_status", equinix_status)
+            pulumi.set(__self__, "equinix_status", equinix_status)
         if errors is not None:
-            _setter("errors", errors)
+            pulumi.set(__self__, "errors", errors)
         if provider_status is not None:
-            _setter("provider_status", provider_status)
+            pulumi.set(__self__, "provider_status", provider_status)
 
     @property
     @pulumi.getter(name="equinixStatus")
@@ -2683,47 +2045,18 @@ class ConnectionOperationErrorArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOperationErrorAdditionalInfoArgs']]] additional_info: Connection side additional information
         """
-        ConnectionOperationErrorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_info=additional_info,
-            correlation_id=correlation_id,
-            details=details,
-            error_code=error_code,
-            error_message=error_message,
-            help=help,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOperationErrorAdditionalInfoArgs']]]] = None,
-             correlation_id: Optional[pulumi.Input[str]] = None,
-             details: Optional[pulumi.Input[str]] = None,
-             error_code: Optional[pulumi.Input[str]] = None,
-             error_message: Optional[pulumi.Input[str]] = None,
-             help: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-        if correlation_id is None and 'correlationId' in kwargs:
-            correlation_id = kwargs['correlationId']
-        if error_code is None and 'errorCode' in kwargs:
-            error_code = kwargs['errorCode']
-        if error_message is None and 'errorMessage' in kwargs:
-            error_message = kwargs['errorMessage']
-
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if correlation_id is not None:
-            _setter("correlation_id", correlation_id)
+            pulumi.set(__self__, "correlation_id", correlation_id)
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if error_code is not None:
-            _setter("error_code", error_code)
+            pulumi.set(__self__, "error_code", error_code)
         if error_message is not None:
-            _setter("error_message", error_message)
+            pulumi.set(__self__, "error_message", error_message)
         if help is not None:
-            _setter("help", help)
+            pulumi.set(__self__, "help", help)
 
     @property
     @pulumi.getter(name="additionalInfo")
@@ -2788,23 +2121,10 @@ class ConnectionOperationErrorAdditionalInfoArgs:
     def __init__(__self__, *,
                  property: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
-        ConnectionOperationErrorAdditionalInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            property=property,
-            reason=reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             property: Optional[pulumi.Input[str]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if property is not None:
-            _setter("property", property)
+            pulumi.set(__self__, "property", property)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
@@ -2838,39 +2158,14 @@ class ConnectionOrderArgs:
         :param pulumi.Input[str] order_number: Order Reference Number
         :param pulumi.Input[str] purchase_order_number: Purchase order number
         """
-        ConnectionOrderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            billing_tier=billing_tier,
-            order_id=order_id,
-            order_number=order_number,
-            purchase_order_number=purchase_order_number,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             billing_tier: Optional[pulumi.Input[str]] = None,
-             order_id: Optional[pulumi.Input[str]] = None,
-             order_number: Optional[pulumi.Input[str]] = None,
-             purchase_order_number: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if billing_tier is None and 'billingTier' in kwargs:
-            billing_tier = kwargs['billingTier']
-        if order_id is None and 'orderId' in kwargs:
-            order_id = kwargs['orderId']
-        if order_number is None and 'orderNumber' in kwargs:
-            order_number = kwargs['orderNumber']
-        if purchase_order_number is None and 'purchaseOrderNumber' in kwargs:
-            purchase_order_number = kwargs['purchaseOrderNumber']
-
         if billing_tier is not None:
-            _setter("billing_tier", billing_tier)
+            pulumi.set(__self__, "billing_tier", billing_tier)
         if order_id is not None:
-            _setter("order_id", order_id)
+            pulumi.set(__self__, "order_id", order_id)
         if order_number is not None:
-            _setter("order_number", order_number)
+            pulumi.set(__self__, "order_number", order_number)
         if purchase_order_number is not None:
-            _setter("purchase_order_number", purchase_order_number)
+            pulumi.set(__self__, "purchase_order_number", purchase_order_number)
 
     @property
     @pulumi.getter(name="billingTier")
@@ -2930,25 +2225,10 @@ class ConnectionProjectArgs:
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input[str] project_id: Project Id
         """
-        ConnectionProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -2984,23 +2264,10 @@ class ConnectionRedundancyArgs:
         :param pulumi.Input[str] group: Redundancy group identifier
         :param pulumi.Input[str] priority: Priority type- PRIMARY, SECONDARY
         """
-        ConnectionRedundancyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group=group,
-            priority=priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if group is not None:
-            _setter("group", group)
+            pulumi.set(__self__, "group", group)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
@@ -3038,33 +2305,12 @@ class ConnectionZSideArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAdditionalInfoArgs']]] additional_info: Connection side additional information
         :param pulumi.Input['ConnectionZSideServiceTokenArgs'] service_token: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
         """
-        ConnectionZSideArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point=access_point,
-            additional_info=additional_info,
-            service_token=service_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point: Optional[pulumi.Input['ConnectionZSideAccessPointArgs']] = None,
-             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAdditionalInfoArgs']]]] = None,
-             service_token: Optional[pulumi.Input['ConnectionZSideServiceTokenArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if access_point is None and 'accessPoint' in kwargs:
-            access_point = kwargs['accessPoint']
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-        if service_token is None and 'serviceToken' in kwargs:
-            service_token = kwargs['serviceToken']
-
         if access_point is not None:
-            _setter("access_point", access_point)
+            pulumi.set(__self__, "access_point", access_point)
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if service_token is not None:
-            _setter("service_token", service_token)
+            pulumi.set(__self__, "service_token", service_token)
 
     @property
     @pulumi.getter(name="accessPoint")
@@ -3138,96 +2384,41 @@ class ConnectionZSideAccessPointArgs:
         :param pulumi.Input[Union[str, 'AccessPointType']] type: Interface type
         :param pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgs'] virtual_device: Virtual device
         """
-        ConnectionZSideAccessPointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account=account,
-            authentication_key=authentication_key,
-            gateway=gateway,
-            interface=interface,
-            link_protocol=link_protocol,
-            location=location,
-            network=network,
-            peering_type=peering_type,
-            port=port,
-            profile=profile,
-            provider_connection_id=provider_connection_id,
-            router=router,
-            routing_protocols=routing_protocols,
-            seller_region=seller_region,
-            type=type,
-            virtual_device=virtual_device,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account: Optional[pulumi.Input['ConnectionZSideAccessPointAccountArgs']] = None,
-             authentication_key: Optional[pulumi.Input[str]] = None,
-             gateway: Optional[pulumi.Input['ConnectionZSideAccessPointGatewayArgs']] = None,
-             interface: Optional[pulumi.Input['ConnectionZSideAccessPointInterfaceArgs']] = None,
-             link_protocol: Optional[pulumi.Input['ConnectionZSideAccessPointLinkProtocolArgs']] = None,
-             location: Optional[pulumi.Input['ConnectionZSideAccessPointLocationArgs']] = None,
-             network: Optional[pulumi.Input['ConnectionZSideAccessPointNetworkArgs']] = None,
-             peering_type: Optional[pulumi.Input[Union[str, 'AccessPointPeeringType']]] = None,
-             port: Optional[pulumi.Input['ConnectionZSideAccessPointPortArgs']] = None,
-             profile: Optional[pulumi.Input['ConnectionZSideAccessPointProfileArgs']] = None,
-             provider_connection_id: Optional[pulumi.Input[str]] = None,
-             router: Optional[pulumi.Input['ConnectionZSideAccessPointRouterArgs']] = None,
-             routing_protocols: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointRoutingProtocolArgs']]]] = None,
-             seller_region: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[Union[str, 'AccessPointType']]] = None,
-             virtual_device: Optional[pulumi.Input['ConnectionZSideAccessPointVirtualDeviceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if authentication_key is None and 'authenticationKey' in kwargs:
-            authentication_key = kwargs['authenticationKey']
-        if link_protocol is None and 'linkProtocol' in kwargs:
-            link_protocol = kwargs['linkProtocol']
-        if peering_type is None and 'peeringType' in kwargs:
-            peering_type = kwargs['peeringType']
-        if provider_connection_id is None and 'providerConnectionId' in kwargs:
-            provider_connection_id = kwargs['providerConnectionId']
-        if routing_protocols is None and 'routingProtocols' in kwargs:
-            routing_protocols = kwargs['routingProtocols']
-        if seller_region is None and 'sellerRegion' in kwargs:
-            seller_region = kwargs['sellerRegion']
-        if virtual_device is None and 'virtualDevice' in kwargs:
-            virtual_device = kwargs['virtualDevice']
-
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if authentication_key is not None:
-            _setter("authentication_key", authentication_key)
+            pulumi.set(__self__, "authentication_key", authentication_key)
         if gateway is not None:
             warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
             pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
         if interface is not None:
-            _setter("interface", interface)
+            pulumi.set(__self__, "interface", interface)
         if link_protocol is not None:
-            _setter("link_protocol", link_protocol)
+            pulumi.set(__self__, "link_protocol", link_protocol)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if peering_type is not None:
-            _setter("peering_type", peering_type)
+            pulumi.set(__self__, "peering_type", peering_type)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if profile is not None:
-            _setter("profile", profile)
+            pulumi.set(__self__, "profile", profile)
         if provider_connection_id is not None:
-            _setter("provider_connection_id", provider_connection_id)
+            pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if router is not None:
-            _setter("router", router)
+            pulumi.set(__self__, "router", router)
         if routing_protocols is not None:
-            _setter("routing_protocols", routing_protocols)
+            pulumi.set(__self__, "routing_protocols", routing_protocols)
         if seller_region is not None:
-            _setter("seller_region", seller_region)
+            pulumi.set(__self__, "seller_region", seller_region)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if virtual_device is not None:
-            _setter("virtual_device", virtual_device)
+            pulumi.set(__self__, "virtual_device", virtual_device)
 
     @property
     @pulumi.getter
@@ -3429,57 +2620,20 @@ class ConnectionZSideAccessPointAccountArgs:
                  global_organization_name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[int]] = None,
                  organization_name: Optional[pulumi.Input[str]] = None):
-        ConnectionZSideAccessPointAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_number=account_number,
-            global_cust_id=global_cust_id,
-            global_org_id=global_org_id,
-            global_organization_name=global_organization_name,
-            org_id=org_id,
-            organization_name=organization_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_number: Optional[pulumi.Input[int]] = None,
-             global_cust_id: Optional[pulumi.Input[str]] = None,
-             global_org_id: Optional[pulumi.Input[str]] = None,
-             global_organization_name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[int]] = None,
-             organization_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-        if global_cust_id is None and 'globalCustId' in kwargs:
-            global_cust_id = kwargs['globalCustId']
-        if global_org_id is None and 'globalOrgId' in kwargs:
-            global_org_id = kwargs['globalOrgId']
-        if global_organization_name is None and 'globalOrganizationName' in kwargs:
-            global_organization_name = kwargs['globalOrganizationName']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if organization_name is None and 'organizationName' in kwargs:
-            organization_name = kwargs['organizationName']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
-            _setter("account_number", account_number)
+            pulumi.set(__self__, "account_number", account_number)
         if global_cust_id is not None:
-            _setter("global_cust_id", global_cust_id)
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
         if global_org_id is not None:
-            _setter("global_org_id", global_org_id)
+            pulumi.set(__self__, "global_org_id", global_org_id)
         if global_organization_name is not None:
-            _setter("global_organization_name", global_organization_name)
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
-            _setter("organization_name", organization_name)
+            pulumi.set(__self__, "organization_name", organization_name)
 
     @property
     @pulumi.getter(name="accountName")
@@ -3554,23 +2708,10 @@ class ConnectionZSideAccessPointGatewayArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointGatewayArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -3608,27 +2749,12 @@ class ConnectionZSideAccessPointInterfaceArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointInterfaceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -3680,37 +2806,14 @@ class ConnectionZSideAccessPointLinkProtocolArgs:
         :param pulumi.Input[int] vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
         :param pulumi.Input[int] vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
         """
-        ConnectionZSideAccessPointLinkProtocolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            vlan_c_tag=vlan_c_tag,
-            vlan_s_tag=vlan_s_tag,
-            vlan_tag=vlan_tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[Union[str, 'AccessPointLinkProtocolType']]] = None,
-             vlan_c_tag: Optional[pulumi.Input[int]] = None,
-             vlan_s_tag: Optional[pulumi.Input[int]] = None,
-             vlan_tag: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if vlan_c_tag is None and 'vlanCTag' in kwargs:
-            vlan_c_tag = kwargs['vlanCTag']
-        if vlan_s_tag is None and 'vlanSTag' in kwargs:
-            vlan_s_tag = kwargs['vlanSTag']
-        if vlan_tag is None and 'vlanTag' in kwargs:
-            vlan_tag = kwargs['vlanTag']
-
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vlan_c_tag is not None:
-            _setter("vlan_c_tag", vlan_c_tag)
+            pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
         if vlan_s_tag is not None:
-            _setter("vlan_s_tag", vlan_s_tag)
+            pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
         if vlan_tag is not None:
-            _setter("vlan_tag", vlan_tag)
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
 
     @property
     @pulumi.getter
@@ -3774,35 +2877,14 @@ class ConnectionZSideAccessPointLocationArgs:
         :param pulumi.Input[str] metro_name: Access point metro name
         :param pulumi.Input[str] region: Access point region
         """
-        ConnectionZSideAccessPointLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ibx=ibx,
-            metro_code=metro_code,
-            metro_name=metro_name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ibx: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[Union[str, '_root_enums.Metro']]] = None,
-             metro_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if metro_name is None and 'metroName' in kwargs:
-            metro_name = kwargs['metroName']
-
         if ibx is not None:
-            _setter("ibx", ibx)
+            pulumi.set(__self__, "ibx", ibx)
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if metro_name is not None:
-            _setter("metro_name", metro_name)
+            pulumi.set(__self__, "metro_name", metro_name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -3862,23 +2944,10 @@ class ConnectionZSideAccessPointNetworkArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointNetworkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -3918,31 +2987,14 @@ class ConnectionZSideAccessPointPortArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointPortRedundancyArgs']]] redundancies: Redundancy Information
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointPortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            name=name,
-            redundancies=redundancies,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             redundancies: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointPortRedundancyArgs']]]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if redundancies is not None:
-            _setter("redundancies", redundancies)
+            pulumi.set(__self__, "redundancies", redundancies)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4000,19 +3052,8 @@ class ConnectionZSideAccessPointPortRedundancyArgs:
         """
         :param pulumi.Input[str] priority: Priority type- PRIMARY, SECONDARY
         """
-        ConnectionZSideAccessPointPortRedundancyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            priority=priority,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
@@ -4044,43 +3085,16 @@ class ConnectionZSideAccessPointProfileArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] name: Port name
         """
-        ConnectionZSideAccessPointProfileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            uuid=uuid,
-            access_point_type_configs=access_point_type_configs,
-            description=description,
-            href=href,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if uuid is None:
-            raise TypeError("Missing 'uuid' argument")
-        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
-            access_point_type_configs = kwargs['accessPointTypeConfigs']
-
-        _setter("type", type)
-        _setter("uuid", uuid)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
         if access_point_type_configs is not None:
-            _setter("access_point_type_configs", access_point_type_configs)
+            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -4164,23 +3178,10 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4216,23 +3217,10 @@ class ConnectionZSideAccessPointRouterArgs:
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointRouterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4270,27 +3258,12 @@ class ConnectionZSideAccessPointRoutingProtocolArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointRoutingProtocolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            state=state,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4340,27 +3313,12 @@ class ConnectionZSideAccessPointVirtualDeviceArgs:
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideAccessPointVirtualDeviceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4408,23 +3366,10 @@ class ConnectionZSideAdditionalInfoArgs:
         :param pulumi.Input[str] key: Additional information key
         :param pulumi.Input[str] value: Additional information value
         """
-        ConnectionZSideAdditionalInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -4464,31 +3409,14 @@ class ConnectionZSideServiceTokenArgs:
         :param pulumi.Input[Union[str, 'ServiceTokenType']] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
-        ConnectionZSideServiceTokenArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            href=href,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[Union[str, 'ServiceTokenType']]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4548,24 +3476,9 @@ class RoutingProtocolBfdArgs:
         :param pulumi.Input[bool] enabled: Bidirectional Forwarding Detection enablement
         :param pulumi.Input[str] interval: Interval range between the received BFD control packets
         """
-        RoutingProtocolBfdArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            interval=interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
 
     @property
     @pulumi.getter
@@ -4603,32 +3516,11 @@ class RoutingProtocolBgpIpv4Args:
         :param pulumi.Input[bool] enabled: Admin status for the BGP session
         :param pulumi.Input[str] equinix_peer_ip: Equinix side peering ip
         """
-        RoutingProtocolBgpIpv4Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_peer_ip=customer_peer_ip,
-            enabled=enabled,
-            equinix_peer_ip=equinix_peer_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_peer_ip: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             equinix_peer_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
-            customer_peer_ip = kwargs['customerPeerIp']
-        if customer_peer_ip is None:
-            raise TypeError("Missing 'customer_peer_ip' argument")
-        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
-            equinix_peer_ip = kwargs['equinixPeerIp']
-
-        _setter("customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if equinix_peer_ip is not None:
-            _setter("equinix_peer_ip", equinix_peer_ip)
+            pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
 
     @property
     @pulumi.getter(name="customerPeerIp")
@@ -4678,32 +3570,11 @@ class RoutingProtocolBgpIpv6Args:
         :param pulumi.Input[bool] enabled: Admin status for the BGP session
         :param pulumi.Input[str] equinix_peer_ip: Equinix side peering ip
         """
-        RoutingProtocolBgpIpv6Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_peer_ip=customer_peer_ip,
-            enabled=enabled,
-            equinix_peer_ip=equinix_peer_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_peer_ip: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             equinix_peer_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
-            customer_peer_ip = kwargs['customerPeerIp']
-        if customer_peer_ip is None:
-            raise TypeError("Missing 'customer_peer_ip' argument")
-        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
-            equinix_peer_ip = kwargs['equinixPeerIp']
-
-        _setter("customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if equinix_peer_ip is not None:
-            _setter("equinix_peer_ip", equinix_peer_ip)
+            pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
 
     @property
     @pulumi.getter(name="customerPeerIp")
@@ -4748,27 +3619,12 @@ class RoutingProtocolChangeArgs:
                  href: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
-        RoutingProtocolChangeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            type=type,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -4813,87 +3669,30 @@ class RoutingProtocolChangeLogArgs:
                  updated_by_email: Optional[pulumi.Input[str]] = None,
                  updated_by_full_name: Optional[pulumi.Input[str]] = None,
                  updated_date_time: Optional[pulumi.Input[str]] = None):
-        RoutingProtocolChangeLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_by=created_by,
-            created_by_email=created_by_email,
-            created_by_full_name=created_by_full_name,
-            created_date_time=created_date_time,
-            deleted_by=deleted_by,
-            deleted_by_email=deleted_by_email,
-            deleted_by_full_name=deleted_by_full_name,
-            deleted_date_time=deleted_date_time,
-            updated_by=updated_by,
-            updated_by_email=updated_by_email,
-            updated_by_full_name=updated_by_full_name,
-            updated_date_time=updated_date_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_by: Optional[pulumi.Input[str]] = None,
-             created_by_email: Optional[pulumi.Input[str]] = None,
-             created_by_full_name: Optional[pulumi.Input[str]] = None,
-             created_date_time: Optional[pulumi.Input[str]] = None,
-             deleted_by: Optional[pulumi.Input[str]] = None,
-             deleted_by_email: Optional[pulumi.Input[str]] = None,
-             deleted_by_full_name: Optional[pulumi.Input[str]] = None,
-             deleted_date_time: Optional[pulumi.Input[str]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             updated_by_email: Optional[pulumi.Input[str]] = None,
-             updated_by_full_name: Optional[pulumi.Input[str]] = None,
-             updated_date_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if created_by_email is None and 'createdByEmail' in kwargs:
-            created_by_email = kwargs['createdByEmail']
-        if created_by_full_name is None and 'createdByFullName' in kwargs:
-            created_by_full_name = kwargs['createdByFullName']
-        if created_date_time is None and 'createdDateTime' in kwargs:
-            created_date_time = kwargs['createdDateTime']
-        if deleted_by is None and 'deletedBy' in kwargs:
-            deleted_by = kwargs['deletedBy']
-        if deleted_by_email is None and 'deletedByEmail' in kwargs:
-            deleted_by_email = kwargs['deletedByEmail']
-        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
-            deleted_by_full_name = kwargs['deletedByFullName']
-        if deleted_date_time is None and 'deletedDateTime' in kwargs:
-            deleted_date_time = kwargs['deletedDateTime']
-        if updated_by is None and 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-        if updated_by_email is None and 'updatedByEmail' in kwargs:
-            updated_by_email = kwargs['updatedByEmail']
-        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
-            updated_by_full_name = kwargs['updatedByFullName']
-        if updated_date_time is None and 'updatedDateTime' in kwargs:
-            updated_date_time = kwargs['updatedDateTime']
-
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
-            _setter("created_by_email", created_by_email)
+            pulumi.set(__self__, "created_by_email", created_by_email)
         if created_by_full_name is not None:
-            _setter("created_by_full_name", created_by_full_name)
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
         if created_date_time is not None:
-            _setter("created_date_time", created_date_time)
+            pulumi.set(__self__, "created_date_time", created_date_time)
         if deleted_by is not None:
-            _setter("deleted_by", deleted_by)
+            pulumi.set(__self__, "deleted_by", deleted_by)
         if deleted_by_email is not None:
-            _setter("deleted_by_email", deleted_by_email)
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
         if deleted_by_full_name is not None:
-            _setter("deleted_by_full_name", deleted_by_full_name)
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
         if deleted_date_time is not None:
-            _setter("deleted_date_time", deleted_date_time)
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
         if updated_by_email is not None:
-            _setter("updated_by_email", updated_by_email)
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
         if updated_by_full_name is not None:
-            _setter("updated_by_full_name", updated_by_full_name)
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
         if updated_date_time is not None:
-            _setter("updated_date_time", updated_date_time)
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
 
     @property
     @pulumi.getter(name="createdBy")
@@ -5011,22 +3810,7 @@ class RoutingProtocolDirectIpv4Args:
         """
         :param pulumi.Input[str] equinix_iface_ip: Equinix side Interface IP address
         """
-        RoutingProtocolDirectIpv4Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            equinix_iface_ip=equinix_iface_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
-            equinix_iface_ip = kwargs['equinixIfaceIp']
-        if equinix_iface_ip is None:
-            raise TypeError("Missing 'equinix_iface_ip' argument")
-
-        _setter("equinix_iface_ip", equinix_iface_ip)
+        pulumi.set(__self__, "equinix_iface_ip", equinix_iface_ip)
 
     @property
     @pulumi.getter(name="equinixIfaceIp")
@@ -5048,21 +3832,8 @@ class RoutingProtocolDirectIpv6Args:
         """
         :param pulumi.Input[str] equinix_iface_ip: Equinix side Interface IP address
         """
-        RoutingProtocolDirectIpv6Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            equinix_iface_ip=equinix_iface_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
-            equinix_iface_ip = kwargs['equinixIfaceIp']
-
         if equinix_iface_ip is not None:
-            _setter("equinix_iface_ip", equinix_iface_ip)
+            pulumi.set(__self__, "equinix_iface_ip", equinix_iface_ip)
 
     @property
     @pulumi.getter(name="equinixIfaceIp")
@@ -5081,19 +3852,8 @@ class RoutingProtocolDirectIpv6Args:
 class RoutingProtocolOperationArgs:
     def __init__(__self__, *,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationErrorArgs']]]] = None):
-        RoutingProtocolOperationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            errors=errors,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             errors: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationErrorArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if errors is not None:
-            _setter("errors", errors)
+            pulumi.set(__self__, "errors", errors)
 
     @property
     @pulumi.getter
@@ -5114,47 +3874,18 @@ class RoutingProtocolOperationErrorArgs:
                  error_code: Optional[pulumi.Input[str]] = None,
                  error_message: Optional[pulumi.Input[str]] = None,
                  help: Optional[pulumi.Input[str]] = None):
-        RoutingProtocolOperationErrorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_infos=additional_infos,
-            correlation_id=correlation_id,
-            details=details,
-            error_code=error_code,
-            error_message=error_message,
-            help=help,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_infos: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingProtocolOperationErrorAdditionalInfoArgs']]]] = None,
-             correlation_id: Optional[pulumi.Input[str]] = None,
-             details: Optional[pulumi.Input[str]] = None,
-             error_code: Optional[pulumi.Input[str]] = None,
-             error_message: Optional[pulumi.Input[str]] = None,
-             help: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if additional_infos is None and 'additionalInfos' in kwargs:
-            additional_infos = kwargs['additionalInfos']
-        if correlation_id is None and 'correlationId' in kwargs:
-            correlation_id = kwargs['correlationId']
-        if error_code is None and 'errorCode' in kwargs:
-            error_code = kwargs['errorCode']
-        if error_message is None and 'errorMessage' in kwargs:
-            error_message = kwargs['errorMessage']
-
         if additional_infos is not None:
-            _setter("additional_infos", additional_infos)
+            pulumi.set(__self__, "additional_infos", additional_infos)
         if correlation_id is not None:
-            _setter("correlation_id", correlation_id)
+            pulumi.set(__self__, "correlation_id", correlation_id)
         if details is not None:
-            _setter("details", details)
+            pulumi.set(__self__, "details", details)
         if error_code is not None:
-            _setter("error_code", error_code)
+            pulumi.set(__self__, "error_code", error_code)
         if error_message is not None:
-            _setter("error_message", error_message)
+            pulumi.set(__self__, "error_message", error_message)
         if help is not None:
-            _setter("help", help)
+            pulumi.set(__self__, "help", help)
 
     @property
     @pulumi.getter(name="additionalInfos")
@@ -5216,23 +3947,10 @@ class RoutingProtocolOperationErrorAdditionalInfoArgs:
     def __init__(__self__, *,
                  property: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
-        RoutingProtocolOperationErrorAdditionalInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            property=property,
-            reason=reason,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             property: Optional[pulumi.Input[str]] = None,
-             reason: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if property is not None:
-            _setter("property", property)
+            pulumi.set(__self__, "property", property)
         if reason is not None:
-            _setter("reason", reason)
+            pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
@@ -5286,96 +4004,33 @@ class ServiceProfileAccessPointTypeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] supported_bandwidths: Supported bandwidths
         :param pulumi.Input[str] uuid: Colo/Port Uuid
         """
-        ServiceProfileAccessPointTypeConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            allow_bandwidth_auto_approval=allow_bandwidth_auto_approval,
-            allow_bandwidth_upgrade=allow_bandwidth_upgrade,
-            allow_custom_bandwidth=allow_custom_bandwidth,
-            allow_remote_connections=allow_remote_connections,
-            api_config=api_config,
-            authentication_key=authentication_key,
-            bandwidth_alert_threshold=bandwidth_alert_threshold,
-            connection_label=connection_label,
-            connection_redundancy_required=connection_redundancy_required,
-            enable_auto_generate_service_key=enable_auto_generate_service_key,
-            link_protocol_config=link_protocol_config,
-            supported_bandwidths=supported_bandwidths,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[Union[str, 'ProfileAccessPointType']]] = None,
-             allow_bandwidth_auto_approval: Optional[pulumi.Input[bool]] = None,
-             allow_bandwidth_upgrade: Optional[pulumi.Input[bool]] = None,
-             allow_custom_bandwidth: Optional[pulumi.Input[bool]] = None,
-             allow_remote_connections: Optional[pulumi.Input[bool]] = None,
-             api_config: Optional[pulumi.Input['ServiceProfileAccessPointTypeConfigApiConfigArgs']] = None,
-             authentication_key: Optional[pulumi.Input['ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs']] = None,
-             bandwidth_alert_threshold: Optional[pulumi.Input[float]] = None,
-             connection_label: Optional[pulumi.Input[str]] = None,
-             connection_redundancy_required: Optional[pulumi.Input[bool]] = None,
-             enable_auto_generate_service_key: Optional[pulumi.Input[bool]] = None,
-             link_protocol_config: Optional[pulumi.Input['ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs']] = None,
-             supported_bandwidths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if allow_bandwidth_auto_approval is None and 'allowBandwidthAutoApproval' in kwargs:
-            allow_bandwidth_auto_approval = kwargs['allowBandwidthAutoApproval']
-        if allow_bandwidth_upgrade is None and 'allowBandwidthUpgrade' in kwargs:
-            allow_bandwidth_upgrade = kwargs['allowBandwidthUpgrade']
-        if allow_custom_bandwidth is None and 'allowCustomBandwidth' in kwargs:
-            allow_custom_bandwidth = kwargs['allowCustomBandwidth']
-        if allow_remote_connections is None and 'allowRemoteConnections' in kwargs:
-            allow_remote_connections = kwargs['allowRemoteConnections']
-        if api_config is None and 'apiConfig' in kwargs:
-            api_config = kwargs['apiConfig']
-        if authentication_key is None and 'authenticationKey' in kwargs:
-            authentication_key = kwargs['authenticationKey']
-        if bandwidth_alert_threshold is None and 'bandwidthAlertThreshold' in kwargs:
-            bandwidth_alert_threshold = kwargs['bandwidthAlertThreshold']
-        if connection_label is None and 'connectionLabel' in kwargs:
-            connection_label = kwargs['connectionLabel']
-        if connection_redundancy_required is None and 'connectionRedundancyRequired' in kwargs:
-            connection_redundancy_required = kwargs['connectionRedundancyRequired']
-        if enable_auto_generate_service_key is None and 'enableAutoGenerateServiceKey' in kwargs:
-            enable_auto_generate_service_key = kwargs['enableAutoGenerateServiceKey']
-        if link_protocol_config is None and 'linkProtocolConfig' in kwargs:
-            link_protocol_config = kwargs['linkProtocolConfig']
-        if supported_bandwidths is None and 'supportedBandwidths' in kwargs:
-            supported_bandwidths = kwargs['supportedBandwidths']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if allow_bandwidth_auto_approval is not None:
-            _setter("allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
+            pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
         if allow_bandwidth_upgrade is not None:
-            _setter("allow_bandwidth_upgrade", allow_bandwidth_upgrade)
+            pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
         if allow_custom_bandwidth is not None:
-            _setter("allow_custom_bandwidth", allow_custom_bandwidth)
+            pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
         if allow_remote_connections is not None:
-            _setter("allow_remote_connections", allow_remote_connections)
+            pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
         if api_config is not None:
-            _setter("api_config", api_config)
+            pulumi.set(__self__, "api_config", api_config)
         if authentication_key is not None:
-            _setter("authentication_key", authentication_key)
+            pulumi.set(__self__, "authentication_key", authentication_key)
         if bandwidth_alert_threshold is not None:
-            _setter("bandwidth_alert_threshold", bandwidth_alert_threshold)
+            pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
         if connection_label is not None:
-            _setter("connection_label", connection_label)
+            pulumi.set(__self__, "connection_label", connection_label)
         if connection_redundancy_required is not None:
-            _setter("connection_redundancy_required", connection_redundancy_required)
+            pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
         if enable_auto_generate_service_key is not None:
-            _setter("enable_auto_generate_service_key", enable_auto_generate_service_key)
+            pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
         if link_protocol_config is not None:
-            _setter("link_protocol_config", link_protocol_config)
+            pulumi.set(__self__, "link_protocol_config", link_protocol_config)
         if supported_bandwidths is not None:
-            _setter("supported_bandwidths", supported_bandwidths)
+            pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -5565,57 +4220,20 @@ class ServiceProfileAccessPointTypeConfigApiConfigArgs:
         :param pulumi.Input[str] integration_id: Integration id
         :param pulumi.Input[int] over_subscription_limit: A cap on over subscription
         """
-        ServiceProfileAccessPointTypeConfigApiConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_over_subscription=allow_over_subscription,
-            api_available=api_available,
-            bandwidth_from_api=bandwidth_from_api,
-            equinix_managed_port=equinix_managed_port,
-            equinix_managed_vlan=equinix_managed_vlan,
-            integration_id=integration_id,
-            over_subscription_limit=over_subscription_limit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_over_subscription: Optional[pulumi.Input[bool]] = None,
-             api_available: Optional[pulumi.Input[bool]] = None,
-             bandwidth_from_api: Optional[pulumi.Input[bool]] = None,
-             equinix_managed_port: Optional[pulumi.Input[bool]] = None,
-             equinix_managed_vlan: Optional[pulumi.Input[bool]] = None,
-             integration_id: Optional[pulumi.Input[str]] = None,
-             over_subscription_limit: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if allow_over_subscription is None and 'allowOverSubscription' in kwargs:
-            allow_over_subscription = kwargs['allowOverSubscription']
-        if api_available is None and 'apiAvailable' in kwargs:
-            api_available = kwargs['apiAvailable']
-        if bandwidth_from_api is None and 'bandwidthFromApi' in kwargs:
-            bandwidth_from_api = kwargs['bandwidthFromApi']
-        if equinix_managed_port is None and 'equinixManagedPort' in kwargs:
-            equinix_managed_port = kwargs['equinixManagedPort']
-        if equinix_managed_vlan is None and 'equinixManagedVlan' in kwargs:
-            equinix_managed_vlan = kwargs['equinixManagedVlan']
-        if integration_id is None and 'integrationId' in kwargs:
-            integration_id = kwargs['integrationId']
-        if over_subscription_limit is None and 'overSubscriptionLimit' in kwargs:
-            over_subscription_limit = kwargs['overSubscriptionLimit']
-
         if allow_over_subscription is not None:
-            _setter("allow_over_subscription", allow_over_subscription)
+            pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
         if api_available is not None:
-            _setter("api_available", api_available)
+            pulumi.set(__self__, "api_available", api_available)
         if bandwidth_from_api is not None:
-            _setter("bandwidth_from_api", bandwidth_from_api)
+            pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
         if equinix_managed_port is not None:
-            _setter("equinix_managed_port", equinix_managed_port)
+            pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
         if equinix_managed_vlan is not None:
-            _setter("equinix_managed_vlan", equinix_managed_vlan)
+            pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
         if integration_id is not None:
-            _setter("integration_id", integration_id)
+            pulumi.set(__self__, "integration_id", integration_id)
         if over_subscription_limit is not None:
-            _setter("over_subscription_limit", over_subscription_limit)
+            pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
 
     @property
     @pulumi.getter(name="allowOverSubscription")
@@ -5713,27 +4331,12 @@ class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs:
         :param pulumi.Input[str] label: Label
         :param pulumi.Input[bool] required: Required
         """
-        ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            label=label,
-            required=required,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             required: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if required is not None:
-            _setter("required", required)
+            pulumi.set(__self__, "required", required)
 
     @property
     @pulumi.getter
@@ -5783,31 +4386,12 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs:
         :param pulumi.Input[str] encapsulation_strategy: Encapsulation strategy
         :param pulumi.Input[bool] reuse_vlan_s_tag: Reuse vlan sTag
         """
-        ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            encapsulation=encapsulation,
-            encapsulation_strategy=encapsulation_strategy,
-            reuse_vlan_s_tag=reuse_vlan_s_tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             encapsulation: Optional[pulumi.Input[str]] = None,
-             encapsulation_strategy: Optional[pulumi.Input[str]] = None,
-             reuse_vlan_s_tag: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if encapsulation_strategy is None and 'encapsulationStrategy' in kwargs:
-            encapsulation_strategy = kwargs['encapsulationStrategy']
-        if reuse_vlan_s_tag is None and 'reuseVlanSTag' in kwargs:
-            reuse_vlan_s_tag = kwargs['reuseVlanSTag']
-
         if encapsulation is not None:
-            _setter("encapsulation", encapsulation)
+            pulumi.set(__self__, "encapsulation", encapsulation)
         if encapsulation_strategy is not None:
-            _setter("encapsulation_strategy", encapsulation_strategy)
+            pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
         if reuse_vlan_s_tag is not None:
-            _setter("reuse_vlan_s_tag", reuse_vlan_s_tag)
+            pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
 
     @property
     @pulumi.getter
@@ -5867,63 +4451,22 @@ class ServiceProfileAccountArgs:
         :param pulumi.Input[str] organization_name: Customer organization name
         :param pulumi.Input[str] ucm_id: Enterprise datastore id
         """
-        ServiceProfileAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_name=account_name,
-            account_number=account_number,
-            global_cust_id=global_cust_id,
-            global_org_id=global_org_id,
-            global_organization_name=global_organization_name,
-            org_id=org_id,
-            organization_name=organization_name,
-            ucm_id=ucm_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_name: Optional[pulumi.Input[str]] = None,
-             account_number: Optional[pulumi.Input[int]] = None,
-             global_cust_id: Optional[pulumi.Input[str]] = None,
-             global_org_id: Optional[pulumi.Input[str]] = None,
-             global_organization_name: Optional[pulumi.Input[str]] = None,
-             org_id: Optional[pulumi.Input[int]] = None,
-             organization_name: Optional[pulumi.Input[str]] = None,
-             ucm_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if account_name is None and 'accountName' in kwargs:
-            account_name = kwargs['accountName']
-        if account_number is None and 'accountNumber' in kwargs:
-            account_number = kwargs['accountNumber']
-        if global_cust_id is None and 'globalCustId' in kwargs:
-            global_cust_id = kwargs['globalCustId']
-        if global_org_id is None and 'globalOrgId' in kwargs:
-            global_org_id = kwargs['globalOrgId']
-        if global_organization_name is None and 'globalOrganizationName' in kwargs:
-            global_organization_name = kwargs['globalOrganizationName']
-        if org_id is None and 'orgId' in kwargs:
-            org_id = kwargs['orgId']
-        if organization_name is None and 'organizationName' in kwargs:
-            organization_name = kwargs['organizationName']
-        if ucm_id is None and 'ucmId' in kwargs:
-            ucm_id = kwargs['ucmId']
-
         if account_name is not None:
-            _setter("account_name", account_name)
+            pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
-            _setter("account_number", account_number)
+            pulumi.set(__self__, "account_number", account_number)
         if global_cust_id is not None:
-            _setter("global_cust_id", global_cust_id)
+            pulumi.set(__self__, "global_cust_id", global_cust_id)
         if global_org_id is not None:
-            _setter("global_org_id", global_org_id)
+            pulumi.set(__self__, "global_org_id", global_org_id)
         if global_organization_name is not None:
-            _setter("global_organization_name", global_organization_name)
+            pulumi.set(__self__, "global_organization_name", global_organization_name)
         if org_id is not None:
-            _setter("org_id", org_id)
+            pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
-            _setter("organization_name", organization_name)
+            pulumi.set(__self__, "organization_name", organization_name)
         if ucm_id is not None:
-            _setter("ucm_id", ucm_id)
+            pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
@@ -6037,87 +4580,30 @@ class ServiceProfileChangeLogArgs:
                  updated_by_email: Optional[pulumi.Input[str]] = None,
                  updated_by_full_name: Optional[pulumi.Input[str]] = None,
                  updated_date_time: Optional[pulumi.Input[str]] = None):
-        ServiceProfileChangeLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_by=created_by,
-            created_by_email=created_by_email,
-            created_by_full_name=created_by_full_name,
-            created_date_time=created_date_time,
-            deleted_by=deleted_by,
-            deleted_by_email=deleted_by_email,
-            deleted_by_full_name=deleted_by_full_name,
-            deleted_date_time=deleted_date_time,
-            updated_by=updated_by,
-            updated_by_email=updated_by_email,
-            updated_by_full_name=updated_by_full_name,
-            updated_date_time=updated_date_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_by: Optional[pulumi.Input[str]] = None,
-             created_by_email: Optional[pulumi.Input[str]] = None,
-             created_by_full_name: Optional[pulumi.Input[str]] = None,
-             created_date_time: Optional[pulumi.Input[str]] = None,
-             deleted_by: Optional[pulumi.Input[str]] = None,
-             deleted_by_email: Optional[pulumi.Input[str]] = None,
-             deleted_by_full_name: Optional[pulumi.Input[str]] = None,
-             deleted_date_time: Optional[pulumi.Input[str]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             updated_by_email: Optional[pulumi.Input[str]] = None,
-             updated_by_full_name: Optional[pulumi.Input[str]] = None,
-             updated_date_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if created_by_email is None and 'createdByEmail' in kwargs:
-            created_by_email = kwargs['createdByEmail']
-        if created_by_full_name is None and 'createdByFullName' in kwargs:
-            created_by_full_name = kwargs['createdByFullName']
-        if created_date_time is None and 'createdDateTime' in kwargs:
-            created_date_time = kwargs['createdDateTime']
-        if deleted_by is None and 'deletedBy' in kwargs:
-            deleted_by = kwargs['deletedBy']
-        if deleted_by_email is None and 'deletedByEmail' in kwargs:
-            deleted_by_email = kwargs['deletedByEmail']
-        if deleted_by_full_name is None and 'deletedByFullName' in kwargs:
-            deleted_by_full_name = kwargs['deletedByFullName']
-        if deleted_date_time is None and 'deletedDateTime' in kwargs:
-            deleted_date_time = kwargs['deletedDateTime']
-        if updated_by is None and 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-        if updated_by_email is None and 'updatedByEmail' in kwargs:
-            updated_by_email = kwargs['updatedByEmail']
-        if updated_by_full_name is None and 'updatedByFullName' in kwargs:
-            updated_by_full_name = kwargs['updatedByFullName']
-        if updated_date_time is None and 'updatedDateTime' in kwargs:
-            updated_date_time = kwargs['updatedDateTime']
-
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
-            _setter("created_by_email", created_by_email)
+            pulumi.set(__self__, "created_by_email", created_by_email)
         if created_by_full_name is not None:
-            _setter("created_by_full_name", created_by_full_name)
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
         if created_date_time is not None:
-            _setter("created_date_time", created_date_time)
+            pulumi.set(__self__, "created_date_time", created_date_time)
         if deleted_by is not None:
-            _setter("deleted_by", deleted_by)
+            pulumi.set(__self__, "deleted_by", deleted_by)
         if deleted_by_email is not None:
-            _setter("deleted_by_email", deleted_by_email)
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
         if deleted_by_full_name is not None:
-            _setter("deleted_by_full_name", deleted_by_full_name)
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
         if deleted_date_time is not None:
-            _setter("deleted_date_time", deleted_date_time)
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
         if updated_by_email is not None:
-            _setter("updated_by_email", updated_by_email)
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
         if updated_by_full_name is not None:
-            _setter("updated_by_full_name", updated_by_full_name)
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
         if updated_date_time is not None:
-            _setter("updated_date_time", updated_date_time)
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
 
     @property
     @pulumi.getter(name="createdBy")
@@ -6245,46 +4731,15 @@ class ServiceProfileCustomFieldArgs:
         :param pulumi.Input[str] description: Description
         :param pulumi.Input[Sequence[pulumi.Input[str]]] options: Options
         """
-        ServiceProfileCustomFieldArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_type=data_type,
-            label=label,
-            required=required,
-            capture_in_email=capture_in_email,
-            description=description,
-            options=options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_type: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             required: Optional[pulumi.Input[bool]] = None,
-             capture_in_email: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if data_type is None and 'dataType' in kwargs:
-            data_type = kwargs['dataType']
-        if data_type is None:
-            raise TypeError("Missing 'data_type' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if required is None:
-            raise TypeError("Missing 'required' argument")
-        if capture_in_email is None and 'captureInEmail' in kwargs:
-            capture_in_email = kwargs['captureInEmail']
-
-        _setter("data_type", data_type)
-        _setter("label", label)
-        _setter("required", required)
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "required", required)
         if capture_in_email is not None:
-            _setter("capture_in_email", capture_in_email)
+            pulumi.set(__self__, "capture_in_email", capture_in_email)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
 
     @property
     @pulumi.getter(name="dataType")
@@ -6370,29 +4825,12 @@ class ServiceProfileMarketingInfoArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoProcessStepArgs']]] process_steps: Process Step
         :param pulumi.Input[bool] promotion: Promotion
         """
-        ServiceProfileMarketingInfoArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            logo=logo,
-            process_steps=process_steps,
-            promotion=promotion,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             logo: Optional[pulumi.Input[str]] = None,
-             process_steps: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMarketingInfoProcessStepArgs']]]] = None,
-             promotion: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if process_steps is None and 'processSteps' in kwargs:
-            process_steps = kwargs['processSteps']
-
         if logo is not None:
-            _setter("logo", logo)
+            pulumi.set(__self__, "logo", logo)
         if process_steps is not None:
-            _setter("process_steps", process_steps)
+            pulumi.set(__self__, "process_steps", process_steps)
         if promotion is not None:
-            _setter("promotion", promotion)
+            pulumi.set(__self__, "promotion", promotion)
 
     @property
     @pulumi.getter
@@ -6442,29 +4880,12 @@ class ServiceProfileMarketingInfoProcessStepArgs:
         :param pulumi.Input[str] sub_title: Sub Title
         :param pulumi.Input[str] title: Title
         """
-        ServiceProfileMarketingInfoProcessStepArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            sub_title=sub_title,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             sub_title: Optional[pulumi.Input[str]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if sub_title is None and 'subTitle' in kwargs:
-            sub_title = kwargs['subTitle']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if sub_title is not None:
-            _setter("sub_title", sub_title)
+            pulumi.set(__self__, "sub_title", sub_title)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -6520,45 +4941,18 @@ class ServiceProfileMetroArgs:
         :param pulumi.Input[str] name: Metro Name
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] seller_regions: Seller Regions
         """
-        ServiceProfileMetroArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            code=code,
-            display_name=display_name,
-            ibxs=ibxs,
-            in_trail=in_trail,
-            name=name,
-            seller_regions=seller_regions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             code: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             ibxs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             in_trail: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             seller_regions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if in_trail is None and 'inTrail' in kwargs:
-            in_trail = kwargs['inTrail']
-        if seller_regions is None and 'sellerRegions' in kwargs:
-            seller_regions = kwargs['sellerRegions']
-
         if code is not None:
-            _setter("code", code)
+            pulumi.set(__self__, "code", code)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if ibxs is not None:
-            _setter("ibxs", ibxs)
+            pulumi.set(__self__, "ibxs", ibxs)
         if in_trail is not None:
-            _setter("in_trail", in_trail)
+            pulumi.set(__self__, "in_trail", in_trail)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if seller_regions is not None:
-            _setter("seller_regions", seller_regions)
+            pulumi.set(__self__, "seller_regions", seller_regions)
 
     @property
     @pulumi.getter
@@ -6644,31 +5038,10 @@ class ServiceProfileNotificationArgs:
         :param pulumi.Input[Union[str, 'NotificationsType']] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         :param pulumi.Input[str] send_interval: Send interval
         """
-        ServiceProfileNotificationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            emails=emails,
-            type=type,
-            send_interval=send_interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[Union[str, 'NotificationsType']]] = None,
-             send_interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if emails is None:
-            raise TypeError("Missing 'emails' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if send_interval is None and 'sendInterval' in kwargs:
-            send_interval = kwargs['sendInterval']
-
-        _setter("emails", emails)
-        _setter("type", type)
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "type", type)
         if send_interval is not None:
-            _setter("send_interval", send_interval)
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
@@ -6724,47 +5097,16 @@ class ServiceProfilePortArgs:
         :param pulumi.Input[str] seller_region: Seller Region
         :param pulumi.Input[str] seller_region_description: Seller Region details
         """
-        ServiceProfilePortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            uuid=uuid,
-            cross_connect_id=cross_connect_id,
-            location=location,
-            seller_region=seller_region,
-            seller_region_description=seller_region_description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             cross_connect_id: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input['ServiceProfilePortLocationArgs']] = None,
-             seller_region: Optional[pulumi.Input[str]] = None,
-             seller_region_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if uuid is None:
-            raise TypeError("Missing 'uuid' argument")
-        if cross_connect_id is None and 'crossConnectId' in kwargs:
-            cross_connect_id = kwargs['crossConnectId']
-        if seller_region is None and 'sellerRegion' in kwargs:
-            seller_region = kwargs['sellerRegion']
-        if seller_region_description is None and 'sellerRegionDescription' in kwargs:
-            seller_region_description = kwargs['sellerRegionDescription']
-
-        _setter("type", type)
-        _setter("uuid", uuid)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
         if cross_connect_id is not None:
-            _setter("cross_connect_id", cross_connect_id)
+            pulumi.set(__self__, "cross_connect_id", cross_connect_id)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if seller_region is not None:
-            _setter("seller_region", seller_region)
+            pulumi.set(__self__, "seller_region", seller_region)
         if seller_region_description is not None:
-            _setter("seller_region_description", seller_region_description)
+            pulumi.set(__self__, "seller_region_description", seller_region_description)
 
     @property
     @pulumi.getter
@@ -6852,35 +5194,14 @@ class ServiceProfilePortLocationArgs:
         :param pulumi.Input[str] metro_name: Access point metro name
         :param pulumi.Input[str] region: Access point region
         """
-        ServiceProfilePortLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ibx=ibx,
-            metro_code=metro_code,
-            metro_name=metro_name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ibx: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             metro_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if metro_name is None and 'metroName' in kwargs:
-            metro_name = kwargs['metroName']
-
         if ibx is not None:
-            _setter("ibx", ibx)
+            pulumi.set(__self__, "ibx", ibx)
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if metro_name is not None:
-            _setter("metro_name", metro_name)
+            pulumi.set(__self__, "metro_name", metro_name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -6940,25 +5261,10 @@ class ServiceProfileProjectArgs:
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input[str] project_id: Project Id
         """
-        ServiceProfileProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -6998,35 +5304,12 @@ class ServiceProfileVirtualDeviceArgs:
         :param pulumi.Input[str] interface_uuid: Device Interface Uuid
         :param pulumi.Input['ServiceProfileVirtualDeviceLocationArgs'] location: Device Location
         """
-        ServiceProfileVirtualDeviceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            uuid=uuid,
-            interface_uuid=interface_uuid,
-            location=location,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             interface_uuid: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input['ServiceProfileVirtualDeviceLocationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if uuid is None:
-            raise TypeError("Missing 'uuid' argument")
-        if interface_uuid is None and 'interfaceUuid' in kwargs:
-            interface_uuid = kwargs['interfaceUuid']
-
-        _setter("type", type)
-        _setter("uuid", uuid)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
         if interface_uuid is not None:
-            _setter("interface_uuid", interface_uuid)
+            pulumi.set(__self__, "interface_uuid", interface_uuid)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
 
     @property
     @pulumi.getter
@@ -7090,35 +5373,14 @@ class ServiceProfileVirtualDeviceLocationArgs:
         :param pulumi.Input[str] metro_name: Access point metro name
         :param pulumi.Input[str] region: Access point region
         """
-        ServiceProfileVirtualDeviceLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ibx=ibx,
-            metro_code=metro_code,
-            metro_name=metro_name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ibx: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             metro_name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-        if metro_name is None and 'metroName' in kwargs:
-            metro_name = kwargs['metroName']
-
         if ibx is not None:
-            _setter("ibx", ibx)
+            pulumi.set(__self__, "ibx", ibx)
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if metro_name is not None:
-            _setter("metro_name", metro_name)
+            pulumi.set(__self__, "metro_name", metro_name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -7178,27 +5440,8 @@ class GetCloudRouterProjectArgs:
         :param str href: Unique Resource URL
         :param str project_id: Project Id
         """
-        GetCloudRouterProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if href is None:
-            raise TypeError("Missing 'href' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-
-        _setter("href", href)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -7234,27 +5477,8 @@ class GetConnectionProjectArgs:
         :param str href: Unique Resource URL
         :param str project_id: Project Id
         """
-        GetConnectionProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            href=href,
-            project_id=project_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             href: Optional[str] = None,
-             project_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if href is None:
-            raise TypeError("Missing 'href' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-
-        _setter("href", href)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
@@ -7288,19 +5512,8 @@ class GetPortsFilterArgs:
         """
         :param str name: Query Parameter to Get Ports By Name
         """
-        GetPortsFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -7324,24 +5537,9 @@ class GetRoutingProtocolBfdArgs:
         :param bool enabled: Bidirectional Forwarding Detection enablement
         :param str interval: Interval range between the received BFD control packets
         """
-        GetRoutingProtocolBfdArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            interval=interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             interval: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
 
     @property
     @pulumi.getter
@@ -7379,33 +5577,10 @@ class GetRoutingProtocolBgpIpv4Args:
         :param str equinix_peer_ip: Equinix side peering ip
         :param bool enabled: Admin status for the BGP session
         """
-        GetRoutingProtocolBgpIpv4Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_peer_ip=customer_peer_ip,
-            equinix_peer_ip=equinix_peer_ip,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_peer_ip: Optional[str] = None,
-             equinix_peer_ip: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
-            customer_peer_ip = kwargs['customerPeerIp']
-        if customer_peer_ip is None:
-            raise TypeError("Missing 'customer_peer_ip' argument")
-        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
-            equinix_peer_ip = kwargs['equinixPeerIp']
-        if equinix_peer_ip is None:
-            raise TypeError("Missing 'equinix_peer_ip' argument")
-
-        _setter("customer_peer_ip", customer_peer_ip)
-        _setter("equinix_peer_ip", equinix_peer_ip)
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="customerPeerIp")
@@ -7455,33 +5630,10 @@ class GetRoutingProtocolBgpIpv6Args:
         :param str equinix_peer_ip: Equinix side peering ip
         :param bool enabled: Admin status for the BGP session
         """
-        GetRoutingProtocolBgpIpv6Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_peer_ip=customer_peer_ip,
-            equinix_peer_ip=equinix_peer_ip,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_peer_ip: Optional[str] = None,
-             equinix_peer_ip: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if customer_peer_ip is None and 'customerPeerIp' in kwargs:
-            customer_peer_ip = kwargs['customerPeerIp']
-        if customer_peer_ip is None:
-            raise TypeError("Missing 'customer_peer_ip' argument")
-        if equinix_peer_ip is None and 'equinixPeerIp' in kwargs:
-            equinix_peer_ip = kwargs['equinixPeerIp']
-        if equinix_peer_ip is None:
-            raise TypeError("Missing 'equinix_peer_ip' argument")
-
-        _setter("customer_peer_ip", customer_peer_ip)
-        _setter("equinix_peer_ip", equinix_peer_ip)
+        pulumi.set(__self__, "customer_peer_ip", customer_peer_ip)
+        pulumi.set(__self__, "equinix_peer_ip", equinix_peer_ip)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="customerPeerIp")
@@ -7527,22 +5679,7 @@ class GetRoutingProtocolDirectIpv4Args:
         """
         :param str equinix_iface_ip: Equinix side Interface IP address
         """
-        GetRoutingProtocolDirectIpv4Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            equinix_iface_ip=equinix_iface_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
-            equinix_iface_ip = kwargs['equinixIfaceIp']
-        if equinix_iface_ip is None:
-            raise TypeError("Missing 'equinix_iface_ip' argument")
-
-        _setter("equinix_iface_ip", equinix_iface_ip)
+        pulumi.set(__self__, "equinix_iface_ip", equinix_iface_ip)
 
     @property
     @pulumi.getter(name="equinixIfaceIp")
@@ -7564,21 +5701,8 @@ class GetRoutingProtocolDirectIpv6Args:
         """
         :param str equinix_iface_ip: Equinix side Interface IP address
         """
-        GetRoutingProtocolDirectIpv6Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            equinix_iface_ip=equinix_iface_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             equinix_iface_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if equinix_iface_ip is None and 'equinixIfaceIp' in kwargs:
-            equinix_iface_ip = kwargs['equinixIfaceIp']
-
         if equinix_iface_ip is not None:
-            _setter("equinix_iface_ip", equinix_iface_ip)
+            pulumi.set(__self__, "equinix_iface_ip", equinix_iface_ip)
 
     @property
     @pulumi.getter(name="equinixIfaceIp")
@@ -7604,27 +5728,12 @@ class GetServiceProfilesFilterArgs:
         :param str property: Search Criteria for Service Profile - /name, /uuid, /state, /metros/code, /visibility, /type
         :param Sequence[str] values: Values
         """
-        GetServiceProfilesFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operator=operator,
-            property=property,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operator: Optional[str] = None,
-             property: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if property is not None:
-            _setter("property", property)
+            pulumi.set(__self__, "property", property)
         if values is not None:
-            _setter("values", values)
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -7672,23 +5781,10 @@ class GetServiceProfilesSortArgs:
         :param str direction: Priority type- DESC, ASC
         :param str property: Search operation sort criteria /name /state /changeLog/createdDateTime /changeLog/updatedDateTime
         """
-        GetServiceProfilesSortArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            direction=direction,
-            property=property,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             direction: Optional[str] = None,
-             property: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if property is not None:
-            _setter("property", property)
+            pulumi.set(__self__, "property", property)
 
     @property
     @pulumi.getter

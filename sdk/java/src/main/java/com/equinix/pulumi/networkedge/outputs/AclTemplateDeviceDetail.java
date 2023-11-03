@@ -88,11 +88,11 @@ public final class AclTemplateDeviceDetail {
             return this;
         }
         public AclTemplateDeviceDetail build() {
-            final var o = new AclTemplateDeviceDetail();
-            o.aclStatus = aclStatus;
-            o.name = name;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new AclTemplateDeviceDetail();
+            _resultValue.aclStatus = aclStatus;
+            _resultValue.name = name;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

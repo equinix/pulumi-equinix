@@ -105,12 +105,12 @@ public final class ServiceProfileVirtualDeviceLocation {
             return this;
         }
         public ServiceProfileVirtualDeviceLocation build() {
-            final var o = new ServiceProfileVirtualDeviceLocation();
-            o.ibx = ibx;
-            o.metroCode = metroCode;
-            o.metroName = metroName;
-            o.region = region;
-            return o;
+            final var _resultValue = new ServiceProfileVirtualDeviceLocation();
+            _resultValue.ibx = ibx;
+            _resultValue.metroCode = metroCode;
+            _resultValue.metroName = metroName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

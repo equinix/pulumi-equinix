@@ -113,13 +113,13 @@ public final class GetSpotMarketPriceResult {
             return this;
         }
         public GetSpotMarketPriceResult build() {
-            final var o = new GetSpotMarketPriceResult();
-            o.facility = facility;
-            o.id = id;
-            o.metro = metro;
-            o.plan = plan;
-            o.price = price;
-            return o;
+            final var _resultValue = new GetSpotMarketPriceResult();
+            _resultValue.facility = facility;
+            _resultValue.id = id;
+            _resultValue.metro = metro;
+            _resultValue.plan = plan;
+            _resultValue.price = price;
+            return _resultValue;
         }
     }
 }

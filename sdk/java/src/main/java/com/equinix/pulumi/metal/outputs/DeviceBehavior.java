@@ -51,9 +51,9 @@ public final class DeviceBehavior {
             return allowChanges(List.of(allowChanges));
         }
         public DeviceBehavior build() {
-            final var o = new DeviceBehavior();
-            o.allowChanges = allowChanges;
-            return o;
+            final var _resultValue = new DeviceBehavior();
+            _resultValue.allowChanges = allowChanges;
+            return _resultValue;
         }
     }
 }

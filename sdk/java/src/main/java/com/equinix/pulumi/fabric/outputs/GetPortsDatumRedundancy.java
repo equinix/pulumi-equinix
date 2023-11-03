@@ -61,11 +61,11 @@ public final class GetPortsDatumRedundancy {
             return this;
         }
         public GetPortsDatumRedundancy build() {
-            final var o = new GetPortsDatumRedundancy();
-            o.enabled = enabled;
-            o.group = group;
-            o.priority = priority;
-            return o;
+            final var _resultValue = new GetPortsDatumRedundancy();
+            _resultValue.enabled = enabled;
+            _resultValue.group = group;
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

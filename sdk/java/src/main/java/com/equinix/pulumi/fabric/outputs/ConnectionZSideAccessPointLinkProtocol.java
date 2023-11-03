@@ -106,12 +106,12 @@ public final class ConnectionZSideAccessPointLinkProtocol {
             return this;
         }
         public ConnectionZSideAccessPointLinkProtocol build() {
-            final var o = new ConnectionZSideAccessPointLinkProtocol();
-            o.type = type;
-            o.vlanCTag = vlanCTag;
-            o.vlanSTag = vlanSTag;
-            o.vlanTag = vlanTag;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointLinkProtocol();
+            _resultValue.type = type;
+            _resultValue.vlanCTag = vlanCTag;
+            _resultValue.vlanSTag = vlanSTag;
+            _resultValue.vlanTag = vlanTag;
+            return _resultValue;
         }
     }
 }

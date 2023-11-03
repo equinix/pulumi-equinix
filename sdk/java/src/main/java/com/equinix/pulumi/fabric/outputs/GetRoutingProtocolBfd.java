@@ -68,10 +68,10 @@ public final class GetRoutingProtocolBfd {
             return this;
         }
         public GetRoutingProtocolBfd build() {
-            final var o = new GetRoutingProtocolBfd();
-            o.enabled = enabled;
-            o.interval = interval;
-            return o;
+            final var _resultValue = new GetRoutingProtocolBfd();
+            _resultValue.enabled = enabled;
+            _resultValue.interval = interval;
+            return _resultValue;
         }
     }
 }

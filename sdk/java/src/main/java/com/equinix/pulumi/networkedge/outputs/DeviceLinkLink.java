@@ -180,15 +180,15 @@ public final class DeviceLinkLink {
             return this;
         }
         public DeviceLinkLink build() {
-            final var o = new DeviceLinkLink();
-            o.accountNumber = accountNumber;
-            o.dstMetroCode = dstMetroCode;
-            o.dstZoneCode = dstZoneCode;
-            o.srcMetroCode = srcMetroCode;
-            o.srcZoneCode = srcZoneCode;
-            o.throughput = throughput;
-            o.throughputUnit = throughputUnit;
-            return o;
+            final var _resultValue = new DeviceLinkLink();
+            _resultValue.accountNumber = accountNumber;
+            _resultValue.dstMetroCode = dstMetroCode;
+            _resultValue.dstZoneCode = dstZoneCode;
+            _resultValue.srcMetroCode = srcMetroCode;
+            _resultValue.srcZoneCode = srcZoneCode;
+            _resultValue.throughput = throughput;
+            _resultValue.throughputUnit = throughputUnit;
+            return _resultValue;
         }
     }
 }
