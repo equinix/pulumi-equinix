@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Charles Treatman <ctreatman@equinix.com>
+Date: Tue, 31 Oct 2023 09:43:08 -0500
+Subject: [PATCH 3/7] fix: read metal-go client's auth token from config, not
+ env
+
+When the metal-go client was introduced to enable packngo deprecation,
+it was wired up directly to the `METAL_AUTH_TOKEN` environment variable
+for auth.  This breaks auth when a customer is using the `auth_token`
+provider configuration.
+
+This updates the metal-go client initialization so that the client will
+work with both the `auth_token` setting and the `METAL_AUTH_TOKEN` env
+var.
+
+diff --git a/equinix/config.go b/equinix/config.go
+index ebe0192..d59a4b9 100644
+--- a/equinix/config.go
++++ b/equinix/config.go
+@@ -228,7 +228,7 @@ func (c *Config) NewMetalGoClient() *metalv1.APIClient {
+ 		},
+ 	}
+ 	configuration.HTTPClient = standardClient
+-	configuration.AddDefaultHeader("X-Auth-Token", os.Getenv("METAL_AUTH_TOKEN"))
++	configuration.AddDefaultHeader("X-Auth-Token", c.AuthToken)
+ 	configuration.UserAgent = c.fullUserAgent(configuration.UserAgent)
+ 	client := metalv1.NewAPIClient(configuration)
+ 	c.metalGoUserAgent = client.GetConfig().UserAgent

@@ -1,0 +1,87 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Mon, 30 Oct 2023 09:53:39 -0700
+Subject: [PATCH 5/7] style: Changing ibm example folder name
+
+
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/README.md b/examples/fabric/v4/portConnectivity/ibm/ibm2/README.md
+similarity index 81%
+rename from examples/fabric/v4/portConnectivity/ibm/ibm2.0/README.md
+rename to examples/fabric/v4/portConnectivity/ibm/ibm2/README.md
+index d5cf131..70e2069 100644
+--- a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/README.md
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm2/README.md
+@@ -1,6 +1,6 @@
+-# ECX Fabric Layer2 Redundant Connection to IBM 2.0
++# ECX Fabric Layer2 Redundant Connection to IBM 2
+ 
+-This example shows how to create Layer 2 Connection between ECX Fabric ports and IBM 2.0 Cloud.
++This example shows how to create Layer 2 Connection between ECX Fabric ports and IBM2 Cloud.
+ 
+ ## Adjust variables
+ 
+@@ -36,17 +36,17 @@ Log in to IBM portal with an account that has permission to create necessary res
+ 
+ ## Initialize
+ - First step is to initialize the terraform directory/resource we are going to work on.
+-  In the given example, the folder to perform CRUD operations for port2ibm2.0 redundant connections can be found at examples/fabric/v4/portConnectivity/ibm/ibm2.0.
++  In the given example, the folder to perform CRUD operations for port2ibm2 redundant connections can be found at examples/fabric/v4/portConnectivity/ibm/ibm2.
+ 
+-- Change directory into - `CD examples/fabric/v4/portConnectivity/ibm/ibm2.0`
++- Change directory into - `CD examples/fabric/v4/portConnectivity/ibm/ibm2`
+ - Initialize Terraform plugins - `terraform init`
+ 
+-## Port to IBM 2.0 connection  : Create, Read, Update and Delete(CRUD) operations
++## Port to IBM2 connection  : Create, Read, Update and Delete(CRUD) operations
+ Note: `–auto-approve` command does not prompt the user for validating the applying config. Remove it to get a prompt to confirm the operation.
+ 
+ | Operation |              Command              |                                                                Description |
+ |:----------|:---------------------------------:|---------------------------------------------------------------------------:|
+-| CREATE    |  `terraform apply –auto-approve`  |                                 Creates a port2ibm2.0 connection resources |
+-| READ      |         `terraform show`          |      Reads/Shows the current state of the port2ibm2.0 connection resources |
++| CREATE    |  `terraform apply –auto-approve`  |                                   Creates a port2ibm2 connection resources |
++| READ      |         `terraform show`          |        Reads/Shows the current state of the port2ibm2 connection resources |
+ | UPDATE    |    `terraform apply -refresh`     |  Updates the connections with values provided in the terraform.tfvars file |
+-| DELETE    | `terraform destroy –auto-approve` |                       Deletes the created port2ibm2.0 connection resources |
++| DELETE    | `terraform destroy –auto-approve` |                         Deletes the created port2ibm2 connection resources |
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/main.tf b/examples/fabric/v4/portConnectivity/ibm/ibm2/main.tf
+similarity index 100%
+rename from examples/fabric/v4/portConnectivity/ibm/ibm2.0/main.tf
+rename to examples/fabric/v4/portConnectivity/ibm/ibm2/main.tf
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/terraform.tf b/examples/fabric/v4/portConnectivity/ibm/ibm2/terraform.tf
+similarity index 100%
+rename from examples/fabric/v4/portConnectivity/ibm/ibm2.0/terraform.tf
+rename to examples/fabric/v4/portConnectivity/ibm/ibm2/terraform.tf
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/terraform.tfvars.example b/examples/fabric/v4/portConnectivity/ibm/ibm2/terraform.tfvars.example
+similarity index 94%
+rename from examples/fabric/v4/portConnectivity/ibm/ibm2.0/terraform.tfvars.example
+rename to examples/fabric/v4/portConnectivity/ibm/ibm2/terraform.tfvars.example
+index 6b73a2f..5c5816f 100644
+--- a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/terraform.tfvars.example
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm2/terraform.tfvars.example
+@@ -1,7 +1,7 @@
+ equinix_client_id      = "MyEquinixClientId"
+ equinix_client_secret  = "MyEquinixClientSecret"
+ 
+-connection_name             = "Terra_Port2IBM2.0"
++connection_name             = "Terra_Port2IBM2"
+ connection_type             = "EVPL_VC"
+ notifications_type          = "ALL"
+ notifications_emails        = ["example@equinix.com"]
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2.0/variables.tf b/examples/fabric/v4/portConnectivity/ibm/ibm2/variables.tf
+similarity index 100%
+rename from examples/fabric/v4/portConnectivity/ibm/ibm2.0/variables.tf
+rename to examples/fabric/v4/portConnectivity/ibm/ibm2/variables.tf
+diff --git a/tests/connection_e2e_ibm_test.go b/tests/connection_e2e_ibm_test.go
+index 027722e..7cf580c 100644
+--- a/tests/connection_e2e_ibm_test.go
++++ b/tests/connection_e2e_ibm_test.go
+@@ -10,7 +10,7 @@ import (
+ func TestIBMCreateConnection(t *testing.T) {
+ 	// retryable errors in terraform testing.
+ 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+-		TerraformDir: "../examples/fabric/v4/portConnectivity/ibm/ibm2.0",
++		TerraformDir: "../examples/fabric/v4/portConnectivity/ibm/ibm2",
+ 	})
+ 
+ 	defer terraform.Destroy(t, terraformOptions)

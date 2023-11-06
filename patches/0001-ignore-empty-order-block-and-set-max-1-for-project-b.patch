@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Thu, 26 Oct 2023 13:47:05 +0200
+Subject: [PATCH 1/7] ignore empty order block and set max 1 for project block
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/equinix/fabric_cloud_router_schema.go b/equinix/fabric_cloud_router_schema.go
+index 0bc416e..402c4c3 100755
+--- a/equinix/fabric_cloud_router_schema.go
++++ b/equinix/fabric_cloud_router_schema.go
+@@ -118,6 +118,7 @@ func createCloudRouterResourceSchema() map[string]*schema.Schema {
+ 			Type:        schema.TypeSet,
+ 			Optional:    true,
+ 			Description: "Fabric Cloud Router project",
++			MaxItems:    1,
+ 			Elem: &schema.Resource{
+ 				Schema: createCloudRouterProjectSch(),
+ 			},
+diff --git a/equinix/resource_fabric_cloud_router.go b/equinix/resource_fabric_cloud_router.go
+index 1f72db4..ed67ab8 100755
+--- a/equinix/resource_fabric_cloud_router.go
++++ b/equinix/resource_fabric_cloud_router.go
+@@ -39,8 +39,6 @@ func resourceCloudRouterCreate(ctx context.Context, d *schema.ResourceData, meta
+ 	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
+ 	schemaNotifications := d.Get("notifications").([]interface{})
+ 	notifications := notificationToFabric(schemaNotifications)
+-	schemaOrder := d.Get("order").(*schema.Set).List()
+-	order := orderToFabric(schemaOrder)
+ 	schemaAccount := d.Get("account").(*schema.Set).List()
+ 	account := accountToCloudRouter(schemaAccount)
+ 	schemaLocation := d.Get("location").(*schema.Set).List()
+@@ -56,7 +54,6 @@ func resourceCloudRouterCreate(ctx context.Context, d *schema.ResourceData, meta
+ 	createRequest := v4.CloudRouterPostRequest{
+ 		Name:          d.Get("name").(string),
+ 		Type_:         d.Get("type").(string),
+-		Order:         &order,
+ 		Location:      &location,
+ 		Notifications: notifications,
+ 		Package_:      &packages,
+@@ -64,6 +61,11 @@ func resourceCloudRouterCreate(ctx context.Context, d *schema.ResourceData, meta
+ 		Project:       &project,
+ 	}
+ 
++	if v, ok := d.GetOk("order"); ok {
++		order := orderToFabric(v.(*schema.Set).List())
++		createRequest.Order = &order
++	}
++
+ 	fcr, _, err := client.CloudRoutersApi.CreateCloudRouter(ctx, createRequest)
+ 	if err != nil {
+ 		return diag.FromErr(err)

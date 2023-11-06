@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Charles Treatman <ctreatman@equinix.com>
+Date: Thu, 2 Nov 2023 10:40:01 -0500
+Subject: [PATCH 7/7] fix: use the correct base User-Agent for metal-go
+ requests
+
+The code that injects terraform module information into the User-Agent
+string for the metal-go client was mis-wired; it was using the packngo
+User-Agent as a base instead of the metal-go User-Agent.  This change
+will correct the User-Agent so that requests made with metal-go will
+not appear to come from packngo.
+
+diff --git a/equinix/config.go b/equinix/config.go
+index d59a4b9..55de571 100644
+--- a/equinix/config.go
++++ b/equinix/config.go
+@@ -303,7 +303,7 @@ func (c *Config) addModuleToMetalUserAgent(d *schema.ResourceData) {
+ }
+ 
+ func (c *Config) addModuleToMetalGoUserAgent(d *schema.ResourceData) {
+-	c.metalgo.GetConfig().UserAgent = generateModuleUserAgentString(d, c.metalUserAgent)
++	c.metalgo.GetConfig().UserAgent = generateModuleUserAgentString(d, c.metalGoUserAgent)
+ }
+ 
+ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string) string {

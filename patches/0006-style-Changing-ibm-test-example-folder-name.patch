@@ -1,0 +1,10 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Mon, 30 Oct 2023 11:23:14 -0700
+Subject: [PATCH 6/7] style: Changing ibm test example folder name
+
+
+diff --git a/tests/connection_e2e_ibm_test.go b/tests/connection_e2e_ibm2_test.go
+similarity index 100%
+rename from tests/connection_e2e_ibm_test.go
+rename to tests/connection_e2e_ibm2_test.go
