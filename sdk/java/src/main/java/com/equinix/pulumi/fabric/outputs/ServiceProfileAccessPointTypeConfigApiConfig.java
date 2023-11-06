@@ -164,15 +164,15 @@ public final class ServiceProfileAccessPointTypeConfigApiConfig {
             return this;
         }
         public ServiceProfileAccessPointTypeConfigApiConfig build() {
-            final var o = new ServiceProfileAccessPointTypeConfigApiConfig();
-            o.allowOverSubscription = allowOverSubscription;
-            o.apiAvailable = apiAvailable;
-            o.bandwidthFromApi = bandwidthFromApi;
-            o.equinixManagedPort = equinixManagedPort;
-            o.equinixManagedVlan = equinixManagedVlan;
-            o.integrationId = integrationId;
-            o.overSubscriptionLimit = overSubscriptionLimit;
-            return o;
+            final var _resultValue = new ServiceProfileAccessPointTypeConfigApiConfig();
+            _resultValue.allowOverSubscription = allowOverSubscription;
+            _resultValue.apiAvailable = apiAvailable;
+            _resultValue.bandwidthFromApi = bandwidthFromApi;
+            _resultValue.equinixManagedPort = equinixManagedPort;
+            _resultValue.equinixManagedVlan = equinixManagedVlan;
+            _resultValue.integrationId = integrationId;
+            _resultValue.overSubscriptionLimit = overSubscriptionLimit;
+            return _resultValue;
         }
     }
 }

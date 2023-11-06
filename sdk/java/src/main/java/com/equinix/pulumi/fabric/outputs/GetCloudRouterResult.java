@@ -377,26 +377,26 @@ public final class GetCloudRouterResult {
             return this;
         }
         public GetCloudRouterResult build() {
-            final var o = new GetCloudRouterResult();
-            o.accounts = accounts;
-            o.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
-            o.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
-            o.changeLogs = changeLogs;
-            o.connectionsCount = connectionsCount;
-            o.description = description;
-            o.equinixAsn = equinixAsn;
-            o.href = href;
-            o.id = id;
-            o.locations = locations;
-            o.name = name;
-            o.notifications = notifications;
-            o.orders = orders;
-            o.packages = packages;
-            o.projects = projects;
-            o.state = state;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetCloudRouterResult();
+            _resultValue.accounts = accounts;
+            _resultValue.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
+            _resultValue.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
+            _resultValue.changeLogs = changeLogs;
+            _resultValue.connectionsCount = connectionsCount;
+            _resultValue.description = description;
+            _resultValue.equinixAsn = equinixAsn;
+            _resultValue.href = href;
+            _resultValue.id = id;
+            _resultValue.locations = locations;
+            _resultValue.name = name;
+            _resultValue.notifications = notifications;
+            _resultValue.orders = orders;
+            _resultValue.packages = packages;
+            _resultValue.projects = projects;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

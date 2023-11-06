@@ -42,6 +42,7 @@ public final class GetDevicesDevice {
      */
     private String projectId;
     private String rootPassword;
+    private String sosHostname;
     private List<String> sshKeyIds;
     private String state;
     private String storage;
@@ -115,6 +116,9 @@ public final class GetDevicesDevice {
     public String rootPassword() {
         return this.rootPassword;
     }
+    public String sosHostname() {
+        return this.sosHostname;
+    }
     public List<String> sshKeyIds() {
         return this.sshKeyIds;
     }
@@ -156,6 +160,7 @@ public final class GetDevicesDevice {
         private List<GetDevicesDevicePort> ports;
         private String projectId;
         private String rootPassword;
+        private String sosHostname;
         private List<String> sshKeyIds;
         private String state;
         private String storage;
@@ -182,6 +187,7 @@ public final class GetDevicesDevice {
     	      this.ports = defaults.ports;
     	      this.projectId = defaults.projectId;
     	      this.rootPassword = defaults.rootPassword;
+    	      this.sosHostname = defaults.sosHostname;
     	      this.sshKeyIds = defaults.sshKeyIds;
     	      this.state = defaults.state;
     	      this.storage = defaults.storage;
@@ -290,6 +296,11 @@ public final class GetDevicesDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder sosHostname(String sosHostname) {
+            this.sosHostname = Objects.requireNonNull(sosHostname);
+            return this;
+        }
+        @CustomType.Setter
         public Builder sshKeyIds(List<String> sshKeyIds) {
             this.sshKeyIds = Objects.requireNonNull(sshKeyIds);
             return this;
@@ -316,31 +327,32 @@ public final class GetDevicesDevice {
             return tags(List.of(tags));
         }
         public GetDevicesDevice build() {
-            final var o = new GetDevicesDevice();
-            o.accessPrivateIpv4 = accessPrivateIpv4;
-            o.accessPublicIpv4 = accessPublicIpv4;
-            o.accessPublicIpv6 = accessPublicIpv6;
-            o.alwaysPxe = alwaysPxe;
-            o.billingCycle = billingCycle;
-            o.description = description;
-            o.deviceId = deviceId;
-            o.facility = facility;
-            o.hardwareReservationId = hardwareReservationId;
-            o.hostname = hostname;
-            o.ipxeScriptUrl = ipxeScriptUrl;
-            o.metro = metro;
-            o.networkType = networkType;
-            o.networks = networks;
-            o.operatingSystem = operatingSystem;
-            o.plan = plan;
-            o.ports = ports;
-            o.projectId = projectId;
-            o.rootPassword = rootPassword;
-            o.sshKeyIds = sshKeyIds;
-            o.state = state;
-            o.storage = storage;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetDevicesDevice();
+            _resultValue.accessPrivateIpv4 = accessPrivateIpv4;
+            _resultValue.accessPublicIpv4 = accessPublicIpv4;
+            _resultValue.accessPublicIpv6 = accessPublicIpv6;
+            _resultValue.alwaysPxe = alwaysPxe;
+            _resultValue.billingCycle = billingCycle;
+            _resultValue.description = description;
+            _resultValue.deviceId = deviceId;
+            _resultValue.facility = facility;
+            _resultValue.hardwareReservationId = hardwareReservationId;
+            _resultValue.hostname = hostname;
+            _resultValue.ipxeScriptUrl = ipxeScriptUrl;
+            _resultValue.metro = metro;
+            _resultValue.networkType = networkType;
+            _resultValue.networks = networks;
+            _resultValue.operatingSystem = operatingSystem;
+            _resultValue.plan = plan;
+            _resultValue.ports = ports;
+            _resultValue.projectId = projectId;
+            _resultValue.rootPassword = rootPassword;
+            _resultValue.sosHostname = sosHostname;
+            _resultValue.sshKeyIds = sshKeyIds;
+            _resultValue.state = state;
+            _resultValue.storage = storage;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

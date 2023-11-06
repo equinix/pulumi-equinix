@@ -62,11 +62,11 @@ public final class RoutingProtocolChange {
             return this;
         }
         public RoutingProtocolChange build() {
-            final var o = new RoutingProtocolChange();
-            o.href = href;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new RoutingProtocolChange();
+            _resultValue.href = href;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

@@ -61,11 +61,11 @@ public final class GetServiceProfileAccessPointTypeConfigLinkProtocolConfig {
             return this;
         }
         public GetServiceProfileAccessPointTypeConfigLinkProtocolConfig build() {
-            final var o = new GetServiceProfileAccessPointTypeConfigLinkProtocolConfig();
-            o.encapsulation = encapsulation;
-            o.encapsulationStrategy = encapsulationStrategy;
-            o.reuseVlanSTag = reuseVlanSTag;
-            return o;
+            final var _resultValue = new GetServiceProfileAccessPointTypeConfigLinkProtocolConfig();
+            _resultValue.encapsulation = encapsulation;
+            _resultValue.encapsulationStrategy = encapsulationStrategy;
+            _resultValue.reuseVlanSTag = reuseVlanSTag;
+            return _resultValue;
         }
     }
 }

@@ -105,11 +105,11 @@ public final class DeviceIpAddress {
             return this;
         }
         public DeviceIpAddress build() {
-            final var o = new DeviceIpAddress();
-            o.cidr = cidr;
-            o.reservationIds = reservationIds;
-            o.type = type;
-            return o;
+            final var _resultValue = new DeviceIpAddress();
+            _resultValue.cidr = cidr;
+            _resultValue.reservationIds = reservationIds;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

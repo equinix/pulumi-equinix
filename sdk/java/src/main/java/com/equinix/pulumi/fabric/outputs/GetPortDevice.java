@@ -54,10 +54,10 @@ public final class GetPortDevice {
             return redundancies(List.of(redundancies));
         }
         public GetPortDevice build() {
-            final var o = new GetPortDevice();
-            o.name = name;
-            o.redundancies = redundancies;
-            return o;
+            final var _resultValue = new GetPortDevice();
+            _resultValue.name = name;
+            _resultValue.redundancies = redundancies;
+            return _resultValue;
         }
     }
 }

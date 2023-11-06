@@ -70,10 +70,10 @@ public final class GetFacilityCapacity {
             return this;
         }
         public GetFacilityCapacity build() {
-            final var o = new GetFacilityCapacity();
-            o.plan = plan;
-            o.quantity = quantity;
-            return o;
+            final var _resultValue = new GetFacilityCapacity();
+            _resultValue.plan = plan;
+            _resultValue.quantity = quantity;
+            return _resultValue;
         }
     }
 }

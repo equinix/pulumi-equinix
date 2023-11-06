@@ -90,11 +90,11 @@ public final class ServiceProfileNotification {
             return this;
         }
         public ServiceProfileNotification build() {
-            final var o = new ServiceProfileNotification();
-            o.emails = emails;
-            o.sendInterval = sendInterval;
-            o.type = type;
-            return o;
+            final var _resultValue = new ServiceProfileNotification();
+            _resultValue.emails = emails;
+            _resultValue.sendInterval = sendInterval;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

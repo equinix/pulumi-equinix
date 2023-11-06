@@ -81,11 +81,11 @@ public final class GetDeviceBgpNeighborsResult {
             return this;
         }
         public GetDeviceBgpNeighborsResult build() {
-            final var o = new GetDeviceBgpNeighborsResult();
-            o.bgpNeighbors = bgpNeighbors;
-            o.deviceId = deviceId;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetDeviceBgpNeighborsResult();
+            _resultValue.bgpNeighbors = bgpNeighbors;
+            _resultValue.deviceId = deviceId;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class ConnectionASideAccessPointLocation {
             return this;
         }
         public ConnectionASideAccessPointLocation build() {
-            final var o = new ConnectionASideAccessPointLocation();
-            o.ibx = ibx;
-            o.metroCode = metroCode;
-            o.metroName = metroName;
-            o.region = region;
-            return o;
+            final var _resultValue = new ConnectionASideAccessPointLocation();
+            _resultValue.ibx = ibx;
+            _resultValue.metroCode = metroCode;
+            _resultValue.metroName = metroName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

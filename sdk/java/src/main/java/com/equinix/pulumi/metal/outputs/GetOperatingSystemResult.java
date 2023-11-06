@@ -111,14 +111,14 @@ public final class GetOperatingSystemResult {
             return this;
         }
         public GetOperatingSystemResult build() {
-            final var o = new GetOperatingSystemResult();
-            o.distro = distro;
-            o.id = id;
-            o.name = name;
-            o.provisionableOn = provisionableOn;
-            o.slug = slug;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetOperatingSystemResult();
+            _resultValue.distro = distro;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.provisionableOn = provisionableOn;
+            _resultValue.slug = slug;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

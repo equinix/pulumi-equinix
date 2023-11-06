@@ -156,16 +156,16 @@ public final class GetVlanResult {
             return this;
         }
         public GetVlanResult build() {
-            final var o = new GetVlanResult();
-            o.assignedDevicesIds = assignedDevicesIds;
-            o.description = description;
-            o.facility = facility;
-            o.id = id;
-            o.metro = metro;
-            o.projectId = projectId;
-            o.vlanId = vlanId;
-            o.vxlan = vxlan;
-            return o;
+            final var _resultValue = new GetVlanResult();
+            _resultValue.assignedDevicesIds = assignedDevicesIds;
+            _resultValue.description = description;
+            _resultValue.facility = facility;
+            _resultValue.id = id;
+            _resultValue.metro = metro;
+            _resultValue.projectId = projectId;
+            _resultValue.vlanId = vlanId;
+            _resultValue.vxlan = vxlan;
+            return _resultValue;
         }
     }
 }

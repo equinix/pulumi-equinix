@@ -114,12 +114,12 @@ public final class GetPlansFilter {
             return values(List.of(values));
         }
         public GetPlansFilter build() {
-            final var o = new GetPlansFilter();
-            o.all = all;
-            o.attribute = attribute;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetPlansFilter();
+            _resultValue.all = all;
+            _resultValue.attribute = attribute;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

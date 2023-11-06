@@ -144,14 +144,14 @@ public final class ServiceProfilePort {
             return this;
         }
         public ServiceProfilePort build() {
-            final var o = new ServiceProfilePort();
-            o.crossConnectId = crossConnectId;
-            o.location = location;
-            o.sellerRegion = sellerRegion;
-            o.sellerRegionDescription = sellerRegionDescription;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ServiceProfilePort();
+            _resultValue.crossConnectId = crossConnectId;
+            _resultValue.location = location;
+            _resultValue.sellerRegion = sellerRegion;
+            _resultValue.sellerRegionDescription = sellerRegionDescription;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

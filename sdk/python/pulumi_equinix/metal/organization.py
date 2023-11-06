@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,40 +32,17 @@ class OrganizationArgs:
         :param pulumi.Input[str] twitter: Twitter handle.
         :param pulumi.Input[str] website: Website link.
         """
-        OrganizationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            description=description,
-            logo=logo,
-            name=name,
-            twitter=twitter,
-            website=website,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input['OrganizationAddressArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             logo: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             twitter: Optional[pulumi.Input[str]] = None,
-             website: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-
-        _setter("address", address)
+        pulumi.set(__self__, "address", address)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if logo is not None:
-            _setter("logo", logo)
+            pulumi.set(__self__, "logo", logo)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if twitter is not None:
-            _setter("twitter", twitter)
+            pulumi.set(__self__, "twitter", twitter)
         if website is not None:
-            _setter("website", website)
+            pulumi.set(__self__, "website", website)
 
     @property
     @pulumi.getter
@@ -164,47 +141,22 @@ class _OrganizationState:
         :param pulumi.Input[str] updated: The timestamp for the last time the organization was updated.
         :param pulumi.Input[str] website: Website link.
         """
-        _OrganizationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            created=created,
-            description=description,
-            logo=logo,
-            name=name,
-            twitter=twitter,
-            updated=updated,
-            website=website,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input['OrganizationAddressArgs']] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             logo: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             twitter: Optional[pulumi.Input[str]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             website: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if logo is not None:
-            _setter("logo", logo)
+            pulumi.set(__self__, "logo", logo)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if twitter is not None:
-            _setter("twitter", twitter)
+            pulumi.set(__self__, "twitter", twitter)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
         if website is not None:
-            _setter("website", website)
+            pulumi.set(__self__, "website", website)
 
     @property
     @pulumi.getter
@@ -390,10 +342,6 @@ class Organization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrganizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -414,11 +362,6 @@ class Organization(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
-            if address is not None and not isinstance(address, OrganizationAddressArgs):
-                address = address or {}
-                def _setter(key, value):
-                    address[key] = value
-                OrganizationAddressArgs._configure(_setter, **address)
             if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address

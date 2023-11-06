@@ -431,28 +431,28 @@ public final class GetInterconnectionResult {
             return vlans(List.of(vlans));
         }
         public GetInterconnectionResult build() {
-            final var o = new GetInterconnectionResult();
-            o.connectionId = connectionId;
-            o.contactEmail = contactEmail;
-            o.description = description;
-            o.facility = facility;
-            o.id = id;
-            o.metro = metro;
-            o.mode = mode;
-            o.name = name;
-            o.organizationId = organizationId;
-            o.ports = ports;
-            o.projectId = projectId;
-            o.redundancy = redundancy;
-            o.serviceTokenType = serviceTokenType;
-            o.serviceTokens = serviceTokens;
-            o.speed = speed;
-            o.status = status;
-            o.tags = tags;
-            o.token = token;
-            o.type = type;
-            o.vlans = vlans;
-            return o;
+            final var _resultValue = new GetInterconnectionResult();
+            _resultValue.connectionId = connectionId;
+            _resultValue.contactEmail = contactEmail;
+            _resultValue.description = description;
+            _resultValue.facility = facility;
+            _resultValue.id = id;
+            _resultValue.metro = metro;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.organizationId = organizationId;
+            _resultValue.ports = ports;
+            _resultValue.projectId = projectId;
+            _resultValue.redundancy = redundancy;
+            _resultValue.serviceTokenType = serviceTokenType;
+            _resultValue.serviceTokens = serviceTokens;
+            _resultValue.speed = speed;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.token = token;
+            _resultValue.type = type;
+            _resultValue.vlans = vlans;
+            return _resultValue;
         }
     }
 }

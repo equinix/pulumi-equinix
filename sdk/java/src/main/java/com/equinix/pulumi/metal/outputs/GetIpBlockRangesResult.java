@@ -182,16 +182,16 @@ public final class GetIpBlockRangesResult {
             return publicIpv4s(List.of(publicIpv4s));
         }
         public GetIpBlockRangesResult build() {
-            final var o = new GetIpBlockRangesResult();
-            o.facility = facility;
-            o.globalIpv4s = globalIpv4s;
-            o.id = id;
-            o.ipv6s = ipv6s;
-            o.metro = metro;
-            o.privateIpv4s = privateIpv4s;
-            o.projectId = projectId;
-            o.publicIpv4s = publicIpv4s;
-            return o;
+            final var _resultValue = new GetIpBlockRangesResult();
+            _resultValue.facility = facility;
+            _resultValue.globalIpv4s = globalIpv4s;
+            _resultValue.id = id;
+            _resultValue.ipv6s = ipv6s;
+            _resultValue.metro = metro;
+            _resultValue.privateIpv4s = privateIpv4s;
+            _resultValue.projectId = projectId;
+            _resultValue.publicIpv4s = publicIpv4s;
+            return _resultValue;
         }
     }
 }

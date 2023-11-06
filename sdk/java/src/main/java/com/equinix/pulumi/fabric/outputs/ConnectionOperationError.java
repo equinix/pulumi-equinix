@@ -108,14 +108,14 @@ public final class ConnectionOperationError {
             return this;
         }
         public ConnectionOperationError build() {
-            final var o = new ConnectionOperationError();
-            o.additionalInfo = additionalInfo;
-            o.correlationId = correlationId;
-            o.details = details;
-            o.errorCode = errorCode;
-            o.errorMessage = errorMessage;
-            o.help = help;
-            return o;
+            final var _resultValue = new ConnectionOperationError();
+            _resultValue.additionalInfo = additionalInfo;
+            _resultValue.correlationId = correlationId;
+            _resultValue.details = details;
+            _resultValue.errorCode = errorCode;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.help = help;
+            return _resultValue;
         }
     }
 }

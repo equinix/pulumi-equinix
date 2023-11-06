@@ -67,10 +67,10 @@ public final class ConnectionRedundancy {
             return this;
         }
         public ConnectionRedundancy build() {
-            final var o = new ConnectionRedundancy();
-            o.group = group;
-            o.priority = priority;
-            return o;
+            final var _resultValue = new ConnectionRedundancy();
+            _resultValue.group = group;
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

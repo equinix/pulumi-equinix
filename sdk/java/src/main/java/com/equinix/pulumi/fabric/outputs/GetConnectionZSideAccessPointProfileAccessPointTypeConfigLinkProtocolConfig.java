@@ -61,11 +61,11 @@ public final class GetConnectionZSideAccessPointProfileAccessPointTypeConfigLink
             return this;
         }
         public GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig build() {
-            final var o = new GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig();
-            o.encapsulation = encapsulation;
-            o.encapsulationStrategy = encapsulationStrategy;
-            o.reuseVlanSTag = reuseVlanSTag;
-            return o;
+            final var _resultValue = new GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig();
+            _resultValue.encapsulation = encapsulation;
+            _resultValue.encapsulationStrategy = encapsulationStrategy;
+            _resultValue.reuseVlanSTag = reuseVlanSTag;
+            return _resultValue;
         }
     }
 }

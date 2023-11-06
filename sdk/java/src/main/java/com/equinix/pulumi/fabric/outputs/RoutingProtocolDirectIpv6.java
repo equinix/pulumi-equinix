@@ -48,9 +48,9 @@ public final class RoutingProtocolDirectIpv6 {
             return this;
         }
         public RoutingProtocolDirectIpv6 build() {
-            final var o = new RoutingProtocolDirectIpv6();
-            o.equinixIfaceIp = equinixIfaceIp;
-            return o;
+            final var _resultValue = new RoutingProtocolDirectIpv6();
+            _resultValue.equinixIfaceIp = equinixIfaceIp;
+            return _resultValue;
         }
     }
 }

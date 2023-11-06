@@ -93,12 +93,12 @@ public final class GetPlansResult {
             return sorts(List.of(sorts));
         }
         public GetPlansResult build() {
-            final var o = new GetPlansResult();
-            o.filters = filters;
-            o.id = id;
-            o.plans = plans;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetPlansResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.plans = plans;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

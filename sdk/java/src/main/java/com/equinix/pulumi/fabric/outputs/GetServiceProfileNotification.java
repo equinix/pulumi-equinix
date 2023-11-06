@@ -64,11 +64,11 @@ public final class GetServiceProfileNotification {
             return this;
         }
         public GetServiceProfileNotification build() {
-            final var o = new GetServiceProfileNotification();
-            o.emails = emails;
-            o.sendInterval = sendInterval;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceProfileNotification();
+            _resultValue.emails = emails;
+            _resultValue.sendInterval = sendInterval;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

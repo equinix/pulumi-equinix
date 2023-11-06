@@ -105,15 +105,15 @@ public final class GetConnectionASideAccessPointAccount {
             return this;
         }
         public GetConnectionASideAccessPointAccount build() {
-            final var o = new GetConnectionASideAccessPointAccount();
-            o.accountName = accountName;
-            o.accountNumber = accountNumber;
-            o.globalCustId = globalCustId;
-            o.globalOrgId = globalOrgId;
-            o.globalOrganizationName = globalOrganizationName;
-            o.orgId = orgId;
-            o.organizationName = organizationName;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointAccount();
+            _resultValue.accountName = accountName;
+            _resultValue.accountNumber = accountNumber;
+            _resultValue.globalCustId = globalCustId;
+            _resultValue.globalOrgId = globalOrgId;
+            _resultValue.globalOrganizationName = globalOrganizationName;
+            _resultValue.orgId = orgId;
+            _resultValue.organizationName = organizationName;
+            return _resultValue;
         }
     }
 }

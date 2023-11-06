@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,84 +47,35 @@ class InterconnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
         """
-        InterconnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            redundancy=redundancy,
-            type=type,
-            contact_email=contact_email,
-            description=description,
-            facility=facility,
-            metro=metro,
-            mode=mode,
-            name=name,
-            organization_id=organization_id,
-            project_id=project_id,
-            service_token_type=service_token_type,
-            speed=speed,
-            tags=tags,
-            vlans=vlans,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             redundancy: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             contact_email: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             facility: Optional[pulumi.Input[str]] = None,
-             metro: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             organization_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             service_token_type: Optional[pulumi.Input[str]] = None,
-             speed: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if redundancy is None:
-            raise TypeError("Missing 'redundancy' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if contact_email is None and 'contactEmail' in kwargs:
-            contact_email = kwargs['contactEmail']
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if service_token_type is None and 'serviceTokenType' in kwargs:
-            service_token_type = kwargs['serviceTokenType']
-
-        _setter("redundancy", redundancy)
-        _setter("type", type)
+        pulumi.set(__self__, "redundancy", redundancy)
+        pulumi.set(__self__, "type", type)
         if contact_email is not None:
-            _setter("contact_email", contact_email)
+            pulumi.set(__self__, "contact_email", contact_email)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if facility is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
-            _setter("facility", facility)
+            pulumi.set(__self__, "facility", facility)
         if metro is not None:
-            _setter("metro", metro)
+            pulumi.set(__self__, "metro", metro)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if organization_id is not None:
-            _setter("organization_id", organization_id)
+            pulumi.set(__self__, "organization_id", organization_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if service_token_type is not None:
-            _setter("service_token_type", service_token_type)
+            pulumi.set(__self__, "service_token_type", service_token_type)
         if speed is not None:
-            _setter("speed", speed)
+            pulumi.set(__self__, "speed", speed)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vlans is not None:
-            _setter("vlans", vlans)
+            pulumi.set(__self__, "vlans", vlans)
 
     @property
     @pulumi.getter
@@ -342,103 +293,48 @@ class _InterconnectionState:
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
         """
-        _InterconnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            contact_email=contact_email,
-            description=description,
-            facility=facility,
-            metro=metro,
-            mode=mode,
-            name=name,
-            organization_id=organization_id,
-            ports=ports,
-            project_id=project_id,
-            redundancy=redundancy,
-            service_token_type=service_token_type,
-            service_tokens=service_tokens,
-            speed=speed,
-            status=status,
-            tags=tags,
-            token=token,
-            type=type,
-            vlans=vlans,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             contact_email: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             facility: Optional[pulumi.Input[str]] = None,
-             metro: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             organization_id: Optional[pulumi.Input[str]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectionPortArgs']]]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             redundancy: Optional[pulumi.Input[str]] = None,
-             service_token_type: Optional[pulumi.Input[str]] = None,
-             service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectionServiceTokenArgs']]]] = None,
-             speed: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if contact_email is None and 'contactEmail' in kwargs:
-            contact_email = kwargs['contactEmail']
-        if organization_id is None and 'organizationId' in kwargs:
-            organization_id = kwargs['organizationId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if service_token_type is None and 'serviceTokenType' in kwargs:
-            service_token_type = kwargs['serviceTokenType']
-        if service_tokens is None and 'serviceTokens' in kwargs:
-            service_tokens = kwargs['serviceTokens']
-
         if contact_email is not None:
-            _setter("contact_email", contact_email)
+            pulumi.set(__self__, "contact_email", contact_email)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if facility is not None:
             warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
             pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
         if facility is not None:
-            _setter("facility", facility)
+            pulumi.set(__self__, "facility", facility)
         if metro is not None:
-            _setter("metro", metro)
+            pulumi.set(__self__, "metro", metro)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if organization_id is not None:
-            _setter("organization_id", organization_id)
+            pulumi.set(__self__, "organization_id", organization_id)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if redundancy is not None:
-            _setter("redundancy", redundancy)
+            pulumi.set(__self__, "redundancy", redundancy)
         if service_token_type is not None:
-            _setter("service_token_type", service_token_type)
+            pulumi.set(__self__, "service_token_type", service_token_type)
         if service_tokens is not None:
-            _setter("service_tokens", service_tokens)
+            pulumi.set(__self__, "service_tokens", service_tokens)
         if speed is not None:
-            _setter("speed", speed)
+            pulumi.set(__self__, "speed", speed)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if token is not None:
             warnings.warn("""If your organization already has connection service tokens enabled, use `service_tokens` instead""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead""")
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if vlans is not None:
-            _setter("vlans", vlans)
+            pulumi.set(__self__, "vlans", vlans)
 
     @property
     @pulumi.getter(name="contactEmail")
@@ -778,10 +674,6 @@ class Interconnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InterconnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

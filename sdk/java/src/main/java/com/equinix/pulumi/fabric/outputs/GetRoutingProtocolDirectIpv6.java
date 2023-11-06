@@ -48,9 +48,9 @@ public final class GetRoutingProtocolDirectIpv6 {
             return this;
         }
         public GetRoutingProtocolDirectIpv6 build() {
-            final var o = new GetRoutingProtocolDirectIpv6();
-            o.equinixIfaceIp = equinixIfaceIp;
-            return o;
+            final var _resultValue = new GetRoutingProtocolDirectIpv6();
+            _resultValue.equinixIfaceIp = equinixIfaceIp;
+            return _resultValue;
         }
     }
 }

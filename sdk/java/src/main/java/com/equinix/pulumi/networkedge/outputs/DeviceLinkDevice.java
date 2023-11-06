@@ -129,13 +129,13 @@ public final class DeviceLinkDevice {
             return this;
         }
         public DeviceLinkDevice build() {
-            final var o = new DeviceLinkDevice();
-            o.asn = asn;
-            o.id = id;
-            o.interfaceId = interfaceId;
-            o.ipAddress = ipAddress;
-            o.status = status;
-            return o;
+            final var _resultValue = new DeviceLinkDevice();
+            _resultValue.asn = asn;
+            _resultValue.id = id;
+            _resultValue.interfaceId = interfaceId;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

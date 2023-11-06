@@ -87,11 +87,11 @@ public final class RoutingProtocolBgpIpv4 {
             return this;
         }
         public RoutingProtocolBgpIpv4 build() {
-            final var o = new RoutingProtocolBgpIpv4();
-            o.customerPeerIp = customerPeerIp;
-            o.enabled = enabled;
-            o.equinixPeerIp = equinixPeerIp;
-            return o;
+            final var _resultValue = new RoutingProtocolBgpIpv4();
+            _resultValue.customerPeerIp = customerPeerIp;
+            _resultValue.enabled = enabled;
+            _resultValue.equinixPeerIp = equinixPeerIp;
+            return _resultValue;
         }
     }
 }

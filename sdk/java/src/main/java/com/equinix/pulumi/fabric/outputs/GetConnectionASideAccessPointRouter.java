@@ -60,11 +60,11 @@ public final class GetConnectionASideAccessPointRouter {
             return this;
         }
         public GetConnectionASideAccessPointRouter build() {
-            final var o = new GetConnectionASideAccessPointRouter();
-            o.href = href;
-            o.state = state;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointRouter();
+            _resultValue.href = href;
+            _resultValue.state = state;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

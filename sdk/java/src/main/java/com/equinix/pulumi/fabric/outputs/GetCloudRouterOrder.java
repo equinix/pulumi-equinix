@@ -71,12 +71,12 @@ public final class GetCloudRouterOrder {
             return this;
         }
         public GetCloudRouterOrder build() {
-            final var o = new GetCloudRouterOrder();
-            o.billingTier = billingTier;
-            o.orderId = orderId;
-            o.orderNumber = orderNumber;
-            o.purchaseOrderNumber = purchaseOrderNumber;
-            return o;
+            final var _resultValue = new GetCloudRouterOrder();
+            _resultValue.billingTier = billingTier;
+            _resultValue.orderId = orderId;
+            _resultValue.orderNumber = orderNumber;
+            _resultValue.purchaseOrderNumber = purchaseOrderNumber;
+            return _resultValue;
         }
     }
 }

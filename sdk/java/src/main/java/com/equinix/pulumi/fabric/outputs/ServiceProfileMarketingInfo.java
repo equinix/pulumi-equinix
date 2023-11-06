@@ -92,11 +92,11 @@ public final class ServiceProfileMarketingInfo {
             return this;
         }
         public ServiceProfileMarketingInfo build() {
-            final var o = new ServiceProfileMarketingInfo();
-            o.logo = logo;
-            o.processSteps = processSteps;
-            o.promotion = promotion;
-            return o;
+            final var _resultValue = new ServiceProfileMarketingInfo();
+            _resultValue.logo = logo;
+            _resultValue.processSteps = processSteps;
+            _resultValue.promotion = promotion;
+            return _resultValue;
         }
     }
 }

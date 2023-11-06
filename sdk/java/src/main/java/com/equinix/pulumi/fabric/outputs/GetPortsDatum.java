@@ -258,26 +258,26 @@ public final class GetPortsDatum {
             return this;
         }
         public GetPortsDatum build() {
-            final var o = new GetPortsDatum();
-            o.accounts = accounts;
-            o.availableBandwidth = availableBandwidth;
-            o.bandwidth = bandwidth;
-            o.changeLogs = changeLogs;
-            o.description = description;
-            o.devices = devices;
-            o.encapsulations = encapsulations;
-            o.href = href;
-            o.lagEnabled = lagEnabled;
-            o.locations = locations;
-            o.name = name;
-            o.operations = operations;
-            o.redundancies = redundancies;
-            o.serviceType = serviceType;
-            o.state = state;
-            o.type = type;
-            o.usedBandwidth = usedBandwidth;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetPortsDatum();
+            _resultValue.accounts = accounts;
+            _resultValue.availableBandwidth = availableBandwidth;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.changeLogs = changeLogs;
+            _resultValue.description = description;
+            _resultValue.devices = devices;
+            _resultValue.encapsulations = encapsulations;
+            _resultValue.href = href;
+            _resultValue.lagEnabled = lagEnabled;
+            _resultValue.locations = locations;
+            _resultValue.name = name;
+            _resultValue.operations = operations;
+            _resultValue.redundancies = redundancies;
+            _resultValue.serviceType = serviceType;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.usedBandwidth = usedBandwidth;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

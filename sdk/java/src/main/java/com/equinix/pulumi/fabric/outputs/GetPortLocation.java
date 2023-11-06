@@ -82,13 +82,13 @@ public final class GetPortLocation {
             return this;
         }
         public GetPortLocation build() {
-            final var o = new GetPortLocation();
-            o.href = href;
-            o.ibx = ibx;
-            o.metroCode = metroCode;
-            o.metroName = metroName;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetPortLocation();
+            _resultValue.href = href;
+            _resultValue.ibx = ibx;
+            _resultValue.metroCode = metroCode;
+            _resultValue.metroName = metroName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

@@ -561,35 +561,35 @@ public final class DeviceSecondaryDevice {
             return this;
         }
         public DeviceSecondaryDevice build() {
-            final var o = new DeviceSecondaryDevice();
-            o.accountNumber = accountNumber;
-            o.aclTemplateId = aclTemplateId;
-            o.additionalBandwidth = additionalBandwidth;
-            o.asn = asn;
-            o.cloudInitFileId = cloudInitFileId;
-            o.hostname = hostname;
-            o.ibx = ibx;
-            o.interfaces = interfaces;
-            o.licenseFile = licenseFile;
-            o.licenseFileId = licenseFileId;
-            o.licenseStatus = licenseStatus;
-            o.licenseToken = licenseToken;
-            o.metroCode = metroCode;
-            o.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
-            o.name = name;
-            o.notifications = notifications;
-            o.redundancyType = redundancyType;
-            o.redundantId = redundantId;
-            o.region = region;
-            o.sshIpAddress = sshIpAddress;
-            o.sshIpFqdn = sshIpFqdn;
-            o.sshKey = sshKey;
-            o.status = status;
-            o.uuid = uuid;
-            o.vendorConfiguration = vendorConfiguration;
-            o.wanInterfaceId = wanInterfaceId;
-            o.zoneCode = zoneCode;
-            return o;
+            final var _resultValue = new DeviceSecondaryDevice();
+            _resultValue.accountNumber = accountNumber;
+            _resultValue.aclTemplateId = aclTemplateId;
+            _resultValue.additionalBandwidth = additionalBandwidth;
+            _resultValue.asn = asn;
+            _resultValue.cloudInitFileId = cloudInitFileId;
+            _resultValue.hostname = hostname;
+            _resultValue.ibx = ibx;
+            _resultValue.interfaces = interfaces;
+            _resultValue.licenseFile = licenseFile;
+            _resultValue.licenseFileId = licenseFileId;
+            _resultValue.licenseStatus = licenseStatus;
+            _resultValue.licenseToken = licenseToken;
+            _resultValue.metroCode = metroCode;
+            _resultValue.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
+            _resultValue.name = name;
+            _resultValue.notifications = notifications;
+            _resultValue.redundancyType = redundancyType;
+            _resultValue.redundantId = redundantId;
+            _resultValue.region = region;
+            _resultValue.sshIpAddress = sshIpAddress;
+            _resultValue.sshIpFqdn = sshIpFqdn;
+            _resultValue.sshKey = sshKey;
+            _resultValue.status = status;
+            _resultValue.uuid = uuid;
+            _resultValue.vendorConfiguration = vendorConfiguration;
+            _resultValue.wanInterfaceId = wanInterfaceId;
+            _resultValue.zoneCode = zoneCode;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class GetPlansSort {
             return this;
         }
         public GetPlansSort build() {
-            final var o = new GetPlansSort();
-            o.attribute = attribute;
-            o.direction = direction;
-            return o;
+            final var _resultValue = new GetPlansSort();
+            _resultValue.attribute = attribute;
+            _resultValue.direction = direction;
+            return _resultValue;
         }
     }
 }

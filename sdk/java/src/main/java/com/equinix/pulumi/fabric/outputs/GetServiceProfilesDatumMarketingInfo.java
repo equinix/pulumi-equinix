@@ -66,11 +66,11 @@ public final class GetServiceProfilesDatumMarketingInfo {
             return this;
         }
         public GetServiceProfilesDatumMarketingInfo build() {
-            final var o = new GetServiceProfilesDatumMarketingInfo();
-            o.logo = logo;
-            o.processSteps = processSteps;
-            o.promotion = promotion;
-            return o;
+            final var _resultValue = new GetServiceProfilesDatumMarketingInfo();
+            _resultValue.logo = logo;
+            _resultValue.processSteps = processSteps;
+            _resultValue.promotion = promotion;
+            return _resultValue;
         }
     }
 }

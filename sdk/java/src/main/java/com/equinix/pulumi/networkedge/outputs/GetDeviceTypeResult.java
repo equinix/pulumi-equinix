@@ -132,15 +132,15 @@ public final class GetDeviceTypeResult {
             return this;
         }
         public GetDeviceTypeResult build() {
-            final var o = new GetDeviceTypeResult();
-            o.category = category;
-            o.code = code;
-            o.description = description;
-            o.id = id;
-            o.metroCodes = metroCodes;
-            o.name = name;
-            o.vendor = vendor;
-            return o;
+            final var _resultValue = new GetDeviceTypeResult();
+            _resultValue.category = category;
+            _resultValue.code = code;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.metroCodes = metroCodes;
+            _resultValue.name = name;
+            _resultValue.vendor = vendor;
+            return _resultValue;
         }
     }
 }

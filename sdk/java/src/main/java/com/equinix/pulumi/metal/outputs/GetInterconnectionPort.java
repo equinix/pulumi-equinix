@@ -166,15 +166,15 @@ public final class GetInterconnectionPort {
             return virtualCircuitIds(List.of(virtualCircuitIds));
         }
         public GetInterconnectionPort build() {
-            final var o = new GetInterconnectionPort();
-            o.id = id;
-            o.linkStatus = linkStatus;
-            o.name = name;
-            o.role = role;
-            o.speed = speed;
-            o.status = status;
-            o.virtualCircuitIds = virtualCircuitIds;
-            return o;
+            final var _resultValue = new GetInterconnectionPort();
+            _resultValue.id = id;
+            _resultValue.linkStatus = linkStatus;
+            _resultValue.name = name;
+            _resultValue.role = role;
+            _resultValue.speed = speed;
+            _resultValue.status = status;
+            _resultValue.virtualCircuitIds = virtualCircuitIds;
+            return _resultValue;
         }
     }
 }

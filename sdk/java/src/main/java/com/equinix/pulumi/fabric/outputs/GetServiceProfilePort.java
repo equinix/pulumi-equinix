@@ -98,14 +98,14 @@ public final class GetServiceProfilePort {
             return this;
         }
         public GetServiceProfilePort build() {
-            final var o = new GetServiceProfilePort();
-            o.crossConnectId = crossConnectId;
-            o.locations = locations;
-            o.sellerRegion = sellerRegion;
-            o.sellerRegionDescription = sellerRegionDescription;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetServiceProfilePort();
+            _resultValue.crossConnectId = crossConnectId;
+            _resultValue.locations = locations;
+            _resultValue.sellerRegion = sellerRegion;
+            _resultValue.sellerRegionDescription = sellerRegionDescription;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

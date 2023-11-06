@@ -67,10 +67,10 @@ public final class GetServiceProfilesSort {
             return this;
         }
         public GetServiceProfilesSort build() {
-            final var o = new GetServiceProfilesSort();
-            o.direction = direction;
-            o.property = property;
-            return o;
+            final var _resultValue = new GetServiceProfilesSort();
+            _resultValue.direction = direction;
+            _resultValue.property = property;
+            return _resultValue;
         }
     }
 }

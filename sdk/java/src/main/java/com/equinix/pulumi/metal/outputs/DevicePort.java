@@ -125,13 +125,13 @@ public final class DevicePort {
             return this;
         }
         public DevicePort build() {
-            final var o = new DevicePort();
-            o.bonded = bonded;
-            o.id = id;
-            o.mac = mac;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new DevicePort();
+            _resultValue.bonded = bonded;
+            _resultValue.id = id;
+            _resultValue.mac = mac;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

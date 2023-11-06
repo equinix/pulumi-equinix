@@ -71,12 +71,12 @@ public final class GetConnectionOrder {
             return this;
         }
         public GetConnectionOrder build() {
-            final var o = new GetConnectionOrder();
-            o.billingTier = billingTier;
-            o.orderId = orderId;
-            o.orderNumber = orderNumber;
-            o.purchaseOrderNumber = purchaseOrderNumber;
-            return o;
+            final var _resultValue = new GetConnectionOrder();
+            _resultValue.billingTier = billingTier;
+            _resultValue.orderId = orderId;
+            _resultValue.orderNumber = orderNumber;
+            _resultValue.purchaseOrderNumber = purchaseOrderNumber;
+            return _resultValue;
         }
     }
 }

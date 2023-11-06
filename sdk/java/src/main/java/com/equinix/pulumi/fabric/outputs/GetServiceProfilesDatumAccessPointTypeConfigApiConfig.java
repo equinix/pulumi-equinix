@@ -106,15 +106,15 @@ public final class GetServiceProfilesDatumAccessPointTypeConfigApiConfig {
             return this;
         }
         public GetServiceProfilesDatumAccessPointTypeConfigApiConfig build() {
-            final var o = new GetServiceProfilesDatumAccessPointTypeConfigApiConfig();
-            o.allowOverSubscription = allowOverSubscription;
-            o.apiAvailable = apiAvailable;
-            o.bandwidthFromApi = bandwidthFromApi;
-            o.equinixManagedPort = equinixManagedPort;
-            o.equinixManagedVlan = equinixManagedVlan;
-            o.integrationId = integrationId;
-            o.overSubscriptionLimit = overSubscriptionLimit;
-            return o;
+            final var _resultValue = new GetServiceProfilesDatumAccessPointTypeConfigApiConfig();
+            _resultValue.allowOverSubscription = allowOverSubscription;
+            _resultValue.apiAvailable = apiAvailable;
+            _resultValue.bandwidthFromApi = bandwidthFromApi;
+            _resultValue.equinixManagedPort = equinixManagedPort;
+            _resultValue.equinixManagedVlan = equinixManagedVlan;
+            _resultValue.integrationId = integrationId;
+            _resultValue.overSubscriptionLimit = overSubscriptionLimit;
+            return _resultValue;
         }
     }
 }

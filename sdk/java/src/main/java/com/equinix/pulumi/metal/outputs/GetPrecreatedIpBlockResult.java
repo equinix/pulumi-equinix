@@ -245,26 +245,26 @@ public final class GetPrecreatedIpBlockResult {
             return this;
         }
         public GetPrecreatedIpBlockResult build() {
-            final var o = new GetPrecreatedIpBlockResult();
-            o.address = address;
-            o.addressFamily = addressFamily;
-            o.cidr = cidr;
-            o.cidrNotation = cidrNotation;
-            o.facility = facility;
-            o.gateway = gateway;
-            o.global = global;
-            o.id = id;
-            o.manageable = manageable;
-            o.management = management;
-            o.metro = metro;
-            o.netmask = netmask;
-            o.network = network;
-            o.projectId = projectId;
-            o.public_ = public_;
-            o.quantity = quantity;
-            o.type = type;
-            o.vrfId = vrfId;
-            return o;
+            final var _resultValue = new GetPrecreatedIpBlockResult();
+            _resultValue.address = address;
+            _resultValue.addressFamily = addressFamily;
+            _resultValue.cidr = cidr;
+            _resultValue.cidrNotation = cidrNotation;
+            _resultValue.facility = facility;
+            _resultValue.gateway = gateway;
+            _resultValue.global = global;
+            _resultValue.id = id;
+            _resultValue.manageable = manageable;
+            _resultValue.management = management;
+            _resultValue.metro = metro;
+            _resultValue.netmask = netmask;
+            _resultValue.network = network;
+            _resultValue.projectId = projectId;
+            _resultValue.public_ = public_;
+            _resultValue.quantity = quantity;
+            _resultValue.type = type;
+            _resultValue.vrfId = vrfId;
+            return _resultValue;
         }
     }
 }

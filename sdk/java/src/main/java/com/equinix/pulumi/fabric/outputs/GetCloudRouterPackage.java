@@ -38,9 +38,9 @@ public final class GetCloudRouterPackage {
             return this;
         }
         public GetCloudRouterPackage build() {
-            final var o = new GetCloudRouterPackage();
-            o.code = code;
-            return o;
+            final var _resultValue = new GetCloudRouterPackage();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

@@ -161,17 +161,17 @@ public final class GetDevicePlatformResult {
             return packages(List.of(packages));
         }
         public GetDevicePlatformResult build() {
-            final var o = new GetDevicePlatformResult();
-            o.coreCount = coreCount;
-            o.deviceType = deviceType;
-            o.flavor = flavor;
-            o.id = id;
-            o.licenseOptions = licenseOptions;
-            o.managementTypes = managementTypes;
-            o.memory = memory;
-            o.memoryUnit = memoryUnit;
-            o.packages = packages;
-            return o;
+            final var _resultValue = new GetDevicePlatformResult();
+            _resultValue.coreCount = coreCount;
+            _resultValue.deviceType = deviceType;
+            _resultValue.flavor = flavor;
+            _resultValue.id = id;
+            _resultValue.licenseOptions = licenseOptions;
+            _resultValue.managementTypes = managementTypes;
+            _resultValue.memory = memory;
+            _resultValue.memoryUnit = memoryUnit;
+            _resultValue.packages = packages;
+            return _resultValue;
         }
     }
 }

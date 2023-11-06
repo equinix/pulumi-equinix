@@ -49,10 +49,10 @@ public final class GetDeviceSecondaryDeviceSshKey {
             return this;
         }
         public GetDeviceSecondaryDeviceSshKey build() {
-            final var o = new GetDeviceSecondaryDeviceSshKey();
-            o.keyName = keyName;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetDeviceSecondaryDeviceSshKey();
+            _resultValue.keyName = keyName;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

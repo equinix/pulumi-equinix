@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -31,39 +31,16 @@ class AclTemplateArgs:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
         """
-        AclTemplateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            inbound_rules=inbound_rules,
-            description=description,
-            metro_code=metro_code,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if inbound_rules is None and 'inboundRules' in kwargs:
-            inbound_rules = kwargs['inboundRules']
-        if inbound_rules is None:
-            raise TypeError("Missing 'inbound_rules' argument")
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-
-        _setter("inbound_rules", inbound_rules)
+        pulumi.set(__self__, "inbound_rules", inbound_rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if metro_code is not None:
             warnings.warn("""Metro Code is no longer required""", DeprecationWarning)
             pulumi.log.warn("""metro_code is deprecated: Metro Code is no longer required""")
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="inboundRules")
@@ -146,63 +123,28 @@ class _AclTemplateState:
         :param pulumi.Input[str] name: ACL template name.
         :param pulumi.Input[str] uuid: Device uuid.
         """
-        _AclTemplateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            device_acl_status=device_acl_status,
-            device_details=device_details,
-            device_id=device_id,
-            inbound_rules=inbound_rules,
-            metro_code=metro_code,
-            name=name,
-            uuid=uuid,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             device_acl_status: Optional[pulumi.Input[str]] = None,
-             device_details: Optional[pulumi.Input[Sequence[pulumi.Input['AclTemplateDeviceDetailArgs']]]] = None,
-             device_id: Optional[pulumi.Input[str]] = None,
-             inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]]] = None,
-             metro_code: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if device_acl_status is None and 'deviceAclStatus' in kwargs:
-            device_acl_status = kwargs['deviceAclStatus']
-        if device_details is None and 'deviceDetails' in kwargs:
-            device_details = kwargs['deviceDetails']
-        if device_id is None and 'deviceId' in kwargs:
-            device_id = kwargs['deviceId']
-        if inbound_rules is None and 'inboundRules' in kwargs:
-            inbound_rules = kwargs['inboundRules']
-        if metro_code is None and 'metroCode' in kwargs:
-            metro_code = kwargs['metroCode']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if device_acl_status is not None:
-            _setter("device_acl_status", device_acl_status)
+            pulumi.set(__self__, "device_acl_status", device_acl_status)
         if device_details is not None:
-            _setter("device_details", device_details)
+            pulumi.set(__self__, "device_details", device_details)
         if device_id is not None:
             warnings.warn("""Refer to device details get device information""", DeprecationWarning)
             pulumi.log.warn("""device_id is deprecated: Refer to device details get device information""")
         if device_id is not None:
-            _setter("device_id", device_id)
+            pulumi.set(__self__, "device_id", device_id)
         if inbound_rules is not None:
-            _setter("inbound_rules", inbound_rules)
+            pulumi.set(__self__, "inbound_rules", inbound_rules)
         if metro_code is not None:
             warnings.warn("""Metro Code is no longer required""", DeprecationWarning)
             pulumi.log.warn("""metro_code is deprecated: Metro Code is no longer required""")
         if metro_code is not None:
-            _setter("metro_code", metro_code)
+            pulumi.set(__self__, "metro_code", metro_code)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -423,10 +365,6 @@ class AclTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AclTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

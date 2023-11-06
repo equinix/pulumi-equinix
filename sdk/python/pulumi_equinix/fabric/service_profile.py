@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._enums import *
@@ -54,97 +54,38 @@ class ServiceProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
-        ServiceProfileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            type=type,
-            access_point_type_configs=access_point_type_configs,
-            account=account,
-            allowed_emails=allowed_emails,
-            custom_fields=custom_fields,
-            marketing_info=marketing_info,
-            metros=metros,
-            name=name,
-            notifications=notifications,
-            ports=ports,
-            project=project,
-            self_profile=self_profile,
-            state=state,
-            tags=tags,
-            virtual_devices=virtual_devices,
-            visibility=visibility,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
-             access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
-             account: Optional[pulumi.Input['ServiceProfileAccountArgs']] = None,
-             allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]]] = None,
-             marketing_info: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']] = None,
-             metros: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
-             project: Optional[pulumi.Input['ServiceProfileProjectArgs']] = None,
-             self_profile: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]] = None,
-             visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
-            access_point_type_configs = kwargs['accessPointTypeConfigs']
-        if allowed_emails is None and 'allowedEmails' in kwargs:
-            allowed_emails = kwargs['allowedEmails']
-        if custom_fields is None and 'customFields' in kwargs:
-            custom_fields = kwargs['customFields']
-        if marketing_info is None and 'marketingInfo' in kwargs:
-            marketing_info = kwargs['marketingInfo']
-        if self_profile is None and 'selfProfile' in kwargs:
-            self_profile = kwargs['selfProfile']
-        if virtual_devices is None and 'virtualDevices' in kwargs:
-            virtual_devices = kwargs['virtualDevices']
-
-        _setter("description", description)
-        _setter("type", type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "type", type)
         if access_point_type_configs is not None:
-            _setter("access_point_type_configs", access_point_type_configs)
+            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if allowed_emails is not None:
-            _setter("allowed_emails", allowed_emails)
+            pulumi.set(__self__, "allowed_emails", allowed_emails)
         if custom_fields is not None:
-            _setter("custom_fields", custom_fields)
+            pulumi.set(__self__, "custom_fields", custom_fields)
         if marketing_info is not None:
-            _setter("marketing_info", marketing_info)
+            pulumi.set(__self__, "marketing_info", marketing_info)
         if metros is not None:
-            _setter("metros", metros)
+            pulumi.set(__self__, "metros", metros)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_profile is not None:
-            _setter("self_profile", self_profile)
+            pulumi.set(__self__, "self_profile", self_profile)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if virtual_devices is not None:
-            _setter("virtual_devices", virtual_devices)
+            pulumi.set(__self__, "virtual_devices", virtual_devices)
         if visibility is not None:
-            _setter("visibility", visibility)
+            pulumi.set(__self__, "visibility", visibility)
 
     @property
     @pulumi.getter
@@ -397,109 +338,46 @@ class _ServiceProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
-        _ServiceProfileState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point_type_configs=access_point_type_configs,
-            account=account,
-            allowed_emails=allowed_emails,
-            change_log=change_log,
-            custom_fields=custom_fields,
-            description=description,
-            href=href,
-            marketing_info=marketing_info,
-            metros=metros,
-            name=name,
-            notifications=notifications,
-            ports=ports,
-            project=project,
-            self_profile=self_profile,
-            state=state,
-            tags=tags,
-            type=type,
-            uuid=uuid,
-            virtual_devices=virtual_devices,
-            visibility=visibility,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
-             account: Optional[pulumi.Input['ServiceProfileAccountArgs']] = None,
-             allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             change_log: Optional[pulumi.Input['ServiceProfileChangeLogArgs']] = None,
-             custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             marketing_info: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']] = None,
-             metros: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]]] = None,
-             ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]]] = None,
-             project: Optional[pulumi.Input['ServiceProfileProjectArgs']] = None,
-             self_profile: Optional[pulumi.Input[bool]] = None,
-             state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
-             uuid: Optional[pulumi.Input[str]] = None,
-             virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]] = None,
-             visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if access_point_type_configs is None and 'accessPointTypeConfigs' in kwargs:
-            access_point_type_configs = kwargs['accessPointTypeConfigs']
-        if allowed_emails is None and 'allowedEmails' in kwargs:
-            allowed_emails = kwargs['allowedEmails']
-        if change_log is None and 'changeLog' in kwargs:
-            change_log = kwargs['changeLog']
-        if custom_fields is None and 'customFields' in kwargs:
-            custom_fields = kwargs['customFields']
-        if marketing_info is None and 'marketingInfo' in kwargs:
-            marketing_info = kwargs['marketingInfo']
-        if self_profile is None and 'selfProfile' in kwargs:
-            self_profile = kwargs['selfProfile']
-        if virtual_devices is None and 'virtualDevices' in kwargs:
-            virtual_devices = kwargs['virtualDevices']
-
         if access_point_type_configs is not None:
-            _setter("access_point_type_configs", access_point_type_configs)
+            pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if allowed_emails is not None:
-            _setter("allowed_emails", allowed_emails)
+            pulumi.set(__self__, "allowed_emails", allowed_emails)
         if change_log is not None:
-            _setter("change_log", change_log)
+            pulumi.set(__self__, "change_log", change_log)
         if custom_fields is not None:
-            _setter("custom_fields", custom_fields)
+            pulumi.set(__self__, "custom_fields", custom_fields)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if marketing_info is not None:
-            _setter("marketing_info", marketing_info)
+            pulumi.set(__self__, "marketing_info", marketing_info)
         if metros is not None:
-            _setter("metros", metros)
+            pulumi.set(__self__, "metros", metros)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if ports is not None:
-            _setter("ports", ports)
+            pulumi.set(__self__, "ports", ports)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if self_profile is not None:
-            _setter("self_profile", self_profile)
+            pulumi.set(__self__, "self_profile", self_profile)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if uuid is not None:
-            _setter("uuid", uuid)
+            pulumi.set(__self__, "uuid", uuid)
         if virtual_devices is not None:
-            _setter("virtual_devices", virtual_devices)
+            pulumi.set(__self__, "virtual_devices", virtual_devices)
         if visibility is not None:
-            _setter("visibility", visibility)
+            pulumi.set(__self__, "visibility", visibility)
 
     @property
     @pulumi.getter(name="accessPointTypeConfigs")
@@ -903,10 +781,6 @@ class ServiceProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -939,32 +813,17 @@ class ServiceProfile(pulumi.CustomResource):
             __props__ = ServiceProfileArgs.__new__(ServiceProfileArgs)
 
             __props__.__dict__["access_point_type_configs"] = access_point_type_configs
-            if account is not None and not isinstance(account, ServiceProfileAccountArgs):
-                account = account or {}
-                def _setter(key, value):
-                    account[key] = value
-                ServiceProfileAccountArgs._configure(_setter, **account)
             __props__.__dict__["account"] = account
             __props__.__dict__["allowed_emails"] = allowed_emails
             __props__.__dict__["custom_fields"] = custom_fields
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
-            if marketing_info is not None and not isinstance(marketing_info, ServiceProfileMarketingInfoArgs):
-                marketing_info = marketing_info or {}
-                def _setter(key, value):
-                    marketing_info[key] = value
-                ServiceProfileMarketingInfoArgs._configure(_setter, **marketing_info)
             __props__.__dict__["marketing_info"] = marketing_info
             __props__.__dict__["metros"] = metros
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["ports"] = ports
-            if project is not None and not isinstance(project, ServiceProfileProjectArgs):
-                project = project or {}
-                def _setter(key, value):
-                    project[key] = value
-                ServiceProfileProjectArgs._configure(_setter, **project)
             __props__.__dict__["project"] = project
             __props__.__dict__["self_profile"] = self_profile
             __props__.__dict__["state"] = state

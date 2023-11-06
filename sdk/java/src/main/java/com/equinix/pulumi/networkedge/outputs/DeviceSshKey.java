@@ -57,10 +57,10 @@ public final class DeviceSshKey {
             return this;
         }
         public DeviceSshKey build() {
-            final var o = new DeviceSshKey();
-            o.keyName = keyName;
-            o.username = username;
-            return o;
+            final var _resultValue = new DeviceSshKey();
+            _resultValue.keyName = keyName;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

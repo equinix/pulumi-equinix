@@ -126,13 +126,13 @@ public final class DeviceNetwork {
             return this;
         }
         public DeviceNetwork build() {
-            final var o = new DeviceNetwork();
-            o.address = address;
-            o.cidr = cidr;
-            o.family = family;
-            o.gateway = gateway;
-            o.public_ = public_;
-            return o;
+            final var _resultValue = new DeviceNetwork();
+            _resultValue.address = address;
+            _resultValue.cidr = cidr;
+            _resultValue.family = family;
+            _resultValue.gateway = gateway;
+            _resultValue.public_ = public_;
+            return _resultValue;
         }
     }
 }

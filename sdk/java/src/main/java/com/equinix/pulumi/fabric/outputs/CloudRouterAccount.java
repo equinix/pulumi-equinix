@@ -48,9 +48,9 @@ public final class CloudRouterAccount {
             return this;
         }
         public CloudRouterAccount build() {
-            final var o = new CloudRouterAccount();
-            o.accountNumber = accountNumber;
-            return o;
+            final var _resultValue = new CloudRouterAccount();
+            _resultValue.accountNumber = accountNumber;
+            return _resultValue;
         }
     }
 }

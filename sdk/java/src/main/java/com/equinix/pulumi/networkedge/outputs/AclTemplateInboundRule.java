@@ -194,16 +194,16 @@ public final class AclTemplateInboundRule {
             return subnets(List.of(subnets));
         }
         public AclTemplateInboundRule build() {
-            final var o = new AclTemplateInboundRule();
-            o.description = description;
-            o.dstPort = dstPort;
-            o.protocol = protocol;
-            o.sequenceNumber = sequenceNumber;
-            o.sourceType = sourceType;
-            o.srcPort = srcPort;
-            o.subnet = subnet;
-            o.subnets = subnets;
-            return o;
+            final var _resultValue = new AclTemplateInboundRule();
+            _resultValue.description = description;
+            _resultValue.dstPort = dstPort;
+            _resultValue.protocol = protocol;
+            _resultValue.sequenceNumber = sequenceNumber;
+            _resultValue.sourceType = sourceType;
+            _resultValue.srcPort = srcPort;
+            _resultValue.subnet = subnet;
+            _resultValue.subnets = subnets;
+            return _resultValue;
         }
     }
 }

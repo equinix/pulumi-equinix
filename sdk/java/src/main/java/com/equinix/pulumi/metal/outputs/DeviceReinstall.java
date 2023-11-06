@@ -92,11 +92,11 @@ public final class DeviceReinstall {
             return this;
         }
         public DeviceReinstall build() {
-            final var o = new DeviceReinstall();
-            o.deprovisionFast = deprovisionFast;
-            o.enabled = enabled;
-            o.preserveData = preserveData;
-            return o;
+            final var _resultValue = new DeviceReinstall();
+            _resultValue.deprovisionFast = deprovisionFast;
+            _resultValue.enabled = enabled;
+            _resultValue.preserveData = preserveData;
+            return _resultValue;
         }
     }
 }

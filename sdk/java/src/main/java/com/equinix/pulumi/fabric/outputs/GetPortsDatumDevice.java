@@ -54,10 +54,10 @@ public final class GetPortsDatumDevice {
             return redundancies(List.of(redundancies));
         }
         public GetPortsDatumDevice build() {
-            final var o = new GetPortsDatumDevice();
-            o.name = name;
-            o.redundancies = redundancies;
-            return o;
+            final var _resultValue = new GetPortsDatumDevice();
+            _resultValue.name = name;
+            _resultValue.redundancies = redundancies;
+            return _resultValue;
         }
     }
 }

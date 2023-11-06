@@ -86,11 +86,11 @@ public final class ConnectionZSideAccessPointInterface {
             return this;
         }
         public ConnectionZSideAccessPointInterface build() {
-            final var o = new ConnectionZSideAccessPointInterface();
-            o.id = id;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointInterface();
+            _resultValue.id = id;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetConnectionRedundancy {
             return this;
         }
         public GetConnectionRedundancy build() {
-            final var o = new GetConnectionRedundancy();
-            o.group = group;
-            o.priority = priority;
-            return o;
+            final var _resultValue = new GetConnectionRedundancy();
+            _resultValue.group = group;
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

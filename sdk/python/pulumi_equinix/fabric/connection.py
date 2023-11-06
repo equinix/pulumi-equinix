@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from .. import _enums as _root_enums
@@ -41,66 +41,21 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionProjectArgs'] project: Project information
         :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
         """
-        ConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            a_side=a_side,
-            bandwidth=bandwidth,
-            notifications=notifications,
-            type=type,
-            z_side=z_side,
-            additional_info=additional_info,
-            name=name,
-            order=order,
-            project=project,
-            redundancy=redundancy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             a_side: Optional[pulumi.Input['ConnectionASideArgs']] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]]] = None,
-             type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-             z_side: Optional[pulumi.Input['ConnectionZSideArgs']] = None,
-             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
-             project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
-             redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if a_side is None and 'aSide' in kwargs:
-            a_side = kwargs['aSide']
-        if a_side is None:
-            raise TypeError("Missing 'a_side' argument")
-        if bandwidth is None:
-            raise TypeError("Missing 'bandwidth' argument")
-        if notifications is None:
-            raise TypeError("Missing 'notifications' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if z_side is None and 'zSide' in kwargs:
-            z_side = kwargs['zSide']
-        if z_side is None:
-            raise TypeError("Missing 'z_side' argument")
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-
-        _setter("a_side", a_side)
-        _setter("bandwidth", bandwidth)
-        _setter("notifications", notifications)
-        _setter("type", type)
-        _setter("z_side", z_side)
+        pulumi.set(__self__, "a_side", a_side)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "z_side", z_side)
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if redundancy is not None:
-            _setter("redundancy", redundancy)
+            pulumi.set(__self__, "redundancy", redundancy)
 
     @property
     @pulumi.getter(name="aSide")
@@ -263,93 +218,40 @@ class _ConnectionState:
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
-        _ConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            a_side=a_side,
-            account=account,
-            additional_info=additional_info,
-            bandwidth=bandwidth,
-            change_log=change_log,
-            direction=direction,
-            href=href,
-            is_remote=is_remote,
-            name=name,
-            notifications=notifications,
-            operation=operation,
-            order=order,
-            project=project,
-            redundancy=redundancy,
-            state=state,
-            type=type,
-            z_side=z_side,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             a_side: Optional[pulumi.Input['ConnectionASideArgs']] = None,
-             account: Optional[pulumi.Input['ConnectionAccountArgs']] = None,
-             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
-             bandwidth: Optional[pulumi.Input[int]] = None,
-             change_log: Optional[pulumi.Input['ConnectionChangeLogArgs']] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             is_remote: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]]] = None,
-             operation: Optional[pulumi.Input['ConnectionOperationArgs']] = None,
-             order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
-             project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
-             redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
-             z_side: Optional[pulumi.Input['ConnectionZSideArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if a_side is None and 'aSide' in kwargs:
-            a_side = kwargs['aSide']
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-        if change_log is None and 'changeLog' in kwargs:
-            change_log = kwargs['changeLog']
-        if is_remote is None and 'isRemote' in kwargs:
-            is_remote = kwargs['isRemote']
-        if z_side is None and 'zSide' in kwargs:
-            z_side = kwargs['zSide']
-
         if a_side is not None:
-            _setter("a_side", a_side)
+            pulumi.set(__self__, "a_side", a_side)
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if bandwidth is not None:
-            _setter("bandwidth", bandwidth)
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if change_log is not None:
-            _setter("change_log", change_log)
+            pulumi.set(__self__, "change_log", change_log)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if is_remote is not None:
-            _setter("is_remote", is_remote)
+            pulumi.set(__self__, "is_remote", is_remote)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if operation is not None:
-            _setter("operation", operation)
+            pulumi.set(__self__, "operation", operation)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
         if project is not None:
-            _setter("project", project)
+            pulumi.set(__self__, "project", project)
         if redundancy is not None:
-            _setter("redundancy", redundancy)
+            pulumi.set(__self__, "redundancy", redundancy)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if z_side is not None:
-            _setter("z_side", z_side)
+            pulumi.set(__self__, "z_side", z_side)
 
     @property
     @pulumi.getter(name="aSide")
@@ -739,10 +641,6 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -767,11 +665,6 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
-            if a_side is not None and not isinstance(a_side, ConnectionASideArgs):
-                a_side = a_side or {}
-                def _setter(key, value):
-                    a_side[key] = value
-                ConnectionASideArgs._configure(_setter, **a_side)
             if a_side is None and not opts.urn:
                 raise TypeError("Missing required property 'a_side'")
             __props__.__dict__["a_side"] = a_side
@@ -783,32 +676,12 @@ class Connection(pulumi.CustomResource):
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
-            if order is not None and not isinstance(order, ConnectionOrderArgs):
-                order = order or {}
-                def _setter(key, value):
-                    order[key] = value
-                ConnectionOrderArgs._configure(_setter, **order)
             __props__.__dict__["order"] = order
-            if project is not None and not isinstance(project, ConnectionProjectArgs):
-                project = project or {}
-                def _setter(key, value):
-                    project[key] = value
-                ConnectionProjectArgs._configure(_setter, **project)
             __props__.__dict__["project"] = project
-            if redundancy is not None and not isinstance(redundancy, ConnectionRedundancyArgs):
-                redundancy = redundancy or {}
-                def _setter(key, value):
-                    redundancy[key] = value
-                ConnectionRedundancyArgs._configure(_setter, **redundancy)
             __props__.__dict__["redundancy"] = redundancy
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if z_side is not None and not isinstance(z_side, ConnectionZSideArgs):
-                z_side = z_side or {}
-                def _setter(key, value):
-                    z_side[key] = value
-                ConnectionZSideArgs._configure(_setter, **z_side)
             if z_side is None and not opts.urn:
                 raise TypeError("Missing required property 'z_side'")
             __props__.__dict__["z_side"] = z_side

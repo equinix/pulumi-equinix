@@ -176,16 +176,16 @@ public final class GetVrfResult {
             return this;
         }
         public GetVrfResult build() {
-            final var o = new GetVrfResult();
-            o.description = description;
-            o.id = id;
-            o.ipRanges = ipRanges;
-            o.localAsn = localAsn;
-            o.metro = metro;
-            o.name = name;
-            o.projectId = projectId;
-            o.vrfId = vrfId;
-            return o;
+            final var _resultValue = new GetVrfResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipRanges = ipRanges;
+            _resultValue.localAsn = localAsn;
+            _resultValue.metro = metro;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.vrfId = vrfId;
+            return _resultValue;
         }
     }
 }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IpAttachmentArgs', 'IpAttachment']
@@ -22,29 +22,8 @@ class IpAttachmentArgs:
                and metro as the device.
         :param pulumi.Input[str] device_id: ID of device to which to assign the subnet.
         """
-        IpAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cidr_notation=cidr_notation,
-            device_id=device_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cidr_notation: Optional[pulumi.Input[str]] = None,
-             device_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if cidr_notation is None and 'cidrNotation' in kwargs:
-            cidr_notation = kwargs['cidrNotation']
-        if cidr_notation is None:
-            raise TypeError("Missing 'cidr_notation' argument")
-        if device_id is None and 'deviceId' in kwargs:
-            device_id = kwargs['deviceId']
-        if device_id is None:
-            raise TypeError("Missing 'device_id' argument")
-
-        _setter("cidr_notation", cidr_notation)
-        _setter("device_id", device_id)
+        pulumi.set(__self__, "cidr_notation", cidr_notation)
+        pulumi.set(__self__, "device_id", device_id)
 
     @property
     @pulumi.getter(name="cidrNotation")
@@ -101,77 +80,32 @@ class _IpAttachmentState:
         :param pulumi.Input[str] network: Subnet network address.
         :param pulumi.Input[bool] public: Boolean flag whether subnet is reachable from the Internet.
         """
-        _IpAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            address_family=address_family,
-            cidr=cidr,
-            cidr_notation=cidr_notation,
-            device_id=device_id,
-            gateway=gateway,
-            global_=global_,
-            manageable=manageable,
-            management=management,
-            netmask=netmask,
-            network=network,
-            public=public,
-            vrf_id=vrf_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             address_family: Optional[pulumi.Input[int]] = None,
-             cidr: Optional[pulumi.Input[int]] = None,
-             cidr_notation: Optional[pulumi.Input[str]] = None,
-             device_id: Optional[pulumi.Input[str]] = None,
-             gateway: Optional[pulumi.Input[str]] = None,
-             global_: Optional[pulumi.Input[bool]] = None,
-             manageable: Optional[pulumi.Input[bool]] = None,
-             management: Optional[pulumi.Input[bool]] = None,
-             netmask: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input[str]] = None,
-             public: Optional[pulumi.Input[bool]] = None,
-             vrf_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if address_family is None and 'addressFamily' in kwargs:
-            address_family = kwargs['addressFamily']
-        if cidr_notation is None and 'cidrNotation' in kwargs:
-            cidr_notation = kwargs['cidrNotation']
-        if device_id is None and 'deviceId' in kwargs:
-            device_id = kwargs['deviceId']
-        if global_ is None and 'global' in kwargs:
-            global_ = kwargs['global']
-        if vrf_id is None and 'vrfId' in kwargs:
-            vrf_id = kwargs['vrfId']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if address_family is not None:
-            _setter("address_family", address_family)
+            pulumi.set(__self__, "address_family", address_family)
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if cidr_notation is not None:
-            _setter("cidr_notation", cidr_notation)
+            pulumi.set(__self__, "cidr_notation", cidr_notation)
         if device_id is not None:
-            _setter("device_id", device_id)
+            pulumi.set(__self__, "device_id", device_id)
         if gateway is not None:
-            _setter("gateway", gateway)
+            pulumi.set(__self__, "gateway", gateway)
         if global_ is not None:
-            _setter("global_", global_)
+            pulumi.set(__self__, "global_", global_)
         if manageable is not None:
-            _setter("manageable", manageable)
+            pulumi.set(__self__, "manageable", manageable)
         if management is not None:
-            _setter("management", management)
+            pulumi.set(__self__, "management", management)
         if netmask is not None:
-            _setter("netmask", netmask)
+            pulumi.set(__self__, "netmask", netmask)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if public is not None:
-            _setter("public", public)
+            pulumi.set(__self__, "public", public)
         if vrf_id is not None:
-            _setter("vrf_id", vrf_id)
+            pulumi.set(__self__, "vrf_id", vrf_id)
 
     @property
     @pulumi.getter
@@ -409,10 +343,6 @@ class IpAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IpAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

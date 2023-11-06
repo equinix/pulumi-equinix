@@ -245,19 +245,19 @@ public final class GetSpotMarketRequestResult {
             return this;
         }
         public GetSpotMarketRequestResult build() {
-            final var o = new GetSpotMarketRequestResult();
-            o.deviceIds = deviceIds;
-            o.devicesMax = devicesMax;
-            o.devicesMin = devicesMin;
-            o.endAt = endAt;
-            o.facilities = facilities;
-            o.id = id;
-            o.maxBidPrice = maxBidPrice;
-            o.metro = metro;
-            o.plan = plan;
-            o.projectId = projectId;
-            o.requestId = requestId;
-            return o;
+            final var _resultValue = new GetSpotMarketRequestResult();
+            _resultValue.deviceIds = deviceIds;
+            _resultValue.devicesMax = devicesMax;
+            _resultValue.devicesMin = devicesMin;
+            _resultValue.endAt = endAt;
+            _resultValue.facilities = facilities;
+            _resultValue.id = id;
+            _resultValue.maxBidPrice = maxBidPrice;
+            _resultValue.metro = metro;
+            _resultValue.plan = plan;
+            _resultValue.projectId = projectId;
+            _resultValue.requestId = requestId;
+            return _resultValue;
         }
     }
 }

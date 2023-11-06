@@ -145,6 +145,10 @@ export interface GetDeviceResult {
      */
     readonly rootPassword: string;
     /**
+     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     */
+    readonly sosHostname: string;
+    /**
      * List of IDs of SSH keys deployed in the device, can be both user or project SSH keys.
      */
     readonly sshKeyIds: string[];

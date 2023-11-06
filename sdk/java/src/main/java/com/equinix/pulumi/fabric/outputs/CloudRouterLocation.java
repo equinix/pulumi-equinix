@@ -105,12 +105,12 @@ public final class CloudRouterLocation {
             return this;
         }
         public CloudRouterLocation build() {
-            final var o = new CloudRouterLocation();
-            o.ibx = ibx;
-            o.metroCode = metroCode;
-            o.metroName = metroName;
-            o.region = region;
-            return o;
+            final var _resultValue = new CloudRouterLocation();
+            _resultValue.ibx = ibx;
+            _resultValue.metroCode = metroCode;
+            _resultValue.metroName = metroName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

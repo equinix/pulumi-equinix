@@ -110,12 +110,12 @@ public final class ConnectionZSideAccessPointPort {
             return this;
         }
         public ConnectionZSideAccessPointPort build() {
-            final var o = new ConnectionZSideAccessPointPort();
-            o.href = href;
-            o.name = name;
-            o.redundancies = redundancies;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ConnectionZSideAccessPointPort();
+            _resultValue.href = href;
+            _resultValue.name = name;
+            _resultValue.redundancies = redundancies;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

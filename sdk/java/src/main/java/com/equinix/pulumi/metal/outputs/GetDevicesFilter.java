@@ -114,12 +114,12 @@ public final class GetDevicesFilter {
             return values(List.of(values));
         }
         public GetDevicesFilter build() {
-            final var o = new GetDevicesFilter();
-            o.all = all;
-            o.attribute = attribute;
-            o.matchBy = matchBy;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetDevicesFilter();
+            _resultValue.all = all;
+            _resultValue.attribute = attribute;
+            _resultValue.matchBy = matchBy;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

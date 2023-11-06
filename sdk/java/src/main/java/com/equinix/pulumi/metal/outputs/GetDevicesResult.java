@@ -135,15 +135,15 @@ public final class GetDevicesResult {
             return sorts(List.of(sorts));
         }
         public GetDevicesResult build() {
-            final var o = new GetDevicesResult();
-            o.devices = devices;
-            o.filters = filters;
-            o.id = id;
-            o.organizationId = organizationId;
-            o.projectId = projectId;
-            o.search = search;
-            o.sorts = sorts;
-            return o;
+            final var _resultValue = new GetDevicesResult();
+            _resultValue.devices = devices;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.organizationId = organizationId;
+            _resultValue.projectId = projectId;
+            _resultValue.search = search;
+            _resultValue.sorts = sorts;
+            return _resultValue;
         }
     }
 }

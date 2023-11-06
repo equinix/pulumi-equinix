@@ -67,10 +67,10 @@ public final class ConnectionZSideAdditionalInfo {
             return this;
         }
         public ConnectionZSideAdditionalInfo build() {
-            final var o = new ConnectionZSideAdditionalInfo();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ConnectionZSideAdditionalInfo();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

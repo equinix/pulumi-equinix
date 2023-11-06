@@ -48,9 +48,9 @@ public final class GetPortsFilter {
             return this;
         }
         public GetPortsFilter build() {
-            final var o = new GetPortsFilter();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetPortsFilter();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -93,14 +93,14 @@ public final class GetDeviceClusterDetailNode1VendorConfiguration {
             return this;
         }
         public GetDeviceClusterDetailNode1VendorConfiguration build() {
-            final var o = new GetDeviceClusterDetailNode1VendorConfiguration();
-            o.activationKey = activationKey;
-            o.adminPassword = adminPassword;
-            o.controller1 = controller1;
-            o.controllerFqdn = controllerFqdn;
-            o.hostname = hostname;
-            o.rootPassword = rootPassword;
-            return o;
+            final var _resultValue = new GetDeviceClusterDetailNode1VendorConfiguration();
+            _resultValue.activationKey = activationKey;
+            _resultValue.adminPassword = adminPassword;
+            _resultValue.controller1 = controller1;
+            _resultValue.controllerFqdn = controllerFqdn;
+            _resultValue.hostname = hostname;
+            _resultValue.rootPassword = rootPassword;
+            return _resultValue;
         }
     }
 }

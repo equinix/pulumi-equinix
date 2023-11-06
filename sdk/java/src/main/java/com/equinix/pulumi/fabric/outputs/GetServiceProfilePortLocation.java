@@ -71,12 +71,12 @@ public final class GetServiceProfilePortLocation {
             return this;
         }
         public GetServiceProfilePortLocation build() {
-            final var o = new GetServiceProfilePortLocation();
-            o.ibx = ibx;
-            o.metroCode = metroCode;
-            o.metroName = metroName;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetServiceProfilePortLocation();
+            _resultValue.ibx = ibx;
+            _resultValue.metroCode = metroCode;
+            _resultValue.metroName = metroName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

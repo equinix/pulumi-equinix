@@ -291,23 +291,23 @@ public final class GetPortResult {
             return vxlanIds(List.of(vxlanIds));
         }
         public GetPortResult build() {
-            final var o = new GetPortResult();
-            o.bondId = bondId;
-            o.bondName = bondName;
-            o.bonded = bonded;
-            o.deviceId = deviceId;
-            o.disbondSupported = disbondSupported;
-            o.id = id;
-            o.layer2 = layer2;
-            o.mac = mac;
-            o.name = name;
-            o.nativeVlanId = nativeVlanId;
-            o.networkType = networkType;
-            o.portId = portId;
-            o.type = type;
-            o.vlanIds = vlanIds;
-            o.vxlanIds = vxlanIds;
-            return o;
+            final var _resultValue = new GetPortResult();
+            _resultValue.bondId = bondId;
+            _resultValue.bondName = bondName;
+            _resultValue.bonded = bonded;
+            _resultValue.deviceId = deviceId;
+            _resultValue.disbondSupported = disbondSupported;
+            _resultValue.id = id;
+            _resultValue.layer2 = layer2;
+            _resultValue.mac = mac;
+            _resultValue.name = name;
+            _resultValue.nativeVlanId = nativeVlanId;
+            _resultValue.networkType = networkType;
+            _resultValue.portId = portId;
+            _resultValue.type = type;
+            _resultValue.vlanIds = vlanIds;
+            _resultValue.vxlanIds = vxlanIds;
+            return _resultValue;
         }
     }
 }

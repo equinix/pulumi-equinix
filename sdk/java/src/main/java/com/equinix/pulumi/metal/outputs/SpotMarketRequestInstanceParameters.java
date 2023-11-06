@@ -239,24 +239,24 @@ public final class SpotMarketRequestInstanceParameters {
             return this;
         }
         public SpotMarketRequestInstanceParameters build() {
-            final var o = new SpotMarketRequestInstanceParameters();
-            o.alwaysPxe = alwaysPxe;
-            o.billingCycle = billingCycle;
-            o.customdata = customdata;
-            o.description = description;
-            o.features = features;
-            o.hostname = hostname;
-            o.ipxeScriptUrl = ipxeScriptUrl;
-            o.locked = locked;
-            o.operatingSystem = operatingSystem;
-            o.plan = plan;
-            o.projectSshKeys = projectSshKeys;
-            o.tags = tags;
-            o.terminationTime = terminationTime;
-            o.termintationTime = termintationTime;
-            o.userSshKeys = userSshKeys;
-            o.userdata = userdata;
-            return o;
+            final var _resultValue = new SpotMarketRequestInstanceParameters();
+            _resultValue.alwaysPxe = alwaysPxe;
+            _resultValue.billingCycle = billingCycle;
+            _resultValue.customdata = customdata;
+            _resultValue.description = description;
+            _resultValue.features = features;
+            _resultValue.hostname = hostname;
+            _resultValue.ipxeScriptUrl = ipxeScriptUrl;
+            _resultValue.locked = locked;
+            _resultValue.operatingSystem = operatingSystem;
+            _resultValue.plan = plan;
+            _resultValue.projectSshKeys = projectSshKeys;
+            _resultValue.tags = tags;
+            _resultValue.terminationTime = terminationTime;
+            _resultValue.termintationTime = termintationTime;
+            _resultValue.userSshKeys = userSshKeys;
+            _resultValue.userdata = userdata;
+            return _resultValue;
         }
     }
 }

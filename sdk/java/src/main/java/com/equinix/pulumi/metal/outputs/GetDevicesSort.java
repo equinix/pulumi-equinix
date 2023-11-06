@@ -59,10 +59,10 @@ public final class GetDevicesSort {
             return this;
         }
         public GetDevicesSort build() {
-            final var o = new GetDevicesSort();
-            o.attribute = attribute;
-            o.direction = direction;
-            return o;
+            final var _resultValue = new GetDevicesSort();
+            _resultValue.attribute = attribute;
+            _resultValue.direction = direction;
+            return _resultValue;
         }
     }
 }

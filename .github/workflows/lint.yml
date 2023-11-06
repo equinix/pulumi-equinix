@@ -1,5 +1,5 @@
 # WARNING: This file was build based on https://github.com/pulumi/ci-mgmt
-# but it is currently not in sync. Any updates may be done manually
+# but it is currently not in sync. Any update must be done manually
 
 name: lint
 on:
@@ -32,14 +32,13 @@ jobs:
       continue-on-error: true # this fails if there are no go:embed directives
       run: |
         git grep -l 'go:embed' -- provider | xargs sed -i 's/go:embed/ goembed/g'
-    # TODO add upstream
-    # - name: prepare upstream
-    #   continue-on-error: true
-    #   run: make upstream
+    - name: prepare upstream
+      continue-on-error: true
+      run: make upstream
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v3
       with:
-        version: v1.54.1
+        version: v1.55.2
         working-directory: provider
     - if: failure() && github.event_name == 'push'
       name: Notify Slack

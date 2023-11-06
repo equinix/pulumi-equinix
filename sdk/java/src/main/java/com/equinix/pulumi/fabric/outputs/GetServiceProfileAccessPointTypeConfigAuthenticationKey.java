@@ -61,11 +61,11 @@ public final class GetServiceProfileAccessPointTypeConfigAuthenticationKey {
             return this;
         }
         public GetServiceProfileAccessPointTypeConfigAuthenticationKey build() {
-            final var o = new GetServiceProfileAccessPointTypeConfigAuthenticationKey();
-            o.description = description;
-            o.label = label;
-            o.required = required;
-            return o;
+            final var _resultValue = new GetServiceProfileAccessPointTypeConfigAuthenticationKey();
+            _resultValue.description = description;
+            _resultValue.label = label;
+            _resultValue.required = required;
+            return _resultValue;
         }
     }
 }

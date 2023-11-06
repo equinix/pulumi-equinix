@@ -409,27 +409,27 @@ public final class GetRoutingProtocolResult {
             return this;
         }
         public GetRoutingProtocolResult build() {
-            final var o = new GetRoutingProtocolResult();
-            o.bfd = bfd;
-            o.bgpAuthKey = bgpAuthKey;
-            o.bgpIpv4 = bgpIpv4;
-            o.bgpIpv6 = bgpIpv6;
-            o.changeLogs = changeLogs;
-            o.changes = changes;
-            o.connectionUuid = connectionUuid;
-            o.customerAsn = customerAsn;
-            o.description = description;
-            o.directIpv4 = directIpv4;
-            o.directIpv6 = directIpv6;
-            o.equinixAsn = equinixAsn;
-            o.href = href;
-            o.id = id;
-            o.name = name;
-            o.operations = operations;
-            o.state = state;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetRoutingProtocolResult();
+            _resultValue.bfd = bfd;
+            _resultValue.bgpAuthKey = bgpAuthKey;
+            _resultValue.bgpIpv4 = bgpIpv4;
+            _resultValue.bgpIpv6 = bgpIpv6;
+            _resultValue.changeLogs = changeLogs;
+            _resultValue.changes = changes;
+            _resultValue.connectionUuid = connectionUuid;
+            _resultValue.customerAsn = customerAsn;
+            _resultValue.description = description;
+            _resultValue.directIpv4 = directIpv4;
+            _resultValue.directIpv6 = directIpv6;
+            _resultValue.equinixAsn = equinixAsn;
+            _resultValue.href = href;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.operations = operations;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

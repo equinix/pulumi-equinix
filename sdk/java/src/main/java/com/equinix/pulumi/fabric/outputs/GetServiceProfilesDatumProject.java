@@ -49,10 +49,10 @@ public final class GetServiceProfilesDatumProject {
             return this;
         }
         public GetServiceProfilesDatumProject build() {
-            final var o = new GetServiceProfilesDatumProject();
-            o.href = href;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetServiceProfilesDatumProject();
+            _resultValue.href = href;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VirtualCircuitArgs', 'VirtualCircuit']
@@ -51,96 +51,33 @@ class VirtualCircuitArgs:
         :param pulumi.Input[str] vlan_id: UUID of the VLAN to associate.
         :param pulumi.Input[str] vrf_id: UUID of the VRF to associate.
         """
-        VirtualCircuitArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_id=connection_id,
-            port_id=port_id,
-            project_id=project_id,
-            customer_ip=customer_ip,
-            description=description,
-            md5=md5,
-            metal_ip=metal_ip,
-            name=name,
-            nni_vlan=nni_vlan,
-            peer_asn=peer_asn,
-            speed=speed,
-            subnet=subnet,
-            tags=tags,
-            vlan_id=vlan_id,
-            vrf_id=vrf_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_id: Optional[pulumi.Input[str]] = None,
-             port_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             customer_ip: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             md5: Optional[pulumi.Input[str]] = None,
-             metal_ip: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nni_vlan: Optional[pulumi.Input[int]] = None,
-             peer_asn: Optional[pulumi.Input[int]] = None,
-             speed: Optional[pulumi.Input[str]] = None,
-             subnet: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vlan_id: Optional[pulumi.Input[str]] = None,
-             vrf_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if connection_id is None:
-            raise TypeError("Missing 'connection_id' argument")
-        if port_id is None and 'portId' in kwargs:
-            port_id = kwargs['portId']
-        if port_id is None:
-            raise TypeError("Missing 'port_id' argument")
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if customer_ip is None and 'customerIp' in kwargs:
-            customer_ip = kwargs['customerIp']
-        if metal_ip is None and 'metalIp' in kwargs:
-            metal_ip = kwargs['metalIp']
-        if nni_vlan is None and 'nniVlan' in kwargs:
-            nni_vlan = kwargs['nniVlan']
-        if peer_asn is None and 'peerAsn' in kwargs:
-            peer_asn = kwargs['peerAsn']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vrf_id is None and 'vrfId' in kwargs:
-            vrf_id = kwargs['vrfId']
-
-        _setter("connection_id", connection_id)
-        _setter("port_id", port_id)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "project_id", project_id)
         if customer_ip is not None:
-            _setter("customer_ip", customer_ip)
+            pulumi.set(__self__, "customer_ip", customer_ip)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if md5 is not None:
-            _setter("md5", md5)
+            pulumi.set(__self__, "md5", md5)
         if metal_ip is not None:
-            _setter("metal_ip", metal_ip)
+            pulumi.set(__self__, "metal_ip", metal_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nni_vlan is not None:
-            _setter("nni_vlan", nni_vlan)
+            pulumi.set(__self__, "nni_vlan", nni_vlan)
         if peer_asn is not None:
-            _setter("peer_asn", peer_asn)
+            pulumi.set(__self__, "peer_asn", peer_asn)
         if speed is not None:
-            _setter("speed", speed)
+            pulumi.set(__self__, "speed", speed)
         if subnet is not None:
-            _setter("subnet", subnet)
+            pulumi.set(__self__, "subnet", subnet)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
         if vrf_id is not None:
-            _setter("vrf_id", vrf_id)
+            pulumi.set(__self__, "vrf_id", vrf_id)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -373,107 +310,42 @@ class _VirtualCircuitState:
         :param pulumi.Input[int] vnid: VNID VLAN parameter, see the [documentation for Equinix Fabric](https://metal.equinix.com/developers/docs/networking/fabric/).
         :param pulumi.Input[str] vrf_id: UUID of the VRF to associate.
         """
-        _VirtualCircuitState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_id=connection_id,
-            customer_ip=customer_ip,
-            description=description,
-            md5=md5,
-            metal_ip=metal_ip,
-            name=name,
-            nni_vlan=nni_vlan,
-            nni_vnid=nni_vnid,
-            peer_asn=peer_asn,
-            port_id=port_id,
-            project_id=project_id,
-            speed=speed,
-            status=status,
-            subnet=subnet,
-            tags=tags,
-            vlan_id=vlan_id,
-            vnid=vnid,
-            vrf_id=vrf_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_id: Optional[pulumi.Input[str]] = None,
-             customer_ip: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             md5: Optional[pulumi.Input[str]] = None,
-             metal_ip: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             nni_vlan: Optional[pulumi.Input[int]] = None,
-             nni_vnid: Optional[pulumi.Input[int]] = None,
-             peer_asn: Optional[pulumi.Input[int]] = None,
-             port_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             speed: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             subnet: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             vlan_id: Optional[pulumi.Input[str]] = None,
-             vnid: Optional[pulumi.Input[int]] = None,
-             vrf_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if connection_id is None and 'connectionId' in kwargs:
-            connection_id = kwargs['connectionId']
-        if customer_ip is None and 'customerIp' in kwargs:
-            customer_ip = kwargs['customerIp']
-        if metal_ip is None and 'metalIp' in kwargs:
-            metal_ip = kwargs['metalIp']
-        if nni_vlan is None and 'nniVlan' in kwargs:
-            nni_vlan = kwargs['nniVlan']
-        if nni_vnid is None and 'nniVnid' in kwargs:
-            nni_vnid = kwargs['nniVnid']
-        if peer_asn is None and 'peerAsn' in kwargs:
-            peer_asn = kwargs['peerAsn']
-        if port_id is None and 'portId' in kwargs:
-            port_id = kwargs['portId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if vlan_id is None and 'vlanId' in kwargs:
-            vlan_id = kwargs['vlanId']
-        if vrf_id is None and 'vrfId' in kwargs:
-            vrf_id = kwargs['vrfId']
-
         if connection_id is not None:
-            _setter("connection_id", connection_id)
+            pulumi.set(__self__, "connection_id", connection_id)
         if customer_ip is not None:
-            _setter("customer_ip", customer_ip)
+            pulumi.set(__self__, "customer_ip", customer_ip)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if md5 is not None:
-            _setter("md5", md5)
+            pulumi.set(__self__, "md5", md5)
         if metal_ip is not None:
-            _setter("metal_ip", metal_ip)
+            pulumi.set(__self__, "metal_ip", metal_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if nni_vlan is not None:
-            _setter("nni_vlan", nni_vlan)
+            pulumi.set(__self__, "nni_vlan", nni_vlan)
         if nni_vnid is not None:
-            _setter("nni_vnid", nni_vnid)
+            pulumi.set(__self__, "nni_vnid", nni_vnid)
         if peer_asn is not None:
-            _setter("peer_asn", peer_asn)
+            pulumi.set(__self__, "peer_asn", peer_asn)
         if port_id is not None:
-            _setter("port_id", port_id)
+            pulumi.set(__self__, "port_id", port_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if speed is not None:
-            _setter("speed", speed)
+            pulumi.set(__self__, "speed", speed)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if subnet is not None:
-            _setter("subnet", subnet)
+            pulumi.set(__self__, "subnet", subnet)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if vlan_id is not None:
-            _setter("vlan_id", vlan_id)
+            pulumi.set(__self__, "vlan_id", vlan_id)
         if vnid is not None:
-            _setter("vnid", vnid)
+            pulumi.set(__self__, "vnid", vnid)
         if vrf_id is not None:
-            _setter("vrf_id", vrf_id)
+            pulumi.set(__self__, "vrf_id", vrf_id)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -815,10 +687,6 @@ class VirtualCircuit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VirtualCircuitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

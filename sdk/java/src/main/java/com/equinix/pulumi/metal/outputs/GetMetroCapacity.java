@@ -70,10 +70,10 @@ public final class GetMetroCapacity {
             return this;
         }
         public GetMetroCapacity build() {
-            final var o = new GetMetroCapacity();
-            o.plan = plan;
-            o.quantity = quantity;
-            return o;
+            final var _resultValue = new GetMetroCapacity();
+            _resultValue.plan = plan;
+            _resultValue.quantity = quantity;
+            return _resultValue;
         }
     }
 }

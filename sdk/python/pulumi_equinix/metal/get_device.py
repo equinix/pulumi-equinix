@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -22,7 +22,7 @@ class GetDeviceResult:
     """
     A collection of values returned by getDevice.
     """
-    def __init__(__self__, access_private_ipv4=None, access_public_ipv4=None, access_public_ipv6=None, always_pxe=None, billing_cycle=None, description=None, device_id=None, facility=None, hardware_reservation_id=None, hostname=None, id=None, ipxe_script_url=None, metro=None, network_type=None, networks=None, operating_system=None, plan=None, ports=None, project_id=None, root_password=None, ssh_key_ids=None, state=None, storage=None, tags=None):
+    def __init__(__self__, access_private_ipv4=None, access_public_ipv4=None, access_public_ipv6=None, always_pxe=None, billing_cycle=None, description=None, device_id=None, facility=None, hardware_reservation_id=None, hostname=None, id=None, ipxe_script_url=None, metro=None, network_type=None, networks=None, operating_system=None, plan=None, ports=None, project_id=None, root_password=None, sos_hostname=None, ssh_key_ids=None, state=None, storage=None, tags=None):
         if access_private_ipv4 and not isinstance(access_private_ipv4, str):
             raise TypeError("Expected argument 'access_private_ipv4' to be a str")
         pulumi.set(__self__, "access_private_ipv4", access_private_ipv4)
@@ -83,6 +83,9 @@ class GetDeviceResult:
         if root_password and not isinstance(root_password, str):
             raise TypeError("Expected argument 'root_password' to be a str")
         pulumi.set(__self__, "root_password", root_password)
+        if sos_hostname and not isinstance(sos_hostname, str):
+            raise TypeError("Expected argument 'sos_hostname' to be a str")
+        pulumi.set(__self__, "sos_hostname", sos_hostname)
         if ssh_key_ids and not isinstance(ssh_key_ids, list):
             raise TypeError("Expected argument 'ssh_key_ids' to be a list")
         pulumi.set(__self__, "ssh_key_ids", ssh_key_ids)
@@ -248,6 +251,14 @@ class GetDeviceResult:
         return pulumi.get(self, "root_password")
 
     @property
+    @pulumi.getter(name="sosHostname")
+    def sos_hostname(self) -> str:
+        """
+        The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        """
+        return pulumi.get(self, "sos_hostname")
+
+    @property
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> Sequence[str]:
         """
@@ -303,6 +314,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             ports=self.ports,
             project_id=self.project_id,
             root_password=self.root_password,
+            sos_hostname=self.sos_hostname,
             ssh_key_ids=self.ssh_key_ids,
             state=self.state,
             storage=self.storage,
@@ -376,6 +388,7 @@ def get_device(device_id: Optional[str] = None,
         ports=pulumi.get(__ret__, 'ports'),
         project_id=pulumi.get(__ret__, 'project_id'),
         root_password=pulumi.get(__ret__, 'root_password'),
+        sos_hostname=pulumi.get(__ret__, 'sos_hostname'),
         ssh_key_ids=pulumi.get(__ret__, 'ssh_key_ids'),
         state=pulumi.get(__ret__, 'state'),
         storage=pulumi.get(__ret__, 'storage'),

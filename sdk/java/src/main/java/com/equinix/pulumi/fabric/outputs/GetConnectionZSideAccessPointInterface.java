@@ -60,11 +60,11 @@ public final class GetConnectionZSideAccessPointInterface {
             return this;
         }
         public GetConnectionZSideAccessPointInterface build() {
-            final var o = new GetConnectionZSideAccessPointInterface();
-            o.id = id;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetConnectionZSideAccessPointInterface();
+            _resultValue.id = id;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

@@ -148,15 +148,15 @@ public final class GetFacilityResult {
             return this;
         }
         public GetFacilityResult build() {
-            final var o = new GetFacilityResult();
-            o.capacities = capacities;
-            o.code = code;
-            o.features = features;
-            o.featuresRequireds = featuresRequireds;
-            o.id = id;
-            o.metro = metro;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetFacilityResult();
+            _resultValue.capacities = capacities;
+            _resultValue.code = code;
+            _resultValue.features = features;
+            _resultValue.featuresRequireds = featuresRequireds;
+            _resultValue.id = id;
+            _resultValue.metro = metro;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

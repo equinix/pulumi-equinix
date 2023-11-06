@@ -192,17 +192,17 @@ public final class GetProjectSshKeyResult {
             return this;
         }
         public GetProjectSshKeyResult build() {
-            final var o = new GetProjectSshKeyResult();
-            o.created = created;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.name = name;
-            o.ownerId = ownerId;
-            o.projectId = projectId;
-            o.publicKey = publicKey;
-            o.search = search;
-            o.updated = updated;
-            return o;
+            final var _resultValue = new GetProjectSshKeyResult();
+            _resultValue.created = created;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.ownerId = ownerId;
+            _resultValue.projectId = projectId;
+            _resultValue.publicKey = publicKey;
+            _resultValue.search = search;
+            _resultValue.updated = updated;
+            return _resultValue;
         }
     }
 }

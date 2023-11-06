@@ -117,14 +117,14 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.id = id;
-            o.metroCode = metroCode;
-            o.name = name;
-            o.number = number;
-            o.status = status;
-            o.ucmId = ucmId;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.id = id;
+            _resultValue.metroCode = metroCode;
+            _resultValue.name = name;
+            _resultValue.number = number;
+            _resultValue.status = status;
+            _resultValue.ucmId = ucmId;
+            return _resultValue;
         }
     }
 }

@@ -523,6 +523,21 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * 
+     */
+    @Import(name="sosHostname")
+    private @Nullable Output<String> sosHostname;
+
+    /**
+     * @return The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     * 
+     */
+    public Optional<Output<String>> sosHostname() {
+        return Optional.ofNullable(this.sosHostname);
+    }
+
+    /**
      * List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
      * 
      */
@@ -702,6 +717,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         this.projectSshKeyIds = $.projectSshKeyIds;
         this.reinstall = $.reinstall;
         this.rootPassword = $.rootPassword;
+        this.sosHostname = $.sosHostname;
         this.sshKeyIds = $.sshKeyIds;
         this.state = $.state;
         this.storage = $.storage;
@@ -1560,6 +1576,27 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rootPassword(String rootPassword) {
             return rootPassword(Output.of(rootPassword));
+        }
+
+        /**
+         * @param sosHostname The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sosHostname(@Nullable Output<String> sosHostname) {
+            $.sosHostname = sosHostname;
+            return this;
+        }
+
+        /**
+         * @param sosHostname The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sosHostname(String sosHostname) {
+            return sosHostname(Output.of(sosHostname));
         }
 
         /**

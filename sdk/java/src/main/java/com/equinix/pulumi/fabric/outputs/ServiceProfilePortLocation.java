@@ -105,12 +105,12 @@ public final class ServiceProfilePortLocation {
             return this;
         }
         public ServiceProfilePortLocation build() {
-            final var o = new ServiceProfilePortLocation();
-            o.ibx = ibx;
-            o.metroCode = metroCode;
-            o.metroName = metroName;
-            o.region = region;
-            return o;
+            final var _resultValue = new ServiceProfilePortLocation();
+            _resultValue.ibx = ibx;
+            _resultValue.metroCode = metroCode;
+            _resultValue.metroName = metroName;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

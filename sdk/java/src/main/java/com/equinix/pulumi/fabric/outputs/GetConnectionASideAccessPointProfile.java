@@ -98,14 +98,14 @@ public final class GetConnectionASideAccessPointProfile {
             return this;
         }
         public GetConnectionASideAccessPointProfile build() {
-            final var o = new GetConnectionASideAccessPointProfile();
-            o.accessPointTypeConfigs = accessPointTypeConfigs;
-            o.description = description;
-            o.href = href;
-            o.name = name;
-            o.type = type;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointProfile();
+            _resultValue.accessPointTypeConfigs = accessPointTypeConfigs;
+            _resultValue.description = description;
+            _resultValue.href = href;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

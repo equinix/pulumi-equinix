@@ -7468,6 +7468,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "sosHostname": {
+                    "type": "string"
+                },
                 "sshKeyIds": {
                     "type": "array",
                     "items": {
@@ -7508,6 +7511,7 @@
                 "ports",
                 "projectId",
                 "rootPassword",
+                "sosHostname",
                 "sshKeyIds",
                 "state",
                 "storage",
@@ -10926,6 +10930,10 @@
                     "description": "Root password to the server (disabled after 24 hours).\n",
                     "secret": true
                 },
+                "sosHostname": {
+                    "type": "string",
+                    "description": "The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device\n"
+                },
                 "sshKeyIds": {
                     "type": "array",
                     "items": {
@@ -10990,6 +10998,7 @@
                 "ports",
                 "projectId",
                 "rootPassword",
+                "sosHostname",
                 "sshKeyIds",
                 "state",
                 "updated"
@@ -11342,6 +11351,10 @@
                         "type": "string",
                         "description": "Root password to the server (disabled after 24 hours).\n",
                         "secret": true
+                    },
+                    "sosHostname": {
+                        "type": "string",
+                        "description": "The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device\n"
                     },
                     "sshKeyIds": {
                         "type": "array",
@@ -16063,6 +16076,10 @@
                         "description": "Root password to the server (if still available).\n",
                         "secret": true
                     },
+                    "sosHostname": {
+                        "type": "string",
+                        "description": "The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device\n"
+                    },
                     "sshKeyIds": {
                         "type": "array",
                         "items": {
@@ -16106,6 +16123,7 @@
                     "ports",
                     "projectId",
                     "rootPassword",
+                    "sosHostname",
                     "sshKeyIds",
                     "state",
                     "storage",

@@ -133,13 +133,13 @@ public final class DeviceClusterDetailsNode1 {
             return this;
         }
         public DeviceClusterDetailsNode1 build() {
-            final var o = new DeviceClusterDetailsNode1();
-            o.licenseFileId = licenseFileId;
-            o.licenseToken = licenseToken;
-            o.name = name;
-            o.uuid = uuid;
-            o.vendorConfiguration = vendorConfiguration;
-            return o;
+            final var _resultValue = new DeviceClusterDetailsNode1();
+            _resultValue.licenseFileId = licenseFileId;
+            _resultValue.licenseToken = licenseToken;
+            _resultValue.name = name;
+            _resultValue.uuid = uuid;
+            _resultValue.vendorConfiguration = vendorConfiguration;
+            return _resultValue;
         }
     }
 }

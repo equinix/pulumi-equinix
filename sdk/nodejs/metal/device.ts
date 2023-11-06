@@ -210,6 +210,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly rootPassword!: pulumi.Output<string>;
     /**
+     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     */
+    public /*out*/ readonly sosHostname!: pulumi.Output<string>;
+    /**
      * List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
      */
     public /*out*/ readonly sshKeyIds!: pulumi.Output<string[]>;
@@ -294,6 +298,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["projectSshKeyIds"] = state ? state.projectSshKeyIds : undefined;
             resourceInputs["reinstall"] = state ? state.reinstall : undefined;
             resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
+            resourceInputs["sosHostname"] = state ? state.sosHostname : undefined;
             resourceInputs["sshKeyIds"] = state ? state.sshKeyIds : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
@@ -348,6 +353,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["networkType"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
             resourceInputs["rootPassword"] = undefined /*out*/;
+            resourceInputs["sosHostname"] = undefined /*out*/;
             resourceInputs["sshKeyIds"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
@@ -506,6 +512,10 @@ export interface DeviceState {
      * Root password to the server (disabled after 24 hours).
      */
     rootPassword?: pulumi.Input<string>;
+    /**
+     * The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+     */
+    sosHostname?: pulumi.Input<string>;
     /**
      * List of IDs of SSH keys deployed in the device, can be both user and project SSH keys.
      */

@@ -83,13 +83,13 @@ public final class GetDevicesDevicePort {
             return this;
         }
         public GetDevicesDevicePort build() {
-            final var o = new GetDevicesDevicePort();
-            o.bonded = bonded;
-            o.id = id;
-            o.mac = mac;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDevicesDevicePort();
+            _resultValue.bonded = bonded;
+            _resultValue.id = id;
+            _resultValue.mac = mac;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

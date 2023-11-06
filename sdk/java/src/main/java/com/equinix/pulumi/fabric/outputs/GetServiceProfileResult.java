@@ -441,28 +441,28 @@ public final class GetServiceProfileResult {
             return this;
         }
         public GetServiceProfileResult build() {
-            final var o = new GetServiceProfileResult();
-            o.accessPointTypeConfigs = accessPointTypeConfigs;
-            o.account = account;
-            o.allowedEmails = allowedEmails;
-            o.changeLog = changeLog;
-            o.customFields = customFields;
-            o.description = description;
-            o.href = href;
-            o.id = id;
-            o.marketingInfo = marketingInfo;
-            o.metros = metros;
-            o.name = name;
-            o.notifications = notifications;
-            o.ports = ports;
-            o.project = project;
-            o.selfProfile = selfProfile;
-            o.state = state;
-            o.tags = tags;
-            o.type = type;
-            o.uuid = uuid;
-            o.visibility = visibility;
-            return o;
+            final var _resultValue = new GetServiceProfileResult();
+            _resultValue.accessPointTypeConfigs = accessPointTypeConfigs;
+            _resultValue.account = account;
+            _resultValue.allowedEmails = allowedEmails;
+            _resultValue.changeLog = changeLog;
+            _resultValue.customFields = customFields;
+            _resultValue.description = description;
+            _resultValue.href = href;
+            _resultValue.id = id;
+            _resultValue.marketingInfo = marketingInfo;
+            _resultValue.metros = metros;
+            _resultValue.name = name;
+            _resultValue.notifications = notifications;
+            _resultValue.ports = ports;
+            _resultValue.project = project;
+            _resultValue.selfProfile = selfProfile;
+            _resultValue.state = state;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.uuid = uuid;
+            _resultValue.visibility = visibility;
+            return _resultValue;
         }
     }
 }

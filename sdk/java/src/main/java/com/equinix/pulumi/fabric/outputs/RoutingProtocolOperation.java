@@ -43,9 +43,9 @@ public final class RoutingProtocolOperation {
             return errors(List.of(errors));
         }
         public RoutingProtocolOperation build() {
-            final var o = new RoutingProtocolOperation();
-            o.errors = errors;
-            return o;
+            final var _resultValue = new RoutingProtocolOperation();
+            _resultValue.errors = errors;
+            return _resultValue;
         }
     }
 }

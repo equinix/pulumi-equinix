@@ -92,11 +92,11 @@ public final class GetPortsResult {
             return this;
         }
         public GetPortsResult build() {
-            final var o = new GetPortsResult();
-            o.data = data;
-            o.filter = filter;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetPortsResult();
+            _resultValue.data = data;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

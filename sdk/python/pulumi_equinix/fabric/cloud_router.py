@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,55 +37,20 @@ class CloudRouterArgs:
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]] projects: Fabric Cloud Router project
         """
-        CloudRouterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            notifications=notifications,
-            package=package,
-            type=type,
-            account=account,
-            description=description,
-            name=name,
-            order=order,
-            projects=projects,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]]] = None,
-             package: Optional[pulumi.Input['CloudRouterPackageArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
-             projects: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if notifications is None:
-            raise TypeError("Missing 'notifications' argument")
-        if package is None:
-            raise TypeError("Missing 'package' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("location", location)
-        _setter("notifications", notifications)
-        _setter("package", package)
-        _setter("type", type)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "package", package)
+        pulumi.set(__self__, "type", type)
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
         if projects is not None:
-            _setter("projects", projects)
+            pulumi.set(__self__, "projects", projects)
 
     @property
     @pulumi.getter
@@ -228,71 +193,32 @@ class _CloudRouterState:
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         """
-        _CloudRouterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account=account,
-            change_logs=change_logs,
-            description=description,
-            equinix_asn=equinix_asn,
-            href=href,
-            location=location,
-            name=name,
-            notifications=notifications,
-            order=order,
-            package=package,
-            projects=projects,
-            state=state,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
-             change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             equinix_asn: Optional[pulumi.Input[int]] = None,
-             href: Optional[pulumi.Input[str]] = None,
-             location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]]] = None,
-             order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
-             package: Optional[pulumi.Input['CloudRouterPackageArgs']] = None,
-             projects: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if change_logs is None and 'changeLogs' in kwargs:
-            change_logs = kwargs['changeLogs']
-        if equinix_asn is None and 'equinixAsn' in kwargs:
-            equinix_asn = kwargs['equinixAsn']
-
         if account is not None:
-            _setter("account", account)
+            pulumi.set(__self__, "account", account)
         if change_logs is not None:
-            _setter("change_logs", change_logs)
+            pulumi.set(__self__, "change_logs", change_logs)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if equinix_asn is not None:
-            _setter("equinix_asn", equinix_asn)
+            pulumi.set(__self__, "equinix_asn", equinix_asn)
         if href is not None:
-            _setter("href", href)
+            pulumi.set(__self__, "href", href)
         if location is not None:
-            _setter("location", location)
+            pulumi.set(__self__, "location", location)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if order is not None:
-            _setter("order", order)
+            pulumi.set(__self__, "order", order)
         if package is not None:
-            _setter("package", package)
+            pulumi.set(__self__, "package", package)
         if projects is not None:
-            _setter("projects", projects)
+            pulumi.set(__self__, "projects", projects)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -554,10 +480,6 @@ class CloudRouter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CloudRouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -581,18 +503,8 @@ class CloudRouter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudRouterArgs.__new__(CloudRouterArgs)
 
-            if account is not None and not isinstance(account, CloudRouterAccountArgs):
-                account = account or {}
-                def _setter(key, value):
-                    account[key] = value
-                CloudRouterAccountArgs._configure(_setter, **account)
             __props__.__dict__["account"] = account
             __props__.__dict__["description"] = description
-            if location is not None and not isinstance(location, CloudRouterLocationArgs):
-                location = location or {}
-                def _setter(key, value):
-                    location[key] = value
-                CloudRouterLocationArgs._configure(_setter, **location)
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -600,17 +512,7 @@ class CloudRouter(pulumi.CustomResource):
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
-            if order is not None and not isinstance(order, CloudRouterOrderArgs):
-                order = order or {}
-                def _setter(key, value):
-                    order[key] = value
-                CloudRouterOrderArgs._configure(_setter, **order)
             __props__.__dict__["order"] = order
-            if package is not None and not isinstance(package, CloudRouterPackageArgs):
-                package = package or {}
-                def _setter(key, value):
-                    package[key] = value
-                CloudRouterPackageArgs._configure(_setter, **package)
             if package is None and not opts.urn:
                 raise TypeError("Missing required property 'package'")
             __props__.__dict__["package"] = package

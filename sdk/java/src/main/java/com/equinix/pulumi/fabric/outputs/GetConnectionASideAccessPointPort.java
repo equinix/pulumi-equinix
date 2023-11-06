@@ -76,12 +76,12 @@ public final class GetConnectionASideAccessPointPort {
             return this;
         }
         public GetConnectionASideAccessPointPort build() {
-            final var o = new GetConnectionASideAccessPointPort();
-            o.href = href;
-            o.name = name;
-            o.redundancies = redundancies;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetConnectionASideAccessPointPort();
+            _resultValue.href = href;
+            _resultValue.name = name;
+            _resultValue.redundancies = redundancies;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

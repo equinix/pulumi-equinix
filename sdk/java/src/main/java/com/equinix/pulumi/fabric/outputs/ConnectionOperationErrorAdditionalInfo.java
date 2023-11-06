@@ -51,10 +51,10 @@ public final class ConnectionOperationErrorAdditionalInfo {
             return this;
         }
         public ConnectionOperationErrorAdditionalInfo build() {
-            final var o = new ConnectionOperationErrorAdditionalInfo();
-            o.property = property;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new ConnectionOperationErrorAdditionalInfo();
+            _resultValue.property = property;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }
