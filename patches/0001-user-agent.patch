@@ -1,12 +1,9 @@
-From 66f7739b91be84f7034d8232078d8313ec9be094 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: ocobleseqx <oscar.cobles@eu.equinix.com>
 Date: Tue, 31 Oct 2023 17:13:45 +0100
 Subject: [PATCH] user agent
 
 Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
----
- equinix/config.go | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/equinix/config.go b/equinix/config.go
 index 085100e..ebe0192 100644
@@ -44,6 +41,3 @@ index 085100e..ebe0192 100644
 +	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", pulumiUserAgent, version.ProviderVersion, suffix)
  	return strings.TrimSpace(userAgent)
  }
--- 
-2.39.1
-
