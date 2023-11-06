@@ -9,7 +9,7 @@ replace (
 )
 
 require (
-	github.com/equinix/terraform-provider-equinix v1.18.2
+	github.com/equinix/terraform-provider-equinix v1.19.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2
 	github.com/pulumi/pulumi/pkg/v3 v3.91.1
 	github.com/pulumi/pulumi/sdk/v3 v3.91.1
@@ -82,7 +82,7 @@ require (
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/equinix-labs/fabric-go v0.7.0 // indirect
-	github.com/equinix-labs/metal-go v0.16.0 // indirect
+	github.com/equinix-labs/metal-go v0.25.1 // indirect
 	github.com/equinix/ecx-go/v2 v2.3.1 // indirect
 	github.com/equinix/ne-go v1.11.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect

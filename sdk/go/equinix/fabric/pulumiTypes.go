@@ -1139,34 +1139,50 @@ func (i CloudRouterProjectArgs) ToOutput(ctx context.Context) pulumix.Output[Clo
 	}
 }
 
-// CloudRouterProjectArrayInput is an input type that accepts CloudRouterProjectArray and CloudRouterProjectArrayOutput values.
-// You can construct a concrete instance of `CloudRouterProjectArrayInput` via:
+func (i CloudRouterProjectArgs) ToCloudRouterProjectPtrOutput() CloudRouterProjectPtrOutput {
+	return i.ToCloudRouterProjectPtrOutputWithContext(context.Background())
+}
+
+func (i CloudRouterProjectArgs) ToCloudRouterProjectPtrOutputWithContext(ctx context.Context) CloudRouterProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterProjectOutput).ToCloudRouterProjectPtrOutputWithContext(ctx)
+}
+
+// CloudRouterProjectPtrInput is an input type that accepts CloudRouterProjectArgs, CloudRouterProjectPtr and CloudRouterProjectPtrOutput values.
+// You can construct a concrete instance of `CloudRouterProjectPtrInput` via:
 //
-//	CloudRouterProjectArray{ CloudRouterProjectArgs{...} }
-type CloudRouterProjectArrayInput interface {
+//	        CloudRouterProjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudRouterProjectPtrInput interface {
 	pulumi.Input
 
-	ToCloudRouterProjectArrayOutput() CloudRouterProjectArrayOutput
-	ToCloudRouterProjectArrayOutputWithContext(context.Context) CloudRouterProjectArrayOutput
+	ToCloudRouterProjectPtrOutput() CloudRouterProjectPtrOutput
+	ToCloudRouterProjectPtrOutputWithContext(context.Context) CloudRouterProjectPtrOutput
 }
 
-type CloudRouterProjectArray []CloudRouterProjectInput
+type cloudRouterProjectPtrType CloudRouterProjectArgs
 
-func (CloudRouterProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudRouterProject)(nil)).Elem()
+func CloudRouterProjectPtr(v *CloudRouterProjectArgs) CloudRouterProjectPtrInput {
+	return (*cloudRouterProjectPtrType)(v)
 }
 
-func (i CloudRouterProjectArray) ToCloudRouterProjectArrayOutput() CloudRouterProjectArrayOutput {
-	return i.ToCloudRouterProjectArrayOutputWithContext(context.Background())
+func (*cloudRouterProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRouterProject)(nil)).Elem()
 }
 
-func (i CloudRouterProjectArray) ToCloudRouterProjectArrayOutputWithContext(ctx context.Context) CloudRouterProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterProjectArrayOutput)
+func (i *cloudRouterProjectPtrType) ToCloudRouterProjectPtrOutput() CloudRouterProjectPtrOutput {
+	return i.ToCloudRouterProjectPtrOutputWithContext(context.Background())
 }
 
-func (i CloudRouterProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]CloudRouterProject] {
-	return pulumix.Output[[]CloudRouterProject]{
-		OutputState: i.ToCloudRouterProjectArrayOutputWithContext(ctx).OutputState,
+func (i *cloudRouterProjectPtrType) ToCloudRouterProjectPtrOutputWithContext(ctx context.Context) CloudRouterProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterProjectPtrOutput)
+}
+
+func (i *cloudRouterProjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*CloudRouterProject] {
+	return pulumix.Output[*CloudRouterProject]{
+		OutputState: i.ToCloudRouterProjectPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1182,6 +1198,16 @@ func (o CloudRouterProjectOutput) ToCloudRouterProjectOutput() CloudRouterProjec
 
 func (o CloudRouterProjectOutput) ToCloudRouterProjectOutputWithContext(ctx context.Context) CloudRouterProjectOutput {
 	return o
+}
+
+func (o CloudRouterProjectOutput) ToCloudRouterProjectPtrOutput() CloudRouterProjectPtrOutput {
+	return o.ToCloudRouterProjectPtrOutputWithContext(context.Background())
+}
+
+func (o CloudRouterProjectOutput) ToCloudRouterProjectPtrOutputWithContext(ctx context.Context) CloudRouterProjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRouterProject) *CloudRouterProject {
+		return &v
+	}).(CloudRouterProjectPtrOutput)
 }
 
 func (o CloudRouterProjectOutput) ToOutput(ctx context.Context) pulumix.Output[CloudRouterProject] {
@@ -1200,30 +1226,54 @@ func (o CloudRouterProjectOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRouterProject) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-type CloudRouterProjectArrayOutput struct{ *pulumi.OutputState }
+type CloudRouterProjectPtrOutput struct{ *pulumi.OutputState }
 
-func (CloudRouterProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudRouterProject)(nil)).Elem()
+func (CloudRouterProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRouterProject)(nil)).Elem()
 }
 
-func (o CloudRouterProjectArrayOutput) ToCloudRouterProjectArrayOutput() CloudRouterProjectArrayOutput {
+func (o CloudRouterProjectPtrOutput) ToCloudRouterProjectPtrOutput() CloudRouterProjectPtrOutput {
 	return o
 }
 
-func (o CloudRouterProjectArrayOutput) ToCloudRouterProjectArrayOutputWithContext(ctx context.Context) CloudRouterProjectArrayOutput {
+func (o CloudRouterProjectPtrOutput) ToCloudRouterProjectPtrOutputWithContext(ctx context.Context) CloudRouterProjectPtrOutput {
 	return o
 }
 
-func (o CloudRouterProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CloudRouterProject] {
-	return pulumix.Output[[]CloudRouterProject]{
+func (o CloudRouterProjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRouterProject] {
+	return pulumix.Output[*CloudRouterProject]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o CloudRouterProjectArrayOutput) Index(i pulumi.IntInput) CloudRouterProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudRouterProject {
-		return vs[0].([]CloudRouterProject)[vs[1].(int)]
+func (o CloudRouterProjectPtrOutput) Elem() CloudRouterProjectOutput {
+	return o.ApplyT(func(v *CloudRouterProject) CloudRouterProject {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRouterProject
+		return ret
 	}).(CloudRouterProjectOutput)
+}
+
+// Unique Resource URL
+func (o CloudRouterProjectPtrOutput) Href() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRouterProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project Id
+func (o CloudRouterProjectPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRouterProject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASide struct {
@@ -29834,7 +29884,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterPackageInput)(nil)).Elem(), CloudRouterPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterPackagePtrInput)(nil)).Elem(), CloudRouterPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterProjectInput)(nil)).Elem(), CloudRouterProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterProjectArrayInput)(nil)).Elem(), CloudRouterProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRouterProjectPtrInput)(nil)).Elem(), CloudRouterProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideInput)(nil)).Elem(), ConnectionASideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASidePtrInput)(nil)).Elem(), ConnectionASideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointInput)(nil)).Elem(), ConnectionASideAccessPointArgs{})
@@ -30184,7 +30234,7 @@ func init() {
 	pulumi.RegisterOutputType(CloudRouterPackageOutput{})
 	pulumi.RegisterOutputType(CloudRouterPackagePtrOutput{})
 	pulumi.RegisterOutputType(CloudRouterProjectOutput{})
-	pulumi.RegisterOutputType(CloudRouterProjectArrayOutput{})
+	pulumi.RegisterOutputType(CloudRouterProjectPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideOutput{})
 	pulumi.RegisterOutputType(ConnectionASidePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointOutput{})

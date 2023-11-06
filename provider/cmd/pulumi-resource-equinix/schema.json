@@ -9706,11 +9706,8 @@
                     "$ref": "#/types/equinix:fabric/CloudRouterPackage:CloudRouterPackage",
                     "description": "Fabric Cloud Router package\n"
                 },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/CloudRouterProject:CloudRouterProject"
-                    },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/CloudRouterProject:CloudRouterProject",
                     "description": "Fabric Cloud Router project\n"
                 },
                 "state": {
@@ -9765,11 +9762,8 @@
                     "$ref": "#/types/equinix:fabric/CloudRouterPackage:CloudRouterPackage",
                     "description": "Fabric Cloud Router package\n"
                 },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/CloudRouterProject:CloudRouterProject"
-                    },
+                "project": {
+                    "$ref": "#/types/equinix:fabric/CloudRouterProject:CloudRouterProject",
                     "description": "Fabric Cloud Router project\n"
                 },
                 "type": {
@@ -9832,11 +9826,8 @@
                         "$ref": "#/types/equinix:fabric/CloudRouterPackage:CloudRouterPackage",
                         "description": "Fabric Cloud Router package\n"
                     },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/equinix:fabric/CloudRouterProject:CloudRouterProject"
-                        },
+                    "project": {
+                        "$ref": "#/types/equinix:fabric/CloudRouterProject:CloudRouterProject",
                         "description": "Fabric Cloud Router project\n"
                     },
                     "state": {
