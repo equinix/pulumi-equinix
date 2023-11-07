@@ -56,6 +56,20 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1.5.0
         with:
           repo: pulumi/pulumictl
+      - name: Build tfgen & provider binaries
+        run: make provider
+      - name: Unit-test provider code
+        run: make test_provider
+      - name: Tar provider binaries
+        run: tar -zcf ${{ github.workspace }}/bin/provider.tar.gz -C ${{
+          github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }}
+          pulumi-tfgen-${{ env.PROVIDER }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.PROVIDER }}-provider.tar.gz
+          path: ${{ github.workspace }}/bin/provider.tar.gz
+          retention-days: 30
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - name: Run GoReleaser
@@ -108,6 +122,24 @@ jobs:
         with:
           # Pin to known good version until #2262 is resolved
           gradle-version: "7.6"
+      - name: Download provider + tfgen binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.PROVIDER }}-provider.tar.gz
+          path: ${{ github.workspace }}/bin
+      - name: Untar provider binaries
+        run: >-
+          tar -zxf ${{ github.workspace }}/bin/provider.tar.gz -C ${{
+          github.workspace}}/bin
+
+          find ${{ github.workspace }} -name "pulumi-*-${{ env.PROVIDER }}" -print -exec chmod +x {} \;
+      - name: Install plugins
+        run: make install_plugins
+      - name: Update path
+        run: echo "${{ github.workspace }}/bin" >> "$GITHUB_PATH"
+      - name: Set PACKAGE_VERSION to Env
+        run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
+          "$GITHUB_ENV"
       - name: Build SDK
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
@@ -119,6 +151,16 @@ jobs:
               git diff
               exit 1
           fi
+      - name: Compress SDK folder
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.language  }}-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
+        # TODO replace all below publish package steps with
+        # - name: Publish SDKs
+        #   uses: pulumi/pulumi-package-publisher@v0.0.12
       - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
         name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
