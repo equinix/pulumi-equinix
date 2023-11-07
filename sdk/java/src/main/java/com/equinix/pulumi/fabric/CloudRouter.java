@@ -223,15 +223,15 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * Fabric Cloud Router project
      * 
      */
-    @Export(name="projects", refs={List.class,CloudRouterProject.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CloudRouterProject>> projects;
+    @Export(name="project", refs={CloudRouterProject.class}, tree="[0]")
+    private Output</* @Nullable */ CloudRouterProject> project;
 
     /**
      * @return Fabric Cloud Router project
      * 
      */
-    public Output<Optional<List<CloudRouterProject>>> projects() {
-        return Codegen.optional(this.projects);
+    public Output<Optional<CloudRouterProject>> project() {
+        return Codegen.optional(this.project);
     }
     /**
      * Fabric Cloud Router overall state

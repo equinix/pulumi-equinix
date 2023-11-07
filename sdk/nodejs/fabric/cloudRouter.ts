@@ -108,7 +108,7 @@ export class CloudRouter extends pulumi.CustomResource {
     /**
      * Fabric Cloud Router project
      */
-    public readonly projects!: pulumi.Output<outputs.fabric.CloudRouterProject[] | undefined>;
+    public readonly project!: pulumi.Output<outputs.fabric.CloudRouterProject | undefined>;
     /**
      * Fabric Cloud Router overall state
      */
@@ -141,7 +141,7 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["order"] = state ? state.order : undefined;
             resourceInputs["package"] = state ? state.package : undefined;
-            resourceInputs["projects"] = state ? state.projects : undefined;
+            resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -165,7 +165,7 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
             resourceInputs["package"] = args ? args.package : undefined;
-            resourceInputs["projects"] = args ? args.projects : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["changeLogs"] = undefined /*out*/;
             resourceInputs["equinixAsn"] = undefined /*out*/;
@@ -224,7 +224,7 @@ export interface CloudRouterState {
     /**
      * Fabric Cloud Router project
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.CloudRouterProject>[]>;
+    project?: pulumi.Input<inputs.fabric.CloudRouterProject>;
     /**
      * Fabric Cloud Router overall state
      */
@@ -270,7 +270,7 @@ export interface CloudRouterArgs {
     /**
      * Fabric Cloud Router project
      */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.CloudRouterProject>[]>;
+    project?: pulumi.Input<inputs.fabric.CloudRouterProject>;
     /**
      * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
      */

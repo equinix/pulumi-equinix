@@ -87,7 +87,7 @@ type CloudRouter struct {
 	// Fabric Cloud Router package
 	Package CloudRouterPackageOutput `pulumi:"package"`
 	// Fabric Cloud Router project
-	Projects CloudRouterProjectArrayOutput `pulumi:"projects"`
+	Project CloudRouterProjectPtrOutput `pulumi:"project"`
 	// Fabric Cloud Router overall state
 	State pulumi.StringOutput `pulumi:"state"`
 	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
@@ -157,7 +157,7 @@ type cloudRouterState struct {
 	// Fabric Cloud Router package
 	Package *CloudRouterPackage `pulumi:"package"`
 	// Fabric Cloud Router project
-	Projects []CloudRouterProject `pulumi:"projects"`
+	Project *CloudRouterProject `pulumi:"project"`
 	// Fabric Cloud Router overall state
 	State *string `pulumi:"state"`
 	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
@@ -186,7 +186,7 @@ type CloudRouterState struct {
 	// Fabric Cloud Router package
 	Package CloudRouterPackagePtrInput
 	// Fabric Cloud Router project
-	Projects CloudRouterProjectArrayInput
+	Project CloudRouterProjectPtrInput
 	// Fabric Cloud Router overall state
 	State pulumi.StringPtrInput
 	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
@@ -213,7 +213,7 @@ type cloudRouterArgs struct {
 	// Fabric Cloud Router package
 	Package CloudRouterPackage `pulumi:"package"`
 	// Fabric Cloud Router project
-	Projects []CloudRouterProject `pulumi:"projects"`
+	Project *CloudRouterProject `pulumi:"project"`
 	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
 	Type string `pulumi:"type"`
 }
@@ -235,7 +235,7 @@ type CloudRouterArgs struct {
 	// Fabric Cloud Router package
 	Package CloudRouterPackageInput
 	// Fabric Cloud Router project
-	Projects CloudRouterProjectArrayInput
+	Project CloudRouterProjectPtrInput
 	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
 	Type pulumi.StringInput
 }
@@ -402,8 +402,8 @@ func (o CloudRouterOutput) Package() CloudRouterPackageOutput {
 }
 
 // Fabric Cloud Router project
-func (o CloudRouterOutput) Projects() CloudRouterProjectArrayOutput {
-	return o.ApplyT(func(v *CloudRouter) CloudRouterProjectArrayOutput { return v.Projects }).(CloudRouterProjectArrayOutput)
+func (o CloudRouterOutput) Project() CloudRouterProjectPtrOutput {
+	return o.ApplyT(func(v *CloudRouter) CloudRouterProjectPtrOutput { return v.Project }).(CloudRouterProjectPtrOutput)
 }
 
 // Fabric Cloud Router overall state

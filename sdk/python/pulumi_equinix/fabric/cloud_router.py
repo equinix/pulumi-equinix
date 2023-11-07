@@ -24,7 +24,7 @@ class CloudRouterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]] = None):
+                 project: Optional[pulumi.Input['CloudRouterProjectArgs']] = None):
         """
         The set of arguments for constructing a CloudRouter resource.
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
@@ -35,7 +35,7 @@ class CloudRouterArgs:
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]] projects: Fabric Cloud Router project
+        :param pulumi.Input['CloudRouterProjectArgs'] project: Fabric Cloud Router project
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "notifications", notifications)
@@ -49,8 +49,8 @@ class CloudRouterArgs:
             pulumi.set(__self__, "name", name)
         if order is not None:
             pulumi.set(__self__, "order", order)
-        if projects is not None:
-            pulumi.set(__self__, "projects", projects)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -150,15 +150,15 @@ class CloudRouterArgs:
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]]:
+    def project(self) -> Optional[pulumi.Input['CloudRouterProjectArgs']]:
         """
         Fabric Cloud Router project
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
-    @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]]):
-        pulumi.set(self, "projects", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input['CloudRouterProjectArgs']]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -174,7 +174,7 @@ class _CloudRouterState:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]]] = None,
                  order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
                  package: Optional[pulumi.Input['CloudRouterPackageArgs']] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]] = None,
+                 project: Optional[pulumi.Input['CloudRouterProjectArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -189,7 +189,7 @@ class _CloudRouterState:
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router package
-        :param pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]] projects: Fabric Cloud Router project
+        :param pulumi.Input['CloudRouterProjectArgs'] project: Fabric Cloud Router project
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         """
@@ -213,8 +213,8 @@ class _CloudRouterState:
             pulumi.set(__self__, "order", order)
         if package is not None:
             pulumi.set(__self__, "package", package)
-        if projects is not None:
-            pulumi.set(__self__, "projects", projects)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
@@ -342,15 +342,15 @@ class _CloudRouterState:
 
     @property
     @pulumi.getter
-    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]]:
+    def project(self) -> Optional[pulumi.Input['CloudRouterProjectArgs']]:
         """
         Fabric Cloud Router project
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
-    @projects.setter
-    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterProjectArgs']]]]):
-        pulumi.set(self, "projects", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input['CloudRouterProjectArgs']]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -389,7 +389,7 @@ class CloudRouter(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
                  order: Optional[pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]]]] = None,
+                 project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -431,7 +431,7 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router package
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]]] projects: Fabric Cloud Router project
+        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Fabric Cloud Router project
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         """
         ...
@@ -492,7 +492,7 @@ class CloudRouter(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
                  order: Optional[pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]]]] = None,
+                 project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -516,7 +516,7 @@ class CloudRouter(pulumi.CustomResource):
             if package is None and not opts.urn:
                 raise TypeError("Missing required property 'package'")
             __props__.__dict__["package"] = package
-            __props__.__dict__["projects"] = projects
+            __props__.__dict__["project"] = project
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -544,7 +544,7 @@ class CloudRouter(pulumi.CustomResource):
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
             order: Optional[pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']]] = None,
             package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
-            projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]]]] = None,
+            project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'CloudRouter':
         """
@@ -564,7 +564,7 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router package
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]]] projects: Fabric Cloud Router project
+        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Fabric Cloud Router project
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         """
@@ -582,7 +582,7 @@ class CloudRouter(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["order"] = order
         __props__.__dict__["package"] = package
-        __props__.__dict__["projects"] = projects
+        __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         return CloudRouter(resource_name, opts=opts, __props__=__props__)
@@ -669,11 +669,11 @@ class CloudRouter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def projects(self) -> pulumi.Output[Optional[Sequence['outputs.CloudRouterProject']]]:
+    def project(self) -> pulumi.Output[Optional['outputs.CloudRouterProject']]:
         """
         Fabric Cloud Router project
         """
-        return pulumi.get(self, "projects")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

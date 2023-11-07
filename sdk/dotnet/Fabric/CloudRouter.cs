@@ -124,8 +124,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric Cloud Router project
         /// </summary>
-        [Output("projects")]
-        public Output<ImmutableArray<Outputs.CloudRouterProject>> Projects { get; private set; } = null!;
+        [Output("project")]
+        public Output<Outputs.CloudRouterProject?> Project { get; private set; } = null!;
 
         /// <summary>
         /// Fabric Cloud Router overall state
@@ -234,17 +234,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("package", required: true)]
         public Input<Inputs.CloudRouterPackageArgs> Package { get; set; } = null!;
 
-        [Input("projects")]
-        private InputList<Inputs.CloudRouterProjectArgs>? _projects;
-
         /// <summary>
         /// Fabric Cloud Router project
         /// </summary>
-        public InputList<Inputs.CloudRouterProjectArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.CloudRouterProjectArgs>());
-            set => _projects = value;
-        }
+        [Input("project")]
+        public Input<Inputs.CloudRouterProjectArgs>? Project { get; set; }
 
         /// <summary>
         /// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
@@ -332,17 +326,11 @@ namespace Pulumi.Equinix.Fabric
         [Input("package")]
         public Input<Inputs.CloudRouterPackageGetArgs>? Package { get; set; }
 
-        [Input("projects")]
-        private InputList<Inputs.CloudRouterProjectGetArgs>? _projects;
-
         /// <summary>
         /// Fabric Cloud Router project
         /// </summary>
-        public InputList<Inputs.CloudRouterProjectGetArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.CloudRouterProjectGetArgs>());
-            set => _projects = value;
-        }
+        [Input("project")]
+        public Input<Inputs.CloudRouterProjectGetArgs>? Project { get; set; }
 
         /// <summary>
         /// Fabric Cloud Router overall state

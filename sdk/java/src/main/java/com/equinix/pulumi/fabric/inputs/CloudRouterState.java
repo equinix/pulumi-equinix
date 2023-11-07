@@ -178,15 +178,15 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
      * Fabric Cloud Router project
      * 
      */
-    @Import(name="projects")
-    private @Nullable Output<List<CloudRouterProjectArgs>> projects;
+    @Import(name="project")
+    private @Nullable Output<CloudRouterProjectArgs> project;
 
     /**
      * @return Fabric Cloud Router project
      * 
      */
-    public Optional<Output<List<CloudRouterProjectArgs>>> projects() {
-        return Optional.ofNullable(this.projects);
+    public Optional<Output<CloudRouterProjectArgs>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -232,7 +232,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.order = $.order;
         this.package_ = $.package_;
-        this.projects = $.projects;
+        this.project = $.project;
         this.state = $.state;
         this.type = $.type;
     }
@@ -486,34 +486,24 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projects Fabric Cloud Router project
+         * @param project Fabric Cloud Router project
          * 
          * @return builder
          * 
          */
-        public Builder projects(@Nullable Output<List<CloudRouterProjectArgs>> projects) {
-            $.projects = projects;
+        public Builder project(@Nullable Output<CloudRouterProjectArgs> project) {
+            $.project = project;
             return this;
         }
 
         /**
-         * @param projects Fabric Cloud Router project
+         * @param project Fabric Cloud Router project
          * 
          * @return builder
          * 
          */
-        public Builder projects(List<CloudRouterProjectArgs> projects) {
-            return projects(Output.of(projects));
-        }
-
-        /**
-         * @param projects Fabric Cloud Router project
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(CloudRouterProjectArgs... projects) {
-            return projects(List.of(projects));
+        public Builder project(CloudRouterProjectArgs project) {
+            return project(Output.of(project));
         }
 
         /**
