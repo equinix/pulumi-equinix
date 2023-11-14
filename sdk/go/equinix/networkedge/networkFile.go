@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/equinix/pulumi-equinix/sdk/go/equinix"
+
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"

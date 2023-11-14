@@ -86,6 +86,8 @@ build_dotnet: upstream
 
 build_go:: upstream
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
+	go install golang.org/x/tools/cmd/goimports@latest
+	cd sdk && goimports -w . && go list "$$(grep -e "^module" go.mod | cut -d ' ' -f 2)/go/..." | xargs go build
 
 build_java: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java: bin/pulumi-java-gen patch_java_schema upstream
