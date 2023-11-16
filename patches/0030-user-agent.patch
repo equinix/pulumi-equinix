@@ -1,9 +1,12 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From bdcb620fef072f3c8713ff0d392fe23667d9ec3f Mon Sep 17 00:00:00 2001
 From: ocobleseqx <oscar.cobles@eu.equinix.com>
-Date: Tue, 31 Oct 2023 17:13:45 +0100
-Subject: [PATCH 30/30] user agent
+Date: Thu, 16 Nov 2023 18:47:17 +0100
+Subject: [PATCH] rebase main
 
 Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+---
+ internal/config/config.go | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/internal/config/config.go b/internal/config/config.go
 index f16ddc7..6795459 100644
