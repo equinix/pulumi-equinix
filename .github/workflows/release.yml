@@ -105,7 +105,7 @@ jobs:
           node-version: ${{ env.NODEVERSION }}
           registry-url: ${{env.NPM_REGISTRY_URL}}
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNETVERSION }}
       - name: Setup Python
