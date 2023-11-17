@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The datasource can be used to fetch a single device.
@@ -191,12 +190,6 @@ func (o LookupDeviceResultOutput) ToLookupDeviceResultOutput() LookupDeviceResul
 
 func (o LookupDeviceResultOutput) ToLookupDeviceResultOutputWithContext(ctx context.Context) LookupDeviceResultOutput {
 	return o
-}
-
-func (o LookupDeviceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeviceResult] {
-	return pulumix.Output[LookupDeviceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ipv4 private IP assigned to the device.

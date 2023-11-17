@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetPorts(ctx *pulumi.Context, args *GetPortsArgs, opts ...pulumi.InvokeOption) (*GetPortsResult, error) {
@@ -74,12 +73,6 @@ func (o GetPortsResultOutput) ToGetPortsResultOutput() GetPortsResultOutput {
 
 func (o GetPortsResultOutput) ToGetPortsResultOutputWithContext(ctx context.Context) GetPortsResultOutput {
 	return o
-}
-
-func (o GetPortsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortsResult] {
-	return pulumix.Output[GetPortsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of  Ports

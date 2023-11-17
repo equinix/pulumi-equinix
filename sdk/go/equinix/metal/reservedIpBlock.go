@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to create and manage blocks of reserved IP addresses in a project.
@@ -339,12 +338,6 @@ func (i *ReservedIpBlock) ToReservedIpBlockOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpBlockOutput)
 }
 
-func (i *ReservedIpBlock) ToOutput(ctx context.Context) pulumix.Output[*ReservedIpBlock] {
-	return pulumix.Output[*ReservedIpBlock]{
-		OutputState: i.ToReservedIpBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReservedIpBlockArrayInput is an input type that accepts ReservedIpBlockArray and ReservedIpBlockArrayOutput values.
 // You can construct a concrete instance of `ReservedIpBlockArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i ReservedIpBlockArray) ToReservedIpBlockArrayOutput() ReservedIpBlockArra
 
 func (i ReservedIpBlockArray) ToReservedIpBlockArrayOutputWithContext(ctx context.Context) ReservedIpBlockArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpBlockArrayOutput)
-}
-
-func (i ReservedIpBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReservedIpBlock] {
-	return pulumix.Output[[]*ReservedIpBlock]{
-		OutputState: i.ToReservedIpBlockArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReservedIpBlockMapInput is an input type that accepts ReservedIpBlockMap and ReservedIpBlockMapOutput values.
@@ -401,12 +388,6 @@ func (i ReservedIpBlockMap) ToReservedIpBlockMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ReservedIpBlockMapOutput)
 }
 
-func (i ReservedIpBlockMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservedIpBlock] {
-	return pulumix.Output[map[string]*ReservedIpBlock]{
-		OutputState: i.ToReservedIpBlockMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReservedIpBlockOutput struct{ *pulumi.OutputState }
 
 func (ReservedIpBlockOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o ReservedIpBlockOutput) ToReservedIpBlockOutput() ReservedIpBlockOutput {
 
 func (o ReservedIpBlockOutput) ToReservedIpBlockOutputWithContext(ctx context.Context) ReservedIpBlockOutput {
 	return o
-}
-
-func (o ReservedIpBlockOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservedIpBlock] {
-	return pulumix.Output[*ReservedIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReservedIpBlockOutput) Address() pulumi.StringOutput {
@@ -547,12 +522,6 @@ func (o ReservedIpBlockArrayOutput) ToReservedIpBlockArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ReservedIpBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReservedIpBlock] {
-	return pulumix.Output[[]*ReservedIpBlock]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReservedIpBlockArrayOutput) Index(i pulumi.IntInput) ReservedIpBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReservedIpBlock {
 		return vs[0].([]*ReservedIpBlock)[vs[1].(int)]
@@ -571,12 +540,6 @@ func (o ReservedIpBlockMapOutput) ToReservedIpBlockMapOutput() ReservedIpBlockMa
 
 func (o ReservedIpBlockMapOutput) ToReservedIpBlockMapOutputWithContext(ctx context.Context) ReservedIpBlockMapOutput {
 	return o
-}
-
-func (o ReservedIpBlockMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservedIpBlock] {
-	return pulumix.Output[map[string]*ReservedIpBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReservedIpBlockMapOutput) MapIndex(k pulumi.StringInput) ReservedIpBlockOutput {

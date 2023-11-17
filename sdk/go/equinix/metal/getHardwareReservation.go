@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a [hardware reservation resource from Equinix Metal](https://metal.equinix.com/developers/docs/deploy/reserved/).
@@ -130,12 +129,6 @@ func (o GetHardwareReservationResultOutput) ToGetHardwareReservationResultOutput
 
 func (o GetHardwareReservationResultOutput) ToGetHardwareReservationResultOutputWithContext(ctx context.Context) GetHardwareReservationResultOutput {
 	return o
-}
-
-func (o GetHardwareReservationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHardwareReservationResult] {
-	return pulumix.Output[GetHardwareReservationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UUID of device occupying the reservation.

@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource `networkedge.AclTemplate` allows creation and management of
@@ -241,12 +240,6 @@ func (i *AclTemplate) ToAclTemplateOutputWithContext(ctx context.Context) AclTem
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateOutput)
 }
 
-func (i *AclTemplate) ToOutput(ctx context.Context) pulumix.Output[*AclTemplate] {
-	return pulumix.Output[*AclTemplate]{
-		OutputState: i.ToAclTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AclTemplateArrayInput is an input type that accepts AclTemplateArray and AclTemplateArrayOutput values.
 // You can construct a concrete instance of `AclTemplateArrayInput` via:
 //
@@ -270,12 +263,6 @@ func (i AclTemplateArray) ToAclTemplateArrayOutput() AclTemplateArrayOutput {
 
 func (i AclTemplateArray) ToAclTemplateArrayOutputWithContext(ctx context.Context) AclTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateArrayOutput)
-}
-
-func (i AclTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclTemplate] {
-	return pulumix.Output[[]*AclTemplate]{
-		OutputState: i.ToAclTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AclTemplateMapInput is an input type that accepts AclTemplateMap and AclTemplateMapOutput values.
@@ -303,12 +290,6 @@ func (i AclTemplateMap) ToAclTemplateMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AclTemplateMapOutput)
 }
 
-func (i AclTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclTemplate] {
-	return pulumix.Output[map[string]*AclTemplate]{
-		OutputState: i.ToAclTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AclTemplateOutput struct{ *pulumi.OutputState }
 
 func (AclTemplateOutput) ElementType() reflect.Type {
@@ -321,12 +302,6 @@ func (o AclTemplateOutput) ToAclTemplateOutput() AclTemplateOutput {
 
 func (o AclTemplateOutput) ToAclTemplateOutputWithContext(ctx context.Context) AclTemplateOutput {
 	return o
-}
-
-func (o AclTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*AclTemplate] {
-	return pulumix.Output[*AclTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Inbound rule description, up to 200 characters.
@@ -391,12 +366,6 @@ func (o AclTemplateArrayOutput) ToAclTemplateArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o AclTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclTemplate] {
-	return pulumix.Output[[]*AclTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclTemplateArrayOutput) Index(i pulumi.IntInput) AclTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclTemplate {
 		return vs[0].([]*AclTemplate)[vs[1].(int)]
@@ -415,12 +384,6 @@ func (o AclTemplateMapOutput) ToAclTemplateMapOutput() AclTemplateMapOutput {
 
 func (o AclTemplateMapOutput) ToAclTemplateMapOutputWithContext(ctx context.Context) AclTemplateMapOutput {
 	return o
-}
-
-func (o AclTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclTemplate] {
-	return pulumix.Output[map[string]*AclTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclTemplateMapOutput) MapIndex(k pulumi.StringInput) AclTemplateOutput {

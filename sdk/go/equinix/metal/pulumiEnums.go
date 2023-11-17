@@ -78,12 +78,6 @@ func (o BillingCycleOutput) ToBillingCyclePtrOutputWithContext(ctx context.Conte
 	}).(BillingCyclePtrOutput)
 }
 
-func (o BillingCycleOutput) ToOutput(ctx context.Context) pulumix.Output[BillingCycle] {
-	return pulumix.Output[BillingCycle]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BillingCycleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,12 +111,6 @@ func (o BillingCyclePtrOutput) ToBillingCyclePtrOutput() BillingCyclePtrOutput {
 
 func (o BillingCyclePtrOutput) ToBillingCyclePtrOutputWithContext(ctx context.Context) BillingCyclePtrOutput {
 	return o
-}
-
-func (o BillingCyclePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingCycle] {
-	return pulumix.Output[*BillingCycle]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BillingCyclePtrOutput) Elem() BillingCycleOutput {
@@ -343,12 +331,6 @@ func (o FacilityOutput) ToFacilityPtrOutputWithContext(ctx context.Context) Faci
 	}).(FacilityPtrOutput)
 }
 
-func (o FacilityOutput) ToOutput(ctx context.Context) pulumix.Output[Facility] {
-	return pulumix.Output[Facility]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FacilityOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -382,12 +364,6 @@ func (o FacilityPtrOutput) ToFacilityPtrOutput() FacilityPtrOutput {
 
 func (o FacilityPtrOutput) ToFacilityPtrOutputWithContext(ctx context.Context) FacilityPtrOutput {
 	return o
-}
-
-func (o FacilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Facility] {
-	return pulumix.Output[*Facility]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FacilityPtrOutput) Elem() FacilityOutput {
@@ -525,12 +501,6 @@ func (o IpBlockTypeOutput) ToIpBlockTypePtrOutputWithContext(ctx context.Context
 	}).(IpBlockTypePtrOutput)
 }
 
-func (o IpBlockTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpBlockType] {
-	return pulumix.Output[IpBlockType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpBlockTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -564,12 +534,6 @@ func (o IpBlockTypePtrOutput) ToIpBlockTypePtrOutput() IpBlockTypePtrOutput {
 
 func (o IpBlockTypePtrOutput) ToIpBlockTypePtrOutputWithContext(ctx context.Context) IpBlockTypePtrOutput {
 	return o
-}
-
-func (o IpBlockTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpBlockType] {
-	return pulumix.Output[*IpBlockType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpBlockTypePtrOutput) Elem() IpBlockTypeOutput {
@@ -709,12 +673,6 @@ func (o NetworkTypeOutput) ToNetworkTypePtrOutputWithContext(ctx context.Context
 	}).(NetworkTypePtrOutput)
 }
 
-func (o NetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkType] {
-	return pulumix.Output[NetworkType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -748,12 +706,6 @@ func (o NetworkTypePtrOutput) ToNetworkTypePtrOutput() NetworkTypePtrOutput {
 
 func (o NetworkTypePtrOutput) ToNetworkTypePtrOutputWithContext(ctx context.Context) NetworkTypePtrOutput {
 	return o
-}
-
-func (o NetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkType] {
-	return pulumix.Output[*NetworkType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkTypePtrOutput) Elem() NetworkTypeOutput {
@@ -970,12 +922,6 @@ func (o OperatingSystemOutput) ToOperatingSystemPtrOutputWithContext(ctx context
 	}).(OperatingSystemPtrOutput)
 }
 
-func (o OperatingSystemOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystem] {
-	return pulumix.Output[OperatingSystem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OperatingSystemOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1009,12 +955,6 @@ func (o OperatingSystemPtrOutput) ToOperatingSystemPtrOutput() OperatingSystemPt
 
 func (o OperatingSystemPtrOutput) ToOperatingSystemPtrOutputWithContext(ctx context.Context) OperatingSystemPtrOutput {
 	return o
-}
-
-func (o OperatingSystemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystem] {
-	return pulumix.Output[*OperatingSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperatingSystemPtrOutput) Elem() OperatingSystemOutput {
@@ -1169,12 +1109,6 @@ func (o PlanOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutpu
 	}).(PlanPtrOutput)
 }
 
-func (o PlanOutput) ToOutput(ctx context.Context) pulumix.Output[Plan] {
-	return pulumix.Output[Plan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PlanOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1208,12 +1142,6 @@ func (o PlanPtrOutput) ToPlanPtrOutput() PlanPtrOutput {
 
 func (o PlanPtrOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
 	return o
-}
-
-func (o PlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Plan] {
-	return pulumix.Output[*Plan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanPtrOutput) Elem() PlanOutput {

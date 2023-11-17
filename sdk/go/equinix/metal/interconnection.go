@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
@@ -329,12 +328,6 @@ func (i *Interconnection) ToInterconnectionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionOutput)
 }
 
-func (i *Interconnection) ToOutput(ctx context.Context) pulumix.Output[*Interconnection] {
-	return pulumix.Output[*Interconnection]{
-		OutputState: i.ToInterconnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InterconnectionArrayInput is an input type that accepts InterconnectionArray and InterconnectionArrayOutput values.
 // You can construct a concrete instance of `InterconnectionArrayInput` via:
 //
@@ -358,12 +351,6 @@ func (i InterconnectionArray) ToInterconnectionArrayOutput() InterconnectionArra
 
 func (i InterconnectionArray) ToInterconnectionArrayOutputWithContext(ctx context.Context) InterconnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionArrayOutput)
-}
-
-func (i InterconnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Interconnection] {
-	return pulumix.Output[[]*Interconnection]{
-		OutputState: i.ToInterconnectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InterconnectionMapInput is an input type that accepts InterconnectionMap and InterconnectionMapOutput values.
@@ -391,12 +378,6 @@ func (i InterconnectionMap) ToInterconnectionMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectionMapOutput)
 }
 
-func (i InterconnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Interconnection] {
-	return pulumix.Output[map[string]*Interconnection]{
-		OutputState: i.ToInterconnectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterconnectionOutput struct{ *pulumi.OutputState }
 
 func (InterconnectionOutput) ElementType() reflect.Type {
@@ -409,12 +390,6 @@ func (o InterconnectionOutput) ToInterconnectionOutput() InterconnectionOutput {
 
 func (o InterconnectionOutput) ToInterconnectionOutputWithContext(ctx context.Context) InterconnectionOutput {
 	return o
-}
-
-func (o InterconnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Interconnection] {
-	return pulumix.Output[*Interconnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
@@ -527,12 +502,6 @@ func (o InterconnectionArrayOutput) ToInterconnectionArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o InterconnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Interconnection] {
-	return pulumix.Output[[]*Interconnection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InterconnectionArrayOutput) Index(i pulumi.IntInput) InterconnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Interconnection {
 		return vs[0].([]*Interconnection)[vs[1].(int)]
@@ -551,12 +520,6 @@ func (o InterconnectionMapOutput) ToInterconnectionMapOutput() InterconnectionMa
 
 func (o InterconnectionMapOutput) ToInterconnectionMapOutputWithContext(ctx context.Context) InterconnectionMapOutput {
 	return o
-}
-
-func (o InterconnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Interconnection] {
-	return pulumix.Output[map[string]*Interconnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InterconnectionMapOutput) MapIndex(k pulumi.StringInput) InterconnectionOutput {

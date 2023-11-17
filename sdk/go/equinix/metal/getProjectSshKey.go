@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to retrieve attributes of a Project SSH Key API resource.
@@ -127,12 +126,6 @@ func (o LookupProjectSshKeyResultOutput) ToLookupProjectSshKeyResultOutput() Loo
 
 func (o LookupProjectSshKeyResultOutput) ToLookupProjectSshKeyResultOutputWithContext(ctx context.Context) LookupProjectSshKeyResultOutput {
 	return o
-}
-
-func (o LookupProjectSshKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectSshKeyResult] {
-	return pulumix.Output[LookupProjectSshKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp for when the SSH key was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Network Edge device platform configuration details
@@ -139,12 +138,6 @@ func (o GetDevicePlatformResultOutput) ToGetDevicePlatformResultOutput() GetDevi
 
 func (o GetDevicePlatformResultOutput) ToGetDevicePlatformResultOutputWithContext(ctx context.Context) GetDevicePlatformResultOutput {
 	return o
-}
-
-func (o GetDevicePlatformResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicePlatformResult] {
-	return pulumix.Output[GetDevicePlatformResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDevicePlatformResultOutput) CoreCount() pulumi.IntOutput {

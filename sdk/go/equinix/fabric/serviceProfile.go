@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -349,12 +348,6 @@ func (i *ServiceProfile) ToServiceProfileOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileOutput)
 }
 
-func (i *ServiceProfile) ToOutput(ctx context.Context) pulumix.Output[*ServiceProfile] {
-	return pulumix.Output[*ServiceProfile]{
-		OutputState: i.ToServiceProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceProfileArrayInput is an input type that accepts ServiceProfileArray and ServiceProfileArrayOutput values.
 // You can construct a concrete instance of `ServiceProfileArrayInput` via:
 //
@@ -378,12 +371,6 @@ func (i ServiceProfileArray) ToServiceProfileArrayOutput() ServiceProfileArrayOu
 
 func (i ServiceProfileArray) ToServiceProfileArrayOutputWithContext(ctx context.Context) ServiceProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileArrayOutput)
-}
-
-func (i ServiceProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceProfile] {
-	return pulumix.Output[[]*ServiceProfile]{
-		OutputState: i.ToServiceProfileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceProfileMapInput is an input type that accepts ServiceProfileMap and ServiceProfileMapOutput values.
@@ -411,12 +398,6 @@ func (i ServiceProfileMap) ToServiceProfileMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceProfileMapOutput)
 }
 
-func (i ServiceProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceProfile] {
-	return pulumix.Output[map[string]*ServiceProfile]{
-		OutputState: i.ToServiceProfileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceProfileOutput struct{ *pulumi.OutputState }
 
 func (ServiceProfileOutput) ElementType() reflect.Type {
@@ -429,12 +410,6 @@ func (o ServiceProfileOutput) ToServiceProfileOutput() ServiceProfileOutput {
 
 func (o ServiceProfileOutput) ToServiceProfileOutputWithContext(ctx context.Context) ServiceProfileOutput {
 	return o
-}
-
-func (o ServiceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceProfile] {
-	return pulumix.Output[*ServiceProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access point config information
@@ -553,12 +528,6 @@ func (o ServiceProfileArrayOutput) ToServiceProfileArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ServiceProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceProfile] {
-	return pulumix.Output[[]*ServiceProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceProfileArrayOutput) Index(i pulumi.IntInput) ServiceProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceProfile {
 		return vs[0].([]*ServiceProfile)[vs[1].(int)]
@@ -577,12 +546,6 @@ func (o ServiceProfileMapOutput) ToServiceProfileMapOutput() ServiceProfileMapOu
 
 func (o ServiceProfileMapOutput) ToServiceProfileMapOutputWithContext(ctx context.Context) ServiceProfileMapOutput {
 	return o
-}
-
-func (o ServiceProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceProfile] {
-	return pulumix.Output[map[string]*ServiceProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceProfileMapOutput) MapIndex(k pulumi.StringInput) ServiceProfileOutput {

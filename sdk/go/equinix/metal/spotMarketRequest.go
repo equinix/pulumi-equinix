@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal Spot Market Request resource to allow you to
@@ -268,12 +267,6 @@ func (i *SpotMarketRequest) ToSpotMarketRequestOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestOutput)
 }
 
-func (i *SpotMarketRequest) ToOutput(ctx context.Context) pulumix.Output[*SpotMarketRequest] {
-	return pulumix.Output[*SpotMarketRequest]{
-		OutputState: i.ToSpotMarketRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpotMarketRequestArrayInput is an input type that accepts SpotMarketRequestArray and SpotMarketRequestArrayOutput values.
 // You can construct a concrete instance of `SpotMarketRequestArrayInput` via:
 //
@@ -297,12 +290,6 @@ func (i SpotMarketRequestArray) ToSpotMarketRequestArrayOutput() SpotMarketReque
 
 func (i SpotMarketRequestArray) ToSpotMarketRequestArrayOutputWithContext(ctx context.Context) SpotMarketRequestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestArrayOutput)
-}
-
-func (i SpotMarketRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpotMarketRequest] {
-	return pulumix.Output[[]*SpotMarketRequest]{
-		OutputState: i.ToSpotMarketRequestArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SpotMarketRequestMapInput is an input type that accepts SpotMarketRequestMap and SpotMarketRequestMapOutput values.
@@ -330,12 +317,6 @@ func (i SpotMarketRequestMap) ToSpotMarketRequestMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SpotMarketRequestMapOutput)
 }
 
-func (i SpotMarketRequestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpotMarketRequest] {
-	return pulumix.Output[map[string]*SpotMarketRequest]{
-		OutputState: i.ToSpotMarketRequestMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpotMarketRequestOutput struct{ *pulumi.OutputState }
 
 func (SpotMarketRequestOutput) ElementType() reflect.Type {
@@ -348,12 +329,6 @@ func (o SpotMarketRequestOutput) ToSpotMarketRequestOutput() SpotMarketRequestOu
 
 func (o SpotMarketRequestOutput) ToSpotMarketRequestOutputWithContext(ctx context.Context) SpotMarketRequestOutput {
 	return o
-}
-
-func (o SpotMarketRequestOutput) ToOutput(ctx context.Context) pulumix.Output[*SpotMarketRequest] {
-	return pulumix.Output[*SpotMarketRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number devices to be created.
@@ -417,12 +392,6 @@ func (o SpotMarketRequestArrayOutput) ToSpotMarketRequestArrayOutputWithContext(
 	return o
 }
 
-func (o SpotMarketRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpotMarketRequest] {
-	return pulumix.Output[[]*SpotMarketRequest]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpotMarketRequestArrayOutput) Index(i pulumi.IntInput) SpotMarketRequestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpotMarketRequest {
 		return vs[0].([]*SpotMarketRequest)[vs[1].(int)]
@@ -441,12 +410,6 @@ func (o SpotMarketRequestMapOutput) ToSpotMarketRequestMapOutput() SpotMarketReq
 
 func (o SpotMarketRequestMapOutput) ToSpotMarketRequestMapOutputWithContext(ctx context.Context) SpotMarketRequestMapOutput {
 	return o
-}
-
-func (o SpotMarketRequestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpotMarketRequest] {
-	return pulumix.Output[map[string]*SpotMarketRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpotMarketRequestMapOutput) MapIndex(k pulumi.StringInput) SpotMarketRequestOutput {

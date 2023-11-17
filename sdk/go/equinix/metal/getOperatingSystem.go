@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Metal Operating System image.
@@ -128,12 +127,6 @@ func (o GetOperatingSystemResultOutput) ToGetOperatingSystemResultOutput() GetOp
 
 func (o GetOperatingSystemResultOutput) ToGetOperatingSystemResultOutputWithContext(ctx context.Context) GetOperatingSystemResultOutput {
 	return o
-}
-
-func (o GetOperatingSystemResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOperatingSystemResult] {
-	return pulumix.Output[GetOperatingSystemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetOperatingSystemResultOutput) Distro() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to find IP address blocks in Equinix Metal. You can use IP address or a block
@@ -107,12 +106,6 @@ func (o LookupReservedIpBlockResultOutput) ToLookupReservedIpBlockResultOutput()
 
 func (o LookupReservedIpBlockResultOutput) ToLookupReservedIpBlockResultOutputWithContext(ctx context.Context) LookupReservedIpBlockResultOutput {
 	return o
-}
-
-func (o LookupReservedIpBlockResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReservedIpBlockResult] {
-	return pulumix.Output[LookupReservedIpBlockResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupReservedIpBlockResultOutput) Address() pulumi.StringOutput {

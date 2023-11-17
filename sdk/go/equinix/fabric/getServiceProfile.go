@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
@@ -113,12 +112,6 @@ func (o LookupServiceProfileResultOutput) ToLookupServiceProfileResultOutput() L
 
 func (o LookupServiceProfileResultOutput) ToLookupServiceProfileResultOutputWithContext(ctx context.Context) LookupServiceProfileResultOutput {
 	return o
-}
-
-func (o LookupServiceProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceProfileResult] {
-	return pulumix.Output[LookupServiceProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access point config information

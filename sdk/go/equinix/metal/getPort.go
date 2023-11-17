@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to read ports of existing devices. You can read port by either its UUID,
@@ -142,12 +141,6 @@ func (o LookupPortResultOutput) ToLookupPortResultOutput() LookupPortResultOutpu
 
 func (o LookupPortResultOutput) ToLookupPortResultOutputWithContext(ctx context.Context) LookupPortResultOutput {
 	return o
-}
-
-func (o LookupPortResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPortResult] {
-	return pulumix.Output[LookupPortResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UUID of the bond port.

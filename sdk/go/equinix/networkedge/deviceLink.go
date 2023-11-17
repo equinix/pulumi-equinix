@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource `networkedge.DeviceLink` allows creation and management of Equinix
@@ -232,12 +231,6 @@ func (i *DeviceLink) ToDeviceLinkOutputWithContext(ctx context.Context) DeviceLi
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkOutput)
 }
 
-func (i *DeviceLink) ToOutput(ctx context.Context) pulumix.Output[*DeviceLink] {
-	return pulumix.Output[*DeviceLink]{
-		OutputState: i.ToDeviceLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceLinkArrayInput is an input type that accepts DeviceLinkArray and DeviceLinkArrayOutput values.
 // You can construct a concrete instance of `DeviceLinkArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i DeviceLinkArray) ToDeviceLinkArrayOutput() DeviceLinkArrayOutput {
 
 func (i DeviceLinkArray) ToDeviceLinkArrayOutputWithContext(ctx context.Context) DeviceLinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkArrayOutput)
-}
-
-func (i DeviceLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceLink] {
-	return pulumix.Output[[]*DeviceLink]{
-		OutputState: i.ToDeviceLinkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeviceLinkMapInput is an input type that accepts DeviceLinkMap and DeviceLinkMapOutput values.
@@ -294,12 +281,6 @@ func (i DeviceLinkMap) ToDeviceLinkMapOutputWithContext(ctx context.Context) Dev
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkMapOutput)
 }
 
-func (i DeviceLinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceLink] {
-	return pulumix.Output[map[string]*DeviceLink]{
-		OutputState: i.ToDeviceLinkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceLinkOutput struct{ *pulumi.OutputState }
 
 func (DeviceLinkOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o DeviceLinkOutput) ToDeviceLinkOutput() DeviceLinkOutput {
 
 func (o DeviceLinkOutput) ToDeviceLinkOutputWithContext(ctx context.Context) DeviceLinkOutput {
 	return o
-}
-
-func (o DeviceLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceLink] {
-	return pulumix.Output[*DeviceLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // definition of one or more devices belonging to the
@@ -368,12 +343,6 @@ func (o DeviceLinkArrayOutput) ToDeviceLinkArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DeviceLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceLink] {
-	return pulumix.Output[[]*DeviceLink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeviceLink {
 		return vs[0].([]*DeviceLink)[vs[1].(int)]
@@ -392,12 +361,6 @@ func (o DeviceLinkMapOutput) ToDeviceLinkMapOutput() DeviceLinkMapOutput {
 
 func (o DeviceLinkMapOutput) ToDeviceLinkMapOutputWithContext(ctx context.Context) DeviceLinkMapOutput {
 	return o
-}
-
-func (o DeviceLinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceLink] {
-	return pulumix.Output[map[string]*DeviceLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceLinkMapOutput) MapIndex(k pulumi.StringInput) DeviceLinkOutput {

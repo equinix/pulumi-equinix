@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetPlans(ctx *pulumi.Context, args *GetPlansArgs, opts ...pulumi.InvokeOption) (*GetPlansResult, error) {
@@ -79,12 +78,6 @@ func (o GetPlansResultOutput) ToGetPlansResultOutput() GetPlansResultOutput {
 
 func (o GetPlansResultOutput) ToGetPlansResultOutputWithContext(ctx context.Context) GetPlansResultOutput {
 	return o
-}
-
-func (o GetPlansResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPlansResult] {
-	return pulumix.Output[GetPlansResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPlansResultOutput) Filters() GetPlansFilterArrayOutput {

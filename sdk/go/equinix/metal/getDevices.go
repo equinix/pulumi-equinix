@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The datasource can be used to find a list of devices which meet filter criteria.
@@ -164,12 +163,6 @@ func (o GetDevicesResultOutput) ToGetDevicesResultOutput() GetDevicesResultOutpu
 
 func (o GetDevicesResultOutput) ToGetDevicesResultOutputWithContext(ctx context.Context) GetDevicesResultOutput {
 	return o
-}
-
-func (o GetDevicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicesResult] {
-	return pulumix.Output[GetDevicesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // list of resources with attributes like in the equninixMetalDevice datasources.

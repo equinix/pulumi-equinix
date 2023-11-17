@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts ...pulumi.InvokeOption) (*GetServiceProfilesResult, error) {
@@ -86,12 +85,6 @@ func (o GetServiceProfilesResultOutput) ToGetServiceProfilesResultOutput() GetSe
 
 func (o GetServiceProfilesResultOutput) ToGetServiceProfilesResultOutputWithContext(ctx context.Context) GetServiceProfilesResultOutput {
 	return o
-}
-
-func (o GetServiceProfilesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceProfilesResult] {
-	return pulumix.Output[GetServiceProfilesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of  Service Profiles

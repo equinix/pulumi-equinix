@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get CIDR expression for precreated (management) IPv6 and IPv4 blocks in Equinix Metal.
@@ -116,12 +115,6 @@ func (o GetPrecreatedIpBlockResultOutput) ToGetPrecreatedIpBlockResultOutput() G
 
 func (o GetPrecreatedIpBlockResultOutput) ToGetPrecreatedIpBlockResultOutputWithContext(ctx context.Context) GetPrecreatedIpBlockResultOutput {
 	return o
-}
-
-func (o GetPrecreatedIpBlockResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrecreatedIpBlockResult] {
-	return pulumix.Output[GetPrecreatedIpBlockResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPrecreatedIpBlockResultOutput) Address() pulumi.StringOutput {

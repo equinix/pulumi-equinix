@@ -79,12 +79,6 @@ func (o AclRuleProtocolTypeOutput) ToAclRuleProtocolTypePtrOutputWithContext(ctx
 	}).(AclRuleProtocolTypePtrOutput)
 }
 
-func (o AclRuleProtocolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AclRuleProtocolType] {
-	return pulumix.Output[AclRuleProtocolType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclRuleProtocolTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o AclRuleProtocolTypePtrOutput) ToAclRuleProtocolTypePtrOutput() AclRulePr
 
 func (o AclRuleProtocolTypePtrOutput) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
 	return o
-}
-
-func (o AclRuleProtocolTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AclRuleProtocolType] {
-	return pulumix.Output[*AclRuleProtocolType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclRuleProtocolTypePtrOutput) Elem() AclRuleProtocolTypeOutput {
@@ -261,12 +249,6 @@ func (o FileTypeOutput) ToFileTypePtrOutputWithContext(ctx context.Context) File
 	}).(FileTypePtrOutput)
 }
 
-func (o FileTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FileType] {
-	return pulumix.Output[FileType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FileTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -300,12 +282,6 @@ func (o FileTypePtrOutput) ToFileTypePtrOutput() FileTypePtrOutput {
 
 func (o FileTypePtrOutput) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
 	return o
-}
-
-func (o FileTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileType] {
-	return pulumix.Output[*FileType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileTypePtrOutput) Elem() FileTypeOutput {
@@ -443,12 +419,6 @@ func (o ThroughputUnitOutput) ToThroughputUnitPtrOutputWithContext(ctx context.C
 	}).(ThroughputUnitPtrOutput)
 }
 
-func (o ThroughputUnitOutput) ToOutput(ctx context.Context) pulumix.Output[ThroughputUnit] {
-	return pulumix.Output[ThroughputUnit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ThroughputUnitOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -482,12 +452,6 @@ func (o ThroughputUnitPtrOutput) ToThroughputUnitPtrOutput() ThroughputUnitPtrOu
 
 func (o ThroughputUnitPtrOutput) ToThroughputUnitPtrOutputWithContext(ctx context.Context) ThroughputUnitPtrOutput {
 	return o
-}
-
-func (o ThroughputUnitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThroughputUnit] {
-	return pulumix.Output[*ThroughputUnit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThroughputUnitPtrOutput) Elem() ThroughputUnitOutput {

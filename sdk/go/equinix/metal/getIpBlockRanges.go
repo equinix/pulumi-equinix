@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to get CIDR expressions for allocated IP blocks of all the types in a project, optionally filtered by facility or metro.
@@ -131,12 +130,6 @@ func (o GetIpBlockRangesResultOutput) ToGetIpBlockRangesResultOutput() GetIpBloc
 
 func (o GetIpBlockRangesResultOutput) ToGetIpBlockRangesResultOutputWithContext(ctx context.Context) GetIpBlockRangesResultOutput {
 	return o
-}
-
-func (o GetIpBlockRangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpBlockRangesResult] {
-	return pulumix.Output[GetIpBlockRangesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices

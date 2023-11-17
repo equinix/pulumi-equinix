@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource `networkedge.NetworkFile` allows creation and management of Equinix Network Edge files.
@@ -262,12 +261,6 @@ func (i *NetworkFile) ToNetworkFileOutputWithContext(ctx context.Context) Networ
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFileOutput)
 }
 
-func (i *NetworkFile) ToOutput(ctx context.Context) pulumix.Output[*NetworkFile] {
-	return pulumix.Output[*NetworkFile]{
-		OutputState: i.ToNetworkFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkFileArrayInput is an input type that accepts NetworkFileArray and NetworkFileArrayOutput values.
 // You can construct a concrete instance of `NetworkFileArrayInput` via:
 //
@@ -291,12 +284,6 @@ func (i NetworkFileArray) ToNetworkFileArrayOutput() NetworkFileArrayOutput {
 
 func (i NetworkFileArray) ToNetworkFileArrayOutputWithContext(ctx context.Context) NetworkFileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFileArrayOutput)
-}
-
-func (i NetworkFileArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkFile] {
-	return pulumix.Output[[]*NetworkFile]{
-		OutputState: i.ToNetworkFileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkFileMapInput is an input type that accepts NetworkFileMap and NetworkFileMapOutput values.
@@ -324,12 +311,6 @@ func (i NetworkFileMap) ToNetworkFileMapOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFileMapOutput)
 }
 
-func (i NetworkFileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkFile] {
-	return pulumix.Output[map[string]*NetworkFile]{
-		OutputState: i.ToNetworkFileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkFileOutput struct{ *pulumi.OutputState }
 
 func (NetworkFileOutput) ElementType() reflect.Type {
@@ -342,12 +323,6 @@ func (o NetworkFileOutput) ToNetworkFileOutput() NetworkFileOutput {
 
 func (o NetworkFileOutput) ToNetworkFileOutputWithContext(ctx context.Context) NetworkFileOutput {
 	return o
-}
-
-func (o NetworkFileOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFile] {
-	return pulumix.Output[*NetworkFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boolean value that determines device licensing mode, i.e.,
@@ -411,12 +386,6 @@ func (o NetworkFileArrayOutput) ToNetworkFileArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o NetworkFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkFile] {
-	return pulumix.Output[[]*NetworkFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkFileArrayOutput) Index(i pulumi.IntInput) NetworkFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkFile {
 		return vs[0].([]*NetworkFile)[vs[1].(int)]
@@ -435,12 +404,6 @@ func (o NetworkFileMapOutput) ToNetworkFileMapOutput() NetworkFileMapOutput {
 
 func (o NetworkFileMapOutput) ToNetworkFileMapOutputWithContext(ctx context.Context) NetworkFileMapOutput {
 	return o
-}
-
-func (o NetworkFileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkFile] {
-	return pulumix.Output[map[string]*NetworkFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkFileMapOutput) MapIndex(k pulumi.StringInput) NetworkFileOutput {

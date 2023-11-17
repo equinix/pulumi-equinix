@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -282,12 +281,6 @@ func (i *CloudRouter) ToCloudRouterOutputWithContext(ctx context.Context) CloudR
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterOutput)
 }
 
-func (i *CloudRouter) ToOutput(ctx context.Context) pulumix.Output[*CloudRouter] {
-	return pulumix.Output[*CloudRouter]{
-		OutputState: i.ToCloudRouterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CloudRouterArrayInput is an input type that accepts CloudRouterArray and CloudRouterArrayOutput values.
 // You can construct a concrete instance of `CloudRouterArrayInput` via:
 //
@@ -311,12 +304,6 @@ func (i CloudRouterArray) ToCloudRouterArrayOutput() CloudRouterArrayOutput {
 
 func (i CloudRouterArray) ToCloudRouterArrayOutputWithContext(ctx context.Context) CloudRouterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterArrayOutput)
-}
-
-func (i CloudRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]*CloudRouter] {
-	return pulumix.Output[[]*CloudRouter]{
-		OutputState: i.ToCloudRouterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CloudRouterMapInput is an input type that accepts CloudRouterMap and CloudRouterMapOutput values.
@@ -344,12 +331,6 @@ func (i CloudRouterMap) ToCloudRouterMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CloudRouterMapOutput)
 }
 
-func (i CloudRouterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudRouter] {
-	return pulumix.Output[map[string]*CloudRouter]{
-		OutputState: i.ToCloudRouterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudRouterOutput struct{ *pulumi.OutputState }
 
 func (CloudRouterOutput) ElementType() reflect.Type {
@@ -362,12 +343,6 @@ func (o CloudRouterOutput) ToCloudRouterOutput() CloudRouterOutput {
 
 func (o CloudRouterOutput) ToCloudRouterOutputWithContext(ctx context.Context) CloudRouterOutput {
 	return o
-}
-
-func (o CloudRouterOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudRouter] {
-	return pulumix.Output[*CloudRouter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customer account information that is associated with this Fabric Cloud Router
@@ -464,12 +439,6 @@ func (o CloudRouterArrayOutput) ToCloudRouterArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o CloudRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CloudRouter] {
-	return pulumix.Output[[]*CloudRouter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudRouterArrayOutput) Index(i pulumi.IntInput) CloudRouterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CloudRouter {
 		return vs[0].([]*CloudRouter)[vs[1].(int)]
@@ -488,12 +457,6 @@ func (o CloudRouterMapOutput) ToCloudRouterMapOutput() CloudRouterMapOutput {
 
 func (o CloudRouterMapOutput) ToCloudRouterMapOutputWithContext(ctx context.Context) CloudRouterMapOutput {
 	return o
-}
-
-func (o CloudRouterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CloudRouter] {
-	return pulumix.Output[map[string]*CloudRouter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudRouterMapOutput) MapIndex(k pulumi.StringInput) CloudRouterOutput {

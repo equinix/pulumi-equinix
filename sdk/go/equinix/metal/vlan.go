@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to allow users to manage Virtual Networks in their projects.
@@ -198,12 +197,6 @@ func (i *Vlan) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VlanOutput)
 }
 
-func (i *Vlan) ToOutput(ctx context.Context) pulumix.Output[*Vlan] {
-	return pulumix.Output[*Vlan]{
-		OutputState: i.ToVlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VlanArrayInput is an input type that accepts VlanArray and VlanArrayOutput values.
 // You can construct a concrete instance of `VlanArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i VlanArray) ToVlanArrayOutput() VlanArrayOutput {
 
 func (i VlanArray) ToVlanArrayOutputWithContext(ctx context.Context) VlanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VlanArrayOutput)
-}
-
-func (i VlanArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vlan] {
-	return pulumix.Output[[]*Vlan]{
-		OutputState: i.ToVlanArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VlanMapInput is an input type that accepts VlanMap and VlanMapOutput values.
@@ -260,12 +247,6 @@ func (i VlanMap) ToVlanMapOutputWithContext(ctx context.Context) VlanMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VlanMapOutput)
 }
 
-func (i VlanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vlan] {
-	return pulumix.Output[map[string]*Vlan]{
-		OutputState: i.ToVlanMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VlanOutput struct{ *pulumi.OutputState }
 
 func (VlanOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o VlanOutput) ToVlanOutput() VlanOutput {
 
 func (o VlanOutput) ToVlanOutputWithContext(ctx context.Context) VlanOutput {
 	return o
-}
-
-func (o VlanOutput) ToOutput(ctx context.Context) pulumix.Output[*Vlan] {
-	return pulumix.Output[*Vlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description string.
@@ -327,12 +302,6 @@ func (o VlanArrayOutput) ToVlanArrayOutputWithContext(ctx context.Context) VlanA
 	return o
 }
 
-func (o VlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vlan] {
-	return pulumix.Output[[]*Vlan]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VlanArrayOutput) Index(i pulumi.IntInput) VlanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vlan {
 		return vs[0].([]*Vlan)[vs[1].(int)]
@@ -351,12 +320,6 @@ func (o VlanMapOutput) ToVlanMapOutput() VlanMapOutput {
 
 func (o VlanMapOutput) ToVlanMapOutputWithContext(ctx context.Context) VlanMapOutput {
 	return o
-}
-
-func (o VlanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vlan] {
-	return pulumix.Output[map[string]*Vlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VlanMapOutput) MapIndex(k pulumi.StringInput) VlanOutput {
