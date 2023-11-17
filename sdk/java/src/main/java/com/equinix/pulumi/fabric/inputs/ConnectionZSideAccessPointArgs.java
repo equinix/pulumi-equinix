@@ -124,9 +124,17 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * Simplified Network
+     * 
+     */
     @Import(name="network")
     private @Nullable Output<ConnectionZSideAccessPointNetworkArgs> network;
 
+    /**
+     * @return Simplified Network
+     * 
+     */
     public Optional<Output<ConnectionZSideAccessPointNetworkArgs>> network() {
         return Optional.ofNullable(this.network);
     }
@@ -435,11 +443,23 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
             return location(Output.of(location));
         }
 
+        /**
+         * @param network Simplified Network
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(@Nullable Output<ConnectionZSideAccessPointNetworkArgs> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network Simplified Network
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(ConnectionZSideAccessPointNetworkArgs network) {
             return network(Output.of(network));
         }

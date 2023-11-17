@@ -1487,7 +1487,8 @@ type ConnectionASideAccessPoint struct {
 	LinkProtocol *ConnectionASideAccessPointLinkProtocol `pulumi:"linkProtocol"`
 	// Access point location
 	Location *ConnectionASideAccessPointLocation `pulumi:"location"`
-	Network  *ConnectionASideAccessPointNetwork  `pulumi:"network"`
+	// Simplified Network
+	Network *ConnectionASideAccessPointNetwork `pulumi:"network"`
 	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
 	PeeringType *string `pulumi:"peeringType"`
 	// Port access point information
@@ -1532,7 +1533,8 @@ type ConnectionASideAccessPointArgs struct {
 	LinkProtocol ConnectionASideAccessPointLinkProtocolPtrInput `pulumi:"linkProtocol"`
 	// Access point location
 	Location ConnectionASideAccessPointLocationPtrInput `pulumi:"location"`
-	Network  ConnectionASideAccessPointNetworkPtrInput  `pulumi:"network"`
+	// Simplified Network
+	Network ConnectionASideAccessPointNetworkPtrInput `pulumi:"network"`
 	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
 	PeeringType pulumi.StringPtrInput `pulumi:"peeringType"`
 	// Port access point information
@@ -1678,6 +1680,7 @@ func (o ConnectionASideAccessPointOutput) Location() ConnectionASideAccessPointL
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointLocation { return v.Location }).(ConnectionASideAccessPointLocationPtrOutput)
 }
 
+// Simplified Network
 func (o ConnectionASideAccessPointOutput) Network() ConnectionASideAccessPointNetworkPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *ConnectionASideAccessPointNetwork { return v.Network }).(ConnectionASideAccessPointNetworkPtrOutput)
 }
@@ -1819,6 +1822,7 @@ func (o ConnectionASideAccessPointPtrOutput) Location() ConnectionASideAccessPoi
 	}).(ConnectionASideAccessPointLocationPtrOutput)
 }
 
+// Simplified Network
 func (o ConnectionASideAccessPointPtrOutput) Network() ConnectionASideAccessPointNetworkPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPoint) *ConnectionASideAccessPointNetwork {
 		if v == nil {
@@ -2347,7 +2351,7 @@ func (o ConnectionASideAccessPointGatewayPtrOutput) Uuid() pulumi.StringPtrOutpu
 
 type ConnectionASideAccessPointInterface struct {
 	// id
-	Id *string `pulumi:"id"`
+	Id *int `pulumi:"id"`
 	// Interface type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -2367,7 +2371,7 @@ type ConnectionASideAccessPointInterfaceInput interface {
 
 type ConnectionASideAccessPointInterfaceArgs struct {
 	// id
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -2470,8 +2474,8 @@ func (o ConnectionASideAccessPointInterfaceOutput) ToOutput(ctx context.Context)
 }
 
 // id
-func (o ConnectionASideAccessPointInterfaceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPointInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ConnectionASideAccessPointInterfaceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPointInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // Interface type
@@ -2515,13 +2519,13 @@ func (o ConnectionASideAccessPointInterfacePtrOutput) Elem() ConnectionASideAcce
 }
 
 // id
-func (o ConnectionASideAccessPointInterfacePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) *string {
+func (o ConnectionASideAccessPointInterfacePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Id
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Interface type
@@ -4211,6 +4215,8 @@ func (o ConnectionASideAccessPointRoutingProtocolArrayOutput) Index(i pulumi.Int
 type ConnectionASideAccessPointVirtualDevice struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
+	// Port name
+	Name *string `pulumi:"name"`
 	// Interface type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -4231,6 +4237,8 @@ type ConnectionASideAccessPointVirtualDeviceInput interface {
 type ConnectionASideAccessPointVirtualDeviceArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Port name
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -4337,6 +4345,11 @@ func (o ConnectionASideAccessPointVirtualDeviceOutput) Href() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
+// Port name
+func (o ConnectionASideAccessPointVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // Interface type
 func (o ConnectionASideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -4384,6 +4397,16 @@ func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPt
 			return nil
 		}
 		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port name
+func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6715,7 +6738,8 @@ type ConnectionZSideAccessPoint struct {
 	LinkProtocol *ConnectionZSideAccessPointLinkProtocol `pulumi:"linkProtocol"`
 	// Access point location
 	Location *ConnectionZSideAccessPointLocation `pulumi:"location"`
-	Network  *ConnectionZSideAccessPointNetwork  `pulumi:"network"`
+	// Simplified Network
+	Network *ConnectionZSideAccessPointNetwork `pulumi:"network"`
 	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
 	PeeringType *string `pulumi:"peeringType"`
 	// Port access point information
@@ -6760,7 +6784,8 @@ type ConnectionZSideAccessPointArgs struct {
 	LinkProtocol ConnectionZSideAccessPointLinkProtocolPtrInput `pulumi:"linkProtocol"`
 	// Access point location
 	Location ConnectionZSideAccessPointLocationPtrInput `pulumi:"location"`
-	Network  ConnectionZSideAccessPointNetworkPtrInput  `pulumi:"network"`
+	// Simplified Network
+	Network ConnectionZSideAccessPointNetworkPtrInput `pulumi:"network"`
 	// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
 	PeeringType pulumi.StringPtrInput `pulumi:"peeringType"`
 	// Port access point information
@@ -6906,6 +6931,7 @@ func (o ConnectionZSideAccessPointOutput) Location() ConnectionZSideAccessPointL
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointLocation { return v.Location }).(ConnectionZSideAccessPointLocationPtrOutput)
 }
 
+// Simplified Network
 func (o ConnectionZSideAccessPointOutput) Network() ConnectionZSideAccessPointNetworkPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *ConnectionZSideAccessPointNetwork { return v.Network }).(ConnectionZSideAccessPointNetworkPtrOutput)
 }
@@ -7047,6 +7073,7 @@ func (o ConnectionZSideAccessPointPtrOutput) Location() ConnectionZSideAccessPoi
 	}).(ConnectionZSideAccessPointLocationPtrOutput)
 }
 
+// Simplified Network
 func (o ConnectionZSideAccessPointPtrOutput) Network() ConnectionZSideAccessPointNetworkPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *ConnectionZSideAccessPointNetwork {
 		if v == nil {
@@ -7575,7 +7602,7 @@ func (o ConnectionZSideAccessPointGatewayPtrOutput) Uuid() pulumi.StringPtrOutpu
 
 type ConnectionZSideAccessPointInterface struct {
 	// id
-	Id *string `pulumi:"id"`
+	Id *int `pulumi:"id"`
 	// Interface type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -7595,7 +7622,7 @@ type ConnectionZSideAccessPointInterfaceInput interface {
 
 type ConnectionZSideAccessPointInterfaceArgs struct {
 	// id
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id pulumi.IntPtrInput `pulumi:"id"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -7698,8 +7725,8 @@ func (o ConnectionZSideAccessPointInterfaceOutput) ToOutput(ctx context.Context)
 }
 
 // id
-func (o ConnectionZSideAccessPointInterfaceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPointInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ConnectionZSideAccessPointInterfaceOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPointInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 // Interface type
@@ -7743,13 +7770,13 @@ func (o ConnectionZSideAccessPointInterfacePtrOutput) Elem() ConnectionZSideAcce
 }
 
 // id
-func (o ConnectionZSideAccessPointInterfacePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) *string {
+func (o ConnectionZSideAccessPointInterfacePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Id
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Interface type
@@ -9439,6 +9466,8 @@ func (o ConnectionZSideAccessPointRoutingProtocolArrayOutput) Index(i pulumi.Int
 type ConnectionZSideAccessPointVirtualDevice struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
+	// Port name
+	Name *string `pulumi:"name"`
 	// Interface type
 	Type *string `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -9459,6 +9488,8 @@ type ConnectionZSideAccessPointVirtualDeviceInput interface {
 type ConnectionZSideAccessPointVirtualDeviceArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
+	// Port name
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Equinix-assigned interface identifier
@@ -9565,6 +9596,11 @@ func (o ConnectionZSideAccessPointVirtualDeviceOutput) Href() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
+// Port name
+func (o ConnectionZSideAccessPointVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // Interface type
 func (o ConnectionZSideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -9612,6 +9648,16 @@ func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPt
 			return nil
 		}
 		return v.Href
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port name
+func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 

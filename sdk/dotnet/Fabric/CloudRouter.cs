@@ -68,10 +68,28 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.CloudRouterAccount?> Account { get; private set; } = null!;
 
         /// <summary>
+        /// Access point used and maximum number of IPv4 BGP routes
+        /// </summary>
+        [Output("bgpIpv4RoutesCount")]
+        public Output<int> BgpIpv4RoutesCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Access point used and maximum number of IPv6 BGP routes
+        /// </summary>
+        [Output("bgpIpv6RoutesCount")]
+        public Output<int> BgpIpv6RoutesCount { get; private set; } = null!;
+
+        /// <summary>
         /// Captures Fabric Cloud Router lifecycle change information
         /// </summary>
         [Output("changeLogs")]
         public Output<ImmutableArray<Outputs.CloudRouterChangeLog>> ChangeLogs { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of connections associated with this Access point
+        /// </summary>
+        [Output("connectionsCount")]
+        public Output<int> ConnectionsCount { get; private set; } = null!;
 
         /// <summary>
         /// Customer-provided Fabric Cloud Router description
@@ -260,6 +278,18 @@ namespace Pulumi.Equinix.Fabric
         [Input("account")]
         public Input<Inputs.CloudRouterAccountGetArgs>? Account { get; set; }
 
+        /// <summary>
+        /// Access point used and maximum number of IPv4 BGP routes
+        /// </summary>
+        [Input("bgpIpv4RoutesCount")]
+        public Input<int>? BgpIpv4RoutesCount { get; set; }
+
+        /// <summary>
+        /// Access point used and maximum number of IPv6 BGP routes
+        /// </summary>
+        [Input("bgpIpv6RoutesCount")]
+        public Input<int>? BgpIpv6RoutesCount { get; set; }
+
         [Input("changeLogs")]
         private InputList<Inputs.CloudRouterChangeLogGetArgs>? _changeLogs;
 
@@ -271,6 +301,12 @@ namespace Pulumi.Equinix.Fabric
             get => _changeLogs ?? (_changeLogs = new InputList<Inputs.CloudRouterChangeLogGetArgs>());
             set => _changeLogs = value;
         }
+
+        /// <summary>
+        /// Number of connections associated with this Access point
+        /// </summary>
+        [Input("connectionsCount")]
+        public Input<int>? ConnectionsCount { get; set; }
 
         /// <summary>
         /// Customer-provided Fabric Cloud Router description

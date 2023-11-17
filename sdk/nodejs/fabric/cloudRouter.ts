@@ -70,9 +70,21 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public readonly account!: pulumi.Output<outputs.fabric.CloudRouterAccount | undefined>;
     /**
+     * Access point used and maximum number of IPv4 BGP routes
+     */
+    public /*out*/ readonly bgpIpv4RoutesCount!: pulumi.Output<number>;
+    /**
+     * Access point used and maximum number of IPv6 BGP routes
+     */
+    public /*out*/ readonly bgpIpv6RoutesCount!: pulumi.Output<number>;
+    /**
      * Captures Fabric Cloud Router lifecycle change information
      */
     public /*out*/ readonly changeLogs!: pulumi.Output<outputs.fabric.CloudRouterChangeLog[]>;
+    /**
+     * Number of connections associated with this Access point
+     */
+    public /*out*/ readonly connectionsCount!: pulumi.Output<number>;
     /**
      * Customer-provided Fabric Cloud Router description
      */
@@ -132,7 +144,10 @@ export class CloudRouter extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CloudRouterState | undefined;
             resourceInputs["account"] = state ? state.account : undefined;
+            resourceInputs["bgpIpv4RoutesCount"] = state ? state.bgpIpv4RoutesCount : undefined;
+            resourceInputs["bgpIpv6RoutesCount"] = state ? state.bgpIpv6RoutesCount : undefined;
             resourceInputs["changeLogs"] = state ? state.changeLogs : undefined;
+            resourceInputs["connectionsCount"] = state ? state.connectionsCount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["equinixAsn"] = state ? state.equinixAsn : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
@@ -167,7 +182,10 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["package"] = args ? args.package : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["bgpIpv4RoutesCount"] = undefined /*out*/;
+            resourceInputs["bgpIpv6RoutesCount"] = undefined /*out*/;
             resourceInputs["changeLogs"] = undefined /*out*/;
+            resourceInputs["connectionsCount"] = undefined /*out*/;
             resourceInputs["equinixAsn"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -186,9 +204,21 @@ export interface CloudRouterState {
      */
     account?: pulumi.Input<inputs.fabric.CloudRouterAccount>;
     /**
+     * Access point used and maximum number of IPv4 BGP routes
+     */
+    bgpIpv4RoutesCount?: pulumi.Input<number>;
+    /**
+     * Access point used and maximum number of IPv6 BGP routes
+     */
+    bgpIpv6RoutesCount?: pulumi.Input<number>;
+    /**
      * Captures Fabric Cloud Router lifecycle change information
      */
     changeLogs?: pulumi.Input<pulumi.Input<inputs.fabric.CloudRouterChangeLog>[]>;
+    /**
+     * Number of connections associated with this Access point
+     */
+    connectionsCount?: pulumi.Input<number>;
     /**
      * Customer-provided Fabric Cloud Router description
      */

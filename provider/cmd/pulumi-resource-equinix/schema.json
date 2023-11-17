@@ -344,7 +344,8 @@
                     "description": "Access point location\n"
                 },
                 "network": {
-                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointNetwork:ConnectionASideAccessPointNetwork"
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointNetwork:ConnectionASideAccessPointNetwork",
+                    "description": "Simplified Network\n"
                 },
                 "peeringType": {
                     "type": "string",
@@ -476,7 +477,7 @@
         "equinix:fabric/ConnectionASideAccessPointInterface:ConnectionASideAccessPointInterface": {
             "properties": {
                 "id": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "id\n"
                 },
                 "type": {
@@ -766,6 +767,10 @@
                 "href": {
                     "type": "string",
                     "description": "Unique Resource Identifier\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Port name\n"
                 },
                 "type": {
                     "type": "string",
@@ -1168,7 +1173,8 @@
                     "description": "Access point location\n"
                 },
                 "network": {
-                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointNetwork:ConnectionZSideAccessPointNetwork"
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointNetwork:ConnectionZSideAccessPointNetwork",
+                    "description": "Simplified Network\n"
                 },
                 "peeringType": {
                     "type": "string",
@@ -1300,7 +1306,7 @@
         "equinix:fabric/ConnectionZSideAccessPointInterface:ConnectionZSideAccessPointInterface": {
             "properties": {
                 "id": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "id\n"
                 },
                 "type": {
@@ -1590,6 +1596,10 @@
                 "href": {
                     "type": "string",
                     "description": "Unique Resource Identifier\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Port name\n"
                 },
                 "type": {
                     "type": "string",
@@ -9664,12 +9674,24 @@
                     "$ref": "#/types/equinix:fabric/CloudRouterAccount:CloudRouterAccount",
                     "description": "Customer account information that is associated with this Fabric Cloud Router\n"
                 },
+                "bgpIpv4RoutesCount": {
+                    "type": "integer",
+                    "description": "Access point used and maximum number of IPv4 BGP routes\n"
+                },
+                "bgpIpv6RoutesCount": {
+                    "type": "integer",
+                    "description": "Access point used and maximum number of IPv6 BGP routes\n"
+                },
                 "changeLogs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/equinix:fabric/CloudRouterChangeLog:CloudRouterChangeLog"
                     },
                     "description": "Captures Fabric Cloud Router lifecycle change information\n"
+                },
+                "connectionsCount": {
+                    "type": "integer",
+                    "description": "Number of connections associated with this Access point\n"
                 },
                 "description": {
                     "type": "string",
@@ -9720,7 +9742,10 @@
                 }
             },
             "required": [
+                "bgpIpv4RoutesCount",
+                "bgpIpv6RoutesCount",
                 "changeLogs",
+                "connectionsCount",
                 "equinixAsn",
                 "href",
                 "location",
@@ -9784,12 +9809,24 @@
                         "$ref": "#/types/equinix:fabric/CloudRouterAccount:CloudRouterAccount",
                         "description": "Customer account information that is associated with this Fabric Cloud Router\n"
                     },
+                    "bgpIpv4RoutesCount": {
+                        "type": "integer",
+                        "description": "Access point used and maximum number of IPv4 BGP routes\n"
+                    },
+                    "bgpIpv6RoutesCount": {
+                        "type": "integer",
+                        "description": "Access point used and maximum number of IPv6 BGP routes\n"
+                    },
                     "changeLogs": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/equinix:fabric/CloudRouterChangeLog:CloudRouterChangeLog"
                         },
                         "description": "Captures Fabric Cloud Router lifecycle change information\n"
+                    },
+                    "connectionsCount": {
+                        "type": "integer",
+                        "description": "Number of connections associated with this Access point\n"
                     },
                     "description": {
                         "type": "string",

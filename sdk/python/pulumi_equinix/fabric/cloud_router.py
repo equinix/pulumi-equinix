@@ -165,7 +165,10 @@ class CloudRouterArgs:
 class _CloudRouterState:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
+                 bgp_ipv4_routes_count: Optional[pulumi.Input[int]] = None,
+                 bgp_ipv6_routes_count: Optional[pulumi.Input[int]] = None,
                  change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]] = None,
+                 connections_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  equinix_asn: Optional[pulumi.Input[int]] = None,
                  href: Optional[pulumi.Input[str]] = None,
@@ -180,7 +183,10 @@ class _CloudRouterState:
         """
         Input properties used for looking up and filtering CloudRouter resources.
         :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
+        :param pulumi.Input[int] bgp_ipv4_routes_count: Access point used and maximum number of IPv4 BGP routes
+        :param pulumi.Input[int] bgp_ipv6_routes_count: Access point used and maximum number of IPv6 BGP routes
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]] change_logs: Captures Fabric Cloud Router lifecycle change information
+        :param pulumi.Input[int] connections_count: Number of connections associated with this Access point
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Unique Resource URL
@@ -195,8 +201,14 @@ class _CloudRouterState:
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
+        if bgp_ipv4_routes_count is not None:
+            pulumi.set(__self__, "bgp_ipv4_routes_count", bgp_ipv4_routes_count)
+        if bgp_ipv6_routes_count is not None:
+            pulumi.set(__self__, "bgp_ipv6_routes_count", bgp_ipv6_routes_count)
         if change_logs is not None:
             pulumi.set(__self__, "change_logs", change_logs)
+        if connections_count is not None:
+            pulumi.set(__self__, "connections_count", connections_count)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if equinix_asn is not None:
@@ -233,6 +245,30 @@ class _CloudRouterState:
         pulumi.set(self, "account", value)
 
     @property
+    @pulumi.getter(name="bgpIpv4RoutesCount")
+    def bgp_ipv4_routes_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Access point used and maximum number of IPv4 BGP routes
+        """
+        return pulumi.get(self, "bgp_ipv4_routes_count")
+
+    @bgp_ipv4_routes_count.setter
+    def bgp_ipv4_routes_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bgp_ipv4_routes_count", value)
+
+    @property
+    @pulumi.getter(name="bgpIpv6RoutesCount")
+    def bgp_ipv6_routes_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Access point used and maximum number of IPv6 BGP routes
+        """
+        return pulumi.get(self, "bgp_ipv6_routes_count")
+
+    @bgp_ipv6_routes_count.setter
+    def bgp_ipv6_routes_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bgp_ipv6_routes_count", value)
+
+    @property
     @pulumi.getter(name="changeLogs")
     def change_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]]:
         """
@@ -243,6 +279,18 @@ class _CloudRouterState:
     @change_logs.setter
     def change_logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]]):
         pulumi.set(self, "change_logs", value)
+
+    @property
+    @pulumi.getter(name="connectionsCount")
+    def connections_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of connections associated with this Access point
+        """
+        return pulumi.get(self, "connections_count")
+
+    @connections_count.setter
+    def connections_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connections_count", value)
 
     @property
     @pulumi.getter
@@ -520,7 +568,10 @@ class CloudRouter(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["bgp_ipv4_routes_count"] = None
+            __props__.__dict__["bgp_ipv6_routes_count"] = None
             __props__.__dict__["change_logs"] = None
+            __props__.__dict__["connections_count"] = None
             __props__.__dict__["equinix_asn"] = None
             __props__.__dict__["href"] = None
             __props__.__dict__["state"] = None
@@ -535,7 +586,10 @@ class CloudRouter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account: Optional[pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']]] = None,
+            bgp_ipv4_routes_count: Optional[pulumi.Input[int]] = None,
+            bgp_ipv6_routes_count: Optional[pulumi.Input[int]] = None,
             change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterChangeLogArgs']]]]] = None,
+            connections_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             equinix_asn: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
@@ -555,7 +609,10 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']] account: Customer account information that is associated with this Fabric Cloud Router
+        :param pulumi.Input[int] bgp_ipv4_routes_count: Access point used and maximum number of IPv4 BGP routes
+        :param pulumi.Input[int] bgp_ipv6_routes_count: Access point used and maximum number of IPv6 BGP routes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterChangeLogArgs']]]] change_logs: Captures Fabric Cloud Router lifecycle change information
+        :param pulumi.Input[int] connections_count: Number of connections associated with this Access point
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Unique Resource URL
@@ -573,7 +630,10 @@ class CloudRouter(pulumi.CustomResource):
         __props__ = _CloudRouterState.__new__(_CloudRouterState)
 
         __props__.__dict__["account"] = account
+        __props__.__dict__["bgp_ipv4_routes_count"] = bgp_ipv4_routes_count
+        __props__.__dict__["bgp_ipv6_routes_count"] = bgp_ipv6_routes_count
         __props__.__dict__["change_logs"] = change_logs
+        __props__.__dict__["connections_count"] = connections_count
         __props__.__dict__["description"] = description
         __props__.__dict__["equinix_asn"] = equinix_asn
         __props__.__dict__["href"] = href
@@ -596,12 +656,36 @@ class CloudRouter(pulumi.CustomResource):
         return pulumi.get(self, "account")
 
     @property
+    @pulumi.getter(name="bgpIpv4RoutesCount")
+    def bgp_ipv4_routes_count(self) -> pulumi.Output[int]:
+        """
+        Access point used and maximum number of IPv4 BGP routes
+        """
+        return pulumi.get(self, "bgp_ipv4_routes_count")
+
+    @property
+    @pulumi.getter(name="bgpIpv6RoutesCount")
+    def bgp_ipv6_routes_count(self) -> pulumi.Output[int]:
+        """
+        Access point used and maximum number of IPv6 BGP routes
+        """
+        return pulumi.get(self, "bgp_ipv6_routes_count")
+
+    @property
     @pulumi.getter(name="changeLogs")
     def change_logs(self) -> pulumi.Output[Sequence['outputs.CloudRouterChangeLog']]:
         """
         Captures Fabric Cloud Router lifecycle change information
         """
         return pulumi.get(self, "change_logs")
+
+    @property
+    @pulumi.getter(name="connectionsCount")
+    def connections_count(self) -> pulumi.Output[int]:
+        """
+        Number of connections associated with this Access point
+        """
+        return pulumi.get(self, "connections_count")
 
     @property
     @pulumi.getter

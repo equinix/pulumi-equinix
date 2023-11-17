@@ -17,6 +17,11 @@ public final class ConnectionZSideAccessPointVirtualDevice {
      */
     private @Nullable String href;
     /**
+     * @return Port name
+     * 
+     */
+    private @Nullable String name;
+    /**
      * @return Interface type
      * 
      */
@@ -34,6 +39,13 @@ public final class ConnectionZSideAccessPointVirtualDevice {
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
+    }
+    /**
+     * @return Port name
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Interface type
@@ -60,12 +72,14 @@ public final class ConnectionZSideAccessPointVirtualDevice {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String href;
+        private @Nullable String name;
         private @Nullable String type;
         private @Nullable String uuid;
         public Builder() {}
         public Builder(ConnectionZSideAccessPointVirtualDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.href = defaults.href;
+    	      this.name = defaults.name;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
         }
@@ -73,6 +87,11 @@ public final class ConnectionZSideAccessPointVirtualDevice {
         @CustomType.Setter
         public Builder href(@Nullable String href) {
             this.href = href;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -88,6 +107,7 @@ public final class ConnectionZSideAccessPointVirtualDevice {
         public ConnectionZSideAccessPointVirtualDevice build() {
             final var _resultValue = new ConnectionZSideAccessPointVirtualDevice();
             _resultValue.href = href;
+            _resultValue.name = name;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
             return _resultValue;

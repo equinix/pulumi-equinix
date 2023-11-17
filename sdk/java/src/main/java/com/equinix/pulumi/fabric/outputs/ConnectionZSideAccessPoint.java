@@ -55,6 +55,10 @@ public final class ConnectionZSideAccessPoint {
      * 
      */
     private @Nullable ConnectionZSideAccessPointLocation location;
+    /**
+     * @return Simplified Network
+     * 
+     */
     private @Nullable ConnectionZSideAccessPointNetwork network;
     /**
      * @return Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
@@ -147,6 +151,10 @@ public final class ConnectionZSideAccessPoint {
     public Optional<ConnectionZSideAccessPointLocation> location() {
         return Optional.ofNullable(this.location);
     }
+    /**
+     * @return Simplified Network
+     * 
+     */
     public Optional<ConnectionZSideAccessPointNetwork> network() {
         return Optional.ofNullable(this.network);
     }

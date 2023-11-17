@@ -94,6 +94,34 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.account);
     }
     /**
+     * Access point used and maximum number of IPv4 BGP routes
+     * 
+     */
+    @Export(name="bgpIpv4RoutesCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> bgpIpv4RoutesCount;
+
+    /**
+     * @return Access point used and maximum number of IPv4 BGP routes
+     * 
+     */
+    public Output<Integer> bgpIpv4RoutesCount() {
+        return this.bgpIpv4RoutesCount;
+    }
+    /**
+     * Access point used and maximum number of IPv6 BGP routes
+     * 
+     */
+    @Export(name="bgpIpv6RoutesCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> bgpIpv6RoutesCount;
+
+    /**
+     * @return Access point used and maximum number of IPv6 BGP routes
+     * 
+     */
+    public Output<Integer> bgpIpv6RoutesCount() {
+        return this.bgpIpv6RoutesCount;
+    }
+    /**
      * Captures Fabric Cloud Router lifecycle change information
      * 
      */
@@ -106,6 +134,20 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<List<CloudRouterChangeLog>> changeLogs() {
         return this.changeLogs;
+    }
+    /**
+     * Number of connections associated with this Access point
+     * 
+     */
+    @Export(name="connectionsCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> connectionsCount;
+
+    /**
+     * @return Number of connections associated with this Access point
+     * 
+     */
+    public Output<Integer> connectionsCount() {
+        return this.connectionsCount;
     }
     /**
      * Customer-provided Fabric Cloud Router description
