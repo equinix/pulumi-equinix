@@ -109,7 +109,7 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNETVERSION }}
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHONVERSION }}
       - name: Setup Java
