@@ -100,7 +100,7 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v2.0.0
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODEVERSION }}
           registry-url: ${{env.NPM_REGISTRY_URL}}
