@@ -12,7 +12,7 @@ require (
 	github.com/equinix/terraform-provider-equinix v1.20.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.0
 	github.com/pulumi/pulumi/pkg/v3 v3.91.1
-	github.com/pulumi/pulumi/sdk/v3 v3.91.1
+	github.com/pulumi/pulumi/sdk/v3 v3.94.1
 )
 
 require (
