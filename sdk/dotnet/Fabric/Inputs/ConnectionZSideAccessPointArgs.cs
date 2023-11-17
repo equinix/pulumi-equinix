@@ -45,6 +45,9 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("location")]
         public Input<Inputs.ConnectionZSideAccessPointLocationArgs>? Location { get; set; }
 
+        /// <summary>
+        /// Simplified Network
+        /// </summary>
         [Input("network")]
         public Input<Inputs.ConnectionZSideAccessPointNetworkArgs>? Network { get; set; }
 

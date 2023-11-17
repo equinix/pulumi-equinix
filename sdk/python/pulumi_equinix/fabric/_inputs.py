@@ -608,6 +608,7 @@ class ConnectionASideAccessPointArgs:
         :param pulumi.Input['ConnectionASideAccessPointInterfaceArgs'] interface: Virtual device interface
         :param pulumi.Input['ConnectionASideAccessPointLinkProtocolArgs'] link_protocol: Connection link protocol
         :param pulumi.Input['ConnectionASideAccessPointLocationArgs'] location: Access point location
+        :param pulumi.Input['ConnectionASideAccessPointNetworkArgs'] network: Simplified Network
         :param pulumi.Input[Union[str, 'AccessPointPeeringType']] peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param pulumi.Input['ConnectionASideAccessPointPortArgs'] port: Port access point information
         :param pulumi.Input['ConnectionASideAccessPointProfileArgs'] profile: Service Profile
@@ -729,6 +730,9 @@ class ConnectionASideAccessPointArgs:
     @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input['ConnectionASideAccessPointNetworkArgs']]:
+        """
+        Simplified Network
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -975,11 +979,11 @@ class ConnectionASideAccessPointGatewayArgs:
 @pulumi.input_type
 class ConnectionASideAccessPointInterfaceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: id
+        :param pulumi.Input[int] id: id
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
@@ -992,14 +996,14 @@ class ConnectionASideAccessPointInterfaceArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> Optional[pulumi.Input[int]]:
         """
         id
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
 
     @property
@@ -1540,15 +1544,19 @@ class ConnectionASideAccessPointRoutingProtocolArgs:
 class ConnectionASideAccessPointVirtualDeviceArgs:
     def __init__(__self__, *,
                  href: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[str] name: Port name
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if uuid is not None:
@@ -1565,6 +1573,18 @@ class ConnectionASideAccessPointVirtualDeviceArgs:
     @href.setter
     def href(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -2374,6 +2394,7 @@ class ConnectionZSideAccessPointArgs:
         :param pulumi.Input['ConnectionZSideAccessPointInterfaceArgs'] interface: Virtual device interface
         :param pulumi.Input['ConnectionZSideAccessPointLinkProtocolArgs'] link_protocol: Connection link protocol
         :param pulumi.Input['ConnectionZSideAccessPointLocationArgs'] location: Access point location
+        :param pulumi.Input['ConnectionZSideAccessPointNetworkArgs'] network: Simplified Network
         :param pulumi.Input[Union[str, 'AccessPointPeeringType']] peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param pulumi.Input['ConnectionZSideAccessPointPortArgs'] port: Port access point information
         :param pulumi.Input['ConnectionZSideAccessPointProfileArgs'] profile: Service Profile
@@ -2495,6 +2516,9 @@ class ConnectionZSideAccessPointArgs:
     @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input['ConnectionZSideAccessPointNetworkArgs']]:
+        """
+        Simplified Network
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -2741,11 +2765,11 @@ class ConnectionZSideAccessPointGatewayArgs:
 @pulumi.input_type
 class ConnectionZSideAccessPointInterfaceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: id
+        :param pulumi.Input[int] id: id
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
@@ -2758,14 +2782,14 @@ class ConnectionZSideAccessPointInterfaceArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> Optional[pulumi.Input[int]]:
         """
         id
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "id", value)
 
     @property
@@ -3306,15 +3330,19 @@ class ConnectionZSideAccessPointRoutingProtocolArgs:
 class ConnectionZSideAccessPointVirtualDeviceArgs:
     def __init__(__self__, *,
                  href: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[str] name: Port name
         :param pulumi.Input[str] type: Interface type
         :param pulumi.Input[str] uuid: Equinix-assigned interface identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if uuid is not None:
@@ -3331,6 +3359,18 @@ class ConnectionZSideAccessPointVirtualDeviceArgs:
     @href.setter
     def href(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "href", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter

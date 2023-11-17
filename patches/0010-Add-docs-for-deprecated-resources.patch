@@ -1,0 +1,81 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tim Hogarty <thogarty@equinix.com>
+Date: Fri, 3 Nov 2023 12:55:28 -0700
+Subject: [PATCH 10/30] Add docs for deprecated resources
+
+
+diff --git a/docs/data-sources/equinix_ecx_l2_sellerprofile.md b/docs/data-sources/equinix_ecx_l2_sellerprofile.md
+index d5f2368..2ebbb5e 100644
+--- a/docs/data-sources/equinix_ecx_l2_sellerprofile.md
++++ b/docs/data-sources/equinix_ecx_l2_sellerprofile.md
+@@ -2,6 +2,10 @@
+ subcategory: "Fabric"
+ ---
+ 
++# DEPRECATED RESOURCE
++
++End of Life will be June 30th, 2024. Use equinix_fabric_service_profile instead.
++
+ # equinix_ecx_l2_sellerprofile (Data Source)
+ 
+ Use this data source to get details of Equinix Fabric layer 2 seller profile with a given name
+diff --git a/docs/data-sources/equinix_ecx_l2_sellerprofiles.md b/docs/data-sources/equinix_ecx_l2_sellerprofiles.md
+index b6d2c9b..57a183c 100644
+--- a/docs/data-sources/equinix_ecx_l2_sellerprofiles.md
++++ b/docs/data-sources/equinix_ecx_l2_sellerprofiles.md
+@@ -2,6 +2,10 @@
+ subcategory: "Fabric"
+ ---
+ 
++# DEPRECATED RESOURCE
++
++End of Life will be June 30th, 2024. Use equinix_fabric_service_profiles instead.
++
+ # equinix_ecx_l2_sellerprofiles (Data Source)
+ 
+ Use this data source to get details of available Equinix Fabric layer 2 seller profiles. It is
+diff --git a/docs/data-sources/equinix_ecx_port.md b/docs/data-sources/equinix_ecx_port.md
+index df92bb3..c17bfe8 100644
+--- a/docs/data-sources/equinix_ecx_port.md
++++ b/docs/data-sources/equinix_ecx_port.md
+@@ -2,6 +2,10 @@
+ subcategory: "Fabric"
+ ---
+ 
++# DEPRECATED RESOURCE
++
++End of Life will be June 30th, 2024. Use equinix_fabric_port and equinix_fabric_ports instead.
++
+ # equinix_ecx_port (Data Source)
+ 
+ Use this data source to get details of Equinix Fabric port with a given name.
+diff --git a/docs/resources/equinix_ecx_l2_connection.md b/docs/resources/equinix_ecx_l2_connection.md
+index 09a2af9..107e0f9 100644
+--- a/docs/resources/equinix_ecx_l2_connection.md
++++ b/docs/resources/equinix_ecx_l2_connection.md
+@@ -2,6 +2,10 @@
+ subcategory: "Fabric"
+ ---
+ 
++# DEPRECATED RESOURCE
++
++End of Life will be June 30th, 2024. Use equinix_fabric_connection instead.
++
+ # equinix_ecx_l2_connection (Resource)
+ 
+ Resource `equinix_ecx_l2_connection` allows creation and management of Equinix Fabric
+diff --git a/docs/resources/equinix_ecx_l2_serviceprofile.md b/docs/resources/equinix_ecx_l2_serviceprofile.md
+index d82cadc..19589e9 100644
+--- a/docs/resources/equinix_ecx_l2_serviceprofile.md
++++ b/docs/resources/equinix_ecx_l2_serviceprofile.md
+@@ -2,6 +2,10 @@
+ subcategory: "Fabric"
+ ---
+ 
++# DEPRECATED RESOURCE
++
++End of Life will be June 30th, 2024. Use equinix_fabric_service_profile instead.
++
+ # equinix_ecx_l2_serviceprofile (Resource)
+ 
+ Resource `equinix_ecx_l2_serviceprofile` is used to manage layer 2 service profiles

@@ -34,6 +34,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Access point location
         /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointLocation? Location;
+        /// <summary>
+        /// Simplified Network
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointNetwork? Network;
         /// <summary>
         /// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL

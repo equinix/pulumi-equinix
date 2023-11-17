@@ -4,6 +4,7 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public final class ConnectionZSideAccessPointInterface {
      * @return id
      * 
      */
-    private @Nullable String id;
+    private @Nullable Integer id;
     /**
      * @return Interface type
      * 
@@ -32,7 +33,7 @@ public final class ConnectionZSideAccessPointInterface {
      * @return id
      * 
      */
-    public Optional<String> id() {
+    public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
     /**
@@ -59,7 +60,7 @@ public final class ConnectionZSideAccessPointInterface {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
+        private @Nullable Integer id;
         private @Nullable String type;
         private @Nullable String uuid;
         public Builder() {}
@@ -71,7 +72,7 @@ public final class ConnectionZSideAccessPointInterface {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
+        public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }

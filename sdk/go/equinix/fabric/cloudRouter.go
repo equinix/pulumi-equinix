@@ -69,8 +69,14 @@ type CloudRouter struct {
 
 	// Customer account information that is associated with this Fabric Cloud Router
 	Account CloudRouterAccountPtrOutput `pulumi:"account"`
+	// Access point used and maximum number of IPv4 BGP routes
+	BgpIpv4RoutesCount pulumi.IntOutput `pulumi:"bgpIpv4RoutesCount"`
+	// Access point used and maximum number of IPv6 BGP routes
+	BgpIpv6RoutesCount pulumi.IntOutput `pulumi:"bgpIpv6RoutesCount"`
 	// Captures Fabric Cloud Router lifecycle change information
 	ChangeLogs CloudRouterChangeLogArrayOutput `pulumi:"changeLogs"`
+	// Number of connections associated with this Access point
+	ConnectionsCount pulumi.IntOutput `pulumi:"connectionsCount"`
 	// Customer-provided Fabric Cloud Router description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Equinix ASN
@@ -139,8 +145,14 @@ func GetCloudRouter(ctx *pulumi.Context,
 type cloudRouterState struct {
 	// Customer account information that is associated with this Fabric Cloud Router
 	Account *CloudRouterAccount `pulumi:"account"`
+	// Access point used and maximum number of IPv4 BGP routes
+	BgpIpv4RoutesCount *int `pulumi:"bgpIpv4RoutesCount"`
+	// Access point used and maximum number of IPv6 BGP routes
+	BgpIpv6RoutesCount *int `pulumi:"bgpIpv6RoutesCount"`
 	// Captures Fabric Cloud Router lifecycle change information
 	ChangeLogs []CloudRouterChangeLog `pulumi:"changeLogs"`
+	// Number of connections associated with this Access point
+	ConnectionsCount *int `pulumi:"connectionsCount"`
 	// Customer-provided Fabric Cloud Router description
 	Description *string `pulumi:"description"`
 	// Equinix ASN
@@ -168,8 +180,14 @@ type cloudRouterState struct {
 type CloudRouterState struct {
 	// Customer account information that is associated with this Fabric Cloud Router
 	Account CloudRouterAccountPtrInput
+	// Access point used and maximum number of IPv4 BGP routes
+	BgpIpv4RoutesCount pulumi.IntPtrInput
+	// Access point used and maximum number of IPv6 BGP routes
+	BgpIpv6RoutesCount pulumi.IntPtrInput
 	// Captures Fabric Cloud Router lifecycle change information
 	ChangeLogs CloudRouterChangeLogArrayInput
+	// Number of connections associated with this Access point
+	ConnectionsCount pulumi.IntPtrInput
 	// Customer-provided Fabric Cloud Router description
 	Description pulumi.StringPtrInput
 	// Equinix ASN
@@ -357,9 +375,24 @@ func (o CloudRouterOutput) Account() CloudRouterAccountPtrOutput {
 	return o.ApplyT(func(v *CloudRouter) CloudRouterAccountPtrOutput { return v.Account }).(CloudRouterAccountPtrOutput)
 }
 
+// Access point used and maximum number of IPv4 BGP routes
+func (o CloudRouterOutput) BgpIpv4RoutesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudRouter) pulumi.IntOutput { return v.BgpIpv4RoutesCount }).(pulumi.IntOutput)
+}
+
+// Access point used and maximum number of IPv6 BGP routes
+func (o CloudRouterOutput) BgpIpv6RoutesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudRouter) pulumi.IntOutput { return v.BgpIpv6RoutesCount }).(pulumi.IntOutput)
+}
+
 // Captures Fabric Cloud Router lifecycle change information
 func (o CloudRouterOutput) ChangeLogs() CloudRouterChangeLogArrayOutput {
 	return o.ApplyT(func(v *CloudRouter) CloudRouterChangeLogArrayOutput { return v.ChangeLogs }).(CloudRouterChangeLogArrayOutput)
+}
+
+// Number of connections associated with this Access point
+func (o CloudRouterOutput) ConnectionsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *CloudRouter) pulumi.IntOutput { return v.ConnectionsCount }).(pulumi.IntOutput)
 }
 
 // Customer-provided Fabric Cloud Router description

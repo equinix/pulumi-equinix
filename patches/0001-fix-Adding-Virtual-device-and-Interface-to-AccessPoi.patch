@@ -1,0 +1,73 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Mon, 30 Oct 2023 09:23:17 -0700
+Subject: [PATCH 01/30] fix: Adding Virtual device and Interface to AccessPoint
+ mapper function
+
+
+diff --git a/equinix/fabric_mapping_helper.go b/equinix/fabric_mapping_helper.go
+index 0ea1551..5dd709a 100644
+--- a/equinix/fabric_mapping_helper.go
++++ b/equinix/fabric_mapping_helper.go
+@@ -41,6 +41,8 @@ func accessPointToFabric(accessPointRequest []interface{}) v4.AccessPoint {
+ 		portList := accessPointMap["port"].(*schema.Set).List()
+ 		profileList := accessPointMap["profile"].(*schema.Set).List()
+ 		locationList := accessPointMap["location"].(*schema.Set).List()
++		virtualdeviceList := accessPointMap["virtual_device"].(*schema.Set).List()
++		interfaceList := accessPointMap["interface"].(*schema.Set).List()
+ 		networkList := accessPointMap["network"].(*schema.Set).List()
+ 		typeVal := accessPointMap["type"].(string)
+ 		authenticationKey := accessPointMap["authentication_key"].(string)
+@@ -108,6 +110,16 @@ func accessPointToFabric(accessPointRequest []interface{}) v4.AccessPoint {
+ 			accessPoint.Location = &sl
+ 		}
+ 
++		if len(virtualdeviceList) != 0 {
++			vd := virtualdeviceToFabric(virtualdeviceList)
++			accessPoint.VirtualDevice = &vd
++		}
++
++		if len(interfaceList) != 0 {
++			il := interfaceToFabric(interfaceList)
++			accessPoint.Interface_ = &il
++		}
++
+ 	}
+ 	return accessPoint
+ }
+@@ -237,6 +249,7 @@ func simplifiedServiceProfileToFabric(profileList []interface{}) v4.SimplifiedSe
+ 
+ func locationToFabric(locationList []interface{}) v4.SimplifiedLocation {
+ 	sl := v4.SimplifiedLocation{}
++	log.Printf("[DEBUG]value of sl", sl)
+ 	for _, ll := range locationList {
+ 		llMap := ll.(map[string]interface{})
+ 		metroName := llMap["metro_name"]
+@@ -252,6 +265,27 @@ func locationToFabric(locationList []interface{}) v4.SimplifiedLocation {
+ 	return sl
+ }
+ 
++func virtualdeviceToFabric(virtualdeviceList []interface{}) v4.VirtualDevice {
++	vd := v4.VirtualDevice{}
++	for _, ll := range virtualdeviceList {
++		llMap := ll.(map[string]interface{})
++		tp := llMap["type"].(string)
++		ud := llMap["uuid"].(string)
++		vd = v4.VirtualDevice{Type_: tp, Uuid: ud}
++	}
++	return vd
++}
++
++func interfaceToFabric(interfaceList []interface{}) v4.ModelInterface {
++	il := v4.ModelInterface{}
++	for _, ll := range interfaceList {
++		llMap := ll.(map[string]interface{})
++		tp := llMap["type"].(string)
++		il = v4.ModelInterface{Type_: tp}
++	}
++	return il
++}
++
+ func accountToCloudRouter(accountList []interface{}) v4.SimplifiedAccount {
+ 	sa := v4.SimplifiedAccount{}
+ 	for _, ll := range accountList {

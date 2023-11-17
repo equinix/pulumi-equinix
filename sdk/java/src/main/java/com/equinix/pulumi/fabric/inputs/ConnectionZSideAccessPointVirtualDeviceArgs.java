@@ -31,6 +31,21 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
     }
 
     /**
+     * Port name
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Port name
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Interface type
      * 
      */
@@ -64,6 +79,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
 
     private ConnectionZSideAccessPointVirtualDeviceArgs(ConnectionZSideAccessPointVirtualDeviceArgs $) {
         this.href = $.href;
+        this.name = $.name;
         this.type = $.type;
         this.uuid = $.uuid;
     }
@@ -105,6 +121,27 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
          */
         public Builder href(String href) {
             return href(Output.of(href));
+        }
+
+        /**
+         * @param name Port name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Port name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

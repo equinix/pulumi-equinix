@@ -18,6 +18,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? Href;
         /// <summary>
+        /// Port name
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// Interface type
         /// </summary>
         public readonly string? Type;
@@ -30,11 +34,14 @@ namespace Pulumi.Equinix.Fabric.Outputs
         private ConnectionASideAccessPointVirtualDevice(
             string? href,
 
+            string? name,
+
             string? type,
 
             string? uuid)
         {
             Href = href;
+            Name = name;
             Type = type;
             Uuid = uuid;
         }

@@ -40,6 +40,36 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Access point used and maximum number of IPv4 BGP routes
+     * 
+     */
+    @Import(name="bgpIpv4RoutesCount")
+    private @Nullable Output<Integer> bgpIpv4RoutesCount;
+
+    /**
+     * @return Access point used and maximum number of IPv4 BGP routes
+     * 
+     */
+    public Optional<Output<Integer>> bgpIpv4RoutesCount() {
+        return Optional.ofNullable(this.bgpIpv4RoutesCount);
+    }
+
+    /**
+     * Access point used and maximum number of IPv6 BGP routes
+     * 
+     */
+    @Import(name="bgpIpv6RoutesCount")
+    private @Nullable Output<Integer> bgpIpv6RoutesCount;
+
+    /**
+     * @return Access point used and maximum number of IPv6 BGP routes
+     * 
+     */
+    public Optional<Output<Integer>> bgpIpv6RoutesCount() {
+        return Optional.ofNullable(this.bgpIpv6RoutesCount);
+    }
+
+    /**
      * Captures Fabric Cloud Router lifecycle change information
      * 
      */
@@ -52,6 +82,21 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<CloudRouterChangeLogArgs>>> changeLogs() {
         return Optional.ofNullable(this.changeLogs);
+    }
+
+    /**
+     * Number of connections associated with this Access point
+     * 
+     */
+    @Import(name="connectionsCount")
+    private @Nullable Output<Integer> connectionsCount;
+
+    /**
+     * @return Number of connections associated with this Access point
+     * 
+     */
+    public Optional<Output<Integer>> connectionsCount() {
+        return Optional.ofNullable(this.connectionsCount);
     }
 
     /**
@@ -223,7 +268,10 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
 
     private CloudRouterState(CloudRouterState $) {
         this.account = $.account;
+        this.bgpIpv4RoutesCount = $.bgpIpv4RoutesCount;
+        this.bgpIpv6RoutesCount = $.bgpIpv6RoutesCount;
         this.changeLogs = $.changeLogs;
+        this.connectionsCount = $.connectionsCount;
         this.description = $.description;
         this.equinixAsn = $.equinixAsn;
         this.href = $.href;
@@ -277,6 +325,48 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bgpIpv4RoutesCount Access point used and maximum number of IPv4 BGP routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpIpv4RoutesCount(@Nullable Output<Integer> bgpIpv4RoutesCount) {
+            $.bgpIpv4RoutesCount = bgpIpv4RoutesCount;
+            return this;
+        }
+
+        /**
+         * @param bgpIpv4RoutesCount Access point used and maximum number of IPv4 BGP routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpIpv4RoutesCount(Integer bgpIpv4RoutesCount) {
+            return bgpIpv4RoutesCount(Output.of(bgpIpv4RoutesCount));
+        }
+
+        /**
+         * @param bgpIpv6RoutesCount Access point used and maximum number of IPv6 BGP routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpIpv6RoutesCount(@Nullable Output<Integer> bgpIpv6RoutesCount) {
+            $.bgpIpv6RoutesCount = bgpIpv6RoutesCount;
+            return this;
+        }
+
+        /**
+         * @param bgpIpv6RoutesCount Access point used and maximum number of IPv6 BGP routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpIpv6RoutesCount(Integer bgpIpv6RoutesCount) {
+            return bgpIpv6RoutesCount(Output.of(bgpIpv6RoutesCount));
+        }
+
+        /**
          * @param changeLogs Captures Fabric Cloud Router lifecycle change information
          * 
          * @return builder
@@ -305,6 +395,27 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder changeLogs(CloudRouterChangeLogArgs... changeLogs) {
             return changeLogs(List.of(changeLogs));
+        }
+
+        /**
+         * @param connectionsCount Number of connections associated with this Access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionsCount(@Nullable Output<Integer> connectionsCount) {
+            $.connectionsCount = connectionsCount;
+            return this;
+        }
+
+        /**
+         * @param connectionsCount Number of connections associated with this Access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionsCount(Integer connectionsCount) {
+            return connectionsCount(Output.of(connectionsCount));
         }
 
         /**

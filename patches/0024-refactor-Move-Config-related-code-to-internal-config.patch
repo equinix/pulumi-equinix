@@ -1,0 +1,3755 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tomas Karasek <tom.to.the.k@gmail.com>
+Date: Tue, 14 Nov 2023 14:05:12 +0100
+Subject: [PATCH 24/30] refactor: Move Config-related code to internal/config
+
+
+diff --git a/equinix/data_source_ecx_l2_sellerprofile.go b/equinix/data_source_ecx_l2_sellerprofile.go
+index 59b9958..c0bf3de 100644
+--- a/equinix/data_source_ecx_l2_sellerprofile.go
++++ b/equinix/data_source_ecx_l2_sellerprofile.go
+@@ -6,6 +6,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/hashicorp/go-cty/cty"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -229,12 +231,12 @@ func createECXL2SellerProfileSchema() map[string]*schema.Schema {
+ }
+ 
+ func dataSourceECXL2SellerProfileRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+ 	name := d.Get(ecxL2SellerProfileSchemaNames["Name"]).(string)
+ 	orgName := d.Get(ecxL2SellerProfileSchemaNames["OrganizationName"]).(string)
+ 	orgGlobalName := d.Get(ecxL2SellerProfileSchemaNames["GlobalOrganization"]).(string)
+-	profiles, err := conf.ecx.GetL2SellerProfiles()
++	profiles, err := conf.Ecx.GetL2SellerProfiles()
+ 	if err != nil {
+ 		return diag.FromErr(err)
+ 	}
+diff --git a/equinix/data_source_ecx_l2_sellerprofiles.go b/equinix/data_source_ecx_l2_sellerprofiles.go
+index 5a48a10..cede18c 100644
+--- a/equinix/data_source_ecx_l2_sellerprofiles.go
++++ b/equinix/data_source_ecx_l2_sellerprofiles.go
+@@ -6,6 +6,8 @@ import (
+ 	"regexp"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/hashicorp/go-cty/cty"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -87,9 +89,9 @@ func dataSourceECXL2SellerProfiles() *schema.Resource {
+ }
+ 
+ func dataSourceECXL2SellerProfilesRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+-	profiles, err := conf.ecx.GetL2SellerProfiles()
++	profiles, err := conf.Ecx.GetL2SellerProfiles()
+ 	if err != nil {
+ 		return diag.FromErr(err)
+ 	}
+diff --git a/equinix/data_source_ecx_port.go b/equinix/data_source_ecx_port.go
+index eefbb9c..83ffc17 100644
+--- a/equinix/data_source_ecx_port.go
++++ b/equinix/data_source_ecx_port.go
+@@ -4,6 +4,8 @@ import (
+ 	"context"
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -97,10 +99,10 @@ func dataSourceECXPort() *schema.Resource {
+ }
+ 
+ func dataSourceECXPortRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+ 	name := d.Get(ecxPortSchemaNames["Name"]).(string)
+-	ports, err := conf.ecx.GetUserPorts()
++	ports, err := conf.Ecx.GetUserPorts()
+ 	if err != nil {
+ 		return diag.FromErr(err)
+ 	}
+diff --git a/equinix/data_source_metal_device.go b/equinix/data_source_metal_device.go
+index 22b619d..8e7e9ab 100644
+--- a/equinix/data_source_metal_device.go
++++ b/equinix/data_source_metal_device.go
+@@ -8,6 +8,8 @@ import (
+ 	"sort"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	metalv1 "github.com/equinix-labs/metal-go/metal/v1"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure"
+@@ -208,7 +210,7 @@ func dataSourceMetalDevice() *schema.Resource {
+ }
+ 
+ func dataSourceMetalDeviceRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metalgo
++	client := meta.(*config.Config).Metalgo
+ 
+ 	hostnameRaw, hostnameOK := d.GetOk("hostname")
+ 	projectIdRaw, projectIdOK := d.GetOk("project_id")
+diff --git a/equinix/data_source_metal_device_bgp_neighbors.go b/equinix/data_source_metal_device_bgp_neighbors.go
+index ed5e6bd..641f2f8 100644
+--- a/equinix/data_source_metal_device_bgp_neighbors.go
++++ b/equinix/data_source_metal_device_bgp_neighbors.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"context"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	metalv1 "github.com/equinix-labs/metal-go/metal/v1"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -106,7 +108,7 @@ func dataSourceMetalDeviceBGPNeighbors() *schema.Resource {
+ }
+ 
+ func dataSourceMetalDeviceBGPNeighborsRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).metalgo
++	client := meta.(*config.Config).Metalgo
+ 	deviceID := d.Get("device_id").(string)
+ 
+ 	bgpNeighborsRaw, _, err := client.DevicesApi.GetBgpNeighborData(ctx, deviceID).Execute()
+diff --git a/equinix/data_source_metal_devices.go b/equinix/data_source_metal_devices.go
+index 3904af6..9e1d834 100644
+--- a/equinix/data_source_metal_devices.go
++++ b/equinix/data_source_metal_devices.go
+@@ -4,8 +4,10 @@ import (
+ 	"context"
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	metalv1 "github.com/equinix-labs/metal-go/metal/v1"
+-	"github.com/equinix/terraform-provider-equinix/equinix/internal/datalist"
++	"github.com/equinix/terraform-provider-equinix/internal/datalist"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ )
+ 
+@@ -50,7 +52,7 @@ func dataSourceMetalDevices() *schema.Resource {
+ }
+ 
+ func getDevices(meta interface{}, extra map[string]interface{}) ([]interface{}, error) {
+-	client := meta.(*Config).metalgo
++	client := meta.(*config.Config).Metalgo
+ 	projectID := extra["project_id"].(string)
+ 	orgID := extra["organization_id"].(string)
+ 
+diff --git a/equinix/data_source_metal_facility.go b/equinix/data_source_metal_facility.go
+index 38b85aa..5ed6d02 100644
+--- a/equinix/data_source_metal_facility.go
++++ b/equinix/data_source_metal_facility.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -81,7 +83,7 @@ func dataSourceMetalFacility() *schema.Resource {
+ }
+ 
+ func dataSourceMetalFacilityRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	code := d.Get("code").(string)
+ 
+ 	_, capacityOk := d.GetOk("capacity")
+diff --git a/equinix/data_source_metal_hardware_reservation.go b/equinix/data_source_metal_hardware_reservation.go
+index 3dc9da5..bf53fc9 100644
+--- a/equinix/data_source_metal_hardware_reservation.go
++++ b/equinix/data_source_metal_hardware_reservation.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -65,7 +67,7 @@ func dataSourceMetalHardwareReservation() *schema.Resource {
+ }
+ 
+ func dataSourceMetalHardwareReservationRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	hrIdRaw, hrIdOk := d.GetOk("id")
+ 	dIdRaw, dIdOk := d.GetOk("device_id")
+ 
+diff --git a/equinix/data_source_metal_ip_block_ranges.go b/equinix/data_source_metal_ip_block_ranges.go
+index 823b86a..17b97f0 100644
+--- a/equinix/data_source_metal_ip_block_ranges.go
++++ b/equinix/data_source_metal_ip_block_ranges.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -88,7 +90,7 @@ func metroOffacilityMatch(ref string, facility *packngo.Facility) bool {
+ }
+ 
+ func dataSourceMetalIPBlockRangesRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	projectID := d.Get("project_id").(string)
+ 	ips, _, err := client.ProjectIPs.List(projectID, nil)
+ 	if err != nil {
+diff --git a/equinix/data_source_metal_metro.go b/equinix/data_source_metal_metro.go
+index d8dde96..fa4be85 100644
+--- a/equinix/data_source_metal_metro.go
++++ b/equinix/data_source_metal_metro.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -37,7 +39,7 @@ func dataSourceMetalMetro() *schema.Resource {
+ }
+ 
+ func dataSourceMetalMetroRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	code := d.Get("code").(string)
+ 
+ 	_, capacityOk := d.GetOk("capacity")
+diff --git a/equinix/data_source_metal_operating_system.go b/equinix/data_source_metal_operating_system.go
+index 469d493..7698c59 100644
+--- a/equinix/data_source_metal_operating_system.go
++++ b/equinix/data_source_metal_operating_system.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -42,7 +44,7 @@ func dataSourceOperatingSystem() *schema.Resource {
+ }
+ 
+ func dataSourceMetalOperatingSystemRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 
+ 	name, nameOK := d.GetOk("name")
+ 	distro, distroOK := d.GetOk("distro")
+diff --git a/equinix/data_source_metal_organization.go b/equinix/data_source_metal_organization.go
+index 24bdac3..b47453e 100644
+--- a/equinix/data_source_metal_organization.go
++++ b/equinix/data_source_metal_organization.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"path"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -108,7 +110,7 @@ func findOrgByName(os []packngo.Organization, name string) (*packngo.Organizatio
+ }
+ 
+ func dataSourceMetalOrganizationRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	nameRaw, nameOK := d.GetOk("name")
+ 	orgIdRaw, orgIdOK := d.GetOk("organization_id")
+ 
+diff --git a/equinix/data_source_metal_plans.go b/equinix/data_source_metal_plans.go
+index 58c13a9..1edf8d0 100644
+--- a/equinix/data_source_metal_plans.go
++++ b/equinix/data_source_metal_plans.go
+@@ -3,7 +3,9 @@ package equinix
+ import (
+ 	"fmt"
+ 
+-	"github.com/equinix/terraform-provider-equinix/equinix/internal/datalist"
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
++	"github.com/equinix/terraform-provider-equinix/internal/datalist"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -21,7 +23,7 @@ func dataSourceMetalPlans() *schema.Resource {
+ }
+ 
+ func getPlans(meta interface{}, extra map[string]interface{}) ([]interface{}, error) {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	opts := &packngo.ListOptions{
+ 		Includes: []string{"available_in", "available_in_metros"},
+ 	}
+diff --git a/equinix/data_source_metal_precreated_ip_block.go b/equinix/data_source_metal_precreated_ip_block.go
+index dbedefc..f0afd0a 100644
+--- a/equinix/data_source_metal_precreated_ip_block.go
++++ b/equinix/data_source_metal_precreated_ip_block.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"log"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -67,7 +69,7 @@ func dataSourceMetalPreCreatedIPBlock() *schema.Resource {
+ 
+ func dataSourceMetalPreCreatedIPBlockRead(d *schema.ResourceData, meta interface{}) error {
+ 	var types string
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	projectID := d.Get("project_id").(string)
+ 
+ 	ipv := d.Get("address_family").(int)
+diff --git a/equinix/data_source_metal_project.go b/equinix/data_source_metal_project.go
+index 5e13c68..c8573b9 100644
+--- a/equinix/data_source_metal_project.go
++++ b/equinix/data_source_metal_project.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"path"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -104,7 +106,7 @@ func dataSourceMetalProject() *schema.Resource {
+ }
+ 
+ func dataSourceMetalProjectRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	nameRaw, nameOK := d.GetOk("name")
+ 	projectIdRaw, projectIdOK := d.GetOk("project_id")
+ 
+diff --git a/equinix/data_source_metal_project_ssh_key.go b/equinix/data_source_metal_project_ssh_key.go
+index ae564a3..f1c9151 100644
+--- a/equinix/data_source_metal_project_ssh_key.go
++++ b/equinix/data_source_metal_project_ssh_key.go
+@@ -5,6 +5,8 @@ import (
+ 	"path"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -64,7 +66,7 @@ func dataSourceMetalProjectSSHKey() *schema.Resource {
+ }
+ 
+ func dataSourceMetalProjectSSHKeyRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 
+ 	search := d.Get("search").(string)
+ 	id := d.Get("id").(string)
+diff --git a/equinix/data_source_metal_reserved_ip_block.go b/equinix/data_source_metal_reserved_ip_block.go
+index 512625c..fa9481c 100644
+--- a/equinix/data_source_metal_reserved_ip_block.go
++++ b/equinix/data_source_metal_reserved_ip_block.go
+@@ -5,6 +5,8 @@ import (
+ 	"net"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -119,7 +121,7 @@ func dataSourceMetalReservedIPBlock() *schema.Resource {
+ }
+ 
+ func dataSourceMetalReservedIPBlockRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 
+ 	blockId, blockIdOk := d.GetOk("id")
+ 	projectId, projectIdOk := d.GetOk("project_id")
+diff --git a/equinix/data_source_metal_spot_market_price.go b/equinix/data_source_metal_spot_market_price.go
+index 24f659e..1684d99 100644
+--- a/equinix/data_source_metal_spot_market_price.go
++++ b/equinix/data_source_metal_spot_market_price.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -40,7 +42,7 @@ func dataSourceSpotMarketPrice() *schema.Resource {
+ }
+ 
+ func dataSourceMetalSpotMarketPriceRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	sms := client.SpotMarket.(*packngo.SpotMarketServiceOp)
+ 	facility := d.Get("facility").(string)
+ 	metro := d.Get("metro").(string)
+diff --git a/equinix/data_source_metal_spot_market_request.go b/equinix/data_source_metal_spot_market_request.go
+index 7b8f94c..0d0064e 100644
+--- a/equinix/data_source_metal_spot_market_request.go
++++ b/equinix/data_source_metal_spot_market_request.go
+@@ -6,6 +6,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -74,7 +76,7 @@ func dataSourceMetalSpotMarketRequest() *schema.Resource {
+ }
+ 
+ func dataSourceMetalSpotMarketRequestRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	id := d.Get("request_id").(string)
+ 
+ 	smr, _, err := client.SpotMarketRequests.Get(id, &packngo.GetOptions{Includes: []string{"project", "devices", "facilities", "metro"}})
+diff --git a/equinix/data_source_metal_vlan.go b/equinix/data_source_metal_vlan.go
+index 7c80b41..81c81dd 100644
+--- a/equinix/data_source_metal_vlan.go
++++ b/equinix/data_source_metal_vlan.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -67,7 +69,7 @@ func dataSourceMetalVlan() *schema.Resource {
+ }
+ 
+ func dataSourceMetalVlanRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 
+ 	projectRaw, projectOk := d.GetOk("project_id")
+ 	vxlanRaw, vxlanOk := d.GetOk("vxlan")
+diff --git a/equinix/data_source_metal_vlan_acc_test.go b/equinix/data_source_metal_vlan_acc_test.go
+index a173e35..e8027ff 100644
+--- a/equinix/data_source_metal_vlan_acc_test.go
++++ b/equinix/data_source_metal_vlan_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"reflect"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -320,7 +322,7 @@ func TestMetalVlan_matchingVlan(t *testing.T) {
+ }
+ 
+ func testAccMetalDatasourceVlanCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_vlan" {
+diff --git a/equinix/data_source_network_account.go b/equinix/data_source_network_account.go
+index 50660bc..eb47a3d 100644
+--- a/equinix/data_source_network_account.go
++++ b/equinix/data_source_network_account.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -67,12 +69,12 @@ func dataSourceNetworkAccount() *schema.Resource {
+ }
+ 
+ func dataSourceNetworkAccountRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+ 	metro := d.Get(networkAccountSchemaNames["MetroCode"]).(string)
+ 	name := d.Get(networkAccountSchemaNames["Name"]).(string)
+ 	status := d.Get(networkAccountSchemaNames["Status"]).(string)
+-	accounts, err := conf.ne.GetAccounts(metro)
++	accounts, err := conf.Ne.GetAccounts(metro)
+ 	if err != nil {
+ 		return diag.FromErr(err)
+ 	}
+diff --git a/equinix/data_source_network_device.go b/equinix/data_source_network_device.go
+index 8d4b7fa..f248530 100644
+--- a/equinix/data_source_network_device.go
++++ b/equinix/data_source_network_device.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -620,10 +622,10 @@ func dataSourceNetworkDevice() *schema.Resource {
+ 	}
+ }
+ 
+-func getDeviceByName(deviceName string, conf *Config, validDeviceStateList *[]string) (*ne.Device, error) {
++func getDeviceByName(deviceName string, conf *config.Config, validDeviceStateList *[]string) (*ne.Device, error) {
+ 	var devices []ne.Device
+ 	err := error(nil)
+-	devices, err = conf.ne.GetDevices(*validDeviceStateList)
++	devices, err = conf.Ne.GetDevices(*validDeviceStateList)
+ 	if err != nil {
+ 		return nil, fmt.Errorf("'devices: %v'", devices)
+ 	}
+@@ -636,7 +638,7 @@ func getDeviceByName(deviceName string, conf *Config, validDeviceStateList *[]st
+ }
+ 
+ func dataSourceNetworkDeviceRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+ 	var err error
+ 	var primary, secondary *ne.Device
+@@ -655,7 +657,7 @@ func dataSourceNetworkDeviceRead(ctx context.Context, d *schema.ResourceData, m
+ 	if nameExists {
+ 		primary, err = getDeviceByName(name, conf, validDeviceStatusList)
+ 	} else {
+-		primary, err = conf.ne.GetDevice(uuid)
++		primary, err = conf.Ne.GetDevice(uuid)
+ 	}
+ 
+ 	if err != nil {
+@@ -668,7 +670,7 @@ func dataSourceNetworkDeviceRead(ctx context.Context, d *schema.ResourceData, m
+ 	}
+ 	if ne.StringValue(primary.RedundantUUID) != "" {
+ 
+-		secondary, err = conf.ne.GetDevice(ne.StringValue(primary.RedundantUUID))
++		secondary, err = conf.Ne.GetDevice(ne.StringValue(primary.RedundantUUID))
+ 		if err != nil {
+ 			return diag.Errorf("cannot fetch secondary network device due to '%v'", err)
+ 		}
+diff --git a/equinix/data_source_network_device_software.go b/equinix/data_source_network_device_software.go
+index 81a8b60..616b5bf 100644
+--- a/equinix/data_source_network_device_software.go
++++ b/equinix/data_source_network_device_software.go
+@@ -7,6 +7,8 @@ import (
+ 	"sort"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -111,11 +113,11 @@ func dataSourceNetworkDeviceSoftware() *schema.Resource {
+ }
+ 
+ func dataSourceNetworkDeviceSoftwareRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+ 	typeCode := d.Get(networkDeviceSoftwareSchemaNames["DeviceTypeCode"]).(string)
+ 	pkgCodes := expandSetToStringList(d.Get(networkDeviceSoftwareSchemaNames["PackageCodes"]).(*schema.Set))
+-	versions, err := conf.ne.GetDeviceSoftwareVersions(typeCode)
++	versions, err := conf.Ne.GetDeviceSoftwareVersions(typeCode)
+ 	if err != nil {
+ 		return diag.FromErr(err)
+ 	}
+diff --git a/equinix/data_source_network_device_type.go b/equinix/data_source_network_device_type.go
+index 0bdeb17..098d11c 100644
+--- a/equinix/data_source_network_device_type.go
++++ b/equinix/data_source_network_device_type.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -81,9 +83,9 @@ func dataSourceNetworkDeviceType() *schema.Resource {
+ }
+ 
+ func dataSourceNetworkDeviceTypeRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+-	types, err := conf.ne.GetDeviceTypes()
++	types, err := conf.Ne.GetDeviceTypes()
+ 	name := d.Get(networkDeviceTypeSchemaNames["Name"]).(string)
+ 	vendor := d.Get(networkDeviceTypeSchemaNames["Vendor"]).(string)
+ 	category := d.Get(networkDeviceTypeSchemaNames["Category"]).(string)
+diff --git a/equinix/data_source_network_platform.go b/equinix/data_source_network_platform.go
+index 739bf1d..41a3912 100644
+--- a/equinix/data_source_network_platform.go
++++ b/equinix/data_source_network_platform.go
+@@ -4,6 +4,8 @@ import (
+ 	"context"
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -104,10 +106,10 @@ func dataSourceNetworkDevicePlatform() *schema.Resource {
+ }
+ 
+ func dataSourceNetworkDevicePlatformRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	conf := m.(*Config)
++	conf := m.(*config.Config)
+ 	var diags diag.Diagnostics
+ 	typeCode := d.Get(networkDevicePlatformSchemaNames["DeviceTypeCode"]).(string)
+-	platforms, err := conf.ne.GetDevicePlatforms(typeCode)
++	platforms, err := conf.Ne.GetDevicePlatforms(typeCode)
+ 	if err != nil {
+ 		return diag.FromErr(err)
+ 	}
+diff --git a/equinix/equinix_sweeper_test.go b/equinix/equinix_sweeper_test.go
+index ea717ed..f5e3010 100644
+--- a/equinix/equinix_sweeper_test.go
++++ b/equinix/equinix_sweeper_test.go
+@@ -7,6 +7,8 @@ import (
+ 	"testing"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ )
+ 
+@@ -16,12 +18,12 @@ func TestMain(m *testing.M) {
+ 	resource.TestMain(m)
+ }
+ 
+-func sharedConfigForRegion(region string) (*Config, error) {
+-	endpoint := getFromEnvDefault(endpointEnvVar, DefaultBaseURL)
++func sharedConfigForRegion(region string) (*config.Config, error) {
++	endpoint := getFromEnvDefault(endpointEnvVar, config.DefaultBaseURL)
+ 	clientToken := getFromEnvDefault(clientTokenEnvVar, "")
+ 	clientID := getFromEnvDefault(clientIDEnvVar, "")
+ 	clientSecret := getFromEnvDefault(clientSecretEnvVar, "")
+-	clientTimeout := getFromEnvDefault(clientTimeoutEnvVar, strconv.Itoa(DefaultTimeout))
++	clientTimeout := getFromEnvDefault(clientTimeoutEnvVar, strconv.Itoa(config.DefaultTimeout))
+ 	clientTimeoutInt, err := strconv.Atoi(clientTimeout)
+ 	if err != nil {
+ 		return nil, fmt.Errorf("cannot convert value of '%s' env variable to int", clientTimeoutEnvVar)
+@@ -33,7 +35,7 @@ func sharedConfigForRegion(region string) (*Config, error) {
+ 			clientTokenEnvVar, clientIDEnvVar, clientSecretEnvVar, metalAuthTokenEnvVar)
+ 	}
+ 
+-	return &Config{
++	return &config.Config{
+ 		AuthToken:      metalAuthToken,
+ 		BaseURL:        endpoint,
+ 		Token:          clientToken,
+diff --git a/equinix/fabric_mapping_helper.go b/equinix/fabric_mapping_helper.go
+index 8d8bca7..8b6de21 100644
+--- a/equinix/fabric_mapping_helper.go
++++ b/equinix/fabric_mapping_helper.go
+@@ -3,8 +3,6 @@ package equinix
+ import (
+ 	"fmt"
+ 	"log"
+-	"math/rand"
+-	"time"
+ 
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -1228,21 +1226,3 @@ func getCloudRouterUpdateRequest(conn v4.CloudRouter, d *schema.ResourceData) (v
+ 	}
+ 	return changeOps, nil
+ }
+-
+-const allowed_charset = "abcdefghijklmnopqrstuvwxyz" +
+-	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$&@"
+-
+-var seededRand = rand.New(
+-	rand.NewSource(time.Now().UnixNano()))
+-
+-func CorrelationIdWithCharset(length int, charset string) string {
+-	b := make([]byte, length)
+-	for i := range b {
+-		b[i] = charset[seededRand.Intn(len(charset))]
+-	}
+-	return string(b)
+-}
+-
+-func CorrelationId(length int) string {
+-	return CorrelationIdWithCharset(length, allowed_charset)
+-}
+diff --git a/equinix/port_helpers.go b/equinix/port_helpers.go
+index 742198d..2c11341 100644
+--- a/equinix/port_helpers.go
++++ b/equinix/port_helpers.go
+@@ -6,6 +6,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+@@ -19,8 +21,8 @@ type ClientPortResource struct {
+ }
+ 
+ func getClientPortResource(d *schema.ResourceData, meta interface{}) (*ClientPortResource, *packngo.Response, error) {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	port_id := d.Get("port_id").(string)
+ 
+diff --git a/equinix/provider.go b/equinix/provider.go
+index d8eda43..2ff4a5d 100644
+--- a/equinix/provider.go
++++ b/equinix/provider.go
+@@ -12,6 +12,7 @@ import (
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/equinix/rest-go"
++	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+@@ -50,9 +51,9 @@ func Provider() *schema.Provider {
+ 			"endpoint": {
+ 				Type:         schema.TypeString,
+ 				Optional:     true,
+-				DefaultFunc:  schema.EnvDefaultFunc(endpointEnvVar, DefaultBaseURL),
++				DefaultFunc:  schema.EnvDefaultFunc(endpointEnvVar, config.DefaultBaseURL),
+ 				ValidateFunc: validation.IsURLWithHTTPorHTTPS,
+-				Description:  fmt.Sprintf("The Equinix API base URL to point out desired environment. Defaults to %s", DefaultBaseURL),
++				Description:  fmt.Sprintf("The Equinix API base URL to point out desired environment. Defaults to %s", config.DefaultBaseURL),
+ 			},
+ 			"client_id": {
+ 				Type:        schema.TypeString,
+@@ -81,9 +82,9 @@ func Provider() *schema.Provider {
+ 			"request_timeout": {
+ 				Type:         schema.TypeInt,
+ 				Optional:     true,
+-				DefaultFunc:  schema.EnvDefaultFunc(clientTimeoutEnvVar, DefaultTimeout),
++				DefaultFunc:  schema.EnvDefaultFunc(clientTimeoutEnvVar, config.DefaultTimeout),
+ 				ValidateFunc: validation.IntAtLeast(1),
+-				Description:  fmt.Sprintf("The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.  Defaults to %d", DefaultTimeout),
++				Description:  fmt.Sprintf("The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.  Defaults to %d", config.DefaultTimeout),
+ 			},
+ 			"response_max_page_size": {
+ 				Type:         schema.TypeInt,
+@@ -199,7 +200,7 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+ 	mrws := d.Get("max_retry_wait_seconds").(int)
+ 	rt := d.Get("request_timeout").(int)
+ 
+-	config := Config{
++	config := config.Config{
+ 		AuthToken:      d.Get("auth_token").(string),
+ 		BaseURL:        d.Get("endpoint").(string),
+ 		ClientID:       d.Get("client_id").(string),
+@@ -215,11 +216,11 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+ 	if err := d.GetProviderMeta(&meta); err != nil {
+ 		return nil, diag.FromErr(err)
+ 	}
+-	config.terraformVersion = p.TerraformVersion
+-	if config.terraformVersion == "" {
++	config.TerraformVersion = p.TerraformVersion
++	if config.TerraformVersion == "" {
+ 		// Terraform 0.12 introduced this field to the protocol
+ 		// We can therefore assume that if it's missing it's 0.10 or 0.11
+-		config.terraformVersion = "0.11+compatible"
++		config.TerraformVersion = "0.11+compatible"
+ 	}
+ 
+ 	stopCtx, ok := schema.StopContext(ctx)
+diff --git a/equinix/resource_ecx_l2_connection.go b/equinix/resource_ecx_l2_connection.go
+index 5dd66df..3f04776 100644
+--- a/equinix/resource_ecx_l2_connection.go
++++ b/equinix/resource_ecx_l2_connection.go
+@@ -7,6 +7,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -658,8 +660,8 @@ func createECXL2ConnectionActionsRequiredDataSchema() map[string]*schema.Schema
+ }
+ 
+ func resourceECXL2ConnectionCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 
+ 	var diags diag.Diagnostics
+ 	primary, secondary := createECXL2Connections(d)
+@@ -696,8 +698,8 @@ func resourceECXL2ConnectionCreate(ctx context.Context, d *schema.ResourceData,
+ }
+ 
+ func resourceECXL2ConnectionRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	var err error
+ 	var primary *ecx.L2Connection
+@@ -741,8 +743,8 @@ func resourceECXL2ConnectionRead(ctx context.Context, d *schema.ResourceData, m
+ }
+ 
+ func resourceECXL2ConnectionUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	supportedChanges := []string{
+ 		ecxL2ConnectionSchemaNames["Name"],
+@@ -766,8 +768,8 @@ func resourceECXL2ConnectionUpdate(ctx context.Context, d *schema.ResourceData,
+ }
+ 
+ func resourceECXL2ConnectionDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 
+ 	var diags diag.Diagnostics
+ 	if err := client.DeleteL2Connection(d.Id()); err != nil {
+diff --git a/equinix/resource_ecx_l2_connection_acc_test.go b/equinix/resource_ecx_l2_connection_acc_test.go
+index 8fe2cbb..45a5e0b 100644
+--- a/equinix/resource_ecx_l2_connection_acc_test.go
++++ b/equinix/resource_ecx_l2_connection_acc_test.go
+@@ -7,6 +7,8 @@ import (
+ 	"regexp"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -44,7 +46,7 @@ func testSweepECXL2Connections(region string) error {
+ 		log.Printf("[INFO][SWEEPER_LOG] error loading configuration: %s", err)
+ 		return err
+ 	}
+-	conns, err := config.ecx.GetL2OutgoingConnections([]string{
++	conns, err := config.Ecx.GetL2OutgoingConnections([]string{
+ 		ecx.ConnectionStatusNotAvailable,
+ 		ecx.ConnectionStatusPendingAutoApproval,
+ 		ecx.ConnectionStatusPendingBGPPeering,
+@@ -62,7 +64,7 @@ func testSweepECXL2Connections(region string) error {
+ 			nonSweepableCount++
+ 			continue
+ 		}
+-		if err := config.ecx.DeleteL2Connection(ecx.StringValue(conn.UUID)); err != nil {
++		if err := config.Ecx.DeleteL2Connection(ecx.StringValue(conn.UUID)); err != nil {
+ 			log.Printf("[INFO][SWEEPER_LOG] error deleting ECXL2Connection resource %s (%s): %s", ecx.StringValue(conn.UUID), ecx.StringValue(conn.Name), err)
+ 		} else {
+ 			log.Printf("[INFO][SWEEPER_LOG] sent delete request for ECXL2Connection resource %s (%s)", ecx.StringValue(conn.UUID), ecx.StringValue(conn.Name))
+@@ -363,8 +365,8 @@ func TestAccFabricL2Connection_ServiceToken_HA_SP(t *testing.T) {
+ 	}
+ 	mockEquinix := Provider()
+ 	mockEquinix.ConfigureContextFunc = func(c context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
+-		config := Config{
+-			ecx: mockECXClient,
++		config := config.Config{
++			Ecx: mockECXClient,
+ 		}
+ 		return &config, nil
+ 	}
+@@ -496,8 +498,8 @@ func TestAccFabricL2Connection_ZSideServiceToken_Single(t *testing.T) {
+ 	}
+ 	mockEquinix := Provider()
+ 	mockEquinix.ConfigureContextFunc = func(c context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
+-		config := Config{
+-			ecx: mockECXClient,
++		config := config.Config{
++			Ecx: mockECXClient,
+ 		}
+ 		return &config, nil
+ 	}
+@@ -540,7 +542,7 @@ func testAccFabricL2ConnectionExists(resourceName string, conn *ecx.L2Connection
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ecx
++		client := testAccProvider.Meta().(*config.Config).Ecx
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+@@ -563,7 +565,7 @@ func testAccFabricL2ConnectionSecondaryExists(resourceName string, conn *ecx.L2C
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ecx
++		client := testAccProvider.Meta().(*config.Config).Ecx
+ 
+ 		if connID, ok := rs.Primary.Attributes["secondary_connection.0.uuid"]; ok {
+ 			resp, err := client.GetL2Connection(connID)
+diff --git a/equinix/resource_ecx_l2_serviceprofile.go b/equinix/resource_ecx_l2_serviceprofile.go
+index ae8465b..af0bfba 100644
+--- a/equinix/resource_ecx_l2_serviceprofile.go
++++ b/equinix/resource_ecx_l2_serviceprofile.go
+@@ -4,6 +4,8 @@ import (
+ 	"context"
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -341,8 +343,8 @@ func createECXL2ServiceProfileResourceSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceECXL2ServiceProfileCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	profile := createECXL2ServiceProfile(d)
+ 	uuid, err := client.CreateL2ServiceProfile(*profile)
+@@ -355,8 +357,8 @@ func resourceECXL2ServiceProfileCreate(ctx context.Context, d *schema.ResourceDa
+ }
+ 
+ func resourceECXL2ServiceProfileRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	profile, err := client.GetL2ServiceProfile(d.Id())
+ 	if err != nil {
+@@ -369,8 +371,8 @@ func resourceECXL2ServiceProfileRead(ctx context.Context, d *schema.ResourceData
+ }
+ 
+ func resourceECXL2ServiceProfileUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	profile := createECXL2ServiceProfile(d)
+ 	if err := client.UpdateL2ServiceProfile(*profile); err != nil {
+@@ -381,8 +383,8 @@ func resourceECXL2ServiceProfileUpdate(ctx context.Context, d *schema.ResourceDa
+ }
+ 
+ func resourceECXL2ServiceProfileDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ecx
+-	m.(*Config).addModuleToECXUserAgent(&client, d)
++	client := m.(*config.Config).Ecx
++	m.(*config.Config).AddModuleToECXUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	if err := client.DeleteL2ServiceProfile(d.Id()); err != nil {
+ 		restErr, ok := err.(rest.Error)
+diff --git a/equinix/resource_ecx_l2_serviceprofile_acc_test.go b/equinix/resource_ecx_l2_serviceprofile_acc_test.go
+index 7f5d8a0..59054a3 100644
+--- a/equinix/resource_ecx_l2_serviceprofile_acc_test.go
++++ b/equinix/resource_ecx_l2_serviceprofile_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -62,7 +64,7 @@ func testAccECXL2ServiceProfileExists(resourceName string, profile *ecx.L2Servic
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ecx
++		client := testAccProvider.Meta().(*config.Config).Ecx
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+diff --git a/equinix/resource_fabric_cloud_router.go b/equinix/resource_fabric_cloud_router.go
+index ed67ab8..2c308f9 100644
+--- a/equinix/resource_fabric_cloud_router.go
++++ b/equinix/resource_fabric_cloud_router.go
+@@ -7,6 +7,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+@@ -35,8 +37,8 @@ func resourceCloudRouter() *schema.Resource {
+ }
+ 
+ func resourceCloudRouterCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	schemaNotifications := d.Get("notifications").([]interface{})
+ 	notifications := notificationToFabric(schemaNotifications)
+ 	schemaAccount := d.Get("account").(*schema.Set).List()
+@@ -80,8 +82,8 @@ func resourceCloudRouterCreate(ctx context.Context, d *schema.ResourceData, meta
+ }
+ 
+ func resourceCloudRouterRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	CloudRouter, _, err := client.CloudRoutersApi.GetCloudRouterByUuid(ctx, d.Id())
+ 	if err != nil {
+ 		log.Printf("[WARN] Fabric Cloud Router %s not found , error %s", d.Id(), err)
+@@ -115,8 +117,8 @@ func setCloudRouterMap(d *schema.ResourceData, fcr v4.CloudRouter) diag.Diagnost
+ }
+ 
+ func resourceCloudRouterUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	dbConn, err := waitUntilCloudRouterIsProvisioned(d.Id(), meta, ctx)
+ 	if err != nil {
+ 		if !strings.Contains(err.Error(), "500") {
+@@ -153,7 +155,7 @@ func waitForCloudRouterUpdateCompletion(uuid string, meta interface{}, ctx conte
+ 	stateConf := &resource.StateChangeConf{
+ 		Target: []string{string(v4.PROVISIONED_CloudRouterAccessPointState)},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.CloudRoutersApi.GetCloudRouterByUuid(ctx, uuid)
+ 			if err != nil {
+ 				return "", "", err
+@@ -185,7 +187,7 @@ func waitUntilCloudRouterIsProvisioned(uuid string, meta interface{}, ctx contex
+ 			string(v4.PROVISIONED_CloudRouterAccessPointState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.CloudRoutersApi.GetCloudRouterByUuid(ctx, uuid)
+ 			if err != nil {
+ 				return "", "", err
+@@ -208,8 +210,8 @@ func waitUntilCloudRouterIsProvisioned(uuid string, meta interface{}, ctx contex
+ 
+ func resourceCloudRouterDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+ 	diags := diag.Diagnostics{}
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	resp, err := client.CloudRoutersApi.DeleteCloudRouterByUuid(ctx, d.Id())
+ 	if err != nil {
+ 		errors, ok := err.(v4.GenericSwaggerError).Model().([]v4.ModelError)
+@@ -239,7 +241,7 @@ func waitUntilCloudRouterDeprovisioned(uuid string, meta interface{}, ctx contex
+ 			string(v4.DEPROVISIONED_CloudRouterAccessPointState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.CloudRoutersApi.GetCloudRouterByUuid(ctx, uuid)
+ 			if err != nil {
+ 				return "", "", err
+diff --git a/equinix/resource_fabric_cloud_router_acc_test.go b/equinix/resource_fabric_cloud_router_acc_test.go
+index a433982..cd61ad8 100644
+--- a/equinix/resource_fabric_cloud_router_acc_test.go
++++ b/equinix/resource_fabric_cloud_router_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -38,7 +40,7 @@ func TestAccCloudRouterCreate(t *testing.T) {
+ 
+ func checkCloudRouterDelete(s *terraform.State) error {
+ 	ctx := context.Background()
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*Config).FabricAuthToken)
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*config.Config).FabricAuthToken)
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_fabric_cloud_router" {
+ 			continue
+diff --git a/equinix/resource_fabric_connection.go b/equinix/resource_fabric_connection.go
+index 2764fe9..d592726 100644
+--- a/equinix/resource_fabric_connection.go
++++ b/equinix/resource_fabric_connection.go
+@@ -7,6 +7,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+@@ -35,8 +37,8 @@ func resourceFabricConnection() *schema.Resource {
+ }
+ 
+ func resourceFabricConnectionCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	conType := v4.ConnectionType(d.Get("type").(string))
+ 	schemaNotifications := d.Get("notifications").([]interface{})
+ 	notifications := notificationToFabric(schemaNotifications)
+@@ -154,8 +156,8 @@ func additionalInfoContainsAWSSecrets(info []interface{}) ([]interface{}, bool)
+ }
+ 
+ func resourceFabricConnectionRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	conn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, d.Id(), nil)
+ 	if err != nil {
+ 		log.Printf("[WARN] Connection %s not found , error %s", d.Id(), err)
+@@ -199,8 +201,8 @@ func setFabricMap(d *schema.ResourceData, conn v4.Connection) diag.Diagnostics {
+ }
+ 
+ func resourceFabricConnectionUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	dbConn, err := verifyConnectionCreated(d.Id(), meta, ctx)
+ 	if err != nil {
+ 		if !strings.Contains(err.Error(), "500") {
+@@ -254,7 +256,7 @@ func waitForConnectionUpdateCompletion(uuid string, meta interface{}, ctx contex
+ 	stateConf := &retry.StateChangeConf{
+ 		Target: []string{"COMPLETED"},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return "", "", err
+@@ -291,7 +293,7 @@ func waitUntilConnectionIsCreated(uuid string, meta interface{}, ctx context.Con
+ 			string(v4.ACTIVE_ConnectionState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return "", "", err
+@@ -319,7 +321,7 @@ func waitForConnectionProviderStatusChange(uuid string, meta interface{}, ctx co
+ 			string(v4.PROVISIONED_ProviderStatus),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return "", "", err
+@@ -349,7 +351,7 @@ func verifyConnectionCreated(uuid string, meta interface{}, ctx context.Context)
+ 			string(v4.PENDING_ConnectionState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return "", "", err
+@@ -372,8 +374,8 @@ func verifyConnectionCreated(uuid string, meta interface{}, ctx context.Context)
+ 
+ func resourceFabricConnectionDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+ 	diags := diag.Diagnostics{}
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	_, _, err := client.ConnectionsApi.DeleteConnectionByUuid(ctx, d.Id())
+ 	if err != nil {
+ 		errors, ok := err.(v4.GenericSwaggerError).Model().([]v4.ModelError)
+@@ -403,7 +405,7 @@ func waitUntilConnectionDeprovisioned(uuid string, meta interface{}, ctx context
+ 			string(v4.DEPROVISIONED_ConnectionState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return "", "", err
+diff --git a/equinix/resource_fabric_connection_acc_test.go b/equinix/resource_fabric_connection_acc_test.go
+index c928c3e..adb3394 100644
+--- a/equinix/resource_fabric_connection_acc_test.go
++++ b/equinix/resource_fabric_connection_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -72,7 +74,7 @@ func TestAccFabricCreateCloudRouterConnection(t *testing.T) {
+ 
+ func checkConnectionDelete(s *terraform.State) error {
+ 	ctx := context.Background()
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*Config).FabricAuthToken)
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*config.Config).FabricAuthToken)
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_fabric_connection" {
+ 			continue
+diff --git a/equinix/resource_fabric_port.go b/equinix/resource_fabric_port.go
+index 98f78c1..db90bb0 100644
+--- a/equinix/resource_fabric_port.go
++++ b/equinix/resource_fabric_port.go
+@@ -8,6 +8,8 @@ import (
+ 	"runtime/debug"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/antihax/optional"
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -15,8 +17,8 @@ import (
+ )
+ 
+ func resourceFabricPortRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	port, _, err := client.PortsApi.GetPortByUuid(ctx, d.Id())
+ 	if err != nil {
+ 		log.Printf("[WARN] Port %s not found , error %s", d.Id(), err)
+@@ -83,8 +85,8 @@ func resourceFabricPortGetByPortName(ctx context.Context, d *schema.ResourceData
+ 		}
+ 	}()
+ 
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	portNameParam := d.Get("filters").(*schema.Set).List()
+ 	portName := portNameQueryParamToFabric(portNameParam)
+ 	ports, _, err := client.PortsApi.GetPorts(ctx, &portName)
+diff --git a/equinix/resource_fabric_routing_protocol.go b/equinix/resource_fabric_routing_protocol.go
+index 92d04c8..21341e2 100644
+--- a/equinix/resource_fabric_routing_protocol.go
++++ b/equinix/resource_fabric_routing_protocol.go
+@@ -3,12 +3,14 @@ package equinix
+ import (
+ 	"context"
+ 	"fmt"
+-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"log"
+ 	"strconv"
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -47,8 +49,8 @@ func resourceFabricRoutingProtocol() *schema.Resource {
+ }
+ 
+ func resourceFabricRoutingProtocolRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	log.Printf("[WARN] Routing Protocol Connection uuid: %s", d.Get("connection_uuid").(string))
+ 	fabricRoutingProtocol, _, err := client.RoutingProtocolsApi.GetConnectionRoutingProtocolByUuid(ctx, d.Id(), d.Get("connection_uuid").(string))
+ 	if err != nil {
+@@ -69,8 +71,8 @@ func resourceFabricRoutingProtocolRead(ctx context.Context, d *schema.ResourceDa
+ }
+ 
+ func resourceFabricRoutingProtocolCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	schemaBgpIpv4 := d.Get("bgp_ipv4").(*schema.Set).List()
+ 	bgpIpv4 := routingProtocolBgpIpv4ToFabric(schemaBgpIpv4)
+ 	schemaBgpIpv6 := d.Get("bgp_ipv6").(*schema.Set).List()
+@@ -152,8 +154,8 @@ func resourceFabricRoutingProtocolCreate(ctx context.Context, d *schema.Resource
+ }
+ 
+ func resourceFabricRoutingProtocolUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 
+ 	/* todo: support patch bgp in the future - switch between PUT and PATCH
+ 	1. get getRoutingProtocolPatchUpdateRequest()
+@@ -251,8 +253,8 @@ func resourceFabricRoutingProtocolUpdate(ctx context.Context, d *schema.Resource
+ 
+ func resourceFabricRoutingProtocolDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+ 	diags := diag.Diagnostics{}
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	_, resp, err := client.RoutingProtocolsApi.DeleteConnectionRoutingProtocolByUuid(ctx, d.Id(), d.Get("connection_uuid").(string))
+ 	if err != nil {
+ 		errors, ok := err.(v4.GenericSwaggerError).Model().([]v4.ModelError)
+@@ -324,7 +326,7 @@ func waitUntilRoutingProtocolIsProvisioned(uuid string, connUuid string, meta in
+ 			string(v4.PROVISIONED_ConnectionState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.RoutingProtocolsApi.GetConnectionRoutingProtocolByUuid(ctx, uuid, connUuid)
+ 			if err != nil {
+ 				return "", "", err
+@@ -361,7 +363,7 @@ func waitUntilRoutingProtocolIsDeprovisioned(uuid string, connUuid string, meta
+ 			strconv.Itoa(404),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, resp, _ := client.RoutingProtocolsApi.GetConnectionRoutingProtocolByUuid(ctx, uuid, connUuid)
+ 			// fixme: check for error code instead?
+ 			// ignore error for Target
+@@ -382,7 +384,7 @@ func waitForRoutingProtocolUpdateCompletion(rpChangeUuid string, uuid string, co
+ 	stateConf := &resource.StateChangeConf{
+ 		Target: []string{"COMPLETED"},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbConn, _, err := client.RoutingProtocolsApi.GetConnectionRoutingProtocolsChangeByUuid(ctx, connUuid, uuid, rpChangeUuid)
+ 			if err != nil {
+ 				return "", "", err
+diff --git a/equinix/resource_fabric_routing_protocol_acc_test.go b/equinix/resource_fabric_routing_protocol_acc_test.go
+index 4fc9cc5..af4af24 100644
+--- a/equinix/resource_fabric_routing_protocol_acc_test.go
++++ b/equinix/resource_fabric_routing_protocol_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -97,7 +99,7 @@ func testAccFabricCreateRoutingProtocolBgpConfig(connectionUuid string, ipv4 str
+ 
+ func checkRoutingProtocolDelete(s *terraform.State) error {
+ 	ctx := context.Background()
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*Config).FabricAuthToken)
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*config.Config).FabricAuthToken)
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_fabric_routing_protocol" {
+ 			continue
+diff --git a/equinix/resource_fabric_service_profile.go b/equinix/resource_fabric_service_profile.go
+index a7b9152..9d21c89 100644
+--- a/equinix/resource_fabric_service_profile.go
++++ b/equinix/resource_fabric_service_profile.go
+@@ -4,12 +4,14 @@ import (
+ 	"context"
+ 	"errors"
+ 	"fmt"
+-	"github.com/antihax/optional"
+ 	"log"
+ 	"strconv"
+ 	"strings"
+ 	"time"
+ 
++	"github.com/antihax/optional"
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	v4 "github.com/equinix-labs/fabric-go/fabric/v4"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+@@ -37,8 +39,8 @@ func resourceFabricServiceProfile() *schema.Resource {
+ }
+ 
+ func resourceFabricServiceProfileRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	serviceProfile, _, err := client.ServiceProfilesApi.GetServiceProfileByUuid(ctx, d.Id(), nil)
+ 	if err != nil {
+ 		if !strings.Contains(err.Error(), "500") {
+@@ -53,8 +55,8 @@ func resourceFabricServiceProfileRead(ctx context.Context, d *schema.ResourceDat
+ }
+ 
+ func resourceFabricServiceProfileCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 
+ 	createRequest := getServiceProfileRequestPayload(d)
+ 	sp, _, err := client.ServiceProfilesApi.CreateServiceProfile(ctx, createRequest)
+@@ -123,8 +125,8 @@ func getServiceProfileRequestPayload(d *schema.ResourceData) v4.ServiceProfileRe
+ }
+ 
+ func resourceFabricServiceProfileUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	uuid := d.Id()
+ 	updateRequest := getServiceProfileRequestPayload(d)
+ 
+@@ -159,7 +161,7 @@ func waitForServiceProfileUpdateCompletion(uuid string, meta interface{}, ctx co
+ 	stateConf := &retry.StateChangeConf{
+ 		Target: []string{"COMPLETED"},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbServiceProfile, _, err := client.ServiceProfilesApi.GetServiceProfileByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return "", "", err
+@@ -187,7 +189,7 @@ func waitForActiveServiceProfileAndPopulateETag(uuid string, meta interface{}, c
+ 	stateConf := &retry.StateChangeConf{
+ 		Target: []string{string(v4.ACTIVE_ServiceProfileStateEnum)},
+ 		Refresh: func() (interface{}, string, error) {
+-			client := meta.(*Config).fabricClient
++			client := meta.(*config.Config).FabricClient
+ 			dbServiceProfile, res, err := client.ServiceProfilesApi.GetServiceProfileByUuid(ctx, uuid, nil)
+ 			if err != nil {
+ 				return nil, "", err
+@@ -219,8 +221,8 @@ func waitForActiveServiceProfileAndPopulateETag(uuid string, meta interface{}, c
+ 
+ func resourceFabricServiceProfileDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+ 	diags := diag.Diagnostics{}
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	uuid := d.Id()
+ 	if uuid == "" {
+ 		return diag.Errorf("No uuid found %v ", uuid)
+@@ -273,8 +275,8 @@ func setFabricServiceProfilesListMap(d *schema.ResourceData, spl v4.ServiceProfi
+ }
+ 
+ func resourceServiceProfilesSearchRequest(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+-	client := meta.(*Config).fabricClient
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*Config).FabricAuthToken)
++	client := meta.(*config.Config).FabricClient
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	schemaFilter := d.Get("filter").(*schema.Set).List()
+ 	filter := serviceProfilesSearchFilterRequestToFabric(schemaFilter)
+ 	var serviceProfileFlt v4.ServiceProfileFilter // Cast ServiceProfile search expression struct type to interface
+diff --git a/equinix/resource_fabric_service_profile_acc_test.go b/equinix/resource_fabric_service_profile_acc_test.go
+index 4063958..59aa9d2 100644
+--- a/equinix/resource_fabric_service_profile_acc_test.go
++++ b/equinix/resource_fabric_service_profile_acc_test.go
+@@ -7,6 +7,8 @@ import (
+ 	"testing"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -150,9 +152,9 @@ func testAccFabricCreateServiceProfileConfig(name string) string {
+ }
+ 
+ func checkServiceProfileDelete(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).fabricClient
++	client := testAccProvider.Meta().(*config.Config).FabricClient
+ 	ctx := context.Background()
+-	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*Config).FabricAuthToken)
++	ctx = context.WithValue(ctx, v4.ContextAccessToken, testAccProvider.Meta().(*config.Config).FabricAuthToken)
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_fabric_service_profile" {
+ 			continue
+diff --git a/equinix/resource_metal_bgp_session.go b/equinix/resource_metal_bgp_session.go
+index 122e8f9..767776a 100644
+--- a/equinix/resource_metal_bgp_session.go
++++ b/equinix/resource_metal_bgp_session.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"log"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -49,8 +51,8 @@ func resourceMetalBGPSession() *schema.Resource {
+ }
+ 
+ func resourceMetalBGPSessionCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	dID := d.Get("device_id").(string)
+ 	addressFamily := d.Get("address_family").(string)
+@@ -70,8 +72,8 @@ func resourceMetalBGPSessionCreate(d *schema.ResourceData, meta interface{}) err
+ }
+ 
+ func resourceMetalBGPSessionRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	bgpSession, _, err := client.BGPSessions.Get(d.Id(),
+ 		&packngo.GetOptions{Includes: []string{"device"}})
+@@ -100,8 +102,8 @@ func resourceMetalBGPSessionRead(d *schema.ResourceData, meta interface{}) error
+ }
+ 
+ func resourceMetalBGPSessionDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	resp, err := client.BGPSessions.Delete(d.Id())
+ 	return ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err)
+ }
+diff --git a/equinix/resource_metal_bgp_setup_acc_test.go b/equinix/resource_metal_bgp_setup_acc_test.go
+index 226a7d0..32c4189 100644
+--- a/equinix/resource_metal_bgp_setup_acc_test.go
++++ b/equinix/resource_metal_bgp_setup_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -52,7 +54,7 @@ func TestAccMetalBGPSetup_basic(t *testing.T) {
+ }
+ 
+ func testAccMetalBGPSetupCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_bgp_session" {
+diff --git a/equinix/resource_metal_connection.go b/equinix/resource_metal_connection.go
+index 91bffe3..98576b0 100644
+--- a/equinix/resource_metal_connection.go
++++ b/equinix/resource_metal_connection.go
+@@ -7,6 +7,8 @@ import (
+ 	"strconv"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -198,8 +200,8 @@ func resourceMetalConnection() *schema.Resource {
+ }
+ 
+ func resourceMetalConnectionCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	facility, facOk := d.GetOk("facility")
+ 	metro, metOk := d.GetOk("metro")
+@@ -315,8 +317,8 @@ func resourceMetalConnectionCreate(d *schema.ResourceData, meta interface{}) err
+ }
+ 
+ func resourceMetalConnectionUpdate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	if d.HasChange("locked") {
+ 		var action func(string) (*packngo.Response, error)
+@@ -423,8 +425,8 @@ func updateHiddenVirtualCircuitVNID(client *packngo.Client, port map[string]inte
+ }
+ 
+ func resourceMetalConnectionRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	connId := d.Id()
+ 	conn, _, err := client.Connections.Get(
+@@ -489,8 +491,8 @@ func resourceMetalConnectionRead(d *schema.ResourceData, meta interface{}) error
+ }
+ 
+ func resourceMetalConnectionDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	resp, err := client.Connections.Delete(d.Id(), true)
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+ 		return friendlyError(err)
+diff --git a/equinix/resource_metal_connection_acc_test.go b/equinix/resource_metal_connection_acc_test.go
+index 53c0259..7a5146d 100644
+--- a/equinix/resource_metal_connection_acc_test.go
++++ b/equinix/resource_metal_connection_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -42,7 +44,7 @@ func TestSpeedConversion(t *testing.T) {
+ }
+ 
+ func testAccMetalConnectionCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_connection" {
+diff --git a/equinix/resource_metal_device.go b/equinix/resource_metal_device.go
+index 756dadc..8da8ece 100644
+--- a/equinix/resource_metal_device.go
++++ b/equinix/resource_metal_device.go
+@@ -12,6 +12,8 @@ import (
+ 	"sort"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/customdiff"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -473,8 +475,8 @@ func reinstallDisabledAndNoChangesAllowed(attribute string) customdiff.ResourceC
+ }
+ 
+ func resourceMetalDeviceCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	var addressTypesSlice []packngo.IPAddressCreateRequest
+ 	_, ok := d.GetOk("ip_address")
+@@ -610,8 +612,8 @@ func resourceMetalDeviceCreate(ctx context.Context, d *schema.ResourceData, meta
+ }
+ 
+ func resourceMetalDeviceRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalGoUserAgent(d)
+-	client := meta.(*Config).metalgo
++	meta.(*config.Config).AddModuleToMetalGoUserAgent(d)
++	client := meta.(*config.Config).Metalgo
+ 
+ 	device, resp, err := client.DevicesApi.FindDeviceById(context.Background(), d.Id()).Include(deviceCommonIncludes).Execute()
+ 	if err != nil {
+@@ -717,8 +719,8 @@ func resourceMetalDeviceRead(ctx context.Context, d *schema.ResourceData, meta i
+ }
+ 
+ func resourceMetalDeviceUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	if d.HasChange("locked") {
+ 		var action func(string) (*packngo.Response, error)
+@@ -824,8 +826,8 @@ func doReinstall(ctx context.Context, client *packngo.Client, d *schema.Resource
+ }
+ 
+ func resourceMetalDeviceDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	fdvIf, fdvOk := d.GetOk("force_detach_volumes")
+ 	fdv := false
+@@ -864,8 +866,8 @@ func waitForActiveDevice(ctx context.Context, d *schema.ResourceData, meta inter
+ 		Pending: pending,
+ 		Target:  targets,
+ 		Refresh: func() (interface{}, string, error) {
+-			meta.(*Config).addModuleToMetalUserAgent(d)
+-			client := meta.(*Config).metal
++			meta.(*config.Config).AddModuleToMetalUserAgent(d)
++			client := meta.(*config.Config).Metal
+ 
+ 			device, _, err := client.Devices.Get(d.Id(), &packngo.GetOptions{Includes: []string{"project"}})
+ 			if err == nil {
+diff --git a/equinix/resource_metal_device_acc_test.go b/equinix/resource_metal_device_acc_test.go
+index 030f337..0822a1f 100644
+--- a/equinix/resource_metal_device_acc_test.go
++++ b/equinix/resource_metal_device_acc_test.go
+@@ -12,6 +12,8 @@ import (
+ 	"testing"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/google/uuid"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+@@ -538,7 +540,7 @@ func TestAccMetalDevice_allowChangesErrorOnUnsupportedAttribute(t *testing.T) {
+ }
+ 
+ func testAccMetalDeviceCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_device" {
+@@ -574,7 +576,7 @@ func testAccMetalDeviceExists(n string, device *packngo.Device) resource.TestChe
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundDevice, _, err := client.Devices.Get(rs.Primary.ID, nil)
+ 		if err != nil {
+@@ -1103,7 +1105,7 @@ func TestAccMetalDevice_readErrorHandling(t *testing.T) {
+ 			}
+ 
+ 			mockAPI := httptest.NewServer(http.HandlerFunc(tt.args.handler))
+-			meta := &Config{
++			meta := &config.Config{
+ 				BaseURL: mockAPI.URL,
+ 				Token:   "fakeTokenForMock",
+ 			}
+@@ -1132,8 +1134,8 @@ func testAccWaitForMetalDeviceActive(project, deviceHostName string) resource.Im
+ 
+ 		meta := testAccProvider.Meta()
+ 		rd := new(schema.ResourceData)
+-		meta.(*Config).addModuleToMetalUserAgent(rd)
+-		client := meta.(*Config).metal
++		meta.(*config.Config).AddModuleToMetalUserAgent(rd)
++		client := meta.(*config.Config).Metal
+ 		devices, _, err := client.Devices.List(rs.Primary.ID, &packngo.ListOptions{Search: deviceHostName})
+ 		if err != nil {
+ 			return "", fmt.Errorf("error while fetching devices for project [%s], error: %w", rs.Primary.ID, err)
+diff --git a/equinix/resource_metal_device_network_type.go b/equinix/resource_metal_device_network_type.go
+index 0222521..87fa5df 100644
+--- a/equinix/resource_metal_device_network_type.go
++++ b/equinix/resource_metal_device_network_type.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"log"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -71,8 +73,8 @@ func getAndPossiblySetNetworkType(d *schema.ResourceData, c *packngo.Client, tar
+ }
+ 
+ func resourceMetalDeviceNetworkTypeCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	ntype := d.Get("type").(string)
+ 	err := getAndPossiblySetNetworkType(d, client, ntype)
+@@ -84,8 +86,8 @@ func resourceMetalDeviceNetworkTypeCreate(d *schema.ResourceData, meta interface
+ }
+ 
+ func resourceMetalDeviceNetworkTypeRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	_, devNType, err := getDevIDandNetworkType(d, client)
+ 	if err != nil {
+@@ -113,8 +115,8 @@ func resourceMetalDeviceNetworkTypeRead(d *schema.ResourceData, meta interface{}
+ }
+ 
+ func resourceMetalDeviceNetworkTypeUpdate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	ntype := d.Get("type").(string)
+ 	if d.HasChange("type") {
+diff --git a/equinix/resource_metal_gateway.go b/equinix/resource_metal_gateway.go
+index 19959bc..2ca2862 100644
+--- a/equinix/resource_metal_gateway.go
++++ b/equinix/resource_metal_gateway.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+@@ -93,8 +95,8 @@ func resourceMetalGateway() *schema.Resource {
+ }
+ 
+ func resourceMetalGatewayCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	_, hasIPReservation := d.GetOk("ip_reservation_id")
+ 	_, hasSubnetSize := d.GetOk("private_ipv4_subnet_size")
+@@ -120,8 +122,8 @@ func resourceMetalGatewayCreate(d *schema.ResourceData, meta interface{}) error
+ }
+ 
+ func resourceMetalGatewayRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	mgId := d.Id()
+ 	includes := &packngo.GetOptions{Includes: []string{"project", "ip_reservation", "virtual_network", "vrf"}}
+@@ -152,8 +154,8 @@ func resourceMetalGatewayRead(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalGatewayDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	resp, err := client.MetalGateways.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+ 		return friendlyError(err)
+diff --git a/equinix/resource_metal_gateway_acc_test.go b/equinix/resource_metal_gateway_acc_test.go
+index 43f2421..0a73093 100644
+--- a/equinix/resource_metal_gateway_acc_test.go
++++ b/equinix/resource_metal_gateway_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+ )
+@@ -98,7 +100,7 @@ resource "equinix_metal_gateway" "test" {
+ }
+ 
+ func testAccMetalGatewayCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_gateway" {
+diff --git a/equinix/resource_metal_ip_attachment.go b/equinix/resource_metal_ip_attachment.go
+index 0da8618..7057932 100644
+--- a/equinix/resource_metal_ip_attachment.go
++++ b/equinix/resource_metal_ip_attachment.go
+@@ -5,6 +5,8 @@ import (
+ 	"log"
+ 	"path"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -34,8 +36,8 @@ func resourceMetalIPAttachment() *schema.Resource {
+ }
+ 
+ func resourceMetalIPAttachmentCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	deviceID := d.Get("device_id").(string)
+ 	ipa := d.Get("cidr_notation").(string)
+@@ -51,8 +53,8 @@ func resourceMetalIPAttachmentCreate(d *schema.ResourceData, meta interface{}) e
+ }
+ 
+ func resourceMetalIPAttachmentRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	assignment, _, err := client.DeviceIPs.Get(d.Id(), nil)
+ 	if err != nil {
+ 		err = friendlyError(err)
+@@ -87,8 +89,8 @@ func resourceMetalIPAttachmentRead(d *schema.ResourceData, meta interface{}) err
+ }
+ 
+ func resourceMetalIPAttachmentDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.DeviceIPs.Unassign(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+diff --git a/equinix/resource_metal_ip_attachment_acc_test.go b/equinix/resource_metal_ip_attachment_acc_test.go
+index 993ff99..eca1f82 100644
+--- a/equinix/resource_metal_ip_attachment_acc_test.go
++++ b/equinix/resource_metal_ip_attachment_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -127,7 +129,7 @@ resource "equinix_metal_ip_attachment" "test" {
+ }
+ 
+ func testAccMetalIPAttachmentCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_ip_attachment" {
+diff --git a/equinix/resource_metal_organization.go b/equinix/resource_metal_organization.go
+index 24030a8..00fe088 100644
+--- a/equinix/resource_metal_organization.go
++++ b/equinix/resource_metal_organization.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"regexp"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -100,8 +102,8 @@ func createMetalOrganizationAddressResourceSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceMetalOrganizationCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	createRequest := &packngo.OrganizationCreateRequest{
+ 		Name:    d.Get("name").(string),
+@@ -135,8 +137,8 @@ func resourceMetalOrganizationCreate(d *schema.ResourceData, meta interface{}) e
+ }
+ 
+ func resourceMetalOrganizationRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	key, _, err := client.Organizations.Get(d.Id(), &packngo.GetOptions{Includes: []string{"address"}})
+ 	if err != nil {
+@@ -166,8 +168,8 @@ func resourceMetalOrganizationRead(d *schema.ResourceData, meta interface{}) err
+ }
+ 
+ func resourceMetalOrganizationUpdate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	changes := getResourceDataChangedKeys([]string{"name", "description", "website", "twitter", "logo", "address"}, d)
+ 	updateRequest := &packngo.OrganizationUpdateRequest{}
+@@ -203,8 +205,8 @@ func resourceMetalOrganizationUpdate(d *schema.ResourceData, meta interface{}) e
+ }
+ 
+ func resourceMetalOrganizationDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.Organizations.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+diff --git a/equinix/resource_metal_organization_acc_test.go b/equinix/resource_metal_organization_acc_test.go
+index 255dfda..098afd4 100644
+--- a/equinix/resource_metal_organization_acc_test.go
++++ b/equinix/resource_metal_organization_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"log"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -123,7 +125,7 @@ func TestAccMetalOrganization_importBasic(t *testing.T) {
+ }
+ 
+ func testAccMetalOrganizationCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_organization" {
+@@ -147,7 +149,7 @@ func testAccMetalOrganizationExists(n string, org *packngo.Organization) resourc
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundOrg, _, err := client.Organizations.Get(rs.Primary.ID, &packngo.GetOptions{Includes: []string{"address", "primary_owner"}})
+ 		if err != nil {
+diff --git a/equinix/resource_metal_organization_member.go b/equinix/resource_metal_organization_member.go
+index 6bee739..3e5c3ab 100644
+--- a/equinix/resource_metal_organization_member.go
++++ b/equinix/resource_metal_organization_member.go
+@@ -6,6 +6,8 @@ import (
+ 	"path"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -117,7 +119,7 @@ func resourceMetalOrganizationMember() *schema.Resource {
+ }
+ 
+ func resourceMetalOrganizationMemberCreate(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 
+ 	email := d.Get("invitee").(string)
+ 	createRequest := &packngo.InvitationCreateRequest{
+@@ -154,7 +156,7 @@ func findMember(invitee string, members []packngo.Member, invitations []packngo.
+ }
+ 
+ func resourceMetalOrganizationMemberRead(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 	parts := strings.Split(d.Id(), ":")
+ 	invitee := parts[0]
+ 	orgID := parts[1]
+@@ -219,7 +221,7 @@ func resourceMetalOrganizationMemberRead(d *schema.ResourceData, meta interface{
+ }
+ 
+ func resourceMetalOrganizationMemberDelete(d *schema.ResourceData, meta interface{}) error {
+-	client := meta.(*Config).metal
++	client := meta.(*config.Config).Metal
+ 
+ 	listOpts := &packngo.ListOptions{Includes: []string{"user"}}
+ 	invitations, _, err := client.Invitations.List(d.Get("organization_id").(string), listOpts)
+diff --git a/equinix/resource_metal_port.go b/equinix/resource_metal_port.go
+index 375897e..aec4fdf 100644
+--- a/equinix/resource_metal_port.go
++++ b/equinix/resource_metal_port.go
+@@ -5,6 +5,8 @@ import (
+ 	"log"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ )
+ 
+@@ -143,8 +145,8 @@ func resourceMetalPortUpdate(ctx context.Context, d *schema.ResourceData, meta i
+ }
+ 
+ func resourceMetalPortRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	port, err := getPortByResourceData(d, client)
+ 	if err != nil {
+diff --git a/equinix/resource_metal_port_acc_test.go b/equinix/resource_metal_port_acc_test.go
+index 71274d4..68e7ce3 100644
+--- a/equinix/resource_metal_port_acc_test.go
++++ b/equinix/resource_metal_port_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"regexp"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -354,7 +356,7 @@ func TestAccMetalPort_hybridBonded(t *testing.T) {
+ }
+ 
+ func testAccMetalPortDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	port_ids := []string{}
+ 
+@@ -391,8 +393,8 @@ func testAccWaitForPortActive(deviceName, portName string) resource.ImportStateI
+ 
+ 		meta := testAccProvider.Meta()
+ 		rd := new(schema.ResourceData)
+-		meta.(*Config).addModuleToMetalUserAgent(rd)
+-		client := meta.(*Config).metal
++		meta.(*config.Config).AddModuleToMetalUserAgent(rd)
++		client := meta.(*config.Config).Metal
+ 		device, _, err := client.Devices.Get(rs.Primary.ID, &packngo.GetOptions{Includes: []string{"ports"}})
+ 		if err != nil {
+ 			return "", fmt.Errorf("error while fetching device with Id [%s], error: %w", rs.Primary.ID, err)
+diff --git a/equinix/resource_metal_port_vlan_attachment.go b/equinix/resource_metal_port_vlan_attachment.go
+index d537c0d..e72efa0 100644
+--- a/equinix/resource_metal_port_vlan_attachment.go
++++ b/equinix/resource_metal_port_vlan_attachment.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"log"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -65,8 +67,8 @@ func resourceMetalPortVlanAttachment() *schema.Resource {
+ }
+ 
+ func resourceMetalPortVlanAttachmentCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	deviceID := d.Get("device_id").(string)
+ 	pName := d.Get("port_name").(string)
+ 	vlanVNID := d.Get("vlan_vnid").(int)
+@@ -158,8 +160,8 @@ func resourceMetalPortVlanAttachmentCreate(d *schema.ResourceData, meta interfac
+ }
+ 
+ func resourceMetalPortVlanAttachmentRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	deviceID := d.Get("device_id").(string)
+ 	pName := d.Get("port_name").(string)
+ 	vlanVNID := d.Get("vlan_vnid").(int)
+@@ -212,8 +214,8 @@ func resourceMetalPortVlanAttachmentRead(d *schema.ResourceData, meta interface{
+ }
+ 
+ func resourceMetalPortVlanAttachmentUpdate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	if d.HasChange("native") {
+ 		native := d.Get("native").(bool)
+ 		portID := d.Get("port_id").(string)
+@@ -235,8 +237,8 @@ func resourceMetalPortVlanAttachmentUpdate(d *schema.ResourceData, meta interfac
+ }
+ 
+ func resourceMetalPortVlanAttachmentDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	pID := d.Get("port_id").(string)
+ 	vlanID := d.Get("vlan_id").(string)
+ 	native := d.Get("native").(bool)
+diff --git a/equinix/resource_metal_port_vlan_attachment_acc_test.go b/equinix/resource_metal_port_vlan_attachment_acc_test.go
+index 2cc9b80..de96c4b 100644
+--- a/equinix/resource_metal_port_vlan_attachment_acc_test.go
++++ b/equinix/resource_metal_port_vlan_attachment_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"strings"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -346,7 +348,7 @@ func TestAccMetalPortVlanAttachment_hybridMultipleVlans(t *testing.T) {
+ }
+ 
+ func testAccMetalPortVlanAttachmentCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	device_id := ""
+ 	vlan_id := ""
+diff --git a/equinix/resource_metal_project.go b/equinix/resource_metal_project.go
+index d02528e..31023a4 100644
+--- a/equinix/resource_metal_project.go
++++ b/equinix/resource_metal_project.go
+@@ -6,6 +6,8 @@ import (
+ 	"regexp"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+ 	"github.com/packethost/packngo"
+@@ -123,8 +125,8 @@ func expandBGPConfig(d *schema.ResourceData) packngo.CreateBGPConfigRequest {
+ }
+ 
+ func resourceMetalProjectCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	createRequest := &packngo.ProjectCreateRequest{
+ 		Name:           d.Get("name").(string),
+@@ -159,8 +161,8 @@ func resourceMetalProjectCreate(d *schema.ResourceData, meta interface{}) error
+ }
+ 
+ func resourceMetalProjectRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	proj, _, err := client.Projects.Get(d.Id(), nil)
+ 	if err != nil {
+@@ -232,8 +234,8 @@ func flattenBGPConfig(l *packngo.BGPConfig) []map[string]interface{} {
+ }
+ 
+ func resourceMetalProjectUpdate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	updateRequest := &packngo.ProjectUpdateRequest{}
+ 	if d.HasChange("name") {
+ 		pName := d.Get("name").(string)
+@@ -284,8 +286,8 @@ func resourceMetalProjectUpdate(d *schema.ResourceData, meta interface{}) error
+ }
+ 
+ func resourceMetalProjectDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.Projects.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+diff --git a/equinix/resource_metal_project_acc_test.go b/equinix/resource_metal_project_acc_test.go
+index ea4e22c..b891bfc 100644
+--- a/equinix/resource_metal_project_acc_test.go
++++ b/equinix/resource_metal_project_acc_test.go
+@@ -8,6 +8,8 @@ import (
+ 	"regexp"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+@@ -135,8 +137,8 @@ func TestAccMetalProject_errorHandling(t *testing.T) {
+ 	}
+ 	mockEquinix := Provider()
+ 	mockEquinix.ConfigureContextFunc = func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
+-		config := Config{
+-			metal: &packngo.Client{Projects: mockMetalProjectService},
++		config := config.Config{
++			Metal: &packngo.Client{Projects: mockMetalProjectService},
+ 		}
+ 		return &config, nil
+ 	}
+@@ -167,8 +169,8 @@ func TestAccMetalProject_apiErrorHandling(t *testing.T) {
+ 	}
+ 	mockEquinix := Provider()
+ 	mockEquinix.ConfigureContextFunc = func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics) {
+-		config := Config{
+-			metal: &packngo.Client{Projects: mockMetalProjectService},
++		config := config.Config{
++			Metal: &packngo.Client{Projects: mockMetalProjectService},
+ 		}
+ 		return &config, nil
+ 	}
+@@ -346,7 +348,7 @@ func TestAccMetalProject_BGPUpdate(t *testing.T) {
+ }
+ 
+ func testAccMetalProjectCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_project" {
+@@ -370,7 +372,7 @@ func testAccMetalProjectExists(n string, project *packngo.Project) resource.Test
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundProject, _, err := client.Projects.Get(rs.Primary.ID, nil)
+ 		if err != nil {
+diff --git a/equinix/resource_metal_project_api_key.go b/equinix/resource_metal_project_api_key.go
+index bedc974..6e8f078 100644
+--- a/equinix/resource_metal_project_api_key.go
++++ b/equinix/resource_metal_project_api_key.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"log"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -47,8 +49,8 @@ func resourceMetalProjectAPIKey() *schema.Resource {
+ }
+ 
+ func resourceMetalAPIKeyCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	projectId := ""
+ 
+@@ -82,8 +84,8 @@ func projectIdFromResourceData(d *schema.ResourceData) string {
+ }
+ 
+ func resourceMetalAPIKeyRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	projectId := projectIdFromResourceData(d)
+ 
+@@ -133,8 +135,8 @@ func resourceMetalAPIKeyRead(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalAPIKeyDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.APIKeys.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+diff --git a/equinix/resource_metal_project_api_key_acc_test.go b/equinix/resource_metal_project_api_key_acc_test.go
+index d626234..7c2d9e7 100644
+--- a/equinix/resource_metal_project_api_key_acc_test.go
++++ b/equinix/resource_metal_project_api_key_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+ )
+@@ -44,7 +46,7 @@ resource "equinix_metal_project_api_key" "test" {
+ }
+ 
+ func testAccMetalProjectAPIKeyCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_project_api_key" {
+ 			continue
+diff --git a/equinix/resource_metal_project_ssh_key_acc_test.go b/equinix/resource_metal_project_ssh_key_acc_test.go
+index d8553f7..40e2ac9 100644
+--- a/equinix/resource_metal_project_ssh_key_acc_test.go
++++ b/equinix/resource_metal_project_ssh_key_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -74,7 +76,7 @@ func TestAccMetalProjectSSHKey_basic(t *testing.T) {
+ }
+ 
+ func testAccMetalProjectSSHKeyCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_project_ssh_key" {
+diff --git a/equinix/resource_metal_reserved_ip_block.go b/equinix/resource_metal_reserved_ip_block.go
+index 04ff8c5..7e37fc5 100644
+--- a/equinix/resource_metal_reserved_ip_block.go
++++ b/equinix/resource_metal_reserved_ip_block.go
+@@ -9,6 +9,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure"
+@@ -232,8 +234,8 @@ func resourceMetalReservedIPBlock() *schema.Resource {
+ }
+ 
+ func resourceMetalReservedIPBlockCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	quantity := d.Get("quantity").(int)
+ 	typ := d.Get("type").(string)
+@@ -315,8 +317,8 @@ func resourceMetalReservedIPBlockCreate(ctx context.Context, d *schema.ResourceD
+ }
+ 
+ func resourceMetalReservedIPBlockUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	id := d.Id()
+ 	req := &packngo.IPAddressUpdateRequest{}
+ 	if d.HasChange("tags") {
+@@ -457,8 +459,8 @@ func loadBlock(d *schema.ResourceData, reservedBlock *packngo.IPAddressReservati
+ }
+ 
+ func resourceMetalReservedIPBlockRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	id := d.Id()
+ 	getOpts := &packngo.GetOptions{Includes: []string{"facility", "metro", "project", "vrf"}}
+@@ -488,8 +490,8 @@ func resourceMetalReservedIPBlockRead(ctx context.Context, d *schema.ResourceDat
+ }
+ 
+ func resourceMetalReservedIPBlockDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	id := d.Id()
+ 
+diff --git a/equinix/resource_metal_reserved_ip_block_acc_test.go b/equinix/resource_metal_reserved_ip_block_acc_test.go
+index f101435..40d4cde 100644
+--- a/equinix/resource_metal_reserved_ip_block_acc_test.go
++++ b/equinix/resource_metal_reserved_ip_block_acc_test.go
+@@ -7,6 +7,8 @@ import (
+ 	"testing"
+ 	"text/template"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -210,7 +212,7 @@ func TestAccMetalReservedIPBlock_importBasic(t *testing.T) {
+ }
+ 
+ func testAccMetalReservedIPBlockCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_reserved_ip_block" {
+diff --git a/equinix/resource_metal_spot_market_request.go b/equinix/resource_metal_spot_market_request.go
+index 2052ce4..707b434 100644
+--- a/equinix/resource_metal_spot_market_request.go
++++ b/equinix/resource_metal_spot_market_request.go
+@@ -9,6 +9,8 @@ import (
+ 	"strconv"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+@@ -213,8 +215,8 @@ func resourceMetalSpotMarketRequest() *schema.Resource {
+ }
+ 
+ func resourceMetalSpotMarketRequestCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	var waitForDevices bool
+ 
+ 	metro := d.Get("metro").(string)
+@@ -356,8 +358,8 @@ func resourceMetalSpotMarketRequestCreate(ctx context.Context, d *schema.Resourc
+ }
+ 
+ func resourceMetalSpotMarketRequestRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	smr, _, err := client.SpotMarketRequests.Get(d.Id(), &packngo.GetOptions{Includes: []string{"project", "devices", "facilities", "metro"}})
+ 	if err != nil {
+@@ -396,8 +398,8 @@ func resourceMetalSpotMarketRequestRead(ctx context.Context, d *schema.ResourceD
+ }
+ 
+ func resourceMetalSpotMarketRequestDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	var waitForDevices bool
+ 
+ 	if val, ok := d.GetOk("wait_for_devices"); ok {
+@@ -437,8 +439,8 @@ func resourceMetalSpotMarketRequestDelete(ctx context.Context, d *schema.Resourc
+ 
+ func resourceStateRefreshFunc(d *schema.ResourceData, meta interface{}) retry.StateRefreshFunc {
+ 	return func() (interface{}, string, error) {
+-		meta.(*Config).addModuleToMetalUserAgent(d)
+-		client := meta.(*Config).metal
++		meta.(*config.Config).AddModuleToMetalUserAgent(d)
++		client := meta.(*config.Config).Metal
+ 
+ 		smr, _, err := client.SpotMarketRequests.Get(d.Id(), &packngo.GetOptions{Includes: []string{"project", "devices", "facilities", "metro"}})
+ 		if err != nil {
+diff --git a/equinix/resource_metal_spot_market_request_acc_test.go b/equinix/resource_metal_spot_market_request_acc_test.go
+index 7291f40..2d273bf 100644
+--- a/equinix/resource_metal_spot_market_request_acc_test.go
++++ b/equinix/resource_metal_spot_market_request_acc_test.go
+@@ -2,12 +2,14 @@ package equinix
+ 
+ import (
+ 	"fmt"
++	"regexp"
++	"testing"
++
++	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+ 	"github.com/packethost/packngo"
+-	"regexp"
+-	"testing"
+ )
+ 
+ var (
+@@ -40,7 +42,7 @@ func TestAccMetalSpotMarketRequest_basic(t *testing.T) {
+ }
+ 
+ func testAccMetalSpotMarketRequestCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_spot_market_request" {
+@@ -64,7 +66,7 @@ func testAccCheckMetalSpotMarketRequestExists(n string, key *packngo.SpotMarketR
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundKey, _, err := client.SpotMarketRequests.Get(rs.Primary.ID, &packngo.GetOptions{Includes: []string{"project", "devices", "facilities", "metro"}})
+ 		if err != nil {
+diff --git a/equinix/resource_metal_ssh_key.go b/equinix/resource_metal_ssh_key.go
+index 49000d9..087063b 100644
+--- a/equinix/resource_metal_ssh_key.go
++++ b/equinix/resource_metal_ssh_key.go
+@@ -5,6 +5,8 @@ import (
+ 	"path"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -63,8 +65,8 @@ func resourceMetalSSHKey() *schema.Resource {
+ }
+ 
+ func resourceMetalSSHKeyCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	createRequest := &packngo.SSHKeyCreateRequest{
+ 		Label: d.Get("name").(string),
+@@ -87,8 +89,8 @@ func resourceMetalSSHKeyCreate(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalSSHKeyRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	key, _, err := client.SSHKeys.Get(d.Id(), nil)
+ 	if err != nil {
+@@ -123,8 +125,8 @@ func resourceMetalSSHKeyRead(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalSSHKeyUpdate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	updateRequest := &packngo.SSHKeyUpdateRequest{}
+ 
+@@ -147,8 +149,8 @@ func resourceMetalSSHKeyUpdate(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalSSHKeyDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.SSHKeys.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+diff --git a/equinix/resource_metal_ssh_key_acc_test.go b/equinix/resource_metal_ssh_key_acc_test.go
+index f2b07f1..82601cd 100644
+--- a/equinix/resource_metal_ssh_key_acc_test.go
++++ b/equinix/resource_metal_ssh_key_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"net/http"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -188,7 +190,7 @@ func TestAccMetalSSHKey_importBasic(t *testing.T) {
+ }
+ 
+ func testAccMetalSSHKeyCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_ssh_key" {
+@@ -212,7 +214,7 @@ func testAccCheckMetalSSHKeyExists(n string, key *packngo.SSHKey) resource.TestC
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundKey, _, err := client.SSHKeys.Get(rs.Primary.ID, nil)
+ 		if err != nil {
+diff --git a/equinix/resource_metal_user_api_key_acc_test.go b/equinix/resource_metal_user_api_key_acc_test.go
+index 4b34896..831995a 100644
+--- a/equinix/resource_metal_user_api_key_acc_test.go
++++ b/equinix/resource_metal_user_api_key_acc_test.go
+@@ -69,7 +69,7 @@ func TestAccMetalUserAPIKey_basic(t *testing.T) {
+ }
+ 
+ func testAccMetalUserAPIKeyCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_user_api_key" {
+ 			continue
+diff --git a/equinix/resource_metal_virtual_circuit.go b/equinix/resource_metal_virtual_circuit.go
+index 7d9ded7..a832bc8 100644
+--- a/equinix/resource_metal_virtual_circuit.go
++++ b/equinix/resource_metal_virtual_circuit.go
+@@ -9,6 +9,8 @@ import (
+ 	"strconv"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+@@ -139,8 +141,8 @@ func resourceMetalVirtualCircuit() *schema.Resource {
+ }
+ 
+ func resourceMetalVirtualCircuitCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	vncr := packngo.VCCreateRequest{
+ 		VirtualNetworkID: d.Get("vlan_id").(string),
+ 		Name:             d.Get("name").(string),
+@@ -199,8 +201,8 @@ func resourceMetalVirtualCircuitCreate(ctx context.Context, d *schema.ResourceDa
+ }
+ 
+ func resourceMetalVirtualCircuitRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 	vcId := d.Id()
+ 
+ 	vc, _, err := client.VirtualCircuits.Get(
+@@ -280,8 +282,8 @@ func getVCStateWaiter(client *packngo.Client, id string, timeout time.Duration,
+ }
+ 
+ func resourceMetalVirtualCircuitUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	ur := packngo.VCUpdateRequest{}
+ 	if d.HasChange("vlan_id") {
+@@ -328,8 +330,8 @@ func resourceMetalVirtualCircuitUpdate(ctx context.Context, d *schema.ResourceDa
+ }
+ 
+ func resourceMetalVirtualCircuitDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.VirtualCircuits.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) != nil {
+diff --git a/equinix/resource_metal_virtual_circuit_acc_test.go b/equinix/resource_metal_virtual_circuit_acc_test.go
+index 13a1117..94c4b72 100644
+--- a/equinix/resource_metal_virtual_circuit_acc_test.go
++++ b/equinix/resource_metal_virtual_circuit_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"os"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -59,7 +61,7 @@ func testSweepVirtualCircuits(region string) error {
+ }
+ 
+ func testAccMetalVirtualCircuitCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_virtual_circuit" {
+diff --git a/equinix/resource_metal_vlan.go b/equinix/resource_metal_vlan.go
+index 5cfcd3a..2b39fcc 100644
+--- a/equinix/resource_metal_vlan.go
++++ b/equinix/resource_metal_vlan.go
+@@ -4,6 +4,8 @@ import (
+ 	"errors"
+ 	"path"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+ )
+@@ -76,8 +78,8 @@ func resourceMetalVlan() *schema.Resource {
+ }
+ 
+ func resourceMetalVlanCreate(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	facRaw, facOk := d.GetOk("facility")
+ 	metroRaw, metroOk := d.GetOk("metro")
+@@ -110,8 +112,8 @@ func resourceMetalVlanCreate(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalVlanRead(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	vlan, _, err := client.ProjectVirtualNetworks.Get(d.Id(),
+ 		&packngo.GetOptions{Includes: []string{"assigned_to"}})
+@@ -133,8 +135,8 @@ func resourceMetalVlanRead(d *schema.ResourceData, meta interface{}) error {
+ }
+ 
+ func resourceMetalVlanDelete(d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	id := d.Id()
+ 	vlan, resp, err := client.ProjectVirtualNetworks.Get(id, &packngo.GetOptions{Includes: []string{"instances", "instances.network_ports.virtual_networks", "internet_gateway"}})
+diff --git a/equinix/resource_metal_vlan_acc_test.go b/equinix/resource_metal_vlan_acc_test.go
+index 6e395f6..eb76aa8 100644
+--- a/equinix/resource_metal_vlan_acc_test.go
++++ b/equinix/resource_metal_vlan_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"log"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -133,7 +135,7 @@ func testAccCheckMetalVlanExists(n string, vlan *packngo.VirtualNetwork) resourc
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundVlan, _, err := client.ProjectVirtualNetworks.Get(rs.Primary.ID, nil)
+ 		if err != nil {
+@@ -150,7 +152,7 @@ func testAccCheckMetalVlanExists(n string, vlan *packngo.VirtualNetwork) resourc
+ }
+ 
+ func testAccMetalVlanCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_vlan" {
+diff --git a/equinix/resource_metal_vrf.go b/equinix/resource_metal_vrf.go
+index 71b92aa..4f35916 100644
+--- a/equinix/resource_metal_vrf.go
++++ b/equinix/resource_metal_vrf.go
+@@ -2,9 +2,11 @@ package equinix
+ 
+ import (
+ 	"context"
++	"log"
++
++	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/packethost/packngo"
+-	"log"
+ )
+ 
+ func resourceMetalVRF() *schema.Resource {
+@@ -56,8 +58,8 @@ func resourceMetalVRF() *schema.Resource {
+ }
+ 
+ func resourceMetalVRFCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	createRequest := &packngo.VRFCreateRequest{
+ 		Name:        d.Get("name").(string),
+@@ -79,8 +81,8 @@ func resourceMetalVRFCreate(ctx context.Context, d *schema.ResourceData, meta in
+ }
+ 
+ func resourceMetalVRFUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	sPtr := func(s string) *string { return &s }
+ 	iPtr := func(i int) *int { return &i }
+@@ -109,8 +111,8 @@ func resourceMetalVRFUpdate(ctx context.Context, d *schema.ResourceData, meta in
+ }
+ 
+ func resourceMetalVRFRead(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	getOpts := &packngo.GetOptions{Includes: []string{"project", "metro"}}
+ 
+@@ -137,8 +139,8 @@ func resourceMetalVRFRead(ctx context.Context, d *schema.ResourceData, meta inte
+ }
+ 
+ func resourceMetalVRFDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) error {
+-	meta.(*Config).addModuleToMetalUserAgent(d)
+-	client := meta.(*Config).metal
++	meta.(*config.Config).AddModuleToMetalUserAgent(d)
++	client := meta.(*config.Config).Metal
+ 
+ 	resp, err := client.VRFs.Delete(d.Id())
+ 	if ignoreResponseErrors(httpForbidden, httpNotFound)(resp, err) == nil {
+diff --git a/equinix/resource_metal_vrf_acc_test.go b/equinix/resource_metal_vrf_acc_test.go
+index caf5831..5a1b481 100644
+--- a/equinix/resource_metal_vrf_acc_test.go
++++ b/equinix/resource_metal_vrf_acc_test.go
+@@ -7,6 +7,8 @@ import (
+ 	"strconv"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -296,7 +298,7 @@ func TestAccMetalVRFConfig_withConnection(t *testing.T) {
+ }
+ 
+ func testAccMetalVRFCheckDestroyed(s *terraform.State) error {
+-	client := testAccProvider.Meta().(*Config).metal
++	client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 	for _, rs := range s.RootModule().Resources {
+ 		if rs.Type != "equinix_metal_vrf" {
+@@ -320,7 +322,7 @@ func testAccMetalVRFExists(n string, vrf *packngo.VRF) resource.TestCheckFunc {
+ 			return fmt.Errorf("No Record ID is set")
+ 		}
+ 
+-		client := testAccProvider.Meta().(*Config).metal
++		client := testAccProvider.Meta().(*config.Config).Metal
+ 
+ 		foundResource, _, err := client.VRFs.Get(rs.Primary.ID, nil)
+ 		if err != nil {
+diff --git a/equinix/resource_network_acl_template.go b/equinix/resource_network_acl_template.go
+index 2e58887..b0776b5 100644
+--- a/equinix/resource_network_acl_template.go
++++ b/equinix/resource_network_acl_template.go
+@@ -6,6 +6,8 @@ import (
+ 	"log"
+ 	"net/http"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -224,8 +226,8 @@ func networkACLTemplateDeviceDetailsSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceNetworkACLTemplateCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	template := createACLTemplate(d)
+ 	uuid, err := client.CreateACLTemplate(template)
+@@ -238,8 +240,8 @@ func resourceNetworkACLTemplateCreate(ctx context.Context, d *schema.ResourceDat
+ }
+ 
+ func resourceNetworkACLTemplateRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	template, err := client.GetACLTemplate(d.Id())
+ 	if err != nil {
+@@ -258,8 +260,8 @@ func resourceNetworkACLTemplateRead(ctx context.Context, d *schema.ResourceData,
+ }
+ 
+ func resourceNetworkACLTemplateUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	template := createACLTemplate(d)
+ 	if err := client.ReplaceACLTemplate(d.Id(), template); err != nil {
+@@ -270,8 +272,8 @@ func resourceNetworkACLTemplateUpdate(ctx context.Context, d *schema.ResourceDat
+ }
+ 
+ func resourceNetworkACLTemplateDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	if devID, ok := d.GetOk(networkACLTemplateSchemaNames["DeviceUUID"]); ok {
+ 		if err := client.NewDeviceUpdateRequest(devID.(string)).WithACLTemplate("").Execute(); err != nil {
+diff --git a/equinix/resource_network_acl_template_acc_test.go b/equinix/resource_network_acl_template_acc_test.go
+index 19e24e6..4a9262b 100644
+--- a/equinix/resource_network_acl_template_acc_test.go
++++ b/equinix/resource_network_acl_template_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"log"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -27,7 +29,7 @@ func testSweepNetworkACLTemplate(region string) error {
+ 		log.Printf("[INFO][SWEEPER_LOG] error loading configuration: %s", err)
+ 		return err
+ 	}
+-	templates, err := config.ne.GetACLTemplates()
++	templates, err := config.Ne.GetACLTemplates()
+ 	if err != nil {
+ 		log.Printf("[INFO][SWEEPER_LOG] error fetching Network ACL Templates list: %s", err)
+ 		return err
+@@ -38,7 +40,7 @@ func testSweepNetworkACLTemplate(region string) error {
+ 			nonSweepableCount++
+ 			continue
+ 		}
+-		if err := config.ne.DeleteACLTemplate(ne.StringValue(template.UUID)); err != nil {
++		if err := config.Ne.DeleteACLTemplate(ne.StringValue(template.UUID)); err != nil {
+ 			log.Printf("[INFO][SWEEPER_LOG] error deleting NetworkACLTemplate resource %s (%s): %s", ne.StringValue(template.UUID), ne.StringValue(template.Name), err)
+ 		} else {
+ 			log.Printf("[INFO][SWEEPER_LOG] sent delete request for NetworkACLTemplate resource %s (%s)", ne.StringValue(template.UUID), ne.StringValue(template.Name))
+@@ -143,7 +145,7 @@ func testAccNetworkACLTemplateExists(resourceName string, template *ne.ACLTempla
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+diff --git a/equinix/resource_network_bgp.go b/equinix/resource_network_bgp.go
+index cbd6fba..ff1a208 100644
+--- a/equinix/resource_network_bgp.go
++++ b/equinix/resource_network_bgp.go
+@@ -6,6 +6,8 @@ import (
+ 	"net/http"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -121,8 +123,8 @@ func createNetworkBGPResourceSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceNetworkBGPCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	bgp := createNetworkBGPConfiguration(d)
+ 	existingBGP, err := client.GetBGPConfigurationForConnection(ne.StringValue(bgp.ConnectionUUID))
+@@ -151,8 +153,8 @@ func resourceNetworkBGPCreate(ctx context.Context, d *schema.ResourceData, m int
+ }
+ 
+ func resourceNetworkBGPRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	bgp, err := client.GetBGPConfiguration(d.Id())
+ 	if err != nil {
+@@ -165,8 +167,8 @@ func resourceNetworkBGPRead(ctx context.Context, d *schema.ResourceData, m inter
+ }
+ 
+ func resourceNetworkBGPUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	bgpConfig := createNetworkBGPConfiguration(d)
+ 	if err := createNetworkBGPUpdateRequest(client.NewBGPConfigurationUpdateRequest, &bgpConfig).Execute(); err != nil {
+diff --git a/equinix/resource_network_bgp_acc_test.go b/equinix/resource_network_bgp_acc_test.go
+index ad8a04b..cd120c3 100644
+--- a/equinix/resource_network_bgp_acc_test.go
++++ b/equinix/resource_network_bgp_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -128,7 +130,7 @@ func testAccNeBGPExists(resourceName string, bgpConfig *ne.BGPConfiguration) res
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+diff --git a/equinix/resource_network_device.go b/equinix/resource_network_device.go
+index bdefb4b..b625096 100644
+--- a/equinix/resource_network_device.go
++++ b/equinix/resource_network_device.go
+@@ -9,6 +9,8 @@ import (
+ 	"path/filepath"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -874,8 +876,8 @@ func createVendorConfigurationSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceNetworkDeviceCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	primary, secondary := createNetworkDevices(d)
+ 	var err error
+@@ -927,8 +929,8 @@ func resourceNetworkDeviceCreate(ctx context.Context, d *schema.ResourceData, m
+ }
+ 
+ func resourceNetworkDeviceRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	var err error
+ 	var primary, secondary *ne.Device
+@@ -953,8 +955,8 @@ func resourceNetworkDeviceRead(ctx context.Context, d *schema.ResourceData, m in
+ }
+ 
+ func resourceNetworkDeviceUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	supportedChanges := []string{
+ 		neDeviceSchemaNames["Name"], neDeviceSchemaNames["TermLength"],
+@@ -989,8 +991,8 @@ func resourceNetworkDeviceUpdate(ctx context.Context, d *schema.ResourceData, m
+ }
+ 
+ func resourceNetworkDeviceDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	waitConfigs := []*retry.StateChangeConf{
+ 		createNetworkDeviceStatusDeleteWaitConfiguration(client.GetDevice, d.Id(), 5*time.Second, d.Timeout(schema.TimeoutDelete)),
+diff --git a/equinix/resource_network_device_acc_test.go b/equinix/resource_network_device_acc_test.go
+index 5f4bc31..3843107 100644
+--- a/equinix/resource_network_device_acc_test.go
++++ b/equinix/resource_network_device_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"log"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -46,7 +48,7 @@ func testSweepNetworkDevice(region string) error {
+ 		log.Printf("[INFO][SWEEPER_LOG] error loading configuration: %s", err)
+ 		return err
+ 	}
+-	devices, err := config.ne.GetDevices([]string{
++	devices, err := config.Ne.GetDevices([]string{
+ 		ne.DeviceStateInitializing,
+ 		ne.DeviceStateProvisioned,
+ 		ne.DeviceStateProvisioning,
+@@ -68,7 +70,7 @@ func testSweepNetworkDevice(region string) error {
+ 		if ne.StringValue(device.RedundancyType) != "PRIMARY" {
+ 			continue
+ 		}
+-		if err := config.ne.DeleteDevice(ne.StringValue(device.UUID)); err != nil {
++		if err := config.Ne.DeleteDevice(ne.StringValue(device.UUID)); err != nil {
+ 			log.Printf("[INFO][SWEEPER_LOG] error deleting NetworkDevice resource %s (%s): %s", ne.StringValue(device.UUID), ne.StringValue(device.Name), err)
+ 		} else {
+ 			log.Printf("[INFO][SWEEPER_LOG] sent delete request for NetworkDevice resource %s (%s)", ne.StringValue(device.UUID), ne.StringValue(device.Name))
+@@ -906,7 +908,7 @@ func testAccNeDeviceExists(resourceName string, device *ne.Device) resource.Test
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		resp, err := client.GetDevice(rs.Primary.ID)
+ 		if err != nil {
+ 			return fmt.Errorf("error when fetching network device '%s': %s", rs.Primary.ID, err)
+@@ -921,7 +923,7 @@ func testAccNeDeviceSecondaryExists(primary, secondary *ne.Device) resource.Test
+ 		if ne.StringValue(primary.RedundantUUID) == "" {
+ 			return fmt.Errorf("secondary device UUID is not set")
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		resp, err := client.GetDevice(ne.StringValue(primary.RedundantUUID))
+ 		if err != nil {
+ 			return fmt.Errorf("error when fetching network device '%s': %s", ne.StringValue(primary.RedundantUUID), err)
+@@ -940,7 +942,7 @@ func testAccNeDevicePairExists(resourceName string, primary, secondary *ne.Devic
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		resp, err := client.GetDevice(rs.Primary.ID)
+ 		if err != nil {
+ 			return fmt.Errorf("error when fetching primary network device '%s': %s", rs.Primary.ID, err)
+@@ -1130,7 +1132,7 @@ func testAccNeDeviceACL(resourceName string, device *ne.Device) resource.TestChe
+ 		}
+ 		templateId := rs.Primary.ID
+ 		deviceID := ne.StringValue(device.UUID)
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		if ne.StringValue(device.ACLTemplateUUID) != rs.Primary.ID {
+ 			return fmt.Errorf("acl_template_id for device %s does not match %v - %v", deviceID, ne.StringValue(device.ACLTemplateUUID), templateId)
+ 		}
+diff --git a/equinix/resource_network_device_link.go b/equinix/resource_network_device_link.go
+index ac77036..c7feabb 100644
+--- a/equinix/resource_network_device_link.go
++++ b/equinix/resource_network_device_link.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/go-cty/cty"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -220,8 +222,8 @@ func createNetworkDeviceLinkConnectionResourceSchema() map[string]*schema.Schema
+ }
+ 
+ func resourceNetworkDeviceLinkCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	link := createNetworkDeviceLink(d)
+ 	uuid, err := client.CreateDeviceLinkGroup(link)
+@@ -242,8 +244,8 @@ func resourceNetworkDeviceLinkCreate(ctx context.Context, d *schema.ResourceData
+ }
+ 
+ func resourceNetworkDeviceLinkRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	link, err := client.GetDeviceLinkGroup(d.Id())
+ 	if err != nil {
+@@ -266,8 +268,8 @@ func resourceNetworkDeviceLinkRead(ctx context.Context, d *schema.ResourceData,
+ }
+ 
+ func resourceNetworkDeviceLinkUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	changes := getResourceDataChangedKeys([]string{
+ 		networkDeviceLinkSchemaNames["Name"], networkDeviceLinkSchemaNames["Subnet"],
+@@ -304,8 +306,8 @@ func resourceNetworkDeviceLinkUpdate(ctx context.Context, d *schema.ResourceData
+ }
+ 
+ func resourceNetworkDeviceLinkDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	if err := client.DeleteDeviceLinkGroup(d.Id()); err != nil {
+ 		if isRestNotFoundError(err) {
+diff --git a/equinix/resource_network_device_link_acc_test.go b/equinix/resource_network_device_link_acc_test.go
+index 0a4901f..026f91a 100644
+--- a/equinix/resource_network_device_link_acc_test.go
++++ b/equinix/resource_network_device_link_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"log"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -28,7 +30,7 @@ func testSweepNetworkDeviceLink(region string) error {
+ 		log.Printf("[INFO][SWEEPER_LOG] error loading configuration: %s", err)
+ 		return err
+ 	}
+-	links, err := config.ne.GetDeviceLinkGroups()
++	links, err := config.Ne.GetDeviceLinkGroups()
+ 	if err != nil {
+ 		log.Printf("[INFO][SWEEPER_LOG] error fetching device links list: %s", err)
+ 		return err
+@@ -39,7 +41,7 @@ func testSweepNetworkDeviceLink(region string) error {
+ 			nonSweepableCount++
+ 			continue
+ 		}
+-		if err := config.ne.DeleteDeviceLinkGroup(ne.StringValue(link.UUID)); err != nil {
++		if err := config.Ne.DeleteDeviceLinkGroup(ne.StringValue(link.UUID)); err != nil {
+ 			log.Printf("[INFO][SWEEPER_LOG] error deleting NetworkDeviceLink resource %s (%s): %s", ne.StringValue(link.UUID), ne.StringValue(link.Name), err)
+ 		} else {
+ 			log.Printf("[INFO][SWEEPER_LOG] sent delete request for NetworkDeviceLink resource %s (%s)", ne.StringValue(link.UUID), ne.StringValue(link.Name))
+@@ -157,7 +159,7 @@ func testAccNeDeviceLinkExists(resourceName string, deviceLink *ne.DeviceLinkGro
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+diff --git a/equinix/resource_network_file.go b/equinix/resource_network_file.go
+index 96dd4b2..f7085b4 100644
+--- a/equinix/resource_network_file.go
++++ b/equinix/resource_network_file.go
+@@ -3,13 +3,15 @@ package equinix
+ import (
+ 	"context"
+ 	"fmt"
++	"net/http"
++	"strings"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/equinix/rest-go"
++	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
+-	"net/http"
+-	"strings"
+ )
+ 
+ var networkFileSchemaNames = map[string]string{
+@@ -111,8 +113,8 @@ func createNetworkFileSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceNetworkFileCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	fileRequest := createFileRequest(d)
+ 	uuid, err := client.UploadFile(fileRequest["MetroCode"], fileRequest["DeviceTypeCode"], fileRequest["ProcessType"],
+@@ -127,8 +129,8 @@ func resourceNetworkFileCreate(ctx context.Context, d *schema.ResourceData, m in
+ }
+ 
+ func resourceNetworkFileRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	file, err := client.GetFile(d.Id())
+ 	if err != nil {
+diff --git a/equinix/resource_network_file_acc_test.go b/equinix/resource_network_file_acc_test.go
+index e66f30c..38fff93 100644
+--- a/equinix/resource_network_file_acc_test.go
++++ b/equinix/resource_network_file_acc_test.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -65,7 +67,7 @@ func testAccNetworkFileExists(resourceName string, file *ne.File) resource.TestC
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+diff --git a/equinix/resource_network_ssh_key.go b/equinix/resource_network_ssh_key.go
+index 788e0ef..7e5cb60 100644
+--- a/equinix/resource_network_ssh_key.go
++++ b/equinix/resource_network_ssh_key.go
+@@ -6,6 +6,8 @@ import (
+ 	"net/http"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -76,8 +78,8 @@ func createNetworkSSHKeyResourceSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceNetworkSSHKeyCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	key := createNetworkSSHKey(d)
+ 	uuid, err := client.CreateSSHPublicKey(key)
+@@ -90,8 +92,8 @@ func resourceNetworkSSHKeyCreate(ctx context.Context, d *schema.ResourceData, m
+ }
+ 
+ func resourceNetworkSSHKeyRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	key, err := client.GetSSHPublicKey(d.Id())
+ 	if err != nil {
+@@ -110,8 +112,8 @@ func resourceNetworkSSHKeyRead(ctx context.Context, d *schema.ResourceData, m in
+ }
+ 
+ func resourceNetworkSSHKeyDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	if err := client.DeleteSSHPublicKey(d.Id()); err != nil {
+ 		if restErr, ok := err.(rest.Error); ok {
+diff --git a/equinix/resource_network_ssh_key_acc_test.go b/equinix/resource_network_ssh_key_acc_test.go
+index 9c71b2f..8115fac 100644
+--- a/equinix/resource_network_ssh_key_acc_test.go
++++ b/equinix/resource_network_ssh_key_acc_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"log"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -27,7 +29,7 @@ func testSweepNetworkSSHKey(region string) error {
+ 		log.Printf("[INFO][SWEEPER_LOG] error loading configuration: %s", err)
+ 		return err
+ 	}
+-	keys, err := config.ne.GetSSHPublicKeys()
++	keys, err := config.Ne.GetSSHPublicKeys()
+ 	if err != nil {
+ 		log.Printf("[INFO][SWEEPER_LOG] error fetching NetworkSSHKey list: %s", err)
+ 		return err
+@@ -38,7 +40,7 @@ func testSweepNetworkSSHKey(region string) error {
+ 			nonSweepableCount++
+ 			continue
+ 		}
+-		if err := config.ne.DeleteSSHPublicKey(ne.StringValue(key.UUID)); err != nil {
++		if err := config.Ne.DeleteSSHPublicKey(ne.StringValue(key.UUID)); err != nil {
+ 			log.Printf("[INFO][SWEEPER_LOG] error deleting NetworkSSHKey resource %s (%s): %s", ne.StringValue(key.UUID), ne.StringValue(key.Name), err)
+ 		} else {
+ 			log.Printf("[INFO][SWEEPER_LOG] sent delete request for NetworkSSHKey resource %s (%s)", ne.StringValue(key.UUID), ne.StringValue(key.Name))
+@@ -96,7 +98,7 @@ func testAccNetworkSSHKeyExists(resourceName string, key *ne.SSHPublicKey) resou
+ 		if !ok {
+ 			return fmt.Errorf("resource not found: %s", resourceName)
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+diff --git a/equinix/resource_network_ssh_user.go b/equinix/resource_network_ssh_user.go
+index 8bf775e..0c718cd 100644
+--- a/equinix/resource_network_ssh_user.go
++++ b/equinix/resource_network_ssh_user.go
+@@ -4,6 +4,8 @@ import (
+ 	"context"
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/go-cty/cty"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+@@ -74,8 +76,8 @@ func createNetworkSSHUserResourceSchema() map[string]*schema.Schema {
+ }
+ 
+ func resourceNetworkSSHUserCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 
+ 	var diags diag.Diagnostics
+ 	user := createNetworkSSHUser(d)
+@@ -102,8 +104,8 @@ func resourceNetworkSSHUserCreate(ctx context.Context, d *schema.ResourceData, m
+ }
+ 
+ func resourceNetworkSSHUserRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	user, err := client.GetSSHUser(d.Id())
+ 	if err != nil {
+@@ -116,8 +118,8 @@ func resourceNetworkSSHUserRead(ctx context.Context, d *schema.ResourceData, m i
+ }
+ 
+ func resourceNetworkSSHUserUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	updateReq := client.NewSSHUserUpdateRequest(d.Id())
+ 	if v, ok := d.GetOk(networkSSHUserSchemaNames["Password"]); ok && d.HasChange(networkSSHUserSchemaNames["Password"]) {
+@@ -137,8 +139,8 @@ func resourceNetworkSSHUserUpdate(ctx context.Context, d *schema.ResourceData, m
+ }
+ 
+ func resourceNetworkSSHUserDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
+-	client := m.(*Config).ne
+-	m.(*Config).addModuleToNEUserAgent(&client, d)
++	client := m.(*config.Config).Ne
++	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	if err := client.DeleteSSHUser(d.Id()); err != nil {
+ 		return diag.FromErr(err)
+diff --git a/equinix/resource_network_ssh_user_acc_test.go b/equinix/resource_network_ssh_user_acc_test.go
+index f118b49..5a0eb91 100644
+--- a/equinix/resource_network_ssh_user_acc_test.go
++++ b/equinix/resource_network_ssh_user_acc_test.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"log"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/config"
++
+ 	"github.com/equinix/ne-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
+@@ -29,7 +31,7 @@ func testSweepNetworkSSHUser(region string) error {
+ 		log.Printf("[INFO][SWEEPER_LOG] error loading configuration: %s", err)
+ 		return err
+ 	}
+-	users, err := config.ne.GetSSHUsers()
++	users, err := config.Ne.GetSSHUsers()
+ 	if err != nil {
+ 		log.Printf("[INFO][SWEEPER_LOG] error fetching NetworkSSHUser list: %s", err)
+ 		return err
+@@ -38,7 +40,7 @@ func testSweepNetworkSSHUser(region string) error {
+ 		if !isSweepableTestResource(ne.StringValue(user.Username)) {
+ 			continue
+ 		}
+-		if err := config.ne.DeleteSSHUser(ne.StringValue(user.UUID)); err != nil {
++		if err := config.Ne.DeleteSSHUser(ne.StringValue(user.UUID)); err != nil {
+ 			log.Printf("[INFO][SWEEPER_LOG] error deleting NetworkSSHUser resource %s (%s): %s", ne.StringValue(user.UUID), ne.StringValue(user.Username), err)
+ 		} else {
+ 			log.Printf("[INFO][SWEEPER_LOG] sent delete request for NetworkSSHUser resource %s (%s)", ne.StringValue(user.UUID), ne.StringValue(user.Username))
+@@ -78,7 +80,7 @@ func testAccNeSSHUserExists(resourceName string, user *ne.SSHUser) resource.Test
+ 		if rs.Primary.ID == "" {
+ 			return fmt.Errorf("resource has no ID attribute set")
+ 		}
+-		client := testAccProvider.Meta().(*Config).ne
++		client := testAccProvider.Meta().(*config.Config).Ne
+ 		resp, err := client.GetSSHUser(rs.Primary.ID)
+ 		if err != nil {
+ 			return fmt.Errorf("error when fetching SSH user '%s': %s", rs.Primary.ID, err)
+diff --git a/equinix/config.go b/internal/config/config.go
+similarity index 89%
+rename from equinix/config.go
+rename to internal/config/config.go
+index b2c5ee8..d0fdd20 100644
+--- a/equinix/config.go
++++ b/internal/config/config.go
+@@ -1,4 +1,4 @@
+-package equinix
++package config
+ 
+ import (
+ 	"context"
+@@ -28,6 +28,15 @@ import (
+ 	xoauth2 "golang.org/x/oauth2"
+ )
+ 
++var (
++	UuidRE         = regexp.MustCompile("^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[8|9|aA|bB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$")
++	IpAddressTypes = []string{"public_ipv4", "private_ipv4", "public_ipv6"}
++)
++
++type ProviderMeta struct {
++	ModuleName string `cty:"module_name"`
++}
++
+ type DumpTransport struct {
+ 	r http.RoundTripper
+ }
+@@ -81,18 +90,18 @@ type Config struct {
+ 	PageSize       int
+ 	Token          string
+ 
+-	ecx     ecx.Client
+-	ne      ne.Client
+-	metal   *packngo.Client
+-	metalgo *metalv1.APIClient
++	Ecx     ecx.Client
++	Ne      ne.Client
++	Metal   *packngo.Client
++	Metalgo *metalv1.APIClient
+ 
+ 	ecxUserAgent     string
+ 	neUserAgent      string
+ 	metalUserAgent   string
+ 	metalGoUserAgent string
+ 
+-	terraformVersion string
+-	fabricClient     *v4.APIClient
++	TerraformVersion string
++	FabricClient     *v4.APIClient
+ 	FabricAuthToken  string
+ }
+ 
+@@ -158,15 +167,17 @@ func (c *Config) Load(ctx context.Context) error {
+ 		"User-agent": c.neUserAgent,
+ 	})
+ 
+-	c.ecx = ecxClient
+-	c.ne = neClient
+-	c.metal = c.NewMetalClient()
+-	c.metalgo = c.NewMetalGoClient()
+-	c.fabricClient = c.NewFabricClient()
++	c.Ecx = ecxClient
++	c.Ne = neClient
++	c.Metal = c.NewMetalClient()
++	c.Metalgo = c.NewMetalGoClient()
++	c.FabricClient = c.NewFabricClient()
+ 	return nil
+ }
+ 
+ // NewFabricClient returns a new client for accessing Equinix Fabric's v4 API.
++// uncomment the funct when migrating Fabric resources to use
++// functions from internal/
+ func (c *Config) NewFabricClient() *v4.APIClient {
+ 	transport := logging.NewTransport("Equinix Fabric", http.DefaultTransport)
+ 	authClient := &http.Client{
+@@ -281,14 +292,14 @@ func terraformUserAgent(version string) string {
+ 	return ua
+ }
+ 
+-func (c *Config) addModuleToECXUserAgent(client *ecx.Client, d *schema.ResourceData) {
++func (c *Config) AddModuleToECXUserAgent(client *ecx.Client, d *schema.ResourceData) {
+ 	cli := *client
+ 	rc := cli.(*ecx.RestClient)
+ 	rc.SetHeader("User-agent", generateModuleUserAgentString(d, c.ecxUserAgent))
+ 	*client = rc
+ }
+ 
+-func (c *Config) addModuleToNEUserAgent(client *ne.Client, d *schema.ResourceData) {
++func (c *Config) AddModuleToNEUserAgent(client *ne.Client, d *schema.ResourceData) {
+ 	cli := *client
+ 	rc := cli.(*ne.RestClient)
+ 	rc.SetHeader("User-agent", generateModuleUserAgentString(d, c.neUserAgent))
+@@ -300,16 +311,16 @@ func (c *Config) addModuleToNEUserAgent(client *ne.Client, d *schema.ResourceDat
+ // the UserAgent resulting in swapped UserAgent.
+ // This can be fixed by letting the headers be overwritten on the initialized Packngo ServiceOp
+ // clients on a query-by-query basis.
+-func (c *Config) addModuleToMetalUserAgent(d *schema.ResourceData) {
+-	c.metal.UserAgent = generateModuleUserAgentString(d, c.metalUserAgent)
++func (c *Config) AddModuleToMetalUserAgent(d *schema.ResourceData) {
++	c.Metal.UserAgent = generateModuleUserAgentString(d, c.metalUserAgent)
+ }
+ 
+-func (c *Config) addModuleToMetalGoUserAgent(d *schema.ResourceData) {
+-	c.metalgo.GetConfig().UserAgent = generateModuleUserAgentString(d, c.metalGoUserAgent)
++func (c *Config) AddModuleToMetalGoUserAgent(d *schema.ResourceData) {
++	c.Metalgo.GetConfig().UserAgent = generateModuleUserAgentString(d, c.metalGoUserAgent)
+ }
+ 
+ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string) string {
+-	var m providerMeta
++	var m ProviderMeta
+ 	err := d.GetProviderMeta(&m)
+ 	if err != nil {
+ 		log.Printf("[WARN] error retrieving provider_meta")
+@@ -323,7 +334,7 @@ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string)
+ }
+ 
+ func (c *Config) fullUserAgent(suffix string) string {
+-	tfUserAgent := terraformUserAgent(c.terraformVersion)
++	tfUserAgent := terraformUserAgent(c.TerraformVersion)
+ 	userAgent := fmt.Sprintf("%s terraform-provider-equinix/%s %s", tfUserAgent, version.ProviderVersion, suffix)
+ 	return strings.TrimSpace(userAgent)
+ }
+diff --git a/internal/config/correlation_id.go b/internal/config/correlation_id.go
+new file mode 100644
+index 0000000..4e5fcb3
+--- /dev/null
++++ b/internal/config/correlation_id.go
+@@ -0,0 +1,24 @@
++package config
++
++import (
++	"math/rand"
++	"time"
++)
++
++const allowed_charset = "abcdefghijklmnopqrstuvwxyz" +
++	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$&@"
++
++var seededRand = rand.New(
++	rand.NewSource(time.Now().UnixNano()))
++
++func CorrelationIdWithCharset(length int, charset string) string {
++	b := make([]byte, length)
++	for i := range b {
++		b[i] = charset[seededRand.Intn(len(charset))]
++	}
++	return string(b)
++}
++
++func CorrelationId(length int) string {
++	return CorrelationIdWithCharset(length, allowed_charset)
++}
+diff --git a/equinix/internal/datalist/filter.go b/internal/datalist/filter.go
+similarity index 100%
+rename from equinix/internal/datalist/filter.go
+rename to internal/datalist/filter.go
+diff --git a/equinix/internal/datalist/filter_test.go b/internal/datalist/filter_test.go
+similarity index 100%
+rename from equinix/internal/datalist/filter_test.go
+rename to internal/datalist/filter_test.go
+diff --git a/equinix/internal/datalist/schema.go b/internal/datalist/schema.go
+similarity index 100%
+rename from equinix/internal/datalist/schema.go
+rename to internal/datalist/schema.go
+diff --git a/equinix/internal/datalist/sort.go b/internal/datalist/sort.go
+similarity index 100%
+rename from equinix/internal/datalist/sort.go
+rename to internal/datalist/sort.go
+diff --git a/equinix/internal/datalist/sort_test.go b/internal/datalist/sort_test.go
+similarity index 100%
+rename from equinix/internal/datalist/sort_test.go
+rename to internal/datalist/sort_test.go
+diff --git a/equinix/internal/datalist/values.go b/internal/datalist/values.go
+similarity index 100%
+rename from equinix/internal/datalist/values.go
+rename to internal/datalist/values.go

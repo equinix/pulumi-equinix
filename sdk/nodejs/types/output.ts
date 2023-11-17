@@ -140,6 +140,9 @@ export namespace fabric {
          * Access point location
          */
         location: outputs.fabric.ConnectionASideAccessPointLocation;
+        /**
+         * Simplified Network
+         */
         network?: outputs.fabric.ConnectionASideAccessPointNetwork;
         /**
          * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
@@ -204,7 +207,7 @@ export namespace fabric {
         /**
          * id
          */
-        id: string;
+        id: number;
         /**
          * Interface type
          */
@@ -359,6 +362,10 @@ export namespace fabric {
          * Unique Resource Identifier
          */
         href: string;
+        /**
+         * Port name
+         */
+        name?: string;
         /**
          * Interface type
          */
@@ -543,6 +550,9 @@ export namespace fabric {
          * Access point location
          */
         location: outputs.fabric.ConnectionZSideAccessPointLocation;
+        /**
+         * Simplified Network
+         */
         network?: outputs.fabric.ConnectionZSideAccessPointNetwork;
         /**
          * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
@@ -607,7 +617,7 @@ export namespace fabric {
         /**
          * id
          */
-        id: string;
+        id: number;
         /**
          * Interface type
          */
@@ -762,6 +772,10 @@ export namespace fabric {
          * Unique Resource Identifier
          */
         href: string;
+        /**
+         * Port name
+         */
+        name?: string;
         /**
          * Interface type
          */

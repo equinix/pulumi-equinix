@@ -771,6 +771,7 @@ class ConnectionASideAccessPoint(dict):
         :param 'ConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
         :param 'ConnectionASideAccessPointLocationArgs' location: Access point location
+        :param 'ConnectionASideAccessPointNetworkArgs' network: Simplified Network
         :param Union[str, 'AccessPointPeeringType'] peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'ConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionASideAccessPointProfileArgs' profile: Service Profile
@@ -865,6 +866,9 @@ class ConnectionASideAccessPoint(dict):
     @property
     @pulumi.getter
     def network(self) -> Optional['outputs.ConnectionASideAccessPointNetwork']:
+        """
+        Simplified Network
+        """
         return pulumi.get(self, "network")
 
     @property
@@ -1064,11 +1068,11 @@ class ConnectionASideAccessPointGateway(dict):
 @pulumi.output_type
 class ConnectionASideAccessPointInterface(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
+                 id: Optional[int] = None,
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str id: id
+        :param int id: id
         :param str type: Interface type
         :param str uuid: Equinix-assigned interface identifier
         """
@@ -1081,7 +1085,7 @@ class ConnectionASideAccessPointInterface(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> Optional[int]:
         """
         id
         """
@@ -1562,15 +1566,19 @@ class ConnectionASideAccessPointRoutingProtocol(dict):
 class ConnectionASideAccessPointVirtualDevice(dict):
     def __init__(__self__, *,
                  href: Optional[str] = None,
+                 name: Optional[str] = None,
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
+        :param str name: Port name
         :param str type: Interface type
         :param str uuid: Equinix-assigned interface identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if uuid is not None:
@@ -1583,6 +1591,14 @@ class ConnectionASideAccessPointVirtualDevice(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Port name
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
@@ -2401,6 +2417,7 @@ class ConnectionZSideAccessPoint(dict):
         :param 'ConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
         :param 'ConnectionZSideAccessPointLocationArgs' location: Access point location
+        :param 'ConnectionZSideAccessPointNetworkArgs' network: Simplified Network
         :param Union[str, 'AccessPointPeeringType'] peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'ConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionZSideAccessPointProfileArgs' profile: Service Profile
@@ -2495,6 +2512,9 @@ class ConnectionZSideAccessPoint(dict):
     @property
     @pulumi.getter
     def network(self) -> Optional['outputs.ConnectionZSideAccessPointNetwork']:
+        """
+        Simplified Network
+        """
         return pulumi.get(self, "network")
 
     @property
@@ -2694,11 +2714,11 @@ class ConnectionZSideAccessPointGateway(dict):
 @pulumi.output_type
 class ConnectionZSideAccessPointInterface(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
+                 id: Optional[int] = None,
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str id: id
+        :param int id: id
         :param str type: Interface type
         :param str uuid: Equinix-assigned interface identifier
         """
@@ -2711,7 +2731,7 @@ class ConnectionZSideAccessPointInterface(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> Optional[int]:
         """
         id
         """
@@ -3192,15 +3212,19 @@ class ConnectionZSideAccessPointRoutingProtocol(dict):
 class ConnectionZSideAccessPointVirtualDevice(dict):
     def __init__(__self__, *,
                  href: Optional[str] = None,
+                 name: Optional[str] = None,
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
+        :param str name: Port name
         :param str type: Interface type
         :param str uuid: Equinix-assigned interface identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if uuid is not None:
@@ -3213,6 +3237,14 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
         Unique Resource Identifier
         """
         return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Port name
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter

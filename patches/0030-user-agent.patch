@@ -1,17 +1,17 @@
-From 66f7739b91be84f7034d8232078d8313ec9be094 Mon Sep 17 00:00:00 2001
+From bdcb620fef072f3c8713ff0d392fe23667d9ec3f Mon Sep 17 00:00:00 2001
 From: ocobleseqx <oscar.cobles@eu.equinix.com>
-Date: Tue, 31 Oct 2023 17:13:45 +0100
+Date: Thu, 16 Nov 2023 18:47:17 +0100
 Subject: [PATCH] user agent
 
 Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
 ---
- equinix/config.go | 12 ++++++------
+ internal/config/config.go | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/equinix/config.go b/equinix/config.go
-index 085100e..ebe0192 100644
---- a/equinix/config.go
-+++ b/equinix/config.go
+diff --git a/internal/config/config.go b/internal/config/config.go
+index f16ddc7..6795459 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
 @@ -23,7 +23,6 @@ import (
  	"github.com/hashicorp/go-retryablehttp"
  	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/logging"
@@ -20,7 +20,7 @@ index 085100e..ebe0192 100644
  	"github.com/packethost/packngo"
  	xoauth2 "golang.org/x/oauth2"
  )
-@@ -266,9 +265,8 @@ func MetalRetryPolicy(ctx context.Context, resp *http.Response, err error) (bool
+@@ -277,9 +276,8 @@ func MetalRetryPolicy(ctx context.Context, resp *http.Response, err error) (bool
  	return false, nil
  }
  
@@ -32,11 +32,11 @@ index 085100e..ebe0192 100644
  
  	if add := os.Getenv(uaEnvVar); add != "" {
  		add = strings.TrimSpace(add)
-@@ -323,7 +321,9 @@ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string)
+@@ -334,7 +332,9 @@ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string)
  }
  
  func (c *Config) fullUserAgent(suffix string) string {
--	tfUserAgent := terraformUserAgent(c.terraformVersion)
+-	tfUserAgent := terraformUserAgent(c.TerraformVersion)
 -	userAgent := fmt.Sprintf("%s terraform-provider-equinix/%s %s", tfUserAgent, version.ProviderVersion, suffix)
 +	// FORK: this gives us the ability to add a Pulumi Specific user agent
 +	// TODO (ocobles) override pulumi sdk version with ldflags
@@ -44,6 +44,3 @@ index 085100e..ebe0192 100644
 +	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", pulumiUserAgent, version.ProviderVersion, suffix)
  	return strings.TrimSpace(userAgent)
  }
--- 
-2.39.1
-

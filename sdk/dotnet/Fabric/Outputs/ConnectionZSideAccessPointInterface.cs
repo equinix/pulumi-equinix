@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// id
         /// </summary>
-        public readonly string? Id;
+        public readonly int? Id;
         /// <summary>
         /// Interface type
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
         [OutputConstructor]
         private ConnectionZSideAccessPointInterface(
-            string? id,
+            int? id,
 
             string? type,
 

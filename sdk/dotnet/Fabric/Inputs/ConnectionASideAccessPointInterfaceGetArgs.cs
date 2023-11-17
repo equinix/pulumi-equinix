@@ -16,7 +16,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// id
         /// </summary>
         [Input("id")]
-        public Input<string>? Id { get; set; }
+        public Input<int>? Id { get; set; }
 
         /// <summary>
         /// Interface type

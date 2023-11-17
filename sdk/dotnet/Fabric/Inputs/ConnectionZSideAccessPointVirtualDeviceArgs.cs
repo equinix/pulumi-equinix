@@ -19,6 +19,12 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Href { get; set; }
 
         /// <summary>
+        /// Port name
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// Interface type
         /// </summary>
         [Input("type")]

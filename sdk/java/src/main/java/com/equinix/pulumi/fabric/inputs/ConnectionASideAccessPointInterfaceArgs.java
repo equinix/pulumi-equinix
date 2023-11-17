@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,13 +21,13 @@ public final class ConnectionASideAccessPointInterfaceArgs extends com.pulumi.re
      * 
      */
     @Import(name="id")
-    private @Nullable Output<String> id;
+    private @Nullable Output<Integer> id;
 
     /**
      * @return id
      * 
      */
-    public Optional<Output<String>> id() {
+    public Optional<Output<Integer>> id() {
         return Optional.ofNullable(this.id);
     }
 
@@ -92,7 +93,7 @@ public final class ConnectionASideAccessPointInterfaceArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(@Nullable Output<Integer> id) {
             $.id = id;
             return this;
         }
@@ -103,7 +104,7 @@ public final class ConnectionASideAccessPointInterfaceArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             return id(Output.of(id));
         }
 
