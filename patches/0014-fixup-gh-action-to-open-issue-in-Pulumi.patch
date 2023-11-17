@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Tue, 7 Nov 2023 00:14:17 +0100
+Subject: [PATCH 14/30] fixup! gh action to open issue in Pulumi
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/.github/workflows/pulumi.yml b/.github/workflows/pulumi.yml
+index a5bbb85..e70f48a 100644
+--- a/.github/workflows/pulumi.yml
++++ b/.github/workflows/pulumi.yml
+@@ -18,4 +18,4 @@ jobs:
+         repo-owner: ${{ env.PULUMI_REPO_OWNER }}
+         repo-name: ${{ env.PULUMI_REPO_NAME }}
+         issue-title: Upgrade ${{ github.event.repository.name }} to ${{ github.ref_name }}
+-        issue-body: "Release details: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+\ No newline at end of file
++        issue-body: "Release details: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"

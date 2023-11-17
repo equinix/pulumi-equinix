@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Mon, 13 Nov 2023 23:50:19 +0100
+Subject: [PATCH 16/30] fix wait provisioned status
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/equinix/resource_fabric_cloud_router.go b/equinix/resource_fabric_cloud_router.go
+index e32f4bc..1328872 100644
+--- a/equinix/resource_fabric_cloud_router.go
++++ b/equinix/resource_fabric_cloud_router.go
+@@ -183,10 +183,9 @@ func waitUntilCloudRouterIsProvisioned(uuid string, meta interface{}, ctx contex
+ 	log.Printf("Waiting for Cloud Router to be provisioned, uuid %s", uuid)
+ 	stateConf := &resource.StateChangeConf{
+ 		Pending: []string{
+-			string(v4.PROVISIONED_CloudRouterAccessPointState),
++			string(v4.PROVISIONING_CloudRouterAccessPointState),
+ 		},
+ 		Target: []string{
+-			string(v4.PENDING_INTERFACE_CONFIGURATION_EquinixStatus),
+ 			string(v4.PROVISIONED_CloudRouterAccessPointState),
+ 		},
+ 		Refresh: func() (interface{}, string, error) {

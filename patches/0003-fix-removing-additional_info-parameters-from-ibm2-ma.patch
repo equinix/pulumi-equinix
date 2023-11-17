@@ -1,0 +1,49 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Wed, 1 Nov 2023 11:56:58 -0700
+Subject: [PATCH 03/30] fix: removing additional_info parameters from ibm2
+ main.tf file
+
+
+diff --git a/docs/resources/equinix_fabric_connection.md b/docs/resources/equinix_fabric_connection.md
+index 16548cd..744aefb 100644
+--- a/docs/resources/equinix_fabric_connection.md
++++ b/docs/resources/equinix_fabric_connection.md
+@@ -64,6 +64,7 @@ Optional:
+ - **Deprecated** `gateway` Use `router` attribute instead; (Block Set) (see [below for nested schema](#nestedblock--a_side--access_point--router))
+ - `router` (Block Set) Cloud Router access point information that replaces `gateway` (refers to [below for nested schema](#nestedblock--a_side--access_point--router))
+ - `interface` (Block Set) Virtual device interface (see [below for nested schema](#nestedblock--a_side--access_point--interface))
++- `network` (Block Set) Simplified Network (see [below for nested schema](#nestedblock--a_side--access_point--network))
+ - `link_protocol` (Block Set) Connection link protocol (see [below for nested schema](#nestedblock--a_side--access_point--link_protocol))
+ - `location` (Block Set) Access point location (see [below for nested schema](#nestedblock--a_side--access_point--location))
+ - `peering_type` (String) Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2/README.md b/examples/fabric/v4/portConnectivity/ibm/ibm2/README.md
+index 70e2069..26f0a12 100644
+--- a/examples/fabric/v4/portConnectivity/ibm/ibm2/README.md
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm2/README.md
+@@ -30,6 +30,12 @@ At minimum, you must set below variables in `terraform.tfvars` file:
+ `seller_asn` - Seller ASN Number
+ `seller_region` - Seller Region
+ 
++## Note
++* You can modify the IBM side of the connection using parameters passed to additional_info field
++  `{"key": "Global", "value": "false"}`
++  `{"key": "BGP_IBM_CIDR", "value": "172.16.0.18/30"}`
++  `{"key": "BGP_CER_CIDR", "value": "172.16.0.19/30"}`
++
+ ## IBM login
+ 
+ Log in to IBM portal with an account that has permission to create necessary resources.
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm2/main.tf b/examples/fabric/v4/portConnectivity/ibm/ibm2/main.tf
+index f55849e..65698a8 100644
+--- a/examples/fabric/v4/portConnectivity/ibm/ibm2/main.tf
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm2/main.tf
+@@ -28,7 +28,7 @@ resource "equinix_fabric_connection" "ibm2" {
+ 
+   bandwidth = var.bandwidth
+ 
+-  additional_info  = [{key = "ASN", value = var.seller_asn }, {"key"= "Global","value" = "false"}, {"key" = "BGP_IBM_CIDR","value" = "172.16.0.18/30"},{"key" = "BGP_CER_CIDR","value" = "172.16.0.19/30"} ]
++  additional_info = [{key = "ASN", value = var.seller_asn }]
+ 
+   redundancy {  priority  = var.redundancy  }
+   order {
