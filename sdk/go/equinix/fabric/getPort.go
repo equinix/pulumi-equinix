@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
@@ -105,12 +104,6 @@ func (o GetPortResultOutput) ToGetPortResultOutput() GetPortResultOutput {
 
 func (o GetPortResultOutput) ToGetPortResultOutputWithContext(ctx context.Context) GetPortResultOutput {
 	return o
-}
-
-func (o GetPortResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortResult] {
-	return pulumix.Output[GetPortResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customer account information that is associated with this port

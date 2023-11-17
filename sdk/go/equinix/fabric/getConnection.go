@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
@@ -110,12 +109,6 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupCon
 
 func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
 	return o
-}
-
-func (o LookupConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionResult] {
-	return pulumix.Output[LookupConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Requester or Customer side connection configuration object of the multi-segment connection

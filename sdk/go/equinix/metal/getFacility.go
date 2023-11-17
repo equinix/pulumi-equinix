@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Deprecated** Use `metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
@@ -92,12 +91,6 @@ func (o GetFacilityResultOutput) ToGetFacilityResultOutput() GetFacilityResultOu
 
 func (o GetFacilityResultOutput) ToGetFacilityResultOutputWithContext(ctx context.Context) GetFacilityResultOutput {
 	return o
-}
-
-func (o GetFacilityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFacilityResult] {
-	return pulumix.Output[GetFacilityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetFacilityResultOutput) Capacities() GetFacilityCapacityArrayOutput {

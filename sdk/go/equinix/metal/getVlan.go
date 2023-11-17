@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal Virtual Network datasource. VLANs data sources can be
@@ -167,12 +166,6 @@ func (o LookupVlanResultOutput) ToLookupVlanResultOutput() LookupVlanResultOutpu
 
 func (o LookupVlanResultOutput) ToLookupVlanResultOutputWithContext(ctx context.Context) LookupVlanResultOutput {
 	return o
-}
-
-func (o LookupVlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVlanResult] {
-	return pulumix.Output[LookupVlanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of device ID to which this VLAN is assigned.

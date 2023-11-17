@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupRoutingProtocol(ctx *pulumi.Context, args *LookupRoutingProtocolArgs, opts ...pulumi.InvokeOption) (*LookupRoutingProtocolResult, error) {
@@ -146,12 +145,6 @@ func (o LookupRoutingProtocolResultOutput) ToLookupRoutingProtocolResultOutput()
 
 func (o LookupRoutingProtocolResultOutput) ToLookupRoutingProtocolResultOutputWithContext(ctx context.Context) LookupRoutingProtocolResultOutput {
 	return o
-}
-
-func (o LookupRoutingProtocolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoutingProtocolResult] {
-	return pulumix.Output[LookupRoutingProtocolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bidirectional Forwarding Detection

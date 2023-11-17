@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal organization datasource.
@@ -120,12 +119,6 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutput() Looku
 
 func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithContext(ctx context.Context) LookupOrganizationResultOutput {
 	return o
-}
-
-func (o LookupOrganizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrganizationResult] {
-	return pulumix.Output[LookupOrganizationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Postal address.

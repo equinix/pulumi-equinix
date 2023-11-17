@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Equinix Metal metro datasource.
@@ -81,12 +80,6 @@ func (o GetMetroResultOutput) ToGetMetroResultOutput() GetMetroResultOutput {
 
 func (o GetMetroResultOutput) ToGetMetroResultOutputWithContext(ctx context.Context) GetMetroResultOutput {
 	return o
-}
-
-func (o GetMetroResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMetroResult] {
-	return pulumix.Output[GetMetroResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetMetroResultOutput) Capacities() GetMetroCapacityArrayOutput {

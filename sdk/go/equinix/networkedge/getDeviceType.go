@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Network Edge device type details. For further details, check supported
@@ -123,12 +122,6 @@ func (o GetDeviceTypeResultOutput) ToGetDeviceTypeResultOutput() GetDeviceTypeRe
 
 func (o GetDeviceTypeResultOutput) ToGetDeviceTypeResultOutputWithContext(ctx context.Context) GetDeviceTypeResultOutput {
 	return o
-}
-
-func (o GetDeviceTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceTypeResult] {
-	return pulumix.Output[GetDeviceTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetDeviceTypeResultOutput) Category() pulumi.StringOutput {

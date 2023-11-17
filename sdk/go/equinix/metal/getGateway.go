@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
@@ -121,12 +120,6 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayRe
 
 func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
 	return o
-}
-
-func (o LookupGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewayResult] {
-	return pulumix.Output[LookupGatewayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupGatewayResultOutput) GatewayId() pulumi.StringOutput {

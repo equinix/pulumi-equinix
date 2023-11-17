@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -282,12 +281,6 @@ func (i *RoutingProtocol) ToRoutingProtocolOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingProtocolOutput)
 }
 
-func (i *RoutingProtocol) ToOutput(ctx context.Context) pulumix.Output[*RoutingProtocol] {
-	return pulumix.Output[*RoutingProtocol]{
-		OutputState: i.ToRoutingProtocolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoutingProtocolArrayInput is an input type that accepts RoutingProtocolArray and RoutingProtocolArrayOutput values.
 // You can construct a concrete instance of `RoutingProtocolArrayInput` via:
 //
@@ -311,12 +304,6 @@ func (i RoutingProtocolArray) ToRoutingProtocolArrayOutput() RoutingProtocolArra
 
 func (i RoutingProtocolArray) ToRoutingProtocolArrayOutputWithContext(ctx context.Context) RoutingProtocolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingProtocolArrayOutput)
-}
-
-func (i RoutingProtocolArray) ToOutput(ctx context.Context) pulumix.Output[[]*RoutingProtocol] {
-	return pulumix.Output[[]*RoutingProtocol]{
-		OutputState: i.ToRoutingProtocolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RoutingProtocolMapInput is an input type that accepts RoutingProtocolMap and RoutingProtocolMapOutput values.
@@ -344,12 +331,6 @@ func (i RoutingProtocolMap) ToRoutingProtocolMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingProtocolMapOutput)
 }
 
-func (i RoutingProtocolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoutingProtocol] {
-	return pulumix.Output[map[string]*RoutingProtocol]{
-		OutputState: i.ToRoutingProtocolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RoutingProtocolOutput struct{ *pulumi.OutputState }
 
 func (RoutingProtocolOutput) ElementType() reflect.Type {
@@ -362,12 +343,6 @@ func (o RoutingProtocolOutput) ToRoutingProtocolOutput() RoutingProtocolOutput {
 
 func (o RoutingProtocolOutput) ToRoutingProtocolOutputWithContext(ctx context.Context) RoutingProtocolOutput {
 	return o
-}
-
-func (o RoutingProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingProtocol] {
-	return pulumix.Output[*RoutingProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bidirectional Forwarding Detection
@@ -474,12 +449,6 @@ func (o RoutingProtocolArrayOutput) ToRoutingProtocolArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o RoutingProtocolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RoutingProtocol] {
-	return pulumix.Output[[]*RoutingProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutingProtocolArrayOutput) Index(i pulumi.IntInput) RoutingProtocolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoutingProtocol {
 		return vs[0].([]*RoutingProtocol)[vs[1].(int)]
@@ -498,12 +467,6 @@ func (o RoutingProtocolMapOutput) ToRoutingProtocolMapOutput() RoutingProtocolMa
 
 func (o RoutingProtocolMapOutput) ToRoutingProtocolMapOutputWithContext(ctx context.Context) RoutingProtocolMapOutput {
 	return o
-}
-
-func (o RoutingProtocolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoutingProtocol] {
-	return pulumix.Output[map[string]*RoutingProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutingProtocolMapOutput) MapIndex(k pulumi.StringInput) RoutingProtocolOutput {

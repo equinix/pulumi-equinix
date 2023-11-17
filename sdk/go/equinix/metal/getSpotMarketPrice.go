@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get Equinix Metal Spot Market Price for a plan.
@@ -118,12 +117,6 @@ func (o GetSpotMarketPriceResultOutput) ToGetSpotMarketPriceResultOutput() GetSp
 
 func (o GetSpotMarketPriceResultOutput) ToGetSpotMarketPriceResultOutputWithContext(ctx context.Context) GetSpotMarketPriceResultOutput {
 	return o
-}
-
-func (o GetSpotMarketPriceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSpotMarketPriceResult] {
-	return pulumix.Output[GetSpotMarketPriceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices

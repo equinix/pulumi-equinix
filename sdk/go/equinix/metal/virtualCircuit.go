@@ -11,7 +11,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to associate VLAN with a Dedicated Port from
@@ -339,12 +338,6 @@ func (i *VirtualCircuit) ToVirtualCircuitOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualCircuitOutput)
 }
 
-func (i *VirtualCircuit) ToOutput(ctx context.Context) pulumix.Output[*VirtualCircuit] {
-	return pulumix.Output[*VirtualCircuit]{
-		OutputState: i.ToVirtualCircuitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualCircuitArrayInput is an input type that accepts VirtualCircuitArray and VirtualCircuitArrayOutput values.
 // You can construct a concrete instance of `VirtualCircuitArrayInput` via:
 //
@@ -368,12 +361,6 @@ func (i VirtualCircuitArray) ToVirtualCircuitArrayOutput() VirtualCircuitArrayOu
 
 func (i VirtualCircuitArray) ToVirtualCircuitArrayOutputWithContext(ctx context.Context) VirtualCircuitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualCircuitArrayOutput)
-}
-
-func (i VirtualCircuitArray) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualCircuit] {
-	return pulumix.Output[[]*VirtualCircuit]{
-		OutputState: i.ToVirtualCircuitArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VirtualCircuitMapInput is an input type that accepts VirtualCircuitMap and VirtualCircuitMapOutput values.
@@ -401,12 +388,6 @@ func (i VirtualCircuitMap) ToVirtualCircuitMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualCircuitMapOutput)
 }
 
-func (i VirtualCircuitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualCircuit] {
-	return pulumix.Output[map[string]*VirtualCircuit]{
-		OutputState: i.ToVirtualCircuitMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualCircuitOutput struct{ *pulumi.OutputState }
 
 func (VirtualCircuitOutput) ElementType() reflect.Type {
@@ -419,12 +400,6 @@ func (o VirtualCircuitOutput) ToVirtualCircuitOutput() VirtualCircuitOutput {
 
 func (o VirtualCircuitOutput) ToVirtualCircuitOutputWithContext(ctx context.Context) VirtualCircuitOutput {
 	return o
-}
-
-func (o VirtualCircuitOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualCircuit] {
-	return pulumix.Output[*VirtualCircuit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UUID of Connection where the VC is scoped to.
@@ -535,12 +510,6 @@ func (o VirtualCircuitArrayOutput) ToVirtualCircuitArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o VirtualCircuitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VirtualCircuit] {
-	return pulumix.Output[[]*VirtualCircuit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualCircuitArrayOutput) Index(i pulumi.IntInput) VirtualCircuitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VirtualCircuit {
 		return vs[0].([]*VirtualCircuit)[vs[1].(int)]
@@ -559,12 +528,6 @@ func (o VirtualCircuitMapOutput) ToVirtualCircuitMapOutput() VirtualCircuitMapOu
 
 func (o VirtualCircuitMapOutput) ToVirtualCircuitMapOutputWithContext(ctx context.Context) VirtualCircuitMapOutput {
 	return o
-}
-
-func (o VirtualCircuitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VirtualCircuit] {
-	return pulumix.Output[map[string]*VirtualCircuit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualCircuitMapOutput) MapIndex(k pulumi.StringInput) VirtualCircuitOutput {

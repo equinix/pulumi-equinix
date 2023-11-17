@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)
@@ -140,12 +139,6 @@ func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutput()
 
 func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutputWithContext(ctx context.Context) LookupInterconnectionResultOutput {
 	return o
-}
-
-func (o LookupInterconnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInterconnectionResult] {
-	return pulumix.Output[LookupInterconnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupInterconnectionResultOutput) ConnectionId() pulumi.StringOutput {

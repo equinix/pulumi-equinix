@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to retrieve list of BGP neighbors of a device in the Equinix Metal host.
@@ -107,12 +106,6 @@ func (o GetDeviceBgpNeighborsResultOutput) ToGetDeviceBgpNeighborsResultOutput()
 
 func (o GetDeviceBgpNeighborsResultOutput) ToGetDeviceBgpNeighborsResultOutputWithContext(ctx context.Context) GetDeviceBgpNeighborsResultOutput {
 	return o
-}
-
-func (o GetDeviceBgpNeighborsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeviceBgpNeighborsResult] {
-	return pulumix.Output[GetDeviceBgpNeighborsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // array of BGP neighbor records with attributes:

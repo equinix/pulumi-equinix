@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupCloudRouter(ctx *pulumi.Context, args *LookupCloudRouterArgs, opts ...pulumi.InvokeOption) (*LookupCloudRouterResult, error) {
@@ -105,12 +104,6 @@ func (o LookupCloudRouterResultOutput) ToLookupCloudRouterResultOutput() LookupC
 
 func (o LookupCloudRouterResultOutput) ToLookupCloudRouterResultOutputWithContext(ctx context.Context) LookupCloudRouterResultOutput {
 	return o
-}
-
-func (o LookupCloudRouterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudRouterResult] {
-	return pulumix.Output[LookupCloudRouterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customer account information that is associated with this Fabric Cloud Router

@@ -9,7 +9,6 @@ import (
 
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to retrieve attributes of the Project API resource.
@@ -118,12 +117,6 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutput() LookupProjectRe
 
 func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx context.Context) LookupProjectResultOutput {
 	return o
-}
-
-func (o LookupProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectResult] {
-	return pulumix.Output[LookupProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether Backend Transfer is enabled for this project.
