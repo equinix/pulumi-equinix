@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tim Hogarty <thogarty@equinix.com>
+Date: Sat, 11 Nov 2023 00:13:05 -0800
+Subject: [PATCH 38/51] Fix typo in error message
+
+
+diff --git a/equinix/resource_fabric_connection.go b/equinix/resource_fabric_connection.go
+index a6587e2..8db7fe7 100644
+--- a/equinix/resource_fabric_connection.go
++++ b/equinix/resource_fabric_connection.go
+@@ -226,7 +226,7 @@ func resourceFabricConnectionUpdate(ctx context.Context, d *schema.ResourceData,
+ 	for _, update := range updateRequests {
+ 		_, httpResponse, err := client.ConnectionsApi.UpdateConnectionByUuid(ctx, update, d.Id())
+ 		if err != nil {
+-			diags = append(diags, networkErrorOutput(fmt.Errorf("connectionn property update request error: %v [update payload: %v] (other updates will be successful if the payload is not shown)", err, update), httpResponse)...)
++			diags = append(diags, networkErrorOutput(fmt.Errorf("connection property update request error: %v [update payload: %v] (other updates will be successful if the payload is not shown)", err, update), httpResponse)...)
+ 			continue
+ 		}
+ 

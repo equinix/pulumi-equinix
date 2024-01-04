@@ -34,6 +34,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// * FAILED
         /// * DEPROVISIONING
         /// * DEPROVISIONED
+        /// * RESOURCE_UPGRADE_IN_PROGRESS
+        /// * RESOURCE_UPGRADE_FAILED
         /// </summary>
         public readonly string Status;
         public readonly string Type;

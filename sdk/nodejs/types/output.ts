@@ -922,7 +922,7 @@ export namespace fabric {
     }
 
     export interface GetConnectionASideAccessPointInterface {
-        id: string;
+        id: number;
         type: string;
         uuid: string;
     }
@@ -1144,7 +1144,7 @@ export namespace fabric {
     }
 
     export interface GetConnectionZSideAccessPointInterface {
-        id: string;
+        id: number;
         type: string;
         uuid: string;
     }
@@ -3376,6 +3376,8 @@ export namespace networkedge {
          * * FAILED
          * * DEPROVISIONING
          * * DEPROVISIONED
+         * * RESOURCE_UPGRADE_IN_PROGRESS
+         * * RESOURCE_UPGRADE_FAILED
          */
         status: string;
         type: string;
@@ -3467,6 +3469,8 @@ export namespace networkedge {
          * * FAILED
          * * DEPROVISIONING
          * * DEPROVISIONED
+         * * RESOURCE_UPGRADE_IN_PROGRESS
+         * * RESOURCE_UPGRADE_FAILED
          */
         status: string;
         /**
@@ -3503,6 +3507,8 @@ export namespace networkedge {
          * * FAILED
          * * DEPROVISIONING
          * * DEPROVISIONED
+         * * RESOURCE_UPGRADE_IN_PROGRESS
+         * * RESOURCE_UPGRADE_FAILED
          */
         status: string;
         type: string;

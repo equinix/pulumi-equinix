@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tim Hogarty <thogarty@equinix.com>
+Date: Fri, 8 Dec 2023 12:36:44 -0800
+Subject: [PATCH 43/51] Use Errors type from Equinix errors.go as return value
+
+
+diff --git a/internal/errors/errors.go b/internal/errors/errors.go
+index fec0ef2..59a450e 100644
+--- a/internal/errors/errors.go
++++ b/internal/errors/errors.go
+@@ -69,20 +69,20 @@ func FormatFabricError(err error) error {
+ 	// If in future one would like to do something with the response body of the API request
+ 	// The line below is how to access it with the SwaggerCodegen Fabric Go 12/7/2023 - thogarty
+ 	// errors = append(errors, string(err.(fabric.GenericSwaggerError).Body()))
+-	var errors []string
++	var errors Errors
+ 	errors = append(errors, err.Error())
+ 	if fabricErrs, ok := err.(fabric.GenericSwaggerError).Model().([]fabric.ModelError); ok {
+ 		for _, e := range fabricErrs {
++			errors = append(errors, fmt.Sprintf("Code: %s", e.ErrorCode))
+ 			errors = append(errors, fmt.Sprintf("Message: %s", e.ErrorMessage))
+ 			errors = append(errors, fmt.Sprintf("Details: %s", e.Details))
+ 			if additionalInfo := FormatFabricAdditionalInfo(e.AdditionalInfo); additionalInfo != "" {
+ 				errors = append(errors, fmt.Sprintf("AdditionalInfo: [%s]", additionalInfo))
+ 			}
+-			errors = append(errors, fmt.Sprintf("Code: %s", e.ErrorCode))
+ 		}
+ 	}
+ 
+-	return fmt.Errorf("%s", strings.Join(errors, ", "))
++	return errors
+ }
+ 
+ func IsForbidden(err error) bool {

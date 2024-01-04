@@ -5797,7 +5797,7 @@ class GetConnectionASideAccessPointGatewayResult(dict):
 @pulumi.output_type
 class GetConnectionASideAccessPointInterfaceResult(dict):
     def __init__(__self__, *,
-                 id: str,
+                 id: int,
                  type: str,
                  uuid: str):
         pulumi.set(__self__, "id", id)
@@ -5806,7 +5806,7 @@ class GetConnectionASideAccessPointInterfaceResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property
@@ -6854,7 +6854,7 @@ class GetConnectionZSideAccessPointGatewayResult(dict):
 @pulumi.output_type
 class GetConnectionZSideAccessPointInterfaceResult(dict):
     def __init__(__self__, *,
-                 id: str,
+                 id: int,
                  type: str,
                  uuid: str):
         pulumi.set(__self__, "id", id)
@@ -6863,7 +6863,7 @@ class GetConnectionZSideAccessPointInterfaceResult(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> int:
         return pulumi.get(self, "id")
 
     @property

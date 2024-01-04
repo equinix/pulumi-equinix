@@ -241,14 +241,14 @@ public class Device extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectivity);
     }
     /**
-     * Number of CPU cores used by device.
+     * Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      * 
      */
     @Export(name="coreCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> coreCount;
 
     /**
-     * @return Number of CPU cores used by device.
+     * @return Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      * 
      */
     public Output<Integer> coreCount() {

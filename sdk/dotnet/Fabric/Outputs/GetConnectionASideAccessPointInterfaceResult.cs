@@ -13,13 +13,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideAccessPointInterfaceResult
     {
-        public readonly string Id;
+        public readonly int Id;
         public readonly string Type;
         public readonly string Uuid;
 
         [OutputConstructor]
         private GetConnectionASideAccessPointInterfaceResult(
-            string id,
+            int id,
 
             string type,
 

@@ -8,13 +8,6 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Equinix Metal device resource. This can be used to create,
- * modify, and delete devices.
- *
- * > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in
- *  the raw state as plain-text.
- * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- *
  * ## Example Usage
  *
  * ```typescript

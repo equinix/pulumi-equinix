@@ -1,0 +1,97 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tim Hogarty <thogarty@equinix.com>
+Date: Fri, 3 Nov 2023 11:58:26 -0700
+Subject: [PATCH 20/51] Add deprecation messages to ecx_ terraform resources
+ using Fabric v3 API SDK
+
+
+diff --git a/equinix/data_source_ecx_l2_sellerprofile.go b/equinix/data_source_ecx_l2_sellerprofile.go
+index c0bf3de..6454b94 100644
+--- a/equinix/data_source_ecx_l2_sellerprofile.go
++++ b/equinix/data_source_ecx_l2_sellerprofile.go
+@@ -77,9 +77,10 @@ var ecxL2SellerProfileAdditionalInfosDescriptions = map[string]string{
+ 
+ func dataSourceECXL2SellerProfile() *schema.Resource {
+ 	return &schema.Resource{
+-		ReadContext: dataSourceECXL2SellerProfileRead,
+-		Description: "Use this data source to get details of Equinix Fabric layer 2 seller profile with a given name and / or organization",
+-		Schema:      createECXL2SellerProfileSchema(),
++		DeprecationMessage: "This resource is deprecated. End of Life will be June 30th, 2024. Use equinix_fabric_service_profile instead.",
++		ReadContext:        dataSourceECXL2SellerProfileRead,
++		Description:        "Use this data source to get details of Equinix Fabric layer 2 seller profile with a given name and / or organization",
++		Schema:             createECXL2SellerProfileSchema(),
+ 	}
+ }
+ 
+diff --git a/equinix/data_source_ecx_l2_sellerprofiles.go b/equinix/data_source_ecx_l2_sellerprofiles.go
+index cede18c..2104f9b 100644
+--- a/equinix/data_source_ecx_l2_sellerprofiles.go
++++ b/equinix/data_source_ecx_l2_sellerprofiles.go
+@@ -35,8 +35,9 @@ var ecxL2SellerProfilesDescriptions = map[string]string{
+ 
+ func dataSourceECXL2SellerProfiles() *schema.Resource {
+ 	return &schema.Resource{
+-		ReadContext: dataSourceECXL2SellerProfilesRead,
+-		Description: "Use this data source to get list of Equinix Fabric layer 2 seller profiles",
++		DeprecationMessage: "This resource is deprecated. End of Life will be June 30th, 2024. Use equinix_fabric_service_profiles instead.",
++		ReadContext:        dataSourceECXL2SellerProfilesRead,
++		Description:        "Use this data source to get list of Equinix Fabric layer 2 seller profiles",
+ 		Schema: map[string]*schema.Schema{
+ 			ecxL2SellerProfilesSchemaNames["NameRegex"]: {
+ 				Type:         schema.TypeString,
+diff --git a/equinix/data_source_ecx_port.go b/equinix/data_source_ecx_port.go
+index 83ffc17..ea8a200 100644
+--- a/equinix/data_source_ecx_port.go
++++ b/equinix/data_source_ecx_port.go
+@@ -40,8 +40,9 @@ var ecxPortDescriptions = map[string]string{
+ 
+ func dataSourceECXPort() *schema.Resource {
+ 	return &schema.Resource{
+-		ReadContext: dataSourceECXPortRead,
+-		Description: "Use this data source to get details of Equinix Fabric port with a given name",
++		DeprecationMessage: "This resource is deprecated. End of Life will be June 30th, 2024. Use equinix_fabric_port and equinix_fabric_ports instead.",
++		ReadContext:        dataSourceECXPortRead,
++		Description:        "Use this data source to get details of Equinix Fabric port with a given name",
+ 		Schema: map[string]*schema.Schema{
+ 			ecxPortSchemaNames["UUID"]: {
+ 				Type:        schema.TypeString,
+diff --git a/equinix/resource_ecx_l2_connection.go b/equinix/resource_ecx_l2_connection.go
+index 3f04776..64cd044 100644
+--- a/equinix/resource_ecx_l2_connection.go
++++ b/equinix/resource_ecx_l2_connection.go
+@@ -129,10 +129,11 @@ type (
+ 
+ func resourceECXL2Connection() *schema.Resource {
+ 	return &schema.Resource{
+-		CreateContext: resourceECXL2ConnectionCreate,
+-		ReadContext:   resourceECXL2ConnectionRead,
+-		UpdateContext: resourceECXL2ConnectionUpdate,
+-		DeleteContext: resourceECXL2ConnectionDelete,
++		DeprecationMessage: "This resource is deprecated. End of Life will be June 30th, 2024. Use equinix_fabric_connection instead.",
++		CreateContext:      resourceECXL2ConnectionCreate,
++		ReadContext:        resourceECXL2ConnectionRead,
++		UpdateContext:      resourceECXL2ConnectionUpdate,
++		DeleteContext:      resourceECXL2ConnectionDelete,
+ 		Importer: &schema.ResourceImporter{
+ 			StateContext: func(ctx context.Context, d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
+ 				// The expected ID to import redundant connections is '(primaryID):(secondaryID)', e.g.,
+diff --git a/equinix/resource_ecx_l2_serviceprofile.go b/equinix/resource_ecx_l2_serviceprofile.go
+index af0bfba..4aa17b8 100644
+--- a/equinix/resource_ecx_l2_serviceprofile.go
++++ b/equinix/resource_ecx_l2_serviceprofile.go
+@@ -105,10 +105,11 @@ var ecxL2ServiceProfileSpeedBandDescriptions = map[string]string{
+ 
+ func resourceECXL2ServiceProfile() *schema.Resource {
+ 	return &schema.Resource{
+-		CreateContext: resourceECXL2ServiceProfileCreate,
+-		ReadContext:   resourceECXL2ServiceProfileRead,
+-		UpdateContext: resourceECXL2ServiceProfileUpdate,
+-		DeleteContext: resourceECXL2ServiceProfileDelete,
++		DeprecationMessage: "This resource is deprecated. End of Life will be June 30th, 2024. Use equinix_fabric_service_profile instead.",
++		CreateContext:      resourceECXL2ServiceProfileCreate,
++		ReadContext:        resourceECXL2ServiceProfileRead,
++		UpdateContext:      resourceECXL2ServiceProfileUpdate,
++		DeleteContext:      resourceECXL2ServiceProfileDelete,
+ 		Importer: &schema.ResourceImporter{
+ 			State: schema.ImportStatePassthrough,
+ 		},

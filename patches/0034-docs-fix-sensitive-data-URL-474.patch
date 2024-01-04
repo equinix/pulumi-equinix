@@ -1,0 +1,37 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marques Johansson <mjohansson@equinix.com>
+Date: Wed, 6 Dec 2023 13:14:53 -0500
+Subject: [PATCH 34/51] docs: fix sensitive-data URL (#474)
+
+The current link is a 404
+
+---------
+
+Signed-off-by: Marques Johansson <mjohansson@equinix.com>
+
+diff --git a/docs/data-sources/equinix_metal_device.md b/docs/data-sources/equinix_metal_device.md
+index 1acc0c6..3711d1c 100644
+--- a/docs/data-sources/equinix_metal_device.md
++++ b/docs/data-sources/equinix_metal_device.md
+@@ -10,7 +10,7 @@ If you need to fetch a list of devices which meet filter criteria, you can use t
+ 
+ ~> **Note:** All arguments including the `root_password` and `user_data` will be stored in
+  the raw state as plain-text.
+-[Read more about sensitive data in state](/docs/state/sensitive-data.html).
++[Read more about sensitive data in state](https://developer.hashicorp.com/terraform/language/state/sensitive-data).
+ 
+ ## Example Usage
+ 
+diff --git a/docs/resources/equinix_metal_device.md b/docs/resources/equinix_metal_device.md
+index f03faf6..14f1b22 100644
+--- a/docs/resources/equinix_metal_device.md
++++ b/docs/resources/equinix_metal_device.md
+@@ -9,7 +9,7 @@ modify, and delete devices.
+ 
+ ~> **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
+  the raw state as plain-text.
+-[Read more about sensitive data in state](/docs/state/sensitive-data.html).
++[Read more about sensitive data in state](https://developer.hashicorp.com/terraform/language/state/sensitive-data).
+ 
+ ## Example Usage
+ 

@@ -326,14 +326,6 @@ def get_device(device_id: Optional[str] = None,
                project_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceResult:
     """
-    The datasource can be used to fetch a single device.
-
-    If you need to fetch a list of devices which meet filter criteria, you can use the metal_get_devices datasource.
-
-    > **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     the raw state as plain-text.
-    [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
     ## Example Usage
 
     ```python
@@ -401,14 +393,6 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
     """
-    The datasource can be used to fetch a single device.
-
-    If you need to fetch a list of devices which meet filter criteria, you can use the metal_get_devices datasource.
-
-    > **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     the raw state as plain-text.
-    [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
     ## Example Usage
 
     ```python

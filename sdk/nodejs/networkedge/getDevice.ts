@@ -157,6 +157,8 @@ export interface GetDeviceResult {
      * * FAILED
      * * DEPROVISIONING
      * * DEPROVISIONED
+     * * RESOURCE_UPGRADE_IN_PROGRESS
+     * * RESOURCE_UPGRADE_FAILED
      */
     readonly status: string;
     readonly termLength: number;

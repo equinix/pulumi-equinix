@@ -1,0 +1,58 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Wed, 15 Nov 2023 09:53:12 +0100
+Subject: [PATCH 18/51] add missing fields and descriptions in CloudRouter
+ schemas
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/equinix/fabric_cloud_router_read_schema.go b/equinix/fabric_cloud_router_read_schema.go
+index 64ddc8f..39daeec 100644
+--- a/equinix/fabric_cloud_router_read_schema.go
++++ b/equinix/fabric_cloud_router_read_schema.go
+@@ -47,17 +47,17 @@ func readCloudRouterResourceSchema() map[string]*schema.Schema {
+ 		"bgp_ipv4_routes_count": {
+ 			Type:        schema.TypeInt,
+ 			Computed:    true,
+-			Description: "",
++			Description: "Access point used and maximum number of IPv4 BGP routes",
+ 		},
+ 		"bgp_ipv6_routes_count": {
+ 			Type:        schema.TypeInt,
+ 			Computed:    true,
+-			Description: "",
++			Description: "Access point used and maximum number of IPv6 BGP routes",
+ 		},
+ 		"connections_count": {
+ 			Type:        schema.TypeInt,
+ 			Computed:    true,
+-			Description: "",
++			Description: "Number of connections associated with this Access point",
+ 		},
+ 		"package": {
+ 			Type:        schema.TypeSet,
+diff --git a/equinix/fabric_cloud_router_schema.go b/equinix/fabric_cloud_router_schema.go
+index 402c4c3..3ffeefc 100644
+--- a/equinix/fabric_cloud_router_schema.go
++++ b/equinix/fabric_cloud_router_schema.go
+@@ -149,5 +149,20 @@ func createCloudRouterResourceSchema() map[string]*schema.Schema {
+ 				Schema: createNotificationSch(),
+ 			},
+ 		},
++		"bgp_ipv4_routes_count": {
++			Type:        schema.TypeInt,
++			Computed:    true,
++			Description: "Access point used and maximum number of IPv4 BGP routes",
++		},
++		"bgp_ipv6_routes_count": {
++			Type:        schema.TypeInt,
++			Computed:    true,
++			Description: "Access point used and maximum number of IPv6 BGP routes",
++		},
++		"connections_count": {
++			Type:        schema.TypeInt,
++			Computed:    true,
++			Description: "Number of connections associated with this Access point",
++		},
+ 	}
+ }

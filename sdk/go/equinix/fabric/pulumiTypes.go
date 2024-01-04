@@ -14337,7 +14337,7 @@ func (o GetConnectionASideAccessPointGatewayArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetConnectionASideAccessPointInterface struct {
-	Id   string `pulumi:"id"`
+	Id   int    `pulumi:"id"`
 	Type string `pulumi:"type"`
 	Uuid string `pulumi:"uuid"`
 }
@@ -14354,7 +14354,7 @@ type GetConnectionASideAccessPointInterfaceInput interface {
 }
 
 type GetConnectionASideAccessPointInterfaceArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	Id   pulumi.IntInput    `pulumi:"id"`
 	Type pulumi.StringInput `pulumi:"type"`
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
@@ -14410,8 +14410,8 @@ func (o GetConnectionASideAccessPointInterfaceOutput) ToGetConnectionASideAccess
 	return o
 }
 
-func (o GetConnectionASideAccessPointInterfaceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionASideAccessPointInterface) string { return v.Id }).(pulumi.StringOutput)
+func (o GetConnectionASideAccessPointInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionASideAccessPointInterface) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetConnectionASideAccessPointInterfaceOutput) Type() pulumi.StringOutput {
@@ -17239,7 +17239,7 @@ func (o GetConnectionZSideAccessPointGatewayArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetConnectionZSideAccessPointInterface struct {
-	Id   string `pulumi:"id"`
+	Id   int    `pulumi:"id"`
 	Type string `pulumi:"type"`
 	Uuid string `pulumi:"uuid"`
 }
@@ -17256,7 +17256,7 @@ type GetConnectionZSideAccessPointInterfaceInput interface {
 }
 
 type GetConnectionZSideAccessPointInterfaceArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	Id   pulumi.IntInput    `pulumi:"id"`
 	Type pulumi.StringInput `pulumi:"type"`
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
@@ -17312,8 +17312,8 @@ func (o GetConnectionZSideAccessPointInterfaceOutput) ToGetConnectionZSideAccess
 	return o
 }
 
-func (o GetConnectionZSideAccessPointInterfaceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionZSideAccessPointInterface) string { return v.Id }).(pulumi.StringOutput)
+func (o GetConnectionZSideAccessPointInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionZSideAccessPointInterface) int { return v.Id }).(pulumi.IntOutput)
 }
 
 func (o GetConnectionZSideAccessPointInterfaceOutput) Type() pulumi.StringOutput {

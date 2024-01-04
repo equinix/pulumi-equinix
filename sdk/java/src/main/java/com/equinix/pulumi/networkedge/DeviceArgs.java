@@ -138,14 +138,14 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of CPU cores used by device.
+     * Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      * 
      */
     @Import(name="coreCount", required=true)
     private Output<Integer> coreCount;
 
     /**
-     * @return Number of CPU cores used by device.
+     * @return Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      * 
      */
     public Output<Integer> coreCount() {
@@ -711,7 +711,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreCount Number of CPU cores used by device.
+         * @param coreCount Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreCount Number of CPU cores used by device.
+         * @param coreCount Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
          * 
          * @return builder
          * 

@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Wed, 6 Dec 2023 14:59:04 -0800
+Subject: [PATCH 45/51] fix: fixing fabric connection schema for port 2 network
+ connection
+
+
+diff --git a/equinix/fabric_connection_read_schema.go b/equinix/fabric_connection_read_schema.go
+index 8f478e0..80b80ed 100644
+--- a/equinix/fabric_connection_read_schema.go
++++ b/equinix/fabric_connection_read_schema.go
+@@ -796,7 +796,7 @@ func readFabricConnectionResourceSchema() map[string]*schema.Schema {
+ 		"type": {
+ 			Type:        schema.TypeString,
+ 			Computed:    true,
+-			Description: "Defines the connection type like VG_VC, EVPL_VC, EPL_VC, EC_VC, IP_VC, IPWAN_VC, ACCESS_EPL_VC",
++			Description: "Defines the connection type like VG_VC, EVPL_VC, EPL_VC, EC_VC, IP_VC, IPWAN_VC, ACCESS_EPL_VC,EVPLAN_VC,EPLAN_VC",
+ 		},
+ 		"bandwidth": {
+ 			Type:        schema.TypeInt,
+diff --git a/equinix/fabric_connection_schema.go b/equinix/fabric_connection_schema.go
+index 0d26d1e..7dcdb31 100644
+--- a/equinix/fabric_connection_schema.go
++++ b/equinix/fabric_connection_schema.go
+@@ -107,6 +107,7 @@ func createGatewayProjectSch() map[string]*schema.Schema {
+ 		"project_id": {
+ 			Type:        schema.TypeString,
+ 			Computed:    true,
++			Optional:    true,
+ 			Description: "Project Id",
+ 		},
+ 		"href": {
+@@ -790,8 +791,8 @@ func createFabricConnectionResourceSchema() map[string]*schema.Schema {
+ 		"type": {
+ 			Type:         schema.TypeString,
+ 			Required:     true,
+-			ValidateFunc: validation.StringInSlice([]string{"VG_VC", "EVPL_VC", "EPL_VC", "EC_VC", "IP_VC", "IPWAN_VC", "ACCESS_EPL_VC"}, true),
+-			Description:  "Defines the connection type like VG_VC, EVPL_VC, EPL_VC, EC_VC, IP_VC, IPWAN_VC,ACCESS_EPL_VC",
++			ValidateFunc: validation.StringInSlice([]string{"VG_VC", "EVPL_VC", "EPL_VC", "EC_VC", "IP_VC", "IPWAN_VC", "ACCESS_EPL_VC", "EVPLAN_VC", "EPLAN_VC"}, true),
++			Description:  "Defines the connection type like VG_VC, EVPL_VC, EPL_VC, EC_VC, IP_VC, IPWAN_VC,ACCESS_EPL_VC,EVPLAN_VC, EPLAN_VC",
+ 		},
+ 		"bandwidth": {
+ 			Type:        schema.TypeInt,

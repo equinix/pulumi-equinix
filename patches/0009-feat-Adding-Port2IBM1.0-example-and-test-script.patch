@@ -1,0 +1,252 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Mon, 6 Nov 2023 12:42:54 -0800
+Subject: [PATCH 09/51] feat: Adding Port2IBM1.0 example and test script
+
+
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm1/README.md b/examples/fabric/v4/portConnectivity/ibm/ibm1/README.md
+new file mode 100644
+index 0000000..fb4ae8c
+--- /dev/null
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm1/README.md
+@@ -0,0 +1,58 @@
++# ECX Fabric Layer2 Redundant Connection to IBM 1
++
++This example shows how to create Layer 2 Connection between ECX Fabric ports and IBM1 Cloud.
++
++## Adjust variables
++
++At minimum, you must set below variables in `terraform.tfvars` file:
++
++* `equinix_client_id` - Equinix client ID (consumer key), obtained after
++  registering app in the developer platform
++* `equinix_client_secret` - Equinix client secret ID (consumer secret),
++  obtained same way as above
++
++`connection_name` - The name of the connection
++`connection_type` - Connection type, please refer to OAS schema for enum values.
++`notifications_type` - Notification type
++`notifications_emails` - List of emails
++`bandwidth` - Bandwidth in MBs
++`redundancy` - Port redundancy
++`purchase_order_number` - Purchase order number applied to billing invoices for this connection.
++`aside_ap_type` - Access point type
++`aside_link_protocol_type` - Link protocol type
++`aside_pri_link_protocol_tag` - Tag number
++`zside_ap_type` - Z side access point type
++`zside_ap_authentication_key` - IBM authorization key (Account Id), like 1223344
++`zside_ap_profile_type` - Service profile type
++`zside_location` - Equinix Metro Code for the Z side access point
++`fabric_sp_name` - Service profile name like i.e. IBM
++`equinix_port_name` -  Name of ECX Fabric Port
++`seller_asn` - Seller ASN Number
++`seller_region` - Seller Region
++
++## Note
++* You can modify the IBM side of the connection using parameters passed to additional_info field
++  `{"key": "Global", "value": "false"}`
++  `{"key": "BGP_IBM_CIDR", "value": "172.16.0.18/30"}`
++  `{"key": "BGP_CER_CIDR", "value": "172.16.0.19/30"}`
++
++## IBM login
++
++Log in to IBM portal with an account that has permission to create necessary resources.
++
++## Initialize
++- First step is to initialize the terraform directory/resource we are going to work on.
++  In the given example, the folder to perform CRUD operations for port2ibm1 connections can be found at examples/fabric/v4/portConnectivity/ibm/ibm1.
++
++- Change directory into - `CD examples/fabric/v4/portConnectivity/ibm/ibm1`
++- Initialize Terraform plugins - `terraform init`
++
++## Port to IBM1 connection  : Create, Read, Update and Delete(CRUD) operations
++Note: `–auto-approve` command does not prompt the user for validating the applying config. Remove it to get a prompt to confirm the operation.
++
++| Operation |              Command              |                                                               Description |
++|:----------|:---------------------------------:|--------------------------------------------------------------------------:|
++| CREATE    |  `terraform apply –auto-approve`  |                                  Creates a port2ibm1 connection resources |
++| READ      |         `terraform show`          |       Reads/Shows the current state of the port2ibm1 connection resources |
++| UPDATE    |    `terraform apply -refresh`     | Updates the connections with values provided in the terraform.tfvars file |
++| DELETE    | `terraform destroy –auto-approve` |                        Deletes the created port2ibm1 connection resources |
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm1/main.tf b/examples/fabric/v4/portConnectivity/ibm/ibm1/main.tf
+new file mode 100644
+index 0000000..f512480
+--- /dev/null
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm1/main.tf
+@@ -0,0 +1,69 @@
++provider "equinix" {
++  client_id     = var.equinix_client_id
++  client_secret = var.equinix_client_secret
++}
++
++data "equinix_fabric_service_profiles" "ibm" {
++  filter {
++    property = "/name"
++    operator = "="
++    values   = [var.fabric_sp_name]
++  }
++}
++
++data "equinix_fabric_ports" "port" {
++  filters {
++    name = var.equinix_port_name
++  }
++}
++
++resource "equinix_fabric_connection" "ibm1" {
++  name = var.connection_name
++  type = var.connection_type
++
++  notifications {
++    type   = var.notifications_type
++    emails = var.notifications_emails
++  }
++
++  bandwidth = var.bandwidth
++
++  additional_info  = [{ key = "ASN", value = var.seller_asn }]
++
++  redundancy {
++    priority  = var.redundancy
++  }
++  order {
++    purchase_order_number = var.purchase_order_number
++  }
++  a_side {
++    access_point {
++      type = var.aside_ap_type
++      port {
++        uuid = data.equinix_fabric_ports.port.id
++      }
++      link_protocol {
++        type     = var.aside_link_protocol_type
++        vlan_tag = var.aside_link_protocol_tag
++      }
++    }
++  }
++  z_side {
++    access_point {
++      type                = var.zside_ap_type
++      authentication_key  = var.zside_ap_authentication_key
++      seller_region       = var.seller_region
++      profile {
++        type  = var.zside_ap_profile_type
++        uuid  = data.equinix_fabric_service_profiles.ibm.id
++      }
++      location {
++        metro_code  = var.zside_location
++      }
++    }
++  }
++}
++
++output "connection_result" {
++  value = equinix_fabric_connection.ibm1.id
++}
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm1/terraform.tf b/examples/fabric/v4/portConnectivity/ibm/ibm1/terraform.tf
+new file mode 100644
+index 0000000..fd41df1
+--- /dev/null
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm1/terraform.tf
+@@ -0,0 +1,7 @@
++terraform {
++  required_providers {
++    equinix = {
++      source = "equinix/equinix"
++    }
++  }
++}
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm1/terraform.tfvars.example b/examples/fabric/v4/portConnectivity/ibm/ibm1/terraform.tfvars.example
+new file mode 100644
+index 0000000..da96183
+--- /dev/null
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm1/terraform.tfvars.example
+@@ -0,0 +1,21 @@
++equinix_client_id      = "MyEquinixClientId"
++equinix_client_secret  = "MyEquinixClientSecret"
++
++connection_name             = "Terra_Port2IBM1"
++connection_type             = "EVPL_VC"
++notifications_type          = "ALL"
++notifications_emails        = ["example@equinix.com"]
++bandwidth                   = 50
++redundancy                  = "PRIMARY"
++purchase_order_number       = "1-323292"
++aside_ap_type               = "COLO"
++aside_link_protocol_type    = "DOT1Q"
++aside_link_protocol_tag     = "3202"
++zside_ap_type               = "SP"
++zside_ap_authentication_key = "IBM Authentication Key"
++zside_ap_profile_type       = "L2_PROFILE"
++zside_location              = "SV"
++fabric_sp_name              = "IBM Cloud Direct Link Exchange"
++equinix_port_name           = "Equinix Port Name"
++seller_asn                  = "9000"
++seller_region               = "San Jose 2"
+diff --git a/examples/fabric/v4/portConnectivity/ibm/ibm1/variables.tf b/examples/fabric/v4/portConnectivity/ibm/ibm1/variables.tf
+new file mode 100644
+index 0000000..b8ddcb5
+--- /dev/null
++++ b/examples/fabric/v4/portConnectivity/ibm/ibm1/variables.tf
+@@ -0,0 +1,20 @@
++variable "equinix_client_id" {}
++variable "equinix_client_secret" {}
++variable "connection_name" {}
++variable "connection_type" {}
++variable "notifications_type" {}
++variable "notifications_emails" {}
++variable "bandwidth" {}
++variable "redundancy" {}
++variable "purchase_order_number" {}
++variable "aside_ap_type" {}
++variable "aside_link_protocol_type" {}
++variable "aside_link_protocol_tag" {}
++variable "zside_ap_type" {}
++variable "zside_ap_authentication_key" {}
++variable "zside_ap_profile_type" {}
++variable "zside_location" {}
++variable "fabric_sp_name" {}
++variable "equinix_port_name" {}
++variable "seller_asn" {}
++variable "seller_region" {}
+diff --git a/tests/connection_e2e_ibm1_test.go b/tests/connection_e2e_ibm1_test.go
+new file mode 100644
+index 0000000..0f2d06a
+--- /dev/null
++++ b/tests/connection_e2e_ibm1_test.go
+@@ -0,0 +1,22 @@
++package tests
++
++import (
++	"testing"
++
++	"github.com/gruntwork-io/terratest/modules/terraform"
++	"github.com/stretchr/testify/assert"
++)
++
++func TestIBM1CreateConnection(t *testing.T) {
++	// retryable errors in terraform testing.
++	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
++		TerraformDir: "../examples/fabric/v4/portConnectivity/ibm/ibm1",
++	})
++
++	defer terraform.Destroy(t, terraformOptions)
++
++	terraform.InitAndApply(t, terraformOptions)
++
++	output := terraform.Output(t, terraformOptions, "connection_result")
++	assert.NotNil(t, output)
++}
+diff --git a/tests/connection_e2e_ibm2_test.go b/tests/connection_e2e_ibm2_test.go
+index 7cf580c..46d135e 100644
+--- a/tests/connection_e2e_ibm2_test.go
++++ b/tests/connection_e2e_ibm2_test.go
+@@ -7,7 +7,7 @@ import (
+ 	"github.com/stretchr/testify/assert"
+ )
+ 
+-func TestIBMCreateConnection(t *testing.T) {
++func TestIBM2CreateConnection(t *testing.T) {
+ 	// retryable errors in terraform testing.
+ 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+ 		TerraformDir: "../examples/fabric/v4/portConnectivity/ibm/ibm2",

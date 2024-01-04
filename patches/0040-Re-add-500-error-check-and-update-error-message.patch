@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tim Hogarty <thogarty@equinix.com>
+Date: Fri, 8 Dec 2023 12:14:26 -0800
+Subject: [PATCH 40/51] Re-add 500 error check and update error message
+
+
+diff --git a/equinix/resource_fabric_connection.go b/equinix/resource_fabric_connection.go
+index d48f931..2df73ed 100644
+--- a/equinix/resource_fabric_connection.go
++++ b/equinix/resource_fabric_connection.go
+@@ -169,6 +169,10 @@ func resourceFabricConnectionRead(ctx context.Context, d *schema.ResourceData, m
+ 	ctx = context.WithValue(ctx, v4.ContextAccessToken, meta.(*config.Config).FabricAuthToken)
+ 	conn, _, err := client.ConnectionsApi.GetConnectionByUuid(ctx, d.Id(), nil)
+ 	if err != nil {
++		log.Printf("[WARN] Connection %s not found , error %s", d.Id(), err)
++		if !strings.Contains(err.Error(), "500") {
++			d.SetId("")
++		}
+ 		return diag.FromErr(equinix_errors.FormatFabricError(err))
+ 	}
+ 	d.SetId(conn.Uuid)
+diff --git a/internal/errors/errors.go b/internal/errors/errors.go
+index 83309a0..c6c322e 100644
+--- a/internal/errors/errors.go
++++ b/internal/errors/errors.go
+@@ -73,9 +73,9 @@ func FormatFabricError(err error) error {
+ 	errors = append(errors, err.Error())
+ 	if fabricErrs, ok := err.(v4.GenericSwaggerError).Model().([]v4.ModelError); ok {
+ 		for _, e := range fabricErrs {
+-			errors = append(errors, fmt.Sprintf("ErrorCode: %s", e.ErrorCode))
+-			errors = append(errors, fmt.Sprintf("ErrorMessage: %s", e.ErrorMessage))
+-			errors = append(errors, fmt.Sprintf("ErrorDetails: %s", e.Details))
++			errors = append(errors, fmt.Sprintf("Code: %s", e.ErrorCode))
++			errors = append(errors, fmt.Sprintf("Message: %s", e.ErrorMessage))
++			errors = append(errors, fmt.Sprintf("Details: %s", e.Details))
+ 			if additionalInfo := FormatFabricAdditionalInfo(e.AdditionalInfo); additionalInfo != "" {
+ 				errors = append(errors, fmt.Sprintf("AdditionalInfo: [%s]", additionalInfo))
+ 			}

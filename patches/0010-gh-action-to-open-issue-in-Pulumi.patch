@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Tue, 7 Nov 2023 00:12:53 +0100
+Subject: [PATCH 10/51] gh action to open issue in Pulumi
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/.github/workflows/pulumi.yml b/.github/workflows/pulumi.yml
+new file mode 100644
+index 0000000..a5bbb85
+--- /dev/null
++++ b/.github/workflows/pulumi.yml
+@@ -0,0 +1,21 @@
++name: Upgrade provider dependency in Pulumi provider
++on:
++  push:
++    tags:
++      - 'v*'
++  workflow_dispatch:
++env:
++  PULUMI_REPO_OWNER: equinix
++  PULUMI_REPO_NAME: pulumi-equinix
++jobs:
++  release:
++    runs-on: ubuntu-latest
++    steps:
++    - name: Open new ISSUE on Pulumi provider repository
++      uses: GuillaumeFalourd/open-issue-action@v1
++      with:
++        access-token: ${{ secrets.PULUMI_ACCESS_TOKEN }}
++        repo-owner: ${{ env.PULUMI_REPO_OWNER }}
++        repo-name: ${{ env.PULUMI_REPO_NAME }}
++        issue-title: Upgrade ${{ github.event.repository.name }} to ${{ github.ref_name }}
++        issue-body: "Release details: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+\ No newline at end of file

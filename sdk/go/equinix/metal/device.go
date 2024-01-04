@@ -13,15 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Equinix Metal device resource. This can be used to create,
-// modify, and delete devices.
-//
-// > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in
-//
-//	the raw state as plain-text.
-//
-// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-//
 // ## Example Usage
 // ```go
 // package main

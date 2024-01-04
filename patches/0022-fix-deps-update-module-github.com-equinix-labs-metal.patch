@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "renovate[bot]" <29139614+renovate[bot]@users.noreply.github.com>
 Date: Wed, 15 Nov 2023 01:16:12 +0000
-Subject: [PATCH 22/30] fix(deps): update module
+Subject: [PATCH 22/51] fix(deps): update module
  github.com/equinix-labs/metal-go to v0.27.0
 
 

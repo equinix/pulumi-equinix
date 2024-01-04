@@ -1,0 +1,83 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Charles Treatman <ctreatman@equinix.com>
+Date: Mon, 11 Dec 2023 09:30:36 -0600
+Subject: [PATCH 44/51] refactor: clean up config package (#480)
+
+When the config struct was moved to its own package, we added a couple
+public variables to replace private ones. However, the original private
+variable definitions were left in place, and all references to the
+private variables were left unchanged.
+
+On closer inspection, one of the private variables (`ipAddressTypes`) is
+only used by one resource and can remain private. The other one
+(`uuidRE`) is used for validation that duplicates a built-in terraform
+validator, so I've replaced it with the built-in validator.
+
+diff --git a/equinix/helpers_device.go b/equinix/helpers_device.go
+index 028ce80..74ecceb 100644
+--- a/equinix/helpers_device.go
++++ b/equinix/helpers_device.go
+@@ -235,7 +235,7 @@ func ipAddressSchema() *schema.Resource {
+ 				MinItems:    1,
+ 				Elem: &schema.Schema{
+ 					Type:         schema.TypeString,
+-					ValidateFunc: validation.StringMatch(uuidRE, "must be a valid UUID"),
++					ValidateFunc: validation.IsUUID,
+ 				},
+ 			},
+ 		},
+diff --git a/equinix/resource_metal_project.go b/equinix/resource_metal_project.go
+index 5a1cf37..45b5f9b 100644
+--- a/equinix/resource_metal_project.go
++++ b/equinix/resource_metal_project.go
+@@ -3,7 +3,6 @@ package equinix
+ import (
+ 	"fmt"
+ 	"path"
+-	"regexp"
+ 	"strings"
+ 
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+@@ -15,8 +14,6 @@ import (
+ 	"github.com/packethost/packngo"
+ )
+ 
+-var uuidRE = regexp.MustCompile("^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[8|9|aA|bB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$")
+-
+ func resourceMetalProject() *schema.Resource {
+ 	return &schema.Resource{
+ 		Create: resourceMetalProjectCreate,
+@@ -57,7 +54,7 @@ func resourceMetalProject() *schema.Resource {
+ 					return strings.EqualFold(strings.Trim(old, `"`), strings.Trim(new, `"`))
+ 				},
+ 				ValidateFunc: validation.Any(
+-					validation.StringMatch(uuidRE, "must be a valid UUID"),
++					validation.IsUUID,
+ 					validation.StringIsEmpty,
+ 				),
+ 			},
+@@ -70,7 +67,7 @@ func resourceMetalProject() *schema.Resource {
+ 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
+ 					return strings.EqualFold(strings.Trim(old, `"`), strings.Trim(new, `"`))
+ 				},
+-				ValidateFunc: validation.StringMatch(uuidRE, "must be a valid UUID"),
++				ValidateFunc: validation.IsUUID,
+ 			},
+ 			"bgp_config": {
+ 				Type:        schema.TypeList,
+diff --git a/internal/config/config.go b/internal/config/config.go
+index f16ddc7..d5d116b 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -28,11 +28,6 @@ import (
+ 	xoauth2 "golang.org/x/oauth2"
+ )
+ 
+-var (
+-	UuidRE         = regexp.MustCompile("^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[8|9|aA|bB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$")
+-	IpAddressTypes = []string{"public_ipv4", "private_ipv4", "public_ipv6"}
+-)
+-
+ type ProviderMeta struct {
+ 	ModuleName string `cty:"module_name"`
+ }

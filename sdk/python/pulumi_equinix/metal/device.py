@@ -1167,13 +1167,6 @@ class Device(pulumi.CustomResource):
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides an Equinix Metal device resource. This can be used to create,
-        modify, and delete devices.
-
-        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
-         the raw state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
         ## Example Usage
         ```python
         import pulumi
@@ -1251,13 +1244,6 @@ class Device(pulumi.CustomResource):
                  args: DeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Equinix Metal device resource. This can be used to create,
-        modify, and delete devices.
-
-        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
-         the raw state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
         ## Example Usage
         ```python
         import pulumi

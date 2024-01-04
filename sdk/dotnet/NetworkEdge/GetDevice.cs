@@ -237,6 +237,8 @@ namespace Pulumi.Equinix.NetworkEdge
         /// * FAILED
         /// * DEPROVISIONING
         /// * DEPROVISIONED
+        /// * RESOURCE_UPGRADE_IN_PROGRESS
+        /// * RESOURCE_UPGRADE_FAILED
         /// </summary>
         public readonly string Status;
         public readonly int TermLength;
