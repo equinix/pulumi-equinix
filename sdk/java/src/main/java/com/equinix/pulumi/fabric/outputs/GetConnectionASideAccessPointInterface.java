@@ -4,17 +4,18 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointInterface {
-    private String id;
+    private Integer id;
     private String type;
     private String uuid;
 
     private GetConnectionASideAccessPointInterface() {}
-    public String id() {
+    public Integer id() {
         return this.id;
     }
     public String type() {
@@ -33,7 +34,7 @@ public final class GetConnectionASideAccessPointInterface {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
+        private Integer id;
         private String type;
         private String uuid;
         public Builder() {}
@@ -45,7 +46,7 @@ public final class GetConnectionASideAccessPointInterface {
         }
 
         @CustomType.Setter
-        public Builder id(String id) {
+        public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }

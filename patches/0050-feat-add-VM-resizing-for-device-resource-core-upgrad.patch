@@ -1,0 +1,204 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Rui Ling <82846950+rling-equinix@users.noreply.github.com>
+Date: Fri, 15 Dec 2023 11:24:07 -0800
+Subject: [PATCH 50/51] feat: add VM resizing for device resource core upgrade
+ and new device status for device data source (#492)
+
+In Dec release, we added the "core" field to the [Update Virtual
+Device](https://developer.equinix.com/dev-docs/ne/api-reference/virtual-devices#update-virtual-device)
+API to allow users to resize their devices. After device is provisioned,
+the customer can send a PATCH request to upgrade its core number. The
+device will be marked as "RESOURCE_UPGRADE_IN_PROGRESS" and once the
+upgrade is done, the device status will be provisioned again.
+More details could be found in our API documentation.
+reference: https://developer.equinix.com/docs?page=/dev-docs/ne/overview
+product reference:
+https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-VNF-resize.htm#UpgradeResourceSizeforClusterDeviceDeployment
+
+diff --git a/docs/data-sources/equinix_network_device.md b/docs/data-sources/equinix_network_device.md
+index e359ae7..01b21e9 100644
+--- a/docs/data-sources/equinix_network_device.md
++++ b/docs/data-sources/equinix_network_device.md
+@@ -42,6 +42,8 @@ NOTE: Exactly one of either `uuid` or `name` must be specified.
+   * FAILED
+   * DEPROVISIONING
+   * DEPROVISIONED
++  * RESOURCE_UPGRADE_IN_PROGRESS
++  * RESOURCE_UPGRADE_FAILED
+ * `valid_status_list` - Comma separated list of device states (from see `status` for full list) to be considered valid. Default is 'PROVISIONED'.  Case insensitive. 
+ * `license_status` - Device license registration status
+   * APPLYING_LICENSE
+diff --git a/docs/resources/equinix_network_device.md b/docs/resources/equinix_network_device.md
+index f3ccb52..1b6a606 100644
+--- a/docs/resources/equinix_network_device.md
++++ b/docs/resources/equinix_network_device.md
+@@ -227,7 +227,7 @@ The following arguments are supported:
+ * `hostname` - (Optional) Device hostname prefix.
+ * `package_code` - (Required) Device software package code.
+ * `version` - (Required) Device software software version.
+-* `core_count` - (Required) Number of CPU cores used by device.
++* `core_count` - (Required) Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
+ * `term_length` - (Required) Device term length.
+ * `self_managed` - (Optional) Boolean value that determines device management mode, i.e.,
+ `self-managed` or `Equinix-managed` (default).
+@@ -356,7 +356,7 @@ In addition to all arguments above, the following attributes are exported:
+ * `status` - Device provisioning status. Possible values are
+   `INITIALIZING`, `PROVISIONING`, `WAITING_FOR_PRIMARY`, `WAITING_FOR_SECONDARY`,
+   `WAITING_FOR_REPLICA_CLUSTER_NODES`, `CLUSTER_SETUP_IN_PROGRESS`, `FAILED`, `PROVISIONED`,
+-  `DEPROVISIONING`, `DEPROVISIONED`.
++  `DEPROVISIONING`, `DEPROVISIONED`, `RESOURCE_UPGRADE_IN_PROGRESS`, `RESOURCE_UPGRADE_FAILED`.
+ * `license_status` - Device license registration status. Possible values are `APPLYING_LICENSE`,
+   `REGISTERED`, `APPLIED`, `WAITING_FOR_CLUSTER_SETUP`, `REGISTRATION_FAILED`.
+ * `license_file_id` - Unique identifier of applied license file.
+@@ -394,7 +394,7 @@ This resource provides the following [Timeouts configuration](https://www.terraf
+ options:
+ 
+ * create - Default is 90 minutes
+-* update - Default is 30 minutes
++* update - Default is 90 minutes
+ * delete - Default is 30 minutes
+ 
+ ## Import
+diff --git a/equinix/data_source_network_device.go b/equinix/data_source_network_device.go
+index f248530..a040ec4 100644
+--- a/equinix/data_source_network_device.go
++++ b/equinix/data_source_network_device.go
+@@ -23,6 +23,8 @@ var neDeviceStateMap = map[string]string{
+ 	"waiting_for_replica_cluster_nodes": ne.DeviceStateWaitingClusterNodes,
+ 	"waiting_for_primary":               ne.DeviceStateWaitingPrimary,
+ 	"waiting_for_secondary":             ne.DeviceStateWaitingSecondary,
++	"resource_upgrade_in_progress":      ne.DeviceStateResourceUpgradeInProgress,
++	"resource_upgrade_failed":           ne.DeviceStateResourceUpgradeFailed,
+ }
+ 
+ func getNeDeviceStatusList(deviceStateText string) (*[]string, error) {
+diff --git a/equinix/resource_network_device.go b/equinix/resource_network_device.go
+index b625096..9b0da7d 100644
+--- a/equinix/resource_network_device.go
++++ b/equinix/resource_network_device.go
+@@ -205,7 +205,7 @@ func resourceNetworkDevice() *schema.Resource {
+ 		Schema: createNetworkDeviceSchema(),
+ 		Timeouts: &schema.ResourceTimeout{
+ 			Create: schema.DefaultTimeout(90 * time.Minute),
+-			Update: schema.DefaultTimeout(30 * time.Minute),
++			Update: schema.DefaultTimeout(90 * time.Minute),
+ 			Delete: schema.DefaultTimeout(30 * time.Minute),
+ 		},
+ 		Description: "Resource allows creation and management of Equinix Network Edge virtual devices",
+@@ -425,7 +425,6 @@ func createNetworkDeviceSchema() map[string]*schema.Schema {
+ 		neDeviceSchemaNames["CoreCount"]: {
+ 			Type:         schema.TypeInt,
+ 			Required:     true,
+-			ForceNew:     true,
+ 			ValidateFunc: validation.IntAtLeast(1),
+ 			Description:  neDeviceDescriptions["CoreCount"],
+ 		},
+@@ -959,7 +958,7 @@ func resourceNetworkDeviceUpdate(ctx context.Context, d *schema.ResourceData, m
+ 	m.(*config.Config).AddModuleToNEUserAgent(&client, d)
+ 	var diags diag.Diagnostics
+ 	supportedChanges := []string{
+-		neDeviceSchemaNames["Name"], neDeviceSchemaNames["TermLength"],
++		neDeviceSchemaNames["Name"], neDeviceSchemaNames["TermLength"], neDeviceSchemaNames["CoreCount"],
+ 		neDeviceSchemaNames["Notifications"], neDeviceSchemaNames["AdditionalBandwidth"],
+ 		neDeviceSchemaNames["ACLTemplateUUID"], neDeviceSchemaNames["MgmtAclTemplateUuid"],
+ 	}
+@@ -1499,6 +1498,8 @@ func fillNetworkDeviceUpdateRequest(updateReq ne.DeviceUpdateRequest, changes ma
+ 			updateReq.WithTermLength(changeValue.(int))
+ 		case neDeviceSchemaNames["Notifications"]:
+ 			updateReq.WithNotifications(expandSetToStringList(changeValue.(*schema.Set)))
++		case neDeviceSchemaNames["CoreCount"]:
++			updateReq.WithCore(changeValue.(int))
+ 		case neDeviceSchemaNames["AdditionalBandwidth"]:
+ 			updateReq.WithAdditionalBandwidth(changeValue.(int))
+ 		case neDeviceSchemaNames["ACLTemplateUUID"]:
+@@ -1532,6 +1533,11 @@ func getNetworkDeviceStateChangeConfigs(c ne.Client, deviceID string, timeout ti
+ 			createNetworkDeviceAdditionalBandwidthStatusWaitConfiguration(c.GetDeviceAdditionalBandwidthDetails, deviceID, 1*time.Second, timeout),
+ 		)
+ 	}
++	if _, found := changes[neDeviceSchemaNames["CoreCount"]]; found {
++		configs = append(configs,
++			createNetworkDeviceStatusResourceUpgradeWaitConfiguration(c.GetDevice, deviceID, 5*time.Second, timeout),
++		)
++	}
+ 	return configs
+ }
+ 
+@@ -1592,6 +1598,19 @@ func createNetworkDeviceStatusDeleteWaitConfiguration(fetchFunc getDevice, id st
+ 	return createNetworkDeviceStatusWaitConfiguration(fetchFunc, id, delay, timeout, target, pending)
+ }
+ 
++func createNetworkDeviceStatusResourceUpgradeWaitConfiguration(fetchFunc getDevice, id string, delay time.Duration, timeout time.Duration) *retry.StateChangeConf {
++	pending := []string{
++		ne.DeviceStateResourceUpgradeInProgress,
++		ne.DeviceStateWaitingPrimary,
++		ne.DeviceStateWaitingSecondary,
++		ne.DeviceStateWaitingClusterNodes,
++	}
++	target := []string{
++		ne.DeviceStateProvisioned,
++	}
++	return createNetworkDeviceStatusWaitConfiguration(fetchFunc, id, delay, timeout, target, pending)
++}
++
+ func createNetworkDeviceStatusWaitConfiguration(fetchFunc getDevice, id string, delay time.Duration, timeout time.Duration, target []string, pending []string) *retry.StateChangeConf {
+ 	return &retry.StateChangeConf{
+ 		Pending:    pending,
+diff --git a/equinix/resource_network_device_test.go b/equinix/resource_network_device_test.go
+index 60db267..6c39fc4 100644
+--- a/equinix/resource_network_device_test.go
++++ b/equinix/resource_network_device_test.go
+@@ -379,6 +379,26 @@ func TestNetworkDevice_statusDeleteWaitConfiguration(t *testing.T) {
+ 	assert.Equal(t, delay, waitConfig.MinTimeout, "Device status wait configuration min timeout matches")
+ }
+ 
++func TestNetworkDevice_statusResourceUpgradeWaitConfiguration(t *testing.T) {
++	// given
++	deviceID := "test"
++	var queriedDeviceID string
++	fetchFunc := func(uuid string) (*ne.Device, error) {
++		queriedDeviceID = uuid
++		return &ne.Device{Status: ne.String(ne.DeviceStateProvisioned)}, nil
++	}
++	delay := 100 * time.Millisecond
++	timeout := 10 * time.Minute
++	// when
++	waitConfig := createNetworkDeviceStatusResourceUpgradeWaitConfiguration(fetchFunc, deviceID, delay, timeout)
++	_, err := waitConfig.WaitForStateContext(context.Background())
++	// then
++	assert.Nil(t, err, "WaitForState does not return an error")
++	assert.Equal(t, deviceID, queriedDeviceID, "Queried device ID matches")
++	assert.Equal(t, timeout, waitConfig.Timeout, "Device status wait configuration timeout matches")
++	assert.Equal(t, delay, waitConfig.MinTimeout, "Device status wait configuration min timeout matches")
++}
++
+ func TestNetworkDevice_licenseStatusWaitConfiguration(t *testing.T) {
+ 	// given
+ 	deviceID := "test"
+diff --git a/go.mod b/go.mod
+index e14e4ce..ca4a6a0 100644
+--- a/go.mod
++++ b/go.mod
+@@ -7,7 +7,7 @@ require (
+ 	github.com/equinix-labs/fabric-go v0.7.1
+ 	github.com/equinix/ecx-go/v2 v2.3.1
+ 	github.com/equinix/equinix-sdk-go v0.30.0
+-	github.com/equinix/ne-go v1.11.0
++	github.com/equinix/ne-go v1.12.0
+ 	github.com/equinix/oauth2-go v1.0.0
+ 	github.com/equinix/rest-go v1.3.0
+ 	github.com/google/uuid v1.4.0
+diff --git a/go.sum b/go.sum
+index 6ac881b..2302fa2 100644
+--- a/go.sum
++++ b/go.sum
+@@ -265,8 +265,8 @@ github.com/equinix/ecx-go/v2 v2.3.1 h1:gFcAIeyaEUw7S8ebqApmT7E/S7pC7Ac3wgScp89fk
+ github.com/equinix/ecx-go/v2 v2.3.1/go.mod h1:FvCdZ3jXU8Z4CPKig2DT+4J2HdwgRK17pIcznM7RXyk=
+ github.com/equinix/equinix-sdk-go v0.30.0 h1:u/+/p00mfAhDhoLvP1jTKruXndAYWoTwqN65BTbAPCg=
+ github.com/equinix/equinix-sdk-go v0.30.0/go.mod h1:qnpdRzVftHFNaJFk1VSIrAOTLrIoeDrxzUr3l8ARyvQ=
+-github.com/equinix/ne-go v1.11.0 h1:ja6G2fmcGrLsOeV25Mq6pDfH+/cUlvxJbnE8uRXTGGk=
+-github.com/equinix/ne-go v1.11.0/go.mod h1:eHkkxM4nbTB7DZ9X9zGnwfYnxIJWIsU3aHA+FAoZ1EI=
++github.com/equinix/ne-go v1.12.0 h1:xZxnVWRIqFkos4ls9nSx92FMGkV8jSPTEaosLGE4Vvw=
++github.com/equinix/ne-go v1.12.0/go.mod h1:eHkkxM4nbTB7DZ9X9zGnwfYnxIJWIsU3aHA+FAoZ1EI=
+ github.com/equinix/oauth2-go v1.0.0 h1:fHtAPGq82PdgtK5vEThs8Vwz6f7D/8SX4tE3NJu+KcU=
+ github.com/equinix/oauth2-go v1.0.0/go.mod h1:4pulXvUNMktJlewLPnUeJyMW52iCoF1aM+A/Z5xY1ws=
+ github.com/equinix/rest-go v1.3.0 h1:m38scYTOfV6N+gcrwchgVDutDffYd+QoYCMm9Jn6jyk=

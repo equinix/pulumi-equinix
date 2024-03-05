@@ -141,7 +141,7 @@ type Device struct {
 	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
 	// If not specified, default will be INTERNET-ACCESS
 	Connectivity pulumi.StringPtrOutput `pulumi:"connectivity"`
-	// Number of CPU cores used by device.
+	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntOutput `pulumi:"coreCount"`
 	// Device hostname prefix.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
@@ -298,7 +298,7 @@ type deviceState struct {
 	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
 	// If not specified, default will be INTERNET-ACCESS
 	Connectivity *string `pulumi:"connectivity"`
-	// Number of CPU cores used by device.
+	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount *int `pulumi:"coreCount"`
 	// Device hostname prefix.
 	Hostname *string `pulumi:"hostname"`
@@ -402,7 +402,7 @@ type DeviceState struct {
 	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
 	// If not specified, default will be INTERNET-ACCESS
 	Connectivity pulumi.StringPtrInput
-	// Number of CPU cores used by device.
+	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntPtrInput
 	// Device hostname prefix.
 	Hostname pulumi.StringPtrInput
@@ -508,7 +508,7 @@ type deviceArgs struct {
 	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
 	// If not specified, default will be INTERNET-ACCESS
 	Connectivity *string `pulumi:"connectivity"`
-	// Number of CPU cores used by device.
+	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount int `pulumi:"coreCount"`
 	// Device hostname prefix.
 	Hostname *string `pulumi:"hostname"`
@@ -586,7 +586,7 @@ type DeviceArgs struct {
 	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
 	// If not specified, default will be INTERNET-ACCESS
 	Connectivity pulumi.StringPtrInput
-	// Number of CPU cores used by device.
+	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntInput
 	// Device hostname prefix.
 	Hostname pulumi.StringPtrInput
@@ -775,7 +775,7 @@ func (o DeviceOutput) Connectivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.Connectivity }).(pulumi.StringPtrOutput)
 }
 
-// Number of CPU cores used by device.
+// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 func (o DeviceOutput) CoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.CoreCount }).(pulumi.IntOutput)
 }

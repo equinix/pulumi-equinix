@@ -1,0 +1,49 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Charles Treatman <ctreatman@equinix.com>
+Date: Tue, 12 Dec 2023 09:28:08 -0600
+Subject: [PATCH 47/51] refactor: move spot market timeouts out of provider.go
+ (#483)
+
+There was a private variable for default timeouts defined in
+`provider.go`, but it was only referenced in the spot market request
+data source. Other resources and data sources define their default
+timeouts inline; this does the same for the spot market request data
+source so that it will be easier to move that data source to a different
+package than the one that `provider.go` is in.
+
+diff --git a/equinix/data_source_metal_spot_market_request.go b/equinix/data_source_metal_spot_market_request.go
+index 4307153..66fb6b9 100644
+--- a/equinix/data_source_metal_spot_market_request.go
++++ b/equinix/data_source_metal_spot_market_request.go
+@@ -74,7 +74,12 @@ func dataSourceMetalSpotMarketRequest() *schema.Resource {
+ 				Computed:    true,
+ 			},
+ 		},
+-		Timeouts: resourceDefaultTimeouts,
++		Timeouts: &schema.ResourceTimeout{
++			Create:  schema.DefaultTimeout(60 * time.Minute),
++			Update:  schema.DefaultTimeout(60 * time.Minute),
++			Delete:  schema.DefaultTimeout(60 * time.Minute),
++			Default: schema.DefaultTimeout(60 * time.Minute),
++		},
+ 	}
+ }
+ 
+diff --git a/equinix/provider.go b/equinix/provider.go
+index 2ff4a5d..2f9ed13 100644
+--- a/equinix/provider.go
++++ b/equinix/provider.go
+@@ -233,13 +233,6 @@ func configureProvider(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+ 	return &config, nil
+ }
+ 
+-var resourceDefaultTimeouts = &schema.ResourceTimeout{
+-	Create:  schema.DefaultTimeout(60 * time.Minute),
+-	Update:  schema.DefaultTimeout(60 * time.Minute),
+-	Delete:  schema.DefaultTimeout(60 * time.Minute),
+-	Default: schema.DefaultTimeout(60 * time.Minute),
+-}
+-
+ func expandListToStringList(list []interface{}) []string {
+ 	result := make([]string, len(list))
+ 	for i, v := range list {

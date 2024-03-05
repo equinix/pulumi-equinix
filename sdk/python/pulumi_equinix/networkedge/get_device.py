@@ -382,6 +382,8 @@ class GetDeviceResult:
         * FAILED
         * DEPROVISIONING
         * DEPROVISIONED
+        * RESOURCE_UPGRADE_IN_PROGRESS
+        * RESOURCE_UPGRADE_FAILED
         """
         return pulumi.get(self, "status")
 

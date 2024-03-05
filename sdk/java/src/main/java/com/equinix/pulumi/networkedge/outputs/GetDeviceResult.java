@@ -130,6 +130,8 @@ public final class GetDeviceResult {
      * * FAILED
      * * DEPROVISIONING
      * * DEPROVISIONED
+     * * RESOURCE_UPGRADE_IN_PROGRESS
+     * * RESOURCE_UPGRADE_FAILED
      * 
      */
     private String status;
@@ -332,6 +334,8 @@ public final class GetDeviceResult {
      * * FAILED
      * * DEPROVISIONING
      * * DEPROVISIONED
+     * * RESOURCE_UPGRADE_IN_PROGRESS
+     * * RESOURCE_UPGRADE_FAILED
      * 
      */
     public String status() {

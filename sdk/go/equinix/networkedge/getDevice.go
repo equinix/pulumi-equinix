@@ -139,6 +139,8 @@ type LookupDeviceResult struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status         string `pulumi:"status"`
 	TermLength     int    `pulumi:"termLength"`
 	Throughput     int    `pulumi:"throughput"`
@@ -366,6 +368,8 @@ func (o LookupDeviceResultOutput) SshKeys() GetDeviceSshKeyArrayOutput {
 // * FAILED
 // * DEPROVISIONING
 // * DEPROVISIONED
+// * RESOURCE_UPGRADE_IN_PROGRESS
+// * RESOURCE_UPGRADE_FAILED
 func (o LookupDeviceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Status }).(pulumi.StringOutput)
 }

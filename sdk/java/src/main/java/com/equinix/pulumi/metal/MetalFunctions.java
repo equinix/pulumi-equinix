@@ -78,14 +78,6 @@ import java.util.concurrent.CompletableFuture;
 
 public final class MetalFunctions {
     /**
-     * The datasource can be used to fetch a single device.
-     * 
-     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-     * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -152,14 +144,6 @@ public final class MetalFunctions {
         return getDevice(GetDeviceArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The datasource can be used to fetch a single device.
-     * 
-     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-     * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -226,14 +210,6 @@ public final class MetalFunctions {
         return getDevicePlain(GetDevicePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The datasource can be used to fetch a single device.
-     * 
-     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-     * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -300,14 +276,6 @@ public final class MetalFunctions {
         return getDevice(args, InvokeOptions.Empty);
     }
     /**
-     * The datasource can be used to fetch a single device.
-     * 
-     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-     * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -374,14 +342,6 @@ public final class MetalFunctions {
         return getDevicePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The datasource can be used to fetch a single device.
-     * 
-     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-     * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -448,14 +408,6 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The datasource can be used to fetch a single device.
-     * 
-     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-     * 
-     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-     *  the raw state as plain-text.
-     * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;

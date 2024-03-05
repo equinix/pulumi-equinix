@@ -50,7 +50,7 @@ class DeviceArgs:
         """
         The set of arguments for constructing a Device resource.
         :param pulumi.Input[str] account_number: Billing account number for a device.
-        :param pulumi.Input[int] core_count: Number of CPU cores used by device.
+        :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] metro_code: Device location metro code.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of email addresses that will receive device status
                notifications.
@@ -163,7 +163,7 @@ class DeviceArgs:
     @pulumi.getter(name="coreCount")
     def core_count(self) -> pulumi.Input[int]:
         """
-        Number of CPU cores used by device.
+        Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         """
         return pulumi.get(self, "core_count")
 
@@ -581,7 +581,7 @@ class _DeviceState:
                Cluster Details below for more details.
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
-        :param pulumi.Input[int] core_count: Number of CPU cores used by device.
+        :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
@@ -818,7 +818,7 @@ class _DeviceState:
     @pulumi.getter(name="coreCount")
     def core_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of CPU cores used by device.
+        Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         """
         return pulumi.get(self, "core_count")
 
@@ -1365,7 +1365,7 @@ class Device(pulumi.CustomResource):
                Cluster Details below for more details.
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
-        :param pulumi.Input[int] core_count: Number of CPU cores used by device.
+        :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
                default number for a given device type will be used.
@@ -1668,7 +1668,7 @@ class Device(pulumi.CustomResource):
                Cluster Details below for more details.
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
-        :param pulumi.Input[int] core_count: Number of CPU cores used by device.
+        :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
@@ -1836,7 +1836,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="coreCount")
     def core_count(self) -> pulumi.Output[int]:
         """
-        Number of CPU cores used by device.
+        Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         """
         return pulumi.get(self, "core_count")
 

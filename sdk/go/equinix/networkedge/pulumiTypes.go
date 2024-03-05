@@ -3712,6 +3712,8 @@ type GetDeviceInterface struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status string `pulumi:"status"`
 	Type   string `pulumi:"type"`
 }
@@ -3746,6 +3748,8 @@ type GetDeviceInterfaceArgs struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status pulumi.StringInput `pulumi:"status"`
 	Type   pulumi.StringInput `pulumi:"type"`
 }
@@ -3837,6 +3841,8 @@ func (o GetDeviceInterfaceOutput) OperationalStatus() pulumi.StringOutput {
 // * FAILED
 // * DEPROVISIONING
 // * DEPROVISIONED
+// * RESOURCE_UPGRADE_IN_PROGRESS
+// * RESOURCE_UPGRADE_FAILED
 func (o GetDeviceInterfaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceInterface) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -3926,6 +3932,8 @@ type GetDeviceSecondaryDevice struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status string `pulumi:"status"`
 	// UUID of an existing Equinix Network Edge device
 	Uuid                string            `pulumi:"uuid"`
@@ -4007,6 +4015,8 @@ type GetDeviceSecondaryDeviceArgs struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status pulumi.StringInput `pulumi:"status"`
 	// UUID of an existing Equinix Network Edge device
 	Uuid                pulumi.StringInput    `pulumi:"uuid"`
@@ -4193,6 +4203,8 @@ func (o GetDeviceSecondaryDeviceOutput) SshKeys() GetDeviceSecondaryDeviceSshKey
 // * FAILED
 // * DEPROVISIONING
 // * DEPROVISIONED
+// * RESOURCE_UPGRADE_IN_PROGRESS
+// * RESOURCE_UPGRADE_FAILED
 func (o GetDeviceSecondaryDeviceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDevice) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4254,6 +4266,8 @@ type GetDeviceSecondaryDeviceInterface struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status string `pulumi:"status"`
 	Type   string `pulumi:"type"`
 }
@@ -4288,6 +4302,8 @@ type GetDeviceSecondaryDeviceInterfaceArgs struct {
 	// * FAILED
 	// * DEPROVISIONING
 	// * DEPROVISIONED
+	// * RESOURCE_UPGRADE_IN_PROGRESS
+	// * RESOURCE_UPGRADE_FAILED
 	Status pulumi.StringInput `pulumi:"status"`
 	Type   pulumi.StringInput `pulumi:"type"`
 }
@@ -4379,6 +4395,8 @@ func (o GetDeviceSecondaryDeviceInterfaceOutput) OperationalStatus() pulumi.Stri
 // * FAILED
 // * DEPROVISIONING
 // * DEPROVISIONED
+// * RESOURCE_UPGRADE_IN_PROGRESS
+// * RESOURCE_UPGRADE_FAILED
 func (o GetDeviceSecondaryDeviceInterfaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDeviceSecondaryDeviceInterface) string { return v.Status }).(pulumi.StringOutput)
 }

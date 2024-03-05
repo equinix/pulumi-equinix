@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tim Hogarty <thogarty@equinix.com>
+Date: Fri, 8 Dec 2023 12:26:21 -0800
+Subject: [PATCH 42/51] Reorder Fabric Error Output
+
+
+diff --git a/internal/errors/errors.go b/internal/errors/errors.go
+index c06ae08..fec0ef2 100644
+--- a/internal/errors/errors.go
++++ b/internal/errors/errors.go
+@@ -73,12 +73,12 @@ func FormatFabricError(err error) error {
+ 	errors = append(errors, err.Error())
+ 	if fabricErrs, ok := err.(fabric.GenericSwaggerError).Model().([]fabric.ModelError); ok {
+ 		for _, e := range fabricErrs {
+-			errors = append(errors, fmt.Sprintf("Code: %s", e.ErrorCode))
+ 			errors = append(errors, fmt.Sprintf("Message: %s", e.ErrorMessage))
+ 			errors = append(errors, fmt.Sprintf("Details: %s", e.Details))
+ 			if additionalInfo := FormatFabricAdditionalInfo(e.AdditionalInfo); additionalInfo != "" {
+ 				errors = append(errors, fmt.Sprintf("AdditionalInfo: [%s]", additionalInfo))
+ 			}
++			errors = append(errors, fmt.Sprintf("Code: %s", e.ErrorCode))
+ 		}
+ 	}
+ 

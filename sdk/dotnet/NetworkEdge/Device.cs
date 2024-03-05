@@ -151,7 +151,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<string?> Connectivity { get; private set; } = null!;
 
         /// <summary>
-        /// Number of CPU cores used by device.
+        /// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         /// </summary>
         [Output("coreCount")]
         public Output<int> CoreCount { get; private set; } = null!;
@@ -461,7 +461,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Connectivity { get; set; }
 
         /// <summary>
-        /// Number of CPU cores used by device.
+        /// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         /// </summary>
         [Input("coreCount", required: true)]
         public Input<int> CoreCount { get; set; } = null!;
@@ -681,7 +681,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Connectivity { get; set; }
 
         /// <summary>
-        /// Number of CPU cores used by device.
+        /// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         /// </summary>
         [Input("coreCount")]
         public Input<int>? CoreCount { get; set; }

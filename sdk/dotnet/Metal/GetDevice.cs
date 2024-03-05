@@ -12,14 +12,6 @@ namespace Pulumi.Equinix.Metal
     public static class GetDevice
     {
         /// <summary>
-        /// The datasource can be used to fetch a single device.
-        /// 
-        /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-        /// 
-        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-        ///  the raw state as plain-text.
-        /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -71,14 +63,6 @@ namespace Pulumi.Equinix.Metal
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("equinix:metal/getDevice:getDevice", args ?? new GetDeviceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The datasource can be used to fetch a single device.
-        /// 
-        /// If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
-        /// 
-        /// &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
-        ///  the raw state as plain-text.
-        /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

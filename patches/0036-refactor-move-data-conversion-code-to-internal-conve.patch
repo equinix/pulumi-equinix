@@ -1,0 +1,940 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Kar=C3=A1sek?=
+ <t0mk@users.noreply.github.com>
+Date: Thu, 7 Dec 2023 16:18:31 +0100
+Subject: [PATCH 36/51] refactor: move data conversion code to
+ internal/converters (#473)
+
+This PR is part of a refactoring effort (#106). It moves some helper
+code to another internal subpackage.
+
+diff --git a/equinix/data_source_ecx_l2_sellerprofile.go b/equinix/data_source_ecx_l2_sellerprofile.go
+index 6454b94..1490754 100644
+--- a/equinix/data_source_ecx_l2_sellerprofile.go
++++ b/equinix/data_source_ecx_l2_sellerprofile.go
+@@ -6,6 +6,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/hashcode"
++
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 
+ 	"github.com/equinix/ecx-go/v2"
+@@ -349,19 +351,19 @@ func ecxL2ServiceProfileSpeedBandHash(v interface{}) int {
+ 	m := v.(map[string]interface{})
+ 	buf.WriteString(fmt.Sprintf("%d-", m[ecxL2ServiceProfileSpeedBandSchemaNames["Speed"]].(int)))
+ 	buf.WriteString(fmt.Sprintf("%s-", m[ecxL2ServiceProfileSpeedBandSchemaNames["SpeedUnit"]].(string)))
+-	return hashcodeString(buf.String())
++	return hashcode.String(buf.String())
+ }
+ 
+ func ecxL2SellerProfileMetroHash(v interface{}) int {
+ 	var buf bytes.Buffer
+ 	m := v.(map[string]interface{})
+ 	buf.WriteString(fmt.Sprintf("%s-", m[ecxL2SellerProfileMetrosSchemaNames["Code"]].(string)))
+-	return hashcodeString(buf.String())
++	return hashcode.String(buf.String())
+ }
+ 
+ func ecxL2SellerProfileAdditionalInfoHash(v interface{}) int {
+ 	var buf bytes.Buffer
+ 	m := v.(map[string]interface{})
+ 	buf.WriteString(fmt.Sprintf("%s-", m[ecxL2SellerProfileAdditionalInfosSchemaNames["Name"]].(string)))
+-	return hashcodeString(buf.String())
++	return hashcode.String(buf.String())
+ }
+diff --git a/equinix/data_source_metal_facility.go b/equinix/data_source_metal_facility.go
+index 5398fd2..95d0a3b 100644
+--- a/equinix/data_source_metal_facility.go
++++ b/equinix/data_source_metal_facility.go
+@@ -4,6 +4,8 @@ import (
+ 	"fmt"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+@@ -118,7 +120,7 @@ func dataSourceMetalFacilityRead(d *schema.ResourceData, meta interface{}) error
+ 	for _, f := range facilities {
+ 		if f.Code == code {
+ 			if dfOk {
+-				unsupported := difference(convertStringArr(dfRaw.(*schema.Set).List()), f.Features)
++				unsupported := converters.Difference(converters.IfArrToStringArr(dfRaw.(*schema.Set).List()), f.Features)
+ 				if len(unsupported) > 0 {
+ 					return fmt.Errorf("facililty %s doesn't have feature(s) %v", f.Code, unsupported)
+ 				}
+diff --git a/equinix/data_source_metal_ip_block_ranges.go b/equinix/data_source_metal_ip_block_ranges.go
+index 17b97f0..b76442b 100644
+--- a/equinix/data_source_metal_ip_block_ranges.go
++++ b/equinix/data_source_metal_ip_block_ranges.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -29,7 +31,7 @@ func dataSourceMetalIPBlockRanges() *schema.Resource {
+ 				Type:        schema.TypeString,
+ 				Description: "Metro code filtering the IP blocks. Global IPv4 blocks will be listed anyway. If you omit this and facility, all the block from the project will be listed",
+ 				Optional:    true,
+-				StateFunc:   toLower,
++				StateFunc:   converters.ToLowerIf,
+ 			},
+ 			"public_ipv4": {
+ 				Type:        schema.TypeList,
+diff --git a/equinix/data_source_metal_plans.go b/equinix/data_source_metal_plans.go
+index 1edf8d0..3893ae3 100644
+--- a/equinix/data_source_metal_plans.go
++++ b/equinix/data_source_metal_plans.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 
+ 	"github.com/equinix/terraform-provider-equinix/internal/datalist"
+@@ -108,10 +110,10 @@ func flattenPlan(rawPlan interface{}, meta interface{}, extra map[string]interfa
+ 		metros = append(metros, m.Code)
+ 	}
+ 
+-	flattenedFacs := schema.NewSet(schema.HashString, stringArrToIfArr(facs))
+-	flattenedMetros := schema.NewSet(schema.HashString, stringArrToIfArr(metros))
++	flattenedFacs := schema.NewSet(schema.HashString, converters.StringArrToIfArr(facs))
++	flattenedMetros := schema.NewSet(schema.HashString, converters.StringArrToIfArr(metros))
+ 	flattenedDepTypes := schema.NewSet(schema.HashString,
+-		stringArrToIfArr(plan.DeploymentTypes))
++		converters.StringArrToIfArr(plan.DeploymentTypes))
+ 
+ 	flattenedPlan := map[string]interface{}{
+ 		"id":                  plan.ID,
+diff --git a/equinix/data_source_metal_spot_market_price.go b/equinix/data_source_metal_spot_market_price.go
+index 1684d99..9960869 100644
+--- a/equinix/data_source_metal_spot_market_price.go
++++ b/equinix/data_source_metal_spot_market_price.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+@@ -25,7 +27,7 @@ func dataSourceSpotMarketPrice() *schema.Resource {
+ 				Description:   "Name of the metro",
+ 				ConflictsWith: []string{"facility"},
+ 				Optional:      true,
+-				StateFunc:     toLower,
++				StateFunc:     converters.ToLowerIf,
+ 			},
+ 			"plan": {
+ 				Type:        schema.TypeString,
+diff --git a/equinix/data_source_metal_vlan.go b/equinix/data_source_metal_vlan.go
+index cb87258..11a952e 100644
+--- a/equinix/data_source_metal_vlan.go
++++ b/equinix/data_source_metal_vlan.go
+@@ -3,6 +3,8 @@ package equinix
+ import (
+ 	"fmt"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -47,7 +49,7 @@ func dataSourceMetalVlan() *schema.Resource {
+ 				Computed:      true,
+ 				ConflictsWith: []string{"vlan_id", "facility"},
+ 				Description:   "Metro where the VLAN is deployed",
+-				StateFunc:     toLower,
++				StateFunc:     converters.ToLowerIf,
+ 			},
+ 			"vlan_id": {
+ 				Type:          schema.TypeString,
+diff --git a/equinix/helpers_device.go b/equinix/helpers_device.go
+index 0428203..028ce80 100644
+--- a/equinix/helpers_device.go
++++ b/equinix/helpers_device.go
+@@ -12,6 +12,8 @@ import (
+ 	"sync"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 
+ 	metalv1 "github.com/equinix-labs/metal-go/metal/v1"
+@@ -49,7 +51,7 @@ func ifToIPCreateRequest(m interface{}) packngo.IPAddressCreateRequest {
+ 		iacr.Public = true
+ 	}
+ 	iacr.CIDR = ia["cidr"].(int)
+-	iacr.Reservations = convertStringArr(ia["reservation_ids"].([]interface{}))
++	iacr.Reservations = converters.IfArrToStringArr(ia["reservation_ids"].([]interface{}))
+ 	return iacr
+ }
+ 
+@@ -269,7 +271,7 @@ func getDeviceMap(device metalv1.Device) map[string]interface{} {
+ 		"ipxe_script_url":     device.GetIpxeScriptUrl(),
+ 		"always_pxe":          device.GetAlwaysPxe(),
+ 		"root_password":       device.GetRootPassword(),
+-		"tags":                stringArrToIfArr(device.GetTags()),
++		"tags":                converters.StringArrToIfArr(device.GetTags()),
+ 		"access_public_ipv6":  networkInfo.PublicIPv6,
+ 		"access_public_ipv4":  networkInfo.PublicIPv4,
+ 		"access_private_ipv4": networkInfo.PrivateIPv4,
+diff --git a/equinix/helpers_device_test.go b/equinix/helpers_device_test.go
+index f57c714..1f9dc75 100644
+--- a/equinix/helpers_device_test.go
++++ b/equinix/helpers_device_test.go
+@@ -6,6 +6,8 @@ import (
+ 	"testing"
+ 	"time"
+ 
++	"golang.org/x/exp/slices"
++
+ 	"github.com/packethost/packngo"
+ )
+ 
+@@ -79,7 +81,7 @@ func Test_waitUntilReservationProvisionable(t *testing.T) {
+ 								*invoked++
+ 
+ 								var device *packngo.Device
+-								if opts != nil && contains(opts.Includes, "device") {
++								if opts != nil && slices.Contains(opts.Includes, "device") {
+ 									device = &packngo.Device{ID: response.id}
+ 								}
+ 								return &packngo.HardwareReservation{
+@@ -114,7 +116,7 @@ func Test_waitUntilReservationProvisionable(t *testing.T) {
+ 								*invoked++
+ 
+ 								var device *packngo.Device
+-								if opts != nil && contains(opts.Includes, "device") {
++								if opts != nil && slices.Contains(opts.Includes, "device") {
+ 									device = &packngo.Device{ID: response.id}
+ 								}
+ 								return &packngo.HardwareReservation{
+diff --git a/equinix/port_helpers.go b/equinix/port_helpers.go
+index 2c11341..29faa37 100644
+--- a/equinix/port_helpers.go
++++ b/equinix/port_helpers.go
+@@ -6,6 +6,10 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"golang.org/x/exp/slices"
++
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
+@@ -119,12 +123,12 @@ func specifiedVlanIds(d *schema.ResourceData) []string {
+ 	// either vlan_ids or vxlan_ids should be set, TF should ensure that
+ 	vlanIdsRaw, vlanIdsOk := d.GetOk("vlan_ids")
+ 	if vlanIdsOk {
+-		return convertStringArr(vlanIdsRaw.(*schema.Set).List())
++		return converters.IfArrToStringArr(vlanIdsRaw.(*schema.Set).List())
+ 	}
+ 
+ 	vxlanIdsRaw, vxlanIdsOk := d.GetOk("vxlan_ids")
+ 	if vxlanIdsOk {
+-		return convertIntArr(vxlanIdsRaw.(*schema.Set).List())
++		return converters.IfArrToIntStringArr(vxlanIdsRaw.(*schema.Set).List())
+ 	}
+ 	return []string{}
+ }
+@@ -133,14 +137,14 @@ func batchVlans(ctx context.Context, start time.Time, removeOnly bool) func(*Cli
+ 	return func(cpr *ClientPortResource) error {
+ 		var vlansToAssign []string
+ 		var currentNative string
+-		vlansToRemove := difference(
++		vlansToRemove := converters.Difference(
+ 			attachedVlanIds(cpr.Port),
+ 			specifiedVlanIds(cpr.Resource),
+ 		)
+ 		if !removeOnly {
+ 			currentNative = getCurrentNative(cpr.Port)
+ 
+-			vlansToAssign = difference(
++			vlansToAssign = converters.Difference(
+ 				specifiedVlanIds(cpr.Resource),
+ 				attachedVlanIds(cpr.Port),
+ 			)
+@@ -271,7 +275,7 @@ func makeDisbond(cpr *ClientPortResource) error {
+ 
+ func convertToL2(cpr *ClientPortResource) error {
+ 	l2, l2Ok := cpr.Resource.GetOkExists("layer2")
+-	isLayer2 := contains(l2Types, cpr.Port.NetworkType)
++	isLayer2 := slices.Contains(l2Types, cpr.Port.NetworkType)
+ 
+ 	if l2Ok && l2.(bool) && !isLayer2 {
+ 		port, _, err := cpr.Client.Ports.ConvertToLayerTwo(cpr.Port.ID)
+@@ -285,7 +289,7 @@ func convertToL2(cpr *ClientPortResource) error {
+ 
+ func convertToL3(cpr *ClientPortResource) error {
+ 	l2, l2Ok := cpr.Resource.GetOkExists("layer2")
+-	isLayer2 := contains(l2Types, cpr.Port.NetworkType)
++	isLayer2 := slices.Contains(l2Types, cpr.Port.NetworkType)
+ 
+ 	if l2Ok && !l2.(bool) && isLayer2 {
+ 		ips := []packngo.AddressRequest{
+@@ -327,7 +331,7 @@ func portSanityChecks(cpr *ClientPortResource) error {
+ 	if nativeVlanOk {
+ 		nativeVlan := nativeVlanRaw.(string)
+ 		vlans := specifiedVlanIds(cpr.Resource)
+-		if !contains(vlans, nativeVlan) {
++		if !slices.Contains(vlans, nativeVlan) {
+ 			return fmt.Errorf("the native VLAN to be set is not (being) assigned to the port")
+ 		}
+ 		if len(vlans) < 2 {
+diff --git a/equinix/provider_test.go b/equinix/provider_test.go
+index 27f650d..590bf84 100644
+--- a/equinix/provider_test.go
++++ b/equinix/provider_test.go
+@@ -9,6 +9,8 @@ import (
+ 	"strings"
+ 	"testing"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/hashcode"
++
+ 	"github.com/equinix/ecx-go/v2"
+ 	"github.com/equinix/rest-go"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
+@@ -378,7 +380,7 @@ func TestProvider_schemaSetToMap(t *testing.T) {
+ 	}
+ 	setFunc := func(v interface{}) int {
+ 		i := v.(item)
+-		return hashcodeString(i.id)
++		return hashcode.String(i.id)
+ 	}
+ 	items := []interface{}{
+ 		item{"id1", 100, 200},
+diff --git a/equinix/resource_metal_connection.go b/equinix/resource_metal_connection.go
+index 1475b24..d69e88e 100644
+--- a/equinix/resource_metal_connection.go
++++ b/equinix/resource_metal_connection.go
+@@ -7,6 +7,8 @@ import (
+ 	"strconv"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -94,7 +96,7 @@ func resourceMetalConnection() *schema.Resource {
+ 				Description:   "Metro where the connection will be created",
+ 				ConflictsWith: []string{"facility"},
+ 				ForceNew:      true,
+-				StateFunc:     toLower,
++				StateFunc:     converters.ToLowerIf,
+ 			},
+ 			"redundancy": {
+ 				Type:        schema.TypeString,
+@@ -223,7 +225,7 @@ func resourceMetalConnectionCreate(d *schema.ResourceData, meta interface{}) err
+ 	vlans := []int{}
+ 	vlansNum := d.Get("vlans.#").(int)
+ 	if vlansNum > 0 {
+-		vlans = convertIntArr2(d.Get("vlans").([]interface{}))
++		vlans = converters.IfArrToIntArr(d.Get("vlans").([]interface{}))
+ 	}
+ 	connRedundancy := packngo.ConnectionRedundancy(d.Get("redundancy").(string))
+ 
+@@ -256,7 +258,7 @@ func resourceMetalConnectionCreate(d *schema.ResourceData, meta interface{}) err
+ 	// this could be generalized, see $ grep "d.Get(\"tags" *
+ 	tags := d.Get("tags.#").(int)
+ 	if tags > 0 {
+-		connReq.Tags = convertStringArr(d.Get("tags").([]interface{}))
++		connReq.Tags = converters.IfArrToStringArr(d.Get("tags").([]interface{}))
+ 	}
+ 
+ 	if metOk {
+@@ -381,8 +383,8 @@ func resourceMetalConnectionUpdate(d *schema.ResourceData, meta interface{}) err
+ 
+ 		if connType == packngo.ConnectionShared {
+ 			old, new := d.GetChange("vlans")
+-			oldVlans := convertIntArr2(old.([]interface{}))
+-			newVlans := convertIntArr2(new.([]interface{}))
++			oldVlans := converters.IfArrToIntArr(old.([]interface{}))
++			newVlans := converters.IfArrToIntArr(new.([]interface{}))
+ 			maxVlans := int(math.Max(float64(len(oldVlans)), float64(len(newVlans))))
+ 
+ 			ports := d.Get("ports").([]interface{})
+diff --git a/equinix/resource_metal_device.go b/equinix/resource_metal_device.go
+index b474774..e1a05c7 100644
+--- a/equinix/resource_metal_device.go
++++ b/equinix/resource_metal_device.go
+@@ -12,6 +12,10 @@ import (
+ 	"sort"
+ 	"time"
+ 
++	"golang.org/x/exp/slices"
++
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+@@ -98,7 +102,7 @@ func resourceMetalDevice() *schema.Resource {
+ 					}
+ 					return old == new
+ 				},
+-				StateFunc: toLower,
++				StateFunc: converters.ToLowerIf,
+ 			},
+ 			"facilities": {
+ 				Type:        schema.TypeList,
+@@ -110,12 +114,12 @@ func resourceMetalDevice() *schema.Resource {
+ 				MinItems:    1,
+ 				DiffSuppressFunc: func(k, old, new string, d *schema.ResourceData) bool {
+ 					fsRaw := d.Get("facilities")
+-					fs := convertStringArr(fsRaw.([]interface{}))
++					fs := converters.IfArrToStringArr(fsRaw.([]interface{}))
+ 					df := d.Get("deployed_facility").(string)
+-					if contains(fs, df) {
++					if slices.Contains(fs, df) {
+ 						return true
+ 					}
+-					if contains(fs, "any") && (len(df) != 0) {
++					if slices.Contains(fs, "any") && (len(df) != 0) {
+ 						return true
+ 					}
+ 					return false
+@@ -401,7 +405,7 @@ func resourceMetalDevice() *schema.Resource {
+ 								ValidateFunc: func(val interface{}, key string) (warns []string, errs []error) {
+ 									attribute := val.(string)
+ 									supportedAttributes := []string{"custom_data", "user_data"}
+-									if !contains(supportedAttributes, attribute) {
++									if !slices.Contains(supportedAttributes, attribute) {
+ 										errs = []error{fmt.Errorf("behavior.allow_changes was given %s, but only supports %v", attribute, supportedAttributes)}
+ 									}
+ 									return
+@@ -463,11 +467,11 @@ func reinstallDisabledAndNoChangesAllowed(attribute string) customdiff.ResourceC
+ 			behavior_list := behavior.([]interface{})
+ 			behavior_config := behavior_list[0].(map[string]interface{})
+ 
+-			allow_changes := convertStringArr(behavior_config["allow_changes"].([]interface{}))
++			allow_changes := converters.IfArrToStringArr(behavior_config["allow_changes"].([]interface{}))
+ 
+ 			// This means we got a valid behavior specification, so we set ForceNew
+ 			// to true if behavior.allow_changes includes the attribute that is changing
+-			return !contains(allow_changes, attribute)
++			return !slices.Contains(allow_changes, attribute)
+ 		}
+ 
+ 		// This means reinstall is enabled, so it doesn't matter what the behavior
+@@ -504,7 +508,7 @@ func resourceMetalDeviceCreate(ctx context.Context, d *schema.ResourceData, meta
+ 	}
+ 
+ 	if facsOk {
+-		createRequest.Facility = convertStringArr(facsRaw.([]interface{}))
++		createRequest.Facility = converters.IfArrToStringArr(facsRaw.([]interface{}))
+ 	}
+ 
+ 	if metroOk {
+@@ -567,17 +571,17 @@ func resourceMetalDeviceCreate(ctx context.Context, d *schema.ResourceData, meta
+ 
+ 	projectKeys := d.Get("project_ssh_key_ids.#").(int)
+ 	if projectKeys > 0 {
+-		createRequest.ProjectSSHKeys = convertStringArr(d.Get("project_ssh_key_ids").([]interface{}))
++		createRequest.ProjectSSHKeys = converters.IfArrToStringArr(d.Get("project_ssh_key_ids").([]interface{}))
+ 	}
+ 
+ 	userKeys := d.Get("user_ssh_key_ids.#").(int)
+ 	if userKeys > 0 {
+-		createRequest.UserSSHKeys = convertStringArr(d.Get("user_ssh_key_ids").([]interface{}))
++		createRequest.UserSSHKeys = converters.IfArrToStringArr(d.Get("user_ssh_key_ids").([]interface{}))
+ 	}
+ 
+ 	tags := d.Get("tags.#").(int)
+ 	if tags > 0 {
+-		createRequest.Tags = convertStringArr(d.Get("tags").([]interface{}))
++		createRequest.Tags = converters.IfArrToStringArr(d.Get("tags").([]interface{}))
+ 	}
+ 
+ 	if attr, ok := d.GetOk("storage"); ok {
+diff --git a/equinix/resource_metal_organization_member.go b/equinix/resource_metal_organization_member.go
+index b7023c5..585a6ec 100644
+--- a/equinix/resource_metal_organization_member.go
++++ b/equinix/resource_metal_organization_member.go
+@@ -6,6 +6,8 @@ import (
+ 	"path"
+ 	"strings"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -127,8 +129,8 @@ func resourceMetalOrganizationMemberCreate(d *schema.ResourceData, meta interfac
+ 	email := d.Get("invitee").(string)
+ 	createRequest := &packngo.InvitationCreateRequest{
+ 		Invitee:     email,
+-		Roles:       convertStringArr(d.Get("roles").(*schema.Set).List()),
+-		ProjectsIDs: convertStringArr(d.Get("projects_ids").(*schema.Set).List()),
++		Roles:       converters.IfArrToStringArr(d.Get("roles").(*schema.Set).List()),
++		ProjectsIDs: converters.IfArrToStringArr(d.Get("projects_ids").(*schema.Set).List()),
+ 		Message:     strings.TrimSpace(d.Get("message").(string)),
+ 	}
+ 
+@@ -200,8 +202,8 @@ func resourceMetalOrganizationMemberRead(d *schema.ResourceData, meta interface{
+ 		}
+ 		return equinix_schema.SetMap(d, map[string]interface{}{
+ 			"state":           "active",
+-			"roles":           stringArrToIfArr(member.Member.Roles),
+-			"projects_ids":    stringArrToIfArr(projectIDs),
++			"roles":           converters.StringArrToIfArr(member.Member.Roles),
++			"projects_ids":    converters.StringArrToIfArr(projectIDs),
+ 			"organization_id": path.Base(member.Member.Organization.URL),
+ 		})
+ 	} else if member.isInvitation() {
+diff --git a/equinix/resource_metal_port.go b/equinix/resource_metal_port.go
+index a37ef5d..ed173af 100644
+--- a/equinix/resource_metal_port.go
++++ b/equinix/resource_metal_port.go
+@@ -5,6 +5,8 @@ import (
+ 	"log"
+ 	"time"
+ 
++	"golang.org/x/exp/slices"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -170,8 +172,8 @@ func resourceMetalPortRead(ctx context.Context, d *schema.ResourceData, meta int
+ 		"bonded":            port.Data.Bonded,
+ 		"disbond_supported": port.DisbondOperationSupported,
+ 	}
+-	l2 := contains(l2Types, port.NetworkType)
+-	l3 := contains(l3Types, port.NetworkType)
++	l2 := slices.Contains(l2Types, port.NetworkType)
++	l3 := slices.Contains(l3Types, port.NetworkType)
+ 
+ 	if l2 {
+ 		m["layer2"] = true
+diff --git a/equinix/resource_metal_reserved_ip_block.go b/equinix/resource_metal_reserved_ip_block.go
+index c518018..83cf6bd 100644
+--- a/equinix/resource_metal_reserved_ip_block.go
++++ b/equinix/resource_metal_reserved_ip_block.go
+@@ -9,6 +9,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -134,7 +136,7 @@ func resourceMetalReservedIPBlock() *schema.Resource {
+ 			}
+ 			return fromState == fromHCL
+ 		},
+-		StateFunc: toLower,
++		StateFunc: converters.ToLowerIf,
+ 	}
+ 	reservedBlockSchema["description"] = &schema.Schema{
+ 		Type:        schema.TypeString,
+diff --git a/equinix/resource_metal_spot_market_request.go b/equinix/resource_metal_spot_market_request.go
+index 4a1a4e4..5320350 100644
+--- a/equinix/resource_metal_spot_market_request.go
++++ b/equinix/resource_metal_spot_market_request.go
+@@ -9,6 +9,8 @@ import (
+ 	"strconv"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -114,7 +116,7 @@ func resourceMetalSpotMarketRequest() *schema.Resource {
+ 				Optional:      true,
+ 				ForceNew:      true,
+ 				ConflictsWith: []string{"facilities"},
+-				StateFunc:     toLower,
++				StateFunc:     converters.ToLowerIf,
+ 			},
+ 			"instance_parameters": {
+ 				Type:        schema.TypeList,
+diff --git a/equinix/resource_metal_virtual_circuit.go b/equinix/resource_metal_virtual_circuit.go
+index 61f561c..588b0f0 100644
+--- a/equinix/resource_metal_virtual_circuit.go
++++ b/equinix/resource_metal_virtual_circuit.go
+@@ -9,6 +9,8 @@ import (
+ 	"strconv"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 	equinix_schema "github.com/equinix/terraform-provider-equinix/internal/schema"
+ 
+@@ -165,7 +167,7 @@ func resourceMetalVirtualCircuitCreate(ctx context.Context, d *schema.ResourceDa
+ 
+ 	tags := d.Get("tags.#").(int)
+ 	if tags > 0 {
+-		vncr.Tags = convertStringArr(d.Get("tags").([]interface{}))
++		vncr.Tags = converters.IfArrToStringArr(d.Get("tags").([]interface{}))
+ 	}
+ 
+ 	if nniVlan, ok := d.GetOk("nni_vlan"); ok {
+diff --git a/equinix/resource_metal_vlan.go b/equinix/resource_metal_vlan.go
+index 0dc8b95..86873da 100644
+--- a/equinix/resource_metal_vlan.go
++++ b/equinix/resource_metal_vlan.go
+@@ -4,6 +4,8 @@ import (
+ 	"errors"
+ 	"path"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/converters"
++
+ 	equinix_errors "github.com/equinix/terraform-provider-equinix/internal/errors"
+ 
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+@@ -66,7 +68,7 @@ func resourceMetalVlan() *schema.Resource {
+ 					}
+ 					return old == new
+ 				},
+-				StateFunc: toLower,
++				StateFunc: converters.ToLowerIf,
+ 			},
+ 			"vxlan": {
+ 				Type:        schema.TypeInt,
+diff --git a/equinix/resource_network_device_link.go b/equinix/resource_network_device_link.go
+index c7feabb..756b67c 100644
+--- a/equinix/resource_network_device_link.go
++++ b/equinix/resource_network_device_link.go
+@@ -5,6 +5,8 @@ import (
+ 	"fmt"
+ 	"time"
+ 
++	"github.com/equinix/terraform-provider-equinix/internal/hashcode"
++
+ 	"github.com/equinix/terraform-provider-equinix/internal/config"
+ 
+ 	"github.com/equinix/ne-go"
+@@ -491,7 +493,7 @@ func networkDeviceLinkDeviceKey(v interface{}) string {
+ }
+ 
+ func networkDeviceLinkDeviceHash(v interface{}) int {
+-	return hashcodeString(networkDeviceLinkDeviceKey(v))
++	return hashcode.String(networkDeviceLinkDeviceKey(v))
+ }
+ 
+ func networkDeviceLinkConnectionKey(v interface{}) string {
+@@ -513,5 +515,5 @@ func networkDeviceLinkConnectionKey(v interface{}) string {
+ }
+ 
+ func networkDeviceLinkConnectionHash(v interface{}) int {
+-	return hashcodeString(networkDeviceLinkConnectionKey(v))
++	return hashcode.String(networkDeviceLinkConnectionKey(v))
+ }
+diff --git a/go.sum b/go.sum
+index 7c37dde..dcf2004 100644
+--- a/go.sum
++++ b/go.sum
+@@ -197,8 +197,6 @@ github.com/Masterminds/sprig/v3 v3.2.2 h1:17jRggJu518dr3QaafizSXOjKYp94wKfABxUmy
+ github.com/Masterminds/sprig/v3 v3.2.2/go.mod h1:UoaO7Yp8KlPnJIYWTFkMaqPUYKTfGFPhxNuwnnxkKlk=
+ github.com/Microsoft/go-winio v0.6.1 h1:9/kr64B9VUZrLm5YYwbGtUJnMgqWVOdUAXu6Migciow=
+ github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
+-github.com/ProtonMail/go-crypto v0.0.0-20230717121422-5aa5874ade95 h1:KLq8BE0KwCL+mmXnjLWEAOYO+2l2AE4YMmqG1ZpZHBs=
+-github.com/ProtonMail/go-crypto v0.0.0-20230717121422-5aa5874ade95/go.mod h1:EjAoLdwvbIOoOQr3ihjnSoLZRtE8azugULFRteWMNc0=
+ github.com/ProtonMail/go-crypto v0.0.0-20230828082145-3c4c8a2d2371 h1:kkhsdkhsCvIsutKu5zLMgWtgh9YxGCNAw8Ad8hjwfYg=
+ github.com/ProtonMail/go-crypto v0.0.0-20230828082145-3c4c8a2d2371/go.mod h1:EjAoLdwvbIOoOQr3ihjnSoLZRtE8azugULFRteWMNc0=
+ github.com/acomagu/bufpipe v1.0.4 h1:e3H4WUzM3npvo5uv95QuJM3cQspFNtFBzvJ2oNjKIDQ=
+@@ -244,6 +242,7 @@ github.com/cncf/xds/go v0.0.0-20210922020428-25de7278fc84/go.mod h1:eXthEFrGJvWH
+ github.com/cncf/xds/go v0.0.0-20211001041855-01bcc9b48dfe/go.mod h1:eXthEFrGJvWHgFFCl3hGmgk+/aYT6PnTQLykKQRLhEs=
+ github.com/cncf/xds/go v0.0.0-20211011173535-cb28da3451f1/go.mod h1:eXthEFrGJvWHgFFCl3hGmgk+/aYT6PnTQLykKQRLhEs=
+ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
++github.com/cyphar/filepath-securejoin v0.2.4 h1:Ugdm7cg7i6ZK6x3xDF1oEu1nfkyfH53EtKeQYTC3kyg=
+ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+@@ -260,14 +259,8 @@ github.com/envoyproxy/go-control-plane v0.9.9-0.20210512163311-63b5d3c536b0/go.m
+ github.com/envoyproxy/go-control-plane v0.9.10-0.20210907150352-cf90f659a021/go.mod h1:AFq3mo9L8Lqqiid3OhADV3RfLJnjiw63cSpi+fDTRC0=
+ github.com/envoyproxy/go-control-plane v0.10.2-0.20220325020618-49ff273808a1/go.mod h1:KJwIaB5Mv44NWtYuAOFCVOjcI94vtpEz2JU/D2v6IjE=
+ github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
+-github.com/equinix-labs/fabric-go v0.7.0 h1:AiiVPD4aE/aeiuCK7Fhsq4bvjmJ5RzmZ3boKnp0dl4g=
+-github.com/equinix-labs/fabric-go v0.7.0/go.mod h1:oqgGS3GOI8hHGPJKsAwDOEX0qRHl52sJGvwA/zMSd90=
+ github.com/equinix-labs/fabric-go v0.7.1 h1:4yk0IKXMcc72rkRVbcYHokAEc1uUB06t6NXK+DtSsbs=
+ github.com/equinix-labs/fabric-go v0.7.1/go.mod h1:oqgGS3GOI8hHGPJKsAwDOEX0qRHl52sJGvwA/zMSd90=
+-github.com/equinix-labs/metal-go v0.25.1 h1:uL83lRKyAcOfab+9r2xujAuLD8lTsqv89+SPvVFkcBM=
+-github.com/equinix-labs/metal-go v0.25.1/go.mod h1:SmxCklxW+KjmBLVMdEXgtFO5gD5/b4N0VxcNgUYbOH4=
+-github.com/equinix-labs/metal-go v0.26.0 h1:0rBTyjF8j58dg++kMFLRi9Jhs5gng5BFn5Y0bl5NPtM=
+-github.com/equinix-labs/metal-go v0.26.0/go.mod h1:SmxCklxW+KjmBLVMdEXgtFO5gD5/b4N0VxcNgUYbOH4=
+ github.com/equinix-labs/metal-go v0.27.0 h1:p5Bqus/gSs5oQezHWXWpc0IzkQl06+yZgbXT5jB7AWs=
+ github.com/equinix-labs/metal-go v0.27.0/go.mod h1:SmxCklxW+KjmBLVMdEXgtFO5gD5/b4N0VxcNgUYbOH4=
+ github.com/equinix/ecx-go/v2 v2.3.1 h1:gFcAIeyaEUw7S8ebqApmT7E/S7pC7Ac3wgScp89fkPU=
+@@ -284,8 +277,8 @@ github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYF
+ github.com/frankban/quicktest v1.14.3 h1:FJKSZTDHjyhriyC81FLQ0LY93eSai0ZyR/ZIkd3ZUKE=
+ github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
+ github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 h1:+zs/tPmkDkHx3U66DAb0lQFJrpS6731Oaa12ikc+DiI=
+-github.com/go-git/go-billy/v5 v5.4.1 h1:Uwp5tDRkPr+l/TnbHOQzp+tmJfLceOlbVucgpTz8ix4=
+-github.com/go-git/go-git/v5 v5.8.1 h1:Zo79E4p7TRk0xoRgMq0RShiTHGKcKI4+DI6BfJc/Q+A=
++github.com/go-git/go-billy/v5 v5.5.0 h1:yEY4yhzCDuMGSv83oGxiBotRzhwhNr8VZyphhiu+mTU=
++github.com/go-git/go-git/v5 v5.9.0 h1:cD9SFA7sHVRdJ7AYck1ZaAa/yeuBvGPxwXDL8cxrObY=
+ github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
+ github.com/go-gl/glfw/v3.3/glfw v0.0.0-20191125211704-12ad95a8df72/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
+ github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
+@@ -346,7 +339,6 @@ github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
+ github.com/google/go-cmp v0.5.6/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
+ github.com/google/go-cmp v0.5.7/go.mod h1:n+brtR0CgQNWTVd5ZUFpTBC8YFBDLK/h/bpaJ8/DtOE=
+ github.com/google/go-cmp v0.5.8/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+-github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
+ github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+ github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
+ github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+@@ -375,7 +367,6 @@ github.com/google/s2a-go v0.1.4 h1:1kZ/sQM3srePvKs3tXAvQzo66XfcReoqFpIpIccE7Oc=
+ github.com/google/s2a-go v0.1.4/go.mod h1:Ej+mSEMGRnqRzjc7VtF+jdBwYG5fuJfiZ8ELkjEwM0A=
+ github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+ github.com/google/uuid v1.1.2/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+-github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+ github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+ github.com/google/uuid v1.4.0 h1:MtMxsa51/r9yyhkyLsVeVt0B+BGQZzpQiTQ4eHZ8bc4=
+ github.com/google/uuid v1.4.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+@@ -419,8 +410,6 @@ github.com/hashicorp/go-multierror v1.1.1 h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+l
+ github.com/hashicorp/go-multierror v1.1.1/go.mod h1:iw975J/qwKPdAO1clOe2L8331t/9/fmwbPZ6JB6eMoM=
+ github.com/hashicorp/go-plugin v1.5.1 h1:oGm7cWBaYIp3lJpx1RUEfLWophprE2EV/KUeqBYo+6k=
+ github.com/hashicorp/go-plugin v1.5.1/go.mod h1:w1sAEES3g3PuV/RzUrgow20W2uErMly84hhD3um1WL4=
+-github.com/hashicorp/go-retryablehttp v0.7.4 h1:ZQgVdpTdAL7WpMIwLzCfbalOcSUdkDZnpUv3/+BxzFA=
+-github.com/hashicorp/go-retryablehttp v0.7.4/go.mod h1:Jy/gPYAdjqffZ/yFGCFV2doI5wjtH1ewM9u8iYVjtX8=
+ github.com/hashicorp/go-retryablehttp v0.7.5 h1:bJj+Pj19UZMIweq/iie+1u5YCdGrnxCT9yvm0e+Nd5M=
+ github.com/hashicorp/go-retryablehttp v0.7.5/go.mod h1:Jy/gPYAdjqffZ/yFGCFV2doI5wjtH1ewM9u8iYVjtX8=
+ github.com/hashicorp/go-safetemp v1.0.0 h1:2HR189eFNrjHQyENnQMMpCiBAsRxzbTMIgBhEyExpmo=
+@@ -432,13 +421,9 @@ github.com/hashicorp/go-version v1.6.0 h1:feTTfFNnjP967rlCxM/I9g701jU+RN74YKx2mO
+ github.com/hashicorp/go-version v1.6.0/go.mod h1:fltr4n8CU8Ke44wwGCBoEymUuxUHl09ZGVZPK5anwXA=
+ github.com/hashicorp/golang-lru v0.5.0/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ4Ao+sR/qLZy8=
+ github.com/hashicorp/golang-lru v0.5.1/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ4Ao+sR/qLZy8=
+-github.com/hashicorp/hc-install v0.6.0 h1:fDHnU7JNFNSQebVKYhHZ0va1bC6SrPQ8fpebsvNr2w4=
+-github.com/hashicorp/hc-install v0.6.0/go.mod h1:10I912u3nntx9Umo1VAeYPUUuehk0aRQJYpMwbX5wQA=
+ github.com/hashicorp/hc-install v0.6.1 h1:IGxShH7AVhPaSuSJpKtVi/EFORNjO+OYVJJrAtGG2mY=
+ github.com/hashicorp/hc-install v0.6.1/go.mod h1:0fW3jpg+wraYSnFDJ6Rlie3RvLf1bIqVIkzoon4KoVE=
+ github.com/hashicorp/hcl/v2 v2.9.1/go.mod h1:FwWsfWEjyV/CMj8s/gqAuiviY72rJ1/oayI9WftqcKg=
+-github.com/hashicorp/hcl/v2 v2.18.0 h1:wYnG7Lt31t2zYkcquwgKo6MWXzRUDIeIVU5naZwHLl8=
+-github.com/hashicorp/hcl/v2 v2.18.0/go.mod h1:ThLC89FV4p9MPW804KVbe/cEXoQ8NZEh+JtMeeGErHE=
+ github.com/hashicorp/hcl/v2 v2.19.1 h1://i05Jqznmb2EXqa39Nsvyan2o5XyMowW5fnCKW5RPI=
+ github.com/hashicorp/hcl/v2 v2.19.1/go.mod h1:ThLC89FV4p9MPW804KVbe/cEXoQ8NZEh+JtMeeGErHE=
+ github.com/hashicorp/logutils v1.0.0 h1:dLEQVugN8vlakKOUE3ihGLTZJRB4j+M2cdTm/ORI65Y=
+@@ -447,15 +432,12 @@ github.com/hashicorp/terraform-exec v0.19.0 h1:FpqZ6n50Tk95mItTSS9BjeOVUb4eg81Sp
+ github.com/hashicorp/terraform-exec v0.19.0/go.mod h1:tbxUpe3JKruE9Cuf65mycSIT8KiNPZ0FkuTE3H4urQg=
+ github.com/hashicorp/terraform-json v0.17.1 h1:eMfvh/uWggKmY7Pmb3T85u86E2EQg6EQHgyRwf3RkyA=
+ github.com/hashicorp/terraform-json v0.17.1/go.mod h1:Huy6zt6euxaY9knPAFKjUITn8QxUFIe9VuSzb4zn/0o=
+-github.com/hashicorp/terraform-plugin-docs v0.14.1 h1:MikFi59KxrP/ewrZoaowrB9he5Vu4FtvhamZFustiA4=
+-github.com/hashicorp/terraform-plugin-docs v0.14.1/go.mod h1:k2NW8+t113jAus6bb5tQYQgEAX/KueE/u8X2Z45V1GM=
++github.com/hashicorp/terraform-plugin-docs v0.16.0 h1:UmxFr3AScl6Wged84jndJIfFccGyBZn52KtMNsS12dI=
+ github.com/hashicorp/terraform-plugin-docs v0.16.0/go.mod h1:M3ZrlKBJAbPMtNOPwHicGi1c+hZUh7/g0ifT/z7TVfA=
+ github.com/hashicorp/terraform-plugin-go v0.19.0 h1:BuZx/6Cp+lkmiG0cOBk6Zps0Cb2tmqQpDM3iAtnhDQU=
+ github.com/hashicorp/terraform-plugin-go v0.19.0/go.mod h1:EhRSkEPNoylLQntYsk5KrDHTZJh9HQoumZXbOGOXmec=
+ github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9TFvymaRGZED3FCV0=
+ github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwUYLVdlYeamldAHSxjUFADow=
+-github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0 h1:wcOKYwPI9IorAJEBLzgclh3xVolO7ZorYd6U1vnok14=
+-github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0/go.mod h1:qH/34G25Ugdj5FcM95cSoXzUgIbgfhVLXCcEcYaMwq8=
+ github.com/hashicorp/terraform-plugin-sdk/v2 v2.30.0 h1:X7vB6vn5tON2b49ILa4W7mFAsndeqJ7bZFOGbVO+0Cc=
+ github.com/hashicorp/terraform-plugin-sdk/v2 v2.30.0/go.mod h1:ydFcxbdj6klCqYEPkPvdvFKiNGKZLUs+896ODUXCyao=
+ github.com/hashicorp/terraform-registry-address v0.2.2 h1:lPQBg403El8PPicg/qONZJDC6YlgCVbWDtNmmZKtBno=
+@@ -599,8 +581,6 @@ github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5t
+ github.com/zclconf/go-cty v1.2.0/go.mod h1:hOPWgoHbaTUnI5k4D2ld+GRpFJSCe6bCM7m1q/N4PQ8=
+ github.com/zclconf/go-cty v1.8.0/go.mod h1:vVKLxnk3puL4qRAv72AO+W99LUD4da90g3uUAzyuvAk=
+ github.com/zclconf/go-cty v1.8.1/go.mod h1:vVKLxnk3puL4qRAv72AO+W99LUD4da90g3uUAzyuvAk=
+-github.com/zclconf/go-cty v1.14.0 h1:/Xrd39K7DXbHzlisFP9c4pHao4yyf+/Ug9LEz+Y/yhc=
+-github.com/zclconf/go-cty v1.14.0/go.mod h1:VvMs5i0vgZdhYawQNq5kePSpLAoz8u1xvZgrPIxfnZE=
+ github.com/zclconf/go-cty v1.14.1 h1:t9fyA35fwjjUMcmL5hLER+e/rEPqrbCK1/OSE4SI9KA=
+ github.com/zclconf/go-cty v1.14.1/go.mod h1:VvMs5i0vgZdhYawQNq5kePSpLAoz8u1xvZgrPIxfnZE=
+ github.com/zclconf/go-cty-debug v0.0.0-20191215020915-b22d67c1ba0b/go.mod h1:ZRKQfBXbGkpdV6QMzT3rU1kSTAnfu1dO8dPKjYprgj8=
+@@ -627,8 +607,6 @@ golang.org/x/crypto v0.0.0-20210921155107-089bfa567519/go.mod h1:GvvjBRRGRdwPK5y
+ golang.org/x/crypto v0.0.0-20220314234659-1baeb1ce4c0b/go.mod h1:IxCIyHEi3zRg3s0A5j5BB6A9Jmi73HwBIUl50j+osU4=
+ golang.org/x/crypto v0.3.1-0.20221117191849-2c476679df9a/go.mod h1:hebNnKkNXi2UzZN1eVRvBB7co0a+JxK6XbPiWVs/3J4=
+ golang.org/x/crypto v0.7.0/go.mod h1:pYwdfH91IfpZVANVyUOhSIPZaFoJGxTFbZhFTx+dXZU=
+-golang.org/x/crypto v0.14.0 h1:wBqGXzWJW6m1XrIKlAH0Hs1JJ7+9KBwnIO8v66Q9cHc=
+-golang.org/x/crypto v0.14.0/go.mod h1:MVFd36DqK4CsrnJYDkBA3VC4m2GkXAM0PvzMCn4JQf4=
+ golang.org/x/crypto v0.15.0 h1:frVn1TEaCEaZcn3Tmd7Y2b5KKPaZ+I32Q2OA3kYp5TA=
+ golang.org/x/crypto v0.15.0/go.mod h1:4ChreQoLWfG3xLDer1WdlH5NdlQ3+mwnQq1YTKY+72g=
+ golang.org/x/exp v0.0.0-20190121172915-509febef88a4/go.mod h1:CJ0aWSM057203Lf6IL+f9T1iT9GByDxfZKAQTCR3kQA=
+@@ -641,10 +619,6 @@ golang.org/x/exp v0.0.0-20191227195350-da58074b4299/go.mod h1:2RIsYlXP63K8oxa1u0
+ golang.org/x/exp v0.0.0-20200119233911-0405dc783f0a/go.mod h1:2RIsYlXP63K8oxa1u096TMicItID8zy7Y6sNkU49FU4=
+ golang.org/x/exp v0.0.0-20200207192155-f17229e696bd/go.mod h1:J/WKrq2StrnmMY6+EHIKF9dgMWnmCNThgcyBT1FY9mM=
+ golang.org/x/exp v0.0.0-20200224162631-6cc2880d07d6/go.mod h1:3jZMyOhIsHpP37uCMkUooju7aAi5cS1Q23tOzKc+0MU=
+-golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1 h1:k/i9J1pBpvlfR+9QsetwPyERsqu1GIbi967PQMq3Ivc=
+-golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1/go.mod h1:V1LtkGg67GoY2N1AnLN78QLrzxkLyJw7RJb1gzOOz9w=
+-golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df h1:UA2aFVmmsIlefxMk29Dp2juaUSth8Pyn3Tq5Y5mJGME=
+-golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
+ golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa h1:FRnLl4eNAQl8hwxVVC17teOw8kdjVDVAiFMtgUdTSRQ=
+ golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa/go.mod h1:zk2irFbV9DP96SEBUUAy67IdHUaZuSnrz1n472HUCLE=
+ golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
+@@ -674,10 +648,6 @@ golang.org/x/mod v0.4.1/go.mod h1:s0Qsj1ACt9ePp/hMypM3fl4fZqREWJwdYDEqhRiZZUA=
+ golang.org/x/mod v0.4.2/go.mod h1:s0Qsj1ACt9ePp/hMypM3fl4fZqREWJwdYDEqhRiZZUA=
+ golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4/go.mod h1:jJ57K6gSWd91VN4djpZkiMVwK6gcyfeH4XE8wZrZaV4=
+ golang.org/x/mod v0.8.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=
+-golang.org/x/mod v0.12.0 h1:rmsUpXtvNzj340zd98LZ4KntptpfRHwpFOHG188oHXc=
+-golang.org/x/mod v0.12.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=
+-golang.org/x/mod v0.13.0 h1:I/DsJXRlw/8l/0c24sM9yb0T4z9liZTduXvdAWYiysY=
+-golang.org/x/mod v0.13.0/go.mod h1:hTbmBsO62+eylJbnUtE2MGJUyE7QWk4xUqPFrRgJ+7c=
+ golang.org/x/mod v0.14.0 h1:dGoOF9QVLYng8IHTm7BAyWqCqSheQ5pYWGhzW00YJr0=
+ golang.org/x/mod v0.14.0/go.mod h1:hTbmBsO62+eylJbnUtE2MGJUyE7QWk4xUqPFrRgJ+7c=
+ golang.org/x/net v0.0.0-20180724234803-3673e40ba225/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
+@@ -733,8 +703,6 @@ golang.org/x/net v0.1.0/go.mod h1:Cx3nUiGt4eDBEyega/BKRp+/AlGL8hYe7U9odMt2Cco=
+ golang.org/x/net v0.2.0/go.mod h1:KqCZLdyyvdV855qA2rE3GC2aiw5xGR5TEjj8smXukLY=
+ golang.org/x/net v0.6.0/go.mod h1:2Tu9+aMcznHK/AK1HMvgo6xiTLG5rD5rZLDS+rp2Bjs=
+ golang.org/x/net v0.8.0/go.mod h1:QVkue5JL9kW//ek3r6jTKnTFis1tRmNAW2P1shuFdJc=
+-golang.org/x/net v0.17.0 h1:pVaXccu2ozPjCXewfr1S7xza/zcXTity9cCdXQYSjIM=
+-golang.org/x/net v0.17.0/go.mod h1:NxSsAGuq816PNPmqtQdLE42eU2Fs7NoRIZrHJAlaCOE=
+ golang.org/x/net v0.18.0 h1:mIYleuAkSbHh0tCv7RvjL3F6ZVbLjq4+R7zbOn3Kokg=
+ golang.org/x/net v0.18.0/go.mod h1:/czyP5RqHAH4odGYxBJ1qz0+CE5WZ+2j1YgoEo8F2jQ=
+ golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
+@@ -762,8 +730,6 @@ golang.org/x/oauth2 v0.0.0-20220822191816-0ebed06d0094/go.mod h1:h4gKUeWbJ4rQPri
+ golang.org/x/oauth2 v0.0.0-20220909003341-f21342109be1/go.mod h1:h4gKUeWbJ4rQPri7E0u6Gs4e9Ri2zaLxzw5DI5XGrYg=
+ golang.org/x/oauth2 v0.0.0-20221014153046-6fdb5e3db783/go.mod h1:h4gKUeWbJ4rQPri7E0u6Gs4e9Ri2zaLxzw5DI5XGrYg=
+ golang.org/x/oauth2 v0.1.0/go.mod h1:G9FE4dLTsbXUu90h/Pf85g4w1D+SSAgR+q46nJZ8M4A=
+-golang.org/x/oauth2 v0.13.0 h1:jDDenyj+WgFtmV3zYVoi8aE2BwtXFLWOA67ZfNWftiY=
+-golang.org/x/oauth2 v0.13.0/go.mod h1:/JMhi4ZRXAf4HG9LiNmxvk+45+96RUlVThiH8FzNBn0=
+ golang.org/x/oauth2 v0.14.0 h1:P0Vrf/2538nmC0H+pEQ3MNFRRnVR7RlqyVw+bvm26z0=
+ golang.org/x/oauth2 v0.14.0/go.mod h1:lAtNWgaWfL4cm7j2OV8TxGi9Qb7ECORx8DktCY74OwM=
+ golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+@@ -854,8 +820,6 @@ golang.org/x/sys v0.2.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.3.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.5.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+-golang.org/x/sys v0.13.0 h1:Af8nKPmuFypiUBjVoU9V20FiaFXOcuZI21p0ycVYYGE=
+-golang.org/x/sys v0.13.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.14.0 h1:Vz7Qs629MkJkGyHxUlRHizWJRG2j8fbQKjELVSNhy7Q=
+ golang.org/x/sys v0.14.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+ golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
+@@ -864,7 +828,7 @@ golang.org/x/term v0.1.0/go.mod h1:jbD1KX2456YbFQfuXm/mYQcufACuNUgVhRMnK/tPxf8=
+ golang.org/x/term v0.2.0/go.mod h1:TVmDHMZPmdnySmBfhjOoOdhjzdE1h4u1VwSiw2l1Nuc=
+ golang.org/x/term v0.5.0/go.mod h1:jMB1sMXY+tzblOD4FWmEbocvup2/aLOaQEp7JmGp78k=
+ golang.org/x/term v0.6.0/go.mod h1:m6U89DPEgQRMq3DNkDClhWw02AUbt2daBVO4cn4Hv9U=
+-golang.org/x/term v0.13.0 h1:bb+I9cTfFazGW51MZqBVmZy7+JEJMouUHTUSKVQLBek=
++golang.org/x/term v0.14.0 h1:LGK9IlZ8T9jvdy6cTdfKUCltatMFOehAQo9SRC46UQ8=
+ golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+ golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+ golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+@@ -878,8 +842,6 @@ golang.org/x/text v0.3.8/go.mod h1:E6s5w1FMmriuDzIBO73fBruAKo1PCIq6d2Q6DHfQ8WQ=
+ golang.org/x/text v0.4.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+ golang.org/x/text v0.7.0/go.mod h1:mrYo+phRRbMaCq/xk9113O4dZlRixOauAjOtrjsXDZ8=
+ golang.org/x/text v0.8.0/go.mod h1:e1OnstbJyHTd6l/uOt8jFFHp6TRDWZR/bV3emEE/zU8=
+-golang.org/x/text v0.13.0 h1:ablQoSUd0tRdKxZewP80B+BaqeKJuVhuRxj/dkrun3k=
+-golang.org/x/text v0.13.0/go.mod h1:TvPlkZtksWOMsz7fbANvkp4WM8x/WCo/om8BMLbz+aE=
+ golang.org/x/text v0.14.0 h1:ScX5w1eTa3QqT8oi6+ziP7dTV1S2+ALU0bI+0zXKWiQ=
+ golang.org/x/text v0.14.0/go.mod h1:18ZOQIKpY8NJVqYksKHtTdi31H5itFRjB5/qKTNYzSU=
+ golang.org/x/time v0.0.0-20181108054448-85acf8d2951c/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
+@@ -937,8 +899,8 @@ golang.org/x/tools v0.1.3/go.mod h1:o0xws9oXOQQZyjljx8fwUC0k7L1pTE6eaCbjGeHmOkk=
+ golang.org/x/tools v0.1.4/go.mod h1:o0xws9oXOQQZyjljx8fwUC0k7L1pTE6eaCbjGeHmOkk=
+ golang.org/x/tools v0.1.5/go.mod h1:o0xws9oXOQQZyjljx8fwUC0k7L1pTE6eaCbjGeHmOkk=
+ golang.org/x/tools v0.1.12/go.mod h1:hNGJHUnrk76NpqgfD5Aqm5Crs+Hm0VOH/i9J2+nxYbc=
+-golang.org/x/tools v0.6.0 h1:BOw41kyTf3PuCW1pVQf8+Cyg8pMlkYB1oo9iJ6D/lKM=
+ golang.org/x/tools v0.6.0/go.mod h1:Xwgl3UAJ/d3gWutnCtw505GrjyAbvKui8lOU390QaIU=
++golang.org/x/tools v0.15.0 h1:zdAyfUGbYmuVokhzVmghFl2ZJh5QhcfebBgmVPFYA+8=
+ golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+ golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+ golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
+@@ -1148,8 +1110,6 @@ google.golang.org/grpc v1.48.0/go.mod h1:vN9eftEi1UMyUsIF80+uQXhHjbXYbm0uXoFCACu
+ google.golang.org/grpc v1.49.0/go.mod h1:ZgQEeidpAuNRZ8iRrlBKXZQP1ghovWIVhdJRyCDK+GI=
+ google.golang.org/grpc v1.50.0/go.mod h1:ZgQEeidpAuNRZ8iRrlBKXZQP1ghovWIVhdJRyCDK+GI=
+ google.golang.org/grpc v1.50.1/go.mod h1:ZgQEeidpAuNRZ8iRrlBKXZQP1ghovWIVhdJRyCDK+GI=
+-google.golang.org/grpc v1.57.0 h1:kfzNeI/klCGD2YPMUlaGNT3pxvYfga7smW3Vth8Zsiw=
+-google.golang.org/grpc v1.57.0/go.mod h1:Sd+9RMTACXwmub0zcNY2c4arhtrbBYD1AUHI/dt16Mo=
+ google.golang.org/grpc v1.57.1 h1:upNTNqv0ES+2ZOOqACwVtS3Il8M12/+Hz41RCPzAjQg=
+ google.golang.org/grpc v1.57.1/go.mod h1:Sd+9RMTACXwmub0zcNY2c4arhtrbBYD1AUHI/dt16Mo=
+ google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
+diff --git a/equinix/utils.go b/internal/converters/converters.go
+similarity index 65%
+rename from equinix/utils.go
+rename to internal/converters/converters.go
+index 3ac610b..c5b9a22 100644
+--- a/equinix/utils.go
++++ b/internal/converters/converters.go
+@@ -1,20 +1,11 @@
+-package equinix
++package converters
+ 
+ import (
+ 	"strconv"
+ 	"strings"
+ )
+ 
+-func contains(s []string, e string) bool {
+-	for _, a := range s {
+-		if a == e {
+-			return true
+-		}
+-	}
+-	return false
+-}
+-
+-func stringArrToIfArr(sli []string) []interface{} {
++func StringArrToIfArr(sli []string) []interface{} {
+ 	var arr []interface{}
+ 	for _, v := range sli {
+ 		arr = append(arr, v)
+@@ -22,7 +13,7 @@ func stringArrToIfArr(sli []string) []interface{} {
+ 	return arr
+ }
+ 
+-func convertStringArr(ifaceArr []interface{}) []string {
++func IfArrToStringArr(ifaceArr []interface{}) []string {
+ 	var arr []string
+ 	for _, v := range ifaceArr {
+ 		if v == nil {
+@@ -33,7 +24,7 @@ func convertStringArr(ifaceArr []interface{}) []string {
+ 	return arr
+ }
+ 
+-func convertIntArr(ifaceArr []interface{}) []string {
++func IfArrToIntStringArr(ifaceArr []interface{}) []string {
+ 	var arr []string
+ 	for _, v := range ifaceArr {
+ 		if v == nil {
+@@ -44,7 +35,7 @@ func convertIntArr(ifaceArr []interface{}) []string {
+ 	return arr
+ }
+ 
+-func convertIntArr2(ifaceArr []interface{}) []int {
++func IfArrToIntArr(ifaceArr []interface{}) []int {
+ 	var arr []int
+ 	for _, v := range ifaceArr {
+ 		if v == nil {
+@@ -55,12 +46,12 @@ func convertIntArr2(ifaceArr []interface{}) []int {
+ 	return arr
+ }
+ 
+-func toLower(v interface{}) string {
++func ToLowerIf(v interface{}) string {
+ 	return strings.ToLower(v.(string))
+ }
+ 
+ // from https://stackoverflow.com/a/45428032
+-func difference(a, b []string) []string {
++func Difference(a, b []string) []string {
+ 	mb := make(map[string]struct{}, len(b))
+ 	for _, x := range b {
+ 		mb[x] = struct{}{}
+diff --git a/equinix/hashcode.go b/internal/hashcode/hashcode.go
+similarity index 90%
+rename from equinix/hashcode.go
+rename to internal/hashcode/hashcode.go
+index 3fb5af5..20f4213 100644
+--- a/equinix/hashcode.go
++++ b/internal/hashcode/hashcode.go
+@@ -1,4 +1,4 @@
+-package equinix
++package hashcode
+ 
+ import (
+ 	"hash/crc32"
+@@ -11,7 +11,7 @@ import (
+ // and invert it if the result is negative.
+ //
+ // Originally from https://github.com/hashicorp/terraform-plugin-sdk/blob/main/internal/helper/hashcode/hashcode.go
+-func hashcodeString(s string) int {
++func String(s string) int {
+ 	v := int(crc32.ChecksumIEEE([]byte(s)))
+ 	if v >= 0 {
+ 		return v

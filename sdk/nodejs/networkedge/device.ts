@@ -144,7 +144,7 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly connectivity!: pulumi.Output<string | undefined>;
     /**
-     * Number of CPU cores used by device.
+     * Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      */
     public readonly coreCount!: pulumi.Output<number>;
     /**
@@ -463,7 +463,7 @@ export interface DeviceState {
      */
     connectivity?: pulumi.Input<string>;
     /**
-     * Number of CPU cores used by device.
+     * Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      */
     coreCount?: pulumi.Input<number>;
     /**
@@ -650,7 +650,7 @@ export interface DeviceArgs {
      */
     connectivity?: pulumi.Input<string>;
     /**
-     * Number of CPU cores used by device.
+     * Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      */
     coreCount: pulumi.Input<number>;
     /**

@@ -1934,6 +1934,8 @@ class GetDeviceInterfaceResult(dict):
                * FAILED
                * DEPROVISIONING
                * DEPROVISIONED
+               * RESOURCE_UPGRADE_IN_PROGRESS
+               * RESOURCE_UPGRADE_FAILED
         """
         pulumi.set(__self__, "assigned_type", assigned_type)
         pulumi.set(__self__, "id", id)
@@ -1992,6 +1994,8 @@ class GetDeviceInterfaceResult(dict):
         * FAILED
         * DEPROVISIONING
         * DEPROVISIONED
+        * RESOURCE_UPGRADE_IN_PROGRESS
+        * RESOURCE_UPGRADE_FAILED
         """
         return pulumi.get(self, "status")
 
@@ -2070,6 +2074,8 @@ class GetDeviceSecondaryDeviceResult(dict):
                * FAILED
                * DEPROVISIONING
                * DEPROVISIONED
+               * RESOURCE_UPGRADE_IN_PROGRESS
+               * RESOURCE_UPGRADE_FAILED
         :param str uuid: UUID of an existing Equinix Network Edge device
         :param str zone_code: Device location zone code
         """
@@ -2277,6 +2283,8 @@ class GetDeviceSecondaryDeviceResult(dict):
         * FAILED
         * DEPROVISIONING
         * DEPROVISIONED
+        * RESOURCE_UPGRADE_IN_PROGRESS
+        * RESOURCE_UPGRADE_FAILED
         """
         return pulumi.get(self, "status")
 
@@ -2331,6 +2339,8 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
                * FAILED
                * DEPROVISIONING
                * DEPROVISIONED
+               * RESOURCE_UPGRADE_IN_PROGRESS
+               * RESOURCE_UPGRADE_FAILED
         """
         pulumi.set(__self__, "assigned_type", assigned_type)
         pulumi.set(__self__, "id", id)
@@ -2389,6 +2399,8 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
         * FAILED
         * DEPROVISIONING
         * DEPROVISIONED
+        * RESOURCE_UPGRADE_IN_PROGRESS
+        * RESOURCE_UPGRADE_FAILED
         """
         return pulumi.get(self, "status")
 

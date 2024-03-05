@@ -1,0 +1,111 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: srushti-patl <srpatel@equinix.com>
+Date: Wed, 1 Nov 2023 16:19:57 -0700
+Subject: [PATCH 06/51] fix: adding missing parameters to aside.access_point
+ model and updating docs
+
+
+diff --git a/docs/data-sources/equinix_fabric_connection.md b/docs/data-sources/equinix_fabric_connection.md
+index f528625..d60bd2a 100644
+--- a/docs/data-sources/equinix_fabric_connection.md
++++ b/docs/data-sources/equinix_fabric_connection.md
+@@ -261,6 +261,7 @@ Read-Only:
+ - `key` (String)
+ - `value` (String)
+ 
++~> **NOTE:** Connection could be modified from Service Provider Side by using parameters passed to additional_info field:  `{"key": "ASN", "value": "1111"}` `{"key": "Global", "value": "false"}` `{"key": "BGP_IBM_CIDR", "value": "172.16.0.18/30"}` `{"key": "BGP_CER_CIDR", "value": "172.16.0.19/30"}`
+ 
+ <a id="nestedatt--change_log"></a>
+ ### Nested Schema for `change_log`
+diff --git a/docs/resources/equinix_ecx_l2_connection.md b/docs/resources/equinix_ecx_l2_connection.md
+index 09a2af9..cdb2b1a 100644
+--- a/docs/resources/equinix_ecx_l2_connection.md
++++ b/docs/resources/equinix_ecx_l2_connection.md
+@@ -61,7 +61,7 @@ resource "equinix_ecx_l2_connection" "ports-2-azure" {
+   vlan_ctag         = 2512
+   seller_metro_code = "SV"
+   named_tag         = "PRIVATE"
+-  authorization_key = "c4dff8e8-b52f-4b34-b0d4-c4588f7338f3
++  authorization_key = "c4dff8e8-b52f-4b34-b0d4-c4588f7338f3"
+   secondary_connection {
+     name      = "tf-azure-sec"
+     port_uuid = data.equinix_ecx_port.sv-qinq-sec.id
+@@ -184,8 +184,11 @@ for more details.
+ docs.
+ 
+ * `additional_info` - (Optional) one or more additional information key-value objects
+-  * `name` - (Required) additional information key
++  * `key` - (Required) additional information key
+   * `value` - (Required) additional information value
++
++~> **NOTE:** Connection could be modified from Service Provider Side by using parameters passed to additional_info field:  `{"key": "ASN", "value": "1111"}` `{"key": "Global", "value": "false"}` `{"key": "BGP_IBM_CIDR", "value": "172.16.0.18/30"}` `{"key": "BGP_CER_CIDR", "value": "172.16.0.19/30"}`
++
+ * `zside_port_uuid` - (Optional) Unique identifier of the port on the remote/destination side
+ (z-side). Allows you to connect between your own ports or virtual devices across your company's
+ Equinix Fabric deployment, with no need for a private service profile.
+diff --git a/docs/resources/equinix_fabric_connection.md b/docs/resources/equinix_fabric_connection.md
+index 744aefb..d9ce970 100644
+--- a/docs/resources/equinix_fabric_connection.md
++++ b/docs/resources/equinix_fabric_connection.md
+@@ -104,7 +104,7 @@ Read-Only:
+ 
+ - `id` (String) id
+ 
+-<a id="nestedblock--a_side--access_point--netwrok"></a>
++<a id="nestedblock--a_side--access_point--network"></a>
+ ### Nested Schema for `a_side.access_point.network`
+ 
+ Required:
+@@ -197,9 +197,15 @@ Optional:
+ Optional:
+ 
+ - `type` (String) Virtual Device type
++- `name` (String) Customer-assigned Virtual Device Name
+ - `uuid` (String) Equinix-assigned Virtual Device identifier
+ 
+ 
++Read-Only:
++
++- `href` (String) Unique Resource Identifier
++
++
+ <a id="nestedatt--a_side--access_point--account"></a>
+ ### Nested Schema for `a_side.access_point.account`
+ 
+@@ -223,6 +229,7 @@ Optional:
+ - `key` (String) Additional information key
+ - `value` (String) Additional information value
+ 
++~> **NOTE:** Connection could be modified from Service Provider Side by using parameters passed to additional_info field:  `{"key": "ASN", "value": "1111"}` `{"key": "Global", "value": "false"}` `{"key": "BGP_IBM_CIDR", "value": "172.16.0.18/30"}` `{"key": "BGP_CER_CIDR", "value": "172.16.0.19/30"}`
+ 
+ <a id="nestedblock--a_side--service_token"></a>
+ ### Nested Schema for `a_side.service_token`
+diff --git a/equinix/fabric_mapping_helper.go b/equinix/fabric_mapping_helper.go
+index e8febd2..8d8bca7 100644
+--- a/equinix/fabric_mapping_helper.go
++++ b/equinix/fabric_mapping_helper.go
+@@ -268,9 +268,11 @@ func virtualdeviceToFabric(virtualdeviceList []interface{}) v4.VirtualDevice {
+ 	vd := v4.VirtualDevice{}
+ 	for _, ll := range virtualdeviceList {
+ 		llMap := ll.(map[string]interface{})
++		hr := llMap["href"].(string)
+ 		tp := llMap["type"].(string)
+ 		ud := llMap["uuid"].(string)
+-		vd = v4.VirtualDevice{Type_: tp, Uuid: ud}
++		na := llMap["name"].(string)
++		vd = v4.VirtualDevice{Href: hr, Type_: tp, Uuid: ud, Name: na}
+ 	}
+ 	return vd
+ }
+@@ -279,8 +281,10 @@ func interfaceToFabric(interfaceList []interface{}) v4.ModelInterface {
+ 	il := v4.ModelInterface{}
+ 	for _, ll := range interfaceList {
+ 		llMap := ll.(map[string]interface{})
++		ud := llMap["uuid"].(string)
+ 		tp := llMap["type"].(string)
+-		il = v4.ModelInterface{Type_: tp}
++		id := llMap["id"].(int)
++		il = v4.ModelInterface{Type_: tp, Uuid: ud, Id: int32(id)}
+ 	}
+ 	return il
+ }

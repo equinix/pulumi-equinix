@@ -1,0 +1,10 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tomas Karasek <tom.to.the.k@gmail.com>
+Date: Mon, 4 Dec 2023 13:59:24 +0100
+Subject: [PATCH 31/51] fix: rename schema.go to set_map.go
+
+
+diff --git a/internal/schema/schema.go b/internal/schema/set_map.go
+similarity index 100%
+rename from internal/schema/schema.go
+rename to internal/schema/set_map.go
