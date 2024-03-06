@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * const dc = equinix.networkedge.getAccount({
  *     metroCode: "DC",
  *     status: "Active",
+ *     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
  * });
  * export const number = dc.then(dc => dc.number);
  * ```
@@ -30,6 +31,7 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("equinix:networkedge/getAccount:getAccount", {
         "metroCode": args.metroCode,
         "name": args.name,
+        "projectId": args.projectId,
         "status": args.status,
     }, opts);
 }
@@ -46,6 +48,11 @@ export interface GetAccountArgs {
      * Account name for filtering.
      */
     name?: string;
+    /**
+     * Unique Identifier for the project resource where the account is scoped to.If you
+     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     */
+    projectId?: string;
     /**
      * Account status for filtering. Possible values are: `Active`, `Processing`,
      * `Submitted`, `Staged`.
@@ -67,6 +74,7 @@ export interface GetAccountResult {
      * Account unique number.
      */
     readonly number: string;
+    readonly projectId: string;
     readonly status: string;
     /**
      * Account unique identifier.
@@ -89,6 +97,7 @@ export interface GetAccountResult {
  * const dc = equinix.networkedge.getAccount({
  *     metroCode: "DC",
  *     status: "Active",
+ *     projectId: "a86d7112-d740-4758-9c9c-31e66373746b",
  * });
  * export const number = dc.then(dc => dc.number);
  * ```
@@ -109,6 +118,11 @@ export interface GetAccountOutputArgs {
      * Account name for filtering.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the account is scoped to.If you
+     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Account status for filtering. Possible values are: `Active`, `Processing`,
      * `Submitted`, `Staged`.

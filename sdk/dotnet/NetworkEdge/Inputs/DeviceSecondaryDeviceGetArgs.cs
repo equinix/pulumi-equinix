@@ -130,6 +130,13 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         }
 
         /// <summary>
+        /// Unique Identifier for the project resource where the device is scoped to.If you
+        /// leave it out, the device will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// Device redundancy type applicable for HA devices, either
         /// primary or secondary.
         /// </summary>
@@ -160,6 +167,9 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         [Input("sshIpFqdn")]
         public Input<string>? SshIpFqdn { get; set; }
 
+        /// <summary>
+        /// Definition of SSH key that will be provisioned on a device
+        /// </summary>
         [Input("sshKey")]
         public Input<Inputs.DeviceSecondaryDeviceSshKeyGetArgs>? SshKey { get; set; }
 
@@ -189,6 +199,9 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
             set => _vendorConfiguration = value;
         }
 
+        /// <summary>
+        /// device interface id picked for WAN
+        /// </summary>
         [Input("wanInterfaceId")]
         public Input<string>? WanInterfaceId { get; set; }
 

@@ -7,8 +7,6 @@ import com.equinix.pulumi.fabric.inputs.GetPortsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
@@ -19,15 +17,15 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
      * name
      * 
      */
-    @Import(name="filter")
-    private @Nullable Output<GetPortsFilterArgs> filter;
+    @Import(name="filter", required=true)
+    private Output<GetPortsFilterArgs> filter;
 
     /**
      * @return name
      * 
      */
-    public Optional<Output<GetPortsFilterArgs>> filter() {
-        return Optional.ofNullable(this.filter);
+    public Output<GetPortsFilterArgs> filter() {
+        return this.filter;
     }
 
     private GetPortsArgs() {}
@@ -60,7 +58,7 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder filter(@Nullable Output<GetPortsFilterArgs> filter) {
+        public Builder filter(Output<GetPortsFilterArgs> filter) {
             $.filter = filter;
             return this;
         }
@@ -76,6 +74,7 @@ public final class GetPortsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetPortsArgs build() {
+            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
             return $;
         }
     }

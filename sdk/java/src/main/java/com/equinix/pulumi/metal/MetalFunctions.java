@@ -78,6 +78,14 @@ import java.util.concurrent.CompletableFuture;
 
 public final class MetalFunctions {
     /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
+     *  the raw state as plain-text.
+     * Read more about sensitive data in state.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -144,6 +152,14 @@ public final class MetalFunctions {
         return getDevice(GetDeviceArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
+     *  the raw state as plain-text.
+     * Read more about sensitive data in state.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -210,6 +226,14 @@ public final class MetalFunctions {
         return getDevicePlain(GetDevicePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
+     *  the raw state as plain-text.
+     * Read more about sensitive data in state.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -276,6 +300,14 @@ public final class MetalFunctions {
         return getDevice(args, InvokeOptions.Empty);
     }
     /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
+     *  the raw state as plain-text.
+     * Read more about sensitive data in state.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -342,6 +374,14 @@ public final class MetalFunctions {
         return getDevicePlain(args, InvokeOptions.Empty);
     }
     /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
+     *  the raw state as plain-text.
+     * Read more about sensitive data in state.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -408,6 +448,14 @@ public final class MetalFunctions {
         return Deployment.getInstance().invoke("equinix:metal/getDevice:getDevice", TypeShape.of(GetDeviceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The datasource can be used to fetch a single device.
+     * 
+     * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+     * 
+     * &gt; **Note:** All arguments including the `root_password` and `user_data` will be stored in
+     *  the raw state as plain-text.
+     * Read more about sensitive data in state.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2517,21 +2565,1143 @@ public final class MetalFunctions {
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .values(2.5)
+     *                     .matchBy(&#34;less_than&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;class&#34;)
+     *                     .values(&#34;large&#34;)
+     *                     .matchBy(&#34;substring&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;deployment_types&#34;)
+     *                     .values(&#34;spot_market&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .all(true)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ### Ignoring Changes to Plans/Metro
+     * 
+     * Preserve deployed device plan, facility and metro when creating a new execution plan.
+     * 
+     * As described in the `data-resource-behavior` feature as shown in the example below.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;name&#34;)
+     *                     .values(                    
+     *                         &#34;c3.small.x86&#34;,
+     *                         &#34;c3.medium.x86&#34;,
+     *                         &#34;m3.large.x86&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(&#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
+     *             .hostname(&#34;example&#34;)
+     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
+     *             .billingCycle(&#34;hourly&#34;)
+     *             .projectId(var_.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var examplePlans = MetalFunctions.getPlans();
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPlansResult> getPlans() {
         return getPlans(GetPlansArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .values(2.5)
+     *                     .matchBy(&#34;less_than&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;class&#34;)
+     *                     .values(&#34;large&#34;)
+     *                     .matchBy(&#34;substring&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;deployment_types&#34;)
+     *                     .values(&#34;spot_market&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .all(true)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ### Ignoring Changes to Plans/Metro
+     * 
+     * Preserve deployed device plan, facility and metro when creating a new execution plan.
+     * 
+     * As described in the `data-resource-behavior` feature as shown in the example below.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;name&#34;)
+     *                     .values(                    
+     *                         &#34;c3.small.x86&#34;,
+     *                         &#34;c3.medium.x86&#34;,
+     *                         &#34;m3.large.x86&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(&#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
+     *             .hostname(&#34;example&#34;)
+     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
+     *             .billingCycle(&#34;hourly&#34;)
+     *             .projectId(var_.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var examplePlans = MetalFunctions.getPlans();
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPlansResult> getPlansPlain() {
         return getPlansPlain(GetPlansPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .values(2.5)
+     *                     .matchBy(&#34;less_than&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;class&#34;)
+     *                     .values(&#34;large&#34;)
+     *                     .matchBy(&#34;substring&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;deployment_types&#34;)
+     *                     .values(&#34;spot_market&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .all(true)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ### Ignoring Changes to Plans/Metro
+     * 
+     * Preserve deployed device plan, facility and metro when creating a new execution plan.
+     * 
+     * As described in the `data-resource-behavior` feature as shown in the example below.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;name&#34;)
+     *                     .values(                    
+     *                         &#34;c3.small.x86&#34;,
+     *                         &#34;c3.medium.x86&#34;,
+     *                         &#34;m3.large.x86&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(&#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
+     *             .hostname(&#34;example&#34;)
+     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
+     *             .billingCycle(&#34;hourly&#34;)
+     *             .projectId(var_.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var examplePlans = MetalFunctions.getPlans();
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPlansResult> getPlans(GetPlansArgs args) {
         return getPlans(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .values(2.5)
+     *                     .matchBy(&#34;less_than&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;class&#34;)
+     *                     .values(&#34;large&#34;)
+     *                     .matchBy(&#34;substring&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;deployment_types&#34;)
+     *                     .values(&#34;spot_market&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .all(true)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ### Ignoring Changes to Plans/Metro
+     * 
+     * Preserve deployed device plan, facility and metro when creating a new execution plan.
+     * 
+     * As described in the `data-resource-behavior` feature as shown in the example below.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;name&#34;)
+     *                     .values(                    
+     *                         &#34;c3.small.x86&#34;,
+     *                         &#34;c3.medium.x86&#34;,
+     *                         &#34;m3.large.x86&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(&#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
+     *             .hostname(&#34;example&#34;)
+     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
+     *             .billingCycle(&#34;hourly&#34;)
+     *             .projectId(var_.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var examplePlans = MetalFunctions.getPlans();
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPlansResult> getPlansPlain(GetPlansPlainArgs args) {
         return getPlansPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .values(2.5)
+     *                     .matchBy(&#34;less_than&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;class&#34;)
+     *                     .values(&#34;large&#34;)
+     *                     .matchBy(&#34;substring&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;deployment_types&#34;)
+     *                     .values(&#34;spot_market&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .all(true)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ### Ignoring Changes to Plans/Metro
+     * 
+     * Preserve deployed device plan, facility and metro when creating a new execution plan.
+     * 
+     * As described in the `data-resource-behavior` feature as shown in the example below.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;name&#34;)
+     *                     .values(                    
+     *                         &#34;c3.small.x86&#34;,
+     *                         &#34;c3.medium.x86&#34;,
+     *                         &#34;m3.large.x86&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(&#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
+     *             .hostname(&#34;example&#34;)
+     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
+     *             .billingCycle(&#34;hourly&#34;)
+     *             .projectId(var_.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var examplePlans = MetalFunctions.getPlans();
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPlansResult> getPlans(GetPlansArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getPlans:getPlans", TypeShape.of(GetPlansResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;pricing_hour&#34;)
+     *                     .values(2.5)
+     *                     .matchBy(&#34;less_than&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;class&#34;)
+     *                     .values(&#34;large&#34;)
+     *                     .matchBy(&#34;substring&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;deployment_types&#34;)
+     *                     .values(&#34;spot_market&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(                    
+     *                         &#34;da&#34;,
+     *                         &#34;sv&#34;)
+     *                     .all(true)
+     *                     .build())
+     *             .build());
+     * 
+     *         ctx.export(&#34;plans&#34;, example.applyValue(getPlansResult -&gt; getPlansResult.plans()));
+     *     }
+     * }
+     * ```
+     * ### Ignoring Changes to Plans/Metro
+     * 
+     * Preserve deployed device plan, facility and metro when creating a new execution plan.
+     * 
+     * As described in the `data-resource-behavior` feature as shown in the example below.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import com.pulumi.equinix.metal.DeviceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()
+     *             .sorts(GetPlansSortArgs.builder()
+     *                 .attribute(&#34;pricing_hour&#34;)
+     *                 .direction(&#34;asc&#34;)
+     *                 .build())
+     *             .filters(            
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;name&#34;)
+     *                     .values(                    
+     *                         &#34;c3.small.x86&#34;,
+     *                         &#34;c3.medium.x86&#34;,
+     *                         &#34;m3.large.x86&#34;)
+     *                     .build(),
+     *                 GetPlansFilterArgs.builder()
+     *                     .attribute(&#34;available_in_metros&#34;)
+     *                     .values(&#34;sv&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
+     *             .hostname(&#34;example&#34;)
+     *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
+     *             .metro(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].availableInMetros()[0]))
+     *             .operatingSystem(&#34;ubuntu_20_04&#34;)
+     *             .billingCycle(&#34;hourly&#34;)
+     *             .projectId(var_.project_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetPlansArgs;
+     * import com.pulumi.equinix.metal.Device;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
+     *         final var examplePlans = MetalFunctions.getPlans();
+     * 
+     *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPlansResult> getPlansPlain(GetPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:metal/getPlans:getPlans", TypeShape.of(GetPlansResult.class), args, Utilities.withVersion(options));
     }
@@ -3545,41 +4715,6 @@ public final class MetalFunctions {
      * 
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
-     * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetVirtualCircuitResult> getVirtualCircuit(GetVirtualCircuitArgs args) {
         return getVirtualCircuit(args, InvokeOptions.Empty);
@@ -3589,41 +4724,6 @@ public final class MetalFunctions {
      * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
      * 
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
-     * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetVirtualCircuitResult> getVirtualCircuitPlain(GetVirtualCircuitPlainArgs args) {
@@ -3635,41 +4735,6 @@ public final class MetalFunctions {
      * 
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
-     * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetVirtualCircuitResult> getVirtualCircuit(GetVirtualCircuitArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getVirtualCircuit:getVirtualCircuit", TypeShape.of(GetVirtualCircuitResult.class), args, Utilities.withVersion(options));
@@ -3679,41 +4744,6 @@ public final class MetalFunctions {
      * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
      * 
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.equinix.metal.MetalFunctions;
-     * import com.pulumi.equinix.metal.inputs.GetInterconnectionArgs;
-     * import com.pulumi.equinix.metal.inputs.GetVirtualCircuitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleConnection = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
-     *             .connectionId(&#34;4347e805-eb46-4699-9eb9-5c116e6a017d&#34;)
-     *             .build());
-     * 
-     *         final var exampleVc = MetalFunctions.getVirtualCircuit(GetVirtualCircuitArgs.builder()
-     *             .virtualCircuitId(exampleConnection.applyValue(getInterconnectionResult -&gt; getInterconnectionResult.ports()[1].virtualCircuitIds()[0]))
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetVirtualCircuitResult> getVirtualCircuitPlain(GetVirtualCircuitPlainArgs args, InvokeOptions options) {

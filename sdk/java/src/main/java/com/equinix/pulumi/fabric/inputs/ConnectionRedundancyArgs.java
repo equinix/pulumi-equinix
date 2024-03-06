@@ -16,14 +16,14 @@ public final class ConnectionRedundancyArgs extends com.pulumi.resources.Resourc
     public static final ConnectionRedundancyArgs Empty = new ConnectionRedundancyArgs();
 
     /**
-     * Redundancy group identifier
+     * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return Redundancy group identifier
+     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
      * 
      */
     public Optional<Output<String>> group() {
@@ -31,14 +31,14 @@ public final class ConnectionRedundancyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Priority type- PRIMARY, SECONDARY
+     * Connection priority in redundancy group - PRIMARY, SECONDARY
      * 
      */
     @Import(name="priority")
     private @Nullable Output<String> priority;
 
     /**
-     * @return Priority type- PRIMARY, SECONDARY
+     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
      * 
      */
     public Optional<Output<String>> priority() {
@@ -71,7 +71,7 @@ public final class ConnectionRedundancyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param group Redundancy group identifier
+         * @param group Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ConnectionRedundancyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param group Redundancy group identifier
+         * @param group Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ConnectionRedundancyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param priority Priority type- PRIMARY, SECONDARY
+         * @param priority Connection priority in redundancy group - PRIMARY, SECONDARY
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ConnectionRedundancyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param priority Priority type- PRIMARY, SECONDARY
+         * @param priority Connection priority in redundancy group - PRIMARY, SECONDARY
          * 
          * @return builder
          * 

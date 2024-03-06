@@ -11,9 +11,387 @@ namespace Pulumi.Equinix.Metal
 {
     public static class GetPlans
     {
+        /// <summary>
+        /// Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetPlans.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansSortInputArgs
+        ///             {
+        ///                 Attribute = "pricing_hour",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "pricing_hour",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2.5",
+        ///                 },
+        ///                 MatchBy = "less_than",
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "available_in_metros",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "da",
+        ///                     "sv",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["plans"] = example.Apply(getPlansResult =&gt; getPlansResult.Plans),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetPlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "class",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "large",
+        ///                 },
+        ///                 MatchBy = "substring",
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "deployment_types",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "spot_market",
+        ///                 },
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "available_in_metros",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "da",
+        ///                     "sv",
+        ///                 },
+        ///                 All = true,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["plans"] = example.Apply(getPlansResult =&gt; getPlansResult.Plans),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Ignoring Changes to Plans/Metro
+        /// 
+        /// Preserve deployed device plan, facility and metro when creating a new execution plan.
+        /// 
+        /// As described in the `data-resource-behavior` feature as shown in the example below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var examplePlans = Equinix.Metal.GetPlans.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansSortInputArgs
+        ///             {
+        ///                 Attribute = "pricing_hour",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "name",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "c3.small.x86",
+        ///                     "c3.medium.x86",
+        ///                     "m3.large.x86",
+        ///                 },
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "available_in_metros",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "sv",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+        ///     // It will ignore future changes on plan and metro
+        ///     var exampleDevice = new Equinix.Metal.Device("exampleDevice", new()
+        ///     {
+        ///         Hostname = "example",
+        ///         Plan = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse&lt;Equinix.Metal.Plan.Plan&gt;),
+        ///         Metro = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.AvailableInMetros[0]),
+        ///         OperatingSystem = "ubuntu_20_04",
+        ///         BillingCycle = "hourly",
+        ///         ProjectId = @var.Project_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var ignorePlansMetrosChanges = config.GetBoolean("ignorePlansMetrosChanges") ?? false;
+        ///     var examplePlans = Equinix.Metal.GetPlans.Invoke();
+        /// 
+        ///     // required device arguments
+        ///     var exampleDevice = new Equinix.Metal.Device("exampleDevice");
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetPlansResult> InvokeAsync(GetPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetPlans.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansSortInputArgs
+        ///             {
+        ///                 Attribute = "pricing_hour",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "pricing_hour",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2.5",
+        ///                 },
+        ///                 MatchBy = "less_than",
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "available_in_metros",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "da",
+        ///                     "sv",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["plans"] = example.Apply(getPlansResult =&gt; getPlansResult.Plans),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Equinix.Metal.GetPlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "class",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "large",
+        ///                 },
+        ///                 MatchBy = "substring",
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "deployment_types",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "spot_market",
+        ///                 },
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "available_in_metros",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "da",
+        ///                     "sv",
+        ///                 },
+        ///                 All = true,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["plans"] = example.Apply(getPlansResult =&gt; getPlansResult.Plans),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Ignoring Changes to Plans/Metro
+        /// 
+        /// Preserve deployed device plan, facility and metro when creating a new execution plan.
+        /// 
+        /// As described in the `data-resource-behavior` feature as shown in the example below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var examplePlans = Equinix.Metal.GetPlans.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansSortInputArgs
+        ///             {
+        ///                 Attribute = "pricing_hour",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///         Filters = new[]
+        ///         {
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "name",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "c3.small.x86",
+        ///                     "c3.medium.x86",
+        ///                     "m3.large.x86",
+        ///                 },
+        ///             },
+        ///             new Equinix.Metal.Inputs.GetPlansFilterInputArgs
+        ///             {
+        ///                 Attribute = "available_in_metros",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "sv",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+        ///     // It will ignore future changes on plan and metro
+        ///     var exampleDevice = new Equinix.Metal.Device("exampleDevice", new()
+        ///     {
+        ///         Hostname = "example",
+        ///         Plan = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse&lt;Equinix.Metal.Plan.Plan&gt;),
+        ///         Metro = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.AvailableInMetros[0]),
+        ///         OperatingSystem = "ubuntu_20_04",
+        ///         BillingCycle = "hourly",
+        ///         ProjectId = @var.Project_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var ignorePlansMetrosChanges = config.GetBoolean("ignorePlansMetrosChanges") ?? false;
+        ///     var examplePlans = Equinix.Metal.GetPlans.Invoke();
+        /// 
+        ///     // required device arguments
+        ///     var exampleDevice = new Equinix.Metal.Device("exampleDevice");
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetPlansResult> Invoke(GetPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansInvokeArgs(), options.WithDefaults());
     }

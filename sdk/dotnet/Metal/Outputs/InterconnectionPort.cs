@@ -13,36 +13,36 @@ namespace Pulumi.Equinix.Metal.Outputs
     [OutputType]
     public sealed class InterconnectionPort
     {
-        public readonly string? Id;
-        public readonly string? LinkStatus;
+        public readonly string Id;
+        public readonly string LinkStatus;
         /// <summary>
         /// Name of the connection resource
         /// </summary>
-        public readonly string? Name;
-        public readonly string? Role;
+        public readonly string Name;
+        public readonly string Role;
         /// <summary>
-        /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
-        public readonly int? Speed;
+        public readonly int Speed;
         /// <summary>
         /// Status of the connection resource.
         /// </summary>
-        public readonly string? Status;
+        public readonly string Status;
         public readonly ImmutableArray<object> VirtualCircuitIds;
 
         [OutputConstructor]
         private InterconnectionPort(
-            string? id,
+            string id,
 
-            string? linkStatus,
+            string linkStatus,
 
-            string? name,
+            string name,
 
-            string? role,
+            string role,
 
-            int? speed,
+            int speed,
 
-            string? status,
+            string status,
 
             ImmutableArray<object> virtualCircuitIds)
         {

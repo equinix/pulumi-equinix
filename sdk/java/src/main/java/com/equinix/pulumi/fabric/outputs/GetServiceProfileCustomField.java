@@ -8,32 +8,82 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfileCustomField {
-    private Boolean captureInEmail;
+    /**
+     * @return Required field
+     * 
+     */
+    private @Nullable Boolean captureInEmail;
+    /**
+     * @return Data type
+     * 
+     */
     private String dataType;
-    private String description;
+    /**
+     * @return Description
+     * 
+     */
+    private @Nullable String description;
+    /**
+     * @return Label
+     * 
+     */
     private String label;
-    private List<String> options;
+    /**
+     * @return Options
+     * 
+     */
+    private @Nullable List<String> options;
+    /**
+     * @return Required field
+     * 
+     */
     private Boolean required;
 
     private GetServiceProfileCustomField() {}
-    public Boolean captureInEmail() {
-        return this.captureInEmail;
+    /**
+     * @return Required field
+     * 
+     */
+    public Optional<Boolean> captureInEmail() {
+        return Optional.ofNullable(this.captureInEmail);
     }
+    /**
+     * @return Data type
+     * 
+     */
     public String dataType() {
         return this.dataType;
     }
-    public String description() {
-        return this.description;
+    /**
+     * @return Description
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Label
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return Options
+     * 
+     */
     public List<String> options() {
-        return this.options;
+        return this.options == null ? List.of() : this.options;
     }
+    /**
+     * @return Required field
+     * 
+     */
     public Boolean required() {
         return this.required;
     }
@@ -47,11 +97,11 @@ public final class GetServiceProfileCustomField {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean captureInEmail;
+        private @Nullable Boolean captureInEmail;
         private String dataType;
-        private String description;
+        private @Nullable String description;
         private String label;
-        private List<String> options;
+        private @Nullable List<String> options;
         private Boolean required;
         public Builder() {}
         public Builder(GetServiceProfileCustomField defaults) {
@@ -65,8 +115,8 @@ public final class GetServiceProfileCustomField {
         }
 
         @CustomType.Setter
-        public Builder captureInEmail(Boolean captureInEmail) {
-            this.captureInEmail = Objects.requireNonNull(captureInEmail);
+        public Builder captureInEmail(@Nullable Boolean captureInEmail) {
+            this.captureInEmail = captureInEmail;
             return this;
         }
         @CustomType.Setter
@@ -75,8 +125,8 @@ public final class GetServiceProfileCustomField {
             return this;
         }
         @CustomType.Setter
-        public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+        public Builder description(@Nullable String description) {
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -85,8 +135,8 @@ public final class GetServiceProfileCustomField {
             return this;
         }
         @CustomType.Setter
-        public Builder options(List<String> options) {
-            this.options = Objects.requireNonNull(options);
+        public Builder options(@Nullable List<String> options) {
+            this.options = options;
             return this;
         }
         public Builder options(String... options) {

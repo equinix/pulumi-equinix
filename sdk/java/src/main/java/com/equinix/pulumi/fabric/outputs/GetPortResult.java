@@ -63,6 +63,10 @@ public final class GetPortResult {
      * 
      */
     private String id;
+    /**
+     * @return Port Lag
+     * 
+     */
     private Boolean lagEnabled;
     /**
      * @return Port location information
@@ -174,6 +178,10 @@ public final class GetPortResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Port Lag
+     * 
+     */
     public Boolean lagEnabled() {
         return this.lagEnabled;
     }

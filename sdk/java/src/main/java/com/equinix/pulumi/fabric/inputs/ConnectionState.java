@@ -107,6 +107,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * User-provided service description
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided service description
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Connection directionality from the requester point of view
      * 
      */
@@ -197,14 +212,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Order related to this connection information
+     * Order details
      * 
      */
     @Import(name="order")
     private @Nullable Output<ConnectionOrderArgs> order;
 
     /**
-     * @return Order related to this connection information
+     * @return Order details
      * 
      */
     public Optional<Output<ConnectionOrderArgs>> order() {
@@ -242,14 +257,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Routing protocol instance state
+     * Connection overall state
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Routing protocol instance state
+     * @return Connection overall state
      * 
      */
     public Optional<Output<String>> state() {
@@ -269,6 +284,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Either<String,ConnectionType>>> type() {
         return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * Equinix-assigned virtual gateway identifier
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return Equinix-assigned virtual gateway identifier
+     * 
+     */
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
     }
 
     /**
@@ -294,6 +324,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.additionalInfo = $.additionalInfo;
         this.bandwidth = $.bandwidth;
         this.changeLog = $.changeLog;
+        this.description = $.description;
         this.direction = $.direction;
         this.href = $.href;
         this.isRemote = $.isRemote;
@@ -305,6 +336,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.redundancy = $.redundancy;
         this.state = $.state;
         this.type = $.type;
+        this.uuid = $.uuid;
         this.zSide = $.zSide;
     }
 
@@ -439,6 +471,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder changeLog(ConnectionChangeLogArgs changeLog) {
             return changeLog(Output.of(changeLog));
+        }
+
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -578,7 +631,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Order related to this connection information
+         * @param order Order details
          * 
          * @return builder
          * 
@@ -589,7 +642,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Order related to this connection information
+         * @param order Order details
          * 
          * @return builder
          * 
@@ -641,7 +694,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Routing protocol instance state
+         * @param state Connection overall state
          * 
          * @return builder
          * 
@@ -652,7 +705,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Routing protocol instance state
+         * @param state Connection overall state
          * 
          * @return builder
          * 
@@ -700,6 +753,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(ConnectionType type) {
             return type(Either.ofRight(type));
+        }
+
+        /**
+         * @param uuid Equinix-assigned virtual gateway identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+        /**
+         * @param uuid Equinix-assigned virtual gateway identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
         }
 
         /**

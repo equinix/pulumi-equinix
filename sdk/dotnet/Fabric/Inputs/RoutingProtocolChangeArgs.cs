@@ -12,12 +12,21 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class RoutingProtocolChangeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Routing Protocol Change URI
+        /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
+        /// <summary>
+        /// Type of change
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Uniquely identifies a change
+        /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 

@@ -13,29 +13,29 @@ namespace Pulumi.Equinix.Metal.Outputs
     [OutputType]
     public sealed class InterconnectionServiceToken
     {
-        public readonly string? ExpiresAt;
-        public readonly string? Id;
-        public readonly string? MaxAllowedSpeed;
-        public readonly string? Role;
-        public readonly string? State;
+        public readonly string ExpiresAt;
+        public readonly string Id;
+        public readonly string MaxAllowedSpeed;
+        public readonly string Role;
+        public readonly string State;
         /// <summary>
         /// Connection type - dedicated or shared.
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private InterconnectionServiceToken(
-            string? expiresAt,
+            string expiresAt,
 
-            string? id,
+            string id,
 
-            string? maxAllowedSpeed,
+            string maxAllowedSpeed,
 
-            string? role,
+            string role,
 
-            string? state,
+            string state,
 
-            string? type)
+            string type)
         {
             ExpiresAt = expiresAt;
             Id = id;

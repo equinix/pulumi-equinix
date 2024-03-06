@@ -11,9 +11,59 @@ namespace Pulumi.Equinix.Fabric
 {
     public static class GetPort
     {
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch port by uuid
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var portDataName = Equinix.Fabric.GetPort.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_port&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetPortResult> InvokeAsync(GetPortArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("equinix:fabric/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch port by uuid
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var portDataName = Equinix.Fabric.GetPort.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_port&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:fabric/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
     }
@@ -87,6 +137,9 @@ namespace Pulumi.Equinix.Fabric
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Port Lag
+        /// </summary>
         public readonly bool LagEnabled;
         /// <summary>
         /// Port location information

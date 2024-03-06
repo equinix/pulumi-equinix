@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ServiceProfileMarketingInfoProcessStep
     {
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         public readonly string? Description;
         /// <summary>

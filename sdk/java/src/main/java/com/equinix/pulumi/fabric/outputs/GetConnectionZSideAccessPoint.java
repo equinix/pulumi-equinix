@@ -8,6 +8,7 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointGateway;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointInterface;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointLinkProtocol;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointLocation;
+import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointNetwork;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointPort;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointProfile;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPointRouter;
@@ -16,86 +17,200 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionZSideAccessPoint {
+    /**
+     * @return Account
+     * 
+     */
     private List<GetConnectionZSideAccessPointAccount> accounts;
-    private String authenticationKey;
     /**
+     * @return Authentication key for provider based connections
+     * 
+     */
+    private @Nullable String authenticationKey;
+    /**
+     * @return **Deprecated** `gateway` Use `router` attribute instead
+     * 
      * @deprecated
-     * router attribute will be returned instead
+     * use router attribute instead; gateway is no longer a part of the supported backend
      * 
      */
-    @Deprecated /* router attribute will be returned instead */
-    private List<GetConnectionZSideAccessPointGateway> gateways;
-    private List<GetConnectionZSideAccessPointInterface> interfaces;
-    private List<GetConnectionZSideAccessPointLinkProtocol> linkProtocols;
-    private List<GetConnectionZSideAccessPointLocation> locations;
-    private String peeringType;
-    private List<GetConnectionZSideAccessPointPort> ports;
-    private List<GetConnectionZSideAccessPointProfile> profiles;
-    private String providerConnectionId;
+    @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
+    private @Nullable GetConnectionZSideAccessPointGateway gateway;
     /**
-     * @return CloudRouter; Replaces `gateway` attribute (Set of Object)
+     * @return Virtual device interface
      * 
      */
-    private List<GetConnectionZSideAccessPointRouter> routers;
-    private String sellerRegion;
-    private String type;
-    private List<GetConnectionZSideAccessPointVirtualDevice> virtualDevices;
+    private @Nullable GetConnectionZSideAccessPointInterface interface_;
+    /**
+     * @return Connection link protocol
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPointLinkProtocol linkProtocol;
+    /**
+     * @return Access point location
+     * 
+     */
+    private GetConnectionZSideAccessPointLocation location;
+    /**
+     * @return network access point information
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPointNetwork network;
+    /**
+     * @return Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+     * 
+     */
+    private @Nullable String peeringType;
+    /**
+     * @return Port access point information
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPointPort port;
+    /**
+     * @return Service Profile
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPointProfile profile;
+    /**
+     * @return Provider assigned Connection Id
+     * 
+     */
+    private @Nullable String providerConnectionId;
+    /**
+     * @return Cloud Router access point information that replaces `gateway`
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPointRouter router;
+    /**
+     * @return Access point seller region
+     * 
+     */
+    private @Nullable String sellerRegion;
+    /**
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return Virtual device
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPointVirtualDevice virtualDevice;
 
     private GetConnectionZSideAccessPoint() {}
+    /**
+     * @return Account
+     * 
+     */
     public List<GetConnectionZSideAccessPointAccount> accounts() {
         return this.accounts;
     }
-    public String authenticationKey() {
-        return this.authenticationKey;
+    /**
+     * @return Authentication key for provider based connections
+     * 
+     */
+    public Optional<String> authenticationKey() {
+        return Optional.ofNullable(this.authenticationKey);
     }
     /**
+     * @return **Deprecated** `gateway` Use `router` attribute instead
+     * 
      * @deprecated
-     * router attribute will be returned instead
+     * use router attribute instead; gateway is no longer a part of the supported backend
      * 
      */
-    @Deprecated /* router attribute will be returned instead */
-    public List<GetConnectionZSideAccessPointGateway> gateways() {
-        return this.gateways;
-    }
-    public List<GetConnectionZSideAccessPointInterface> interfaces() {
-        return this.interfaces;
-    }
-    public List<GetConnectionZSideAccessPointLinkProtocol> linkProtocols() {
-        return this.linkProtocols;
-    }
-    public List<GetConnectionZSideAccessPointLocation> locations() {
-        return this.locations;
-    }
-    public String peeringType() {
-        return this.peeringType;
-    }
-    public List<GetConnectionZSideAccessPointPort> ports() {
-        return this.ports;
-    }
-    public List<GetConnectionZSideAccessPointProfile> profiles() {
-        return this.profiles;
-    }
-    public String providerConnectionId() {
-        return this.providerConnectionId;
+    @Deprecated /* use router attribute instead; gateway is no longer a part of the supported backend */
+    public Optional<GetConnectionZSideAccessPointGateway> gateway() {
+        return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return CloudRouter; Replaces `gateway` attribute (Set of Object)
+     * @return Virtual device interface
      * 
      */
-    public List<GetConnectionZSideAccessPointRouter> routers() {
-        return this.routers;
+    public Optional<GetConnectionZSideAccessPointInterface> interface_() {
+        return Optional.ofNullable(this.interface_);
     }
-    public String sellerRegion() {
-        return this.sellerRegion;
+    /**
+     * @return Connection link protocol
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPointLinkProtocol> linkProtocol() {
+        return Optional.ofNullable(this.linkProtocol);
     }
-    public String type() {
-        return this.type;
+    /**
+     * @return Access point location
+     * 
+     */
+    public GetConnectionZSideAccessPointLocation location() {
+        return this.location;
     }
-    public List<GetConnectionZSideAccessPointVirtualDevice> virtualDevices() {
-        return this.virtualDevices;
+    /**
+     * @return network access point information
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPointNetwork> network() {
+        return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+     * 
+     */
+    public Optional<String> peeringType() {
+        return Optional.ofNullable(this.peeringType);
+    }
+    /**
+     * @return Port access point information
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPointPort> port() {
+        return Optional.ofNullable(this.port);
+    }
+    /**
+     * @return Service Profile
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPointProfile> profile() {
+        return Optional.ofNullable(this.profile);
+    }
+    /**
+     * @return Provider assigned Connection Id
+     * 
+     */
+    public Optional<String> providerConnectionId() {
+        return Optional.ofNullable(this.providerConnectionId);
+    }
+    /**
+     * @return Cloud Router access point information that replaces `gateway`
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPointRouter> router() {
+        return Optional.ofNullable(this.router);
+    }
+    /**
+     * @return Access point seller region
+     * 
+     */
+    public Optional<String> sellerRegion() {
+        return Optional.ofNullable(this.sellerRegion);
+    }
+    /**
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+    /**
+     * @return Virtual device
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPointVirtualDevice> virtualDevice() {
+        return Optional.ofNullable(this.virtualDevice);
     }
 
     public static Builder builder() {
@@ -108,36 +223,38 @@ public final class GetConnectionZSideAccessPoint {
     @CustomType.Builder
     public static final class Builder {
         private List<GetConnectionZSideAccessPointAccount> accounts;
-        private String authenticationKey;
-        private List<GetConnectionZSideAccessPointGateway> gateways;
-        private List<GetConnectionZSideAccessPointInterface> interfaces;
-        private List<GetConnectionZSideAccessPointLinkProtocol> linkProtocols;
-        private List<GetConnectionZSideAccessPointLocation> locations;
-        private String peeringType;
-        private List<GetConnectionZSideAccessPointPort> ports;
-        private List<GetConnectionZSideAccessPointProfile> profiles;
-        private String providerConnectionId;
-        private List<GetConnectionZSideAccessPointRouter> routers;
-        private String sellerRegion;
-        private String type;
-        private List<GetConnectionZSideAccessPointVirtualDevice> virtualDevices;
+        private @Nullable String authenticationKey;
+        private @Nullable GetConnectionZSideAccessPointGateway gateway;
+        private @Nullable GetConnectionZSideAccessPointInterface interface_;
+        private @Nullable GetConnectionZSideAccessPointLinkProtocol linkProtocol;
+        private GetConnectionZSideAccessPointLocation location;
+        private @Nullable GetConnectionZSideAccessPointNetwork network;
+        private @Nullable String peeringType;
+        private @Nullable GetConnectionZSideAccessPointPort port;
+        private @Nullable GetConnectionZSideAccessPointProfile profile;
+        private @Nullable String providerConnectionId;
+        private @Nullable GetConnectionZSideAccessPointRouter router;
+        private @Nullable String sellerRegion;
+        private @Nullable String type;
+        private @Nullable GetConnectionZSideAccessPointVirtualDevice virtualDevice;
         public Builder() {}
         public Builder(GetConnectionZSideAccessPoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
     	      this.authenticationKey = defaults.authenticationKey;
-    	      this.gateways = defaults.gateways;
-    	      this.interfaces = defaults.interfaces;
-    	      this.linkProtocols = defaults.linkProtocols;
-    	      this.locations = defaults.locations;
+    	      this.gateway = defaults.gateway;
+    	      this.interface_ = defaults.interface_;
+    	      this.linkProtocol = defaults.linkProtocol;
+    	      this.location = defaults.location;
+    	      this.network = defaults.network;
     	      this.peeringType = defaults.peeringType;
-    	      this.ports = defaults.ports;
-    	      this.profiles = defaults.profiles;
+    	      this.port = defaults.port;
+    	      this.profile = defaults.profile;
     	      this.providerConnectionId = defaults.providerConnectionId;
-    	      this.routers = defaults.routers;
+    	      this.router = defaults.router;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.type = defaults.type;
-    	      this.virtualDevices = defaults.virtualDevices;
+    	      this.virtualDevice = defaults.virtualDevice;
         }
 
         @CustomType.Setter
@@ -149,110 +266,92 @@ public final class GetConnectionZSideAccessPoint {
             return accounts(List.of(accounts));
         }
         @CustomType.Setter
-        public Builder authenticationKey(String authenticationKey) {
-            this.authenticationKey = Objects.requireNonNull(authenticationKey);
+        public Builder authenticationKey(@Nullable String authenticationKey) {
+            this.authenticationKey = authenticationKey;
             return this;
         }
         @CustomType.Setter
-        public Builder gateways(List<GetConnectionZSideAccessPointGateway> gateways) {
-            this.gateways = Objects.requireNonNull(gateways);
+        public Builder gateway(@Nullable GetConnectionZSideAccessPointGateway gateway) {
+            this.gateway = gateway;
             return this;
         }
-        public Builder gateways(GetConnectionZSideAccessPointGateway... gateways) {
-            return gateways(List.of(gateways));
-        }
-        @CustomType.Setter
-        public Builder interfaces(List<GetConnectionZSideAccessPointInterface> interfaces) {
-            this.interfaces = Objects.requireNonNull(interfaces);
-            return this;
-        }
-        public Builder interfaces(GetConnectionZSideAccessPointInterface... interfaces) {
-            return interfaces(List.of(interfaces));
-        }
-        @CustomType.Setter
-        public Builder linkProtocols(List<GetConnectionZSideAccessPointLinkProtocol> linkProtocols) {
-            this.linkProtocols = Objects.requireNonNull(linkProtocols);
-            return this;
-        }
-        public Builder linkProtocols(GetConnectionZSideAccessPointLinkProtocol... linkProtocols) {
-            return linkProtocols(List.of(linkProtocols));
-        }
-        @CustomType.Setter
-        public Builder locations(List<GetConnectionZSideAccessPointLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
-            return this;
-        }
-        public Builder locations(GetConnectionZSideAccessPointLocation... locations) {
-            return locations(List.of(locations));
-        }
-        @CustomType.Setter
-        public Builder peeringType(String peeringType) {
-            this.peeringType = Objects.requireNonNull(peeringType);
+        @CustomType.Setter("interface")
+        public Builder interface_(@Nullable GetConnectionZSideAccessPointInterface interface_) {
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
-        public Builder ports(List<GetConnectionZSideAccessPointPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
-            return this;
-        }
-        public Builder ports(GetConnectionZSideAccessPointPort... ports) {
-            return ports(List.of(ports));
-        }
-        @CustomType.Setter
-        public Builder profiles(List<GetConnectionZSideAccessPointProfile> profiles) {
-            this.profiles = Objects.requireNonNull(profiles);
-            return this;
-        }
-        public Builder profiles(GetConnectionZSideAccessPointProfile... profiles) {
-            return profiles(List.of(profiles));
-        }
-        @CustomType.Setter
-        public Builder providerConnectionId(String providerConnectionId) {
-            this.providerConnectionId = Objects.requireNonNull(providerConnectionId);
+        public Builder linkProtocol(@Nullable GetConnectionZSideAccessPointLinkProtocol linkProtocol) {
+            this.linkProtocol = linkProtocol;
             return this;
         }
         @CustomType.Setter
-        public Builder routers(List<GetConnectionZSideAccessPointRouter> routers) {
-            this.routers = Objects.requireNonNull(routers);
-            return this;
-        }
-        public Builder routers(GetConnectionZSideAccessPointRouter... routers) {
-            return routers(List.of(routers));
-        }
-        @CustomType.Setter
-        public Builder sellerRegion(String sellerRegion) {
-            this.sellerRegion = Objects.requireNonNull(sellerRegion);
+        public Builder location(GetConnectionZSideAccessPointLocation location) {
+            this.location = Objects.requireNonNull(location);
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder network(@Nullable GetConnectionZSideAccessPointNetwork network) {
+            this.network = network;
             return this;
         }
         @CustomType.Setter
-        public Builder virtualDevices(List<GetConnectionZSideAccessPointVirtualDevice> virtualDevices) {
-            this.virtualDevices = Objects.requireNonNull(virtualDevices);
+        public Builder peeringType(@Nullable String peeringType) {
+            this.peeringType = peeringType;
             return this;
         }
-        public Builder virtualDevices(GetConnectionZSideAccessPointVirtualDevice... virtualDevices) {
-            return virtualDevices(List.of(virtualDevices));
+        @CustomType.Setter
+        public Builder port(@Nullable GetConnectionZSideAccessPointPort port) {
+            this.port = port;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder profile(@Nullable GetConnectionZSideAccessPointProfile profile) {
+            this.profile = profile;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConnectionId(@Nullable String providerConnectionId) {
+            this.providerConnectionId = providerConnectionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder router(@Nullable GetConnectionZSideAccessPointRouter router) {
+            this.router = router;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sellerRegion(@Nullable String sellerRegion) {
+            this.sellerRegion = sellerRegion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder virtualDevice(@Nullable GetConnectionZSideAccessPointVirtualDevice virtualDevice) {
+            this.virtualDevice = virtualDevice;
+            return this;
         }
         public GetConnectionZSideAccessPoint build() {
             final var _resultValue = new GetConnectionZSideAccessPoint();
             _resultValue.accounts = accounts;
             _resultValue.authenticationKey = authenticationKey;
-            _resultValue.gateways = gateways;
-            _resultValue.interfaces = interfaces;
-            _resultValue.linkProtocols = linkProtocols;
-            _resultValue.locations = locations;
+            _resultValue.gateway = gateway;
+            _resultValue.interface_ = interface_;
+            _resultValue.linkProtocol = linkProtocol;
+            _resultValue.location = location;
+            _resultValue.network = network;
             _resultValue.peeringType = peeringType;
-            _resultValue.ports = ports;
-            _resultValue.profiles = profiles;
+            _resultValue.port = port;
+            _resultValue.profile = profile;
             _resultValue.providerConnectionId = providerConnectionId;
-            _resultValue.routers = routers;
+            _resultValue.router = router;
             _resultValue.sellerRegion = sellerRegion;
             _resultValue.type = type;
-            _resultValue.virtualDevices = virtualDevices;
+            _resultValue.virtualDevice = virtualDevice;
             return _resultValue;
         }
     }

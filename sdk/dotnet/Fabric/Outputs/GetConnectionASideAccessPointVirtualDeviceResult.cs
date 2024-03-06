@@ -13,19 +13,35 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideAccessPointVirtualDeviceResult
     {
+        /// <summary>
+        /// Unique Resource Identifier
+        /// </summary>
         public readonly string Href;
-        public readonly string Type;
-        public readonly string Uuid;
+        /// <summary>
+        /// Customer-assigned Virtual Device Name
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Virtual Device type
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
+        /// Equinix-assigned Virtual Device identifier
+        /// </summary>
+        public readonly string? Uuid;
 
         [OutputConstructor]
         private GetConnectionASideAccessPointVirtualDeviceResult(
             string href,
 
-            string type,
+            string? name,
 
-            string uuid)
+            string? type,
+
+            string? uuid)
         {
             Href = href;
+            Name = name;
             Type = type;
             Uuid = uuid;
         }

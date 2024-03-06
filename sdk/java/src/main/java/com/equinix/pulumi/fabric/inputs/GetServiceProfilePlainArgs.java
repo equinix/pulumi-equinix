@@ -6,28 +6,11 @@ package com.equinix.pulumi.fabric.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetServiceProfilePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServiceProfilePlainArgs Empty = new GetServiceProfilePlainArgs();
-
-    /**
-     * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-     * 
-     */
-    @Import(name="state")
-    private @Nullable String state;
-
-    /**
-     * @return Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-     * 
-     */
-    public Optional<String> state() {
-        return Optional.ofNullable(this.state);
-    }
 
     @Import(name="uuid", required=true)
     private String uuid;
@@ -39,7 +22,6 @@ public final class GetServiceProfilePlainArgs extends com.pulumi.resources.Invok
     private GetServiceProfilePlainArgs() {}
 
     private GetServiceProfilePlainArgs(GetServiceProfilePlainArgs $) {
-        this.state = $.state;
         this.uuid = $.uuid;
     }
 
@@ -59,17 +41,6 @@ public final class GetServiceProfilePlainArgs extends com.pulumi.resources.Invok
 
         public Builder(GetServiceProfilePlainArgs defaults) {
             $ = new GetServiceProfilePlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param state Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(@Nullable String state) {
-            $.state = state;
-            return this;
         }
 
         public Builder uuid(String uuid) {

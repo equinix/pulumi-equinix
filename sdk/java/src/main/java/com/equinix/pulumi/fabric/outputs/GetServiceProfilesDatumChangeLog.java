@@ -9,53 +9,149 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfilesDatumChangeLog {
+    /**
+     * @return Created by User Key
+     * 
+     */
     private String createdBy;
+    /**
+     * @return Created by User Email Address
+     * 
+     */
     private String createdByEmail;
+    /**
+     * @return Created by User Full Name
+     * 
+     */
     private String createdByFullName;
+    /**
+     * @return Created by Date and Time
+     * 
+     */
     private String createdDateTime;
+    /**
+     * @return Deleted by User Key
+     * 
+     */
     private String deletedBy;
+    /**
+     * @return Deleted by User Email Address
+     * 
+     */
     private String deletedByEmail;
+    /**
+     * @return Deleted by User Full Name
+     * 
+     */
     private String deletedByFullName;
+    /**
+     * @return Deleted by Date and Time
+     * 
+     */
     private String deletedDateTime;
+    /**
+     * @return Updated by User Key
+     * 
+     */
     private String updatedBy;
+    /**
+     * @return Updated by User Email Address
+     * 
+     */
     private String updatedByEmail;
+    /**
+     * @return Updated by User Full Name
+     * 
+     */
     private String updatedByFullName;
+    /**
+     * @return Updated by Date and Time
+     * 
+     */
     private String updatedDateTime;
 
     private GetServiceProfilesDatumChangeLog() {}
+    /**
+     * @return Created by User Key
+     * 
+     */
     public String createdBy() {
         return this.createdBy;
     }
+    /**
+     * @return Created by User Email Address
+     * 
+     */
     public String createdByEmail() {
         return this.createdByEmail;
     }
+    /**
+     * @return Created by User Full Name
+     * 
+     */
     public String createdByFullName() {
         return this.createdByFullName;
     }
+    /**
+     * @return Created by Date and Time
+     * 
+     */
     public String createdDateTime() {
         return this.createdDateTime;
     }
+    /**
+     * @return Deleted by User Key
+     * 
+     */
     public String deletedBy() {
         return this.deletedBy;
     }
+    /**
+     * @return Deleted by User Email Address
+     * 
+     */
     public String deletedByEmail() {
         return this.deletedByEmail;
     }
+    /**
+     * @return Deleted by User Full Name
+     * 
+     */
     public String deletedByFullName() {
         return this.deletedByFullName;
     }
+    /**
+     * @return Deleted by Date and Time
+     * 
+     */
     public String deletedDateTime() {
         return this.deletedDateTime;
     }
+    /**
+     * @return Updated by User Key
+     * 
+     */
     public String updatedBy() {
         return this.updatedBy;
     }
+    /**
+     * @return Updated by User Email Address
+     * 
+     */
     public String updatedByEmail() {
         return this.updatedByEmail;
     }
+    /**
+     * @return Updated by User Full Name
+     * 
+     */
     public String updatedByFullName() {
         return this.updatedByFullName;
     }
+    /**
+     * @return Updated by Date and Time
+     * 
+     */
     public String updatedDateTime() {
         return this.updatedDateTime;
     }

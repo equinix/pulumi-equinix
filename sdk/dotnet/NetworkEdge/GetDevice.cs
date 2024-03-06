@@ -156,6 +156,14 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         public readonly string Connectivity;
         public readonly int CoreCount;
+        /// <summary>
+        /// diverse device uuid
+        /// </summary>
+        public readonly string DiverseDeviceId;
+        /// <summary>
+        /// Name of the device with diverse device UUID
+        /// </summary>
+        public readonly string DiverseDeviceName;
         public readonly string Hostname;
         /// <summary>
         /// Device location Equinix Business Exchange name
@@ -200,6 +208,7 @@ namespace Pulumi.Equinix.NetworkEdge
         public readonly ImmutableArray<string> Notifications;
         public readonly string OrderReference;
         public readonly string PackageCode;
+        public readonly string ProjectId;
         public readonly string PurchaseOrderNumber;
         /// <summary>
         /// Device redundancy type applicable for HA devices, either
@@ -279,6 +288,10 @@ namespace Pulumi.Equinix.NetworkEdge
 
             int coreCount,
 
+            string diverseDeviceId,
+
+            string diverseDeviceName,
+
             string hostname,
 
             string ibx,
@@ -308,6 +321,8 @@ namespace Pulumi.Equinix.NetworkEdge
             string orderReference,
 
             string packageCode,
+
+            string projectId,
 
             string purchaseOrderNumber,
 
@@ -357,6 +372,8 @@ namespace Pulumi.Equinix.NetworkEdge
             ClusterDetails = clusterDetails;
             Connectivity = connectivity;
             CoreCount = coreCount;
+            DiverseDeviceId = diverseDeviceId;
+            DiverseDeviceName = diverseDeviceName;
             Hostname = hostname;
             Ibx = ibx;
             Id = id;
@@ -372,6 +389,7 @@ namespace Pulumi.Equinix.NetworkEdge
             Notifications = notifications;
             OrderReference = orderReference;
             PackageCode = packageCode;
+            ProjectId = projectId;
             PurchaseOrderNumber = purchaseOrderNumber;
             RedundancyType = redundancyType;
             RedundantId = redundantId;

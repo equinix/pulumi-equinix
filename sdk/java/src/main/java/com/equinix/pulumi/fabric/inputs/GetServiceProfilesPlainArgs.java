@@ -48,14 +48,14 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      * 
      */
     @Import(name="viewPoint")
     private @Nullable String viewPoint;
 
     /**
-     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      * 
      */
     public Optional<String> viewPoint() {
@@ -121,7 +121,7 @@ public final class GetServiceProfilesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param viewPoint Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+         * @param viewPoint flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
          * 
          * @return builder
          * 

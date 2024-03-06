@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible data resource that allow user to fetch port by uuid
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.GetPort(ctx, &fabric.GetPortArgs{
+//				Uuid: "<uuid_of_port>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortResult
@@ -46,8 +73,9 @@ type GetPortResult struct {
 	// Port URI information
 	Href string `pulumi:"href"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	LagEnabled bool   `pulumi:"lagEnabled"`
+	Id string `pulumi:"id"`
+	// Port Lag
+	LagEnabled bool `pulumi:"lagEnabled"`
 	// Port location information
 	Location GetPortLocation `pulumi:"location"`
 	// Port name
@@ -151,6 +179,7 @@ func (o GetPortResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPortResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Port Lag
 func (o GetPortResultOutput) LagEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPortResult) bool { return v.LagEnabled }).(pulumi.BoolOutput)
 }

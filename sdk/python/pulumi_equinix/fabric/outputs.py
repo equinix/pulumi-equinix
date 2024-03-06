@@ -33,7 +33,6 @@ __all__ = [
     'ConnectionASideAccessPointProfile',
     'ConnectionASideAccessPointProfileAccessPointTypeConfig',
     'ConnectionASideAccessPointRouter',
-    'ConnectionASideAccessPointRoutingProtocol',
     'ConnectionASideAccessPointVirtualDevice',
     'ConnectionASideAdditionalInfo',
     'ConnectionASideServiceToken',
@@ -59,10 +58,15 @@ __all__ = [
     'ConnectionZSideAccessPointProfile',
     'ConnectionZSideAccessPointProfileAccessPointTypeConfig',
     'ConnectionZSideAccessPointRouter',
-    'ConnectionZSideAccessPointRoutingProtocol',
     'ConnectionZSideAccessPointVirtualDevice',
     'ConnectionZSideAdditionalInfo',
     'ConnectionZSideServiceToken',
+    'NetworkChange',
+    'NetworkChangeLog',
+    'NetworkLocation',
+    'NetworkNotification',
+    'NetworkOperation',
+    'NetworkProject',
     'RoutingProtocolBfd',
     'RoutingProtocolBgpIpv4',
     'RoutingProtocolBgpIpv6',
@@ -103,18 +107,16 @@ __all__ = [
     'GetConnectionASideAccessPointInterfaceResult',
     'GetConnectionASideAccessPointLinkProtocolResult',
     'GetConnectionASideAccessPointLocationResult',
+    'GetConnectionASideAccessPointNetworkResult',
     'GetConnectionASideAccessPointPortResult',
     'GetConnectionASideAccessPointPortRedundancyResult',
     'GetConnectionASideAccessPointProfileResult',
     'GetConnectionASideAccessPointProfileAccessPointTypeConfigResult',
-    'GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult',
-    'GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult',
-    'GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult',
     'GetConnectionASideAccessPointRouterResult',
     'GetConnectionASideAccessPointVirtualDeviceResult',
+    'GetConnectionASideAdditionalInfoResult',
     'GetConnectionASideServiceTokenResult',
     'GetConnectionAccountResult',
-    'GetConnectionAdditionalInfoResult',
     'GetConnectionChangeLogResult',
     'GetConnectionNotificationResult',
     'GetConnectionOperationResult',
@@ -130,16 +132,21 @@ __all__ = [
     'GetConnectionZSideAccessPointInterfaceResult',
     'GetConnectionZSideAccessPointLinkProtocolResult',
     'GetConnectionZSideAccessPointLocationResult',
+    'GetConnectionZSideAccessPointNetworkResult',
     'GetConnectionZSideAccessPointPortResult',
     'GetConnectionZSideAccessPointPortRedundancyResult',
     'GetConnectionZSideAccessPointProfileResult',
     'GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult',
-    'GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult',
-    'GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult',
-    'GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult',
     'GetConnectionZSideAccessPointRouterResult',
     'GetConnectionZSideAccessPointVirtualDeviceResult',
+    'GetConnectionZSideAdditionalInfoResult',
     'GetConnectionZSideServiceTokenResult',
+    'GetNetworkChangeResult',
+    'GetNetworkChangeLogResult',
+    'GetNetworkLocationResult',
+    'GetNetworkNotificationResult',
+    'GetNetworkOperationResult',
+    'GetNetworkProjectResult',
     'GetPortAccountResult',
     'GetPortChangeLogResult',
     'GetPortDeviceResult',
@@ -182,6 +189,8 @@ __all__ = [
     'GetServiceProfilePortResult',
     'GetServiceProfilePortLocationResult',
     'GetServiceProfileProjectResult',
+    'GetServiceProfileVirtualDeviceResult',
+    'GetServiceProfileVirtualDeviceLocationResult',
     'GetServiceProfilesDatumResult',
     'GetServiceProfilesDatumAccessPointTypeConfigResult',
     'GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult',
@@ -197,6 +206,8 @@ __all__ = [
     'GetServiceProfilesDatumPortResult',
     'GetServiceProfilesDatumPortLocationResult',
     'GetServiceProfilesDatumProjectResult',
+    'GetServiceProfilesDatumVirtualDeviceResult',
+    'GetServiceProfilesDatumVirtualDeviceLocationResult',
     'GetServiceProfilesFilterResult',
     'GetServiceProfilesSortResult',
 ]
@@ -291,6 +302,20 @@ class CloudRouterChangeLog(dict):
                  updated_by_email: Optional[str] = None,
                  updated_by_full_name: Optional[str] = None,
                  updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
@@ -319,61 +344,97 @@ class CloudRouterChangeLog(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -730,8 +791,6 @@ class ConnectionASideAccessPoint(dict):
             suggest = "peering_type"
         elif key == "providerConnectionId":
             suggest = "provider_connection_id"
-        elif key == "routingProtocols":
-            suggest = "routing_protocols"
         elif key == "sellerRegion":
             suggest = "seller_region"
         elif key == "virtualDevice":
@@ -761,23 +820,22 @@ class ConnectionASideAccessPoint(dict):
                  profile: Optional['outputs.ConnectionASideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
                  router: Optional['outputs.ConnectionASideAccessPointRouter'] = None,
-                 routing_protocols: Optional[Sequence['outputs.ConnectionASideAccessPointRoutingProtocol']] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
                  virtual_device: Optional['outputs.ConnectionASideAccessPointVirtualDevice'] = None):
         """
         :param 'ConnectionASideAccessPointAccountArgs' account: Account
         :param str authentication_key: Authentication key for provider based connections
+        :param 'ConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'ConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
         :param 'ConnectionASideAccessPointLocationArgs' location: Access point location
-        :param 'ConnectionASideAccessPointNetworkArgs' network: Simplified Network
+        :param 'ConnectionASideAccessPointNetworkArgs' network: network access point information
         :param Union[str, 'AccessPointPeeringType'] peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'ConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionASideAccessPointProfileArgs' profile: Service Profile
         :param str provider_connection_id: Provider assigned Connection Id
-        :param 'ConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
-        :param Sequence['ConnectionASideAccessPointRoutingProtocolArgs'] routing_protocols: Access point routing protocols configuration
+        :param 'ConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param Union[str, 'AccessPointType'] type: Interface type
         :param 'ConnectionASideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
@@ -806,8 +864,6 @@ class ConnectionASideAccessPoint(dict):
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
-        if routing_protocols is not None:
-            pulumi.set(__self__, "routing_protocols", routing_protocols)
         if seller_region is not None:
             pulumi.set(__self__, "seller_region", seller_region)
         if type is not None:
@@ -834,6 +890,9 @@ class ConnectionASideAccessPoint(dict):
     @property
     @pulumi.getter
     def gateway(self) -> Optional['outputs.ConnectionASideAccessPointGateway']:
+        """
+        **Deprecated** `gateway` Use `router` attribute instead
+        """
         warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
         pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
 
@@ -867,7 +926,7 @@ class ConnectionASideAccessPoint(dict):
     @pulumi.getter
     def network(self) -> Optional['outputs.ConnectionASideAccessPointNetwork']:
         """
-        Simplified Network
+        network access point information
         """
         return pulumi.get(self, "network")
 
@@ -907,17 +966,9 @@ class ConnectionASideAccessPoint(dict):
     @pulumi.getter
     def router(self) -> Optional['outputs.ConnectionASideAccessPointRouter']:
         """
-        Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+        Cloud Router access point information that replaces `gateway`
         """
         return pulumi.get(self, "router")
-
-    @property
-    @pulumi.getter(name="routingProtocols")
-    def routing_protocols(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointRoutingProtocol']]:
-        """
-        Access point routing protocols configuration
-        """
-        return pulumi.get(self, "routing_protocols")
 
     @property
     @pulumi.getter(name="sellerRegion")
@@ -963,6 +1014,8 @@ class ConnectionASideAccessPointAccount(dict):
             suggest = "org_id"
         elif key == "organizationName":
             suggest = "organization_name"
+        elif key == "ucmId":
+            suggest = "ucm_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionASideAccessPointAccount. Access the value via the '{suggest}' property getter instead.")
@@ -982,7 +1035,18 @@ class ConnectionASideAccessPointAccount(dict):
                  global_org_id: Optional[str] = None,
                  global_organization_name: Optional[str] = None,
                  org_id: Optional[int] = None,
-                 organization_name: Optional[str] = None):
+                 organization_name: Optional[str] = None,
+                 ucm_id: Optional[str] = None):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
@@ -997,41 +1061,72 @@ class ConnectionASideAccessPointAccount(dict):
             pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
             pulumi.set(__self__, "organization_name", organization_name)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[str]:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> Optional[int]:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> Optional[str]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> Optional[str]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> Optional[str]:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[int]:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[str]:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[str]:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
@@ -1041,7 +1136,7 @@ class ConnectionASideAccessPointGateway(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1060,7 +1155,7 @@ class ConnectionASideAccessPointGateway(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1074,7 +1169,7 @@ class ConnectionASideAccessPointInterface(dict):
         """
         :param int id: id
         :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -1103,7 +1198,7 @@ class ConnectionASideAccessPointInterface(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1265,7 +1360,7 @@ class ConnectionASideAccessPointNetwork(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1284,7 +1379,7 @@ class ConnectionASideAccessPointNetwork(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1300,7 +1395,7 @@ class ConnectionASideAccessPointPort(dict):
         :param str href: Unique Resource Identifier
         :param str name: Port name
         :param Sequence['ConnectionASideAccessPointPortRedundancyArgs'] redundancies: Redundancy Information
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1339,7 +1434,7 @@ class ConnectionASideAccessPointPort(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1347,18 +1442,42 @@ class ConnectionASideAccessPointPort(dict):
 @pulumi.output_type
 class ConnectionASideAccessPointPortRedundancy(dict):
     def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group: Optional[str] = None,
                  priority: Optional[str] = None):
         """
-        :param str priority: Priority type- PRIMARY, SECONDARY
+        :param bool enabled: Access point redundancy
+        :param str group: Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        :param str priority: Connection priority in redundancy group - PRIMARY, SECONDARY
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Access point redundancy
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[str]:
         """
-        Priority type- PRIMARY, SECONDARY
+        Connection priority in redundancy group - PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
 
@@ -1391,7 +1510,7 @@ class ConnectionASideAccessPointProfile(dict):
                  name: Optional[str] = None):
         """
         :param Union[str, 'ProfileType'] type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         :param Sequence['ConnectionASideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
         :param str description: User-provided service description
         :param str href: Unique Resource Identifier
@@ -1420,7 +1539,7 @@ class ConnectionASideAccessPointProfile(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1464,7 +1583,7 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
                  uuid: Optional[str] = None):
         """
         :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -1483,7 +1602,7 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1495,7 +1614,7 @@ class ConnectionASideAccessPointRouter(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1514,50 +1633,7 @@ class ConnectionASideAccessPointRouter(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
-        """
-        return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
-class ConnectionASideAccessPointRoutingProtocol(dict):
-    def __init__(__self__, *,
-                 state: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
-        """
-        :param str state: Routing protocol instance state
-        :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
-        """
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[str]:
-        """
-        Routing protocol instance state
-        """
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Interface type
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1573,7 +1649,7 @@ class ConnectionASideAccessPointVirtualDevice(dict):
         :param str href: Unique Resource Identifier
         :param str name: Port name
         :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1612,7 +1688,7 @@ class ConnectionASideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1659,7 +1735,7 @@ class ConnectionASideServiceToken(dict):
         :param str description: User-provided service description
         :param str href: Unique Resource Identifier
         :param Union[str, 'ServiceTokenType'] type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1698,7 +1774,7 @@ class ConnectionASideServiceToken(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1722,6 +1798,8 @@ class ConnectionAccount(dict):
             suggest = "org_id"
         elif key == "organizationName":
             suggest = "organization_name"
+        elif key == "ucmId":
+            suggest = "ucm_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionAccount. Access the value via the '{suggest}' property getter instead.")
@@ -1741,7 +1819,18 @@ class ConnectionAccount(dict):
                  global_org_id: Optional[str] = None,
                  global_organization_name: Optional[str] = None,
                  org_id: Optional[int] = None,
-                 organization_name: Optional[str] = None):
+                 organization_name: Optional[str] = None,
+                 ucm_id: Optional[str] = None):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
@@ -1756,41 +1845,72 @@ class ConnectionAccount(dict):
             pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
             pulumi.set(__self__, "organization_name", organization_name)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[str]:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> Optional[int]:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> Optional[str]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> Optional[str]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> Optional[str]:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[int]:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[str]:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[str]:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
@@ -1847,6 +1967,20 @@ class ConnectionChangeLog(dict):
                  updated_by_email: Optional[str] = None,
                  updated_by_full_name: Optional[str] = None,
                  updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
@@ -1875,61 +2009,97 @@ class ConnectionChangeLog(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -2016,6 +2186,11 @@ class ConnectionOperation(dict):
                  equinix_status: Optional[str] = None,
                  errors: Optional[Sequence['outputs.ConnectionOperationError']] = None,
                  provider_status: Optional[str] = None):
+        """
+        :param str equinix_status: Connection status
+        :param Sequence['ConnectionOperationErrorArgs'] errors: Errors occurred
+        :param str provider_status: Connection provider readiness status
+        """
         if equinix_status is not None:
             pulumi.set(__self__, "equinix_status", equinix_status)
         if errors is not None:
@@ -2026,16 +2201,25 @@ class ConnectionOperation(dict):
     @property
     @pulumi.getter(name="equinixStatus")
     def equinix_status(self) -> Optional[str]:
+        """
+        Connection status
+        """
         return pulumi.get(self, "equinix_status")
 
     @property
     @pulumi.getter
     def errors(self) -> Optional[Sequence['outputs.ConnectionOperationError']]:
+        """
+        Errors occurred
+        """
         return pulumi.get(self, "errors")
 
     @property
     @pulumi.getter(name="providerStatus")
     def provider_status(self) -> Optional[str]:
+        """
+        Connection provider readiness status
+        """
         return pulumi.get(self, "provider_status")
 
 
@@ -2073,6 +2257,11 @@ class ConnectionOperationError(dict):
                  help: Optional[str] = None):
         """
         :param Sequence['ConnectionOperationErrorAdditionalInfoArgs'] additional_info: Connection side additional information
+        :param str correlation_id: CorrelationId
+        :param str details: Details
+        :param str error_code: Error  code
+        :param str error_message: Error Message
+        :param str help: Help
         """
         if additional_info is not None:
             pulumi.set(__self__, "additional_info", additional_info)
@@ -2098,26 +2287,41 @@ class ConnectionOperationError(dict):
     @property
     @pulumi.getter(name="correlationId")
     def correlation_id(self) -> Optional[str]:
+        """
+        CorrelationId
+        """
         return pulumi.get(self, "correlation_id")
 
     @property
     @pulumi.getter
     def details(self) -> Optional[str]:
+        """
+        Details
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> Optional[str]:
+        """
+        Error  code
+        """
         return pulumi.get(self, "error_code")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> Optional[str]:
+        """
+        Error Message
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def help(self) -> Optional[str]:
+        """
+        Help
+        """
         return pulumi.get(self, "help")
 
 
@@ -2126,6 +2330,10 @@ class ConnectionOperationErrorAdditionalInfo(dict):
     def __init__(__self__, *,
                  property: Optional[str] = None,
                  reason: Optional[str] = None):
+        """
+        :param str property: Property at which the error potentially occurred
+        :param str reason: Reason for the error
+        """
         if property is not None:
             pulumi.set(__self__, "property", property)
         if reason is not None:
@@ -2134,11 +2342,17 @@ class ConnectionOperationErrorAdditionalInfo(dict):
     @property
     @pulumi.getter
     def reason(self) -> Optional[str]:
+        """
+        Reason for the error
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        Property at which the error potentially occurred
+        """
         return pulumi.get(self, "property")
 
 
@@ -2274,8 +2488,8 @@ class ConnectionRedundancy(dict):
                  group: Optional[str] = None,
                  priority: Optional[str] = None):
         """
-        :param str group: Redundancy group identifier
-        :param str priority: Priority type- PRIMARY, SECONDARY
+        :param str group: Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        :param str priority: Connection priority in redundancy group - PRIMARY, SECONDARY
         """
         if group is not None:
             pulumi.set(__self__, "group", group)
@@ -2286,7 +2500,7 @@ class ConnectionRedundancy(dict):
     @pulumi.getter
     def group(self) -> Optional[str]:
         """
-        Redundancy group identifier
+        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
         """
         return pulumi.get(self, "group")
 
@@ -2294,7 +2508,7 @@ class ConnectionRedundancy(dict):
     @pulumi.getter
     def priority(self) -> Optional[str]:
         """
-        Priority type- PRIMARY, SECONDARY
+        Connection priority in redundancy group - PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
 
@@ -2376,8 +2590,6 @@ class ConnectionZSideAccessPoint(dict):
             suggest = "peering_type"
         elif key == "providerConnectionId":
             suggest = "provider_connection_id"
-        elif key == "routingProtocols":
-            suggest = "routing_protocols"
         elif key == "sellerRegion":
             suggest = "seller_region"
         elif key == "virtualDevice":
@@ -2407,23 +2619,22 @@ class ConnectionZSideAccessPoint(dict):
                  profile: Optional['outputs.ConnectionZSideAccessPointProfile'] = None,
                  provider_connection_id: Optional[str] = None,
                  router: Optional['outputs.ConnectionZSideAccessPointRouter'] = None,
-                 routing_protocols: Optional[Sequence['outputs.ConnectionZSideAccessPointRoutingProtocol']] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
                  virtual_device: Optional['outputs.ConnectionZSideAccessPointVirtualDevice'] = None):
         """
         :param 'ConnectionZSideAccessPointAccountArgs' account: Account
         :param str authentication_key: Authentication key for provider based connections
+        :param 'ConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'ConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
         :param 'ConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
         :param 'ConnectionZSideAccessPointLocationArgs' location: Access point location
-        :param 'ConnectionZSideAccessPointNetworkArgs' network: Simplified Network
+        :param 'ConnectionZSideAccessPointNetworkArgs' network: network access point information
         :param Union[str, 'AccessPointPeeringType'] peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'ConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'ConnectionZSideAccessPointProfileArgs' profile: Service Profile
         :param str provider_connection_id: Provider assigned Connection Id
-        :param 'ConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
-        :param Sequence['ConnectionZSideAccessPointRoutingProtocolArgs'] routing_protocols: Access point routing protocols configuration
+        :param 'ConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param Union[str, 'AccessPointType'] type: Interface type
         :param 'ConnectionZSideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
@@ -2452,8 +2663,6 @@ class ConnectionZSideAccessPoint(dict):
             pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
-        if routing_protocols is not None:
-            pulumi.set(__self__, "routing_protocols", routing_protocols)
         if seller_region is not None:
             pulumi.set(__self__, "seller_region", seller_region)
         if type is not None:
@@ -2480,6 +2689,9 @@ class ConnectionZSideAccessPoint(dict):
     @property
     @pulumi.getter
     def gateway(self) -> Optional['outputs.ConnectionZSideAccessPointGateway']:
+        """
+        **Deprecated** `gateway` Use `router` attribute instead
+        """
         warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
         pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
 
@@ -2513,7 +2725,7 @@ class ConnectionZSideAccessPoint(dict):
     @pulumi.getter
     def network(self) -> Optional['outputs.ConnectionZSideAccessPointNetwork']:
         """
-        Simplified Network
+        network access point information
         """
         return pulumi.get(self, "network")
 
@@ -2553,17 +2765,9 @@ class ConnectionZSideAccessPoint(dict):
     @pulumi.getter
     def router(self) -> Optional['outputs.ConnectionZSideAccessPointRouter']:
         """
-        Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+        Cloud Router access point information that replaces `gateway`
         """
         return pulumi.get(self, "router")
-
-    @property
-    @pulumi.getter(name="routingProtocols")
-    def routing_protocols(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointRoutingProtocol']]:
-        """
-        Access point routing protocols configuration
-        """
-        return pulumi.get(self, "routing_protocols")
 
     @property
     @pulumi.getter(name="sellerRegion")
@@ -2609,6 +2813,8 @@ class ConnectionZSideAccessPointAccount(dict):
             suggest = "org_id"
         elif key == "organizationName":
             suggest = "organization_name"
+        elif key == "ucmId":
+            suggest = "ucm_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionZSideAccessPointAccount. Access the value via the '{suggest}' property getter instead.")
@@ -2628,7 +2834,18 @@ class ConnectionZSideAccessPointAccount(dict):
                  global_org_id: Optional[str] = None,
                  global_organization_name: Optional[str] = None,
                  org_id: Optional[int] = None,
-                 organization_name: Optional[str] = None):
+                 organization_name: Optional[str] = None,
+                 ucm_id: Optional[str] = None):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
         if account_number is not None:
@@ -2643,41 +2860,72 @@ class ConnectionZSideAccessPointAccount(dict):
             pulumi.set(__self__, "org_id", org_id)
         if organization_name is not None:
             pulumi.set(__self__, "organization_name", organization_name)
+        if ucm_id is not None:
+            pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[str]:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> Optional[int]:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> Optional[str]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> Optional[str]:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> Optional[str]:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[int]:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[str]:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> Optional[str]:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
@@ -2687,7 +2935,7 @@ class ConnectionZSideAccessPointGateway(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -2706,7 +2954,7 @@ class ConnectionZSideAccessPointGateway(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -2720,7 +2968,7 @@ class ConnectionZSideAccessPointInterface(dict):
         """
         :param int id: id
         :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -2749,7 +2997,7 @@ class ConnectionZSideAccessPointInterface(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -2911,7 +3159,7 @@ class ConnectionZSideAccessPointNetwork(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -2930,7 +3178,7 @@ class ConnectionZSideAccessPointNetwork(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -2946,7 +3194,7 @@ class ConnectionZSideAccessPointPort(dict):
         :param str href: Unique Resource Identifier
         :param str name: Port name
         :param Sequence['ConnectionZSideAccessPointPortRedundancyArgs'] redundancies: Redundancy Information
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -2985,7 +3233,7 @@ class ConnectionZSideAccessPointPort(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -2993,18 +3241,42 @@ class ConnectionZSideAccessPointPort(dict):
 @pulumi.output_type
 class ConnectionZSideAccessPointPortRedundancy(dict):
     def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group: Optional[str] = None,
                  priority: Optional[str] = None):
         """
-        :param str priority: Priority type- PRIMARY, SECONDARY
+        :param bool enabled: Access point redundancy
+        :param str group: Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        :param str priority: Connection priority in redundancy group - PRIMARY, SECONDARY
         """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Access point redundancy
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[str]:
         """
-        Priority type- PRIMARY, SECONDARY
+        Connection priority in redundancy group - PRIMARY, SECONDARY
         """
         return pulumi.get(self, "priority")
 
@@ -3037,7 +3309,7 @@ class ConnectionZSideAccessPointProfile(dict):
                  name: Optional[str] = None):
         """
         :param Union[str, 'ProfileType'] type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         :param Sequence['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
         :param str description: User-provided service description
         :param str href: Unique Resource Identifier
@@ -3066,7 +3338,7 @@ class ConnectionZSideAccessPointProfile(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3110,7 +3382,7 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
                  uuid: Optional[str] = None):
         """
         :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -3129,7 +3401,7 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3141,7 +3413,7 @@ class ConnectionZSideAccessPointRouter(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -3160,50 +3432,7 @@ class ConnectionZSideAccessPointRouter(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
-        """
-        return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
-class ConnectionZSideAccessPointRoutingProtocol(dict):
-    def __init__(__self__, *,
-                 state: Optional[str] = None,
-                 type: Optional[str] = None,
-                 uuid: Optional[str] = None):
-        """
-        :param str state: Routing protocol instance state
-        :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
-        """
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[str]:
-        """
-        Routing protocol instance state
-        """
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Interface type
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3219,7 +3448,7 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
         :param str href: Unique Resource Identifier
         :param str name: Port name
         :param str type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -3258,7 +3487,7 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3305,7 +3534,7 @@ class ConnectionZSideServiceToken(dict):
         :param str description: User-provided service description
         :param str href: Unique Resource Identifier
         :param Union[str, 'ServiceTokenType'] type: Interface type
-        :param str uuid: Equinix-assigned interface identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -3344,9 +3573,447 @@ class ConnectionZSideServiceToken(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned interface identifier
+        Equinix-assigned virtual gateway identifier
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class NetworkChange(dict):
+    def __init__(__self__, *,
+                 href: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Absolute URL that returns the details of the given change.
+               Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+        :param str type: Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+        :param str uuid: Asset change request identifier.
+        """
+        if href is not None:
+            pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[str]:
+        """
+        Absolute URL that returns the details of the given change.
+        Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Asset change request identifier.
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class NetworkChangeLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBy":
+            suggest = "created_by"
+        elif key == "createdByEmail":
+            suggest = "created_by_email"
+        elif key == "createdByFullName":
+            suggest = "created_by_full_name"
+        elif key == "createdDateTime":
+            suggest = "created_date_time"
+        elif key == "deletedBy":
+            suggest = "deleted_by"
+        elif key == "deletedByEmail":
+            suggest = "deleted_by_email"
+        elif key == "deletedByFullName":
+            suggest = "deleted_by_full_name"
+        elif key == "deletedDateTime":
+            suggest = "deleted_date_time"
+        elif key == "updatedBy":
+            suggest = "updated_by"
+        elif key == "updatedByEmail":
+            suggest = "updated_by_email"
+        elif key == "updatedByFullName":
+            suggest = "updated_by_full_name"
+        elif key == "updatedDateTime":
+            suggest = "updated_date_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkChangeLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkChangeLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkChangeLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_by: Optional[str] = None,
+                 created_by_email: Optional[str] = None,
+                 created_by_full_name: Optional[str] = None,
+                 created_date_time: Optional[str] = None,
+                 deleted_by: Optional[str] = None,
+                 deleted_by_email: Optional[str] = None,
+                 deleted_by_full_name: Optional[str] = None,
+                 deleted_date_time: Optional[str] = None,
+                 updated_by: Optional[str] = None,
+                 updated_by_email: Optional[str] = None,
+                 updated_by_full_name: Optional[str] = None,
+                 updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if created_by_email is not None:
+            pulumi.set(__self__, "created_by_email", created_by_email)
+        if created_by_full_name is not None:
+            pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        if created_date_time is not None:
+            pulumi.set(__self__, "created_date_time", created_date_time)
+        if deleted_by is not None:
+            pulumi.set(__self__, "deleted_by", deleted_by)
+        if deleted_by_email is not None:
+            pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        if deleted_by_full_name is not None:
+            pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        if deleted_date_time is not None:
+            pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if updated_by_email is not None:
+            pulumi.set(__self__, "updated_by_email", updated_by_email)
+        if updated_by_full_name is not None:
+            pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        if updated_date_time is not None:
+            pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class NetworkLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metroCode":
+            suggest = "metro_code"
+        elif key == "metroName":
+            suggest = "metro_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ibx: Optional[str] = None,
+                 metro_code: Optional[str] = None,
+                 metro_name: Optional[str] = None,
+                 region: Optional[str] = None):
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
+        if ibx is not None:
+            pulumi.set(__self__, "ibx", ibx)
+        if metro_code is not None:
+            pulumi.set(__self__, "metro_code", metro_code)
+        if metro_name is not None:
+            pulumi.set(__self__, "metro_name", metro_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> Optional[str]:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> Optional[str]:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> Optional[str]:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class NetworkNotification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sendInterval":
+            suggest = "send_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkNotification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkNotification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkNotification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 emails: Sequence[str],
+                 type: str,
+                 send_interval: Optional[str] = None):
+        """
+        :param Sequence[str] emails: Array of contact emails
+        :param str type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param str send_interval: Send interval
+        """
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[str]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
+
+
+@pulumi.output_type
+class NetworkOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "equinixStatus":
+            suggest = "equinix_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 equinix_status: Optional[str] = None):
+        """
+        :param str equinix_status: Progress towards provisioning a given asset.
+        """
+        if equinix_status is not None:
+            pulumi.set(__self__, "equinix_status", equinix_status)
+
+    @property
+    @pulumi.getter(name="equinixStatus")
+    def equinix_status(self) -> Optional[str]:
+        """
+        Progress towards provisioning a given asset.
+        """
+        return pulumi.get(self, "equinix_status")
+
+
+@pulumi.output_type
+class NetworkProject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkProject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkProject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkProject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Customer project identifier
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Customer project identifier
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type
@@ -3507,6 +4174,11 @@ class RoutingProtocolChange(dict):
                  href: Optional[str] = None,
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
+        """
+        :param str href: Routing Protocol Change URI
+        :param str type: Type of change
+        :param str uuid: Uniquely identifies a change
+        """
         if href is not None:
             pulumi.set(__self__, "href", href)
         if type is not None:
@@ -3517,16 +4189,25 @@ class RoutingProtocolChange(dict):
     @property
     @pulumi.getter
     def href(self) -> Optional[str]:
+        """
+        Routing Protocol Change URI
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Type of change
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> Optional[str]:
+        """
+        Uniquely identifies a change
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -3584,6 +4265,20 @@ class RoutingProtocolChangeLog(dict):
                  updated_by_email: Optional[str] = None,
                  updated_by_full_name: Optional[str] = None,
                  updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
@@ -3612,61 +4307,97 @@ class RoutingProtocolChangeLog(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -3745,12 +4476,18 @@ class RoutingProtocolDirectIpv6(dict):
 class RoutingProtocolOperation(dict):
     def __init__(__self__, *,
                  errors: Optional[Sequence['outputs.RoutingProtocolOperationError']] = None):
+        """
+        :param Sequence['RoutingProtocolOperationErrorArgs'] errors: Errors occurred
+        """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
 
     @property
     @pulumi.getter
     def errors(self) -> Optional[Sequence['outputs.RoutingProtocolOperationError']]:
+        """
+        Errors occurred
+        """
         return pulumi.get(self, "errors")
 
 
@@ -3786,6 +4523,14 @@ class RoutingProtocolOperationError(dict):
                  error_code: Optional[str] = None,
                  error_message: Optional[str] = None,
                  help: Optional[str] = None):
+        """
+        :param Sequence['RoutingProtocolOperationErrorAdditionalInfoArgs'] additional_infos: Pricing error additional Info
+        :param str correlation_id: CorrelationId
+        :param str details: Details
+        :param str error_code: Error  code
+        :param str error_message: Error Message
+        :param str help: Help
+        """
         if additional_infos is not None:
             pulumi.set(__self__, "additional_infos", additional_infos)
         if correlation_id is not None:
@@ -3802,31 +4547,49 @@ class RoutingProtocolOperationError(dict):
     @property
     @pulumi.getter(name="additionalInfos")
     def additional_infos(self) -> Optional[Sequence['outputs.RoutingProtocolOperationErrorAdditionalInfo']]:
+        """
+        Pricing error additional Info
+        """
         return pulumi.get(self, "additional_infos")
 
     @property
     @pulumi.getter(name="correlationId")
     def correlation_id(self) -> Optional[str]:
+        """
+        CorrelationId
+        """
         return pulumi.get(self, "correlation_id")
 
     @property
     @pulumi.getter
     def details(self) -> Optional[str]:
+        """
+        Details
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> Optional[str]:
+        """
+        Error  code
+        """
         return pulumi.get(self, "error_code")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> Optional[str]:
+        """
+        Error Message
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def help(self) -> Optional[str]:
+        """
+        Help
+        """
         return pulumi.get(self, "help")
 
 
@@ -3835,6 +4598,10 @@ class RoutingProtocolOperationErrorAdditionalInfo(dict):
     def __init__(__self__, *,
                  property: Optional[str] = None,
                  reason: Optional[str] = None):
+        """
+        :param str property: Property at which the error potentially occurred
+        :param str reason: Reason for the error
+        """
         if property is not None:
             pulumi.set(__self__, "property", property)
         if reason is not None:
@@ -3843,11 +4610,17 @@ class RoutingProtocolOperationErrorAdditionalInfo(dict):
     @property
     @pulumi.getter
     def reason(self) -> Optional[str]:
+        """
+        Reason for the error
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        Property at which the error potentially occurred
+        """
         return pulumi.get(self, "property")
 
 
@@ -4105,12 +4878,12 @@ class ServiceProfileAccessPointTypeConfigApiConfig(dict):
                  over_subscription_limit: Optional[int] = None):
         """
         :param bool allow_over_subscription: Setting showing that oversubscription support is available (true) or not (false). The default is false
-        :param bool api_available: Setting indicating whether the API is available (true) or not (false)
-        :param bool bandwidth_from_api: Bandwidth from api
+        :param bool api_available: Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
+        :param bool bandwidth_from_api: Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
         :param bool equinix_managed_port: Setting indicating that the port is managed by Equinix (true) or not (false)
         :param bool equinix_managed_vlan: Setting indicating that the VLAN is managed by Equinix (true) or not (false)
-        :param str integration_id: Integration id
-        :param int over_subscription_limit: A cap on over subscription
+        :param str integration_id: A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
+        :param int over_subscription_limit: Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
         """
         if allow_over_subscription is not None:
             pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
@@ -4139,7 +4912,7 @@ class ServiceProfileAccessPointTypeConfigApiConfig(dict):
     @pulumi.getter(name="apiAvailable")
     def api_available(self) -> Optional[bool]:
         """
-        Setting indicating whether the API is available (true) or not (false)
+        Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
         """
         return pulumi.get(self, "api_available")
 
@@ -4147,7 +4920,7 @@ class ServiceProfileAccessPointTypeConfigApiConfig(dict):
     @pulumi.getter(name="bandwidthFromApi")
     def bandwidth_from_api(self) -> Optional[bool]:
         """
-        Bandwidth from api
+        Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
         """
         return pulumi.get(self, "bandwidth_from_api")
 
@@ -4171,7 +4944,7 @@ class ServiceProfileAccessPointTypeConfigApiConfig(dict):
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> Optional[str]:
         """
-        Integration id
+        A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
         """
         return pulumi.get(self, "integration_id")
 
@@ -4179,7 +4952,7 @@ class ServiceProfileAccessPointTypeConfigApiConfig(dict):
     @pulumi.getter(name="overSubscriptionLimit")
     def over_subscription_limit(self) -> Optional[int]:
         """
-        A cap on over subscription
+        Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
         """
         return pulumi.get(self, "over_subscription_limit")
 
@@ -4191,9 +4964,9 @@ class ServiceProfileAccessPointTypeConfigAuthenticationKey(dict):
                  label: Optional[str] = None,
                  required: Optional[bool] = None):
         """
-        :param str description: Description
-        :param str label: Label
-        :param bool required: Required
+        :param str description: Description of authorization key
+        :param str label: Name of the parameter that must be provided to authorize the connection.
+        :param bool required: Requirement to configure an authentication key.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -4206,7 +4979,7 @@ class ServiceProfileAccessPointTypeConfigAuthenticationKey(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description
+        Description of authorization key
         """
         return pulumi.get(self, "description")
 
@@ -4214,7 +4987,7 @@ class ServiceProfileAccessPointTypeConfigAuthenticationKey(dict):
     @pulumi.getter
     def label(self) -> Optional[str]:
         """
-        Label
+        Name of the parameter that must be provided to authorize the connection.
         """
         return pulumi.get(self, "label")
 
@@ -4222,7 +4995,7 @@ class ServiceProfileAccessPointTypeConfigAuthenticationKey(dict):
     @pulumi.getter
     def required(self) -> Optional[bool]:
         """
-        Required
+        Requirement to configure an authentication key.
         """
         return pulumi.get(self, "required")
 
@@ -4253,9 +5026,9 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfig(dict):
                  encapsulation_strategy: Optional[str] = None,
                  reuse_vlan_s_tag: Optional[bool] = None):
         """
-        :param str encapsulation: Port Encapsulation
-        :param str encapsulation_strategy: Encapsulation strategy
-        :param bool reuse_vlan_s_tag: Reuse vlan sTag
+        :param str encapsulation: Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        :param str encapsulation_strategy: Additional tagging information required by the seller profile.
+        :param bool reuse_vlan_s_tag: Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
         """
         if encapsulation is not None:
             pulumi.set(__self__, "encapsulation", encapsulation)
@@ -4268,7 +5041,7 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfig(dict):
     @pulumi.getter
     def encapsulation(self) -> Optional[str]:
         """
-        Port Encapsulation
+        Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
         """
         return pulumi.get(self, "encapsulation")
 
@@ -4276,7 +5049,7 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfig(dict):
     @pulumi.getter(name="encapsulationStrategy")
     def encapsulation_strategy(self) -> Optional[str]:
         """
-        Encapsulation strategy
+        Additional tagging information required by the seller profile.
         """
         return pulumi.get(self, "encapsulation_strategy")
 
@@ -4284,7 +5057,7 @@ class ServiceProfileAccessPointTypeConfigLinkProtocolConfig(dict):
     @pulumi.getter(name="reuseVlanSTag")
     def reuse_vlan_s_tag(self) -> Optional[bool]:
         """
-        Reuse vlan sTag
+        Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
         """
         return pulumi.get(self, "reuse_vlan_s_tag")
 
@@ -4332,13 +5105,13 @@ class ServiceProfileAccount(dict):
                  organization_name: Optional[str] = None,
                  ucm_id: Optional[str] = None):
         """
-        :param str account_name: Account Name
-        :param int account_number: Account Number
-        :param str global_cust_id: Global Customer organization identifier
-        :param str global_org_id: Global organization identifier
-        :param str global_organization_name: Global organization name
-        :param int org_id: Customer organization identifier
-        :param str organization_name: Customer organization name
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
         :param str ucm_id: Enterprise datastore id
         """
         if account_name is not None:
@@ -4362,7 +5135,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[str]:
         """
-        Account Name
+        Legal name of the accountholder.
         """
         return pulumi.get(self, "account_name")
 
@@ -4370,7 +5143,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> Optional[int]:
         """
-        Account Number
+        Equinix-assigned account number.
         """
         return pulumi.get(self, "account_number")
 
@@ -4378,7 +5151,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> Optional[str]:
         """
-        Global Customer organization identifier
+        Equinix-assigned ID of the subscriber's parent organization.
         """
         return pulumi.get(self, "global_cust_id")
 
@@ -4386,7 +5159,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> Optional[str]:
         """
-        Global organization identifier
+        Equinix-assigned ID of the subscriber's parent organization.
         """
         return pulumi.get(self, "global_org_id")
 
@@ -4394,7 +5167,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> Optional[str]:
         """
-        Global organization name
+        Equinix-assigned name of the subscriber's parent organization.
         """
         return pulumi.get(self, "global_organization_name")
 
@@ -4402,7 +5175,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[int]:
         """
-        Customer organization identifier
+        Equinix-assigned ID of the subscriber's organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -4410,7 +5183,7 @@ class ServiceProfileAccount(dict):
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[str]:
         """
-        Customer organization name
+        Equinix-assigned name of the subscriber's organization.
         """
         return pulumi.get(self, "organization_name")
 
@@ -4477,6 +5250,20 @@ class ServiceProfileChangeLog(dict):
                  updated_by_email: Optional[str] = None,
                  updated_by_full_name: Optional[str] = None,
                  updated_date_time: Optional[str] = None):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
         if created_by_email is not None:
@@ -4505,61 +5292,97 @@ class ServiceProfileChangeLog(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> Optional[str]:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> Optional[str]:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> Optional[str]:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> Optional[str]:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> Optional[str]:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> Optional[str]:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> Optional[str]:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> Optional[str]:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> Optional[str]:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> Optional[str]:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -4742,7 +5565,7 @@ class ServiceProfileMarketingInfoProcessStep(dict):
                  sub_title: Optional[str] = None,
                  title: Optional[str] = None):
         """
-        :param str description: Description
+        :param str description: Description of authorization key
         :param str sub_title: Sub Title
         :param str title: Title
         """
@@ -4757,7 +5580,7 @@ class ServiceProfileMarketingInfoProcessStep(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description
+        Description of authorization key
         """
         return pulumi.get(self, "description")
 
@@ -5303,55 +6126,19 @@ class ServiceProfileVirtualDeviceLocation(dict):
 @pulumi.output_type
 class GetCloudRouterAccountResult(dict):
     def __init__(__self__, *,
-                 account_name: str,
-                 account_number: int,
-                 global_cust_id: str,
-                 global_org_id: str,
-                 global_organization_name: str,
-                 org_id: int,
-                 organization_name: str):
-        pulumi.set(__self__, "account_name", account_name)
+                 account_number: int):
+        """
+        :param int account_number: Account Number
+        """
         pulumi.set(__self__, "account_number", account_number)
-        pulumi.set(__self__, "global_cust_id", global_cust_id)
-        pulumi.set(__self__, "global_org_id", global_org_id)
-        pulumi.set(__self__, "global_organization_name", global_organization_name)
-        pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "organization_name", organization_name)
-
-    @property
-    @pulumi.getter(name="accountName")
-    def account_name(self) -> str:
-        return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Account Number
+        """
         return pulumi.get(self, "account_number")
-
-    @property
-    @pulumi.getter(name="globalCustId")
-    def global_cust_id(self) -> str:
-        return pulumi.get(self, "global_cust_id")
-
-    @property
-    @pulumi.getter(name="globalOrgId")
-    def global_org_id(self) -> str:
-        return pulumi.get(self, "global_org_id")
-
-    @property
-    @pulumi.getter(name="globalOrganizationName")
-    def global_organization_name(self) -> str:
-        return pulumi.get(self, "global_organization_name")
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> int:
-        return pulumi.get(self, "org_id")
-
-    @property
-    @pulumi.getter(name="organizationName")
-    def organization_name(self) -> str:
-        return pulumi.get(self, "organization_name")
 
 
 @pulumi.output_type
@@ -5369,6 +6156,20 @@ class GetCloudRouterChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -5385,73 +6186,113 @@ class GetCloudRouterChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
 @pulumi.output_type
 class GetCloudRouterLocationResult(dict):
     def __init__(__self__, *,
-                 href: str,
                  ibx: str,
                  metro_code: str,
                  metro_name: str,
                  region: str):
-        pulumi.set(__self__, "href", href)
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -5459,27 +6300,34 @@ class GetCloudRouterLocationResult(dict):
 
     @property
     @pulumi.getter
-    def href(self) -> str:
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
 
 
@@ -5487,26 +6335,41 @@ class GetCloudRouterLocationResult(dict):
 class GetCloudRouterNotificationResult(dict):
     def __init__(__self__, *,
                  emails: Sequence[str],
-                 send_interval: str,
-                 type: str):
+                 type: str,
+                 send_interval: Optional[str] = None):
+        """
+        :param Sequence[str] emails: Array of contact emails
+        :param str type: Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        :param str send_interval: Send interval
+        """
         pulumi.set(__self__, "emails", emails)
-        pulumi.set(__self__, "send_interval", send_interval)
         pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
     def emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
         return pulumi.get(self, "emails")
-
-    @property
-    @pulumi.getter(name="sendInterval")
-    def send_interval(self) -> str:
-        return pulumi.get(self, "send_interval")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[str]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
 
 
 @pulumi.output_type
@@ -5516,6 +6379,12 @@ class GetCloudRouterOrderResult(dict):
                  order_id: str,
                  order_number: str,
                  purchase_order_number: str):
+        """
+        :param str billing_tier: Billing tier for connection bandwidth
+        :param str order_id: Order Identification
+        :param str order_number: Order Reference Number
+        :param str purchase_order_number: Purchase order number
+        """
         pulumi.set(__self__, "billing_tier", billing_tier)
         pulumi.set(__self__, "order_id", order_id)
         pulumi.set(__self__, "order_number", order_number)
@@ -5524,21 +6393,33 @@ class GetCloudRouterOrderResult(dict):
     @property
     @pulumi.getter(name="billingTier")
     def billing_tier(self) -> str:
+        """
+        Billing tier for connection bandwidth
+        """
         return pulumi.get(self, "billing_tier")
 
     @property
     @pulumi.getter(name="orderId")
     def order_id(self) -> str:
+        """
+        Order Identification
+        """
         return pulumi.get(self, "order_id")
 
     @property
     @pulumi.getter(name="orderNumber")
     def order_number(self) -> str:
+        """
+        Order Reference Number
+        """
         return pulumi.get(self, "order_number")
 
     @property
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> str:
+        """
+        Purchase order number
+        """
         return pulumi.get(self, "purchase_order_number")
 
 
@@ -5546,11 +6427,17 @@ class GetCloudRouterOrderResult(dict):
 class GetCloudRouterPackageResult(dict):
     def __init__(__self__, *,
                  code: str):
+        """
+        :param str code: Fabric Cloud Router package code
+        """
         pulumi.set(__self__, "code", code)
 
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        Fabric Cloud Router package code
+        """
         return pulumi.get(self, "code")
 
 
@@ -5586,19 +6473,43 @@ class GetCloudRouterProjectResult(dict):
 @pulumi.output_type
 class GetConnectionASideResult(dict):
     def __init__(__self__, *,
-                 access_point: 'outputs.GetConnectionASideAccessPointResult',
-                 service_token: 'outputs.GetConnectionASideServiceTokenResult'):
-        pulumi.set(__self__, "access_point", access_point)
-        pulumi.set(__self__, "service_token", service_token)
+                 access_point: Optional['outputs.GetConnectionASideAccessPointResult'] = None,
+                 additional_infos: Optional[Sequence['outputs.GetConnectionASideAdditionalInfoResult']] = None,
+                 service_token: Optional['outputs.GetConnectionASideServiceTokenResult'] = None):
+        """
+        :param 'GetConnectionASideAccessPointArgs' access_point: Point of access details
+        :param Sequence['GetConnectionASideAdditionalInfoArgs'] additional_infos: Connection side additional information
+        :param 'GetConnectionASideServiceTokenArgs' service_token: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        """
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if additional_infos is not None:
+            pulumi.set(__self__, "additional_infos", additional_infos)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
 
     @property
     @pulumi.getter(name="accessPoint")
-    def access_point(self) -> 'outputs.GetConnectionASideAccessPointResult':
+    def access_point(self) -> Optional['outputs.GetConnectionASideAccessPointResult']:
+        """
+        Point of access details
+        """
         return pulumi.get(self, "access_point")
 
     @property
+    @pulumi.getter(name="additionalInfos")
+    def additional_infos(self) -> Optional[Sequence['outputs.GetConnectionASideAdditionalInfoResult']]:
+        """
+        Connection side additional information
+        """
+        return pulumi.get(self, "additional_infos")
+
+    @property
     @pulumi.getter(name="serviceToken")
-    def service_token(self) -> 'outputs.GetConnectionASideServiceTokenResult':
+    def service_token(self) -> Optional['outputs.GetConnectionASideServiceTokenResult']:
+        """
+        For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        """
         return pulumi.get(self, "service_token")
 
 
@@ -5606,112 +6517,188 @@ class GetConnectionASideResult(dict):
 class GetConnectionASideAccessPointResult(dict):
     def __init__(__self__, *,
                  accounts: Sequence['outputs.GetConnectionASideAccessPointAccountResult'],
-                 authentication_key: str,
-                 gateways: Sequence['outputs.GetConnectionASideAccessPointGatewayResult'],
-                 interfaces: Sequence['outputs.GetConnectionASideAccessPointInterfaceResult'],
-                 link_protocols: Sequence['outputs.GetConnectionASideAccessPointLinkProtocolResult'],
-                 locations: Sequence['outputs.GetConnectionASideAccessPointLocationResult'],
-                 peering_type: str,
-                 ports: Sequence['outputs.GetConnectionASideAccessPointPortResult'],
-                 profiles: Sequence['outputs.GetConnectionASideAccessPointProfileResult'],
-                 provider_connection_id: str,
-                 routers: Sequence['outputs.GetConnectionASideAccessPointRouterResult'],
-                 seller_region: str,
-                 type: str,
-                 virtual_devices: Sequence['outputs.GetConnectionASideAccessPointVirtualDeviceResult']):
+                 location: 'outputs.GetConnectionASideAccessPointLocationResult',
+                 authentication_key: Optional[str] = None,
+                 gateway: Optional['outputs.GetConnectionASideAccessPointGatewayResult'] = None,
+                 interface: Optional['outputs.GetConnectionASideAccessPointInterfaceResult'] = None,
+                 link_protocol: Optional['outputs.GetConnectionASideAccessPointLinkProtocolResult'] = None,
+                 network: Optional['outputs.GetConnectionASideAccessPointNetworkResult'] = None,
+                 peering_type: Optional[str] = None,
+                 port: Optional['outputs.GetConnectionASideAccessPointPortResult'] = None,
+                 profile: Optional['outputs.GetConnectionASideAccessPointProfileResult'] = None,
+                 provider_connection_id: Optional[str] = None,
+                 router: Optional['outputs.GetConnectionASideAccessPointRouterResult'] = None,
+                 seller_region: Optional[str] = None,
+                 type: Optional[str] = None,
+                 virtual_device: Optional['outputs.GetConnectionASideAccessPointVirtualDeviceResult'] = None):
         """
-        :param Sequence['GetConnectionASideAccessPointRouterArgs'] routers: CloudRouter; Replaces `gateway` attribute (Set of Object)
+        :param Sequence['GetConnectionASideAccessPointAccountArgs'] accounts: Account
+        :param 'GetConnectionASideAccessPointLocationArgs' location: Access point location
+        :param str authentication_key: Authentication key for provider based connections
+        :param 'GetConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
+        :param 'GetConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
+        :param 'GetConnectionASideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
+        :param 'GetConnectionASideAccessPointNetworkArgs' network: network access point information
+        :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        :param 'GetConnectionASideAccessPointPortArgs' port: Port access point information
+        :param 'GetConnectionASideAccessPointProfileArgs' profile: Service Profile
+        :param str provider_connection_id: Provider assigned Connection Id
+        :param 'GetConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
+        :param str seller_region: Access point seller region
+        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param 'GetConnectionASideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         pulumi.set(__self__, "accounts", accounts)
-        pulumi.set(__self__, "authentication_key", authentication_key)
-        pulumi.set(__self__, "gateways", gateways)
-        pulumi.set(__self__, "interfaces", interfaces)
-        pulumi.set(__self__, "link_protocols", link_protocols)
-        pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "peering_type", peering_type)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "profiles", profiles)
-        pulumi.set(__self__, "provider_connection_id", provider_connection_id)
-        pulumi.set(__self__, "routers", routers)
-        pulumi.set(__self__, "seller_region", seller_region)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "virtual_devices", virtual_devices)
+        pulumi.set(__self__, "location", location)
+        if authentication_key is not None:
+            pulumi.set(__self__, "authentication_key", authentication_key)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if peering_type is not None:
+            pulumi.set(__self__, "peering_type", peering_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+        if provider_connection_id is not None:
+            pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if router is not None:
+            pulumi.set(__self__, "router", router)
+        if seller_region is not None:
+            pulumi.set(__self__, "seller_region", seller_region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if virtual_device is not None:
+            pulumi.set(__self__, "virtual_device", virtual_device)
 
     @property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetConnectionASideAccessPointAccountResult']:
+        """
+        Account
+        """
         return pulumi.get(self, "accounts")
 
     @property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetConnectionASideAccessPointLocationResult':
+        """
+        Access point location
+        """
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="authenticationKey")
-    def authentication_key(self) -> str:
+    def authentication_key(self) -> Optional[str]:
+        """
+        Authentication key for provider based connections
+        """
         return pulumi.get(self, "authentication_key")
 
     @property
     @pulumi.getter
-    def gateways(self) -> Sequence['outputs.GetConnectionASideAccessPointGatewayResult']:
-        warnings.warn("""router attribute will be returned instead""", DeprecationWarning)
-        pulumi.log.warn("""gateways is deprecated: router attribute will be returned instead""")
+    def gateway(self) -> Optional['outputs.GetConnectionASideAccessPointGatewayResult']:
+        """
+        **Deprecated** `gateway` Use `router` attribute instead
+        """
+        warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
+        pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
 
-        return pulumi.get(self, "gateways")
-
-    @property
-    @pulumi.getter
-    def interfaces(self) -> Sequence['outputs.GetConnectionASideAccessPointInterfaceResult']:
-        return pulumi.get(self, "interfaces")
-
-    @property
-    @pulumi.getter(name="linkProtocols")
-    def link_protocols(self) -> Sequence['outputs.GetConnectionASideAccessPointLinkProtocolResult']:
-        return pulumi.get(self, "link_protocols")
+        return pulumi.get(self, "gateway")
 
     @property
     @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetConnectionASideAccessPointLocationResult']:
-        return pulumi.get(self, "locations")
+    def interface(self) -> Optional['outputs.GetConnectionASideAccessPointInterfaceResult']:
+        """
+        Virtual device interface
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.GetConnectionASideAccessPointLinkProtocolResult']:
+        """
+        Connection link protocol
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.GetConnectionASideAccessPointNetworkResult']:
+        """
+        network access point information
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="peeringType")
-    def peering_type(self) -> str:
+    def peering_type(self) -> Optional[str]:
+        """
+        Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        """
         return pulumi.get(self, "peering_type")
 
     @property
     @pulumi.getter
-    def ports(self) -> Sequence['outputs.GetConnectionASideAccessPointPortResult']:
-        return pulumi.get(self, "ports")
+    def port(self) -> Optional['outputs.GetConnectionASideAccessPointPortResult']:
+        """
+        Port access point information
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def profiles(self) -> Sequence['outputs.GetConnectionASideAccessPointProfileResult']:
-        return pulumi.get(self, "profiles")
+    def profile(self) -> Optional['outputs.GetConnectionASideAccessPointProfileResult']:
+        """
+        Service Profile
+        """
+        return pulumi.get(self, "profile")
 
     @property
     @pulumi.getter(name="providerConnectionId")
-    def provider_connection_id(self) -> str:
+    def provider_connection_id(self) -> Optional[str]:
+        """
+        Provider assigned Connection Id
+        """
         return pulumi.get(self, "provider_connection_id")
 
     @property
     @pulumi.getter
-    def routers(self) -> Sequence['outputs.GetConnectionASideAccessPointRouterResult']:
+    def router(self) -> Optional['outputs.GetConnectionASideAccessPointRouterResult']:
         """
-        CloudRouter; Replaces `gateway` attribute (Set of Object)
+        Cloud Router access point information that replaces `gateway`
         """
-        return pulumi.get(self, "routers")
+        return pulumi.get(self, "router")
 
     @property
     @pulumi.getter(name="sellerRegion")
-    def seller_region(self) -> str:
+    def seller_region(self) -> Optional[str]:
+        """
+        Access point seller region
+        """
         return pulumi.get(self, "seller_region")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
+        """
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        """
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter(name="virtualDevices")
-    def virtual_devices(self) -> Sequence['outputs.GetConnectionASideAccessPointVirtualDeviceResult']:
-        return pulumi.get(self, "virtual_devices")
+    @pulumi.getter(name="virtualDevice")
+    def virtual_device(self) -> Optional['outputs.GetConnectionASideAccessPointVirtualDeviceResult']:
+        """
+        Virtual device
+        """
+        return pulumi.get(self, "virtual_device")
 
 
 @pulumi.output_type
@@ -5723,7 +6710,18 @@ class GetConnectionASideAccessPointAccountResult(dict):
                  global_org_id: str,
                  global_organization_name: str,
                  org_id: int,
-                 organization_name: str):
+                 organization_name: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -5731,66 +6729,100 @@ class GetConnectionASideAccessPointAccountResult(dict):
         pulumi.set(__self__, "global_organization_name", global_organization_name)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
 class GetConnectionASideAccessPointGatewayResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 state: str,
-                 uuid: str):
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
+        """
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "uuid", uuid)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned virtual gateway identifier
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -5798,70 +6830,109 @@ class GetConnectionASideAccessPointGatewayResult(dict):
 class GetConnectionASideAccessPointInterfaceResult(dict):
     def __init__(__self__, *,
                  id: int,
-                 type: str,
-                 uuid: str):
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param int id: id
+        :param str type: Interface type
+        :param str uuid: Equinix-assigned interface identifier
+        """
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        id
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
+        """
+        Interface type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned interface identifier
+        """
         return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
 class GetConnectionASideAccessPointLinkProtocolResult(dict):
     def __init__(__self__, *,
-                 type: str,
                  vlan_c_tag: int,
                  vlan_s_tag: int,
-                 vlan_tag: int):
-        pulumi.set(__self__, "type", type)
+                 vlan_tag: int,
+                 type: Optional[str] = None):
+        """
+        :param int vlan_c_tag: Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        :param int vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        :param int vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
+        :param str type: Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
         pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
         pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
         pulumi.set(__self__, "vlan_tag", vlan_tag)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        return pulumi.get(self, "type")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="vlanCTag")
     def vlan_c_tag(self) -> int:
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
         return pulumi.get(self, "vlan_c_tag")
 
     @property
     @pulumi.getter(name="vlanSTag")
     def vlan_s_tag(self) -> int:
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
         return pulumi.get(self, "vlan_s_tag")
 
     @property
     @pulumi.getter(name="vlanTag")
     def vlan_tag(self) -> int:
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
         return pulumi.get(self, "vlan_tag")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetConnectionASideAccessPointLocationResult(dict):
     def __init__(__self__, *,
-                 href: str,
                  ibx: str,
                  metro_code: str,
                  metro_name: str,
                  region: str):
-        pulumi.set(__self__, "href", href)
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -5869,28 +6940,65 @@ class GetConnectionASideAccessPointLocationResult(dict):
 
     @property
     @pulumi.getter
-    def href(self) -> str:
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetConnectionASideAccessPointNetworkResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned Network identifier
+        """
+        pulumi.set(__self__, "href", href)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -5900,6 +7008,12 @@ class GetConnectionASideAccessPointPortResult(dict):
                  name: str,
                  redundancies: Sequence['outputs.GetConnectionASideAccessPointPortRedundancyResult'],
                  uuid: str):
+        """
+        :param str href: Unique Resource Identifier
+        :param str name: Port name
+        :param Sequence['GetConnectionASideAccessPointPortRedundancyArgs'] redundancies: Redundancy Information
+        :param str uuid: Equinix-assigned Port identifier
+        """
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "redundancies", redundancies)
@@ -5908,33 +7022,73 @@ class GetConnectionASideAccessPointPortResult(dict):
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Port name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def redundancies(self) -> Sequence['outputs.GetConnectionASideAccessPointPortRedundancyResult']:
+        """
+        Redundancy Information
+        """
         return pulumi.get(self, "redundancies")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix-assigned Port identifier
+        """
         return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
 class GetConnectionASideAccessPointPortRedundancyResult(dict):
     def __init__(__self__, *,
+                 enabled: bool,
+                 group: str,
                  priority: str):
+        """
+        :param bool enabled: Access point redundancy
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Access point redundancy
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        Port redundancy group
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
     def priority(self) -> str:
+        """
+        Priority type-Primary or Secondary
+        """
         return pulumi.get(self, "priority")
 
 
@@ -5947,6 +7101,14 @@ class GetConnectionASideAccessPointProfileResult(dict):
                  name: str,
                  type: str,
                  uuid: str):
+        """
+        :param Sequence['GetConnectionASideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
+        :param str description: User-provided service description
+        :param str href: Service Profile URI response attribute
+        :param str name: Customer-assigned service profile name
+        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        :param str uuid: Equinix assigned service profile identifier
+        """
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "href", href)
@@ -5957,266 +7119,108 @@ class GetConnectionASideAccessPointProfileResult(dict):
     @property
     @pulumi.getter(name="accessPointTypeConfigs")
     def access_point_type_configs(self) -> Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigResult']:
+        """
+        Access point config information
+        """
         return pulumi.get(self, "access_point_type_configs")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        User-provided service description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Service Profile URI response attribute
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Customer-assigned service profile name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix assigned service profile identifier
+        """
         return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
 class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
     def __init__(__self__, *,
-                 allow_bandwidth_auto_approval: bool,
-                 allow_bandwidth_upgrade: bool,
-                 allow_custom_bandwidth: bool,
-                 allow_remote_connections: bool,
-                 api_configs: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult'],
-                 authentication_keys: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult'],
-                 bandwidth_alert_threshold: float,
-                 connection_label: str,
-                 connection_redundancy_required: bool,
-                 enable_auto_generate_service_key: bool,
-                 link_protocol_configs: Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult'],
-                 supported_bandwidths: Sequence[int],
                  type: str,
                  uuid: str):
-        pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
-        pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
-        pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
-        pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
-        pulumi.set(__self__, "api_configs", api_configs)
-        pulumi.set(__self__, "authentication_keys", authentication_keys)
-        pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
-        pulumi.set(__self__, "connection_label", connection_label)
-        pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
-        pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
-        pulumi.set(__self__, "link_protocol_configs", link_protocol_configs)
-        pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
+        """
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Equinix-assigned access point type config identifier
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
 
     @property
-    @pulumi.getter(name="allowBandwidthAutoApproval")
-    def allow_bandwidth_auto_approval(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_auto_approval")
-
-    @property
-    @pulumi.getter(name="allowBandwidthUpgrade")
-    def allow_bandwidth_upgrade(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_upgrade")
-
-    @property
-    @pulumi.getter(name="allowCustomBandwidth")
-    def allow_custom_bandwidth(self) -> bool:
-        return pulumi.get(self, "allow_custom_bandwidth")
-
-    @property
-    @pulumi.getter(name="allowRemoteConnections")
-    def allow_remote_connections(self) -> bool:
-        return pulumi.get(self, "allow_remote_connections")
-
-    @property
-    @pulumi.getter(name="apiConfigs")
-    def api_configs(self) -> Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult']:
-        return pulumi.get(self, "api_configs")
-
-    @property
-    @pulumi.getter(name="authenticationKeys")
-    def authentication_keys(self) -> Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult']:
-        return pulumi.get(self, "authentication_keys")
-
-    @property
-    @pulumi.getter(name="bandwidthAlertThreshold")
-    def bandwidth_alert_threshold(self) -> float:
-        return pulumi.get(self, "bandwidth_alert_threshold")
-
-    @property
-    @pulumi.getter(name="connectionLabel")
-    def connection_label(self) -> str:
-        return pulumi.get(self, "connection_label")
-
-    @property
-    @pulumi.getter(name="connectionRedundancyRequired")
-    def connection_redundancy_required(self) -> bool:
-        return pulumi.get(self, "connection_redundancy_required")
-
-    @property
-    @pulumi.getter(name="enableAutoGenerateServiceKey")
-    def enable_auto_generate_service_key(self) -> bool:
-        return pulumi.get(self, "enable_auto_generate_service_key")
-
-    @property
-    @pulumi.getter(name="linkProtocolConfigs")
-    def link_protocol_configs(self) -> Sequence['outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult']:
-        return pulumi.get(self, "link_protocol_configs")
-
-    @property
-    @pulumi.getter(name="supportedBandwidths")
-    def supported_bandwidths(self) -> Sequence[int]:
-        return pulumi.get(self, "supported_bandwidths")
-
-    @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of access point type config - VD, COLO
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix-assigned access point type config identifier
+        """
         return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
-class GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfigResult(dict):
-    def __init__(__self__, *,
-                 allow_over_subscription: bool,
-                 api_available: bool,
-                 bandwidth_from_api: bool,
-                 equinix_managed_port: bool,
-                 equinix_managed_vlan: bool,
-                 integration_id: str,
-                 over_subscription_limit: int):
-        pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
-        pulumi.set(__self__, "api_available", api_available)
-        pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
-        pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
-        pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
-        pulumi.set(__self__, "integration_id", integration_id)
-        pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
-
-    @property
-    @pulumi.getter(name="allowOverSubscription")
-    def allow_over_subscription(self) -> bool:
-        return pulumi.get(self, "allow_over_subscription")
-
-    @property
-    @pulumi.getter(name="apiAvailable")
-    def api_available(self) -> bool:
-        return pulumi.get(self, "api_available")
-
-    @property
-    @pulumi.getter(name="bandwidthFromApi")
-    def bandwidth_from_api(self) -> bool:
-        return pulumi.get(self, "bandwidth_from_api")
-
-    @property
-    @pulumi.getter(name="equinixManagedPort")
-    def equinix_managed_port(self) -> bool:
-        return pulumi.get(self, "equinix_managed_port")
-
-    @property
-    @pulumi.getter(name="equinixManagedVlan")
-    def equinix_managed_vlan(self) -> bool:
-        return pulumi.get(self, "equinix_managed_vlan")
-
-    @property
-    @pulumi.getter(name="integrationId")
-    def integration_id(self) -> str:
-        return pulumi.get(self, "integration_id")
-
-    @property
-    @pulumi.getter(name="overSubscriptionLimit")
-    def over_subscription_limit(self) -> int:
-        return pulumi.get(self, "over_subscription_limit")
-
-
-@pulumi.output_type
-class GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult(dict):
-    def __init__(__self__, *,
-                 description: str,
-                 label: str,
-                 required: bool):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "required", required)
-
-    @property
-    @pulumi.getter
-    def description(self) -> str:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter
-    def required(self) -> bool:
-        return pulumi.get(self, "required")
-
-
-@pulumi.output_type
-class GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult(dict):
-    def __init__(__self__, *,
-                 encapsulation: str,
-                 encapsulation_strategy: str,
-                 reuse_vlan_s_tag: bool):
-        pulumi.set(__self__, "encapsulation", encapsulation)
-        pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
-        pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
-
-    @property
-    @pulumi.getter
-    def encapsulation(self) -> str:
-        return pulumi.get(self, "encapsulation")
-
-    @property
-    @pulumi.getter(name="encapsulationStrategy")
-    def encapsulation_strategy(self) -> str:
-        return pulumi.get(self, "encapsulation_strategy")
-
-    @property
-    @pulumi.getter(name="reuseVlanSTag")
-    def reuse_vlan_s_tag(self) -> bool:
-        return pulumi.get(self, "reuse_vlan_s_tag")
 
 
 @pulumi.output_type
 class GetConnectionASideAccessPointRouterResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 state: str,
-                 uuid: str):
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
+        """
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "uuid", uuid)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned virtual gateway identifier
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -6224,26 +7228,85 @@ class GetConnectionASideAccessPointRouterResult(dict):
 class GetConnectionASideAccessPointVirtualDeviceResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 type: str,
-                 uuid: str):
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str name: Customer-assigned Virtual Device Name
+        :param str type: Virtual Device type
+        :param str uuid: Equinix-assigned Virtual Device identifier
+        """
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        Customer-assigned Virtual Device Name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Virtual Device type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetConnectionASideAdditionalInfoResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: Additional information key
+        :param str value: Additional information value
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Additional information key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Additional information value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -6251,31 +7314,51 @@ class GetConnectionASideServiceTokenResult(dict):
     def __init__(__self__, *,
                  description: str,
                  href: str,
-                 type: str,
-                 uuid: str):
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str description: Service token description
+        :param str href: An absolute URL that is the subject of the link's context
+        :param str type: Token type - VC_TOKEN
+        :param str uuid: Equinix-assigned service token identifier
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Service token description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        An absolute URL that is the subject of the link's context
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
+        """
+        Token type - VC_TOKEN
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned service token identifier
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -6288,7 +7371,18 @@ class GetConnectionAccountResult(dict):
                  global_org_id: str,
                  global_organization_name: str,
                  org_id: int,
-                 organization_name: str):
+                 organization_name: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -6296,60 +7390,71 @@ class GetConnectionAccountResult(dict):
         pulumi.set(__self__, "global_organization_name", global_organization_name)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
 
-
-@pulumi.output_type
-class GetConnectionAdditionalInfoResult(dict):
-    def __init__(__self__, *,
-                 key: str,
-                 value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
     @property
-    @pulumi.getter
-    def key(self) -> str:
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        return pulumi.get(self, "value")
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
@@ -6367,6 +7472,20 @@ class GetConnectionChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -6383,61 +7502,97 @@ class GetConnectionChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -6445,26 +7600,41 @@ class GetConnectionChangeLogResult(dict):
 class GetConnectionNotificationResult(dict):
     def __init__(__self__, *,
                  emails: Sequence[str],
-                 send_interval: str,
-                 type: str):
+                 type: str,
+                 send_interval: Optional[str] = None):
+        """
+        :param Sequence[str] emails: Array of contact emails
+        :param str type: Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        :param str send_interval: Send interval
+        """
         pulumi.set(__self__, "emails", emails)
-        pulumi.set(__self__, "send_interval", send_interval)
         pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
     def emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
         return pulumi.get(self, "emails")
-
-    @property
-    @pulumi.getter(name="sendInterval")
-    def send_interval(self) -> str:
-        return pulumi.get(self, "send_interval")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[str]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
 
 
 @pulumi.output_type
@@ -6473,6 +7643,11 @@ class GetConnectionOperationResult(dict):
                  equinix_status: str,
                  errors: Sequence['outputs.GetConnectionOperationErrorResult'],
                  provider_status: str):
+        """
+        :param str equinix_status: Connection status
+        :param Sequence['GetConnectionOperationErrorArgs'] errors: Errors occurred
+        :param str provider_status: Connection provider readiness status
+        """
         pulumi.set(__self__, "equinix_status", equinix_status)
         pulumi.set(__self__, "errors", errors)
         pulumi.set(__self__, "provider_status", provider_status)
@@ -6480,16 +7655,25 @@ class GetConnectionOperationResult(dict):
     @property
     @pulumi.getter(name="equinixStatus")
     def equinix_status(self) -> str:
+        """
+        Connection status
+        """
         return pulumi.get(self, "equinix_status")
 
     @property
     @pulumi.getter
     def errors(self) -> Sequence['outputs.GetConnectionOperationErrorResult']:
+        """
+        Errors occurred
+        """
         return pulumi.get(self, "errors")
 
     @property
     @pulumi.getter(name="providerStatus")
     def provider_status(self) -> str:
+        """
+        Connection provider readiness status
+        """
         return pulumi.get(self, "provider_status")
 
 
@@ -6502,6 +7686,14 @@ class GetConnectionOperationErrorResult(dict):
                  error_code: str,
                  error_message: str,
                  help: str):
+        """
+        :param Sequence['GetConnectionOperationErrorAdditionalInfoArgs'] additional_infos: Pricing error additional Info
+        :param str correlation_id: CorrelationId
+        :param str details: Details
+        :param str error_code: Error  code
+        :param str error_message: Error Message
+        :param str help: Help
+        """
         pulumi.set(__self__, "additional_infos", additional_infos)
         pulumi.set(__self__, "correlation_id", correlation_id)
         pulumi.set(__self__, "details", details)
@@ -6512,31 +7704,49 @@ class GetConnectionOperationErrorResult(dict):
     @property
     @pulumi.getter(name="additionalInfos")
     def additional_infos(self) -> Sequence['outputs.GetConnectionOperationErrorAdditionalInfoResult']:
+        """
+        Pricing error additional Info
+        """
         return pulumi.get(self, "additional_infos")
 
     @property
     @pulumi.getter(name="correlationId")
     def correlation_id(self) -> str:
+        """
+        CorrelationId
+        """
         return pulumi.get(self, "correlation_id")
 
     @property
     @pulumi.getter
     def details(self) -> str:
+        """
+        Details
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> str:
+        """
+        Error  code
+        """
         return pulumi.get(self, "error_code")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> str:
+        """
+        Error Message
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def help(self) -> str:
+        """
+        Help
+        """
         return pulumi.get(self, "help")
 
 
@@ -6545,17 +7755,27 @@ class GetConnectionOperationErrorAdditionalInfoResult(dict):
     def __init__(__self__, *,
                  property: str,
                  reason: str):
+        """
+        :param str property: Property at which the error potentially occurred
+        :param str reason: Reason for the error
+        """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        Reason for the error
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter
     def property(self) -> str:
+        """
+        Property at which the error potentially occurred
+        """
         return pulumi.get(self, "property")
 
 
@@ -6566,6 +7786,12 @@ class GetConnectionOrderResult(dict):
                  order_id: str,
                  order_number: str,
                  purchase_order_number: str):
+        """
+        :param str billing_tier: Billing tier for connection bandwidth
+        :param str order_id: Order Identification
+        :param str order_number: Order Reference Number
+        :param str purchase_order_number: Purchase order number
+        """
         pulumi.set(__self__, "billing_tier", billing_tier)
         pulumi.set(__self__, "order_id", order_id)
         pulumi.set(__self__, "order_number", order_number)
@@ -6574,21 +7800,33 @@ class GetConnectionOrderResult(dict):
     @property
     @pulumi.getter(name="billingTier")
     def billing_tier(self) -> str:
+        """
+        Billing tier for connection bandwidth
+        """
         return pulumi.get(self, "billing_tier")
 
     @property
     @pulumi.getter(name="orderId")
     def order_id(self) -> str:
+        """
+        Order Identification
+        """
         return pulumi.get(self, "order_id")
 
     @property
     @pulumi.getter(name="orderNumber")
     def order_number(self) -> str:
+        """
+        Order Reference Number
+        """
         return pulumi.get(self, "order_number")
 
     @property
     @pulumi.getter(name="purchaseOrderNumber")
     def purchase_order_number(self) -> str:
+        """
+        Purchase order number
+        """
         return pulumi.get(self, "purchase_order_number")
 
 
@@ -6626,36 +7864,70 @@ class GetConnectionRedundancyResult(dict):
     def __init__(__self__, *,
                  group: str,
                  priority: str):
+        """
+        :param str group: Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+        :param str priority: Connection priority in redundancy group - PRIMARY, SECONDARY
+        """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
     def group(self) -> str:
+        """
+        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def priority(self) -> str:
+        """
+        Connection priority in redundancy group - PRIMARY, SECONDARY
+        """
         return pulumi.get(self, "priority")
 
 
 @pulumi.output_type
 class GetConnectionZSideResult(dict):
     def __init__(__self__, *,
-                 access_point: 'outputs.GetConnectionZSideAccessPointResult',
-                 service_token: 'outputs.GetConnectionZSideServiceTokenResult'):
-        pulumi.set(__self__, "access_point", access_point)
-        pulumi.set(__self__, "service_token", service_token)
+                 access_point: Optional['outputs.GetConnectionZSideAccessPointResult'] = None,
+                 additional_infos: Optional[Sequence['outputs.GetConnectionZSideAdditionalInfoResult']] = None,
+                 service_token: Optional['outputs.GetConnectionZSideServiceTokenResult'] = None):
+        """
+        :param 'GetConnectionZSideAccessPointArgs' access_point: Point of access details
+        :param Sequence['GetConnectionZSideAdditionalInfoArgs'] additional_infos: Connection side additional information
+        :param 'GetConnectionZSideServiceTokenArgs' service_token: For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        """
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if additional_infos is not None:
+            pulumi.set(__self__, "additional_infos", additional_infos)
+        if service_token is not None:
+            pulumi.set(__self__, "service_token", service_token)
 
     @property
     @pulumi.getter(name="accessPoint")
-    def access_point(self) -> 'outputs.GetConnectionZSideAccessPointResult':
+    def access_point(self) -> Optional['outputs.GetConnectionZSideAccessPointResult']:
+        """
+        Point of access details
+        """
         return pulumi.get(self, "access_point")
 
     @property
+    @pulumi.getter(name="additionalInfos")
+    def additional_infos(self) -> Optional[Sequence['outputs.GetConnectionZSideAdditionalInfoResult']]:
+        """
+        Connection side additional information
+        """
+        return pulumi.get(self, "additional_infos")
+
+    @property
     @pulumi.getter(name="serviceToken")
-    def service_token(self) -> 'outputs.GetConnectionZSideServiceTokenResult':
+    def service_token(self) -> Optional['outputs.GetConnectionZSideServiceTokenResult']:
+        """
+        For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        """
         return pulumi.get(self, "service_token")
 
 
@@ -6663,112 +7935,188 @@ class GetConnectionZSideResult(dict):
 class GetConnectionZSideAccessPointResult(dict):
     def __init__(__self__, *,
                  accounts: Sequence['outputs.GetConnectionZSideAccessPointAccountResult'],
-                 authentication_key: str,
-                 gateways: Sequence['outputs.GetConnectionZSideAccessPointGatewayResult'],
-                 interfaces: Sequence['outputs.GetConnectionZSideAccessPointInterfaceResult'],
-                 link_protocols: Sequence['outputs.GetConnectionZSideAccessPointLinkProtocolResult'],
-                 locations: Sequence['outputs.GetConnectionZSideAccessPointLocationResult'],
-                 peering_type: str,
-                 ports: Sequence['outputs.GetConnectionZSideAccessPointPortResult'],
-                 profiles: Sequence['outputs.GetConnectionZSideAccessPointProfileResult'],
-                 provider_connection_id: str,
-                 routers: Sequence['outputs.GetConnectionZSideAccessPointRouterResult'],
-                 seller_region: str,
-                 type: str,
-                 virtual_devices: Sequence['outputs.GetConnectionZSideAccessPointVirtualDeviceResult']):
+                 location: 'outputs.GetConnectionZSideAccessPointLocationResult',
+                 authentication_key: Optional[str] = None,
+                 gateway: Optional['outputs.GetConnectionZSideAccessPointGatewayResult'] = None,
+                 interface: Optional['outputs.GetConnectionZSideAccessPointInterfaceResult'] = None,
+                 link_protocol: Optional['outputs.GetConnectionZSideAccessPointLinkProtocolResult'] = None,
+                 network: Optional['outputs.GetConnectionZSideAccessPointNetworkResult'] = None,
+                 peering_type: Optional[str] = None,
+                 port: Optional['outputs.GetConnectionZSideAccessPointPortResult'] = None,
+                 profile: Optional['outputs.GetConnectionZSideAccessPointProfileResult'] = None,
+                 provider_connection_id: Optional[str] = None,
+                 router: Optional['outputs.GetConnectionZSideAccessPointRouterResult'] = None,
+                 seller_region: Optional[str] = None,
+                 type: Optional[str] = None,
+                 virtual_device: Optional['outputs.GetConnectionZSideAccessPointVirtualDeviceResult'] = None):
         """
-        :param Sequence['GetConnectionZSideAccessPointRouterArgs'] routers: CloudRouter; Replaces `gateway` attribute (Set of Object)
+        :param Sequence['GetConnectionZSideAccessPointAccountArgs'] accounts: Account
+        :param 'GetConnectionZSideAccessPointLocationArgs' location: Access point location
+        :param str authentication_key: Authentication key for provider based connections
+        :param 'GetConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
+        :param 'GetConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
+        :param 'GetConnectionZSideAccessPointLinkProtocolArgs' link_protocol: Connection link protocol
+        :param 'GetConnectionZSideAccessPointNetworkArgs' network: network access point information
+        :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        :param 'GetConnectionZSideAccessPointPortArgs' port: Port access point information
+        :param 'GetConnectionZSideAccessPointProfileArgs' profile: Service Profile
+        :param str provider_connection_id: Provider assigned Connection Id
+        :param 'GetConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
+        :param str seller_region: Access point seller region
+        :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        :param 'GetConnectionZSideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         pulumi.set(__self__, "accounts", accounts)
-        pulumi.set(__self__, "authentication_key", authentication_key)
-        pulumi.set(__self__, "gateways", gateways)
-        pulumi.set(__self__, "interfaces", interfaces)
-        pulumi.set(__self__, "link_protocols", link_protocols)
-        pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "peering_type", peering_type)
-        pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "profiles", profiles)
-        pulumi.set(__self__, "provider_connection_id", provider_connection_id)
-        pulumi.set(__self__, "routers", routers)
-        pulumi.set(__self__, "seller_region", seller_region)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "virtual_devices", virtual_devices)
+        pulumi.set(__self__, "location", location)
+        if authentication_key is not None:
+            pulumi.set(__self__, "authentication_key", authentication_key)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if link_protocol is not None:
+            pulumi.set(__self__, "link_protocol", link_protocol)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if peering_type is not None:
+            pulumi.set(__self__, "peering_type", peering_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+        if provider_connection_id is not None:
+            pulumi.set(__self__, "provider_connection_id", provider_connection_id)
+        if router is not None:
+            pulumi.set(__self__, "router", router)
+        if seller_region is not None:
+            pulumi.set(__self__, "seller_region", seller_region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if virtual_device is not None:
+            pulumi.set(__self__, "virtual_device", virtual_device)
 
     @property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetConnectionZSideAccessPointAccountResult']:
+        """
+        Account
+        """
         return pulumi.get(self, "accounts")
 
     @property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetConnectionZSideAccessPointLocationResult':
+        """
+        Access point location
+        """
+        return pulumi.get(self, "location")
+
+    @property
     @pulumi.getter(name="authenticationKey")
-    def authentication_key(self) -> str:
+    def authentication_key(self) -> Optional[str]:
+        """
+        Authentication key for provider based connections
+        """
         return pulumi.get(self, "authentication_key")
 
     @property
     @pulumi.getter
-    def gateways(self) -> Sequence['outputs.GetConnectionZSideAccessPointGatewayResult']:
-        warnings.warn("""router attribute will be returned instead""", DeprecationWarning)
-        pulumi.log.warn("""gateways is deprecated: router attribute will be returned instead""")
+    def gateway(self) -> Optional['outputs.GetConnectionZSideAccessPointGatewayResult']:
+        """
+        **Deprecated** `gateway` Use `router` attribute instead
+        """
+        warnings.warn("""use router attribute instead; gateway is no longer a part of the supported backend""", DeprecationWarning)
+        pulumi.log.warn("""gateway is deprecated: use router attribute instead; gateway is no longer a part of the supported backend""")
 
-        return pulumi.get(self, "gateways")
-
-    @property
-    @pulumi.getter
-    def interfaces(self) -> Sequence['outputs.GetConnectionZSideAccessPointInterfaceResult']:
-        return pulumi.get(self, "interfaces")
-
-    @property
-    @pulumi.getter(name="linkProtocols")
-    def link_protocols(self) -> Sequence['outputs.GetConnectionZSideAccessPointLinkProtocolResult']:
-        return pulumi.get(self, "link_protocols")
+        return pulumi.get(self, "gateway")
 
     @property
     @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetConnectionZSideAccessPointLocationResult']:
-        return pulumi.get(self, "locations")
+    def interface(self) -> Optional['outputs.GetConnectionZSideAccessPointInterfaceResult']:
+        """
+        Virtual device interface
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter(name="linkProtocol")
+    def link_protocol(self) -> Optional['outputs.GetConnectionZSideAccessPointLinkProtocolResult']:
+        """
+        Connection link protocol
+        """
+        return pulumi.get(self, "link_protocol")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.GetConnectionZSideAccessPointNetworkResult']:
+        """
+        network access point information
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="peeringType")
-    def peering_type(self) -> str:
+    def peering_type(self) -> Optional[str]:
+        """
+        Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        """
         return pulumi.get(self, "peering_type")
 
     @property
     @pulumi.getter
-    def ports(self) -> Sequence['outputs.GetConnectionZSideAccessPointPortResult']:
-        return pulumi.get(self, "ports")
+    def port(self) -> Optional['outputs.GetConnectionZSideAccessPointPortResult']:
+        """
+        Port access point information
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def profiles(self) -> Sequence['outputs.GetConnectionZSideAccessPointProfileResult']:
-        return pulumi.get(self, "profiles")
+    def profile(self) -> Optional['outputs.GetConnectionZSideAccessPointProfileResult']:
+        """
+        Service Profile
+        """
+        return pulumi.get(self, "profile")
 
     @property
     @pulumi.getter(name="providerConnectionId")
-    def provider_connection_id(self) -> str:
+    def provider_connection_id(self) -> Optional[str]:
+        """
+        Provider assigned Connection Id
+        """
         return pulumi.get(self, "provider_connection_id")
 
     @property
     @pulumi.getter
-    def routers(self) -> Sequence['outputs.GetConnectionZSideAccessPointRouterResult']:
+    def router(self) -> Optional['outputs.GetConnectionZSideAccessPointRouterResult']:
         """
-        CloudRouter; Replaces `gateway` attribute (Set of Object)
+        Cloud Router access point information that replaces `gateway`
         """
-        return pulumi.get(self, "routers")
+        return pulumi.get(self, "router")
 
     @property
     @pulumi.getter(name="sellerRegion")
-    def seller_region(self) -> str:
+    def seller_region(self) -> Optional[str]:
+        """
+        Access point seller region
+        """
         return pulumi.get(self, "seller_region")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
+        """
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        """
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter(name="virtualDevices")
-    def virtual_devices(self) -> Sequence['outputs.GetConnectionZSideAccessPointVirtualDeviceResult']:
-        return pulumi.get(self, "virtual_devices")
+    @pulumi.getter(name="virtualDevice")
+    def virtual_device(self) -> Optional['outputs.GetConnectionZSideAccessPointVirtualDeviceResult']:
+        """
+        Virtual device
+        """
+        return pulumi.get(self, "virtual_device")
 
 
 @pulumi.output_type
@@ -6780,7 +8128,18 @@ class GetConnectionZSideAccessPointAccountResult(dict):
                  global_org_id: str,
                  global_organization_name: str,
                  org_id: int,
-                 organization_name: str):
+                 organization_name: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -6788,66 +8147,100 @@ class GetConnectionZSideAccessPointAccountResult(dict):
         pulumi.set(__self__, "global_organization_name", global_organization_name)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
 class GetConnectionZSideAccessPointGatewayResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 state: str,
-                 uuid: str):
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
+        """
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "uuid", uuid)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned virtual gateway identifier
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -6855,70 +8248,109 @@ class GetConnectionZSideAccessPointGatewayResult(dict):
 class GetConnectionZSideAccessPointInterfaceResult(dict):
     def __init__(__self__, *,
                  id: int,
-                 type: str,
-                 uuid: str):
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param int id: id
+        :param str type: Interface type
+        :param str uuid: Equinix-assigned interface identifier
+        """
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        id
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
+        """
+        Interface type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned interface identifier
+        """
         return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
 class GetConnectionZSideAccessPointLinkProtocolResult(dict):
     def __init__(__self__, *,
-                 type: str,
                  vlan_c_tag: int,
                  vlan_s_tag: int,
-                 vlan_tag: int):
-        pulumi.set(__self__, "type", type)
+                 vlan_tag: int,
+                 type: Optional[str] = None):
+        """
+        :param int vlan_c_tag: Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        :param int vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        :param int vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
+        :param str type: Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
         pulumi.set(__self__, "vlan_c_tag", vlan_c_tag)
         pulumi.set(__self__, "vlan_s_tag", vlan_s_tag)
         pulumi.set(__self__, "vlan_tag", vlan_tag)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        return pulumi.get(self, "type")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="vlanCTag")
     def vlan_c_tag(self) -> int:
+        """
+        Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+        """
         return pulumi.get(self, "vlan_c_tag")
 
     @property
     @pulumi.getter(name="vlanSTag")
     def vlan_s_tag(self) -> int:
+        """
+        Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+        """
         return pulumi.get(self, "vlan_s_tag")
 
     @property
     @pulumi.getter(name="vlanTag")
     def vlan_tag(self) -> int:
+        """
+        Vlan Tag information, vlanTag value specified for DOT1Q connections
+        """
         return pulumi.get(self, "vlan_tag")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetConnectionZSideAccessPointLocationResult(dict):
     def __init__(__self__, *,
-                 href: str,
                  ibx: str,
                  metro_code: str,
                  metro_name: str,
                  region: str):
-        pulumi.set(__self__, "href", href)
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -6926,28 +8358,65 @@ class GetConnectionZSideAccessPointLocationResult(dict):
 
     @property
     @pulumi.getter
-    def href(self) -> str:
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetConnectionZSideAccessPointNetworkResult(dict):
+    def __init__(__self__, *,
+                 href: str,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned Network identifier
+        """
+        pulumi.set(__self__, "href", href)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned Network identifier
+        """
+        return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
@@ -6957,6 +8426,12 @@ class GetConnectionZSideAccessPointPortResult(dict):
                  name: str,
                  redundancies: Sequence['outputs.GetConnectionZSideAccessPointPortRedundancyResult'],
                  uuid: str):
+        """
+        :param str href: Unique Resource Identifier
+        :param str name: Port name
+        :param Sequence['GetConnectionZSideAccessPointPortRedundancyArgs'] redundancies: Redundancy Information
+        :param str uuid: Equinix-assigned Port identifier
+        """
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "redundancies", redundancies)
@@ -6965,33 +8440,73 @@ class GetConnectionZSideAccessPointPortResult(dict):
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Port name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def redundancies(self) -> Sequence['outputs.GetConnectionZSideAccessPointPortRedundancyResult']:
+        """
+        Redundancy Information
+        """
         return pulumi.get(self, "redundancies")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix-assigned Port identifier
+        """
         return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
 class GetConnectionZSideAccessPointPortRedundancyResult(dict):
     def __init__(__self__, *,
+                 enabled: bool,
+                 group: str,
                  priority: str):
+        """
+        :param bool enabled: Access point redundancy
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Access point redundancy
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        Port redundancy group
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
     def priority(self) -> str:
+        """
+        Priority type-Primary or Secondary
+        """
         return pulumi.get(self, "priority")
 
 
@@ -7004,6 +8519,14 @@ class GetConnectionZSideAccessPointProfileResult(dict):
                  name: str,
                  type: str,
                  uuid: str):
+        """
+        :param Sequence['GetConnectionZSideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
+        :param str description: User-provided service description
+        :param str href: Service Profile URI response attribute
+        :param str name: Customer-assigned service profile name
+        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        :param str uuid: Equinix assigned service profile identifier
+        """
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "href", href)
@@ -7014,266 +8537,108 @@ class GetConnectionZSideAccessPointProfileResult(dict):
     @property
     @pulumi.getter(name="accessPointTypeConfigs")
     def access_point_type_configs(self) -> Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult']:
+        """
+        Access point config information
+        """
         return pulumi.get(self, "access_point_type_configs")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        User-provided service description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Service Profile URI response attribute
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Customer-assigned service profile name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix assigned service profile identifier
+        """
         return pulumi.get(self, "uuid")
 
 
 @pulumi.output_type
 class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
     def __init__(__self__, *,
-                 allow_bandwidth_auto_approval: bool,
-                 allow_bandwidth_upgrade: bool,
-                 allow_custom_bandwidth: bool,
-                 allow_remote_connections: bool,
-                 api_configs: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult'],
-                 authentication_keys: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult'],
-                 bandwidth_alert_threshold: float,
-                 connection_label: str,
-                 connection_redundancy_required: bool,
-                 enable_auto_generate_service_key: bool,
-                 link_protocol_configs: Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult'],
-                 supported_bandwidths: Sequence[int],
                  type: str,
                  uuid: str):
-        pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
-        pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
-        pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
-        pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
-        pulumi.set(__self__, "api_configs", api_configs)
-        pulumi.set(__self__, "authentication_keys", authentication_keys)
-        pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
-        pulumi.set(__self__, "connection_label", connection_label)
-        pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
-        pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
-        pulumi.set(__self__, "link_protocol_configs", link_protocol_configs)
-        pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
+        """
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Equinix-assigned access point type config identifier
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
 
     @property
-    @pulumi.getter(name="allowBandwidthAutoApproval")
-    def allow_bandwidth_auto_approval(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_auto_approval")
-
-    @property
-    @pulumi.getter(name="allowBandwidthUpgrade")
-    def allow_bandwidth_upgrade(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_upgrade")
-
-    @property
-    @pulumi.getter(name="allowCustomBandwidth")
-    def allow_custom_bandwidth(self) -> bool:
-        return pulumi.get(self, "allow_custom_bandwidth")
-
-    @property
-    @pulumi.getter(name="allowRemoteConnections")
-    def allow_remote_connections(self) -> bool:
-        return pulumi.get(self, "allow_remote_connections")
-
-    @property
-    @pulumi.getter(name="apiConfigs")
-    def api_configs(self) -> Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult']:
-        return pulumi.get(self, "api_configs")
-
-    @property
-    @pulumi.getter(name="authenticationKeys")
-    def authentication_keys(self) -> Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult']:
-        return pulumi.get(self, "authentication_keys")
-
-    @property
-    @pulumi.getter(name="bandwidthAlertThreshold")
-    def bandwidth_alert_threshold(self) -> float:
-        return pulumi.get(self, "bandwidth_alert_threshold")
-
-    @property
-    @pulumi.getter(name="connectionLabel")
-    def connection_label(self) -> str:
-        return pulumi.get(self, "connection_label")
-
-    @property
-    @pulumi.getter(name="connectionRedundancyRequired")
-    def connection_redundancy_required(self) -> bool:
-        return pulumi.get(self, "connection_redundancy_required")
-
-    @property
-    @pulumi.getter(name="enableAutoGenerateServiceKey")
-    def enable_auto_generate_service_key(self) -> bool:
-        return pulumi.get(self, "enable_auto_generate_service_key")
-
-    @property
-    @pulumi.getter(name="linkProtocolConfigs")
-    def link_protocol_configs(self) -> Sequence['outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult']:
-        return pulumi.get(self, "link_protocol_configs")
-
-    @property
-    @pulumi.getter(name="supportedBandwidths")
-    def supported_bandwidths(self) -> Sequence[int]:
-        return pulumi.get(self, "supported_bandwidths")
-
-    @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of access point type config - VD, COLO
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix-assigned access point type config identifier
+        """
         return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
-class GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult(dict):
-    def __init__(__self__, *,
-                 allow_over_subscription: bool,
-                 api_available: bool,
-                 bandwidth_from_api: bool,
-                 equinix_managed_port: bool,
-                 equinix_managed_vlan: bool,
-                 integration_id: str,
-                 over_subscription_limit: int):
-        pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
-        pulumi.set(__self__, "api_available", api_available)
-        pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
-        pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
-        pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
-        pulumi.set(__self__, "integration_id", integration_id)
-        pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
-
-    @property
-    @pulumi.getter(name="allowOverSubscription")
-    def allow_over_subscription(self) -> bool:
-        return pulumi.get(self, "allow_over_subscription")
-
-    @property
-    @pulumi.getter(name="apiAvailable")
-    def api_available(self) -> bool:
-        return pulumi.get(self, "api_available")
-
-    @property
-    @pulumi.getter(name="bandwidthFromApi")
-    def bandwidth_from_api(self) -> bool:
-        return pulumi.get(self, "bandwidth_from_api")
-
-    @property
-    @pulumi.getter(name="equinixManagedPort")
-    def equinix_managed_port(self) -> bool:
-        return pulumi.get(self, "equinix_managed_port")
-
-    @property
-    @pulumi.getter(name="equinixManagedVlan")
-    def equinix_managed_vlan(self) -> bool:
-        return pulumi.get(self, "equinix_managed_vlan")
-
-    @property
-    @pulumi.getter(name="integrationId")
-    def integration_id(self) -> str:
-        return pulumi.get(self, "integration_id")
-
-    @property
-    @pulumi.getter(name="overSubscriptionLimit")
-    def over_subscription_limit(self) -> int:
-        return pulumi.get(self, "over_subscription_limit")
-
-
-@pulumi.output_type
-class GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult(dict):
-    def __init__(__self__, *,
-                 description: str,
-                 label: str,
-                 required: bool):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "required", required)
-
-    @property
-    @pulumi.getter
-    def description(self) -> str:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def label(self) -> str:
-        return pulumi.get(self, "label")
-
-    @property
-    @pulumi.getter
-    def required(self) -> bool:
-        return pulumi.get(self, "required")
-
-
-@pulumi.output_type
-class GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult(dict):
-    def __init__(__self__, *,
-                 encapsulation: str,
-                 encapsulation_strategy: str,
-                 reuse_vlan_s_tag: bool):
-        pulumi.set(__self__, "encapsulation", encapsulation)
-        pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
-        pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
-
-    @property
-    @pulumi.getter
-    def encapsulation(self) -> str:
-        return pulumi.get(self, "encapsulation")
-
-    @property
-    @pulumi.getter(name="encapsulationStrategy")
-    def encapsulation_strategy(self) -> str:
-        return pulumi.get(self, "encapsulation_strategy")
-
-    @property
-    @pulumi.getter(name="reuseVlanSTag")
-    def reuse_vlan_s_tag(self) -> bool:
-        return pulumi.get(self, "reuse_vlan_s_tag")
 
 
 @pulumi.output_type
 class GetConnectionZSideAccessPointRouterResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 state: str,
-                 uuid: str):
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str uuid: Equinix-assigned virtual gateway identifier
+        """
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "uuid", uuid)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def state(self) -> str:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned virtual gateway identifier
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -7281,26 +8646,85 @@ class GetConnectionZSideAccessPointRouterResult(dict):
 class GetConnectionZSideAccessPointVirtualDeviceResult(dict):
     def __init__(__self__, *,
                  href: str,
-                 type: str,
-                 uuid: str):
+                 name: Optional[str] = None,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str href: Unique Resource Identifier
+        :param str name: Customer-assigned Virtual Device Name
+        :param str type: Virtual Device type
+        :param str uuid: Equinix-assigned Virtual Device identifier
+        """
         pulumi.set(__self__, "href", href)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource Identifier
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        Customer-assigned Virtual Device Name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Virtual Device type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> str:
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned Virtual Device identifier
+        """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetConnectionZSideAdditionalInfoResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: Additional information key
+        :param str value: Additional information value
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Additional information key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Additional information value
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -7308,32 +8732,361 @@ class GetConnectionZSideServiceTokenResult(dict):
     def __init__(__self__, *,
                  description: str,
                  href: str,
+                 type: Optional[str] = None,
+                 uuid: Optional[str] = None):
+        """
+        :param str description: Service token description
+        :param str href: An absolute URL that is the subject of the link's context
+        :param str type: Token type - VC_TOKEN
+        :param str uuid: Equinix-assigned service token identifier
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "href", href)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Service token description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def href(self) -> str:
+        """
+        An absolute URL that is the subject of the link's context
+        """
+        return pulumi.get(self, "href")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Token type - VC_TOKEN
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[str]:
+        """
+        Equinix-assigned service token identifier
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetNetworkChangeResult(dict):
+    def __init__(__self__, *,
+                 href: str,
                  type: str,
                  uuid: str):
-        pulumi.set(__self__, "description", description)
+        """
+        :param str href: Absolute URL that returns the details of the given change.
+               Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+        :param str type: Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+        :param str uuid: Asset change request identifier.
+        """
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
-    def description(self) -> str:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
     def href(self) -> str:
+        """
+        Absolute URL that returns the details of the given change.
+        Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Asset change request identifier.
+        """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetNetworkChangeLogResult(dict):
+    def __init__(__self__, *,
+                 created_by: str,
+                 created_by_email: str,
+                 created_by_full_name: str,
+                 created_date_time: str,
+                 deleted_by: str,
+                 deleted_by_email: str,
+                 deleted_by_full_name: str,
+                 deleted_date_time: str,
+                 updated_by: str,
+                 updated_by_email: str,
+                 updated_by_full_name: str,
+                 updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "created_by_email", created_by_email)
+        pulumi.set(__self__, "created_by_full_name", created_by_full_name)
+        pulumi.set(__self__, "created_date_time", created_date_time)
+        pulumi.set(__self__, "deleted_by", deleted_by)
+        pulumi.set(__self__, "deleted_by_email", deleted_by_email)
+        pulumi.set(__self__, "deleted_by_full_name", deleted_by_full_name)
+        pulumi.set(__self__, "deleted_date_time", deleted_date_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        pulumi.set(__self__, "updated_by_email", updated_by_email)
+        pulumi.set(__self__, "updated_by_full_name", updated_by_full_name)
+        pulumi.set(__self__, "updated_date_time", updated_date_time)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        Created by User Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="createdByEmail")
+    def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
+        return pulumi.get(self, "created_by_email")
+
+    @property
+    @pulumi.getter(name="createdByFullName")
+    def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
+        return pulumi.get(self, "created_by_full_name")
+
+    @property
+    @pulumi.getter(name="createdDateTime")
+    def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
+        return pulumi.get(self, "created_date_time")
+
+    @property
+    @pulumi.getter(name="deletedBy")
+    def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
+        return pulumi.get(self, "deleted_by")
+
+    @property
+    @pulumi.getter(name="deletedByEmail")
+    def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
+        return pulumi.get(self, "deleted_by_email")
+
+    @property
+    @pulumi.getter(name="deletedByFullName")
+    def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
+        return pulumi.get(self, "deleted_by_full_name")
+
+    @property
+    @pulumi.getter(name="deletedDateTime")
+    def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
+        return pulumi.get(self, "deleted_date_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter(name="updatedByEmail")
+    def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
+        return pulumi.get(self, "updated_by_email")
+
+    @property
+    @pulumi.getter(name="updatedByFullName")
+    def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
+        return pulumi.get(self, "updated_by_full_name")
+
+    @property
+    @pulumi.getter(name="updatedDateTime")
+    def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
+        return pulumi.get(self, "updated_date_time")
+
+
+@pulumi.output_type
+class GetNetworkLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: str,
+                 metro_code: str,
+                 metro_name: str,
+                 region: str):
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_name", metro_name)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> str:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetNetworkNotificationResult(dict):
+    def __init__(__self__, *,
+                 emails: Sequence[str],
+                 type: str,
+                 send_interval: Optional[str] = None):
+        """
+        :param Sequence[str] emails: Array of contact emails
+        :param str type: Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        :param str send_interval: Send interval
+        """
+        pulumi.set(__self__, "emails", emails)
+        pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
+        return pulumi.get(self, "emails")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[str]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
+
+
+@pulumi.output_type
+class GetNetworkOperationResult(dict):
+    def __init__(__self__, *,
+                 equinix_status: str):
+        """
+        :param str equinix_status: Progress towards provisioning a given asset.
+        """
+        pulumi.set(__self__, "equinix_status", equinix_status)
+
+    @property
+    @pulumi.getter(name="equinixStatus")
+    def equinix_status(self) -> str:
+        """
+        Progress towards provisioning a given asset.
+        """
+        return pulumi.get(self, "equinix_status")
+
+
+@pulumi.output_type
+class GetNetworkProjectResult(dict):
+    def __init__(__self__, *,
+                 project_id: str):
+        """
+        :param str project_id: Customer project identifier
+        """
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Customer project identifier
+        """
+        return pulumi.get(self, "project_id")
 
 
 @pulumi.output_type
@@ -7345,7 +9098,18 @@ class GetPortAccountResult(dict):
                  global_org_id: str,
                  global_organization_name: str,
                  org_id: int,
-                 organization_name: str):
+                 organization_name: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -7353,41 +9117,71 @@ class GetPortAccountResult(dict):
         pulumi.set(__self__, "global_organization_name", global_organization_name)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
@@ -7405,6 +9199,20 @@ class GetPortChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -7421,61 +9229,97 @@ class GetPortChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -7484,36 +9328,67 @@ class GetPortDeviceResult(dict):
     def __init__(__self__, *,
                  name: str,
                  redundancies: Sequence['outputs.GetPortDeviceRedundancyResult']):
+        """
+        :param str name: Port name
+        :param Sequence['GetPortDeviceRedundancyArgs'] redundancies: Port device redundancy
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "redundancies", redundancies)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Port name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def redundancies(self) -> Sequence['outputs.GetPortDeviceRedundancyResult']:
+        """
+        Port device redundancy
+        """
         return pulumi.get(self, "redundancies")
 
 
 @pulumi.output_type
 class GetPortDeviceRedundancyResult(dict):
     def __init__(__self__, *,
+                 enabled: bool,
                  group: str,
                  priority: str):
+        """
+        :param bool enabled: Access point redundancy
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
+        """
+        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Access point redundancy
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
     def group(self) -> str:
+        """
+        Port redundancy group
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def priority(self) -> str:
+        """
+        Priority type-Primary or Secondary
+        """
         return pulumi.get(self, "priority")
 
 
@@ -7522,29 +9397,43 @@ class GetPortEncapsulationResult(dict):
     def __init__(__self__, *,
                  tag_protocol_id: str,
                  type: str):
+        """
+        :param str tag_protocol_id: Port encapsulation Tag Protocol Identifier
+        :param str type: Port encapsulation protocol type
+        """
         pulumi.set(__self__, "tag_protocol_id", tag_protocol_id)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="tagProtocolId")
     def tag_protocol_id(self) -> str:
+        """
+        Port encapsulation Tag Protocol Identifier
+        """
         return pulumi.get(self, "tag_protocol_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Port encapsulation protocol type
+        """
         return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetPortLocationResult(dict):
     def __init__(__self__, *,
-                 href: str,
                  ibx: str,
                  metro_code: str,
                  metro_name: str,
                  region: str):
-        pulumi.set(__self__, "href", href)
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -7552,27 +9441,34 @@ class GetPortLocationResult(dict):
 
     @property
     @pulumi.getter
-    def href(self) -> str:
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
 
 
@@ -7582,6 +9478,11 @@ class GetPortOperationResult(dict):
                  connection_count: int,
                  op_status_changed_at: str,
                  operational_status: str):
+        """
+        :param int connection_count: Total number of current connections
+        :param str op_status_changed_at: Date and time at which port availability changed
+        :param str operational_status: Port operation status
+        """
         pulumi.set(__self__, "connection_count", connection_count)
         pulumi.set(__self__, "op_status_changed_at", op_status_changed_at)
         pulumi.set(__self__, "operational_status", operational_status)
@@ -7589,16 +9490,25 @@ class GetPortOperationResult(dict):
     @property
     @pulumi.getter(name="connectionCount")
     def connection_count(self) -> int:
+        """
+        Total number of current connections
+        """
         return pulumi.get(self, "connection_count")
 
     @property
     @pulumi.getter(name="opStatusChangedAt")
     def op_status_changed_at(self) -> str:
+        """
+        Date and time at which port availability changed
+        """
         return pulumi.get(self, "op_status_changed_at")
 
     @property
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> str:
+        """
+        Port operation status
+        """
         return pulumi.get(self, "operational_status")
 
 
@@ -7608,6 +9518,11 @@ class GetPortRedundancyResult(dict):
                  enabled: bool,
                  group: str,
                  priority: str):
+        """
+        :param bool enabled: Access point redundancy
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
+        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
@@ -7615,16 +9530,25 @@ class GetPortRedundancyResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Access point redundancy
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def group(self) -> str:
+        """
+        Port redundancy group
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def priority(self) -> str:
+        """
+        Priority type-Primary or Secondary
+        """
         return pulumi.get(self, "priority")
 
 
@@ -7648,7 +9572,27 @@ class GetPortsDatumResult(dict):
                  state: str,
                  type: str,
                  used_bandwidth: int,
-                 uuid: Optional[str] = None):
+                 uuid: str):
+        """
+        :param Sequence['GetPortsDatumAccountArgs'] accounts: Customer account information that is associated with this port
+        :param int available_bandwidth: Port available bandwidth in Mbps
+        :param int bandwidth: Port bandwidth in Mbps
+        :param Sequence['GetPortsDatumChangeLogArgs'] change_logs: Captures port lifecycle change information
+        :param str description: Port description
+        :param Sequence['GetPortsDatumDeviceArgs'] devices: Port device
+        :param Sequence['GetPortsDatumEncapsulationArgs'] encapsulations: Port encapsulation protocol
+        :param str href: Port URI information
+        :param bool lag_enabled: Port Lag
+        :param Sequence['GetPortsDatumLocationArgs'] locations: Port location information
+        :param str name: Port name
+        :param Sequence['GetPortsDatumOperationArgs'] operations: Port specific operational data
+        :param Sequence['GetPortsDatumRedundancyArgs'] redundancies: Port redundancy information
+        :param str service_type: Port service type
+        :param str state: Port state
+        :param str type: Port type
+        :param int used_bandwidth: Port used bandwidth in Mbps
+        :param str uuid: Equinix-assigned port identifier
+        """
         pulumi.set(__self__, "accounts", accounts)
         pulumi.set(__self__, "available_bandwidth", available_bandwidth)
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -7666,97 +9610,150 @@ class GetPortsDatumResult(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "used_bandwidth", used_bandwidth)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetPortsDatumAccountResult']:
+        """
+        Customer account information that is associated with this port
+        """
         return pulumi.get(self, "accounts")
 
     @property
     @pulumi.getter(name="availableBandwidth")
     def available_bandwidth(self) -> int:
+        """
+        Port available bandwidth in Mbps
+        """
         return pulumi.get(self, "available_bandwidth")
 
     @property
     @pulumi.getter
     def bandwidth(self) -> int:
+        """
+        Port bandwidth in Mbps
+        """
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="changeLogs")
     def change_logs(self) -> Sequence['outputs.GetPortsDatumChangeLogResult']:
+        """
+        Captures port lifecycle change information
+        """
         return pulumi.get(self, "change_logs")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Port description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def devices(self) -> Sequence['outputs.GetPortsDatumDeviceResult']:
+        """
+        Port device
+        """
         return pulumi.get(self, "devices")
 
     @property
     @pulumi.getter
     def encapsulations(self) -> Sequence['outputs.GetPortsDatumEncapsulationResult']:
+        """
+        Port encapsulation protocol
+        """
         return pulumi.get(self, "encapsulations")
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Port URI information
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter(name="lagEnabled")
     def lag_enabled(self) -> bool:
+        """
+        Port Lag
+        """
         return pulumi.get(self, "lag_enabled")
 
     @property
     @pulumi.getter
     def locations(self) -> Sequence['outputs.GetPortsDatumLocationResult']:
+        """
+        Port location information
+        """
         return pulumi.get(self, "locations")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Port name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def operations(self) -> Sequence['outputs.GetPortsDatumOperationResult']:
+        """
+        Port specific operational data
+        """
         return pulumi.get(self, "operations")
 
     @property
     @pulumi.getter
     def redundancies(self) -> Sequence['outputs.GetPortsDatumRedundancyResult']:
+        """
+        Port redundancy information
+        """
         return pulumi.get(self, "redundancies")
 
     @property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> str:
+        """
+        Port service type
+        """
         return pulumi.get(self, "service_type")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        Port state
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Port type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="usedBandwidth")
     def used_bandwidth(self) -> int:
+        """
+        Port used bandwidth in Mbps
+        """
         return pulumi.get(self, "used_bandwidth")
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
+        """
+        Equinix-assigned port identifier
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -7769,7 +9766,18 @@ class GetPortsDatumAccountResult(dict):
                  global_org_id: str,
                  global_organization_name: str,
                  org_id: int,
-                 organization_name: str):
+                 organization_name: str,
+                 ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -7777,41 +9785,71 @@ class GetPortsDatumAccountResult(dict):
         pulumi.set(__self__, "global_organization_name", global_organization_name)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "organization_name", organization_name)
+        pulumi.set(__self__, "ucm_id", ucm_id)
 
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="ucmId")
+    def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
+        return pulumi.get(self, "ucm_id")
 
 
 @pulumi.output_type
@@ -7829,6 +9867,20 @@ class GetPortsDatumChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -7845,61 +9897,97 @@ class GetPortsDatumChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -7908,36 +9996,67 @@ class GetPortsDatumDeviceResult(dict):
     def __init__(__self__, *,
                  name: str,
                  redundancies: Sequence['outputs.GetPortsDatumDeviceRedundancyResult']):
+        """
+        :param str name: Port name
+        :param Sequence['GetPortsDatumDeviceRedundancyArgs'] redundancies: Port device redundancy
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "redundancies", redundancies)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Port name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def redundancies(self) -> Sequence['outputs.GetPortsDatumDeviceRedundancyResult']:
+        """
+        Port device redundancy
+        """
         return pulumi.get(self, "redundancies")
 
 
 @pulumi.output_type
 class GetPortsDatumDeviceRedundancyResult(dict):
     def __init__(__self__, *,
+                 enabled: bool,
                  group: str,
                  priority: str):
+        """
+        :param bool enabled: Access point redundancy
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
+        """
+        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
 
     @property
     @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Access point redundancy
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
     def group(self) -> str:
+        """
+        Port redundancy group
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def priority(self) -> str:
+        """
+        Priority type-Primary or Secondary
+        """
         return pulumi.get(self, "priority")
 
 
@@ -7946,29 +10065,43 @@ class GetPortsDatumEncapsulationResult(dict):
     def __init__(__self__, *,
                  tag_protocol_id: str,
                  type: str):
+        """
+        :param str tag_protocol_id: Port encapsulation Tag Protocol Identifier
+        :param str type: Port encapsulation protocol type
+        """
         pulumi.set(__self__, "tag_protocol_id", tag_protocol_id)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="tagProtocolId")
     def tag_protocol_id(self) -> str:
+        """
+        Port encapsulation Tag Protocol Identifier
+        """
         return pulumi.get(self, "tag_protocol_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Port encapsulation protocol type
+        """
         return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetPortsDatumLocationResult(dict):
     def __init__(__self__, *,
-                 href: str,
                  ibx: str,
                  metro_code: str,
                  metro_name: str,
                  region: str):
-        pulumi.set(__self__, "href", href)
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -7976,27 +10109,34 @@ class GetPortsDatumLocationResult(dict):
 
     @property
     @pulumi.getter
-    def href(self) -> str:
-        return pulumi.get(self, "href")
-
-    @property
-    @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
 
 
@@ -8006,6 +10146,11 @@ class GetPortsDatumOperationResult(dict):
                  connection_count: int,
                  op_status_changed_at: str,
                  operational_status: str):
+        """
+        :param int connection_count: Total number of current connections
+        :param str op_status_changed_at: Date and time at which port availability changed
+        :param str operational_status: Port operation status
+        """
         pulumi.set(__self__, "connection_count", connection_count)
         pulumi.set(__self__, "op_status_changed_at", op_status_changed_at)
         pulumi.set(__self__, "operational_status", operational_status)
@@ -8013,16 +10158,25 @@ class GetPortsDatumOperationResult(dict):
     @property
     @pulumi.getter(name="connectionCount")
     def connection_count(self) -> int:
+        """
+        Total number of current connections
+        """
         return pulumi.get(self, "connection_count")
 
     @property
     @pulumi.getter(name="opStatusChangedAt")
     def op_status_changed_at(self) -> str:
+        """
+        Date and time at which port availability changed
+        """
         return pulumi.get(self, "op_status_changed_at")
 
     @property
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> str:
+        """
+        Port operation status
+        """
         return pulumi.get(self, "operational_status")
 
 
@@ -8032,6 +10186,11 @@ class GetPortsDatumRedundancyResult(dict):
                  enabled: bool,
                  group: str,
                  priority: str):
+        """
+        :param bool enabled: Access point redundancy
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
+        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "priority", priority)
@@ -8039,32 +10198,40 @@ class GetPortsDatumRedundancyResult(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Access point redundancy
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def group(self) -> str:
+        """
+        Port redundancy group
+        """
         return pulumi.get(self, "group")
 
     @property
     @pulumi.getter
     def priority(self) -> str:
+        """
+        Priority type-Primary or Secondary
+        """
         return pulumi.get(self, "priority")
 
 
 @pulumi.output_type
 class GetPortsFilterResult(dict):
     def __init__(__self__, *,
-                 name: Optional[str] = None):
+                 name: str):
         """
         :param str name: Query Parameter to Get Ports By Name
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         Query Parameter to Get Ports By Name
         """
@@ -8189,6 +10356,11 @@ class GetRoutingProtocolChangeResult(dict):
                  href: str,
                  type: str,
                  uuid: str):
+        """
+        :param str href: Routing Protocol Change URI
+        :param str type: Type of change
+        :param str uuid: Uniquely identifies a change
+        """
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -8196,16 +10368,25 @@ class GetRoutingProtocolChangeResult(dict):
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Routing Protocol Change URI
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of change
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Uniquely identifies a change
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -8224,6 +10405,20 @@ class GetRoutingProtocolChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -8240,61 +10435,97 @@ class GetRoutingProtocolChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
@@ -8339,11 +10570,17 @@ class GetRoutingProtocolDirectIpv6Result(dict):
 class GetRoutingProtocolOperationResult(dict):
     def __init__(__self__, *,
                  errors: Sequence['outputs.GetRoutingProtocolOperationErrorResult']):
+        """
+        :param Sequence['GetRoutingProtocolOperationErrorArgs'] errors: Errors occurred
+        """
         pulumi.set(__self__, "errors", errors)
 
     @property
     @pulumi.getter
     def errors(self) -> Sequence['outputs.GetRoutingProtocolOperationErrorResult']:
+        """
+        Errors occurred
+        """
         return pulumi.get(self, "errors")
 
 
@@ -8356,6 +10593,14 @@ class GetRoutingProtocolOperationErrorResult(dict):
                  error_code: str,
                  error_message: str,
                  help: str):
+        """
+        :param Sequence['GetRoutingProtocolOperationErrorAdditionalInfoArgs'] additional_infos: Pricing error additional Info
+        :param str correlation_id: CorrelationId
+        :param str details: Details
+        :param str error_code: Error  code
+        :param str error_message: Error Message
+        :param str help: Help
+        """
         pulumi.set(__self__, "additional_infos", additional_infos)
         pulumi.set(__self__, "correlation_id", correlation_id)
         pulumi.set(__self__, "details", details)
@@ -8366,31 +10611,49 @@ class GetRoutingProtocolOperationErrorResult(dict):
     @property
     @pulumi.getter(name="additionalInfos")
     def additional_infos(self) -> Sequence['outputs.GetRoutingProtocolOperationErrorAdditionalInfoResult']:
+        """
+        Pricing error additional Info
+        """
         return pulumi.get(self, "additional_infos")
 
     @property
     @pulumi.getter(name="correlationId")
     def correlation_id(self) -> str:
+        """
+        CorrelationId
+        """
         return pulumi.get(self, "correlation_id")
 
     @property
     @pulumi.getter
     def details(self) -> str:
+        """
+        Details
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> str:
+        """
+        Error  code
+        """
         return pulumi.get(self, "error_code")
 
     @property
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> str:
+        """
+        Error Message
+        """
         return pulumi.get(self, "error_message")
 
     @property
     @pulumi.getter
     def help(self) -> str:
+        """
+        Help
+        """
         return pulumi.get(self, "help")
 
 
@@ -8399,226 +10662,377 @@ class GetRoutingProtocolOperationErrorAdditionalInfoResult(dict):
     def __init__(__self__, *,
                  property: str,
                  reason: str):
+        """
+        :param str property: Property at which the error potentially occurred
+        :param str reason: Reason for the error
+        """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "reason", reason)
 
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        Reason for the error
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter
     def property(self) -> str:
+        """
+        Property at which the error potentially occurred
+        """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class GetServiceProfileAccessPointTypeConfigResult(dict):
     def __init__(__self__, *,
-                 allow_bandwidth_auto_approval: bool,
-                 allow_bandwidth_upgrade: bool,
-                 allow_custom_bandwidth: bool,
-                 allow_remote_connections: bool,
-                 api_configs: Sequence['outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult'],
-                 authentication_keys: Sequence['outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult'],
-                 bandwidth_alert_threshold: float,
-                 connection_label: str,
-                 connection_redundancy_required: bool,
-                 enable_auto_generate_service_key: bool,
-                 link_protocol_configs: Sequence['outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult'],
-                 supported_bandwidths: Sequence[int],
                  type: str,
-                 uuid: str):
-        pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
-        pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
-        pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
-        pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
-        pulumi.set(__self__, "api_configs", api_configs)
-        pulumi.set(__self__, "authentication_keys", authentication_keys)
-        pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
-        pulumi.set(__self__, "connection_label", connection_label)
-        pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
-        pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
-        pulumi.set(__self__, "link_protocol_configs", link_protocol_configs)
-        pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
+                 uuid: str,
+                 allow_bandwidth_auto_approval: Optional[bool] = None,
+                 allow_bandwidth_upgrade: Optional[bool] = None,
+                 allow_custom_bandwidth: Optional[bool] = None,
+                 allow_remote_connections: Optional[bool] = None,
+                 api_config: Optional['outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult'] = None,
+                 authentication_key: Optional['outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult'] = None,
+                 bandwidth_alert_threshold: Optional[float] = None,
+                 connection_label: Optional[str] = None,
+                 connection_redundancy_required: Optional[bool] = None,
+                 enable_auto_generate_service_key: Optional[bool] = None,
+                 link_protocol_config: Optional['outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult'] = None,
+                 supported_bandwidths: Optional[Sequence[int]] = None):
+        """
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Colo/Port Uuid
+        :param bool allow_bandwidth_auto_approval: Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+        :param bool allow_bandwidth_upgrade: Availability of a bandwidth upgrade. The default is false
+        :param bool allow_custom_bandwidth: Setting to enable or disable the ability of the buyer to customize the bandwidth
+        :param bool allow_remote_connections: Setting to allow or prohibit remote connections to the service profile
+        :param 'GetServiceProfileAccessPointTypeConfigApiConfigArgs' api_config: Api configuration details
+        :param 'GetServiceProfileAccessPointTypeConfigAuthenticationKeyArgs' authentication_key: Authentication key details
+        :param float bandwidth_alert_threshold: Percentage of port bandwidth at which an allocation alert is generated
+        :param str connection_label: Custom name for Connection
+        :param bool connection_redundancy_required: Mandate redundant connections
+        :param bool enable_auto_generate_service_key: Enable auto generate service key
+        :param 'GetServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs' link_protocol_config: Link protocol configuration details
+        :param Sequence[int] supported_bandwidths: Supported bandwidths
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter(name="allowBandwidthAutoApproval")
-    def allow_bandwidth_auto_approval(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_auto_approval")
-
-    @property
-    @pulumi.getter(name="allowBandwidthUpgrade")
-    def allow_bandwidth_upgrade(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_upgrade")
-
-    @property
-    @pulumi.getter(name="allowCustomBandwidth")
-    def allow_custom_bandwidth(self) -> bool:
-        return pulumi.get(self, "allow_custom_bandwidth")
-
-    @property
-    @pulumi.getter(name="allowRemoteConnections")
-    def allow_remote_connections(self) -> bool:
-        return pulumi.get(self, "allow_remote_connections")
-
-    @property
-    @pulumi.getter(name="apiConfigs")
-    def api_configs(self) -> Sequence['outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult']:
-        return pulumi.get(self, "api_configs")
-
-    @property
-    @pulumi.getter(name="authenticationKeys")
-    def authentication_keys(self) -> Sequence['outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult']:
-        return pulumi.get(self, "authentication_keys")
-
-    @property
-    @pulumi.getter(name="bandwidthAlertThreshold")
-    def bandwidth_alert_threshold(self) -> float:
-        return pulumi.get(self, "bandwidth_alert_threshold")
-
-    @property
-    @pulumi.getter(name="connectionLabel")
-    def connection_label(self) -> str:
-        return pulumi.get(self, "connection_label")
-
-    @property
-    @pulumi.getter(name="connectionRedundancyRequired")
-    def connection_redundancy_required(self) -> bool:
-        return pulumi.get(self, "connection_redundancy_required")
-
-    @property
-    @pulumi.getter(name="enableAutoGenerateServiceKey")
-    def enable_auto_generate_service_key(self) -> bool:
-        return pulumi.get(self, "enable_auto_generate_service_key")
-
-    @property
-    @pulumi.getter(name="linkProtocolConfigs")
-    def link_protocol_configs(self) -> Sequence['outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult']:
-        return pulumi.get(self, "link_protocol_configs")
-
-    @property
-    @pulumi.getter(name="supportedBandwidths")
-    def supported_bandwidths(self) -> Sequence[int]:
-        return pulumi.get(self, "supported_bandwidths")
+        if allow_bandwidth_auto_approval is not None:
+            pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
+        if allow_bandwidth_upgrade is not None:
+            pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
+        if allow_custom_bandwidth is not None:
+            pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
+        if allow_remote_connections is not None:
+            pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
+        if api_config is not None:
+            pulumi.set(__self__, "api_config", api_config)
+        if authentication_key is not None:
+            pulumi.set(__self__, "authentication_key", authentication_key)
+        if bandwidth_alert_threshold is not None:
+            pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
+        if connection_label is not None:
+            pulumi.set(__self__, "connection_label", connection_label)
+        if connection_redundancy_required is not None:
+            pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
+        if enable_auto_generate_service_key is not None:
+            pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
+        if link_protocol_config is not None:
+            pulumi.set(__self__, "link_protocol_config", link_protocol_config)
+        if supported_bandwidths is not None:
+            pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of access point type config - VD, COLO
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Colo/Port Uuid
+        """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="allowBandwidthAutoApproval")
+    def allow_bandwidth_auto_approval(self) -> Optional[bool]:
+        """
+        Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+        """
+        return pulumi.get(self, "allow_bandwidth_auto_approval")
+
+    @property
+    @pulumi.getter(name="allowBandwidthUpgrade")
+    def allow_bandwidth_upgrade(self) -> Optional[bool]:
+        """
+        Availability of a bandwidth upgrade. The default is false
+        """
+        return pulumi.get(self, "allow_bandwidth_upgrade")
+
+    @property
+    @pulumi.getter(name="allowCustomBandwidth")
+    def allow_custom_bandwidth(self) -> Optional[bool]:
+        """
+        Setting to enable or disable the ability of the buyer to customize the bandwidth
+        """
+        return pulumi.get(self, "allow_custom_bandwidth")
+
+    @property
+    @pulumi.getter(name="allowRemoteConnections")
+    def allow_remote_connections(self) -> Optional[bool]:
+        """
+        Setting to allow or prohibit remote connections to the service profile
+        """
+        return pulumi.get(self, "allow_remote_connections")
+
+    @property
+    @pulumi.getter(name="apiConfig")
+    def api_config(self) -> Optional['outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult']:
+        """
+        Api configuration details
+        """
+        return pulumi.get(self, "api_config")
+
+    @property
+    @pulumi.getter(name="authenticationKey")
+    def authentication_key(self) -> Optional['outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult']:
+        """
+        Authentication key details
+        """
+        return pulumi.get(self, "authentication_key")
+
+    @property
+    @pulumi.getter(name="bandwidthAlertThreshold")
+    def bandwidth_alert_threshold(self) -> Optional[float]:
+        """
+        Percentage of port bandwidth at which an allocation alert is generated
+        """
+        return pulumi.get(self, "bandwidth_alert_threshold")
+
+    @property
+    @pulumi.getter(name="connectionLabel")
+    def connection_label(self) -> Optional[str]:
+        """
+        Custom name for Connection
+        """
+        return pulumi.get(self, "connection_label")
+
+    @property
+    @pulumi.getter(name="connectionRedundancyRequired")
+    def connection_redundancy_required(self) -> Optional[bool]:
+        """
+        Mandate redundant connections
+        """
+        return pulumi.get(self, "connection_redundancy_required")
+
+    @property
+    @pulumi.getter(name="enableAutoGenerateServiceKey")
+    def enable_auto_generate_service_key(self) -> Optional[bool]:
+        """
+        Enable auto generate service key
+        """
+        return pulumi.get(self, "enable_auto_generate_service_key")
+
+    @property
+    @pulumi.getter(name="linkProtocolConfig")
+    def link_protocol_config(self) -> Optional['outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult']:
+        """
+        Link protocol configuration details
+        """
+        return pulumi.get(self, "link_protocol_config")
+
+    @property
+    @pulumi.getter(name="supportedBandwidths")
+    def supported_bandwidths(self) -> Optional[Sequence[int]]:
+        """
+        Supported bandwidths
+        """
+        return pulumi.get(self, "supported_bandwidths")
 
 
 @pulumi.output_type
 class GetServiceProfileAccessPointTypeConfigApiConfigResult(dict):
     def __init__(__self__, *,
-                 allow_over_subscription: bool,
-                 api_available: bool,
-                 bandwidth_from_api: bool,
-                 equinix_managed_port: bool,
-                 equinix_managed_vlan: bool,
-                 integration_id: str,
-                 over_subscription_limit: int):
-        pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
-        pulumi.set(__self__, "api_available", api_available)
-        pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
-        pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
-        pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
-        pulumi.set(__self__, "integration_id", integration_id)
-        pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
+                 allow_over_subscription: Optional[bool] = None,
+                 api_available: Optional[bool] = None,
+                 bandwidth_from_api: Optional[bool] = None,
+                 equinix_managed_port: Optional[bool] = None,
+                 equinix_managed_vlan: Optional[bool] = None,
+                 integration_id: Optional[str] = None,
+                 over_subscription_limit: Optional[int] = None):
+        """
+        :param bool allow_over_subscription: Setting showing that oversubscription support is available (true) or not (false). The default is false
+        :param bool api_available: Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
+        :param bool bandwidth_from_api: Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+        :param bool equinix_managed_port: Setting indicating that the port is managed by Equinix (true) or not (false)
+        :param bool equinix_managed_vlan: Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        :param str integration_id: A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
+        :param int over_subscription_limit: Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+        """
+        if allow_over_subscription is not None:
+            pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
+        if api_available is not None:
+            pulumi.set(__self__, "api_available", api_available)
+        if bandwidth_from_api is not None:
+            pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
+        if equinix_managed_port is not None:
+            pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
+        if equinix_managed_vlan is not None:
+            pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
+        if integration_id is not None:
+            pulumi.set(__self__, "integration_id", integration_id)
+        if over_subscription_limit is not None:
+            pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
 
     @property
     @pulumi.getter(name="allowOverSubscription")
-    def allow_over_subscription(self) -> bool:
+    def allow_over_subscription(self) -> Optional[bool]:
+        """
+        Setting showing that oversubscription support is available (true) or not (false). The default is false
+        """
         return pulumi.get(self, "allow_over_subscription")
 
     @property
     @pulumi.getter(name="apiAvailable")
-    def api_available(self) -> bool:
+    def api_available(self) -> Optional[bool]:
+        """
+        Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
+        """
         return pulumi.get(self, "api_available")
 
     @property
     @pulumi.getter(name="bandwidthFromApi")
-    def bandwidth_from_api(self) -> bool:
+    def bandwidth_from_api(self) -> Optional[bool]:
+        """
+        Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+        """
         return pulumi.get(self, "bandwidth_from_api")
 
     @property
     @pulumi.getter(name="equinixManagedPort")
-    def equinix_managed_port(self) -> bool:
+    def equinix_managed_port(self) -> Optional[bool]:
+        """
+        Setting indicating that the port is managed by Equinix (true) or not (false)
+        """
         return pulumi.get(self, "equinix_managed_port")
 
     @property
     @pulumi.getter(name="equinixManagedVlan")
-    def equinix_managed_vlan(self) -> bool:
+    def equinix_managed_vlan(self) -> Optional[bool]:
+        """
+        Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        """
         return pulumi.get(self, "equinix_managed_vlan")
 
     @property
     @pulumi.getter(name="integrationId")
-    def integration_id(self) -> str:
+    def integration_id(self) -> Optional[str]:
+        """
+        A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
+        """
         return pulumi.get(self, "integration_id")
 
     @property
     @pulumi.getter(name="overSubscriptionLimit")
-    def over_subscription_limit(self) -> int:
+    def over_subscription_limit(self) -> Optional[int]:
+        """
+        Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+        """
         return pulumi.get(self, "over_subscription_limit")
 
 
 @pulumi.output_type
 class GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult(dict):
     def __init__(__self__, *,
-                 description: str,
-                 label: str,
-                 required: bool):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "required", required)
+                 description: Optional[str] = None,
+                 label: Optional[str] = None,
+                 required: Optional[bool] = None):
+        """
+        :param str description: Description of authorization key
+        :param str label: Name of the parameter that must be provided to authorize the connection.
+        :param bool required: Requirement to configure an authentication key.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> Optional[str]:
+        """
+        Description of authorization key
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> Optional[str]:
+        """
+        Name of the parameter that must be provided to authorize the connection.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def required(self) -> bool:
+    def required(self) -> Optional[bool]:
+        """
+        Requirement to configure an authentication key.
+        """
         return pulumi.get(self, "required")
 
 
 @pulumi.output_type
 class GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult(dict):
     def __init__(__self__, *,
-                 encapsulation: str,
-                 encapsulation_strategy: str,
-                 reuse_vlan_s_tag: bool):
-        pulumi.set(__self__, "encapsulation", encapsulation)
-        pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
-        pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
+                 encapsulation: Optional[str] = None,
+                 encapsulation_strategy: Optional[str] = None,
+                 reuse_vlan_s_tag: Optional[bool] = None):
+        """
+        :param str encapsulation: Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        :param str encapsulation_strategy: Additional tagging information required by the seller profile.
+        :param bool reuse_vlan_s_tag: Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+        """
+        if encapsulation is not None:
+            pulumi.set(__self__, "encapsulation", encapsulation)
+        if encapsulation_strategy is not None:
+            pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
+        if reuse_vlan_s_tag is not None:
+            pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
 
     @property
     @pulumi.getter
-    def encapsulation(self) -> str:
+    def encapsulation(self) -> Optional[str]:
+        """
+        Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        """
         return pulumi.get(self, "encapsulation")
 
     @property
     @pulumi.getter(name="encapsulationStrategy")
-    def encapsulation_strategy(self) -> str:
+    def encapsulation_strategy(self) -> Optional[str]:
+        """
+        Additional tagging information required by the seller profile.
+        """
         return pulumi.get(self, "encapsulation_strategy")
 
     @property
     @pulumi.getter(name="reuseVlanSTag")
-    def reuse_vlan_s_tag(self) -> bool:
+    def reuse_vlan_s_tag(self) -> Optional[bool]:
+        """
+        Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+        """
         return pulumi.get(self, "reuse_vlan_s_tag")
 
 
@@ -8633,6 +11047,16 @@ class GetServiceProfileAccountResult(dict):
                  org_id: int,
                  organization_name: str,
                  ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -8645,41 +11069,65 @@ class GetServiceProfileAccountResult(dict):
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
 
     @property
     @pulumi.getter(name="ucmId")
     def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
         return pulumi.get(self, "ucm_id")
 
 
@@ -8698,6 +11146,20 @@ class GetServiceProfileChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -8714,207 +11176,338 @@ class GetServiceProfileChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
 @pulumi.output_type
 class GetServiceProfileCustomFieldResult(dict):
     def __init__(__self__, *,
-                 capture_in_email: bool,
                  data_type: str,
-                 description: str,
                  label: str,
-                 options: Sequence[str],
-                 required: bool):
-        pulumi.set(__self__, "capture_in_email", capture_in_email)
+                 required: bool,
+                 capture_in_email: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 options: Optional[Sequence[str]] = None):
+        """
+        :param str data_type: Data type
+        :param str label: Label
+        :param bool required: Required field
+        :param bool capture_in_email: Required field
+        :param str description: Description
+        :param Sequence[str] options: Options
+        """
         pulumi.set(__self__, "data_type", data_type)
-        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "required", required)
-
-    @property
-    @pulumi.getter(name="captureInEmail")
-    def capture_in_email(self) -> bool:
-        return pulumi.get(self, "capture_in_email")
+        if capture_in_email is not None:
+            pulumi.set(__self__, "capture_in_email", capture_in_email)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
 
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
+        """
+        Data type
+        """
         return pulumi.get(self, "data_type")
 
     @property
     @pulumi.getter
-    def description(self) -> str:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
     def label(self) -> str:
+        """
+        Label
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def options(self) -> Sequence[str]:
-        return pulumi.get(self, "options")
+    def required(self) -> bool:
+        """
+        Required field
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="captureInEmail")
+    def capture_in_email(self) -> Optional[bool]:
+        """
+        Required field
+        """
+        return pulumi.get(self, "capture_in_email")
 
     @property
     @pulumi.getter
-    def required(self) -> bool:
-        return pulumi.get(self, "required")
+    def description(self) -> Optional[str]:
+        """
+        Description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence[str]]:
+        """
+        Options
+        """
+        return pulumi.get(self, "options")
 
 
 @pulumi.output_type
 class GetServiceProfileMarketingInfoResult(dict):
     def __init__(__self__, *,
-                 logo: str,
-                 process_steps: Sequence['outputs.GetServiceProfileMarketingInfoProcessStepResult'],
-                 promotion: bool):
-        pulumi.set(__self__, "logo", logo)
-        pulumi.set(__self__, "process_steps", process_steps)
-        pulumi.set(__self__, "promotion", promotion)
+                 logo: Optional[str] = None,
+                 process_steps: Optional[Sequence['outputs.GetServiceProfileMarketingInfoProcessStepResult']] = None,
+                 promotion: Optional[bool] = None):
+        """
+        :param str logo: Logo
+        :param Sequence['GetServiceProfileMarketingInfoProcessStepArgs'] process_steps: Process Step
+        :param bool promotion: Promotion
+        """
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+        if process_steps is not None:
+            pulumi.set(__self__, "process_steps", process_steps)
+        if promotion is not None:
+            pulumi.set(__self__, "promotion", promotion)
 
     @property
     @pulumi.getter
-    def logo(self) -> str:
+    def logo(self) -> Optional[str]:
+        """
+        Logo
+        """
         return pulumi.get(self, "logo")
 
     @property
     @pulumi.getter(name="processSteps")
-    def process_steps(self) -> Sequence['outputs.GetServiceProfileMarketingInfoProcessStepResult']:
+    def process_steps(self) -> Optional[Sequence['outputs.GetServiceProfileMarketingInfoProcessStepResult']]:
+        """
+        Process Step
+        """
         return pulumi.get(self, "process_steps")
 
     @property
     @pulumi.getter
-    def promotion(self) -> bool:
+    def promotion(self) -> Optional[bool]:
+        """
+        Promotion
+        """
         return pulumi.get(self, "promotion")
 
 
 @pulumi.output_type
 class GetServiceProfileMarketingInfoProcessStepResult(dict):
     def __init__(__self__, *,
-                 description: str,
-                 sub_title: str,
-                 title: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "sub_title", sub_title)
-        pulumi.set(__self__, "title", title)
+                 description: Optional[str] = None,
+                 sub_title: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str description: Description
+        :param str sub_title: Sub Title
+        :param str title: Title
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if sub_title is not None:
+            pulumi.set(__self__, "sub_title", sub_title)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> Optional[str]:
+        """
+        Description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="subTitle")
-    def sub_title(self) -> str:
+    def sub_title(self) -> Optional[str]:
+        """
+        Sub Title
+        """
         return pulumi.get(self, "sub_title")
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> Optional[str]:
+        """
+        Title
+        """
         return pulumi.get(self, "title")
 
 
 @pulumi.output_type
 class GetServiceProfileMetroResult(dict):
     def __init__(__self__, *,
-                 code: str,
-                 display_name: str,
-                 ibxs: Sequence[str],
-                 in_trail: bool,
-                 name: str,
-                 seller_regions: Mapping[str, str]):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "ibxs", ibxs)
-        pulumi.set(__self__, "in_trail", in_trail)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "seller_regions", seller_regions)
+                 code: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 ibxs: Optional[Sequence[str]] = None,
+                 in_trail: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 seller_regions: Optional[Mapping[str, str]] = None):
+        """
+        :param str code: Metro Code - Example SV
+        :param str display_name: Display Name
+        :param Sequence[str] ibxs: IBX- Equinix International Business Exchange list
+        :param bool in_trail: In Trail
+        :param str name: Metro Name
+        :param Mapping[str, str] seller_regions: Seller Regions
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if ibxs is not None:
+            pulumi.set(__self__, "ibxs", ibxs)
+        if in_trail is not None:
+            pulumi.set(__self__, "in_trail", in_trail)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if seller_regions is not None:
+            pulumi.set(__self__, "seller_regions", seller_regions)
 
     @property
     @pulumi.getter
-    def code(self) -> str:
+    def code(self) -> Optional[str]:
+        """
+        Metro Code - Example SV
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> Optional[str]:
+        """
+        Display Name
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
-    def ibxs(self) -> Sequence[str]:
+    def ibxs(self) -> Optional[Sequence[str]]:
+        """
+        IBX- Equinix International Business Exchange list
+        """
         return pulumi.get(self, "ibxs")
 
     @property
     @pulumi.getter(name="inTrail")
-    def in_trail(self) -> bool:
+    def in_trail(self) -> Optional[bool]:
+        """
+        In Trail
+        """
         return pulumi.get(self, "in_trail")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        Metro Name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="sellerRegions")
-    def seller_regions(self) -> Mapping[str, str]:
+    def seller_regions(self) -> Optional[Mapping[str, str]]:
+        """
+        Seller Regions
+        """
         return pulumi.get(self, "seller_regions")
 
 
@@ -8922,73 +11515,118 @@ class GetServiceProfileMetroResult(dict):
 class GetServiceProfileNotificationResult(dict):
     def __init__(__self__, *,
                  emails: Sequence[str],
-                 send_interval: str,
-                 type: str):
+                 type: str,
+                 send_interval: Optional[str] = None):
+        """
+        :param Sequence[str] emails: Array of contact emails
+        :param str type: Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        :param str send_interval: Send interval
+        """
         pulumi.set(__self__, "emails", emails)
-        pulumi.set(__self__, "send_interval", send_interval)
         pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
     def emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
         return pulumi.get(self, "emails")
-
-    @property
-    @pulumi.getter(name="sendInterval")
-    def send_interval(self) -> str:
-        return pulumi.get(self, "send_interval")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[str]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
 
 
 @pulumi.output_type
 class GetServiceProfilePortResult(dict):
     def __init__(__self__, *,
-                 cross_connect_id: str,
-                 locations: Sequence['outputs.GetServiceProfilePortLocationResult'],
-                 seller_region: str,
-                 seller_region_description: str,
                  type: str,
-                 uuid: str):
-        pulumi.set(__self__, "cross_connect_id", cross_connect_id)
-        pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "seller_region", seller_region)
-        pulumi.set(__self__, "seller_region_description", seller_region_description)
+                 uuid: str,
+                 cross_connect_id: Optional[str] = None,
+                 location: Optional['outputs.GetServiceProfilePortLocationResult'] = None,
+                 seller_region: Optional[str] = None,
+                 seller_region_description: Optional[str] = None):
+        """
+        :param str type: Colo/Port Type
+        :param str uuid: Colo/Port Uuid
+        :param str cross_connect_id: Cross Connect Id
+        :param 'GetServiceProfilePortLocationArgs' location: Colo/Port Location
+        :param str seller_region: Seller Region
+        :param str seller_region_description: Seller Region details
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter(name="crossConnectId")
-    def cross_connect_id(self) -> str:
-        return pulumi.get(self, "cross_connect_id")
-
-    @property
-    @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetServiceProfilePortLocationResult']:
-        return pulumi.get(self, "locations")
-
-    @property
-    @pulumi.getter(name="sellerRegion")
-    def seller_region(self) -> str:
-        return pulumi.get(self, "seller_region")
-
-    @property
-    @pulumi.getter(name="sellerRegionDescription")
-    def seller_region_description(self) -> str:
-        return pulumi.get(self, "seller_region_description")
+        if cross_connect_id is not None:
+            pulumi.set(__self__, "cross_connect_id", cross_connect_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if seller_region is not None:
+            pulumi.set(__self__, "seller_region", seller_region)
+        if seller_region_description is not None:
+            pulumi.set(__self__, "seller_region_description", seller_region_description)
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Colo/Port Type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Colo/Port Uuid
+        """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="crossConnectId")
+    def cross_connect_id(self) -> Optional[str]:
+        """
+        Cross Connect Id
+        """
+        return pulumi.get(self, "cross_connect_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.GetServiceProfilePortLocationResult']:
+        """
+        Colo/Port Location
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="sellerRegion")
+    def seller_region(self) -> Optional[str]:
+        """
+        Seller Region
+        """
+        return pulumi.get(self, "seller_region")
+
+    @property
+    @pulumi.getter(name="sellerRegionDescription")
+    def seller_region_description(self) -> Optional[str]:
+        """
+        Seller Region details
+        """
+        return pulumi.get(self, "seller_region_description")
 
 
 @pulumi.output_type
@@ -8998,6 +11636,12 @@ class GetServiceProfilePortLocationResult(dict):
                  metro_code: str,
                  metro_name: str,
                  region: str):
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -9006,21 +11650,33 @@ class GetServiceProfilePortLocationResult(dict):
     @property
     @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
 
 
@@ -9029,18 +11685,132 @@ class GetServiceProfileProjectResult(dict):
     def __init__(__self__, *,
                  href: str,
                  project_id: str):
+        """
+        :param str href: Unique Resource URL
+        :param str project_id: Project Id
+        """
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource URL
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project Id
+        """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetServiceProfileVirtualDeviceResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str,
+                 interface_uuid: Optional[str] = None,
+                 location: Optional['outputs.GetServiceProfileVirtualDeviceLocationResult'] = None):
+        """
+        :param str type: Virtual Device Type
+        :param str uuid: Virtual Device Uuid
+        :param str interface_uuid: Device Interface Uuid
+        :param 'GetServiceProfileVirtualDeviceLocationArgs' location: Device Location
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if interface_uuid is not None:
+            pulumi.set(__self__, "interface_uuid", interface_uuid)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Virtual Device Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Virtual Device Uuid
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="interfaceUuid")
+    def interface_uuid(self) -> Optional[str]:
+        """
+        Device Interface Uuid
+        """
+        return pulumi.get(self, "interface_uuid")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.GetServiceProfileVirtualDeviceLocationResult']:
+        """
+        Device Location
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetServiceProfileVirtualDeviceLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: str,
+                 metro_code: str,
+                 metro_name: str,
+                 region: str):
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_name", metro_name)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> str:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -9060,11 +11830,34 @@ class GetServiceProfilesDatumResult(dict):
                  ports: Sequence['outputs.GetServiceProfilesDatumPortResult'],
                  projects: Sequence['outputs.GetServiceProfilesDatumProjectResult'],
                  self_profile: bool,
+                 state: str,
                  tags: Sequence[str],
                  type: str,
-                 visibility: str,
-                 state: Optional[str] = None,
-                 uuid: Optional[str] = None):
+                 uuid: str,
+                 virtual_devices: Sequence['outputs.GetServiceProfilesDatumVirtualDeviceResult'],
+                 visibility: str):
+        """
+        :param Sequence['GetServiceProfilesDatumAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
+        :param Sequence['GetServiceProfilesDatumAccountArgs'] accounts: Service Profile Owner Account Information
+        :param Sequence[str] allowed_emails: Array of contact emails
+        :param Sequence['GetServiceProfilesDatumChangeLogArgs'] change_logs: Captures connection lifecycle change information
+        :param Sequence['GetServiceProfilesDatumCustomFieldArgs'] custom_fields: Custom Fields
+        :param str description: User-provided service description
+        :param str href: Service Profile URI response attribute
+        :param Sequence['GetServiceProfilesDatumMarketingInfoArgs'] marketing_infos: Marketing Info
+        :param Sequence['GetServiceProfilesDatumMetroArgs'] metros: Access point config information
+        :param str name: Customer-assigned service profile name
+        :param Sequence['GetServiceProfilesDatumNotificationArgs'] notifications: Preferences for notifications on connection configuration or status changes
+        :param Sequence['GetServiceProfilesDatumPortArgs'] ports: Ports
+        :param Sequence['GetServiceProfilesDatumProjectArgs'] projects: Project information
+        :param bool self_profile: Self Profile indicating if the profile is created for customer's  self use
+        :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        :param Sequence[str] tags: Tags attached to the connection
+        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        :param str uuid: Equinix assigned service profile identifier
+        :param Sequence['GetServiceProfilesDatumVirtualDeviceArgs'] virtual_devices: Virtual Devices
+        :param str visibility: Service profile visibility - PUBLIC, PRIVATE
+        """
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
         pulumi.set(__self__, "accounts", accounts)
         pulumi.set(__self__, "allowed_emails", allowed_emails)
@@ -9079,316 +11872,521 @@ class GetServiceProfilesDatumResult(dict):
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "projects", projects)
         pulumi.set(__self__, "self_profile", self_profile)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "virtual_devices", virtual_devices)
         pulumi.set(__self__, "visibility", visibility)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter(name="accessPointTypeConfigs")
     def access_point_type_configs(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigResult']:
+        """
+        Access point config information
+        """
         return pulumi.get(self, "access_point_type_configs")
 
     @property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetServiceProfilesDatumAccountResult']:
+        """
+        Service Profile Owner Account Information
+        """
         return pulumi.get(self, "accounts")
 
     @property
     @pulumi.getter(name="allowedEmails")
     def allowed_emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
         return pulumi.get(self, "allowed_emails")
 
     @property
     @pulumi.getter(name="changeLogs")
     def change_logs(self) -> Sequence['outputs.GetServiceProfilesDatumChangeLogResult']:
+        """
+        Captures connection lifecycle change information
+        """
         return pulumi.get(self, "change_logs")
 
     @property
     @pulumi.getter(name="customFields")
     def custom_fields(self) -> Sequence['outputs.GetServiceProfilesDatumCustomFieldResult']:
+        """
+        Custom Fields
+        """
         return pulumi.get(self, "custom_fields")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        User-provided service description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Service Profile URI response attribute
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter(name="marketingInfos")
     def marketing_infos(self) -> Sequence['outputs.GetServiceProfilesDatumMarketingInfoResult']:
+        """
+        Marketing Info
+        """
         return pulumi.get(self, "marketing_infos")
 
     @property
     @pulumi.getter
     def metros(self) -> Sequence['outputs.GetServiceProfilesDatumMetroResult']:
+        """
+        Access point config information
+        """
         return pulumi.get(self, "metros")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Customer-assigned service profile name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def notifications(self) -> Sequence['outputs.GetServiceProfilesDatumNotificationResult']:
+        """
+        Preferences for notifications on connection configuration or status changes
+        """
         return pulumi.get(self, "notifications")
 
     @property
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetServiceProfilesDatumPortResult']:
+        """
+        Ports
+        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetServiceProfilesDatumProjectResult']:
+        """
+        Project information
+        """
         return pulumi.get(self, "projects")
 
     @property
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> bool:
+        """
+        Self Profile indicating if the profile is created for customer's  self use
+        """
         return pulumi.get(self, "self_profile")
 
     @property
     @pulumi.getter
+    def state(self) -> str:
+        """
+        Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        Tags attached to the connection
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter
-    def visibility(self) -> str:
-        return pulumi.get(self, "visibility")
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[str]:
-        return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter
-    def uuid(self) -> Optional[str]:
-        return pulumi.get(self, "uuid")
-
-
-@pulumi.output_type
-class GetServiceProfilesDatumAccessPointTypeConfigResult(dict):
-    def __init__(__self__, *,
-                 allow_bandwidth_auto_approval: bool,
-                 allow_bandwidth_upgrade: bool,
-                 allow_custom_bandwidth: bool,
-                 allow_remote_connections: bool,
-                 api_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult'],
-                 authentication_keys: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult'],
-                 bandwidth_alert_threshold: float,
-                 connection_label: str,
-                 connection_redundancy_required: bool,
-                 enable_auto_generate_service_key: bool,
-                 link_protocol_configs: Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult'],
-                 supported_bandwidths: Sequence[int],
-                 type: str,
-                 uuid: str):
-        pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
-        pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
-        pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
-        pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
-        pulumi.set(__self__, "api_configs", api_configs)
-        pulumi.set(__self__, "authentication_keys", authentication_keys)
-        pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
-        pulumi.set(__self__, "connection_label", connection_label)
-        pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
-        pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
-        pulumi.set(__self__, "link_protocol_configs", link_protocol_configs)
-        pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter(name="allowBandwidthAutoApproval")
-    def allow_bandwidth_auto_approval(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_auto_approval")
-
-    @property
-    @pulumi.getter(name="allowBandwidthUpgrade")
-    def allow_bandwidth_upgrade(self) -> bool:
-        return pulumi.get(self, "allow_bandwidth_upgrade")
-
-    @property
-    @pulumi.getter(name="allowCustomBandwidth")
-    def allow_custom_bandwidth(self) -> bool:
-        return pulumi.get(self, "allow_custom_bandwidth")
-
-    @property
-    @pulumi.getter(name="allowRemoteConnections")
-    def allow_remote_connections(self) -> bool:
-        return pulumi.get(self, "allow_remote_connections")
-
-    @property
-    @pulumi.getter(name="apiConfigs")
-    def api_configs(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult']:
-        return pulumi.get(self, "api_configs")
-
-    @property
-    @pulumi.getter(name="authenticationKeys")
-    def authentication_keys(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult']:
-        return pulumi.get(self, "authentication_keys")
-
-    @property
-    @pulumi.getter(name="bandwidthAlertThreshold")
-    def bandwidth_alert_threshold(self) -> float:
-        return pulumi.get(self, "bandwidth_alert_threshold")
-
-    @property
-    @pulumi.getter(name="connectionLabel")
-    def connection_label(self) -> str:
-        return pulumi.get(self, "connection_label")
-
-    @property
-    @pulumi.getter(name="connectionRedundancyRequired")
-    def connection_redundancy_required(self) -> bool:
-        return pulumi.get(self, "connection_redundancy_required")
-
-    @property
-    @pulumi.getter(name="enableAutoGenerateServiceKey")
-    def enable_auto_generate_service_key(self) -> bool:
-        return pulumi.get(self, "enable_auto_generate_service_key")
-
-    @property
-    @pulumi.getter(name="linkProtocolConfigs")
-    def link_protocol_configs(self) -> Sequence['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult']:
-        return pulumi.get(self, "link_protocol_configs")
-
-    @property
-    @pulumi.getter(name="supportedBandwidths")
-    def supported_bandwidths(self) -> Sequence[int]:
-        return pulumi.get(self, "supported_bandwidths")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
+        """
+        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Equinix assigned service profile identifier
+        """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="virtualDevices")
+    def virtual_devices(self) -> Sequence['outputs.GetServiceProfilesDatumVirtualDeviceResult']:
+        """
+        Virtual Devices
+        """
+        return pulumi.get(self, "virtual_devices")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        """
+        Service profile visibility - PUBLIC, PRIVATE
+        """
+        return pulumi.get(self, "visibility")
+
+
+@pulumi.output_type
+class GetServiceProfilesDatumAccessPointTypeConfigResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str,
+                 allow_bandwidth_auto_approval: Optional[bool] = None,
+                 allow_bandwidth_upgrade: Optional[bool] = None,
+                 allow_custom_bandwidth: Optional[bool] = None,
+                 allow_remote_connections: Optional[bool] = None,
+                 api_config: Optional['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult'] = None,
+                 authentication_key: Optional['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult'] = None,
+                 bandwidth_alert_threshold: Optional[float] = None,
+                 connection_label: Optional[str] = None,
+                 connection_redundancy_required: Optional[bool] = None,
+                 enable_auto_generate_service_key: Optional[bool] = None,
+                 link_protocol_config: Optional['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult'] = None,
+                 supported_bandwidths: Optional[Sequence[int]] = None):
+        """
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Colo/Port Uuid
+        :param bool allow_bandwidth_auto_approval: Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+        :param bool allow_bandwidth_upgrade: Availability of a bandwidth upgrade. The default is false
+        :param bool allow_custom_bandwidth: Setting to enable or disable the ability of the buyer to customize the bandwidth
+        :param bool allow_remote_connections: Setting to allow or prohibit remote connections to the service profile
+        :param 'GetServiceProfilesDatumAccessPointTypeConfigApiConfigArgs' api_config: Api configuration details
+        :param 'GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyArgs' authentication_key: Authentication key details
+        :param float bandwidth_alert_threshold: Percentage of port bandwidth at which an allocation alert is generated
+        :param str connection_label: Custom name for Connection
+        :param bool connection_redundancy_required: Mandate redundant connections
+        :param bool enable_auto_generate_service_key: Enable auto generate service key
+        :param 'GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigArgs' link_protocol_config: Link protocol configuration details
+        :param Sequence[int] supported_bandwidths: Supported bandwidths
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if allow_bandwidth_auto_approval is not None:
+            pulumi.set(__self__, "allow_bandwidth_auto_approval", allow_bandwidth_auto_approval)
+        if allow_bandwidth_upgrade is not None:
+            pulumi.set(__self__, "allow_bandwidth_upgrade", allow_bandwidth_upgrade)
+        if allow_custom_bandwidth is not None:
+            pulumi.set(__self__, "allow_custom_bandwidth", allow_custom_bandwidth)
+        if allow_remote_connections is not None:
+            pulumi.set(__self__, "allow_remote_connections", allow_remote_connections)
+        if api_config is not None:
+            pulumi.set(__self__, "api_config", api_config)
+        if authentication_key is not None:
+            pulumi.set(__self__, "authentication_key", authentication_key)
+        if bandwidth_alert_threshold is not None:
+            pulumi.set(__self__, "bandwidth_alert_threshold", bandwidth_alert_threshold)
+        if connection_label is not None:
+            pulumi.set(__self__, "connection_label", connection_label)
+        if connection_redundancy_required is not None:
+            pulumi.set(__self__, "connection_redundancy_required", connection_redundancy_required)
+        if enable_auto_generate_service_key is not None:
+            pulumi.set(__self__, "enable_auto_generate_service_key", enable_auto_generate_service_key)
+        if link_protocol_config is not None:
+            pulumi.set(__self__, "link_protocol_config", link_protocol_config)
+        if supported_bandwidths is not None:
+            pulumi.set(__self__, "supported_bandwidths", supported_bandwidths)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of access point type config - VD, COLO
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Colo/Port Uuid
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="allowBandwidthAutoApproval")
+    def allow_bandwidth_auto_approval(self) -> Optional[bool]:
+        """
+        Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+        """
+        return pulumi.get(self, "allow_bandwidth_auto_approval")
+
+    @property
+    @pulumi.getter(name="allowBandwidthUpgrade")
+    def allow_bandwidth_upgrade(self) -> Optional[bool]:
+        """
+        Availability of a bandwidth upgrade. The default is false
+        """
+        return pulumi.get(self, "allow_bandwidth_upgrade")
+
+    @property
+    @pulumi.getter(name="allowCustomBandwidth")
+    def allow_custom_bandwidth(self) -> Optional[bool]:
+        """
+        Setting to enable or disable the ability of the buyer to customize the bandwidth
+        """
+        return pulumi.get(self, "allow_custom_bandwidth")
+
+    @property
+    @pulumi.getter(name="allowRemoteConnections")
+    def allow_remote_connections(self) -> Optional[bool]:
+        """
+        Setting to allow or prohibit remote connections to the service profile
+        """
+        return pulumi.get(self, "allow_remote_connections")
+
+    @property
+    @pulumi.getter(name="apiConfig")
+    def api_config(self) -> Optional['outputs.GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult']:
+        """
+        Api configuration details
+        """
+        return pulumi.get(self, "api_config")
+
+    @property
+    @pulumi.getter(name="authenticationKey")
+    def authentication_key(self) -> Optional['outputs.GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult']:
+        """
+        Authentication key details
+        """
+        return pulumi.get(self, "authentication_key")
+
+    @property
+    @pulumi.getter(name="bandwidthAlertThreshold")
+    def bandwidth_alert_threshold(self) -> Optional[float]:
+        """
+        Percentage of port bandwidth at which an allocation alert is generated
+        """
+        return pulumi.get(self, "bandwidth_alert_threshold")
+
+    @property
+    @pulumi.getter(name="connectionLabel")
+    def connection_label(self) -> Optional[str]:
+        """
+        Custom name for Connection
+        """
+        return pulumi.get(self, "connection_label")
+
+    @property
+    @pulumi.getter(name="connectionRedundancyRequired")
+    def connection_redundancy_required(self) -> Optional[bool]:
+        """
+        Mandate redundant connections
+        """
+        return pulumi.get(self, "connection_redundancy_required")
+
+    @property
+    @pulumi.getter(name="enableAutoGenerateServiceKey")
+    def enable_auto_generate_service_key(self) -> Optional[bool]:
+        """
+        Enable auto generate service key
+        """
+        return pulumi.get(self, "enable_auto_generate_service_key")
+
+    @property
+    @pulumi.getter(name="linkProtocolConfig")
+    def link_protocol_config(self) -> Optional['outputs.GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult']:
+        """
+        Link protocol configuration details
+        """
+        return pulumi.get(self, "link_protocol_config")
+
+    @property
+    @pulumi.getter(name="supportedBandwidths")
+    def supported_bandwidths(self) -> Optional[Sequence[int]]:
+        """
+        Supported bandwidths
+        """
+        return pulumi.get(self, "supported_bandwidths")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumAccessPointTypeConfigApiConfigResult(dict):
     def __init__(__self__, *,
-                 allow_over_subscription: bool,
-                 api_available: bool,
-                 bandwidth_from_api: bool,
-                 equinix_managed_port: bool,
-                 equinix_managed_vlan: bool,
-                 integration_id: str,
-                 over_subscription_limit: int):
-        pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
-        pulumi.set(__self__, "api_available", api_available)
-        pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
-        pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
-        pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
-        pulumi.set(__self__, "integration_id", integration_id)
-        pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
+                 allow_over_subscription: Optional[bool] = None,
+                 api_available: Optional[bool] = None,
+                 bandwidth_from_api: Optional[bool] = None,
+                 equinix_managed_port: Optional[bool] = None,
+                 equinix_managed_vlan: Optional[bool] = None,
+                 integration_id: Optional[str] = None,
+                 over_subscription_limit: Optional[int] = None):
+        """
+        :param bool allow_over_subscription: Setting showing that oversubscription support is available (true) or not (false). The default is false
+        :param bool api_available: Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
+        :param bool bandwidth_from_api: Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+        :param bool equinix_managed_port: Setting indicating that the port is managed by Equinix (true) or not (false)
+        :param bool equinix_managed_vlan: Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        :param str integration_id: A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
+        :param int over_subscription_limit: Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+        """
+        if allow_over_subscription is not None:
+            pulumi.set(__self__, "allow_over_subscription", allow_over_subscription)
+        if api_available is not None:
+            pulumi.set(__self__, "api_available", api_available)
+        if bandwidth_from_api is not None:
+            pulumi.set(__self__, "bandwidth_from_api", bandwidth_from_api)
+        if equinix_managed_port is not None:
+            pulumi.set(__self__, "equinix_managed_port", equinix_managed_port)
+        if equinix_managed_vlan is not None:
+            pulumi.set(__self__, "equinix_managed_vlan", equinix_managed_vlan)
+        if integration_id is not None:
+            pulumi.set(__self__, "integration_id", integration_id)
+        if over_subscription_limit is not None:
+            pulumi.set(__self__, "over_subscription_limit", over_subscription_limit)
 
     @property
     @pulumi.getter(name="allowOverSubscription")
-    def allow_over_subscription(self) -> bool:
+    def allow_over_subscription(self) -> Optional[bool]:
+        """
+        Setting showing that oversubscription support is available (true) or not (false). The default is false
+        """
         return pulumi.get(self, "allow_over_subscription")
 
     @property
     @pulumi.getter(name="apiAvailable")
-    def api_available(self) -> bool:
+    def api_available(self) -> Optional[bool]:
+        """
+        Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
+        """
         return pulumi.get(self, "api_available")
 
     @property
     @pulumi.getter(name="bandwidthFromApi")
-    def bandwidth_from_api(self) -> bool:
+    def bandwidth_from_api(self) -> Optional[bool]:
+        """
+        Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+        """
         return pulumi.get(self, "bandwidth_from_api")
 
     @property
     @pulumi.getter(name="equinixManagedPort")
-    def equinix_managed_port(self) -> bool:
+    def equinix_managed_port(self) -> Optional[bool]:
+        """
+        Setting indicating that the port is managed by Equinix (true) or not (false)
+        """
         return pulumi.get(self, "equinix_managed_port")
 
     @property
     @pulumi.getter(name="equinixManagedVlan")
-    def equinix_managed_vlan(self) -> bool:
+    def equinix_managed_vlan(self) -> Optional[bool]:
+        """
+        Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+        """
         return pulumi.get(self, "equinix_managed_vlan")
 
     @property
     @pulumi.getter(name="integrationId")
-    def integration_id(self) -> str:
+    def integration_id(self) -> Optional[str]:
+        """
+        A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
+        """
         return pulumi.get(self, "integration_id")
 
     @property
     @pulumi.getter(name="overSubscriptionLimit")
-    def over_subscription_limit(self) -> int:
+    def over_subscription_limit(self) -> Optional[int]:
+        """
+        Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+        """
         return pulumi.get(self, "over_subscription_limit")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumAccessPointTypeConfigAuthenticationKeyResult(dict):
     def __init__(__self__, *,
-                 description: str,
-                 label: str,
-                 required: bool):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "required", required)
+                 description: Optional[str] = None,
+                 label: Optional[str] = None,
+                 required: Optional[bool] = None):
+        """
+        :param str description: Description of authorization key
+        :param str label: Name of the parameter that must be provided to authorize the connection.
+        :param bool required: Requirement to configure an authentication key.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> Optional[str]:
+        """
+        Description of authorization key
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def label(self) -> str:
+    def label(self) -> Optional[str]:
+        """
+        Name of the parameter that must be provided to authorize the connection.
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def required(self) -> bool:
+    def required(self) -> Optional[bool]:
+        """
+        Requirement to configure an authentication key.
+        """
         return pulumi.get(self, "required")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfigResult(dict):
     def __init__(__self__, *,
-                 encapsulation: str,
-                 encapsulation_strategy: str,
-                 reuse_vlan_s_tag: bool):
-        pulumi.set(__self__, "encapsulation", encapsulation)
-        pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
-        pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
+                 encapsulation: Optional[str] = None,
+                 encapsulation_strategy: Optional[str] = None,
+                 reuse_vlan_s_tag: Optional[bool] = None):
+        """
+        :param str encapsulation: Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        :param str encapsulation_strategy: Additional tagging information required by the seller profile.
+        :param bool reuse_vlan_s_tag: Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+        """
+        if encapsulation is not None:
+            pulumi.set(__self__, "encapsulation", encapsulation)
+        if encapsulation_strategy is not None:
+            pulumi.set(__self__, "encapsulation_strategy", encapsulation_strategy)
+        if reuse_vlan_s_tag is not None:
+            pulumi.set(__self__, "reuse_vlan_s_tag", reuse_vlan_s_tag)
 
     @property
     @pulumi.getter
-    def encapsulation(self) -> str:
+    def encapsulation(self) -> Optional[str]:
+        """
+        Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        """
         return pulumi.get(self, "encapsulation")
 
     @property
     @pulumi.getter(name="encapsulationStrategy")
-    def encapsulation_strategy(self) -> str:
+    def encapsulation_strategy(self) -> Optional[str]:
+        """
+        Additional tagging information required by the seller profile.
+        """
         return pulumi.get(self, "encapsulation_strategy")
 
     @property
     @pulumi.getter(name="reuseVlanSTag")
-    def reuse_vlan_s_tag(self) -> bool:
+    def reuse_vlan_s_tag(self) -> Optional[bool]:
+        """
+        Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+        """
         return pulumi.get(self, "reuse_vlan_s_tag")
 
 
@@ -9403,6 +12401,16 @@ class GetServiceProfilesDatumAccountResult(dict):
                  org_id: int,
                  organization_name: str,
                  ucm_id: str):
+        """
+        :param str account_name: Legal name of the accountholder.
+        :param int account_number: Equinix-assigned account number.
+        :param str global_cust_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_org_id: Equinix-assigned ID of the subscriber's parent organization.
+        :param str global_organization_name: Equinix-assigned name of the subscriber's parent organization.
+        :param int org_id: Equinix-assigned ID of the subscriber's organization.
+        :param str organization_name: Equinix-assigned name of the subscriber's organization.
+        :param str ucm_id: Enterprise datastore id
+        """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_number", account_number)
         pulumi.set(__self__, "global_cust_id", global_cust_id)
@@ -9415,41 +12423,65 @@ class GetServiceProfilesDatumAccountResult(dict):
     @property
     @pulumi.getter(name="accountName")
     def account_name(self) -> str:
+        """
+        Legal name of the accountholder.
+        """
         return pulumi.get(self, "account_name")
 
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> int:
+        """
+        Equinix-assigned account number.
+        """
         return pulumi.get(self, "account_number")
 
     @property
     @pulumi.getter(name="globalCustId")
     def global_cust_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_cust_id")
 
     @property
     @pulumi.getter(name="globalOrgId")
     def global_org_id(self) -> str:
+        """
+        Equinix-assigned ID of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_org_id")
 
     @property
     @pulumi.getter(name="globalOrganizationName")
     def global_organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's parent organization.
+        """
         return pulumi.get(self, "global_organization_name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> int:
+        """
+        Equinix-assigned ID of the subscriber's organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> str:
+        """
+        Equinix-assigned name of the subscriber's organization.
+        """
         return pulumi.get(self, "organization_name")
 
     @property
     @pulumi.getter(name="ucmId")
     def ucm_id(self) -> str:
+        """
+        Enterprise datastore id
+        """
         return pulumi.get(self, "ucm_id")
 
 
@@ -9468,6 +12500,20 @@ class GetServiceProfilesDatumChangeLogResult(dict):
                  updated_by_email: str,
                  updated_by_full_name: str,
                  updated_date_time: str):
+        """
+        :param str created_by: Created by User Key
+        :param str created_by_email: Created by User Email Address
+        :param str created_by_full_name: Created by User Full Name
+        :param str created_date_time: Created by Date and Time
+        :param str deleted_by: Deleted by User Key
+        :param str deleted_by_email: Deleted by User Email Address
+        :param str deleted_by_full_name: Deleted by User Full Name
+        :param str deleted_date_time: Deleted by Date and Time
+        :param str updated_by: Updated by User Key
+        :param str updated_by_email: Updated by User Email Address
+        :param str updated_by_full_name: Updated by User Full Name
+        :param str updated_date_time: Updated by Date and Time
+        """
         pulumi.set(__self__, "created_by", created_by)
         pulumi.set(__self__, "created_by_email", created_by_email)
         pulumi.set(__self__, "created_by_full_name", created_by_full_name)
@@ -9484,207 +12530,338 @@ class GetServiceProfilesDatumChangeLogResult(dict):
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        Created by User Key
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="createdByEmail")
     def created_by_email(self) -> str:
+        """
+        Created by User Email Address
+        """
         return pulumi.get(self, "created_by_email")
 
     @property
     @pulumi.getter(name="createdByFullName")
     def created_by_full_name(self) -> str:
+        """
+        Created by User Full Name
+        """
         return pulumi.get(self, "created_by_full_name")
 
     @property
     @pulumi.getter(name="createdDateTime")
     def created_date_time(self) -> str:
+        """
+        Created by Date and Time
+        """
         return pulumi.get(self, "created_date_time")
 
     @property
     @pulumi.getter(name="deletedBy")
     def deleted_by(self) -> str:
+        """
+        Deleted by User Key
+        """
         return pulumi.get(self, "deleted_by")
 
     @property
     @pulumi.getter(name="deletedByEmail")
     def deleted_by_email(self) -> str:
+        """
+        Deleted by User Email Address
+        """
         return pulumi.get(self, "deleted_by_email")
 
     @property
     @pulumi.getter(name="deletedByFullName")
     def deleted_by_full_name(self) -> str:
+        """
+        Deleted by User Full Name
+        """
         return pulumi.get(self, "deleted_by_full_name")
 
     @property
     @pulumi.getter(name="deletedDateTime")
     def deleted_date_time(self) -> str:
+        """
+        Deleted by Date and Time
+        """
         return pulumi.get(self, "deleted_date_time")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> str:
+        """
+        Updated by User Key
+        """
         return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter(name="updatedByEmail")
     def updated_by_email(self) -> str:
+        """
+        Updated by User Email Address
+        """
         return pulumi.get(self, "updated_by_email")
 
     @property
     @pulumi.getter(name="updatedByFullName")
     def updated_by_full_name(self) -> str:
+        """
+        Updated by User Full Name
+        """
         return pulumi.get(self, "updated_by_full_name")
 
     @property
     @pulumi.getter(name="updatedDateTime")
     def updated_date_time(self) -> str:
+        """
+        Updated by Date and Time
+        """
         return pulumi.get(self, "updated_date_time")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumCustomFieldResult(dict):
     def __init__(__self__, *,
-                 capture_in_email: bool,
                  data_type: str,
-                 description: str,
                  label: str,
-                 options: Sequence[str],
-                 required: bool):
-        pulumi.set(__self__, "capture_in_email", capture_in_email)
+                 required: bool,
+                 capture_in_email: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 options: Optional[Sequence[str]] = None):
+        """
+        :param str data_type: Data type
+        :param str label: Label
+        :param bool required: Required field
+        :param bool capture_in_email: Required field
+        :param str description: Description
+        :param Sequence[str] options: Options
+        """
         pulumi.set(__self__, "data_type", data_type)
-        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "required", required)
-
-    @property
-    @pulumi.getter(name="captureInEmail")
-    def capture_in_email(self) -> bool:
-        return pulumi.get(self, "capture_in_email")
+        if capture_in_email is not None:
+            pulumi.set(__self__, "capture_in_email", capture_in_email)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
 
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
+        """
+        Data type
+        """
         return pulumi.get(self, "data_type")
 
     @property
     @pulumi.getter
-    def description(self) -> str:
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
     def label(self) -> str:
+        """
+        Label
+        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter
-    def options(self) -> Sequence[str]:
-        return pulumi.get(self, "options")
+    def required(self) -> bool:
+        """
+        Required field
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="captureInEmail")
+    def capture_in_email(self) -> Optional[bool]:
+        """
+        Required field
+        """
+        return pulumi.get(self, "capture_in_email")
 
     @property
     @pulumi.getter
-    def required(self) -> bool:
-        return pulumi.get(self, "required")
+    def description(self) -> Optional[str]:
+        """
+        Description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence[str]]:
+        """
+        Options
+        """
+        return pulumi.get(self, "options")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumMarketingInfoResult(dict):
     def __init__(__self__, *,
-                 logo: str,
-                 process_steps: Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult'],
-                 promotion: bool):
-        pulumi.set(__self__, "logo", logo)
-        pulumi.set(__self__, "process_steps", process_steps)
-        pulumi.set(__self__, "promotion", promotion)
+                 logo: Optional[str] = None,
+                 process_steps: Optional[Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult']] = None,
+                 promotion: Optional[bool] = None):
+        """
+        :param str logo: Logo
+        :param Sequence['GetServiceProfilesDatumMarketingInfoProcessStepArgs'] process_steps: Process Step
+        :param bool promotion: Promotion
+        """
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+        if process_steps is not None:
+            pulumi.set(__self__, "process_steps", process_steps)
+        if promotion is not None:
+            pulumi.set(__self__, "promotion", promotion)
 
     @property
     @pulumi.getter
-    def logo(self) -> str:
+    def logo(self) -> Optional[str]:
+        """
+        Logo
+        """
         return pulumi.get(self, "logo")
 
     @property
     @pulumi.getter(name="processSteps")
-    def process_steps(self) -> Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult']:
+    def process_steps(self) -> Optional[Sequence['outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult']]:
+        """
+        Process Step
+        """
         return pulumi.get(self, "process_steps")
 
     @property
     @pulumi.getter
-    def promotion(self) -> bool:
+    def promotion(self) -> Optional[bool]:
+        """
+        Promotion
+        """
         return pulumi.get(self, "promotion")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumMarketingInfoProcessStepResult(dict):
     def __init__(__self__, *,
-                 description: str,
-                 sub_title: str,
-                 title: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "sub_title", sub_title)
-        pulumi.set(__self__, "title", title)
+                 description: Optional[str] = None,
+                 sub_title: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str description: Description
+        :param str sub_title: Sub Title
+        :param str title: Title
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if sub_title is not None:
+            pulumi.set(__self__, "sub_title", sub_title)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> Optional[str]:
+        """
+        Description
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="subTitle")
-    def sub_title(self) -> str:
+    def sub_title(self) -> Optional[str]:
+        """
+        Sub Title
+        """
         return pulumi.get(self, "sub_title")
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> Optional[str]:
+        """
+        Title
+        """
         return pulumi.get(self, "title")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumMetroResult(dict):
     def __init__(__self__, *,
-                 code: str,
-                 display_name: str,
-                 ibxs: Sequence[str],
-                 in_trail: bool,
-                 name: str,
-                 seller_regions: Mapping[str, str]):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "ibxs", ibxs)
-        pulumi.set(__self__, "in_trail", in_trail)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "seller_regions", seller_regions)
+                 code: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 ibxs: Optional[Sequence[str]] = None,
+                 in_trail: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 seller_regions: Optional[Mapping[str, str]] = None):
+        """
+        :param str code: Metro Code - Example SV
+        :param str display_name: Display Name
+        :param Sequence[str] ibxs: IBX- Equinix International Business Exchange list
+        :param bool in_trail: In Trail
+        :param str name: Metro Name
+        :param Mapping[str, str] seller_regions: Seller Regions
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if ibxs is not None:
+            pulumi.set(__self__, "ibxs", ibxs)
+        if in_trail is not None:
+            pulumi.set(__self__, "in_trail", in_trail)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if seller_regions is not None:
+            pulumi.set(__self__, "seller_regions", seller_regions)
 
     @property
     @pulumi.getter
-    def code(self) -> str:
+    def code(self) -> Optional[str]:
+        """
+        Metro Code - Example SV
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> Optional[str]:
+        """
+        Display Name
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
-    def ibxs(self) -> Sequence[str]:
+    def ibxs(self) -> Optional[Sequence[str]]:
+        """
+        IBX- Equinix International Business Exchange list
+        """
         return pulumi.get(self, "ibxs")
 
     @property
     @pulumi.getter(name="inTrail")
-    def in_trail(self) -> bool:
+    def in_trail(self) -> Optional[bool]:
+        """
+        In Trail
+        """
         return pulumi.get(self, "in_trail")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
+        """
+        Metro Name
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="sellerRegions")
-    def seller_regions(self) -> Mapping[str, str]:
+    def seller_regions(self) -> Optional[Mapping[str, str]]:
+        """
+        Seller Regions
+        """
         return pulumi.get(self, "seller_regions")
 
 
@@ -9692,73 +12869,118 @@ class GetServiceProfilesDatumMetroResult(dict):
 class GetServiceProfilesDatumNotificationResult(dict):
     def __init__(__self__, *,
                  emails: Sequence[str],
-                 send_interval: str,
-                 type: str):
+                 type: str,
+                 send_interval: Optional[str] = None):
+        """
+        :param Sequence[str] emails: Array of contact emails
+        :param str type: Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        :param str send_interval: Send interval
+        """
         pulumi.set(__self__, "emails", emails)
-        pulumi.set(__self__, "send_interval", send_interval)
         pulumi.set(__self__, "type", type)
+        if send_interval is not None:
+            pulumi.set(__self__, "send_interval", send_interval)
 
     @property
     @pulumi.getter
     def emails(self) -> Sequence[str]:
+        """
+        Array of contact emails
+        """
         return pulumi.get(self, "emails")
-
-    @property
-    @pulumi.getter(name="sendInterval")
-    def send_interval(self) -> str:
-        return pulumi.get(self, "send_interval")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="sendInterval")
+    def send_interval(self) -> Optional[str]:
+        """
+        Send interval
+        """
+        return pulumi.get(self, "send_interval")
 
 
 @pulumi.output_type
 class GetServiceProfilesDatumPortResult(dict):
     def __init__(__self__, *,
-                 cross_connect_id: str,
-                 locations: Sequence['outputs.GetServiceProfilesDatumPortLocationResult'],
-                 seller_region: str,
-                 seller_region_description: str,
                  type: str,
-                 uuid: str):
-        pulumi.set(__self__, "cross_connect_id", cross_connect_id)
-        pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "seller_region", seller_region)
-        pulumi.set(__self__, "seller_region_description", seller_region_description)
+                 uuid: str,
+                 cross_connect_id: Optional[str] = None,
+                 location: Optional['outputs.GetServiceProfilesDatumPortLocationResult'] = None,
+                 seller_region: Optional[str] = None,
+                 seller_region_description: Optional[str] = None):
+        """
+        :param str type: Colo/Port Type
+        :param str uuid: Colo/Port Uuid
+        :param str cross_connect_id: Cross Connect Id
+        :param 'GetServiceProfilesDatumPortLocationArgs' location: Colo/Port Location
+        :param str seller_region: Seller Region
+        :param str seller_region_description: Seller Region details
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
-
-    @property
-    @pulumi.getter(name="crossConnectId")
-    def cross_connect_id(self) -> str:
-        return pulumi.get(self, "cross_connect_id")
-
-    @property
-    @pulumi.getter
-    def locations(self) -> Sequence['outputs.GetServiceProfilesDatumPortLocationResult']:
-        return pulumi.get(self, "locations")
-
-    @property
-    @pulumi.getter(name="sellerRegion")
-    def seller_region(self) -> str:
-        return pulumi.get(self, "seller_region")
-
-    @property
-    @pulumi.getter(name="sellerRegionDescription")
-    def seller_region_description(self) -> str:
-        return pulumi.get(self, "seller_region_description")
+        if cross_connect_id is not None:
+            pulumi.set(__self__, "cross_connect_id", cross_connect_id)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if seller_region is not None:
+            pulumi.set(__self__, "seller_region", seller_region)
+        if seller_region_description is not None:
+            pulumi.set(__self__, "seller_region_description", seller_region_description)
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Colo/Port Type
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uuid(self) -> str:
+        """
+        Colo/Port Uuid
+        """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="crossConnectId")
+    def cross_connect_id(self) -> Optional[str]:
+        """
+        Cross Connect Id
+        """
+        return pulumi.get(self, "cross_connect_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.GetServiceProfilesDatumPortLocationResult']:
+        """
+        Colo/Port Location
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="sellerRegion")
+    def seller_region(self) -> Optional[str]:
+        """
+        Seller Region
+        """
+        return pulumi.get(self, "seller_region")
+
+    @property
+    @pulumi.getter(name="sellerRegionDescription")
+    def seller_region_description(self) -> Optional[str]:
+        """
+        Seller Region details
+        """
+        return pulumi.get(self, "seller_region_description")
 
 
 @pulumi.output_type
@@ -9768,6 +12990,12 @@ class GetServiceProfilesDatumPortLocationResult(dict):
                  metro_code: str,
                  metro_name: str,
                  region: str):
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
         pulumi.set(__self__, "ibx", ibx)
         pulumi.set(__self__, "metro_code", metro_code)
         pulumi.set(__self__, "metro_name", metro_name)
@@ -9776,21 +13004,33 @@ class GetServiceProfilesDatumPortLocationResult(dict):
     @property
     @pulumi.getter
     def ibx(self) -> str:
+        """
+        IBX Code
+        """
         return pulumi.get(self, "ibx")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="metroName")
     def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
         return pulumi.get(self, "metro_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        Access point region
+        """
         return pulumi.get(self, "region")
 
 
@@ -9799,18 +13039,132 @@ class GetServiceProfilesDatumProjectResult(dict):
     def __init__(__self__, *,
                  href: str,
                  project_id: str):
+        """
+        :param str href: Unique Resource URL
+        :param str project_id: Project Id
+        """
         pulumi.set(__self__, "href", href)
         pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter
     def href(self) -> str:
+        """
+        Unique Resource URL
+        """
         return pulumi.get(self, "href")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project Id
+        """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetServiceProfilesDatumVirtualDeviceResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 uuid: str,
+                 interface_uuid: Optional[str] = None,
+                 location: Optional['outputs.GetServiceProfilesDatumVirtualDeviceLocationResult'] = None):
+        """
+        :param str type: Virtual Device Type
+        :param str uuid: Virtual Device Uuid
+        :param str interface_uuid: Device Interface Uuid
+        :param 'GetServiceProfilesDatumVirtualDeviceLocationArgs' location: Device Location
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "uuid", uuid)
+        if interface_uuid is not None:
+            pulumi.set(__self__, "interface_uuid", interface_uuid)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Virtual Device Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
+        """
+        Virtual Device Uuid
+        """
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="interfaceUuid")
+    def interface_uuid(self) -> Optional[str]:
+        """
+        Device Interface Uuid
+        """
+        return pulumi.get(self, "interface_uuid")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.GetServiceProfilesDatumVirtualDeviceLocationResult']:
+        """
+        Device Location
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetServiceProfilesDatumVirtualDeviceLocationResult(dict):
+    def __init__(__self__, *,
+                 ibx: str,
+                 metro_code: str,
+                 metro_name: str,
+                 region: str):
+        """
+        :param str ibx: IBX Code
+        :param str metro_code: Access point metro code
+        :param str metro_name: Access point metro name
+        :param str region: Access point region
+        """
+        pulumi.set(__self__, "ibx", ibx)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "metro_name", metro_name)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def ibx(self) -> str:
+        """
+        IBX Code
+        """
+        return pulumi.get(self, "ibx")
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> str:
+        """
+        Access point metro code
+        """
+        return pulumi.get(self, "metro_code")
+
+    @property
+    @pulumi.getter(name="metroName")
+    def metro_name(self) -> str:
+        """
+        Access point metro name
+        """
+        return pulumi.get(self, "metro_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Access point region
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type

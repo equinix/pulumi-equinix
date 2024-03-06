@@ -17,7 +17,7 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfig {
      */
     private @Nullable String type;
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     private @Nullable String uuid;
@@ -31,7 +31,7 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     public Optional<String> uuid() {

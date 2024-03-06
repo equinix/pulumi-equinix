@@ -18,6 +18,9 @@ namespace Pulumi.Equinix.Metal.Inputs
         [Input("attribute", required: true)]
         public Input<string> Attribute { get; set; } = null!;
 
+        /// <summary>
+        /// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+        /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 

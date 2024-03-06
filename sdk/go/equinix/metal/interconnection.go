@@ -68,15 +68,15 @@ type Interconnection struct {
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail pulumi.StringOutput `pulumi:"contactEmail"`
 	// Description for the connection resource.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
-	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility pulumi.StringOutput `pulumi:"facility"`
 	// Metro where the connection will be created.
 	Metro pulumi.StringOutput `pulumi:"metro"`
 	// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
-	Mode pulumi.StringPtrOutput `pulumi:"mode"`
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Name of the connection resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the organization where the connection is scoped to.
@@ -93,7 +93,7 @@ type Interconnection struct {
 	ServiceTokenType pulumi.StringPtrOutput `pulumi:"serviceTokenType"`
 	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
 	ServiceTokens InterconnectionServiceTokenArrayOutput `pulumi:"serviceTokens"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringOutput `pulumi:"speed"`
 	// Status of the connection resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -151,7 +151,7 @@ type interconnectionState struct {
 	Description *string `pulumi:"description"`
 	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
-	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility *string `pulumi:"facility"`
 	// Metro where the connection will be created.
 	Metro *string `pulumi:"metro"`
@@ -173,7 +173,7 @@ type interconnectionState struct {
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
 	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
 	ServiceTokens []InterconnectionServiceToken `pulumi:"serviceTokens"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed *string `pulumi:"speed"`
 	// Status of the connection resource.
 	Status *string `pulumi:"status"`
@@ -196,7 +196,7 @@ type InterconnectionState struct {
 	Description pulumi.StringPtrInput
 	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
-	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility pulumi.StringPtrInput
 	// Metro where the connection will be created.
 	Metro pulumi.StringPtrInput
@@ -218,7 +218,7 @@ type InterconnectionState struct {
 	ServiceTokenType pulumi.StringPtrInput
 	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
 	ServiceTokens InterconnectionServiceTokenArrayInput
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringPtrInput
 	// Status of the connection resource.
 	Status pulumi.StringPtrInput
@@ -245,7 +245,7 @@ type interconnectionArgs struct {
 	Description *string `pulumi:"description"`
 	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
-	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility *string `pulumi:"facility"`
 	// Metro where the connection will be created.
 	Metro *string `pulumi:"metro"`
@@ -261,7 +261,7 @@ type interconnectionArgs struct {
 	Redundancy string `pulumi:"redundancy"`
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed *string `pulumi:"speed"`
 	// String list of tags.
 	Tags []string `pulumi:"tags"`
@@ -279,7 +279,7 @@ type InterconnectionArgs struct {
 	Description pulumi.StringPtrInput
 	// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 	//
-	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility pulumi.StringPtrInput
 	// Metro where the connection will be created.
 	Metro pulumi.StringPtrInput
@@ -295,7 +295,7 @@ type InterconnectionArgs struct {
 	Redundancy pulumi.StringInput
 	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
 	ServiceTokenType pulumi.StringPtrInput
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringPtrInput
 	// String list of tags.
 	Tags pulumi.StringArrayInput
@@ -398,13 +398,13 @@ func (o InterconnectionOutput) ContactEmail() pulumi.StringOutput {
 }
 
 // Description for the connection resource.
-func (o InterconnectionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o InterconnectionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
 //
-// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 func (o InterconnectionOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Facility }).(pulumi.StringOutput)
 }
@@ -415,8 +415,8 @@ func (o InterconnectionOutput) Metro() pulumi.StringOutput {
 }
 
 // Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
-func (o InterconnectionOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
+func (o InterconnectionOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Name of the connection resource
@@ -456,7 +456,7 @@ func (o InterconnectionOutput) ServiceTokens() InterconnectionServiceTokenArrayO
 	return o.ApplyT(func(v *Interconnection) InterconnectionServiceTokenArrayOutput { return v.ServiceTokens }).(InterconnectionServiceTokenArrayOutput)
 }
 
-// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 func (o InterconnectionOutput) Speed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Speed }).(pulumi.StringOutput)
 }

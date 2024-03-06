@@ -12,26 +12,26 @@ namespace Pulumi.Equinix.Metal.Inputs
 
     public sealed class InterconnectionServiceTokenArgs : global::Pulumi.ResourceArgs
     {
-        [Input("expiresAt")]
-        public Input<string>? ExpiresAt { get; set; }
+        [Input("expiresAt", required: true)]
+        public Input<string> ExpiresAt { get; set; } = null!;
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
-        [Input("maxAllowedSpeed")]
-        public Input<string>? MaxAllowedSpeed { get; set; }
+        [Input("maxAllowedSpeed", required: true)]
+        public Input<string> MaxAllowedSpeed { get; set; } = null!;
 
-        [Input("role")]
-        public Input<string>? Role { get; set; }
+        [Input("role", required: true)]
+        public Input<string> Role { get; set; } = null!;
 
-        [Input("state")]
-        public Input<string>? State { get; set; }
+        [Input("state", required: true)]
+        public Input<string> State { get; set; } = null!;
 
         /// <summary>
         /// Connection type - dedicated or shared.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public InterconnectionServiceTokenArgs()
         {

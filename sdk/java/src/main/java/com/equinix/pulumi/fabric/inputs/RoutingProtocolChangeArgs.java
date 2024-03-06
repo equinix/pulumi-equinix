@@ -15,23 +15,47 @@ public final class RoutingProtocolChangeArgs extends com.pulumi.resources.Resour
 
     public static final RoutingProtocolChangeArgs Empty = new RoutingProtocolChangeArgs();
 
+    /**
+     * Routing Protocol Change URI
+     * 
+     */
     @Import(name="href")
     private @Nullable Output<String> href;
 
+    /**
+     * @return Routing Protocol Change URI
+     * 
+     */
     public Optional<Output<String>> href() {
         return Optional.ofNullable(this.href);
     }
 
+    /**
+     * Type of change
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Type of change
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Uniquely identifies a change
+     * 
+     */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
+    /**
+     * @return Uniquely identifies a change
+     * 
+     */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
     }
@@ -62,29 +86,65 @@ public final class RoutingProtocolChangeArgs extends com.pulumi.resources.Resour
             $ = new RoutingProtocolChangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param href Routing Protocol Change URI
+         * 
+         * @return builder
+         * 
+         */
         public Builder href(@Nullable Output<String> href) {
             $.href = href;
             return this;
         }
 
+        /**
+         * @param href Routing Protocol Change URI
+         * 
+         * @return builder
+         * 
+         */
         public Builder href(String href) {
             return href(Output.of(href));
         }
 
+        /**
+         * @param type Type of change
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of change
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param uuid Uniquely identifies a change
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(@Nullable Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Uniquely identifies a change
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

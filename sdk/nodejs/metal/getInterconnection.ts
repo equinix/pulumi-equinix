@@ -57,11 +57,11 @@ export interface GetInterconnectionResult {
     /**
      * (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
      *
-     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
     readonly facility: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Port UUID.
      */
     readonly id: string;
     /**

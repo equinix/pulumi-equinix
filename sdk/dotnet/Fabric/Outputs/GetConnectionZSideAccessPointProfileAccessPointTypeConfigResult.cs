@@ -13,63 +13,21 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult
     {
-        public readonly bool AllowBandwidthAutoApproval;
-        public readonly bool AllowBandwidthUpgrade;
-        public readonly bool AllowCustomBandwidth;
-        public readonly bool AllowRemoteConnections;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult> ApiConfigs;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult> AuthenticationKeys;
-        public readonly double BandwidthAlertThreshold;
-        public readonly string ConnectionLabel;
-        public readonly bool ConnectionRedundancyRequired;
-        public readonly bool EnableAutoGenerateServiceKey;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult> LinkProtocolConfigs;
-        public readonly ImmutableArray<int> SupportedBandwidths;
+        /// <summary>
+        /// Type of access point type config - VD, COLO
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Equinix-assigned access point type config identifier
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]
         private GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(
-            bool allowBandwidthAutoApproval,
-
-            bool allowBandwidthUpgrade,
-
-            bool allowCustomBandwidth,
-
-            bool allowRemoteConnections,
-
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigApiConfigResult> apiConfigs,
-
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigAuthenticationKeyResult> authenticationKeys,
-
-            double bandwidthAlertThreshold,
-
-            string connectionLabel,
-
-            bool connectionRedundancyRequired,
-
-            bool enableAutoGenerateServiceKey,
-
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileAccessPointTypeConfigLinkProtocolConfigResult> linkProtocolConfigs,
-
-            ImmutableArray<int> supportedBandwidths,
-
             string type,
 
             string uuid)
         {
-            AllowBandwidthAutoApproval = allowBandwidthAutoApproval;
-            AllowBandwidthUpgrade = allowBandwidthUpgrade;
-            AllowCustomBandwidth = allowCustomBandwidth;
-            AllowRemoteConnections = allowRemoteConnections;
-            ApiConfigs = apiConfigs;
-            AuthenticationKeys = authenticationKeys;
-            BandwidthAlertThreshold = bandwidthAlertThreshold;
-            ConnectionLabel = connectionLabel;
-            ConnectionRedundancyRequired = connectionRedundancyRequired;
-            EnableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            LinkProtocolConfigs = linkProtocolConfigs;
-            SupportedBandwidths = supportedBandwidths;
             Type = type;
             Uuid = uuid;
         }

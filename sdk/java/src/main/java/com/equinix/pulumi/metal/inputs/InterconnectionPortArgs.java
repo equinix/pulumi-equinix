@@ -10,85 +10,83 @@ import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class InterconnectionPortArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InterconnectionPortArgs Empty = new InterconnectionPortArgs();
 
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
-    @Import(name="linkStatus")
-    private @Nullable Output<String> linkStatus;
+    @Import(name="linkStatus", required=true)
+    private Output<String> linkStatus;
 
-    public Optional<Output<String>> linkStatus() {
-        return Optional.ofNullable(this.linkStatus);
+    public Output<String> linkStatus() {
+        return this.linkStatus;
     }
 
     /**
      * Name of the connection resource
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of the connection resource
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
-    @Import(name="role")
-    private @Nullable Output<String> role;
+    @Import(name="role", required=true)
+    private Output<String> role;
 
-    public Optional<Output<String>> role() {
-        return Optional.ofNullable(this.role);
+    public Output<String> role() {
+        return this.role;
     }
 
     /**
-     * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
-    @Import(name="speed")
-    private @Nullable Output<Integer> speed;
+    @Import(name="speed", required=true)
+    private Output<Integer> speed;
 
     /**
-     * @return Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
-    public Optional<Output<Integer>> speed() {
-        return Optional.ofNullable(this.speed);
+    public Output<Integer> speed() {
+        return this.speed;
     }
 
     /**
      * Status of the connection resource.
      * 
      */
-    @Import(name="status")
-    private @Nullable Output<String> status;
+    @Import(name="status", required=true)
+    private Output<String> status;
 
     /**
      * @return Status of the connection resource.
      * 
      */
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
+    public Output<String> status() {
+        return this.status;
     }
 
-    @Import(name="virtualCircuitIds")
-    private @Nullable Output<List<Object>> virtualCircuitIds;
+    @Import(name="virtualCircuitIds", required=true)
+    private Output<List<Object>> virtualCircuitIds;
 
-    public Optional<Output<List<Object>>> virtualCircuitIds() {
-        return Optional.ofNullable(this.virtualCircuitIds);
+    public Output<List<Object>> virtualCircuitIds() {
+        return this.virtualCircuitIds;
     }
 
     private InterconnectionPortArgs() {}
@@ -121,7 +119,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             $ = new InterconnectionPortArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
@@ -130,7 +128,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             return id(Output.of(id));
         }
 
-        public Builder linkStatus(@Nullable Output<String> linkStatus) {
+        public Builder linkStatus(Output<String> linkStatus) {
             $.linkStatus = linkStatus;
             return this;
         }
@@ -145,7 +143,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -160,7 +158,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             return name(Output.of(name));
         }
 
-        public Builder role(@Nullable Output<String> role) {
+        public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
@@ -170,18 +168,18 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param speed Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
          */
-        public Builder speed(@Nullable Output<Integer> speed) {
+        public Builder speed(Output<Integer> speed) {
             $.speed = speed;
             return this;
         }
 
         /**
-         * @param speed Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -196,7 +194,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder status(@Nullable Output<String> status) {
+        public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
@@ -211,7 +209,7 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
             return status(Output.of(status));
         }
 
-        public Builder virtualCircuitIds(@Nullable Output<List<Object>> virtualCircuitIds) {
+        public Builder virtualCircuitIds(Output<List<Object>> virtualCircuitIds) {
             $.virtualCircuitIds = virtualCircuitIds;
             return this;
         }
@@ -225,6 +223,13 @@ public final class InterconnectionPortArgs extends com.pulumi.resources.Resource
         }
 
         public InterconnectionPortArgs build() {
+            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            $.linkStatus = Objects.requireNonNull($.linkStatus, "expected parameter 'linkStatus' to be non-null");
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            $.speed = Objects.requireNonNull($.speed, "expected parameter 'speed' to be non-null");
+            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            $.virtualCircuitIds = Objects.requireNonNull($.virtualCircuitIds, "expected parameter 'virtualCircuitIds' to be non-null");
             return $;
         }
     }

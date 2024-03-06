@@ -1,4 +1,4 @@
 [submodule "upstream"]
 	path = upstream
 	url = https://github.com/equinix/terraform-provider-equinix.git
-	ignore = dirty
+        ignore = dirty

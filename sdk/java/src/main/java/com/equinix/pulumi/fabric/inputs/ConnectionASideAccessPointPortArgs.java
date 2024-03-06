@@ -63,14 +63,14 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
     }
 
     /**
-     * Equinix-assigned interface identifier
+     * Equinix-assigned virtual gateway identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -178,7 +178,7 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param uuid Equinix-assigned interface identifier
+         * @param uuid Equinix-assigned virtual gateway identifier
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ConnectionASideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param uuid Equinix-assigned interface identifier
+         * @param uuid Equinix-assigned virtual gateway identifier
          * 
          * @return builder
          * 

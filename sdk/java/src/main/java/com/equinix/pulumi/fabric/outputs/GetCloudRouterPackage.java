@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCloudRouterPackage {
+    /**
+     * @return Fabric Cloud Router package code
+     * 
+     */
     private String code;
 
     private GetCloudRouterPackage() {}
+    /**
+     * @return Fabric Cloud Router package code
+     * 
+     */
     public String code() {
         return this.code;
     }

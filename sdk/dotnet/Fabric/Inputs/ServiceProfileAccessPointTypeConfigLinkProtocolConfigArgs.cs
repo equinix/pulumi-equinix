@@ -13,19 +13,19 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Port Encapsulation
+        /// Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
         /// </summary>
         [Input("encapsulation")]
         public Input<string>? Encapsulation { get; set; }
 
         /// <summary>
-        /// Encapsulation strategy
+        /// Additional tagging information required by the seller profile.
         /// </summary>
         [Input("encapsulationStrategy")]
         public Input<string>? EncapsulationStrategy { get; set; }
 
         /// <summary>
-        /// Reuse vlan sTag
+        /// Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
         /// </summary>
         [Input("reuseVlanSTag")]
         public Input<bool>? ReuseVlanSTag { get; set; }

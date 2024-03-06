@@ -17,8 +17,17 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// The id of the cluster
         /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// The name of the cluster device
+        /// </summary>
         public readonly string ClusterName;
+        /// <summary>
+        /// An object that has node0 details
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceClusterDetailNode0Result> Node0s;
+        /// <summary>
+        /// An object that has node1 details
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceClusterDetailNode1Result> Node1s;
         /// <summary>
         /// The number of nodes in the cluster

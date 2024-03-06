@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RoutingProtocolOperationErrorAdditionalInfo {
+    /**
+     * @return Property at which the error potentially occurred
+     * 
+     */
     private @Nullable String property;
+    /**
+     * @return Reason for the error
+     * 
+     */
     private @Nullable String reason;
 
     private RoutingProtocolOperationErrorAdditionalInfo() {}
+    /**
+     * @return Property at which the error potentially occurred
+     * 
+     */
     public Optional<String> property() {
         return Optional.ofNullable(this.property);
     }
+    /**
+     * @return Reason for the error
+     * 
+     */
     public Optional<String> reason() {
         return Optional.ofNullable(this.reason);
     }

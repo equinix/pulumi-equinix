@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceProfileAccessPointTypeConfigAuthenticationKey {
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     private @Nullable String description;
     /**
-     * @return Label
+     * @return Name of the parameter that must be provided to authorize the connection.
      * 
      */
     private @Nullable String label;
     /**
-     * @return Required
+     * @return Requirement to configure an authentication key.
      * 
      */
     private @Nullable Boolean required;
 
     private ServiceProfileAccessPointTypeConfigAuthenticationKey() {}
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Label
+     * @return Name of the parameter that must be provided to authorize the connection.
      * 
      */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return Required
+     * @return Requirement to configure an authentication key.
      * 
      */
     public Optional<Boolean> required() {

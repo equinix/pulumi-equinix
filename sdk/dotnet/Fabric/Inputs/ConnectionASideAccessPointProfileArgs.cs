@@ -49,7 +49,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
 
         /// <summary>
-        /// Equinix-assigned interface identifier
+        /// Equinix-assigned virtual gateway identifier
         /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;

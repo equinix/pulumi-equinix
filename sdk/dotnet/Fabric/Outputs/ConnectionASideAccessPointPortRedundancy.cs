@@ -14,13 +14,28 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionASideAccessPointPortRedundancy
     {
         /// <summary>
-        /// Priority type- PRIMARY, SECONDARY
+        /// Access point redundancy
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
+        /// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        /// </summary>
+        public readonly string? Group;
+        /// <summary>
+        /// Connection priority in redundancy group - PRIMARY, SECONDARY
         /// </summary>
         public readonly string? Priority;
 
         [OutputConstructor]
-        private ConnectionASideAccessPointPortRedundancy(string? priority)
+        private ConnectionASideAccessPointPortRedundancy(
+            bool? enabled,
+
+            string? group,
+
+            string? priority)
         {
+            Enabled = enabled;
+            Group = group;
             Priority = priority;
         }
     }

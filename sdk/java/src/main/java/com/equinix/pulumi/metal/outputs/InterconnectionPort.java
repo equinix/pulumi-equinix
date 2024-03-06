@@ -9,64 +9,62 @@ import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class InterconnectionPort {
-    private @Nullable String id;
-    private @Nullable String linkStatus;
+    private String id;
+    private String linkStatus;
     /**
      * @return Name of the connection resource
      * 
      */
-    private @Nullable String name;
-    private @Nullable String role;
+    private String name;
+    private String role;
     /**
-     * @return Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
-    private @Nullable Integer speed;
+    private Integer speed;
     /**
      * @return Status of the connection resource.
      * 
      */
-    private @Nullable String status;
-    private @Nullable List<Object> virtualCircuitIds;
+    private String status;
+    private List<Object> virtualCircuitIds;
 
     private InterconnectionPort() {}
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
-    public Optional<String> linkStatus() {
-        return Optional.ofNullable(this.linkStatus);
+    public String linkStatus() {
+        return this.linkStatus;
     }
     /**
      * @return Name of the connection resource
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
-    public Optional<String> role() {
-        return Optional.ofNullable(this.role);
+    public String role() {
+        return this.role;
     }
     /**
-     * @return Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
-    public Optional<Integer> speed() {
-        return Optional.ofNullable(this.speed);
+    public Integer speed() {
+        return this.speed;
     }
     /**
      * @return Status of the connection resource.
      * 
      */
-    public Optional<String> status() {
-        return Optional.ofNullable(this.status);
+    public String status() {
+        return this.status;
     }
     public List<Object> virtualCircuitIds() {
-        return this.virtualCircuitIds == null ? List.of() : this.virtualCircuitIds;
+        return this.virtualCircuitIds;
     }
 
     public static Builder builder() {
@@ -78,13 +76,13 @@ public final class InterconnectionPort {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
-        private @Nullable String linkStatus;
-        private @Nullable String name;
-        private @Nullable String role;
-        private @Nullable Integer speed;
-        private @Nullable String status;
-        private @Nullable List<Object> virtualCircuitIds;
+        private String id;
+        private String linkStatus;
+        private String name;
+        private String role;
+        private Integer speed;
+        private String status;
+        private List<Object> virtualCircuitIds;
         public Builder() {}
         public Builder(InterconnectionPort defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,38 +96,38 @@ public final class InterconnectionPort {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-            this.id = id;
+        public Builder id(String id) {
+            this.id = Objects.requireNonNull(id);
             return this;
         }
         @CustomType.Setter
-        public Builder linkStatus(@Nullable String linkStatus) {
-            this.linkStatus = linkStatus;
+        public Builder linkStatus(String linkStatus) {
+            this.linkStatus = Objects.requireNonNull(linkStatus);
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
-        public Builder role(@Nullable String role) {
-            this.role = role;
+        public Builder role(String role) {
+            this.role = Objects.requireNonNull(role);
             return this;
         }
         @CustomType.Setter
-        public Builder speed(@Nullable Integer speed) {
-            this.speed = speed;
+        public Builder speed(Integer speed) {
+            this.speed = Objects.requireNonNull(speed);
             return this;
         }
         @CustomType.Setter
-        public Builder status(@Nullable String status) {
-            this.status = status;
+        public Builder status(String status) {
+            this.status = Objects.requireNonNull(status);
             return this;
         }
         @CustomType.Setter
-        public Builder virtualCircuitIds(@Nullable List<Object> virtualCircuitIds) {
-            this.virtualCircuitIds = virtualCircuitIds;
+        public Builder virtualCircuitIds(List<Object> virtualCircuitIds) {
+            this.virtualCircuitIds = Objects.requireNonNull(virtualCircuitIds);
             return this;
         }
         public Builder virtualCircuitIds(Object... virtualCircuitIds) {

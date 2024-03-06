@@ -3,14 +3,10 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
-import com.equinix.pulumi.fabric.inputs.GetCloudRouterProjectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetCloudRouterArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,39 +14,23 @@ public final class GetCloudRouterArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetCloudRouterArgs Empty = new GetCloudRouterArgs();
 
     /**
-     * Project information
-     * 
-     */
-    @Import(name="projects")
-    private @Nullable Output<List<GetCloudRouterProjectArgs>> projects;
-
-    /**
-     * @return Project information
-     * 
-     */
-    public Optional<Output<List<GetCloudRouterProjectArgs>>> projects() {
-        return Optional.ofNullable(this.projects);
-    }
-
-    /**
      * Equinix-assigned Fabric Cloud Router identifier
      * 
      */
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
+    @Import(name="uuid", required=true)
+    private Output<String> uuid;
 
     /**
      * @return Equinix-assigned Fabric Cloud Router identifier
      * 
      */
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     private GetCloudRouterArgs() {}
 
     private GetCloudRouterArgs(GetCloudRouterArgs $) {
-        this.projects = $.projects;
         this.uuid = $.uuid;
     }
 
@@ -73,43 +53,12 @@ public final class GetCloudRouterArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(@Nullable Output<List<GetCloudRouterProjectArgs>> projects) {
-            $.projects = projects;
-            return this;
-        }
-
-        /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(List<GetCloudRouterProjectArgs> projects) {
-            return projects(Output.of(projects));
-        }
-
-        /**
-         * @param projects Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder projects(GetCloudRouterProjectArgs... projects) {
-            return projects(List.of(projects));
-        }
-
-        /**
          * @param uuid Equinix-assigned Fabric Cloud Router identifier
          * 
          * @return builder
          * 
          */
-        public Builder uuid(@Nullable Output<String> uuid) {
+        public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
@@ -125,6 +74,7 @@ public final class GetCloudRouterArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetCloudRouterArgs build() {
+            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
             return $;
         }
     }

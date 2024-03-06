@@ -13,6 +13,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetCloudRouterPackageResult
     {
+        /// <summary>
+        /// Fabric Cloud Router package code
+        /// </summary>
         public readonly string Code;
 
         [OutputConstructor]

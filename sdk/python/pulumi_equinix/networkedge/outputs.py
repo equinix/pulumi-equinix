@@ -141,6 +141,8 @@ class AclTemplateInboundRule(dict):
         :param str src_port: Inbound traffic source ports. Allowed values are a comma separated list
                of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param str description: Inbound rule description, up to 200 characters.
+        :param int sequence_number: Inbound rule sequence number
+        :param str source_type: Type of traffic source used in a given inbound rule
         :param str subnet: Inbound traffic source IP subnet in CIDR format.
         :param Sequence[str] subnets: Inbound traffic source IP subnets in CIDR format.
         """
@@ -195,11 +197,17 @@ class AclTemplateInboundRule(dict):
     @property
     @pulumi.getter(name="sequenceNumber")
     def sequence_number(self) -> Optional[int]:
+        """
+        Inbound rule sequence number
+        """
         return pulumi.get(self, "sequence_number")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[str]:
+        """
+        Type of traffic source used in a given inbound rule
+        """
         warnings.warn("""Source Type will not be returned""", DeprecationWarning)
         pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
 
@@ -1079,6 +1087,8 @@ class DeviceSecondaryDevice(dict):
             suggest = "license_token"
         elif key == "mgmtAclTemplateUuid":
             suggest = "mgmt_acl_template_uuid"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "redundancyType":
             suggest = "redundancy_type"
         elif key == "redundantId":
@@ -1124,6 +1134,7 @@ class DeviceSecondaryDevice(dict):
                  license_status: Optional[str] = None,
                  license_token: Optional[str] = None,
                  mgmt_acl_template_uuid: Optional[str] = None,
+                 project_id: Optional[str] = None,
                  redundancy_type: Optional[str] = None,
                  redundant_id: Optional[str] = None,
                  region: Optional[str] = None,
@@ -1161,17 +1172,21 @@ class DeviceSecondaryDevice(dict):
                applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
                device.
+        :param str project_id: Unique Identifier for the project resource where the device is scoped to.If you
+               leave it out, the device will be created under the default project id of your organization.
         :param str redundancy_type: Device redundancy type applicable for HA devices, either
                primary or secondary.
         :param str redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param str region: Device location region.
         :param str ssh_ip_address: IP address of SSH enabled interface on the device.
         :param str ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
+        :param 'DeviceSecondaryDeviceSshKeyArgs' ssh_key: Definition of SSH key that will be provisioned on a device
         :param str status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param str uuid: Device unique identifier.
         :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters
                for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
                `systemIpAddress`.
+        :param str wan_interface_id: device interface id picked for WAN
         :param str zone_code: Device location zone code.
         """
         pulumi.set(__self__, "account_number", account_number)
@@ -1202,6 +1217,8 @@ class DeviceSecondaryDevice(dict):
             pulumi.set(__self__, "license_token", license_token)
         if mgmt_acl_template_uuid is not None:
             pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if redundancy_type is not None:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if redundant_id is not None:
@@ -1363,6 +1380,15 @@ class DeviceSecondaryDevice(dict):
         return pulumi.get(self, "mgmt_acl_template_uuid")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        Unique Identifier for the project resource where the device is scoped to.If you
+        leave it out, the device will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> Optional[str]:
         """
@@ -1406,6 +1432,9 @@ class DeviceSecondaryDevice(dict):
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional['outputs.DeviceSecondaryDeviceSshKey']:
+        """
+        Definition of SSH key that will be provisioned on a device
+        """
         return pulumi.get(self, "ssh_key")
 
     @property
@@ -1437,6 +1466,9 @@ class DeviceSecondaryDevice(dict):
     @property
     @pulumi.getter(name="wanInterfaceId")
     def wan_interface_id(self) -> Optional[str]:
+        """
+        device interface id picked for WAN
+        """
         return pulumi.get(self, "wan_interface_id")
 
     @property
@@ -1597,6 +1629,7 @@ class DeviceSecondaryDeviceSshKey(dict):
                  key_name: str,
                  username: str):
         """
+        :param str key_name: Reference by name to previously provisioned public SSH key
         :param str username: username associated with given key.
         """
         pulumi.set(__self__, "key_name", key_name)
@@ -1605,6 +1638,9 @@ class DeviceSecondaryDeviceSshKey(dict):
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> str:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
         return pulumi.get(self, "key_name")
 
     @property
@@ -1639,6 +1675,7 @@ class DeviceSshKey(dict):
                  key_name: str,
                  username: str):
         """
+        :param str key_name: Reference by name to previously provisioned public SSH key
         :param str username: username associated with given key.
         """
         pulumi.set(__self__, "key_name", key_name)
@@ -1647,6 +1684,9 @@ class DeviceSshKey(dict):
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> str:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
         return pulumi.get(self, "key_name")
 
     @property
@@ -1668,6 +1708,9 @@ class GetDeviceClusterDetailResult(dict):
                  num_of_nodes: int):
         """
         :param str cluster_id: The id of the cluster
+        :param str cluster_name: The name of the cluster device
+        :param Sequence['GetDeviceClusterDetailNode0Args'] node0s: An object that has node0 details
+        :param Sequence['GetDeviceClusterDetailNode1Args'] node1s: An object that has node1 details
         :param int num_of_nodes: The number of nodes in the cluster
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -1687,16 +1730,25 @@ class GetDeviceClusterDetailResult(dict):
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
+        """
+        The name of the cluster device
+        """
         return pulumi.get(self, "cluster_name")
 
     @property
     @pulumi.getter
     def node0s(self) -> Sequence['outputs.GetDeviceClusterDetailNode0Result']:
+        """
+        An object that has node0 details
+        """
         return pulumi.get(self, "node0s")
 
     @property
     @pulumi.getter
     def node1s(self) -> Sequence['outputs.GetDeviceClusterDetailNode1Result']:
+        """
+        An object that has node1 details
+        """
         return pulumi.get(self, "node1s")
 
     @property
@@ -1718,8 +1770,10 @@ class GetDeviceClusterDetailNode0Result(dict):
                  vendor_configurations: Sequence['outputs.GetDeviceClusterDetailNode0VendorConfigurationResult']):
         """
         :param str license_file_id: Unique identifier of applied license file
+        :param str license_token: License token. This is necessary for Palo Alto clusters
         :param str name: Name of an existing Equinix Network Edge device
         :param str uuid: UUID of an existing Equinix Network Edge device
+        :param Sequence['GetDeviceClusterDetailNode0VendorConfigurationArgs'] vendor_configurations: An object that has fields relevant to the vendor of the cluster device
         """
         pulumi.set(__self__, "license_file_id", license_file_id)
         pulumi.set(__self__, "license_token", license_token)
@@ -1738,6 +1792,9 @@ class GetDeviceClusterDetailNode0Result(dict):
     @property
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> str:
+        """
+        License token. This is necessary for Palo Alto clusters
+        """
         return pulumi.get(self, "license_token")
 
     @property
@@ -1759,6 +1816,9 @@ class GetDeviceClusterDetailNode0Result(dict):
     @property
     @pulumi.getter(name="vendorConfigurations")
     def vendor_configurations(self) -> Sequence['outputs.GetDeviceClusterDetailNode0VendorConfigurationResult']:
+        """
+        An object that has fields relevant to the vendor of the cluster device
+        """
         return pulumi.get(self, "vendor_configurations")
 
 
@@ -1771,6 +1831,14 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
                  controller_fqdn: str,
                  hostname: str,
                  root_password: str):
+        """
+        :param str activation_key: Activation key. This is required for Velocloud clusters
+        :param str admin_password: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+        :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device
+        :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters
+        :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+        """
         pulumi.set(__self__, "activation_key", activation_key)
         pulumi.set(__self__, "admin_password", admin_password)
         pulumi.set(__self__, "controller1", controller1)
@@ -1781,31 +1849,49 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
     @property
     @pulumi.getter(name="activationKey")
     def activation_key(self) -> str:
+        """
+        Activation key. This is required for Velocloud clusters
+        """
         return pulumi.get(self, "activation_key")
 
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> str:
+        """
+        The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter
     def controller1(self) -> str:
+        """
+        System IP Address. Mandatory for the Fortinet SDWAN cluster device
+        """
         return pulumi.get(self, "controller1")
 
     @property
     @pulumi.getter(name="controllerFqdn")
     def controller_fqdn(self) -> str:
+        """
+        Controller fqdn. This is required for Velocloud clusters
+        """
         return pulumi.get(self, "controller_fqdn")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
+        """
+        The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+        """
         return pulumi.get(self, "root_password")
 
 
@@ -1819,8 +1905,10 @@ class GetDeviceClusterDetailNode1Result(dict):
                  vendor_configurations: Sequence['outputs.GetDeviceClusterDetailNode1VendorConfigurationResult']):
         """
         :param str license_file_id: Unique identifier of applied license file
+        :param str license_token: License token. This is necessary for Palo Alto clusters
         :param str name: Name of an existing Equinix Network Edge device
         :param str uuid: UUID of an existing Equinix Network Edge device
+        :param Sequence['GetDeviceClusterDetailNode1VendorConfigurationArgs'] vendor_configurations: An object that has fields relevant to the vendor of the cluster device
         """
         pulumi.set(__self__, "license_file_id", license_file_id)
         pulumi.set(__self__, "license_token", license_token)
@@ -1839,6 +1927,9 @@ class GetDeviceClusterDetailNode1Result(dict):
     @property
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> str:
+        """
+        License token. This is necessary for Palo Alto clusters
+        """
         return pulumi.get(self, "license_token")
 
     @property
@@ -1860,6 +1951,9 @@ class GetDeviceClusterDetailNode1Result(dict):
     @property
     @pulumi.getter(name="vendorConfigurations")
     def vendor_configurations(self) -> Sequence['outputs.GetDeviceClusterDetailNode1VendorConfigurationResult']:
+        """
+        An object that has fields relevant to the vendor of the cluster device
+        """
         return pulumi.get(self, "vendor_configurations")
 
 
@@ -1872,6 +1966,14 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
                  controller_fqdn: str,
                  hostname: str,
                  root_password: str):
+        """
+        :param str activation_key: Activation key. This is required for Velocloud clusters
+        :param str admin_password: The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+        :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device
+        :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters
+        :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+        """
         pulumi.set(__self__, "activation_key", activation_key)
         pulumi.set(__self__, "admin_password", admin_password)
         pulumi.set(__self__, "controller1", controller1)
@@ -1882,31 +1984,49 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
     @property
     @pulumi.getter(name="activationKey")
     def activation_key(self) -> str:
+        """
+        Activation key. This is required for Velocloud clusters
+        """
         return pulumi.get(self, "activation_key")
 
     @property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> str:
+        """
+        The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+        """
         return pulumi.get(self, "admin_password")
 
     @property
     @pulumi.getter
     def controller1(self) -> str:
+        """
+        System IP Address. Mandatory for the Fortinet SDWAN cluster device
+        """
         return pulumi.get(self, "controller1")
 
     @property
     @pulumi.getter(name="controllerFqdn")
     def controller_fqdn(self) -> str:
+        """
+        Controller fqdn. This is required for Velocloud clusters
+        """
         return pulumi.get(self, "controller_fqdn")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
+        """
+        The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+        """
         return pulumi.get(self, "root_password")
 
 
@@ -1922,7 +2042,12 @@ class GetDeviceInterfaceResult(dict):
                  status: str,
                  type: str):
         """
+        :param str assigned_type: Interface management type (Equinix Managed or empty)
+        :param int id: Interface identifier
+        :param str ip_address: interface IP address
+        :param str mac_address: Interface MAC addres
         :param str name: Name of an existing Equinix Network Edge device
+        :param str operational_status: Interface operational status (up or down)
         :param str status: Device provisioning status
                * INITIALIZING
                * PROVISIONING
@@ -1936,6 +2061,7 @@ class GetDeviceInterfaceResult(dict):
                * DEPROVISIONED
                * RESOURCE_UPGRADE_IN_PROGRESS
                * RESOURCE_UPGRADE_FAILED
+        :param str type: Interface type
         """
         pulumi.set(__self__, "assigned_type", assigned_type)
         pulumi.set(__self__, "id", id)
@@ -1949,21 +2075,33 @@ class GetDeviceInterfaceResult(dict):
     @property
     @pulumi.getter(name="assignedType")
     def assigned_type(self) -> str:
+        """
+        Interface management type (Equinix Managed or empty)
+        """
         return pulumi.get(self, "assigned_type")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        Interface identifier
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
+        """
+        interface IP address
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> str:
+        """
+        Interface MAC addres
+        """
         return pulumi.get(self, "mac_address")
 
     @property
@@ -1977,6 +2115,9 @@ class GetDeviceInterfaceResult(dict):
     @property
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> str:
+        """
+        Interface operational status (up or down)
+        """
         return pulumi.get(self, "operational_status")
 
     @property
@@ -2002,6 +2143,9 @@ class GetDeviceInterfaceResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Interface type
+        """
         return pulumi.get(self, "type")
 
 
@@ -2024,6 +2168,7 @@ class GetDeviceSecondaryDeviceResult(dict):
                  mgmt_acl_template_uuid: str,
                  name: str,
                  notifications: Sequence[str],
+                 project_id: str,
                  redundancy_type: str,
                  redundant_id: str,
                  region: str,
@@ -2036,8 +2181,12 @@ class GetDeviceSecondaryDeviceResult(dict):
                  wan_interface_id: str,
                  zone_code: str):
         """
+        :param str account_number: Device billing account number
         :param str acl_template_id: Unique identifier of applied ACL template
+        :param int additional_bandwidth: Additional Internet bandwidth, in Mbps, that will be allocated to the device
         :param int asn: Autonomous system number
+        :param str cloud_init_file_id: Unique identifier of applied cloud init file
+        :param str hostname: Device hostname prefix
         :param str ibx: Device location Equinix Business Exchange name
         :param Sequence['GetDeviceSecondaryDeviceInterfaceArgs'] interfaces: List of device interfaces
                * `interface.#.id` - interface identifier
@@ -2048,6 +2197,7 @@ class GetDeviceSecondaryDeviceResult(dict):
                * `interface.#.ip_address` - interface IP address
                * `interface.#.assigned_type` - interface management type (Equinix Managed or empty)
                * `interface.#.type` - interface type
+        :param str license_file: Path to the license file that will be uploaded and applied on a device, applicable for some device types in BYOL licensing mode
         :param str license_file_id: Unique identifier of applied license file
         :param str license_status: Device license registration status
                * APPLYING_LICENSE
@@ -2056,13 +2206,19 @@ class GetDeviceSecondaryDeviceResult(dict):
                * WAITING_FOR_CLUSTER_SETUP
                * REGISTRATION_FAILED
                * NA
+        :param str license_token: License Token applicable for some device types in BYOL licensing mode
+        :param str metro_code: Device location metro code
+        :param str mgmt_acl_template_uuid: Unique identifier of applied MGMT ACL template
         :param str name: Name of an existing Equinix Network Edge device
+        :param Sequence[str] notifications: List of email addresses that will receive device status notifications
+        :param str project_id: The unique identifier of Project Resource to which device is scoped to
         :param str redundancy_type: Device redundancy type applicable for HA devices, either
                primary or secondary
         :param str redundant_id: Unique identifier for a redundant device applicable for HA devices
         :param str region: Device location region
         :param str ssh_ip_address: IP address of SSH enabled interface on the device
         :param str ssh_ip_fqdn: FQDN of SSH enabled interface on the device
+        :param Sequence['GetDeviceSecondaryDeviceSshKeyArgs'] ssh_keys: Definition of SSH key that will be provisioned on a device
         :param str status: Device provisioning status
                * INITIALIZING
                * PROVISIONING
@@ -2077,6 +2233,8 @@ class GetDeviceSecondaryDeviceResult(dict):
                * RESOURCE_UPGRADE_IN_PROGRESS
                * RESOURCE_UPGRADE_FAILED
         :param str uuid: UUID of an existing Equinix Network Edge device
+        :param Mapping[str, str] vendor_configuration: Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+        :param str wan_interface_id: device interface id picked for WAN
         :param str zone_code: Device location zone code
         """
         pulumi.set(__self__, "account_number", account_number)
@@ -2095,6 +2253,7 @@ class GetDeviceSecondaryDeviceResult(dict):
         pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "redundancy_type", redundancy_type)
         pulumi.set(__self__, "redundant_id", redundant_id)
         pulumi.set(__self__, "region", region)
@@ -2110,6 +2269,9 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> str:
+        """
+        Device billing account number
+        """
         return pulumi.get(self, "account_number")
 
     @property
@@ -2123,6 +2285,9 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="additionalBandwidth")
     def additional_bandwidth(self) -> int:
+        """
+        Additional Internet bandwidth, in Mbps, that will be allocated to the device
+        """
         return pulumi.get(self, "additional_bandwidth")
 
     @property
@@ -2136,11 +2301,17 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="cloudInitFileId")
     def cloud_init_file_id(self) -> str:
+        """
+        Unique identifier of applied cloud init file
+        """
         return pulumi.get(self, "cloud_init_file_id")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        Device hostname prefix
+        """
         return pulumi.get(self, "hostname")
 
     @property
@@ -2170,6 +2341,9 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="licenseFile")
     def license_file(self) -> str:
+        """
+        Path to the license file that will be uploaded and applied on a device, applicable for some device types in BYOL licensing mode
+        """
         return pulumi.get(self, "license_file")
 
     @property
@@ -2197,16 +2371,25 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> str:
+        """
+        License Token applicable for some device types in BYOL licensing mode
+        """
         return pulumi.get(self, "license_token")
 
     @property
     @pulumi.getter(name="metroCode")
     def metro_code(self) -> str:
+        """
+        Device location metro code
+        """
         return pulumi.get(self, "metro_code")
 
     @property
     @pulumi.getter(name="mgmtAclTemplateUuid")
     def mgmt_acl_template_uuid(self) -> str:
+        """
+        Unique identifier of applied MGMT ACL template
+        """
         return pulumi.get(self, "mgmt_acl_template_uuid")
 
     @property
@@ -2220,7 +2403,18 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter
     def notifications(self) -> Sequence[str]:
+        """
+        List of email addresses that will receive device status notifications
+        """
         return pulumi.get(self, "notifications")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The unique identifier of Project Resource to which device is scoped to
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="redundancyType")
@@ -2266,6 +2460,9 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> Sequence['outputs.GetDeviceSecondaryDeviceSshKeyResult']:
+        """
+        Definition of SSH key that will be provisioned on a device
+        """
         return pulumi.get(self, "ssh_keys")
 
     @property
@@ -2299,11 +2496,17 @@ class GetDeviceSecondaryDeviceResult(dict):
     @property
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Mapping[str, str]:
+        """
+        Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+        """
         return pulumi.get(self, "vendor_configuration")
 
     @property
     @pulumi.getter(name="wanInterfaceId")
     def wan_interface_id(self) -> str:
+        """
+        device interface id picked for WAN
+        """
         return pulumi.get(self, "wan_interface_id")
 
     @property
@@ -2327,7 +2530,12 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
                  status: str,
                  type: str):
         """
+        :param str assigned_type: Interface management type (Equinix Managed or empty)
+        :param int id: Interface identifier
+        :param str ip_address: interface IP address
+        :param str mac_address: Interface MAC addres
         :param str name: Name of an existing Equinix Network Edge device
+        :param str operational_status: Interface operational status (up or down)
         :param str status: Device provisioning status
                * INITIALIZING
                * PROVISIONING
@@ -2341,6 +2549,7 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
                * DEPROVISIONED
                * RESOURCE_UPGRADE_IN_PROGRESS
                * RESOURCE_UPGRADE_FAILED
+        :param str type: Interface type
         """
         pulumi.set(__self__, "assigned_type", assigned_type)
         pulumi.set(__self__, "id", id)
@@ -2354,21 +2563,33 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
     @property
     @pulumi.getter(name="assignedType")
     def assigned_type(self) -> str:
+        """
+        Interface management type (Equinix Managed or empty)
+        """
         return pulumi.get(self, "assigned_type")
 
     @property
     @pulumi.getter
     def id(self) -> int:
+        """
+        Interface identifier
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
+        """
+        interface IP address
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> str:
+        """
+        Interface MAC addres
+        """
         return pulumi.get(self, "mac_address")
 
     @property
@@ -2382,6 +2603,9 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
     @property
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> str:
+        """
+        Interface operational status (up or down)
+        """
         return pulumi.get(self, "operational_status")
 
     @property
@@ -2407,6 +2631,9 @@ class GetDeviceSecondaryDeviceInterfaceResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Interface type
+        """
         return pulumi.get(self, "type")
 
 
@@ -2415,17 +2642,27 @@ class GetDeviceSecondaryDeviceSshKeyResult(dict):
     def __init__(__self__, *,
                  key_name: str,
                  username: str):
+        """
+        :param str key_name: Reference by name to previously provisioned public SSH key
+        :param str username: Username associated with given key
+        """
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> str:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
         return pulumi.get(self, "key_name")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        Username associated with given key
+        """
         return pulumi.get(self, "username")
 
 
@@ -2434,17 +2671,27 @@ class GetDeviceSshKeyResult(dict):
     def __init__(__self__, *,
                  key_name: str,
                  username: str):
+        """
+        :param str key_name: Reference by name to previously provisioned public SSH key
+        :param str username: Username associated with given key
+        """
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> str:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
         return pulumi.get(self, "key_name")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        Username associated with given key
+        """
         return pulumi.get(self, "username")
 
 

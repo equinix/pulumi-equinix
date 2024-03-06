@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RoutingProtocolOperation {
+    /**
+     * @return Errors occurred
+     * 
+     */
     private @Nullable List<RoutingProtocolOperationError> errors;
 
     private RoutingProtocolOperation() {}
+    /**
+     * @return Errors occurred
+     * 
+     */
     public List<RoutingProtocolOperationError> errors() {
         return this.errors == null ? List.of() : this.errors;
     }

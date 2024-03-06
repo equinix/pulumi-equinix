@@ -73,6 +73,21 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * User-provided service description
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return User-provided service description
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Port name
      * 
      */
@@ -103,18 +118,18 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Order related to this connection information
+     * Order details
      * 
      */
-    @Import(name="order")
-    private @Nullable Output<ConnectionOrderArgs> order;
+    @Import(name="order", required=true)
+    private Output<ConnectionOrderArgs> order;
 
     /**
-     * @return Order related to this connection information
+     * @return Order details
      * 
      */
-    public Optional<Output<ConnectionOrderArgs>> order() {
-        return Optional.ofNullable(this.order);
+    public Output<ConnectionOrderArgs> order() {
+        return this.order;
     }
 
     /**
@@ -183,6 +198,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.aSide = $.aSide;
         this.additionalInfo = $.additionalInfo;
         this.bandwidth = $.bandwidth;
+        this.description = $.description;
         this.name = $.name;
         this.notifications = $.notifications;
         this.order = $.order;
@@ -284,6 +300,27 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description User-provided service description
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param name Port name
          * 
          * @return builder
@@ -336,18 +373,18 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param order Order related to this connection information
+         * @param order Order details
          * 
          * @return builder
          * 
          */
-        public Builder order(@Nullable Output<ConnectionOrderArgs> order) {
+        public Builder order(Output<ConnectionOrderArgs> order) {
             $.order = order;
             return this;
         }
 
         /**
-         * @param order Order related to this connection information
+         * @param order Order details
          * 
          * @return builder
          * 
@@ -464,6 +501,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
             $.aSide = Objects.requireNonNull($.aSide, "expected parameter 'aSide' to be non-null");
             $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
             $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
+            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             $.zSide = Objects.requireNonNull($.zSide, "expected parameter 'zSide' to be non-null");
             return $;

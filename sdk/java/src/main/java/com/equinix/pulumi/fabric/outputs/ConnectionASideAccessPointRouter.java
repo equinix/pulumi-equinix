@@ -17,7 +17,7 @@ public final class ConnectionASideAccessPointRouter {
      */
     private @Nullable String href;
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     private @Nullable String uuid;
@@ -31,7 +31,7 @@ public final class ConnectionASideAccessPointRouter {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     public Optional<String> uuid() {

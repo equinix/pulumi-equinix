@@ -8,6 +8,8 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -93,9 +95,9 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly accessPointTypeConfigs!: pulumi.Output<outputs.fabric.ServiceProfileAccessPointTypeConfig[] | undefined>;
     /**
-     * Account
+     * Service Profile Owner Account Information
      */
-    public readonly account!: pulumi.Output<outputs.fabric.ServiceProfileAccount | undefined>;
+    public /*out*/ readonly account!: pulumi.Output<outputs.fabric.ServiceProfileAccount>;
     /**
      * Array of contact emails
      */
@@ -109,7 +111,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly customFields!: pulumi.Output<outputs.fabric.ServiceProfileCustomField[] | undefined>;
     /**
-     * Description
+     * Description of authorization key
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -141,7 +143,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<outputs.fabric.ServiceProfileProject | undefined>;
     /**
-     * Self Profile
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     public readonly selfProfile!: pulumi.Output<boolean | undefined>;
     /**
@@ -211,7 +213,6 @@ export class ServiceProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accessPointTypeConfigs"] = args ? args.accessPointTypeConfigs : undefined;
-            resourceInputs["account"] = args ? args.account : undefined;
             resourceInputs["allowedEmails"] = args ? args.allowedEmails : undefined;
             resourceInputs["customFields"] = args ? args.customFields : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -227,6 +228,7 @@ export class ServiceProfile extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["virtualDevices"] = args ? args.virtualDevices : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["account"] = undefined /*out*/;
             resourceInputs["changeLog"] = undefined /*out*/;
             resourceInputs["href"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
@@ -245,7 +247,7 @@ export interface ServiceProfileState {
      */
     accessPointTypeConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfig>[]>;
     /**
-     * Account
+     * Service Profile Owner Account Information
      */
     account?: pulumi.Input<inputs.fabric.ServiceProfileAccount>;
     /**
@@ -261,7 +263,7 @@ export interface ServiceProfileState {
      */
     customFields?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileCustomField>[]>;
     /**
-     * Description
+     * Description of authorization key
      */
     description?: pulumi.Input<string>;
     /**
@@ -293,7 +295,7 @@ export interface ServiceProfileState {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**
@@ -331,10 +333,6 @@ export interface ServiceProfileArgs {
      */
     accessPointTypeConfigs?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileAccessPointTypeConfig>[]>;
     /**
-     * Account
-     */
-    account?: pulumi.Input<inputs.fabric.ServiceProfileAccount>;
-    /**
      * Array of contact emails
      */
     allowedEmails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -343,7 +341,7 @@ export interface ServiceProfileArgs {
      */
     customFields?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileCustomField>[]>;
     /**
-     * Description
+     * Description of authorization key
      */
     description: pulumi.Input<string>;
     /**
@@ -371,7 +369,7 @@ export interface ServiceProfileArgs {
      */
     project?: pulumi.Input<inputs.fabric.ServiceProfileProject>;
     /**
-     * Self Profile
+     * Self Profile indicating if the profile is created for customer's  self use
      */
     selfProfile?: pulumi.Input<boolean>;
     /**

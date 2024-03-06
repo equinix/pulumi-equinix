@@ -16,9 +16,17 @@ public final class RoutingProtocolOperationArgs extends com.pulumi.resources.Res
 
     public static final RoutingProtocolOperationArgs Empty = new RoutingProtocolOperationArgs();
 
+    /**
+     * Errors occurred
+     * 
+     */
     @Import(name="errors")
     private @Nullable Output<List<RoutingProtocolOperationErrorArgs>> errors;
 
+    /**
+     * @return Errors occurred
+     * 
+     */
     public Optional<Output<List<RoutingProtocolOperationErrorArgs>>> errors() {
         return Optional.ofNullable(this.errors);
     }
@@ -47,15 +55,33 @@ public final class RoutingProtocolOperationArgs extends com.pulumi.resources.Res
             $ = new RoutingProtocolOperationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param errors Errors occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(@Nullable Output<List<RoutingProtocolOperationErrorArgs>> errors) {
             $.errors = errors;
             return this;
         }
 
+        /**
+         * @param errors Errors occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(List<RoutingProtocolOperationErrorArgs> errors) {
             return errors(Output.of(errors));
         }
 
+        /**
+         * @param errors Errors occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(RoutingProtocolOperationErrorArgs... errors) {
             return errors(List.of(errors));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetPortDeviceResult
     {
+        /// <summary>
+        /// Port name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Port device redundancy
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortDeviceRedundancyResult> Redundancies;
 
         [OutputConstructor]

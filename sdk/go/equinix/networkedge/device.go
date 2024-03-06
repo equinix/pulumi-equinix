@@ -117,7 +117,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+// This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.<break><break>
 type Device struct {
 	pulumi.CustomResourceState
 
@@ -143,6 +143,13 @@ type Device struct {
 	Connectivity pulumi.StringPtrOutput `pulumi:"connectivity"`
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntOutput `pulumi:"coreCount"`
+	// Unique ID of an existing device.
+	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+	// device. This field is only meaningful for single devices.
+	DiverseDeviceId pulumi.StringOutput `pulumi:"diverseDeviceId"`
+	// Name of the device with diverse device UUID. This field is returned in device details if the
+	// device is created by passing diverse_device_id.
+	DiverseDeviceName pulumi.StringOutput `pulumi:"diverseDeviceName"`
 	// Device hostname prefix.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
@@ -178,6 +185,9 @@ type Device struct {
 	OrderReference pulumi.StringPtrOutput `pulumi:"orderReference"`
 	// Device software package code.
 	PackageCode pulumi.StringOutput `pulumi:"packageCode"`
+	// Unique Identifier for the project resource where the device is scoped to.If you
+	// leave it out, the device will be created under the default project id of your organization.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber pulumi.StringPtrOutput `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either
@@ -300,6 +310,13 @@ type deviceState struct {
 	Connectivity *string `pulumi:"connectivity"`
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount *int `pulumi:"coreCount"`
+	// Unique ID of an existing device.
+	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+	// device. This field is only meaningful for single devices.
+	DiverseDeviceId *string `pulumi:"diverseDeviceId"`
+	// Name of the device with diverse device UUID. This field is returned in device details if the
+	// device is created by passing diverse_device_id.
+	DiverseDeviceName *string `pulumi:"diverseDeviceName"`
 	// Device hostname prefix.
 	Hostname *string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name.
@@ -335,6 +352,9 @@ type deviceState struct {
 	OrderReference *string `pulumi:"orderReference"`
 	// Device software package code.
 	PackageCode *string `pulumi:"packageCode"`
+	// Unique Identifier for the project resource where the device is scoped to.If you
+	// leave it out, the device will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either
@@ -404,6 +424,13 @@ type DeviceState struct {
 	Connectivity pulumi.StringPtrInput
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntPtrInput
+	// Unique ID of an existing device.
+	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+	// device. This field is only meaningful for single devices.
+	DiverseDeviceId pulumi.StringPtrInput
+	// Name of the device with diverse device UUID. This field is returned in device details if the
+	// device is created by passing diverse_device_id.
+	DiverseDeviceName pulumi.StringPtrInput
 	// Device hostname prefix.
 	Hostname pulumi.StringPtrInput
 	// Device location Equinix Business Exchange name.
@@ -439,6 +466,9 @@ type DeviceState struct {
 	OrderReference pulumi.StringPtrInput
 	// Device software package code.
 	PackageCode pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the device is scoped to.If you
+	// leave it out, the device will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber pulumi.StringPtrInput
 	// Device redundancy type applicable for HA devices, either
@@ -510,6 +540,10 @@ type deviceArgs struct {
 	Connectivity *string `pulumi:"connectivity"`
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount int `pulumi:"coreCount"`
+	// Unique ID of an existing device.
+	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+	// device. This field is only meaningful for single devices.
+	DiverseDeviceId *string `pulumi:"diverseDeviceId"`
 	// Device hostname prefix.
 	Hostname *string `pulumi:"hostname"`
 	// Number of network interfaces on a device. If not specified,
@@ -537,6 +571,9 @@ type deviceArgs struct {
 	OrderReference *string `pulumi:"orderReference"`
 	// Device software package code.
 	PackageCode string `pulumi:"packageCode"`
+	// Unique Identifier for the project resource where the device is scoped to.If you
+	// leave it out, the device will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber *string `pulumi:"purchaseOrderNumber"`
 	// Definition of secondary device for redundant
@@ -588,6 +625,10 @@ type DeviceArgs struct {
 	Connectivity pulumi.StringPtrInput
 	// Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
 	CoreCount pulumi.IntInput
+	// Unique ID of an existing device.
+	// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+	// device. This field is only meaningful for single devices.
+	DiverseDeviceId pulumi.StringPtrInput
 	// Device hostname prefix.
 	Hostname pulumi.StringPtrInput
 	// Number of network interfaces on a device. If not specified,
@@ -615,6 +656,9 @@ type DeviceArgs struct {
 	OrderReference pulumi.StringPtrInput
 	// Device software package code.
 	PackageCode pulumi.StringInput
+	// Unique Identifier for the project resource where the device is scoped to.If you
+	// leave it out, the device will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// Purchase order number associated with a device order.
 	PurchaseOrderNumber pulumi.StringPtrInput
 	// Definition of secondary device for redundant
@@ -780,6 +824,19 @@ func (o DeviceOutput) CoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Device) pulumi.IntOutput { return v.CoreCount }).(pulumi.IntOutput)
 }
 
+// Unique ID of an existing device.
+// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+// device. This field is only meaningful for single devices.
+func (o DeviceOutput) DiverseDeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DiverseDeviceId }).(pulumi.StringOutput)
+}
+
+// Name of the device with diverse device UUID. This field is returned in device details if the
+// device is created by passing diverse_device_id.
+func (o DeviceOutput) DiverseDeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DiverseDeviceName }).(pulumi.StringOutput)
+}
+
 // Device hostname prefix.
 func (o DeviceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
@@ -855,6 +912,12 @@ func (o DeviceOutput) OrderReference() pulumi.StringPtrOutput {
 // Device software package code.
 func (o DeviceOutput) PackageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.PackageCode }).(pulumi.StringOutput)
+}
+
+// Unique Identifier for the project resource where the device is scoped to.If you
+// leave it out, the device will be created under the default project id of your organization.
+func (o DeviceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // Purchase order number associated with a device order.

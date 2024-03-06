@@ -6,6 +6,7 @@ package com.equinix.pulumi.metal;
 import com.equinix.pulumi.Utilities;
 import com.equinix.pulumi.metal.GatewayArgs;
 import com.equinix.pulumi.metal.inputs.GatewayState;
+import com.equinix.pulumi.metal.outputs.GatewayTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -58,15 +59,15 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipReservationId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ipReservationId;
+    private Output<String> ipReservationId;
 
     /**
      * @return UUID of Public or VRF IP Reservation to associate with the gateway, the
      * reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
      * 
      */
-    public Output<Optional<String>> ipReservationId() {
-        return Codegen.optional(this.ipReservationId);
+    public Output<String> ipReservationId() {
+        return this.ipReservationId;
     }
     /**
      * Size of the private IPv4 subnet to create for this metal
@@ -111,6 +112,12 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="timeouts", refs={GatewayTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ GatewayTimeouts> timeouts;
+
+    public Output<Optional<GatewayTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
      * UUID of the VLAN where the gateway is scoped to.

@@ -13,17 +13,53 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionChangeLogResult
     {
+        /// <summary>
+        /// Created by User Key
+        /// </summary>
         public readonly string CreatedBy;
+        /// <summary>
+        /// Created by User Email Address
+        /// </summary>
         public readonly string CreatedByEmail;
+        /// <summary>
+        /// Created by User Full Name
+        /// </summary>
         public readonly string CreatedByFullName;
+        /// <summary>
+        /// Created by Date and Time
+        /// </summary>
         public readonly string CreatedDateTime;
+        /// <summary>
+        /// Deleted by User Key
+        /// </summary>
         public readonly string DeletedBy;
+        /// <summary>
+        /// Deleted by User Email Address
+        /// </summary>
         public readonly string DeletedByEmail;
+        /// <summary>
+        /// Deleted by User Full Name
+        /// </summary>
         public readonly string DeletedByFullName;
+        /// <summary>
+        /// Deleted by Date and Time
+        /// </summary>
         public readonly string DeletedDateTime;
+        /// <summary>
+        /// Updated by User Key
+        /// </summary>
         public readonly string UpdatedBy;
+        /// <summary>
+        /// Updated by User Email Address
+        /// </summary>
         public readonly string UpdatedByEmail;
+        /// <summary>
+        /// Updated by User Full Name
+        /// </summary>
         public readonly string UpdatedByFullName;
+        /// <summary>
+        /// Updated by Date and Time
+        /// </summary>
         public readonly string UpdatedDateTime;
 
         [OutputConstructor]

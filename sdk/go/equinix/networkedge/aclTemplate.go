@@ -64,7 +64,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
+// This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
 type AclTemplate struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +90,9 @@ type AclTemplate struct {
 	MetroCode pulumi.StringPtrOutput `pulumi:"metroCode"`
 	// ACL template name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Unique Identifier for the project resource where the acl template is scoped to.If you
+	// leave it out, the ACL template will be created under the default project id of your organization.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Device uuid.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
@@ -149,6 +152,9 @@ type aclTemplateState struct {
 	MetroCode *string `pulumi:"metroCode"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the acl template is scoped to.If you
+	// leave it out, the ACL template will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// Device uuid.
 	Uuid *string `pulumi:"uuid"`
 }
@@ -176,6 +182,9 @@ type AclTemplateState struct {
 	MetroCode pulumi.StringPtrInput
 	// ACL template name.
 	Name pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the acl template is scoped to.If you
+	// leave it out, the ACL template will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// Device uuid.
 	Uuid pulumi.StringPtrInput
 }
@@ -198,6 +207,9 @@ type aclTemplateArgs struct {
 	MetroCode *string `pulumi:"metroCode"`
 	// ACL template name.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the acl template is scoped to.If you
+	// leave it out, the ACL template will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // The set of arguments for constructing a AclTemplate resource.
@@ -215,6 +227,9 @@ type AclTemplateArgs struct {
 	MetroCode pulumi.StringPtrInput
 	// ACL template name.
 	Name pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the acl template is scoped to.If you
+	// leave it out, the ACL template will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 }
 
 func (AclTemplateArgs) ElementType() reflect.Type {
@@ -345,6 +360,12 @@ func (o AclTemplateOutput) MetroCode() pulumi.StringPtrOutput {
 // ACL template name.
 func (o AclTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Unique Identifier for the project resource where the acl template is scoped to.If you
+// leave it out, the ACL template will be created under the default project id of your organization.
+func (o AclTemplateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclTemplate) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // Device uuid.

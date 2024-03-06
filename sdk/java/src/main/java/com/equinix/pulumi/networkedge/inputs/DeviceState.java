@@ -169,6 +169,42 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     * 
+     */
+    @Import(name="diverseDeviceId")
+    private @Nullable Output<String> diverseDeviceId;
+
+    /**
+     * @return Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     * 
+     */
+    public Optional<Output<String>> diverseDeviceId() {
+        return Optional.ofNullable(this.diverseDeviceId);
+    }
+
+    /**
+     * Name of the device with diverse device UUID. This field is returned in device details if the
+     * device is created by passing diverse_device_id.
+     * 
+     */
+    @Import(name="diverseDeviceName")
+    private @Nullable Output<String> diverseDeviceName;
+
+    /**
+     * @return Name of the device with diverse device UUID. This field is returned in device details if the
+     * device is created by passing diverse_device_id.
+     * 
+     */
+    public Optional<Output<String>> diverseDeviceName() {
+        return Optional.ofNullable(this.diverseDeviceName);
+    }
+
+    /**
      * Device hostname prefix.
      * 
      */
@@ -390,6 +426,23 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> packageCode() {
         return Optional.ofNullable(this.packageCode);
+    }
+
+    /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -701,6 +754,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         this.clusterDetails = $.clusterDetails;
         this.connectivity = $.connectivity;
         this.coreCount = $.coreCount;
+        this.diverseDeviceId = $.diverseDeviceId;
+        this.diverseDeviceName = $.diverseDeviceName;
         this.hostname = $.hostname;
         this.ibx = $.ibx;
         this.interfaceCount = $.interfaceCount;
@@ -715,6 +770,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.orderReference = $.orderReference;
         this.packageCode = $.packageCode;
+        this.projectId = $.projectId;
         this.purchaseOrderNumber = $.purchaseOrderNumber;
         this.redundancyType = $.redundancyType;
         this.redundantId = $.redundantId;
@@ -949,6 +1005,54 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder coreCount(Integer coreCount) {
             return coreCount(Output.of(coreCount));
+        }
+
+        /**
+         * @param diverseDeviceId Unique ID of an existing device.
+         * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+         * device. This field is only meaningful for single devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diverseDeviceId(@Nullable Output<String> diverseDeviceId) {
+            $.diverseDeviceId = diverseDeviceId;
+            return this;
+        }
+
+        /**
+         * @param diverseDeviceId Unique ID of an existing device.
+         * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+         * device. This field is only meaningful for single devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diverseDeviceId(String diverseDeviceId) {
+            return diverseDeviceId(Output.of(diverseDeviceId));
+        }
+
+        /**
+         * @param diverseDeviceName Name of the device with diverse device UUID. This field is returned in device details if the
+         * device is created by passing diverse_device_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diverseDeviceName(@Nullable Output<String> diverseDeviceName) {
+            $.diverseDeviceName = diverseDeviceName;
+            return this;
+        }
+
+        /**
+         * @param diverseDeviceName Name of the device with diverse device UUID. This field is returned in device details if the
+         * device is created by passing diverse_device_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diverseDeviceName(String diverseDeviceName) {
+            return diverseDeviceName(Output.of(diverseDeviceName));
         }
 
         /**
@@ -1279,6 +1383,29 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder packageCode(String packageCode) {
             return packageCode(Output.of(packageCode));
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
+         * leave it out, the device will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
+         * leave it out, the device will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

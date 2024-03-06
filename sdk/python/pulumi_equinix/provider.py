@@ -29,6 +29,8 @@ class ProviderArgs:
         :param pulumi.Input[str] client_id: API Consumer Key available under My Apps section in developer portal
         :param pulumi.Input[str] client_secret: API Consumer secret available under My Apps section in developer portal
         :param pulumi.Input[str] endpoint: The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        :param pulumi.Input[int] max_retries: Maximum number of retries.
+        :param pulumi.Input[int] max_retry_wait_seconds: Maximum number of seconds to wait before retrying a request.
         :param pulumi.Input[int] request_timeout: The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
                Defaults to 30
         :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses
@@ -104,6 +106,9 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of retries.
+        """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
@@ -113,6 +118,9 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="maxRetryWaitSeconds")
     def max_retry_wait_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of seconds to wait before retrying a request.
+        """
         return pulumi.get(self, "max_retry_wait_seconds")
 
     @max_retry_wait_seconds.setter
@@ -184,6 +192,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_id: API Consumer Key available under My Apps section in developer portal
         :param pulumi.Input[str] client_secret: API Consumer secret available under My Apps section in developer portal
         :param pulumi.Input[str] endpoint: The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
+        :param pulumi.Input[int] max_retries: Maximum number of retries.
+        :param pulumi.Input[int] max_retry_wait_seconds: Maximum number of seconds to wait before retrying a request.
         :param pulumi.Input[int] request_timeout: The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
                Defaults to 30
         :param pulumi.Input[int] response_max_page_size: The maximum number of records in a single response for REST queries that produce paginated responses

@@ -13,68 +13,114 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointResult
     {
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointAccountResult> Accounts;
-        public readonly string AuthenticationKey;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointGatewayResult> Gateways;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointInterfaceResult> Interfaces;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointLinkProtocolResult> LinkProtocols;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointLocationResult> Locations;
-        public readonly string PeeringType;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointPortResult> Ports;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileResult> Profiles;
-        public readonly string ProviderConnectionId;
         /// <summary>
-        /// CloudRouter; Replaces `gateway` attribute (Set of Object)
+        /// Account
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointRouterResult> Routers;
-        public readonly string SellerRegion;
-        public readonly string Type;
-        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointVirtualDeviceResult> VirtualDevices;
+        public readonly ImmutableArray<Outputs.GetConnectionZSideAccessPointAccountResult> Accounts;
+        /// <summary>
+        /// Authentication key for provider based connections
+        /// </summary>
+        public readonly string? AuthenticationKey;
+        /// <summary>
+        /// **Deprecated** `gateway` Use `router` attribute instead
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointGatewayResult? Gateway;
+        /// <summary>
+        /// Virtual device interface
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointInterfaceResult? Interface;
+        /// <summary>
+        /// Connection link protocol
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointLinkProtocolResult? LinkProtocol;
+        /// <summary>
+        /// Access point location
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointLocationResult Location;
+        /// <summary>
+        /// network access point information
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointNetworkResult? Network;
+        /// <summary>
+        /// Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+        /// </summary>
+        public readonly string? PeeringType;
+        /// <summary>
+        /// Port access point information
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointPortResult? Port;
+        /// <summary>
+        /// Service Profile
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointProfileResult? Profile;
+        /// <summary>
+        /// Provider assigned Connection Id
+        /// </summary>
+        public readonly string? ProviderConnectionId;
+        /// <summary>
+        /// Cloud Router access point information that replaces `gateway`
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointRouterResult? Router;
+        /// <summary>
+        /// Access point seller region
+        /// </summary>
+        public readonly string? SellerRegion;
+        /// <summary>
+        /// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
+        /// Virtual device
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointVirtualDeviceResult? VirtualDevice;
 
         [OutputConstructor]
         private GetConnectionZSideAccessPointResult(
             ImmutableArray<Outputs.GetConnectionZSideAccessPointAccountResult> accounts,
 
-            string authenticationKey,
+            string? authenticationKey,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointGatewayResult> gateways,
+            Outputs.GetConnectionZSideAccessPointGatewayResult? gateway,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointInterfaceResult> interfaces,
+            Outputs.GetConnectionZSideAccessPointInterfaceResult? @interface,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointLinkProtocolResult> linkProtocols,
+            Outputs.GetConnectionZSideAccessPointLinkProtocolResult? linkProtocol,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointLocationResult> locations,
+            Outputs.GetConnectionZSideAccessPointLocationResult location,
 
-            string peeringType,
+            Outputs.GetConnectionZSideAccessPointNetworkResult? network,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointPortResult> ports,
+            string? peeringType,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointProfileResult> profiles,
+            Outputs.GetConnectionZSideAccessPointPortResult? port,
 
-            string providerConnectionId,
+            Outputs.GetConnectionZSideAccessPointProfileResult? profile,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointRouterResult> routers,
+            string? providerConnectionId,
 
-            string sellerRegion,
+            Outputs.GetConnectionZSideAccessPointRouterResult? router,
 
-            string type,
+            string? sellerRegion,
 
-            ImmutableArray<Outputs.GetConnectionZSideAccessPointVirtualDeviceResult> virtualDevices)
+            string? type,
+
+            Outputs.GetConnectionZSideAccessPointVirtualDeviceResult? virtualDevice)
         {
             Accounts = accounts;
             AuthenticationKey = authenticationKey;
-            Gateways = gateways;
-            Interfaces = interfaces;
-            LinkProtocols = linkProtocols;
-            Locations = locations;
+            Gateway = gateway;
+            Interface = @interface;
+            LinkProtocol = linkProtocol;
+            Location = location;
+            Network = network;
             PeeringType = peeringType;
-            Ports = ports;
-            Profiles = profiles;
+            Port = port;
+            Profile = profile;
             ProviderConnectionId = providerConnectionId;
-            Routers = routers;
+            Router = router;
             SellerRegion = sellerRegion;
             Type = type;
-            VirtualDevices = virtualDevices;
+            VirtualDevice = virtualDevice;
         }
     }
 }

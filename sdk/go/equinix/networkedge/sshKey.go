@@ -54,12 +54,15 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
+// This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
 type SshKey struct {
 	pulumi.CustomResourceState
 
 	// The name of SSH key used for identification.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you
+	// leave it out, the ssh key will be created under the default project id of your organization.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
@@ -104,6 +107,9 @@ func GetSshKey(ctx *pulumi.Context,
 type sshKeyState struct {
 	// The name of SSH key used for identification.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you
+	// leave it out, the ssh key will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey *string `pulumi:"publicKey"`
@@ -116,6 +122,9 @@ type sshKeyState struct {
 type SshKeyState struct {
 	// The name of SSH key used for identification.
 	Name pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you
+	// leave it out, the ssh key will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey pulumi.StringPtrInput
@@ -132,6 +141,9 @@ func (SshKeyState) ElementType() reflect.Type {
 type sshKeyArgs struct {
 	// The name of SSH key used for identification.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you
+	// leave it out, the ssh key will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey string `pulumi:"publicKey"`
@@ -143,6 +155,9 @@ type sshKeyArgs struct {
 type SshKeyArgs struct {
 	// The name of SSH key used for identification.
 	Name pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the SSH key is scoped to.If you
+	// leave it out, the ssh key will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// The SSH public key. If this is a file, it can be read using the file
 	// interpolation function.
 	PublicKey pulumi.StringInput
@@ -240,6 +255,12 @@ func (o SshKeyOutput) ToSshKeyOutputWithContext(ctx context.Context) SshKeyOutpu
 // The name of SSH key used for identification.
 func (o SshKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Unique Identifier for the project resource where the SSH key is scoped to.If you
+// leave it out, the ssh key will be created under the default project id of your organization.
+func (o SshKeyOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshKey) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // The SSH public key. If this is a file, it can be read using the file

@@ -14,6 +14,10 @@ namespace Pulumi.Equinix.Fabric.Inputs
     {
         [Input("errors")]
         private InputList<Inputs.RoutingProtocolOperationErrorArgs>? _errors;
+
+        /// <summary>
+        /// Errors occurred
+        /// </summary>
         public InputList<Inputs.RoutingProtocolOperationErrorArgs> Errors
         {
             get => _errors ?? (_errors = new InputList<Inputs.RoutingProtocolOperationErrorArgs>());

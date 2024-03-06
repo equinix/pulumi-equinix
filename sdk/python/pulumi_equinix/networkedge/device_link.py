@@ -19,6 +19,7 @@ class DeviceLinkArgs:
                  devices: pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]],
                  links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DeviceLink resource.
@@ -27,6 +28,8 @@ class DeviceLinkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
         :param pulumi.Input[str] name: device link name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
+               leave it out, the device link will be created under the default project id of your organization.
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
                between self configured devices.
         """
@@ -35,6 +38,8 @@ class DeviceLinkArgs:
             pulumi.set(__self__, "links", links)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
 
@@ -77,6 +82,19 @@ class DeviceLinkArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the device link is scoped to.If you
+        leave it out, the device link will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
@@ -96,6 +114,7 @@ class _DeviceLinkState:
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
@@ -106,6 +125,8 @@ class _DeviceLinkState:
         :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
         :param pulumi.Input[str] name: device link name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
+               leave it out, the device link will be created under the default project id of your organization.
         :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
                `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
@@ -118,6 +139,8 @@ class _DeviceLinkState:
             pulumi.set(__self__, "links", links)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if subnet is not None:
@@ -162,6 +185,19 @@ class _DeviceLinkState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the device link is scoped to.If you
+        leave it out, the device link will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter
@@ -210,6 +246,7 @@ class DeviceLink(pulumi.CustomResource):
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -258,7 +295,7 @@ class DeviceLink(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,6 +304,8 @@ class DeviceLink(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
         :param pulumi.Input[str] name: device link name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
+               leave it out, the device link will be created under the default project id of your organization.
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
                between self configured devices.
         """
@@ -322,7 +361,7 @@ class DeviceLink(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param DeviceLinkArgs args: The arguments to use to populate this resource's properties.
@@ -342,6 +381,7 @@ class DeviceLink(pulumi.CustomResource):
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -357,6 +397,7 @@ class DeviceLink(pulumi.CustomResource):
             __props__.__dict__["devices"] = devices
             __props__.__dict__["links"] = links
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["status"] = None
             __props__.__dict__["uuid"] = None
@@ -373,6 +414,7 @@ class DeviceLink(pulumi.CustomResource):
             devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
             links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'DeviceLink':
@@ -388,6 +430,8 @@ class DeviceLink(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
         :param pulumi.Input[str] name: device link name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
+               leave it out, the device link will be created under the default project id of your organization.
         :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
                `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
@@ -401,6 +445,7 @@ class DeviceLink(pulumi.CustomResource):
         __props__.__dict__["devices"] = devices
         __props__.__dict__["links"] = links
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["status"] = status
         __props__.__dict__["subnet"] = subnet
         __props__.__dict__["uuid"] = uuid
@@ -431,6 +476,15 @@ class DeviceLink(pulumi.CustomResource):
         device link name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Unique Identifier for the project resource where the device link is scoped to.If you
+        leave it out, the device link will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter

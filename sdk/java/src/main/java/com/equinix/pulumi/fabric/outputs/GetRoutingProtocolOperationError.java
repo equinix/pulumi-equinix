@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRoutingProtocolOperationError {
+    /**
+     * @return Pricing error additional Info
+     * 
+     */
     private List<GetRoutingProtocolOperationErrorAdditionalInfo> additionalInfos;
+    /**
+     * @return CorrelationId
+     * 
+     */
     private String correlationId;
+    /**
+     * @return Details
+     * 
+     */
     private String details;
+    /**
+     * @return Error  code
+     * 
+     */
     private String errorCode;
+    /**
+     * @return Error Message
+     * 
+     */
     private String errorMessage;
+    /**
+     * @return Help
+     * 
+     */
     private String help;
 
     private GetRoutingProtocolOperationError() {}
+    /**
+     * @return Pricing error additional Info
+     * 
+     */
     public List<GetRoutingProtocolOperationErrorAdditionalInfo> additionalInfos() {
         return this.additionalInfos;
     }
+    /**
+     * @return CorrelationId
+     * 
+     */
     public String correlationId() {
         return this.correlationId;
     }
+    /**
+     * @return Details
+     * 
+     */
     public String details() {
         return this.details;
     }
+    /**
+     * @return Error  code
+     * 
+     */
     public String errorCode() {
         return this.errorCode;
     }
+    /**
+     * @return Error Message
+     * 
+     */
     public String errorMessage() {
         return this.errorMessage;
     }
+    /**
+     * @return Help
+     * 
+     */
     public String help() {
         return this.help;
     }

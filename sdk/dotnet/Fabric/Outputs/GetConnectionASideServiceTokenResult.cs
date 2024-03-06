@@ -13,10 +13,22 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideServiceTokenResult
     {
+        /// <summary>
+        /// Service token description
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// An absolute URL that is the subject of the link's context
+        /// </summary>
         public readonly string Href;
-        public readonly string Type;
-        public readonly string Uuid;
+        /// <summary>
+        /// Token type - VC_TOKEN
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
+        /// Equinix-assigned service token identifier
+        /// </summary>
+        public readonly string? Uuid;
 
         [OutputConstructor]
         private GetConnectionASideServiceTokenResult(
@@ -24,9 +36,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string href,
 
-            string type,
+            string? type,
 
-            string uuid)
+            string? uuid)
         {
             Description = description;
             Href = href;

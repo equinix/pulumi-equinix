@@ -119,7 +119,7 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string Facility;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Port UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -92,7 +92,13 @@ export interface ProviderArgs {
      * The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * Maximum number of retries.
+     */
     maxRetries?: pulumi.Input<number>;
+    /**
+     * Maximum number of seconds to wait before retrying a request.
+     */
     maxRetryWaitSeconds?: pulumi.Input<number>;
     /**
      * The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.

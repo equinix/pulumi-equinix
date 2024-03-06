@@ -7,6 +7,24 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const serviceProfilesDataName = equinix.fabric.getServiceProfiles({
+ *     filter: {
+ *         operator: "=",
+ *         property: "/name",
+ *         values: ["<list_of_profiles_to_return>"],
+ *     },
+ * });
+ * ```
+ */
 export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfilesResult> {
     args = args || {};
 
@@ -31,7 +49,7 @@ export interface GetServiceProfilesArgs {
      */
     sort?: inputs.fabric.GetServiceProfilesSort[];
     /**
-     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      */
     viewPoint?: string;
 }
@@ -41,7 +59,7 @@ export interface GetServiceProfilesArgs {
  */
 export interface GetServiceProfilesResult {
     /**
-     * List of  Service Profiles
+     * List of Service Profiles
      */
     readonly data: outputs.fabric.GetServiceProfilesDatum[];
     /**
@@ -57,10 +75,28 @@ export interface GetServiceProfilesResult {
      */
     readonly sort?: outputs.fabric.GetServiceProfilesSort[];
     /**
-     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      */
     readonly viewPoint?: string;
 }
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const serviceProfilesDataName = equinix.fabric.getServiceProfiles({
+ *     filter: {
+ *         operator: "=",
+ *         property: "/name",
+ *         values: ["<list_of_profiles_to_return>"],
+ *     },
+ * });
+ * ```
+ */
 export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))
 }
@@ -78,7 +114,7 @@ export interface GetServiceProfilesOutputArgs {
      */
     sort?: pulumi.Input<pulumi.Input<inputs.fabric.GetServiceProfilesSortArgs>[]>;
     /**
-     * Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      */
     viewPoint?: pulumi.Input<string>;
 }

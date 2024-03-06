@@ -7,7 +7,6 @@ import com.equinix.pulumi.fabric.enums.ProfileState;
 import com.equinix.pulumi.fabric.enums.ProfileType;
 import com.equinix.pulumi.fabric.enums.ProfileVisibility;
 import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccountArgs;
 import com.equinix.pulumi.fabric.inputs.ServiceProfileCustomFieldArgs;
 import com.equinix.pulumi.fabric.inputs.ServiceProfileMarketingInfoArgs;
 import com.equinix.pulumi.fabric.inputs.ServiceProfileMetroArgs;
@@ -46,21 +45,6 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Account
-     * 
-     */
-    @Import(name="account")
-    private @Nullable Output<ServiceProfileAccountArgs> account;
-
-    /**
-     * @return Account
-     * 
-     */
-    public Optional<Output<ServiceProfileAccountArgs>> account() {
-        return Optional.ofNullable(this.account);
-    }
-
-    /**
      * Array of contact emails
      * 
      */
@@ -91,14 +75,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Description
+     * Description of authorization key
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     public Output<String> description() {
@@ -196,14 +180,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Self Profile
+     * Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     @Import(name="selfProfile")
     private @Nullable Output<Boolean> selfProfile;
 
     /**
-     * @return Self Profile
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     public Optional<Output<Boolean>> selfProfile() {
@@ -289,7 +273,6 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
 
     private ServiceProfileArgs(ServiceProfileArgs $) {
         this.accessPointTypeConfigs = $.accessPointTypeConfigs;
-        this.account = $.account;
         this.allowedEmails = $.allowedEmails;
         this.customFields = $.customFields;
         this.description = $.description;
@@ -357,27 +340,6 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param account Account
-         * 
-         * @return builder
-         * 
-         */
-        public Builder account(@Nullable Output<ServiceProfileAccountArgs> account) {
-            $.account = account;
-            return this;
-        }
-
-        /**
-         * @param account Account
-         * 
-         * @return builder
-         * 
-         */
-        public Builder account(ServiceProfileAccountArgs account) {
-            return account(Output.of(account));
-        }
-
-        /**
          * @param allowedEmails Array of contact emails
          * 
          * @return builder
@@ -440,7 +402,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -451,7 +413,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -617,7 +579,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param selfProfile Self Profile
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
          * 
          * @return builder
          * 
@@ -628,7 +590,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param selfProfile Self Profile
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
          * 
          * @return builder
          * 

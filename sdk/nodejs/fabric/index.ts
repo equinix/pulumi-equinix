@@ -25,6 +25,11 @@ export const getConnection: typeof import("./getConnection").getConnection = nul
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
+export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
+export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
+export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+
 export { GetPortArgs, GetPortResult, GetPortOutputArgs } from "./getPort";
 export const getPort: typeof import("./getPort").getPort = null as any;
 export const getPortOutput: typeof import("./getPort").getPortOutput = null as any;
@@ -50,6 +55,11 @@ export const getServiceProfiles: typeof import("./getServiceProfiles").getServic
 export const getServiceProfilesOutput: typeof import("./getServiceProfiles").getServiceProfilesOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceProfiles","getServiceProfilesOutput"], () => require("./getServiceProfiles"));
 
+export { NetworkArgs, NetworkState } from "./network";
+export type Network = import("./network").Network;
+export const Network: typeof import("./network").Network = null as any;
+utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
 export { RoutingProtocolArgs, RoutingProtocolState } from "./routingProtocol";
 export type RoutingProtocol = import("./routingProtocol").RoutingProtocol;
 export const RoutingProtocol: typeof import("./routingProtocol").RoutingProtocol = null as any;
@@ -72,6 +82,8 @@ const _module = {
                 return new CloudRouter(name, <any>undefined, { urn })
             case "equinix:fabric/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "equinix:fabric/network:Network":
+                return new Network(name, <any>undefined, { urn })
             case "equinix:fabric/routingProtocol:RoutingProtocol":
                 return new RoutingProtocol(name, <any>undefined, { urn })
             case "equinix:fabric/serviceProfile:ServiceProfile":
@@ -83,5 +95,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("equinix", "fabric/cloudRouter", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/connection", _module)
+pulumi.runtime.registerResourceModule("equinix", "fabric/network", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/routingProtocol", _module)
 pulumi.runtime.registerResourceModule("equinix", "fabric/serviceProfile", _module)

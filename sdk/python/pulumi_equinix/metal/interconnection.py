@@ -43,7 +43,7 @@ class InterconnectionArgs:
         :param pulumi.Input[str] organization_id: ID of the organization where the connection is scoped to.
         :param pulumi.Input[str] project_id: ID of the project where the connection is scoped to, must be set for.
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a_side or z_side
-        :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
         """
@@ -54,8 +54,8 @@ class InterconnectionArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+            warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
         if metro is not None:
@@ -131,8 +131,8 @@ class InterconnectionArgs:
         """
         Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+        warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
 
         return pulumi.get(self, "facility")
 
@@ -216,7 +216,7 @@ class InterconnectionArgs:
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[str]]:
         """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         """
         return pulumi.get(self, "speed")
 
@@ -286,7 +286,7 @@ class _InterconnectionState:
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary.
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a_side or z_side
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectionServiceTokenArgs']]] service_tokens: List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the metal.Interconnection datasource.
-        :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[str] status: Status of the connection resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[str] token: (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
@@ -298,8 +298,8 @@ class _InterconnectionState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if facility is not None:
-            warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-            pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+            warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
+            pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
         if facility is not None:
             pulumi.set(__self__, "facility", facility)
         if metro is not None:
@@ -366,8 +366,8 @@ class _InterconnectionState:
         """
         Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+        warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
 
         return pulumi.get(self, "facility")
 
@@ -489,7 +489,7 @@ class _InterconnectionState:
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[str]]:
         """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         """
         return pulumi.get(self, "speed")
 
@@ -623,7 +623,7 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: ID of the project where the connection is scoped to, must be set for.
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary.
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a_side or z_side
-        :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
@@ -773,7 +773,7 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary.
         :param pulumi.Input[str] service_token_type: Only used with shared connection. Type of service token to use for the connection, a_side or z_side
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectionServiceTokenArgs']]]] service_tokens: List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of service_token is described in documentation of the metal.Interconnection datasource.
-        :param pulumi.Input[str] speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[str] status: Status of the connection resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[str] token: (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
@@ -814,7 +814,7 @@ class Interconnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         Description for the connection resource.
         """
@@ -826,8 +826,8 @@ class Interconnection(pulumi.CustomResource):
         """
         Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+        warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
 
         return pulumi.get(self, "facility")
 
@@ -841,7 +841,7 @@ class Interconnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> pulumi.Output[Optional[str]]:
+    def mode(self) -> pulumi.Output[str]:
         """
         Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         """
@@ -909,7 +909,7 @@ class Interconnection(pulumi.CustomResource):
     @pulumi.getter
     def speed(self) -> pulumi.Output[str]:
         """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         """
         return pulumi.get(self, "speed")
 

@@ -12,91 +12,254 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumMetro;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumNotification;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumPort;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumProject;
+import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfilesDatum {
+    /**
+     * @return Access point config information
+     * 
+     */
     private List<GetServiceProfilesDatumAccessPointTypeConfig> accessPointTypeConfigs;
+    /**
+     * @return Service Profile Owner Account Information
+     * 
+     */
     private List<GetServiceProfilesDatumAccount> accounts;
+    /**
+     * @return Array of contact emails
+     * 
+     */
     private List<String> allowedEmails;
+    /**
+     * @return Captures connection lifecycle change information
+     * 
+     */
     private List<GetServiceProfilesDatumChangeLog> changeLogs;
+    /**
+     * @return Custom Fields
+     * 
+     */
     private List<GetServiceProfilesDatumCustomField> customFields;
+    /**
+     * @return User-provided service description
+     * 
+     */
     private String description;
+    /**
+     * @return Service Profile URI response attribute
+     * 
+     */
     private String href;
+    /**
+     * @return Marketing Info
+     * 
+     */
     private List<GetServiceProfilesDatumMarketingInfo> marketingInfos;
+    /**
+     * @return Access point config information
+     * 
+     */
     private List<GetServiceProfilesDatumMetro> metros;
+    /**
+     * @return Customer-assigned service profile name
+     * 
+     */
     private String name;
+    /**
+     * @return Preferences for notifications on connection configuration or status changes
+     * 
+     */
     private List<GetServiceProfilesDatumNotification> notifications;
+    /**
+     * @return Ports
+     * 
+     */
     private List<GetServiceProfilesDatumPort> ports;
+    /**
+     * @return Project information
+     * 
+     */
     private List<GetServiceProfilesDatumProject> projects;
+    /**
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * 
+     */
     private Boolean selfProfile;
-    private @Nullable String state;
+    /**
+     * @return Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+     * 
+     */
+    private String state;
+    /**
+     * @return Tags attached to the connection
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * 
+     */
     private String type;
-    private @Nullable String uuid;
+    /**
+     * @return Equinix assigned service profile identifier
+     * 
+     */
+    private String uuid;
+    /**
+     * @return Virtual Devices
+     * 
+     */
+    private List<GetServiceProfilesDatumVirtualDevice> virtualDevices;
+    /**
+     * @return Service profile visibility - PUBLIC, PRIVATE
+     * 
+     */
     private String visibility;
 
     private GetServiceProfilesDatum() {}
+    /**
+     * @return Access point config information
+     * 
+     */
     public List<GetServiceProfilesDatumAccessPointTypeConfig> accessPointTypeConfigs() {
         return this.accessPointTypeConfigs;
     }
+    /**
+     * @return Service Profile Owner Account Information
+     * 
+     */
     public List<GetServiceProfilesDatumAccount> accounts() {
         return this.accounts;
     }
+    /**
+     * @return Array of contact emails
+     * 
+     */
     public List<String> allowedEmails() {
         return this.allowedEmails;
     }
+    /**
+     * @return Captures connection lifecycle change information
+     * 
+     */
     public List<GetServiceProfilesDatumChangeLog> changeLogs() {
         return this.changeLogs;
     }
+    /**
+     * @return Custom Fields
+     * 
+     */
     public List<GetServiceProfilesDatumCustomField> customFields() {
         return this.customFields;
     }
+    /**
+     * @return User-provided service description
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Service Profile URI response attribute
+     * 
+     */
     public String href() {
         return this.href;
     }
+    /**
+     * @return Marketing Info
+     * 
+     */
     public List<GetServiceProfilesDatumMarketingInfo> marketingInfos() {
         return this.marketingInfos;
     }
+    /**
+     * @return Access point config information
+     * 
+     */
     public List<GetServiceProfilesDatumMetro> metros() {
         return this.metros;
     }
+    /**
+     * @return Customer-assigned service profile name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Preferences for notifications on connection configuration or status changes
+     * 
+     */
     public List<GetServiceProfilesDatumNotification> notifications() {
         return this.notifications;
     }
+    /**
+     * @return Ports
+     * 
+     */
     public List<GetServiceProfilesDatumPort> ports() {
         return this.ports;
     }
+    /**
+     * @return Project information
+     * 
+     */
     public List<GetServiceProfilesDatumProject> projects() {
         return this.projects;
     }
+    /**
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
+     * 
+     */
     public Boolean selfProfile() {
         return this.selfProfile;
     }
-    public Optional<String> state() {
-        return Optional.ofNullable(this.state);
+    /**
+     * @return Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+     * 
+     */
+    public String state() {
+        return this.state;
     }
+    /**
+     * @return Tags attached to the connection
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * 
+     */
     public String type() {
         return this.type;
     }
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    /**
+     * @return Equinix assigned service profile identifier
+     * 
+     */
+    public String uuid() {
+        return this.uuid;
     }
+    /**
+     * @return Virtual Devices
+     * 
+     */
+    public List<GetServiceProfilesDatumVirtualDevice> virtualDevices() {
+        return this.virtualDevices;
+    }
+    /**
+     * @return Service profile visibility - PUBLIC, PRIVATE
+     * 
+     */
     public String visibility() {
         return this.visibility;
     }
@@ -124,10 +287,11 @@ public final class GetServiceProfilesDatum {
         private List<GetServiceProfilesDatumPort> ports;
         private List<GetServiceProfilesDatumProject> projects;
         private Boolean selfProfile;
-        private @Nullable String state;
+        private String state;
         private List<String> tags;
         private String type;
-        private @Nullable String uuid;
+        private String uuid;
+        private List<GetServiceProfilesDatumVirtualDevice> virtualDevices;
         private String visibility;
         public Builder() {}
         public Builder(GetServiceProfilesDatum defaults) {
@@ -150,6 +314,7 @@ public final class GetServiceProfilesDatum {
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
+    	      this.virtualDevices = defaults.virtualDevices;
     	      this.visibility = defaults.visibility;
         }
 
@@ -254,8 +419,8 @@ public final class GetServiceProfilesDatum {
             return this;
         }
         @CustomType.Setter
-        public Builder state(@Nullable String state) {
-            this.state = state;
+        public Builder state(String state) {
+            this.state = Objects.requireNonNull(state);
             return this;
         }
         @CustomType.Setter
@@ -272,9 +437,17 @@ public final class GetServiceProfilesDatum {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-            this.uuid = uuid;
+        public Builder uuid(String uuid) {
+            this.uuid = Objects.requireNonNull(uuid);
             return this;
+        }
+        @CustomType.Setter
+        public Builder virtualDevices(List<GetServiceProfilesDatumVirtualDevice> virtualDevices) {
+            this.virtualDevices = Objects.requireNonNull(virtualDevices);
+            return this;
+        }
+        public Builder virtualDevices(GetServiceProfilesDatumVirtualDevice... virtualDevices) {
+            return virtualDevices(List.of(virtualDevices));
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
@@ -301,6 +474,7 @@ public final class GetServiceProfilesDatum {
             _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
+            _resultValue.virtualDevices = virtualDevices;
             _resultValue.visibility = visibility;
             return _resultValue;
         }

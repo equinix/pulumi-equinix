@@ -9,20 +9,6 @@ import * as utilities from "../utilities";
  * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
  *
  * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const exampleConnection = equinix.metal.getInterconnection({
- *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
- * });
- * const exampleVc = exampleConnection.then(exampleConnection => equinix.metal.getVirtualCircuit({
- *     virtualCircuitId: exampleConnection.ports?.[1]?.virtualCircuitIds?.[0],
- * }));
- * ```
  */
 export function getVirtualCircuit(args: GetVirtualCircuitArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualCircuitResult> {
 
@@ -125,20 +111,6 @@ export interface GetVirtualCircuitResult {
  * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
  *
  * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as equinix from "@equinix-labs/pulumi-equinix";
- *
- * const exampleConnection = equinix.metal.getInterconnection({
- *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
- * });
- * const exampleVc = exampleConnection.then(exampleConnection => equinix.metal.getVirtualCircuit({
- *     virtualCircuitId: exampleConnection.ports?.[1]?.virtualCircuitIds?.[0],
- * }));
- * ```
  */
 export function getVirtualCircuitOutput(args: GetVirtualCircuitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualCircuitResult> {
     return pulumi.output(args).apply((a: any) => getVirtualCircuit(a, opts))

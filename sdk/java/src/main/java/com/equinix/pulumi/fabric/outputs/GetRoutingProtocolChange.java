@@ -9,17 +9,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRoutingProtocolChange {
+    /**
+     * @return Routing Protocol Change URI
+     * 
+     */
     private String href;
+    /**
+     * @return Type of change
+     * 
+     */
     private String type;
+    /**
+     * @return Uniquely identifies a change
+     * 
+     */
     private String uuid;
 
     private GetRoutingProtocolChange() {}
+    /**
+     * @return Routing Protocol Change URI
+     * 
+     */
     public String href() {
         return this.href;
     }
+    /**
+     * @return Type of change
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Uniquely identifies a change
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

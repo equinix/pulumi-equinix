@@ -13,7 +13,31 @@ import (
 
 // Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 //
-// > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.LookupServiceProfile(ctx, &fabric.LookupServiceProfileArgs{
+//				Uuid: "<uuid_of_service_profile>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceProfile(ctx *pulumi.Context, args *LookupServiceProfileArgs, opts ...pulumi.InvokeOption) (*LookupServiceProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceProfileResult
@@ -26,16 +50,14 @@ func LookupServiceProfile(ctx *pulumi.Context, args *LookupServiceProfileArgs, o
 
 // A collection of arguments for invoking getServiceProfile.
 type LookupServiceProfileArgs struct {
-	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-	State *string `pulumi:"state"`
-	Uuid  string  `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // A collection of values returned by getServiceProfile.
 type LookupServiceProfileResult struct {
 	// Access point config information
 	AccessPointTypeConfigs []GetServiceProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
-	// Account
+	// Service Profile Owner Account Information
 	Account GetServiceProfileAccount `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails []string `pulumi:"allowedEmails"`
@@ -64,13 +86,15 @@ type LookupServiceProfileResult struct {
 	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-	State *string `pulumi:"state"`
+	State string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
 	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
+	// Virtual Devices
+	VirtualDevices []GetServiceProfileVirtualDevice `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
 	Visibility string `pulumi:"visibility"`
 }
@@ -90,9 +114,7 @@ func LookupServiceProfileOutput(ctx *pulumi.Context, args LookupServiceProfileOu
 
 // A collection of arguments for invoking getServiceProfile.
 type LookupServiceProfileOutputArgs struct {
-	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-	State pulumi.StringPtrInput `pulumi:"state"`
-	Uuid  pulumi.StringInput    `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (LookupServiceProfileOutputArgs) ElementType() reflect.Type {
@@ -121,7 +143,7 @@ func (o LookupServiceProfileResultOutput) AccessPointTypeConfigs() GetServicePro
 	}).(GetServiceProfileAccessPointTypeConfigArrayOutput)
 }
 
-// Account
+// Service Profile Owner Account Information
 func (o LookupServiceProfileResultOutput) Account() GetServiceProfileAccountOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) GetServiceProfileAccount { return v.Account }).(GetServiceProfileAccountOutput)
 }
@@ -192,8 +214,8 @@ func (o LookupServiceProfileResultOutput) SelfProfile() pulumi.BoolOutput {
 }
 
 // Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-func (o LookupServiceProfileResultOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServiceProfileResult) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o LookupServiceProfileResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Tags attached to the connection
@@ -209,6 +231,11 @@ func (o LookupServiceProfileResultOutput) Type() pulumi.StringOutput {
 // Equinix assigned service profile identifier
 func (o LookupServiceProfileResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Virtual Devices
+func (o LookupServiceProfileResultOutput) VirtualDevices() GetServiceProfileVirtualDeviceArrayOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) []GetServiceProfileVirtualDevice { return v.VirtualDevices }).(GetServiceProfileVirtualDeviceArrayOutput)
 }
 
 // Service profile visibility - PUBLIC, PRIVATE

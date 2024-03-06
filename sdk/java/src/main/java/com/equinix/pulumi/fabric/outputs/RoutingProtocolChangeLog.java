@@ -11,53 +11,149 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RoutingProtocolChangeLog {
+    /**
+     * @return Created by User Key
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return Created by User Email Address
+     * 
+     */
     private @Nullable String createdByEmail;
+    /**
+     * @return Created by User Full Name
+     * 
+     */
     private @Nullable String createdByFullName;
+    /**
+     * @return Created by Date and Time
+     * 
+     */
     private @Nullable String createdDateTime;
+    /**
+     * @return Deleted by User Key
+     * 
+     */
     private @Nullable String deletedBy;
+    /**
+     * @return Deleted by User Email Address
+     * 
+     */
     private @Nullable String deletedByEmail;
+    /**
+     * @return Deleted by User Full Name
+     * 
+     */
     private @Nullable String deletedByFullName;
+    /**
+     * @return Deleted by Date and Time
+     * 
+     */
     private @Nullable String deletedDateTime;
+    /**
+     * @return Updated by User Key
+     * 
+     */
     private @Nullable String updatedBy;
+    /**
+     * @return Updated by User Email Address
+     * 
+     */
     private @Nullable String updatedByEmail;
+    /**
+     * @return Updated by User Full Name
+     * 
+     */
     private @Nullable String updatedByFullName;
+    /**
+     * @return Updated by Date and Time
+     * 
+     */
     private @Nullable String updatedDateTime;
 
     private RoutingProtocolChangeLog() {}
+    /**
+     * @return Created by User Key
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return Created by User Email Address
+     * 
+     */
     public Optional<String> createdByEmail() {
         return Optional.ofNullable(this.createdByEmail);
     }
+    /**
+     * @return Created by User Full Name
+     * 
+     */
     public Optional<String> createdByFullName() {
         return Optional.ofNullable(this.createdByFullName);
     }
+    /**
+     * @return Created by Date and Time
+     * 
+     */
     public Optional<String> createdDateTime() {
         return Optional.ofNullable(this.createdDateTime);
     }
+    /**
+     * @return Deleted by User Key
+     * 
+     */
     public Optional<String> deletedBy() {
         return Optional.ofNullable(this.deletedBy);
     }
+    /**
+     * @return Deleted by User Email Address
+     * 
+     */
     public Optional<String> deletedByEmail() {
         return Optional.ofNullable(this.deletedByEmail);
     }
+    /**
+     * @return Deleted by User Full Name
+     * 
+     */
     public Optional<String> deletedByFullName() {
         return Optional.ofNullable(this.deletedByFullName);
     }
+    /**
+     * @return Deleted by Date and Time
+     * 
+     */
     public Optional<String> deletedDateTime() {
         return Optional.ofNullable(this.deletedDateTime);
     }
+    /**
+     * @return Updated by User Key
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
+    /**
+     * @return Updated by User Email Address
+     * 
+     */
     public Optional<String> updatedByEmail() {
         return Optional.ofNullable(this.updatedByEmail);
     }
+    /**
+     * @return Updated by User Full Name
+     * 
+     */
     public Optional<String> updatedByFullName() {
         return Optional.ofNullable(this.updatedByFullName);
     }
+    /**
+     * @return Updated by Date and Time
+     * 
+     */
     public Optional<String> updatedDateTime() {
         return Optional.ofNullable(this.updatedDateTime);
     }

@@ -279,6 +279,23 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * Device redundancy type applicable for HA devices, either
      * primary or secondary.
      * 
@@ -355,9 +372,17 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.sshIpFqdn);
     }
 
+    /**
+     * Definition of SSH key that will be provisioned on a device
+     * 
+     */
     @Import(name="sshKey")
     private @Nullable Output<DeviceSecondaryDeviceSshKeyArgs> sshKey;
 
+    /**
+     * @return Definition of SSH key that will be provisioned on a device
+     * 
+     */
     public Optional<Output<DeviceSecondaryDeviceSshKeyArgs>> sshKey() {
         return Optional.ofNullable(this.sshKey);
     }
@@ -411,9 +436,17 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.vendorConfiguration);
     }
 
+    /**
+     * device interface id picked for WAN
+     * 
+     */
     @Import(name="wanInterfaceId")
     private @Nullable Output<String> wanInterfaceId;
 
+    /**
+     * @return device interface id picked for WAN
+     * 
+     */
     public Optional<Output<String>> wanInterfaceId() {
         return Optional.ofNullable(this.wanInterfaceId);
     }
@@ -452,6 +485,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         this.mgmtAclTemplateUuid = $.mgmtAclTemplateUuid;
         this.name = $.name;
         this.notifications = $.notifications;
+        this.projectId = $.projectId;
         this.redundancyType = $.redundancyType;
         this.redundantId = $.redundantId;
         this.region = $.region;
@@ -860,6 +894,29 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
+         * leave it out, the device will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
+         * leave it out, the device will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
+        }
+
+        /**
          * @param redundancyType Device redundancy type applicable for HA devices, either
          * primary or secondary.
          * 
@@ -966,11 +1023,23 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
             return sshIpFqdn(Output.of(sshIpFqdn));
         }
 
+        /**
+         * @param sshKey Definition of SSH key that will be provisioned on a device
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshKey(@Nullable Output<DeviceSecondaryDeviceSshKeyArgs> sshKey) {
             $.sshKey = sshKey;
             return this;
         }
 
+        /**
+         * @param sshKey Definition of SSH key that will be provisioned on a device
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshKey(DeviceSecondaryDeviceSshKeyArgs sshKey) {
             return sshKey(Output.of(sshKey));
         }
@@ -1042,11 +1111,23 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
             return vendorConfiguration(Output.of(vendorConfiguration));
         }
 
+        /**
+         * @param wanInterfaceId device interface id picked for WAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanInterfaceId(@Nullable Output<String> wanInterfaceId) {
             $.wanInterfaceId = wanInterfaceId;
             return this;
         }
 
+        /**
+         * @param wanInterfaceId device interface id picked for WAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanInterfaceId(String wanInterfaceId) {
             return wanInterfaceId(Output.of(wanInterfaceId));
         }

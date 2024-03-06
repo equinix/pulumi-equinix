@@ -34,6 +34,7 @@ import (
 //			dc, err := networkedge.GetAccount(ctx, &networkedge.GetAccountArgs{
 //				MetroCode: "DC",
 //				Status:    pulumi.StringRef("Active"),
+//				ProjectId: pulumi.StringRef("a86d7112-d740-4758-9c9c-31e66373746b"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -60,6 +61,9 @@ type GetAccountArgs struct {
 	MetroCode string `pulumi:"metroCode"`
 	// Account name for filtering.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the account is scoped to.If you
+	// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+	ProjectId *string `pulumi:"projectId"`
 	// Account status for filtering. Possible values are: `Active`, `Processing`,
 	// `Submitted`, `Staged`.
 	Status *string `pulumi:"status"`
@@ -72,8 +76,9 @@ type GetAccountResult struct {
 	MetroCode string `pulumi:"metroCode"`
 	Name      string `pulumi:"name"`
 	// Account unique number.
-	Number string `pulumi:"number"`
-	Status string `pulumi:"status"`
+	Number    string `pulumi:"number"`
+	ProjectId string `pulumi:"projectId"`
+	Status    string `pulumi:"status"`
 	// Account unique identifier.
 	UcmId string `pulumi:"ucmId"`
 }
@@ -97,6 +102,9 @@ type GetAccountOutputArgs struct {
 	MetroCode pulumi.StringInput `pulumi:"metroCode"`
 	// Account name for filtering.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique Identifier for the project resource where the account is scoped to.If you
+	// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Account status for filtering. Possible values are: `Active`, `Processing`,
 	// `Submitted`, `Staged`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -137,6 +145,10 @@ func (o GetAccountResultOutput) Name() pulumi.StringOutput {
 // Account unique number.
 func (o GetAccountResultOutput) Number() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountResult) string { return v.Number }).(pulumi.StringOutput)
+}
+
+func (o GetAccountResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o GetAccountResultOutput) Status() pulumi.StringOutput {

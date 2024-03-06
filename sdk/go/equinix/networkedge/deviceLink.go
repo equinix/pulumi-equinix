@@ -83,7 +83,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
+// This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
 type DeviceLink struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +95,9 @@ type DeviceLink struct {
 	Links DeviceLinkLinkArrayOutput `pulumi:"links"`
 	// device link name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Unique Identifier for the project resource where the device link is scoped to.If you
+	// leave it out, the device link will be created under the default project id of your organization.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// device link provisioning status on a given device. One of `PROVISIONING`,
 	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -146,6 +149,9 @@ type deviceLinkState struct {
 	Links []DeviceLinkLink `pulumi:"links"`
 	// device link name.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the device link is scoped to.If you
+	// leave it out, the device link will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// device link provisioning status on a given device. One of `PROVISIONING`,
 	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status *string `pulumi:"status"`
@@ -165,6 +171,9 @@ type DeviceLinkState struct {
 	Links DeviceLinkLinkArrayInput
 	// device link name.
 	Name pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the device link is scoped to.If you
+	// leave it out, the device link will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// device link provisioning status on a given device. One of `PROVISIONING`,
 	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status pulumi.StringPtrInput
@@ -188,6 +197,9 @@ type deviceLinkArgs struct {
 	Links []DeviceLinkLink `pulumi:"links"`
 	// device link name.
 	Name *string `pulumi:"name"`
+	// Unique Identifier for the project resource where the device link is scoped to.If you
+	// leave it out, the device link will be created under the default project id of your organization.
+	ProjectId *string `pulumi:"projectId"`
 	// device link subnet in CIDR format. Not required for link
 	// between self configured devices.
 	Subnet *string `pulumi:"subnet"`
@@ -203,6 +215,9 @@ type DeviceLinkArgs struct {
 	Links DeviceLinkLinkArrayInput
 	// device link name.
 	Name pulumi.StringPtrInput
+	// Unique Identifier for the project resource where the device link is scoped to.If you
+	// leave it out, the device link will be created under the default project id of your organization.
+	ProjectId pulumi.StringPtrInput
 	// device link subnet in CIDR format. Not required for link
 	// between self configured devices.
 	Subnet pulumi.StringPtrInput
@@ -310,6 +325,12 @@ func (o DeviceLinkOutput) Links() DeviceLinkLinkArrayOutput {
 // device link name.
 func (o DeviceLinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceLink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Unique Identifier for the project resource where the device link is scoped to.If you
+// leave it out, the device link will be created under the default project id of your organization.
+func (o DeviceLinkOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceLink) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // device link provisioning status on a given device. One of `PROVISIONING`,

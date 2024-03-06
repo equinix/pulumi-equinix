@@ -16,33 +16,6 @@ namespace Pulumi.Equinix.Metal
         /// [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
         /// 
         /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleConnection = Equinix.Metal.GetInterconnection.Invoke(new()
-        ///     {
-        ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
-        ///     });
-        /// 
-        ///     var exampleVc = Equinix.Metal.GetVirtualCircuit.Invoke(new()
-        ///     {
-        ///         VirtualCircuitId = exampleConnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[1]?.VirtualCircuitIds[0]),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVirtualCircuitResult> InvokeAsync(GetVirtualCircuitArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitArgs(), options.WithDefaults());
@@ -52,33 +25,6 @@ namespace Pulumi.Equinix.Metal
         /// [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
         /// 
         /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Equinix = Pulumi.Equinix;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleConnection = Equinix.Metal.GetInterconnection.Invoke(new()
-        ///     {
-        ///         ConnectionId = "4347e805-eb46-4699-9eb9-5c116e6a017d",
-        ///     });
-        /// 
-        ///     var exampleVc = Equinix.Metal.GetVirtualCircuit.Invoke(new()
-        ///     {
-        ///         VirtualCircuitId = exampleConnection.Apply(getInterconnectionResult =&gt; getInterconnectionResult.Ports[1]?.VirtualCircuitIds[0]),
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVirtualCircuitResult> Invoke(GetVirtualCircuitInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualCircuitResult>("equinix:metal/getVirtualCircuit:getVirtualCircuit", args ?? new GetVirtualCircuitInvokeArgs(), options.WithDefaults());

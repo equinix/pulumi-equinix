@@ -9,34 +9,84 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfileMetro {
-    private String code;
-    private String displayName;
-    private List<String> ibxs;
-    private Boolean inTrail;
-    private String name;
-    private Map<String,String> sellerRegions;
+    /**
+     * @return Metro Code - Example SV
+     * 
+     */
+    private @Nullable String code;
+    /**
+     * @return Display Name
+     * 
+     */
+    private @Nullable String displayName;
+    /**
+     * @return IBX- Equinix International Business Exchange list
+     * 
+     */
+    private @Nullable List<String> ibxs;
+    /**
+     * @return In Trail
+     * 
+     */
+    private @Nullable Boolean inTrail;
+    /**
+     * @return Metro Name
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return Seller Regions
+     * 
+     */
+    private @Nullable Map<String,String> sellerRegions;
 
     private GetServiceProfileMetro() {}
-    public String code() {
-        return this.code;
+    /**
+     * @return Metro Code - Example SV
+     * 
+     */
+    public Optional<String> code() {
+        return Optional.ofNullable(this.code);
     }
-    public String displayName() {
-        return this.displayName;
+    /**
+     * @return Display Name
+     * 
+     */
+    public Optional<String> displayName() {
+        return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return IBX- Equinix International Business Exchange list
+     * 
+     */
     public List<String> ibxs() {
-        return this.ibxs;
+        return this.ibxs == null ? List.of() : this.ibxs;
     }
-    public Boolean inTrail() {
-        return this.inTrail;
+    /**
+     * @return In Trail
+     * 
+     */
+    public Optional<Boolean> inTrail() {
+        return Optional.ofNullable(this.inTrail);
     }
-    public String name() {
-        return this.name;
+    /**
+     * @return Metro Name
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Seller Regions
+     * 
+     */
     public Map<String,String> sellerRegions() {
-        return this.sellerRegions;
+        return this.sellerRegions == null ? Map.of() : this.sellerRegions;
     }
 
     public static Builder builder() {
@@ -48,12 +98,12 @@ public final class GetServiceProfileMetro {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String code;
-        private String displayName;
-        private List<String> ibxs;
-        private Boolean inTrail;
-        private String name;
-        private Map<String,String> sellerRegions;
+        private @Nullable String code;
+        private @Nullable String displayName;
+        private @Nullable List<String> ibxs;
+        private @Nullable Boolean inTrail;
+        private @Nullable String name;
+        private @Nullable Map<String,String> sellerRegions;
         public Builder() {}
         public Builder(GetServiceProfileMetro defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,36 +116,36 @@ public final class GetServiceProfileMetro {
         }
 
         @CustomType.Setter
-        public Builder code(String code) {
-            this.code = Objects.requireNonNull(code);
+        public Builder code(@Nullable String code) {
+            this.code = code;
             return this;
         }
         @CustomType.Setter
-        public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+        public Builder displayName(@Nullable String displayName) {
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
-        public Builder ibxs(List<String> ibxs) {
-            this.ibxs = Objects.requireNonNull(ibxs);
+        public Builder ibxs(@Nullable List<String> ibxs) {
+            this.ibxs = ibxs;
             return this;
         }
         public Builder ibxs(String... ibxs) {
             return ibxs(List.of(ibxs));
         }
         @CustomType.Setter
-        public Builder inTrail(Boolean inTrail) {
-            this.inTrail = Objects.requireNonNull(inTrail);
+        public Builder inTrail(@Nullable Boolean inTrail) {
+            this.inTrail = inTrail;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder sellerRegions(Map<String,String> sellerRegions) {
-            this.sellerRegions = Objects.requireNonNull(sellerRegions);
+        public Builder sellerRegions(@Nullable Map<String,String> sellerRegions) {
+            this.sellerRegions = sellerRegions;
             return this;
         }
         public GetServiceProfileMetro build() {

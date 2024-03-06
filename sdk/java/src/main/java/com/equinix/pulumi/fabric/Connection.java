@@ -29,6 +29,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -201,6 +203,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.changeLog;
     }
     /**
+     * User-provided service description
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return User-provided service description
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * Connection directionality from the requester point of view
      * 
      */
@@ -285,32 +301,32 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.operation;
     }
     /**
-     * Order related to this connection information
+     * Order details
      * 
      */
     @Export(name="order", refs={ConnectionOrder.class}, tree="[0]")
-    private Output</* @Nullable */ ConnectionOrder> order;
+    private Output<ConnectionOrder> order;
 
     /**
-     * @return Order related to this connection information
+     * @return Order details
      * 
      */
-    public Output<Optional<ConnectionOrder>> order() {
-        return Codegen.optional(this.order);
+    public Output<ConnectionOrder> order() {
+        return this.order;
     }
     /**
      * Project information
      * 
      */
     @Export(name="project", refs={ConnectionProject.class}, tree="[0]")
-    private Output</* @Nullable */ ConnectionProject> project;
+    private Output<ConnectionProject> project;
 
     /**
      * @return Project information
      * 
      */
-    public Output<Optional<ConnectionProject>> project() {
-        return Codegen.optional(this.project);
+    public Output<ConnectionProject> project() {
+        return this.project;
     }
     /**
      * Redundancy Information
@@ -327,14 +343,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redundancy);
     }
     /**
-     * Routing protocol instance state
+     * Connection overall state
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Routing protocol instance state
+     * @return Connection overall state
      * 
      */
     public Output<String> state() {
@@ -353,6 +369,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * Equinix-assigned virtual gateway identifier
+     * 
+     */
+    @Export(name="uuid", refs={String.class}, tree="[0]")
+    private Output<String> uuid;
+
+    /**
+     * @return Equinix-assigned virtual gateway identifier
+     * 
+     */
+    public Output<String> uuid() {
+        return this.uuid;
     }
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection

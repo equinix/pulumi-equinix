@@ -7,12 +7,26 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
-export function getCloudRouter(args?: GetCloudRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRouterResult> {
-    args = args || {};
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+ *
+ * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const cloudRouterDataName = equinix.fabric.getCloudRouter({
+ *     uuid: "<uuid_of_cloud_router>",
+ * });
+ * ```
+ */
+export function getCloudRouter(args: GetCloudRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRouterResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getCloudRouter:getCloudRouter", {
-        "projects": args.projects,
         "uuid": args.uuid,
     }, opts);
 }
@@ -22,13 +36,9 @@ export function getCloudRouter(args?: GetCloudRouterArgs, opts?: pulumi.InvokeOp
  */
 export interface GetCloudRouterArgs {
     /**
-     * Project information
-     */
-    projects?: inputs.fabric.GetCloudRouterProject[];
-    /**
      * Equinix-assigned Fabric Cloud Router identifier
      */
-    uuid?: string;
+    uuid: string;
 }
 
 /**
@@ -39,17 +49,34 @@ export interface GetCloudRouterResult {
      * Customer account information that is associated with this Fabric Cloud Router
      */
     readonly accounts: outputs.fabric.GetCloudRouterAccount[];
+    /**
+     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
+     */
     readonly bgpIpv4RoutesCount: number;
+    /**
+     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
+     */
     readonly bgpIpv6RoutesCount: number;
     /**
      * Captures Fabric Cloud Router lifecycle change information
      */
     readonly changeLogs: outputs.fabric.GetCloudRouterChangeLog[];
+    /**
+     * Number of connections associated with this Fabric Cloud Router instance
+     */
     readonly connectionsCount: number;
     /**
      * Customer-provided Fabric Cloud Router description
      */
     readonly description: string;
+    /**
+     * Number of distinct IPv4 routes
+     */
+    readonly distinctIpv4PrefixesCount: number;
+    /**
+     * Number of distinct IPv6 routes
+     */
+    readonly distinctIpv6PrefixesCount: number;
     /**
      * Equinix ASN
      */
@@ -79,11 +106,11 @@ export interface GetCloudRouterResult {
      */
     readonly orders: outputs.fabric.GetCloudRouterOrder[];
     /**
-     * Fabric Cloud Router package information
+     * Fabric Cloud Router Package Type
      */
     readonly packages: outputs.fabric.GetCloudRouterPackage[];
     /**
-     * Project information
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
     readonly projects: outputs.fabric.GetCloudRouterProject[];
     /**
@@ -91,15 +118,31 @@ export interface GetCloudRouterResult {
      */
     readonly state: string;
     /**
-     * Defines the Fabric Cloud Router type like XF_GATEWAY
+     * Defines the FCR type like; XF_ROUTER
      */
     readonly type: string;
     /**
      * Equinix-assigned Fabric Cloud Router identifier
      */
-    readonly uuid?: string;
+    readonly uuid: string;
 }
-export function getCloudRouterOutput(args?: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRouterResult> {
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+ *
+ * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const cloudRouterDataName = equinix.fabric.getCloudRouter({
+ *     uuid: "<uuid_of_cloud_router>",
+ * });
+ * ```
+ */
+export function getCloudRouterOutput(args: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRouterResult> {
     return pulumi.output(args).apply((a: any) => getCloudRouter(a, opts))
 }
 
@@ -108,11 +151,7 @@ export function getCloudRouterOutput(args?: GetCloudRouterOutputArgs, opts?: pul
  */
 export interface GetCloudRouterOutputArgs {
     /**
-     * Project information
-     */
-    projects?: pulumi.Input<pulumi.Input<inputs.fabric.GetCloudRouterProjectArgs>[]>;
-    /**
      * Equinix-assigned Fabric Cloud Router identifier
      */
-    uuid?: pulumi.Input<string>;
+    uuid: pulumi.Input<string>;
 }

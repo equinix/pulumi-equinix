@@ -19,12 +19,12 @@ public final class ServiceProfileAccessPointTypeConfigApiConfig {
      */
     private @Nullable Boolean allowOverSubscription;
     /**
-     * @return Setting indicating whether the API is available (true) or not (false)
+     * @return Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
      * 
      */
     private @Nullable Boolean apiAvailable;
     /**
-     * @return Bandwidth from api
+     * @return Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
      * 
      */
     private @Nullable Boolean bandwidthFromApi;
@@ -39,12 +39,12 @@ public final class ServiceProfileAccessPointTypeConfigApiConfig {
      */
     private @Nullable Boolean equinixManagedVlan;
     /**
-     * @return Integration id
+     * @return A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
      * 
      */
     private @Nullable String integrationId;
     /**
-     * @return A cap on over subscription
+     * @return Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
      * 
      */
     private @Nullable Integer overSubscriptionLimit;
@@ -58,14 +58,14 @@ public final class ServiceProfileAccessPointTypeConfigApiConfig {
         return Optional.ofNullable(this.allowOverSubscription);
     }
     /**
-     * @return Setting indicating whether the API is available (true) or not (false)
+     * @return Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
      * 
      */
     public Optional<Boolean> apiAvailable() {
         return Optional.ofNullable(this.apiAvailable);
     }
     /**
-     * @return Bandwidth from api
+     * @return Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
      * 
      */
     public Optional<Boolean> bandwidthFromApi() {
@@ -86,14 +86,14 @@ public final class ServiceProfileAccessPointTypeConfigApiConfig {
         return Optional.ofNullable(this.equinixManagedVlan);
     }
     /**
-     * @return Integration id
+     * @return A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
      * 
      */
     public Optional<String> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }
     /**
-     * @return A cap on over subscription
+     * @return Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
      * 
      */
     public Optional<Integer> overSubscriptionLimit() {

@@ -14,19 +14,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDeviceSecondaryDevice {
+    /**
+     * @return Device billing account number
+     * 
+     */
     private String accountNumber;
     /**
      * @return Unique identifier of applied ACL template
      * 
      */
     private String aclTemplateId;
+    /**
+     * @return Additional Internet bandwidth, in Mbps, that will be allocated to the device
+     * 
+     */
     private Integer additionalBandwidth;
     /**
      * @return Autonomous system number
      * 
      */
     private Integer asn;
+    /**
+     * @return Unique identifier of applied cloud init file
+     * 
+     */
     private String cloudInitFileId;
+    /**
+     * @return Device hostname prefix
+     * 
+     */
     private String hostname;
     /**
      * @return Device location Equinix Business Exchange name
@@ -46,6 +62,10 @@ public final class GetDeviceSecondaryDevice {
      * 
      */
     private List<GetDeviceSecondaryDeviceInterface> interfaces;
+    /**
+     * @return Path to the license file that will be uploaded and applied on a device, applicable for some device types in BYOL licensing mode
+     * 
+     */
     private String licenseFile;
     /**
      * @return Unique identifier of applied license file
@@ -63,15 +83,36 @@ public final class GetDeviceSecondaryDevice {
      * 
      */
     private String licenseStatus;
+    /**
+     * @return License Token applicable for some device types in BYOL licensing mode
+     * 
+     */
     private String licenseToken;
+    /**
+     * @return Device location metro code
+     * 
+     */
     private String metroCode;
+    /**
+     * @return Unique identifier of applied MGMT ACL template
+     * 
+     */
     private String mgmtAclTemplateUuid;
     /**
      * @return Name of an existing Equinix Network Edge device
      * 
      */
     private String name;
+    /**
+     * @return List of email addresses that will receive device status notifications
+     * 
+     */
     private List<String> notifications;
+    /**
+     * @return The unique identifier of Project Resource to which device is scoped to
+     * 
+     */
+    private String projectId;
     /**
      * @return Device redundancy type applicable for HA devices, either
      * primary or secondary
@@ -98,6 +139,10 @@ public final class GetDeviceSecondaryDevice {
      * 
      */
     private String sshIpFqdn;
+    /**
+     * @return Definition of SSH key that will be provisioned on a device
+     * 
+     */
     private List<GetDeviceSecondaryDeviceSshKey> sshKeys;
     /**
      * @return Device provisioning status
@@ -121,7 +166,15 @@ public final class GetDeviceSecondaryDevice {
      * 
      */
     private String uuid;
+    /**
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * 
+     */
     private Map<String,String> vendorConfiguration;
+    /**
+     * @return device interface id picked for WAN
+     * 
+     */
     private String wanInterfaceId;
     /**
      * @return Device location zone code
@@ -130,6 +183,10 @@ public final class GetDeviceSecondaryDevice {
     private String zoneCode;
 
     private GetDeviceSecondaryDevice() {}
+    /**
+     * @return Device billing account number
+     * 
+     */
     public String accountNumber() {
         return this.accountNumber;
     }
@@ -140,6 +197,10 @@ public final class GetDeviceSecondaryDevice {
     public String aclTemplateId() {
         return this.aclTemplateId;
     }
+    /**
+     * @return Additional Internet bandwidth, in Mbps, that will be allocated to the device
+     * 
+     */
     public Integer additionalBandwidth() {
         return this.additionalBandwidth;
     }
@@ -150,9 +211,17 @@ public final class GetDeviceSecondaryDevice {
     public Integer asn() {
         return this.asn;
     }
+    /**
+     * @return Unique identifier of applied cloud init file
+     * 
+     */
     public String cloudInitFileId() {
         return this.cloudInitFileId;
     }
+    /**
+     * @return Device hostname prefix
+     * 
+     */
     public String hostname() {
         return this.hostname;
     }
@@ -178,6 +247,10 @@ public final class GetDeviceSecondaryDevice {
     public List<GetDeviceSecondaryDeviceInterface> interfaces() {
         return this.interfaces;
     }
+    /**
+     * @return Path to the license file that will be uploaded and applied on a device, applicable for some device types in BYOL licensing mode
+     * 
+     */
     public String licenseFile() {
         return this.licenseFile;
     }
@@ -201,12 +274,24 @@ public final class GetDeviceSecondaryDevice {
     public String licenseStatus() {
         return this.licenseStatus;
     }
+    /**
+     * @return License Token applicable for some device types in BYOL licensing mode
+     * 
+     */
     public String licenseToken() {
         return this.licenseToken;
     }
+    /**
+     * @return Device location metro code
+     * 
+     */
     public String metroCode() {
         return this.metroCode;
     }
+    /**
+     * @return Unique identifier of applied MGMT ACL template
+     * 
+     */
     public String mgmtAclTemplateUuid() {
         return this.mgmtAclTemplateUuid;
     }
@@ -217,8 +302,19 @@ public final class GetDeviceSecondaryDevice {
     public String name() {
         return this.name;
     }
+    /**
+     * @return List of email addresses that will receive device status notifications
+     * 
+     */
     public List<String> notifications() {
         return this.notifications;
+    }
+    /**
+     * @return The unique identifier of Project Resource to which device is scoped to
+     * 
+     */
+    public String projectId() {
+        return this.projectId;
     }
     /**
      * @return Device redundancy type applicable for HA devices, either
@@ -256,6 +352,10 @@ public final class GetDeviceSecondaryDevice {
     public String sshIpFqdn() {
         return this.sshIpFqdn;
     }
+    /**
+     * @return Definition of SSH key that will be provisioned on a device
+     * 
+     */
     public List<GetDeviceSecondaryDeviceSshKey> sshKeys() {
         return this.sshKeys;
     }
@@ -285,9 +385,17 @@ public final class GetDeviceSecondaryDevice {
     public String uuid() {
         return this.uuid;
     }
+    /**
+     * @return Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * 
+     */
     public Map<String,String> vendorConfiguration() {
         return this.vendorConfiguration;
     }
+    /**
+     * @return device interface id picked for WAN
+     * 
+     */
     public String wanInterfaceId() {
         return this.wanInterfaceId;
     }
@@ -324,6 +432,7 @@ public final class GetDeviceSecondaryDevice {
         private String mgmtAclTemplateUuid;
         private String name;
         private List<String> notifications;
+        private String projectId;
         private String redundancyType;
         private String redundantId;
         private String region;
@@ -354,6 +463,7 @@ public final class GetDeviceSecondaryDevice {
     	      this.mgmtAclTemplateUuid = defaults.mgmtAclTemplateUuid;
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
+    	      this.projectId = defaults.projectId;
     	      this.redundancyType = defaults.redundancyType;
     	      this.redundantId = defaults.redundantId;
     	      this.region = defaults.region;
@@ -454,6 +564,11 @@ public final class GetDeviceSecondaryDevice {
             return notifications(List.of(notifications));
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder redundancyType(String redundancyType) {
             this.redundancyType = Objects.requireNonNull(redundancyType);
             return this;
@@ -529,6 +644,7 @@ public final class GetDeviceSecondaryDevice {
             _resultValue.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
             _resultValue.name = name;
             _resultValue.notifications = notifications;
+            _resultValue.projectId = projectId;
             _resultValue.redundancyType = redundancyType;
             _resultValue.redundantId = redundantId;
             _resultValue.region = region;

@@ -14,13 +14,11 @@ import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointNetworkArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointPortArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointProfileArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointRouterArgs;
-import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointRoutingProtocolArgs;
 import com.equinix.pulumi.fabric.inputs.ConnectionASideAccessPointVirtualDeviceArgs;
 import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -61,6 +59,8 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
+     * **Deprecated** `gateway` Use `router` attribute instead
+     * 
      * @deprecated
      * use router attribute instead; gateway is no longer a part of the supported backend
      * 
@@ -70,6 +70,8 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     private @Nullable Output<ConnectionASideAccessPointGatewayArgs> gateway;
 
     /**
+     * @return **Deprecated** `gateway` Use `router` attribute instead
+     * 
      * @deprecated
      * use router attribute instead; gateway is no longer a part of the supported backend
      * 
@@ -125,14 +127,14 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Simplified Network
+     * network access point information
      * 
      */
     @Import(name="network")
     private @Nullable Output<ConnectionASideAccessPointNetworkArgs> network;
 
     /**
-     * @return Simplified Network
+     * @return network access point information
      * 
      */
     public Optional<Output<ConnectionASideAccessPointNetworkArgs>> network() {
@@ -200,33 +202,18 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * Cloud Router access point information that replaces `gateway`
      * 
      */
     @Import(name="router")
     private @Nullable Output<ConnectionASideAccessPointRouterArgs> router;
 
     /**
-     * @return Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * @return Cloud Router access point information that replaces `gateway`
      * 
      */
     public Optional<Output<ConnectionASideAccessPointRouterArgs>> router() {
         return Optional.ofNullable(this.router);
-    }
-
-    /**
-     * Access point routing protocols configuration
-     * 
-     */
-    @Import(name="routingProtocols")
-    private @Nullable Output<List<ConnectionASideAccessPointRoutingProtocolArgs>> routingProtocols;
-
-    /**
-     * @return Access point routing protocols configuration
-     * 
-     */
-    public Optional<Output<List<ConnectionASideAccessPointRoutingProtocolArgs>>> routingProtocols() {
-        return Optional.ofNullable(this.routingProtocols);
     }
 
     /**
@@ -289,7 +276,6 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         this.profile = $.profile;
         this.providerConnectionId = $.providerConnectionId;
         this.router = $.router;
-        this.routingProtocols = $.routingProtocols;
         this.sellerRegion = $.sellerRegion;
         this.type = $.type;
         this.virtualDevice = $.virtualDevice;
@@ -356,6 +342,8 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param gateway **Deprecated** `gateway` Use `router` attribute instead
+         * 
          * @return builder
          * 
          * @deprecated
@@ -369,6 +357,8 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param gateway **Deprecated** `gateway` Use `router` attribute instead
+         * 
          * @return builder
          * 
          * @deprecated
@@ -444,7 +434,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param network Simplified Network
+         * @param network network access point information
          * 
          * @return builder
          * 
@@ -455,7 +445,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param network Simplified Network
+         * @param network network access point information
          * 
          * @return builder
          * 
@@ -569,7 +559,7 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param router Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         * @param router Cloud Router access point information that replaces `gateway`
          * 
          * @return builder
          * 
@@ -580,44 +570,13 @@ public final class ConnectionASideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param router Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+         * @param router Cloud Router access point information that replaces `gateway`
          * 
          * @return builder
          * 
          */
         public Builder router(ConnectionASideAccessPointRouterArgs router) {
             return router(Output.of(router));
-        }
-
-        /**
-         * @param routingProtocols Access point routing protocols configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routingProtocols(@Nullable Output<List<ConnectionASideAccessPointRoutingProtocolArgs>> routingProtocols) {
-            $.routingProtocols = routingProtocols;
-            return this;
-        }
-
-        /**
-         * @param routingProtocols Access point routing protocols configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routingProtocols(List<ConnectionASideAccessPointRoutingProtocolArgs> routingProtocols) {
-            return routingProtocols(Output.of(routingProtocols));
-        }
-
-        /**
-         * @param routingProtocols Access point routing protocols configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routingProtocols(ConnectionASideAccessPointRoutingProtocolArgs... routingProtocols) {
-            return routingProtocols(List.of(routingProtocols));
         }
 
         /**

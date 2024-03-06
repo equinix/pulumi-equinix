@@ -11,33 +11,75 @@ namespace Pulumi.Equinix.Fabric
 {
     public static class GetCloudRouter
     {
-        public static Task<GetCloudRouterResult> InvokeAsync(GetCloudRouterArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+        /// 
+        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cloudRouterDataName = Equinix.Fabric.GetCloudRouter.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_cloud_router&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Task<GetCloudRouterResult> InvokeAsync(GetCloudRouterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudRouterResult>("equinix:fabric/getCloudRouter:getCloudRouter", args ?? new GetCloudRouterArgs(), options.WithDefaults());
 
-        public static Output<GetCloudRouterResult> Invoke(GetCloudRouterInvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+        /// 
+        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cloudRouterDataName = Equinix.Fabric.GetCloudRouter.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_cloud_router&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetCloudRouterResult> Invoke(GetCloudRouterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudRouterResult>("equinix:fabric/getCloudRouter:getCloudRouter", args ?? new GetCloudRouterInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetCloudRouterArgs : global::Pulumi.InvokeArgs
     {
-        [Input("projects")]
-        private List<Inputs.GetCloudRouterProjectArgs>? _projects;
-
-        /// <summary>
-        /// Project information
-        /// </summary>
-        public List<Inputs.GetCloudRouterProjectArgs> Projects
-        {
-            get => _projects ?? (_projects = new List<Inputs.GetCloudRouterProjectArgs>());
-            set => _projects = value;
-        }
-
         /// <summary>
         /// Equinix-assigned Fabric Cloud Router identifier
         /// </summary>
-        [Input("uuid")]
-        public string? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public string Uuid { get; set; } = null!;
 
         public GetCloudRouterArgs()
         {
@@ -47,23 +89,11 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetCloudRouterInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("projects")]
-        private InputList<Inputs.GetCloudRouterProjectInputArgs>? _projects;
-
-        /// <summary>
-        /// Project information
-        /// </summary>
-        public InputList<Inputs.GetCloudRouterProjectInputArgs> Projects
-        {
-            get => _projects ?? (_projects = new InputList<Inputs.GetCloudRouterProjectInputArgs>());
-            set => _projects = value;
-        }
-
         /// <summary>
         /// Equinix-assigned Fabric Cloud Router identifier
         /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public Input<string> Uuid { get; set; } = null!;
 
         public GetCloudRouterInvokeArgs()
         {
@@ -79,17 +109,34 @@ namespace Pulumi.Equinix.Fabric
         /// Customer account information that is associated with this Fabric Cloud Router
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterAccountResult> Accounts;
+        /// <summary>
+        /// Number of IPv4 BGP routes in use (including non-distinct prefixes)
+        /// </summary>
         public readonly int BgpIpv4RoutesCount;
+        /// <summary>
+        /// Number of IPv6 BGP routes in use (including non-distinct prefixes)
+        /// </summary>
         public readonly int BgpIpv6RoutesCount;
         /// <summary>
         /// Captures Fabric Cloud Router lifecycle change information
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterChangeLogResult> ChangeLogs;
+        /// <summary>
+        /// Number of connections associated with this Fabric Cloud Router instance
+        /// </summary>
         public readonly int ConnectionsCount;
         /// <summary>
         /// Customer-provided Fabric Cloud Router description
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Number of distinct IPv4 routes
+        /// </summary>
+        public readonly int DistinctIpv4PrefixesCount;
+        /// <summary>
+        /// Number of distinct IPv6 routes
+        /// </summary>
+        public readonly int DistinctIpv6PrefixesCount;
         /// <summary>
         /// Equinix ASN
         /// </summary>
@@ -119,11 +166,11 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterOrderResult> Orders;
         /// <summary>
-        /// Fabric Cloud Router package information
+        /// Fabric Cloud Router Package Type
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterPackageResult> Packages;
         /// <summary>
-        /// Project information
+        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudRouterProjectResult> Projects;
         /// <summary>
@@ -131,13 +178,13 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Defines the Fabric Cloud Router type like XF_GATEWAY
+        /// Defines the FCR type like; XF_ROUTER
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// Equinix-assigned Fabric Cloud Router identifier
         /// </summary>
-        public readonly string? Uuid;
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetCloudRouterResult(
@@ -152,6 +199,10 @@ namespace Pulumi.Equinix.Fabric
             int connectionsCount,
 
             string description,
+
+            int distinctIpv4PrefixesCount,
+
+            int distinctIpv6PrefixesCount,
 
             int equinixAsn,
 
@@ -175,7 +226,7 @@ namespace Pulumi.Equinix.Fabric
 
             string type,
 
-            string? uuid)
+            string uuid)
         {
             Accounts = accounts;
             BgpIpv4RoutesCount = bgpIpv4RoutesCount;
@@ -183,6 +234,8 @@ namespace Pulumi.Equinix.Fabric
             ChangeLogs = changeLogs;
             ConnectionsCount = connectionsCount;
             Description = description;
+            DistinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
+            DistinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
             EquinixAsn = equinixAsn;
             Href = href;
             Id = id;

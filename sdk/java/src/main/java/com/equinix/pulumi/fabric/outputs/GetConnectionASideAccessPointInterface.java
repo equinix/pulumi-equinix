@@ -7,22 +7,48 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionASideAccessPointInterface {
+    /**
+     * @return id
+     * 
+     */
     private Integer id;
-    private String type;
-    private String uuid;
+    /**
+     * @return Interface type
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
+    private @Nullable String uuid;
 
     private GetConnectionASideAccessPointInterface() {}
+    /**
+     * @return id
+     * 
+     */
     public Integer id() {
         return this.id;
     }
-    public String type() {
-        return this.type;
+    /**
+     * @return Interface type
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
-    public String uuid() {
-        return this.uuid;
+    /**
+     * @return Equinix-assigned interface identifier
+     * 
+     */
+    public Optional<String> uuid() {
+        return Optional.ofNullable(this.uuid);
     }
 
     public static Builder builder() {
@@ -35,8 +61,8 @@ public final class GetConnectionASideAccessPointInterface {
     @CustomType.Builder
     public static final class Builder {
         private Integer id;
-        private String type;
-        private String uuid;
+        private @Nullable String type;
+        private @Nullable String uuid;
         public Builder() {}
         public Builder(GetConnectionASideAccessPointInterface defaults) {
     	      Objects.requireNonNull(defaults);
@@ -51,13 +77,13 @@ public final class GetConnectionASideAccessPointInterface {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+        public Builder uuid(@Nullable String uuid) {
+            this.uuid = uuid;
             return this;
         }
         public GetConnectionASideAccessPointInterface build() {

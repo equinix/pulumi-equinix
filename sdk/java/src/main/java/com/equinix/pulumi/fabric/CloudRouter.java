@@ -24,6 +24,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
+ * 
+ * Additional Fabric Cloud Router documentation:
+ * * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
+ * * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -84,38 +90,38 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="account", refs={CloudRouterAccount.class}, tree="[0]")
-    private Output</* @Nullable */ CloudRouterAccount> account;
+    private Output<CloudRouterAccount> account;
 
     /**
      * @return Customer account information that is associated with this Fabric Cloud Router
      * 
      */
-    public Output<Optional<CloudRouterAccount>> account() {
-        return Codegen.optional(this.account);
+    public Output<CloudRouterAccount> account() {
+        return this.account;
     }
     /**
-     * Access point used and maximum number of IPv4 BGP routes
+     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
      * 
      */
     @Export(name="bgpIpv4RoutesCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> bgpIpv4RoutesCount;
 
     /**
-     * @return Access point used and maximum number of IPv4 BGP routes
+     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
      * 
      */
     public Output<Integer> bgpIpv4RoutesCount() {
         return this.bgpIpv4RoutesCount;
     }
     /**
-     * Access point used and maximum number of IPv6 BGP routes
+     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
      * 
      */
     @Export(name="bgpIpv6RoutesCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> bgpIpv6RoutesCount;
 
     /**
-     * @return Access point used and maximum number of IPv6 BGP routes
+     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
      * 
      */
     public Output<Integer> bgpIpv6RoutesCount() {
@@ -136,14 +142,14 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return this.changeLogs;
     }
     /**
-     * Number of connections associated with this Access point
+     * Number of connections associated with this Fabric Cloud Router instance
      * 
      */
     @Export(name="connectionsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectionsCount;
 
     /**
-     * @return Number of connections associated with this Access point
+     * @return Number of connections associated with this Fabric Cloud Router instance
      * 
      */
     public Output<Integer> connectionsCount() {
@@ -162,6 +168,34 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Number of distinct IPv4 routes
+     * 
+     */
+    @Export(name="distinctIpv4PrefixesCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> distinctIpv4PrefixesCount;
+
+    /**
+     * @return Number of distinct IPv4 routes
+     * 
+     */
+    public Output<Integer> distinctIpv4PrefixesCount() {
+        return this.distinctIpv4PrefixesCount;
+    }
+    /**
+     * Number of distinct IPv6 routes
+     * 
+     */
+    @Export(name="distinctIpv6PrefixesCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> distinctIpv6PrefixesCount;
+
+    /**
+     * @return Number of distinct IPv6 routes
+     * 
+     */
+    public Output<Integer> distinctIpv6PrefixesCount() {
+        return this.distinctIpv6PrefixesCount;
     }
     /**
      * Equinix ASN
@@ -238,42 +272,42 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="order", refs={CloudRouterOrder.class}, tree="[0]")
-    private Output</* @Nullable */ CloudRouterOrder> order;
+    private Output<CloudRouterOrder> order;
 
     /**
      * @return Order information related to this Fabric Cloud Router
      * 
      */
-    public Output<Optional<CloudRouterOrder>> order() {
-        return Codegen.optional(this.order);
+    public Output<CloudRouterOrder> order() {
+        return this.order;
     }
     /**
-     * Fabric Cloud Router package
+     * Fabric Cloud Router Package Type
      * 
      */
     @Export(name="package", refs={CloudRouterPackage.class}, tree="[0]")
     private Output<CloudRouterPackage> package_;
 
     /**
-     * @return Fabric Cloud Router package
+     * @return Fabric Cloud Router Package Type
      * 
      */
     public Output<CloudRouterPackage> package_() {
         return this.package_;
     }
     /**
-     * Fabric Cloud Router project
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     @Export(name="project", refs={CloudRouterProject.class}, tree="[0]")
-    private Output</* @Nullable */ CloudRouterProject> project;
+    private Output<CloudRouterProject> project;
 
     /**
-     * @return Fabric Cloud Router project
+     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
-    public Output<Optional<CloudRouterProject>> project() {
-        return Codegen.optional(this.project);
+    public Output<CloudRouterProject> project() {
+        return this.project;
     }
     /**
      * Fabric Cloud Router overall state
@@ -302,6 +336,20 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * Equinix-assigned Fabric Cloud Router identifier
+     * 
+     */
+    @Export(name="uuid", refs={String.class}, tree="[0]")
+    private Output<String> uuid;
+
+    /**
+     * @return Equinix-assigned Fabric Cloud Router identifier
+     * 
+     */
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     /**

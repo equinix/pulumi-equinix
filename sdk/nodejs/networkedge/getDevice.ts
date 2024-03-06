@@ -76,6 +76,14 @@ export interface GetDeviceResult {
      */
     readonly connectivity: string;
     readonly coreCount: number;
+    /**
+     * diverse device uuid
+     */
+    readonly diverseDeviceId: string;
+    /**
+     * Name of the device with diverse device UUID
+     */
+    readonly diverseDeviceName: string;
     readonly hostname: string;
     /**
      * Device location Equinix Business Exchange name
@@ -120,6 +128,7 @@ export interface GetDeviceResult {
     readonly notifications: string[];
     readonly orderReference: string;
     readonly packageCode: string;
+    readonly projectId: string;
     readonly purchaseOrderNumber: string;
     /**
      * Device redundancy type applicable for HA devices, either

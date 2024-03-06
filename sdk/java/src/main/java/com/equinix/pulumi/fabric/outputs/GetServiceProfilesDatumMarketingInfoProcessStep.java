@@ -6,22 +6,48 @@ package com.equinix.pulumi.fabric.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfilesDatumMarketingInfoProcessStep {
-    private String description;
-    private String subTitle;
-    private String title;
+    /**
+     * @return Description
+     * 
+     */
+    private @Nullable String description;
+    /**
+     * @return Sub Title
+     * 
+     */
+    private @Nullable String subTitle;
+    /**
+     * @return Title
+     * 
+     */
+    private @Nullable String title;
 
     private GetServiceProfilesDatumMarketingInfoProcessStep() {}
-    public String description() {
-        return this.description;
+    /**
+     * @return Description
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
-    public String subTitle() {
-        return this.subTitle;
+    /**
+     * @return Sub Title
+     * 
+     */
+    public Optional<String> subTitle() {
+        return Optional.ofNullable(this.subTitle);
     }
-    public String title() {
-        return this.title;
+    /**
+     * @return Title
+     * 
+     */
+    public Optional<String> title() {
+        return Optional.ofNullable(this.title);
     }
 
     public static Builder builder() {
@@ -33,9 +59,9 @@ public final class GetServiceProfilesDatumMarketingInfoProcessStep {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String description;
-        private String subTitle;
-        private String title;
+        private @Nullable String description;
+        private @Nullable String subTitle;
+        private @Nullable String title;
         public Builder() {}
         public Builder(GetServiceProfilesDatumMarketingInfoProcessStep defaults) {
     	      Objects.requireNonNull(defaults);
@@ -45,18 +71,18 @@ public final class GetServiceProfilesDatumMarketingInfoProcessStep {
         }
 
         @CustomType.Setter
-        public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+        public Builder description(@Nullable String description) {
+            this.description = description;
             return this;
         }
         @CustomType.Setter
-        public Builder subTitle(String subTitle) {
-            this.subTitle = Objects.requireNonNull(subTitle);
+        public Builder subTitle(@Nullable String subTitle) {
+            this.subTitle = subTitle;
             return this;
         }
         @CustomType.Setter
-        public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+        public Builder title(@Nullable String title) {
+            this.title = title;
             return this;
         }
         public GetServiceProfilesDatumMarketingInfoProcessStep build() {

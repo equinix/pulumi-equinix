@@ -259,7 +259,7 @@ class Vrf(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing VRF ID: <break><break>```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
+        This resource can be imported using an existing VRF ID:<break><break> ```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -306,7 +306,7 @@ class Vrf(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing VRF ID: <break><break>```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
+        This resource can be imported using an existing VRF ID:<break><break> ```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param VrfArgs args: The arguments to use to populate this resource's properties.

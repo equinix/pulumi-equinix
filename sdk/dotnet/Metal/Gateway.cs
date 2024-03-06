@@ -47,7 +47,7 @@ namespace Pulumi.Equinix.Metal
         /// reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
         /// </summary>
         [Output("ipReservationId")]
-        public Output<string?> IpReservationId { get; private set; } = null!;
+        public Output<string> IpReservationId { get; private set; } = null!;
 
         /// <summary>
         /// Size of the private IPv4 subnet to create for this metal
@@ -67,6 +67,9 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.GatewayTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// UUID of the VLAN where the gateway is scoped to.
@@ -147,6 +150,9 @@ namespace Pulumi.Equinix.Metal
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GatewayTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// UUID of the VLAN where the gateway is scoped to.
         /// </summary>
@@ -186,6 +192,9 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GatewayTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// UUID of the VLAN where the gateway is scoped to.

@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfileProject {
+    /**
+     * @return Unique Resource URL
+     * 
+     */
     private String href;
+    /**
+     * @return Project Id
+     * 
+     */
     private String projectId;
 
     private GetServiceProfileProject() {}
+    /**
+     * @return Unique Resource URL
+     * 
+     */
     public String href() {
         return this.href;
     }
+    /**
+     * @return Project Id
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }

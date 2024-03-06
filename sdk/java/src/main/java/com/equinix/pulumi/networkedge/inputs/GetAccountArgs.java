@@ -46,6 +46,23 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Unique Identifier for the project resource where the account is scoped to.If you
+     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the account is scoped to.If you
+     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * Account status for filtering. Possible values are: `Active`, `Processing`,
      * `Submitted`, `Staged`.
      * 
@@ -67,6 +84,7 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
     private GetAccountArgs(GetAccountArgs $) {
         this.metroCode = $.metroCode;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.status = $.status;
     }
 
@@ -128,6 +146,29 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the account is scoped to.If you
+         * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the account is scoped to.If you
+         * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

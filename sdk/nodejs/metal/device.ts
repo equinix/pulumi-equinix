@@ -8,6 +8,13 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an Equinix Metal device resource. This can be used to create,
+ * modify, and delete devices.
+ *
+ * > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in
+ *  the raw state as plain-text.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +36,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+ * This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
  */
 export class Device extends pulumi.CustomResource {
     /**
@@ -123,8 +130,18 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly forceDetachVolumes!: pulumi.Output<boolean | undefined>;
     /**
-     * The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-     * next available reservation automatically
+     * The UUID of the hardware reservation where you want this
+     * device deployed, or `next-available` if you want to pick your next available reservation
+     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+     * together for the same pool of reservations. It might happen that the reservation which Equinix
+     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+     * created later, resource creation will fail because the reservation is already in use (by the
+     * resource created with `next-available`). To workaround this, have the `next-available` resource
+     * explicitly dependOn
+     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+     * see issue #176.
      */
     public readonly hardwareReservationId!: pulumi.Output<string | undefined>;
     /**
@@ -143,9 +160,9 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly ipxeScriptUrl!: pulumi.Output<string | undefined>;
     /**
-     * Whether the device is locked.
+     * Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
      */
-    public /*out*/ readonly locked!: pulumi.Output<boolean>;
+    public readonly locked!: pulumi.Output<boolean>;
     /**
      * Metro area for the new device. Conflicts with `facilities`.
      */
@@ -323,6 +340,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["ipAddresses"] = args ? args.ipAddresses : undefined;
             resourceInputs["ipxeScriptUrl"] = args ? args.ipxeScriptUrl : undefined;
+            resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["metro"] = args ? args.metro : undefined;
             resourceInputs["operatingSystem"] = args ? args.operatingSystem : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -341,7 +359,6 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["deployedFacility"] = undefined /*out*/;
             resourceInputs["deployedHardwareReservationId"] = undefined /*out*/;
-            resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkType"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
@@ -426,8 +443,18 @@ export interface DeviceState {
      */
     forceDetachVolumes?: pulumi.Input<boolean>;
     /**
-     * The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-     * next available reservation automatically
+     * The UUID of the hardware reservation where you want this
+     * device deployed, or `next-available` if you want to pick your next available reservation
+     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+     * together for the same pool of reservations. It might happen that the reservation which Equinix
+     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+     * created later, resource creation will fail because the reservation is already in use (by the
+     * resource created with `next-available`). To workaround this, have the `next-available` resource
+     * explicitly dependOn
+     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+     * see issue #176.
      */
     hardwareReservationId?: pulumi.Input<string>;
     /**
@@ -446,7 +473,7 @@ export interface DeviceState {
      */
     ipxeScriptUrl?: pulumi.Input<string>;
     /**
-     * Whether the device is locked.
+     * Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
      */
     locked?: pulumi.Input<boolean>;
     /**
@@ -595,8 +622,18 @@ export interface DeviceArgs {
      */
     forceDetachVolumes?: pulumi.Input<boolean>;
     /**
-     * The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-     * next available reservation automatically
+     * The UUID of the hardware reservation where you want this
+     * device deployed, or `next-available` if you want to pick your next available reservation
+     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+     * together for the same pool of reservations. It might happen that the reservation which Equinix
+     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+     * created later, resource creation will fail because the reservation is already in use (by the
+     * resource created with `next-available`). To workaround this, have the `next-available` resource
+     * explicitly dependOn
+     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+     * see issue #176.
      */
     hardwareReservationId?: pulumi.Input<string>;
     /**
@@ -614,6 +651,10 @@ export interface DeviceArgs {
      * [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
      */
     ipxeScriptUrl?: pulumi.Input<string>;
+    /**
+     * Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
+     */
+    locked?: pulumi.Input<boolean>;
     /**
      * Metro area for the new device. Conflicts with `facilities`.
      */

@@ -5,6 +5,7 @@ package com.equinix.pulumi.fabric.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,44 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
     public static final ConnectionASideAccessPointPortRedundancyArgs Empty = new ConnectionASideAccessPointPortRedundancyArgs();
 
     /**
-     * Priority type- PRIMARY, SECONDARY
+     * Access point redundancy
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Access point redundancy
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+     * 
+     */
+    @Import(name="group")
+    private @Nullable Output<String> group;
+
+    /**
+     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+     * 
+     */
+    public Optional<Output<String>> group() {
+        return Optional.ofNullable(this.group);
+    }
+
+    /**
+     * Connection priority in redundancy group - PRIMARY, SECONDARY
      * 
      */
     @Import(name="priority")
     private @Nullable Output<String> priority;
 
     /**
-     * @return Priority type- PRIMARY, SECONDARY
+     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
      * 
      */
     public Optional<Output<String>> priority() {
@@ -33,6 +64,8 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
     private ConnectionASideAccessPointPortRedundancyArgs() {}
 
     private ConnectionASideAccessPointPortRedundancyArgs(ConnectionASideAccessPointPortRedundancyArgs $) {
+        this.enabled = $.enabled;
+        this.group = $.group;
         this.priority = $.priority;
     }
 
@@ -55,7 +88,49 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
         }
 
         /**
-         * @param priority Priority type- PRIMARY, SECONDARY
+         * @param enabled Access point redundancy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Access point redundancy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param group Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(@Nullable Output<String> group) {
+            $.group = group;
+            return this;
+        }
+
+        /**
+         * @param group Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(String group) {
+            return group(Output.of(group));
+        }
+
+        /**
+         * @param priority Connection priority in redundancy group - PRIMARY, SECONDARY
          * 
          * @return builder
          * 
@@ -66,7 +141,7 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
         }
 
         /**
-         * @param priority Priority type- PRIMARY, SECONDARY
+         * @param priority Connection priority in redundancy group - PRIMARY, SECONDARY
          * 
          * @return builder
          * 

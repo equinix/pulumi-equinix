@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The datasource can be used to fetch a single device.
+//
+// If you need to fetch a list of devices which meet filter criteria, you can use the metal.getDevices datasource.
+//
+// > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
+//
+//	the raw state as plain-text.
+//
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 //
 // ```go

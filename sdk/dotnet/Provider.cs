@@ -101,9 +101,15 @@ namespace Pulumi.Equinix
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// Maximum number of retries.
+        /// </summary>
         [Input("maxRetries", json: true)]
         public Input<int>? MaxRetries { get; set; }
 
+        /// <summary>
+        /// Maximum number of seconds to wait before retrying a request.
+        /// </summary>
         [Input("maxRetryWaitSeconds", json: true)]
         public Input<int>? MaxRetryWaitSeconds { get; set; }
 

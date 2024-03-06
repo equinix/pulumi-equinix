@@ -156,6 +156,9 @@ class GetPortResult:
     @property
     @pulumi.getter(name="lagEnabled")
     def lag_enabled(self) -> bool:
+        """
+        Port Lag
+        """
         return pulumi.get(self, "lag_enabled")
 
     @property
@@ -261,7 +264,17 @@ class AwaitableGetPortResult(GetPortResult):
 def get_port(uuid: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortResult:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch port by uuid
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    port_data_name = equinix.fabric.get_port(uuid="<uuid_of_port>")
+    ```
+
 
     :param str uuid: Equinix-assigned port identifier
     """
@@ -296,7 +309,17 @@ def get_port(uuid: Optional[str] = None,
 def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch port by uuid
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    port_data_name = equinix.fabric.get_port(uuid="<uuid_of_port>")
+    ```
+
 
     :param str uuid: Equinix-assigned port identifier
     """

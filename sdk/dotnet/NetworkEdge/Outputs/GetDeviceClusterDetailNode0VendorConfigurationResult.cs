@@ -13,11 +13,29 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     [OutputType]
     public sealed class GetDeviceClusterDetailNode0VendorConfigurationResult
     {
+        /// <summary>
+        /// Activation key. This is required for Velocloud clusters
+        /// </summary>
         public readonly string ActivationKey;
+        /// <summary>
+        /// The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+        /// </summary>
         public readonly string AdminPassword;
+        /// <summary>
+        /// System IP Address. Mandatory for the Fortinet SDWAN cluster device
+        /// </summary>
         public readonly string Controller1;
+        /// <summary>
+        /// Controller fqdn. This is required for Velocloud clusters
+        /// </summary>
         public readonly string ControllerFqdn;
+        /// <summary>
+        /// Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        /// </summary>
         public readonly string Hostname;
+        /// <summary>
+        /// The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+        /// </summary>
         public readonly string RootPassword;
 
         [OutputConstructor]

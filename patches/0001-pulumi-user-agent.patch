@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Wed, 6 Mar 2024 00:55:10 +0100
+Subject: [PATCH 1/2] pulumi user agent
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/internal/config/config.go b/internal/config/config.go
+index 50d17c1..8b93e11 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -373,20 +373,20 @@ func generateModuleUserAgentString(d *schema.ResourceData, baseUserAgent string)
+ }
+ 
+ func (c *Config) tfSdkUserAgent(suffix string) string {
+-	sdkModulePath := "github.com/hashicorp/terraform-plugin-sdk/v2"
+-	baseUserAgent := fmt.Sprintf("HashiCorp Terraform/%s (+https://www.terraform.io) Terraform Plugin SDK/%s",
+-		c.TerraformVersion, moduleVersionFromBuild(sdkModulePath))
++	sdkModulePath := "github.com/pulumi/pulumi/pkg/v3"
++	baseUserAgent := fmt.Sprintf("Pulumi/%s (+https://www.pulumi.com) Pulumi Plugin SDK/%s",
++			c.TerraformVersion, moduleVersionFromBuild(sdkModulePath))
+ 	baseUserAgent = appendUserAgentFromEnv(baseUserAgent)
+-	userAgent := fmt.Sprintf("%s terraform-provider-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
++	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
+ 	return strings.TrimSpace(userAgent)
+ }
+ 
+ func (c *Config) tfFrameworkUserAgent(suffix string) string {
+-	frameworkModulePath := "github.com/hashicorp/terraform-plugin-framework"
+-	baseUserAgent := fmt.Sprintf("HashiCorp Terraform/%s (+https://www.terraform.io) Terraform Plugin Framework/%s",
+-		c.TerraformVersion, moduleVersionFromBuild(frameworkModulePath))
++	frameworkModulePath := "github.com/pulumi/pulumi/pkg/v3"
++	baseUserAgent := fmt.Sprintf("Pulumi/%s (+https://www.pulumi.com) Pulumi Plugin SDK/%s",
++			c.TerraformVersion, moduleVersionFromBuild(frameworkModulePath))
+ 	baseUserAgent = appendUserAgentFromEnv(baseUserAgent)
+-	userAgent := fmt.Sprintf("%s terraform-provider-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
++	userAgent := fmt.Sprintf("%s pulumi-equinix/%s %s", baseUserAgent, version.ProviderVersion, suffix)
+ 	return strings.TrimSpace(userAgent)
+ }
+ 

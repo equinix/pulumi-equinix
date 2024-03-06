@@ -17,6 +17,7 @@ __all__ = [
     'DeviceNetwork',
     'DevicePort',
     'DeviceReinstall',
+    'GatewayTimeouts',
     'InterconnectionPort',
     'InterconnectionServiceToken',
     'OrganizationAddress',
@@ -355,6 +356,25 @@ class DeviceReinstall(dict):
 
 
 @pulumi.output_type
+class GatewayTimeouts(dict):
+    def __init__(__self__, *,
+                 delete: Optional[str] = None):
+        """
+        :param str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+
+@pulumi.output_type
 class InterconnectionPort(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -376,46 +396,39 @@ class InterconnectionPort(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 link_status: Optional[str] = None,
-                 name: Optional[str] = None,
-                 role: Optional[str] = None,
-                 speed: Optional[int] = None,
-                 status: Optional[str] = None,
-                 virtual_circuit_ids: Optional[Sequence[Any]] = None):
+                 id: str,
+                 link_status: str,
+                 name: str,
+                 role: str,
+                 speed: int,
+                 status: str,
+                 virtual_circuit_ids: Sequence[Any]):
         """
         :param str name: Name of the connection resource
-        :param int speed: Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        :param int speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param str status: Status of the connection resource.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if link_status is not None:
-            pulumi.set(__self__, "link_status", link_status)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-        if speed is not None:
-            pulumi.set(__self__, "speed", speed)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if virtual_circuit_ids is not None:
-            pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link_status", link_status)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "speed", speed)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "virtual_circuit_ids", virtual_circuit_ids)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="linkStatus")
-    def link_status(self) -> Optional[str]:
+    def link_status(self) -> str:
         return pulumi.get(self, "link_status")
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         Name of the connection resource
         """
@@ -423,20 +436,20 @@ class InterconnectionPort(dict):
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> str:
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
-    def speed(self) -> Optional[int]:
+    def speed(self) -> int:
         """
-        Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         """
         return pulumi.get(self, "speed")
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> str:
         """
         Status of the connection resource.
         """
@@ -444,7 +457,7 @@ class InterconnectionPort(dict):
 
     @property
     @pulumi.getter(name="virtualCircuitIds")
-    def virtual_circuit_ids(self) -> Optional[Sequence[Any]]:
+    def virtual_circuit_ids(self) -> Sequence[Any]:
         return pulumi.get(self, "virtual_circuit_ids")
 
 
@@ -470,56 +483,50 @@ class InterconnectionServiceToken(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 expires_at: Optional[str] = None,
-                 id: Optional[str] = None,
-                 max_allowed_speed: Optional[str] = None,
-                 role: Optional[str] = None,
-                 state: Optional[str] = None,
-                 type: Optional[str] = None):
+                 expires_at: str,
+                 id: str,
+                 max_allowed_speed: str,
+                 role: str,
+                 state: str,
+                 type: str):
         """
         :param str type: Connection type - dedicated or shared.
         """
-        if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if max_allowed_speed is not None:
-            pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_allowed_speed", max_allowed_speed)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[str]:
+    def expires_at(self) -> str:
         return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="maxAllowedSpeed")
-    def max_allowed_speed(self) -> Optional[str]:
+    def max_allowed_speed(self) -> str:
         return pulumi.get(self, "max_allowed_speed")
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> str:
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[str]:
+    def state(self) -> str:
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         Connection type - dedicated or shared.
         """
@@ -1189,7 +1196,27 @@ class GetDevicesDeviceResult(dict):
                  storage: str,
                  tags: Sequence[str]):
         """
+        :param str access_private_ipv4: The ipv4 private IP assigned to the device
+        :param str access_public_ipv4: The ipv4 management IP assigned to the device
+        :param str access_public_ipv6: The ipv6 management IP assigned to the device
+        :param str billing_cycle: The billing cycle of the device (monthly or hourly)
+        :param str description: Description string for the device
+        :param str device_id: Device ID
+        :param str facility: The facility where the device is deployed
+        :param str hardware_reservation_id: The id of hardware reservation which this device occupies
+        :param str hostname: The device name
+        :param str metro: The metro where the device is deployed
+        :param str network_type: L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
+        :param Sequence['GetDevicesDeviceNetworkArgs'] networks: The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix_metal_device.name.network.0, IPv6 at equinix_metal_device.name.network.1 and private IPv4 at equinix_metal_device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
+        :param str operating_system: The operating system running on the device
+        :param str plan: The hardware config of the device
+        :param Sequence['GetDevicesDevicePortArgs'] ports: Ports assigned to the device
         :param str project_id: ID of project containing the devices. Exactly one of `project_id` and `organization_id` must be set.
+        :param str root_password: Root password to the server (if still available)
+        :param str sos_hostname: The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        :param Sequence[str] ssh_key_ids: List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
+        :param str state: The state of the device
+        :param Sequence[str] tags: Tags attached to the device
         """
         pulumi.set(__self__, "access_private_ipv4", access_private_ipv4)
         pulumi.set(__self__, "access_public_ipv4", access_public_ipv4)
@@ -1219,16 +1246,25 @@ class GetDevicesDeviceResult(dict):
     @property
     @pulumi.getter(name="accessPrivateIpv4")
     def access_private_ipv4(self) -> str:
+        """
+        The ipv4 private IP assigned to the device
+        """
         return pulumi.get(self, "access_private_ipv4")
 
     @property
     @pulumi.getter(name="accessPublicIpv4")
     def access_public_ipv4(self) -> str:
+        """
+        The ipv4 management IP assigned to the device
+        """
         return pulumi.get(self, "access_public_ipv4")
 
     @property
     @pulumi.getter(name="accessPublicIpv6")
     def access_public_ipv6(self) -> str:
+        """
+        The ipv6 management IP assigned to the device
+        """
         return pulumi.get(self, "access_public_ipv6")
 
     @property
@@ -1239,21 +1275,33 @@ class GetDevicesDeviceResult(dict):
     @property
     @pulumi.getter(name="billingCycle")
     def billing_cycle(self) -> str:
+        """
+        The billing cycle of the device (monthly or hourly)
+        """
         return pulumi.get(self, "billing_cycle")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description string for the device
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceId")
     def device_id(self) -> str:
+        """
+        Device ID
+        """
         return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter
     def facility(self) -> str:
+        """
+        The facility where the device is deployed
+        """
         warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
         pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
 
@@ -1262,11 +1310,17 @@ class GetDevicesDeviceResult(dict):
     @property
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> str:
+        """
+        The id of hardware reservation which this device occupies
+        """
         return pulumi.get(self, "hardware_reservation_id")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        The device name
+        """
         return pulumi.get(self, "hostname")
 
     @property
@@ -1277,31 +1331,49 @@ class GetDevicesDeviceResult(dict):
     @property
     @pulumi.getter
     def metro(self) -> str:
+        """
+        The metro where the device is deployed
+        """
         return pulumi.get(self, "metro")
 
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
+        """
+        L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
+        """
         return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetDevicesDeviceNetworkResult']:
+        """
+        The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix_metal_device.name.network.0, IPv6 at equinix_metal_device.name.network.1 and private IPv4 at equinix_metal_device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
+        """
         return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> str:
+        """
+        The operating system running on the device
+        """
         return pulumi.get(self, "operating_system")
 
     @property
     @pulumi.getter
     def plan(self) -> str:
+        """
+        The hardware config of the device
+        """
         return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetDevicesDevicePortResult']:
+        """
+        Ports assigned to the device
+        """
         return pulumi.get(self, "ports")
 
     @property
@@ -1315,21 +1387,33 @@ class GetDevicesDeviceResult(dict):
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
+        """
+        Root password to the server (if still available)
+        """
         return pulumi.get(self, "root_password")
 
     @property
     @pulumi.getter(name="sosHostname")
     def sos_hostname(self) -> str:
+        """
+        The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+        """
         return pulumi.get(self, "sos_hostname")
 
     @property
     @pulumi.getter(name="sshKeyIds")
     def ssh_key_ids(self) -> Sequence[str]:
+        """
+        List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
+        """
         return pulumi.get(self, "ssh_key_ids")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the device
+        """
         return pulumi.get(self, "state")
 
     @property
@@ -1340,6 +1424,9 @@ class GetDevicesDeviceResult(dict):
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        Tags attached to the device
+        """
         return pulumi.get(self, "tags")
 
 
@@ -1351,6 +1438,13 @@ class GetDevicesDeviceNetworkResult(dict):
                  family: int,
                  gateway: str,
                  public: bool):
+        """
+        :param str address: IPv4 or IPv6 address string
+        :param int cidr: Bit length of the network mask of the address
+        :param int family: IP version - "4" or "6"
+        :param str gateway: Address of router
+        :param bool public: Whether the address is routable from the Internet
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "family", family)
@@ -1360,26 +1454,41 @@ class GetDevicesDeviceNetworkResult(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        IPv4 or IPv6 address string
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def cidr(self) -> int:
+        """
+        Bit length of the network mask of the address
+        """
         return pulumi.get(self, "cidr")
 
     @property
     @pulumi.getter
     def family(self) -> int:
+        """
+        IP version - "4" or "6"
+        """
         return pulumi.get(self, "family")
 
     @property
     @pulumi.getter
     def gateway(self) -> str:
+        """
+        Address of router
+        """
         return pulumi.get(self, "gateway")
 
     @property
     @pulumi.getter
     def public(self) -> bool:
+        """
+        Whether the address is routable from the Internet
+        """
         return pulumi.get(self, "public")
 
 
@@ -1391,6 +1500,13 @@ class GetDevicesDevicePortResult(dict):
                  mac: str,
                  name: str,
                  type: str):
+        """
+        :param bool bonded: Whether this port is part of a bond in bonded network setup
+        :param str id: The ID of the device
+        :param str mac: MAC address assigned to the port
+        :param str name: Name of the port (e.g. eth0, or bond0)
+        :param str type: Type of the port (e.g. NetworkPort or NetworkBondPort)
+        """
         pulumi.set(__self__, "bonded", bonded)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mac", mac)
@@ -1400,26 +1516,41 @@ class GetDevicesDevicePortResult(dict):
     @property
     @pulumi.getter
     def bonded(self) -> bool:
+        """
+        Whether this port is part of a bond in bonded network setup
+        """
         return pulumi.get(self, "bonded")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the device
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def mac(self) -> str:
+        """
+        MAC address assigned to the port
+        """
         return pulumi.get(self, "mac")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the port (e.g. eth0, or bond0)
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of the port (e.g. NetworkPort or NetworkBondPort)
+        """
         return pulumi.get(self, "type")
 
 
@@ -1487,6 +1618,7 @@ class GetDevicesSortResult(dict):
                  direction: Optional[str] = None):
         """
         :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
+        :param str direction: Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
         """
         pulumi.set(__self__, "attribute", attribute)
         if direction is not None:
@@ -1503,6 +1635,9 @@ class GetDevicesSortResult(dict):
     @property
     @pulumi.getter
     def direction(self) -> Optional[str]:
+        """
+        Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+        """
         return pulumi.get(self, "direction")
 
 

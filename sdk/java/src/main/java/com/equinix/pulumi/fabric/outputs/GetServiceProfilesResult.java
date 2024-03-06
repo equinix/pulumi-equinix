@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceProfilesResult {
     /**
-     * @return List of  Service Profiles
+     * @return List of Service Profiles
      * 
      */
     private List<GetServiceProfilesDatum> data;
@@ -36,14 +36,14 @@ public final class GetServiceProfilesResult {
      */
     private @Nullable List<GetServiceProfilesSort> sort;
     /**
-     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      * 
      */
     private @Nullable String viewPoint;
 
     private GetServiceProfilesResult() {}
     /**
-     * @return List of  Service Profiles
+     * @return List of Service Profiles
      * 
      */
     public List<GetServiceProfilesDatum> data() {
@@ -71,7 +71,7 @@ public final class GetServiceProfilesResult {
         return this.sort == null ? List.of() : this.sort;
     }
     /**
-     * @return Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
      * 
      */
     public Optional<String> viewPoint() {

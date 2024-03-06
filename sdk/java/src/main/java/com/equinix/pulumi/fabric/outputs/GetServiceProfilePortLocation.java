@@ -9,21 +9,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfilePortLocation {
+    /**
+     * @return IBX Code
+     * 
+     */
     private String ibx;
+    /**
+     * @return Access point metro code
+     * 
+     */
     private String metroCode;
+    /**
+     * @return Access point metro name
+     * 
+     */
     private String metroName;
+    /**
+     * @return Access point region
+     * 
+     */
     private String region;
 
     private GetServiceProfilePortLocation() {}
+    /**
+     * @return IBX Code
+     * 
+     */
     public String ibx() {
         return this.ibx;
     }
+    /**
+     * @return Access point metro code
+     * 
+     */
     public String metroCode() {
         return this.metroCode;
     }
+    /**
+     * @return Access point metro name
+     * 
+     */
     public String metroName() {
         return this.metroName;
     }
+    /**
+     * @return Access point region
+     * 
+     */
     public String region() {
         return this.region;
     }

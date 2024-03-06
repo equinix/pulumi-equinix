@@ -39,7 +39,7 @@ public final class ConnectionASideAccessPointProfile {
      */
     private String type;
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     private String uuid;
@@ -81,7 +81,7 @@ public final class ConnectionASideAccessPointProfile {
         return this.type;
     }
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     public String uuid() {

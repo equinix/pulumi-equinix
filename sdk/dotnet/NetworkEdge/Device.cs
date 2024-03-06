@@ -93,7 +93,7 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/device:Device example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+    /// This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/device:Device example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/device:Device")]
     public partial class Device : global::Pulumi.CustomResource
@@ -155,6 +155,21 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("coreCount")]
         public Output<int> CoreCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID of an existing device.
+        /// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+        /// device. This field is only meaningful for single devices.
+        /// </summary>
+        [Output("diverseDeviceId")]
+        public Output<string> DiverseDeviceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the device with diverse device UUID. This field is returned in device details if the
+        /// device is created by passing diverse_device_id.
+        /// </summary>
+        [Output("diverseDeviceName")]
+        public Output<string> DiverseDeviceName { get; private set; } = null!;
 
         /// <summary>
         /// Device hostname prefix.
@@ -246,6 +261,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("packageCode")]
         public Output<string> PackageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the device is scoped to.If you
+        /// leave it out, the device will be created under the default project id of your organization.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// Purchase order number associated with a device order.
@@ -467,6 +489,14 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<int> CoreCount { get; set; } = null!;
 
         /// <summary>
+        /// Unique ID of an existing device.
+        /// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+        /// device. This field is only meaningful for single devices.
+        /// </summary>
+        [Input("diverseDeviceId")]
+        public Input<string>? DiverseDeviceId { get; set; }
+
+        /// <summary>
         /// Device hostname prefix.
         /// </summary>
         [Input("hostname")]
@@ -542,6 +572,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("packageCode", required: true)]
         public Input<string> PackageCode { get; set; } = null!;
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the device is scoped to.If you
+        /// leave it out, the device will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// Purchase order number associated with a device order.
@@ -687,6 +724,21 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<int>? CoreCount { get; set; }
 
         /// <summary>
+        /// Unique ID of an existing device.
+        /// Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+        /// device. This field is only meaningful for single devices.
+        /// </summary>
+        [Input("diverseDeviceId")]
+        public Input<string>? DiverseDeviceId { get; set; }
+
+        /// <summary>
+        /// Name of the device with diverse device UUID. This field is returned in device details if the
+        /// device is created by passing diverse_device_id.
+        /// </summary>
+        [Input("diverseDeviceName")]
+        public Input<string>? DiverseDeviceName { get; set; }
+
+        /// <summary>
         /// Device hostname prefix.
         /// </summary>
         [Input("hostname")]
@@ -788,6 +840,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("packageCode")]
         public Input<string>? PackageCode { get; set; }
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the device is scoped to.If you
+        /// leave it out, the device will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// Purchase order number associated with a device order.

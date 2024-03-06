@@ -13,17 +13,26 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfileMarketingInfoProcessStepResult
     {
-        public readonly string Description;
-        public readonly string SubTitle;
-        public readonly string Title;
+        /// <summary>
+        /// Description
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
+        /// Sub Title
+        /// </summary>
+        public readonly string? SubTitle;
+        /// <summary>
+        /// Title
+        /// </summary>
+        public readonly string? Title;
 
         [OutputConstructor]
         private GetServiceProfileMarketingInfoProcessStepResult(
-            string description,
+            string? description,
 
-            string subTitle,
+            string? subTitle,
 
-            string title)
+            string? title)
         {
             Description = description;
             SubTitle = subTitle;

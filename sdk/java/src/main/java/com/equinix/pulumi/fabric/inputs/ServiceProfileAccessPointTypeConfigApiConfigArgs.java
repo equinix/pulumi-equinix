@@ -33,14 +33,14 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
     }
 
     /**
-     * Setting indicating whether the API is available (true) or not (false)
+     * Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
      * 
      */
     @Import(name="apiAvailable")
     private @Nullable Output<Boolean> apiAvailable;
 
     /**
-     * @return Setting indicating whether the API is available (true) or not (false)
+     * @return Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
      * 
      */
     public Optional<Output<Boolean>> apiAvailable() {
@@ -48,14 +48,14 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
     }
 
     /**
-     * Bandwidth from api
+     * Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
      * 
      */
     @Import(name="bandwidthFromApi")
     private @Nullable Output<Boolean> bandwidthFromApi;
 
     /**
-     * @return Bandwidth from api
+     * @return Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
      * 
      */
     public Optional<Output<Boolean>> bandwidthFromApi() {
@@ -93,14 +93,14 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
     }
 
     /**
-     * Integration id
+     * A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
      * 
      */
     @Import(name="integrationId")
     private @Nullable Output<String> integrationId;
 
     /**
-     * @return Integration id
+     * @return A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
      * 
      */
     public Optional<Output<String>> integrationId() {
@@ -108,14 +108,14 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
     }
 
     /**
-     * A cap on over subscription
+     * Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
      * 
      */
     @Import(name="overSubscriptionLimit")
     private @Nullable Output<Integer> overSubscriptionLimit;
 
     /**
-     * @return A cap on over subscription
+     * @return Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
      * 
      */
     public Optional<Output<Integer>> overSubscriptionLimit() {
@@ -174,7 +174,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param apiAvailable Setting indicating whether the API is available (true) or not (false)
+         * @param apiAvailable Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param apiAvailable Setting indicating whether the API is available (true) or not (false)
+         * @param apiAvailable Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param bandwidthFromApi Bandwidth from api
+         * @param bandwidthFromApi Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param bandwidthFromApi Bandwidth from api
+         * @param bandwidthFromApi Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param integrationId Integration id
+         * @param integrationId A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param integrationId Integration id
+         * @param integrationId A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param overSubscriptionLimit A cap on over subscription
+         * @param overSubscriptionLimit Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class ServiceProfileAccessPointTypeConfigApiConfigArgs extends com.
         }
 
         /**
-         * @param overSubscriptionLimit A cap on over subscription
+         * @param overSubscriptionLimit Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
          * 
          * @return builder
          * 

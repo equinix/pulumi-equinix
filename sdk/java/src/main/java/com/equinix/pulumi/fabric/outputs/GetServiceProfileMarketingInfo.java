@@ -9,22 +9,48 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfileMarketingInfo {
-    private String logo;
-    private List<GetServiceProfileMarketingInfoProcessStep> processSteps;
-    private Boolean promotion;
+    /**
+     * @return Logo
+     * 
+     */
+    private @Nullable String logo;
+    /**
+     * @return Process Step
+     * 
+     */
+    private @Nullable List<GetServiceProfileMarketingInfoProcessStep> processSteps;
+    /**
+     * @return Promotion
+     * 
+     */
+    private @Nullable Boolean promotion;
 
     private GetServiceProfileMarketingInfo() {}
-    public String logo() {
-        return this.logo;
+    /**
+     * @return Logo
+     * 
+     */
+    public Optional<String> logo() {
+        return Optional.ofNullable(this.logo);
     }
+    /**
+     * @return Process Step
+     * 
+     */
     public List<GetServiceProfileMarketingInfoProcessStep> processSteps() {
-        return this.processSteps;
+        return this.processSteps == null ? List.of() : this.processSteps;
     }
-    public Boolean promotion() {
-        return this.promotion;
+    /**
+     * @return Promotion
+     * 
+     */
+    public Optional<Boolean> promotion() {
+        return Optional.ofNullable(this.promotion);
     }
 
     public static Builder builder() {
@@ -36,9 +62,9 @@ public final class GetServiceProfileMarketingInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String logo;
-        private List<GetServiceProfileMarketingInfoProcessStep> processSteps;
-        private Boolean promotion;
+        private @Nullable String logo;
+        private @Nullable List<GetServiceProfileMarketingInfoProcessStep> processSteps;
+        private @Nullable Boolean promotion;
         public Builder() {}
         public Builder(GetServiceProfileMarketingInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -48,21 +74,21 @@ public final class GetServiceProfileMarketingInfo {
         }
 
         @CustomType.Setter
-        public Builder logo(String logo) {
-            this.logo = Objects.requireNonNull(logo);
+        public Builder logo(@Nullable String logo) {
+            this.logo = logo;
             return this;
         }
         @CustomType.Setter
-        public Builder processSteps(List<GetServiceProfileMarketingInfoProcessStep> processSteps) {
-            this.processSteps = Objects.requireNonNull(processSteps);
+        public Builder processSteps(@Nullable List<GetServiceProfileMarketingInfoProcessStep> processSteps) {
+            this.processSteps = processSteps;
             return this;
         }
         public Builder processSteps(GetServiceProfileMarketingInfoProcessStep... processSteps) {
             return processSteps(List.of(processSteps));
         }
         @CustomType.Setter
-        public Builder promotion(Boolean promotion) {
-            this.promotion = Objects.requireNonNull(promotion);
+        public Builder promotion(@Nullable Boolean promotion) {
+            this.promotion = promotion;
             return this;
         }
         public GetServiceProfileMarketingInfo build() {

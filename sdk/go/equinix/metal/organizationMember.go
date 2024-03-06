@@ -56,7 +56,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
+// This resource can be imported using the `invitee` and `organization_id` as colon separated arguments:<break><break> ```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
 type OrganizationMember struct {
 	pulumi.CustomResourceState
 

@@ -17,14 +17,14 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
     public static final ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs Empty = new ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs();
 
     /**
-     * Port Encapsulation
+     * Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
      * 
      */
     @Import(name="encapsulation")
     private @Nullable Output<String> encapsulation;
 
     /**
-     * @return Port Encapsulation
+     * @return Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
      * 
      */
     public Optional<Output<String>> encapsulation() {
@@ -32,14 +32,14 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
     }
 
     /**
-     * Encapsulation strategy
+     * Additional tagging information required by the seller profile.
      * 
      */
     @Import(name="encapsulationStrategy")
     private @Nullable Output<String> encapsulationStrategy;
 
     /**
-     * @return Encapsulation strategy
+     * @return Additional tagging information required by the seller profile.
      * 
      */
     public Optional<Output<String>> encapsulationStrategy() {
@@ -47,14 +47,14 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
     }
 
     /**
-     * Reuse vlan sTag
+     * Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
      * 
      */
     @Import(name="reuseVlanSTag")
     private @Nullable Output<Boolean> reuseVlanSTag;
 
     /**
-     * @return Reuse vlan sTag
+     * @return Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
      * 
      */
     public Optional<Output<Boolean>> reuseVlanSTag() {
@@ -88,7 +88,7 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
         }
 
         /**
-         * @param encapsulation Port Encapsulation
+         * @param encapsulation Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
         }
 
         /**
-         * @param encapsulation Port Encapsulation
+         * @param encapsulation Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
         }
 
         /**
-         * @param encapsulationStrategy Encapsulation strategy
+         * @param encapsulationStrategy Additional tagging information required by the seller profile.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
         }
 
         /**
-         * @param encapsulationStrategy Encapsulation strategy
+         * @param encapsulationStrategy Additional tagging information required by the seller profile.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
         }
 
         /**
-         * @param reuseVlanSTag Reuse vlan sTag
+         * @param reuseVlanSTag Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs ext
         }
 
         /**
-         * @param reuseVlanSTag Reuse vlan sTag
+         * @param reuseVlanSTag Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
          * 
          * @return builder
          * 

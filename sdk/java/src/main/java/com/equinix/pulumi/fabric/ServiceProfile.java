@@ -27,6 +27,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -113,18 +115,18 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessPointTypeConfigs);
     }
     /**
-     * Account
+     * Service Profile Owner Account Information
      * 
      */
     @Export(name="account", refs={ServiceProfileAccount.class}, tree="[0]")
-    private Output</* @Nullable */ ServiceProfileAccount> account;
+    private Output<ServiceProfileAccount> account;
 
     /**
-     * @return Account
+     * @return Service Profile Owner Account Information
      * 
      */
-    public Output<Optional<ServiceProfileAccount>> account() {
-        return Codegen.optional(this.account);
+    public Output<ServiceProfileAccount> account() {
+        return this.account;
     }
     /**
      * Array of contact emails
@@ -169,14 +171,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customFields);
     }
     /**
-     * Description
+     * Description of authorization key
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     public Output<String> description() {
@@ -281,14 +283,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.project);
     }
     /**
-     * Self Profile
+     * Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     @Export(name="selfProfile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> selfProfile;
 
     /**
-     * @return Self Profile
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     public Output<Optional<Boolean>> selfProfile() {

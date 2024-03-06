@@ -12,35 +12,103 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAccount {
+    /**
+     * @return Legal name of the accountholder.
+     * 
+     */
     private @Nullable String accountName;
+    /**
+     * @return Equinix-assigned account number.
+     * 
+     */
     private @Nullable Integer accountNumber;
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     private @Nullable String globalCustId;
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     private @Nullable String globalOrgId;
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
+     * 
+     */
     private @Nullable String globalOrganizationName;
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
+     * 
+     */
     private @Nullable Integer orgId;
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
+     * 
+     */
     private @Nullable String organizationName;
+    /**
+     * @return Enterprise datastore id
+     * 
+     */
+    private @Nullable String ucmId;
 
     private ConnectionAccount() {}
+    /**
+     * @return Legal name of the accountholder.
+     * 
+     */
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
+    /**
+     * @return Equinix-assigned account number.
+     * 
+     */
     public Optional<Integer> accountNumber() {
         return Optional.ofNullable(this.accountNumber);
     }
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     public Optional<String> globalCustId() {
         return Optional.ofNullable(this.globalCustId);
     }
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     public Optional<String> globalOrgId() {
         return Optional.ofNullable(this.globalOrgId);
     }
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
+     * 
+     */
     public Optional<String> globalOrganizationName() {
         return Optional.ofNullable(this.globalOrganizationName);
     }
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
+     * 
+     */
     public Optional<Integer> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
+     * 
+     */
     public Optional<String> organizationName() {
         return Optional.ofNullable(this.organizationName);
+    }
+    /**
+     * @return Enterprise datastore id
+     * 
+     */
+    public Optional<String> ucmId() {
+        return Optional.ofNullable(this.ucmId);
     }
 
     public static Builder builder() {
@@ -59,6 +127,7 @@ public final class ConnectionAccount {
         private @Nullable String globalOrganizationName;
         private @Nullable Integer orgId;
         private @Nullable String organizationName;
+        private @Nullable String ucmId;
         public Builder() {}
         public Builder(ConnectionAccount defaults) {
     	      Objects.requireNonNull(defaults);
@@ -69,6 +138,7 @@ public final class ConnectionAccount {
     	      this.globalOrganizationName = defaults.globalOrganizationName;
     	      this.orgId = defaults.orgId;
     	      this.organizationName = defaults.organizationName;
+    	      this.ucmId = defaults.ucmId;
         }
 
         @CustomType.Setter
@@ -106,6 +176,11 @@ public final class ConnectionAccount {
             this.organizationName = organizationName;
             return this;
         }
+        @CustomType.Setter
+        public Builder ucmId(@Nullable String ucmId) {
+            this.ucmId = ucmId;
+            return this;
+        }
         public ConnectionAccount build() {
             final var _resultValue = new ConnectionAccount();
             _resultValue.accountName = accountName;
@@ -115,6 +190,7 @@ public final class ConnectionAccount {
             _resultValue.globalOrganizationName = globalOrganizationName;
             _resultValue.orgId = orgId;
             _resultValue.organizationName = organizationName;
+            _resultValue.ucmId = ucmId;
             return _resultValue;
         }
     }

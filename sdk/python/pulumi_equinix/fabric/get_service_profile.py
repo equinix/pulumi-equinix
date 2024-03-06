@@ -22,7 +22,7 @@ class GetServiceProfileResult:
     """
     A collection of values returned by getServiceProfile.
     """
-    def __init__(__self__, access_point_type_configs=None, account=None, allowed_emails=None, change_log=None, custom_fields=None, description=None, href=None, id=None, marketing_info=None, metros=None, name=None, notifications=None, ports=None, project=None, self_profile=None, state=None, tags=None, type=None, uuid=None, visibility=None):
+    def __init__(__self__, access_point_type_configs=None, account=None, allowed_emails=None, change_log=None, custom_fields=None, description=None, href=None, id=None, marketing_info=None, metros=None, name=None, notifications=None, ports=None, project=None, self_profile=None, state=None, tags=None, type=None, uuid=None, virtual_devices=None, visibility=None):
         if access_point_type_configs and not isinstance(access_point_type_configs, list):
             raise TypeError("Expected argument 'access_point_type_configs' to be a list")
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
@@ -80,6 +80,9 @@ class GetServiceProfileResult:
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
+        if virtual_devices and not isinstance(virtual_devices, list):
+            raise TypeError("Expected argument 'virtual_devices' to be a list")
+        pulumi.set(__self__, "virtual_devices", virtual_devices)
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         pulumi.set(__self__, "visibility", visibility)
@@ -96,7 +99,7 @@ class GetServiceProfileResult:
     @pulumi.getter
     def account(self) -> 'outputs.GetServiceProfileAccountResult':
         """
-        Account
+        Service Profile Owner Account Information
         """
         return pulumi.get(self, "account")
 
@@ -206,7 +209,7 @@ class GetServiceProfileResult:
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[str]:
+    def state(self) -> str:
         """
         Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         """
@@ -235,6 +238,14 @@ class GetServiceProfileResult:
         Equinix assigned service profile identifier
         """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="virtualDevices")
+    def virtual_devices(self) -> Sequence['outputs.GetServiceProfileVirtualDeviceResult']:
+        """
+        Virtual Devices
+        """
+        return pulumi.get(self, "virtual_devices")
 
     @property
     @pulumi.getter
@@ -270,22 +281,25 @@ class AwaitableGetServiceProfileResult(GetServiceProfileResult):
             tags=self.tags,
             type=self.type,
             uuid=self.uuid,
+            virtual_devices=self.virtual_devices,
             visibility=self.visibility)
 
 
-def get_service_profile(state: Optional[str] = None,
-                        uuid: Optional[str] = None,
+def get_service_profile(uuid: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceProfileResult:
     """
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
-    > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+    ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
 
-    :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+    service_profile_data_name = equinix.fabric.get_service_profile(uuid="<uuid_of_service_profile>")
+    ```
     """
     __args__ = dict()
-    __args__['state'] = state
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getServiceProfile:getServiceProfile', __args__, opts=opts, typ=GetServiceProfileResult).value
@@ -310,19 +324,23 @@ def get_service_profile(state: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'),
+        virtual_devices=pulumi.get(__ret__, 'virtual_devices'),
         visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_service_profile)
-def get_service_profile_output(state: Optional[pulumi.Input[Optional[str]]] = None,
-                               uuid: Optional[pulumi.Input[str]] = None,
+def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfileResult]:
     """
     Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
 
-    > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+    ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
 
-    :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+    service_profile_data_name = equinix.fabric.get_service_profile(uuid="<uuid_of_service_profile>")
+    ```
     """
     ...

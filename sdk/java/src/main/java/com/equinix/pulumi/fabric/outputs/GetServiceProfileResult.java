@@ -12,13 +12,12 @@ import com.equinix.pulumi.fabric.outputs.GetServiceProfileMetro;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileNotification;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilePort;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfileProject;
+import com.equinix.pulumi.fabric.outputs.GetServiceProfileVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfileResult {
@@ -28,7 +27,7 @@ public final class GetServiceProfileResult {
      */
     private List<GetServiceProfileAccessPointTypeConfig> accessPointTypeConfigs;
     /**
-     * @return Account
+     * @return Service Profile Owner Account Information
      * 
      */
     private GetServiceProfileAccount account;
@@ -101,7 +100,7 @@ public final class GetServiceProfileResult {
      * @return Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      * 
      */
-    private @Nullable String state;
+    private String state;
     /**
      * @return Tags attached to the connection
      * 
@@ -118,6 +117,11 @@ public final class GetServiceProfileResult {
      */
     private String uuid;
     /**
+     * @return Virtual Devices
+     * 
+     */
+    private List<GetServiceProfileVirtualDevice> virtualDevices;
+    /**
      * @return Service profile visibility - PUBLIC, PRIVATE
      * 
      */
@@ -132,7 +136,7 @@ public final class GetServiceProfileResult {
         return this.accessPointTypeConfigs;
     }
     /**
-     * @return Account
+     * @return Service Profile Owner Account Information
      * 
      */
     public GetServiceProfileAccount account() {
@@ -233,8 +237,8 @@ public final class GetServiceProfileResult {
      * @return Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      * 
      */
-    public Optional<String> state() {
-        return Optional.ofNullable(this.state);
+    public String state() {
+        return this.state;
     }
     /**
      * @return Tags attached to the connection
@@ -256,6 +260,13 @@ public final class GetServiceProfileResult {
      */
     public String uuid() {
         return this.uuid;
+    }
+    /**
+     * @return Virtual Devices
+     * 
+     */
+    public List<GetServiceProfileVirtualDevice> virtualDevices() {
+        return this.virtualDevices;
     }
     /**
      * @return Service profile visibility - PUBLIC, PRIVATE
@@ -289,10 +300,11 @@ public final class GetServiceProfileResult {
         private List<GetServiceProfilePort> ports;
         private GetServiceProfileProject project;
         private Boolean selfProfile;
-        private @Nullable String state;
+        private String state;
         private List<String> tags;
         private String type;
         private String uuid;
+        private List<GetServiceProfileVirtualDevice> virtualDevices;
         private String visibility;
         public Builder() {}
         public Builder(GetServiceProfileResult defaults) {
@@ -316,6 +328,7 @@ public final class GetServiceProfileResult {
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
+    	      this.virtualDevices = defaults.virtualDevices;
     	      this.visibility = defaults.visibility;
         }
 
@@ -413,8 +426,8 @@ public final class GetServiceProfileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder state(@Nullable String state) {
-            this.state = state;
+        public Builder state(String state) {
+            this.state = Objects.requireNonNull(state);
             return this;
         }
         @CustomType.Setter
@@ -434,6 +447,14 @@ public final class GetServiceProfileResult {
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
+        }
+        @CustomType.Setter
+        public Builder virtualDevices(List<GetServiceProfileVirtualDevice> virtualDevices) {
+            this.virtualDevices = Objects.requireNonNull(virtualDevices);
+            return this;
+        }
+        public Builder virtualDevices(GetServiceProfileVirtualDevice... virtualDevices) {
+            return virtualDevices(List.of(virtualDevices));
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
@@ -461,6 +482,7 @@ public final class GetServiceProfileResult {
             _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
+            _resultValue.virtualDevices = virtualDevices;
             _resultValue.visibility = visibility;
             return _resultValue;
         }

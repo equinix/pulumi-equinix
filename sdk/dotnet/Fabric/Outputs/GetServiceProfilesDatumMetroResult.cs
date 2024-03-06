@@ -13,26 +13,44 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfilesDatumMetroResult
     {
-        public readonly string Code;
-        public readonly string DisplayName;
+        /// <summary>
+        /// Metro Code - Example SV
+        /// </summary>
+        public readonly string? Code;
+        /// <summary>
+        /// Display Name
+        /// </summary>
+        public readonly string? DisplayName;
+        /// <summary>
+        /// IBX- Equinix International Business Exchange list
+        /// </summary>
         public readonly ImmutableArray<string> Ibxs;
-        public readonly bool InTrail;
-        public readonly string Name;
-        public readonly ImmutableDictionary<string, string> SellerRegions;
+        /// <summary>
+        /// In Trail
+        /// </summary>
+        public readonly bool? InTrail;
+        /// <summary>
+        /// Metro Name
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// Seller Regions
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? SellerRegions;
 
         [OutputConstructor]
         private GetServiceProfilesDatumMetroResult(
-            string code,
+            string? code,
 
-            string displayName,
+            string? displayName,
 
             ImmutableArray<string> ibxs,
 
-            bool inTrail,
+            bool? inTrail,
 
-            string name,
+            string? name,
 
-            ImmutableDictionary<string, string> sellerRegions)
+            ImmutableDictionary<string, string>? sellerRegions)
         {
             Code = code;
             DisplayName = displayName;

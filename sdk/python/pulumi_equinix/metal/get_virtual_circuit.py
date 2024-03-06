@@ -273,16 +273,6 @@ def get_virtual_circuit(virtual_circuit_id: Optional[str] = None,
 
     > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    example_connection = equinix.metal.get_interconnection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
-    example_vc = equinix.metal.get_virtual_circuit(virtual_circuit_id=example_connection.ports[1].virtual_circuit_ids[0])
-    ```
-
 
     :param str virtual_circuit_id: ID of the virtual circuit resource
     """
@@ -322,16 +312,6 @@ def get_virtual_circuit_output(virtual_circuit_id: Optional[pulumi.Input[str]] =
     [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
 
     > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_equinix as equinix
-
-    example_connection = equinix.metal.get_interconnection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
-    example_vc = equinix.metal.get_virtual_circuit(virtual_circuit_id=example_connection.ports[1].virtual_circuit_ids[0])
-    ```
 
 
     :param str virtual_circuit_id: ID of the virtual circuit resource

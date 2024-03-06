@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
+    /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+    /// 
+    /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;

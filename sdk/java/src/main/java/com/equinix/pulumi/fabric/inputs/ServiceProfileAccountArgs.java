@@ -17,14 +17,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     public static final ServiceProfileAccountArgs Empty = new ServiceProfileAccountArgs();
 
     /**
-     * Account Name
+     * Legal name of the accountholder.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return Account Name
+     * @return Legal name of the accountholder.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -32,14 +32,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Account Number
+     * Equinix-assigned account number.
      * 
      */
     @Import(name="accountNumber")
     private @Nullable Output<Integer> accountNumber;
 
     /**
-     * @return Account Number
+     * @return Equinix-assigned account number.
      * 
      */
     public Optional<Output<Integer>> accountNumber() {
@@ -47,14 +47,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Global Customer organization identifier
+     * Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     @Import(name="globalCustId")
     private @Nullable Output<String> globalCustId;
 
     /**
-     * @return Global Customer organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     public Optional<Output<String>> globalCustId() {
@@ -62,14 +62,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Global organization identifier
+     * Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     @Import(name="globalOrgId")
     private @Nullable Output<String> globalOrgId;
 
     /**
-     * @return Global organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     public Optional<Output<String>> globalOrgId() {
@@ -77,14 +77,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Global organization name
+     * Equinix-assigned name of the subscriber&#39;s parent organization.
      * 
      */
     @Import(name="globalOrganizationName")
     private @Nullable Output<String> globalOrganizationName;
 
     /**
-     * @return Global organization name
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
      * 
      */
     public Optional<Output<String>> globalOrganizationName() {
@@ -92,14 +92,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Customer organization identifier
+     * Equinix-assigned ID of the subscriber&#39;s organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<Integer> orgId;
 
     /**
-     * @return Customer organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
      * 
      */
     public Optional<Output<Integer>> orgId() {
@@ -107,14 +107,14 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Customer organization name
+     * Equinix-assigned name of the subscriber&#39;s organization.
      * 
      */
     @Import(name="organizationName")
     private @Nullable Output<String> organizationName;
 
     /**
-     * @return Customer organization name
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
      * 
      */
     public Optional<Output<String>> organizationName() {
@@ -168,7 +168,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountName Account Name
+         * @param accountName Legal name of the accountholder.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountName Account Name
+         * @param accountName Legal name of the accountholder.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountNumber Account Number
+         * @param accountNumber Equinix-assigned account number.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountNumber Account Number
+         * @param accountNumber Equinix-assigned account number.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param globalCustId Global Customer organization identifier
+         * @param globalCustId Equinix-assigned ID of the subscriber&#39;s parent organization.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param globalCustId Global Customer organization identifier
+         * @param globalCustId Equinix-assigned ID of the subscriber&#39;s parent organization.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param globalOrgId Global organization identifier
+         * @param globalOrgId Equinix-assigned ID of the subscriber&#39;s parent organization.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param globalOrgId Global organization identifier
+         * @param globalOrgId Equinix-assigned ID of the subscriber&#39;s parent organization.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param globalOrganizationName Global organization name
+         * @param globalOrganizationName Equinix-assigned name of the subscriber&#39;s parent organization.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param globalOrganizationName Global organization name
+         * @param globalOrganizationName Equinix-assigned name of the subscriber&#39;s parent organization.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param orgId Customer organization identifier
+         * @param orgId Equinix-assigned ID of the subscriber&#39;s organization.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param orgId Customer organization identifier
+         * @param orgId Equinix-assigned ID of the subscriber&#39;s organization.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param organizationName Customer organization name
+         * @param organizationName Equinix-assigned name of the subscriber&#39;s organization.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ServiceProfileAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param organizationName Customer organization name
+         * @param organizationName Equinix-assigned name of the subscriber&#39;s organization.
          * 
          * @return builder
          * 

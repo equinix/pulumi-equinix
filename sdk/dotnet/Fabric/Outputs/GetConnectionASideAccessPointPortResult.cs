@@ -13,9 +13,21 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideAccessPointPortResult
     {
+        /// <summary>
+        /// Unique Resource Identifier
+        /// </summary>
         public readonly string Href;
+        /// <summary>
+        /// Port name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Redundancy Information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionASideAccessPointPortRedundancyResult> Redundancies;
+        /// <summary>
+        /// Equinix-assigned Port identifier
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

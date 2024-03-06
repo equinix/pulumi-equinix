@@ -106,6 +106,12 @@ public final class DeviceSecondaryDevice {
      */
     private List<String> notifications;
     /**
+     * @return Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    private @Nullable String projectId;
+    /**
      * @return Device redundancy type applicable for HA devices, either
      * primary or secondary.
      * 
@@ -131,6 +137,10 @@ public final class DeviceSecondaryDevice {
      * 
      */
     private @Nullable String sshIpFqdn;
+    /**
+     * @return Definition of SSH key that will be provisioned on a device
+     * 
+     */
     private @Nullable DeviceSecondaryDeviceSshKey sshKey;
     /**
      * @return interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
@@ -149,6 +159,10 @@ public final class DeviceSecondaryDevice {
      * 
      */
     private @Nullable Map<String,String> vendorConfiguration;
+    /**
+     * @return device interface id picked for WAN
+     * 
+     */
     private @Nullable String wanInterfaceId;
     /**
      * @return Device location zone code.
@@ -279,6 +293,14 @@ public final class DeviceSecondaryDevice {
         return this.notifications;
     }
     /**
+     * @return Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+    /**
      * @return Device redundancy type applicable for HA devices, either
      * primary or secondary.
      * 
@@ -314,6 +336,10 @@ public final class DeviceSecondaryDevice {
     public Optional<String> sshIpFqdn() {
         return Optional.ofNullable(this.sshIpFqdn);
     }
+    /**
+     * @return Definition of SSH key that will be provisioned on a device
+     * 
+     */
     public Optional<DeviceSecondaryDeviceSshKey> sshKey() {
         return Optional.ofNullable(this.sshKey);
     }
@@ -340,6 +366,10 @@ public final class DeviceSecondaryDevice {
     public Map<String,String> vendorConfiguration() {
         return this.vendorConfiguration == null ? Map.of() : this.vendorConfiguration;
     }
+    /**
+     * @return device interface id picked for WAN
+     * 
+     */
     public Optional<String> wanInterfaceId() {
         return Optional.ofNullable(this.wanInterfaceId);
     }
@@ -376,6 +406,7 @@ public final class DeviceSecondaryDevice {
         private @Nullable String mgmtAclTemplateUuid;
         private String name;
         private List<String> notifications;
+        private @Nullable String projectId;
         private @Nullable String redundancyType;
         private @Nullable String redundantId;
         private @Nullable String region;
@@ -406,6 +437,7 @@ public final class DeviceSecondaryDevice {
     	      this.mgmtAclTemplateUuid = defaults.mgmtAclTemplateUuid;
     	      this.name = defaults.name;
     	      this.notifications = defaults.notifications;
+    	      this.projectId = defaults.projectId;
     	      this.redundancyType = defaults.redundancyType;
     	      this.redundantId = defaults.redundantId;
     	      this.region = defaults.region;
@@ -506,6 +538,11 @@ public final class DeviceSecondaryDevice {
             return notifications(List.of(notifications));
         }
         @CustomType.Setter
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redundancyType(@Nullable String redundancyType) {
             this.redundancyType = redundancyType;
             return this;
@@ -578,6 +615,7 @@ public final class DeviceSecondaryDevice {
             _resultValue.mgmtAclTemplateUuid = mgmtAclTemplateUuid;
             _resultValue.name = name;
             _resultValue.notifications = notifications;
+            _resultValue.projectId = projectId;
             _resultValue.redundancyType = redundancyType;
             _resultValue.redundantId = redundantId;
             _resultValue.region = region;

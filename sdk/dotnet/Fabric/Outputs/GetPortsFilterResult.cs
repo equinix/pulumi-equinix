@@ -16,10 +16,10 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Query Parameter to Get Ports By Name
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
-        private GetPortsFilterResult(string? name)
+        private GetPortsFilterResult(string name)
         {
             Name = name;
         }

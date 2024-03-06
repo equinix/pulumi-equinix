@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/organizationMember:OrganizationMember")

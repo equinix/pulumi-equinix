@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing project ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using an existing project ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/project:Project")

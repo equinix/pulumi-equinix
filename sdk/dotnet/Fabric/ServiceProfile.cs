@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
+    /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
@@ -90,10 +92,10 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.ServiceProfileAccessPointTypeConfig>> AccessPointTypeConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Account
+        /// Service Profile Owner Account Information
         /// </summary>
         [Output("account")]
-        public Output<Outputs.ServiceProfileAccount?> Account { get; private set; } = null!;
+        public Output<Outputs.ServiceProfileAccount> Account { get; private set; } = null!;
 
         /// <summary>
         /// Array of contact emails
@@ -114,7 +116,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.ServiceProfileCustomField>> CustomFields { get; private set; } = null!;
 
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -162,7 +164,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ServiceProfileProject?> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Self Profile
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         [Output("selfProfile")]
         public Output<bool?> SelfProfile { get; private set; } = null!;
@@ -262,12 +264,6 @@ namespace Pulumi.Equinix.Fabric
             set => _accessPointTypeConfigs = value;
         }
 
-        /// <summary>
-        /// Account
-        /// </summary>
-        [Input("account")]
-        public Input<Inputs.ServiceProfileAccountArgs>? Account { get; set; }
-
         [Input("allowedEmails")]
         private InputList<string>? _allowedEmails;
 
@@ -293,7 +289,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -353,7 +349,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }
@@ -421,7 +417,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Account
+        /// Service Profile Owner Account Information
         /// </summary>
         [Input("account")]
         public Input<Inputs.ServiceProfileAccountGetArgs>? Account { get; set; }
@@ -457,7 +453,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -523,7 +519,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ServiceProfileProjectGetArgs>? Project { get; set; }
 
         /// <summary>
-        /// Self Profile
+        /// Self Profile indicating if the profile is created for customer's  self use
         /// </summary>
         [Input("selfProfile")]
         public Input<bool>? SelfProfile { get; set; }

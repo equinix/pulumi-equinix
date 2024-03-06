@@ -13,9 +13,17 @@ public final class DeviceSshKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceSshKeyArgs Empty = new DeviceSshKeyArgs();
 
+    /**
+     * Reference by name to previously provisioned public SSH key
+     * 
+     */
     @Import(name="keyName", required=true)
     private Output<String> keyName;
 
+    /**
+     * @return Reference by name to previously provisioned public SSH key
+     * 
+     */
     public Output<String> keyName() {
         return this.keyName;
     }
@@ -60,11 +68,23 @@ public final class DeviceSshKeyArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DeviceSshKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keyName Reference by name to previously provisioned public SSH key
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyName(Output<String> keyName) {
             $.keyName = keyName;
             return this;
         }
 
+        /**
+         * @param keyName Reference by name to previously provisioned public SSH key
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }

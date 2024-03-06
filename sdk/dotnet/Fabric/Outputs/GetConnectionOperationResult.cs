@@ -13,8 +13,17 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionOperationResult
     {
+        /// <summary>
+        /// Connection status
+        /// </summary>
         public readonly string EquinixStatus;
+        /// <summary>
+        /// Errors occurred
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOperationErrorResult> Errors;
+        /// <summary>
+        /// Connection provider readiness status
+        /// </summary>
         public readonly string ProviderStatus;
 
         [OutputConstructor]

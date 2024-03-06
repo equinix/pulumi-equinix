@@ -12,9 +12,15 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class RoutingProtocolOperationErrorAdditionalInfoGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Property at which the error potentially occurred
+        /// </summary>
         [Input("property")]
         public Input<string>? Property { get; set; }
 
+        /// <summary>
+        /// Reason for the error
+        /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 

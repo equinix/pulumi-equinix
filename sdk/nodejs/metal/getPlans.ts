@@ -7,6 +7,120 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
+/**
+ * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const example = equinix.metal.getPlans({
+ *     sorts: [{
+ *         attribute: "pricing_hour",
+ *         direction: "asc",
+ *     }],
+ *     filters: [
+ *         {
+ *             attribute: "pricing_hour",
+ *             values: ["2.5"],
+ *             matchBy: "less_than",
+ *         },
+ *         {
+ *             attribute: "available_in_metros",
+ *             values: [
+ *                 "da",
+ *                 "sv",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * export const plans = example.then(example => example.plans);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const example = equinix.metal.getPlans({
+ *     filters: [
+ *         {
+ *             attribute: "class",
+ *             values: ["large"],
+ *             matchBy: "substring",
+ *         },
+ *         {
+ *             attribute: "deployment_types",
+ *             values: ["spot_market"],
+ *         },
+ *         {
+ *             attribute: "available_in_metros",
+ *             values: [
+ *                 "da",
+ *                 "sv",
+ *             ],
+ *             all: true,
+ *         },
+ *     ],
+ * });
+ * export const plans = example.then(example => example.plans);
+ * ```
+ * ### Ignoring Changes to Plans/Metro
+ *
+ * Preserve deployed device plan, facility and metro when creating a new execution plan.
+ *
+ * As described in the `data-resource-behavior` feature as shown in the example below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const examplePlans = equinix.metal.getPlans({
+ *     sorts: [{
+ *         attribute: "pricing_hour",
+ *         direction: "asc",
+ *     }],
+ *     filters: [
+ *         {
+ *             attribute: "name",
+ *             values: [
+ *                 "c3.small.x86",
+ *                 "c3.medium.x86",
+ *                 "m3.large.x86",
+ *             ],
+ *         },
+ *         {
+ *             attribute: "available_in_metros",
+ *             values: ["sv"],
+ *         },
+ *     ],
+ * });
+ * // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+ * // It will ignore future changes on plan and metro
+ * const exampleDevice = new equinix.metal.Device("exampleDevice", {
+ *     hostname: "example",
+ *     plan: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.name).apply((x) => equinix.metal.plan.Plan[x]),
+ *     metro: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.availableInMetros?.[0]),
+ *     operatingSystem: "ubuntu_20_04",
+ *     billingCycle: "hourly",
+ *     projectId: _var.project_id,
+ * });
+ * ```
+ *
+ * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const ignorePlansMetrosChanges = config.getBoolean("ignorePlansMetrosChanges") || false;
+ * const examplePlans = equinix.metal.getPlans({});
+ * // required device arguments
+ * const exampleDevice = new equinix.metal.Device("exampleDevice", {});
+ * ```
+ */
 export function getPlans(args?: GetPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetPlansResult> {
     args = args || {};
 
@@ -44,6 +158,120 @@ export interface GetPlansResult {
     readonly plans: outputs.metal.GetPlansPlan[];
     readonly sorts?: outputs.metal.GetPlansSort[];
 }
+/**
+ * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const example = equinix.metal.getPlans({
+ *     sorts: [{
+ *         attribute: "pricing_hour",
+ *         direction: "asc",
+ *     }],
+ *     filters: [
+ *         {
+ *             attribute: "pricing_hour",
+ *             values: ["2.5"],
+ *             matchBy: "less_than",
+ *         },
+ *         {
+ *             attribute: "available_in_metros",
+ *             values: [
+ *                 "da",
+ *                 "sv",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * export const plans = example.then(example => example.plans);
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const example = equinix.metal.getPlans({
+ *     filters: [
+ *         {
+ *             attribute: "class",
+ *             values: ["large"],
+ *             matchBy: "substring",
+ *         },
+ *         {
+ *             attribute: "deployment_types",
+ *             values: ["spot_market"],
+ *         },
+ *         {
+ *             attribute: "available_in_metros",
+ *             values: [
+ *                 "da",
+ *                 "sv",
+ *             ],
+ *             all: true,
+ *         },
+ *     ],
+ * });
+ * export const plans = example.then(example => example.plans);
+ * ```
+ * ### Ignoring Changes to Plans/Metro
+ *
+ * Preserve deployed device plan, facility and metro when creating a new execution plan.
+ *
+ * As described in the `data-resource-behavior` feature as shown in the example below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const examplePlans = equinix.metal.getPlans({
+ *     sorts: [{
+ *         attribute: "pricing_hour",
+ *         direction: "asc",
+ *     }],
+ *     filters: [
+ *         {
+ *             attribute: "name",
+ *             values: [
+ *                 "c3.small.x86",
+ *                 "c3.medium.x86",
+ *                 "m3.large.x86",
+ *             ],
+ *         },
+ *         {
+ *             attribute: "available_in_metros",
+ *             values: ["sv"],
+ *         },
+ *     ],
+ * });
+ * // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+ * // It will ignore future changes on plan and metro
+ * const exampleDevice = new equinix.metal.Device("exampleDevice", {
+ *     hostname: "example",
+ *     plan: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.name).apply((x) => equinix.metal.plan.Plan[x]),
+ *     metro: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.availableInMetros?.[0]),
+ *     operatingSystem: "ubuntu_20_04",
+ *     billingCycle: "hourly",
+ *     projectId: _var.project_id,
+ * });
+ * ```
+ *
+ * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const config = new pulumi.Config();
+ * const ignorePlansMetrosChanges = config.getBoolean("ignorePlansMetrosChanges") || false;
+ * const examplePlans = equinix.metal.getPlans({});
+ * // required device arguments
+ * const exampleDevice = new equinix.metal.Device("exampleDevice", {});
+ * ```
+ */
 export function getPlansOutput(args?: GetPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlansResult> {
     return pulumi.output(args).apply((a: any) => getPlans(a, opts))
 }

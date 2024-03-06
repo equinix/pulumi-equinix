@@ -31,6 +31,7 @@ class DeviceArgs:
                  hostname: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]]] = None,
                  ipxe_script_url: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
                  project_ssh_key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  reinstall: Optional[pulumi.Input['DeviceReinstallArgs']] = None,
@@ -62,14 +63,25 @@ class DeviceArgs:
                token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-               next available reservation automatically
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
+               device deployed, or `next-available` if you want to pick your next available reservation
+               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+               together for the same pool of reservations. It might happen that the reservation which Equinix
+               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+               metal.Device resource. If that happens, and the metal.Device with the UUID is
+               created later, resource creation will fail because the reservation is already in use (by the
+               resource created with `next-available`). To workaround this, have the `next-available` resource
+               explicitly depend_on
+               the resource with hardware reservation UUID, so that the latter is created first. For more details,
+               see issue #176.
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
                or metadata service configuration.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]] ip_addresses: A list of IP address types for the device. See
                IP address below for more details.
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         :param pulumi.Input['DeviceReinstallArgs'] reinstall: Whether the device should be reinstalled instead of destroyed when
@@ -117,6 +129,8 @@ class DeviceArgs:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
         if ipxe_script_url is not None:
             pulumi.set(__self__, "ipxe_script_url", ipxe_script_url)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
         if metro is not None:
             pulumi.set(__self__, "metro", metro)
         if project_ssh_key_ids is not None:
@@ -273,8 +287,18 @@ class DeviceArgs:
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-        next available reservation automatically
+        The UUID of the hardware reservation where you want this
+        device deployed, or `next-available` if you want to pick your next available reservation
+        automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+        in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+        together for the same pool of reservations. It might happen that the reservation which Equinix
+        Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+        metal.Device resource. If that happens, and the metal.Device with the UUID is
+        created later, resource creation will fail because the reservation is already in use (by the
+        resource created with `next-available`). To workaround this, have the `next-available` resource
+        explicitly depend_on
+        the resource with hardware reservation UUID, so that the latter is created first. For more details,
+        see issue #176.
         """
         return pulumi.get(self, "hardware_reservation_id")
 
@@ -320,6 +344,18 @@ class DeviceArgs:
     @ipxe_script_url.setter
     def ipxe_script_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipxe_script_url", value)
+
+    @property
+    @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "locked", value)
 
     @property
     @pulumi.getter
@@ -502,15 +538,25 @@ class _DeviceState:
                token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-               next available reservation automatically
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
+               device deployed, or `next-available` if you want to pick your next available reservation
+               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+               together for the same pool of reservations. It might happen that the reservation which Equinix
+               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+               metal.Device resource. If that happens, and the metal.Device with the UUID is
+               created later, resource creation will fail because the reservation is already in use (by the
+               resource created with `next-available`). To workaround this, have the `next-available` resource
+               explicitly depend_on
+               the resource with hardware reservation UUID, so that the latter is created first. For more details,
+               see issue #176.
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
                or metadata service configuration.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceIpAddressArgs']]] ip_addresses: A list of IP address types for the device. See
                IP address below for more details.
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
-        :param pulumi.Input[bool] locked: Whether the device is locked.
+        :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceNetworkArgs']]] network: The device's private and public IP (v4 and v6) network details. See
                Network Attribute below for more details.
@@ -812,8 +858,18 @@ class _DeviceState:
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-        next available reservation automatically
+        The UUID of the hardware reservation where you want this
+        device deployed, or `next-available` if you want to pick your next available reservation
+        automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+        in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+        together for the same pool of reservations. It might happen that the reservation which Equinix
+        Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+        metal.Device resource. If that happens, and the metal.Device with the UUID is
+        created later, resource creation will fail because the reservation is already in use (by the
+        resource created with `next-available`). To workaround this, have the `next-available` resource
+        explicitly depend_on
+        the resource with hardware reservation UUID, so that the latter is created first. For more details,
+        see issue #176.
         """
         return pulumi.get(self, "hardware_reservation_id")
 
@@ -864,7 +920,7 @@ class _DeviceState:
     @pulumi.getter
     def locked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the device is locked.
+        Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         """
         return pulumi.get(self, "locked")
 
@@ -1153,6 +1209,7 @@ class Device(pulumi.CustomResource):
                  hostname: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]]] = None,
                  ipxe_script_url: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
                  plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
@@ -1167,6 +1224,13 @@ class Device(pulumi.CustomResource):
                  wait_for_reservation_deprovision: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides an Equinix Metal device resource. This can be used to create,
+        modify, and delete devices.
+
+        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
+         the raw state as plain-text.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ```python
         import pulumi
@@ -1186,7 +1250,7 @@ class Device(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+        This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1203,14 +1267,25 @@ class Device(pulumi.CustomResource):
                token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-               next available reservation automatically
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
+               device deployed, or `next-available` if you want to pick your next available reservation
+               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+               together for the same pool of reservations. It might happen that the reservation which Equinix
+               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+               metal.Device resource. If that happens, and the metal.Device with the UUID is
+               created later, resource creation will fail because the reservation is already in use (by the
+               resource created with `next-available`). To workaround this, have the `next-available` resource
+               explicitly depend_on
+               the resource with hardware reservation UUID, so that the latter is created first. For more details,
+               see issue #176.
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
                or metadata service configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device. See
                IP address below for more details.
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
+        :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
@@ -1244,6 +1319,13 @@ class Device(pulumi.CustomResource):
                  args: DeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an Equinix Metal device resource. This can be used to create,
+        modify, and delete devices.
+
+        > **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
+         the raw state as plain-text.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ```python
         import pulumi
@@ -1263,7 +1345,7 @@ class Device(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+        This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param DeviceArgs args: The arguments to use to populate this resource's properties.
@@ -1291,6 +1373,7 @@ class Device(pulumi.CustomResource):
                  hostname: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]]] = None,
                  ipxe_script_url: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  metro: Optional[pulumi.Input[str]] = None,
                  operating_system: Optional[pulumi.Input[Union[str, 'OperatingSystem']]] = None,
                  plan: Optional[pulumi.Input[Union[str, 'Plan']]] = None,
@@ -1323,6 +1406,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["ip_addresses"] = ip_addresses
             __props__.__dict__["ipxe_script_url"] = ipxe_script_url
+            __props__.__dict__["locked"] = locked
             __props__.__dict__["metro"] = metro
             if operating_system is None and not opts.urn:
                 raise TypeError("Missing required property 'operating_system'")
@@ -1347,7 +1431,6 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["created"] = None
             __props__.__dict__["deployed_facility"] = None
             __props__.__dict__["deployed_hardware_reservation_id"] = None
-            __props__.__dict__["locked"] = None
             __props__.__dict__["network"] = None
             __props__.__dict__["network_type"] = None
             __props__.__dict__["ports"] = None
@@ -1433,15 +1516,25 @@ class Device(pulumi.CustomResource):
                token in the top of the page and see JSON from the API response. Conflicts with `metro`.  Use metro instead; read the facility to metro migration guide
         :param pulumi.Input[bool] force_detach_volumes: Delete device even if it has volumes attached. Only applies
                for destroy action.
-        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-               next available reservation automatically
+        :param pulumi.Input[str] hardware_reservation_id: The UUID of the hardware reservation where you want this
+               device deployed, or `next-available` if you want to pick your next available reservation
+               automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+               in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+               together for the same pool of reservations. It might happen that the reservation which Equinix
+               Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+               metal.Device resource. If that happens, and the metal.Device with the UUID is
+               created later, resource creation will fail because the reservation is already in use (by the
+               resource created with `next-available`). To workaround this, have the `next-available` resource
+               explicitly depend_on
+               the resource with hardware reservation UUID, so that the latter is created first. For more details,
+               see issue #176.
         :param pulumi.Input[str] hostname: The device hostname used in deployments taking advantage of Layer3 DHCP
                or metadata service configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceIpAddressArgs']]]] ip_addresses: A list of IP address types for the device. See
                IP address below for more details.
         :param pulumi.Input[str] ipxe_script_url: URL pointing to a hosted iPXE script. More information is in the
                [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
-        :param pulumi.Input[bool] locked: Whether the device is locked.
+        :param pulumi.Input[bool] locked: Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         :param pulumi.Input[str] metro: Metro area for the new device. Conflicts with `facilities`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceNetworkArgs']]]] network: The device's private and public IP (v4 and v6) network details. See
                Network Attribute below for more details.
@@ -1649,8 +1742,18 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="hardwareReservationId")
     def hardware_reservation_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-        next available reservation automatically
+        The UUID of the hardware reservation where you want this
+        device deployed, or `next-available` if you want to pick your next available reservation
+        automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+        in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+        together for the same pool of reservations. It might happen that the reservation which Equinix
+        Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+        metal.Device resource. If that happens, and the metal.Device with the UUID is
+        created later, resource creation will fail because the reservation is already in use (by the
+        resource created with `next-available`). To workaround this, have the `next-available` resource
+        explicitly depend_on
+        the resource with hardware reservation UUID, so that the latter is created first. For more details,
+        see issue #176.
         """
         return pulumi.get(self, "hardware_reservation_id")
 
@@ -1685,7 +1788,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def locked(self) -> pulumi.Output[bool]:
         """
-        Whether the device is locked.
+        Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         """
         return pulumi.get(self, "locked")
 

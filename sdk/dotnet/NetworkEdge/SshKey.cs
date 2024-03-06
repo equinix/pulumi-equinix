@@ -36,7 +36,7 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource
@@ -46,6 +46,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the SSH key is scoped to.If you
+        /// leave it out, the ssh key will be created under the default project id of your organization.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// The SSH public key. If this is a file, it can be read using the file
@@ -120,6 +127,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Unique Identifier for the project resource where the SSH key is scoped to.If you
+        /// leave it out, the ssh key will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The SSH public key. If this is a file, it can be read using the file
         /// interpolation function.
         /// </summary>
@@ -145,6 +159,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the SSH key is scoped to.If you
+        /// leave it out, the ssh key will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// The SSH public key. If this is a file, it can be read using the file

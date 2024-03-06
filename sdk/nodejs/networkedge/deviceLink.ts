@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
+ * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
  */
 export class DeviceLink extends pulumi.CustomResource {
     /**
@@ -106,6 +106,11 @@ export class DeviceLink extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Unique Identifier for the project resource where the device link is scoped to.If you
+     * leave it out, the device link will be created under the default project id of your organization.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * device link provisioning status on a given device. One of `PROVISIONING`,
      * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
      */
@@ -136,6 +141,7 @@ export class DeviceLink extends pulumi.CustomResource {
             resourceInputs["devices"] = state ? state.devices : undefined;
             resourceInputs["links"] = state ? state.links : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["subnet"] = state ? state.subnet : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
@@ -147,6 +153,7 @@ export class DeviceLink extends pulumi.CustomResource {
             resourceInputs["devices"] = args ? args.devices : undefined;
             resourceInputs["links"] = args ? args.links : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["subnet"] = args ? args.subnet : undefined;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
@@ -174,6 +181,11 @@ export interface DeviceLinkState {
      * device link name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the device link is scoped to.If you
+     * leave it out, the device link will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * device link provisioning status on a given device. One of `PROVISIONING`,
      * `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
@@ -208,6 +220,11 @@ export interface DeviceLinkArgs {
      * device link name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the device link is scoped to.If you
+     * leave it out, the device link will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * device link subnet in CIDR format. Not required for link
      * between self configured devices.

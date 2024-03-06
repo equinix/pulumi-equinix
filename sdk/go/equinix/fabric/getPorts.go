@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible data resource that allow user to fetch port by name
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
+//				Filter: fabric.GetPortsFilter{
+//					Name: "<name_of_port||port_prefix>",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPorts(ctx *pulumi.Context, args *GetPortsArgs, opts ...pulumi.InvokeOption) (*GetPortsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortsResult
@@ -24,15 +53,15 @@ func GetPorts(ctx *pulumi.Context, args *GetPortsArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getPorts.
 type GetPortsArgs struct {
 	// name
-	Filter *GetPortsFilter `pulumi:"filter"`
+	Filter GetPortsFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getPorts.
 type GetPortsResult struct {
-	// List of  Ports
+	// List of Ports
 	Data []GetPortsDatum `pulumi:"data"`
 	// name
-	Filter *GetPortsFilter `pulumi:"filter"`
+	Filter GetPortsFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -53,7 +82,7 @@ func GetPortsOutput(ctx *pulumi.Context, args GetPortsOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getPorts.
 type GetPortsOutputArgs struct {
 	// name
-	Filter GetPortsFilterPtrInput `pulumi:"filter"`
+	Filter GetPortsFilterInput `pulumi:"filter"`
 }
 
 func (GetPortsOutputArgs) ElementType() reflect.Type {
@@ -75,14 +104,14 @@ func (o GetPortsResultOutput) ToGetPortsResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// List of  Ports
+// List of Ports
 func (o GetPortsResultOutput) Data() GetPortsDatumArrayOutput {
 	return o.ApplyT(func(v GetPortsResult) []GetPortsDatum { return v.Data }).(GetPortsDatumArrayOutput)
 }
 
 // name
-func (o GetPortsResultOutput) Filter() GetPortsFilterPtrOutput {
-	return o.ApplyT(func(v GetPortsResult) *GetPortsFilter { return v.Filter }).(GetPortsFilterPtrOutput)
+func (o GetPortsResultOutput) Filter() GetPortsFilterOutput {
+	return o.ApplyT(func(v GetPortsResult) GetPortsFilter { return v.Filter }).(GetPortsFilterOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

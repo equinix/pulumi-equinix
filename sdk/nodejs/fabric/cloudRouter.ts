@@ -8,6 +8,12 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
+ *
+ * Additional Fabric Cloud Router documentation:
+ * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
+ * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -68,13 +74,13 @@ export class CloudRouter extends pulumi.CustomResource {
     /**
      * Customer account information that is associated with this Fabric Cloud Router
      */
-    public readonly account!: pulumi.Output<outputs.fabric.CloudRouterAccount | undefined>;
+    public readonly account!: pulumi.Output<outputs.fabric.CloudRouterAccount>;
     /**
-     * Access point used and maximum number of IPv4 BGP routes
+     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
      */
     public /*out*/ readonly bgpIpv4RoutesCount!: pulumi.Output<number>;
     /**
-     * Access point used and maximum number of IPv6 BGP routes
+     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
      */
     public /*out*/ readonly bgpIpv6RoutesCount!: pulumi.Output<number>;
     /**
@@ -82,7 +88,7 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public /*out*/ readonly changeLogs!: pulumi.Output<outputs.fabric.CloudRouterChangeLog[]>;
     /**
-     * Number of connections associated with this Access point
+     * Number of connections associated with this Fabric Cloud Router instance
      */
     public /*out*/ readonly connectionsCount!: pulumi.Output<number>;
     /**
@@ -90,13 +96,21 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Number of distinct IPv4 routes
+     */
+    public /*out*/ readonly distinctIpv4PrefixesCount!: pulumi.Output<number>;
+    /**
+     * Number of distinct IPv6 routes
+     */
+    public /*out*/ readonly distinctIpv6PrefixesCount!: pulumi.Output<number>;
+    /**
      * Equinix ASN
      */
     public /*out*/ readonly equinixAsn!: pulumi.Output<number>;
     /**
      * Unique Resource URL
      */
-    public /*out*/ readonly href!: pulumi.Output<string>;
+    public readonly href!: pulumi.Output<string>;
     /**
      * Fabric Cloud Router location
      */
@@ -112,15 +126,15 @@ export class CloudRouter extends pulumi.CustomResource {
     /**
      * Order information related to this Fabric Cloud Router
      */
-    public readonly order!: pulumi.Output<outputs.fabric.CloudRouterOrder | undefined>;
+    public readonly order!: pulumi.Output<outputs.fabric.CloudRouterOrder>;
     /**
-     * Fabric Cloud Router package
+     * Fabric Cloud Router Package Type
      */
     public readonly package!: pulumi.Output<outputs.fabric.CloudRouterPackage>;
     /**
-     * Fabric Cloud Router project
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
-    public readonly project!: pulumi.Output<outputs.fabric.CloudRouterProject | undefined>;
+    public readonly project!: pulumi.Output<outputs.fabric.CloudRouterProject>;
     /**
      * Fabric Cloud Router overall state
      */
@@ -129,6 +143,10 @@ export class CloudRouter extends pulumi.CustomResource {
      * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * Equinix-assigned Fabric Cloud Router identifier
+     */
+    public readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a CloudRouter resource with the given unique name, arguments, and options.
@@ -149,6 +167,8 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["changeLogs"] = state ? state.changeLogs : undefined;
             resourceInputs["connectionsCount"] = state ? state.connectionsCount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["distinctIpv4PrefixesCount"] = state ? state.distinctIpv4PrefixesCount : undefined;
+            resourceInputs["distinctIpv6PrefixesCount"] = state ? state.distinctIpv6PrefixesCount : undefined;
             resourceInputs["equinixAsn"] = state ? state.equinixAsn : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -159,22 +179,33 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as CloudRouterArgs | undefined;
+            if ((!args || args.account === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'account'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.notifications === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notifications'");
             }
+            if ((!args || args.order === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'order'");
+            }
             if ((!args || args.package === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'package'");
+            }
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["account"] = args ? args.account : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["href"] = args ? args.href : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
@@ -182,12 +213,14 @@ export class CloudRouter extends pulumi.CustomResource {
             resourceInputs["package"] = args ? args.package : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["uuid"] = args ? args.uuid : undefined;
             resourceInputs["bgpIpv4RoutesCount"] = undefined /*out*/;
             resourceInputs["bgpIpv6RoutesCount"] = undefined /*out*/;
             resourceInputs["changeLogs"] = undefined /*out*/;
             resourceInputs["connectionsCount"] = undefined /*out*/;
+            resourceInputs["distinctIpv4PrefixesCount"] = undefined /*out*/;
+            resourceInputs["distinctIpv6PrefixesCount"] = undefined /*out*/;
             resourceInputs["equinixAsn"] = undefined /*out*/;
-            resourceInputs["href"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -204,11 +237,11 @@ export interface CloudRouterState {
      */
     account?: pulumi.Input<inputs.fabric.CloudRouterAccount>;
     /**
-     * Access point used and maximum number of IPv4 BGP routes
+     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
      */
     bgpIpv4RoutesCount?: pulumi.Input<number>;
     /**
-     * Access point used and maximum number of IPv6 BGP routes
+     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
      */
     bgpIpv6RoutesCount?: pulumi.Input<number>;
     /**
@@ -216,13 +249,21 @@ export interface CloudRouterState {
      */
     changeLogs?: pulumi.Input<pulumi.Input<inputs.fabric.CloudRouterChangeLog>[]>;
     /**
-     * Number of connections associated with this Access point
+     * Number of connections associated with this Fabric Cloud Router instance
      */
     connectionsCount?: pulumi.Input<number>;
     /**
      * Customer-provided Fabric Cloud Router description
      */
     description?: pulumi.Input<string>;
+    /**
+     * Number of distinct IPv4 routes
+     */
+    distinctIpv4PrefixesCount?: pulumi.Input<number>;
+    /**
+     * Number of distinct IPv6 routes
+     */
+    distinctIpv6PrefixesCount?: pulumi.Input<number>;
     /**
      * Equinix ASN
      */
@@ -248,11 +289,11 @@ export interface CloudRouterState {
      */
     order?: pulumi.Input<inputs.fabric.CloudRouterOrder>;
     /**
-     * Fabric Cloud Router package
+     * Fabric Cloud Router Package Type
      */
     package?: pulumi.Input<inputs.fabric.CloudRouterPackage>;
     /**
-     * Fabric Cloud Router project
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
     project?: pulumi.Input<inputs.fabric.CloudRouterProject>;
     /**
@@ -263,6 +304,10 @@ export interface CloudRouterState {
      * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
      */
     type?: pulumi.Input<string>;
+    /**
+     * Equinix-assigned Fabric Cloud Router identifier
+     */
+    uuid?: pulumi.Input<string>;
 }
 
 /**
@@ -272,11 +317,15 @@ export interface CloudRouterArgs {
     /**
      * Customer account information that is associated with this Fabric Cloud Router
      */
-    account?: pulumi.Input<inputs.fabric.CloudRouterAccount>;
+    account: pulumi.Input<inputs.fabric.CloudRouterAccount>;
     /**
      * Customer-provided Fabric Cloud Router description
      */
     description?: pulumi.Input<string>;
+    /**
+     * Unique Resource URL
+     */
+    href?: pulumi.Input<string>;
     /**
      * Fabric Cloud Router location
      */
@@ -292,17 +341,21 @@ export interface CloudRouterArgs {
     /**
      * Order information related to this Fabric Cloud Router
      */
-    order?: pulumi.Input<inputs.fabric.CloudRouterOrder>;
+    order: pulumi.Input<inputs.fabric.CloudRouterOrder>;
     /**
-     * Fabric Cloud Router package
+     * Fabric Cloud Router Package Type
      */
     package: pulumi.Input<inputs.fabric.CloudRouterPackage>;
     /**
-     * Fabric Cloud Router project
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
-    project?: pulumi.Input<inputs.fabric.CloudRouterProject>;
+    project: pulumi.Input<inputs.fabric.CloudRouterProject>;
     /**
      * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
      */
     type: pulumi.Input<string>;
+    /**
+     * Equinix-assigned Fabric Cloud Router identifier
+     */
+    uuid?: pulumi.Input<string>;
 }

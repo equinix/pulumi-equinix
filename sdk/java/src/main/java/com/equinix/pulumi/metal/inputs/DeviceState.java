@@ -254,16 +254,36 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-     * next available reservation automatically
+     * The UUID of the hardware reservation where you want this
+     * device deployed, or `next-available` if you want to pick your next available reservation
+     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+     * together for the same pool of reservations. It might happen that the reservation which Equinix
+     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+     * created later, resource creation will fail because the reservation is already in use (by the
+     * resource created with `next-available`). To workaround this, have the `next-available` resource
+     * explicitly depend_on
+     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+     * see issue #176.
      * 
      */
     @Import(name="hardwareReservationId")
     private @Nullable Output<String> hardwareReservationId;
 
     /**
-     * @return The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-     * next available reservation automatically
+     * @return The UUID of the hardware reservation where you want this
+     * device deployed, or `next-available` if you want to pick your next available reservation
+     * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+     * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+     * together for the same pool of reservations. It might happen that the reservation which Equinix
+     * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+     * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+     * created later, resource creation will fail because the reservation is already in use (by the
+     * resource created with `next-available`). To workaround this, have the `next-available` resource
+     * explicitly depend_on
+     * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+     * see issue #176.
      * 
      */
     public Optional<Output<String>> hardwareReservationId() {
@@ -322,14 +342,14 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the device is locked.
+     * Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
      * 
      */
     @Import(name="locked")
     private @Nullable Output<Boolean> locked;
 
     /**
-     * @return Whether the device is locked.
+     * @return Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
      * 
      */
     public Optional<Output<Boolean>> locked() {
@@ -1089,8 +1109,18 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hardwareReservationId The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-         * next available reservation automatically
+         * @param hardwareReservationId The UUID of the hardware reservation where you want this
+         * device deployed, or `next-available` if you want to pick your next available reservation
+         * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+         * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+         * together for the same pool of reservations. It might happen that the reservation which Equinix
+         * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+         * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+         * created later, resource creation will fail because the reservation is already in use (by the
+         * resource created with `next-available`). To workaround this, have the `next-available` resource
+         * explicitly depend_on
+         * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+         * see issue #176.
          * 
          * @return builder
          * 
@@ -1101,8 +1131,18 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hardwareReservationId The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-         * next available reservation automatically
+         * @param hardwareReservationId The UUID of the hardware reservation where you want this
+         * device deployed, or `next-available` if you want to pick your next available reservation
+         * automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+         * in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+         * together for the same pool of reservations. It might happen that the reservation which Equinix
+         * Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+         * equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+         * created later, resource creation will fail because the reservation is already in use (by the
+         * resource created with `next-available`). To workaround this, have the `next-available` resource
+         * explicitly depend_on
+         * the resource with hardware reservation UUID, so that the latter is created first. For more details,
+         * see issue #176.
          * 
          * @return builder
          * 
@@ -1192,7 +1232,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locked Whether the device is locked.
+         * @param locked Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
          * 
          * @return builder
          * 
@@ -1203,7 +1243,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locked Whether the device is locked.
+         * @param locked Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
          * 
          * @return builder
          * 

@@ -6,22 +6,60 @@ package com.equinix.pulumi.fabric.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionZSideAccessPointVirtualDevice {
+    /**
+     * @return Unique Resource Identifier
+     * 
+     */
     private String href;
-    private String type;
-    private String uuid;
+    /**
+     * @return Customer-assigned Virtual Device Name
+     * 
+     */
+    private @Nullable String name;
+    /**
+     * @return Virtual Device type
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return Equinix-assigned Virtual Device identifier
+     * 
+     */
+    private @Nullable String uuid;
 
     private GetConnectionZSideAccessPointVirtualDevice() {}
+    /**
+     * @return Unique Resource Identifier
+     * 
+     */
     public String href() {
         return this.href;
     }
-    public String type() {
-        return this.type;
+    /**
+     * @return Customer-assigned Virtual Device Name
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
-    public String uuid() {
-        return this.uuid;
+    /**
+     * @return Virtual Device type
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+    /**
+     * @return Equinix-assigned Virtual Device identifier
+     * 
+     */
+    public Optional<String> uuid() {
+        return Optional.ofNullable(this.uuid);
     }
 
     public static Builder builder() {
@@ -34,12 +72,14 @@ public final class GetConnectionZSideAccessPointVirtualDevice {
     @CustomType.Builder
     public static final class Builder {
         private String href;
-        private String type;
-        private String uuid;
+        private @Nullable String name;
+        private @Nullable String type;
+        private @Nullable String uuid;
         public Builder() {}
         public Builder(GetConnectionZSideAccessPointVirtualDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.href = defaults.href;
+    	      this.name = defaults.name;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
         }
@@ -50,18 +90,24 @@ public final class GetConnectionZSideAccessPointVirtualDevice {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+        public Builder type(@Nullable String type) {
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uuid(@Nullable String uuid) {
+            this.uuid = uuid;
             return this;
         }
         public GetConnectionZSideAccessPointVirtualDevice build() {
             final var _resultValue = new GetConnectionZSideAccessPointVirtualDevice();
             _resultValue.href = href;
+            _resultValue.name = name;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
             return _resultValue;

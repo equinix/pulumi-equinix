@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
 //			_, err := metal.NewVlan(ctx, "testVlan", &metal.VlanArgs{
 //				Description: pulumi.String("test VLAN in SV"),
 //				Metro:       pulumi.String("sv"),
@@ -67,8 +68,7 @@ type LookupGatewayArgs struct {
 // A collection of values returned by getGateway.
 type LookupGatewayResult struct {
 	GatewayId string `pulumi:"gatewayId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string `pulumi:"id"`
 	// UUID of IP reservation block bound to the gateway.
 	IpReservationId string `pulumi:"ipReservationId"`
 	// Size of the private IPv4 subnet bound to this metal gateway. One of
@@ -126,7 +126,6 @@ func (o LookupGatewayResultOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.GatewayId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupGatewayResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Id }).(pulumi.StringOutput)
 }

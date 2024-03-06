@@ -13,7 +13,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ServiceProfileMarketingInfoProcessStepGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

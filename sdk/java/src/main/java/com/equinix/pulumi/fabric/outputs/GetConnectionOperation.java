@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOperation {
+    /**
+     * @return Connection status
+     * 
+     */
     private String equinixStatus;
+    /**
+     * @return Errors occurred
+     * 
+     */
     private List<GetConnectionOperationError> errors;
+    /**
+     * @return Connection provider readiness status
+     * 
+     */
     private String providerStatus;
 
     private GetConnectionOperation() {}
+    /**
+     * @return Connection status
+     * 
+     */
     public String equinixStatus() {
         return this.equinixStatus;
     }
+    /**
+     * @return Errors occurred
+     * 
+     */
     public List<GetConnectionOperationError> errors() {
         return this.errors;
     }
+    /**
+     * @return Connection provider readiness status
+     * 
+     */
     public String providerStatus() {
         return this.providerStatus;
     }

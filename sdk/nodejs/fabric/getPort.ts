@@ -7,6 +7,20 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const portDataName = equinix.fabric.getPort({
+ *     uuid: "<uuid_of_port>",
+ * });
+ * ```
+ */
 export function getPort(args: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,6 +79,9 @@ export interface GetPortResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Port Lag
+     */
     readonly lagEnabled: boolean;
     /**
      * Port location information
@@ -103,6 +120,20 @@ export interface GetPortResult {
      */
     readonly uuid: string;
 }
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const portDataName = equinix.fabric.getPort({
+ *     uuid: "<uuid_of_port>",
+ * });
+ * ```
+ */
 export function getPortOutput(args: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
     return pulumi.output(args).apply((a: any) => getPort(a, opts))
 }

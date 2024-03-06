@@ -84,7 +84,7 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/deviceLink:DeviceLink")]
     public partial class DeviceLink : global::Pulumi.CustomResource
@@ -108,6 +108,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the device link is scoped to.If you
+        /// leave it out, the device link will be created under the default project id of your organization.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// device link provisioning status on a given device. One of `PROVISIONING`,
@@ -209,6 +216,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Unique Identifier for the project resource where the device link is scoped to.If you
+        /// leave it out, the device link will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// device link subnet in CIDR format. Not required for link
         /// between self configured devices.
         /// </summary>
@@ -254,6 +268,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the device link is scoped to.If you
+        /// leave it out, the device link will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// device link provisioning status on a given device. One of `PROVISIONING`,

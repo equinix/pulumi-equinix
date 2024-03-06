@@ -13,37 +13,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceProfileAccount {
     /**
-     * @return Account Name
+     * @return Legal name of the accountholder.
      * 
      */
     private @Nullable String accountName;
     /**
-     * @return Account Number
+     * @return Equinix-assigned account number.
      * 
      */
     private @Nullable Integer accountNumber;
     /**
-     * @return Global Customer organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     private @Nullable String globalCustId;
     /**
-     * @return Global organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     private @Nullable String globalOrgId;
     /**
-     * @return Global organization name
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
      * 
      */
     private @Nullable String globalOrganizationName;
     /**
-     * @return Customer organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
      * 
      */
     private @Nullable Integer orgId;
     /**
-     * @return Customer organization name
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
      * 
      */
     private @Nullable String organizationName;
@@ -55,49 +55,49 @@ public final class ServiceProfileAccount {
 
     private ServiceProfileAccount() {}
     /**
-     * @return Account Name
+     * @return Legal name of the accountholder.
      * 
      */
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
     /**
-     * @return Account Number
+     * @return Equinix-assigned account number.
      * 
      */
     public Optional<Integer> accountNumber() {
         return Optional.ofNullable(this.accountNumber);
     }
     /**
-     * @return Global Customer organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     public Optional<String> globalCustId() {
         return Optional.ofNullable(this.globalCustId);
     }
     /**
-     * @return Global organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
      * 
      */
     public Optional<String> globalOrgId() {
         return Optional.ofNullable(this.globalOrgId);
     }
     /**
-     * @return Global organization name
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
      * 
      */
     public Optional<String> globalOrganizationName() {
         return Optional.ofNullable(this.globalOrganizationName);
     }
     /**
-     * @return Customer organization identifier
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
      * 
      */
     public Optional<Integer> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Customer organization name
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
      * 
      */
     public Optional<String> organizationName() {

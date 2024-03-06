@@ -87,6 +87,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Notifications;
         /// <summary>
+        /// Unique Identifier for the project resource where the device is scoped to.If you
+        /// leave it out, the device will be created under the default project id of your organization.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
         /// Device redundancy type applicable for HA devices, either
         /// primary or secondary.
         /// </summary>
@@ -107,6 +112,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// FQDN of SSH enabled interface on the device.
         /// </summary>
         public readonly string? SshIpFqdn;
+        /// <summary>
+        /// Definition of SSH key that will be provisioned on a device
+        /// </summary>
         public readonly Outputs.DeviceSecondaryDeviceSshKey? SshKey;
         /// <summary>
         /// interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
@@ -122,6 +130,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// `systemIpAddress`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? VendorConfiguration;
+        /// <summary>
+        /// device interface id picked for WAN
+        /// </summary>
         public readonly string? WanInterfaceId;
         /// <summary>
         /// Device location zone code.
@@ -162,6 +173,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             ImmutableArray<string> notifications,
 
+            string? projectId,
+
             string? redundancyType,
 
             string? redundantId,
@@ -200,6 +213,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             MgmtAclTemplateUuid = mgmtAclTemplateUuid;
             Name = name;
             Notifications = notifications;
+            ProjectId = projectId;
             RedundancyType = redundancyType;
             RedundantId = redundantId;
             Region = region;

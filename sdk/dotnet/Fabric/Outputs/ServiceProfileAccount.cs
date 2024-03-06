@@ -14,31 +14,31 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ServiceProfileAccount
     {
         /// <summary>
-        /// Account Name
+        /// Legal name of the accountholder.
         /// </summary>
         public readonly string? AccountName;
         /// <summary>
-        /// Account Number
+        /// Equinix-assigned account number.
         /// </summary>
         public readonly int? AccountNumber;
         /// <summary>
-        /// Global Customer organization identifier
+        /// Equinix-assigned ID of the subscriber's parent organization.
         /// </summary>
         public readonly string? GlobalCustId;
         /// <summary>
-        /// Global organization identifier
+        /// Equinix-assigned ID of the subscriber's parent organization.
         /// </summary>
         public readonly string? GlobalOrgId;
         /// <summary>
-        /// Global organization name
+        /// Equinix-assigned name of the subscriber's parent organization.
         /// </summary>
         public readonly string? GlobalOrganizationName;
         /// <summary>
-        /// Customer organization identifier
+        /// Equinix-assigned ID of the subscriber's organization.
         /// </summary>
         public readonly int? OrgId;
         /// <summary>
-        /// Customer organization name
+        /// Equinix-assigned name of the subscriber's organization.
         /// </summary>
         public readonly string? OrganizationName;
         /// <summary>

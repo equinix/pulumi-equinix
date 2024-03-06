@@ -13,14 +13,29 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     [OutputType]
     public sealed class GetDeviceInterfaceResult
     {
+        /// <summary>
+        /// Interface management type (Equinix Managed or empty)
+        /// </summary>
         public readonly string AssignedType;
+        /// <summary>
+        /// Interface identifier
+        /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// interface IP address
+        /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// Interface MAC addres
+        /// </summary>
         public readonly string MacAddress;
         /// <summary>
         /// Name of an existing Equinix Network Edge device
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Interface operational status (up or down)
+        /// </summary>
         public readonly string OperationalStatus;
         /// <summary>
         /// Device provisioning status
@@ -38,6 +53,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// * RESOURCE_UPGRADE_FAILED
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// Interface type
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

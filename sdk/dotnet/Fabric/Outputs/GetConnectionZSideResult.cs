@@ -13,16 +13,29 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideResult
     {
-        public readonly Outputs.GetConnectionZSideAccessPointResult AccessPoint;
-        public readonly Outputs.GetConnectionZSideServiceTokenResult ServiceToken;
+        /// <summary>
+        /// Point of access details
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideAccessPointResult? AccessPoint;
+        /// <summary>
+        /// Connection side additional information
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionZSideAdditionalInfoResult> AdditionalInfos;
+        /// <summary>
+        /// For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+        /// </summary>
+        public readonly Outputs.GetConnectionZSideServiceTokenResult? ServiceToken;
 
         [OutputConstructor]
         private GetConnectionZSideResult(
-            Outputs.GetConnectionZSideAccessPointResult accessPoint,
+            Outputs.GetConnectionZSideAccessPointResult? accessPoint,
 
-            Outputs.GetConnectionZSideServiceTokenResult serviceToken)
+            ImmutableArray<Outputs.GetConnectionZSideAdditionalInfoResult> additionalInfos,
+
+            Outputs.GetConnectionZSideServiceTokenResult? serviceToken)
         {
             AccessPoint = accessPoint;
+            AdditionalInfos = additionalInfos;
             ServiceToken = serviceToken;
         }
     }

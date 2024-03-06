@@ -16,17 +16,22 @@ class SshKeyArgs:
     def __init__(__self__, *,
                  public_key: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SshKey resource.
         :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
                interpolation function.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
+               leave it out, the ssh key will be created under the default project id of your organization.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
         """
         pulumi.set(__self__, "public_key", public_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -56,6 +61,19 @@ class SshKeyArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the SSH key is scoped to.If you
+        leave it out, the ssh key will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -72,12 +90,15 @@ class SshKeyArgs:
 class _SshKeyState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SshKey resources.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
+               leave it out, the ssh key will be created under the default project id of your organization.
         :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
                interpolation function.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
@@ -85,6 +106,8 @@ class _SshKeyState:
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if type is not None:
@@ -103,6 +126,19 @@ class _SshKeyState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the SSH key is scoped to.If you
+        leave it out, the ssh key will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="publicKey")
@@ -148,6 +184,7 @@ class SshKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -167,11 +204,13 @@ class SshKey(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
+               leave it out, the ssh key will be created under the default project id of your organization.
         :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
                interpolation function.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
@@ -198,7 +237,7 @@ class SshKey(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.
@@ -216,6 +255,7 @@ class SshKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -228,6 +268,7 @@ class SshKey(pulumi.CustomResource):
             __props__ = SshKeyArgs.__new__(SshKeyArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             if public_key is None and not opts.urn:
                 raise TypeError("Missing required property 'public_key'")
             __props__.__dict__["public_key"] = public_key
@@ -244,6 +285,7 @@ class SshKey(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             public_key: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'SshKey':
@@ -255,6 +297,8 @@ class SshKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of SSH key used for identification.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the SSH key is scoped to.If you
+               leave it out, the ssh key will be created under the default project id of your organization.
         :param pulumi.Input[str] public_key: The SSH public key. If this is a file, it can be read using the file
                interpolation function.
         :param pulumi.Input[str] type: The type of SSH key: `RSA` (default) or `DSA`.
@@ -265,6 +309,7 @@ class SshKey(pulumi.CustomResource):
         __props__ = _SshKeyState.__new__(_SshKeyState)
 
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["public_key"] = public_key
         __props__.__dict__["type"] = type
         __props__.__dict__["uuid"] = uuid
@@ -277,6 +322,15 @@ class SshKey(pulumi.CustomResource):
         The name of SSH key used for identification.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Unique Identifier for the project resource where the SSH key is scoped to.If you
+        leave it out, the ssh key will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="publicKey")

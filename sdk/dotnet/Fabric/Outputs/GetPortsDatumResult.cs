@@ -13,24 +13,78 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetPortsDatumResult
     {
+        /// <summary>
+        /// Customer account information that is associated with this port
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumAccountResult> Accounts;
+        /// <summary>
+        /// Port available bandwidth in Mbps
+        /// </summary>
         public readonly int AvailableBandwidth;
+        /// <summary>
+        /// Port bandwidth in Mbps
+        /// </summary>
         public readonly int Bandwidth;
+        /// <summary>
+        /// Captures port lifecycle change information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumChangeLogResult> ChangeLogs;
+        /// <summary>
+        /// Port description
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Port device
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumDeviceResult> Devices;
+        /// <summary>
+        /// Port encapsulation protocol
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumEncapsulationResult> Encapsulations;
+        /// <summary>
+        /// Port URI information
+        /// </summary>
         public readonly string Href;
+        /// <summary>
+        /// Port Lag
+        /// </summary>
         public readonly bool LagEnabled;
+        /// <summary>
+        /// Port location information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumLocationResult> Locations;
+        /// <summary>
+        /// Port name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Port specific operational data
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumOperationResult> Operations;
+        /// <summary>
+        /// Port redundancy information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumRedundancyResult> Redundancies;
+        /// <summary>
+        /// Port service type
+        /// </summary>
         public readonly string ServiceType;
+        /// <summary>
+        /// Port state
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Port type
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Port used bandwidth in Mbps
+        /// </summary>
         public readonly int UsedBandwidth;
-        public readonly string? Uuid;
+        /// <summary>
+        /// Equinix-assigned port identifier
+        /// </summary>
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetPortsDatumResult(
@@ -68,7 +122,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             int usedBandwidth,
 
-            string? uuid)
+            string uuid)
         {
             Accounts = accounts;
             AvailableBandwidth = availableBandwidth;

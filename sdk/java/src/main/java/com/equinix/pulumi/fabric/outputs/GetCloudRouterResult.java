@@ -15,8 +15,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudRouterResult {
@@ -25,19 +23,41 @@ public final class GetCloudRouterResult {
      * 
      */
     private List<GetCloudRouterAccount> accounts;
+    /**
+     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
+     * 
+     */
     private Integer bgpIpv4RoutesCount;
+    /**
+     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
+     * 
+     */
     private Integer bgpIpv6RoutesCount;
     /**
      * @return Captures Fabric Cloud Router lifecycle change information
      * 
      */
     private List<GetCloudRouterChangeLog> changeLogs;
+    /**
+     * @return Number of connections associated with this Fabric Cloud Router instance
+     * 
+     */
     private Integer connectionsCount;
     /**
      * @return Customer-provided Fabric Cloud Router description
      * 
      */
     private String description;
+    /**
+     * @return Number of distinct IPv4 routes
+     * 
+     */
+    private Integer distinctIpv4PrefixesCount;
+    /**
+     * @return Number of distinct IPv6 routes
+     * 
+     */
+    private Integer distinctIpv6PrefixesCount;
     /**
      * @return Equinix ASN
      * 
@@ -74,12 +94,12 @@ public final class GetCloudRouterResult {
      */
     private List<GetCloudRouterOrder> orders;
     /**
-     * @return Fabric Cloud Router package information
+     * @return Fabric Cloud Router Package Type
      * 
      */
     private List<GetCloudRouterPackage> packages;
     /**
-     * @return Project information
+     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     private List<GetCloudRouterProject> projects;
@@ -89,7 +109,7 @@ public final class GetCloudRouterResult {
      */
     private String state;
     /**
-     * @return Defines the Fabric Cloud Router type like XF_GATEWAY
+     * @return Defines the FCR type like; XF_ROUTER
      * 
      */
     private String type;
@@ -97,7 +117,7 @@ public final class GetCloudRouterResult {
      * @return Equinix-assigned Fabric Cloud Router identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private GetCloudRouterResult() {}
     /**
@@ -107,9 +127,17 @@ public final class GetCloudRouterResult {
     public List<GetCloudRouterAccount> accounts() {
         return this.accounts;
     }
+    /**
+     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
+     * 
+     */
     public Integer bgpIpv4RoutesCount() {
         return this.bgpIpv4RoutesCount;
     }
+    /**
+     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
+     * 
+     */
     public Integer bgpIpv6RoutesCount() {
         return this.bgpIpv6RoutesCount;
     }
@@ -120,6 +148,10 @@ public final class GetCloudRouterResult {
     public List<GetCloudRouterChangeLog> changeLogs() {
         return this.changeLogs;
     }
+    /**
+     * @return Number of connections associated with this Fabric Cloud Router instance
+     * 
+     */
     public Integer connectionsCount() {
         return this.connectionsCount;
     }
@@ -129,6 +161,20 @@ public final class GetCloudRouterResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Number of distinct IPv4 routes
+     * 
+     */
+    public Integer distinctIpv4PrefixesCount() {
+        return this.distinctIpv4PrefixesCount;
+    }
+    /**
+     * @return Number of distinct IPv6 routes
+     * 
+     */
+    public Integer distinctIpv6PrefixesCount() {
+        return this.distinctIpv6PrefixesCount;
     }
     /**
      * @return Equinix ASN
@@ -180,14 +226,14 @@ public final class GetCloudRouterResult {
         return this.orders;
     }
     /**
-     * @return Fabric Cloud Router package information
+     * @return Fabric Cloud Router Package Type
      * 
      */
     public List<GetCloudRouterPackage> packages() {
         return this.packages;
     }
     /**
-     * @return Project information
+     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     public List<GetCloudRouterProject> projects() {
@@ -201,7 +247,7 @@ public final class GetCloudRouterResult {
         return this.state;
     }
     /**
-     * @return Defines the Fabric Cloud Router type like XF_GATEWAY
+     * @return Defines the FCR type like; XF_ROUTER
      * 
      */
     public String type() {
@@ -211,8 +257,8 @@ public final class GetCloudRouterResult {
      * @return Equinix-assigned Fabric Cloud Router identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -230,6 +276,8 @@ public final class GetCloudRouterResult {
         private List<GetCloudRouterChangeLog> changeLogs;
         private Integer connectionsCount;
         private String description;
+        private Integer distinctIpv4PrefixesCount;
+        private Integer distinctIpv6PrefixesCount;
         private Integer equinixAsn;
         private String href;
         private String id;
@@ -241,7 +289,7 @@ public final class GetCloudRouterResult {
         private List<GetCloudRouterProject> projects;
         private String state;
         private String type;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(GetCloudRouterResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -251,6 +299,8 @@ public final class GetCloudRouterResult {
     	      this.changeLogs = defaults.changeLogs;
     	      this.connectionsCount = defaults.connectionsCount;
     	      this.description = defaults.description;
+    	      this.distinctIpv4PrefixesCount = defaults.distinctIpv4PrefixesCount;
+    	      this.distinctIpv6PrefixesCount = defaults.distinctIpv6PrefixesCount;
     	      this.equinixAsn = defaults.equinixAsn;
     	      this.href = defaults.href;
     	      this.id = defaults.id;
@@ -299,6 +349,16 @@ public final class GetCloudRouterResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder distinctIpv4PrefixesCount(Integer distinctIpv4PrefixesCount) {
+            this.distinctIpv4PrefixesCount = Objects.requireNonNull(distinctIpv4PrefixesCount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder distinctIpv6PrefixesCount(Integer distinctIpv6PrefixesCount) {
+            this.distinctIpv6PrefixesCount = Objects.requireNonNull(distinctIpv6PrefixesCount);
             return this;
         }
         @CustomType.Setter
@@ -372,8 +432,8 @@ public final class GetCloudRouterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-            this.uuid = uuid;
+        public Builder uuid(String uuid) {
+            this.uuid = Objects.requireNonNull(uuid);
             return this;
         }
         public GetCloudRouterResult build() {
@@ -384,6 +444,8 @@ public final class GetCloudRouterResult {
             _resultValue.changeLogs = changeLogs;
             _resultValue.connectionsCount = connectionsCount;
             _resultValue.description = description;
+            _resultValue.distinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
+            _resultValue.distinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
             _resultValue.equinixAsn = equinixAsn;
             _resultValue.href = href;
             _resultValue.id = id;

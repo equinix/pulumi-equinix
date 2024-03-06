@@ -16,6 +16,10 @@ public final class GetDevicesSort {
      * 
      */
     private String attribute;
+    /**
+     * @return Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+     * 
+     */
     private @Nullable String direction;
 
     private GetDevicesSort() {}
@@ -26,6 +30,10 @@ public final class GetDevicesSort {
     public String attribute() {
         return this.attribute;
     }
+    /**
+     * @return Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+     * 
+     */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }

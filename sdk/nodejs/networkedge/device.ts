@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+ * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.<break><break>
  */
 export class Device extends pulumi.CustomResource {
     /**
@@ -148,6 +148,17 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly coreCount!: pulumi.Output<number>;
     /**
+     * Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     */
+    public readonly diverseDeviceId!: pulumi.Output<string>;
+    /**
+     * Name of the device with diverse device UUID. This field is returned in device details if the
+     * device is created by passing diverse_device_id.
+     */
+    public /*out*/ readonly diverseDeviceName!: pulumi.Output<string>;
+    /**
      * Device hostname prefix.
      */
     public readonly hostname!: pulumi.Output<string>;
@@ -210,6 +221,11 @@ export class Device extends pulumi.CustomResource {
      * Device software package code.
      */
     public readonly packageCode!: pulumi.Output<string>;
+    /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     */
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * Purchase order number associated with a device order.
      */
@@ -315,6 +331,8 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["clusterDetails"] = state ? state.clusterDetails : undefined;
             resourceInputs["connectivity"] = state ? state.connectivity : undefined;
             resourceInputs["coreCount"] = state ? state.coreCount : undefined;
+            resourceInputs["diverseDeviceId"] = state ? state.diverseDeviceId : undefined;
+            resourceInputs["diverseDeviceName"] = state ? state.diverseDeviceName : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ibx"] = state ? state.ibx : undefined;
             resourceInputs["interfaceCount"] = state ? state.interfaceCount : undefined;
@@ -329,6 +347,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["orderReference"] = state ? state.orderReference : undefined;
             resourceInputs["packageCode"] = state ? state.packageCode : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["purchaseOrderNumber"] = state ? state.purchaseOrderNumber : undefined;
             resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
             resourceInputs["redundantId"] = state ? state.redundantId : undefined;
@@ -382,6 +401,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["clusterDetails"] = args ? args.clusterDetails : undefined;
             resourceInputs["connectivity"] = args ? args.connectivity : undefined;
             resourceInputs["coreCount"] = args ? args.coreCount : undefined;
+            resourceInputs["diverseDeviceId"] = args ? args.diverseDeviceId : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["interfaceCount"] = args ? args.interfaceCount : undefined;
             resourceInputs["licenseFile"] = args ? args.licenseFile : undefined;
@@ -393,6 +413,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["orderReference"] = args ? args.orderReference : undefined;
             resourceInputs["packageCode"] = args ? args.packageCode : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["purchaseOrderNumber"] = args ? args.purchaseOrderNumber : undefined;
             resourceInputs["secondaryDevice"] = args ? args.secondaryDevice : undefined;
             resourceInputs["selfManaged"] = args ? args.selfManaged : undefined;
@@ -405,6 +426,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["wanInterfaceId"] = args ? args.wanInterfaceId : undefined;
             resourceInputs["asn"] = undefined /*out*/;
+            resourceInputs["diverseDeviceName"] = undefined /*out*/;
             resourceInputs["ibx"] = undefined /*out*/;
             resourceInputs["interfaces"] = undefined /*out*/;
             resourceInputs["licenseStatus"] = undefined /*out*/;
@@ -466,6 +488,17 @@ export interface DeviceState {
      * Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
      */
     coreCount?: pulumi.Input<number>;
+    /**
+     * Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     */
+    diverseDeviceId?: pulumi.Input<string>;
+    /**
+     * Name of the device with diverse device UUID. This field is returned in device details if the
+     * device is created by passing diverse_device_id.
+     */
+    diverseDeviceName?: pulumi.Input<string>;
     /**
      * Device hostname prefix.
      */
@@ -529,6 +562,11 @@ export interface DeviceState {
      * Device software package code.
      */
     packageCode?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Purchase order number associated with a device order.
      */
@@ -654,6 +692,12 @@ export interface DeviceArgs {
      */
     coreCount: pulumi.Input<number>;
     /**
+     * Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     */
+    diverseDeviceId?: pulumi.Input<string>;
+    /**
      * Device hostname prefix.
      */
     hostname?: pulumi.Input<string>;
@@ -702,6 +746,11 @@ export interface DeviceArgs {
      * Device software package code.
      */
     packageCode: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * Purchase order number associated with a device order.
      */

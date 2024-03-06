@@ -7,8 +7,23 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
-export function getPorts(args?: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
-    args = args || {};
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch port by name
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const portsDataName = equinix.fabric.getPorts({
+ *     filter: {
+ *         name: "<name_of_port||port_prefix>",
+ *     },
+ * });
+ * ```
+ */
+export function getPorts(args: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getPorts:getPorts", {
@@ -23,7 +38,7 @@ export interface GetPortsArgs {
     /**
      * name
      */
-    filter?: inputs.fabric.GetPortsFilter;
+    filter: inputs.fabric.GetPortsFilter;
 }
 
 /**
@@ -31,19 +46,35 @@ export interface GetPortsArgs {
  */
 export interface GetPortsResult {
     /**
-     * List of  Ports
+     * List of Ports
      */
     readonly data: outputs.fabric.GetPortsDatum[];
     /**
      * name
      */
-    readonly filter?: outputs.fabric.GetPortsFilter;
+    readonly filter: outputs.fabric.GetPortsFilter;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
-export function getPortsOutput(args?: GetPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortsResult> {
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch port by name
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const portsDataName = equinix.fabric.getPorts({
+ *     filter: {
+ *         name: "<name_of_port||port_prefix>",
+ *     },
+ * });
+ * ```
+ */
+export function getPortsOutput(args: GetPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortsResult> {
     return pulumi.output(args).apply((a: any) => getPorts(a, opts))
 }
 
@@ -54,5 +85,5 @@ export interface GetPortsOutputArgs {
     /**
      * name
      */
-    filter?: pulumi.Input<inputs.fabric.GetPortsFilterArgs>;
+    filter: pulumi.Input<inputs.fabric.GetPortsFilterArgs>;
 }

@@ -24,6 +24,9 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("authenticationKey")]
         public Input<string>? AuthenticationKey { get; set; }
 
+        /// <summary>
+        /// **Deprecated** `gateway` Use `router` attribute instead
+        /// </summary>
         [Input("gateway")]
         public Input<Inputs.ConnectionASideAccessPointGatewayArgs>? Gateway { get; set; }
 
@@ -46,7 +49,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<Inputs.ConnectionASideAccessPointLocationArgs>? Location { get; set; }
 
         /// <summary>
-        /// Simplified Network
+        /// network access point information
         /// </summary>
         [Input("network")]
         public Input<Inputs.ConnectionASideAccessPointNetworkArgs>? Network { get; set; }
@@ -76,22 +79,10 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? ProviderConnectionId { get; set; }
 
         /// <summary>
-        /// Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+        /// Cloud Router access point information that replaces `gateway`
         /// </summary>
         [Input("router")]
         public Input<Inputs.ConnectionASideAccessPointRouterArgs>? Router { get; set; }
-
-        [Input("routingProtocols")]
-        private InputList<Inputs.ConnectionASideAccessPointRoutingProtocolArgs>? _routingProtocols;
-
-        /// <summary>
-        /// Access point routing protocols configuration
-        /// </summary>
-        public InputList<Inputs.ConnectionASideAccessPointRoutingProtocolArgs> RoutingProtocols
-        {
-            get => _routingProtocols ?? (_routingProtocols = new InputList<Inputs.ConnectionASideAccessPointRoutingProtocolArgs>());
-            set => _routingProtocols = value;
-        }
 
         /// <summary>
         /// Access point seller region

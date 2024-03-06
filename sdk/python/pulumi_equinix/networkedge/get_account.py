@@ -21,7 +21,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, id=None, metro_code=None, name=None, number=None, status=None, ucm_id=None):
+    def __init__(__self__, id=None, metro_code=None, name=None, number=None, project_id=None, status=None, ucm_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -34,6 +34,9 @@ class GetAccountResult:
         if number and not isinstance(number, str):
             raise TypeError("Expected argument 'number' to be a str")
         pulumi.set(__self__, "number", number)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -68,6 +71,11 @@ class GetAccountResult:
         return pulumi.get(self, "number")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         return pulumi.get(self, "status")
@@ -91,12 +99,14 @@ class AwaitableGetAccountResult(GetAccountResult):
             metro_code=self.metro_code,
             name=self.name,
             number=self.number,
+            project_id=self.project_id,
             status=self.status,
             ucm_id=self.ucm_id)
 
 
 def get_account(metro_code: Optional[str] = None,
                 name: Optional[str] = None,
+                project_id: Optional[str] = None,
                 status: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
@@ -113,19 +123,23 @@ def get_account(metro_code: Optional[str] = None,
     import pulumi_equinix as equinix
 
     dc = equinix.networkedge.get_account(metro_code="DC",
-        status="Active")
+        status="Active",
+        project_id="a86d7112-d740-4758-9c9c-31e66373746b")
     pulumi.export("number", dc.number)
     ```
 
 
     :param str metro_code: Account location metro code.
     :param str name: Account name for filtering.
+    :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you
+           leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
     :param str status: Account status for filtering. Possible values are: `Active`, `Processing`,
            `Submitted`, `Staged`.
     """
     __args__ = dict()
     __args__['metroCode'] = metro_code
     __args__['name'] = name
+    __args__['projectId'] = project_id
     __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:networkedge/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
@@ -135,6 +149,7 @@ def get_account(metro_code: Optional[str] = None,
         metro_code=pulumi.get(__ret__, 'metro_code'),
         name=pulumi.get(__ret__, 'name'),
         number=pulumi.get(__ret__, 'number'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         status=pulumi.get(__ret__, 'status'),
         ucm_id=pulumi.get(__ret__, 'ucm_id'))
 
@@ -142,6 +157,7 @@ def get_account(metro_code: Optional[str] = None,
 @_utilities.lift_output_func(get_account)
 def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
@@ -158,13 +174,16 @@ def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
     import pulumi_equinix as equinix
 
     dc = equinix.networkedge.get_account(metro_code="DC",
-        status="Active")
+        status="Active",
+        project_id="a86d7112-d740-4758-9c9c-31e66373746b")
     pulumi.export("number", dc.number)
     ```
 
 
     :param str metro_code: Account location metro code.
     :param str name: Account name for filtering.
+    :param str project_id: Unique Identifier for the project resource where the account is scoped to.If you
+           leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
     :param str status: Account status for filtering. Possible values are: `Active`, `Processing`,
            `Submitted`, `Staged`.
     """

@@ -11,9 +11,65 @@ namespace Pulumi.Equinix.Fabric
 {
     public static class GetRoutingProtocol
     {
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+        /// 
+        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var routingProtocolDataName = Equinix.Fabric.GetRoutingProtocol.Invoke(new()
+        ///     {
+        ///         ConnectionUuid = "&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;",
+        ///         Uuid = "&lt;uuid_of_routing_protocol&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetRoutingProtocolResult> InvokeAsync(GetRoutingProtocolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+        /// 
+        /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var routingProtocolDataName = Equinix.Fabric.GetRoutingProtocol.Invoke(new()
+        ///     {
+        ///         ConnectionUuid = "&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;",
+        ///         Uuid = "&lt;uuid_of_routing_protocol&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetRoutingProtocolResult> Invoke(GetRoutingProtocolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolInvokeArgs(), options.WithDefaults());
     }
@@ -22,70 +78,13 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetRoutingProtocolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Bidirectional Forwarding Detection
-        /// </summary>
-        [Input("bfd")]
-        public Inputs.GetRoutingProtocolBfdArgs? Bfd { get; set; }
-
-        /// <summary>
-        /// BGP authorization key
-        /// </summary>
-        [Input("bgpAuthKey")]
-        public string? BgpAuthKey { get; set; }
-
-        /// <summary>
-        /// Routing Protocol BGP IPv4
-        /// </summary>
-        [Input("bgpIpv4")]
-        public Inputs.GetRoutingProtocolBgpIpv4Args? BgpIpv4 { get; set; }
-
-        /// <summary>
-        /// Routing Protocol BGP IPv6
-        /// </summary>
-        [Input("bgpIpv6")]
-        public Inputs.GetRoutingProtocolBgpIpv6Args? BgpIpv6 { get; set; }
-
-        /// <summary>
         /// Connection URI associated with Routing Protocol
         /// </summary>
         [Input("connectionUuid", required: true)]
         public string ConnectionUuid { get; set; } = null!;
 
-        /// <summary>
-        /// Customer-provided ASN
-        /// </summary>
-        [Input("customerAsn")]
-        public int? CustomerAsn { get; set; }
-
-        /// <summary>
-        /// Customer-provided Fabric Routing Protocol description
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// Routing Protocol Direct IPv4
-        /// </summary>
-        [Input("directIpv4")]
-        public Inputs.GetRoutingProtocolDirectIpv4Args? DirectIpv4 { get; set; }
-
-        /// <summary>
-        /// Routing Protocol Direct IPv6
-        /// </summary>
-        [Input("directIpv6")]
-        public Inputs.GetRoutingProtocolDirectIpv6Args? DirectIpv6 { get; set; }
-
-        /// <summary>
-        /// Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
-
-        [Input("type")]
-        public string? Type { get; set; }
-
-        [Input("uuid")]
-        public string? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public string Uuid { get; set; } = null!;
 
         public GetRoutingProtocolArgs()
         {
@@ -96,70 +95,13 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetRoutingProtocolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Bidirectional Forwarding Detection
-        /// </summary>
-        [Input("bfd")]
-        public Input<Inputs.GetRoutingProtocolBfdInputArgs>? Bfd { get; set; }
-
-        /// <summary>
-        /// BGP authorization key
-        /// </summary>
-        [Input("bgpAuthKey")]
-        public Input<string>? BgpAuthKey { get; set; }
-
-        /// <summary>
-        /// Routing Protocol BGP IPv4
-        /// </summary>
-        [Input("bgpIpv4")]
-        public Input<Inputs.GetRoutingProtocolBgpIpv4InputArgs>? BgpIpv4 { get; set; }
-
-        /// <summary>
-        /// Routing Protocol BGP IPv6
-        /// </summary>
-        [Input("bgpIpv6")]
-        public Input<Inputs.GetRoutingProtocolBgpIpv6InputArgs>? BgpIpv6 { get; set; }
-
-        /// <summary>
         /// Connection URI associated with Routing Protocol
         /// </summary>
         [Input("connectionUuid", required: true)]
         public Input<string> ConnectionUuid { get; set; } = null!;
 
-        /// <summary>
-        /// Customer-provided ASN
-        /// </summary>
-        [Input("customerAsn")]
-        public Input<int>? CustomerAsn { get; set; }
-
-        /// <summary>
-        /// Customer-provided Fabric Routing Protocol description
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Routing Protocol Direct IPv4
-        /// </summary>
-        [Input("directIpv4")]
-        public Input<Inputs.GetRoutingProtocolDirectIpv4InputArgs>? DirectIpv4 { get; set; }
-
-        /// <summary>
-        /// Routing Protocol Direct IPv6
-        /// </summary>
-        [Input("directIpv6")]
-        public Input<Inputs.GetRoutingProtocolDirectIpv6InputArgs>? DirectIpv6 { get; set; }
-
-        /// <summary>
-        /// Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public Input<string> Uuid { get; set; } = null!;
 
         public GetRoutingProtocolInvokeArgs()
         {
@@ -174,19 +116,19 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Bidirectional Forwarding Detection
         /// </summary>
-        public readonly Outputs.GetRoutingProtocolBfdResult? Bfd;
+        public readonly Outputs.GetRoutingProtocolBfdResult Bfd;
         /// <summary>
         /// BGP authorization key
         /// </summary>
-        public readonly string? BgpAuthKey;
+        public readonly string BgpAuthKey;
         /// <summary>
         /// Routing Protocol BGP IPv4
         /// </summary>
-        public readonly Outputs.GetRoutingProtocolBgpIpv4Result? BgpIpv4;
+        public readonly Outputs.GetRoutingProtocolBgpIpv4Result BgpIpv4;
         /// <summary>
         /// Routing Protocol BGP IPv6
         /// </summary>
-        public readonly Outputs.GetRoutingProtocolBgpIpv6Result? BgpIpv6;
+        public readonly Outputs.GetRoutingProtocolBgpIpv6Result BgpIpv6;
         /// <summary>
         /// Captures Routing Protocol lifecycle change information
         /// </summary>
@@ -202,19 +144,19 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Customer-provided ASN
         /// </summary>
-        public readonly int? CustomerAsn;
+        public readonly int CustomerAsn;
         /// <summary>
         /// Customer-provided Fabric Routing Protocol description
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// Routing Protocol Direct IPv4
         /// </summary>
-        public readonly Outputs.GetRoutingProtocolDirectIpv4Result? DirectIpv4;
+        public readonly Outputs.GetRoutingProtocolDirectIpv4Result DirectIpv4;
         /// <summary>
         /// Routing Protocol Direct IPv6
         /// </summary>
-        public readonly Outputs.GetRoutingProtocolDirectIpv6Result? DirectIpv6;
+        public readonly Outputs.GetRoutingProtocolDirectIpv6Result DirectIpv6;
         /// <summary>
         /// Equinix ASN
         /// </summary>
@@ -230,7 +172,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Routing Protocol type-specific operational data
         /// </summary>
@@ -242,7 +184,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Defines the routing protocol type like BGP or DIRECT
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
         /// <summary>
         /// Equinix-assigned routing protocol identifier
         /// </summary>
@@ -250,13 +192,13 @@ namespace Pulumi.Equinix.Fabric
 
         [OutputConstructor]
         private GetRoutingProtocolResult(
-            Outputs.GetRoutingProtocolBfdResult? bfd,
+            Outputs.GetRoutingProtocolBfdResult bfd,
 
-            string? bgpAuthKey,
+            string bgpAuthKey,
 
-            Outputs.GetRoutingProtocolBgpIpv4Result? bgpIpv4,
+            Outputs.GetRoutingProtocolBgpIpv4Result bgpIpv4,
 
-            Outputs.GetRoutingProtocolBgpIpv6Result? bgpIpv6,
+            Outputs.GetRoutingProtocolBgpIpv6Result bgpIpv6,
 
             ImmutableArray<Outputs.GetRoutingProtocolChangeLogResult> changeLogs,
 
@@ -264,13 +206,13 @@ namespace Pulumi.Equinix.Fabric
 
             string connectionUuid,
 
-            int? customerAsn,
+            int customerAsn,
 
-            string? description,
+            string description,
 
-            Outputs.GetRoutingProtocolDirectIpv4Result? directIpv4,
+            Outputs.GetRoutingProtocolDirectIpv4Result directIpv4,
 
-            Outputs.GetRoutingProtocolDirectIpv6Result? directIpv6,
+            Outputs.GetRoutingProtocolDirectIpv6Result directIpv6,
 
             int equinixAsn,
 
@@ -278,13 +220,13 @@ namespace Pulumi.Equinix.Fabric
 
             string id,
 
-            string? name,
+            string name,
 
             ImmutableArray<Outputs.GetRoutingProtocolOperationResult> operations,
 
             string state,
 
-            string? type,
+            string type,
 
             string uuid)
         {

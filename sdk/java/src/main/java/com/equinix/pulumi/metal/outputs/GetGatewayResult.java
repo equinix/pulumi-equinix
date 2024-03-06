@@ -11,10 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetGatewayResult {
     private String gatewayId;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return UUID of IP reservation block bound to the gateway.
@@ -52,10 +48,6 @@ public final class GetGatewayResult {
     public String gatewayId() {
         return this.gatewayId;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

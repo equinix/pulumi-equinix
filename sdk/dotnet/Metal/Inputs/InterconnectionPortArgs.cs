@@ -12,34 +12,34 @@ namespace Pulumi.Equinix.Metal.Inputs
 
     public sealed class InterconnectionPortArgs : global::Pulumi.ResourceArgs
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
-        [Input("linkStatus")]
-        public Input<string>? LinkStatus { get; set; }
+        [Input("linkStatus", required: true)]
+        public Input<string> LinkStatus { get; set; } = null!;
 
         /// <summary>
         /// Name of the connection resource
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("role")]
-        public Input<string>? Role { get; set; }
+        [Input("role", required: true)]
+        public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
-        [Input("speed")]
-        public Input<int>? Speed { get; set; }
+        [Input("speed", required: true)]
+        public Input<int> Speed { get; set; } = null!;
 
         /// <summary>
         /// Status of the connection resource.
         /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
+        [Input("status", required: true)]
+        public Input<string> Status { get; set; } = null!;
 
-        [Input("virtualCircuitIds")]
+        [Input("virtualCircuitIds", required: true)]
         private InputList<object>? _virtualCircuitIds;
         public InputList<object> VirtualCircuitIds
         {

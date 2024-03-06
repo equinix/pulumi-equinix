@@ -16,6 +16,10 @@ public final class GetDeviceClusterDetailNode1 {
      * 
      */
     private String licenseFileId;
+    /**
+     * @return License token. This is necessary for Palo Alto clusters
+     * 
+     */
     private String licenseToken;
     /**
      * @return Name of an existing Equinix Network Edge device
@@ -27,6 +31,10 @@ public final class GetDeviceClusterDetailNode1 {
      * 
      */
     private String uuid;
+    /**
+     * @return An object that has fields relevant to the vendor of the cluster device
+     * 
+     */
     private List<GetDeviceClusterDetailNode1VendorConfiguration> vendorConfigurations;
 
     private GetDeviceClusterDetailNode1() {}
@@ -37,6 +45,10 @@ public final class GetDeviceClusterDetailNode1 {
     public String licenseFileId() {
         return this.licenseFileId;
     }
+    /**
+     * @return License token. This is necessary for Palo Alto clusters
+     * 
+     */
     public String licenseToken() {
         return this.licenseToken;
     }
@@ -54,6 +66,10 @@ public final class GetDeviceClusterDetailNode1 {
     public String uuid() {
         return this.uuid;
     }
+    /**
+     * @return An object that has fields relevant to the vendor of the cluster device
+     * 
+     */
     public List<GetDeviceClusterDetailNode1VendorConfiguration> vendorConfigurations() {
         return this.vendorConfigurations;
     }

@@ -18,8 +18,20 @@ public final class GetDeviceClusterDetail {
      * 
      */
     private String clusterId;
+    /**
+     * @return The name of the cluster device
+     * 
+     */
     private String clusterName;
+    /**
+     * @return An object that has node0 details
+     * 
+     */
     private List<GetDeviceClusterDetailNode0> node0s;
+    /**
+     * @return An object that has node1 details
+     * 
+     */
     private List<GetDeviceClusterDetailNode1> node1s;
     /**
      * @return The number of nodes in the cluster
@@ -35,12 +47,24 @@ public final class GetDeviceClusterDetail {
     public String clusterId() {
         return this.clusterId;
     }
+    /**
+     * @return The name of the cluster device
+     * 
+     */
     public String clusterName() {
         return this.clusterName;
     }
+    /**
+     * @return An object that has node0 details
+     * 
+     */
     public List<GetDeviceClusterDetailNode0> node0s() {
         return this.node0s;
     }
+    /**
+     * @return An object that has node1 details
+     * 
+     */
     public List<GetDeviceClusterDetailNode1> node1s() {
         return this.node1s;
     }

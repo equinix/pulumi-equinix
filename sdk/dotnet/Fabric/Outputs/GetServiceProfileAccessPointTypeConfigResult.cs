@@ -13,44 +13,86 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfileAccessPointTypeConfigResult
     {
-        public readonly bool AllowBandwidthAutoApproval;
-        public readonly bool AllowBandwidthUpgrade;
-        public readonly bool AllowCustomBandwidth;
-        public readonly bool AllowRemoteConnections;
-        public readonly ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult> ApiConfigs;
-        public readonly ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult> AuthenticationKeys;
-        public readonly double BandwidthAlertThreshold;
-        public readonly string ConnectionLabel;
-        public readonly bool ConnectionRedundancyRequired;
-        public readonly bool EnableAutoGenerateServiceKey;
-        public readonly ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult> LinkProtocolConfigs;
+        /// <summary>
+        /// Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+        /// </summary>
+        public readonly bool? AllowBandwidthAutoApproval;
+        /// <summary>
+        /// Availability of a bandwidth upgrade. The default is false
+        /// </summary>
+        public readonly bool? AllowBandwidthUpgrade;
+        /// <summary>
+        /// Setting to enable or disable the ability of the buyer to customize the bandwidth
+        /// </summary>
+        public readonly bool? AllowCustomBandwidth;
+        /// <summary>
+        /// Setting to allow or prohibit remote connections to the service profile
+        /// </summary>
+        public readonly bool? AllowRemoteConnections;
+        /// <summary>
+        /// Api configuration details
+        /// </summary>
+        public readonly Outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult? ApiConfig;
+        /// <summary>
+        /// Authentication key details
+        /// </summary>
+        public readonly Outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult? AuthenticationKey;
+        /// <summary>
+        /// Percentage of port bandwidth at which an allocation alert is generated
+        /// </summary>
+        public readonly double? BandwidthAlertThreshold;
+        /// <summary>
+        /// Custom name for Connection
+        /// </summary>
+        public readonly string? ConnectionLabel;
+        /// <summary>
+        /// Mandate redundant connections
+        /// </summary>
+        public readonly bool? ConnectionRedundancyRequired;
+        /// <summary>
+        /// Enable auto generate service key
+        /// </summary>
+        public readonly bool? EnableAutoGenerateServiceKey;
+        /// <summary>
+        /// Link protocol configuration details
+        /// </summary>
+        public readonly Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult? LinkProtocolConfig;
+        /// <summary>
+        /// Supported bandwidths
+        /// </summary>
         public readonly ImmutableArray<int> SupportedBandwidths;
+        /// <summary>
+        /// Type of access point type config - VD, COLO
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Colo/Port Uuid
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]
         private GetServiceProfileAccessPointTypeConfigResult(
-            bool allowBandwidthAutoApproval,
+            bool? allowBandwidthAutoApproval,
 
-            bool allowBandwidthUpgrade,
+            bool? allowBandwidthUpgrade,
 
-            bool allowCustomBandwidth,
+            bool? allowCustomBandwidth,
 
-            bool allowRemoteConnections,
+            bool? allowRemoteConnections,
 
-            ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult> apiConfigs,
+            Outputs.GetServiceProfileAccessPointTypeConfigApiConfigResult? apiConfig,
 
-            ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult> authenticationKeys,
+            Outputs.GetServiceProfileAccessPointTypeConfigAuthenticationKeyResult? authenticationKey,
 
-            double bandwidthAlertThreshold,
+            double? bandwidthAlertThreshold,
 
-            string connectionLabel,
+            string? connectionLabel,
 
-            bool connectionRedundancyRequired,
+            bool? connectionRedundancyRequired,
 
-            bool enableAutoGenerateServiceKey,
+            bool? enableAutoGenerateServiceKey,
 
-            ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult> linkProtocolConfigs,
+            Outputs.GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult? linkProtocolConfig,
 
             ImmutableArray<int> supportedBandwidths,
 
@@ -62,13 +104,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
             AllowBandwidthUpgrade = allowBandwidthUpgrade;
             AllowCustomBandwidth = allowCustomBandwidth;
             AllowRemoteConnections = allowRemoteConnections;
-            ApiConfigs = apiConfigs;
-            AuthenticationKeys = authenticationKeys;
+            ApiConfig = apiConfig;
+            AuthenticationKey = authenticationKey;
             BandwidthAlertThreshold = bandwidthAlertThreshold;
             ConnectionLabel = connectionLabel;
             ConnectionRedundancyRequired = connectionRedundancyRequired;
             EnableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            LinkProtocolConfigs = linkProtocolConfigs;
+            LinkProtocolConfig = linkProtocolConfig;
             SupportedBandwidths = supportedBandwidths;
             Type = type;
             Uuid = uuid;

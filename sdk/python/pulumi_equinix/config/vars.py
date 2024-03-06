@@ -45,10 +45,16 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def max_retries(self) -> Optional[int]:
+        """
+        Maximum number of retries.
+        """
         return __config__.get_int('maxRetries')
 
     @property
     def max_retry_wait_seconds(self) -> Optional[int]:
+        """
+        Maximum number of seconds to wait before retrying a request.
+        """
         return __config__.get_int('maxRetryWaitSeconds')
 
     @property

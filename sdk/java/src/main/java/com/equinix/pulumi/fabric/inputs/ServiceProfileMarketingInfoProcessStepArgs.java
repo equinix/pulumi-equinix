@@ -16,14 +16,14 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
     public static final ServiceProfileMarketingInfoProcessStepArgs Empty = new ServiceProfileMarketingInfoProcessStepArgs();
 
     /**
-     * Description
+     * Description of authorization key
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     public Optional<Output<String>> description() {
@@ -87,7 +87,7 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ServiceProfileMarketingInfoProcessStepArgs extends com.pulumi
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 

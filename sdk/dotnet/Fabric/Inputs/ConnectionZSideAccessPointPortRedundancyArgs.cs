@@ -13,7 +13,19 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionZSideAccessPointPortRedundancyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Priority type- PRIMARY, SECONDARY
+        /// Access point redundancy
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
+
+        /// <summary>
+        /// Connection priority in redundancy group - PRIMARY, SECONDARY
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }

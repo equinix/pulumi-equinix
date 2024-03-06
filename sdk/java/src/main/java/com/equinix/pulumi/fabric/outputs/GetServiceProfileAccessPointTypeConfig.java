@@ -13,64 +13,178 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfileAccessPointTypeConfig {
-    private Boolean allowBandwidthAutoApproval;
-    private Boolean allowBandwidthUpgrade;
-    private Boolean allowCustomBandwidth;
-    private Boolean allowRemoteConnections;
-    private List<GetServiceProfileAccessPointTypeConfigApiConfig> apiConfigs;
-    private List<GetServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys;
-    private Double bandwidthAlertThreshold;
-    private String connectionLabel;
-    private Boolean connectionRedundancyRequired;
-    private Boolean enableAutoGenerateServiceKey;
-    private List<GetServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
-    private List<Integer> supportedBandwidths;
+    /**
+     * @return Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+     * 
+     */
+    private @Nullable Boolean allowBandwidthAutoApproval;
+    /**
+     * @return Availability of a bandwidth upgrade. The default is false
+     * 
+     */
+    private @Nullable Boolean allowBandwidthUpgrade;
+    /**
+     * @return Setting to enable or disable the ability of the buyer to customize the bandwidth
+     * 
+     */
+    private @Nullable Boolean allowCustomBandwidth;
+    /**
+     * @return Setting to allow or prohibit remote connections to the service profile
+     * 
+     */
+    private @Nullable Boolean allowRemoteConnections;
+    /**
+     * @return Api configuration details
+     * 
+     */
+    private @Nullable GetServiceProfileAccessPointTypeConfigApiConfig apiConfig;
+    /**
+     * @return Authentication key details
+     * 
+     */
+    private @Nullable GetServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey;
+    /**
+     * @return Percentage of port bandwidth at which an allocation alert is generated
+     * 
+     */
+    private @Nullable Double bandwidthAlertThreshold;
+    /**
+     * @return Custom name for Connection
+     * 
+     */
+    private @Nullable String connectionLabel;
+    /**
+     * @return Mandate redundant connections
+     * 
+     */
+    private @Nullable Boolean connectionRedundancyRequired;
+    /**
+     * @return Enable auto generate service key
+     * 
+     */
+    private @Nullable Boolean enableAutoGenerateServiceKey;
+    /**
+     * @return Link protocol configuration details
+     * 
+     */
+    private @Nullable GetServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig;
+    /**
+     * @return Supported bandwidths
+     * 
+     */
+    private @Nullable List<Integer> supportedBandwidths;
+    /**
+     * @return Type of access point type config - VD, COLO
+     * 
+     */
     private String type;
+    /**
+     * @return Colo/Port Uuid
+     * 
+     */
     private String uuid;
 
     private GetServiceProfileAccessPointTypeConfig() {}
-    public Boolean allowBandwidthAutoApproval() {
-        return this.allowBandwidthAutoApproval;
+    /**
+     * @return Setting to enable or disable the ability of the buyer to change connection bandwidth without approval of the seller
+     * 
+     */
+    public Optional<Boolean> allowBandwidthAutoApproval() {
+        return Optional.ofNullable(this.allowBandwidthAutoApproval);
     }
-    public Boolean allowBandwidthUpgrade() {
-        return this.allowBandwidthUpgrade;
+    /**
+     * @return Availability of a bandwidth upgrade. The default is false
+     * 
+     */
+    public Optional<Boolean> allowBandwidthUpgrade() {
+        return Optional.ofNullable(this.allowBandwidthUpgrade);
     }
-    public Boolean allowCustomBandwidth() {
-        return this.allowCustomBandwidth;
+    /**
+     * @return Setting to enable or disable the ability of the buyer to customize the bandwidth
+     * 
+     */
+    public Optional<Boolean> allowCustomBandwidth() {
+        return Optional.ofNullable(this.allowCustomBandwidth);
     }
-    public Boolean allowRemoteConnections() {
-        return this.allowRemoteConnections;
+    /**
+     * @return Setting to allow or prohibit remote connections to the service profile
+     * 
+     */
+    public Optional<Boolean> allowRemoteConnections() {
+        return Optional.ofNullable(this.allowRemoteConnections);
     }
-    public List<GetServiceProfileAccessPointTypeConfigApiConfig> apiConfigs() {
-        return this.apiConfigs;
+    /**
+     * @return Api configuration details
+     * 
+     */
+    public Optional<GetServiceProfileAccessPointTypeConfigApiConfig> apiConfig() {
+        return Optional.ofNullable(this.apiConfig);
     }
-    public List<GetServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys() {
-        return this.authenticationKeys;
+    /**
+     * @return Authentication key details
+     * 
+     */
+    public Optional<GetServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKey() {
+        return Optional.ofNullable(this.authenticationKey);
     }
-    public Double bandwidthAlertThreshold() {
-        return this.bandwidthAlertThreshold;
+    /**
+     * @return Percentage of port bandwidth at which an allocation alert is generated
+     * 
+     */
+    public Optional<Double> bandwidthAlertThreshold() {
+        return Optional.ofNullable(this.bandwidthAlertThreshold);
     }
-    public String connectionLabel() {
-        return this.connectionLabel;
+    /**
+     * @return Custom name for Connection
+     * 
+     */
+    public Optional<String> connectionLabel() {
+        return Optional.ofNullable(this.connectionLabel);
     }
-    public Boolean connectionRedundancyRequired() {
-        return this.connectionRedundancyRequired;
+    /**
+     * @return Mandate redundant connections
+     * 
+     */
+    public Optional<Boolean> connectionRedundancyRequired() {
+        return Optional.ofNullable(this.connectionRedundancyRequired);
     }
-    public Boolean enableAutoGenerateServiceKey() {
-        return this.enableAutoGenerateServiceKey;
+    /**
+     * @return Enable auto generate service key
+     * 
+     */
+    public Optional<Boolean> enableAutoGenerateServiceKey() {
+        return Optional.ofNullable(this.enableAutoGenerateServiceKey);
     }
-    public List<GetServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs() {
-        return this.linkProtocolConfigs;
+    /**
+     * @return Link protocol configuration details
+     * 
+     */
+    public Optional<GetServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfig() {
+        return Optional.ofNullable(this.linkProtocolConfig);
     }
+    /**
+     * @return Supported bandwidths
+     * 
+     */
     public List<Integer> supportedBandwidths() {
-        return this.supportedBandwidths;
+        return this.supportedBandwidths == null ? List.of() : this.supportedBandwidths;
     }
+    /**
+     * @return Type of access point type config - VD, COLO
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Colo/Port Uuid
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -84,18 +198,18 @@ public final class GetServiceProfileAccessPointTypeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean allowBandwidthAutoApproval;
-        private Boolean allowBandwidthUpgrade;
-        private Boolean allowCustomBandwidth;
-        private Boolean allowRemoteConnections;
-        private List<GetServiceProfileAccessPointTypeConfigApiConfig> apiConfigs;
-        private List<GetServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys;
-        private Double bandwidthAlertThreshold;
-        private String connectionLabel;
-        private Boolean connectionRedundancyRequired;
-        private Boolean enableAutoGenerateServiceKey;
-        private List<GetServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
-        private List<Integer> supportedBandwidths;
+        private @Nullable Boolean allowBandwidthAutoApproval;
+        private @Nullable Boolean allowBandwidthUpgrade;
+        private @Nullable Boolean allowCustomBandwidth;
+        private @Nullable Boolean allowRemoteConnections;
+        private @Nullable GetServiceProfileAccessPointTypeConfigApiConfig apiConfig;
+        private @Nullable GetServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey;
+        private @Nullable Double bandwidthAlertThreshold;
+        private @Nullable String connectionLabel;
+        private @Nullable Boolean connectionRedundancyRequired;
+        private @Nullable Boolean enableAutoGenerateServiceKey;
+        private @Nullable GetServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig;
+        private @Nullable List<Integer> supportedBandwidths;
         private String type;
         private String uuid;
         public Builder() {}
@@ -105,85 +219,76 @@ public final class GetServiceProfileAccessPointTypeConfig {
     	      this.allowBandwidthUpgrade = defaults.allowBandwidthUpgrade;
     	      this.allowCustomBandwidth = defaults.allowCustomBandwidth;
     	      this.allowRemoteConnections = defaults.allowRemoteConnections;
-    	      this.apiConfigs = defaults.apiConfigs;
-    	      this.authenticationKeys = defaults.authenticationKeys;
+    	      this.apiConfig = defaults.apiConfig;
+    	      this.authenticationKey = defaults.authenticationKey;
     	      this.bandwidthAlertThreshold = defaults.bandwidthAlertThreshold;
     	      this.connectionLabel = defaults.connectionLabel;
     	      this.connectionRedundancyRequired = defaults.connectionRedundancyRequired;
     	      this.enableAutoGenerateServiceKey = defaults.enableAutoGenerateServiceKey;
-    	      this.linkProtocolConfigs = defaults.linkProtocolConfigs;
+    	      this.linkProtocolConfig = defaults.linkProtocolConfig;
     	      this.supportedBandwidths = defaults.supportedBandwidths;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
         }
 
         @CustomType.Setter
-        public Builder allowBandwidthAutoApproval(Boolean allowBandwidthAutoApproval) {
-            this.allowBandwidthAutoApproval = Objects.requireNonNull(allowBandwidthAutoApproval);
+        public Builder allowBandwidthAutoApproval(@Nullable Boolean allowBandwidthAutoApproval) {
+            this.allowBandwidthAutoApproval = allowBandwidthAutoApproval;
             return this;
         }
         @CustomType.Setter
-        public Builder allowBandwidthUpgrade(Boolean allowBandwidthUpgrade) {
-            this.allowBandwidthUpgrade = Objects.requireNonNull(allowBandwidthUpgrade);
+        public Builder allowBandwidthUpgrade(@Nullable Boolean allowBandwidthUpgrade) {
+            this.allowBandwidthUpgrade = allowBandwidthUpgrade;
             return this;
         }
         @CustomType.Setter
-        public Builder allowCustomBandwidth(Boolean allowCustomBandwidth) {
-            this.allowCustomBandwidth = Objects.requireNonNull(allowCustomBandwidth);
+        public Builder allowCustomBandwidth(@Nullable Boolean allowCustomBandwidth) {
+            this.allowCustomBandwidth = allowCustomBandwidth;
             return this;
         }
         @CustomType.Setter
-        public Builder allowRemoteConnections(Boolean allowRemoteConnections) {
-            this.allowRemoteConnections = Objects.requireNonNull(allowRemoteConnections);
+        public Builder allowRemoteConnections(@Nullable Boolean allowRemoteConnections) {
+            this.allowRemoteConnections = allowRemoteConnections;
             return this;
         }
         @CustomType.Setter
-        public Builder apiConfigs(List<GetServiceProfileAccessPointTypeConfigApiConfig> apiConfigs) {
-            this.apiConfigs = Objects.requireNonNull(apiConfigs);
-            return this;
-        }
-        public Builder apiConfigs(GetServiceProfileAccessPointTypeConfigApiConfig... apiConfigs) {
-            return apiConfigs(List.of(apiConfigs));
-        }
-        @CustomType.Setter
-        public Builder authenticationKeys(List<GetServiceProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys) {
-            this.authenticationKeys = Objects.requireNonNull(authenticationKeys);
-            return this;
-        }
-        public Builder authenticationKeys(GetServiceProfileAccessPointTypeConfigAuthenticationKey... authenticationKeys) {
-            return authenticationKeys(List.of(authenticationKeys));
-        }
-        @CustomType.Setter
-        public Builder bandwidthAlertThreshold(Double bandwidthAlertThreshold) {
-            this.bandwidthAlertThreshold = Objects.requireNonNull(bandwidthAlertThreshold);
+        public Builder apiConfig(@Nullable GetServiceProfileAccessPointTypeConfigApiConfig apiConfig) {
+            this.apiConfig = apiConfig;
             return this;
         }
         @CustomType.Setter
-        public Builder connectionLabel(String connectionLabel) {
-            this.connectionLabel = Objects.requireNonNull(connectionLabel);
+        public Builder authenticationKey(@Nullable GetServiceProfileAccessPointTypeConfigAuthenticationKey authenticationKey) {
+            this.authenticationKey = authenticationKey;
             return this;
         }
         @CustomType.Setter
-        public Builder connectionRedundancyRequired(Boolean connectionRedundancyRequired) {
-            this.connectionRedundancyRequired = Objects.requireNonNull(connectionRedundancyRequired);
+        public Builder bandwidthAlertThreshold(@Nullable Double bandwidthAlertThreshold) {
+            this.bandwidthAlertThreshold = bandwidthAlertThreshold;
             return this;
         }
         @CustomType.Setter
-        public Builder enableAutoGenerateServiceKey(Boolean enableAutoGenerateServiceKey) {
-            this.enableAutoGenerateServiceKey = Objects.requireNonNull(enableAutoGenerateServiceKey);
+        public Builder connectionLabel(@Nullable String connectionLabel) {
+            this.connectionLabel = connectionLabel;
             return this;
         }
         @CustomType.Setter
-        public Builder linkProtocolConfigs(List<GetServiceProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs) {
-            this.linkProtocolConfigs = Objects.requireNonNull(linkProtocolConfigs);
+        public Builder connectionRedundancyRequired(@Nullable Boolean connectionRedundancyRequired) {
+            this.connectionRedundancyRequired = connectionRedundancyRequired;
             return this;
         }
-        public Builder linkProtocolConfigs(GetServiceProfileAccessPointTypeConfigLinkProtocolConfig... linkProtocolConfigs) {
-            return linkProtocolConfigs(List.of(linkProtocolConfigs));
+        @CustomType.Setter
+        public Builder enableAutoGenerateServiceKey(@Nullable Boolean enableAutoGenerateServiceKey) {
+            this.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
+            return this;
         }
         @CustomType.Setter
-        public Builder supportedBandwidths(List<Integer> supportedBandwidths) {
-            this.supportedBandwidths = Objects.requireNonNull(supportedBandwidths);
+        public Builder linkProtocolConfig(@Nullable GetServiceProfileAccessPointTypeConfigLinkProtocolConfig linkProtocolConfig) {
+            this.linkProtocolConfig = linkProtocolConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder supportedBandwidths(@Nullable List<Integer> supportedBandwidths) {
+            this.supportedBandwidths = supportedBandwidths;
             return this;
         }
         public Builder supportedBandwidths(Integer... supportedBandwidths) {
@@ -205,13 +310,13 @@ public final class GetServiceProfileAccessPointTypeConfig {
             _resultValue.allowBandwidthUpgrade = allowBandwidthUpgrade;
             _resultValue.allowCustomBandwidth = allowCustomBandwidth;
             _resultValue.allowRemoteConnections = allowRemoteConnections;
-            _resultValue.apiConfigs = apiConfigs;
-            _resultValue.authenticationKeys = authenticationKeys;
+            _resultValue.apiConfig = apiConfig;
+            _resultValue.authenticationKey = authenticationKey;
             _resultValue.bandwidthAlertThreshold = bandwidthAlertThreshold;
             _resultValue.connectionLabel = connectionLabel;
             _resultValue.connectionRedundancyRequired = connectionRedundancyRequired;
             _resultValue.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            _resultValue.linkProtocolConfigs = linkProtocolConfigs;
+            _resultValue.linkProtocolConfig = linkProtocolConfig;
             _resultValue.supportedBandwidths = supportedBandwidths;
             _resultValue.type = type;
             _resultValue.uuid = uuid;

@@ -122,9 +122,6 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetGatewayResult
     {
         public readonly string GatewayId;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// UUID of IP reservation block bound to the gateway.

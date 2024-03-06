@@ -13,7 +13,13 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     [OutputType]
     public sealed class GetDeviceSshKeyResult
     {
+        /// <summary>
+        /// Reference by name to previously provisioned public SSH key
+        /// </summary>
         public readonly string KeyName;
+        /// <summary>
+        /// Username associated with given key
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

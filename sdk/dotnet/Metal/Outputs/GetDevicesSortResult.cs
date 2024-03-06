@@ -17,6 +17,9 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// The attribute used to filter. Filter attributes are case-sensitive
         /// </summary>
         public readonly string Attribute;
+        /// <summary>
+        /// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+        /// </summary>
         public readonly string? Direction;
 
         [OutputConstructor]

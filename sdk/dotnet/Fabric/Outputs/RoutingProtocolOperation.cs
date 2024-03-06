@@ -13,6 +13,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class RoutingProtocolOperation
     {
+        /// <summary>
+        /// Errors occurred
+        /// </summary>
         public readonly ImmutableArray<Outputs.RoutingProtocolOperationError> Errors;
 
         [OutputConstructor]

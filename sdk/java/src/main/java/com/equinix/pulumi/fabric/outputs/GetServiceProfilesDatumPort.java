@@ -6,34 +6,83 @@ package com.equinix.pulumi.fabric.outputs;
 import com.equinix.pulumi.fabric.outputs.GetServiceProfilesDatumPortLocation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfilesDatumPort {
-    private String crossConnectId;
-    private List<GetServiceProfilesDatumPortLocation> locations;
-    private String sellerRegion;
-    private String sellerRegionDescription;
+    /**
+     * @return Cross Connect Id
+     * 
+     */
+    private @Nullable String crossConnectId;
+    /**
+     * @return Colo/Port Location
+     * 
+     */
+    private @Nullable GetServiceProfilesDatumPortLocation location;
+    /**
+     * @return Seller Region
+     * 
+     */
+    private @Nullable String sellerRegion;
+    /**
+     * @return Seller Region details
+     * 
+     */
+    private @Nullable String sellerRegionDescription;
+    /**
+     * @return Colo/Port Type
+     * 
+     */
     private String type;
+    /**
+     * @return Colo/Port Uuid
+     * 
+     */
     private String uuid;
 
     private GetServiceProfilesDatumPort() {}
-    public String crossConnectId() {
-        return this.crossConnectId;
+    /**
+     * @return Cross Connect Id
+     * 
+     */
+    public Optional<String> crossConnectId() {
+        return Optional.ofNullable(this.crossConnectId);
     }
-    public List<GetServiceProfilesDatumPortLocation> locations() {
-        return this.locations;
+    /**
+     * @return Colo/Port Location
+     * 
+     */
+    public Optional<GetServiceProfilesDatumPortLocation> location() {
+        return Optional.ofNullable(this.location);
     }
-    public String sellerRegion() {
-        return this.sellerRegion;
+    /**
+     * @return Seller Region
+     * 
+     */
+    public Optional<String> sellerRegion() {
+        return Optional.ofNullable(this.sellerRegion);
     }
-    public String sellerRegionDescription() {
-        return this.sellerRegionDescription;
+    /**
+     * @return Seller Region details
+     * 
+     */
+    public Optional<String> sellerRegionDescription() {
+        return Optional.ofNullable(this.sellerRegionDescription);
     }
+    /**
+     * @return Colo/Port Type
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Colo/Port Uuid
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -47,17 +96,17 @@ public final class GetServiceProfilesDatumPort {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String crossConnectId;
-        private List<GetServiceProfilesDatumPortLocation> locations;
-        private String sellerRegion;
-        private String sellerRegionDescription;
+        private @Nullable String crossConnectId;
+        private @Nullable GetServiceProfilesDatumPortLocation location;
+        private @Nullable String sellerRegion;
+        private @Nullable String sellerRegionDescription;
         private String type;
         private String uuid;
         public Builder() {}
         public Builder(GetServiceProfilesDatumPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.crossConnectId = defaults.crossConnectId;
-    	      this.locations = defaults.locations;
+    	      this.location = defaults.location;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.sellerRegionDescription = defaults.sellerRegionDescription;
     	      this.type = defaults.type;
@@ -65,26 +114,23 @@ public final class GetServiceProfilesDatumPort {
         }
 
         @CustomType.Setter
-        public Builder crossConnectId(String crossConnectId) {
-            this.crossConnectId = Objects.requireNonNull(crossConnectId);
+        public Builder crossConnectId(@Nullable String crossConnectId) {
+            this.crossConnectId = crossConnectId;
             return this;
         }
         @CustomType.Setter
-        public Builder locations(List<GetServiceProfilesDatumPortLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
-            return this;
-        }
-        public Builder locations(GetServiceProfilesDatumPortLocation... locations) {
-            return locations(List.of(locations));
-        }
-        @CustomType.Setter
-        public Builder sellerRegion(String sellerRegion) {
-            this.sellerRegion = Objects.requireNonNull(sellerRegion);
+        public Builder location(@Nullable GetServiceProfilesDatumPortLocation location) {
+            this.location = location;
             return this;
         }
         @CustomType.Setter
-        public Builder sellerRegionDescription(String sellerRegionDescription) {
-            this.sellerRegionDescription = Objects.requireNonNull(sellerRegionDescription);
+        public Builder sellerRegion(@Nullable String sellerRegion) {
+            this.sellerRegion = sellerRegion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sellerRegionDescription(@Nullable String sellerRegionDescription) {
+            this.sellerRegionDescription = sellerRegionDescription;
             return this;
         }
         @CustomType.Setter
@@ -100,7 +146,7 @@ public final class GetServiceProfilesDatumPort {
         public GetServiceProfilesDatumPort build() {
             final var _resultValue = new GetServiceProfilesDatumPort();
             _resultValue.crossConnectId = crossConnectId;
-            _resultValue.locations = locations;
+            _resultValue.location = location;
             _resultValue.sellerRegion = sellerRegion;
             _resultValue.sellerRegionDescription = sellerRegionDescription;
             _resultValue.type = type;
