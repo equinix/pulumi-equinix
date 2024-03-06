@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOperationErrorAdditionalInfo {
+    /**
+     * @return Property at which the error potentially occurred
+     * 
+     */
     private String property;
+    /**
+     * @return Reason for the error
+     * 
+     */
     private String reason;
 
     private GetConnectionOperationErrorAdditionalInfo() {}
+    /**
+     * @return Property at which the error potentially occurred
+     * 
+     */
     public String property() {
         return this.property;
     }
+    /**
+     * @return Reason for the error
+     * 
+     */
     public String reason() {
         return this.reason;
     }

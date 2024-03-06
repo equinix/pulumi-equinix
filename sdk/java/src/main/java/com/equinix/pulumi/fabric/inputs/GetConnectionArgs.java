@@ -3,45 +3,26 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
-import com.equinix.pulumi.fabric.inputs.GetConnectionProjectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetConnectionArgs Empty = new GetConnectionArgs();
 
-    /**
-     * Project information
-     * 
-     */
-    @Import(name="project")
-    private @Nullable Output<GetConnectionProjectArgs> project;
+    @Import(name="uuid", required=true)
+    private Output<String> uuid;
 
-    /**
-     * @return Project information
-     * 
-     */
-    public Optional<Output<GetConnectionProjectArgs>> project() {
-        return Optional.ofNullable(this.project);
-    }
-
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
-
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public Output<String> uuid() {
+        return this.uuid;
     }
 
     private GetConnectionArgs() {}
 
     private GetConnectionArgs(GetConnectionArgs $) {
-        this.project = $.project;
         this.uuid = $.uuid;
     }
 
@@ -63,28 +44,7 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetConnectionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param project Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(@Nullable Output<GetConnectionProjectArgs> project) {
-            $.project = project;
-            return this;
-        }
-
-        /**
-         * @param project Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(GetConnectionProjectArgs project) {
-            return project(Output.of(project));
-        }
-
-        public Builder uuid(@Nullable Output<String> uuid) {
+        public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
@@ -94,6 +54,7 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetConnectionArgs build() {
+            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
             return $;
         }
     }

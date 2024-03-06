@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDeviceSecondaryDeviceSshKey {
+    /**
+     * @return Reference by name to previously provisioned public SSH key
+     * 
+     */
     private String keyName;
+    /**
+     * @return Username associated with given key
+     * 
+     */
     private String username;
 
     private GetDeviceSecondaryDeviceSshKey() {}
+    /**
+     * @return Reference by name to previously provisioned public SSH key
+     * 
+     */
     public String keyName() {
         return this.keyName;
     }
+    /**
+     * @return Username associated with given key
+     * 
+     */
     public String username() {
         return this.username;
     }

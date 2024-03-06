@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
+ * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
  */
 export class SshKey extends pulumi.CustomResource {
     /**
@@ -58,6 +58,11 @@ export class SshKey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you
+     * leave it out, the ssh key will be created under the default project id of your organization.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * The SSH public key. If this is a file, it can be read using the file
      * interpolation function.
      */
@@ -85,6 +90,7 @@ export class SshKey extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SshKeyState | undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["publicKey"] = state ? state.publicKey : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
@@ -94,6 +100,7 @@ export class SshKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'publicKey'");
             }
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["uuid"] = undefined /*out*/;
@@ -111,6 +118,11 @@ export interface SshKeyState {
      * The name of SSH key used for identification.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you
+     * leave it out, the ssh key will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * The SSH public key. If this is a file, it can be read using the file
      * interpolation function.
@@ -134,6 +146,11 @@ export interface SshKeyArgs {
      * The name of SSH key used for identification.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you
+     * leave it out, the ssh key will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * The SSH public key. If this is a file, it can be read using the file
      * interpolation function.

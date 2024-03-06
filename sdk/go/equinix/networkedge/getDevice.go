@@ -79,7 +79,11 @@ type LookupDeviceResult struct {
 	// Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT)
 	Connectivity string `pulumi:"connectivity"`
 	CoreCount    int    `pulumi:"coreCount"`
-	Hostname     string `pulumi:"hostname"`
+	// diverse device uuid
+	DiverseDeviceId string `pulumi:"diverseDeviceId"`
+	// Name of the device with diverse device UUID
+	DiverseDeviceName string `pulumi:"diverseDeviceName"`
+	Hostname          string `pulumi:"hostname"`
 	// Device location Equinix Business Exchange name
 	Ibx string `pulumi:"ibx"`
 	// The provider-assigned unique ID for this managed resource.
@@ -113,6 +117,7 @@ type LookupDeviceResult struct {
 	Notifications       []string `pulumi:"notifications"`
 	OrderReference      string   `pulumi:"orderReference"`
 	PackageCode         string   `pulumi:"packageCode"`
+	ProjectId           string   `pulumi:"projectId"`
 	PurchaseOrderNumber string   `pulumi:"purchaseOrderNumber"`
 	// Device redundancy type applicable for HA devices, either
 	// primary or secondary
@@ -236,6 +241,16 @@ func (o LookupDeviceResultOutput) CoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDeviceResult) int { return v.CoreCount }).(pulumi.IntOutput)
 }
 
+// diverse device uuid
+func (o LookupDeviceResultOutput) DiverseDeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.DiverseDeviceId }).(pulumi.StringOutput)
+}
+
+// Name of the device with diverse device UUID
+func (o LookupDeviceResultOutput) DiverseDeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.DiverseDeviceName }).(pulumi.StringOutput)
+}
+
 func (o LookupDeviceResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -313,6 +328,10 @@ func (o LookupDeviceResultOutput) OrderReference() pulumi.StringOutput {
 
 func (o LookupDeviceResultOutput) PackageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.PackageCode }).(pulumi.StringOutput)
+}
+
+func (o LookupDeviceResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o LookupDeviceResultOutput) PurchaseOrderNumber() pulumi.StringOutput {

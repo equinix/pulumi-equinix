@@ -31,9 +31,15 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         [Input("protocol", required: true)]
         public InputUnion<string, Pulumi.Equinix.NetworkEdge.AclRuleProtocolType> Protocol { get; set; } = null!;
 
+        /// <summary>
+        /// Inbound rule sequence number
+        /// </summary>
         [Input("sequenceNumber")]
         public Input<int>? SequenceNumber { get; set; }
 
+        /// <summary>
+        /// Type of traffic source used in a given inbound rule
+        /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 

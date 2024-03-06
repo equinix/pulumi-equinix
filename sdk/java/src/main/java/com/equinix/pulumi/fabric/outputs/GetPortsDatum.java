@@ -16,84 +16,226 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPortsDatum {
+    /**
+     * @return Customer account information that is associated with this port
+     * 
+     */
     private List<GetPortsDatumAccount> accounts;
+    /**
+     * @return Port available bandwidth in Mbps
+     * 
+     */
     private Integer availableBandwidth;
+    /**
+     * @return Port bandwidth in Mbps
+     * 
+     */
     private Integer bandwidth;
+    /**
+     * @return Captures port lifecycle change information
+     * 
+     */
     private List<GetPortsDatumChangeLog> changeLogs;
+    /**
+     * @return Port description
+     * 
+     */
     private String description;
+    /**
+     * @return Port device
+     * 
+     */
     private List<GetPortsDatumDevice> devices;
+    /**
+     * @return Port encapsulation protocol
+     * 
+     */
     private List<GetPortsDatumEncapsulation> encapsulations;
+    /**
+     * @return Port URI information
+     * 
+     */
     private String href;
+    /**
+     * @return Port Lag
+     * 
+     */
     private Boolean lagEnabled;
+    /**
+     * @return Port location information
+     * 
+     */
     private List<GetPortsDatumLocation> locations;
+    /**
+     * @return Port name
+     * 
+     */
     private String name;
+    /**
+     * @return Port specific operational data
+     * 
+     */
     private List<GetPortsDatumOperation> operations;
+    /**
+     * @return Port redundancy information
+     * 
+     */
     private List<GetPortsDatumRedundancy> redundancies;
+    /**
+     * @return Port service type
+     * 
+     */
     private String serviceType;
+    /**
+     * @return Port state
+     * 
+     */
     private String state;
+    /**
+     * @return Port type
+     * 
+     */
     private String type;
+    /**
+     * @return Port used bandwidth in Mbps
+     * 
+     */
     private Integer usedBandwidth;
-    private @Nullable String uuid;
+    /**
+     * @return Equinix-assigned port identifier
+     * 
+     */
+    private String uuid;
 
     private GetPortsDatum() {}
+    /**
+     * @return Customer account information that is associated with this port
+     * 
+     */
     public List<GetPortsDatumAccount> accounts() {
         return this.accounts;
     }
+    /**
+     * @return Port available bandwidth in Mbps
+     * 
+     */
     public Integer availableBandwidth() {
         return this.availableBandwidth;
     }
+    /**
+     * @return Port bandwidth in Mbps
+     * 
+     */
     public Integer bandwidth() {
         return this.bandwidth;
     }
+    /**
+     * @return Captures port lifecycle change information
+     * 
+     */
     public List<GetPortsDatumChangeLog> changeLogs() {
         return this.changeLogs;
     }
+    /**
+     * @return Port description
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Port device
+     * 
+     */
     public List<GetPortsDatumDevice> devices() {
         return this.devices;
     }
+    /**
+     * @return Port encapsulation protocol
+     * 
+     */
     public List<GetPortsDatumEncapsulation> encapsulations() {
         return this.encapsulations;
     }
+    /**
+     * @return Port URI information
+     * 
+     */
     public String href() {
         return this.href;
     }
+    /**
+     * @return Port Lag
+     * 
+     */
     public Boolean lagEnabled() {
         return this.lagEnabled;
     }
+    /**
+     * @return Port location information
+     * 
+     */
     public List<GetPortsDatumLocation> locations() {
         return this.locations;
     }
+    /**
+     * @return Port name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Port specific operational data
+     * 
+     */
     public List<GetPortsDatumOperation> operations() {
         return this.operations;
     }
+    /**
+     * @return Port redundancy information
+     * 
+     */
     public List<GetPortsDatumRedundancy> redundancies() {
         return this.redundancies;
     }
+    /**
+     * @return Port service type
+     * 
+     */
     public String serviceType() {
         return this.serviceType;
     }
+    /**
+     * @return Port state
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return Port type
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Port used bandwidth in Mbps
+     * 
+     */
     public Integer usedBandwidth() {
         return this.usedBandwidth;
     }
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    /**
+     * @return Equinix-assigned port identifier
+     * 
+     */
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -122,7 +264,7 @@ public final class GetPortsDatum {
         private String state;
         private String type;
         private Integer usedBandwidth;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(GetPortsDatum defaults) {
     	      Objects.requireNonNull(defaults);
@@ -253,8 +395,8 @@ public final class GetPortsDatum {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-            this.uuid = uuid;
+        public Builder uuid(String uuid) {
+            this.uuid = Objects.requireNonNull(uuid);
             return this;
         }
         public GetPortsDatum build() {

@@ -13,13 +13,37 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfilesDatumAccountResult
     {
+        /// <summary>
+        /// Legal name of the accountholder.
+        /// </summary>
         public readonly string AccountName;
+        /// <summary>
+        /// Equinix-assigned account number.
+        /// </summary>
         public readonly int AccountNumber;
+        /// <summary>
+        /// Equinix-assigned ID of the subscriber's parent organization.
+        /// </summary>
         public readonly string GlobalCustId;
+        /// <summary>
+        /// Equinix-assigned ID of the subscriber's parent organization.
+        /// </summary>
         public readonly string GlobalOrgId;
+        /// <summary>
+        /// Equinix-assigned name of the subscriber's parent organization.
+        /// </summary>
         public readonly string GlobalOrganizationName;
+        /// <summary>
+        /// Equinix-assigned ID of the subscriber's organization.
+        /// </summary>
         public readonly int OrgId;
+        /// <summary>
+        /// Equinix-assigned name of the subscriber's organization.
+        /// </summary>
         public readonly string OrganizationName;
+        /// <summary>
+        /// Enterprise datastore id
+        /// </summary>
         public readonly string UcmId;
 
         [OutputConstructor]

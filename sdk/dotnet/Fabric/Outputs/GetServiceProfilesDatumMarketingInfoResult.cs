@@ -13,17 +13,26 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfilesDatumMarketingInfoResult
     {
-        public readonly string Logo;
+        /// <summary>
+        /// Logo
+        /// </summary>
+        public readonly string? Logo;
+        /// <summary>
+        /// Process Step
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult> ProcessSteps;
-        public readonly bool Promotion;
+        /// <summary>
+        /// Promotion
+        /// </summary>
+        public readonly bool? Promotion;
 
         [OutputConstructor]
         private GetServiceProfilesDatumMarketingInfoResult(
-            string logo,
+            string? logo,
 
             ImmutableArray<Outputs.GetServiceProfilesDatumMarketingInfoProcessStepResult> processSteps,
 
-            bool promotion)
+            bool? promotion)
         {
             Logo = logo;
             ProcessSteps = processSteps;

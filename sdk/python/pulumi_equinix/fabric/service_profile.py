@@ -20,7 +20,6 @@ class ServiceProfileArgs:
                  description: pulumi.Input[str],
                  type: pulumi.Input[Union[str, 'ProfileType']],
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]] = None,
-                 account: Optional[pulumi.Input['ServiceProfileAccountArgs']] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]]] = None,
                  marketing_info: Optional[pulumi.Input['ServiceProfileMarketingInfoArgs']] = None,
@@ -36,10 +35,9 @@ class ServiceProfileArgs:
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None):
         """
         The set of arguments for constructing a ServiceProfile resource.
-        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] description: Description of authorization key
         :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
-        :param pulumi.Input['ServiceProfileAccountArgs'] account: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
         :param pulumi.Input['ServiceProfileMarketingInfoArgs'] marketing_info: Marketing Info
@@ -48,7 +46,7 @@ class ServiceProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
@@ -58,8 +56,6 @@ class ServiceProfileArgs:
         pulumi.set(__self__, "type", type)
         if access_point_type_configs is not None:
             pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
-        if account is not None:
-            pulumi.set(__self__, "account", account)
         if allowed_emails is not None:
             pulumi.set(__self__, "allowed_emails", allowed_emails)
         if custom_fields is not None:
@@ -91,7 +87,7 @@ class ServiceProfileArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        Description
+        Description of authorization key
         """
         return pulumi.get(self, "description")
 
@@ -122,18 +118,6 @@ class ServiceProfileArgs:
     @access_point_type_configs.setter
     def access_point_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]]]):
         pulumi.set(self, "access_point_type_configs", value)
-
-    @property
-    @pulumi.getter
-    def account(self) -> Optional[pulumi.Input['ServiceProfileAccountArgs']]:
-        """
-        Account
-        """
-        return pulumi.get(self, "account")
-
-    @account.setter
-    def account(self, value: Optional[pulumi.Input['ServiceProfileAccountArgs']]):
-        pulumi.set(self, "account", value)
 
     @property
     @pulumi.getter(name="allowedEmails")
@@ -235,7 +219,7 @@ class ServiceProfileArgs:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Self Profile
+        Self Profile indicating if the profile is created for customer's  self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -318,11 +302,11 @@ class _ServiceProfileState:
         """
         Input properties used for looking up and filtering ServiceProfile resources.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
-        :param pulumi.Input['ServiceProfileAccountArgs'] account: Account
+        :param pulumi.Input['ServiceProfileAccountArgs'] account: Service Profile Owner Account Information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input['ServiceProfileChangeLogArgs'] change_log: Captures connection lifecycle change information
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
-        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] description: Description of authorization key
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input['ServiceProfileMarketingInfoArgs'] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]] metros: Access point config information
@@ -330,7 +314,7 @@ class _ServiceProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
@@ -395,7 +379,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def account(self) -> Optional[pulumi.Input['ServiceProfileAccountArgs']]:
         """
-        Account
+        Service Profile Owner Account Information
         """
         return pulumi.get(self, "account")
 
@@ -443,7 +427,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description
+        Description of authorization key
         """
         return pulumi.get(self, "description")
 
@@ -539,7 +523,7 @@ class _ServiceProfileState:
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> Optional[pulumi.Input[bool]]:
         """
-        Self Profile
+        Self Profile indicating if the profile is created for customer's  self use
         """
         return pulumi.get(self, "self_profile")
 
@@ -626,7 +610,6 @@ class ServiceProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
-                 account: Optional[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -644,6 +627,8 @@ class ServiceProfile(pulumi.CustomResource):
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
         """
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+
         ## Example Usage
         ```python
         import pulumi
@@ -697,17 +682,16 @@ class ServiceProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
-        :param pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']] account: Account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
-        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] description: Description of authorization key
         :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
         :param pulumi.Input[str] name: Metro Name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
@@ -721,6 +705,8 @@ class ServiceProfile(pulumi.CustomResource):
                  args: ServiceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+
         ## Example Usage
         ```python
         import pulumi
@@ -787,7 +773,6 @@ class ServiceProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_point_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]]] = None,
-                 account: Optional[pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']]] = None,
                  allowed_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -813,7 +798,6 @@ class ServiceProfile(pulumi.CustomResource):
             __props__ = ServiceProfileArgs.__new__(ServiceProfileArgs)
 
             __props__.__dict__["access_point_type_configs"] = access_point_type_configs
-            __props__.__dict__["account"] = account
             __props__.__dict__["allowed_emails"] = allowed_emails
             __props__.__dict__["custom_fields"] = custom_fields
             if description is None and not opts.urn:
@@ -833,6 +817,7 @@ class ServiceProfile(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["virtual_devices"] = virtual_devices
             __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["account"] = None
             __props__.__dict__["change_log"] = None
             __props__.__dict__["href"] = None
             __props__.__dict__["uuid"] = None
@@ -874,11 +859,11 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
-        :param pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']] account: Account
+        :param pulumi.Input[pulumi.InputType['ServiceProfileAccountArgs']] account: Service Profile Owner Account Information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
-        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] description: Description of authorization key
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
@@ -886,7 +871,7 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
-        :param pulumi.Input[bool] self_profile: Self Profile
+        :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
         :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
@@ -930,9 +915,9 @@ class ServiceProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def account(self) -> pulumi.Output[Optional['outputs.ServiceProfileAccount']]:
+    def account(self) -> pulumi.Output['outputs.ServiceProfileAccount']:
         """
-        Account
+        Service Profile Owner Account Information
         """
         return pulumi.get(self, "account")
 
@@ -964,7 +949,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Description
+        Description of authorization key
         """
         return pulumi.get(self, "description")
 
@@ -1028,7 +1013,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter(name="selfProfile")
     def self_profile(self) -> pulumi.Output[Optional[bool]]:
         """
-        Self Profile
+        Self Profile indicating if the profile is created for customer's  self use
         """
         return pulumi.get(self, "self_profile")
 

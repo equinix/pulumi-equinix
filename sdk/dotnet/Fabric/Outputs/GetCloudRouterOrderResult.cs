@@ -13,9 +13,21 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetCloudRouterOrderResult
     {
+        /// <summary>
+        /// Billing tier for connection bandwidth
+        /// </summary>
         public readonly string BillingTier;
+        /// <summary>
+        /// Order Identification
+        /// </summary>
         public readonly string OrderId;
+        /// <summary>
+        /// Order Reference Number
+        /// </summary>
         public readonly string OrderNumber;
+        /// <summary>
+        /// Purchase order number
+        /// </summary>
         public readonly string PurchaseOrderNumber;
 
         [OutputConstructor]

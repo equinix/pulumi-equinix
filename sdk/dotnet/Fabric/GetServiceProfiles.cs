@@ -11,9 +11,75 @@ namespace Pulumi.Equinix.Fabric
 {
     public static class GetServiceProfiles
     {
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceProfilesDataName = Equinix.Fabric.GetServiceProfiles.Invoke(new()
+        ///     {
+        ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
+        ///         {
+        ///             Operator = "=",
+        ///             Property = "/name",
+        ///             Values = new[]
+        ///             {
+        ///                 "&lt;list_of_profiles_to_return&gt;",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetServiceProfilesResult> InvokeAsync(GetServiceProfilesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceProfilesDataName = Equinix.Fabric.GetServiceProfiles.Invoke(new()
+        ///     {
+        ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
+        ///         {
+        ///             Operator = "=",
+        ///             Property = "/name",
+        ///             Values = new[]
+        ///             {
+        ///                 "&lt;list_of_profiles_to_return&gt;",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetServiceProfilesResult> Invoke(GetServiceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesInvokeArgs(), options.WithDefaults());
     }
@@ -40,7 +106,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        /// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         /// </summary>
         [Input("viewPoint")]
         public string? ViewPoint { get; set; }
@@ -72,7 +138,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        /// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         /// </summary>
         [Input("viewPoint")]
         public Input<string>? ViewPoint { get; set; }
@@ -88,7 +154,7 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetServiceProfilesResult
     {
         /// <summary>
-        /// List of  Service Profiles
+        /// List of Service Profiles
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumResult> Data;
         /// <summary>
@@ -104,7 +170,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesSortResult> Sort;
         /// <summary>
-        /// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        /// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         /// </summary>
         public readonly string? ViewPoint;
 

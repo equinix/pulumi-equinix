@@ -4,21 +4,53 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAccessPoint;
+import com.equinix.pulumi.fabric.outputs.GetConnectionZSideAdditionalInfo;
 import com.equinix.pulumi.fabric.outputs.GetConnectionZSideServiceToken;
 import com.pulumi.core.annotations.CustomType;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionZSide {
-    private GetConnectionZSideAccessPoint accessPoint;
-    private GetConnectionZSideServiceToken serviceToken;
+    /**
+     * @return Point of access details
+     * 
+     */
+    private @Nullable GetConnectionZSideAccessPoint accessPoint;
+    /**
+     * @return Connection side additional information
+     * 
+     */
+    private @Nullable List<GetConnectionZSideAdditionalInfo> additionalInfos;
+    /**
+     * @return For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+     * 
+     */
+    private @Nullable GetConnectionZSideServiceToken serviceToken;
 
     private GetConnectionZSide() {}
-    public GetConnectionZSideAccessPoint accessPoint() {
-        return this.accessPoint;
+    /**
+     * @return Point of access details
+     * 
+     */
+    public Optional<GetConnectionZSideAccessPoint> accessPoint() {
+        return Optional.ofNullable(this.accessPoint);
     }
-    public GetConnectionZSideServiceToken serviceToken() {
-        return this.serviceToken;
+    /**
+     * @return Connection side additional information
+     * 
+     */
+    public List<GetConnectionZSideAdditionalInfo> additionalInfos() {
+        return this.additionalInfos == null ? List.of() : this.additionalInfos;
+    }
+    /**
+     * @return For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+     * 
+     */
+    public Optional<GetConnectionZSideServiceToken> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     public static Builder builder() {
@@ -30,28 +62,39 @@ public final class GetConnectionZSide {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetConnectionZSideAccessPoint accessPoint;
-        private GetConnectionZSideServiceToken serviceToken;
+        private @Nullable GetConnectionZSideAccessPoint accessPoint;
+        private @Nullable List<GetConnectionZSideAdditionalInfo> additionalInfos;
+        private @Nullable GetConnectionZSideServiceToken serviceToken;
         public Builder() {}
         public Builder(GetConnectionZSide defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPoint = defaults.accessPoint;
+    	      this.additionalInfos = defaults.additionalInfos;
     	      this.serviceToken = defaults.serviceToken;
         }
 
         @CustomType.Setter
-        public Builder accessPoint(GetConnectionZSideAccessPoint accessPoint) {
-            this.accessPoint = Objects.requireNonNull(accessPoint);
+        public Builder accessPoint(@Nullable GetConnectionZSideAccessPoint accessPoint) {
+            this.accessPoint = accessPoint;
             return this;
         }
         @CustomType.Setter
-        public Builder serviceToken(GetConnectionZSideServiceToken serviceToken) {
-            this.serviceToken = Objects.requireNonNull(serviceToken);
+        public Builder additionalInfos(@Nullable List<GetConnectionZSideAdditionalInfo> additionalInfos) {
+            this.additionalInfos = additionalInfos;
+            return this;
+        }
+        public Builder additionalInfos(GetConnectionZSideAdditionalInfo... additionalInfos) {
+            return additionalInfos(List.of(additionalInfos));
+        }
+        @CustomType.Setter
+        public Builder serviceToken(@Nullable GetConnectionZSideServiceToken serviceToken) {
+            this.serviceToken = serviceToken;
             return this;
         }
         public GetConnectionZSide build() {
             final var _resultValue = new GetConnectionZSide();
             _resultValue.accessPoint = accessPoint;
+            _resultValue.additionalInfos = additionalInfos;
             _resultValue.serviceToken = serviceToken;
             return _resultValue;
         }

@@ -9,6 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DeviceSshKey {
+    /**
+     * @return Reference by name to previously provisioned public SSH key
+     * 
+     */
     private String keyName;
     /**
      * @return username associated with given key.
@@ -17,6 +21,10 @@ public final class DeviceSshKey {
     private String username;
 
     private DeviceSshKey() {}
+    /**
+     * @return Reference by name to previously provisioned public SSH key
+     * 
+     */
     public String keyName() {
         return this.keyName;
     }

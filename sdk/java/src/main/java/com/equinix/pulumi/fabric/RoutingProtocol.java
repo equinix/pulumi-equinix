@@ -25,6 +25,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+ * 
+ * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

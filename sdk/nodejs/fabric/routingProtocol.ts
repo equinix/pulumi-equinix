@@ -8,6 +8,10 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+ *
+ * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.LookupConnection(ctx, &fabric.LookupConnectionArgs{
+//				Uuid: "<uuid_of_connection>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
@@ -23,9 +50,7 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 
 // A collection of arguments for invoking getConnection.
 type LookupConnectionArgs struct {
-	// Project information
-	Project *GetConnectionProject `pulumi:"project"`
-	Uuid    *string               `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // A collection of values returned by getConnection.
@@ -35,7 +60,7 @@ type LookupConnectionResult struct {
 	// Customer account information that is associated with this connection
 	Account GetConnectionAccount `pulumi:"account"`
 	// Connection additional information
-	AdditionalInfo []GetConnectionAdditionalInfo `pulumi:"additionalInfo"`
+	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
@@ -54,20 +79,20 @@ type LookupConnectionResult struct {
 	Name string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []GetConnectionNotification `pulumi:"notifications"`
-	// Connection specific operational data
+	// Connection type-specific operational data
 	Operation GetConnectionOperation `pulumi:"operation"`
-	// Order related to this connection information
+	// Order details
 	Order GetConnectionOrder `pulumi:"order"`
 	// Project information
-	Project *GetConnectionProject `pulumi:"project"`
-	// Redundancy Information
+	Project GetConnectionProject `pulumi:"project"`
+	// Connection Redundancy Configuration
 	Redundancy GetConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State string `pulumi:"state"`
-	// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type string `pulumi:"type"`
 	// Equinix-assigned connection identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide GetConnectionZSide `pulumi:"zSide"`
 }
@@ -87,9 +112,7 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 
 // A collection of arguments for invoking getConnection.
 type LookupConnectionOutputArgs struct {
-	// Project information
-	Project GetConnectionProjectPtrInput `pulumi:"project"`
-	Uuid    pulumi.StringPtrInput        `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (LookupConnectionOutputArgs) ElementType() reflect.Type {
@@ -122,8 +145,8 @@ func (o LookupConnectionResultOutput) Account() GetConnectionAccountOutput {
 }
 
 // Connection additional information
-func (o LookupConnectionResultOutput) AdditionalInfo() GetConnectionAdditionalInfoArrayOutput {
-	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionAdditionalInfo { return v.AdditionalInfo }).(GetConnectionAdditionalInfoArrayOutput)
+func (o LookupConnectionResultOutput) AdditionalInfo() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []map[string]interface{} { return v.AdditionalInfo }).(pulumi.MapArrayOutput)
 }
 
 // Connection bandwidth in Mbps
@@ -171,22 +194,22 @@ func (o LookupConnectionResultOutput) Notifications() GetConnectionNotificationA
 	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionNotification { return v.Notifications }).(GetConnectionNotificationArrayOutput)
 }
 
-// Connection specific operational data
+// Connection type-specific operational data
 func (o LookupConnectionResultOutput) Operation() GetConnectionOperationOutput {
 	return o.ApplyT(func(v LookupConnectionResult) GetConnectionOperation { return v.Operation }).(GetConnectionOperationOutput)
 }
 
-// Order related to this connection information
+// Order details
 func (o LookupConnectionResultOutput) Order() GetConnectionOrderOutput {
 	return o.ApplyT(func(v LookupConnectionResult) GetConnectionOrder { return v.Order }).(GetConnectionOrderOutput)
 }
 
 // Project information
-func (o LookupConnectionResultOutput) Project() GetConnectionProjectPtrOutput {
-	return o.ApplyT(func(v LookupConnectionResult) *GetConnectionProject { return v.Project }).(GetConnectionProjectPtrOutput)
+func (o LookupConnectionResultOutput) Project() GetConnectionProjectOutput {
+	return o.ApplyT(func(v LookupConnectionResult) GetConnectionProject { return v.Project }).(GetConnectionProjectOutput)
 }
 
-// Redundancy Information
+// Connection Redundancy Configuration
 func (o LookupConnectionResultOutput) Redundancy() GetConnectionRedundancyOutput {
 	return o.ApplyT(func(v LookupConnectionResult) GetConnectionRedundancy { return v.Redundancy }).(GetConnectionRedundancyOutput)
 }
@@ -196,14 +219,14 @@ func (o LookupConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 func (o LookupConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Equinix-assigned connection identifier
-func (o LookupConnectionResultOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupConnectionResult) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o LookupConnectionResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 // Destination or Provider side connection configuration object of the multi-segment connection

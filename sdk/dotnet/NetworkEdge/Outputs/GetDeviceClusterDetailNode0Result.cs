@@ -17,6 +17,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// Unique identifier of applied license file
         /// </summary>
         public readonly string LicenseFileId;
+        /// <summary>
+        /// License token. This is necessary for Palo Alto clusters
+        /// </summary>
         public readonly string LicenseToken;
         /// <summary>
         /// Name of an existing Equinix Network Edge device
@@ -26,6 +29,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// UUID of an existing Equinix Network Edge device
         /// </summary>
         public readonly string Uuid;
+        /// <summary>
+        /// An object that has fields relevant to the vendor of the cluster device
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceClusterDetailNode0VendorConfigurationResult> VendorConfigurations;
 
         [OutputConstructor]

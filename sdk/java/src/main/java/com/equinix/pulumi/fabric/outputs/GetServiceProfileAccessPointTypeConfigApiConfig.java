@@ -8,38 +8,96 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfileAccessPointTypeConfigApiConfig {
-    private Boolean allowOverSubscription;
-    private Boolean apiAvailable;
-    private Boolean bandwidthFromApi;
-    private Boolean equinixManagedPort;
-    private Boolean equinixManagedVlan;
-    private String integrationId;
-    private Integer overSubscriptionLimit;
+    /**
+     * @return Setting showing that oversubscription support is available (true) or not (false). The default is false
+     * 
+     */
+    private @Nullable Boolean allowOverSubscription;
+    /**
+     * @return Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
+     * 
+     */
+    private @Nullable Boolean apiAvailable;
+    /**
+     * @return Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+     * 
+     */
+    private @Nullable Boolean bandwidthFromApi;
+    /**
+     * @return Setting indicating that the port is managed by Equinix (true) or not (false)
+     * 
+     */
+    private @Nullable Boolean equinixManagedPort;
+    /**
+     * @return Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+     * 
+     */
+    private @Nullable Boolean equinixManagedVlan;
+    /**
+     * @return A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
+     * 
+     */
+    private @Nullable String integrationId;
+    /**
+     * @return Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+     * 
+     */
+    private @Nullable Integer overSubscriptionLimit;
 
     private GetServiceProfileAccessPointTypeConfigApiConfig() {}
-    public Boolean allowOverSubscription() {
-        return this.allowOverSubscription;
+    /**
+     * @return Setting showing that oversubscription support is available (true) or not (false). The default is false
+     * 
+     */
+    public Optional<Boolean> allowOverSubscription() {
+        return Optional.ofNullable(this.allowOverSubscription);
     }
-    public Boolean apiAvailable() {
-        return this.apiAvailable;
+    /**
+     * @return Indicates if it&#39;s possible to establish connections based on the given service profile using the Equinix Fabric API.
+     * 
+     */
+    public Optional<Boolean> apiAvailable() {
+        return Optional.ofNullable(this.apiAvailable);
     }
-    public Boolean bandwidthFromApi() {
-        return this.bandwidthFromApi;
+    /**
+     * @return Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
+     * 
+     */
+    public Optional<Boolean> bandwidthFromApi() {
+        return Optional.ofNullable(this.bandwidthFromApi);
     }
-    public Boolean equinixManagedPort() {
-        return this.equinixManagedPort;
+    /**
+     * @return Setting indicating that the port is managed by Equinix (true) or not (false)
+     * 
+     */
+    public Optional<Boolean> equinixManagedPort() {
+        return Optional.ofNullable(this.equinixManagedPort);
     }
-    public Boolean equinixManagedVlan() {
-        return this.equinixManagedVlan;
+    /**
+     * @return Setting indicating that the VLAN is managed by Equinix (true) or not (false)
+     * 
+     */
+    public Optional<Boolean> equinixManagedVlan() {
+        return Optional.ofNullable(this.equinixManagedVlan);
     }
-    public String integrationId() {
-        return this.integrationId;
+    /**
+     * @return A unique identifier issued during onboarding and used to integrate the customer&#39;s service profile with the Equinix Fabric API.
+     * 
+     */
+    public Optional<String> integrationId() {
+        return Optional.ofNullable(this.integrationId);
     }
-    public Integer overSubscriptionLimit() {
-        return this.overSubscriptionLimit;
+    /**
+     * @return Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
+     * 
+     */
+    public Optional<Integer> overSubscriptionLimit() {
+        return Optional.ofNullable(this.overSubscriptionLimit);
     }
 
     public static Builder builder() {
@@ -51,13 +109,13 @@ public final class GetServiceProfileAccessPointTypeConfigApiConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean allowOverSubscription;
-        private Boolean apiAvailable;
-        private Boolean bandwidthFromApi;
-        private Boolean equinixManagedPort;
-        private Boolean equinixManagedVlan;
-        private String integrationId;
-        private Integer overSubscriptionLimit;
+        private @Nullable Boolean allowOverSubscription;
+        private @Nullable Boolean apiAvailable;
+        private @Nullable Boolean bandwidthFromApi;
+        private @Nullable Boolean equinixManagedPort;
+        private @Nullable Boolean equinixManagedVlan;
+        private @Nullable String integrationId;
+        private @Nullable Integer overSubscriptionLimit;
         public Builder() {}
         public Builder(GetServiceProfileAccessPointTypeConfigApiConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,38 +129,38 @@ public final class GetServiceProfileAccessPointTypeConfigApiConfig {
         }
 
         @CustomType.Setter
-        public Builder allowOverSubscription(Boolean allowOverSubscription) {
-            this.allowOverSubscription = Objects.requireNonNull(allowOverSubscription);
+        public Builder allowOverSubscription(@Nullable Boolean allowOverSubscription) {
+            this.allowOverSubscription = allowOverSubscription;
             return this;
         }
         @CustomType.Setter
-        public Builder apiAvailable(Boolean apiAvailable) {
-            this.apiAvailable = Objects.requireNonNull(apiAvailable);
+        public Builder apiAvailable(@Nullable Boolean apiAvailable) {
+            this.apiAvailable = apiAvailable;
             return this;
         }
         @CustomType.Setter
-        public Builder bandwidthFromApi(Boolean bandwidthFromApi) {
-            this.bandwidthFromApi = Objects.requireNonNull(bandwidthFromApi);
+        public Builder bandwidthFromApi(@Nullable Boolean bandwidthFromApi) {
+            this.bandwidthFromApi = bandwidthFromApi;
             return this;
         }
         @CustomType.Setter
-        public Builder equinixManagedPort(Boolean equinixManagedPort) {
-            this.equinixManagedPort = Objects.requireNonNull(equinixManagedPort);
+        public Builder equinixManagedPort(@Nullable Boolean equinixManagedPort) {
+            this.equinixManagedPort = equinixManagedPort;
             return this;
         }
         @CustomType.Setter
-        public Builder equinixManagedVlan(Boolean equinixManagedVlan) {
-            this.equinixManagedVlan = Objects.requireNonNull(equinixManagedVlan);
+        public Builder equinixManagedVlan(@Nullable Boolean equinixManagedVlan) {
+            this.equinixManagedVlan = equinixManagedVlan;
             return this;
         }
         @CustomType.Setter
-        public Builder integrationId(String integrationId) {
-            this.integrationId = Objects.requireNonNull(integrationId);
+        public Builder integrationId(@Nullable String integrationId) {
+            this.integrationId = integrationId;
             return this;
         }
         @CustomType.Setter
-        public Builder overSubscriptionLimit(Integer overSubscriptionLimit) {
-            this.overSubscriptionLimit = Objects.requireNonNull(overSubscriptionLimit);
+        public Builder overSubscriptionLimit(@Nullable Integer overSubscriptionLimit) {
+            this.overSubscriptionLimit = overSubscriptionLimit;
             return this;
         }
         public GetServiceProfileAccessPointTypeConfigApiConfig build() {

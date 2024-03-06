@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceProfileAccessPointTypeConfigLinkProtocolConfig {
     /**
-     * @return Port Encapsulation
+     * @return Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
      * 
      */
     private @Nullable String encapsulation;
     /**
-     * @return Encapsulation strategy
+     * @return Additional tagging information required by the seller profile.
      * 
      */
     private @Nullable String encapsulationStrategy;
     /**
-     * @return Reuse vlan sTag
+     * @return Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
      * 
      */
     private @Nullable Boolean reuseVlanSTag;
 
     private ServiceProfileAccessPointTypeConfigLinkProtocolConfig() {}
     /**
-     * @return Port Encapsulation
+     * @return Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
      * 
      */
     public Optional<String> encapsulation() {
         return Optional.ofNullable(this.encapsulation);
     }
     /**
-     * @return Encapsulation strategy
+     * @return Additional tagging information required by the seller profile.
      * 
      */
     public Optional<String> encapsulationStrategy() {
         return Optional.ofNullable(this.encapsulationStrategy);
     }
     /**
-     * @return Reuse vlan sTag
+     * @return Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
      * 
      */
     public Optional<Boolean> reuseVlanSTag() {

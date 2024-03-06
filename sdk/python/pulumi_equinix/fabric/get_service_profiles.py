@@ -44,7 +44,7 @@ class GetServiceProfilesResult:
     @pulumi.getter
     def data(self) -> Sequence['outputs.GetServiceProfilesDatumResult']:
         """
-        List of  Service Profiles
+        List of Service Profiles
         """
         return pulumi.get(self, "data")
 
@@ -76,7 +76,7 @@ class GetServiceProfilesResult:
     @pulumi.getter(name="viewPoint")
     def view_point(self) -> Optional[str]:
         """
-        Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+        flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         """
         return pulumi.get(self, "view_point")
 
@@ -99,11 +99,25 @@ def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFi
                          view_point: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceProfilesResult:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    service_profiles_data_name = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
+        operator="=",
+        property="/name",
+        values=["<list_of_profiles_to_return>"],
+    ))
+    ```
+
 
     :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
     :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
-    :param str view_point: Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+    :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -126,10 +140,24 @@ def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.In
                                 view_point: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceProfilesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    service_profiles_data_name = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
+        operator="=",
+        property="/name",
+        values=["<list_of_profiles_to_return>"],
+    ))
+    ```
+
 
     :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
     :param Sequence[pulumi.InputType['GetServiceProfilesSortArgs']] sort: Service Profile Sort criteria for Search Request response payload
-    :param str view_point: Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+    :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
     """
     ...

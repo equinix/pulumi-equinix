@@ -47,14 +47,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Account
+     * Service Profile Owner Account Information
      * 
      */
     @Import(name="account")
     private @Nullable Output<ServiceProfileAccountArgs> account;
 
     /**
-     * @return Account
+     * @return Service Profile Owner Account Information
      * 
      */
     public Optional<Output<ServiceProfileAccountArgs>> account() {
@@ -107,14 +107,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Description
+     * Description of authorization key
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     public Optional<Output<String>> description() {
@@ -227,14 +227,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Self Profile
+     * Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     @Import(name="selfProfile")
     private @Nullable Output<Boolean> selfProfile;
 
     /**
-     * @return Self Profile
+     * @return Self Profile indicating if the profile is created for customer&#39;s  self use
      * 
      */
     public Optional<Output<Boolean>> selfProfile() {
@@ -406,7 +406,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param account Account
+         * @param account Service Profile Owner Account Information
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param account Account
+         * @param account Service Profile Owner Account Information
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfProfile Self Profile
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param selfProfile Self Profile
+         * @param selfProfile Self Profile indicating if the profile is created for customer&#39;s  self use
          * 
          * @return builder
          * 

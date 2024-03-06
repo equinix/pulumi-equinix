@@ -18,10 +18,30 @@ public final class ConnectionOperationError {
      * 
      */
     private @Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfo;
+    /**
+     * @return CorrelationId
+     * 
+     */
     private @Nullable String correlationId;
+    /**
+     * @return Details
+     * 
+     */
     private @Nullable String details;
+    /**
+     * @return Error  code
+     * 
+     */
     private @Nullable String errorCode;
+    /**
+     * @return Error Message
+     * 
+     */
     private @Nullable String errorMessage;
+    /**
+     * @return Help
+     * 
+     */
     private @Nullable String help;
 
     private ConnectionOperationError() {}
@@ -32,18 +52,38 @@ public final class ConnectionOperationError {
     public List<ConnectionOperationErrorAdditionalInfo> additionalInfo() {
         return this.additionalInfo == null ? List.of() : this.additionalInfo;
     }
+    /**
+     * @return CorrelationId
+     * 
+     */
     public Optional<String> correlationId() {
         return Optional.ofNullable(this.correlationId);
     }
+    /**
+     * @return Details
+     * 
+     */
     public Optional<String> details() {
         return Optional.ofNullable(this.details);
     }
+    /**
+     * @return Error  code
+     * 
+     */
     public Optional<String> errorCode() {
         return Optional.ofNullable(this.errorCode);
     }
+    /**
+     * @return Error Message
+     * 
+     */
     public Optional<String> errorMessage() {
         return Optional.ofNullable(this.errorMessage);
     }
+    /**
+     * @return Help
+     * 
+     */
     public Optional<String> help() {
         return Optional.ofNullable(this.help);
     }

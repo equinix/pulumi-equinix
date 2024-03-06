@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRoutingProtocolOperation {
+    /**
+     * @return Errors occurred
+     * 
+     */
     private List<GetRoutingProtocolOperationError> errors;
 
     private GetRoutingProtocolOperation() {}
+    /**
+     * @return Errors occurred
+     * 
+     */
     public List<GetRoutingProtocolOperationError> errors() {
         return this.errors;
     }

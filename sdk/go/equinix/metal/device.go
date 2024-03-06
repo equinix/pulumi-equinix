@@ -13,6 +13,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an Equinix Metal device resource. This can be used to create,
+// modify, and delete devices.
+//
+// > **NOTE:** All arguments including the `rootPassword` and `userData` will be stored in
+//
+//	the raw state as plain-text.
+//
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ```go
 // package main
@@ -53,7 +62,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing device ID: <break><break>```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+// This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
 type Device struct {
 	pulumi.CustomResourceState
 
@@ -94,8 +103,18 @@ type Device struct {
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
 	ForceDetachVolumes pulumi.BoolPtrOutput `pulumi:"forceDetachVolumes"`
-	// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-	// next available reservation automatically
+	// The UUID of the hardware reservation where you want this
+	// device deployed, or `next-available` if you want to pick your next available reservation
+	// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+	// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+	// together for the same pool of reservations. It might happen that the reservation which Equinix
+	// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+	// metal.Device resource. If that happens, and the metal.Device with the UUID is
+	// created later, resource creation will fail because the reservation is already in use (by the
+	// resource created with `next-available`). To workaround this, have the `next-available` resource
+	// explicitly dependOn
+	// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+	// see issue #176.
 	HardwareReservationId pulumi.StringPtrOutput `pulumi:"hardwareReservationId"`
 	// The device hostname used in deployments taking advantage of Layer3 DHCP
 	// or metadata service configuration.
@@ -106,7 +125,7 @@ type Device struct {
 	// URL pointing to a hosted iPXE script. More information is in the
 	// [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
 	IpxeScriptUrl pulumi.StringPtrOutput `pulumi:"ipxeScriptUrl"`
-	// Whether the device is locked.
+	// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrOutput `pulumi:"metro"`
@@ -261,8 +280,18 @@ type deviceState struct {
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
 	ForceDetachVolumes *bool `pulumi:"forceDetachVolumes"`
-	// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-	// next available reservation automatically
+	// The UUID of the hardware reservation where you want this
+	// device deployed, or `next-available` if you want to pick your next available reservation
+	// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+	// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+	// together for the same pool of reservations. It might happen that the reservation which Equinix
+	// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+	// metal.Device resource. If that happens, and the metal.Device with the UUID is
+	// created later, resource creation will fail because the reservation is already in use (by the
+	// resource created with `next-available`). To workaround this, have the `next-available` resource
+	// explicitly dependOn
+	// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+	// see issue #176.
 	HardwareReservationId *string `pulumi:"hardwareReservationId"`
 	// The device hostname used in deployments taking advantage of Layer3 DHCP
 	// or metadata service configuration.
@@ -273,7 +302,7 @@ type deviceState struct {
 	// URL pointing to a hosted iPXE script. More information is in the
 	// [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
 	IpxeScriptUrl *string `pulumi:"ipxeScriptUrl"`
-	// Whether the device is locked.
+	// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
 	Locked *bool `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro *string `pulumi:"metro"`
@@ -378,8 +407,18 @@ type DeviceState struct {
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
 	ForceDetachVolumes pulumi.BoolPtrInput
-	// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-	// next available reservation automatically
+	// The UUID of the hardware reservation where you want this
+	// device deployed, or `next-available` if you want to pick your next available reservation
+	// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+	// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+	// together for the same pool of reservations. It might happen that the reservation which Equinix
+	// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+	// metal.Device resource. If that happens, and the metal.Device with the UUID is
+	// created later, resource creation will fail because the reservation is already in use (by the
+	// resource created with `next-available`). To workaround this, have the `next-available` resource
+	// explicitly dependOn
+	// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+	// see issue #176.
 	HardwareReservationId pulumi.StringPtrInput
 	// The device hostname used in deployments taking advantage of Layer3 DHCP
 	// or metadata service configuration.
@@ -390,7 +429,7 @@ type DeviceState struct {
 	// URL pointing to a hosted iPXE script. More information is in the
 	// [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
 	IpxeScriptUrl pulumi.StringPtrInput
-	// Whether the device is locked.
+	// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
 	Locked pulumi.BoolPtrInput
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrInput
@@ -484,8 +523,18 @@ type deviceArgs struct {
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
 	ForceDetachVolumes *bool `pulumi:"forceDetachVolumes"`
-	// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-	// next available reservation automatically
+	// The UUID of the hardware reservation where you want this
+	// device deployed, or `next-available` if you want to pick your next available reservation
+	// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+	// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+	// together for the same pool of reservations. It might happen that the reservation which Equinix
+	// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+	// metal.Device resource. If that happens, and the metal.Device with the UUID is
+	// created later, resource creation will fail because the reservation is already in use (by the
+	// resource created with `next-available`). To workaround this, have the `next-available` resource
+	// explicitly dependOn
+	// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+	// see issue #176.
 	HardwareReservationId *string `pulumi:"hardwareReservationId"`
 	// The device hostname used in deployments taking advantage of Layer3 DHCP
 	// or metadata service configuration.
@@ -496,6 +545,8 @@ type deviceArgs struct {
 	// URL pointing to a hosted iPXE script. More information is in the
 	// [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
 	IpxeScriptUrl *string `pulumi:"ipxeScriptUrl"`
+	// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
+	Locked *bool `pulumi:"locked"`
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro *string `pulumi:"metro"`
 	// The operating system slug. To find the slug, or visit
@@ -559,8 +610,18 @@ type DeviceArgs struct {
 	// Delete device even if it has volumes attached. Only applies
 	// for destroy action.
 	ForceDetachVolumes pulumi.BoolPtrInput
-	// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-	// next available reservation automatically
+	// The UUID of the hardware reservation where you want this
+	// device deployed, or `next-available` if you want to pick your next available reservation
+	// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+	// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+	// together for the same pool of reservations. It might happen that the reservation which Equinix
+	// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+	// metal.Device resource. If that happens, and the metal.Device with the UUID is
+	// created later, resource creation will fail because the reservation is already in use (by the
+	// resource created with `next-available`). To workaround this, have the `next-available` resource
+	// explicitly dependOn
+	// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+	// see issue #176.
 	HardwareReservationId pulumi.StringPtrInput
 	// The device hostname used in deployments taking advantage of Layer3 DHCP
 	// or metadata service configuration.
@@ -571,6 +632,8 @@ type DeviceArgs struct {
 	// URL pointing to a hosted iPXE script. More information is in the
 	// [Custom iPXE](https://metal.equinix.com/developers/docs/servers/custom-ipxe/) doc.
 	IpxeScriptUrl pulumi.StringPtrInput
+	// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
+	Locked pulumi.BoolPtrInput
 	// Metro area for the new device. Conflicts with `facilities`.
 	Metro pulumi.StringPtrInput
 	// The operating system slug. To find the slug, or visit
@@ -773,8 +836,18 @@ func (o DeviceOutput) ForceDetachVolumes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolPtrOutput { return v.ForceDetachVolumes }).(pulumi.BoolPtrOutput)
 }
 
-// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-// next available reservation automatically
+// The UUID of the hardware reservation where you want this
+// device deployed, or `next-available` if you want to pick your next available reservation
+// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+// together for the same pool of reservations. It might happen that the reservation which Equinix
+// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+// metal.Device resource. If that happens, and the metal.Device with the UUID is
+// created later, resource creation will fail because the reservation is already in use (by the
+// resource created with `next-available`). To workaround this, have the `next-available` resource
+// explicitly dependOn
+// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+// see issue #176.
 func (o DeviceOutput) HardwareReservationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.HardwareReservationId }).(pulumi.StringPtrOutput)
 }
@@ -797,7 +870,7 @@ func (o DeviceOutput) IpxeScriptUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.IpxeScriptUrl }).(pulumi.StringPtrOutput)
 }
 
-// Whether the device is locked.
+// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
 func (o DeviceOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Device) pulumi.BoolOutput { return v.Locked }).(pulumi.BoolOutput)
 }

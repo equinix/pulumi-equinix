@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
+ * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
  */
 export class AclTemplate extends pulumi.CustomResource {
     /**
@@ -112,6 +112,11 @@ export class AclTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * Device uuid.
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
@@ -136,6 +141,7 @@ export class AclTemplate extends pulumi.CustomResource {
             resourceInputs["inboundRules"] = state ? state.inboundRules : undefined;
             resourceInputs["metroCode"] = state ? state.metroCode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as AclTemplateArgs | undefined;
@@ -146,6 +152,7 @@ export class AclTemplate extends pulumi.CustomResource {
             resourceInputs["inboundRules"] = args ? args.inboundRules : undefined;
             resourceInputs["metroCode"] = args ? args.metroCode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["deviceAclStatus"] = undefined /*out*/;
             resourceInputs["deviceDetails"] = undefined /*out*/;
             resourceInputs["deviceId"] = undefined /*out*/;
@@ -197,6 +204,11 @@ export interface AclTemplateState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * Device uuid.
      */
     uuid?: pulumi.Input<string>;
@@ -227,4 +239,9 @@ export interface AclTemplateArgs {
      * ACL template name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     */
+    projectId?: pulumi.Input<string>;
 }

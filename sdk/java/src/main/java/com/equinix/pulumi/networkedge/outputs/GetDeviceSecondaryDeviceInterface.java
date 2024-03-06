@@ -10,15 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDeviceSecondaryDeviceInterface {
+    /**
+     * @return Interface management type (Equinix Managed or empty)
+     * 
+     */
     private String assignedType;
+    /**
+     * @return Interface identifier
+     * 
+     */
     private Integer id;
+    /**
+     * @return interface IP address
+     * 
+     */
     private String ipAddress;
+    /**
+     * @return Interface MAC addres
+     * 
+     */
     private String macAddress;
     /**
      * @return Name of an existing Equinix Network Edge device
      * 
      */
     private String name;
+    /**
+     * @return Interface operational status (up or down)
+     * 
+     */
     private String operationalStatus;
     /**
      * @return Device provisioning status
@@ -37,18 +57,38 @@ public final class GetDeviceSecondaryDeviceInterface {
      * 
      */
     private String status;
+    /**
+     * @return Interface type
+     * 
+     */
     private String type;
 
     private GetDeviceSecondaryDeviceInterface() {}
+    /**
+     * @return Interface management type (Equinix Managed or empty)
+     * 
+     */
     public String assignedType() {
         return this.assignedType;
     }
+    /**
+     * @return Interface identifier
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return interface IP address
+     * 
+     */
     public String ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * @return Interface MAC addres
+     * 
+     */
     public String macAddress() {
         return this.macAddress;
     }
@@ -59,6 +99,10 @@ public final class GetDeviceSecondaryDeviceInterface {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Interface operational status (up or down)
+     * 
+     */
     public String operationalStatus() {
         return this.operationalStatus;
     }
@@ -81,6 +125,10 @@ public final class GetDeviceSecondaryDeviceInterface {
     public String status() {
         return this.status;
     }
+    /**
+     * @return Interface type
+     * 
+     */
     public String type() {
         return this.type;
     }

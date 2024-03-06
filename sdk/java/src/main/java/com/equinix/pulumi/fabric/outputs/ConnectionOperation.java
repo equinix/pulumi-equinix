@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOperation {
+    /**
+     * @return Connection status
+     * 
+     */
     private @Nullable String equinixStatus;
+    /**
+     * @return Errors occurred
+     * 
+     */
     private @Nullable List<ConnectionOperationError> errors;
+    /**
+     * @return Connection provider readiness status
+     * 
+     */
     private @Nullable String providerStatus;
 
     private ConnectionOperation() {}
+    /**
+     * @return Connection status
+     * 
+     */
     public Optional<String> equinixStatus() {
         return Optional.ofNullable(this.equinixStatus);
     }
+    /**
+     * @return Errors occurred
+     * 
+     */
     public List<ConnectionOperationError> errors() {
         return this.errors == null ? List.of() : this.errors;
     }
+    /**
+     * @return Connection provider readiness status
+     * 
+     */
     public Optional<String> providerStatus() {
         return Optional.ofNullable(this.providerStatus);
     }

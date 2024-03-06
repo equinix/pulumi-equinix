@@ -15,8 +15,8 @@ namespace Pulumi.Equinix.Fabric.Inputs
         /// <summary>
         /// Query Parameter to Get Ports By Name
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GetPortsFilterInputArgs()
         {

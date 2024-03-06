@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRoutingProtocolResult',
@@ -84,7 +83,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter
-    def bfd(self) -> Optional['outputs.GetRoutingProtocolBfdResult']:
+    def bfd(self) -> 'outputs.GetRoutingProtocolBfdResult':
         """
         Bidirectional Forwarding Detection
         """
@@ -92,7 +91,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter(name="bgpAuthKey")
-    def bgp_auth_key(self) -> Optional[str]:
+    def bgp_auth_key(self) -> str:
         """
         BGP authorization key
         """
@@ -100,7 +99,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter(name="bgpIpv4")
-    def bgp_ipv4(self) -> Optional['outputs.GetRoutingProtocolBgpIpv4Result']:
+    def bgp_ipv4(self) -> 'outputs.GetRoutingProtocolBgpIpv4Result':
         """
         Routing Protocol BGP IPv4
         """
@@ -108,7 +107,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter(name="bgpIpv6")
-    def bgp_ipv6(self) -> Optional['outputs.GetRoutingProtocolBgpIpv6Result']:
+    def bgp_ipv6(self) -> 'outputs.GetRoutingProtocolBgpIpv6Result':
         """
         Routing Protocol BGP IPv6
         """
@@ -140,7 +139,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter(name="customerAsn")
-    def customer_asn(self) -> Optional[int]:
+    def customer_asn(self) -> int:
         """
         Customer-provided ASN
         """
@@ -148,7 +147,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
         """
         Customer-provided Fabric Routing Protocol description
         """
@@ -156,7 +155,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter(name="directIpv4")
-    def direct_ipv4(self) -> Optional['outputs.GetRoutingProtocolDirectIpv4Result']:
+    def direct_ipv4(self) -> 'outputs.GetRoutingProtocolDirectIpv4Result':
         """
         Routing Protocol Direct IPv4
         """
@@ -164,7 +163,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter(name="directIpv6")
-    def direct_ipv6(self) -> Optional['outputs.GetRoutingProtocolDirectIpv6Result']:
+    def direct_ipv6(self) -> 'outputs.GetRoutingProtocolDirectIpv6Result':
         """
         Routing Protocol Direct IPv6
         """
@@ -196,7 +195,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         """
@@ -220,7 +219,7 @@ class GetRoutingProtocolResult:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         Defines the routing protocol type like BGP or DIRECT
         """
@@ -262,45 +261,29 @@ class AwaitableGetRoutingProtocolResult(GetRoutingProtocolResult):
             uuid=self.uuid)
 
 
-def get_routing_protocol(bfd: Optional[pulumi.InputType['GetRoutingProtocolBfdArgs']] = None,
-                         bgp_auth_key: Optional[str] = None,
-                         bgp_ipv4: Optional[pulumi.InputType['GetRoutingProtocolBgpIpv4Args']] = None,
-                         bgp_ipv6: Optional[pulumi.InputType['GetRoutingProtocolBgpIpv6Args']] = None,
-                         connection_uuid: Optional[str] = None,
-                         customer_asn: Optional[int] = None,
-                         description: Optional[str] = None,
-                         direct_ipv4: Optional[pulumi.InputType['GetRoutingProtocolDirectIpv4Args']] = None,
-                         direct_ipv6: Optional[pulumi.InputType['GetRoutingProtocolDirectIpv6Args']] = None,
-                         name: Optional[str] = None,
-                         type: Optional[str] = None,
+def get_routing_protocol(connection_uuid: Optional[str] = None,
                          uuid: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoutingProtocolResult:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
 
-    :param pulumi.InputType['GetRoutingProtocolBfdArgs'] bfd: Bidirectional Forwarding Detection
-    :param str bgp_auth_key: BGP authorization key
-    :param pulumi.InputType['GetRoutingProtocolBgpIpv4Args'] bgp_ipv4: Routing Protocol BGP IPv4
-    :param pulumi.InputType['GetRoutingProtocolBgpIpv6Args'] bgp_ipv6: Routing Protocol BGP IPv6
+    API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    routing_protocol_data_name = equinix.fabric.get_routing_protocol(connection_uuid="<uuid_of_connection_routing_protocol_is_applied_to>",
+        uuid="<uuid_of_routing_protocol>")
+    ```
+
+
     :param str connection_uuid: Connection URI associated with Routing Protocol
-    :param int customer_asn: Customer-provided ASN
-    :param str description: Customer-provided Fabric Routing Protocol description
-    :param pulumi.InputType['GetRoutingProtocolDirectIpv4Args'] direct_ipv4: Routing Protocol Direct IPv4
-    :param pulumi.InputType['GetRoutingProtocolDirectIpv6Args'] direct_ipv6: Routing Protocol Direct IPv6
-    :param str name: Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
     """
     __args__ = dict()
-    __args__['bfd'] = bfd
-    __args__['bgpAuthKey'] = bgp_auth_key
-    __args__['bgpIpv4'] = bgp_ipv4
-    __args__['bgpIpv6'] = bgp_ipv6
     __args__['connectionUuid'] = connection_uuid
-    __args__['customerAsn'] = customer_asn
-    __args__['description'] = description
-    __args__['directIpv4'] = direct_ipv4
-    __args__['directIpv6'] = direct_ipv6
-    __args__['name'] = name
-    __args__['type'] = type
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getRoutingProtocol:getRoutingProtocol', __args__, opts=opts, typ=GetRoutingProtocolResult).value
@@ -328,31 +311,25 @@ def get_routing_protocol(bfd: Optional[pulumi.InputType['GetRoutingProtocolBfdAr
 
 
 @_utilities.lift_output_func(get_routing_protocol)
-def get_routing_protocol_output(bfd: Optional[pulumi.Input[Optional[pulumi.InputType['GetRoutingProtocolBfdArgs']]]] = None,
-                                bgp_auth_key: Optional[pulumi.Input[Optional[str]]] = None,
-                                bgp_ipv4: Optional[pulumi.Input[Optional[pulumi.InputType['GetRoutingProtocolBgpIpv4Args']]]] = None,
-                                bgp_ipv6: Optional[pulumi.Input[Optional[pulumi.InputType['GetRoutingProtocolBgpIpv6Args']]]] = None,
-                                connection_uuid: Optional[pulumi.Input[str]] = None,
-                                customer_asn: Optional[pulumi.Input[Optional[int]]] = None,
-                                description: Optional[pulumi.Input[Optional[str]]] = None,
-                                direct_ipv4: Optional[pulumi.Input[Optional[pulumi.InputType['GetRoutingProtocolDirectIpv4Args']]]] = None,
-                                direct_ipv6: Optional[pulumi.Input[Optional[pulumi.InputType['GetRoutingProtocolDirectIpv6Args']]]] = None,
-                                name: Optional[pulumi.Input[Optional[str]]] = None,
-                                type: Optional[pulumi.Input[Optional[str]]] = None,
-                                uuid: Optional[pulumi.Input[Optional[str]]] = None,
+def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = None,
+                                uuid: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoutingProtocolResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
 
-    :param pulumi.InputType['GetRoutingProtocolBfdArgs'] bfd: Bidirectional Forwarding Detection
-    :param str bgp_auth_key: BGP authorization key
-    :param pulumi.InputType['GetRoutingProtocolBgpIpv4Args'] bgp_ipv4: Routing Protocol BGP IPv4
-    :param pulumi.InputType['GetRoutingProtocolBgpIpv6Args'] bgp_ipv6: Routing Protocol BGP IPv6
+    API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    routing_protocol_data_name = equinix.fabric.get_routing_protocol(connection_uuid="<uuid_of_connection_routing_protocol_is_applied_to>",
+        uuid="<uuid_of_routing_protocol>")
+    ```
+
+
     :param str connection_uuid: Connection URI associated with Routing Protocol
-    :param int customer_asn: Customer-provided ASN
-    :param str description: Customer-provided Fabric Routing Protocol description
-    :param pulumi.InputType['GetRoutingProtocolDirectIpv4Args'] direct_ipv4: Routing Protocol Direct IPv4
-    :param pulumi.InputType['GetRoutingProtocolDirectIpv6Args'] direct_ipv6: Routing Protocol Direct IPv6
-    :param str name: Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
     """
     ...

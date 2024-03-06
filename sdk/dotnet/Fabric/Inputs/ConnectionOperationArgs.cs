@@ -12,17 +12,27 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ConnectionOperationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Connection status
+        /// </summary>
         [Input("equinixStatus")]
         public Input<string>? EquinixStatus { get; set; }
 
         [Input("errors")]
         private InputList<Inputs.ConnectionOperationErrorArgs>? _errors;
+
+        /// <summary>
+        /// Errors occurred
+        /// </summary>
         public InputList<Inputs.ConnectionOperationErrorArgs> Errors
         {
             get => _errors ?? (_errors = new InputList<Inputs.ConnectionOperationErrorArgs>());
             set => _errors = value;
         }
 
+        /// <summary>
+        /// Connection provider readiness status
+        /// </summary>
         [Input("providerStatus")]
         public Input<string>? ProviderStatus { get; set; }
 

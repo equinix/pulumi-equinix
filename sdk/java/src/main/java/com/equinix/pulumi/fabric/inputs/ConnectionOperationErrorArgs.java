@@ -32,37 +32,77 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.additionalInfo);
     }
 
+    /**
+     * CorrelationId
+     * 
+     */
     @Import(name="correlationId")
     private @Nullable Output<String> correlationId;
 
+    /**
+     * @return CorrelationId
+     * 
+     */
     public Optional<Output<String>> correlationId() {
         return Optional.ofNullable(this.correlationId);
     }
 
+    /**
+     * Details
+     * 
+     */
     @Import(name="details")
     private @Nullable Output<String> details;
 
+    /**
+     * @return Details
+     * 
+     */
     public Optional<Output<String>> details() {
         return Optional.ofNullable(this.details);
     }
 
+    /**
+     * Error  code
+     * 
+     */
     @Import(name="errorCode")
     private @Nullable Output<String> errorCode;
 
+    /**
+     * @return Error  code
+     * 
+     */
     public Optional<Output<String>> errorCode() {
         return Optional.ofNullable(this.errorCode);
     }
 
+    /**
+     * Error Message
+     * 
+     */
     @Import(name="errorMessage")
     private @Nullable Output<String> errorMessage;
 
+    /**
+     * @return Error Message
+     * 
+     */
     public Optional<Output<String>> errorMessage() {
         return Optional.ofNullable(this.errorMessage);
     }
 
+    /**
+     * Help
+     * 
+     */
     @Import(name="help")
     private @Nullable Output<String> help;
 
+    /**
+     * @return Help
+     * 
+     */
     public Optional<Output<String>> help() {
         return Optional.ofNullable(this.help);
     }
@@ -127,47 +167,107 @@ public final class ConnectionOperationErrorArgs extends com.pulumi.resources.Res
             return additionalInfo(List.of(additionalInfo));
         }
 
+        /**
+         * @param correlationId CorrelationId
+         * 
+         * @return builder
+         * 
+         */
         public Builder correlationId(@Nullable Output<String> correlationId) {
             $.correlationId = correlationId;
             return this;
         }
 
+        /**
+         * @param correlationId CorrelationId
+         * 
+         * @return builder
+         * 
+         */
         public Builder correlationId(String correlationId) {
             return correlationId(Output.of(correlationId));
         }
 
+        /**
+         * @param details Details
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(@Nullable Output<String> details) {
             $.details = details;
             return this;
         }
 
+        /**
+         * @param details Details
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(String details) {
             return details(Output.of(details));
         }
 
+        /**
+         * @param errorCode Error  code
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorCode(@Nullable Output<String> errorCode) {
             $.errorCode = errorCode;
             return this;
         }
 
+        /**
+         * @param errorCode Error  code
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorCode(String errorCode) {
             return errorCode(Output.of(errorCode));
         }
 
+        /**
+         * @param errorMessage Error Message
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorMessage(@Nullable Output<String> errorMessage) {
             $.errorMessage = errorMessage;
             return this;
         }
 
+        /**
+         * @param errorMessage Error Message
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorMessage(String errorMessage) {
             return errorMessage(Output.of(errorMessage));
         }
 
+        /**
+         * @param help Help
+         * 
+         * @return builder
+         * 
+         */
         public Builder help(@Nullable Output<String> help) {
             $.help = help;
             return this;
         }
 
+        /**
+         * @param help Help
+         * 
+         * @return builder
+         * 
+         */
         public Builder help(String help) {
             return help(Output.of(help));
         }

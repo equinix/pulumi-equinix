@@ -21,11 +21,12 @@ class ConnectionArgs:
                  a_side: pulumi.Input['ConnectionASideArgs'],
                  bandwidth: pulumi.Input[int],
                  notifications: pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]],
+                 order: pulumi.Input['ConnectionOrderArgs'],
                  type: pulumi.Input[Union[str, 'ConnectionType']],
                  z_side: pulumi.Input['ConnectionZSideArgs'],
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
                  project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
                  redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None):
         """
@@ -33,25 +34,27 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionASideArgs'] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
+        :param pulumi.Input['ConnectionOrderArgs'] order: Order details
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
+        :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] name: Port name
-        :param pulumi.Input['ConnectionOrderArgs'] order: Order related to this connection information
         :param pulumi.Input['ConnectionProjectArgs'] project: Project information
         :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
         """
         pulumi.set(__self__, "a_side", a_side)
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "z_side", z_side)
         if additional_info is not None:
             pulumi.set(__self__, "additional_info", additional_info)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if order is not None:
-            pulumi.set(__self__, "order", order)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redundancy is not None:
@@ -95,6 +98,18 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
+    def order(self) -> pulumi.Input['ConnectionOrderArgs']:
+        """
+        Order details
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input['ConnectionOrderArgs']):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> pulumi.Input[Union[str, 'ConnectionType']]:
         """
         Interface type
@@ -131,6 +146,18 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided service description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Port name
@@ -140,18 +167,6 @@ class ConnectionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def order(self) -> Optional[pulumi.Input['ConnectionOrderArgs']]:
-        """
-        Order related to this connection information
-        """
-        return pulumi.get(self, "order")
-
-    @order.setter
-    def order(self, value: Optional[pulumi.Input['ConnectionOrderArgs']]):
-        pulumi.set(self, "order", value)
 
     @property
     @pulumi.getter
@@ -186,6 +201,7 @@ class _ConnectionState:
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  change_log: Optional[pulumi.Input['ConnectionChangeLogArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  is_remote: Optional[pulumi.Input[bool]] = None,
@@ -197,6 +213,7 @@ class _ConnectionState:
                  redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
                  z_side: Optional[pulumi.Input['ConnectionZSideArgs']] = None):
         """
         Input properties used for looking up and filtering Connection resources.
@@ -205,17 +222,19 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input['ConnectionChangeLogArgs'] change_log: Captures connection lifecycle change information
+        :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Port name
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input['ConnectionOperationArgs'] operation: Connection type-specific operational data
-        :param pulumi.Input['ConnectionOrderArgs'] order: Order related to this connection information
+        :param pulumi.Input['ConnectionOrderArgs'] order: Order details
         :param pulumi.Input['ConnectionProjectArgs'] project: Project information
         :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
-        :param pulumi.Input[str] state: Routing protocol instance state
+        :param pulumi.Input[str] state: Connection overall state
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
+        :param pulumi.Input[str] uuid: Equinix-assigned virtual gateway identifier
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         if a_side is not None:
@@ -228,6 +247,8 @@ class _ConnectionState:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if change_log is not None:
             pulumi.set(__self__, "change_log", change_log)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
         if href is not None:
@@ -250,6 +271,8 @@ class _ConnectionState:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
         if z_side is not None:
             pulumi.set(__self__, "z_side", z_side)
 
@@ -312,6 +335,18 @@ class _ConnectionState:
     @change_log.setter
     def change_log(self, value: Optional[pulumi.Input['ConnectionChangeLogArgs']]):
         pulumi.set(self, "change_log", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided service description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -389,7 +424,7 @@ class _ConnectionState:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input['ConnectionOrderArgs']]:
         """
-        Order related to this connection information
+        Order details
         """
         return pulumi.get(self, "order")
 
@@ -425,7 +460,7 @@ class _ConnectionState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Routing protocol instance state
+        Connection overall state
         """
         return pulumi.get(self, "state")
 
@@ -444,6 +479,18 @@ class _ConnectionState:
     @type.setter
     def type(self, value: Optional[pulumi.Input[Union[str, 'ConnectionType']]]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned virtual gateway identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
 
     @property
     @pulumi.getter(name="zSide")
@@ -466,6 +513,7 @@ class Connection(pulumi.CustomResource):
                  a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
                  order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
@@ -475,6 +523,8 @@ class Connection(pulumi.CustomResource):
                  z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None,
                  __props__=None):
         """
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+
         ## Example Usage
         ```python
         import pulumi
@@ -548,9 +598,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
+        :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] name: Port name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order related to this connection information
+        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order details
         :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
         :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Redundancy Information
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
@@ -563,6 +614,8 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+
         ## Example Usage
         ```python
         import pulumi
@@ -649,6 +702,7 @@ class Connection(pulumi.CustomResource):
                  a_side: Optional[pulumi.Input[pulumi.InputType['ConnectionASideArgs']]] = None,
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]]] = None,
                  order: Optional[pulumi.Input[pulumi.InputType['ConnectionOrderArgs']]] = None,
@@ -672,10 +726,13 @@ class Connection(pulumi.CustomResource):
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
+            if order is None and not opts.urn:
+                raise TypeError("Missing required property 'order'")
             __props__.__dict__["order"] = order
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy"] = redundancy
@@ -692,6 +749,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["is_remote"] = None
             __props__.__dict__["operation"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["uuid"] = None
         super(Connection, __self__).__init__(
             'equinix:fabric/connection:Connection',
             resource_name,
@@ -707,6 +765,7 @@ class Connection(pulumi.CustomResource):
             additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             change_log: Optional[pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             href: Optional[pulumi.Input[str]] = None,
             is_remote: Optional[pulumi.Input[bool]] = None,
@@ -718,6 +777,7 @@ class Connection(pulumi.CustomResource):
             redundancy: Optional[pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[Union[str, 'ConnectionType']]] = None,
+            uuid: Optional[pulumi.Input[str]] = None,
             z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
@@ -731,17 +791,19 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']] change_log: Captures connection lifecycle change information
+        :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
         :param pulumi.Input[str] href: Unique Resource Identifier
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
         :param pulumi.Input[str] name: Port name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[pulumi.InputType['ConnectionOperationArgs']] operation: Connection type-specific operational data
-        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order related to this connection information
+        :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order details
         :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
         :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Redundancy Information
-        :param pulumi.Input[str] state: Routing protocol instance state
+        :param pulumi.Input[str] state: Connection overall state
         :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
+        :param pulumi.Input[str] uuid: Equinix-assigned virtual gateway identifier
         :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -753,6 +815,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["additional_info"] = additional_info
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["change_log"] = change_log
+        __props__.__dict__["description"] = description
         __props__.__dict__["direction"] = direction
         __props__.__dict__["href"] = href
         __props__.__dict__["is_remote"] = is_remote
@@ -764,6 +827,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["redundancy"] = redundancy
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
+        __props__.__dict__["uuid"] = uuid
         __props__.__dict__["z_side"] = z_side
         return Connection(resource_name, opts=opts, __props__=__props__)
 
@@ -806,6 +870,14 @@ class Connection(pulumi.CustomResource):
         Captures connection lifecycle change information
         """
         return pulumi.get(self, "change_log")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-provided service description
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -857,15 +929,15 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Output[Optional['outputs.ConnectionOrder']]:
+    def order(self) -> pulumi.Output['outputs.ConnectionOrder']:
         """
-        Order related to this connection information
+        Order details
         """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Output[Optional['outputs.ConnectionProject']]:
+    def project(self) -> pulumi.Output['outputs.ConnectionProject']:
         """
         Project information
         """
@@ -883,7 +955,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Routing protocol instance state
+        Connection overall state
         """
         return pulumi.get(self, "state")
 
@@ -894,6 +966,14 @@ class Connection(pulumi.CustomResource):
         Interface type
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Output[str]:
+        """
+        Equinix-assigned virtual gateway identifier
+        """
+        return pulumi.get(self, "uuid")
 
     @property
     @pulumi.getter(name="zSide")

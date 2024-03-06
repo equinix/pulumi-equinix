@@ -7,62 +7,60 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InterconnectionServiceTokenArgs Empty = new InterconnectionServiceTokenArgs();
 
-    @Import(name="expiresAt")
-    private @Nullable Output<String> expiresAt;
+    @Import(name="expiresAt", required=true)
+    private Output<String> expiresAt;
 
-    public Optional<Output<String>> expiresAt() {
-        return Optional.ofNullable(this.expiresAt);
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
 
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
-    @Import(name="maxAllowedSpeed")
-    private @Nullable Output<String> maxAllowedSpeed;
+    @Import(name="maxAllowedSpeed", required=true)
+    private Output<String> maxAllowedSpeed;
 
-    public Optional<Output<String>> maxAllowedSpeed() {
-        return Optional.ofNullable(this.maxAllowedSpeed);
+    public Output<String> maxAllowedSpeed() {
+        return this.maxAllowedSpeed;
     }
 
-    @Import(name="role")
-    private @Nullable Output<String> role;
+    @Import(name="role", required=true)
+    private Output<String> role;
 
-    public Optional<Output<String>> role() {
-        return Optional.ofNullable(this.role);
+    public Output<String> role() {
+        return this.role;
     }
 
-    @Import(name="state")
-    private @Nullable Output<String> state;
+    @Import(name="state", required=true)
+    private Output<String> state;
 
-    public Optional<Output<String>> state() {
-        return Optional.ofNullable(this.state);
+    public Output<String> state() {
+        return this.state;
     }
 
     /**
      * Connection type - dedicated or shared.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return Connection type - dedicated or shared.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private InterconnectionServiceTokenArgs() {}
@@ -94,7 +92,7 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
             $ = new InterconnectionServiceTokenArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+        public Builder expiresAt(Output<String> expiresAt) {
             $.expiresAt = expiresAt;
             return this;
         }
@@ -103,7 +101,7 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
             return expiresAt(Output.of(expiresAt));
         }
 
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
@@ -112,7 +110,7 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
             return id(Output.of(id));
         }
 
-        public Builder maxAllowedSpeed(@Nullable Output<String> maxAllowedSpeed) {
+        public Builder maxAllowedSpeed(Output<String> maxAllowedSpeed) {
             $.maxAllowedSpeed = maxAllowedSpeed;
             return this;
         }
@@ -121,7 +119,7 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
             return maxAllowedSpeed(Output.of(maxAllowedSpeed));
         }
 
-        public Builder role(@Nullable Output<String> role) {
+        public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
@@ -130,7 +128,7 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
             return role(Output.of(role));
         }
 
-        public Builder state(@Nullable Output<String> state) {
+        public Builder state(Output<String> state) {
             $.state = state;
             return this;
         }
@@ -145,7 +143,7 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -161,6 +159,12 @@ public final class InterconnectionServiceTokenArgs extends com.pulumi.resources.
         }
 
         public InterconnectionServiceTokenArgs build() {
+            $.expiresAt = Objects.requireNonNull($.expiresAt, "expected parameter 'expiresAt' to be non-null");
+            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            $.maxAllowedSpeed = Objects.requireNonNull($.maxAllowedSpeed, "expected parameter 'maxAllowedSpeed' to be non-null");
+            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
+            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

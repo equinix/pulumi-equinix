@@ -21,6 +21,7 @@ public final class GetAccountResult {
      * 
      */
     private String number;
+    private String projectId;
     private String status;
     /**
      * @return Account unique identifier.
@@ -49,6 +50,9 @@ public final class GetAccountResult {
     public String number() {
         return this.number;
     }
+    public String projectId() {
+        return this.projectId;
+    }
     public String status() {
         return this.status;
     }
@@ -73,6 +77,7 @@ public final class GetAccountResult {
         private String metroCode;
         private String name;
         private String number;
+        private String projectId;
         private String status;
         private String ucmId;
         public Builder() {}
@@ -82,6 +87,7 @@ public final class GetAccountResult {
     	      this.metroCode = defaults.metroCode;
     	      this.name = defaults.name;
     	      this.number = defaults.number;
+    	      this.projectId = defaults.projectId;
     	      this.status = defaults.status;
     	      this.ucmId = defaults.ucmId;
         }
@@ -107,6 +113,11 @@ public final class GetAccountResult {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
@@ -122,6 +133,7 @@ public final class GetAccountResult {
             _resultValue.metroCode = metroCode;
             _resultValue.name = name;
             _resultValue.number = number;
+            _resultValue.projectId = projectId;
             _resultValue.status = status;
             _resultValue.ucmId = ucmId;
             return _resultValue;

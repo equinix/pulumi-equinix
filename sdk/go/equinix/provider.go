@@ -54,9 +54,11 @@ type providerArgs struct {
 	// API Consumer secret available under My Apps section in developer portal
 	ClientSecret *string `pulumi:"clientSecret"`
 	// The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
-	Endpoint            *string `pulumi:"endpoint"`
-	MaxRetries          *int    `pulumi:"maxRetries"`
-	MaxRetryWaitSeconds *int    `pulumi:"maxRetryWaitSeconds"`
+	Endpoint *string `pulumi:"endpoint"`
+	// Maximum number of retries.
+	MaxRetries *int `pulumi:"maxRetries"`
+	// Maximum number of seconds to wait before retrying a request.
+	MaxRetryWaitSeconds *int `pulumi:"maxRetryWaitSeconds"`
 	// The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
 	// Defaults to 30
 	RequestTimeout *int `pulumi:"requestTimeout"`
@@ -75,8 +77,10 @@ type ProviderArgs struct {
 	// API Consumer secret available under My Apps section in developer portal
 	ClientSecret pulumi.StringPtrInput
 	// The Equinix API base URL to point out desired environment. Defaults to https://api.equinix.com
-	Endpoint            pulumi.StringPtrInput
-	MaxRetries          pulumi.IntPtrInput
+	Endpoint pulumi.StringPtrInput
+	// Maximum number of retries.
+	MaxRetries pulumi.IntPtrInput
+	// Maximum number of seconds to wait before retrying a request.
 	MaxRetryWaitSeconds pulumi.IntPtrInput
 	// The duration of time, in seconds, that the Equinix Platform API Client should wait before canceling an API request.
 	// Defaults to 30

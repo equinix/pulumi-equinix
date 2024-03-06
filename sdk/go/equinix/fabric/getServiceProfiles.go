@@ -11,6 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
+//				Filter: fabric.GetServiceProfilesFilter{
+//					Operator: pulumi.StringRef("="),
+//					Property: pulumi.StringRef("/name"),
+//					Values: []string{
+//						"<list_of_profiles_to_return>",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts ...pulumi.InvokeOption) (*GetServiceProfilesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceProfilesResult
@@ -27,13 +60,13 @@ type GetServiceProfilesArgs struct {
 	Filter *GetServiceProfilesFilter `pulumi:"filter"`
 	// Service Profile Sort criteria for Search Request response payload
 	Sort []GetServiceProfilesSort `pulumi:"sort"`
-	// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint *string `pulumi:"viewPoint"`
 }
 
 // A collection of values returned by getServiceProfiles.
 type GetServiceProfilesResult struct {
-	// List of  Service Profiles
+	// List of Service Profiles
 	Data []GetServiceProfilesDatum `pulumi:"data"`
 	// Service Profile Search Filter
 	Filter *GetServiceProfilesFilter `pulumi:"filter"`
@@ -41,7 +74,7 @@ type GetServiceProfilesResult struct {
 	Id string `pulumi:"id"`
 	// Service Profile Sort criteria for Search Request response payload
 	Sort []GetServiceProfilesSort `pulumi:"sort"`
-	// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint *string `pulumi:"viewPoint"`
 }
 
@@ -64,7 +97,7 @@ type GetServiceProfilesOutputArgs struct {
 	Filter GetServiceProfilesFilterPtrInput `pulumi:"filter"`
 	// Service Profile Sort criteria for Search Request response payload
 	Sort GetServiceProfilesSortArrayInput `pulumi:"sort"`
-	// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 	ViewPoint pulumi.StringPtrInput `pulumi:"viewPoint"`
 }
 
@@ -87,7 +120,7 @@ func (o GetServiceProfilesResultOutput) ToGetServiceProfilesResultOutputWithCont
 	return o
 }
 
-// List of  Service Profiles
+// List of Service Profiles
 func (o GetServiceProfilesResultOutput) Data() GetServiceProfilesDatumArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesDatum { return v.Data }).(GetServiceProfilesDatumArrayOutput)
 }
@@ -107,7 +140,7 @@ func (o GetServiceProfilesResultOutput) Sort() GetServiceProfilesSortArrayOutput
 	return o.ApplyT(func(v GetServiceProfilesResult) []GetServiceProfilesSort { return v.Sort }).(GetServiceProfilesSortArrayOutput)
 }
 
-// Service Profile Search Buyer/Seller Representation. Possible values are aSide and zSide.
+// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
 func (o GetServiceProfilesResultOutput) ViewPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceProfilesResult) *string { return v.ViewPoint }).(pulumi.StringPtrOutput)
 }

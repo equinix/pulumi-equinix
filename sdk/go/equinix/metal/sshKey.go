@@ -56,7 +56,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing SSH Key ID: <break><break>```sh<break> $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} <break>```<break><break>
+// This resource can be imported using an existing SSH Key ID:<break><break> ```sh<break> $ pulumi import equinix:metal/sshKey:SshKey equinix_metal_ssh_key {existing_sshkey_id} <break>```<break><break>
 type SshKey struct {
 	pulumi.CustomResourceState
 

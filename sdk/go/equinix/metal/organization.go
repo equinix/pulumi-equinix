@@ -50,7 +50,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing organization ID: <break><break>```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
+// This resource can be imported using an existing organization ID:<break><break> ```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
 type Organization struct {
 	pulumi.CustomResourceState
 

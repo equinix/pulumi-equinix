@@ -13,29 +13,47 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfilePortResult
     {
-        public readonly string CrossConnectId;
-        public readonly ImmutableArray<Outputs.GetServiceProfilePortLocationResult> Locations;
-        public readonly string SellerRegion;
-        public readonly string SellerRegionDescription;
+        /// <summary>
+        /// Cross Connect Id
+        /// </summary>
+        public readonly string? CrossConnectId;
+        /// <summary>
+        /// Colo/Port Location
+        /// </summary>
+        public readonly Outputs.GetServiceProfilePortLocationResult? Location;
+        /// <summary>
+        /// Seller Region
+        /// </summary>
+        public readonly string? SellerRegion;
+        /// <summary>
+        /// Seller Region details
+        /// </summary>
+        public readonly string? SellerRegionDescription;
+        /// <summary>
+        /// Colo/Port Type
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Colo/Port Uuid
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]
         private GetServiceProfilePortResult(
-            string crossConnectId,
+            string? crossConnectId,
 
-            ImmutableArray<Outputs.GetServiceProfilePortLocationResult> locations,
+            Outputs.GetServiceProfilePortLocationResult? location,
 
-            string sellerRegion,
+            string? sellerRegion,
 
-            string sellerRegionDescription,
+            string? sellerRegionDescription,
 
             string type,
 
             string uuid)
         {
             CrossConnectId = crossConnectId;
-            Locations = locations;
+            Location = location;
             SellerRegion = sellerRegion;
             SellerRegionDescription = sellerRegionDescription;
             Type = type;

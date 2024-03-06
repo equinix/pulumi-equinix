@@ -527,6 +527,10 @@ class RoutingProtocol(pulumi.CustomResource):
                  uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+
+        API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+
         ## Example Usage
         ```python
         import pulumi
@@ -568,6 +572,10 @@ class RoutingProtocol(pulumi.CustomResource):
                  args: RoutingProtocolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+
+        API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+
         ## Example Usage
         ```python
         import pulumi

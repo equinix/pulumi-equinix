@@ -76,16 +76,32 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.endpoint);
     }
 
+    /**
+     * Maximum number of retries.
+     * 
+     */
     @Import(name="maxRetries", json=true)
     private @Nullable Output<Integer> maxRetries;
 
+    /**
+     * @return Maximum number of retries.
+     * 
+     */
     public Optional<Output<Integer>> maxRetries() {
         return Optional.ofNullable(this.maxRetries);
     }
 
+    /**
+     * Maximum number of seconds to wait before retrying a request.
+     * 
+     */
     @Import(name="maxRetryWaitSeconds", json=true)
     private @Nullable Output<Integer> maxRetryWaitSeconds;
 
+    /**
+     * @return Maximum number of seconds to wait before retrying a request.
+     * 
+     */
     public Optional<Output<Integer>> maxRetryWaitSeconds() {
         return Optional.ofNullable(this.maxRetryWaitSeconds);
     }
@@ -253,20 +269,44 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return endpoint(Output.of(endpoint));
         }
 
+        /**
+         * @param maxRetries Maximum number of retries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRetries(@Nullable Output<Integer> maxRetries) {
             $.maxRetries = maxRetries;
             return this;
         }
 
+        /**
+         * @param maxRetries Maximum number of retries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRetries(Integer maxRetries) {
             return maxRetries(Output.of(maxRetries));
         }
 
+        /**
+         * @param maxRetryWaitSeconds Maximum number of seconds to wait before retrying a request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRetryWaitSeconds(@Nullable Output<Integer> maxRetryWaitSeconds) {
             $.maxRetryWaitSeconds = maxRetryWaitSeconds;
             return this;
         }
 
+        /**
+         * @param maxRetryWaitSeconds Maximum number of seconds to wait before retrying a request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRetryWaitSeconds(Integer maxRetryWaitSeconds) {
             return maxRetryWaitSeconds(Output.of(maxRetryWaitSeconds));
         }

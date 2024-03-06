@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.
+ * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.<break><break>
  */
 export class NetworkFile extends pulumi.CustomResource {
     /**

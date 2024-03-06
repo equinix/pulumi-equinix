@@ -11,6 +11,200 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := metal.GetPlans(ctx, &metal.GetPlansArgs{
+//				Sorts: []metal.GetPlansSort{
+//					{
+//						Attribute: "pricing_hour",
+//						Direction: pulumi.StringRef("asc"),
+//					},
+//				},
+//				Filters: []metal.GetPlansFilter{
+//					{
+//						Attribute: "pricing_hour",
+//						Values: []string{
+//							"2.5",
+//						},
+//						MatchBy: pulumi.StringRef("less_than"),
+//					},
+//					{
+//						Attribute: "available_in_metros",
+//						Values: []string{
+//							"da",
+//							"sv",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("plans", example.Plans)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := metal.GetPlans(ctx, &metal.GetPlansArgs{
+//				Filters: pulumi.Array{
+//					metal.GetPlansFilter{
+//						Attribute: "class",
+//						Values: []string{
+//							"large",
+//						},
+//						MatchBy: pulumi.StringRef("substring"),
+//					},
+//					metal.GetPlansFilter{
+//						Attribute: "deployment_types",
+//						Values: []string{
+//							"spot_market",
+//						},
+//					},
+//					metal.GetPlansFilter{
+//						Attribute: "available_in_metros",
+//						Values: []string{
+//							"da",
+//							"sv",
+//						},
+//						All: pulumi.BoolRef(true),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("plans", example.Plans)
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ignoring Changes to Plans/Metro
+//
+// Preserve deployed device plan, facility and metro when creating a new execution plan.
+//
+// As described in the `data-resource-behavior` feature as shown in the example below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			examplePlans, err := metal.GetPlans(ctx, &metal.GetPlansArgs{
+//				Sorts: []metal.GetPlansSort{
+//					{
+//						Attribute: "pricing_hour",
+//						Direction: pulumi.StringRef("asc"),
+//					},
+//				},
+//				Filters: []metal.GetPlansFilter{
+//					{
+//						Attribute: "name",
+//						Values: []string{
+//							"c3.small.x86",
+//							"c3.medium.x86",
+//							"m3.large.x86",
+//						},
+//					},
+//					{
+//						Attribute: "available_in_metros",
+//						Values: []string{
+//							"sv",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+//			// It will ignore future changes on plan and metro
+//			_, err = metal.NewDevice(ctx, "exampleDevice", &metal.DeviceArgs{
+//				Hostname:        pulumi.String("example"),
+//				Plan:            examplePlans.Plans[0].Name.ApplyT(func(x *string) metal.Plan { return metal.Plan(*x) }).(metal.PlanOutput),
+//				Metro:           *pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),
+//				OperatingSystem: pulumi.String("ubuntu_20_04"),
+//				BillingCycle:    pulumi.String("hourly"),
+//				ProjectId:       pulumi.Any(_var.Project_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			ignorePlansMetrosChanges := false
+//			if param := cfg.GetBool("ignorePlansMetrosChanges"); param {
+//				ignorePlansMetrosChanges = param
+//			}
+//			_, err := metal.GetPlans(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// required device arguments
+//			_, err = metal.NewDevice(ctx, "exampleDevice", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPlans(ctx *pulumi.Context, args *GetPlansArgs, opts ...pulumi.InvokeOption) (*GetPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPlansResult

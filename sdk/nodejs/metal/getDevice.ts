@@ -8,6 +8,14 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * The datasource can be used to fetch a single device.
+ *
+ * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+ *
+ * > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
+ *  the raw state as plain-text.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -155,6 +163,14 @@ export interface GetDeviceResult {
     readonly tags: string[];
 }
 /**
+ * The datasource can be used to fetch a single device.
+ *
+ * If you need to fetch a list of devices which meet filter criteria, you can use the equinix.metal.getDevices datasource.
+ *
+ * > **Note:** All arguments including the `rootPassword` and `userData` will be stored in
+ *  the raw state as plain-text.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  *
  * ```typescript

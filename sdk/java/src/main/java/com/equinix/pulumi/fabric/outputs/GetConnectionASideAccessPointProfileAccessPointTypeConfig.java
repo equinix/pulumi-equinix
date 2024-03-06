@@ -3,74 +3,35 @@
 
 package com.equinix.pulumi.fabric.outputs;
 
-import com.equinix.pulumi.fabric.outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfig;
-import com.equinix.pulumi.fabric.outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey;
-import com.equinix.pulumi.fabric.outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
-import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointProfileAccessPointTypeConfig {
-    private Boolean allowBandwidthAutoApproval;
-    private Boolean allowBandwidthUpgrade;
-    private Boolean allowCustomBandwidth;
-    private Boolean allowRemoteConnections;
-    private List<GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfig> apiConfigs;
-    private List<GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys;
-    private Double bandwidthAlertThreshold;
-    private String connectionLabel;
-    private Boolean connectionRedundancyRequired;
-    private Boolean enableAutoGenerateServiceKey;
-    private List<GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
-    private List<Integer> supportedBandwidths;
+    /**
+     * @return Type of access point type config - VD, COLO
+     * 
+     */
     private String type;
+    /**
+     * @return Equinix-assigned access point type config identifier
+     * 
+     */
     private String uuid;
 
     private GetConnectionASideAccessPointProfileAccessPointTypeConfig() {}
-    public Boolean allowBandwidthAutoApproval() {
-        return this.allowBandwidthAutoApproval;
-    }
-    public Boolean allowBandwidthUpgrade() {
-        return this.allowBandwidthUpgrade;
-    }
-    public Boolean allowCustomBandwidth() {
-        return this.allowCustomBandwidth;
-    }
-    public Boolean allowRemoteConnections() {
-        return this.allowRemoteConnections;
-    }
-    public List<GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfig> apiConfigs() {
-        return this.apiConfigs;
-    }
-    public List<GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys() {
-        return this.authenticationKeys;
-    }
-    public Double bandwidthAlertThreshold() {
-        return this.bandwidthAlertThreshold;
-    }
-    public String connectionLabel() {
-        return this.connectionLabel;
-    }
-    public Boolean connectionRedundancyRequired() {
-        return this.connectionRedundancyRequired;
-    }
-    public Boolean enableAutoGenerateServiceKey() {
-        return this.enableAutoGenerateServiceKey;
-    }
-    public List<GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs() {
-        return this.linkProtocolConfigs;
-    }
-    public List<Integer> supportedBandwidths() {
-        return this.supportedBandwidths;
-    }
+    /**
+     * @return Type of access point type config - VD, COLO
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Equinix-assigned access point type config identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -84,111 +45,15 @@ public final class GetConnectionASideAccessPointProfileAccessPointTypeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean allowBandwidthAutoApproval;
-        private Boolean allowBandwidthUpgrade;
-        private Boolean allowCustomBandwidth;
-        private Boolean allowRemoteConnections;
-        private List<GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfig> apiConfigs;
-        private List<GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys;
-        private Double bandwidthAlertThreshold;
-        private String connectionLabel;
-        private Boolean connectionRedundancyRequired;
-        private Boolean enableAutoGenerateServiceKey;
-        private List<GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs;
-        private List<Integer> supportedBandwidths;
         private String type;
         private String uuid;
         public Builder() {}
         public Builder(GetConnectionASideAccessPointProfileAccessPointTypeConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.allowBandwidthAutoApproval = defaults.allowBandwidthAutoApproval;
-    	      this.allowBandwidthUpgrade = defaults.allowBandwidthUpgrade;
-    	      this.allowCustomBandwidth = defaults.allowCustomBandwidth;
-    	      this.allowRemoteConnections = defaults.allowRemoteConnections;
-    	      this.apiConfigs = defaults.apiConfigs;
-    	      this.authenticationKeys = defaults.authenticationKeys;
-    	      this.bandwidthAlertThreshold = defaults.bandwidthAlertThreshold;
-    	      this.connectionLabel = defaults.connectionLabel;
-    	      this.connectionRedundancyRequired = defaults.connectionRedundancyRequired;
-    	      this.enableAutoGenerateServiceKey = defaults.enableAutoGenerateServiceKey;
-    	      this.linkProtocolConfigs = defaults.linkProtocolConfigs;
-    	      this.supportedBandwidths = defaults.supportedBandwidths;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
         }
 
-        @CustomType.Setter
-        public Builder allowBandwidthAutoApproval(Boolean allowBandwidthAutoApproval) {
-            this.allowBandwidthAutoApproval = Objects.requireNonNull(allowBandwidthAutoApproval);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder allowBandwidthUpgrade(Boolean allowBandwidthUpgrade) {
-            this.allowBandwidthUpgrade = Objects.requireNonNull(allowBandwidthUpgrade);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder allowCustomBandwidth(Boolean allowCustomBandwidth) {
-            this.allowCustomBandwidth = Objects.requireNonNull(allowCustomBandwidth);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder allowRemoteConnections(Boolean allowRemoteConnections) {
-            this.allowRemoteConnections = Objects.requireNonNull(allowRemoteConnections);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder apiConfigs(List<GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfig> apiConfigs) {
-            this.apiConfigs = Objects.requireNonNull(apiConfigs);
-            return this;
-        }
-        public Builder apiConfigs(GetConnectionASideAccessPointProfileAccessPointTypeConfigApiConfig... apiConfigs) {
-            return apiConfigs(List.of(apiConfigs));
-        }
-        @CustomType.Setter
-        public Builder authenticationKeys(List<GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey> authenticationKeys) {
-            this.authenticationKeys = Objects.requireNonNull(authenticationKeys);
-            return this;
-        }
-        public Builder authenticationKeys(GetConnectionASideAccessPointProfileAccessPointTypeConfigAuthenticationKey... authenticationKeys) {
-            return authenticationKeys(List.of(authenticationKeys));
-        }
-        @CustomType.Setter
-        public Builder bandwidthAlertThreshold(Double bandwidthAlertThreshold) {
-            this.bandwidthAlertThreshold = Objects.requireNonNull(bandwidthAlertThreshold);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder connectionLabel(String connectionLabel) {
-            this.connectionLabel = Objects.requireNonNull(connectionLabel);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder connectionRedundancyRequired(Boolean connectionRedundancyRequired) {
-            this.connectionRedundancyRequired = Objects.requireNonNull(connectionRedundancyRequired);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enableAutoGenerateServiceKey(Boolean enableAutoGenerateServiceKey) {
-            this.enableAutoGenerateServiceKey = Objects.requireNonNull(enableAutoGenerateServiceKey);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder linkProtocolConfigs(List<GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig> linkProtocolConfigs) {
-            this.linkProtocolConfigs = Objects.requireNonNull(linkProtocolConfigs);
-            return this;
-        }
-        public Builder linkProtocolConfigs(GetConnectionASideAccessPointProfileAccessPointTypeConfigLinkProtocolConfig... linkProtocolConfigs) {
-            return linkProtocolConfigs(List.of(linkProtocolConfigs));
-        }
-        @CustomType.Setter
-        public Builder supportedBandwidths(List<Integer> supportedBandwidths) {
-            this.supportedBandwidths = Objects.requireNonNull(supportedBandwidths);
-            return this;
-        }
-        public Builder supportedBandwidths(Integer... supportedBandwidths) {
-            return supportedBandwidths(List.of(supportedBandwidths));
-        }
         @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
@@ -201,18 +66,6 @@ public final class GetConnectionASideAccessPointProfileAccessPointTypeConfig {
         }
         public GetConnectionASideAccessPointProfileAccessPointTypeConfig build() {
             final var _resultValue = new GetConnectionASideAccessPointProfileAccessPointTypeConfig();
-            _resultValue.allowBandwidthAutoApproval = allowBandwidthAutoApproval;
-            _resultValue.allowBandwidthUpgrade = allowBandwidthUpgrade;
-            _resultValue.allowCustomBandwidth = allowCustomBandwidth;
-            _resultValue.allowRemoteConnections = allowRemoteConnections;
-            _resultValue.apiConfigs = apiConfigs;
-            _resultValue.authenticationKeys = authenticationKeys;
-            _resultValue.bandwidthAlertThreshold = bandwidthAlertThreshold;
-            _resultValue.connectionLabel = connectionLabel;
-            _resultValue.connectionRedundancyRequired = connectionRedundancyRequired;
-            _resultValue.enableAutoGenerateServiceKey = enableAutoGenerateServiceKey;
-            _resultValue.linkProtocolConfigs = linkProtocolConfigs;
-            _resultValue.supportedBandwidths = supportedBandwidths;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
             return _resultValue;

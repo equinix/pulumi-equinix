@@ -14,15 +14,15 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ServiceProfileAccessPointTypeConfigAuthenticationKey
     {
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Label
+        /// Name of the parameter that must be provided to authorize the connection.
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// Required
+        /// Requirement to configure an authentication key.
         /// </summary>
         public readonly bool? Required;
 

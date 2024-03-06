@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/aclTemplate:AclTemplate")
@@ -192,6 +192,22 @@ public class AclTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     * 
+     */
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
     }
     /**
      * Device uuid.

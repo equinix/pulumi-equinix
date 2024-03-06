@@ -65,9 +65,9 @@ type LookupInterconnectionResult struct {
 	Description string `pulumi:"description"`
 	// (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
 	//
-	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 	Facility string `pulumi:"facility"`
-	// The provider-assigned unique ID for this managed resource.
+	// Port UUID.
 	Id string `pulumi:"id"`
 	// Slug of a metro to which the connection belongs.
 	Metro string `pulumi:"metro"`
@@ -157,12 +157,12 @@ func (o LookupInterconnectionResultOutput) Description() pulumi.StringOutput {
 
 // (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
 //
-// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+// Deprecated: Use metro instead of facility. For more information, read the migration guide.
 func (o LookupInterconnectionResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.Facility }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Port UUID.
 func (o LookupInterconnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }

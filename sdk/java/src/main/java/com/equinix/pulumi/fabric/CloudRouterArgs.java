@@ -26,15 +26,15 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
      * Customer account information that is associated with this Fabric Cloud Router
      * 
      */
-    @Import(name="account")
-    private @Nullable Output<CloudRouterAccountArgs> account;
+    @Import(name="account", required=true)
+    private Output<CloudRouterAccountArgs> account;
 
     /**
      * @return Customer account information that is associated with this Fabric Cloud Router
      * 
      */
-    public Optional<Output<CloudRouterAccountArgs>> account() {
-        return Optional.ofNullable(this.account);
+    public Output<CloudRouterAccountArgs> account() {
+        return this.account;
     }
 
     /**
@@ -50,6 +50,21 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Unique Resource URL
+     * 
+     */
+    @Import(name="href")
+    private @Nullable Output<String> href;
+
+    /**
+     * @return Unique Resource URL
+     * 
+     */
+    public Optional<Output<String>> href() {
+        return Optional.ofNullable(this.href);
     }
 
     /**
@@ -101,26 +116,26 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
      * Order information related to this Fabric Cloud Router
      * 
      */
-    @Import(name="order")
-    private @Nullable Output<CloudRouterOrderArgs> order;
+    @Import(name="order", required=true)
+    private Output<CloudRouterOrderArgs> order;
 
     /**
      * @return Order information related to this Fabric Cloud Router
      * 
      */
-    public Optional<Output<CloudRouterOrderArgs>> order() {
-        return Optional.ofNullable(this.order);
+    public Output<CloudRouterOrderArgs> order() {
+        return this.order;
     }
 
     /**
-     * Fabric Cloud Router package
+     * Fabric Cloud Router Package Type
      * 
      */
     @Import(name="package", required=true)
     private Output<CloudRouterPackageArgs> package_;
 
     /**
-     * @return Fabric Cloud Router package
+     * @return Fabric Cloud Router Package Type
      * 
      */
     public Output<CloudRouterPackageArgs> package_() {
@@ -128,18 +143,18 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fabric Cloud Router project
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
-    @Import(name="project")
-    private @Nullable Output<CloudRouterProjectArgs> project;
+    @Import(name="project", required=true)
+    private Output<CloudRouterProjectArgs> project;
 
     /**
-     * @return Fabric Cloud Router project
+     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
-    public Optional<Output<CloudRouterProjectArgs>> project() {
-        return Optional.ofNullable(this.project);
+    public Output<CloudRouterProjectArgs> project() {
+        return this.project;
     }
 
     /**
@@ -157,11 +172,27 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         return this.type;
     }
 
+    /**
+     * Equinix-assigned Fabric Cloud Router identifier
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return Equinix-assigned Fabric Cloud Router identifier
+     * 
+     */
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
+    }
+
     private CloudRouterArgs() {}
 
     private CloudRouterArgs(CloudRouterArgs $) {
         this.account = $.account;
         this.description = $.description;
+        this.href = $.href;
         this.location = $.location;
         this.name = $.name;
         this.notifications = $.notifications;
@@ -169,6 +200,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         this.package_ = $.package_;
         this.project = $.project;
         this.type = $.type;
+        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -195,7 +227,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder account(@Nullable Output<CloudRouterAccountArgs> account) {
+        public Builder account(Output<CloudRouterAccountArgs> account) {
             $.account = account;
             return this;
         }
@@ -229,6 +261,27 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param href Unique Resource URL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder href(@Nullable Output<String> href) {
+            $.href = href;
+            return this;
+        }
+
+        /**
+         * @param href Unique Resource URL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder href(String href) {
+            return href(Output.of(href));
         }
 
         /**
@@ -310,7 +363,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder order(@Nullable Output<CloudRouterOrderArgs> order) {
+        public Builder order(Output<CloudRouterOrderArgs> order) {
             $.order = order;
             return this;
         }
@@ -326,7 +379,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param package_ Fabric Cloud Router package
+         * @param package_ Fabric Cloud Router Package Type
          * 
          * @return builder
          * 
@@ -337,7 +390,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param package_ Fabric Cloud Router package
+         * @param package_ Fabric Cloud Router Package Type
          * 
          * @return builder
          * 
@@ -347,18 +400,18 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Fabric Cloud Router project
+         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
          */
-        public Builder project(@Nullable Output<CloudRouterProjectArgs> project) {
+        public Builder project(Output<CloudRouterProjectArgs> project) {
             $.project = project;
             return this;
         }
 
         /**
-         * @param project Fabric Cloud Router project
+         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -388,10 +441,34 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
             return type(Output.of(type));
         }
 
+        /**
+         * @param uuid Equinix-assigned Fabric Cloud Router identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+        /**
+         * @param uuid Equinix-assigned Fabric Cloud Router identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
+        }
+
         public CloudRouterArgs build() {
+            $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
+            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
             $.package_ = Objects.requireNonNull($.package_, "expected parameter 'package' to be non-null");
+            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }

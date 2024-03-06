@@ -10,13 +10,21 @@ import * as utilities from "../utilities";
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
  *
- * > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const serviceProfileDataName = equinix.fabric.getServiceProfile({
+ *     uuid: "<uuid_of_service_profile>",
+ * });
+ * ```
  */
 export function getServiceProfile(args: GetServiceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfileResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getServiceProfile:getServiceProfile", {
-        "state": args.state,
         "uuid": args.uuid,
     }, opts);
 }
@@ -25,10 +33,6 @@ export function getServiceProfile(args: GetServiceProfileArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getServiceProfile.
  */
 export interface GetServiceProfileArgs {
-    /**
-     * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-     */
-    state?: string;
     uuid: string;
 }
 
@@ -41,7 +45,7 @@ export interface GetServiceProfileResult {
      */
     readonly accessPointTypeConfigs: outputs.fabric.GetServiceProfileAccessPointTypeConfig[];
     /**
-     * Account
+     * Service Profile Owner Account Information
      */
     readonly account: outputs.fabric.GetServiceProfileAccount;
     /**
@@ -99,7 +103,7 @@ export interface GetServiceProfileResult {
     /**
      * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
      */
-    readonly state?: string;
+    readonly state: string;
     /**
      * Tags attached to the connection
      */
@@ -113,6 +117,10 @@ export interface GetServiceProfileResult {
      */
     readonly uuid: string;
     /**
+     * Virtual Devices
+     */
+    readonly virtualDevices: outputs.fabric.GetServiceProfileVirtualDevice[];
+    /**
      * Service profile visibility - PUBLIC, PRIVATE
      */
     readonly visibility: string;
@@ -120,7 +128,16 @@ export interface GetServiceProfileResult {
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
  *
- * > **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const serviceProfileDataName = equinix.fabric.getServiceProfile({
+ *     uuid: "<uuid_of_service_profile>",
+ * });
+ * ```
  */
 export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfileResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfile(a, opts))
@@ -130,9 +147,5 @@ export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?
  * A collection of arguments for invoking getServiceProfile.
  */
 export interface GetServiceProfileOutputArgs {
-    /**
-     * Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-     */
-    state?: pulumi.Input<string>;
     uuid: pulumi.Input<string>;
 }

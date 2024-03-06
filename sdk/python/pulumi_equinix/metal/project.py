@@ -278,7 +278,7 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing project ID: <break><break>```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
+        This resource can be imported using an existing project ID:<break><break> ```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -325,7 +325,7 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing project ID: <break><break>```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
+        This resource can be imported using an existing project ID:<break><break> ```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

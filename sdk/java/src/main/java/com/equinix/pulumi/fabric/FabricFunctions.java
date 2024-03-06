@@ -8,6 +8,8 @@ import com.equinix.pulumi.fabric.inputs.GetCloudRouterArgs;
 import com.equinix.pulumi.fabric.inputs.GetCloudRouterPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionArgs;
 import com.equinix.pulumi.fabric.inputs.GetConnectionPlainArgs;
+import com.equinix.pulumi.fabric.inputs.GetNetworkArgs;
+import com.equinix.pulumi.fabric.inputs.GetNetworkPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortPlainArgs;
 import com.equinix.pulumi.fabric.inputs.GetPortsArgs;
@@ -20,6 +22,7 @@ import com.equinix.pulumi.fabric.inputs.GetServiceProfilesArgs;
 import com.equinix.pulumi.fabric.inputs.GetServiceProfilesPlainArgs;
 import com.equinix.pulumi.fabric.outputs.GetCloudRouterResult;
 import com.equinix.pulumi.fabric.outputs.GetConnectionResult;
+import com.equinix.pulumi.fabric.outputs.GetNetworkResult;
 import com.equinix.pulumi.fabric.outputs.GetPortResult;
 import com.equinix.pulumi.fabric.outputs.GetPortsResult;
 import com.equinix.pulumi.fabric.outputs.GetRoutingProtocolResult;
@@ -32,88 +35,958 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class FabricFunctions {
-    public static Output<GetCloudRouterResult> getCloudRouter() {
-        return getCloudRouter(GetCloudRouterArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain() {
-        return getCloudRouterPlain(GetCloudRouterPlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetCloudRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudRouterDataName = FabricFunctions.getCloudRouter(GetCloudRouterArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args) {
         return getCloudRouter(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetCloudRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudRouterDataName = FabricFunctions.getCloudRouter(GetCloudRouterArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args) {
         return getCloudRouterPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetCloudRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudRouterDataName = FabricFunctions.getCloudRouter(GetCloudRouterArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getCloudRouter:getCloudRouter", TypeShape.of(GetCloudRouterResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetCloudRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cloudRouterDataName = FabricFunctions.getCloudRouter(GetCloudRouterArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getCloudRouter:getCloudRouter", TypeShape.of(GetCloudRouterResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetConnectionResult> getConnection() {
-        return getConnection(GetConnectionArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetConnectionResult> getConnectionPlain() {
-        return getConnectionPlain(GetConnectionPlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
         return getConnection(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
         return getConnectionPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var connectionDataName = FabricFunctions.getConnection(GetConnectionArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networkDataName = FabricFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
+        return getNetwork(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networkDataName = FabricFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args) {
+        return getNetworkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networkDataName = FabricFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("equinix:fabric/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networkDataName = FabricFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("equinix:fabric/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portDataName = FabricFunctions.getPort(GetPortArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPortResult> getPort(GetPortArgs args) {
         return getPort(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portDataName = FabricFunctions.getPort(GetPortArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args) {
         return getPortPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portDataName = FabricFunctions.getPort(GetPortArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by uuid
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portDataName = FabricFunctions.getPort(GetPortArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetPortsResult> getPorts() {
-        return getPorts(GetPortsArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetPortsResult> getPortsPlain() {
-        return getPortsPlain(GetPortsPlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
+     *             .filter(GetPortsFilterArgs.builder()
+     *                 .name(&#34;&lt;name_of_port||port_prefix&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPortsResult> getPorts(GetPortsArgs args) {
         return getPorts(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
+     *             .filter(GetPortsFilterArgs.builder()
+     *                 .name(&#34;&lt;name_of_port||port_prefix&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args) {
         return getPortsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
+     *             .filter(GetPortsFilterArgs.builder()
+     *                 .name(&#34;&lt;name_of_port||port_prefix&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetPortsResult> getPorts(GetPortsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch port by name
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetPortsFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var portsDataName = FabricFunctions.getPorts(GetPortsArgs.builder()
+     *             .filter(GetPortsFilterArgs.builder()
+     *                 .name(&#34;&lt;name_of_port||port_prefix&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getPorts:getPorts", TypeShape.of(GetPortsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRoutingProtocolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routingProtocolDataName = FabricFunctions.getRoutingProtocol(GetRoutingProtocolArgs.builder()
+     *             .connectionUuid(&#34;&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;&#34;)
+     *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args) {
         return getRoutingProtocol(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRoutingProtocolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routingProtocolDataName = FabricFunctions.getRoutingProtocol(GetRoutingProtocolArgs.builder()
+     *             .connectionUuid(&#34;&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;&#34;)
+     *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetRoutingProtocolResult> getRoutingProtocolPlain(GetRoutingProtocolPlainArgs args) {
         return getRoutingProtocolPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRoutingProtocolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routingProtocolDataName = FabricFunctions.getRoutingProtocol(GetRoutingProtocolArgs.builder()
+     *             .connectionUuid(&#34;&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;&#34;)
+     *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getRoutingProtocol:getRoutingProtocol", TypeShape.of(GetRoutingProtocolResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+     * 
+     * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetRoutingProtocolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var routingProtocolDataName = FabricFunctions.getRoutingProtocol(GetRoutingProtocolArgs.builder()
+     *             .connectionUuid(&#34;&lt;uuid_of_connection_routing_protocol_is_applied_to&gt;&#34;)
+     *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetRoutingProtocolResult> getRoutingProtocolPlain(GetRoutingProtocolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getRoutingProtocol:getRoutingProtocol", TypeShape.of(GetRoutingProtocolResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
-     * &gt; **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfileDataName = FabricFunctions.getServiceProfile(GetServiceProfileArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceProfileResult> getServiceProfile(GetServiceProfileArgs args) {
@@ -122,7 +995,35 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
-     * &gt; **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfileDataName = FabricFunctions.getServiceProfile(GetServiceProfileArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceProfileResult> getServiceProfilePlain(GetServiceProfilePlainArgs args) {
@@ -131,7 +1032,35 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
-     * &gt; **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfileDataName = FabricFunctions.getServiceProfile(GetServiceProfileArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetServiceProfileResult> getServiceProfile(GetServiceProfileArgs args, InvokeOptions options) {
@@ -140,27 +1069,289 @@ public final class FabricFunctions {
     /**
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
-     * &gt; **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfileDataName = FabricFunctions.getServiceProfile(GetServiceProfileArgs.builder()
+     *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceProfileResult> getServiceProfilePlain(GetServiceProfilePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceProfile:getServiceProfile", TypeShape.of(GetServiceProfileResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+     *             .filter(GetServiceProfilesFilterArgs.builder()
+     *                 .operator(&#34;=&#34;)
+     *                 .property(&#34;/name&#34;)
+     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetServiceProfilesResult> getServiceProfiles() {
         return getServiceProfiles(GetServiceProfilesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+     *             .filter(GetServiceProfilesFilterArgs.builder()
+     *                 .operator(&#34;=&#34;)
+     *                 .property(&#34;/name&#34;)
+     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain() {
         return getServiceProfilesPlain(GetServiceProfilesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+     *             .filter(GetServiceProfilesFilterArgs.builder()
+     *                 .operator(&#34;=&#34;)
+     *                 .property(&#34;/name&#34;)
+     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args) {
         return getServiceProfiles(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+     *             .filter(GetServiceProfilesFilterArgs.builder()
+     *                 .operator(&#34;=&#34;)
+     *                 .property(&#34;/name&#34;)
+     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args) {
         return getServiceProfilesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+     *             .filter(GetServiceProfilesFilterArgs.builder()
+     *                 .operator(&#34;=&#34;)
+     *                 .property(&#34;/name&#34;)
+     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:fabric/getServiceProfiles:getServiceProfiles", TypeShape.of(GetServiceProfilesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.fabric.FabricFunctions;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesArgs;
+     * import com.pulumi.equinix.fabric.inputs.GetServiceProfilesFilterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
+     *             .filter(GetServiceProfilesFilterArgs.builder()
+     *                 .operator(&#34;=&#34;)
+     *                 .property(&#34;/name&#34;)
+     *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("equinix:fabric/getServiceProfiles:getServiceProfiles", TypeShape.of(GetServiceProfilesResult.class), args, Utilities.withVersion(options));
     }

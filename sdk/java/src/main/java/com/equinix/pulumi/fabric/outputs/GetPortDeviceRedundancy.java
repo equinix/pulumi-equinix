@@ -4,18 +4,47 @@
 package com.equinix.pulumi.fabric.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetPortDeviceRedundancy {
+    /**
+     * @return Access point redundancy
+     * 
+     */
+    private Boolean enabled;
+    /**
+     * @return Port redundancy group
+     * 
+     */
     private String group;
+    /**
+     * @return Priority type-Primary or Secondary
+     * 
+     */
     private String priority;
 
     private GetPortDeviceRedundancy() {}
+    /**
+     * @return Access point redundancy
+     * 
+     */
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    /**
+     * @return Port redundancy group
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return Priority type-Primary or Secondary
+     * 
+     */
     public String priority() {
         return this.priority;
     }
@@ -29,15 +58,22 @@ public final class GetPortDeviceRedundancy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enabled;
         private String group;
         private String priority;
         public Builder() {}
         public Builder(GetPortDeviceRedundancy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.group = defaults.group;
     	      this.priority = defaults.priority;
         }
 
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
         @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
@@ -50,6 +86,7 @@ public final class GetPortDeviceRedundancy {
         }
         public GetPortDeviceRedundancy build() {
             final var _resultValue = new GetPortDeviceRedundancy();
+            _resultValue.enabled = enabled;
             _resultValue.group = group;
             _resultValue.priority = priority;
             return _resultValue;

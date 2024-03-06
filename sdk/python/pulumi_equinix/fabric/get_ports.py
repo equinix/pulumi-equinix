@@ -38,13 +38,13 @@ class GetPortsResult:
     @pulumi.getter
     def data(self) -> Sequence['outputs.GetPortsDatumResult']:
         """
-        List of  Ports
+        List of Ports
         """
         return pulumi.get(self, "data")
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional['outputs.GetPortsFilterResult']:
+    def filter(self) -> 'outputs.GetPortsFilterResult':
         """
         name
         """
@@ -73,7 +73,19 @@ class AwaitableGetPortsResult(GetPortsResult):
 def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortsResult:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch port by name
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    ports_data_name = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+        name="<name_of_port||port_prefix>",
+    ))
+    ```
+
 
     :param pulumi.InputType['GetPortsFilterArgs'] filter: name
     """
@@ -89,10 +101,22 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
 
 
 @_utilities.lift_output_func(get_ports)
-def get_ports_output(filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetPortsFilterArgs']]]] = None,
+def get_ports_output(filter: Optional[pulumi.Input[pulumi.InputType['GetPortsFilterArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch port by name
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    ports_data_name = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+        name="<name_of_port||port_prefix>",
+    ))
+    ```
+
 
     :param pulumi.InputType['GetPortsFilterArgs'] filter: name
     """

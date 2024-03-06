@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
+    /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
@@ -145,6 +147,12 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ConnectionChangeLog> ChangeLog { get; private set; } = null!;
 
         /// <summary>
+        /// User-provided service description
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Connection directionality from the requester point of view
         /// </summary>
         [Output("direction")]
@@ -181,16 +189,16 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ConnectionOperation> Operation { get; private set; } = null!;
 
         /// <summary>
-        /// Order related to this connection information
+        /// Order details
         /// </summary>
         [Output("order")]
-        public Output<Outputs.ConnectionOrder?> Order { get; private set; } = null!;
+        public Output<Outputs.ConnectionOrder> Order { get; private set; } = null!;
 
         /// <summary>
         /// Project information
         /// </summary>
         [Output("project")]
-        public Output<Outputs.ConnectionProject?> Project { get; private set; } = null!;
+        public Output<Outputs.ConnectionProject> Project { get; private set; } = null!;
 
         /// <summary>
         /// Redundancy Information
@@ -199,7 +207,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ConnectionRedundancy?> Redundancy { get; private set; } = null!;
 
         /// <summary>
-        /// Routing protocol instance state
+        /// Connection overall state
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -209,6 +217,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// Equinix-assigned virtual gateway identifier
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
 
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection
@@ -288,6 +302,12 @@ namespace Pulumi.Equinix.Fabric
         public Input<int> Bandwidth { get; set; } = null!;
 
         /// <summary>
+        /// User-provided service description
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Port name
         /// </summary>
         [Input("name")]
@@ -306,10 +326,10 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Order related to this connection information
+        /// Order details
         /// </summary>
-        [Input("order")]
-        public Input<Inputs.ConnectionOrderArgs>? Order { get; set; }
+        [Input("order", required: true)]
+        public Input<Inputs.ConnectionOrderArgs> Order { get; set; } = null!;
 
         /// <summary>
         /// Project information
@@ -380,6 +400,12 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionChangeLogGetArgs>? ChangeLog { get; set; }
 
         /// <summary>
+        /// User-provided service description
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Connection directionality from the requester point of view
         /// </summary>
         [Input("direction")]
@@ -422,7 +448,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionOperationGetArgs>? Operation { get; set; }
 
         /// <summary>
-        /// Order related to this connection information
+        /// Order details
         /// </summary>
         [Input("order")]
         public Input<Inputs.ConnectionOrderGetArgs>? Order { get; set; }
@@ -440,7 +466,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionRedundancyGetArgs>? Redundancy { get; set; }
 
         /// <summary>
-        /// Routing protocol instance state
+        /// Connection overall state
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -450,6 +476,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType>? Type { get; set; }
+
+        /// <summary>
+        /// Equinix-assigned virtual gateway identifier
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection

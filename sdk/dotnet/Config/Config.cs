@@ -73,6 +73,9 @@ namespace Pulumi.Equinix
         }
 
         private static readonly __Value<int?> _maxRetries = new __Value<int?>(() => __config.GetInt32("maxRetries"));
+        /// <summary>
+        /// Maximum number of retries.
+        /// </summary>
         public static int? MaxRetries
         {
             get => _maxRetries.Get();
@@ -80,6 +83,9 @@ namespace Pulumi.Equinix
         }
 
         private static readonly __Value<int?> _maxRetryWaitSeconds = new __Value<int?>(() => __config.GetInt32("maxRetryWaitSeconds"));
+        /// <summary>
+        /// Maximum number of seconds to wait before retrying a request.
+        /// </summary>
         public static int? MaxRetryWaitSeconds
         {
             get => _maxRetryWaitSeconds.Get();

@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/deviceLink:DeviceLink")
@@ -147,6 +147,22 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Unique Identifier for the project resource where the device link is scoped to.If you
+     * leave it out, the device link will be created under the default project id of your organization.
+     * 
+     */
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the device link is scoped to.If you
+     * leave it out, the device link will be created under the default project id of your organization.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
     }
     /**
      * device link provisioning status on a given device. One of `PROVISIONING`,

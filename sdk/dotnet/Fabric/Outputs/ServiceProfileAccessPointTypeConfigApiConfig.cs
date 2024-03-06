@@ -18,11 +18,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly bool? AllowOverSubscription;
         /// <summary>
-        /// Setting indicating whether the API is available (true) or not (false)
+        /// Indicates if it's possible to establish connections based on the given service profile using the Equinix Fabric API.
         /// </summary>
         public readonly bool? ApiAvailable;
         /// <summary>
-        /// Bandwidth from api
+        /// Indicates if the connection bandwidth can be obtained directly from the cloud service provider.
         /// </summary>
         public readonly bool? BandwidthFromApi;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly bool? EquinixManagedVlan;
         /// <summary>
-        /// Integration id
+        /// A unique identifier issued during onboarding and used to integrate the customer's service profile with the Equinix Fabric API.
         /// </summary>
         public readonly string? IntegrationId;
         /// <summary>
-        /// A cap on over subscription
+        /// Port bandwidth multiplier that determines the total bandwidth that can be allocated to users creating connections to your services. For example, a 10 Gbps port combined with an overSubscriptionLimit parameter value of 10 allows your subscribers to create connections with a total bandwidth of 100 Gbps.
         /// </summary>
         public readonly int? OverSubscriptionLimit;
 

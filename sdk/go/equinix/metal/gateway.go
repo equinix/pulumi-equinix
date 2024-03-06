@@ -53,14 +53,15 @@ type Gateway struct {
 
 	// UUID of Public or VRF IP Reservation to associate with the gateway, the
 	// reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
-	IpReservationId pulumi.StringPtrOutput `pulumi:"ipReservationId"`
+	IpReservationId pulumi.StringOutput `pulumi:"ipReservationId"`
 	// Size of the private IPv4 subnet to create for this metal
 	// gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
 	PrivateIpv4SubnetSize pulumi.IntOutput `pulumi:"privateIpv4SubnetSize"`
 	// UUID of the project where the gateway is scoped to.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Status of the gateway resource.
-	State pulumi.StringOutput `pulumi:"state"`
+	State    pulumi.StringOutput      `pulumi:"state"`
+	Timeouts GatewayTimeoutsPtrOutput `pulumi:"timeouts"`
 	// UUID of the VLAN where the gateway is scoped to.
 	VlanId pulumi.StringOutput `pulumi:"vlanId"`
 	// UUID of the VRF associated with the IP Reservation
@@ -112,7 +113,8 @@ type gatewayState struct {
 	// UUID of the project where the gateway is scoped to.
 	ProjectId *string `pulumi:"projectId"`
 	// Status of the gateway resource.
-	State *string `pulumi:"state"`
+	State    *string          `pulumi:"state"`
+	Timeouts *GatewayTimeouts `pulumi:"timeouts"`
 	// UUID of the VLAN where the gateway is scoped to.
 	VlanId *string `pulumi:"vlanId"`
 	// UUID of the VRF associated with the IP Reservation
@@ -129,7 +131,8 @@ type GatewayState struct {
 	// UUID of the project where the gateway is scoped to.
 	ProjectId pulumi.StringPtrInput
 	// Status of the gateway resource.
-	State pulumi.StringPtrInput
+	State    pulumi.StringPtrInput
+	Timeouts GatewayTimeoutsPtrInput
 	// UUID of the VLAN where the gateway is scoped to.
 	VlanId pulumi.StringPtrInput
 	// UUID of the VRF associated with the IP Reservation
@@ -148,7 +151,8 @@ type gatewayArgs struct {
 	// gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
 	PrivateIpv4SubnetSize *int `pulumi:"privateIpv4SubnetSize"`
 	// UUID of the project where the gateway is scoped to.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId string           `pulumi:"projectId"`
+	Timeouts  *GatewayTimeouts `pulumi:"timeouts"`
 	// UUID of the VLAN where the gateway is scoped to.
 	VlanId string `pulumi:"vlanId"`
 }
@@ -163,6 +167,7 @@ type GatewayArgs struct {
 	PrivateIpv4SubnetSize pulumi.IntPtrInput
 	// UUID of the project where the gateway is scoped to.
 	ProjectId pulumi.StringInput
+	Timeouts  GatewayTimeoutsPtrInput
 	// UUID of the VLAN where the gateway is scoped to.
 	VlanId pulumi.StringInput
 }
@@ -256,8 +261,8 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 
 // UUID of Public or VRF IP Reservation to associate with the gateway, the
 // reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
-func (o GatewayOutput) IpReservationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.IpReservationId }).(pulumi.StringPtrOutput)
+func (o GatewayOutput) IpReservationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.IpReservationId }).(pulumi.StringOutput)
 }
 
 // Size of the private IPv4 subnet to create for this metal
@@ -274,6 +279,10 @@ func (o GatewayOutput) ProjectId() pulumi.StringOutput {
 // Status of the gateway resource.
 func (o GatewayOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GatewayOutput) Timeouts() GatewayTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Gateway) GatewayTimeoutsPtrOutput { return v.Timeouts }).(GatewayTimeoutsPtrOutput)
 }
 
 // UUID of the VLAN where the gateway is scoped to.

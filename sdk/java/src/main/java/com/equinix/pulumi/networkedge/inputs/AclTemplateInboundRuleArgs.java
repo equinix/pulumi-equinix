@@ -66,14 +66,24 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         return this.protocol;
     }
 
+    /**
+     * Inbound rule sequence number
+     * 
+     */
     @Import(name="sequenceNumber")
     private @Nullable Output<Integer> sequenceNumber;
 
+    /**
+     * @return Inbound rule sequence number
+     * 
+     */
     public Optional<Output<Integer>> sequenceNumber() {
         return Optional.ofNullable(this.sequenceNumber);
     }
 
     /**
+     * Type of traffic source used in a given inbound rule
+     * 
      * @deprecated
      * Source Type will not be returned
      * 
@@ -83,6 +93,8 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> sourceType;
 
     /**
+     * @return Type of traffic source used in a given inbound rule
+     * 
      * @deprecated
      * Source Type will not be returned
      * 
@@ -263,16 +275,30 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
             return protocol(Either.ofRight(protocol));
         }
 
+        /**
+         * @param sequenceNumber Inbound rule sequence number
+         * 
+         * @return builder
+         * 
+         */
         public Builder sequenceNumber(@Nullable Output<Integer> sequenceNumber) {
             $.sequenceNumber = sequenceNumber;
             return this;
         }
 
+        /**
+         * @param sequenceNumber Inbound rule sequence number
+         * 
+         * @return builder
+         * 
+         */
         public Builder sequenceNumber(Integer sequenceNumber) {
             return sequenceNumber(Output.of(sequenceNumber));
         }
 
         /**
+         * @param sourceType Type of traffic source used in a given inbound rule
+         * 
          * @return builder
          * 
          * @deprecated
@@ -286,6 +312,8 @@ public final class AclTemplateInboundRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param sourceType Type of traffic source used in a given inbound rule
+         * 
          * @return builder
          * 
          * @deprecated

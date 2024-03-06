@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Metro string
@@ -189,10 +188,63 @@ func (o MetroPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetroInput is an input type that accepts MetroArgs and MetroOutput values.
-// You can construct a concrete instance of `MetroInput` via:
+// MetroInput is an input type that accepts values of the Metro enum
+// A concrete instance of `MetroInput` can be one of the following:
 //
-//	MetroArgs{...}
+//	MetroAmsterdam
+//	MetroAshburn
+//	MetroAtlanta
+//	MetroBarcelona
+//	MetroBogota
+//	MetroBordeaux
+//	MetroBoston
+//	MetroBrussels
+//	MetroCalgary
+//	MetroCanberra
+//	MetroChicago
+//	MetroDallas
+//	MetroDenver
+//	MetroDubai
+//	MetroDublin
+//	MetroFrankfurt
+//	MetroGeneva
+//	MetroHamburg
+//	MetroHelsinki
+//	MetroHongKong
+//	MetroIstanbul
+//	MetroKamloops
+//	MetroLisbon
+//	MetroLondon
+//	MetroLosAngeles
+//	MetroMadrid
+//	MetroManchester
+//	MetroMelbourne
+//	MetroMexicoCity
+//	MetroMiami
+//	MetroMilan
+//	MetroMontreal
+//	MetroMumbai
+//	MetroMunich
+//	MetroNewYork
+//	MetroOsaka
+//	MetroParis
+//	MetroPerth
+//	MetroPhiladelphia
+//	MetroRioDeJaneiro
+//	MetroSaoPaulo
+//	MetroSeattle
+//	MetroSeoul
+//	MetroSiliconValley
+//	MetroSingapore
+//	MetroSofia
+//	MetroStockholm
+//	MetroSydney
+//	MetroTokyo
+//	MetroToronto
+//	MetroVancouver
+//	MetroWarsaw
+//	MetroWinnipeg
+//	MetroZurich
 type MetroInput interface {
 	pulumi.Input
 
@@ -225,12 +277,6 @@ func (in *metroPtr) ToMetroPtrOutput() MetroPtrOutput {
 
 func (in *metroPtr) ToMetroPtrOutputWithContext(ctx context.Context) MetroPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetroPtrOutput)
-}
-
-func (in *metroPtr) ToOutput(ctx context.Context) pulumix.Output[*Metro] {
-	return pulumix.Output[*Metro]{
-		OutputState: in.ToMetroPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

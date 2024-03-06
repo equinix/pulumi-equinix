@@ -7,22 +7,48 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig {
-    private String encapsulation;
-    private String encapsulationStrategy;
-    private Boolean reuseVlanSTag;
+    /**
+     * @return Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+     * 
+     */
+    private @Nullable String encapsulation;
+    /**
+     * @return Additional tagging information required by the seller profile.
+     * 
+     */
+    private @Nullable String encapsulationStrategy;
+    /**
+     * @return Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+     * 
+     */
+    private @Nullable Boolean reuseVlanSTag;
 
     private GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig() {}
-    public String encapsulation() {
-        return this.encapsulation;
+    /**
+     * @return Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+     * 
+     */
+    public Optional<String> encapsulation() {
+        return Optional.ofNullable(this.encapsulation);
     }
-    public String encapsulationStrategy() {
-        return this.encapsulationStrategy;
+    /**
+     * @return Additional tagging information required by the seller profile.
+     * 
+     */
+    public Optional<String> encapsulationStrategy() {
+        return Optional.ofNullable(this.encapsulationStrategy);
     }
-    public Boolean reuseVlanSTag() {
-        return this.reuseVlanSTag;
+    /**
+     * @return Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+     * 
+     */
+    public Optional<Boolean> reuseVlanSTag() {
+        return Optional.ofNullable(this.reuseVlanSTag);
     }
 
     public static Builder builder() {
@@ -34,9 +60,9 @@ public final class GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfi
     }
     @CustomType.Builder
     public static final class Builder {
-        private String encapsulation;
-        private String encapsulationStrategy;
-        private Boolean reuseVlanSTag;
+        private @Nullable String encapsulation;
+        private @Nullable String encapsulationStrategy;
+        private @Nullable Boolean reuseVlanSTag;
         public Builder() {}
         public Builder(GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,18 +72,18 @@ public final class GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfi
         }
 
         @CustomType.Setter
-        public Builder encapsulation(String encapsulation) {
-            this.encapsulation = Objects.requireNonNull(encapsulation);
+        public Builder encapsulation(@Nullable String encapsulation) {
+            this.encapsulation = encapsulation;
             return this;
         }
         @CustomType.Setter
-        public Builder encapsulationStrategy(String encapsulationStrategy) {
-            this.encapsulationStrategy = Objects.requireNonNull(encapsulationStrategy);
+        public Builder encapsulationStrategy(@Nullable String encapsulationStrategy) {
+            this.encapsulationStrategy = encapsulationStrategy;
             return this;
         }
         @CustomType.Setter
-        public Builder reuseVlanSTag(Boolean reuseVlanSTag) {
-            this.reuseVlanSTag = Objects.requireNonNull(reuseVlanSTag);
+        public Builder reuseVlanSTag(@Nullable Boolean reuseVlanSTag) {
+            this.reuseVlanSTag = reuseVlanSTag;
             return this;
         }
         public GetServiceProfilesDatumAccessPointTypeConfigLinkProtocolConfig build() {

@@ -58,7 +58,7 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:networkedge/aclTemplate:AclTemplate")]
     public partial class AclTemplate : global::Pulumi.CustomResource
@@ -108,6 +108,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the acl template is scoped to.If you
+        /// leave it out, the ACL template will be created under the default project id of your organization.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// Device uuid.
@@ -195,6 +202,13 @@ namespace Pulumi.Equinix.NetworkEdge
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Unique Identifier for the project resource where the acl template is scoped to.If you
+        /// leave it out, the ACL template will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
         public AclTemplateArgs()
         {
         }
@@ -260,6 +274,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the acl template is scoped to.If you
+        /// leave it out, the ACL template will be created under the default project id of your organization.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// Device uuid.

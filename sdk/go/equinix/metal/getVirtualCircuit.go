@@ -15,38 +15,6 @@ import (
 // [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
 //
 // > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleConnection, err := metal.LookupInterconnection(ctx, &metal.LookupInterconnectionArgs{
-//				ConnectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = metal.LookupVirtualCircuit(ctx, &metal.LookupVirtualCircuitArgs{
-//				VirtualCircuitId: exampleConnection.Ports[1].VirtualCircuitIds[0],
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupVirtualCircuit(ctx *pulumi.Context, args *LookupVirtualCircuitArgs, opts ...pulumi.InvokeOption) (*LookupVirtualCircuitResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualCircuitResult

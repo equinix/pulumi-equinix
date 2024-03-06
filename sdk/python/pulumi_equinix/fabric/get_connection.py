@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetConnectionResult',
@@ -103,7 +102,7 @@ class GetConnectionResult:
 
     @property
     @pulumi.getter(name="additionalInfo")
-    def additional_info(self) -> Sequence['outputs.GetConnectionAdditionalInfoResult']:
+    def additional_info(self) -> Sequence[Mapping[str, Any]]:
         """
         Connection additional information
         """
@@ -185,7 +184,7 @@ class GetConnectionResult:
     @pulumi.getter
     def operation(self) -> 'outputs.GetConnectionOperationResult':
         """
-        Connection specific operational data
+        Connection type-specific operational data
         """
         return pulumi.get(self, "operation")
 
@@ -193,13 +192,13 @@ class GetConnectionResult:
     @pulumi.getter
     def order(self) -> 'outputs.GetConnectionOrderResult':
         """
-        Order related to this connection information
+        Order details
         """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter
-    def project(self) -> Optional['outputs.GetConnectionProjectResult']:
+    def project(self) -> 'outputs.GetConnectionProjectResult':
         """
         Project information
         """
@@ -209,7 +208,7 @@ class GetConnectionResult:
     @pulumi.getter
     def redundancy(self) -> 'outputs.GetConnectionRedundancyResult':
         """
-        Redundancy Information
+        Connection Redundancy Configuration
         """
         return pulumi.get(self, "redundancy")
 
@@ -225,13 +224,13 @@ class GetConnectionResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
         """
         Equinix-assigned connection identifier
         """
@@ -274,16 +273,21 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             z_side=self.z_side)
 
 
-def get_connection(project: Optional[pulumi.InputType['GetConnectionProjectArgs']] = None,
-                   uuid: Optional[str] = None,
+def get_connection(uuid: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionResult:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
-    :param pulumi.InputType['GetConnectionProjectArgs'] project: Project information
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    connection_data_name = equinix.fabric.get_connection(uuid="<uuid_of_connection>")
+    ```
     """
     __args__ = dict()
-    __args__['project'] = project
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
@@ -312,12 +316,18 @@ def get_connection(project: Optional[pulumi.InputType['GetConnectionProjectArgs'
 
 
 @_utilities.lift_output_func(get_connection)
-def get_connection_output(project: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectionProjectArgs']]]] = None,
-                          uuid: Optional[pulumi.Input[Optional[str]]] = None,
+def get_connection_output(uuid: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
 
-    :param pulumi.InputType['GetConnectionProjectArgs'] project: Project information
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    connection_data_name = equinix.fabric.get_connection(uuid="<uuid_of_connection>")
+    ```
     """
     ...

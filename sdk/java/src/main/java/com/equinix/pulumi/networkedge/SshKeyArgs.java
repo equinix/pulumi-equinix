@@ -31,6 +31,23 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique Identifier for the project resource where the SSH key is scoped to.If you
+     * leave it out, the ssh key will be created under the default project id of your organization.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the SSH key is scoped to.If you
+     * leave it out, the ssh key will be created under the default project id of your organization.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * The SSH public key. If this is a file, it can be read using the file
      * interpolation function.
      * 
@@ -66,6 +83,7 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     private SshKeyArgs(SshKeyArgs $) {
         this.name = $.name;
+        this.projectId = $.projectId;
         this.publicKey = $.publicKey;
         this.type = $.type;
     }
@@ -107,6 +125,29 @@ public final class SshKeyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the SSH key is scoped to.If you
+         * leave it out, the ssh key will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the SSH key is scoped to.If you
+         * leave it out, the ssh key will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

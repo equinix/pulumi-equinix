@@ -63,14 +63,14 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Equinix-assigned interface identifier
+     * Equinix-assigned virtual gateway identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned interface identifier
+     * @return Equinix-assigned virtual gateway identifier
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -188,7 +188,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uuid Equinix-assigned interface identifier
+         * @param uuid Equinix-assigned virtual gateway identifier
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uuid Equinix-assigned interface identifier
+         * @param uuid Equinix-assigned virtual gateway identifier
          * 
          * @return builder
          * 

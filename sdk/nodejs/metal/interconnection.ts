@@ -70,11 +70,11 @@ export class Interconnection extends pulumi.CustomResource {
     /**
      * Description for the connection resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      *
-     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
     public readonly facility!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class Interconnection extends pulumi.CustomResource {
     /**
      * Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * Name of the connection resource
      */
@@ -116,7 +116,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceTokens!: pulumi.Output<outputs.metal.InterconnectionServiceToken[]>;
     /**
-     * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      */
     public readonly speed!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface InterconnectionState {
     /**
      * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      *
-     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
     facility?: pulumi.Input<string>;
     /**
@@ -262,7 +262,7 @@ export interface InterconnectionState {
      */
     serviceTokens?: pulumi.Input<pulumi.Input<inputs.metal.InterconnectionServiceToken>[]>;
     /**
-     * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      */
     speed?: pulumi.Input<string>;
     /**
@@ -304,7 +304,7 @@ export interface InterconnectionArgs {
     /**
      * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      *
-     * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * @deprecated Use metro instead of facility. For more information, read the migration guide.
      */
     facility?: pulumi.Input<string>;
     /**
@@ -336,7 +336,7 @@ export interface InterconnectionArgs {
      */
     serviceTokenType?: pulumi.Input<string>;
     /**
-     * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      */
     speed?: pulumi.Input<string>;
     /**

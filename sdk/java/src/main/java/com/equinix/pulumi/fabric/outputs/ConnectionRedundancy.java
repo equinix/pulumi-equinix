@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionRedundancy {
     /**
-     * @return Redundancy group identifier
+     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
      * 
      */
     private @Nullable String group;
     /**
-     * @return Priority type- PRIMARY, SECONDARY
+     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
      * 
      */
     private @Nullable String priority;
 
     private ConnectionRedundancy() {}
     /**
-     * @return Redundancy group identifier
+     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
      * 
      */
     public Optional<String> group() {
         return Optional.ofNullable(this.group);
     }
     /**
-     * @return Priority type- PRIMARY, SECONDARY
+     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
      * 
      */
     public Optional<String> priority() {

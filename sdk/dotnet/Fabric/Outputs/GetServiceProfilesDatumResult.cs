@@ -13,24 +13,85 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfilesDatumResult
     {
+        /// <summary>
+        /// Access point config information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumAccessPointTypeConfigResult> AccessPointTypeConfigs;
+        /// <summary>
+        /// Service Profile Owner Account Information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumAccountResult> Accounts;
+        /// <summary>
+        /// Array of contact emails
+        /// </summary>
         public readonly ImmutableArray<string> AllowedEmails;
+        /// <summary>
+        /// Captures connection lifecycle change information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumChangeLogResult> ChangeLogs;
+        /// <summary>
+        /// Custom Fields
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumCustomFieldResult> CustomFields;
+        /// <summary>
+        /// User-provided service description
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Service Profile URI response attribute
+        /// </summary>
         public readonly string Href;
+        /// <summary>
+        /// Marketing Info
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumMarketingInfoResult> MarketingInfos;
+        /// <summary>
+        /// Access point config information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumMetroResult> Metros;
+        /// <summary>
+        /// Customer-assigned service profile name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Preferences for notifications on connection configuration or status changes
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumNotificationResult> Notifications;
+        /// <summary>
+        /// Ports
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumPortResult> Ports;
+        /// <summary>
+        /// Project information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfilesDatumProjectResult> Projects;
+        /// <summary>
+        /// Self Profile indicating if the profile is created for customer's  self use
+        /// </summary>
         public readonly bool SelfProfile;
-        public readonly string? State;
+        /// <summary>
+        /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// Tags attached to the connection
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        /// </summary>
         public readonly string Type;
-        public readonly string? Uuid;
+        /// <summary>
+        /// Equinix assigned service profile identifier
+        /// </summary>
+        public readonly string Uuid;
+        /// <summary>
+        /// Virtual Devices
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceProfilesDatumVirtualDeviceResult> VirtualDevices;
+        /// <summary>
+        /// Service profile visibility - PUBLIC, PRIVATE
+        /// </summary>
         public readonly string Visibility;
 
         [OutputConstructor]
@@ -63,13 +124,15 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             bool selfProfile,
 
-            string? state,
+            string state,
 
             ImmutableArray<string> tags,
 
             string type,
 
-            string? uuid,
+            string uuid,
+
+            ImmutableArray<Outputs.GetServiceProfilesDatumVirtualDeviceResult> virtualDevices,
 
             string visibility)
         {
@@ -91,6 +154,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Tags = tags;
             Type = type;
             Uuid = uuid;
+            VirtualDevices = virtualDevices;
             Visibility = visibility;
         }
     }

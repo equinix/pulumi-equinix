@@ -13,11 +13,29 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideAccessPointProfileResult
     {
+        /// <summary>
+        /// Access point config information
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionASideAccessPointProfileAccessPointTypeConfigResult> AccessPointTypeConfigs;
+        /// <summary>
+        /// User-provided service description
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Service Profile URI response attribute
+        /// </summary>
         public readonly string Href;
+        /// <summary>
+        /// Customer-assigned service profile name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Equinix assigned service profile identifier
+        /// </summary>
         public readonly string Uuid;
 
         [OutputConstructor]

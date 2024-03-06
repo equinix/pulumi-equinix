@@ -12,39 +12,75 @@ namespace Pulumi.Equinix.Fabric.Inputs
 
     public sealed class ServiceProfileChangeLogArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Created by User Key
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Created by User Email Address
+        /// </summary>
         [Input("createdByEmail")]
         public Input<string>? CreatedByEmail { get; set; }
 
+        /// <summary>
+        /// Created by User Full Name
+        /// </summary>
         [Input("createdByFullName")]
         public Input<string>? CreatedByFullName { get; set; }
 
+        /// <summary>
+        /// Created by Date and Time
+        /// </summary>
         [Input("createdDateTime")]
         public Input<string>? CreatedDateTime { get; set; }
 
+        /// <summary>
+        /// Deleted by User Key
+        /// </summary>
         [Input("deletedBy")]
         public Input<string>? DeletedBy { get; set; }
 
+        /// <summary>
+        /// Deleted by User Email Address
+        /// </summary>
         [Input("deletedByEmail")]
         public Input<string>? DeletedByEmail { get; set; }
 
+        /// <summary>
+        /// Deleted by User Full Name
+        /// </summary>
         [Input("deletedByFullName")]
         public Input<string>? DeletedByFullName { get; set; }
 
+        /// <summary>
+        /// Deleted by Date and Time
+        /// </summary>
         [Input("deletedDateTime")]
         public Input<string>? DeletedDateTime { get; set; }
 
+        /// <summary>
+        /// Updated by User Key
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 
+        /// <summary>
+        /// Updated by User Email Address
+        /// </summary>
         [Input("updatedByEmail")]
         public Input<string>? UpdatedByEmail { get; set; }
 
+        /// <summary>
+        /// Updated by User Full Name
+        /// </summary>
         [Input("updatedByFullName")]
         public Input<string>? UpdatedByFullName { get; set; }
 
+        /// <summary>
+        /// Updated by Date and Time
+        /// </summary>
         [Input("updatedDateTime")]
         public Input<string>? UpdatedDateTime { get; set; }
 

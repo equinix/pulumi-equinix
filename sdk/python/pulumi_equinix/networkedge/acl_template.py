@@ -20,7 +20,8 @@ class AclTemplateArgs:
                  inbound_rules: pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]],
                  description: Optional[pulumi.Input[str]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AclTemplate resource.
         :param pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]] inbound_rules: One or more rules to specify allowed inbound traffic.
@@ -30,6 +31,8 @@ class AclTemplateArgs:
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
+               leave it out, the ACL template will be created under the default project id of your organization.
         """
         pulumi.set(__self__, "inbound_rules", inbound_rules)
         if description is not None:
@@ -41,6 +44,8 @@ class AclTemplateArgs:
             pulumi.set(__self__, "metro_code", metro_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="inboundRules")
@@ -96,6 +101,19 @@ class AclTemplateArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the acl template is scoped to.If you
+        leave it out, the ACL template will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
 
 @pulumi.input_type
 class _AclTemplateState:
@@ -107,6 +125,7 @@ class _AclTemplateState:
                  inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclTemplateInboundRuleArgs']]]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AclTemplate resources.
@@ -121,6 +140,8 @@ class _AclTemplateState:
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
+               leave it out, the ACL template will be created under the default project id of your organization.
         :param pulumi.Input[str] uuid: Device uuid.
         """
         if description is not None:
@@ -143,6 +164,8 @@ class _AclTemplateState:
             pulumi.set(__self__, "metro_code", metro_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
 
@@ -241,6 +264,19 @@ class _AclTemplateState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the acl template is scoped to.If you
+        leave it out, the ACL template will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -262,6 +298,7 @@ class AclTemplate(pulumi.CustomResource):
                  inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Resource `networkedge.AclTemplate` allows creation and management of
@@ -299,7 +336,7 @@ class AclTemplate(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -310,6 +347,8 @@ class AclTemplate(pulumi.CustomResource):
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
+               leave it out, the ACL template will be created under the default project id of your organization.
         """
         ...
     @overload
@@ -353,7 +392,7 @@ class AclTemplate(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/aclTemplate:AclTemplate example {existing_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param AclTemplateArgs args: The arguments to use to populate this resource's properties.
@@ -374,6 +413,7 @@ class AclTemplate(pulumi.CustomResource):
                  inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]]] = None,
                  metro_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -389,6 +429,7 @@ class AclTemplate(pulumi.CustomResource):
             __props__.__dict__["inbound_rules"] = inbound_rules
             __props__.__dict__["metro_code"] = metro_code
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["device_acl_status"] = None
             __props__.__dict__["device_details"] = None
             __props__.__dict__["device_id"] = None
@@ -410,6 +451,7 @@ class AclTemplate(pulumi.CustomResource):
             inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTemplateInboundRuleArgs']]]]] = None,
             metro_code: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'AclTemplate':
         """
         Get an existing AclTemplate resource's state with the given name, id, and optional extra
@@ -429,6 +471,8 @@ class AclTemplate(pulumi.CustomResource):
                The `inbound_rule` block has below fields:
         :param pulumi.Input[str] metro_code: ACL template location metro code.
         :param pulumi.Input[str] name: ACL template name.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the acl template is scoped to.If you
+               leave it out, the ACL template will be created under the default project id of your organization.
         :param pulumi.Input[str] uuid: Device uuid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -442,6 +486,7 @@ class AclTemplate(pulumi.CustomResource):
         __props__.__dict__["inbound_rules"] = inbound_rules
         __props__.__dict__["metro_code"] = metro_code
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["uuid"] = uuid
         return AclTemplate(resource_name, opts=opts, __props__=__props__)
 
@@ -510,6 +555,15 @@ class AclTemplate(pulumi.CustomResource):
         ACL template name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Unique Identifier for the project resource where the acl template is scoped to.If you
+        leave it out, the ACL template will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter

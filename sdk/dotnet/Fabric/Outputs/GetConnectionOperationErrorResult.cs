@@ -13,11 +13,29 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionOperationErrorResult
     {
+        /// <summary>
+        /// Pricing error additional Info
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOperationErrorAdditionalInfoResult> AdditionalInfos;
+        /// <summary>
+        /// CorrelationId
+        /// </summary>
         public readonly string CorrelationId;
+        /// <summary>
+        /// Details
+        /// </summary>
         public readonly string Details;
+        /// <summary>
+        /// Error  code
+        /// </summary>
         public readonly string ErrorCode;
+        /// <summary>
+        /// Error Message
+        /// </summary>
         public readonly string ErrorMessage;
+        /// <summary>
+        /// Help
+        /// </summary>
         public readonly string Help;
 
         [OutputConstructor]

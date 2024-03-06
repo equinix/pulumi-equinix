@@ -50,7 +50,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing spot market request ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing spot market request ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/spotMarketRequest:SpotMarketRequest")]
     public partial class SpotMarketRequest : global::Pulumi.CustomResource

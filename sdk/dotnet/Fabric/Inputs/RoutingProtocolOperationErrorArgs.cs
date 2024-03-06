@@ -14,24 +14,43 @@ namespace Pulumi.Equinix.Fabric.Inputs
     {
         [Input("additionalInfos")]
         private InputList<Inputs.RoutingProtocolOperationErrorAdditionalInfoArgs>? _additionalInfos;
+
+        /// <summary>
+        /// Pricing error additional Info
+        /// </summary>
         public InputList<Inputs.RoutingProtocolOperationErrorAdditionalInfoArgs> AdditionalInfos
         {
             get => _additionalInfos ?? (_additionalInfos = new InputList<Inputs.RoutingProtocolOperationErrorAdditionalInfoArgs>());
             set => _additionalInfos = value;
         }
 
+        /// <summary>
+        /// CorrelationId
+        /// </summary>
         [Input("correlationId")]
         public Input<string>? CorrelationId { get; set; }
 
+        /// <summary>
+        /// Details
+        /// </summary>
         [Input("details")]
         public Input<string>? Details { get; set; }
 
+        /// <summary>
+        /// Error  code
+        /// </summary>
         [Input("errorCode")]
         public Input<string>? ErrorCode { get; set; }
 
+        /// <summary>
+        /// Error Message
+        /// </summary>
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
 
+        /// <summary>
+        /// Help
+        /// </summary>
         [Input("help")]
         public Input<string>? Help { get; set; }
 

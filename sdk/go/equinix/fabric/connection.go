@@ -13,6 +13,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+//
 // ## Example Usage
 // ```go
 // package main
@@ -129,6 +131,8 @@ type Connection struct {
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
 	ChangeLog ConnectionChangeLogOutput `pulumi:"changeLog"`
+	// User-provided service description
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Unique Resource Identifier
@@ -141,16 +145,18 @@ type Connection struct {
 	Notifications ConnectionNotificationArrayOutput `pulumi:"notifications"`
 	// Connection type-specific operational data
 	Operation ConnectionOperationOutput `pulumi:"operation"`
-	// Order related to this connection information
-	Order ConnectionOrderPtrOutput `pulumi:"order"`
+	// Order details
+	Order ConnectionOrderOutput `pulumi:"order"`
 	// Project information
-	Project ConnectionProjectPtrOutput `pulumi:"project"`
+	Project ConnectionProjectOutput `pulumi:"project"`
 	// Redundancy Information
 	Redundancy ConnectionRedundancyPtrOutput `pulumi:"redundancy"`
-	// Routing protocol instance state
+	// Connection overall state
 	State pulumi.StringOutput `pulumi:"state"`
 	// Interface type
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid pulumi.StringOutput `pulumi:"uuid"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSideOutput `pulumi:"zSide"`
 }
@@ -170,6 +176,9 @@ func NewConnection(ctx *pulumi.Context,
 	}
 	if args.Notifications == nil {
 		return nil, errors.New("invalid value for required argument 'Notifications'")
+	}
+	if args.Order == nil {
+		return nil, errors.New("invalid value for required argument 'Order'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -210,6 +219,8 @@ type connectionState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
 	ChangeLog *ConnectionChangeLog `pulumi:"changeLog"`
+	// User-provided service description
+	Description *string `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction *string `pulumi:"direction"`
 	// Unique Resource Identifier
@@ -222,16 +233,18 @@ type connectionState struct {
 	Notifications []ConnectionNotification `pulumi:"notifications"`
 	// Connection type-specific operational data
 	Operation *ConnectionOperation `pulumi:"operation"`
-	// Order related to this connection information
+	// Order details
 	Order *ConnectionOrder `pulumi:"order"`
 	// Project information
 	Project *ConnectionProject `pulumi:"project"`
 	// Redundancy Information
 	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
-	// Routing protocol instance state
+	// Connection overall state
 	State *string `pulumi:"state"`
 	// Interface type
 	Type *string `pulumi:"type"`
+	// Equinix-assigned virtual gateway identifier
+	Uuid *string `pulumi:"uuid"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide *ConnectionZSide `pulumi:"zSide"`
 }
@@ -247,6 +260,8 @@ type ConnectionState struct {
 	Bandwidth pulumi.IntPtrInput
 	// Captures connection lifecycle change information
 	ChangeLog ConnectionChangeLogPtrInput
+	// User-provided service description
+	Description pulumi.StringPtrInput
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringPtrInput
 	// Unique Resource Identifier
@@ -259,16 +274,18 @@ type ConnectionState struct {
 	Notifications ConnectionNotificationArrayInput
 	// Connection type-specific operational data
 	Operation ConnectionOperationPtrInput
-	// Order related to this connection information
+	// Order details
 	Order ConnectionOrderPtrInput
 	// Project information
 	Project ConnectionProjectPtrInput
 	// Redundancy Information
 	Redundancy ConnectionRedundancyPtrInput
-	// Routing protocol instance state
+	// Connection overall state
 	State pulumi.StringPtrInput
 	// Interface type
 	Type pulumi.StringPtrInput
+	// Equinix-assigned virtual gateway identifier
+	Uuid pulumi.StringPtrInput
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSidePtrInput
 }
@@ -284,12 +301,14 @@ type connectionArgs struct {
 	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
+	// User-provided service description
+	Description *string `pulumi:"description"`
 	// Port name
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ConnectionNotification `pulumi:"notifications"`
-	// Order related to this connection information
-	Order *ConnectionOrder `pulumi:"order"`
+	// Order details
+	Order ConnectionOrder `pulumi:"order"`
 	// Project information
 	Project *ConnectionProject `pulumi:"project"`
 	// Redundancy Information
@@ -308,12 +327,14 @@ type ConnectionArgs struct {
 	AdditionalInfo pulumi.MapArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntInput
+	// User-provided service description
+	Description pulumi.StringPtrInput
 	// Port name
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayInput
-	// Order related to this connection information
-	Order ConnectionOrderPtrInput
+	// Order details
+	Order ConnectionOrderInput
 	// Project information
 	Project ConnectionProjectPtrInput
 	// Redundancy Information
@@ -436,6 +457,11 @@ func (o ConnectionOutput) ChangeLog() ConnectionChangeLogOutput {
 	return o.ApplyT(func(v *Connection) ConnectionChangeLogOutput { return v.ChangeLog }).(ConnectionChangeLogOutput)
 }
 
+// User-provided service description
+func (o ConnectionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // Connection directionality from the requester point of view
 func (o ConnectionOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
@@ -466,14 +492,14 @@ func (o ConnectionOutput) Operation() ConnectionOperationOutput {
 	return o.ApplyT(func(v *Connection) ConnectionOperationOutput { return v.Operation }).(ConnectionOperationOutput)
 }
 
-// Order related to this connection information
-func (o ConnectionOutput) Order() ConnectionOrderPtrOutput {
-	return o.ApplyT(func(v *Connection) ConnectionOrderPtrOutput { return v.Order }).(ConnectionOrderPtrOutput)
+// Order details
+func (o ConnectionOutput) Order() ConnectionOrderOutput {
+	return o.ApplyT(func(v *Connection) ConnectionOrderOutput { return v.Order }).(ConnectionOrderOutput)
 }
 
 // Project information
-func (o ConnectionOutput) Project() ConnectionProjectPtrOutput {
-	return o.ApplyT(func(v *Connection) ConnectionProjectPtrOutput { return v.Project }).(ConnectionProjectPtrOutput)
+func (o ConnectionOutput) Project() ConnectionProjectOutput {
+	return o.ApplyT(func(v *Connection) ConnectionProjectOutput { return v.Project }).(ConnectionProjectOutput)
 }
 
 // Redundancy Information
@@ -481,7 +507,7 @@ func (o ConnectionOutput) Redundancy() ConnectionRedundancyPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionRedundancyPtrOutput { return v.Redundancy }).(ConnectionRedundancyPtrOutput)
 }
 
-// Routing protocol instance state
+// Connection overall state
 func (o ConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -489,6 +515,11 @@ func (o ConnectionOutput) State() pulumi.StringOutput {
 // Interface type
 func (o ConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Equinix-assigned virtual gateway identifier
+func (o ConnectionOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
 // Destination or Provider side connection configuration object of the multi-segment connection

@@ -7,20 +7,46 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudRouterNotification {
+    /**
+     * @return Array of contact emails
+     * 
+     */
     private List<String> emails;
-    private String sendInterval;
+    /**
+     * @return Send interval
+     * 
+     */
+    private @Nullable String sendInterval;
+    /**
+     * @return Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+     * 
+     */
     private String type;
 
     private GetCloudRouterNotification() {}
+    /**
+     * @return Array of contact emails
+     * 
+     */
     public List<String> emails() {
         return this.emails;
     }
-    public String sendInterval() {
-        return this.sendInterval;
+    /**
+     * @return Send interval
+     * 
+     */
+    public Optional<String> sendInterval() {
+        return Optional.ofNullable(this.sendInterval);
     }
+    /**
+     * @return Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+     * 
+     */
     public String type() {
         return this.type;
     }
@@ -35,7 +61,7 @@ public final class GetCloudRouterNotification {
     @CustomType.Builder
     public static final class Builder {
         private List<String> emails;
-        private String sendInterval;
+        private @Nullable String sendInterval;
         private String type;
         public Builder() {}
         public Builder(GetCloudRouterNotification defaults) {
@@ -54,8 +80,8 @@ public final class GetCloudRouterNotification {
             return emails(List.of(emails));
         }
         @CustomType.Setter
-        public Builder sendInterval(String sendInterval) {
-            this.sendInterval = Objects.requireNonNull(sendInterval);
+        public Builder sendInterval(@Nullable String sendInterval) {
+            this.sendInterval = sendInterval;
             return this;
         }
         @CustomType.Setter

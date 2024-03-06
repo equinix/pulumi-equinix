@@ -8,6 +8,8 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
+ * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -125,6 +127,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly changeLog!: pulumi.Output<outputs.fabric.ConnectionChangeLog>;
     /**
+     * User-provided service description
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * Connection directionality from the requester point of view
      */
     public /*out*/ readonly direction!: pulumi.Output<string>;
@@ -149,25 +155,29 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly operation!: pulumi.Output<outputs.fabric.ConnectionOperation>;
     /**
-     * Order related to this connection information
+     * Order details
      */
-    public readonly order!: pulumi.Output<outputs.fabric.ConnectionOrder | undefined>;
+    public readonly order!: pulumi.Output<outputs.fabric.ConnectionOrder>;
     /**
      * Project information
      */
-    public readonly project!: pulumi.Output<outputs.fabric.ConnectionProject | undefined>;
+    public readonly project!: pulumi.Output<outputs.fabric.ConnectionProject>;
     /**
      * Redundancy Information
      */
     public readonly redundancy!: pulumi.Output<outputs.fabric.ConnectionRedundancy | undefined>;
     /**
-     * Routing protocol instance state
+     * Connection overall state
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Interface type
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * Equinix-assigned virtual gateway identifier
+     */
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
@@ -191,6 +201,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["additionalInfo"] = state ? state.additionalInfo : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["changeLog"] = state ? state.changeLog : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["href"] = state ? state.href : undefined;
             resourceInputs["isRemote"] = state ? state.isRemote : undefined;
@@ -202,6 +213,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["redundancy"] = state ? state.redundancy : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
             resourceInputs["zSide"] = state ? state.zSide : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
@@ -214,6 +226,9 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.notifications === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notifications'");
             }
+            if ((!args || args.order === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'order'");
+            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -223,6 +238,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["aSide"] = args ? args.aSide : undefined;
             resourceInputs["additionalInfo"] = args ? args.additionalInfo : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
@@ -237,6 +253,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["isRemote"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connection.__pulumiType, name, resourceInputs, opts);
@@ -268,6 +285,10 @@ export interface ConnectionState {
      */
     changeLog?: pulumi.Input<inputs.fabric.ConnectionChangeLog>;
     /**
+     * User-provided service description
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Connection directionality from the requester point of view
      */
     direction?: pulumi.Input<string>;
@@ -292,7 +313,7 @@ export interface ConnectionState {
      */
     operation?: pulumi.Input<inputs.fabric.ConnectionOperation>;
     /**
-     * Order related to this connection information
+     * Order details
      */
     order?: pulumi.Input<inputs.fabric.ConnectionOrder>;
     /**
@@ -304,13 +325,17 @@ export interface ConnectionState {
      */
     redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
-     * Routing protocol instance state
+     * Connection overall state
      */
     state?: pulumi.Input<string>;
     /**
      * Interface type
      */
     type?: pulumi.Input<string | enums.fabric.ConnectionType>;
+    /**
+     * Equinix-assigned virtual gateway identifier
+     */
+    uuid?: pulumi.Input<string>;
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
@@ -334,6 +359,10 @@ export interface ConnectionArgs {
      */
     bandwidth: pulumi.Input<number>;
     /**
+     * User-provided service description
+     */
+    description?: pulumi.Input<string>;
+    /**
      * Port name
      */
     name?: pulumi.Input<string>;
@@ -342,9 +371,9 @@ export interface ConnectionArgs {
      */
     notifications: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionNotification>[]>;
     /**
-     * Order related to this connection information
+     * Order details
      */
-    order?: pulumi.Input<inputs.fabric.ConnectionOrder>;
+    order: pulumi.Input<inputs.fabric.ConnectionOrder>;
     /**
      * Project information
      */

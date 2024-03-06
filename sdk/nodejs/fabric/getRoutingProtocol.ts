@@ -7,21 +7,28 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+ *
+ * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const routingProtocolDataName = equinix.fabric.getRoutingProtocol({
+ *     connectionUuid: "<uuid_of_connection_routing_protocol_is_applied_to>",
+ *     uuid: "<uuid_of_routing_protocol>",
+ * });
+ * ```
+ */
 export function getRoutingProtocol(args: GetRoutingProtocolArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutingProtocolResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getRoutingProtocol:getRoutingProtocol", {
-        "bfd": args.bfd,
-        "bgpAuthKey": args.bgpAuthKey,
-        "bgpIpv4": args.bgpIpv4,
-        "bgpIpv6": args.bgpIpv6,
         "connectionUuid": args.connectionUuid,
-        "customerAsn": args.customerAsn,
-        "description": args.description,
-        "directIpv4": args.directIpv4,
-        "directIpv6": args.directIpv6,
-        "name": args.name,
-        "type": args.type,
         "uuid": args.uuid,
     }, opts);
 }
@@ -31,47 +38,10 @@ export function getRoutingProtocol(args: GetRoutingProtocolArgs, opts?: pulumi.I
  */
 export interface GetRoutingProtocolArgs {
     /**
-     * Bidirectional Forwarding Detection
-     */
-    bfd?: inputs.fabric.GetRoutingProtocolBfd;
-    /**
-     * BGP authorization key
-     */
-    bgpAuthKey?: string;
-    /**
-     * Routing Protocol BGP IPv4
-     */
-    bgpIpv4?: inputs.fabric.GetRoutingProtocolBgpIpv4;
-    /**
-     * Routing Protocol BGP IPv6
-     */
-    bgpIpv6?: inputs.fabric.GetRoutingProtocolBgpIpv6;
-    /**
      * Connection URI associated with Routing Protocol
      */
     connectionUuid: string;
-    /**
-     * Customer-provided ASN
-     */
-    customerAsn?: number;
-    /**
-     * Customer-provided Fabric Routing Protocol description
-     */
-    description?: string;
-    /**
-     * Routing Protocol Direct IPv4
-     */
-    directIpv4?: inputs.fabric.GetRoutingProtocolDirectIpv4;
-    /**
-     * Routing Protocol Direct IPv6
-     */
-    directIpv6?: inputs.fabric.GetRoutingProtocolDirectIpv6;
-    /**
-     * Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-     */
-    name?: string;
-    type?: string;
-    uuid?: string;
+    uuid: string;
 }
 
 /**
@@ -81,19 +51,19 @@ export interface GetRoutingProtocolResult {
     /**
      * Bidirectional Forwarding Detection
      */
-    readonly bfd?: outputs.fabric.GetRoutingProtocolBfd;
+    readonly bfd: outputs.fabric.GetRoutingProtocolBfd;
     /**
      * BGP authorization key
      */
-    readonly bgpAuthKey?: string;
+    readonly bgpAuthKey: string;
     /**
      * Routing Protocol BGP IPv4
      */
-    readonly bgpIpv4?: outputs.fabric.GetRoutingProtocolBgpIpv4;
+    readonly bgpIpv4: outputs.fabric.GetRoutingProtocolBgpIpv4;
     /**
      * Routing Protocol BGP IPv6
      */
-    readonly bgpIpv6?: outputs.fabric.GetRoutingProtocolBgpIpv6;
+    readonly bgpIpv6: outputs.fabric.GetRoutingProtocolBgpIpv6;
     /**
      * Captures Routing Protocol lifecycle change information
      */
@@ -109,19 +79,19 @@ export interface GetRoutingProtocolResult {
     /**
      * Customer-provided ASN
      */
-    readonly customerAsn?: number;
+    readonly customerAsn: number;
     /**
      * Customer-provided Fabric Routing Protocol description
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * Routing Protocol Direct IPv4
      */
-    readonly directIpv4?: outputs.fabric.GetRoutingProtocolDirectIpv4;
+    readonly directIpv4: outputs.fabric.GetRoutingProtocolDirectIpv4;
     /**
      * Routing Protocol Direct IPv6
      */
-    readonly directIpv6?: outputs.fabric.GetRoutingProtocolDirectIpv6;
+    readonly directIpv6: outputs.fabric.GetRoutingProtocolDirectIpv6;
     /**
      * Equinix ASN
      */
@@ -137,7 +107,7 @@ export interface GetRoutingProtocolResult {
     /**
      * Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * Routing Protocol type-specific operational data
      */
@@ -149,12 +119,29 @@ export interface GetRoutingProtocolResult {
     /**
      * Defines the routing protocol type like BGP or DIRECT
      */
-    readonly type?: string;
+    readonly type: string;
     /**
      * Equinix-assigned routing protocol identifier
      */
     readonly uuid: string;
 }
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
+ *
+ * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const routingProtocolDataName = equinix.fabric.getRoutingProtocol({
+ *     connectionUuid: "<uuid_of_connection_routing_protocol_is_applied_to>",
+ *     uuid: "<uuid_of_routing_protocol>",
+ * });
+ * ```
+ */
 export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoutingProtocolResult> {
     return pulumi.output(args).apply((a: any) => getRoutingProtocol(a, opts))
 }
@@ -164,45 +151,8 @@ export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opt
  */
 export interface GetRoutingProtocolOutputArgs {
     /**
-     * Bidirectional Forwarding Detection
-     */
-    bfd?: pulumi.Input<inputs.fabric.GetRoutingProtocolBfdArgs>;
-    /**
-     * BGP authorization key
-     */
-    bgpAuthKey?: pulumi.Input<string>;
-    /**
-     * Routing Protocol BGP IPv4
-     */
-    bgpIpv4?: pulumi.Input<inputs.fabric.GetRoutingProtocolBgpIpv4Args>;
-    /**
-     * Routing Protocol BGP IPv6
-     */
-    bgpIpv6?: pulumi.Input<inputs.fabric.GetRoutingProtocolBgpIpv6Args>;
-    /**
      * Connection URI associated with Routing Protocol
      */
     connectionUuid: pulumi.Input<string>;
-    /**
-     * Customer-provided ASN
-     */
-    customerAsn?: pulumi.Input<number>;
-    /**
-     * Customer-provided Fabric Routing Protocol description
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Routing Protocol Direct IPv4
-     */
-    directIpv4?: pulumi.Input<inputs.fabric.GetRoutingProtocolDirectIpv4Args>;
-    /**
-     * Routing Protocol Direct IPv6
-     */
-    directIpv6?: pulumi.Input<inputs.fabric.GetRoutingProtocolDirectIpv6Args>;
-    /**
-     * Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
-     */
-    name?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    uuid?: pulumi.Input<string>;
+    uuid: pulumi.Input<string>;
 }

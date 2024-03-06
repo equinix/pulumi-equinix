@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointProfile {
+    /**
+     * @return Access point config information
+     * 
+     */
     private List<GetConnectionASideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs;
+    /**
+     * @return User-provided service description
+     * 
+     */
     private String description;
+    /**
+     * @return Service Profile URI response attribute
+     * 
+     */
     private String href;
+    /**
+     * @return Customer-assigned service profile name
+     * 
+     */
     private String name;
+    /**
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * 
+     */
     private String type;
+    /**
+     * @return Equinix assigned service profile identifier
+     * 
+     */
     private String uuid;
 
     private GetConnectionASideAccessPointProfile() {}
+    /**
+     * @return Access point config information
+     * 
+     */
     public List<GetConnectionASideAccessPointProfileAccessPointTypeConfig> accessPointTypeConfigs() {
         return this.accessPointTypeConfigs;
     }
+    /**
+     * @return User-provided service description
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Service Profile URI response attribute
+     * 
+     */
     public String href() {
         return this.href;
     }
+    /**
+     * @return Customer-assigned service profile name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Equinix assigned service profile identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

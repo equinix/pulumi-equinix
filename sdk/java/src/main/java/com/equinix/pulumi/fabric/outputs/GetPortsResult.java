@@ -9,13 +9,11 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPortsResult {
     /**
-     * @return List of  Ports
+     * @return List of Ports
      * 
      */
     private List<GetPortsDatum> data;
@@ -23,7 +21,7 @@ public final class GetPortsResult {
      * @return name
      * 
      */
-    private @Nullable GetPortsFilter filter;
+    private GetPortsFilter filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -32,7 +30,7 @@ public final class GetPortsResult {
 
     private GetPortsResult() {}
     /**
-     * @return List of  Ports
+     * @return List of Ports
      * 
      */
     public List<GetPortsDatum> data() {
@@ -42,8 +40,8 @@ public final class GetPortsResult {
      * @return name
      * 
      */
-    public Optional<GetPortsFilter> filter() {
-        return Optional.ofNullable(this.filter);
+    public GetPortsFilter filter() {
+        return this.filter;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -63,7 +61,7 @@ public final class GetPortsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetPortsDatum> data;
-        private @Nullable GetPortsFilter filter;
+        private GetPortsFilter filter;
         private String id;
         public Builder() {}
         public Builder(GetPortsResult defaults) {
@@ -82,8 +80,8 @@ public final class GetPortsResult {
             return data(List.of(data));
         }
         @CustomType.Setter
-        public Builder filter(@Nullable GetPortsFilter filter) {
-            this.filter = filter;
+        public Builder filter(GetPortsFilter filter) {
+            this.filter = Objects.requireNonNull(filter);
             return this;
         }
         @CustomType.Setter

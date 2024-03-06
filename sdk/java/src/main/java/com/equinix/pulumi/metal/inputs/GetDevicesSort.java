@@ -29,9 +29,17 @@ public final class GetDevicesSort extends com.pulumi.resources.InvokeArgs {
         return this.attribute;
     }
 
+    /**
+     * Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+     * 
+     */
     @Import(name="direction")
     private @Nullable String direction;
 
+    /**
+     * @return Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+     * 
+     */
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
@@ -72,6 +80,12 @@ public final class GetDevicesSort extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param direction Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
+         * 
+         * @return builder
+         * 
+         */
         public Builder direction(@Nullable String direction) {
             $.direction = direction;
             return this;

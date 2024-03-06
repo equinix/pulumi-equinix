@@ -77,7 +77,114 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
               sorts: Optional[Sequence[pulumi.InputType['GetPlansSortArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlansResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    example = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
+            attribute="pricing_hour",
+            direction="asc",
+        )],
+        filters=[
+            equinix.metal.GetPlansFilterArgs(
+                attribute="pricing_hour",
+                values=["2.5"],
+                match_by="less_than",
+            ),
+            equinix.metal.GetPlansFilterArgs(
+                attribute="available_in_metros",
+                values=[
+                    "da",
+                    "sv",
+                ],
+            ),
+        ])
+    pulumi.export("plans", example.plans)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    example = equinix.metal.get_plans(filters=[
+        equinix.metal.GetPlansFilterArgs(
+            attribute="class",
+            values=["large"],
+            match_by="substring",
+        ),
+        equinix.metal.GetPlansFilterArgs(
+            attribute="deployment_types",
+            values=["spot_market"],
+        ),
+        equinix.metal.GetPlansFilterArgs(
+            attribute="available_in_metros",
+            values=[
+                "da",
+                "sv",
+            ],
+            all=True,
+        ),
+    ])
+    pulumi.export("plans", example.plans)
+    ```
+    ### Ignoring Changes to Plans/Metro
+
+    Preserve deployed device plan, facility and metro when creating a new execution plan.
+
+    As described in the `data-resource-behavior` feature as shown in the example below.
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    example_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
+            attribute="pricing_hour",
+            direction="asc",
+        )],
+        filters=[
+            equinix.metal.GetPlansFilterArgs(
+                attribute="name",
+                values=[
+                    "c3.small.x86",
+                    "c3.medium.x86",
+                    "m3.large.x86",
+                ],
+            ),
+            equinix.metal.GetPlansFilterArgs(
+                attribute="available_in_metros",
+                values=["sv"],
+            ),
+        ])
+    # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+    # It will ignore future changes on plan and metro
+    example_device = equinix.metal.Device("exampleDevice",
+        hostname="example",
+        plan=example_plans.plans[0].name.apply(lambda x: equinix.metal/plan.Plan(x)),
+        metro=example_plans.plans[0].available_in_metros[0],
+        operating_system="ubuntu_20_04",
+        billing_cycle="hourly",
+        project_id=var["project_id"])
+    ```
+
+    If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    config = pulumi.Config()
+    ignore_plans_metros_changes = config.get_bool("ignorePlansMetrosChanges")
+    if ignore_plans_metros_changes is None:
+        ignore_plans_metros_changes = False
+    example_plans = equinix.metal.get_plans()
+    # required device arguments
+    example_device = equinix.metal.Device("exampleDevice")
+    ```
+
 
     :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
     :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple
@@ -101,7 +208,114 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
                      sorts: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPlansSortArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlansResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    example = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
+            attribute="pricing_hour",
+            direction="asc",
+        )],
+        filters=[
+            equinix.metal.GetPlansFilterArgs(
+                attribute="pricing_hour",
+                values=["2.5"],
+                match_by="less_than",
+            ),
+            equinix.metal.GetPlansFilterArgs(
+                attribute="available_in_metros",
+                values=[
+                    "da",
+                    "sv",
+                ],
+            ),
+        ])
+    pulumi.export("plans", example.plans)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    example = equinix.metal.get_plans(filters=[
+        equinix.metal.GetPlansFilterArgs(
+            attribute="class",
+            values=["large"],
+            match_by="substring",
+        ),
+        equinix.metal.GetPlansFilterArgs(
+            attribute="deployment_types",
+            values=["spot_market"],
+        ),
+        equinix.metal.GetPlansFilterArgs(
+            attribute="available_in_metros",
+            values=[
+                "da",
+                "sv",
+            ],
+            all=True,
+        ),
+    ])
+    pulumi.export("plans", example.plans)
+    ```
+    ### Ignoring Changes to Plans/Metro
+
+    Preserve deployed device plan, facility and metro when creating a new execution plan.
+
+    As described in the `data-resource-behavior` feature as shown in the example below.
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    example_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(
+            attribute="pricing_hour",
+            direction="asc",
+        )],
+        filters=[
+            equinix.metal.GetPlansFilterArgs(
+                attribute="name",
+                values=[
+                    "c3.small.x86",
+                    "c3.medium.x86",
+                    "m3.large.x86",
+                ],
+            ),
+            equinix.metal.GetPlansFilterArgs(
+                attribute="available_in_metros",
+                values=["sv"],
+            ),
+        ])
+    # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+    # It will ignore future changes on plan and metro
+    example_device = equinix.metal.Device("exampleDevice",
+        hostname="example",
+        plan=example_plans.plans[0].name.apply(lambda x: equinix.metal/plan.Plan(x)),
+        metro=example_plans.plans[0].available_in_metros[0],
+        operating_system="ubuntu_20_04",
+        billing_cycle="hourly",
+        project_id=var["project_id"])
+    ```
+
+    If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    config = pulumi.Config()
+    ignore_plans_metros_changes = config.get_bool("ignorePlansMetrosChanges")
+    if ignore_plans_metros_changes is None:
+        ignore_plans_metros_changes = False
+    example_plans = equinix.metal.get_plans()
+    # required device arguments
+    example_device = equinix.metal.Device("exampleDevice")
+    ```
+
 
     :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
     :param Sequence[pulumi.InputType['GetPlansSortArgs']] sorts: One or more attribute/direction pairs on which to sort results. If multiple

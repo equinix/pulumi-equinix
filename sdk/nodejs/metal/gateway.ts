@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
+import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
@@ -58,7 +61,7 @@ export class Gateway extends pulumi.CustomResource {
      * UUID of Public or VRF IP Reservation to associate with the gateway, the
      * reservation must be in the same metro as the VLAN, conflicts with `privateIpv4SubnetSize`.
      */
-    public readonly ipReservationId!: pulumi.Output<string | undefined>;
+    public readonly ipReservationId!: pulumi.Output<string>;
     /**
      * Size of the private IPv4 subnet to create for this metal
      * gateway, must be one of `8`, `16`, `32`, `64`, `128`. Conflicts with `ipReservationId`.
@@ -72,6 +75,7 @@ export class Gateway extends pulumi.CustomResource {
      * Status of the gateway resource.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly timeouts!: pulumi.Output<outputs.metal.GatewayTimeouts | undefined>;
     /**
      * UUID of the VLAN where the gateway is scoped to.
      */
@@ -98,6 +102,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["privateIpv4SubnetSize"] = state ? state.privateIpv4SubnetSize : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["vlanId"] = state ? state.vlanId : undefined;
             resourceInputs["vrfId"] = state ? state.vrfId : undefined;
         } else {
@@ -111,6 +116,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["ipReservationId"] = args ? args.ipReservationId : undefined;
             resourceInputs["privateIpv4SubnetSize"] = args ? args.privateIpv4SubnetSize : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["vlanId"] = args ? args.vlanId : undefined;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["vrfId"] = undefined /*out*/;
@@ -142,6 +148,7 @@ export interface GatewayState {
      * Status of the gateway resource.
      */
     state?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.metal.GatewayTimeouts>;
     /**
      * UUID of the VLAN where the gateway is scoped to.
      */
@@ -170,6 +177,7 @@ export interface GatewayArgs {
      * UUID of the project where the gateway is scoped to.
      */
     projectId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.metal.GatewayTimeouts>;
     /**
      * UUID of the VLAN where the gateway is scoped to.
      */

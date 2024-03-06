@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type BillingCycle string
@@ -137,10 +136,11 @@ func (o BillingCyclePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// BillingCycleInput is an input type that accepts BillingCycleArgs and BillingCycleOutput values.
-// You can construct a concrete instance of `BillingCycleInput` via:
+// BillingCycleInput is an input type that accepts values of the BillingCycle enum
+// A concrete instance of `BillingCycleInput` can be one of the following:
 //
-//	BillingCycleArgs{...}
+//	BillingCycleHourly
+//	BillingCycleMonthly
 type BillingCycleInput interface {
 	pulumi.Input
 
@@ -173,12 +173,6 @@ func (in *billingCyclePtr) ToBillingCyclePtrOutput() BillingCyclePtrOutput {
 
 func (in *billingCyclePtr) ToBillingCyclePtrOutputWithContext(ctx context.Context) BillingCyclePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BillingCyclePtrOutput)
-}
-
-func (in *billingCyclePtr) ToOutput(ctx context.Context) pulumix.Output[*BillingCycle] {
-	return pulumix.Output[*BillingCycle]{
-		OutputState: in.ToBillingCyclePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // See https://deploy.equinix.com/developers/api/metal/#tag/Facilities/operation/findFacilities
@@ -390,10 +384,51 @@ func (o FacilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// FacilityInput is an input type that accepts FacilityArgs and FacilityOutput values.
-// You can construct a concrete instance of `FacilityInput` via:
+// FacilityInput is an input type that accepts values of the Facility enum
+// A concrete instance of `FacilityInput` can be one of the following:
 //
-//	FacilityArgs{...}
+//	FacilityAM2
+//	FacilityAM6
+//	FacilityMA5
+//	FacilityNRT1
+//	FacilityPA4
+//	FacilitySK2
+//	FacilityME2
+//	FacilityHK2
+//	FacilityTY11
+//	FacilityLA4
+//	FacilityDA6
+//	FacilityDA11
+//	FacilityDA3
+//	FacilitySP4
+//	FacilityMT1
+//	FacilitySV16
+//	FacilitySJC1
+//	FacilityFRA2
+//	FacilityFRA8
+//	FacilityNY5
+//	FacilityNY6
+//	FacilityNY7
+//	FacilityCH3
+//	FacilitySL1
+//	FacilitySY5
+//	FacilityOS3
+//	FacilityLD7
+//	FacilityDC10
+//	FacilityAMS1
+//	FacilitySG4
+//	FacilitySE4
+//	FacilitySY4
+//	FacilityAT4
+//	FacilityDFW2
+//	FacilityTR2
+//	FacilityDC13
+//	FacilityHE7
+//	FacilityEWR1
+//	FacilitySG5
+//	FacilitySG1
+//	FacilityMD2
+//	FacilitySV15
 type FacilityInput interface {
 	pulumi.Input
 
@@ -426,12 +461,6 @@ func (in *facilityPtr) ToFacilityPtrOutput() FacilityPtrOutput {
 
 func (in *facilityPtr) ToFacilityPtrOutputWithContext(ctx context.Context) FacilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FacilityPtrOutput)
-}
-
-func (in *facilityPtr) ToOutput(ctx context.Context) pulumix.Output[*Facility] {
-	return pulumix.Output[*Facility]{
-		OutputState: in.ToFacilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type IpBlockType string
@@ -560,10 +589,11 @@ func (o IpBlockTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// IpBlockTypeInput is an input type that accepts IpBlockTypeArgs and IpBlockTypeOutput values.
-// You can construct a concrete instance of `IpBlockTypeInput` via:
+// IpBlockTypeInput is an input type that accepts values of the IpBlockType enum
+// A concrete instance of `IpBlockTypeInput` can be one of the following:
 //
-//	IpBlockTypeArgs{...}
+//	IpBlockTypeGlobalIPv4
+//	IpBlockTypePublicIPv4
 type IpBlockTypeInput interface {
 	pulumi.Input
 
@@ -596,12 +626,6 @@ func (in *ipBlockTypePtr) ToIpBlockTypePtrOutput() IpBlockTypePtrOutput {
 
 func (in *ipBlockTypePtr) ToIpBlockTypePtrOutputWithContext(ctx context.Context) IpBlockTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpBlockTypePtrOutput)
-}
-
-func (in *ipBlockTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpBlockType] {
-	return pulumix.Output[*IpBlockType]{
-		OutputState: in.ToIpBlockTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type NetworkType string
@@ -732,10 +756,13 @@ func (o NetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkTypeInput is an input type that accepts NetworkTypeArgs and NetworkTypeOutput values.
-// You can construct a concrete instance of `NetworkTypeInput` via:
+// NetworkTypeInput is an input type that accepts values of the NetworkType enum
+// A concrete instance of `NetworkTypeInput` can be one of the following:
 //
-//	NetworkTypeArgs{...}
+//	NetworkTypeLayer3
+//	NetworkTypeLayer2Individual
+//	NetworkTypeLayer2Bonded
+//	NetworkTypeHybrid
 type NetworkTypeInput interface {
 	pulumi.Input
 
@@ -768,12 +795,6 @@ func (in *networkTypePtr) ToNetworkTypePtrOutput() NetworkTypePtrOutput {
 
 func (in *networkTypePtr) ToNetworkTypePtrOutputWithContext(ctx context.Context) NetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkTypePtrOutput)
-}
-
-func (in *networkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkType] {
-	return pulumix.Output[*NetworkType]{
-		OutputState: in.ToNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // See https://deploy.equinix.com/developers/api/metal/#tag/OperatingSystems/operation/findOperatingSystems
@@ -981,10 +1002,89 @@ func (o OperatingSystemPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// OperatingSystemInput is an input type that accepts OperatingSystemArgs and OperatingSystemOutput values.
-// You can construct a concrete instance of `OperatingSystemInput` via:
+// OperatingSystemInput is an input type that accepts values of the OperatingSystem enum
+// A concrete instance of `OperatingSystemInput` can be one of the following:
 //
-//	OperatingSystemArgs{...}
+//	OperatingSystemAlma8
+//	OperatingSystemAlma9
+//	OperatingSystemAlpine3
+//	OperatingSystemCentOS6
+//	OperatingSystemCentOS7
+//	OperatingSystemCentOS8
+//	OperatingSystemCoreOSAlpha
+//	OperatingSystemCoreOSBeta
+//	OperatingSystemCoreOSStable
+//	OperatingSystemCustomIPXE
+//	OperatingSystemDebian10
+//	OperatingSystemDebian11
+//	OperatingSystemDebian7
+//	OperatingSystemDebian8
+//	OperatingSystemDebian9
+//	OperatingSystemFedora31
+//	OperatingSystemFedora34
+//	OperatingSystemFlatcarAlpha
+//	OperatingSystemFlatcarBeta
+//	OperatingSystemFlatcarEdge
+//	OperatingSystemFlatcarLTS
+//	OperatingSystemFlatcarStable
+//	OperatingSystem_FreeBSD10_3
+//	OperatingSystem_FreeBSD10_4
+//	OperatingSystem_FreeBSD11_0
+//	OperatingSystem_FreeBSD11_1
+//	OperatingSystem_FreeBSD11_2
+//	OperatingSystem_FreeBSD11_3
+//	OperatingSystem_FreeBSD11_4
+//	OperatingSystemFreeBSD12Testing
+//	OperatingSystem_FreeBSD12_1
+//	OperatingSystem_FreeBSD13_0
+//	OperatingSystem_FreeBSD13_1
+//	OperatingSystem_FreeBSD13_testing
+//	OperatingSystemHookEsxi7
+//	OperatingSystem_NixOS17_03
+//	OperatingSystem_NixOS18_03
+//	OperatingSystem_NixOS19_03
+//	OperatingSystem_NixOS20_09
+//	OperatingSystem_NixOS21_11
+//	OperatingSystem_NixOS22_05
+//	OperatingSystem_NixOS22_11
+//	OperatingSystem_Nixos21_05
+//	OperatingSystemNutanixCentos
+//	OperatingSystem_NutanixLTS5_19_1
+//	OperatingSystem_NutanixLTS5_20
+//	OperatingSystem_OpenSUSE42_3
+//	OperatingSystemRHEL7
+//	OperatingSystemRHEL8
+//	OperatingSystemRHEL9
+//	OperatingSystemRancherOS
+//	OperatingSystemRocky8
+//	OperatingSystemRocky9
+//	OperatingSystemSLES12SP3
+//	OperatingSystemScientificLinux6
+//	OperatingSystemTalosV1
+//	OperatingSystemUbuntu1710
+//	OperatingSystem_Ubuntu18_04
+//	OperatingSystemUbuntu1904
+//	OperatingSystem_Ubuntu19_10
+//	OperatingSystem_Ubuntu20_04
+//	OperatingSystem_Ubuntu20_04_legacy
+//	OperatingSystem_Ubuntu20_10
+//	OperatingSystemUbuntu2204
+//	OperatingSystemVMWareAlloyVcf
+//	OperatingSystem_VMWareEsxi5_5
+//	OperatingSystem_VMWareEsxi6_0
+//	OperatingSystem_VMWareEsxi6_5
+//	OperatingSystem_VMWareEsxi6_7
+//	OperatingSystem_VMWareEsxi6_7_vcf
+//	OperatingSystem_VMWareEsxi7_0
+//	OperatingSystem_VMWareEsxi7_0U2a
+//	OperatingSystem_VMWareEsxi7_0_vcf
+//	OperatingSystem_VMWareNsx2_5_0
+//	OperatingSystem_VMWareNsx3_0_0
+//	OperatingSystemVirtuozzo7
+//	OperatingSystemWindows2012R2
+//	OperatingSystemWindows2016
+//	OperatingSystemWindows2019
+//	OperatingSystemWindows2022
 type OperatingSystemInput interface {
 	pulumi.Input
 
@@ -1017,12 +1117,6 @@ func (in *operatingSystemPtr) ToOperatingSystemPtrOutput() OperatingSystemPtrOut
 
 func (in *operatingSystemPtr) ToOperatingSystemPtrOutputWithContext(ctx context.Context) OperatingSystemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemPtrOutput)
-}
-
-func (in *operatingSystemPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystem] {
-	return pulumix.Output[*OperatingSystem]{
-		OutputState: in.ToOperatingSystemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // See https://deploy.equinix.com/developers/api/metal/#tag/Plans/operation/findPlans
@@ -1168,10 +1262,27 @@ func (o PlanPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// PlanInput is an input type that accepts PlanArgs and PlanOutput values.
-// You can construct a concrete instance of `PlanInput` via:
+// PlanInput is an input type that accepts values of the Plan enum
+// A concrete instance of `PlanInput` can be one of the following:
 //
-//	PlanArgs{...}
+//	PlanA3LargeX86
+//	PlanC2LargeARM
+//	PlanC2MediumX86
+//	PlanC3LargeARM
+//	PlanC3MediumX86
+//	PlanC3SmallX86
+//	PlanF3LargeX86
+//	PlanF3MediumX86
+//	PlanG2LargeX86
+//	PlanM2XLargeX86
+//	PlanM3LargeX86
+//	PlanM3SmallX86
+//	PlanN2XLargeX86
+//	PlanN3XLargeX86
+//	PlanS3XLargeX86
+//	PlanT3SmallX86
+//	PlanX2XLargeX86
+//	PlanX3XLargeX86
 type PlanInput interface {
 	pulumi.Input
 
@@ -1204,12 +1315,6 @@ func (in *planPtr) ToPlanPtrOutput() PlanPtrOutput {
 
 func (in *planPtr) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PlanPtrOutput)
-}
-
-func (in *planPtr) ToOutput(ctx context.Context) pulumix.Output[*Plan] {
-	return pulumix.Output[*Plan]{
-		OutputState: in.ToPlanPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

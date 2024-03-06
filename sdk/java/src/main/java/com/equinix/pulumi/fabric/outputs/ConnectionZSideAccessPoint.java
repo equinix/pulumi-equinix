@@ -12,11 +12,9 @@ import com.equinix.pulumi.fabric.outputs.ConnectionZSideAccessPointNetwork;
 import com.equinix.pulumi.fabric.outputs.ConnectionZSideAccessPointPort;
 import com.equinix.pulumi.fabric.outputs.ConnectionZSideAccessPointProfile;
 import com.equinix.pulumi.fabric.outputs.ConnectionZSideAccessPointRouter;
-import com.equinix.pulumi.fabric.outputs.ConnectionZSideAccessPointRoutingProtocol;
 import com.equinix.pulumi.fabric.outputs.ConnectionZSideAccessPointVirtualDevice;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,6 +32,8 @@ public final class ConnectionZSideAccessPoint {
      */
     private @Nullable String authenticationKey;
     /**
+     * @return **Deprecated** `gateway` Use `router` attribute instead
+     * 
      * @deprecated
      * use router attribute instead; gateway is no longer a part of the supported backend
      * 
@@ -56,7 +56,7 @@ public final class ConnectionZSideAccessPoint {
      */
     private @Nullable ConnectionZSideAccessPointLocation location;
     /**
-     * @return Simplified Network
+     * @return network access point information
      * 
      */
     private @Nullable ConnectionZSideAccessPointNetwork network;
@@ -81,15 +81,10 @@ public final class ConnectionZSideAccessPoint {
      */
     private @Nullable String providerConnectionId;
     /**
-     * @return Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * @return Cloud Router access point information that replaces `gateway`
      * 
      */
     private @Nullable ConnectionZSideAccessPointRouter router;
-    /**
-     * @return Access point routing protocols configuration
-     * 
-     */
-    private @Nullable List<ConnectionZSideAccessPointRoutingProtocol> routingProtocols;
     /**
      * @return Access point seller region
      * 
@@ -122,6 +117,8 @@ public final class ConnectionZSideAccessPoint {
         return Optional.ofNullable(this.authenticationKey);
     }
     /**
+     * @return **Deprecated** `gateway` Use `router` attribute instead
+     * 
      * @deprecated
      * use router attribute instead; gateway is no longer a part of the supported backend
      * 
@@ -152,7 +149,7 @@ public final class ConnectionZSideAccessPoint {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return Simplified Network
+     * @return network access point information
      * 
      */
     public Optional<ConnectionZSideAccessPointNetwork> network() {
@@ -187,18 +184,11 @@ public final class ConnectionZSideAccessPoint {
         return Optional.ofNullable(this.providerConnectionId);
     }
     /**
-     * @return Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+     * @return Cloud Router access point information that replaces `gateway`
      * 
      */
     public Optional<ConnectionZSideAccessPointRouter> router() {
         return Optional.ofNullable(this.router);
-    }
-    /**
-     * @return Access point routing protocols configuration
-     * 
-     */
-    public List<ConnectionZSideAccessPointRoutingProtocol> routingProtocols() {
-        return this.routingProtocols == null ? List.of() : this.routingProtocols;
     }
     /**
      * @return Access point seller region
@@ -243,7 +233,6 @@ public final class ConnectionZSideAccessPoint {
         private @Nullable ConnectionZSideAccessPointProfile profile;
         private @Nullable String providerConnectionId;
         private @Nullable ConnectionZSideAccessPointRouter router;
-        private @Nullable List<ConnectionZSideAccessPointRoutingProtocol> routingProtocols;
         private @Nullable String sellerRegion;
         private @Nullable String type;
         private @Nullable ConnectionZSideAccessPointVirtualDevice virtualDevice;
@@ -262,7 +251,6 @@ public final class ConnectionZSideAccessPoint {
     	      this.profile = defaults.profile;
     	      this.providerConnectionId = defaults.providerConnectionId;
     	      this.router = defaults.router;
-    	      this.routingProtocols = defaults.routingProtocols;
     	      this.sellerRegion = defaults.sellerRegion;
     	      this.type = defaults.type;
     	      this.virtualDevice = defaults.virtualDevice;
@@ -329,14 +317,6 @@ public final class ConnectionZSideAccessPoint {
             return this;
         }
         @CustomType.Setter
-        public Builder routingProtocols(@Nullable List<ConnectionZSideAccessPointRoutingProtocol> routingProtocols) {
-            this.routingProtocols = routingProtocols;
-            return this;
-        }
-        public Builder routingProtocols(ConnectionZSideAccessPointRoutingProtocol... routingProtocols) {
-            return routingProtocols(List.of(routingProtocols));
-        }
-        @CustomType.Setter
         public Builder sellerRegion(@Nullable String sellerRegion) {
             this.sellerRegion = sellerRegion;
             return this;
@@ -365,7 +345,6 @@ public final class ConnectionZSideAccessPoint {
             _resultValue.profile = profile;
             _resultValue.providerConnectionId = providerConnectionId;
             _resultValue.router = router;
-            _resultValue.routingProtocols = routingProtocols;
             _resultValue.sellerRegion = sellerRegion;
             _resultValue.type = type;
             _resultValue.virtualDevice = virtualDevice;

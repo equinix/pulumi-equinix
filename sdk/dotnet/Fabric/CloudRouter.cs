@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
+    /// Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
+    /// 
+    /// Additional Fabric Cloud Router documentation:
+    /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
+    /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
+    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
@@ -65,16 +71,16 @@ namespace Pulumi.Equinix.Fabric
         /// Customer account information that is associated with this Fabric Cloud Router
         /// </summary>
         [Output("account")]
-        public Output<Outputs.CloudRouterAccount?> Account { get; private set; } = null!;
+        public Output<Outputs.CloudRouterAccount> Account { get; private set; } = null!;
 
         /// <summary>
-        /// Access point used and maximum number of IPv4 BGP routes
+        /// Number of IPv4 BGP routes in use (including non-distinct prefixes)
         /// </summary>
         [Output("bgpIpv4RoutesCount")]
         public Output<int> BgpIpv4RoutesCount { get; private set; } = null!;
 
         /// <summary>
-        /// Access point used and maximum number of IPv6 BGP routes
+        /// Number of IPv6 BGP routes in use (including non-distinct prefixes)
         /// </summary>
         [Output("bgpIpv6RoutesCount")]
         public Output<int> BgpIpv6RoutesCount { get; private set; } = null!;
@@ -86,7 +92,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.CloudRouterChangeLog>> ChangeLogs { get; private set; } = null!;
 
         /// <summary>
-        /// Number of connections associated with this Access point
+        /// Number of connections associated with this Fabric Cloud Router instance
         /// </summary>
         [Output("connectionsCount")]
         public Output<int> ConnectionsCount { get; private set; } = null!;
@@ -96,6 +102,18 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of distinct IPv4 routes
+        /// </summary>
+        [Output("distinctIpv4PrefixesCount")]
+        public Output<int> DistinctIpv4PrefixesCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of distinct IPv6 routes
+        /// </summary>
+        [Output("distinctIpv6PrefixesCount")]
+        public Output<int> DistinctIpv6PrefixesCount { get; private set; } = null!;
 
         /// <summary>
         /// Equinix ASN
@@ -131,19 +149,19 @@ namespace Pulumi.Equinix.Fabric
         /// Order information related to this Fabric Cloud Router
         /// </summary>
         [Output("order")]
-        public Output<Outputs.CloudRouterOrder?> Order { get; private set; } = null!;
+        public Output<Outputs.CloudRouterOrder> Order { get; private set; } = null!;
 
         /// <summary>
-        /// Fabric Cloud Router package
+        /// Fabric Cloud Router Package Type
         /// </summary>
         [Output("package")]
         public Output<Outputs.CloudRouterPackage> Package { get; private set; } = null!;
 
         /// <summary>
-        /// Fabric Cloud Router project
+        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         [Output("project")]
-        public Output<Outputs.CloudRouterProject?> Project { get; private set; } = null!;
+        public Output<Outputs.CloudRouterProject> Project { get; private set; } = null!;
 
         /// <summary>
         /// Fabric Cloud Router overall state
@@ -156,6 +174,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// Equinix-assigned Fabric Cloud Router identifier
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
 
 
         /// <summary>
@@ -207,14 +231,20 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Customer account information that is associated with this Fabric Cloud Router
         /// </summary>
-        [Input("account")]
-        public Input<Inputs.CloudRouterAccountArgs>? Account { get; set; }
+        [Input("account", required: true)]
+        public Input<Inputs.CloudRouterAccountArgs> Account { get; set; } = null!;
 
         /// <summary>
         /// Customer-provided Fabric Cloud Router description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Unique Resource URL
+        /// </summary>
+        [Input("href")]
+        public Input<string>? Href { get; set; }
 
         /// <summary>
         /// Fabric Cloud Router location
@@ -243,26 +273,32 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Order information related to this Fabric Cloud Router
         /// </summary>
-        [Input("order")]
-        public Input<Inputs.CloudRouterOrderArgs>? Order { get; set; }
+        [Input("order", required: true)]
+        public Input<Inputs.CloudRouterOrderArgs> Order { get; set; } = null!;
 
         /// <summary>
-        /// Fabric Cloud Router package
+        /// Fabric Cloud Router Package Type
         /// </summary>
         [Input("package", required: true)]
         public Input<Inputs.CloudRouterPackageArgs> Package { get; set; } = null!;
 
         /// <summary>
-        /// Fabric Cloud Router project
+        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
-        [Input("project")]
-        public Input<Inputs.CloudRouterProjectArgs>? Project { get; set; }
+        [Input("project", required: true)]
+        public Input<Inputs.CloudRouterProjectArgs> Project { get; set; } = null!;
 
         /// <summary>
         /// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// Equinix-assigned Fabric Cloud Router identifier
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public CloudRouterArgs()
         {
@@ -279,13 +315,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.CloudRouterAccountGetArgs>? Account { get; set; }
 
         /// <summary>
-        /// Access point used and maximum number of IPv4 BGP routes
+        /// Number of IPv4 BGP routes in use (including non-distinct prefixes)
         /// </summary>
         [Input("bgpIpv4RoutesCount")]
         public Input<int>? BgpIpv4RoutesCount { get; set; }
 
         /// <summary>
-        /// Access point used and maximum number of IPv6 BGP routes
+        /// Number of IPv6 BGP routes in use (including non-distinct prefixes)
         /// </summary>
         [Input("bgpIpv6RoutesCount")]
         public Input<int>? BgpIpv6RoutesCount { get; set; }
@@ -303,7 +339,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Number of connections associated with this Access point
+        /// Number of connections associated with this Fabric Cloud Router instance
         /// </summary>
         [Input("connectionsCount")]
         public Input<int>? ConnectionsCount { get; set; }
@@ -313,6 +349,18 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Number of distinct IPv4 routes
+        /// </summary>
+        [Input("distinctIpv4PrefixesCount")]
+        public Input<int>? DistinctIpv4PrefixesCount { get; set; }
+
+        /// <summary>
+        /// Number of distinct IPv6 routes
+        /// </summary>
+        [Input("distinctIpv6PrefixesCount")]
+        public Input<int>? DistinctIpv6PrefixesCount { get; set; }
 
         /// <summary>
         /// Equinix ASN
@@ -357,13 +405,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.CloudRouterOrderGetArgs>? Order { get; set; }
 
         /// <summary>
-        /// Fabric Cloud Router package
+        /// Fabric Cloud Router Package Type
         /// </summary>
         [Input("package")]
         public Input<Inputs.CloudRouterPackageGetArgs>? Package { get; set; }
 
         /// <summary>
-        /// Fabric Cloud Router project
+        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         [Input("project")]
         public Input<Inputs.CloudRouterProjectGetArgs>? Project { get; set; }
@@ -379,6 +427,12 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Equinix-assigned Fabric Cloud Router identifier
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public CloudRouterState()
         {

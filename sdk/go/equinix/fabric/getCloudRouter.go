@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
+//
+// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/fabric"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fabric.LookupCloudRouter(ctx, &fabric.LookupCloudRouterArgs{
+//				Uuid: "<uuid_of_cloud_router>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCloudRouter(ctx *pulumi.Context, args *LookupCloudRouterArgs, opts ...pulumi.InvokeOption) (*LookupCloudRouterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudRouterResult
@@ -23,23 +52,28 @@ func LookupCloudRouter(ctx *pulumi.Context, args *LookupCloudRouterArgs, opts ..
 
 // A collection of arguments for invoking getCloudRouter.
 type LookupCloudRouterArgs struct {
-	// Project information
-	Projects []GetCloudRouterProject `pulumi:"projects"`
 	// Equinix-assigned Fabric Cloud Router identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 // A collection of values returned by getCloudRouter.
 type LookupCloudRouterResult struct {
 	// Customer account information that is associated with this Fabric Cloud Router
-	Accounts           []GetCloudRouterAccount `pulumi:"accounts"`
-	BgpIpv4RoutesCount int                     `pulumi:"bgpIpv4RoutesCount"`
-	BgpIpv6RoutesCount int                     `pulumi:"bgpIpv6RoutesCount"`
+	Accounts []GetCloudRouterAccount `pulumi:"accounts"`
+	// Number of IPv4 BGP routes in use (including non-distinct prefixes)
+	BgpIpv4RoutesCount int `pulumi:"bgpIpv4RoutesCount"`
+	// Number of IPv6 BGP routes in use (including non-distinct prefixes)
+	BgpIpv6RoutesCount int `pulumi:"bgpIpv6RoutesCount"`
 	// Captures Fabric Cloud Router lifecycle change information
-	ChangeLogs       []GetCloudRouterChangeLog `pulumi:"changeLogs"`
-	ConnectionsCount int                       `pulumi:"connectionsCount"`
+	ChangeLogs []GetCloudRouterChangeLog `pulumi:"changeLogs"`
+	// Number of connections associated with this Fabric Cloud Router instance
+	ConnectionsCount int `pulumi:"connectionsCount"`
 	// Customer-provided Fabric Cloud Router description
 	Description string `pulumi:"description"`
+	// Number of distinct IPv4 routes
+	DistinctIpv4PrefixesCount int `pulumi:"distinctIpv4PrefixesCount"`
+	// Number of distinct IPv6 routes
+	DistinctIpv6PrefixesCount int `pulumi:"distinctIpv6PrefixesCount"`
 	// Equinix ASN
 	EquinixAsn int `pulumi:"equinixAsn"`
 	// Fabric Cloud Router URI information
@@ -54,16 +88,16 @@ type LookupCloudRouterResult struct {
 	Notifications []GetCloudRouterNotification `pulumi:"notifications"`
 	// Order information related to this Fabric Cloud Router
 	Orders []GetCloudRouterOrder `pulumi:"orders"`
-	// Fabric Cloud Router package information
+	// Fabric Cloud Router Package Type
 	Packages []GetCloudRouterPackage `pulumi:"packages"`
-	// Project information
+	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Projects []GetCloudRouterProject `pulumi:"projects"`
 	// Fabric Cloud Router overall state
 	State string `pulumi:"state"`
-	// Defines the Fabric Cloud Router type like XF_GATEWAY
+	// Defines the FCR type like; XF_ROUTER
 	Type string `pulumi:"type"`
 	// Equinix-assigned Fabric Cloud Router identifier
-	Uuid *string `pulumi:"uuid"`
+	Uuid string `pulumi:"uuid"`
 }
 
 func LookupCloudRouterOutput(ctx *pulumi.Context, args LookupCloudRouterOutputArgs, opts ...pulumi.InvokeOption) LookupCloudRouterResultOutput {
@@ -81,10 +115,8 @@ func LookupCloudRouterOutput(ctx *pulumi.Context, args LookupCloudRouterOutputAr
 
 // A collection of arguments for invoking getCloudRouter.
 type LookupCloudRouterOutputArgs struct {
-	// Project information
-	Projects GetCloudRouterProjectArrayInput `pulumi:"projects"`
 	// Equinix-assigned Fabric Cloud Router identifier
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (LookupCloudRouterOutputArgs) ElementType() reflect.Type {
@@ -111,10 +143,12 @@ func (o LookupCloudRouterResultOutput) Accounts() GetCloudRouterAccountArrayOutp
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterAccount { return v.Accounts }).(GetCloudRouterAccountArrayOutput)
 }
 
+// Number of IPv4 BGP routes in use (including non-distinct prefixes)
 func (o LookupCloudRouterResultOutput) BgpIpv4RoutesCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.BgpIpv4RoutesCount }).(pulumi.IntOutput)
 }
 
+// Number of IPv6 BGP routes in use (including non-distinct prefixes)
 func (o LookupCloudRouterResultOutput) BgpIpv6RoutesCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.BgpIpv6RoutesCount }).(pulumi.IntOutput)
 }
@@ -124,6 +158,7 @@ func (o LookupCloudRouterResultOutput) ChangeLogs() GetCloudRouterChangeLogArray
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterChangeLog { return v.ChangeLogs }).(GetCloudRouterChangeLogArrayOutput)
 }
 
+// Number of connections associated with this Fabric Cloud Router instance
 func (o LookupCloudRouterResultOutput) ConnectionsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.ConnectionsCount }).(pulumi.IntOutput)
 }
@@ -131,6 +166,16 @@ func (o LookupCloudRouterResultOutput) ConnectionsCount() pulumi.IntOutput {
 // Customer-provided Fabric Cloud Router description
 func (o LookupCloudRouterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Number of distinct IPv4 routes
+func (o LookupCloudRouterResultOutput) DistinctIpv4PrefixesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.DistinctIpv4PrefixesCount }).(pulumi.IntOutput)
+}
+
+// Number of distinct IPv6 routes
+func (o LookupCloudRouterResultOutput) DistinctIpv6PrefixesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudRouterResult) int { return v.DistinctIpv6PrefixesCount }).(pulumi.IntOutput)
 }
 
 // Equinix ASN
@@ -168,12 +213,12 @@ func (o LookupCloudRouterResultOutput) Orders() GetCloudRouterOrderArrayOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterOrder { return v.Orders }).(GetCloudRouterOrderArrayOutput)
 }
 
-// Fabric Cloud Router package information
+// Fabric Cloud Router Package Type
 func (o LookupCloudRouterResultOutput) Packages() GetCloudRouterPackageArrayOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterPackage { return v.Packages }).(GetCloudRouterPackageArrayOutput)
 }
 
-// Project information
+// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 func (o LookupCloudRouterResultOutput) Projects() GetCloudRouterProjectArrayOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) []GetCloudRouterProject { return v.Projects }).(GetCloudRouterProjectArrayOutput)
 }
@@ -183,14 +228,14 @@ func (o LookupCloudRouterResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Defines the Fabric Cloud Router type like XF_GATEWAY
+// Defines the FCR type like; XF_ROUTER
 func (o LookupCloudRouterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudRouterResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Equinix-assigned Fabric Cloud Router identifier
-func (o LookupCloudRouterResultOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCloudRouterResult) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+func (o LookupCloudRouterResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudRouterResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 func init() {

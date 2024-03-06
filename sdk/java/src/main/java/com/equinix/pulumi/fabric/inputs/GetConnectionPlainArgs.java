@@ -3,44 +3,25 @@
 
 package com.equinix.pulumi.fabric.inputs;
 
-import com.equinix.pulumi.fabric.inputs.GetConnectionProject;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetConnectionPlainArgs Empty = new GetConnectionPlainArgs();
 
-    /**
-     * Project information
-     * 
-     */
-    @Import(name="project")
-    private @Nullable GetConnectionProject project;
+    @Import(name="uuid", required=true)
+    private String uuid;
 
-    /**
-     * @return Project information
-     * 
-     */
-    public Optional<GetConnectionProject> project() {
-        return Optional.ofNullable(this.project);
-    }
-
-    @Import(name="uuid")
-    private @Nullable String uuid;
-
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     private GetConnectionPlainArgs() {}
 
     private GetConnectionPlainArgs(GetConnectionPlainArgs $) {
-        this.project = $.project;
         this.uuid = $.uuid;
     }
 
@@ -62,23 +43,13 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetConnectionPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param project Project information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder project(@Nullable GetConnectionProject project) {
-            $.project = project;
-            return this;
-        }
-
-        public Builder uuid(@Nullable String uuid) {
+        public Builder uuid(String uuid) {
             $.uuid = uuid;
             return this;
         }
 
         public GetConnectionPlainArgs build() {
+            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
             return $;
         }
     }

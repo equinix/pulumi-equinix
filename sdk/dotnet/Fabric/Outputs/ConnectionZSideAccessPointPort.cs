@@ -26,7 +26,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointPortRedundancy> Redundancies;
         /// <summary>
-        /// Equinix-assigned interface identifier
+        /// Equinix-assigned virtual gateway identifier
         /// </summary>
         public readonly string? Uuid;
 

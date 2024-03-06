@@ -153,6 +153,25 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     * 
+     */
+    @Import(name="diverseDeviceId")
+    private @Nullable Output<String> diverseDeviceId;
+
+    /**
+     * @return Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     * 
+     */
+    public Optional<Output<String>> diverseDeviceId() {
+        return Optional.ofNullable(this.diverseDeviceId);
+    }
+
+    /**
      * Device hostname prefix.
      * 
      */
@@ -325,6 +344,23 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> packageCode() {
         return this.packageCode;
+    }
+
+    /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -513,6 +549,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterDetails = $.clusterDetails;
         this.connectivity = $.connectivity;
         this.coreCount = $.coreCount;
+        this.diverseDeviceId = $.diverseDeviceId;
         this.hostname = $.hostname;
         this.interfaceCount = $.interfaceCount;
         this.licenseFile = $.licenseFile;
@@ -524,6 +561,7 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.orderReference = $.orderReference;
         this.packageCode = $.packageCode;
+        this.projectId = $.projectId;
         this.purchaseOrderNumber = $.purchaseOrderNumber;
         this.secondaryDevice = $.secondaryDevice;
         this.selfManaged = $.selfManaged;
@@ -729,6 +767,31 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder coreCount(Integer coreCount) {
             return coreCount(Output.of(coreCount));
+        }
+
+        /**
+         * @param diverseDeviceId Unique ID of an existing device.
+         * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+         * device. This field is only meaningful for single devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diverseDeviceId(@Nullable Output<String> diverseDeviceId) {
+            $.diverseDeviceId = diverseDeviceId;
+            return this;
+        }
+
+        /**
+         * @param diverseDeviceId Unique ID of an existing device.
+         * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+         * device. This field is only meaningful for single devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diverseDeviceId(String diverseDeviceId) {
+            return diverseDeviceId(Output.of(diverseDeviceId));
         }
 
         /**
@@ -981,6 +1044,29 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder packageCode(String packageCode) {
             return packageCode(Output.of(packageCode));
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
+         * leave it out, the device will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the device is scoped to.If you
+         * leave it out, the device will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

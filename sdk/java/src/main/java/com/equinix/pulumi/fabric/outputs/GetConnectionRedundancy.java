@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionRedundancy {
+    /**
+     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+     * 
+     */
     private String group;
+    /**
+     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
+     * 
+     */
     private String priority;
 
     private GetConnectionRedundancy() {}
+    /**
+     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
+     * 
+     */
     public String priority() {
         return this.priority;
     }

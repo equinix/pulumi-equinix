@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPortsDatumRedundancy {
+    /**
+     * @return Access point redundancy
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Port redundancy group
+     * 
+     */
     private String group;
+    /**
+     * @return Priority type-Primary or Secondary
+     * 
+     */
     private String priority;
 
     private GetPortsDatumRedundancy() {}
+    /**
+     * @return Access point redundancy
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Port redundancy group
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return Priority type-Primary or Secondary
+     * 
+     */
     public String priority() {
         return this.priority;
     }

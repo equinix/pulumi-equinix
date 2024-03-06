@@ -297,7 +297,7 @@ class OrganizationMember(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
+        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments:<break><break> ```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -336,7 +336,7 @@ class OrganizationMember(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments: <break><break>```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
+        This resource can be imported using the `invitee` and `organization_id` as colon separated arguments:<break><break> ```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param OrganizationMemberArgs args: The arguments to use to populate this resource's properties.

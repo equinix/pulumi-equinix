@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing organization ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using an existing organization ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:metal/organization:Organization")

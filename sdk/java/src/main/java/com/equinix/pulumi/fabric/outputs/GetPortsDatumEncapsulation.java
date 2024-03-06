@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPortsDatumEncapsulation {
+    /**
+     * @return Port encapsulation Tag Protocol Identifier
+     * 
+     */
     private String tagProtocolId;
+    /**
+     * @return Port encapsulation protocol type
+     * 
+     */
     private String type;
 
     private GetPortsDatumEncapsulation() {}
+    /**
+     * @return Port encapsulation Tag Protocol Identifier
+     * 
+     */
     public String tagProtocolId() {
         return this.tagProtocolId;
     }
+    /**
+     * @return Port encapsulation protocol type
+     * 
+     */
     public String type() {
         return this.type;
     }

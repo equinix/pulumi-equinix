@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GatewayArgs', 'Gateway']
 
@@ -17,7 +19,8 @@ class GatewayArgs:
                  project_id: pulumi.Input[str],
                  vlan_id: pulumi.Input[str],
                  ip_reservation_id: Optional[pulumi.Input[str]] = None,
-                 private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None):
+                 private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
+                 timeouts: Optional[pulumi.Input['GatewayTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[str] project_id: UUID of the project where the gateway is scoped to.
@@ -33,6 +36,8 @@ class GatewayArgs:
             pulumi.set(__self__, "ip_reservation_id", ip_reservation_id)
         if private_ipv4_subnet_size is not None:
             pulumi.set(__self__, "private_ipv4_subnet_size", private_ipv4_subnet_size)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="projectId")
@@ -84,6 +89,15 @@ class GatewayArgs:
     def private_ipv4_subnet_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "private_ipv4_subnet_size", value)
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['GatewayTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['GatewayTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _GatewayState:
@@ -92,6 +106,7 @@ class _GatewayState:
                  private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input['GatewayTimeoutsArgs']] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vrf_id: Optional[pulumi.Input[str]] = None):
         """
@@ -113,6 +128,8 @@ class _GatewayState:
             pulumi.set(__self__, "project_id", project_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
         if vrf_id is not None:
@@ -169,6 +186,15 @@ class _GatewayState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['GatewayTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['GatewayTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -201,6 +227,7 @@ class Gateway(pulumi.CustomResource):
                  ip_reservation_id: Optional[pulumi.Input[str]] = None,
                  private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['GatewayTimeoutsArgs']]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -276,6 +303,7 @@ class Gateway(pulumi.CustomResource):
                  ip_reservation_id: Optional[pulumi.Input[str]] = None,
                  private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['GatewayTimeoutsArgs']]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -291,6 +319,7 @@ class Gateway(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["timeouts"] = timeouts
             if vlan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vlan_id'")
             __props__.__dict__["vlan_id"] = vlan_id
@@ -310,6 +339,7 @@ class Gateway(pulumi.CustomResource):
             private_ipv4_subnet_size: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            timeouts: Optional[pulumi.Input[pulumi.InputType['GatewayTimeoutsArgs']]] = None,
             vlan_id: Optional[pulumi.Input[str]] = None,
             vrf_id: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """
@@ -336,13 +366,14 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["private_ipv4_subnet_size"] = private_ipv4_subnet_size
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vlan_id"] = vlan_id
         __props__.__dict__["vrf_id"] = vrf_id
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="ipReservationId")
-    def ip_reservation_id(self) -> pulumi.Output[Optional[str]]:
+    def ip_reservation_id(self) -> pulumi.Output[str]:
         """
         UUID of Public or VRF IP Reservation to associate with the gateway, the
         reservation must be in the same metro as the VLAN, conflicts with `private_ipv4_subnet_size`.
@@ -373,6 +404,11 @@ class Gateway(pulumi.CustomResource):
         Status of the gateway resource.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.GatewayTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="vlanId")

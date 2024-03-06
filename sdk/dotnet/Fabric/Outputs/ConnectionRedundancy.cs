@@ -14,11 +14,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionRedundancy
     {
         /// <summary>
-        /// Redundancy group identifier
+        /// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
         /// </summary>
         public readonly string? Group;
         /// <summary>
-        /// Priority type- PRIMARY, SECONDARY
+        /// Connection priority in redundancy group - PRIMARY, SECONDARY
         /// </summary>
         public readonly string? Priority;
 

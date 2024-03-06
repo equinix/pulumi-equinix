@@ -14,7 +14,27 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
         /// 
-        /// &gt; **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceProfileDataName = Equinix.Fabric.GetServiceProfile.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_service_profile&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceProfileResult> InvokeAsync(GetServiceProfileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileArgs(), options.WithDefaults());
@@ -22,7 +42,27 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
         /// 
-        /// &gt; **Note** Equinix Fabric v4 resources and datasources are currently in Beta. The interfaces related to `equinix_fabric_` resources and datasources may change ahead of general availability
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceProfileDataName = Equinix.Fabric.GetServiceProfile.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_service_profile&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceProfileResult> Invoke(GetServiceProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileInvokeArgs(), options.WithDefaults());
@@ -31,12 +71,6 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetServiceProfileArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-        /// </summary>
-        [Input("state")]
-        public string? State { get; set; }
-
         [Input("uuid", required: true)]
         public string Uuid { get; set; } = null!;
 
@@ -48,12 +82,6 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetServiceProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 
@@ -72,7 +100,7 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceProfileAccessPointTypeConfigResult> AccessPointTypeConfigs;
         /// <summary>
-        /// Account
+        /// Service Profile Owner Account Information
         /// </summary>
         public readonly Outputs.GetServiceProfileAccountResult Account;
         /// <summary>
@@ -130,7 +158,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         /// </summary>
-        public readonly string? State;
+        public readonly string State;
         /// <summary>
         /// Tags attached to the connection
         /// </summary>
@@ -143,6 +171,10 @@ namespace Pulumi.Equinix.Fabric
         /// Equinix assigned service profile identifier
         /// </summary>
         public readonly string Uuid;
+        /// <summary>
+        /// Virtual Devices
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceProfileVirtualDeviceResult> VirtualDevices;
         /// <summary>
         /// Service profile visibility - PUBLIC, PRIVATE
         /// </summary>
@@ -180,13 +212,15 @@ namespace Pulumi.Equinix.Fabric
 
             bool selfProfile,
 
-            string? state,
+            string state,
 
             ImmutableArray<string> tags,
 
             string type,
 
             string uuid,
+
+            ImmutableArray<Outputs.GetServiceProfileVirtualDeviceResult> virtualDevices,
 
             string visibility)
         {
@@ -209,6 +243,7 @@ namespace Pulumi.Equinix.Fabric
             Tags = tags;
             Type = type;
             Uuid = uuid;
+            VirtualDevices = virtualDevices;
             Visibility = visibility;
         }
     }

@@ -16,41 +16,58 @@ __all__ = ['CloudRouterArgs', 'CloudRouter']
 @pulumi.input_type
 class CloudRouterArgs:
     def __init__(__self__, *,
+                 account: pulumi.Input['CloudRouterAccountArgs'],
                  location: pulumi.Input['CloudRouterLocationArgs'],
                  notifications: pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]],
+                 order: pulumi.Input['CloudRouterOrderArgs'],
                  package: pulumi.Input['CloudRouterPackageArgs'],
+                 project: pulumi.Input['CloudRouterProjectArgs'],
                  type: pulumi.Input[str],
-                 account: Optional[pulumi.Input['CloudRouterAccountArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
-                 project: Optional[pulumi.Input['CloudRouterProjectArgs']] = None):
+                 uuid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CloudRouter resource.
+        :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
-        :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router package
-        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
-        :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
-        :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
-        :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input['CloudRouterProjectArgs'] project: Fabric Cloud Router project
+        :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router Package Type
+        :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
+        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
+        pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "notifications", notifications)
+        pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "package", package)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
-        if account is not None:
-            pulumi.set(__self__, "account", account)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if href is not None:
+            pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if order is not None:
-            pulumi.set(__self__, "order", order)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def account(self) -> pulumi.Input['CloudRouterAccountArgs']:
+        """
+        Customer account information that is associated with this Fabric Cloud Router
+        """
+        return pulumi.get(self, "account")
+
+    @account.setter
+    def account(self, value: pulumi.Input['CloudRouterAccountArgs']):
+        pulumi.set(self, "account", value)
 
     @property
     @pulumi.getter
@@ -78,15 +95,39 @@ class CloudRouterArgs:
 
     @property
     @pulumi.getter
+    def order(self) -> pulumi.Input['CloudRouterOrderArgs']:
+        """
+        Order information related to this Fabric Cloud Router
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input['CloudRouterOrderArgs']):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
     def package(self) -> pulumi.Input['CloudRouterPackageArgs']:
         """
-        Fabric Cloud Router package
+        Fabric Cloud Router Package Type
         """
         return pulumi.get(self, "package")
 
     @package.setter
     def package(self, value: pulumi.Input['CloudRouterPackageArgs']):
         pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input['CloudRouterProjectArgs']:
+        """
+        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input['CloudRouterProjectArgs']):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -102,18 +143,6 @@ class CloudRouterArgs:
 
     @property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input['CloudRouterAccountArgs']]:
-        """
-        Customer account information that is associated with this Fabric Cloud Router
-        """
-        return pulumi.get(self, "account")
-
-    @account.setter
-    def account(self, value: Optional[pulumi.Input['CloudRouterAccountArgs']]):
-        pulumi.set(self, "account", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Customer-provided Fabric Cloud Router description
@@ -123,6 +152,18 @@ class CloudRouterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def href(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Resource URL
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "href", value)
 
     @property
     @pulumi.getter
@@ -138,27 +179,15 @@ class CloudRouterArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input['CloudRouterOrderArgs']]:
+    def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Order information related to this Fabric Cloud Router
+        Equinix-assigned Fabric Cloud Router identifier
         """
-        return pulumi.get(self, "order")
+        return pulumi.get(self, "uuid")
 
-    @order.setter
-    def order(self, value: Optional[pulumi.Input['CloudRouterOrderArgs']]):
-        pulumi.set(self, "order", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input['CloudRouterProjectArgs']]:
-        """
-        Fabric Cloud Router project
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input['CloudRouterProjectArgs']]):
-        pulumi.set(self, "project", value)
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
 
 
 @pulumi.input_type
@@ -170,6 +199,8 @@ class _CloudRouterState:
                  change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]]] = None,
                  connections_count: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 distinct_ipv4_prefixes_count: Optional[pulumi.Input[int]] = None,
+                 distinct_ipv6_prefixes_count: Optional[pulumi.Input[int]] = None,
                  equinix_asn: Optional[pulumi.Input[int]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input['CloudRouterLocationArgs']] = None,
@@ -179,25 +210,29 @@ class _CloudRouterState:
                  package: Optional[pulumi.Input['CloudRouterPackageArgs']] = None,
                  project: Optional[pulumi.Input['CloudRouterProjectArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CloudRouter resources.
         :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
-        :param pulumi.Input[int] bgp_ipv4_routes_count: Access point used and maximum number of IPv4 BGP routes
-        :param pulumi.Input[int] bgp_ipv6_routes_count: Access point used and maximum number of IPv6 BGP routes
+        :param pulumi.Input[int] bgp_ipv4_routes_count: Number of IPv4 BGP routes in use (including non-distinct prefixes)
+        :param pulumi.Input[int] bgp_ipv6_routes_count: Number of IPv6 BGP routes in use (including non-distinct prefixes)
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterChangeLogArgs']]] change_logs: Captures Fabric Cloud Router lifecycle change information
-        :param pulumi.Input[int] connections_count: Number of connections associated with this Access point
+        :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
+        :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
+        :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router package
-        :param pulumi.Input['CloudRouterProjectArgs'] project: Fabric Cloud Router project
+        :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router Package Type
+        :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -211,6 +246,10 @@ class _CloudRouterState:
             pulumi.set(__self__, "connections_count", connections_count)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if distinct_ipv4_prefixes_count is not None:
+            pulumi.set(__self__, "distinct_ipv4_prefixes_count", distinct_ipv4_prefixes_count)
+        if distinct_ipv6_prefixes_count is not None:
+            pulumi.set(__self__, "distinct_ipv6_prefixes_count", distinct_ipv6_prefixes_count)
         if equinix_asn is not None:
             pulumi.set(__self__, "equinix_asn", equinix_asn)
         if href is not None:
@@ -231,6 +270,8 @@ class _CloudRouterState:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -248,7 +289,7 @@ class _CloudRouterState:
     @pulumi.getter(name="bgpIpv4RoutesCount")
     def bgp_ipv4_routes_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Access point used and maximum number of IPv4 BGP routes
+        Number of IPv4 BGP routes in use (including non-distinct prefixes)
         """
         return pulumi.get(self, "bgp_ipv4_routes_count")
 
@@ -260,7 +301,7 @@ class _CloudRouterState:
     @pulumi.getter(name="bgpIpv6RoutesCount")
     def bgp_ipv6_routes_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Access point used and maximum number of IPv6 BGP routes
+        Number of IPv6 BGP routes in use (including non-distinct prefixes)
         """
         return pulumi.get(self, "bgp_ipv6_routes_count")
 
@@ -284,7 +325,7 @@ class _CloudRouterState:
     @pulumi.getter(name="connectionsCount")
     def connections_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of connections associated with this Access point
+        Number of connections associated with this Fabric Cloud Router instance
         """
         return pulumi.get(self, "connections_count")
 
@@ -303,6 +344,30 @@ class _CloudRouterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="distinctIpv4PrefixesCount")
+    def distinct_ipv4_prefixes_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of distinct IPv4 routes
+        """
+        return pulumi.get(self, "distinct_ipv4_prefixes_count")
+
+    @distinct_ipv4_prefixes_count.setter
+    def distinct_ipv4_prefixes_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "distinct_ipv4_prefixes_count", value)
+
+    @property
+    @pulumi.getter(name="distinctIpv6PrefixesCount")
+    def distinct_ipv6_prefixes_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of distinct IPv6 routes
+        """
+        return pulumi.get(self, "distinct_ipv6_prefixes_count")
+
+    @distinct_ipv6_prefixes_count.setter
+    def distinct_ipv6_prefixes_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "distinct_ipv6_prefixes_count", value)
 
     @property
     @pulumi.getter(name="equinixAsn")
@@ -380,7 +445,7 @@ class _CloudRouterState:
     @pulumi.getter
     def package(self) -> Optional[pulumi.Input['CloudRouterPackageArgs']]:
         """
-        Fabric Cloud Router package
+        Fabric Cloud Router Package Type
         """
         return pulumi.get(self, "package")
 
@@ -392,7 +457,7 @@ class _CloudRouterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input['CloudRouterProjectArgs']]:
         """
-        Fabric Cloud Router project
+        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "project")
 
@@ -424,6 +489,18 @@ class _CloudRouterState:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Equinix-assigned Fabric Cloud Router identifier
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uuid", value)
+
 
 class CloudRouter(pulumi.CustomResource):
     @overload
@@ -432,6 +509,7 @@ class CloudRouter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
@@ -439,8 +517,15 @@ class CloudRouter(pulumi.CustomResource):
                  package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
                  project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
+
+        Additional Fabric Cloud Router documentation:
+        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
+        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
+
         ## Example Usage
         ```python
         import pulumi
@@ -474,13 +559,15 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
+        :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router package
-        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Fabric Cloud Router project
+        :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router Package Type
+        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         ...
     @overload
@@ -489,6 +576,12 @@ class CloudRouter(pulumi.CustomResource):
                  args: CloudRouterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
+
+        Additional Fabric Cloud Router documentation:
+        * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
+        * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
+
         ## Example Usage
         ```python
         import pulumi
@@ -535,6 +628,7 @@ class CloudRouter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 href: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]]] = None,
@@ -542,6 +636,7 @@ class CloudRouter(pulumi.CustomResource):
                  package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
                  project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 uuid: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -551,8 +646,11 @@ class CloudRouter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudRouterArgs.__new__(CloudRouterArgs)
 
+            if account is None and not opts.urn:
+                raise TypeError("Missing required property 'account'")
             __props__.__dict__["account"] = account
             __props__.__dict__["description"] = description
+            __props__.__dict__["href"] = href
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -560,20 +658,26 @@ class CloudRouter(pulumi.CustomResource):
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
+            if order is None and not opts.urn:
+                raise TypeError("Missing required property 'order'")
             __props__.__dict__["order"] = order
             if package is None and not opts.urn:
                 raise TypeError("Missing required property 'package'")
             __props__.__dict__["package"] = package
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["uuid"] = uuid
             __props__.__dict__["bgp_ipv4_routes_count"] = None
             __props__.__dict__["bgp_ipv6_routes_count"] = None
             __props__.__dict__["change_logs"] = None
             __props__.__dict__["connections_count"] = None
+            __props__.__dict__["distinct_ipv4_prefixes_count"] = None
+            __props__.__dict__["distinct_ipv6_prefixes_count"] = None
             __props__.__dict__["equinix_asn"] = None
-            __props__.__dict__["href"] = None
             __props__.__dict__["state"] = None
         super(CloudRouter, __self__).__init__(
             'equinix:fabric/cloudRouter:CloudRouter',
@@ -591,6 +695,8 @@ class CloudRouter(pulumi.CustomResource):
             change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterChangeLogArgs']]]]] = None,
             connections_count: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            distinct_ipv4_prefixes_count: Optional[pulumi.Input[int]] = None,
+            distinct_ipv6_prefixes_count: Optional[pulumi.Input[int]] = None,
             equinix_asn: Optional[pulumi.Input[int]] = None,
             href: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']]] = None,
@@ -600,7 +706,8 @@ class CloudRouter(pulumi.CustomResource):
             package: Optional[pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']]] = None,
             project: Optional[pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'CloudRouter':
+            type: Optional[pulumi.Input[str]] = None,
+            uuid: Optional[pulumi.Input[str]] = None) -> 'CloudRouter':
         """
         Get an existing CloudRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -609,21 +716,24 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']] account: Customer account information that is associated with this Fabric Cloud Router
-        :param pulumi.Input[int] bgp_ipv4_routes_count: Access point used and maximum number of IPv4 BGP routes
-        :param pulumi.Input[int] bgp_ipv6_routes_count: Access point used and maximum number of IPv6 BGP routes
+        :param pulumi.Input[int] bgp_ipv4_routes_count: Number of IPv4 BGP routes in use (including non-distinct prefixes)
+        :param pulumi.Input[int] bgp_ipv6_routes_count: Number of IPv6 BGP routes in use (including non-distinct prefixes)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterChangeLogArgs']]]] change_logs: Captures Fabric Cloud Router lifecycle change information
-        :param pulumi.Input[int] connections_count: Number of connections associated with this Access point
+        :param pulumi.Input[int] connections_count: Number of connections associated with this Fabric Cloud Router instance
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
+        :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
+        :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
         :param pulumi.Input[str] href: Unique Resource URL
         :param pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
-        :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router package
-        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Fabric Cloud Router project
+        :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router Package Type
+        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
         :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -635,6 +745,8 @@ class CloudRouter(pulumi.CustomResource):
         __props__.__dict__["change_logs"] = change_logs
         __props__.__dict__["connections_count"] = connections_count
         __props__.__dict__["description"] = description
+        __props__.__dict__["distinct_ipv4_prefixes_count"] = distinct_ipv4_prefixes_count
+        __props__.__dict__["distinct_ipv6_prefixes_count"] = distinct_ipv6_prefixes_count
         __props__.__dict__["equinix_asn"] = equinix_asn
         __props__.__dict__["href"] = href
         __props__.__dict__["location"] = location
@@ -645,11 +757,12 @@ class CloudRouter(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
+        __props__.__dict__["uuid"] = uuid
         return CloudRouter(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def account(self) -> pulumi.Output[Optional['outputs.CloudRouterAccount']]:
+    def account(self) -> pulumi.Output['outputs.CloudRouterAccount']:
         """
         Customer account information that is associated with this Fabric Cloud Router
         """
@@ -659,7 +772,7 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter(name="bgpIpv4RoutesCount")
     def bgp_ipv4_routes_count(self) -> pulumi.Output[int]:
         """
-        Access point used and maximum number of IPv4 BGP routes
+        Number of IPv4 BGP routes in use (including non-distinct prefixes)
         """
         return pulumi.get(self, "bgp_ipv4_routes_count")
 
@@ -667,7 +780,7 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter(name="bgpIpv6RoutesCount")
     def bgp_ipv6_routes_count(self) -> pulumi.Output[int]:
         """
-        Access point used and maximum number of IPv6 BGP routes
+        Number of IPv6 BGP routes in use (including non-distinct prefixes)
         """
         return pulumi.get(self, "bgp_ipv6_routes_count")
 
@@ -683,7 +796,7 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter(name="connectionsCount")
     def connections_count(self) -> pulumi.Output[int]:
         """
-        Number of connections associated with this Access point
+        Number of connections associated with this Fabric Cloud Router instance
         """
         return pulumi.get(self, "connections_count")
 
@@ -694,6 +807,22 @@ class CloudRouter(pulumi.CustomResource):
         Customer-provided Fabric Cloud Router description
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="distinctIpv4PrefixesCount")
+    def distinct_ipv4_prefixes_count(self) -> pulumi.Output[int]:
+        """
+        Number of distinct IPv4 routes
+        """
+        return pulumi.get(self, "distinct_ipv4_prefixes_count")
+
+    @property
+    @pulumi.getter(name="distinctIpv6PrefixesCount")
+    def distinct_ipv6_prefixes_count(self) -> pulumi.Output[int]:
+        """
+        Number of distinct IPv6 routes
+        """
+        return pulumi.get(self, "distinct_ipv6_prefixes_count")
 
     @property
     @pulumi.getter(name="equinixAsn")
@@ -737,7 +866,7 @@ class CloudRouter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Output[Optional['outputs.CloudRouterOrder']]:
+    def order(self) -> pulumi.Output['outputs.CloudRouterOrder']:
         """
         Order information related to this Fabric Cloud Router
         """
@@ -747,15 +876,15 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter
     def package(self) -> pulumi.Output['outputs.CloudRouterPackage']:
         """
-        Fabric Cloud Router package
+        Fabric Cloud Router Package Type
         """
         return pulumi.get(self, "package")
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Output[Optional['outputs.CloudRouterProject']]:
+    def project(self) -> pulumi.Output['outputs.CloudRouterProject']:
         """
-        Fabric Cloud Router project
+        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "project")
 
@@ -774,4 +903,12 @@ class CloudRouter(pulumi.CustomResource):
         Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Output[str]:
+        """
+        Equinix-assigned Fabric Cloud Router identifier
+        """
+        return pulumi.get(self, "uuid")
 

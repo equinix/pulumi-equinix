@@ -7,24 +7,58 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionZSideAccessPointLinkProtocol {
-    private String type;
+    /**
+     * @return Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+     * 
+     */
     private Integer vlanCTag;
+    /**
+     * @return Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+     * 
+     */
     private Integer vlanSTag;
+    /**
+     * @return Vlan Tag information, vlanTag value specified for DOT1Q connections
+     * 
+     */
     private Integer vlanTag;
 
     private GetConnectionZSideAccessPointLinkProtocol() {}
-    public String type() {
-        return this.type;
+    /**
+     * @return Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+     * 
+     */
     public Integer vlanCTag() {
         return this.vlanCTag;
     }
+    /**
+     * @return Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+     * 
+     */
     public Integer vlanSTag() {
         return this.vlanSTag;
     }
+    /**
+     * @return Vlan Tag information, vlanTag value specified for DOT1Q connections
+     * 
+     */
     public Integer vlanTag() {
         return this.vlanTag;
     }
@@ -38,7 +72,7 @@ public final class GetConnectionZSideAccessPointLinkProtocol {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String type;
+        private @Nullable String type;
         private Integer vlanCTag;
         private Integer vlanSTag;
         private Integer vlanTag;
@@ -52,8 +86,8 @@ public final class GetConnectionZSideAccessPointLinkProtocol {
         }
 
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         @CustomType.Setter

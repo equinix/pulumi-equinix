@@ -22,7 +22,7 @@ class GetDeviceResult:
     """
     A collection of values returned by getDevice.
     """
-    def __init__(__self__, account_number=None, acl_template_id=None, additional_bandwidth=None, asn=None, byol=None, cluster_details=None, connectivity=None, core_count=None, hostname=None, ibx=None, id=None, interface_count=None, interfaces=None, license_file=None, license_file_id=None, license_status=None, license_token=None, metro_code=None, mgmt_acl_template_uuid=None, name=None, notifications=None, order_reference=None, package_code=None, purchase_order_number=None, redundancy_type=None, redundant_id=None, region=None, secondary_devices=None, self_managed=None, ssh_ip_address=None, ssh_ip_fqdn=None, ssh_keys=None, status=None, term_length=None, throughput=None, throughput_unit=None, type_code=None, uuid=None, valid_status_list=None, vendor_configuration=None, version=None, wan_interface_id=None, zone_code=None):
+    def __init__(__self__, account_number=None, acl_template_id=None, additional_bandwidth=None, asn=None, byol=None, cluster_details=None, connectivity=None, core_count=None, diverse_device_id=None, diverse_device_name=None, hostname=None, ibx=None, id=None, interface_count=None, interfaces=None, license_file=None, license_file_id=None, license_status=None, license_token=None, metro_code=None, mgmt_acl_template_uuid=None, name=None, notifications=None, order_reference=None, package_code=None, project_id=None, purchase_order_number=None, redundancy_type=None, redundant_id=None, region=None, secondary_devices=None, self_managed=None, ssh_ip_address=None, ssh_ip_fqdn=None, ssh_keys=None, status=None, term_length=None, throughput=None, throughput_unit=None, type_code=None, uuid=None, valid_status_list=None, vendor_configuration=None, version=None, wan_interface_id=None, zone_code=None):
         if account_number and not isinstance(account_number, str):
             raise TypeError("Expected argument 'account_number' to be a str")
         pulumi.set(__self__, "account_number", account_number)
@@ -47,6 +47,12 @@ class GetDeviceResult:
         if core_count and not isinstance(core_count, int):
             raise TypeError("Expected argument 'core_count' to be a int")
         pulumi.set(__self__, "core_count", core_count)
+        if diverse_device_id and not isinstance(diverse_device_id, str):
+            raise TypeError("Expected argument 'diverse_device_id' to be a str")
+        pulumi.set(__self__, "diverse_device_id", diverse_device_id)
+        if diverse_device_name and not isinstance(diverse_device_name, str):
+            raise TypeError("Expected argument 'diverse_device_name' to be a str")
+        pulumi.set(__self__, "diverse_device_name", diverse_device_name)
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
@@ -92,6 +98,9 @@ class GetDeviceResult:
         if package_code and not isinstance(package_code, str):
             raise TypeError("Expected argument 'package_code' to be a str")
         pulumi.set(__self__, "package_code", package_code)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if purchase_order_number and not isinstance(purchase_order_number, str):
             raise TypeError("Expected argument 'purchase_order_number' to be a str")
         pulumi.set(__self__, "purchase_order_number", purchase_order_number)
@@ -203,6 +212,22 @@ class GetDeviceResult:
         return pulumi.get(self, "core_count")
 
     @property
+    @pulumi.getter(name="diverseDeviceId")
+    def diverse_device_id(self) -> str:
+        """
+        diverse device uuid
+        """
+        return pulumi.get(self, "diverse_device_id")
+
+    @property
+    @pulumi.getter(name="diverseDeviceName")
+    def diverse_device_name(self) -> str:
+        """
+        Name of the device with diverse device UUID
+        """
+        return pulumi.get(self, "diverse_device_name")
+
+    @property
     @pulumi.getter
     def hostname(self) -> str:
         return pulumi.get(self, "hostname")
@@ -305,6 +330,11 @@ class GetDeviceResult:
     @pulumi.getter(name="packageCode")
     def package_code(self) -> str:
         return pulumi.get(self, "package_code")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="purchaseOrderNumber")
@@ -461,6 +491,8 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             cluster_details=self.cluster_details,
             connectivity=self.connectivity,
             core_count=self.core_count,
+            diverse_device_id=self.diverse_device_id,
+            diverse_device_name=self.diverse_device_name,
             hostname=self.hostname,
             ibx=self.ibx,
             id=self.id,
@@ -476,6 +508,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             notifications=self.notifications,
             order_reference=self.order_reference,
             package_code=self.package_code,
+            project_id=self.project_id,
             purchase_order_number=self.purchase_order_number,
             redundancy_type=self.redundancy_type,
             redundant_id=self.redundant_id,
@@ -538,6 +571,8 @@ def get_device(name: Optional[str] = None,
         cluster_details=pulumi.get(__ret__, 'cluster_details'),
         connectivity=pulumi.get(__ret__, 'connectivity'),
         core_count=pulumi.get(__ret__, 'core_count'),
+        diverse_device_id=pulumi.get(__ret__, 'diverse_device_id'),
+        diverse_device_name=pulumi.get(__ret__, 'diverse_device_name'),
         hostname=pulumi.get(__ret__, 'hostname'),
         ibx=pulumi.get(__ret__, 'ibx'),
         id=pulumi.get(__ret__, 'id'),
@@ -553,6 +588,7 @@ def get_device(name: Optional[str] = None,
         notifications=pulumi.get(__ret__, 'notifications'),
         order_reference=pulumi.get(__ret__, 'order_reference'),
         package_code=pulumi.get(__ret__, 'package_code'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         purchase_order_number=pulumi.get(__ret__, 'purchase_order_number'),
         redundancy_type=pulumi.get(__ret__, 'redundancy_type'),
         redundant_id=pulumi.get(__ret__, 'redundant_id'),

@@ -13,19 +13,19 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ServiceProfileAccessPointTypeConfigAuthenticationKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description
+        /// Description of authorization key
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Label
+        /// Name of the parameter that must be provided to authorize the connection.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Required
+        /// Requirement to configure an authentication key.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }

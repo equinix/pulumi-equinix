@@ -26,7 +26,13 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// Inbound traffic protocol. One of `IP`, `TCP`, `UDP`.
         /// </summary>
         public readonly string Protocol;
+        /// <summary>
+        /// Inbound rule sequence number
+        /// </summary>
         public readonly int? SequenceNumber;
+        /// <summary>
+        /// Type of traffic source used in a given inbound rule
+        /// </summary>
         public readonly string? SourceType;
         /// <summary>
         /// Inbound traffic source ports. Allowed values are a comma separated list

@@ -290,7 +290,7 @@ class Organization(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing organization ID: <break><break>```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
+        This resource can be imported using an existing organization ID:<break><break> ```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -330,7 +330,7 @@ class Organization(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing organization ID: <break><break>```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
+        This resource can be imported using an existing organization ID:<break><break> ```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.

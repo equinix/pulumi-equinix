@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessPointLinkProtocolType string
@@ -139,10 +138,13 @@ func (o AccessPointLinkProtocolTypePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessPointLinkProtocolTypeInput is an input type that accepts AccessPointLinkProtocolTypeArgs and AccessPointLinkProtocolTypeOutput values.
-// You can construct a concrete instance of `AccessPointLinkProtocolTypeInput` via:
+// AccessPointLinkProtocolTypeInput is an input type that accepts values of the AccessPointLinkProtocolType enum
+// A concrete instance of `AccessPointLinkProtocolTypeInput` can be one of the following:
 //
-//	AccessPointLinkProtocolTypeArgs{...}
+//	AccessPointLinkProtocolTypeUntagged
+//	AccessPointLinkProtocolTypeDot1q
+//	AccessPointLinkProtocolTypeQinQ
+//	AccessPointLinkProtocolType_EVPN_VXLAN
 type AccessPointLinkProtocolTypeInput interface {
 	pulumi.Input
 
@@ -175,12 +177,6 @@ func (in *accessPointLinkProtocolTypePtr) ToAccessPointLinkProtocolTypePtrOutput
 
 func (in *accessPointLinkProtocolTypePtr) ToAccessPointLinkProtocolTypePtrOutputWithContext(ctx context.Context) AccessPointLinkProtocolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPointLinkProtocolTypePtrOutput)
-}
-
-func (in *accessPointLinkProtocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPointLinkProtocolType] {
-	return pulumix.Output[*AccessPointLinkProtocolType]{
-		OutputState: in.ToAccessPointLinkProtocolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type AccessPointPeeringType string
@@ -310,10 +306,12 @@ func (o AccessPointPeeringTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessPointPeeringTypeInput is an input type that accepts AccessPointPeeringTypeArgs and AccessPointPeeringTypeOutput values.
-// You can construct a concrete instance of `AccessPointPeeringTypeInput` via:
+// AccessPointPeeringTypeInput is an input type that accepts values of the AccessPointPeeringType enum
+// A concrete instance of `AccessPointPeeringTypeInput` can be one of the following:
 //
-//	AccessPointPeeringTypeArgs{...}
+//	AccessPointPeeringTypePrivate
+//	AccessPointPeeringTypeMicrosoft
+//	AccessPointPeeringTypePublic
 type AccessPointPeeringTypeInput interface {
 	pulumi.Input
 
@@ -346,12 +344,6 @@ func (in *accessPointPeeringTypePtr) ToAccessPointPeeringTypePtrOutput() AccessP
 
 func (in *accessPointPeeringTypePtr) ToAccessPointPeeringTypePtrOutputWithContext(ctx context.Context) AccessPointPeeringTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPointPeeringTypePtrOutput)
-}
-
-func (in *accessPointPeeringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPointPeeringType] {
-	return pulumix.Output[*AccessPointPeeringType]{
-		OutputState: in.ToAccessPointPeeringTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type AccessPointType string
@@ -492,10 +484,16 @@ func (o AccessPointTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessPointTypeInput is an input type that accepts AccessPointTypeArgs and AccessPointTypeOutput values.
-// You can construct a concrete instance of `AccessPointTypeInput` via:
+// AccessPointTypeInput is an input type that accepts values of the AccessPointType enum
+// A concrete instance of `AccessPointTypeInput` can be one of the following:
 //
-//	AccessPointTypeArgs{...}
+//	AccessPointTypeColo
+//	AccessPointTypeVD
+//	AccessPointTypeSP
+//	AccessPointTypeIGW
+//	AccessPointTypeSubnet
+//	AccessPointTypeGW
+//	AccessPointTypeNetwork
 type AccessPointTypeInput interface {
 	pulumi.Input
 
@@ -528,12 +526,6 @@ func (in *accessPointTypePtr) ToAccessPointTypePtrOutput() AccessPointTypePtrOut
 
 func (in *accessPointTypePtr) ToAccessPointTypePtrOutputWithContext(ctx context.Context) AccessPointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPointTypePtrOutput)
-}
-
-func (in *accessPointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPointType] {
-	return pulumix.Output[*AccessPointType]{
-		OutputState: in.ToAccessPointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ConnectionType string
@@ -670,10 +662,14 @@ func (o ConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionTypeInput is an input type that accepts ConnectionTypeArgs and ConnectionTypeOutput values.
-// You can construct a concrete instance of `ConnectionTypeInput` via:
+// ConnectionTypeInput is an input type that accepts values of the ConnectionType enum
+// A concrete instance of `ConnectionTypeInput` can be one of the following:
 //
-//	ConnectionTypeArgs{...}
+//	ConnectionTypeVG
+//	ConnectionTypeEVPL
+//	ConnectionTypeEPL
+//	ConnectionTypeGW
+//	ConnectionTypeAccessEPL
 type ConnectionTypeInput interface {
 	pulumi.Input
 
@@ -706,12 +702,6 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutput() ConnectionTypePtrOutput
 
 func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionTypePtrOutput)
-}
-
-func (in *connectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
-	return pulumix.Output[*ConnectionType]{
-		OutputState: in.ToConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type NotificationsType string
@@ -842,10 +832,13 @@ func (o NotificationsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// NotificationsTypeInput is an input type that accepts NotificationsTypeArgs and NotificationsTypeOutput values.
-// You can construct a concrete instance of `NotificationsTypeInput` via:
+// NotificationsTypeInput is an input type that accepts values of the NotificationsType enum
+// A concrete instance of `NotificationsTypeInput` can be one of the following:
 //
-//	NotificationsTypeArgs{...}
+//	NotificationsTypeAll
+//	NotificationsTypeConnectionApproval
+//	NotificationsTypeSalesNotifications
+//	NotificationsTypeNotifications
 type NotificationsTypeInput interface {
 	pulumi.Input
 
@@ -878,12 +871,6 @@ func (in *notificationsTypePtr) ToNotificationsTypePtrOutput() NotificationsType
 
 func (in *notificationsTypePtr) ToNotificationsTypePtrOutputWithContext(ctx context.Context) NotificationsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationsTypePtrOutput)
-}
-
-func (in *notificationsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationsType] {
-	return pulumix.Output[*NotificationsType]{
-		OutputState: in.ToNotificationsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ProfileAccessPointType string
@@ -1014,10 +1001,11 @@ func (o ProfileAccessPointTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProfileAccessPointTypeInput is an input type that accepts ProfileAccessPointTypeArgs and ProfileAccessPointTypeOutput values.
-// You can construct a concrete instance of `ProfileAccessPointTypeInput` via:
+// ProfileAccessPointTypeInput is an input type that accepts values of the ProfileAccessPointType enum
+// A concrete instance of `ProfileAccessPointTypeInput` can be one of the following:
 //
-//	ProfileAccessPointTypeArgs{...}
+//	ProfileAccessPointTypeColo
+//	ProfileAccessPointTypeVD
 type ProfileAccessPointTypeInput interface {
 	pulumi.Input
 
@@ -1050,12 +1038,6 @@ func (in *profileAccessPointTypePtr) ToProfileAccessPointTypePtrOutput() Profile
 
 func (in *profileAccessPointTypePtr) ToProfileAccessPointTypePtrOutputWithContext(ctx context.Context) ProfileAccessPointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileAccessPointTypePtrOutput)
-}
-
-func (in *profileAccessPointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileAccessPointType] {
-	return pulumix.Output[*ProfileAccessPointType]{
-		OutputState: in.ToProfileAccessPointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ProfileState string
@@ -1186,10 +1168,13 @@ func (o ProfileStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProfileStateInput is an input type that accepts ProfileStateArgs and ProfileStateOutput values.
-// You can construct a concrete instance of `ProfileStateInput` via:
+// ProfileStateInput is an input type that accepts values of the ProfileState enum
+// A concrete instance of `ProfileStateInput` can be one of the following:
 //
-//	ProfileStateArgs{...}
+//	ProfileStateActive
+//	ProfileStatePendingApproval
+//	ProfileStateDeleted
+//	ProfileStateRejected
 type ProfileStateInput interface {
 	pulumi.Input
 
@@ -1222,12 +1207,6 @@ func (in *profileStatePtr) ToProfileStatePtrOutput() ProfileStatePtrOutput {
 
 func (in *profileStatePtr) ToProfileStatePtrOutputWithContext(ctx context.Context) ProfileStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileStatePtrOutput)
-}
-
-func (in *profileStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileState] {
-	return pulumix.Output[*ProfileState]{
-		OutputState: in.ToProfileStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ProfileType string
@@ -1356,10 +1335,11 @@ func (o ProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProfileTypeInput is an input type that accepts ProfileTypeArgs and ProfileTypeOutput values.
-// You can construct a concrete instance of `ProfileTypeInput` via:
+// ProfileTypeInput is an input type that accepts values of the ProfileType enum
+// A concrete instance of `ProfileTypeInput` can be one of the following:
 //
-//	ProfileTypeArgs{...}
+//	ProfileTypeL2Profile
+//	ProfileTypeL3Profile
 type ProfileTypeInput interface {
 	pulumi.Input
 
@@ -1392,12 +1372,6 @@ func (in *profileTypePtr) ToProfileTypePtrOutput() ProfileTypePtrOutput {
 
 func (in *profileTypePtr) ToProfileTypePtrOutputWithContext(ctx context.Context) ProfileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileTypePtrOutput)
-}
-
-func (in *profileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileType] {
-	return pulumix.Output[*ProfileType]{
-		OutputState: in.ToProfileTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ProfileVisibility string
@@ -1526,10 +1500,11 @@ func (o ProfileVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ProfileVisibilityInput is an input type that accepts ProfileVisibilityArgs and ProfileVisibilityOutput values.
-// You can construct a concrete instance of `ProfileVisibilityInput` via:
+// ProfileVisibilityInput is an input type that accepts values of the ProfileVisibility enum
+// A concrete instance of `ProfileVisibilityInput` can be one of the following:
 //
-//	ProfileVisibilityArgs{...}
+//	ProfileVisibilityPublic
+//	ProfileVisibilityPrivate
 type ProfileVisibilityInput interface {
 	pulumi.Input
 
@@ -1562,12 +1537,6 @@ func (in *profileVisibilityPtr) ToProfileVisibilityPtrOutput() ProfileVisibility
 
 func (in *profileVisibilityPtr) ToProfileVisibilityPtrOutputWithContext(ctx context.Context) ProfileVisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileVisibilityPtrOutput)
-}
-
-func (in *profileVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileVisibility] {
-	return pulumix.Output[*ProfileVisibility]{
-		OutputState: in.ToProfileVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ServiceTokenType string
@@ -1695,10 +1664,10 @@ func (o ServiceTokenTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceTokenTypeInput is an input type that accepts ServiceTokenTypeArgs and ServiceTokenTypeOutput values.
-// You can construct a concrete instance of `ServiceTokenTypeInput` via:
+// ServiceTokenTypeInput is an input type that accepts values of the ServiceTokenType enum
+// A concrete instance of `ServiceTokenTypeInput` can be one of the following:
 //
-//	ServiceTokenTypeArgs{...}
+//	ServiceTokenTypeVCToken
 type ServiceTokenTypeInput interface {
 	pulumi.Input
 
@@ -1731,12 +1700,6 @@ func (in *serviceTokenTypePtr) ToServiceTokenTypePtrOutput() ServiceTokenTypePtr
 
 func (in *serviceTokenTypePtr) ToServiceTokenTypePtrOutputWithContext(ctx context.Context) ServiceTokenTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTokenTypePtrOutput)
-}
-
-func (in *serviceTokenTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceTokenType] {
-	return pulumix.Output[*ServiceTokenType]{
-		OutputState: in.ToServiceTokenTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

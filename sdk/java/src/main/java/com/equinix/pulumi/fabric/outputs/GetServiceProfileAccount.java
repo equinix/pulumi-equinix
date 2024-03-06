@@ -10,37 +10,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceProfileAccount {
+    /**
+     * @return Legal name of the accountholder.
+     * 
+     */
     private String accountName;
+    /**
+     * @return Equinix-assigned account number.
+     * 
+     */
     private Integer accountNumber;
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     private String globalCustId;
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     private String globalOrgId;
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
+     * 
+     */
     private String globalOrganizationName;
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
+     * 
+     */
     private Integer orgId;
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
+     * 
+     */
     private String organizationName;
+    /**
+     * @return Enterprise datastore id
+     * 
+     */
     private String ucmId;
 
     private GetServiceProfileAccount() {}
+    /**
+     * @return Legal name of the accountholder.
+     * 
+     */
     public String accountName() {
         return this.accountName;
     }
+    /**
+     * @return Equinix-assigned account number.
+     * 
+     */
     public Integer accountNumber() {
         return this.accountNumber;
     }
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     public String globalCustId() {
         return this.globalCustId;
     }
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s parent organization.
+     * 
+     */
     public String globalOrgId() {
         return this.globalOrgId;
     }
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s parent organization.
+     * 
+     */
     public String globalOrganizationName() {
         return this.globalOrganizationName;
     }
+    /**
+     * @return Equinix-assigned ID of the subscriber&#39;s organization.
+     * 
+     */
     public Integer orgId() {
         return this.orgId;
     }
+    /**
+     * @return Equinix-assigned name of the subscriber&#39;s organization.
+     * 
+     */
     public String organizationName() {
         return this.organizationName;
     }
+    /**
+     * @return Enterprise datastore id
+     * 
+     */
     public String ucmId() {
         return this.ucmId;
     }

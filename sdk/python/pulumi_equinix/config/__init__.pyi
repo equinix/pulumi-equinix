@@ -30,8 +30,14 @@ The Equinix API base URL to point out desired environment. Defaults to https://a
 """
 
 maxRetries: Optional[int]
+"""
+Maximum number of retries.
+"""
 
 maxRetryWaitSeconds: Optional[int]
+"""
+Maximum number of seconds to wait before retrying a request.
+"""
 
 requestTimeout: Optional[int]
 """

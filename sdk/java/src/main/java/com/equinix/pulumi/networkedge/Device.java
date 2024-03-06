@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:networkedge/device:Device example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+ * This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/device:Device example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.&lt;break&gt;&lt;break&gt;
  * 
  */
 @ResourceType(type="equinix:networkedge/device:Device")
@@ -253,6 +253,40 @@ public class Device extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> coreCount() {
         return this.coreCount;
+    }
+    /**
+     * Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     * 
+     */
+    @Export(name="diverseDeviceId", refs={String.class}, tree="[0]")
+    private Output<String> diverseDeviceId;
+
+    /**
+     * @return Unique ID of an existing device.
+     * Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+     * device. This field is only meaningful for single devices.
+     * 
+     */
+    public Output<String> diverseDeviceId() {
+        return this.diverseDeviceId;
+    }
+    /**
+     * Name of the device with diverse device UUID. This field is returned in device details if the
+     * device is created by passing diverse_device_id.
+     * 
+     */
+    @Export(name="diverseDeviceName", refs={String.class}, tree="[0]")
+    private Output<String> diverseDeviceName;
+
+    /**
+     * @return Name of the device with diverse device UUID. This field is returned in device details if the
+     * device is created by passing diverse_device_id.
+     * 
+     */
+    public Output<String> diverseDeviceName() {
+        return this.diverseDeviceName;
     }
     /**
      * Device hostname prefix.
@@ -463,6 +497,22 @@ public class Device extends com.pulumi.resources.CustomResource {
      */
     public Output<String> packageCode() {
         return this.packageCode;
+    }
+    /**
+     * Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the device is scoped to.If you
+     * leave it out, the device will be created under the default project id of your organization.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
     }
     /**
      * Purchase order number associated with a device order.

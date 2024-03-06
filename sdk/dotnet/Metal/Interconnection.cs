@@ -58,7 +58,7 @@ namespace Pulumi.Equinix.Metal
         /// Description for the connection resource.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
@@ -76,7 +76,7 @@ namespace Pulumi.Equinix.Metal
         /// Mode for connections in IBX facilities with the dedicated type - standard or tunnel. Default is standard.
         /// </summary>
         [Output("mode")]
-        public Output<string?> Mode { get; private set; } = null!;
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// Name of the connection resource
@@ -123,7 +123,7 @@ namespace Pulumi.Equinix.Metal
         public Output<ImmutableArray<Outputs.InterconnectionServiceToken>> ServiceTokens { get; private set; } = null!;
 
         /// <summary>
-        /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Output("speed")]
         public Output<string> Speed { get; private set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? ServiceTokenType { get; set; }
 
         /// <summary>
-        /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
@@ -396,7 +396,7 @@ namespace Pulumi.Equinix.Metal
         }
 
         /// <summary>
-        /// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+        /// Connection speed -  Values must be in the format '&lt;number&gt;Mbps' or '&lt;number&gt;Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

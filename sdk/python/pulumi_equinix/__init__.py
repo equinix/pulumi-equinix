@@ -45,6 +45,14 @@ _utilities.register(
  },
  {
   "pkg": "equinix",
+  "mod": "fabric/network",
+  "fqn": "pulumi_equinix.fabric",
+  "classes": {
+   "equinix:fabric/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "equinix",
   "mod": "fabric/routingProtocol",
   "fqn": "pulumi_equinix.fabric",
   "classes": {

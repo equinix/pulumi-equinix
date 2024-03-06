@@ -6,26 +6,60 @@ package com.equinix.pulumi.fabric.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionASideServiceToken {
+    /**
+     * @return Service token description
+     * 
+     */
     private String description;
+    /**
+     * @return An absolute URL that is the subject of the link&#39;s context
+     * 
+     */
     private String href;
-    private String type;
-    private String uuid;
+    /**
+     * @return Token type - VC_TOKEN
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return Equinix-assigned service token identifier
+     * 
+     */
+    private @Nullable String uuid;
 
     private GetConnectionASideServiceToken() {}
+    /**
+     * @return Service token description
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return An absolute URL that is the subject of the link&#39;s context
+     * 
+     */
     public String href() {
         return this.href;
     }
-    public String type() {
-        return this.type;
+    /**
+     * @return Token type - VC_TOKEN
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
-    public String uuid() {
-        return this.uuid;
+    /**
+     * @return Equinix-assigned service token identifier
+     * 
+     */
+    public Optional<String> uuid() {
+        return Optional.ofNullable(this.uuid);
     }
 
     public static Builder builder() {
@@ -39,8 +73,8 @@ public final class GetConnectionASideServiceToken {
     public static final class Builder {
         private String description;
         private String href;
-        private String type;
-        private String uuid;
+        private @Nullable String type;
+        private @Nullable String uuid;
         public Builder() {}
         public Builder(GetConnectionASideServiceToken defaults) {
     	      Objects.requireNonNull(defaults);
@@ -61,13 +95,13 @@ public final class GetConnectionASideServiceToken {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+        public Builder uuid(@Nullable String uuid) {
+            this.uuid = uuid;
             return this;
         }
         public GetConnectionASideServiceToken build() {

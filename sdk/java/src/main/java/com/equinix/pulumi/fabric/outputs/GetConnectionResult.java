@@ -5,7 +5,6 @@ package com.equinix.pulumi.fabric.outputs;
 
 import com.equinix.pulumi.fabric.outputs.GetConnectionASide;
 import com.equinix.pulumi.fabric.outputs.GetConnectionAccount;
-import com.equinix.pulumi.fabric.outputs.GetConnectionAdditionalInfo;
 import com.equinix.pulumi.fabric.outputs.GetConnectionChangeLog;
 import com.equinix.pulumi.fabric.outputs.GetConnectionNotification;
 import com.equinix.pulumi.fabric.outputs.GetConnectionOperation;
@@ -16,11 +15,11 @@ import com.equinix.pulumi.fabric.outputs.GetConnectionZSide;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionResult {
@@ -38,7 +37,7 @@ public final class GetConnectionResult {
      * @return Connection additional information
      * 
      */
-    private List<GetConnectionAdditionalInfo> additionalInfo;
+    private List<Map<String,Object>> additionalInfo;
     /**
      * @return Connection bandwidth in Mbps
      * 
@@ -85,12 +84,12 @@ public final class GetConnectionResult {
      */
     private List<GetConnectionNotification> notifications;
     /**
-     * @return Connection specific operational data
+     * @return Connection type-specific operational data
      * 
      */
     private GetConnectionOperation operation;
     /**
-     * @return Order related to this connection information
+     * @return Order details
      * 
      */
     private GetConnectionOrder order;
@@ -98,9 +97,9 @@ public final class GetConnectionResult {
      * @return Project information
      * 
      */
-    private @Nullable GetConnectionProject project;
+    private GetConnectionProject project;
     /**
-     * @return Redundancy Information
+     * @return Connection Redundancy Configuration
      * 
      */
     private GetConnectionRedundancy redundancy;
@@ -110,7 +109,7 @@ public final class GetConnectionResult {
      */
     private String state;
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     private String type;
@@ -118,7 +117,7 @@ public final class GetConnectionResult {
      * @return Equinix-assigned connection identifier
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
     /**
      * @return Destination or Provider side connection configuration object of the multi-segment connection
      * 
@@ -144,7 +143,7 @@ public final class GetConnectionResult {
      * @return Connection additional information
      * 
      */
-    public List<GetConnectionAdditionalInfo> additionalInfo() {
+    public List<Map<String,Object>> additionalInfo() {
         return this.additionalInfo;
     }
     /**
@@ -211,14 +210,14 @@ public final class GetConnectionResult {
         return this.notifications;
     }
     /**
-     * @return Connection specific operational data
+     * @return Connection type-specific operational data
      * 
      */
     public GetConnectionOperation operation() {
         return this.operation;
     }
     /**
-     * @return Order related to this connection information
+     * @return Order details
      * 
      */
     public GetConnectionOrder order() {
@@ -228,11 +227,11 @@ public final class GetConnectionResult {
      * @return Project information
      * 
      */
-    public Optional<GetConnectionProject> project() {
-        return Optional.ofNullable(this.project);
+    public GetConnectionProject project() {
+        return this.project;
     }
     /**
-     * @return Redundancy Information
+     * @return Connection Redundancy Configuration
      * 
      */
     public GetConnectionRedundancy redundancy() {
@@ -246,7 +245,7 @@ public final class GetConnectionResult {
         return this.state;
     }
     /**
-     * @return Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     public String type() {
@@ -256,8 +255,8 @@ public final class GetConnectionResult {
      * @return Equinix-assigned connection identifier
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
     /**
      * @return Destination or Provider side connection configuration object of the multi-segment connection
@@ -278,7 +277,7 @@ public final class GetConnectionResult {
     public static final class Builder {
         private GetConnectionASide aSide;
         private GetConnectionAccount account;
-        private List<GetConnectionAdditionalInfo> additionalInfo;
+        private List<Map<String,Object>> additionalInfo;
         private Integer bandwidth;
         private GetConnectionChangeLog changeLog;
         private String description;
@@ -290,11 +289,11 @@ public final class GetConnectionResult {
         private List<GetConnectionNotification> notifications;
         private GetConnectionOperation operation;
         private GetConnectionOrder order;
-        private @Nullable GetConnectionProject project;
+        private GetConnectionProject project;
         private GetConnectionRedundancy redundancy;
         private String state;
         private String type;
-        private @Nullable String uuid;
+        private String uuid;
         private GetConnectionZSide zSide;
         public Builder() {}
         public Builder(GetConnectionResult defaults) {
@@ -332,12 +331,9 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder additionalInfo(List<GetConnectionAdditionalInfo> additionalInfo) {
+        public Builder additionalInfo(List<Map<String,Object>> additionalInfo) {
             this.additionalInfo = Objects.requireNonNull(additionalInfo);
             return this;
-        }
-        public Builder additionalInfo(GetConnectionAdditionalInfo... additionalInfo) {
-            return additionalInfo(List.of(additionalInfo));
         }
         @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
@@ -398,8 +394,8 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(@Nullable GetConnectionProject project) {
-            this.project = project;
+        public Builder project(GetConnectionProject project) {
+            this.project = Objects.requireNonNull(project);
             return this;
         }
         @CustomType.Setter
@@ -418,8 +414,8 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-            this.uuid = uuid;
+        public Builder uuid(String uuid) {
+            this.uuid = Objects.requireNonNull(uuid);
             return this;
         }
         @CustomType.Setter

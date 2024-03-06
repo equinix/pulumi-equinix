@@ -13,37 +13,15 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetCloudRouterAccountResult
     {
-        public readonly string AccountName;
+        /// <summary>
+        /// Account Number
+        /// </summary>
         public readonly int AccountNumber;
-        public readonly string GlobalCustId;
-        public readonly string GlobalOrgId;
-        public readonly string GlobalOrganizationName;
-        public readonly int OrgId;
-        public readonly string OrganizationName;
 
         [OutputConstructor]
-        private GetCloudRouterAccountResult(
-            string accountName,
-
-            int accountNumber,
-
-            string globalCustId,
-
-            string globalOrgId,
-
-            string globalOrganizationName,
-
-            int orgId,
-
-            string organizationName)
+        private GetCloudRouterAccountResult(int accountNumber)
         {
-            AccountName = accountName;
             AccountNumber = accountNumber;
-            GlobalCustId = globalCustId;
-            GlobalOrgId = globalOrgId;
-            GlobalOrganizationName = globalOrganizationName;
-            OrgId = orgId;
-            OrganizationName = organizationName;
         }
     }
 }

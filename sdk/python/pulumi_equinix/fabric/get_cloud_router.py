@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetCloudRouterResult',
@@ -23,7 +22,7 @@ class GetCloudRouterResult:
     """
     A collection of values returned by getCloudRouter.
     """
-    def __init__(__self__, accounts=None, bgp_ipv4_routes_count=None, bgp_ipv6_routes_count=None, change_logs=None, connections_count=None, description=None, equinix_asn=None, href=None, id=None, locations=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
+    def __init__(__self__, accounts=None, bgp_ipv4_routes_count=None, bgp_ipv6_routes_count=None, change_logs=None, connections_count=None, description=None, distinct_ipv4_prefixes_count=None, distinct_ipv6_prefixes_count=None, equinix_asn=None, href=None, id=None, locations=None, name=None, notifications=None, orders=None, packages=None, projects=None, state=None, type=None, uuid=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
@@ -42,6 +41,12 @@ class GetCloudRouterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if distinct_ipv4_prefixes_count and not isinstance(distinct_ipv4_prefixes_count, int):
+            raise TypeError("Expected argument 'distinct_ipv4_prefixes_count' to be a int")
+        pulumi.set(__self__, "distinct_ipv4_prefixes_count", distinct_ipv4_prefixes_count)
+        if distinct_ipv6_prefixes_count and not isinstance(distinct_ipv6_prefixes_count, int):
+            raise TypeError("Expected argument 'distinct_ipv6_prefixes_count' to be a int")
+        pulumi.set(__self__, "distinct_ipv6_prefixes_count", distinct_ipv6_prefixes_count)
         if equinix_asn and not isinstance(equinix_asn, int):
             raise TypeError("Expected argument 'equinix_asn' to be a int")
         pulumi.set(__self__, "equinix_asn", equinix_asn)
@@ -90,11 +95,17 @@ class GetCloudRouterResult:
     @property
     @pulumi.getter(name="bgpIpv4RoutesCount")
     def bgp_ipv4_routes_count(self) -> int:
+        """
+        Number of IPv4 BGP routes in use (including non-distinct prefixes)
+        """
         return pulumi.get(self, "bgp_ipv4_routes_count")
 
     @property
     @pulumi.getter(name="bgpIpv6RoutesCount")
     def bgp_ipv6_routes_count(self) -> int:
+        """
+        Number of IPv6 BGP routes in use (including non-distinct prefixes)
+        """
         return pulumi.get(self, "bgp_ipv6_routes_count")
 
     @property
@@ -108,6 +119,9 @@ class GetCloudRouterResult:
     @property
     @pulumi.getter(name="connectionsCount")
     def connections_count(self) -> int:
+        """
+        Number of connections associated with this Fabric Cloud Router instance
+        """
         return pulumi.get(self, "connections_count")
 
     @property
@@ -117,6 +131,22 @@ class GetCloudRouterResult:
         Customer-provided Fabric Cloud Router description
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="distinctIpv4PrefixesCount")
+    def distinct_ipv4_prefixes_count(self) -> int:
+        """
+        Number of distinct IPv4 routes
+        """
+        return pulumi.get(self, "distinct_ipv4_prefixes_count")
+
+    @property
+    @pulumi.getter(name="distinctIpv6PrefixesCount")
+    def distinct_ipv6_prefixes_count(self) -> int:
+        """
+        Number of distinct IPv6 routes
+        """
+        return pulumi.get(self, "distinct_ipv6_prefixes_count")
 
     @property
     @pulumi.getter(name="equinixAsn")
@@ -178,7 +208,7 @@ class GetCloudRouterResult:
     @pulumi.getter
     def packages(self) -> Sequence['outputs.GetCloudRouterPackageResult']:
         """
-        Fabric Cloud Router package information
+        Fabric Cloud Router Package Type
         """
         return pulumi.get(self, "packages")
 
@@ -186,7 +216,7 @@ class GetCloudRouterResult:
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetCloudRouterProjectResult']:
         """
-        Project information
+        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "projects")
 
@@ -202,13 +232,13 @@ class GetCloudRouterResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Defines the Fabric Cloud Router type like XF_GATEWAY
+        Defines the FCR type like; XF_ROUTER
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def uuid(self) -> Optional[str]:
+    def uuid(self) -> str:
         """
         Equinix-assigned Fabric Cloud Router identifier
         """
@@ -227,6 +257,8 @@ class AwaitableGetCloudRouterResult(GetCloudRouterResult):
             change_logs=self.change_logs,
             connections_count=self.connections_count,
             description=self.description,
+            distinct_ipv4_prefixes_count=self.distinct_ipv4_prefixes_count,
+            distinct_ipv6_prefixes_count=self.distinct_ipv6_prefixes_count,
             equinix_asn=self.equinix_asn,
             href=self.href,
             id=self.id,
@@ -241,17 +273,26 @@ class AwaitableGetCloudRouterResult(GetCloudRouterResult):
             uuid=self.uuid)
 
 
-def get_cloud_router(projects: Optional[Sequence[pulumi.InputType['GetCloudRouterProjectArgs']]] = None,
-                     uuid: Optional[str] = None,
+def get_cloud_router(uuid: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudRouterResult:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
 
-    :param Sequence[pulumi.InputType['GetCloudRouterProjectArgs']] projects: Project information
+    API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    cloud_router_data_name = equinix.fabric.get_cloud_router(uuid="<uuid_of_cloud_router>")
+    ```
+
+
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier
     """
     __args__ = dict()
-    __args__['projects'] = projects
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('equinix:fabric/getCloudRouter:getCloudRouter', __args__, opts=opts, typ=GetCloudRouterResult).value
@@ -263,6 +304,8 @@ def get_cloud_router(projects: Optional[Sequence[pulumi.InputType['GetCloudRoute
         change_logs=pulumi.get(__ret__, 'change_logs'),
         connections_count=pulumi.get(__ret__, 'connections_count'),
         description=pulumi.get(__ret__, 'description'),
+        distinct_ipv4_prefixes_count=pulumi.get(__ret__, 'distinct_ipv4_prefixes_count'),
+        distinct_ipv6_prefixes_count=pulumi.get(__ret__, 'distinct_ipv6_prefixes_count'),
         equinix_asn=pulumi.get(__ret__, 'equinix_asn'),
         href=pulumi.get(__ret__, 'href'),
         id=pulumi.get(__ret__, 'id'),
@@ -278,13 +321,23 @@ def get_cloud_router(projects: Optional[Sequence[pulumi.InputType['GetCloudRoute
 
 
 @_utilities.lift_output_func(get_cloud_router)
-def get_cloud_router_output(projects: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCloudRouterProjectArgs']]]]] = None,
-                            uuid: Optional[pulumi.Input[Optional[str]]] = None,
+def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudRouterResult]:
     """
-    Use this data source to access information about an existing resource.
+    Fabric V4 API compatible data resource that allow user to fetch Fabric Cloud Router for a given UUID
 
-    :param Sequence[pulumi.InputType['GetCloudRouterProjectArgs']] projects: Project information
+    API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    cloud_router_data_name = equinix.fabric.get_cloud_router(uuid="<uuid_of_cloud_router>")
+    ```
+
+
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier
     """
     ...

@@ -13,7 +13,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class RoutingProtocolOperationErrorAdditionalInfo
     {
+        /// <summary>
+        /// Property at which the error potentially occurred
+        /// </summary>
         public readonly string? Property;
+        /// <summary>
+        /// Reason for the error
+        /// </summary>
         public readonly string? Reason;
 
         [OutputConstructor]

@@ -13,20 +13,38 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfilesDatumCustomFieldResult
     {
-        public readonly bool CaptureInEmail;
+        /// <summary>
+        /// Required field
+        /// </summary>
+        public readonly bool? CaptureInEmail;
+        /// <summary>
+        /// Data type
+        /// </summary>
         public readonly string DataType;
-        public readonly string Description;
+        /// <summary>
+        /// Description
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
+        /// Label
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// Options
+        /// </summary>
         public readonly ImmutableArray<string> Options;
+        /// <summary>
+        /// Required field
+        /// </summary>
         public readonly bool Required;
 
         [OutputConstructor]
         private GetServiceProfilesDatumCustomFieldResult(
-            bool captureInEmail,
+            bool? captureInEmail,
 
             string dataType,
 
-            string description,
+            string? description,
 
             string label,
 

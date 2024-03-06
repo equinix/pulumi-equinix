@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AclRuleProtocolType string
@@ -138,10 +137,12 @@ func (o AclRuleProtocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// AclRuleProtocolTypeInput is an input type that accepts AclRuleProtocolTypeArgs and AclRuleProtocolTypeOutput values.
-// You can construct a concrete instance of `AclRuleProtocolTypeInput` via:
+// AclRuleProtocolTypeInput is an input type that accepts values of the AclRuleProtocolType enum
+// A concrete instance of `AclRuleProtocolTypeInput` can be one of the following:
 //
-//	AclRuleProtocolTypeArgs{...}
+//	AclRuleProtocolTypeIP
+//	AclRuleProtocolTypeTCP
+//	AclRuleProtocolTypeUDP
 type AclRuleProtocolTypeInput interface {
 	pulumi.Input
 
@@ -174,12 +175,6 @@ func (in *aclRuleProtocolTypePtr) ToAclRuleProtocolTypePtrOutput() AclRuleProtoc
 
 func (in *aclRuleProtocolTypePtr) ToAclRuleProtocolTypePtrOutputWithContext(ctx context.Context) AclRuleProtocolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AclRuleProtocolTypePtrOutput)
-}
-
-func (in *aclRuleProtocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AclRuleProtocolType] {
-	return pulumix.Output[*AclRuleProtocolType]{
-		OutputState: in.ToAclRuleProtocolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type FileType string
@@ -308,10 +303,11 @@ func (o FileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// FileTypeInput is an input type that accepts FileTypeArgs and FileTypeOutput values.
-// You can construct a concrete instance of `FileTypeInput` via:
+// FileTypeInput is an input type that accepts values of the FileType enum
+// A concrete instance of `FileTypeInput` can be one of the following:
 //
-//	FileTypeArgs{...}
+//	FileTypeLicense
+//	FileTypeCloudInit
 type FileTypeInput interface {
 	pulumi.Input
 
@@ -344,12 +340,6 @@ func (in *fileTypePtr) ToFileTypePtrOutput() FileTypePtrOutput {
 
 func (in *fileTypePtr) ToFileTypePtrOutputWithContext(ctx context.Context) FileTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FileTypePtrOutput)
-}
-
-func (in *fileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileType] {
-	return pulumix.Output[*FileType]{
-		OutputState: in.ToFileTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ThroughputUnit string
@@ -478,10 +468,11 @@ func (o ThroughputUnitPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ThroughputUnitInput is an input type that accepts ThroughputUnitArgs and ThroughputUnitOutput values.
-// You can construct a concrete instance of `ThroughputUnitInput` via:
+// ThroughputUnitInput is an input type that accepts values of the ThroughputUnit enum
+// A concrete instance of `ThroughputUnitInput` can be one of the following:
 //
-//	ThroughputUnitArgs{...}
+//	ThroughputUnitMbps
+//	ThroughputUnitGbps
 type ThroughputUnitInput interface {
 	pulumi.Input
 
@@ -514,12 +505,6 @@ func (in *throughputUnitPtr) ToThroughputUnitPtrOutput() ThroughputUnitPtrOutput
 
 func (in *throughputUnitPtr) ToThroughputUnitPtrOutputWithContext(ctx context.Context) ThroughputUnitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThroughputUnitPtrOutput)
-}
-
-func (in *throughputUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*ThroughputUnit] {
-	return pulumix.Output[*ThroughputUnit]{
-		OutputState: in.ToThroughputUnitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

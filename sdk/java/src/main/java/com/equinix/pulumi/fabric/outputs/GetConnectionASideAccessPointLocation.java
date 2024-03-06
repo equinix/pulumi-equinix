@@ -9,25 +9,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionASideAccessPointLocation {
-    private String href;
+    /**
+     * @return IBX Code
+     * 
+     */
     private String ibx;
+    /**
+     * @return Access point metro code
+     * 
+     */
     private String metroCode;
+    /**
+     * @return Access point metro name
+     * 
+     */
     private String metroName;
+    /**
+     * @return Access point region
+     * 
+     */
     private String region;
 
     private GetConnectionASideAccessPointLocation() {}
-    public String href() {
-        return this.href;
-    }
+    /**
+     * @return IBX Code
+     * 
+     */
     public String ibx() {
         return this.ibx;
     }
+    /**
+     * @return Access point metro code
+     * 
+     */
     public String metroCode() {
         return this.metroCode;
     }
+    /**
+     * @return Access point metro name
+     * 
+     */
     public String metroName() {
         return this.metroName;
     }
+    /**
+     * @return Access point region
+     * 
+     */
     public String region() {
         return this.region;
     }
@@ -41,7 +69,6 @@ public final class GetConnectionASideAccessPointLocation {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String href;
         private String ibx;
         private String metroCode;
         private String metroName;
@@ -49,18 +76,12 @@ public final class GetConnectionASideAccessPointLocation {
         public Builder() {}
         public Builder(GetConnectionASideAccessPointLocation defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.href = defaults.href;
     	      this.ibx = defaults.ibx;
     	      this.metroCode = defaults.metroCode;
     	      this.metroName = defaults.metroName;
     	      this.region = defaults.region;
         }
 
-        @CustomType.Setter
-        public Builder href(String href) {
-            this.href = Objects.requireNonNull(href);
-            return this;
-        }
         @CustomType.Setter
         public Builder ibx(String ibx) {
             this.ibx = Objects.requireNonNull(ibx);
@@ -83,7 +104,6 @@ public final class GetConnectionASideAccessPointLocation {
         }
         public GetConnectionASideAccessPointLocation build() {
             final var _resultValue = new GetConnectionASideAccessPointLocation();
-            _resultValue.href = href;
             _resultValue.ibx = ibx;
             _resultValue.metroCode = metroCode;
             _resultValue.metroName = metroName;

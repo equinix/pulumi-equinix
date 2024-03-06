@@ -31,6 +31,7 @@ class DeviceArgs:
                  cloud_init_file_id: Optional[pulumi.Input[str]] = None,
                  cluster_details: Optional[pulumi.Input['DeviceClusterDetailsArgs']] = None,
                  connectivity: Optional[pulumi.Input[str]] = None,
+                 diverse_device_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
                  license_file: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class DeviceArgs:
                  mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  order_reference: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  purchase_order_number: Optional[pulumi.Input[str]] = None,
                  secondary_device: Optional[pulumi.Input['DeviceSecondaryDeviceArgs']] = None,
                  self_managed: Optional[pulumi.Input[bool]] = None,
@@ -68,6 +70,9 @@ class DeviceArgs:
                Cluster Details below for more details.
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
+               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+               device. This field is only meaningful for single devices.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
                default number for a given device type will be used.
@@ -80,6 +85,8 @@ class DeviceArgs:
                applied on the device.
         :param pulumi.Input[str] name: Device name.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
+               leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
         :param pulumi.Input['DeviceSecondaryDeviceArgs'] secondary_device: Definition of secondary device for redundant
                device configurations. See Secondary Device below for more details.
@@ -114,6 +121,8 @@ class DeviceArgs:
             pulumi.set(__self__, "cluster_details", cluster_details)
         if connectivity is not None:
             pulumi.set(__self__, "connectivity", connectivity)
+        if diverse_device_id is not None:
+            pulumi.set(__self__, "diverse_device_id", diverse_device_id)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if interface_count is not None:
@@ -130,6 +139,8 @@ class DeviceArgs:
             pulumi.set(__self__, "name", name)
         if order_reference is not None:
             pulumi.set(__self__, "order_reference", order_reference)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if purchase_order_number is not None:
             pulumi.set(__self__, "purchase_order_number", purchase_order_number)
         if secondary_device is not None:
@@ -321,6 +332,20 @@ class DeviceArgs:
         pulumi.set(self, "connectivity", value)
 
     @property
+    @pulumi.getter(name="diverseDeviceId")
+    def diverse_device_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of an existing device.
+        Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+        device. This field is only meaningful for single devices.
+        """
+        return pulumi.get(self, "diverse_device_id")
+
+    @diverse_device_id.setter
+    def diverse_device_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "diverse_device_id", value)
+
+    @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
@@ -419,6 +444,19 @@ class DeviceArgs:
     @order_reference.setter
     def order_reference(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "order_reference", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the device is scoped to.If you
+        leave it out, the device will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="purchaseOrderNumber")
@@ -534,6 +572,8 @@ class _DeviceState:
                  cluster_details: Optional[pulumi.Input['DeviceClusterDetailsArgs']] = None,
                  connectivity: Optional[pulumi.Input[str]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
+                 diverse_device_id: Optional[pulumi.Input[str]] = None,
+                 diverse_device_name: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ibx: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
@@ -548,6 +588,7 @@ class _DeviceState:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  order_reference: Optional[pulumi.Input[str]] = None,
                  package_code: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  purchase_order_number: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  redundant_id: Optional[pulumi.Input[str]] = None,
@@ -582,6 +623,11 @@ class _DeviceState:
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
+               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+               device. This field is only meaningful for single devices.
+        :param pulumi.Input[str] diverse_device_name: Name of the device with diverse device UUID. This field is returned in device details if the
+               device is created by passing diverse_device_id.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
@@ -603,6 +649,8 @@ class _DeviceState:
                notifications.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
+               leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either
                primary or secondary.
@@ -647,6 +695,10 @@ class _DeviceState:
             pulumi.set(__self__, "connectivity", connectivity)
         if core_count is not None:
             pulumi.set(__self__, "core_count", core_count)
+        if diverse_device_id is not None:
+            pulumi.set(__self__, "diverse_device_id", diverse_device_id)
+        if diverse_device_name is not None:
+            pulumi.set(__self__, "diverse_device_name", diverse_device_name)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if ibx is not None:
@@ -675,6 +727,8 @@ class _DeviceState:
             pulumi.set(__self__, "order_reference", order_reference)
         if package_code is not None:
             pulumi.set(__self__, "package_code", package_code)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if purchase_order_number is not None:
             pulumi.set(__self__, "purchase_order_number", purchase_order_number)
         if redundancy_type is not None:
@@ -825,6 +879,33 @@ class _DeviceState:
     @core_count.setter
     def core_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "core_count", value)
+
+    @property
+    @pulumi.getter(name="diverseDeviceId")
+    def diverse_device_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of an existing device.
+        Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+        device. This field is only meaningful for single devices.
+        """
+        return pulumi.get(self, "diverse_device_id")
+
+    @diverse_device_id.setter
+    def diverse_device_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "diverse_device_id", value)
+
+    @property
+    @pulumi.getter(name="diverseDeviceName")
+    def diverse_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the device with diverse device UUID. This field is returned in device details if the
+        device is created by passing diverse_device_id.
+        """
+        return pulumi.get(self, "diverse_device_name")
+
+    @diverse_device_name.setter
+    def diverse_device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "diverse_device_name", value)
 
     @property
     @pulumi.getter
@@ -1000,6 +1081,19 @@ class _DeviceState:
     @package_code.setter
     def package_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_code", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the device is scoped to.If you
+        leave it out, the device will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="purchaseOrderNumber")
@@ -1249,6 +1343,7 @@ class Device(pulumi.CustomResource):
                  cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
                  connectivity: Optional[pulumi.Input[str]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
+                 diverse_device_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
                  license_file: Optional[pulumi.Input[str]] = None,
@@ -1260,6 +1355,7 @@ class Device(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  order_reference: Optional[pulumi.Input[str]] = None,
                  package_code: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  purchase_order_number: Optional[pulumi.Input[str]] = None,
                  secondary_device: Optional[pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']]] = None,
                  self_managed: Optional[pulumi.Input[bool]] = None,
@@ -1350,7 +1446,7 @@ class Device(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1366,6 +1462,9 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
+               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+               device. This field is only meaningful for single devices.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
                default number for a given device type will be used.
@@ -1382,6 +1481,8 @@ class Device(pulumi.CustomResource):
                notifications.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
+               leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
         :param pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']] secondary_device: Definition of secondary device for redundant
                device configurations. See Secondary Device below for more details.
@@ -1483,7 +1584,7 @@ class Device(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.<break><break>
 
         :param str resource_name: The name of the resource.
         :param DeviceArgs args: The arguments to use to populate this resource's properties.
@@ -1508,6 +1609,7 @@ class Device(pulumi.CustomResource):
                  cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
                  connectivity: Optional[pulumi.Input[str]] = None,
                  core_count: Optional[pulumi.Input[int]] = None,
+                 diverse_device_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  interface_count: Optional[pulumi.Input[int]] = None,
                  license_file: Optional[pulumi.Input[str]] = None,
@@ -1519,6 +1621,7 @@ class Device(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  order_reference: Optional[pulumi.Input[str]] = None,
                  package_code: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  purchase_order_number: Optional[pulumi.Input[str]] = None,
                  secondary_device: Optional[pulumi.Input[pulumi.InputType['DeviceSecondaryDeviceArgs']]] = None,
                  self_managed: Optional[pulumi.Input[bool]] = None,
@@ -1551,6 +1654,7 @@ class Device(pulumi.CustomResource):
             if core_count is None and not opts.urn:
                 raise TypeError("Missing required property 'core_count'")
             __props__.__dict__["core_count"] = core_count
+            __props__.__dict__["diverse_device_id"] = diverse_device_id
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["interface_count"] = interface_count
             __props__.__dict__["license_file"] = license_file
@@ -1568,6 +1672,7 @@ class Device(pulumi.CustomResource):
             if package_code is None and not opts.urn:
                 raise TypeError("Missing required property 'package_code'")
             __props__.__dict__["package_code"] = package_code
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["purchase_order_number"] = purchase_order_number
             __props__.__dict__["secondary_device"] = secondary_device
             __props__.__dict__["self_managed"] = self_managed
@@ -1586,6 +1691,7 @@ class Device(pulumi.CustomResource):
             __props__.__dict__["version"] = version
             __props__.__dict__["wan_interface_id"] = wan_interface_id
             __props__.__dict__["asn"] = None
+            __props__.__dict__["diverse_device_name"] = None
             __props__.__dict__["ibx"] = None
             __props__.__dict__["interfaces"] = None
             __props__.__dict__["license_status"] = None
@@ -1616,6 +1722,8 @@ class Device(pulumi.CustomResource):
             cluster_details: Optional[pulumi.Input[pulumi.InputType['DeviceClusterDetailsArgs']]] = None,
             connectivity: Optional[pulumi.Input[str]] = None,
             core_count: Optional[pulumi.Input[int]] = None,
+            diverse_device_id: Optional[pulumi.Input[str]] = None,
+            diverse_device_name: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             ibx: Optional[pulumi.Input[str]] = None,
             interface_count: Optional[pulumi.Input[int]] = None,
@@ -1630,6 +1738,7 @@ class Device(pulumi.CustomResource):
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             order_reference: Optional[pulumi.Input[str]] = None,
             package_code: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             purchase_order_number: Optional[pulumi.Input[str]] = None,
             redundancy_type: Optional[pulumi.Input[str]] = None,
             redundant_id: Optional[pulumi.Input[str]] = None,
@@ -1669,6 +1778,11 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] connectivity: Device accessibility (INTERNET-ACCESS or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT).
                If not specified, default will be INTERNET-ACCESS
         :param pulumi.Input[int] core_count: Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
+        :param pulumi.Input[str] diverse_device_id: Unique ID of an existing device.
+               Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+               device. This field is only meaningful for single devices.
+        :param pulumi.Input[str] diverse_device_name: Name of the device with diverse device UUID. This field is returned in device details if the
+               device is created by passing diverse_device_id.
         :param pulumi.Input[str] hostname: Device hostname prefix.
         :param pulumi.Input[str] ibx: Device location Equinix Business Exchange name.
         :param pulumi.Input[int] interface_count: Number of network interfaces on a device. If not specified,
@@ -1690,6 +1804,8 @@ class Device(pulumi.CustomResource):
                notifications.
         :param pulumi.Input[str] order_reference: Name/number used to identify device order on the invoice.
         :param pulumi.Input[str] package_code: Device software package code.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
+               leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] purchase_order_number: Purchase order number associated with a device order.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either
                primary or secondary.
@@ -1729,6 +1845,8 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["cluster_details"] = cluster_details
         __props__.__dict__["connectivity"] = connectivity
         __props__.__dict__["core_count"] = core_count
+        __props__.__dict__["diverse_device_id"] = diverse_device_id
+        __props__.__dict__["diverse_device_name"] = diverse_device_name
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ibx"] = ibx
         __props__.__dict__["interface_count"] = interface_count
@@ -1743,6 +1861,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["order_reference"] = order_reference
         __props__.__dict__["package_code"] = package_code
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["purchase_order_number"] = purchase_order_number
         __props__.__dict__["redundancy_type"] = redundancy_type
         __props__.__dict__["redundant_id"] = redundant_id
@@ -1839,6 +1958,25 @@ class Device(pulumi.CustomResource):
         Number of CPU cores used by device. (**NOTE: Use this field to resize your device. When resizing your HA devices, primary device will be upgraded first. If the upgrade failed, device will be automatically rolled back to the previous state with original core number.**)
         """
         return pulumi.get(self, "core_count")
+
+    @property
+    @pulumi.getter(name="diverseDeviceId")
+    def diverse_device_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID of an existing device.
+        Use this field to let Equinix know if you want your new device to be in a different location from any existing virtual
+        device. This field is only meaningful for single devices.
+        """
+        return pulumi.get(self, "diverse_device_id")
+
+    @property
+    @pulumi.getter(name="diverseDeviceName")
+    def diverse_device_name(self) -> pulumi.Output[str]:
+        """
+        Name of the device with diverse device UUID. This field is returned in device details if the
+        device is created by passing diverse_device_id.
+        """
+        return pulumi.get(self, "diverse_device_name")
 
     @property
     @pulumi.getter
@@ -1958,6 +2096,15 @@ class Device(pulumi.CustomResource):
         Device software package code.
         """
         return pulumi.get(self, "package_code")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Unique Identifier for the project resource where the device is scoped to.If you
+        leave it out, the device will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="purchaseOrderNumber")

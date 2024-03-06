@@ -13,17 +13,29 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     [OutputType]
     public sealed class GetDeviceSecondaryDeviceResult
     {
+        /// <summary>
+        /// Device billing account number
+        /// </summary>
         public readonly string AccountNumber;
         /// <summary>
         /// Unique identifier of applied ACL template
         /// </summary>
         public readonly string AclTemplateId;
+        /// <summary>
+        /// Additional Internet bandwidth, in Mbps, that will be allocated to the device
+        /// </summary>
         public readonly int AdditionalBandwidth;
         /// <summary>
         /// Autonomous system number
         /// </summary>
         public readonly int Asn;
+        /// <summary>
+        /// Unique identifier of applied cloud init file
+        /// </summary>
         public readonly string CloudInitFileId;
+        /// <summary>
+        /// Device hostname prefix
+        /// </summary>
         public readonly string Hostname;
         /// <summary>
         /// Device location Equinix Business Exchange name
@@ -41,6 +53,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// * `interface.#.type` - interface type
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceSecondaryDeviceInterfaceResult> Interfaces;
+        /// <summary>
+        /// Path to the license file that will be uploaded and applied on a device, applicable for some device types in BYOL licensing mode
+        /// </summary>
         public readonly string LicenseFile;
         /// <summary>
         /// Unique identifier of applied license file
@@ -56,14 +71,30 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// * NA
         /// </summary>
         public readonly string LicenseStatus;
+        /// <summary>
+        /// License Token applicable for some device types in BYOL licensing mode
+        /// </summary>
         public readonly string LicenseToken;
+        /// <summary>
+        /// Device location metro code
+        /// </summary>
         public readonly string MetroCode;
+        /// <summary>
+        /// Unique identifier of applied MGMT ACL template
+        /// </summary>
         public readonly string MgmtAclTemplateUuid;
         /// <summary>
         /// Name of an existing Equinix Network Edge device
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// List of email addresses that will receive device status notifications
+        /// </summary>
         public readonly ImmutableArray<string> Notifications;
+        /// <summary>
+        /// The unique identifier of Project Resource to which device is scoped to
+        /// </summary>
+        public readonly string ProjectId;
         /// <summary>
         /// Device redundancy type applicable for HA devices, either
         /// primary or secondary
@@ -85,6 +116,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// FQDN of SSH enabled interface on the device
         /// </summary>
         public readonly string SshIpFqdn;
+        /// <summary>
+        /// Definition of SSH key that will be provisioned on a device
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDeviceSecondaryDeviceSshKeyResult> SshKeys;
         /// <summary>
         /// Device provisioning status
@@ -106,7 +140,13 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// UUID of an existing Equinix Network Edge device
         /// </summary>
         public readonly string Uuid;
+        /// <summary>
+        /// Map of vendor specific configuration parameters for a device (controller1, activationKey, managementType, siteId, systemIpAddress)
+        /// </summary>
         public readonly ImmutableDictionary<string, string> VendorConfiguration;
+        /// <summary>
+        /// device interface id picked for WAN
+        /// </summary>
         public readonly string WanInterfaceId;
         /// <summary>
         /// Device location zone code
@@ -147,6 +187,8 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
 
             ImmutableArray<string> notifications,
 
+            string projectId,
+
             string redundancyType,
 
             string redundantId,
@@ -185,6 +227,7 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
             MgmtAclTemplateUuid = mgmtAclTemplateUuid;
             Name = name;
             Notifications = notifications;
+            ProjectId = projectId;
             RedundancyType = redundancyType;
             RedundantId = redundantId;
             Region = region;

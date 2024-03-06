@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RoutingProtocolChange {
+    /**
+     * @return Routing Protocol Change URI
+     * 
+     */
     private @Nullable String href;
+    /**
+     * @return Type of change
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return Uniquely identifies a change
+     * 
+     */
     private @Nullable String uuid;
 
     private RoutingProtocolChange() {}
+    /**
+     * @return Routing Protocol Change URI
+     * 
+     */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
+    /**
+     * @return Type of change
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Uniquely identifies a change
+     * 
+     */
     public Optional<String> uuid() {
         return Optional.ofNullable(this.uuid);
     }

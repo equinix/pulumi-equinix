@@ -111,8 +111,8 @@ class GetInterconnectionResult:
         """
         (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
         """
-        warnings.warn("""Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""", DeprecationWarning)
-        pulumi.log.warn("""facility is deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices""")
+        warnings.warn("""Use metro instead of facility. For more information, read the migration guide.""", DeprecationWarning)
+        pulumi.log.warn("""facility is deprecated: Use metro instead of facility. For more information, read the migration guide.""")
 
         return pulumi.get(self, "facility")
 
@@ -120,7 +120,7 @@ class GetInterconnectionResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Port UUID.
         """
         return pulumi.get(self, "id")
 

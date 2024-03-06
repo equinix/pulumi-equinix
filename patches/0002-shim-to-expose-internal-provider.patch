@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ocobleseqx <oscar.cobles@eu.equinix.com>
+Date: Wed, 6 Mar 2024 01:09:42 +0100
+Subject: [PATCH 2/2] shim to expose internal provider
+
+Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 0000000..2c0816b
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,26 @@
++package shim
++
++import (
++	"context"
++
++	pfprovider "github.com/hashicorp/terraform-plugin-framework/provider"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++	"github.com/equinix/terraform-provider-equinix/equinix"
++	"github.com/equinix/terraform-provider-equinix/internal/provider"
++	"github.com/equinix/terraform-provider-equinix/version"
++)
++
++type UpstreamProvider struct {
++	SDKV2Provider           *schema.Provider
++	PluginFrameworkProvider pfprovider.Provider
++}
++
++func NewUpstreamProvider(ctx context.Context) UpstreamProvider {
++	primary := equinix.Provider()
++	pf := provider.CreateFrameworkProvider(version.ProviderVersion)
++
++	return UpstreamProvider{
++		SDKV2Provider:           primary,
++		PluginFrameworkProvider: pf,
++	}
++}

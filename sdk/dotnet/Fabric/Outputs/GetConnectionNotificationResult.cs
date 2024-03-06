@@ -13,15 +13,24 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionNotificationResult
     {
+        /// <summary>
+        /// Array of contact emails
+        /// </summary>
         public readonly ImmutableArray<string> Emails;
-        public readonly string SendInterval;
+        /// <summary>
+        /// Send interval
+        /// </summary>
+        public readonly string? SendInterval;
+        /// <summary>
+        /// Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
         private GetConnectionNotificationResult(
             ImmutableArray<string> emails,
 
-            string sendInterval,
+            string? sendInterval,
 
             string type)
         {

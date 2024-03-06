@@ -9,21 +9,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOrder {
+    /**
+     * @return Billing tier for connection bandwidth
+     * 
+     */
     private String billingTier;
+    /**
+     * @return Order Identification
+     * 
+     */
     private String orderId;
+    /**
+     * @return Order Reference Number
+     * 
+     */
     private String orderNumber;
+    /**
+     * @return Purchase order number
+     * 
+     */
     private String purchaseOrderNumber;
 
     private GetConnectionOrder() {}
+    /**
+     * @return Billing tier for connection bandwidth
+     * 
+     */
     public String billingTier() {
         return this.billingTier;
     }
+    /**
+     * @return Order Identification
+     * 
+     */
     public String orderId() {
         return this.orderId;
     }
+    /**
+     * @return Order Reference Number
+     * 
+     */
     public String orderNumber() {
         return this.orderNumber;
     }
+    /**
+     * @return Purchase order number
+     * 
+     */
     public String purchaseOrderNumber() {
         return this.purchaseOrderNumber;
     }

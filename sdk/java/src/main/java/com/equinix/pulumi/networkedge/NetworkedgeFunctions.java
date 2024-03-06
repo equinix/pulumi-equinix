@@ -58,6 +58,7 @@ public final class NetworkedgeFunctions {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
      *             .metroCode(&#34;DC&#34;)
      *             .status(&#34;Active&#34;)
+     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
@@ -101,6 +102,7 @@ public final class NetworkedgeFunctions {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
      *             .metroCode(&#34;DC&#34;)
      *             .status(&#34;Active&#34;)
+     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
@@ -144,6 +146,7 @@ public final class NetworkedgeFunctions {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
      *             .metroCode(&#34;DC&#34;)
      *             .status(&#34;Active&#34;)
+     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));
@@ -187,6 +190,7 @@ public final class NetworkedgeFunctions {
      *         final var dc = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
      *             .metroCode(&#34;DC&#34;)
      *             .status(&#34;Active&#34;)
+     *             .projectId(&#34;a86d7112-d740-4758-9c9c-31e66373746b&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;number&#34;, dc.applyValue(getAccountResult -&gt; getAccountResult.number()));

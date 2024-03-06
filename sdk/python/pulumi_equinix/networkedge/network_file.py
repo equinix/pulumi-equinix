@@ -325,7 +325,7 @@ class NetworkFile(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -371,7 +371,7 @@ class NetworkFile(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID: <break><break>```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.
+        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.<break><break>
 
         :param str resource_name: The name of the resource.
         :param NetworkFileArgs args: The arguments to use to populate this resource's properties.

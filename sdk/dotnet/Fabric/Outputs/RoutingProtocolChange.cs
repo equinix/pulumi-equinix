@@ -13,8 +13,17 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class RoutingProtocolChange
     {
+        /// <summary>
+        /// Routing Protocol Change URI
+        /// </summary>
         public readonly string? Href;
+        /// <summary>
+        /// Type of change
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Uniquely identifies a change
+        /// </summary>
         public readonly string? Uuid;
 
         [OutputConstructor]

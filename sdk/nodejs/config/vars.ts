@@ -51,6 +51,9 @@ Object.defineProperty(exports, "endpoint", {
     enumerable: true,
 });
 
+/**
+ * Maximum number of retries.
+ */
 export declare const maxRetries: number | undefined;
 Object.defineProperty(exports, "maxRetries", {
     get() {
@@ -59,6 +62,9 @@ Object.defineProperty(exports, "maxRetries", {
     enumerable: true,
 });
 
+/**
+ * Maximum number of seconds to wait before retrying a request.
+ */
 export declare const maxRetryWaitSeconds: number | undefined;
 Object.defineProperty(exports, "maxRetryWaitSeconds", {
     get() {

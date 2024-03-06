@@ -45,6 +45,23 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Unique Identifier for the project resource where the account is scoped to.If you
+     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable String projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the account is scoped to.If you
+     * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * Account status for filtering. Possible values are: `Active`, `Processing`,
      * `Submitted`, `Staged`.
      * 
@@ -66,6 +83,7 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetAccountPlainArgs(GetAccountPlainArgs $) {
         this.metroCode = $.metroCode;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.status = $.status;
     }
 
@@ -106,6 +124,18 @@ public final class GetAccountPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the account is scoped to.If you
+         * leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable String projectId) {
+            $.projectId = projectId;
             return this;
         }
 

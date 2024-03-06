@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionZSideAccessPointPort {
+    /**
+     * @return Unique Resource Identifier
+     * 
+     */
     private String href;
+    /**
+     * @return Port name
+     * 
+     */
     private String name;
+    /**
+     * @return Redundancy Information
+     * 
+     */
     private List<GetConnectionZSideAccessPointPortRedundancy> redundancies;
+    /**
+     * @return Equinix-assigned Port identifier
+     * 
+     */
     private String uuid;
 
     private GetConnectionZSideAccessPointPort() {}
+    /**
+     * @return Unique Resource Identifier
+     * 
+     */
     public String href() {
         return this.href;
     }
+    /**
+     * @return Port name
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Redundancy Information
+     * 
+     */
     public List<GetConnectionZSideAccessPointPortRedundancy> redundancies() {
         return this.redundancies;
     }
+    /**
+     * @return Equinix-assigned Port identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }

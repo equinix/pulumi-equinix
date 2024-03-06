@@ -148,6 +148,23 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return Unique Identifier for the project resource where the acl template is scoped to.If you
+     * leave it out, the ACL template will be created under the default project id of your organization.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * Device uuid.
      * 
      */
@@ -172,6 +189,7 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
         this.inboundRules = $.inboundRules;
         this.metroCode = $.metroCode;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.uuid = $.uuid;
     }
 
@@ -385,6 +403,29 @@ public final class AclTemplateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the acl template is scoped to.If you
+         * leave it out, the ACL template will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId Unique Identifier for the project resource where the acl template is scoped to.If you
+         * leave it out, the ACL template will be created under the default project id of your organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

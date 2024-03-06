@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing IP reservation ID: <break><break>```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
+ * This resource can be imported using an existing IP reservation ID:<break><break> ```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
  */
 export class ReservedIpBlock extends pulumi.CustomResource {
     /**

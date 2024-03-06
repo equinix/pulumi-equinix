@@ -13,20 +13,22 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionZSideAccessPointGatewayResult
     {
+        /// <summary>
+        /// Unique Resource Identifier
+        /// </summary>
         public readonly string Href;
-        public readonly string State;
-        public readonly string Uuid;
+        /// <summary>
+        /// Equinix-assigned virtual gateway identifier
+        /// </summary>
+        public readonly string? Uuid;
 
         [OutputConstructor]
         private GetConnectionZSideAccessPointGatewayResult(
             string href,
 
-            string state,
-
-            string uuid)
+            string? uuid)
         {
             Href = href;
-            State = state;
             Uuid = uuid;
         }
     }

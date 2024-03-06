@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPortsDatumOperation {
+    /**
+     * @return Total number of current connections
+     * 
+     */
     private Integer connectionCount;
+    /**
+     * @return Date and time at which port availability changed
+     * 
+     */
     private String opStatusChangedAt;
+    /**
+     * @return Port operation status
+     * 
+     */
     private String operationalStatus;
 
     private GetPortsDatumOperation() {}
+    /**
+     * @return Total number of current connections
+     * 
+     */
     public Integer connectionCount() {
         return this.connectionCount;
     }
+    /**
+     * @return Date and time at which port availability changed
+     * 
+     */
     public String opStatusChangedAt() {
         return this.opStatusChangedAt;
     }
+    /**
+     * @return Port operation status
+     * 
+     */
     public String operationalStatus() {
         return this.operationalStatus;
     }

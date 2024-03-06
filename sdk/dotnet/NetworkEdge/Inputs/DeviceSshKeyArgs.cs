@@ -12,6 +12,9 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
 
     public sealed class DeviceSshKeyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Reference by name to previously provisioned public SSH key
+        /// </summary>
         [Input("keyName", required: true)]
         public Input<string> KeyName { get; set; } = null!;
 

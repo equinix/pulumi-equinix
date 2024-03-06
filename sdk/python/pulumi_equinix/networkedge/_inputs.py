@@ -102,6 +102,8 @@ class AclTemplateInboundRuleArgs:
         :param pulumi.Input[str] src_port: Inbound traffic source ports. Allowed values are a comma separated list
                of ports, e.g., `20,22,23`, port range, e.g., `1023-1040` or word `any`.
         :param pulumi.Input[str] description: Inbound rule description, up to 200 characters.
+        :param pulumi.Input[int] sequence_number: Inbound rule sequence number
+        :param pulumi.Input[str] source_type: Type of traffic source used in a given inbound rule
         :param pulumi.Input[str] subnet: Inbound traffic source IP subnet in CIDR format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: Inbound traffic source IP subnets in CIDR format.
         """
@@ -178,6 +180,9 @@ class AclTemplateInboundRuleArgs:
     @property
     @pulumi.getter(name="sequenceNumber")
     def sequence_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        Inbound rule sequence number
+        """
         return pulumi.get(self, "sequence_number")
 
     @sequence_number.setter
@@ -187,6 +192,9 @@ class AclTemplateInboundRuleArgs:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of traffic source used in a given inbound rule
+        """
         warnings.warn("""Source Type will not be returned""", DeprecationWarning)
         pulumi.log.warn("""source_type is deprecated: Source Type will not be returned""")
 
@@ -1088,6 +1096,7 @@ class DeviceSecondaryDeviceArgs:
                  license_status: Optional[pulumi.Input[str]] = None,
                  license_token: Optional[pulumi.Input[str]] = None,
                  mgmt_acl_template_uuid: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  redundant_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1125,17 +1134,21 @@ class DeviceSecondaryDeviceArgs:
                applied on a secondary device.
                * `ssh-key` - (Optional) Up to one definition of SSH key that will be provisioned on a secondary
                device.
+        :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device is scoped to.If you
+               leave it out, the device will be created under the default project id of your organization.
         :param pulumi.Input[str] redundancy_type: Device redundancy type applicable for HA devices, either
                primary or secondary.
         :param pulumi.Input[str] redundant_id: Unique identifier for a redundant device applicable for HA devices.
         :param pulumi.Input[str] region: Device location region.
         :param pulumi.Input[str] ssh_ip_address: IP address of SSH enabled interface on the device.
         :param pulumi.Input[str] ssh_ip_fqdn: FQDN of SSH enabled interface on the device.
+        :param pulumi.Input['DeviceSecondaryDeviceSshKeyArgs'] ssh_key: Definition of SSH key that will be provisioned on a device
         :param pulumi.Input[str] status: interface status. One of `AVAILABLE`, `RESERVED`, `ASSIGNED`.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Key/Value pairs of vendor specific configuration parameters
                for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
                `systemIpAddress`.
+        :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
         :param pulumi.Input[str] zone_code: Device location zone code.
         """
         pulumi.set(__self__, "account_number", account_number)
@@ -1166,6 +1179,8 @@ class DeviceSecondaryDeviceArgs:
             pulumi.set(__self__, "license_token", license_token)
         if mgmt_acl_template_uuid is not None:
             pulumi.set(__self__, "mgmt_acl_template_uuid", mgmt_acl_template_uuid)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if redundancy_type is not None:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if redundant_id is not None:
@@ -1391,6 +1406,19 @@ class DeviceSecondaryDeviceArgs:
         pulumi.set(self, "mgmt_acl_template_uuid", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique Identifier for the project resource where the device is scoped to.If you
+        leave it out, the device will be created under the default project id of your organization.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1454,6 +1482,9 @@ class DeviceSecondaryDeviceArgs:
     @property
     @pulumi.getter(name="sshKey")
     def ssh_key(self) -> Optional[pulumi.Input['DeviceSecondaryDeviceSshKeyArgs']]:
+        """
+        Definition of SSH key that will be provisioned on a device
+        """
         return pulumi.get(self, "ssh_key")
 
     @ssh_key.setter
@@ -1501,6 +1532,9 @@ class DeviceSecondaryDeviceArgs:
     @property
     @pulumi.getter(name="wanInterfaceId")
     def wan_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        device interface id picked for WAN
+        """
         return pulumi.get(self, "wan_interface_id")
 
     @wan_interface_id.setter
@@ -1661,6 +1695,7 @@ class DeviceSecondaryDeviceSshKeyArgs:
                  key_name: pulumi.Input[str],
                  username: pulumi.Input[str]):
         """
+        :param pulumi.Input[str] key_name: Reference by name to previously provisioned public SSH key
         :param pulumi.Input[str] username: username associated with given key.
         """
         pulumi.set(__self__, "key_name", key_name)
@@ -1669,6 +1704,9 @@ class DeviceSecondaryDeviceSshKeyArgs:
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> pulumi.Input[str]:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -1694,6 +1732,7 @@ class DeviceSshKeyArgs:
                  key_name: pulumi.Input[str],
                  username: pulumi.Input[str]):
         """
+        :param pulumi.Input[str] key_name: Reference by name to previously provisioned public SSH key
         :param pulumi.Input[str] username: username associated with given key.
         """
         pulumi.set(__self__, "key_name", key_name)
@@ -1702,6 +1741,9 @@ class DeviceSshKeyArgs:
     @property
     @pulumi.getter(name="keyName")
     def key_name(self) -> pulumi.Input[str]:
+        """
+        Reference by name to previously provisioned public SSH key
+        """
         return pulumi.get(self, "key_name")
 
     @key_name.setter

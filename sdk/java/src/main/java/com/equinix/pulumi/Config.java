@@ -39,9 +39,17 @@ public final class Config {
     public Optional<String> endpoint() {
         return Codegen.stringProp("endpoint").config(config).get();
     }
+/**
+ * Maximum number of retries.
+ * 
+ */
     public Optional<Integer> maxRetries() {
         return Codegen.integerProp("maxRetries").config(config).get();
     }
+/**
+ * Maximum number of seconds to wait before retrying a request.
+ * 
+ */
     public Optional<Integer> maxRetryWaitSeconds() {
         return Codegen.integerProp("maxRetryWaitSeconds").config(config).get();
     }

@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Metal
 {
     /// <summary>
+    /// Provides an Equinix Metal device resource. This can be used to create,
+    /// modify, and delete devices.
+    /// 
+    /// &gt; **NOTE:** All arguments including the `root_password` and `user_data` will be stored in
+    ///  the raw state as plain-text.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,7 +46,7 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing device ID: &lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing device ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
     /// </summary>
     [EquinixResourceType("equinix:metal/device:Device")]
     public partial class Device : global::Pulumi.CustomResource
@@ -130,8 +137,18 @@ namespace Pulumi.Equinix.Metal
         public Output<bool?> ForceDetachVolumes { get; private set; } = null!;
 
         /// <summary>
-        /// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-        /// next available reservation automatically
+        /// The UUID of the hardware reservation where you want this
+        /// device deployed, or `next-available` if you want to pick your next available reservation
+        /// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+        /// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+        /// together for the same pool of reservations. It might happen that the reservation which Equinix
+        /// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+        /// equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+        /// created later, resource creation will fail because the reservation is already in use (by the
+        /// resource created with `next-available`). To workaround this, have the `next-available` resource
+        /// explicitly depend_on
+        /// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+        /// see issue #176.
         /// </summary>
         [Output("hardwareReservationId")]
         public Output<string?> HardwareReservationId { get; private set; } = null!;
@@ -158,7 +175,7 @@ namespace Pulumi.Equinix.Metal
         public Output<string?> IpxeScriptUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the device is locked.
+        /// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         /// </summary>
         [Output("locked")]
         public Output<bool> Locked { get; private set; } = null!;
@@ -423,8 +440,18 @@ namespace Pulumi.Equinix.Metal
         public Input<bool>? ForceDetachVolumes { get; set; }
 
         /// <summary>
-        /// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-        /// next available reservation automatically
+        /// The UUID of the hardware reservation where you want this
+        /// device deployed, or `next-available` if you want to pick your next available reservation
+        /// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+        /// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+        /// together for the same pool of reservations. It might happen that the reservation which Equinix
+        /// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+        /// equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+        /// created later, resource creation will fail because the reservation is already in use (by the
+        /// resource created with `next-available`). To workaround this, have the `next-available` resource
+        /// explicitly depend_on
+        /// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+        /// see issue #176.
         /// </summary>
         [Input("hardwareReservationId")]
         public Input<string>? HardwareReservationId { get; set; }
@@ -455,6 +482,12 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         [Input("ipxeScriptUrl")]
         public Input<string>? IpxeScriptUrl { get; set; }
+
+        /// <summary>
+        /// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
 
         /// <summary>
         /// Metro area for the new device. Conflicts with `facilities`.
@@ -680,8 +713,18 @@ namespace Pulumi.Equinix.Metal
         public Input<bool>? ForceDetachVolumes { get; set; }
 
         /// <summary>
-        /// The UUID of the hardware reservation where you want this device deployed, or next-available if you want to pick your
-        /// next available reservation automatically
+        /// The UUID of the hardware reservation where you want this
+        /// device deployed, or `next-available` if you want to pick your next available reservation
+        /// automatically. Changing this from a reservation UUID to `next-available` will re-create the device
+        /// in another reservation. Please be careful when using hardware reservation UUID and `next-available`
+        /// together for the same pool of reservations. It might happen that the reservation which Equinix
+        /// Metal API will pick as `next-available` is the reservation which you refer with UUID in another
+        /// equinix.metal.Device resource. If that happens, and the equinix.metal.Device with the UUID is
+        /// created later, resource creation will fail because the reservation is already in use (by the
+        /// resource created with `next-available`). To workaround this, have the `next-available` resource
+        /// explicitly depend_on
+        /// the resource with hardware reservation UUID, so that the latter is created first. For more details,
+        /// see issue #176.
         /// </summary>
         [Input("hardwareReservationId")]
         public Input<string>? HardwareReservationId { get; set; }
@@ -714,7 +757,7 @@ namespace Pulumi.Equinix.Metal
         public Input<string>? IpxeScriptUrl { get; set; }
 
         /// <summary>
-        /// Whether the device is locked.
+        /// Whether the device is locked or unlocked. Locking a device prevents you from deleting or reinstalling the device or performing a firmware update on the device, and it prevents an instance with a termination time set from being reclaimed, even if the termination time was reached
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }

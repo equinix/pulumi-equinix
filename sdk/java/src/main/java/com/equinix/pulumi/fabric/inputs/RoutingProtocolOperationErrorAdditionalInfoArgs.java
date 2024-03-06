@@ -15,16 +15,32 @@ public final class RoutingProtocolOperationErrorAdditionalInfoArgs extends com.p
 
     public static final RoutingProtocolOperationErrorAdditionalInfoArgs Empty = new RoutingProtocolOperationErrorAdditionalInfoArgs();
 
+    /**
+     * Property at which the error potentially occurred
+     * 
+     */
     @Import(name="property")
     private @Nullable Output<String> property;
 
+    /**
+     * @return Property at which the error potentially occurred
+     * 
+     */
     public Optional<Output<String>> property() {
         return Optional.ofNullable(this.property);
     }
 
+    /**
+     * Reason for the error
+     * 
+     */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
+    /**
+     * @return Reason for the error
+     * 
+     */
     public Optional<Output<String>> reason() {
         return Optional.ofNullable(this.reason);
     }
@@ -54,20 +70,44 @@ public final class RoutingProtocolOperationErrorAdditionalInfoArgs extends com.p
             $ = new RoutingProtocolOperationErrorAdditionalInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param property Property at which the error potentially occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder property(@Nullable Output<String> property) {
             $.property = property;
             return this;
         }
 
+        /**
+         * @param property Property at which the error potentially occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder property(String property) {
             return property(Output.of(property));
         }
 
+        /**
+         * @param reason Reason for the error
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(@Nullable Output<String> reason) {
             $.reason = reason;
             return this;
         }
 
+        /**
+         * @param reason Reason for the error
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(String reason) {
             return reason(Output.of(reason));
         }

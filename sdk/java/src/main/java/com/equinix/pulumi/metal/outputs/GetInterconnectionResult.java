@@ -28,13 +28,13 @@ public final class GetInterconnectionResult {
      * @return (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
-     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * Use metro instead of facility. For more information, read the migration guide.
      * 
      */
-    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
+    @Deprecated /* Use metro instead of facility. For more information, read the migration guide. */
     private String facility;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Port UUID.
      * 
      */
     private String id;
@@ -140,15 +140,15 @@ public final class GetInterconnectionResult {
      * @return (**Deprecated**) Slug of a facility to which the connection belongs. Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
-     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * Use metro instead of facility. For more information, read the migration guide.
      * 
      */
-    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
+    @Deprecated /* Use metro instead of facility. For more information, read the migration guide. */
     public String facility() {
         return this.facility;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Port UUID.
      * 
      */
     public String id() {

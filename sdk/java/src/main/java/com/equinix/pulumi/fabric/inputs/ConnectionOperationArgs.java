@@ -17,23 +17,47 @@ public final class ConnectionOperationArgs extends com.pulumi.resources.Resource
 
     public static final ConnectionOperationArgs Empty = new ConnectionOperationArgs();
 
+    /**
+     * Connection status
+     * 
+     */
     @Import(name="equinixStatus")
     private @Nullable Output<String> equinixStatus;
 
+    /**
+     * @return Connection status
+     * 
+     */
     public Optional<Output<String>> equinixStatus() {
         return Optional.ofNullable(this.equinixStatus);
     }
 
+    /**
+     * Errors occurred
+     * 
+     */
     @Import(name="errors")
     private @Nullable Output<List<ConnectionOperationErrorArgs>> errors;
 
+    /**
+     * @return Errors occurred
+     * 
+     */
     public Optional<Output<List<ConnectionOperationErrorArgs>>> errors() {
         return Optional.ofNullable(this.errors);
     }
 
+    /**
+     * Connection provider readiness status
+     * 
+     */
     @Import(name="providerStatus")
     private @Nullable Output<String> providerStatus;
 
+    /**
+     * @return Connection provider readiness status
+     * 
+     */
     public Optional<Output<String>> providerStatus() {
         return Optional.ofNullable(this.providerStatus);
     }
@@ -64,33 +88,75 @@ public final class ConnectionOperationArgs extends com.pulumi.resources.Resource
             $ = new ConnectionOperationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param equinixStatus Connection status
+         * 
+         * @return builder
+         * 
+         */
         public Builder equinixStatus(@Nullable Output<String> equinixStatus) {
             $.equinixStatus = equinixStatus;
             return this;
         }
 
+        /**
+         * @param equinixStatus Connection status
+         * 
+         * @return builder
+         * 
+         */
         public Builder equinixStatus(String equinixStatus) {
             return equinixStatus(Output.of(equinixStatus));
         }
 
+        /**
+         * @param errors Errors occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(@Nullable Output<List<ConnectionOperationErrorArgs>> errors) {
             $.errors = errors;
             return this;
         }
 
+        /**
+         * @param errors Errors occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(List<ConnectionOperationErrorArgs> errors) {
             return errors(Output.of(errors));
         }
 
+        /**
+         * @param errors Errors occurred
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(ConnectionOperationErrorArgs... errors) {
             return errors(List.of(errors));
         }
 
+        /**
+         * @param providerStatus Connection provider readiness status
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerStatus(@Nullable Output<String> providerStatus) {
             $.providerStatus = providerStatus;
             return this;
         }
 
+        /**
+         * @param providerStatus Connection provider readiness status
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerStatus(String providerStatus) {
             return providerStatus(Output.of(providerStatus));
         }

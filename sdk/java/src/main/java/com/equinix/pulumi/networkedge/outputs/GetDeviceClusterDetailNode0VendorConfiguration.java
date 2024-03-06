@@ -9,29 +9,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDeviceClusterDetailNode0VendorConfiguration {
+    /**
+     * @return Activation key. This is required for Velocloud clusters
+     * 
+     */
     private String activationKey;
+    /**
+     * @return The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+     * 
+     */
     private String adminPassword;
+    /**
+     * @return System IP Address. Mandatory for the Fortinet SDWAN cluster device
+     * 
+     */
     private String controller1;
+    /**
+     * @return Controller fqdn. This is required for Velocloud clusters
+     * 
+     */
     private String controllerFqdn;
+    /**
+     * @return Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+     * 
+     */
     private String hostname;
+    /**
+     * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+     * 
+     */
     private String rootPassword;
 
     private GetDeviceClusterDetailNode0VendorConfiguration() {}
+    /**
+     * @return Activation key. This is required for Velocloud clusters
+     * 
+     */
     public String activationKey() {
         return this.activationKey;
     }
+    /**
+     * @return The administrative password of the device. You can use it to log in to the console. This field is not available for all device types
+     * 
+     */
     public String adminPassword() {
         return this.adminPassword;
     }
+    /**
+     * @return System IP Address. Mandatory for the Fortinet SDWAN cluster device
+     * 
+     */
     public String controller1() {
         return this.controller1;
     }
+    /**
+     * @return Controller fqdn. This is required for Velocloud clusters
+     * 
+     */
     public String controllerFqdn() {
         return this.controllerFqdn;
     }
+    /**
+     * @return Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+     * 
+     */
     public String hostname() {
         return this.hostname;
     }
+    /**
+     * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
+     * 
+     */
     public String rootPassword() {
         return this.rootPassword;
     }

@@ -739,16 +739,153 @@ func (o DeviceReinstallPtrOutput) PreserveData() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GatewayTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+}
+
+// GatewayTimeoutsInput is an input type that accepts GatewayTimeoutsArgs and GatewayTimeoutsOutput values.
+// You can construct a concrete instance of `GatewayTimeoutsInput` via:
+//
+//	GatewayTimeoutsArgs{...}
+type GatewayTimeoutsInput interface {
+	pulumi.Input
+
+	ToGatewayTimeoutsOutput() GatewayTimeoutsOutput
+	ToGatewayTimeoutsOutputWithContext(context.Context) GatewayTimeoutsOutput
+}
+
+type GatewayTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+}
+
+func (GatewayTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTimeouts)(nil)).Elem()
+}
+
+func (i GatewayTimeoutsArgs) ToGatewayTimeoutsOutput() GatewayTimeoutsOutput {
+	return i.ToGatewayTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GatewayTimeoutsArgs) ToGatewayTimeoutsOutputWithContext(ctx context.Context) GatewayTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTimeoutsOutput)
+}
+
+func (i GatewayTimeoutsArgs) ToGatewayTimeoutsPtrOutput() GatewayTimeoutsPtrOutput {
+	return i.ToGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayTimeoutsArgs) ToGatewayTimeoutsPtrOutputWithContext(ctx context.Context) GatewayTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTimeoutsOutput).ToGatewayTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GatewayTimeoutsPtrInput is an input type that accepts GatewayTimeoutsArgs, GatewayTimeoutsPtr and GatewayTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GatewayTimeoutsPtrInput` via:
+//
+//	        GatewayTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGatewayTimeoutsPtrOutput() GatewayTimeoutsPtrOutput
+	ToGatewayTimeoutsPtrOutputWithContext(context.Context) GatewayTimeoutsPtrOutput
+}
+
+type gatewayTimeoutsPtrType GatewayTimeoutsArgs
+
+func GatewayTimeoutsPtr(v *GatewayTimeoutsArgs) GatewayTimeoutsPtrInput {
+	return (*gatewayTimeoutsPtrType)(v)
+}
+
+func (*gatewayTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTimeouts)(nil)).Elem()
+}
+
+func (i *gatewayTimeoutsPtrType) ToGatewayTimeoutsPtrOutput() GatewayTimeoutsPtrOutput {
+	return i.ToGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayTimeoutsPtrType) ToGatewayTimeoutsPtrOutputWithContext(ctx context.Context) GatewayTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayTimeoutsPtrOutput)
+}
+
+type GatewayTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GatewayTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayTimeouts)(nil)).Elem()
+}
+
+func (o GatewayTimeoutsOutput) ToGatewayTimeoutsOutput() GatewayTimeoutsOutput {
+	return o
+}
+
+func (o GatewayTimeoutsOutput) ToGatewayTimeoutsOutputWithContext(ctx context.Context) GatewayTimeoutsOutput {
+	return o
+}
+
+func (o GatewayTimeoutsOutput) ToGatewayTimeoutsPtrOutput() GatewayTimeoutsPtrOutput {
+	return o.ToGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTimeoutsOutput) ToGatewayTimeoutsPtrOutputWithContext(ctx context.Context) GatewayTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayTimeouts) *GatewayTimeouts {
+		return &v
+	}).(GatewayTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o GatewayTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+type GatewayTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayTimeouts)(nil)).Elem()
+}
+
+func (o GatewayTimeoutsPtrOutput) ToGatewayTimeoutsPtrOutput() GatewayTimeoutsPtrOutput {
+	return o
+}
+
+func (o GatewayTimeoutsPtrOutput) ToGatewayTimeoutsPtrOutputWithContext(ctx context.Context) GatewayTimeoutsPtrOutput {
+	return o
+}
+
+func (o GatewayTimeoutsPtrOutput) Elem() GatewayTimeoutsOutput {
+	return o.ApplyT(func(v *GatewayTimeouts) GatewayTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayTimeouts
+		return ret
+	}).(GatewayTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o GatewayTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
 type InterconnectionPort struct {
-	Id         *string `pulumi:"id"`
-	LinkStatus *string `pulumi:"linkStatus"`
+	Id         string `pulumi:"id"`
+	LinkStatus string `pulumi:"linkStatus"`
 	// Name of the connection resource
-	Name *string `pulumi:"name"`
-	Role *string `pulumi:"role"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-	Speed *int `pulumi:"speed"`
+	Name string `pulumi:"name"`
+	Role string `pulumi:"role"`
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	Speed int `pulumi:"speed"`
 	// Status of the connection resource.
-	Status            *string       `pulumi:"status"`
+	Status            string        `pulumi:"status"`
 	VirtualCircuitIds []interface{} `pulumi:"virtualCircuitIds"`
 }
 
@@ -764,16 +901,16 @@ type InterconnectionPortInput interface {
 }
 
 type InterconnectionPortArgs struct {
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	LinkStatus pulumi.StringPtrInput `pulumi:"linkStatus"`
+	Id         pulumi.StringInput `pulumi:"id"`
+	LinkStatus pulumi.StringInput `pulumi:"linkStatus"`
 	// Name of the connection resource
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-	Speed pulumi.IntPtrInput `pulumi:"speed"`
+	Name pulumi.StringInput `pulumi:"name"`
+	Role pulumi.StringInput `pulumi:"role"`
+	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+	Speed pulumi.IntInput `pulumi:"speed"`
 	// Status of the connection resource.
-	Status            pulumi.StringPtrInput `pulumi:"status"`
-	VirtualCircuitIds pulumi.ArrayInput     `pulumi:"virtualCircuitIds"`
+	Status            pulumi.StringInput `pulumi:"status"`
+	VirtualCircuitIds pulumi.ArrayInput  `pulumi:"virtualCircuitIds"`
 }
 
 func (InterconnectionPortArgs) ElementType() reflect.Type {
@@ -827,31 +964,31 @@ func (o InterconnectionPortOutput) ToInterconnectionPortOutputWithContext(ctx co
 	return o
 }
 
-func (o InterconnectionPortOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionPort) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o InterconnectionPortOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionPort) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionPortOutput) LinkStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionPort) *string { return v.LinkStatus }).(pulumi.StringPtrOutput)
+func (o InterconnectionPortOutput) LinkStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionPort) string { return v.LinkStatus }).(pulumi.StringOutput)
 }
 
 // Name of the connection resource
-func (o InterconnectionPortOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionPort) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o InterconnectionPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionPort) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionPortOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionPort) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o InterconnectionPortOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionPort) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
-func (o InterconnectionPortOutput) Speed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InterconnectionPort) *int { return v.Speed }).(pulumi.IntPtrOutput)
+// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
+func (o InterconnectionPortOutput) Speed() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectionPort) int { return v.Speed }).(pulumi.IntOutput)
 }
 
 // Status of the connection resource.
-func (o InterconnectionPortOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionPort) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o InterconnectionPortOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionPort) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o InterconnectionPortOutput) VirtualCircuitIds() pulumi.ArrayOutput {
@@ -879,13 +1016,13 @@ func (o InterconnectionPortArrayOutput) Index(i pulumi.IntInput) Interconnection
 }
 
 type InterconnectionServiceToken struct {
-	ExpiresAt       *string `pulumi:"expiresAt"`
-	Id              *string `pulumi:"id"`
-	MaxAllowedSpeed *string `pulumi:"maxAllowedSpeed"`
-	Role            *string `pulumi:"role"`
-	State           *string `pulumi:"state"`
+	ExpiresAt       string `pulumi:"expiresAt"`
+	Id              string `pulumi:"id"`
+	MaxAllowedSpeed string `pulumi:"maxAllowedSpeed"`
+	Role            string `pulumi:"role"`
+	State           string `pulumi:"state"`
 	// Connection type - dedicated or shared.
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 }
 
 // InterconnectionServiceTokenInput is an input type that accepts InterconnectionServiceTokenArgs and InterconnectionServiceTokenOutput values.
@@ -900,13 +1037,13 @@ type InterconnectionServiceTokenInput interface {
 }
 
 type InterconnectionServiceTokenArgs struct {
-	ExpiresAt       pulumi.StringPtrInput `pulumi:"expiresAt"`
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	MaxAllowedSpeed pulumi.StringPtrInput `pulumi:"maxAllowedSpeed"`
-	Role            pulumi.StringPtrInput `pulumi:"role"`
-	State           pulumi.StringPtrInput `pulumi:"state"`
+	ExpiresAt       pulumi.StringInput `pulumi:"expiresAt"`
+	Id              pulumi.StringInput `pulumi:"id"`
+	MaxAllowedSpeed pulumi.StringInput `pulumi:"maxAllowedSpeed"`
+	Role            pulumi.StringInput `pulumi:"role"`
+	State           pulumi.StringInput `pulumi:"state"`
 	// Connection type - dedicated or shared.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (InterconnectionServiceTokenArgs) ElementType() reflect.Type {
@@ -960,29 +1097,29 @@ func (o InterconnectionServiceTokenOutput) ToInterconnectionServiceTokenOutputWi
 	return o
 }
 
-func (o InterconnectionServiceTokenOutput) ExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+func (o InterconnectionServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionServiceTokenOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o InterconnectionServiceTokenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionServiceTokenOutput) MaxAllowedSpeed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.MaxAllowedSpeed }).(pulumi.StringPtrOutput)
+func (o InterconnectionServiceTokenOutput) MaxAllowedSpeed() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.MaxAllowedSpeed }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionServiceTokenOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o InterconnectionServiceTokenOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.Role }).(pulumi.StringOutput)
 }
 
-func (o InterconnectionServiceTokenOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o InterconnectionServiceTokenOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Connection type - dedicated or shared.
-func (o InterconnectionServiceTokenOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterconnectionServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o InterconnectionServiceTokenOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectionServiceToken) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type InterconnectionServiceTokenArrayOutput struct{ *pulumi.OutputState }
@@ -2462,32 +2599,53 @@ func (o GetDevicePortArrayOutput) Index(i pulumi.IntInput) GetDevicePortOutput {
 }
 
 type GetDevicesDevice struct {
+	// The ipv4 private IP assigned to the device
 	AccessPrivateIpv4 string `pulumi:"accessPrivateIpv4"`
-	AccessPublicIpv4  string `pulumi:"accessPublicIpv4"`
-	AccessPublicIpv6  string `pulumi:"accessPublicIpv6"`
-	AlwaysPxe         bool   `pulumi:"alwaysPxe"`
-	BillingCycle      string `pulumi:"billingCycle"`
-	Description       string `pulumi:"description"`
-	DeviceId          string `pulumi:"deviceId"`
+	// The ipv4 management IP assigned to the device
+	AccessPublicIpv4 string `pulumi:"accessPublicIpv4"`
+	// The ipv6 management IP assigned to the device
+	AccessPublicIpv6 string `pulumi:"accessPublicIpv6"`
+	AlwaysPxe        bool   `pulumi:"alwaysPxe"`
+	// The billing cycle of the device (monthly or hourly)
+	BillingCycle string `pulumi:"billingCycle"`
+	// Description string for the device
+	Description string `pulumi:"description"`
+	// Device ID
+	DeviceId string `pulumi:"deviceId"`
+	// The facility where the device is deployed
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-	Facility              string                    `pulumi:"facility"`
-	HardwareReservationId string                    `pulumi:"hardwareReservationId"`
-	Hostname              string                    `pulumi:"hostname"`
-	IpxeScriptUrl         string                    `pulumi:"ipxeScriptUrl"`
-	Metro                 string                    `pulumi:"metro"`
-	NetworkType           string                    `pulumi:"networkType"`
-	Networks              []GetDevicesDeviceNetwork `pulumi:"networks"`
-	OperatingSystem       string                    `pulumi:"operatingSystem"`
-	Plan                  string                    `pulumi:"plan"`
-	Ports                 []GetDevicesDevicePort    `pulumi:"ports"`
+	Facility string `pulumi:"facility"`
+	// The id of hardware reservation which this device occupies
+	HardwareReservationId string `pulumi:"hardwareReservationId"`
+	// The device name
+	Hostname      string `pulumi:"hostname"`
+	IpxeScriptUrl string `pulumi:"ipxeScriptUrl"`
+	// The metro where the device is deployed
+	Metro string `pulumi:"metro"`
+	// L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
+	NetworkType string `pulumi:"networkType"`
+	// The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix_metal_device.name.network.0, IPv6 at equinix_metal_device.name.network.1 and private IPv4 at equinix_metal_device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
+	Networks []GetDevicesDeviceNetwork `pulumi:"networks"`
+	// The operating system running on the device
+	OperatingSystem string `pulumi:"operatingSystem"`
+	// The hardware config of the device
+	Plan string `pulumi:"plan"`
+	// Ports assigned to the device
+	Ports []GetDevicesDevicePort `pulumi:"ports"`
 	// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
-	ProjectId    string   `pulumi:"projectId"`
-	RootPassword string   `pulumi:"rootPassword"`
-	SosHostname  string   `pulumi:"sosHostname"`
-	SshKeyIds    []string `pulumi:"sshKeyIds"`
-	State        string   `pulumi:"state"`
-	Storage      string   `pulumi:"storage"`
-	Tags         []string `pulumi:"tags"`
+	ProjectId string `pulumi:"projectId"`
+	// Root password to the server (if still available)
+	RootPassword string `pulumi:"rootPassword"`
+	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	SosHostname string `pulumi:"sosHostname"`
+	// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
+	SshKeyIds []string `pulumi:"sshKeyIds"`
+	// The state of the device
+	State   string `pulumi:"state"`
+	Storage string `pulumi:"storage"`
+	// Tags attached to the device
+	Tags []string `pulumi:"tags"`
 }
 
 // GetDevicesDeviceInput is an input type that accepts GetDevicesDeviceArgs and GetDevicesDeviceOutput values.
@@ -2502,32 +2660,53 @@ type GetDevicesDeviceInput interface {
 }
 
 type GetDevicesDeviceArgs struct {
+	// The ipv4 private IP assigned to the device
 	AccessPrivateIpv4 pulumi.StringInput `pulumi:"accessPrivateIpv4"`
-	AccessPublicIpv4  pulumi.StringInput `pulumi:"accessPublicIpv4"`
-	AccessPublicIpv6  pulumi.StringInput `pulumi:"accessPublicIpv6"`
-	AlwaysPxe         pulumi.BoolInput   `pulumi:"alwaysPxe"`
-	BillingCycle      pulumi.StringInput `pulumi:"billingCycle"`
-	Description       pulumi.StringInput `pulumi:"description"`
-	DeviceId          pulumi.StringInput `pulumi:"deviceId"`
+	// The ipv4 management IP assigned to the device
+	AccessPublicIpv4 pulumi.StringInput `pulumi:"accessPublicIpv4"`
+	// The ipv6 management IP assigned to the device
+	AccessPublicIpv6 pulumi.StringInput `pulumi:"accessPublicIpv6"`
+	AlwaysPxe        pulumi.BoolInput   `pulumi:"alwaysPxe"`
+	// The billing cycle of the device (monthly or hourly)
+	BillingCycle pulumi.StringInput `pulumi:"billingCycle"`
+	// Description string for the device
+	Description pulumi.StringInput `pulumi:"description"`
+	// Device ID
+	DeviceId pulumi.StringInput `pulumi:"deviceId"`
+	// The facility where the device is deployed
+	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-	Facility              pulumi.StringInput                `pulumi:"facility"`
-	HardwareReservationId pulumi.StringInput                `pulumi:"hardwareReservationId"`
-	Hostname              pulumi.StringInput                `pulumi:"hostname"`
-	IpxeScriptUrl         pulumi.StringInput                `pulumi:"ipxeScriptUrl"`
-	Metro                 pulumi.StringInput                `pulumi:"metro"`
-	NetworkType           pulumi.StringInput                `pulumi:"networkType"`
-	Networks              GetDevicesDeviceNetworkArrayInput `pulumi:"networks"`
-	OperatingSystem       pulumi.StringInput                `pulumi:"operatingSystem"`
-	Plan                  pulumi.StringInput                `pulumi:"plan"`
-	Ports                 GetDevicesDevicePortArrayInput    `pulumi:"ports"`
+	Facility pulumi.StringInput `pulumi:"facility"`
+	// The id of hardware reservation which this device occupies
+	HardwareReservationId pulumi.StringInput `pulumi:"hardwareReservationId"`
+	// The device name
+	Hostname      pulumi.StringInput `pulumi:"hostname"`
+	IpxeScriptUrl pulumi.StringInput `pulumi:"ipxeScriptUrl"`
+	// The metro where the device is deployed
+	Metro pulumi.StringInput `pulumi:"metro"`
+	// L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix_metal_device.name.network.0, IPv6 at equinix_metal_device.name.network.1 and private IPv4 at equinix_metal_device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
+	Networks GetDevicesDeviceNetworkArrayInput `pulumi:"networks"`
+	// The operating system running on the device
+	OperatingSystem pulumi.StringInput `pulumi:"operatingSystem"`
+	// The hardware config of the device
+	Plan pulumi.StringInput `pulumi:"plan"`
+	// Ports assigned to the device
+	Ports GetDevicesDevicePortArrayInput `pulumi:"ports"`
 	// ID of project containing the devices. Exactly one of `projectId` and `organizationId` must be set.
-	ProjectId    pulumi.StringInput      `pulumi:"projectId"`
-	RootPassword pulumi.StringInput      `pulumi:"rootPassword"`
-	SosHostname  pulumi.StringInput      `pulumi:"sosHostname"`
-	SshKeyIds    pulumi.StringArrayInput `pulumi:"sshKeyIds"`
-	State        pulumi.StringInput      `pulumi:"state"`
-	Storage      pulumi.StringInput      `pulumi:"storage"`
-	Tags         pulumi.StringArrayInput `pulumi:"tags"`
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Root password to the server (if still available)
+	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
+	// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
+	SosHostname pulumi.StringInput `pulumi:"sosHostname"`
+	// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
+	SshKeyIds pulumi.StringArrayInput `pulumi:"sshKeyIds"`
+	// The state of the device
+	State   pulumi.StringInput `pulumi:"state"`
+	Storage pulumi.StringInput `pulumi:"storage"`
+	// Tags attached to the device
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetDevicesDeviceArgs) ElementType() reflect.Type {
@@ -2581,14 +2760,17 @@ func (o GetDevicesDeviceOutput) ToGetDevicesDeviceOutputWithContext(ctx context.
 	return o
 }
 
+// The ipv4 private IP assigned to the device
 func (o GetDevicesDeviceOutput) AccessPrivateIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.AccessPrivateIpv4 }).(pulumi.StringOutput)
 }
 
+// The ipv4 management IP assigned to the device
 func (o GetDevicesDeviceOutput) AccessPublicIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.AccessPublicIpv4 }).(pulumi.StringOutput)
 }
 
+// The ipv6 management IP assigned to the device
 func (o GetDevicesDeviceOutput) AccessPublicIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.AccessPublicIpv6 }).(pulumi.StringOutput)
 }
@@ -2597,27 +2779,34 @@ func (o GetDevicesDeviceOutput) AlwaysPxe() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDevicesDevice) bool { return v.AlwaysPxe }).(pulumi.BoolOutput)
 }
 
+// The billing cycle of the device (monthly or hourly)
 func (o GetDevicesDeviceOutput) BillingCycle() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.BillingCycle }).(pulumi.StringOutput)
 }
 
+// Description string for the device
 func (o GetDevicesDeviceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Device ID
 func (o GetDevicesDeviceOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
+// The facility where the device is deployed
+//
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetDevicesDeviceOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.Facility }).(pulumi.StringOutput)
 }
 
+// The id of hardware reservation which this device occupies
 func (o GetDevicesDeviceOutput) HardwareReservationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.HardwareReservationId }).(pulumi.StringOutput)
 }
 
+// The device name
 func (o GetDevicesDeviceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.Hostname }).(pulumi.StringOutput)
 }
@@ -2626,26 +2815,32 @@ func (o GetDevicesDeviceOutput) IpxeScriptUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.IpxeScriptUrl }).(pulumi.StringOutput)
 }
 
+// The metro where the device is deployed
 func (o GetDevicesDeviceOutput) Metro() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.Metro }).(pulumi.StringOutput)
 }
 
+// L2 network type of the device, one oflayer3, hybrid, layer2-individual, layer2-bonded
 func (o GetDevicesDeviceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
+// The device's private and public IP (v4 and v6) network details. When a device is run without any special network configuration, it will have 3 networks: ublic IPv4 at equinix_metal_device.name.network.0, IPv6 at equinix_metal_device.name.network.1 and private IPv4 at equinix_metal_device.name.network.2. Elastic addresses then stack by type - an assigned public IPv4 will go after the management public IPv4 (to index 1), and will then shift the indices of the IPv6 and private IPv4. Assigned private IPv4 will go after the management private IPv4 (to the end of the network list).
 func (o GetDevicesDeviceOutput) Networks() GetDevicesDeviceNetworkArrayOutput {
 	return o.ApplyT(func(v GetDevicesDevice) []GetDevicesDeviceNetwork { return v.Networks }).(GetDevicesDeviceNetworkArrayOutput)
 }
 
+// The operating system running on the device
 func (o GetDevicesDeviceOutput) OperatingSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.OperatingSystem }).(pulumi.StringOutput)
 }
 
+// The hardware config of the device
 func (o GetDevicesDeviceOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.Plan }).(pulumi.StringOutput)
 }
 
+// Ports assigned to the device
 func (o GetDevicesDeviceOutput) Ports() GetDevicesDevicePortArrayOutput {
 	return o.ApplyT(func(v GetDevicesDevice) []GetDevicesDevicePort { return v.Ports }).(GetDevicesDevicePortArrayOutput)
 }
@@ -2655,18 +2850,22 @@ func (o GetDevicesDeviceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// Root password to the server (if still available)
 func (o GetDevicesDeviceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.RootPassword }).(pulumi.StringOutput)
 }
 
+// The hostname to use for [Serial over SSH](https://deploy.equinix.com/developers/docs/metal/resilience-recovery/serial-over-ssh/) access to the device
 func (o GetDevicesDeviceOutput) SosHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.SosHostname }).(pulumi.StringOutput)
 }
 
+// List of IDs of SSH keys deployed in the device, can be both user or project SSH keys
 func (o GetDevicesDeviceOutput) SshKeyIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDevicesDevice) []string { return v.SshKeyIds }).(pulumi.StringArrayOutput)
 }
 
+// The state of the device
 func (o GetDevicesDeviceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.State }).(pulumi.StringOutput)
 }
@@ -2675,6 +2874,7 @@ func (o GetDevicesDeviceOutput) Storage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevice) string { return v.Storage }).(pulumi.StringOutput)
 }
 
+// Tags attached to the device
 func (o GetDevicesDeviceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDevicesDevice) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2700,11 +2900,16 @@ func (o GetDevicesDeviceArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceOu
 }
 
 type GetDevicesDeviceNetwork struct {
+	// IPv4 or IPv6 address string
 	Address string `pulumi:"address"`
-	Cidr    int    `pulumi:"cidr"`
-	Family  int    `pulumi:"family"`
+	// Bit length of the network mask of the address
+	Cidr int `pulumi:"cidr"`
+	// IP version - "4" or "6"
+	Family int `pulumi:"family"`
+	// Address of router
 	Gateway string `pulumi:"gateway"`
-	Public  bool   `pulumi:"public"`
+	// Whether the address is routable from the Internet
+	Public bool `pulumi:"public"`
 }
 
 // GetDevicesDeviceNetworkInput is an input type that accepts GetDevicesDeviceNetworkArgs and GetDevicesDeviceNetworkOutput values.
@@ -2719,11 +2924,16 @@ type GetDevicesDeviceNetworkInput interface {
 }
 
 type GetDevicesDeviceNetworkArgs struct {
+	// IPv4 or IPv6 address string
 	Address pulumi.StringInput `pulumi:"address"`
-	Cidr    pulumi.IntInput    `pulumi:"cidr"`
-	Family  pulumi.IntInput    `pulumi:"family"`
+	// Bit length of the network mask of the address
+	Cidr pulumi.IntInput `pulumi:"cidr"`
+	// IP version - "4" or "6"
+	Family pulumi.IntInput `pulumi:"family"`
+	// Address of router
 	Gateway pulumi.StringInput `pulumi:"gateway"`
-	Public  pulumi.BoolInput   `pulumi:"public"`
+	// Whether the address is routable from the Internet
+	Public pulumi.BoolInput `pulumi:"public"`
 }
 
 func (GetDevicesDeviceNetworkArgs) ElementType() reflect.Type {
@@ -2777,22 +2987,27 @@ func (o GetDevicesDeviceNetworkOutput) ToGetDevicesDeviceNetworkOutputWithContex
 	return o
 }
 
+// IPv4 or IPv6 address string
 func (o GetDevicesDeviceNetworkOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDeviceNetwork) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// Bit length of the network mask of the address
 func (o GetDevicesDeviceNetworkOutput) Cidr() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDevicesDeviceNetwork) int { return v.Cidr }).(pulumi.IntOutput)
 }
 
+// IP version - "4" or "6"
 func (o GetDevicesDeviceNetworkOutput) Family() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDevicesDeviceNetwork) int { return v.Family }).(pulumi.IntOutput)
 }
 
+// Address of router
 func (o GetDevicesDeviceNetworkOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDeviceNetwork) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// Whether the address is routable from the Internet
 func (o GetDevicesDeviceNetworkOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDevicesDeviceNetwork) bool { return v.Public }).(pulumi.BoolOutput)
 }
@@ -2818,11 +3033,16 @@ func (o GetDevicesDeviceNetworkArrayOutput) Index(i pulumi.IntInput) GetDevicesD
 }
 
 type GetDevicesDevicePort struct {
-	Bonded bool   `pulumi:"bonded"`
-	Id     string `pulumi:"id"`
-	Mac    string `pulumi:"mac"`
-	Name   string `pulumi:"name"`
-	Type   string `pulumi:"type"`
+	// Whether this port is part of a bond in bonded network setup
+	Bonded bool `pulumi:"bonded"`
+	// The ID of the device
+	Id string `pulumi:"id"`
+	// MAC address assigned to the port
+	Mac string `pulumi:"mac"`
+	// Name of the port (e.g. eth0, or bond0)
+	Name string `pulumi:"name"`
+	// Type of the port (e.g. NetworkPort or NetworkBondPort)
+	Type string `pulumi:"type"`
 }
 
 // GetDevicesDevicePortInput is an input type that accepts GetDevicesDevicePortArgs and GetDevicesDevicePortOutput values.
@@ -2837,11 +3057,16 @@ type GetDevicesDevicePortInput interface {
 }
 
 type GetDevicesDevicePortArgs struct {
-	Bonded pulumi.BoolInput   `pulumi:"bonded"`
-	Id     pulumi.StringInput `pulumi:"id"`
-	Mac    pulumi.StringInput `pulumi:"mac"`
-	Name   pulumi.StringInput `pulumi:"name"`
-	Type   pulumi.StringInput `pulumi:"type"`
+	// Whether this port is part of a bond in bonded network setup
+	Bonded pulumi.BoolInput `pulumi:"bonded"`
+	// The ID of the device
+	Id pulumi.StringInput `pulumi:"id"`
+	// MAC address assigned to the port
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// Name of the port (e.g. eth0, or bond0)
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of the port (e.g. NetworkPort or NetworkBondPort)
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetDevicesDevicePortArgs) ElementType() reflect.Type {
@@ -2895,22 +3120,27 @@ func (o GetDevicesDevicePortOutput) ToGetDevicesDevicePortOutputWithContext(ctx 
 	return o
 }
 
+// Whether this port is part of a bond in bonded network setup
 func (o GetDevicesDevicePortOutput) Bonded() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDevicesDevicePort) bool { return v.Bonded }).(pulumi.BoolOutput)
 }
 
+// The ID of the device
 func (o GetDevicesDevicePortOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// MAC address assigned to the port
 func (o GetDevicesDevicePortOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Mac }).(pulumi.StringOutput)
 }
 
+// Name of the port (e.g. eth0, or bond0)
 func (o GetDevicesDevicePortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type of the port (e.g. NetworkPort or NetworkBondPort)
 func (o GetDevicesDevicePortOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesDevicePort) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3067,7 +3297,8 @@ func (o GetDevicesFilterArrayOutput) Index(i pulumi.IntInput) GetDevicesFilterOu
 
 type GetDevicesSort struct {
 	// The attribute used to filter. Filter attributes are case-sensitive
-	Attribute string  `pulumi:"attribute"`
+	Attribute string `pulumi:"attribute"`
+	// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 	Direction *string `pulumi:"direction"`
 }
 
@@ -3084,7 +3315,8 @@ type GetDevicesSortInput interface {
 
 type GetDevicesSortArgs struct {
 	// The attribute used to filter. Filter attributes are case-sensitive
-	Attribute pulumi.StringInput    `pulumi:"attribute"`
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 }
 
@@ -3144,6 +3376,7 @@ func (o GetDevicesSortOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesSort) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 func (o GetDevicesSortOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
@@ -4301,6 +4534,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePortArrayInput)(nil)).Elem(), DevicePortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceReinstallInput)(nil)).Elem(), DeviceReinstallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceReinstallPtrInput)(nil)).Elem(), DeviceReinstallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTimeoutsInput)(nil)).Elem(), GatewayTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTimeoutsPtrInput)(nil)).Elem(), GatewayTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionPortInput)(nil)).Elem(), InterconnectionPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionPortArrayInput)(nil)).Elem(), InterconnectionPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectionServiceTokenInput)(nil)).Elem(), InterconnectionServiceTokenArgs{})
@@ -4357,6 +4592,8 @@ func init() {
 	pulumi.RegisterOutputType(DevicePortArrayOutput{})
 	pulumi.RegisterOutputType(DeviceReinstallOutput{})
 	pulumi.RegisterOutputType(DeviceReinstallPtrOutput{})
+	pulumi.RegisterOutputType(GatewayTimeoutsOutput{})
+	pulumi.RegisterOutputType(GatewayTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectionPortOutput{})
 	pulumi.RegisterOutputType(InterconnectionPortArrayOutput{})
 	pulumi.RegisterOutputType(InterconnectionServiceTokenOutput{})

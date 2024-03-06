@@ -30,9 +30,13 @@ func GetClientSecret(ctx *pulumi.Context) string {
 func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "equinix:endpoint")
 }
+
+// Maximum number of retries.
 func GetMaxRetries(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "equinix:maxRetries")
 }
+
+// Maximum number of seconds to wait before retrying a request.
 func GetMaxRetryWaitSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "equinix:maxRetryWaitSeconds")
 }

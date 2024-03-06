@@ -13,17 +13,26 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult
     {
-        public readonly string Encapsulation;
-        public readonly string EncapsulationStrategy;
-        public readonly bool ReuseVlanSTag;
+        /// <summary>
+        /// Data frames encapsulation standard.UNTAGGED - Untagged encapsulation for EPL connections. DOT1Q - DOT1Q encapsulation standard. QINQ - QINQ encapsulation standard.
+        /// </summary>
+        public readonly string? Encapsulation;
+        /// <summary>
+        /// Additional tagging information required by the seller profile.
+        /// </summary>
+        public readonly string? EncapsulationStrategy;
+        /// <summary>
+        /// Automatically accept subsequent DOT1Q to QINQ connections that use the same authentication key. These connections will have the same VLAN S-tag assigned as the initial connection.
+        /// </summary>
+        public readonly bool? ReuseVlanSTag;
 
         [OutputConstructor]
         private GetServiceProfileAccessPointTypeConfigLinkProtocolConfigResult(
-            string encapsulation,
+            string? encapsulation,
 
-            string encapsulationStrategy,
+            string? encapsulationStrategy,
 
-            bool reuseVlanSTag)
+            bool? reuseVlanSTag)
         {
             Encapsulation = encapsulation;
             EncapsulationStrategy = encapsulationStrategy;

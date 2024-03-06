@@ -94,15 +94,21 @@ start_rebase() {
   fi
   git branch --set-upstream-to=local pulumi-patch
 
-  for patch in ../patches/*.patch; do
-    echo "Applying $patch"
-    if ! git am --3way "$patch"; then
-      echo
-      echo "Failed to apply patch. Please run 'make upstream.rebase FROM=$TAG' where '$TAG' allows the patch set to apply cleanly"
-      echo
-      exit 1
-    fi
-  done
+  # Check if there are any .patch files
+  patch_folder="../patches"
+  if [ -z "$(ls -A $patch_folder/*.patch 2>/dev/null)" ]; then
+    echo "No patch files found in ../patches directory."
+  else
+    for patch in $patch_folder/*.patch; do
+      echo "Applying $patch"
+      if ! git am --3way "$patch"; then
+        echo
+        echo "Failed to apply patch. Please run 'make upstream.rebase FROM=$TAG' where '$TAG' allows the patch set to apply cleanly"
+        echo
+        exit 1
+      fi
+    done
+  fi
 
   touch ../rebase-in-progress
 
@@ -180,7 +186,7 @@ end_rebase() {
     exit 1
   fi
 
-  rm patches/*.patch
+  rm -f patches/*.patch
   cd upstream
   git format-patch local -o ../patches --zero-commit --no-signature --no-stat
   cd ..

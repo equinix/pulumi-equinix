@@ -16,8 +16,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRoutingProtocolResult {
@@ -25,22 +23,22 @@ public final class GetRoutingProtocolResult {
      * @return Bidirectional Forwarding Detection
      * 
      */
-    private @Nullable GetRoutingProtocolBfd bfd;
+    private GetRoutingProtocolBfd bfd;
     /**
      * @return BGP authorization key
      * 
      */
-    private @Nullable String bgpAuthKey;
+    private String bgpAuthKey;
     /**
      * @return Routing Protocol BGP IPv4
      * 
      */
-    private @Nullable GetRoutingProtocolBgpIpv4 bgpIpv4;
+    private GetRoutingProtocolBgpIpv4 bgpIpv4;
     /**
      * @return Routing Protocol BGP IPv6
      * 
      */
-    private @Nullable GetRoutingProtocolBgpIpv6 bgpIpv6;
+    private GetRoutingProtocolBgpIpv6 bgpIpv6;
     /**
      * @return Captures Routing Protocol lifecycle change information
      * 
@@ -60,22 +58,22 @@ public final class GetRoutingProtocolResult {
      * @return Customer-provided ASN
      * 
      */
-    private @Nullable Integer customerAsn;
+    private Integer customerAsn;
     /**
      * @return Customer-provided Fabric Routing Protocol description
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return Routing Protocol Direct IPv4
      * 
      */
-    private @Nullable GetRoutingProtocolDirectIpv4 directIpv4;
+    private GetRoutingProtocolDirectIpv4 directIpv4;
     /**
      * @return Routing Protocol Direct IPv6
      * 
      */
-    private @Nullable GetRoutingProtocolDirectIpv6 directIpv6;
+    private GetRoutingProtocolDirectIpv6 directIpv6;
     /**
      * @return Equinix ASN
      * 
@@ -95,7 +93,7 @@ public final class GetRoutingProtocolResult {
      * @return Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Routing Protocol type-specific operational data
      * 
@@ -110,7 +108,7 @@ public final class GetRoutingProtocolResult {
      * @return Defines the routing protocol type like BGP or DIRECT
      * 
      */
-    private @Nullable String type;
+    private String type;
     /**
      * @return Equinix-assigned routing protocol identifier
      * 
@@ -122,29 +120,29 @@ public final class GetRoutingProtocolResult {
      * @return Bidirectional Forwarding Detection
      * 
      */
-    public Optional<GetRoutingProtocolBfd> bfd() {
-        return Optional.ofNullable(this.bfd);
+    public GetRoutingProtocolBfd bfd() {
+        return this.bfd;
     }
     /**
      * @return BGP authorization key
      * 
      */
-    public Optional<String> bgpAuthKey() {
-        return Optional.ofNullable(this.bgpAuthKey);
+    public String bgpAuthKey() {
+        return this.bgpAuthKey;
     }
     /**
      * @return Routing Protocol BGP IPv4
      * 
      */
-    public Optional<GetRoutingProtocolBgpIpv4> bgpIpv4() {
-        return Optional.ofNullable(this.bgpIpv4);
+    public GetRoutingProtocolBgpIpv4 bgpIpv4() {
+        return this.bgpIpv4;
     }
     /**
      * @return Routing Protocol BGP IPv6
      * 
      */
-    public Optional<GetRoutingProtocolBgpIpv6> bgpIpv6() {
-        return Optional.ofNullable(this.bgpIpv6);
+    public GetRoutingProtocolBgpIpv6 bgpIpv6() {
+        return this.bgpIpv6;
     }
     /**
      * @return Captures Routing Protocol lifecycle change information
@@ -171,29 +169,29 @@ public final class GetRoutingProtocolResult {
      * @return Customer-provided ASN
      * 
      */
-    public Optional<Integer> customerAsn() {
-        return Optional.ofNullable(this.customerAsn);
+    public Integer customerAsn() {
+        return this.customerAsn;
     }
     /**
      * @return Customer-provided Fabric Routing Protocol description
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return Routing Protocol Direct IPv4
      * 
      */
-    public Optional<GetRoutingProtocolDirectIpv4> directIpv4() {
-        return Optional.ofNullable(this.directIpv4);
+    public GetRoutingProtocolDirectIpv4 directIpv4() {
+        return this.directIpv4;
     }
     /**
      * @return Routing Protocol Direct IPv6
      * 
      */
-    public Optional<GetRoutingProtocolDirectIpv6> directIpv6() {
-        return Optional.ofNullable(this.directIpv6);
+    public GetRoutingProtocolDirectIpv6 directIpv6() {
+        return this.directIpv6;
     }
     /**
      * @return Equinix ASN
@@ -220,8 +218,8 @@ public final class GetRoutingProtocolResult {
      * @return Routing Protocol name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Routing Protocol type-specific operational data
@@ -241,8 +239,8 @@ public final class GetRoutingProtocolResult {
      * @return Defines the routing protocol type like BGP or DIRECT
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
     /**
      * @return Equinix-assigned routing protocol identifier
@@ -261,24 +259,24 @@ public final class GetRoutingProtocolResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GetRoutingProtocolBfd bfd;
-        private @Nullable String bgpAuthKey;
-        private @Nullable GetRoutingProtocolBgpIpv4 bgpIpv4;
-        private @Nullable GetRoutingProtocolBgpIpv6 bgpIpv6;
+        private GetRoutingProtocolBfd bfd;
+        private String bgpAuthKey;
+        private GetRoutingProtocolBgpIpv4 bgpIpv4;
+        private GetRoutingProtocolBgpIpv6 bgpIpv6;
         private List<GetRoutingProtocolChangeLog> changeLogs;
         private List<GetRoutingProtocolChange> changes;
         private String connectionUuid;
-        private @Nullable Integer customerAsn;
-        private @Nullable String description;
-        private @Nullable GetRoutingProtocolDirectIpv4 directIpv4;
-        private @Nullable GetRoutingProtocolDirectIpv6 directIpv6;
+        private Integer customerAsn;
+        private String description;
+        private GetRoutingProtocolDirectIpv4 directIpv4;
+        private GetRoutingProtocolDirectIpv6 directIpv6;
         private Integer equinixAsn;
         private String href;
         private String id;
-        private @Nullable String name;
+        private String name;
         private List<GetRoutingProtocolOperation> operations;
         private String state;
-        private @Nullable String type;
+        private String type;
         private String uuid;
         public Builder() {}
         public Builder(GetRoutingProtocolResult defaults) {
@@ -305,23 +303,23 @@ public final class GetRoutingProtocolResult {
         }
 
         @CustomType.Setter
-        public Builder bfd(@Nullable GetRoutingProtocolBfd bfd) {
-            this.bfd = bfd;
+        public Builder bfd(GetRoutingProtocolBfd bfd) {
+            this.bfd = Objects.requireNonNull(bfd);
             return this;
         }
         @CustomType.Setter
-        public Builder bgpAuthKey(@Nullable String bgpAuthKey) {
-            this.bgpAuthKey = bgpAuthKey;
+        public Builder bgpAuthKey(String bgpAuthKey) {
+            this.bgpAuthKey = Objects.requireNonNull(bgpAuthKey);
             return this;
         }
         @CustomType.Setter
-        public Builder bgpIpv4(@Nullable GetRoutingProtocolBgpIpv4 bgpIpv4) {
-            this.bgpIpv4 = bgpIpv4;
+        public Builder bgpIpv4(GetRoutingProtocolBgpIpv4 bgpIpv4) {
+            this.bgpIpv4 = Objects.requireNonNull(bgpIpv4);
             return this;
         }
         @CustomType.Setter
-        public Builder bgpIpv6(@Nullable GetRoutingProtocolBgpIpv6 bgpIpv6) {
-            this.bgpIpv6 = bgpIpv6;
+        public Builder bgpIpv6(GetRoutingProtocolBgpIpv6 bgpIpv6) {
+            this.bgpIpv6 = Objects.requireNonNull(bgpIpv6);
             return this;
         }
         @CustomType.Setter
@@ -346,23 +344,23 @@ public final class GetRoutingProtocolResult {
             return this;
         }
         @CustomType.Setter
-        public Builder customerAsn(@Nullable Integer customerAsn) {
-            this.customerAsn = customerAsn;
+        public Builder customerAsn(Integer customerAsn) {
+            this.customerAsn = Objects.requireNonNull(customerAsn);
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-            this.description = description;
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
             return this;
         }
         @CustomType.Setter
-        public Builder directIpv4(@Nullable GetRoutingProtocolDirectIpv4 directIpv4) {
-            this.directIpv4 = directIpv4;
+        public Builder directIpv4(GetRoutingProtocolDirectIpv4 directIpv4) {
+            this.directIpv4 = Objects.requireNonNull(directIpv4);
             return this;
         }
         @CustomType.Setter
-        public Builder directIpv6(@Nullable GetRoutingProtocolDirectIpv6 directIpv6) {
-            this.directIpv6 = directIpv6;
+        public Builder directIpv6(GetRoutingProtocolDirectIpv6 directIpv6) {
+            this.directIpv6 = Objects.requireNonNull(directIpv6);
             return this;
         }
         @CustomType.Setter
@@ -381,8 +379,8 @@ public final class GetRoutingProtocolResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
@@ -399,8 +397,8 @@ public final class GetRoutingProtocolResult {
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-            this.type = type;
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
             return this;
         }
         @CustomType.Setter

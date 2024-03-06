@@ -13,16 +13,25 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetPortsDatumLocationResult
     {
-        public readonly string Href;
+        /// <summary>
+        /// IBX Code
+        /// </summary>
         public readonly string Ibx;
+        /// <summary>
+        /// Access point metro code
+        /// </summary>
         public readonly string MetroCode;
+        /// <summary>
+        /// Access point metro name
+        /// </summary>
         public readonly string MetroName;
+        /// <summary>
+        /// Access point region
+        /// </summary>
         public readonly string Region;
 
         [OutputConstructor]
         private GetPortsDatumLocationResult(
-            string href,
-
             string ibx,
 
             string metroCode,
@@ -31,7 +40,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string region)
         {
-            Href = href;
             Ibx = ibx;
             MetroCode = metroCode;
             MetroName = metroName;

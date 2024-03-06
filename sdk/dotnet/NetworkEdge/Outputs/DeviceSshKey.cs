@@ -13,6 +13,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     [OutputType]
     public sealed class DeviceSshKey
     {
+        /// <summary>
+        /// Reference by name to previously provisioned public SSH key
+        /// </summary>
         public readonly string KeyName;
         /// <summary>
         /// username associated with given key.

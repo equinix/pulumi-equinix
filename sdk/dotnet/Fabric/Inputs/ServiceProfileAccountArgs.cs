@@ -13,43 +13,43 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ServiceProfileAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Name
+        /// Legal name of the accountholder.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Account Number
+        /// Equinix-assigned account number.
         /// </summary>
         [Input("accountNumber")]
         public Input<int>? AccountNumber { get; set; }
 
         /// <summary>
-        /// Global Customer organization identifier
+        /// Equinix-assigned ID of the subscriber's parent organization.
         /// </summary>
         [Input("globalCustId")]
         public Input<string>? GlobalCustId { get; set; }
 
         /// <summary>
-        /// Global organization identifier
+        /// Equinix-assigned ID of the subscriber's parent organization.
         /// </summary>
         [Input("globalOrgId")]
         public Input<string>? GlobalOrgId { get; set; }
 
         /// <summary>
-        /// Global organization name
+        /// Equinix-assigned name of the subscriber's parent organization.
         /// </summary>
         [Input("globalOrganizationName")]
         public Input<string>? GlobalOrganizationName { get; set; }
 
         /// <summary>
-        /// Customer organization identifier
+        /// Equinix-assigned ID of the subscriber's organization.
         /// </summary>
         [Input("orgId")]
         public Input<int>? OrgId { get; set; }
 
         /// <summary>
-        /// Customer organization name
+        /// Equinix-assigned name of the subscriber's organization.
         /// </summary>
         [Input("organizationName")]
         public Input<string>? OrganizationName { get; set; }

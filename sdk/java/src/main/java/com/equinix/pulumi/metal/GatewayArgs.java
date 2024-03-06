@@ -3,6 +3,7 @@
 
 package com.equinix.pulumi.metal;
 
+import com.equinix.pulumi.metal.inputs.GatewayTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -65,6 +66,13 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         return this.projectId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GatewayTimeoutsArgs> timeouts;
+
+    public Optional<Output<GatewayTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * UUID of the VLAN where the gateway is scoped to.
      * 
@@ -86,6 +94,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.ipReservationId = $.ipReservationId;
         this.privateIpv4SubnetSize = $.privateIpv4SubnetSize;
         this.projectId = $.projectId;
+        this.timeouts = $.timeouts;
         this.vlanId = $.vlanId;
     }
 
@@ -172,6 +181,15 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        public Builder timeouts(@Nullable Output<GatewayTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GatewayTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

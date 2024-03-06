@@ -11,10 +11,66 @@ namespace Pulumi.Equinix.Fabric
 {
     public static class GetPorts
     {
-        public static Task<GetPortsResult> InvokeAsync(GetPortsArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch port by name
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var portsDataName = Equinix.Fabric.GetPorts.Invoke(new()
+        ///     {
+        ///         Filter = new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
+        ///         {
+        ///             Name = "&lt;name_of_port||port_prefix&gt;",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Task<GetPortsResult> InvokeAsync(GetPortsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsArgs(), options.WithDefaults());
 
-        public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch port by name
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var portsDataName = Equinix.Fabric.GetPorts.Invoke(new()
+        ///     {
+        ///         Filter = new Equinix.Fabric.Inputs.GetPortsFilterInputArgs
+        ///         {
+        ///             Name = "&lt;name_of_port||port_prefix&gt;",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetPortsResult> Invoke(GetPortsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortsResult>("equinix:fabric/getPorts:getPorts", args ?? new GetPortsInvokeArgs(), options.WithDefaults());
     }
 
@@ -24,8 +80,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// name
         /// </summary>
-        [Input("filter")]
-        public Inputs.GetPortsFilterArgs? Filter { get; set; }
+        [Input("filter", required: true)]
+        public Inputs.GetPortsFilterArgs Filter { get; set; } = null!;
 
         public GetPortsArgs()
         {
@@ -38,8 +94,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// name
         /// </summary>
-        [Input("filter")]
-        public Input<Inputs.GetPortsFilterInputArgs>? Filter { get; set; }
+        [Input("filter", required: true)]
+        public Input<Inputs.GetPortsFilterInputArgs> Filter { get; set; } = null!;
 
         public GetPortsInvokeArgs()
         {
@@ -52,13 +108,13 @@ namespace Pulumi.Equinix.Fabric
     public sealed class GetPortsResult
     {
         /// <summary>
-        /// List of  Ports
+        /// List of Ports
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPortsDatumResult> Data;
         /// <summary>
         /// name
         /// </summary>
-        public readonly Outputs.GetPortsFilterResult? Filter;
+        public readonly Outputs.GetPortsFilterResult Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -68,7 +124,7 @@ namespace Pulumi.Equinix.Fabric
         private GetPortsResult(
             ImmutableArray<Outputs.GetPortsDatumResult> data,
 
-            Outputs.GetPortsFilterResult? filter,
+            Outputs.GetPortsFilterResult filter,
 
             string id)
         {

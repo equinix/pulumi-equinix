@@ -7,12 +7,24 @@ import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
-export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
-    args = args || {};
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const connectionDataName = equinix.fabric.getConnection({
+ *     uuid: "<uuid_of_connection>",
+ * });
+ * ```
+ */
+export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:fabric/getConnection:getConnection", {
-        "project": args.project,
         "uuid": args.uuid,
     }, opts);
 }
@@ -21,11 +33,7 @@ export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getConnection.
  */
 export interface GetConnectionArgs {
-    /**
-     * Project information
-     */
-    project?: inputs.fabric.GetConnectionProject;
-    uuid?: string;
+    uuid: string;
 }
 
 /**
@@ -43,7 +51,7 @@ export interface GetConnectionResult {
     /**
      * Connection additional information
      */
-    readonly additionalInfo: outputs.fabric.GetConnectionAdditionalInfo[];
+    readonly additionalInfo: {[key: string]: any}[];
     /**
      * Connection bandwidth in Mbps
      */
@@ -81,19 +89,19 @@ export interface GetConnectionResult {
      */
     readonly notifications: outputs.fabric.GetConnectionNotification[];
     /**
-     * Connection specific operational data
+     * Connection type-specific operational data
      */
     readonly operation: outputs.fabric.GetConnectionOperation;
     /**
-     * Order related to this connection information
+     * Order details
      */
     readonly order: outputs.fabric.GetConnectionOrder;
     /**
      * Project information
      */
-    readonly project?: outputs.fabric.GetConnectionProject;
+    readonly project: outputs.fabric.GetConnectionProject;
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      */
     readonly redundancy: outputs.fabric.GetConnectionRedundancy;
     /**
@@ -101,19 +109,33 @@ export interface GetConnectionResult {
      */
     readonly state: string;
     /**
-     * Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      */
     readonly type: string;
     /**
      * Equinix-assigned connection identifier
      */
-    readonly uuid?: string;
+    readonly uuid: string;
     /**
      * Destination or Provider side connection configuration object of the multi-segment connection
      */
     readonly zSide: outputs.fabric.GetConnectionZSide;
 }
-export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
+/**
+ * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const connectionDataName = equinix.fabric.getConnection({
+ *     uuid: "<uuid_of_connection>",
+ * });
+ * ```
+ */
+export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
     return pulumi.output(args).apply((a: any) => getConnection(a, opts))
 }
 
@@ -121,9 +143,5 @@ export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulum
  * A collection of arguments for invoking getConnection.
  */
 export interface GetConnectionOutputArgs {
-    /**
-     * Project information
-     */
-    project?: pulumi.Input<inputs.fabric.GetConnectionProjectArgs>;
-    uuid?: pulumi.Input<string>;
+    uuid: pulumi.Input<string>;
 }

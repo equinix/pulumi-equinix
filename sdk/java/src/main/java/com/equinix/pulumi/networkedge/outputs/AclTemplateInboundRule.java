@@ -29,8 +29,14 @@ public final class AclTemplateInboundRule {
      * 
      */
     private String protocol;
+    /**
+     * @return Inbound rule sequence number
+     * 
+     */
     private @Nullable Integer sequenceNumber;
     /**
+     * @return Type of traffic source used in a given inbound rule
+     * 
      * @deprecated
      * Source Type will not be returned
      * 
@@ -81,10 +87,16 @@ public final class AclTemplateInboundRule {
     public String protocol() {
         return this.protocol;
     }
+    /**
+     * @return Inbound rule sequence number
+     * 
+     */
     public Optional<Integer> sequenceNumber() {
         return Optional.ofNullable(this.sequenceNumber);
     }
     /**
+     * @return Type of traffic source used in a given inbound rule
+     * 
      * @deprecated
      * Source Type will not be returned
      * 

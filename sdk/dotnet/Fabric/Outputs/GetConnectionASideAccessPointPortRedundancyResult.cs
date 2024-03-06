@@ -13,11 +13,29 @@ namespace Pulumi.Equinix.Fabric.Outputs
     [OutputType]
     public sealed class GetConnectionASideAccessPointPortRedundancyResult
     {
+        /// <summary>
+        /// Access point redundancy
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Port redundancy group
+        /// </summary>
+        public readonly string Group;
+        /// <summary>
+        /// Priority type-Primary or Secondary
+        /// </summary>
         public readonly string Priority;
 
         [OutputConstructor]
-        private GetConnectionASideAccessPointPortRedundancyResult(string priority)
+        private GetConnectionASideAccessPointPortRedundancyResult(
+            bool enabled,
+
+            string group,
+
+            string priority)
         {
+            Enabled = enabled;
+            Group = group;
             Priority = priority;
         }
     }

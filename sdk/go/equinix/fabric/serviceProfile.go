@@ -13,6 +13,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
+//
 // ## Example Usage
 // ```go
 // package main
@@ -85,15 +87,15 @@ type ServiceProfile struct {
 
 	// Access point config information
 	AccessPointTypeConfigs ServiceProfileAccessPointTypeConfigArrayOutput `pulumi:"accessPointTypeConfigs"`
-	// Account
-	Account ServiceProfileAccountPtrOutput `pulumi:"account"`
+	// Service Profile Owner Account Information
+	Account ServiceProfileAccountOutput `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails pulumi.StringArrayOutput `pulumi:"allowedEmails"`
 	// Captures connection lifecycle change information
 	ChangeLog ServiceProfileChangeLogOutput `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayOutput `pulumi:"customFields"`
-	// Description
+	// Description of authorization key
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Unique Resource URL
 	Href pulumi.StringOutput `pulumi:"href"`
@@ -109,7 +111,7 @@ type ServiceProfile struct {
 	Ports ServiceProfilePortArrayOutput `pulumi:"ports"`
 	// Project information
 	Project ServiceProfileProjectPtrOutput `pulumi:"project"`
-	// Self Profile
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile pulumi.BoolPtrOutput `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrOutput `pulumi:"state"`
@@ -163,7 +165,7 @@ func GetServiceProfile(ctx *pulumi.Context,
 type serviceProfileState struct {
 	// Access point config information
 	AccessPointTypeConfigs []ServiceProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
-	// Account
+	// Service Profile Owner Account Information
 	Account *ServiceProfileAccount `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails []string `pulumi:"allowedEmails"`
@@ -171,7 +173,7 @@ type serviceProfileState struct {
 	ChangeLog *ServiceProfileChangeLog `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
-	// Description
+	// Description of authorization key
 	Description *string `pulumi:"description"`
 	// Unique Resource URL
 	Href *string `pulumi:"href"`
@@ -187,7 +189,7 @@ type serviceProfileState struct {
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project *ServiceProfileProject `pulumi:"project"`
-	// Self Profile
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
@@ -206,7 +208,7 @@ type serviceProfileState struct {
 type ServiceProfileState struct {
 	// Access point config information
 	AccessPointTypeConfigs ServiceProfileAccessPointTypeConfigArrayInput
-	// Account
+	// Service Profile Owner Account Information
 	Account ServiceProfileAccountPtrInput
 	// Array of contact emails
 	AllowedEmails pulumi.StringArrayInput
@@ -214,7 +216,7 @@ type ServiceProfileState struct {
 	ChangeLog ServiceProfileChangeLogPtrInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
-	// Description
+	// Description of authorization key
 	Description pulumi.StringPtrInput
 	// Unique Resource URL
 	Href pulumi.StringPtrInput
@@ -230,7 +232,7 @@ type ServiceProfileState struct {
 	Ports ServiceProfilePortArrayInput
 	// Project information
 	Project ServiceProfileProjectPtrInput
-	// Self Profile
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput
@@ -253,13 +255,11 @@ func (ServiceProfileState) ElementType() reflect.Type {
 type serviceProfileArgs struct {
 	// Access point config information
 	AccessPointTypeConfigs []ServiceProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
-	// Account
-	Account *ServiceProfileAccount `pulumi:"account"`
 	// Array of contact emails
 	AllowedEmails []string `pulumi:"allowedEmails"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
-	// Description
+	// Description of authorization key
 	Description string `pulumi:"description"`
 	// Marketing Info
 	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
@@ -273,7 +273,7 @@ type serviceProfileArgs struct {
 	Ports []ServiceProfilePort `pulumi:"ports"`
 	// Project information
 	Project *ServiceProfileProject `pulumi:"project"`
-	// Self Profile
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile *bool `pulumi:"selfProfile"`
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State *string `pulumi:"state"`
@@ -291,13 +291,11 @@ type serviceProfileArgs struct {
 type ServiceProfileArgs struct {
 	// Access point config information
 	AccessPointTypeConfigs ServiceProfileAccessPointTypeConfigArrayInput
-	// Account
-	Account ServiceProfileAccountPtrInput
 	// Array of contact emails
 	AllowedEmails pulumi.StringArrayInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
-	// Description
+	// Description of authorization key
 	Description pulumi.StringInput
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrInput
@@ -311,7 +309,7 @@ type ServiceProfileArgs struct {
 	Ports ServiceProfilePortArrayInput
 	// Project information
 	Project ServiceProfileProjectPtrInput
-	// Self Profile
+	// Self Profile indicating if the profile is created for customer's  self use
 	SelfProfile pulumi.BoolPtrInput
 	// Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
 	State pulumi.StringPtrInput
@@ -419,9 +417,9 @@ func (o ServiceProfileOutput) AccessPointTypeConfigs() ServiceProfileAccessPoint
 	}).(ServiceProfileAccessPointTypeConfigArrayOutput)
 }
 
-// Account
-func (o ServiceProfileOutput) Account() ServiceProfileAccountPtrOutput {
-	return o.ApplyT(func(v *ServiceProfile) ServiceProfileAccountPtrOutput { return v.Account }).(ServiceProfileAccountPtrOutput)
+// Service Profile Owner Account Information
+func (o ServiceProfileOutput) Account() ServiceProfileAccountOutput {
+	return o.ApplyT(func(v *ServiceProfile) ServiceProfileAccountOutput { return v.Account }).(ServiceProfileAccountOutput)
 }
 
 // Array of contact emails
@@ -439,7 +437,7 @@ func (o ServiceProfileOutput) CustomFields() ServiceProfileCustomFieldArrayOutpu
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileCustomFieldArrayOutput { return v.CustomFields }).(ServiceProfileCustomFieldArrayOutput)
 }
 
-// Description
+// Description of authorization key
 func (o ServiceProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -479,7 +477,7 @@ func (o ServiceProfileOutput) Project() ServiceProfileProjectPtrOutput {
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileProjectPtrOutput { return v.Project }).(ServiceProfileProjectPtrOutput)
 }
 
-// Self Profile
+// Self Profile indicating if the profile is created for customer's  self use
 func (o ServiceProfileOutput) SelfProfile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.BoolPtrOutput { return v.SelfProfile }).(pulumi.BoolPtrOutput)
 }

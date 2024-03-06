@@ -15,13 +15,15 @@
 package equinix
 
 import (
+	"context"
 	"fmt"
 	"path/filepath"
 	"strings"
 	"unicode"
 
 	"github.com/equinix/pulumi-equinix/provider/pkg/version"
-	"github.com/equinix/terraform-provider-equinix/equinix"
+	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -84,7 +86,13 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(equinix.Provider())
+	ctx := context.Background()
+	upstreamProvider := equinixShim.NewUpstreamProvider(ctx)
+	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider,
+		shimv2.WithDiffStrategy(shimv2.PlanState),
+		shimv2.WithPlanResourceChange(func(s string) bool { return true }),
+	)
+	p := pfbridge.MuxShimWithDisjointgPF(ctx, v2p, upstreamProvider.PluginFrameworkProvider)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -124,6 +132,10 @@ func Provider() tfbridge.ProviderInfo {
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
+
+		// See pulumi/pulumi-aws#2880
+		SkipValidateProviderConfigForPluginFramework: true,
+
 		IgnoreMappings: []string{
 			"equinix_ecx_l2_connection",          // to be deprecated in terraform. Use equinix_fabric_connection
 			"equinix_ecx_l2_connection_accepter", // deprecated in terraform
@@ -472,6 +484,23 @@ func Provider() tfbridge.ProviderInfo {
 						MaxItemsOne: tfbridge.True(),
 					},
 					"bgp_ipv6": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"equinix_fabric_network": {
+				Tok: makeEquinixResource(fabricMod, "Network"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"project": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"operation": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change_log": {
 						MaxItemsOne: tfbridge.True(),
 					},
 				},
@@ -1454,6 +1483,23 @@ func Provider() tfbridge.ProviderInfo {
 						MaxItemsOne: tfbridge.True(),
 					},
 					"bgp_ipv6": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
+			"equinix_fabric_network": {
+				Tok: makeEquinixDataSource(fabricMod, "Network"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"project": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"operation": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change": {
+						MaxItemsOne: tfbridge.True(),
+					},
+					"change_log": {
 						MaxItemsOne: tfbridge.True(),
 					},
 				},

@@ -51,10 +51,10 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
      * Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
-     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * Use metro instead of facility. For more information, read the migration guide.
      * 
      */
-    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
+    @Deprecated /* Use metro instead of facility. For more information, read the migration guide. */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
@@ -62,10 +62,10 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
      * @return Facility where the connection will be created.   Use metro instead; read the facility to metro migration guide
      * 
      * @deprecated
-     * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+     * Use metro instead of facility. For more information, read the migration guide.
      * 
      */
-    @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
+    @Deprecated /* Use metro instead of facility. For more information, read the migration guide. */
     public Optional<Output<String>> facility() {
         return Optional.ofNullable(this.facility);
     }
@@ -176,14 +176,14 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+     * @return Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
      * 
      */
     public Optional<Output<String>> speed() {
@@ -320,10 +320,10 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          * @deprecated
-         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * Use metro instead of facility. For more information, read the migration guide.
          * 
          */
-        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
+        @Deprecated /* Use metro instead of facility. For more information, read the migration guide. */
         public Builder facility(@Nullable Output<String> facility) {
             $.facility = facility;
             return this;
@@ -335,10 +335,10 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          * @deprecated
-         * Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * Use metro instead of facility. For more information, read the migration guide.
          * 
          */
-        @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
+        @Deprecated /* Use metro instead of facility. For more information, read the migration guide. */
         public Builder facility(String facility) {
             return facility(Output.of(facility));
         }
@@ -491,7 +491,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param speed Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param speed Connection speed - one of 50Mbps, 200Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps.
+         * @param speed Connection speed -  Values must be in the format &#39;&lt;number&gt;Mbps&#39; or &#39;&lt;number&gt;Gpbs&#39;, for example &#39;100Mbps&#39; or &#39;50Gbps&#39;.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
          * 
          * @return builder
          * 

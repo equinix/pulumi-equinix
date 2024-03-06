@@ -40,14 +40,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access point used and maximum number of IPv4 BGP routes
+     * Number of IPv4 BGP routes in use (including non-distinct prefixes)
      * 
      */
     @Import(name="bgpIpv4RoutesCount")
     private @Nullable Output<Integer> bgpIpv4RoutesCount;
 
     /**
-     * @return Access point used and maximum number of IPv4 BGP routes
+     * @return Number of IPv4 BGP routes in use (including non-distinct prefixes)
      * 
      */
     public Optional<Output<Integer>> bgpIpv4RoutesCount() {
@@ -55,14 +55,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access point used and maximum number of IPv6 BGP routes
+     * Number of IPv6 BGP routes in use (including non-distinct prefixes)
      * 
      */
     @Import(name="bgpIpv6RoutesCount")
     private @Nullable Output<Integer> bgpIpv6RoutesCount;
 
     /**
-     * @return Access point used and maximum number of IPv6 BGP routes
+     * @return Number of IPv6 BGP routes in use (including non-distinct prefixes)
      * 
      */
     public Optional<Output<Integer>> bgpIpv6RoutesCount() {
@@ -85,14 +85,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of connections associated with this Access point
+     * Number of connections associated with this Fabric Cloud Router instance
      * 
      */
     @Import(name="connectionsCount")
     private @Nullable Output<Integer> connectionsCount;
 
     /**
-     * @return Number of connections associated with this Access point
+     * @return Number of connections associated with this Fabric Cloud Router instance
      * 
      */
     public Optional<Output<Integer>> connectionsCount() {
@@ -112,6 +112,36 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Number of distinct IPv4 routes
+     * 
+     */
+    @Import(name="distinctIpv4PrefixesCount")
+    private @Nullable Output<Integer> distinctIpv4PrefixesCount;
+
+    /**
+     * @return Number of distinct IPv4 routes
+     * 
+     */
+    public Optional<Output<Integer>> distinctIpv4PrefixesCount() {
+        return Optional.ofNullable(this.distinctIpv4PrefixesCount);
+    }
+
+    /**
+     * Number of distinct IPv6 routes
+     * 
+     */
+    @Import(name="distinctIpv6PrefixesCount")
+    private @Nullable Output<Integer> distinctIpv6PrefixesCount;
+
+    /**
+     * @return Number of distinct IPv6 routes
+     * 
+     */
+    public Optional<Output<Integer>> distinctIpv6PrefixesCount() {
+        return Optional.ofNullable(this.distinctIpv6PrefixesCount);
     }
 
     /**
@@ -205,14 +235,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fabric Cloud Router package
+     * Fabric Cloud Router Package Type
      * 
      */
     @Import(name="package")
     private @Nullable Output<CloudRouterPackageArgs> package_;
 
     /**
-     * @return Fabric Cloud Router package
+     * @return Fabric Cloud Router Package Type
      * 
      */
     public Optional<Output<CloudRouterPackageArgs>> package_() {
@@ -220,14 +250,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fabric Cloud Router project
+     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     @Import(name="project")
     private @Nullable Output<CloudRouterProjectArgs> project;
 
     /**
-     * @return Fabric Cloud Router project
+     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     public Optional<Output<CloudRouterProjectArgs>> project() {
@@ -264,6 +294,21 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Equinix-assigned Fabric Cloud Router identifier
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return Equinix-assigned Fabric Cloud Router identifier
+     * 
+     */
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
+    }
+
     private CloudRouterState() {}
 
     private CloudRouterState(CloudRouterState $) {
@@ -273,6 +318,8 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         this.changeLogs = $.changeLogs;
         this.connectionsCount = $.connectionsCount;
         this.description = $.description;
+        this.distinctIpv4PrefixesCount = $.distinctIpv4PrefixesCount;
+        this.distinctIpv6PrefixesCount = $.distinctIpv6PrefixesCount;
         this.equinixAsn = $.equinixAsn;
         this.href = $.href;
         this.location = $.location;
@@ -283,6 +330,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.state = $.state;
         this.type = $.type;
+        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -325,7 +373,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpIpv4RoutesCount Access point used and maximum number of IPv4 BGP routes
+         * @param bgpIpv4RoutesCount Number of IPv4 BGP routes in use (including non-distinct prefixes)
          * 
          * @return builder
          * 
@@ -336,7 +384,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpIpv4RoutesCount Access point used and maximum number of IPv4 BGP routes
+         * @param bgpIpv4RoutesCount Number of IPv4 BGP routes in use (including non-distinct prefixes)
          * 
          * @return builder
          * 
@@ -346,7 +394,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpIpv6RoutesCount Access point used and maximum number of IPv6 BGP routes
+         * @param bgpIpv6RoutesCount Number of IPv6 BGP routes in use (including non-distinct prefixes)
          * 
          * @return builder
          * 
@@ -357,7 +405,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpIpv6RoutesCount Access point used and maximum number of IPv6 BGP routes
+         * @param bgpIpv6RoutesCount Number of IPv6 BGP routes in use (including non-distinct prefixes)
          * 
          * @return builder
          * 
@@ -398,7 +446,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionsCount Number of connections associated with this Access point
+         * @param connectionsCount Number of connections associated with this Fabric Cloud Router instance
          * 
          * @return builder
          * 
@@ -409,7 +457,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionsCount Number of connections associated with this Access point
+         * @param connectionsCount Number of connections associated with this Fabric Cloud Router instance
          * 
          * @return builder
          * 
@@ -437,6 +485,48 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param distinctIpv4PrefixesCount Number of distinct IPv4 routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder distinctIpv4PrefixesCount(@Nullable Output<Integer> distinctIpv4PrefixesCount) {
+            $.distinctIpv4PrefixesCount = distinctIpv4PrefixesCount;
+            return this;
+        }
+
+        /**
+         * @param distinctIpv4PrefixesCount Number of distinct IPv4 routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder distinctIpv4PrefixesCount(Integer distinctIpv4PrefixesCount) {
+            return distinctIpv4PrefixesCount(Output.of(distinctIpv4PrefixesCount));
+        }
+
+        /**
+         * @param distinctIpv6PrefixesCount Number of distinct IPv6 routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder distinctIpv6PrefixesCount(@Nullable Output<Integer> distinctIpv6PrefixesCount) {
+            $.distinctIpv6PrefixesCount = distinctIpv6PrefixesCount;
+            return this;
+        }
+
+        /**
+         * @param distinctIpv6PrefixesCount Number of distinct IPv6 routes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder distinctIpv6PrefixesCount(Integer distinctIpv6PrefixesCount) {
+            return distinctIpv6PrefixesCount(Output.of(distinctIpv6PrefixesCount));
         }
 
         /**
@@ -576,7 +666,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param package_ Fabric Cloud Router package
+         * @param package_ Fabric Cloud Router Package Type
          * 
          * @return builder
          * 
@@ -587,7 +677,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param package_ Fabric Cloud Router package
+         * @param package_ Fabric Cloud Router Package Type
          * 
          * @return builder
          * 
@@ -597,7 +687,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Fabric Cloud Router project
+         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -608,7 +698,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Fabric Cloud Router project
+         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -657,6 +747,27 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param uuid Equinix-assigned Fabric Cloud Router identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+        /**
+         * @param uuid Equinix-assigned Fabric Cloud Router identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
         }
 
         public CloudRouterState build() {

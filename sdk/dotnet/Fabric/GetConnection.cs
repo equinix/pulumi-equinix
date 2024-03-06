@@ -11,24 +11,68 @@ namespace Pulumi.Equinix.Fabric
 {
     public static class GetConnection
     {
-        public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_connection&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
 
-        public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connectionDataName = Equinix.Fabric.GetConnection.Invoke(new()
+        ///     {
+        ///         Uuid = "&lt;uuid_of_connection&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetConnectionArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Project information
-        /// </summary>
-        [Input("project")]
-        public Inputs.GetConnectionProjectArgs? Project { get; set; }
-
-        [Input("uuid")]
-        public string? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public string Uuid { get; set; } = null!;
 
         public GetConnectionArgs()
         {
@@ -38,14 +82,8 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Project information
-        /// </summary>
-        [Input("project")]
-        public Input<Inputs.GetConnectionProjectInputArgs>? Project { get; set; }
-
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
+        [Input("uuid", required: true)]
+        public Input<string> Uuid { get; set; } = null!;
 
         public GetConnectionInvokeArgs()
         {
@@ -68,7 +106,7 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Connection additional information
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionAdditionalInfoResult> AdditionalInfo;
+        public readonly ImmutableArray<ImmutableDictionary<string, object>> AdditionalInfo;
         /// <summary>
         /// Connection bandwidth in Mbps
         /// </summary>
@@ -106,19 +144,19 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionNotificationResult> Notifications;
         /// <summary>
-        /// Connection specific operational data
+        /// Connection type-specific operational data
         /// </summary>
         public readonly Outputs.GetConnectionOperationResult Operation;
         /// <summary>
-        /// Order related to this connection information
+        /// Order details
         /// </summary>
         public readonly Outputs.GetConnectionOrderResult Order;
         /// <summary>
         /// Project information
         /// </summary>
-        public readonly Outputs.GetConnectionProjectResult? Project;
+        public readonly Outputs.GetConnectionProjectResult Project;
         /// <summary>
-        /// Redundancy Information
+        /// Connection Redundancy Configuration
         /// </summary>
         public readonly Outputs.GetConnectionRedundancyResult Redundancy;
         /// <summary>
@@ -126,13 +164,13 @@ namespace Pulumi.Equinix.Fabric
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Defines the connection type like VG*VC, EVPL*VC, EPL*VC, EC*VC, IP*VC, ACCESS*EPL_VC
+        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// Equinix-assigned connection identifier
         /// </summary>
-        public readonly string? Uuid;
+        public readonly string Uuid;
         /// <summary>
         /// Destination or Provider side connection configuration object of the multi-segment connection
         /// </summary>
@@ -144,7 +182,7 @@ namespace Pulumi.Equinix.Fabric
 
             Outputs.GetConnectionAccountResult account,
 
-            ImmutableArray<Outputs.GetConnectionAdditionalInfoResult> additionalInfo,
+            ImmutableArray<ImmutableDictionary<string, object>> additionalInfo,
 
             int bandwidth,
 
@@ -168,7 +206,7 @@ namespace Pulumi.Equinix.Fabric
 
             Outputs.GetConnectionOrderResult order,
 
-            Outputs.GetConnectionProjectResult? project,
+            Outputs.GetConnectionProjectResult project,
 
             Outputs.GetConnectionRedundancyResult redundancy,
 
@@ -176,7 +214,7 @@ namespace Pulumi.Equinix.Fabric
 
             string type,
 
-            string? uuid,
+            string uuid,
 
             Outputs.GetConnectionZSideResult zSide)
         {

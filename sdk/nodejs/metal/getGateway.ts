@@ -49,9 +49,6 @@ export interface GetGatewayArgs {
  */
 export interface GetGatewayResult {
     readonly gatewayId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * UUID of IP reservation block bound to the gateway.

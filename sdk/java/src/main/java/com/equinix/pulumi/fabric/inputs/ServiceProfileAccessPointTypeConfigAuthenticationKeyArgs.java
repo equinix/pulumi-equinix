@@ -17,14 +17,14 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
     public static final ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs Empty = new ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs();
 
     /**
-     * Description
+     * Description of authorization key
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description
+     * @return Description of authorization key
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
     }
 
     /**
-     * Label
+     * Name of the parameter that must be provided to authorize the connection.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Label
+     * @return Name of the parameter that must be provided to authorize the connection.
      * 
      */
     public Optional<Output<String>> label() {
@@ -47,14 +47,14 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
     }
 
     /**
-     * Required
+     * Requirement to configure an authentication key.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return Required
+     * @return Requirement to configure an authentication key.
      * 
      */
     public Optional<Output<Boolean>> required() {
@@ -88,7 +88,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param description Description
+         * @param description Description of authorization key
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param label Label
+         * @param label Name of the parameter that must be provided to authorize the connection.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param label Label
+         * @param label Name of the parameter that must be provided to authorize the connection.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param required Required
+         * @param required Requirement to configure an authentication key.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs exte
         }
 
         /**
-         * @param required Required
+         * @param required Requirement to configure an authentication key.
          * 
          * @return builder
          * 

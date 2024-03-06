@@ -13,13 +13,13 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionRedundancyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Redundancy group identifier
+        /// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Priority type- PRIMARY, SECONDARY
+        /// Connection priority in redundancy group - PRIMARY, SECONDARY
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }

@@ -21,6 +21,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// Authentication key for provider based connections
         /// </summary>
         public readonly string? AuthenticationKey;
+        /// <summary>
+        /// **Deprecated** `gateway` Use `router` attribute instead
+        /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointGateway? Gateway;
         /// <summary>
         /// Virtual device interface
@@ -35,7 +38,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointLocation? Location;
         /// <summary>
-        /// Simplified Network
+        /// network access point information
         /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointNetwork? Network;
         /// <summary>
@@ -55,13 +58,9 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? ProviderConnectionId;
         /// <summary>
-        /// Cloud Router access point information that replaces `gateway` (refers to below for nested schema)
+        /// Cloud Router access point information that replaces `gateway`
         /// </summary>
         public readonly Outputs.ConnectionZSideAccessPointRouter? Router;
-        /// <summary>
-        /// Access point routing protocols configuration
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ConnectionZSideAccessPointRoutingProtocol> RoutingProtocols;
         /// <summary>
         /// Access point seller region
         /// </summary>
@@ -101,8 +100,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             Outputs.ConnectionZSideAccessPointRouter? router,
 
-            ImmutableArray<Outputs.ConnectionZSideAccessPointRoutingProtocol> routingProtocols,
-
             string? sellerRegion,
 
             string? type,
@@ -121,7 +118,6 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Profile = profile;
             ProviderConnectionId = providerConnectionId;
             Router = router;
-            RoutingProtocols = routingProtocols;
             SellerRegion = sellerRegion;
             Type = type;
             VirtualDevice = virtualDevice;

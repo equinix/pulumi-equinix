@@ -34,6 +34,7 @@ namespace Pulumi.Equinix.NetworkEdge
         ///     {
         ///         MetroCode = "DC",
         ///         Status = "Active",
+        ///         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -71,6 +72,7 @@ namespace Pulumi.Equinix.NetworkEdge
         ///     {
         ///         MetroCode = "DC",
         ///         Status = "Active",
+        ///         ProjectId = "a86d7112-d740-4758-9c9c-31e66373746b",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -102,6 +104,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public string? Name { get; set; }
 
         /// <summary>
+        /// Unique Identifier for the project resource where the account is scoped to.If you
+        /// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
+
+        /// <summary>
         /// Account status for filtering. Possible values are: `Active`, `Processing`,
         /// `Submitted`, `Staged`.
         /// </summary>
@@ -127,6 +136,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Unique Identifier for the project resource where the account is scoped to.If you
+        /// leave it out, all the billing accounts under all projects in your organization will be returned and it may return more than one account.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// Account status for filtering. Possible values are: `Active`, `Processing`,
@@ -155,6 +171,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// Account unique number.
         /// </summary>
         public readonly string Number;
+        public readonly string ProjectId;
         public readonly string Status;
         /// <summary>
         /// Account unique identifier.
@@ -171,6 +188,8 @@ namespace Pulumi.Equinix.NetworkEdge
 
             string number,
 
+            string projectId,
+
             string status,
 
             string ucmId)
@@ -179,6 +198,7 @@ namespace Pulumi.Equinix.NetworkEdge
             MetroCode = metroCode;
             Name = name;
             Number = number;
+            ProjectId = projectId;
             Status = status;
             UcmId = ucmId;
         }

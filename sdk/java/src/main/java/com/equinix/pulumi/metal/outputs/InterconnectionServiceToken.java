@@ -6,44 +6,42 @@ package com.equinix.pulumi.metal.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class InterconnectionServiceToken {
-    private @Nullable String expiresAt;
-    private @Nullable String id;
-    private @Nullable String maxAllowedSpeed;
-    private @Nullable String role;
-    private @Nullable String state;
+    private String expiresAt;
+    private String id;
+    private String maxAllowedSpeed;
+    private String role;
+    private String state;
     /**
      * @return Connection type - dedicated or shared.
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private InterconnectionServiceToken() {}
-    public Optional<String> expiresAt() {
-        return Optional.ofNullable(this.expiresAt);
+    public String expiresAt() {
+        return this.expiresAt;
     }
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
-    public Optional<String> maxAllowedSpeed() {
-        return Optional.ofNullable(this.maxAllowedSpeed);
+    public String maxAllowedSpeed() {
+        return this.maxAllowedSpeed;
     }
-    public Optional<String> role() {
-        return Optional.ofNullable(this.role);
+    public String role() {
+        return this.role;
     }
-    public Optional<String> state() {
-        return Optional.ofNullable(this.state);
+    public String state() {
+        return this.state;
     }
     /**
      * @return Connection type - dedicated or shared.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -55,12 +53,12 @@ public final class InterconnectionServiceToken {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String expiresAt;
-        private @Nullable String id;
-        private @Nullable String maxAllowedSpeed;
-        private @Nullable String role;
-        private @Nullable String state;
-        private @Nullable String type;
+        private String expiresAt;
+        private String id;
+        private String maxAllowedSpeed;
+        private String role;
+        private String state;
+        private String type;
         public Builder() {}
         public Builder(InterconnectionServiceToken defaults) {
     	      Objects.requireNonNull(defaults);
@@ -73,33 +71,33 @@ public final class InterconnectionServiceToken {
         }
 
         @CustomType.Setter
-        public Builder expiresAt(@Nullable String expiresAt) {
-            this.expiresAt = expiresAt;
+        public Builder expiresAt(String expiresAt) {
+            this.expiresAt = Objects.requireNonNull(expiresAt);
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-            this.id = id;
+        public Builder id(String id) {
+            this.id = Objects.requireNonNull(id);
             return this;
         }
         @CustomType.Setter
-        public Builder maxAllowedSpeed(@Nullable String maxAllowedSpeed) {
-            this.maxAllowedSpeed = maxAllowedSpeed;
+        public Builder maxAllowedSpeed(String maxAllowedSpeed) {
+            this.maxAllowedSpeed = Objects.requireNonNull(maxAllowedSpeed);
             return this;
         }
         @CustomType.Setter
-        public Builder role(@Nullable String role) {
-            this.role = role;
+        public Builder role(String role) {
+            this.role = Objects.requireNonNull(role);
             return this;
         }
         @CustomType.Setter
-        public Builder state(@Nullable String state) {
-            this.state = state;
+        public Builder state(String state) {
+            this.state = Objects.requireNonNull(state);
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-            this.type = type;
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
             return this;
         }
         public InterconnectionServiceToken build() {

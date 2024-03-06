@@ -39,6 +39,16 @@ public final class GetDeviceResult {
      */
     private String connectivity;
     private Integer coreCount;
+    /**
+     * @return diverse device uuid
+     * 
+     */
+    private String diverseDeviceId;
+    /**
+     * @return Name of the device with diverse device UUID
+     * 
+     */
+    private String diverseDeviceName;
     private String hostname;
     /**
      * @return Device location Equinix Business Exchange name
@@ -88,6 +98,7 @@ public final class GetDeviceResult {
     private List<String> notifications;
     private String orderReference;
     private String packageCode;
+    private String projectId;
     private String purchaseOrderNumber;
     /**
      * @return Device redundancy type applicable for HA devices, either
@@ -195,6 +206,20 @@ public final class GetDeviceResult {
     public Integer coreCount() {
         return this.coreCount;
     }
+    /**
+     * @return diverse device uuid
+     * 
+     */
+    public String diverseDeviceId() {
+        return this.diverseDeviceId;
+    }
+    /**
+     * @return Name of the device with diverse device UUID
+     * 
+     */
+    public String diverseDeviceName() {
+        return this.diverseDeviceName;
+    }
     public String hostname() {
         return this.hostname;
     }
@@ -273,6 +298,9 @@ public final class GetDeviceResult {
     }
     public String packageCode() {
         return this.packageCode;
+    }
+    public String projectId() {
+        return this.projectId;
     }
     public String purchaseOrderNumber() {
         return this.purchaseOrderNumber;
@@ -401,6 +429,8 @@ public final class GetDeviceResult {
         private List<GetDeviceClusterDetail> clusterDetails;
         private String connectivity;
         private Integer coreCount;
+        private String diverseDeviceId;
+        private String diverseDeviceName;
         private String hostname;
         private String ibx;
         private String id;
@@ -416,6 +446,7 @@ public final class GetDeviceResult {
         private List<String> notifications;
         private String orderReference;
         private String packageCode;
+        private String projectId;
         private String purchaseOrderNumber;
         private String redundancyType;
         private String redundantId;
@@ -447,6 +478,8 @@ public final class GetDeviceResult {
     	      this.clusterDetails = defaults.clusterDetails;
     	      this.connectivity = defaults.connectivity;
     	      this.coreCount = defaults.coreCount;
+    	      this.diverseDeviceId = defaults.diverseDeviceId;
+    	      this.diverseDeviceName = defaults.diverseDeviceName;
     	      this.hostname = defaults.hostname;
     	      this.ibx = defaults.ibx;
     	      this.id = defaults.id;
@@ -462,6 +495,7 @@ public final class GetDeviceResult {
     	      this.notifications = defaults.notifications;
     	      this.orderReference = defaults.orderReference;
     	      this.packageCode = defaults.packageCode;
+    	      this.projectId = defaults.projectId;
     	      this.purchaseOrderNumber = defaults.purchaseOrderNumber;
     	      this.redundancyType = defaults.redundancyType;
     	      this.redundantId = defaults.redundantId;
@@ -525,6 +559,16 @@ public final class GetDeviceResult {
         @CustomType.Setter
         public Builder coreCount(Integer coreCount) {
             this.coreCount = Objects.requireNonNull(coreCount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diverseDeviceId(String diverseDeviceId) {
+            this.diverseDeviceId = Objects.requireNonNull(diverseDeviceId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diverseDeviceName(String diverseDeviceName) {
+            this.diverseDeviceName = Objects.requireNonNull(diverseDeviceName);
             return this;
         }
         @CustomType.Setter
@@ -606,6 +650,11 @@ public final class GetDeviceResult {
         @CustomType.Setter
         public Builder packageCode(String packageCode) {
             this.packageCode = Objects.requireNonNull(packageCode);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
         @CustomType.Setter
@@ -724,6 +773,8 @@ public final class GetDeviceResult {
             _resultValue.clusterDetails = clusterDetails;
             _resultValue.connectivity = connectivity;
             _resultValue.coreCount = coreCount;
+            _resultValue.diverseDeviceId = diverseDeviceId;
+            _resultValue.diverseDeviceName = diverseDeviceName;
             _resultValue.hostname = hostname;
             _resultValue.ibx = ibx;
             _resultValue.id = id;
@@ -739,6 +790,7 @@ public final class GetDeviceResult {
             _resultValue.notifications = notifications;
             _resultValue.orderReference = orderReference;
             _resultValue.packageCode = packageCode;
+            _resultValue.projectId = projectId;
             _resultValue.purchaseOrderNumber = purchaseOrderNumber;
             _resultValue.redundancyType = redundancyType;
             _resultValue.redundantId = redundantId;
