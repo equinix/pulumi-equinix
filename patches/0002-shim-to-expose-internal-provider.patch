@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: ocobleseqx <oscar.cobles@eu.equinix.com>
 Date: Wed, 6 Mar 2024 01:09:42 +0100
-Subject: [PATCH 2/2] shim to expose internal provider
+Subject: [PATCH 2/3] shim to expose internal provider
 
 Signed-off-by: ocobleseqx <oscar.cobles@eu.equinix.com>
 
