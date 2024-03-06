@@ -16,11 +16,10 @@ package main
 
 import (
 	equinix "github.com/equinix/pulumi-equinix/provider"
-	"github.com/equinix/pulumi-equinix/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("equinix", version.Version, equinix.Provider())
+	tfgen.MainWithMuxer("equinix", equinix.Provider())
 }

@@ -21,6 +21,9 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
@@ -86,13 +89,12 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	ctx := context.Background()
-	upstreamProvider := equinixShim.NewUpstreamProvider(ctx)
+	upstreamProvider := equinixShim.NewUpstreamProvider(version.Version)
 	v2p := shimv2.NewProvider(upstreamProvider.SDKV2Provider,
 		shimv2.WithDiffStrategy(shimv2.PlanState),
 		shimv2.WithPlanResourceChange(func(s string) bool { return true }),
 	)
-	p := pfbridge.MuxShimWithDisjointgPF(ctx, v2p, upstreamProvider.PluginFrameworkProvider)
+	p := pfbridge.MuxShimWithDisjointgPF(context.Background(), v2p, upstreamProvider.PluginFrameworkProvider)
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -129,6 +131,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:            "equinix",
 		UpstreamRepoPath:     "./upstream",
 		Version:              version.Version,
+		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
@@ -1603,3 +1606,6 @@ func Provider() tfbridge.ProviderInfo {
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-equinix/bridge-metadata.json
+var metadata []byte
