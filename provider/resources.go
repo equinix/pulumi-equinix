@@ -21,6 +21,9 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/equinix/pulumi-equinix/provider/pkg/version"
 	equinixShim "github.com/equinix/terraform-provider-equinix/shim"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
@@ -128,6 +131,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:            "equinix",
 		UpstreamRepoPath:     "./upstream",
 		Version:              version.Version,
+		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		// IgnoreMappings is a list of TF resources and data sources to ignore in mappings errors
@@ -1602,3 +1606,6 @@ func Provider() tfbridge.ProviderInfo {
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-equinix/bridge-metadata.json
+var metadata []byte
