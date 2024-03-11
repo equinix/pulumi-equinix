@@ -268,12 +268,14 @@ def get_port(uuid: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     port_data_name = equinix.fabric.get_port(uuid="<uuid_of_port>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned port identifier
@@ -313,12 +315,14 @@ def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     port_data_name = equinix.fabric.get_port(uuid="<uuid_of_port>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned port identifier

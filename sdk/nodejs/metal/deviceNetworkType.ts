@@ -23,7 +23,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can also be imported using existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} <break>```<break><break>
+ * This resource can also be imported using existing device ID:
+ *
+ * ```sh
+ * $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
+ * ```
  */
 export class DeviceNetworkType extends pulumi.CustomResource {
     /**

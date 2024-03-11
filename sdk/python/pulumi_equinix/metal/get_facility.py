@@ -118,6 +118,18 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
 
     Provides an Equinix Metal facility datasource.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    ny5 = equinix.metal.get_facility(code="ny5")
+    pulumi.export("id", ny5.id)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
     :param str code: The facility code to search for facilities.
@@ -150,6 +162,18 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
     > **Deprecated** Use `metal_get_metro` instead.  For more information, refer to the facility to metro migration guide.
 
     Provides an Equinix Metal facility datasource.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_equinix as equinix
+
+    ny5 = equinix.metal.get_facility(code="ny5")
+    pulumi.export("id", ny5.id)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.

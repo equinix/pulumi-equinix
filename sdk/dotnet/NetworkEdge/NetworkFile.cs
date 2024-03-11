@@ -44,7 +44,13 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `content`, `self_managed` and `byol` fields can not be imported.&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing ID:
+    /// 
+    /// ```sh
+    /// $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+    /// ```
+    /// 
+    /// The `content`, `self_managed` and `byol` fields can not be imported.
     /// </summary>
     [EquinixResourceType("equinix:networkedge/networkFile:NetworkFile")]
     public partial class NetworkFile : global::Pulumi.CustomResource

@@ -12,6 +12,35 @@ import (
 )
 
 // Provides an Equinix Metal metro datasource.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sv, err := metal.GetMetro(ctx, &metal.GetMetroArgs{
+//				Code: "sv",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("id", sv.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetMetro(ctx *pulumi.Context, args *GetMetroArgs, opts ...pulumi.InvokeOption) (*GetMetroResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetroResult

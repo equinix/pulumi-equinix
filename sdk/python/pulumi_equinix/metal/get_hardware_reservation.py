@@ -156,6 +156,7 @@ def get_hardware_reservation(device_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -163,6 +164,7 @@ def get_hardware_reservation(device_id: Optional[str] = None,
     example = equinix.metal.get_hardware_reservation(id="4347e805-eb46-4699-9eb9-5c116e6a0172")
     example_by_device_id = equinix.metal.get_hardware_reservation(device_id="ff85aa58-c106-4624-8f1c-7c64554047ea")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: UUID of device occupying the reservation.
@@ -197,6 +199,7 @@ def get_hardware_reservation_output(device_id: Optional[pulumi.Input[Optional[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -204,6 +207,7 @@ def get_hardware_reservation_output(device_id: Optional[pulumi.Input[Optional[st
     example = equinix.metal.get_hardware_reservation(id="4347e805-eb46-4699-9eb9-5c116e6a0172")
     example_by_device_id = equinix.metal.get_hardware_reservation(device_id="ff85aa58-c106-4624-8f1c-7c64554047ea")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: UUID of device occupying the reservation.

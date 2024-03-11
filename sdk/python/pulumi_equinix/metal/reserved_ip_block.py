@@ -618,7 +618,11 @@ class ReservedIpBlock(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing IP reservation ID:<break><break> ```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
+        This resource can be imported using an existing IP reservation ID:
+
+        ```sh
+        $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -688,7 +692,11 @@ class ReservedIpBlock(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing IP reservation ID:<break><break> ```sh<break> $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id} <break>```<break><break>
+        This resource can be imported using an existing IP reservation ID:
+
+        ```sh
+        $ pulumi import equinix:metal/reservedIpBlock:ReservedIpBlock equinix_metal_reserved_ip_block {existing_ip_reservation_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param ReservedIpBlockArgs args: The arguments to use to populate this resource's properties.

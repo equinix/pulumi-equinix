@@ -292,12 +292,14 @@ def get_service_profile(uuid: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     service_profile_data_name = equinix.fabric.get_service_profile(uuid="<uuid_of_service_profile>")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['uuid'] = uuid
@@ -336,11 +338,13 @@ def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     service_profile_data_name = equinix.fabric.get_service_profile(uuid="<uuid_of_service_profile>")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -16,10 +16,9 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVrfResult> InvokeAsync(GetVrfArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVrfResult> Invoke(GetVrfInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVrfResult>("equinix:metal/getVrf:getVrf", args ?? new GetVrfInvokeArgs(), options.WithDefaults());

@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  *     type: "EVPLAN",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Network extends pulumi.CustomResource {
     /**

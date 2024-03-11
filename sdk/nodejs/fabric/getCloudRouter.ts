@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     uuid: "<uuid_of_cloud_router>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudRouter(args: GetCloudRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRouterResult> {
 
@@ -133,6 +135,7 @@ export interface GetCloudRouterResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -141,6 +144,7 @@ export interface GetCloudRouterResult {
  *     uuid: "<uuid_of_cloud_router>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCloudRouterOutput(args: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRouterResult> {
     return pulumi.output(args).apply((a: any) => getCloudRouter(a, opts))

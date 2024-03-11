@@ -212,6 +212,7 @@ def get_port(device_id: Optional[str] = None,
 
     Create a device and read it's eth0 port to the datasource.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -227,6 +228,7 @@ def get_port(device_id: Optional[str] = None,
     test_port = equinix.metal.get_port_output(device_id=test_device.id,
         name="eth0")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: Device UUID where to lookup the port.
@@ -271,6 +273,7 @@ def get_port_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Create a device and read it's eth0 port to the datasource.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -286,6 +289,7 @@ def get_port_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     test_port = equinix.metal.get_port_output(device_id=test_device.id,
         name="eth0")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: Device UUID where to lookup the port.

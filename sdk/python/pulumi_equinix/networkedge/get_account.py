@@ -118,6 +118,7 @@ def get_account(metro_code: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -127,6 +128,7 @@ def get_account(metro_code: Optional[str] = None,
         project_id="a86d7112-d740-4758-9c9c-31e66373746b")
     pulumi.export("number", dc.number)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str metro_code: Account location metro code.
@@ -169,6 +171,7 @@ def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -178,6 +181,7 @@ def get_account_output(metro_code: Optional[pulumi.Input[str]] = None,
         project_id="a86d7112-d740-4758-9c9c-31e66373746b")
     pulumi.export("number", dc.number)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str metro_code: Account location metro code.

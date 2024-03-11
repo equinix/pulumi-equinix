@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const usersOfTerraformFun = tfProject1.then(tfProject1 => tfProject1.userIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
@@ -90,6 +92,7 @@ export interface GetProjectResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -99,6 +102,7 @@ export interface GetProjectResult {
  * });
  * export const usersOfTerraformFun = tfProject1.then(tfProject1 => tfProject1.userIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

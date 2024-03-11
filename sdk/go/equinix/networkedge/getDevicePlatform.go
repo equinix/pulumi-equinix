@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDevicePlatform(ctx *pulumi.Context, args *GetDevicePlatformArgs, opts ...pulumi.InvokeOption) (*GetDevicePlatformResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDevicePlatformResult

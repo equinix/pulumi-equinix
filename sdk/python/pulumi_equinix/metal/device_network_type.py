@@ -120,7 +120,11 @@ class DeviceNetworkType(pulumi.CustomResource):
 
         ## Import
 
-        This resource can also be imported using existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} <break>```<break><break>
+        This resource can also be imported using existing device ID:
+
+        ```sh
+        $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -153,7 +157,11 @@ class DeviceNetworkType(pulumi.CustomResource):
 
         ## Import
 
-        This resource can also be imported using existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} <break>```<break><break>
+        This resource can also be imported using existing device ID:
+
+        ```sh
+        $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param DeviceNetworkTypeArgs args: The arguments to use to populate this resource's properties.

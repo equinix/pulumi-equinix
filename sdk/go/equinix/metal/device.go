@@ -62,7 +62,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+// This resource can be imported using an existing device ID:
+//
+// ```sh
+// $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
+// ```
 type Device struct {
 	pulumi.CustomResourceState
 

@@ -295,7 +295,11 @@ class DeviceLink(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:
+
+        ```sh
+        $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -361,7 +365,11 @@ class DeviceLink(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:
+
+        ```sh
+        $ pulumi import equinix:networkedge/deviceLink:DeviceLink example {existing_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param DeviceLinkArgs args: The arguments to use to populate this resource's properties.

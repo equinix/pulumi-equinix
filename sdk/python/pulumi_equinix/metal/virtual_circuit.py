@@ -617,7 +617,11 @@ class VirtualCircuit(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing Virtual Circuit ID:<break><break> ```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
+        This resource can be imported using an existing Virtual Circuit ID:
+
+        ```sh
+        $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -675,7 +679,11 @@ class VirtualCircuit(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing Virtual Circuit ID:<break><break> ```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
+        This resource can be imported using an existing Virtual Circuit ID:
+
+        ```sh
+        $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param VirtualCircuitArgs args: The arguments to use to populate this resource's properties.

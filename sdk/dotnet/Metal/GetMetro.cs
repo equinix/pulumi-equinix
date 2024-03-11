@@ -13,12 +13,60 @@ namespace Pulumi.Equinix.Metal
     {
         /// <summary>
         /// Provides an Equinix Metal metro datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sv = Equinix.Metal.GetMetro.Invoke(new()
+        ///     {
+        ///         Code = "sv",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = sv.Apply(getMetroResult =&gt; getMetroResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMetroResult> InvokeAsync(GetMetroArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides an Equinix Metal metro datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Equinix = Pulumi.Equinix;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sv = Equinix.Metal.GetMetro.Invoke(new()
+        ///     {
+        ///         Code = "sv",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = sv.Apply(getMetroResult =&gt; getMetroResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());

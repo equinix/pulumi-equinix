@@ -14,6 +14,35 @@ import (
 // > **Deprecated** Use `metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
 //
 // Provides an Equinix Metal facility datasource.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ny5, err := metal.GetFacility(ctx, &metal.GetFacilityArgs{
+//				Code: "ny5",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("id", ny5.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetFacility(ctx *pulumi.Context, args *GetFacilityArgs, opts ...pulumi.InvokeOption) (*GetFacilityResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFacilityResult

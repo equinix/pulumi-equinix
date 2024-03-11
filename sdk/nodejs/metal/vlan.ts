@@ -36,7 +36,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing VLAN ID (UUID):<break><break> ```sh<break> $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} <break>```<break><break>
+ * This resource can be imported using an existing VLAN ID (UUID):
+ *
+ * ```sh
+ * $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
+ * ```
  */
 export class Vlan extends pulumi.CustomResource {
     /**

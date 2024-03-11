@@ -54,7 +54,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} <break>```<break><break>
+// This resource can be imported using an existing ID:
+//
+// ```sh
+// $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
+// ```
 type SshKey struct {
 	pulumi.CustomResourceState
 

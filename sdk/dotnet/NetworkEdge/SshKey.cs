@@ -36,7 +36,11 @@ namespace Pulumi.Equinix.NetworkEdge
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing ID:
+    /// 
+    /// ```sh
+    /// $ pulumi import equinix:networkedge/sshKey:SshKey example {existing_id}
+    /// ```
     /// </summary>
     [EquinixResourceType("equinix:networkedge/sshKey:SshKey")]
     public partial class SshKey : global::Pulumi.CustomResource

@@ -115,6 +115,7 @@ def get_device_type(category: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -126,6 +127,7 @@ def get_device_type(category: Optional[str] = None,
         ],
         vendor="Cisco")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category: Device type category. One of: `Router`, `Firewall`, `SDWAN`.
@@ -163,6 +165,7 @@ def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -174,6 +177,7 @@ def get_device_type_output(category: Optional[pulumi.Input[Optional[str]]] = Non
         ],
         vendor="Cisco")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category: Device type category. One of: `Router`, `Firewall`, `SDWAN`.

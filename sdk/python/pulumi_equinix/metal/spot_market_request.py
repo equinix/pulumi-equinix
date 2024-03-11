@@ -358,7 +358,11 @@ class SpotMarketRequest(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing spot market request ID:<break><break> ```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
+        This resource can be imported using an existing spot market request ID:
+
+        ```sh
+        $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -414,7 +418,11 @@ class SpotMarketRequest(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing spot market request ID:<break><break> ```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
+        This resource can be imported using an existing spot market request ID:
+
+        ```sh
+        $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param SpotMarketRequestArgs args: The arguments to use to populate this resource's properties.

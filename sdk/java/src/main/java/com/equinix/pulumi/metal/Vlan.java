@@ -56,7 +56,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing VLAN ID (UUID):&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using an existing VLAN ID (UUID):
+ * 
+ * ```sh
+ * $ pulumi import equinix:metal/vlan:Vlan equinix_metal_vlan {existing_vlan_id}
+ * ```
  * 
  */
 @ResourceType(type="equinix:metal/vlan:Vlan")

@@ -60,7 +60,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing VRF ID:<break><break> ```sh<break> $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} <break>```<break><break>
+// This resource can be imported using an existing VRF ID:
+//
+// ```sh
+// $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}
+// ```
 type Vrf struct {
 	pulumi.CustomResourceState
 

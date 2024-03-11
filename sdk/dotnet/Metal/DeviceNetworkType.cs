@@ -36,7 +36,11 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// ## Import
     /// 
-    /// This resource can also be imported using existing device ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can also be imported using existing device ID:
+    /// 
+    /// ```sh
+    /// $ pulumi import equinix:metal/deviceNetworkType:DeviceNetworkType equinix_metal_device_network_type {existing device_id}
+    /// ```
     /// </summary>
     [EquinixResourceType("equinix:metal/deviceNetworkType:DeviceNetworkType")]
     public partial class DeviceNetworkType : global::Pulumi.CustomResource

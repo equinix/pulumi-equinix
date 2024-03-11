@@ -31,7 +31,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing organization ID:<break><break> ```sh<break> $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id} <break>```<break><break>
+ * This resource can be imported using an existing organization ID:
+ *
+ * ```sh
+ * $ pulumi import equinix:metal/organization:Organization equinix_metal_organization {existing_organization_id}
+ * ```
  */
 export class Organization extends pulumi.CustomResource {
     /**

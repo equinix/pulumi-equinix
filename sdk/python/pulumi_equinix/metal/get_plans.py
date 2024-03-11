@@ -81,6 +81,7 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -105,7 +106,9 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
         ])
     pulumi.export("plans", example.plans)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -131,12 +134,15 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     ])
     pulumi.export("plans", example.plans)
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Ignoring Changes to Plans/Metro
 
     Preserve deployed device plan, facility and metro when creating a new execution plan.
 
     As described in the `data-resource-behavior` feature as shown in the example below.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -169,9 +175,11 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
         billing_cycle="hourly",
         project_id=var["project_id"])
     ```
+    <!--End PulumiCodeChooser -->
 
     If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -184,6 +192,7 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     # required device arguments
     example_device = equinix.metal.Device("exampleDevice")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of
@@ -212,6 +221,7 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -236,7 +246,9 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
         ])
     pulumi.export("plans", example.plans)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -262,12 +274,15 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     ])
     pulumi.export("plans", example.plans)
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Ignoring Changes to Plans/Metro
 
     Preserve deployed device plan, facility and metro when creating a new execution plan.
 
     As described in the `data-resource-behavior` feature as shown in the example below.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -300,9 +315,11 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
         billing_cycle="hourly",
         project_id=var["project_id"])
     ```
+    <!--End PulumiCodeChooser -->
 
     If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -315,6 +332,7 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     # required device arguments
     example_device = equinix.metal.Device("exampleDevice")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetPlansFilterArgs']] filters: One or more attribute/values pairs to filter off of

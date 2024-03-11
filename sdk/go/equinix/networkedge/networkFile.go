@@ -66,7 +66,13 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id} <break>```<break><break> The `content`, `self_managed` and `byol` fields can not be imported.<break><break>
+// This resource can be imported using an existing ID:
+//
+// ```sh
+// $ pulumi import equinix:networkedge/networkFile:NetworkFile example {existing_id}
+// ```
+//
+// The `content`, `self_managed` and `byol` fields can not be imported.
 type NetworkFile struct {
 	pulumi.CustomResourceState
 

@@ -14,10 +14,9 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,7 +64,9 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -114,14 +115,15 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ### Ignoring Changes to Plans/Metro
         /// 
         /// Preserve deployed device plan, facility and metro when creating a new execution plan.
         /// 
         /// As described in the `data-resource-behavior` feature as shown in the example below.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -177,9 +179,11 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -197,8 +201,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPlansResult> InvokeAsync(GetPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansArgs(), options.WithDefaults());
@@ -206,10 +209,9 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -257,7 +259,9 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -306,14 +310,15 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ### Ignoring Changes to Plans/Metro
         /// 
         /// Preserve deployed device plan, facility and metro when creating a new execution plan.
         /// 
         /// As described in the `data-resource-behavior` feature as shown in the example below.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -369,9 +374,11 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -389,8 +396,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPlansResult> Invoke(GetPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlansResult>("equinix:metal/getPlans:getPlans", args ?? new GetPlansInvokeArgs(), options.WithDefaults());

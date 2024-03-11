@@ -103,6 +103,7 @@ def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFi
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -113,6 +114,7 @@ def get_service_profiles(filter: Optional[pulumi.InputType['GetServiceProfilesFi
         values=["<list_of_profiles_to_return>"],
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter
@@ -144,6 +146,7 @@ def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.In
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -154,6 +157,7 @@ def get_service_profiles_output(filter: Optional[pulumi.Input[Optional[pulumi.In
         values=["<list_of_profiles_to_return>"],
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetServiceProfilesFilterArgs'] filter: Service Profile Search Filter

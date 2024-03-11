@@ -132,6 +132,7 @@ def get_gateway(gateway_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -143,6 +144,7 @@ def get_gateway(gateway_id: Optional[str] = None,
         project_id=local["project_id"])
     test_gateway = equinix.metal.get_gateway(gateway_id=local["gateway_id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: UUID of the metal gateway resource to retrieve.
@@ -173,6 +175,7 @@ def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -184,6 +187,7 @@ def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
         project_id=local["project_id"])
     test_gateway = equinix.metal.get_gateway(gateway_id=local["gateway_id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: UUID of the metal gateway resource to retrieve.

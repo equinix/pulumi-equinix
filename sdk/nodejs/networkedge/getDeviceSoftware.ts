@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     versionRegex: "^16.09.+",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDeviceSoftware(args: GetDeviceSoftwareArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceSoftwareResult> {
 
@@ -105,6 +107,7 @@ export interface GetDeviceSoftwareResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -116,6 +119,7 @@ export interface GetDeviceSoftwareResult {
  *     versionRegex: "^16.09.+",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDeviceSoftwareOutput(args: GetDeviceSoftwareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceSoftwareResult> {
     return pulumi.output(args).apply((a: any) => getDeviceSoftware(a, opts))

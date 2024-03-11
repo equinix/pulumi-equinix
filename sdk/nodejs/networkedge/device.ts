@@ -77,7 +77,13 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/device:Device example {existing_id} <break>```<break><break> The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.<break><break>
+ * This resource can be imported using an existing ID:
+ *
+ * ```sh
+ * $ pulumi import equinix:networkedge/device:Device example {existing_id}
+ * ```
+ *
+ * The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
  */
 export class Device extends pulumi.CustomResource {
     /**
