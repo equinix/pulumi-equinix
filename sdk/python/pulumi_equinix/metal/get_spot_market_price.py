@@ -97,6 +97,7 @@ def get_spot_market_price(facility: Optional[str] = None,
 
     Lookup by metro:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -104,6 +105,7 @@ def get_spot_market_price(facility: Optional[str] = None,
     example = equinix.metal.get_spot_market_price(metro="sv",
         plan="c3.small.x86")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str facility: Name of the facility. Use metro instead; read the facility to metro migration guide
@@ -137,6 +139,7 @@ def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]]
 
     Lookup by metro:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -144,6 +147,7 @@ def get_spot_market_price_output(facility: Optional[pulumi.Input[Optional[str]]]
     example = equinix.metal.get_spot_market_price(metro="sv",
         plan="c3.small.x86")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str facility: Name of the facility. Use metro instead; read the facility to metro migration guide

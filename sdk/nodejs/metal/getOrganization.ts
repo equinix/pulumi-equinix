@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const projectsInTheOrg = test.then(test => test.projectIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
@@ -88,6 +90,7 @@ export interface GetOrganizationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -97,6 +100,7 @@ export interface GetOrganizationResult {
  * });
  * export const projectsInTheOrg = test.then(test => test.projectIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
     return pulumi.output(args).apply((a: any) => getOrganization(a, opts))

@@ -33,7 +33,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing project ID:<break><break> ```sh<break> $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id} <break>```<break><break>
+ * This resource can be imported using an existing project ID:
+ *
+ * ```sh
+ * $ pulumi import equinix:metal/project:Project equinix_metal_project {existing_project_id}
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**

@@ -11,6 +11,20 @@ import * as utilities from "../utilities";
  * > **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
  *
  * Provides an Equinix Metal facility datasource.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const ny5 = equinix.metal.getFacility({
+ *     code: "ny5",
+ * });
+ * export const id = ny5.then(ny5 => ny5.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFacility(args: GetFacilityArgs, opts?: pulumi.InvokeOptions): Promise<GetFacilityResult> {
 
@@ -69,6 +83,20 @@ export interface GetFacilityResult {
  * > **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
  *
  * Provides an Equinix Metal facility datasource.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const ny5 = equinix.metal.getFacility({
+ *     code: "ny5",
+ * });
+ * export const id = ny5.then(ny5 => ny5.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFacilityOutput(args: GetFacilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFacilityResult> {
     return pulumi.output(args).apply((a: any) => getFacility(a, opts))

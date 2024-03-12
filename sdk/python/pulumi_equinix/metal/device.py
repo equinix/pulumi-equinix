@@ -1250,7 +1250,11 @@ class Device(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+        This resource can be imported using an existing device ID:
+
+        ```sh
+        $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1345,7 +1349,11 @@ class Device(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing device ID:<break><break> ```sh<break> $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id} <break>```<break><break>
+        This resource can be imported using an existing device ID:
+
+        ```sh
+        $ pulumi import equinix:metal/device:Device equinix_metal_device {existing_device_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param DeviceArgs args: The arguments to use to populate this resource's properties.

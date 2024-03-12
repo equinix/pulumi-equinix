@@ -134,12 +134,14 @@ def get_vrf(vrf_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     example_vrf = equinix.metal.get_vrf(vrf_id="48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str vrf_id: ID of the VRF resource
@@ -170,12 +172,14 @@ def get_vrf_output(vrf_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     example_vrf = equinix.metal.get_vrf(vrf_id="48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str vrf_id: ID of the VRF resource

@@ -282,12 +282,14 @@ def get_cloud_router(uuid: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     cloud_router_data_name = equinix.fabric.get_cloud_router(uuid="<uuid_of_cloud_router>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier
@@ -330,12 +332,14 @@ def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     cloud_router_data_name = equinix.fabric.get_cloud_router(uuid="<uuid_of_cloud_router>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier

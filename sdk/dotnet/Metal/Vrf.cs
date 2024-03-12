@@ -48,7 +48,11 @@ namespace Pulumi.Equinix.Metal
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using an existing VRF ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt;
+    /// This resource can be imported using an existing VRF ID:
+    /// 
+    /// ```sh
+    /// $ pulumi import equinix:metal/vrf:Vrf equinix_metal_vrf {existing_id}
+    /// ```
     /// </summary>
     [EquinixResourceType("equinix:metal/vrf:Vrf")]
     public partial class Vrf : global::Pulumi.CustomResource

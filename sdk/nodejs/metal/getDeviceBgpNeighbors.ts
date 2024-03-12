@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -27,6 +28,7 @@ import * as utilities from "../utilities";
  * });
  * export const bgpNeighborsListing = test.then(test => test.bgpNeighbors);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDeviceBgpNeighbors(args: GetDeviceBgpNeighborsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceBgpNeighborsResult> {
 
@@ -71,6 +73,7 @@ export interface GetDeviceBgpNeighborsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -80,6 +83,7 @@ export interface GetDeviceBgpNeighborsResult {
  * });
  * export const bgpNeighborsListing = test.then(test => test.bgpNeighbors);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDeviceBgpNeighborsOutput(args: GetDeviceBgpNeighborsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceBgpNeighborsResult> {
     return pulumi.output(args).apply((a: any) => getDeviceBgpNeighbors(a, opts))

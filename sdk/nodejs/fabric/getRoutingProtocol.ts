@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     uuid: "<uuid_of_routing_protocol>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRoutingProtocol(args: GetRoutingProtocolArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutingProtocolResult> {
 
@@ -132,6 +134,7 @@ export interface GetRoutingProtocolResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -141,6 +144,7 @@ export interface GetRoutingProtocolResult {
  *     uuid: "<uuid_of_routing_protocol>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoutingProtocolResult> {
     return pulumi.output(args).apply((a: any) => getRoutingProtocol(a, opts))

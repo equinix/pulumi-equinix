@@ -87,6 +87,8 @@ public final class MetalFunctions {
      * Read more about sensitive data in state.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +119,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -146,6 +151,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceResult> getDevice() {
@@ -161,6 +167,8 @@ public final class MetalFunctions {
      * Read more about sensitive data in state.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -191,6 +199,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -220,6 +231,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceResult> getDevicePlain() {
@@ -235,6 +247,8 @@ public final class MetalFunctions {
      * Read more about sensitive data in state.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -265,6 +279,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -294,6 +311,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceResult> getDevice(GetDeviceArgs args) {
@@ -309,6 +327,8 @@ public final class MetalFunctions {
      * Read more about sensitive data in state.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -339,6 +359,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -368,6 +391,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceResult> getDevicePlain(GetDevicePlainArgs args) {
@@ -383,6 +407,8 @@ public final class MetalFunctions {
      * Read more about sensitive data in state.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -413,6 +439,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -442,6 +471,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceResult> getDevice(GetDeviceArgs args, InvokeOptions options) {
@@ -457,6 +487,8 @@ public final class MetalFunctions {
      * Read more about sensitive data in state.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -487,6 +519,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -516,6 +551,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceResult> getDevicePlain(GetDevicePlainArgs args, InvokeOptions options) {
@@ -531,6 +567,8 @@ public final class MetalFunctions {
      * equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -560,6 +598,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceBgpNeighborsResult> getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs args) {
@@ -575,6 +614,8 @@ public final class MetalFunctions {
      * equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -604,6 +645,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceBgpNeighborsResult> getDeviceBgpNeighborsPlain(GetDeviceBgpNeighborsPlainArgs args) {
@@ -619,6 +661,8 @@ public final class MetalFunctions {
      * equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -648,6 +692,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceBgpNeighborsResult> getDeviceBgpNeighbors(GetDeviceBgpNeighborsArgs args, InvokeOptions options) {
@@ -663,6 +708,8 @@ public final class MetalFunctions {
      * equinix.metal.BgpSession resource documentation.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -692,6 +739,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceBgpNeighborsResult> getDeviceBgpNeighborsPlain(GetDeviceBgpNeighborsPlainArgs args, InvokeOptions options) {
@@ -703,6 +751,8 @@ public final class MetalFunctions {
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -743,6 +793,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -772,6 +825,8 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## search vs filter
      * 
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -786,6 +841,8 @@ public final class MetalFunctions {
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -826,6 +883,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -855,6 +915,8 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## search vs filter
      * 
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -869,6 +931,8 @@ public final class MetalFunctions {
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -909,6 +973,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -938,6 +1005,8 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## search vs filter
      * 
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -952,6 +1021,8 @@ public final class MetalFunctions {
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -992,6 +1063,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1021,6 +1095,8 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## search vs filter
      * 
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -1035,6 +1111,8 @@ public final class MetalFunctions {
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1075,6 +1153,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1104,6 +1185,8 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## search vs filter
      * 
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -1118,6 +1201,8 @@ public final class MetalFunctions {
      * If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1158,6 +1243,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1187,6 +1275,8 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## search vs filter
      * 
      * The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The &#34;filter&#34; arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -1200,6 +1290,40 @@ public final class MetalFunctions {
      * 
      * Provides an Equinix Metal facility datasource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetFacilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
+     *             .code(&#34;ny5&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args) {
         return getFacility(args, InvokeOptions.Empty);
@@ -1208,6 +1332,40 @@ public final class MetalFunctions {
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetFacilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
+     *             .code(&#34;ny5&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFacilityResult> getFacilityPlain(GetFacilityPlainArgs args) {
@@ -1218,6 +1376,40 @@ public final class MetalFunctions {
      * 
      * Provides an Equinix Metal facility datasource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetFacilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
+     *             .code(&#34;ny5&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetFacilityResult> getFacility(GetFacilityArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getFacility:getFacility", TypeShape.of(GetFacilityResult.class), args, Utilities.withVersion(options));
@@ -1226,6 +1418,40 @@ public final class MetalFunctions {
      * &gt; **Deprecated** Use `equinix.metal.getMetro` instead.  For more information, refer to the facility to metro migration guide.
      * 
      * Provides an Equinix Metal facility datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetFacilityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ny5 = MetalFunctions.getFacility(GetFacilityArgs.builder()
+     *             .code(&#34;ny5&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, ny5.applyValue(getFacilityResult -&gt; getFacilityResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFacilityResult> getFacilityPlain(GetFacilityPlainArgs args, InvokeOptions options) {
@@ -1237,6 +1463,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1273,6 +1501,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayResult> getGateway(GetGatewayArgs args) {
@@ -1284,6 +1513,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1320,6 +1551,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayResult> getGatewayPlain(GetGatewayPlainArgs args) {
@@ -1331,6 +1563,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1367,6 +1601,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayResult> getGateway(GetGatewayArgs args, InvokeOptions options) {
@@ -1378,6 +1613,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1414,6 +1651,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayResult> getGatewayPlain(GetGatewayPlainArgs args, InvokeOptions options) {
@@ -1425,6 +1663,8 @@ public final class MetalFunctions {
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1457,6 +1697,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHardwareReservationResult> getHardwareReservation() {
@@ -1468,6 +1709,8 @@ public final class MetalFunctions {
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1500,6 +1743,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHardwareReservationResult> getHardwareReservationPlain() {
@@ -1511,6 +1755,8 @@ public final class MetalFunctions {
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1543,6 +1789,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHardwareReservationResult> getHardwareReservation(GetHardwareReservationArgs args) {
@@ -1554,6 +1801,8 @@ public final class MetalFunctions {
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1586,6 +1835,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHardwareReservationResult> getHardwareReservationPlain(GetHardwareReservationPlainArgs args) {
@@ -1597,6 +1847,8 @@ public final class MetalFunctions {
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1629,6 +1881,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHardwareReservationResult> getHardwareReservation(GetHardwareReservationArgs args, InvokeOptions options) {
@@ -1640,6 +1893,8 @@ public final class MetalFunctions {
      * You can look up hardware reservation by its ID or by ID of device which occupies it.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1672,6 +1927,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHardwareReservationResult> getHardwareReservationPlain(GetHardwareReservationPlainArgs args, InvokeOptions options) {
@@ -1683,6 +1939,8 @@ public final class MetalFunctions {
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1711,6 +1969,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInterconnectionResult> getInterconnection(GetInterconnectionArgs args) {
@@ -1722,6 +1981,8 @@ public final class MetalFunctions {
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1750,6 +2011,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInterconnectionResult> getInterconnectionPlain(GetInterconnectionPlainArgs args) {
@@ -1761,6 +2023,8 @@ public final class MetalFunctions {
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1789,6 +2053,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInterconnectionResult> getInterconnection(GetInterconnectionArgs args, InvokeOptions options) {
@@ -1800,6 +2065,8 @@ public final class MetalFunctions {
      * &gt; Equinix Metal connection with with Service Token A-side / Z-side (service_token_type) is not generally available and may not be enabled yet for your organization.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1828,6 +2095,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInterconnectionResult> getInterconnectionPlain(GetInterconnectionPlainArgs args, InvokeOptions options) {
@@ -1841,6 +2109,8 @@ public final class MetalFunctions {
      * The datasource has 4 list attributes: `global_ipv4`, `public_ipv4`, `private_ipv4` and `ipv6`, each listing CIDR notation (`&lt;network&gt;/&lt;mask&gt;`) of respective blocks from the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1872,6 +2142,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpBlockRangesResult> getIpBlockRanges(GetIpBlockRangesArgs args) {
@@ -1885,6 +2156,8 @@ public final class MetalFunctions {
      * The datasource has 4 list attributes: `global_ipv4`, `public_ipv4`, `private_ipv4` and `ipv6`, each listing CIDR notation (`&lt;network&gt;/&lt;mask&gt;`) of respective blocks from the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1916,6 +2189,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpBlockRangesResult> getIpBlockRangesPlain(GetIpBlockRangesPlainArgs args) {
@@ -1929,6 +2203,8 @@ public final class MetalFunctions {
      * The datasource has 4 list attributes: `global_ipv4`, `public_ipv4`, `private_ipv4` and `ipv6`, each listing CIDR notation (`&lt;network&gt;/&lt;mask&gt;`) of respective blocks from the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1960,6 +2236,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpBlockRangesResult> getIpBlockRanges(GetIpBlockRangesArgs args, InvokeOptions options) {
@@ -1973,6 +2250,8 @@ public final class MetalFunctions {
      * The datasource has 4 list attributes: `global_ipv4`, `public_ipv4`, `private_ipv4` and `ipv6`, each listing CIDR notation (`&lt;network&gt;/&lt;mask&gt;`) of respective blocks from the project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2004,6 +2283,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpBlockRangesResult> getIpBlockRangesPlain(GetIpBlockRangesPlainArgs args, InvokeOptions options) {
@@ -2012,12 +2292,80 @@ public final class MetalFunctions {
     /**
      * Provides an Equinix Metal metro datasource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
+     *             .code(&#34;sv&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetroResult> getMetro(GetMetroArgs args) {
         return getMetro(args, InvokeOptions.Empty);
     }
     /**
      * Provides an Equinix Metal metro datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
+     *             .code(&#34;sv&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetroResult> getMetroPlain(GetMetroPlainArgs args) {
@@ -2026,12 +2374,80 @@ public final class MetalFunctions {
     /**
      * Provides an Equinix Metal metro datasource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
+     *             .code(&#34;sv&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetroResult> getMetro(GetMetroArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("equinix:metal/getMetro:getMetro", TypeShape.of(GetMetroResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides an Equinix Metal metro datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.equinix.metal.MetalFunctions;
+     * import com.pulumi.equinix.metal.inputs.GetMetroArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sv = MetalFunctions.getMetro(GetMetroArgs.builder()
+     *             .code(&#34;sv&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;id&#34;, sv.applyValue(getMetroResult -&gt; getMetroResult.id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetroResult> getMetroPlain(GetMetroPlainArgs args, InvokeOptions options) {
@@ -2041,6 +2457,8 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2082,6 +2500,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOperatingSystemResult> getOperatingSystem() {
@@ -2091,6 +2510,8 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2132,6 +2553,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOperatingSystemResult> getOperatingSystemPlain() {
@@ -2141,6 +2563,8 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2182,6 +2606,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOperatingSystemResult> getOperatingSystem(GetOperatingSystemArgs args) {
@@ -2191,6 +2616,8 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2232,6 +2659,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOperatingSystemResult> getOperatingSystemPlain(GetOperatingSystemPlainArgs args) {
@@ -2241,6 +2669,8 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2282,6 +2712,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOperatingSystemResult> getOperatingSystem(GetOperatingSystemArgs args, InvokeOptions options) {
@@ -2291,6 +2722,8 @@ public final class MetalFunctions {
      * Use this data source to get Equinix Metal Operating System image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2332,6 +2765,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOperatingSystemResult> getOperatingSystemPlain(GetOperatingSystemPlainArgs args, InvokeOptions options) {
@@ -2341,6 +2775,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2370,6 +2806,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization() {
@@ -2379,6 +2816,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2408,6 +2847,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
@@ -2417,6 +2857,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2446,6 +2888,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
@@ -2455,6 +2898,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2484,6 +2929,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
@@ -2493,6 +2939,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2522,6 +2970,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
@@ -2531,6 +2980,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal organization datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2560,6 +3011,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
@@ -2569,6 +3021,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2613,6 +3067,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2658,11 +3115,15 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Ignoring Changes to Plans/Metro
      * 
      * Preserve deployed device plan, facility and metro when creating a new execution plan.
      * 
      * As described in the `data-resource-behavior` feature as shown in the example below.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2717,8 +3178,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2750,6 +3214,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPlansResult> getPlans() {
@@ -2759,6 +3224,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2803,6 +3270,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2848,11 +3318,15 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Ignoring Changes to Plans/Metro
      * 
      * Preserve deployed device plan, facility and metro when creating a new execution plan.
      * 
      * As described in the `data-resource-behavior` feature as shown in the example below.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2907,8 +3381,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2940,6 +3417,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPlansResult> getPlansPlain() {
@@ -2949,6 +3427,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2993,6 +3473,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3038,11 +3521,15 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Ignoring Changes to Plans/Metro
      * 
      * Preserve deployed device plan, facility and metro when creating a new execution plan.
      * 
      * As described in the `data-resource-behavior` feature as shown in the example below.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3097,8 +3584,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3130,6 +3620,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPlansResult> getPlans(GetPlansArgs args) {
@@ -3139,6 +3630,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3183,6 +3676,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3228,11 +3724,15 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Ignoring Changes to Plans/Metro
      * 
      * Preserve deployed device plan, facility and metro when creating a new execution plan.
      * 
      * As described in the `data-resource-behavior` feature as shown in the example below.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3287,8 +3787,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3320,6 +3823,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPlansResult> getPlansPlain(GetPlansPlainArgs args) {
@@ -3329,6 +3833,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3373,6 +3879,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3418,11 +3927,15 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Ignoring Changes to Plans/Metro
      * 
      * Preserve deployed device plan, facility and metro when creating a new execution plan.
      * 
      * As described in the `data-resource-behavior` feature as shown in the example below.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3477,8 +3990,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3510,6 +4026,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPlansResult> getPlans(GetPlansArgs args, InvokeOptions options) {
@@ -3519,6 +4036,8 @@ public final class MetalFunctions {
      * Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3563,6 +4082,9 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3608,11 +4130,15 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Ignoring Changes to Plans/Metro
      * 
      * Preserve deployed device plan, facility and metro when creating a new execution plan.
      * 
      * As described in the `data-resource-behavior` feature as shown in the example below.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3667,8 +4193,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3700,6 +4229,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPlansResult> getPlansPlain(GetPlansPlainArgs args, InvokeOptions options) {
@@ -3712,6 +4242,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3754,6 +4286,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort() {
@@ -3766,6 +4299,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3808,6 +4343,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain() {
@@ -3820,6 +4356,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3862,6 +4400,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args) {
@@ -3874,6 +4413,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3916,6 +4457,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args) {
@@ -3928,6 +4470,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3970,6 +4514,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
@@ -3982,6 +4527,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Create a device and read it&#39;s eth0 port to the datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4024,6 +4571,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args, InvokeOptions options) {
@@ -4089,6 +4637,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4118,6 +4668,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject() {
@@ -4127,6 +4678,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4156,6 +4709,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain() {
@@ -4165,6 +4719,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4194,6 +4750,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -4203,6 +4760,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4232,6 +4791,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -4241,6 +4801,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4270,6 +4832,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -4279,6 +4842,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of the Project API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4308,6 +4873,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -4317,6 +4883,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4346,6 +4914,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectSshKeyResult> getProjectSshKey(GetProjectSshKeyArgs args) {
@@ -4355,6 +4924,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4384,6 +4955,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectSshKeyResult> getProjectSshKeyPlain(GetProjectSshKeyPlainArgs args) {
@@ -4393,6 +4965,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4422,6 +4996,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectSshKeyResult> getProjectSshKey(GetProjectSshKeyArgs args, InvokeOptions options) {
@@ -4431,6 +5006,8 @@ public final class MetalFunctions {
      * Use this datasource to retrieve attributes of a Project SSH Key API resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4460,6 +5037,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectSshKeyResult> getProjectSshKeyPlain(GetProjectSshKeyPlainArgs args, InvokeOptions options) {
@@ -4543,6 +5121,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Lookup by metro:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4572,6 +5152,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpotMarketPriceResult> getSpotMarketPrice(GetSpotMarketPriceArgs args) {
@@ -4583,6 +5164,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Lookup by metro:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4612,6 +5195,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpotMarketPriceResult> getSpotMarketPricePlain(GetSpotMarketPricePlainArgs args) {
@@ -4623,6 +5207,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Lookup by metro:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4652,6 +5238,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSpotMarketPriceResult> getSpotMarketPrice(GetSpotMarketPriceArgs args, InvokeOptions options) {
@@ -4663,6 +5250,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Lookup by metro:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4692,6 +5281,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSpotMarketPriceResult> getSpotMarketPricePlain(GetSpotMarketPricePlainArgs args, InvokeOptions options) {
@@ -4756,6 +5346,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4792,8 +5384,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4824,6 +5419,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVlanResult> getVlan() {
@@ -4836,6 +5432,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4872,8 +5470,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4904,6 +5505,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVlanResult> getVlanPlain() {
@@ -4916,6 +5518,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4952,8 +5556,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4984,6 +5591,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVlanResult> getVlan(GetVlanArgs args) {
@@ -4996,6 +5604,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5032,8 +5642,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5064,6 +5677,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVlanResult> getVlanPlain(GetVlanPlainArgs args) {
@@ -5076,6 +5690,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5112,8 +5728,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5144,6 +5763,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVlanResult> getVlan(GetVlanArgs args, InvokeOptions options) {
@@ -5156,6 +5776,8 @@ public final class MetalFunctions {
      * ## Example Usage
      * 
      * Fetch a vlan by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5192,8 +5814,11 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Fetch a vlan by project ID, vxlan and metro
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5224,6 +5849,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVlanResult> getVlanPlain(GetVlanPlainArgs args, InvokeOptions options) {
@@ -5235,6 +5861,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5263,6 +5891,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVrfResult> getVrf(GetVrfArgs args) {
@@ -5274,6 +5903,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5302,6 +5933,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVrfResult> getVrfPlain(GetVrfPlainArgs args) {
@@ -5313,6 +5945,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5341,6 +5975,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVrfResult> getVrf(GetVrfArgs args, InvokeOptions options) {
@@ -5352,6 +5987,8 @@ public final class MetalFunctions {
      * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5380,6 +6017,7 @@ public final class MetalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVrfResult> getVrfPlain(GetVrfPlainArgs args, InvokeOptions options) {

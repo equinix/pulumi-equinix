@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -38,7 +39,9 @@ import * as utilities from "../utilities";
  * });
  * export const plans = example.then(example => example.plans);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -66,12 +69,15 @@ import * as utilities from "../utilities";
  * });
  * export const plans = example.then(example => example.plans);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Ignoring Changes to Plans/Metro
  *
  * Preserve deployed device plan, facility and metro when creating a new execution plan.
  *
  * As described in the `data-resource-behavior` feature as shown in the example below.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -107,9 +113,11 @@ import * as utilities from "../utilities";
  *     projectId: _var.project_id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -120,6 +128,7 @@ import * as utilities from "../utilities";
  * // required device arguments
  * const exampleDevice = new equinix.metal.Device("exampleDevice", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPlans(args?: GetPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetPlansResult> {
     args = args || {};
@@ -163,6 +172,7 @@ export interface GetPlansResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -189,7 +199,9 @@ export interface GetPlansResult {
  * });
  * export const plans = example.then(example => example.plans);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -217,12 +229,15 @@ export interface GetPlansResult {
  * });
  * export const plans = example.then(example => example.plans);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Ignoring Changes to Plans/Metro
  *
  * Preserve deployed device plan, facility and metro when creating a new execution plan.
  *
  * As described in the `data-resource-behavior` feature as shown in the example below.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -258,9 +273,11 @@ export interface GetPlansResult {
  *     projectId: _var.project_id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -271,6 +288,7 @@ export interface GetPlansResult {
  * // required device arguments
  * const exampleDevice = new equinix.metal.Device("exampleDevice", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPlansOutput(args?: GetPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlansResult> {
     return pulumi.output(args).apply((a: any) => getPlans(a, opts))

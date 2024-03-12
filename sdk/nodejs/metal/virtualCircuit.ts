@@ -36,7 +36,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing Virtual Circuit ID:<break><break> ```sh<break> $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id} <break>```<break><break>
+ * This resource can be imported using an existing Virtual Circuit ID:
+ *
+ * ```sh
+ * $ pulumi import equinix:metal/virtualCircuit:VirtualCircuit equinix_metal_virtual_circuit {existing_id}
+ * ```
  */
 export class VirtualCircuit extends pulumi.CustomResource {
     /**

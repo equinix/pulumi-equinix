@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * Fabric V4 API compatible resource allows creation and management of Equinix Fabric Network
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,6 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="equinix:fabric/network:Network")

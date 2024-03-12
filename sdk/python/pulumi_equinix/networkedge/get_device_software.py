@@ -162,6 +162,7 @@ def get_device_software(device_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -171,6 +172,7 @@ def get_device_software(device_type: Optional[str] = None,
         packages=["IPBASE"],
         version_regex="^16.09.+")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_type: Code of a device type.
@@ -219,6 +221,7 @@ def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -228,6 +231,7 @@ def get_device_software_output(device_type: Optional[pulumi.Input[str]] = None,
         packages=["IPBASE"],
         version_regex="^16.09.+")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_type: Code of a device type.

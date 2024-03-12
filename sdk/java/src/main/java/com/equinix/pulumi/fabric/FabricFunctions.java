@@ -41,6 +41,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -69,6 +71,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args) {
@@ -80,6 +83,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -108,6 +113,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args) {
@@ -119,6 +125,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -147,6 +155,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCloudRouterResult> getCloudRouter(GetCloudRouterArgs args, InvokeOptions options) {
@@ -158,6 +167,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -186,6 +197,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCloudRouterResult> getCloudRouterPlain(GetCloudRouterPlainArgs args, InvokeOptions options) {
@@ -195,6 +207,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -223,6 +237,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args) {
@@ -232,6 +247,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -260,6 +277,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args) {
@@ -269,6 +287,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -297,6 +317,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionResult> getConnection(GetConnectionArgs args, InvokeOptions options) {
@@ -306,6 +327,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -334,6 +357,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
@@ -343,6 +367,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -371,6 +397,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
@@ -380,6 +407,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -408,6 +437,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args) {
@@ -417,6 +447,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -445,6 +477,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
@@ -454,6 +487,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Fabric Network for a given UUID
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -482,6 +517,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
@@ -491,6 +527,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -519,6 +557,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args) {
@@ -528,6 +567,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -556,6 +597,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args) {
@@ -565,6 +607,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -593,6 +637,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
@@ -602,6 +647,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by uuid
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -630,6 +677,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args, InvokeOptions options) {
@@ -639,6 +687,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -670,6 +720,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortsResult> getPorts(GetPortsArgs args) {
@@ -679,6 +730,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -710,6 +763,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args) {
@@ -719,6 +773,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -750,6 +806,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortsResult> getPorts(GetPortsArgs args, InvokeOptions options) {
@@ -759,6 +816,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch port by name
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -790,6 +849,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortsResult> getPortsPlain(GetPortsPlainArgs args, InvokeOptions options) {
@@ -801,6 +861,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -830,6 +892,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args) {
@@ -841,6 +904,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -870,6 +935,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoutingProtocolResult> getRoutingProtocolPlain(GetRoutingProtocolPlainArgs args) {
@@ -881,6 +947,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -910,6 +978,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRoutingProtocolResult> getRoutingProtocol(GetRoutingProtocolArgs args, InvokeOptions options) {
@@ -921,6 +990,8 @@ public final class FabricFunctions {
      * API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -950,6 +1021,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRoutingProtocolResult> getRoutingProtocolPlain(GetRoutingProtocolPlainArgs args, InvokeOptions options) {
@@ -959,6 +1031,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -987,6 +1061,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceProfileResult> getServiceProfile(GetServiceProfileArgs args) {
@@ -996,6 +1071,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1024,6 +1101,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceProfileResult> getServiceProfilePlain(GetServiceProfilePlainArgs args) {
@@ -1033,6 +1111,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1061,6 +1141,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceProfileResult> getServiceProfile(GetServiceProfileArgs args, InvokeOptions options) {
@@ -1070,6 +1151,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1098,6 +1181,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceProfileResult> getServiceProfilePlain(GetServiceProfilePlainArgs args, InvokeOptions options) {
@@ -1107,6 +1191,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1140,6 +1226,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles() {
@@ -1149,6 +1236,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1182,6 +1271,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain() {
@@ -1191,6 +1281,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1224,6 +1316,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args) {
@@ -1233,6 +1326,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1266,6 +1361,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args) {
@@ -1275,6 +1371,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1308,6 +1406,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceProfilesResult> getServiceProfiles(GetServiceProfilesArgs args, InvokeOptions options) {
@@ -1317,6 +1416,8 @@ public final class FabricFunctions {
      * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1350,6 +1451,7 @@ public final class FabricFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceProfilesResult> getServiceProfilesPlain(GetServiceProfilesPlainArgs args, InvokeOptions options) {
