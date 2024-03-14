@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPorts(args: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
 
@@ -63,6 +65,7 @@ export interface GetPortsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -73,6 +76,7 @@ export interface GetPortsResult {
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPortsOutput(args: GetPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortsResult> {
     return pulumi.output(args).apply((a: any) => getPorts(a, opts))

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupRoutingProtocol(ctx *pulumi.Context, args *LookupRoutingProtocolArgs, opts ...pulumi.InvokeOption) (*LookupRoutingProtocolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutingProtocolResult

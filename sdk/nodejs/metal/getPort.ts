@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * Create a device and read it's eth0 port to the datasource.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  *     name: "eth0",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
@@ -121,6 +123,7 @@ export interface GetPortResult {
  *
  * Create a device and read it's eth0 port to the datasource.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -139,6 +142,7 @@ export interface GetPortResult {
  *     name: "eth0",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
     return pulumi.output(args).apply((a: any) => getPort(a, opts))

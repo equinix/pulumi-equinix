@@ -168,7 +168,11 @@ class SshUser(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:
+
+        ```sh
+        $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -205,7 +209,11 @@ class SshUser(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
+        This resource can be imported using an existing ID:
+
+        ```sh
+        $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
+        ```
 
         :param str resource_name: The name of the resource.
         :param SshUserArgs args: The arguments to use to populate this resource's properties.

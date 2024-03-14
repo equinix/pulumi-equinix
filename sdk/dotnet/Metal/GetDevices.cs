@@ -16,10 +16,9 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +58,9 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +80,8 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## search vs filter
         /// 
         /// The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.
@@ -93,10 +94,9 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// If you need to fetch a single device by ID or by project ID and hostname, use the equinix.metal.Device datasource.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -136,7 +136,9 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -156,8 +158,8 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## search vs filter
         /// 
         /// The difference between `search` and `filter` is that `search` is an API parameter, interpreted by the Equinix Metal service. The "filter" arguments will reduce the API list (or search) results by applying client-side filtering, within this provider.

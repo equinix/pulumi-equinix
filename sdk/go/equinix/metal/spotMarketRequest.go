@@ -62,7 +62,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported using an existing spot market request ID:<break><break> ```sh<break> $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id} <break>```<break><break>
+// This resource can be imported using an existing spot market request ID:
+//
+// ```sh
+// $ pulumi import equinix:metal/spotMarketRequest:SpotMarketRequest equinix_metal_spot_market_request {existing_spot_market_request_id}
+// ```
 type SpotMarketRequest struct {
 	pulumi.CustomResourceState
 

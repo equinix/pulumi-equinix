@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupVrf(ctx *pulumi.Context, args *LookupVrfArgs, opts ...pulumi.InvokeOption) (*LookupVrfResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVrfResult

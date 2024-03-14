@@ -271,6 +271,7 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -278,6 +279,7 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
     routing_protocol_data_name = equinix.fabric.get_routing_protocol(connection_uuid="<uuid_of_connection_routing_protocol_is_applied_to>",
         uuid="<uuid_of_routing_protocol>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_uuid: Connection URI associated with Routing Protocol
@@ -321,6 +323,7 @@ def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -328,6 +331,7 @@ def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = N
     routing_protocol_data_name = equinix.fabric.get_routing_protocol(connection_uuid="<uuid_of_connection_routing_protocol_is_applied_to>",
         uuid="<uuid_of_routing_protocol>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_uuid: Connection URI associated with Routing Protocol

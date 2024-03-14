@@ -14,10 +14,9 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch connection for a given UUID
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());

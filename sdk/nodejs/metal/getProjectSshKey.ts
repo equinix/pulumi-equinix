@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     projectId: local.project_id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectSshKey(args: GetProjectSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectSshKeyResult> {
 
@@ -93,6 +95,7 @@ export interface GetProjectSshKeyResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -102,6 +105,7 @@ export interface GetProjectSshKeyResult {
  *     projectId: local.project_id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectSshKeyOutput(args: GetProjectSshKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSshKeyResult> {
     return pulumi.output(args).apply((a: any) => getProjectSshKey(a, opts))

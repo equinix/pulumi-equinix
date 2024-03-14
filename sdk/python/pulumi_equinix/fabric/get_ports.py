@@ -77,6 +77,7 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -85,6 +86,7 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
         name="<name_of_port||port_prefix>",
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetPortsFilterArgs'] filter: name
@@ -108,6 +110,7 @@ def get_ports_output(filter: Optional[pulumi.Input[pulumi.InputType['GetPortsFil
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -116,6 +119,7 @@ def get_ports_output(filter: Optional[pulumi.Input[pulumi.InputType['GetPortsFil
         name="<name_of_port||port_prefix>",
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetPortsFilterArgs'] filter: name

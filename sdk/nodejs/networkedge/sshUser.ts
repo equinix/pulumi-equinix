@@ -29,7 +29,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using an existing ID:<break><break> ```sh<break> $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id} <break>```<break><break>
+ * This resource can be imported using an existing ID:
+ *
+ * ```sh
+ * $ pulumi import equinix:networkedge/sshUser:SshUser example {existing_id}
+ * ```
  */
 export class SshUser extends pulumi.CustomResource {
     /**

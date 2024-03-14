@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceProfiles(args?: GetServiceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfilesResult> {
     args = args || {};
@@ -84,6 +86,7 @@ export interface GetServiceProfilesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -96,6 +99,7 @@ export interface GetServiceProfilesResult {
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceProfilesOutput(args?: GetServiceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfilesResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfiles(a, opts))

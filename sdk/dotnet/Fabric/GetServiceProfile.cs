@@ -14,10 +14,9 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceProfileResult> InvokeAsync(GetServiceProfileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Fabric V4 API compatible data resource that allow user to fetch Service Profile by UUID filter criteria
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceProfileResult> Invoke(GetServiceProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileInvokeArgs(), options.WithDefaults());

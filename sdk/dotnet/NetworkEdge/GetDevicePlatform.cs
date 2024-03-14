@@ -16,10 +16,9 @@ namespace Pulumi.Equinix.NetworkEdge
         /// for a given device type. For further details, check supported
         /// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDevicePlatformResult> InvokeAsync(GetDevicePlatformArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.Equinix.NetworkEdge
         /// for a given device type. For further details, check supported
         /// [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDevicePlatformResult> Invoke(GetDevicePlatformInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformInvokeArgs(), options.WithDefaults());

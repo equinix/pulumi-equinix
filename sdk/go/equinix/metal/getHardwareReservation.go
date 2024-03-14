@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetHardwareReservation(ctx *pulumi.Context, args *GetHardwareReservationArgs, opts ...pulumi.InvokeOption) (*GetHardwareReservationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHardwareReservationResult

@@ -9,6 +9,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Equinix Metal metro datasource.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.metal.getMetro({
+ *     code: "sv",
+ * });
+ * export const id = sv.then(sv => sv.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMetro(args: GetMetroArgs, opts?: pulumi.InvokeOptions): Promise<GetMetroResult> {
 
@@ -54,6 +68,20 @@ export interface GetMetroResult {
 }
 /**
  * Provides an Equinix Metal metro datasource.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as equinix from "@equinix-labs/pulumi-equinix";
+ *
+ * const sv = equinix.metal.getMetro({
+ *     code: "sv",
+ * });
+ * export const id = sv.then(sv => sv.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMetroOutput(args: GetMetroOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetroResult> {
     return pulumi.output(args).apply((a: any) => getMetro(a, opts))

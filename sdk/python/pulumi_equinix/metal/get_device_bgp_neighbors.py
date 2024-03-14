@@ -79,6 +79,7 @@ def get_device_bgp_neighbors(device_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -86,6 +87,7 @@ def get_device_bgp_neighbors(device_id: Optional[str] = None,
     test = equinix.metal.get_device_bgp_neighbors(device_id="4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
     pulumi.export("bgpNeighborsListing", test.bgp_neighbors)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: UUID of BGP-enabled device whose neighbors to list.
@@ -115,6 +117,7 @@ def get_device_bgp_neighbors_output(device_id: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -122,6 +125,7 @@ def get_device_bgp_neighbors_output(device_id: Optional[pulumi.Input[str]] = Non
     test = equinix.metal.get_device_bgp_neighbors(device_id="4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
     pulumi.export("bgpNeighborsListing", test.bgp_neighbors)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: UUID of BGP-enabled device whose neighbors to list.

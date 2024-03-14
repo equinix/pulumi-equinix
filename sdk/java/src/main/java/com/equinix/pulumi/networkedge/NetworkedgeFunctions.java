@@ -34,6 +34,8 @@ public final class NetworkedgeFunctions {
      * in corresponding metro location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -65,6 +67,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args) {
@@ -78,6 +81,8 @@ public final class NetworkedgeFunctions {
      * in corresponding metro location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -109,6 +114,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(GetAccountPlainArgs args) {
@@ -122,6 +128,8 @@ public final class NetworkedgeFunctions {
      * in corresponding metro location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +161,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOptions options) {
@@ -166,6 +175,8 @@ public final class NetworkedgeFunctions {
      * in corresponding metro location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -197,6 +208,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(GetAccountPlainArgs args, InvokeOptions options) {
@@ -206,6 +218,8 @@ public final class NetworkedgeFunctions {
      * Use this data source to get Equinix Network Edge device details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -238,6 +252,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceResult> getDevice() {
@@ -247,6 +262,8 @@ public final class NetworkedgeFunctions {
      * Use this data source to get Equinix Network Edge device details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -279,6 +296,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceResult> getDevicePlain() {
@@ -288,6 +306,8 @@ public final class NetworkedgeFunctions {
      * Use this data source to get Equinix Network Edge device details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -320,6 +340,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceResult> getDevice(GetDeviceArgs args) {
@@ -329,6 +350,8 @@ public final class NetworkedgeFunctions {
      * Use this data source to get Equinix Network Edge device details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -361,6 +384,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceResult> getDevicePlain(GetDevicePlainArgs args) {
@@ -370,6 +394,8 @@ public final class NetworkedgeFunctions {
      * Use this data source to get Equinix Network Edge device details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -402,6 +428,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceResult> getDevice(GetDeviceArgs args, InvokeOptions options) {
@@ -411,6 +438,8 @@ public final class NetworkedgeFunctions {
      * Use this data source to get Equinix Network Edge device details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -443,6 +472,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceResult> getDevicePlain(GetDevicePlainArgs args, InvokeOptions options) {
@@ -454,6 +484,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -484,6 +516,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDevicePlatformResult> getDevicePlatform(GetDevicePlatformArgs args) {
@@ -495,6 +528,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -525,6 +560,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDevicePlatformResult> getDevicePlatformPlain(GetDevicePlatformPlainArgs args) {
@@ -536,6 +572,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -566,6 +604,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDevicePlatformResult> getDevicePlatform(GetDevicePlatformArgs args, InvokeOptions options) {
@@ -577,6 +616,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -607,6 +648,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDevicePlatformResult> getDevicePlatformPlain(GetDevicePlatformPlainArgs args, InvokeOptions options) {
@@ -618,6 +660,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -649,6 +693,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceSoftwareResult> getDeviceSoftware(GetDeviceSoftwareArgs args) {
@@ -660,6 +705,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -691,6 +738,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceSoftwareResult> getDeviceSoftwarePlain(GetDeviceSoftwarePlainArgs args) {
@@ -702,6 +750,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -733,6 +783,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceSoftwareResult> getDeviceSoftware(GetDeviceSoftwareArgs args, InvokeOptions options) {
@@ -744,6 +795,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -775,6 +828,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceSoftwareResult> getDeviceSoftwarePlain(GetDeviceSoftwarePlainArgs args, InvokeOptions options) {
@@ -785,6 +839,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -817,6 +873,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceTypeResult> getDeviceType() {
@@ -827,6 +884,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -859,6 +918,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceTypeResult> getDeviceTypePlain() {
@@ -869,6 +929,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -901,6 +963,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceTypeResult> getDeviceType(GetDeviceTypeArgs args) {
@@ -911,6 +974,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -943,6 +1008,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceTypeResult> getDeviceTypePlain(GetDeviceTypePlainArgs args) {
@@ -953,6 +1019,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -985,6 +1053,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeviceTypeResult> getDeviceType(GetDeviceTypeArgs args, InvokeOptions options) {
@@ -995,6 +1064,8 @@ public final class NetworkedgeFunctions {
      * [Network Edge Vendors and Devices](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-vendors-devices.htm).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1027,6 +1098,7 @@ public final class NetworkedgeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeviceTypeResult> getDeviceTypePlain(GetDeviceTypePlainArgs args, InvokeOptions options) {

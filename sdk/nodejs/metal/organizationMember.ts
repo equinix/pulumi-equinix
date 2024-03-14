@@ -29,7 +29,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments:<break><break> ```sh<break> $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id} <break>```<break><break>
+ * This resource can be imported using the `invitee` and `organization_id` as colon separated arguments:
+ *
+ * ```sh
+ * $ pulumi import equinix:metal/organizationMember:OrganizationMember resource_name {invitee}:{organization_id}
+ * ```
  */
 export class OrganizationMember extends pulumi.CustomResource {
     /**

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortResult

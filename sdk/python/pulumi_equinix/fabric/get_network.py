@@ -208,12 +208,14 @@ def get_network(uuid: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     network_data_name = equinix.fabric.get_network(uuid="<uuid_of_network>")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['uuid'] = uuid
@@ -245,11 +247,13 @@ def get_network_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     network_data_name = equinix.fabric.get_network(uuid="<uuid_of_network>")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

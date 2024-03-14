@@ -16,10 +16,9 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRoutingProtocolResult> InvokeAsync(GetRoutingProtocolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRoutingProtocolResult> Invoke(GetRoutingProtocolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolInvokeArgs(), options.WithDefaults());

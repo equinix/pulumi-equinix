@@ -115,7 +115,13 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported using an existing ID:&lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import equinix:networkedge/device:Device example {existing_id} &lt;break&gt;```&lt;break&gt;&lt;break&gt; The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.&lt;break&gt;&lt;break&gt;
+ * This resource can be imported using an existing ID:
+ * 
+ * ```sh
+ * $ pulumi import equinix:networkedge/device:Device example {existing_id}
+ * ```
+ * 
+ * The `license_token`, `mgmt_acl_template_uuid` and `cloud_init_file_id` fields can not be imported.
  * 
  */
 @ResourceType(type="equinix:networkedge/device:Device")

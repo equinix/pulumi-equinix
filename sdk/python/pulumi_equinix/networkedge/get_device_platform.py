@@ -136,6 +136,7 @@ def get_device_platform(core_count: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -144,6 +145,7 @@ def get_device_platform(core_count: Optional[int] = None,
         flavor="large",
         packages=["IPBASE"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int core_count: Number of CPU cores used to limit platform search results.
@@ -193,6 +195,7 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -201,6 +204,7 @@ def get_device_platform_output(core_count: Optional[pulumi.Input[Optional[int]]]
         flavor="large",
         packages=["IPBASE"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int core_count: Number of CPU cores used to limit platform search results.

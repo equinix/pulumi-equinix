@@ -155,6 +155,7 @@ def get_project(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -162,6 +163,7 @@ def get_project(name: Optional[str] = None,
     tf_project1 = equinix.metal.get_project(name="Terraform Fun")
     pulumi.export("usersOfTerraformFun", tf_project1.user_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name which is used to look up the project.
@@ -195,6 +197,7 @@ def get_project_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -202,6 +205,7 @@ def get_project_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     tf_project1 = equinix.metal.get_project(name="Terraform Fun")
     pulumi.export("usersOfTerraformFun", tf_project1.user_ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name which is used to look up the project.

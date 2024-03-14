@@ -18,10 +18,9 @@ namespace Pulumi.Equinix.NetworkEdge
         /// Billing account reference is required to create Network Edge virtual device
         /// in corresponding metro location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.Equinix.NetworkEdge
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("equinix:networkedge/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
@@ -56,10 +54,9 @@ namespace Pulumi.Equinix.NetworkEdge
         /// Billing account reference is required to create Network Edge virtual device
         /// in corresponding metro location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.Equinix.NetworkEdge
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("equinix:networkedge/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());

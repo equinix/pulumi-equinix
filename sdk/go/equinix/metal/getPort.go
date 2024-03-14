@@ -18,6 +18,7 @@ import (
 //
 // Create a device and read it's eth0 port to the datasource.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,6 +52,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupPort(ctx *pulumi.Context, args *LookupPortArgs, opts ...pulumi.InvokeOption) (*LookupPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPortResult
