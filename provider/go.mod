@@ -8,7 +8,7 @@ replace (
 	// this dependency is sensitive and is worth doing carefully (such as reading release notes)
 	// and not simply rely on passing tests for the upgrade.
 	github.com/hashicorp/terraform-plugin-framework => github.com/pulumi/terraform-plugin-framework v0.0.0-20230922145027-1535d08c1d47
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 7ac578ce47fc
 )
 
 require (
