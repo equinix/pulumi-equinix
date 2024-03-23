@@ -186,7 +186,7 @@ jobs:
           $GITHUB_ENV
       - if: ${{ matrix.language == 'java' && env.PUBLISH_NRM == 'true' }}
         name: Publish Java SDK
-        uses: gradle/gradle-build-action@9bca466e2722baf9e77b4f929bbe0af18848791f
+        uses: gradle/gradle-build-action@942d5e1456472d289f4b112fd3b62244067bac9c
         with:
           arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
           build-root-directory: ./sdk/java
