@@ -35,10 +35,10 @@ namespace Pulumi.Equinix.Metal
         ///     var server = new Equinix.Metal.Device("server", new()
         ///     {
         ///         Hostname = "tf.ubuntu",
-        ///         Plan = "c3.medium.x86",
+        ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "ny",
-        ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal.OperatingSystem.OperatingSystem&gt;),
-        ///         BillingCycle = "hourly",
+        ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal.OperatingSystem&gt;),
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = local.Project_id,
         ///     });
         /// 
@@ -73,10 +73,10 @@ namespace Pulumi.Equinix.Metal
         ///     var server = new Equinix.Metal.Device("server", new()
         ///     {
         ///         Hostname = "tf.ubuntu",
-        ///         Plan = "c3.medium.x86",
+        ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "ny",
-        ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal.OperatingSystem.OperatingSystem&gt;),
-        ///         BillingCycle = "hourly",
+        ///         OperatingSystem = example.Apply(getOperatingSystemResult =&gt; getOperatingSystemResult.Id).Apply(System.Enum.Parse&lt;Equinix.Metal.OperatingSystem&gt;),
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = local.Project_id,
         ///     });
         /// 

@@ -129,9 +129,6 @@ namespace Pulumi.Equinix.Metal
         /// The timestamp for when the project was created.
         /// </summary>
         public readonly string Created;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly string Name;
         /// <summary>

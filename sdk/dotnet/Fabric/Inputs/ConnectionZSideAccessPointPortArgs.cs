@@ -24,17 +24,11 @@ namespace Pulumi.Equinix.Fabric.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("redundancies")]
-        private InputList<Inputs.ConnectionZSideAccessPointPortRedundancyArgs>? _redundancies;
-
         /// <summary>
         /// Redundancy Information
         /// </summary>
-        public InputList<Inputs.ConnectionZSideAccessPointPortRedundancyArgs> Redundancies
-        {
-            get => _redundancies ?? (_redundancies = new InputList<Inputs.ConnectionZSideAccessPointPortRedundancyArgs>());
-            set => _redundancies = value;
-        }
+        [Input("redundancy")]
+        public Input<Inputs.ConnectionZSideAccessPointPortRedundancyArgs>? Redundancy { get; set; }
 
         /// <summary>
         /// Equinix-assigned virtual gateway identifier

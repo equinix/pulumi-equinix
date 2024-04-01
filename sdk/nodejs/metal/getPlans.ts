@@ -106,10 +106,10 @@ import * as utilities from "../utilities";
  * // It will ignore future changes on plan and metro
  * const exampleDevice = new equinix.metal.Device("exampleDevice", {
  *     hostname: "example",
- *     plan: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.name).apply((x) => equinix.metal.plan.Plan[x]),
+ *     plan: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.name).apply((x) => equinix.metal.Plan[x]),
  *     metro: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.availableInMetros?.[0]),
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: _var.project_id,
  * });
  * ```
@@ -266,10 +266,10 @@ export interface GetPlansResult {
  * // It will ignore future changes on plan and metro
  * const exampleDevice = new equinix.metal.Device("exampleDevice", {
  *     hostname: "example",
- *     plan: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.name).apply((x) => equinix.metal.plan.Plan[x]),
+ *     plan: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.name).apply((x) => equinix.metal.Plan[x]),
  *     metro: examplePlans.then(examplePlans => examplePlans.plans?.[0]?.availableInMetros?.[0]),
- *     operatingSystem: "ubuntu_20_04",
- *     billingCycle: "hourly",
+ *     operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: _var.project_id,
  * });
  * ```

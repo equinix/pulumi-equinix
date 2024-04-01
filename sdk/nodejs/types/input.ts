@@ -338,7 +338,7 @@ export namespace fabric {
         /**
          * Redundancy Information
          */
-        redundancies?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionASideAccessPointPortRedundancy>[]>;
+        redundancy?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointPortRedundancy>;
         /**
          * Equinix-assigned virtual gateway identifier
          */
@@ -855,7 +855,7 @@ export namespace fabric {
         /**
          * Redundancy Information
          */
-        redundancies?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPortRedundancy>[]>;
+        redundancy?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPortRedundancy>;
         /**
          * Equinix-assigned virtual gateway identifier
          */

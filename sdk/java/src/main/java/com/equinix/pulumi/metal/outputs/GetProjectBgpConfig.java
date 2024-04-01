@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectBgpConfig {
@@ -31,7 +29,7 @@ public final class GetProjectBgpConfig {
      * @return Password for BGP session in plaintext (not a checksum).
      * 
      */
-    private @Nullable String md5;
+    private String md5;
     /**
      * @return Status of BGP configuration in the project.
      * 
@@ -64,8 +62,8 @@ public final class GetProjectBgpConfig {
      * @return Password for BGP session in plaintext (not a checksum).
      * 
      */
-    public Optional<String> md5() {
-        return Optional.ofNullable(this.md5);
+    public String md5() {
+        return this.md5;
     }
     /**
      * @return Status of BGP configuration in the project.
@@ -87,7 +85,7 @@ public final class GetProjectBgpConfig {
         private Integer asn;
         private String deploymentType;
         private Integer maxPrefix;
-        private @Nullable String md5;
+        private String md5;
         private String status;
         public Builder() {}
         public Builder(GetProjectBgpConfig defaults) {
@@ -115,8 +113,8 @@ public final class GetProjectBgpConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder md5(@Nullable String md5) {
-            this.md5 = md5;
+        public Builder md5(String md5) {
+            this.md5 = Objects.requireNonNull(md5);
             return this;
         }
         @CustomType.Setter

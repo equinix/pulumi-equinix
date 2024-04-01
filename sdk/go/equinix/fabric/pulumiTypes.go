@@ -2879,7 +2879,7 @@ type ConnectionASideAccessPointPort struct {
 	// Port name
 	Name *string `pulumi:"name"`
 	// Redundancy Information
-	Redundancies []ConnectionASideAccessPointPortRedundancy `pulumi:"redundancies"`
+	Redundancy *ConnectionASideAccessPointPortRedundancy `pulumi:"redundancy"`
 	// Equinix-assigned virtual gateway identifier
 	Uuid *string `pulumi:"uuid"`
 }
@@ -2901,7 +2901,7 @@ type ConnectionASideAccessPointPortArgs struct {
 	// Port name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Redundancy Information
-	Redundancies ConnectionASideAccessPointPortRedundancyArrayInput `pulumi:"redundancies"`
+	Redundancy ConnectionASideAccessPointPortRedundancyPtrInput `pulumi:"redundancy"`
 	// Equinix-assigned virtual gateway identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
@@ -2994,10 +2994,8 @@ func (o ConnectionASideAccessPointPortOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Redundancy Information
-func (o ConnectionASideAccessPointPortOutput) Redundancies() ConnectionASideAccessPointPortRedundancyArrayOutput {
-	return o.ApplyT(func(v ConnectionASideAccessPointPort) []ConnectionASideAccessPointPortRedundancy {
-		return v.Redundancies
-	}).(ConnectionASideAccessPointPortRedundancyArrayOutput)
+func (o ConnectionASideAccessPointPortOutput) Redundancy() ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return o.ApplyT(func(v ConnectionASideAccessPointPort) *ConnectionASideAccessPointPortRedundancy { return v.Redundancy }).(ConnectionASideAccessPointPortRedundancyPtrOutput)
 }
 
 // Equinix-assigned virtual gateway identifier
@@ -3050,13 +3048,13 @@ func (o ConnectionASideAccessPointPortPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Redundancy Information
-func (o ConnectionASideAccessPointPortPtrOutput) Redundancies() ConnectionASideAccessPointPortRedundancyArrayOutput {
-	return o.ApplyT(func(v *ConnectionASideAccessPointPort) []ConnectionASideAccessPointPortRedundancy {
+func (o ConnectionASideAccessPointPortPtrOutput) Redundancy() ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPort) *ConnectionASideAccessPointPortRedundancy {
 		if v == nil {
 			return nil
 		}
-		return v.Redundancies
-	}).(ConnectionASideAccessPointPortRedundancyArrayOutput)
+		return v.Redundancy
+	}).(ConnectionASideAccessPointPortRedundancyPtrOutput)
 }
 
 // Equinix-assigned virtual gateway identifier
@@ -3110,29 +3108,45 @@ func (i ConnectionASideAccessPointPortRedundancyArgs) ToConnectionASideAccessPoi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortRedundancyOutput)
 }
 
-// ConnectionASideAccessPointPortRedundancyArrayInput is an input type that accepts ConnectionASideAccessPointPortRedundancyArray and ConnectionASideAccessPointPortRedundancyArrayOutput values.
-// You can construct a concrete instance of `ConnectionASideAccessPointPortRedundancyArrayInput` via:
+func (i ConnectionASideAccessPointPortRedundancyArgs) ToConnectionASideAccessPointPortRedundancyPtrOutput() ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return i.ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionASideAccessPointPortRedundancyArgs) ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortRedundancyOutput).ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(ctx)
+}
+
+// ConnectionASideAccessPointPortRedundancyPtrInput is an input type that accepts ConnectionASideAccessPointPortRedundancyArgs, ConnectionASideAccessPointPortRedundancyPtr and ConnectionASideAccessPointPortRedundancyPtrOutput values.
+// You can construct a concrete instance of `ConnectionASideAccessPointPortRedundancyPtrInput` via:
 //
-//	ConnectionASideAccessPointPortRedundancyArray{ ConnectionASideAccessPointPortRedundancyArgs{...} }
-type ConnectionASideAccessPointPortRedundancyArrayInput interface {
+//	        ConnectionASideAccessPointPortRedundancyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionASideAccessPointPortRedundancyPtrInput interface {
 	pulumi.Input
 
-	ToConnectionASideAccessPointPortRedundancyArrayOutput() ConnectionASideAccessPointPortRedundancyArrayOutput
-	ToConnectionASideAccessPointPortRedundancyArrayOutputWithContext(context.Context) ConnectionASideAccessPointPortRedundancyArrayOutput
+	ToConnectionASideAccessPointPortRedundancyPtrOutput() ConnectionASideAccessPointPortRedundancyPtrOutput
+	ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(context.Context) ConnectionASideAccessPointPortRedundancyPtrOutput
 }
 
-type ConnectionASideAccessPointPortRedundancyArray []ConnectionASideAccessPointPortRedundancyInput
+type connectionASideAccessPointPortRedundancyPtrType ConnectionASideAccessPointPortRedundancyArgs
 
-func (ConnectionASideAccessPointPortRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointPortRedundancy)(nil)).Elem()
+func ConnectionASideAccessPointPortRedundancyPtr(v *ConnectionASideAccessPointPortRedundancyArgs) ConnectionASideAccessPointPortRedundancyPtrInput {
+	return (*connectionASideAccessPointPortRedundancyPtrType)(v)
 }
 
-func (i ConnectionASideAccessPointPortRedundancyArray) ToConnectionASideAccessPointPortRedundancyArrayOutput() ConnectionASideAccessPointPortRedundancyArrayOutput {
-	return i.ToConnectionASideAccessPointPortRedundancyArrayOutputWithContext(context.Background())
+func (*connectionASideAccessPointPortRedundancyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointPortRedundancy)(nil)).Elem()
 }
 
-func (i ConnectionASideAccessPointPortRedundancyArray) ToConnectionASideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortRedundancyArrayOutput)
+func (i *connectionASideAccessPointPortRedundancyPtrType) ToConnectionASideAccessPointPortRedundancyPtrOutput() ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return i.ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionASideAccessPointPortRedundancyPtrType) ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionASideAccessPointPortRedundancyPtrOutput)
 }
 
 type ConnectionASideAccessPointPortRedundancyOutput struct{ *pulumi.OutputState }
@@ -3147,6 +3161,16 @@ func (o ConnectionASideAccessPointPortRedundancyOutput) ToConnectionASideAccessP
 
 func (o ConnectionASideAccessPointPortRedundancyOutput) ToConnectionASideAccessPointPortRedundancyOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyOutput {
 	return o
+}
+
+func (o ConnectionASideAccessPointPortRedundancyOutput) ToConnectionASideAccessPointPortRedundancyPtrOutput() ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return o.ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionASideAccessPointPortRedundancyOutput) ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionASideAccessPointPortRedundancy) *ConnectionASideAccessPointPortRedundancy {
+		return &v
+	}).(ConnectionASideAccessPointPortRedundancyPtrOutput)
 }
 
 // Access point redundancy
@@ -3164,24 +3188,58 @@ func (o ConnectionASideAccessPointPortRedundancyOutput) Priority() pulumi.String
 	return o.ApplyT(func(v ConnectionASideAccessPointPortRedundancy) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionASideAccessPointPortRedundancyArrayOutput struct{ *pulumi.OutputState }
+type ConnectionASideAccessPointPortRedundancyPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionASideAccessPointPortRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionASideAccessPointPortRedundancy)(nil)).Elem()
+func (ConnectionASideAccessPointPortRedundancyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionASideAccessPointPortRedundancy)(nil)).Elem()
 }
 
-func (o ConnectionASideAccessPointPortRedundancyArrayOutput) ToConnectionASideAccessPointPortRedundancyArrayOutput() ConnectionASideAccessPointPortRedundancyArrayOutput {
+func (o ConnectionASideAccessPointPortRedundancyPtrOutput) ToConnectionASideAccessPointPortRedundancyPtrOutput() ConnectionASideAccessPointPortRedundancyPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointPortRedundancyArrayOutput) ToConnectionASideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyArrayOutput {
+func (o ConnectionASideAccessPointPortRedundancyPtrOutput) ToConnectionASideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionASideAccessPointPortRedundancyPtrOutput {
 	return o
 }
 
-func (o ConnectionASideAccessPointPortRedundancyArrayOutput) Index(i pulumi.IntInput) ConnectionASideAccessPointPortRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionASideAccessPointPortRedundancy {
-		return vs[0].([]ConnectionASideAccessPointPortRedundancy)[vs[1].(int)]
+func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Elem() ConnectionASideAccessPointPortRedundancyOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPortRedundancy) ConnectionASideAccessPointPortRedundancy {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionASideAccessPointPortRedundancy
+		return ret
 	}).(ConnectionASideAccessPointPortRedundancyOutput)
+}
+
+// Access point redundancy
+func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPortRedundancy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPortRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection priority in redundancy group - PRIMARY, SECONDARY
+func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionASideAccessPointPortRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionASideAccessPointProfile struct {
@@ -7571,7 +7629,7 @@ type ConnectionZSideAccessPointPort struct {
 	// Port name
 	Name *string `pulumi:"name"`
 	// Redundancy Information
-	Redundancies []ConnectionZSideAccessPointPortRedundancy `pulumi:"redundancies"`
+	Redundancy *ConnectionZSideAccessPointPortRedundancy `pulumi:"redundancy"`
 	// Equinix-assigned virtual gateway identifier
 	Uuid *string `pulumi:"uuid"`
 }
@@ -7593,7 +7651,7 @@ type ConnectionZSideAccessPointPortArgs struct {
 	// Port name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Redundancy Information
-	Redundancies ConnectionZSideAccessPointPortRedundancyArrayInput `pulumi:"redundancies"`
+	Redundancy ConnectionZSideAccessPointPortRedundancyPtrInput `pulumi:"redundancy"`
 	// Equinix-assigned virtual gateway identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
@@ -7686,10 +7744,8 @@ func (o ConnectionZSideAccessPointPortOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Redundancy Information
-func (o ConnectionZSideAccessPointPortOutput) Redundancies() ConnectionZSideAccessPointPortRedundancyArrayOutput {
-	return o.ApplyT(func(v ConnectionZSideAccessPointPort) []ConnectionZSideAccessPointPortRedundancy {
-		return v.Redundancies
-	}).(ConnectionZSideAccessPointPortRedundancyArrayOutput)
+func (o ConnectionZSideAccessPointPortOutput) Redundancy() ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return o.ApplyT(func(v ConnectionZSideAccessPointPort) *ConnectionZSideAccessPointPortRedundancy { return v.Redundancy }).(ConnectionZSideAccessPointPortRedundancyPtrOutput)
 }
 
 // Equinix-assigned virtual gateway identifier
@@ -7742,13 +7798,13 @@ func (o ConnectionZSideAccessPointPortPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Redundancy Information
-func (o ConnectionZSideAccessPointPortPtrOutput) Redundancies() ConnectionZSideAccessPointPortRedundancyArrayOutput {
-	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) []ConnectionZSideAccessPointPortRedundancy {
+func (o ConnectionZSideAccessPointPortPtrOutput) Redundancy() ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) *ConnectionZSideAccessPointPortRedundancy {
 		if v == nil {
 			return nil
 		}
-		return v.Redundancies
-	}).(ConnectionZSideAccessPointPortRedundancyArrayOutput)
+		return v.Redundancy
+	}).(ConnectionZSideAccessPointPortRedundancyPtrOutput)
 }
 
 // Equinix-assigned virtual gateway identifier
@@ -7802,29 +7858,45 @@ func (i ConnectionZSideAccessPointPortRedundancyArgs) ToConnectionZSideAccessPoi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortRedundancyOutput)
 }
 
-// ConnectionZSideAccessPointPortRedundancyArrayInput is an input type that accepts ConnectionZSideAccessPointPortRedundancyArray and ConnectionZSideAccessPointPortRedundancyArrayOutput values.
-// You can construct a concrete instance of `ConnectionZSideAccessPointPortRedundancyArrayInput` via:
+func (i ConnectionZSideAccessPointPortRedundancyArgs) ToConnectionZSideAccessPointPortRedundancyPtrOutput() ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return i.ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionZSideAccessPointPortRedundancyArgs) ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortRedundancyOutput).ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(ctx)
+}
+
+// ConnectionZSideAccessPointPortRedundancyPtrInput is an input type that accepts ConnectionZSideAccessPointPortRedundancyArgs, ConnectionZSideAccessPointPortRedundancyPtr and ConnectionZSideAccessPointPortRedundancyPtrOutput values.
+// You can construct a concrete instance of `ConnectionZSideAccessPointPortRedundancyPtrInput` via:
 //
-//	ConnectionZSideAccessPointPortRedundancyArray{ ConnectionZSideAccessPointPortRedundancyArgs{...} }
-type ConnectionZSideAccessPointPortRedundancyArrayInput interface {
+//	        ConnectionZSideAccessPointPortRedundancyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionZSideAccessPointPortRedundancyPtrInput interface {
 	pulumi.Input
 
-	ToConnectionZSideAccessPointPortRedundancyArrayOutput() ConnectionZSideAccessPointPortRedundancyArrayOutput
-	ToConnectionZSideAccessPointPortRedundancyArrayOutputWithContext(context.Context) ConnectionZSideAccessPointPortRedundancyArrayOutput
+	ToConnectionZSideAccessPointPortRedundancyPtrOutput() ConnectionZSideAccessPointPortRedundancyPtrOutput
+	ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(context.Context) ConnectionZSideAccessPointPortRedundancyPtrOutput
 }
 
-type ConnectionZSideAccessPointPortRedundancyArray []ConnectionZSideAccessPointPortRedundancyInput
+type connectionZSideAccessPointPortRedundancyPtrType ConnectionZSideAccessPointPortRedundancyArgs
 
-func (ConnectionZSideAccessPointPortRedundancyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointPortRedundancy)(nil)).Elem()
+func ConnectionZSideAccessPointPortRedundancyPtr(v *ConnectionZSideAccessPointPortRedundancyArgs) ConnectionZSideAccessPointPortRedundancyPtrInput {
+	return (*connectionZSideAccessPointPortRedundancyPtrType)(v)
 }
 
-func (i ConnectionZSideAccessPointPortRedundancyArray) ToConnectionZSideAccessPointPortRedundancyArrayOutput() ConnectionZSideAccessPointPortRedundancyArrayOutput {
-	return i.ToConnectionZSideAccessPointPortRedundancyArrayOutputWithContext(context.Background())
+func (*connectionZSideAccessPointPortRedundancyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointPortRedundancy)(nil)).Elem()
 }
 
-func (i ConnectionZSideAccessPointPortRedundancyArray) ToConnectionZSideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortRedundancyArrayOutput)
+func (i *connectionZSideAccessPointPortRedundancyPtrType) ToConnectionZSideAccessPointPortRedundancyPtrOutput() ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return i.ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionZSideAccessPointPortRedundancyPtrType) ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionZSideAccessPointPortRedundancyPtrOutput)
 }
 
 type ConnectionZSideAccessPointPortRedundancyOutput struct{ *pulumi.OutputState }
@@ -7839,6 +7911,16 @@ func (o ConnectionZSideAccessPointPortRedundancyOutput) ToConnectionZSideAccessP
 
 func (o ConnectionZSideAccessPointPortRedundancyOutput) ToConnectionZSideAccessPointPortRedundancyOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyOutput {
 	return o
+}
+
+func (o ConnectionZSideAccessPointPortRedundancyOutput) ToConnectionZSideAccessPointPortRedundancyPtrOutput() ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return o.ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionZSideAccessPointPortRedundancyOutput) ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionZSideAccessPointPortRedundancy) *ConnectionZSideAccessPointPortRedundancy {
+		return &v
+	}).(ConnectionZSideAccessPointPortRedundancyPtrOutput)
 }
 
 // Access point redundancy
@@ -7856,24 +7938,58 @@ func (o ConnectionZSideAccessPointPortRedundancyOutput) Priority() pulumi.String
 	return o.ApplyT(func(v ConnectionZSideAccessPointPortRedundancy) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionZSideAccessPointPortRedundancyArrayOutput struct{ *pulumi.OutputState }
+type ConnectionZSideAccessPointPortRedundancyPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionZSideAccessPointPortRedundancyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConnectionZSideAccessPointPortRedundancy)(nil)).Elem()
+func (ConnectionZSideAccessPointPortRedundancyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionZSideAccessPointPortRedundancy)(nil)).Elem()
 }
 
-func (o ConnectionZSideAccessPointPortRedundancyArrayOutput) ToConnectionZSideAccessPointPortRedundancyArrayOutput() ConnectionZSideAccessPointPortRedundancyArrayOutput {
+func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) ToConnectionZSideAccessPointPortRedundancyPtrOutput() ConnectionZSideAccessPointPortRedundancyPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointPortRedundancyArrayOutput) ToConnectionZSideAccessPointPortRedundancyArrayOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyArrayOutput {
+func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) ToConnectionZSideAccessPointPortRedundancyPtrOutputWithContext(ctx context.Context) ConnectionZSideAccessPointPortRedundancyPtrOutput {
 	return o
 }
 
-func (o ConnectionZSideAccessPointPortRedundancyArrayOutput) Index(i pulumi.IntInput) ConnectionZSideAccessPointPortRedundancyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionZSideAccessPointPortRedundancy {
-		return vs[0].([]ConnectionZSideAccessPointPortRedundancy)[vs[1].(int)]
+func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Elem() ConnectionZSideAccessPointPortRedundancyOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPortRedundancy) ConnectionZSideAccessPointPortRedundancy {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionZSideAccessPointPortRedundancy
+		return ret
 	}).(ConnectionZSideAccessPointPortRedundancyOutput)
+}
+
+// Access point redundancy
+func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPortRedundancy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPortRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connection priority in redundancy group - PRIMARY, SECONDARY
+func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionZSideAccessPointPortRedundancy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionZSideAccessPointProfile struct {
@@ -30889,7 +31005,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortInput)(nil)).Elem(), ConnectionASideAccessPointPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortPtrInput)(nil)).Elem(), ConnectionASideAccessPointPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyArrayInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointPortRedundancyPtrInput)(nil)).Elem(), ConnectionASideAccessPointPortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileInput)(nil)).Elem(), ConnectionASideAccessPointProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfilePtrInput)(nil)).Elem(), ConnectionASideAccessPointProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionASideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), ConnectionASideAccessPointProfileAccessPointTypeConfigArgs{})
@@ -30939,7 +31055,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortInput)(nil)).Elem(), ConnectionZSideAccessPointPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortPtrInput)(nil)).Elem(), ConnectionZSideAccessPointPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyArrayInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointPortRedundancyPtrInput)(nil)).Elem(), ConnectionZSideAccessPointPortRedundancyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileInput)(nil)).Elem(), ConnectionZSideAccessPointProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfilePtrInput)(nil)).Elem(), ConnectionZSideAccessPointProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionZSideAccessPointProfileAccessPointTypeConfigInput)(nil)).Elem(), ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs{})
@@ -31254,7 +31370,7 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyOutput{})
-	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionASideAccessPointPortRedundancyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionASideAccessPointProfileAccessPointTypeConfigOutput{})
@@ -31304,7 +31420,7 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyOutput{})
-	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionZSideAccessPointPortRedundancyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionZSideAccessPointProfileAccessPointTypeConfigOutput{})

@@ -38,10 +38,10 @@ import (
 //			}
 //			_, err = metal.NewDevice(ctx, "server", &metal.DeviceArgs{
 //				Hostname:        pulumi.String("tf.ubuntu"),
-//				Plan:            pulumi.String("c3.medium.x86"),
+//				Plan:            pulumi.String(metal.PlanC3MediumX86),
 //				Metro:           pulumi.String("ny"),
 //				OperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),
-//				BillingCycle:    pulumi.String("hourly"),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.Any(local.Project_id),
 //			})
 //			if err != nil {

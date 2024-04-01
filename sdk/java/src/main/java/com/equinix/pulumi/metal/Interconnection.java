@@ -332,6 +332,22 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<Integer>>> vlans() {
         return Codegen.optional(this.vlans);
     }
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    @Export(name="vrfs", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> vrfs;
+
+    /**
+     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    public Output<Optional<List<String>>> vrfs() {
+        return Codegen.optional(this.vrfs);
+    }
 
     /**
      *

@@ -117,6 +117,7 @@ public final class GetInterconnectionResult {
      * 
      */
     private List<Integer> vlans;
+    private List<String> vrfs;
 
     private GetInterconnectionResult() {}
     public String connectionId() {
@@ -263,6 +264,9 @@ public final class GetInterconnectionResult {
     public List<Integer> vlans() {
         return this.vlans;
     }
+    public List<String> vrfs() {
+        return this.vrfs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -293,6 +297,7 @@ public final class GetInterconnectionResult {
         private String token;
         private String type;
         private List<Integer> vlans;
+        private List<String> vrfs;
         public Builder() {}
         public Builder(GetInterconnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -316,6 +321,7 @@ public final class GetInterconnectionResult {
     	      this.token = defaults.token;
     	      this.type = defaults.type;
     	      this.vlans = defaults.vlans;
+    	      this.vrfs = defaults.vrfs;
         }
 
         @CustomType.Setter
@@ -430,6 +436,14 @@ public final class GetInterconnectionResult {
         public Builder vlans(Integer... vlans) {
             return vlans(List.of(vlans));
         }
+        @CustomType.Setter
+        public Builder vrfs(List<String> vrfs) {
+            this.vrfs = Objects.requireNonNull(vrfs);
+            return this;
+        }
+        public Builder vrfs(String... vrfs) {
+            return vrfs(List.of(vrfs));
+        }
         public GetInterconnectionResult build() {
             final var _resultValue = new GetInterconnectionResult();
             _resultValue.connectionId = connectionId;
@@ -452,6 +466,7 @@ public final class GetInterconnectionResult {
             _resultValue.token = token;
             _resultValue.type = type;
             _resultValue.vlans = vlans;
+            _resultValue.vrfs = vrfs;
             return _resultValue;
         }
     }

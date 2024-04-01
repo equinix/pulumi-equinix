@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  * });
  * const server = new equinix.metal.Device("server", {
  *     hostname: "tf.ubuntu",
- *     plan: "c3.medium.x86",
+ *     plan: equinix.metal.Plan.C3MediumX86,
  *     metro: "ny",
- *     operatingSystem: example.then(example => example.id).apply((x) => equinix.metal.operatingsystem.OperatingSystem[x]),
- *     billingCycle: "hourly",
+ *     operatingSystem: example.then(example => example.id).apply((x) => equinix.metal.OperatingSystem[x]),
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: local.project_id,
  * });
  * ```
@@ -98,10 +98,10 @@ export interface GetOperatingSystemResult {
  * });
  * const server = new equinix.metal.Device("server", {
  *     hostname: "tf.ubuntu",
- *     plan: "c3.medium.x86",
+ *     plan: equinix.metal.Plan.C3MediumX86,
  *     metro: "ny",
- *     operatingSystem: example.then(example => example.id).apply((x) => equinix.metal.operatingsystem.OperatingSystem[x]),
- *     billingCycle: "hourly",
+ *     operatingSystem: example.then(example => example.id).apply((x) => equinix.metal.OperatingSystem[x]),
+ *     billingCycle: equinix.metal.BillingCycle.Hourly,
  *     projectId: local.project_id,
  * });
  * ```

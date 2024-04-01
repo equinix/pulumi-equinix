@@ -65,13 +65,13 @@ namespace Pulumi.Equinix.Metal
         /// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         /// </summary>
         [Output("facility")]
-        public Output<string?> Facility { get; private set; } = null!;
+        public Output<string> Facility { get; private set; } = null!;
 
         /// <summary>
         /// Metro in which to create the VLAN
         /// </summary>
         [Output("metro")]
-        public Output<string?> Metro { get; private set; } = null!;
+        public Output<string> Metro { get; private set; } = null!;
 
         /// <summary>
         /// ID of parent project.

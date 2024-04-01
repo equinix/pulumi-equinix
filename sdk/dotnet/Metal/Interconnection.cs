@@ -158,6 +158,13 @@ namespace Pulumi.Equinix.Metal
         [Output("vlans")]
         public Output<ImmutableArray<int>> Vlans { get; private set; } = null!;
 
+        /// <summary>
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        /// connection
+        /// </summary>
+        [Output("vrfs")]
+        public Output<ImmutableArray<string>> Vrfs { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Interconnection resource with the given unique name, arguments, and options.
@@ -301,6 +308,19 @@ namespace Pulumi.Equinix.Metal
             set => _vlans = value;
         }
 
+        [Input("vrfs")]
+        private InputList<string>? _vrfs;
+
+        /// <summary>
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        /// connection
+        /// </summary>
+        public InputList<string> Vrfs
+        {
+            get => _vrfs ?? (_vrfs = new InputList<string>());
+            set => _vrfs = value;
+        }
+
         public InterconnectionArgs()
         {
         }
@@ -441,6 +461,19 @@ namespace Pulumi.Equinix.Metal
         {
             get => _vlans ?? (_vlans = new InputList<int>());
             set => _vlans = value;
+        }
+
+        [Input("vrfs")]
+        private InputList<string>? _vrfs;
+
+        /// <summary>
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        /// connection
+        /// </summary>
+        public InputList<string> Vrfs
+        {
+            get => _vrfs ?? (_vrfs = new InputList<string>());
+            set => _vrfs = value;
         }
 
         public InterconnectionState()

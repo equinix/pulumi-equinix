@@ -34,10 +34,10 @@ import (
 //			projectId := "<UUID_of_your_project>"
 //			testDevice, err := metal.NewDevice(ctx, "testDevice", &metal.DeviceArgs{
 //				Hostname:        pulumi.String("tfacc-test-device-port"),
-//				Plan:            pulumi.String("c3.medium.x86"),
+//				Plan:            pulumi.String(metal.PlanC3MediumX86),
 //				Metro:           pulumi.String("sv"),
-//				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
+//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.String(projectId),
 //			})
 //			if err != nil {

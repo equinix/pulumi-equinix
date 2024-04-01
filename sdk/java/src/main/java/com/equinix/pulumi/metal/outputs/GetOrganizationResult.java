@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationResult {
@@ -20,11 +22,7 @@ public final class GetOrganizationResult {
      * @return Description string.
      * 
      */
-    private String description;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
+    private @Nullable String description;
     private String id;
     /**
      * @return Logo URL.
@@ -61,13 +59,9 @@ public final class GetOrganizationResult {
      * @return Description string.
      * 
      */
-    public String description() {
-        return this.description;
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -116,7 +110,7 @@ public final class GetOrganizationResult {
     @CustomType.Builder
     public static final class Builder {
         private GetOrganizationAddress address;
-        private String description;
+        private @Nullable String description;
         private String id;
         private String logo;
         private String name;
@@ -144,8 +138,8 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+        public Builder description(@Nullable String description) {
+            this.description = description;
             return this;
         }
         @CustomType.Setter

@@ -29,7 +29,8 @@ class InterconnectionArgs:
                  service_token_type: Optional[pulumi.Input[str]] = None,
                  speed: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+                 vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Interconnection resource.
         :param pulumi.Input[str] redundancy: Connection redundancy - redundant or primary.
@@ -46,6 +47,8 @@ class InterconnectionArgs:
         :param pulumi.Input[str] speed: Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vrfs: Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+               connection
         """
         pulumi.set(__self__, "redundancy", redundancy)
         pulumi.set(__self__, "type", type)
@@ -76,6 +79,8 @@ class InterconnectionArgs:
             pulumi.set(__self__, "tags", tags)
         if vlans is not None:
             pulumi.set(__self__, "vlans", vlans)
+        if vrfs is not None:
+            pulumi.set(__self__, "vrfs", vrfs)
 
     @property
     @pulumi.getter
@@ -248,6 +253,19 @@ class InterconnectionArgs:
     def vlans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "vlans", value)
 
+    @property
+    @pulumi.getter
+    def vrfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        connection
+        """
+        return pulumi.get(self, "vrfs")
+
+    @vrfs.setter
+    def vrfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vrfs", value)
+
 
 @pulumi.input_type
 class _InterconnectionState:
@@ -269,7 +287,8 @@ class _InterconnectionState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+                 vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Interconnection resources.
         :param pulumi.Input[str] contact_email: The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
@@ -292,6 +311,8 @@ class _InterconnectionState:
         :param pulumi.Input[str] token: (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vrfs: Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+               connection
         """
         if contact_email is not None:
             pulumi.set(__self__, "contact_email", contact_email)
@@ -335,6 +356,8 @@ class _InterconnectionState:
             pulumi.set(__self__, "type", type)
         if vlans is not None:
             pulumi.set(__self__, "vlans", vlans)
+        if vrfs is not None:
+            pulumi.set(__self__, "vrfs", vrfs)
 
     @property
     @pulumi.getter(name="contactEmail")
@@ -560,6 +583,19 @@ class _InterconnectionState:
     def vlans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "vlans", value)
 
+    @property
+    @pulumi.getter
+    def vrfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        connection
+        """
+        return pulumi.get(self, "vrfs")
+
+    @vrfs.setter
+    def vrfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vrfs", value)
+
 
 class Interconnection(pulumi.CustomResource):
     @overload
@@ -580,6 +616,7 @@ class Interconnection(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Use this resource to request the creation an Interconnection asset to connect with other parties using [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/).
@@ -627,6 +664,8 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: String list of tags.
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vrfs: Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+               connection
         """
         ...
     @overload
@@ -693,6 +732,7 @@ class Interconnection(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -720,6 +760,7 @@ class Interconnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["vlans"] = vlans
+            __props__.__dict__["vrfs"] = vrfs
             __props__.__dict__["ports"] = None
             __props__.__dict__["service_tokens"] = None
             __props__.__dict__["status"] = None
@@ -751,7 +792,8 @@ class Interconnection(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None) -> 'Interconnection':
+            vlans: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+            vrfs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Interconnection':
         """
         Get an existing Interconnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -779,6 +821,8 @@ class Interconnection(pulumi.CustomResource):
         :param pulumi.Input[str] token: (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinix_ecx_l2_connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `service_tokens` instead.
         :param pulumi.Input[str] type: Connection type - dedicated or shared.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vrfs: Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+               connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -802,6 +846,7 @@ class Interconnection(pulumi.CustomResource):
         __props__.__dict__["token"] = token
         __props__.__dict__["type"] = type
         __props__.__dict__["vlans"] = vlans
+        __props__.__dict__["vrfs"] = vrfs
         return Interconnection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -955,4 +1000,13 @@ class Interconnection(pulumi.CustomResource):
         Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
         """
         return pulumi.get(self, "vlans")
+
+    @property
+    @pulumi.getter
+    def vrfs(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        connection
+        """
+        return pulumi.get(self, "vrfs")
 

@@ -1389,20 +1389,20 @@ class ConnectionASideAccessPointPort(dict):
     def __init__(__self__, *,
                  href: Optional[str] = None,
                  name: Optional[str] = None,
-                 redundancies: Optional[Sequence['outputs.ConnectionASideAccessPointPortRedundancy']] = None,
+                 redundancy: Optional['outputs.ConnectionASideAccessPointPortRedundancy'] = None,
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
         :param str name: Port name
-        :param Sequence['ConnectionASideAccessPointPortRedundancyArgs'] redundancies: Redundancy Information
+        :param 'ConnectionASideAccessPointPortRedundancyArgs' redundancy: Redundancy Information
         :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if redundancies is not None:
-            pulumi.set(__self__, "redundancies", redundancies)
+        if redundancy is not None:
+            pulumi.set(__self__, "redundancy", redundancy)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
 
@@ -1424,11 +1424,11 @@ class ConnectionASideAccessPointPort(dict):
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Optional[Sequence['outputs.ConnectionASideAccessPointPortRedundancy']]:
+    def redundancy(self) -> Optional['outputs.ConnectionASideAccessPointPortRedundancy']:
         """
         Redundancy Information
         """
-        return pulumi.get(self, "redundancies")
+        return pulumi.get(self, "redundancy")
 
     @property
     @pulumi.getter
@@ -3188,20 +3188,20 @@ class ConnectionZSideAccessPointPort(dict):
     def __init__(__self__, *,
                  href: Optional[str] = None,
                  name: Optional[str] = None,
-                 redundancies: Optional[Sequence['outputs.ConnectionZSideAccessPointPortRedundancy']] = None,
+                 redundancy: Optional['outputs.ConnectionZSideAccessPointPortRedundancy'] = None,
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
         :param str name: Port name
-        :param Sequence['ConnectionZSideAccessPointPortRedundancyArgs'] redundancies: Redundancy Information
+        :param 'ConnectionZSideAccessPointPortRedundancyArgs' redundancy: Redundancy Information
         :param str uuid: Equinix-assigned virtual gateway identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if redundancies is not None:
-            pulumi.set(__self__, "redundancies", redundancies)
+        if redundancy is not None:
+            pulumi.set(__self__, "redundancy", redundancy)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
 
@@ -3223,11 +3223,11 @@ class ConnectionZSideAccessPointPort(dict):
 
     @property
     @pulumi.getter
-    def redundancies(self) -> Optional[Sequence['outputs.ConnectionZSideAccessPointPortRedundancy']]:
+    def redundancy(self) -> Optional['outputs.ConnectionZSideAccessPointPortRedundancy']:
         """
         Redundancy Information
         """
-        return pulumi.get(self, "redundancies")
+        return pulumi.get(self, "redundancy")
 
     @property
     @pulumi.getter

@@ -69,7 +69,7 @@ export class Organization extends pulumi.CustomResource {
      * An object that has the address information. See Address
      * below for more details.
      */
-    public readonly address!: pulumi.Output<outputs.metal.OrganizationAddress>;
+    public readonly address!: pulumi.Output<outputs.metal.OrganizationAddress | undefined>;
     /**
      * The timestamp for when the organization was created.
      */
@@ -77,11 +77,11 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Description string.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Logo URL.
      */
-    public readonly logo!: pulumi.Output<string | undefined>;
+    public readonly logo!: pulumi.Output<string>;
     /**
      * The name of the Organization.
      */
@@ -89,7 +89,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Twitter handle.
      */
-    public readonly twitter!: pulumi.Output<string | undefined>;
+    public readonly twitter!: pulumi.Output<string>;
     /**
      * The timestamp for the last time the organization was updated.
      */
@@ -97,7 +97,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Website link.
      */
-    public readonly website!: pulumi.Output<string | undefined>;
+    public readonly website!: pulumi.Output<string>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -106,7 +106,7 @@ export class Organization extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationArgs | OrganizationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -122,9 +122,6 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'address'");
-            }
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["logo"] = args ? args.logo : undefined;
@@ -186,7 +183,7 @@ export interface OrganizationArgs {
      * An object that has the address information. See Address
      * below for more details.
      */
-    address: pulumi.Input<inputs.metal.OrganizationAddress>;
+    address?: pulumi.Input<inputs.metal.OrganizationAddress>;
     /**
      * Description string.
      */

@@ -67,9 +67,8 @@ type LookupProjectResult struct {
 	BgpConfig GetProjectBgpConfig `pulumi:"bgpConfig"`
 	// The timestamp for when the project was created.
 	Created string `pulumi:"created"`
-	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id      string `pulumi:"id"`
+	Name    string `pulumi:"name"`
 	// The UUID of this project's parent organization.
 	OrganizationId string `pulumi:"organizationId"`
 	// The UUID of payment method for this project.
@@ -136,7 +135,6 @@ func (o LookupProjectResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }

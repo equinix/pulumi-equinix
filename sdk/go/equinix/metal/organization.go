@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
-
 	"github.com/equinix/pulumi-equinix/sdk/go/equinix/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -60,33 +58,30 @@ type Organization struct {
 
 	// An object that has the address information. See Address
 	// below for more details.
-	Address OrganizationAddressOutput `pulumi:"address"`
+	Address OrganizationAddressPtrOutput `pulumi:"address"`
 	// The timestamp for when the organization was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Description string.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Logo URL.
-	Logo pulumi.StringPtrOutput `pulumi:"logo"`
+	Logo pulumi.StringOutput `pulumi:"logo"`
 	// The name of the Organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Twitter handle.
-	Twitter pulumi.StringPtrOutput `pulumi:"twitter"`
+	Twitter pulumi.StringOutput `pulumi:"twitter"`
 	// The timestamp for the last time the organization was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 	// Website link.
-	Website pulumi.StringPtrOutput `pulumi:"website"`
+	Website pulumi.StringOutput `pulumi:"website"`
 }
 
 // NewOrganization registers a new resource with the given unique name, arguments, and options.
 func NewOrganization(ctx *pulumi.Context,
 	name string, args *OrganizationArgs, opts ...pulumi.ResourceOption) (*Organization, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &OrganizationArgs{}
 	}
 
-	if args.Address == nil {
-		return nil, errors.New("invalid value for required argument 'Address'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Organization
 	err := ctx.RegisterResource("equinix:metal/organization:Organization", name, args, &resource, opts...)
@@ -156,7 +151,7 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// An object that has the address information. See Address
 	// below for more details.
-	Address OrganizationAddress `pulumi:"address"`
+	Address *OrganizationAddress `pulumi:"address"`
 	// Description string.
 	Description *string `pulumi:"description"`
 	// Logo URL.
@@ -173,7 +168,7 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// An object that has the address information. See Address
 	// below for more details.
-	Address OrganizationAddressInput
+	Address OrganizationAddressPtrInput
 	// Description string.
 	Description pulumi.StringPtrInput
 	// Logo URL.
@@ -275,8 +270,8 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 
 // An object that has the address information. See Address
 // below for more details.
-func (o OrganizationOutput) Address() OrganizationAddressOutput {
-	return o.ApplyT(func(v *Organization) OrganizationAddressOutput { return v.Address }).(OrganizationAddressOutput)
+func (o OrganizationOutput) Address() OrganizationAddressPtrOutput {
+	return o.ApplyT(func(v *Organization) OrganizationAddressPtrOutput { return v.Address }).(OrganizationAddressPtrOutput)
 }
 
 // The timestamp for when the organization was created.
@@ -285,13 +280,13 @@ func (o OrganizationOutput) Created() pulumi.StringOutput {
 }
 
 // Description string.
-func (o OrganizationOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o OrganizationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Logo URL.
-func (o OrganizationOutput) Logo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Logo }).(pulumi.StringPtrOutput)
+func (o OrganizationOutput) Logo() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Logo }).(pulumi.StringOutput)
 }
 
 // The name of the Organization.
@@ -300,8 +295,8 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 }
 
 // Twitter handle.
-func (o OrganizationOutput) Twitter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Twitter }).(pulumi.StringPtrOutput)
+func (o OrganizationOutput) Twitter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Twitter }).(pulumi.StringOutput)
 }
 
 // The timestamp for the last time the organization was updated.
@@ -310,8 +305,8 @@ func (o OrganizationOutput) Updated() pulumi.StringOutput {
 }
 
 // Website link.
-func (o OrganizationOutput) Website() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Website }).(pulumi.StringPtrOutput)
+func (o OrganizationOutput) Website() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Website }).(pulumi.StringOutput)
 }
 
 type OrganizationArrayOutput struct{ *pulumi.OutputState }

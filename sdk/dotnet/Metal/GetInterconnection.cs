@@ -178,6 +178,7 @@ namespace Pulumi.Equinix.Metal
         /// Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.
         /// </summary>
         public readonly ImmutableArray<int> Vlans;
+        public readonly ImmutableArray<string> Vrfs;
 
         [OutputConstructor]
         private GetInterconnectionResult(
@@ -219,7 +220,9 @@ namespace Pulumi.Equinix.Metal
 
             string type,
 
-            ImmutableArray<int> vlans)
+            ImmutableArray<int> vlans,
+
+            ImmutableArray<string> vrfs)
         {
             ConnectionId = connectionId;
             ContactEmail = contactEmail;
@@ -241,6 +244,7 @@ namespace Pulumi.Equinix.Metal
             Token = token;
             Type = type;
             Vlans = vlans;
+            Vrfs = vrfs;
         }
     }
 }
