@@ -629,11 +629,8 @@
                     "type": "string",
                     "description": "Port name\n"
                 },
-                "redundancies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointPortRedundancy:ConnectionASideAccessPointPortRedundancy"
-                    },
+                "redundancy": {
+                    "$ref": "#/types/equinix:fabric/ConnectionASideAccessPointPortRedundancy:ConnectionASideAccessPointPortRedundancy",
                     "description": "Redundancy Information\n"
                 },
                 "uuid": {
@@ -647,7 +644,7 @@
                     "requiredOutputs": [
                         "href",
                         "name",
-                        "redundancies",
+                        "redundancy",
                         "uuid"
                     ]
                 }
@@ -1494,11 +1491,8 @@
                     "type": "string",
                     "description": "Port name\n"
                 },
-                "redundancies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointPortRedundancy:ConnectionZSideAccessPointPortRedundancy"
-                    },
+                "redundancy": {
+                    "$ref": "#/types/equinix:fabric/ConnectionZSideAccessPointPortRedundancy:ConnectionZSideAccessPointPortRedundancy",
                     "description": "Redundancy Information\n"
                 },
                 "uuid": {
@@ -1512,7 +1506,7 @@
                     "requiredOutputs": [
                         "href",
                         "name",
-                        "redundancies",
+                        "redundancy",
                         "uuid"
                     ]
                 }
@@ -7423,7 +7417,18 @@
                 "city",
                 "country",
                 "zipCode"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "city",
+                        "country",
+                        "state",
+                        "zipCode"
+                    ]
+                }
+            }
         },
         "equinix:metal/ProjectBgpConfig:ProjectBgpConfig": {
             "properties": {
@@ -8531,8 +8536,7 @@
                 },
                 "md5": {
                     "type": "string",
-                    "description": "Password for BGP session in plaintext (not a checksum).\n",
-                    "secret": true
+                    "description": "Password for BGP session in plaintext (not a checksum).\n"
                 },
                 "status": {
                     "type": "string",
@@ -8544,6 +8548,7 @@
                 "asn",
                 "deploymentType",
                 "maxPrefix",
+                "md5",
                 "status"
             ],
             "language": {
@@ -12562,6 +12567,13 @@
                         "type": "integer"
                     },
                     "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                },
+                "vrfs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant\nconnection\n"
                 }
             },
             "required": [
@@ -12643,6 +12655,13 @@
                         "type": "integer"
                     },
                     "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                },
+                "vrfs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant\nconnection\n"
                 }
             },
             "requiredInputs": [
@@ -12737,6 +12756,13 @@
                             "type": "integer"
                         },
                         "description": "Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                    },
+                    "vrfs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant\nconnection\n"
                     }
                 },
                 "type": "object"
@@ -12919,10 +12945,13 @@
                 }
             },
             "required": [
-                "address",
                 "created",
+                "description",
+                "logo",
                 "name",
-                "updated"
+                "twitter",
+                "updated",
+                "website"
             ],
             "inputProperties": {
                 "address": {
@@ -12950,9 +12979,6 @@
                     "description": "Website link.\n"
                 }
             },
-            "requiredInputs": [
-                "address"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Organization resources.\n",
                 "properties": {
@@ -13056,34 +13082,29 @@
             "inputProperties": {
                 "invitee": {
                     "type": "string",
-                    "description": "The email address of the user to invite\n",
-                    "willReplaceOnChanges": true
+                    "description": "The email address of the user to invite\n"
                 },
                 "message": {
                     "type": "string",
-                    "description": "A message to include in the emailed invitation.\n",
-                    "willReplaceOnChanges": true
+                    "description": "A message to include in the emailed invitation.\n"
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The organization to invite the user to\n",
-                    "willReplaceOnChanges": true
+                    "description": "The organization to invite the user to\n"
                 },
                 "projectsIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Project IDs the member has access to within the organization. If the member is an 'admin', the projects list should be empty.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Project IDs the member has access to within the organization. If the member is an 'admin', the projects list should be empty.\n"
                 },
                 "roles": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Organization roles (admin, collaborator, limited_collaborator, billing)\n",
-                    "willReplaceOnChanges": true
+                    "description": "Organization roles (admin, collaborator, limited_collaborator, billing)\n"
                 }
             },
             "requiredInputs": [
@@ -13105,13 +13126,11 @@
                     },
                     "invitee": {
                         "type": "string",
-                        "description": "The email address of the user to invite\n",
-                        "willReplaceOnChanges": true
+                        "description": "The email address of the user to invite\n"
                     },
                     "message": {
                         "type": "string",
-                        "description": "A message to include in the emailed invitation.\n",
-                        "willReplaceOnChanges": true
+                        "description": "A message to include in the emailed invitation.\n"
                     },
                     "nonce": {
                         "type": "string",
@@ -13119,24 +13138,21 @@
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The organization to invite the user to\n",
-                        "willReplaceOnChanges": true
+                        "description": "The organization to invite the user to\n"
                     },
                     "projectsIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Project IDs the member has access to within the organization. If the member is an 'admin', the projects list should be empty.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Project IDs the member has access to within the organization. If the member is an 'admin', the projects list should be empty.\n"
                     },
                     "roles": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Organization roles (admin, collaborator, limited_collaborator, billing)\n",
-                        "willReplaceOnChanges": true
+                        "description": "Organization roles (admin, collaborator, limited_collaborator, billing)\n"
                     },
                     "state": {
                         "type": "string",
@@ -13482,6 +13498,7 @@
                 }
             },
             "required": [
+                "backendTransfer",
                 "created",
                 "name",
                 "organizationId",
@@ -13503,8 +13520,7 @@
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The UUID of organization under which you want to create the project. If you\nleave it out, the project will be created under your the default organization of your account.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The UUID of organization under which you want to create the project. If you\nleave it out, the project will be created under your the default organization of your account.\n"
                 },
                 "paymentMethodId": {
                     "type": "string",
@@ -13532,8 +13548,7 @@
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The UUID of organization under which you want to create the project. If you\nleave it out, the project will be created under your the default organization of your account.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The UUID of organization under which you want to create the project. If you\nleave it out, the project will be created under your the default organization of your account.\n"
                     },
                     "paymentMethodId": {
                         "type": "string",
@@ -14600,14 +14615,15 @@
                 }
             },
             "required": [
+                "facility",
+                "metro",
                 "projectId",
                 "vxlan"
             ],
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "Description string.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Description string.\n"
                 },
                 "facility": {
                     "type": "string",
@@ -14621,23 +14637,19 @@
                         }
                     ],
                     "description": "Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide\n",
-                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                 },
                 "metro": {
                     "type": "string",
-                    "description": "Metro in which to create the VLAN\n",
-                    "willReplaceOnChanges": true
+                    "description": "Metro in which to create the VLAN\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "ID of parent project.\n",
-                    "willReplaceOnChanges": true
+                    "description": "ID of parent project.\n"
                 },
                 "vxlan": {
                     "type": "integer",
-                    "description": "VLAN ID, must be unique in metro.\n",
-                    "willReplaceOnChanges": true
+                    "description": "VLAN ID, must be unique in metro.\n"
                 }
             },
             "requiredInputs": [
@@ -14648,8 +14660,7 @@
                 "properties": {
                     "description": {
                         "type": "string",
-                        "description": "Description string.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Description string.\n"
                     },
                     "facility": {
                         "type": "string",
@@ -14663,23 +14674,19 @@
                             }
                         ],
                         "description": "Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide\n",
-                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "metro": {
                         "type": "string",
-                        "description": "Metro in which to create the VLAN\n",
-                        "willReplaceOnChanges": true
+                        "description": "Metro in which to create the VLAN\n"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "ID of parent project.\n",
-                        "willReplaceOnChanges": true
+                        "description": "ID of parent project.\n"
                     },
                     "vxlan": {
                         "type": "integer",
-                        "description": "VLAN ID, must be unique in metro.\n",
-                        "willReplaceOnChanges": true
+                        "description": "VLAN ID, must be unique in metro.\n"
                     }
                 },
                 "type": "object"
@@ -17413,7 +17420,7 @@
             }
         },
         "equinix:metal/getGateway:getGateway": {
-            "description": "Use this datasource to retrieve Metal Gateway resources in Equinix Metal.\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\n// Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    description: \"test VLAN in SV\",\n    metro: \"sv\",\n    projectId: local.project_id,\n});\nconst testGateway = equinix.metal.getGateway({\n    gatewayId: local.gateway_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\n# Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    description=\"test VLAN in SV\",\n    metro=\"sv\",\n    project_id=local[\"project_id\"])\ntest_gateway = equinix.metal.get_gateway(gateway_id=local[\"gateway_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        Description = \"test VLAN in SV\",\n        Metro = \"sv\",\n        ProjectId = local.Project_id,\n    });\n\n    var testGateway = Equinix.Metal.GetGateway.Invoke(new()\n    {\n        GatewayId = local.Gateway_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n\t\t_, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tDescription: pulumi.String(\"test VLAN in SV\"),\n\t\t\tMetro:       pulumi.String(\"sv\"),\n\t\t\tProjectId:   pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.LookupGateway(ctx, \u0026metal.LookupGatewayArgs{\n\t\t\tGatewayId: local.Gateway_id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetGatewayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()        \n            .description(\"test VLAN in SV\")\n            .metro(\"sv\")\n            .projectId(local.project_id())\n            .build());\n\n        final var testGateway = MetalFunctions.getGateway(GetGatewayArgs.builder()\n            .gatewayId(local.gateway_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n  testVlan:\n    type: equinix:metal:Vlan\n    properties:\n      description: test VLAN in SV\n      metro: sv\n      projectId: ${local.project_id}\nvariables:\n  testGateway:\n    fn::invoke:\n      Function: equinix:metal:getGateway\n      Arguments:\n        gatewayId: ${local.gateway_id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this datasource to retrieve Metal Gateway resources in Equinix Metal.\n\n\u003e VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\n// Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\nconst testVlan = new equinix.metal.Vlan(\"testVlan\", {\n    description: \"test VLAN in SV\",\n    metro: \"sv\",\n    projectId: local.project_id,\n});\nconst testGateway = equinix.metal.getGateway({\n    gatewayId: local.gateway_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\n# Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\ntest_vlan = equinix.metal.Vlan(\"testVlan\",\n    description=\"test VLAN in SV\",\n    metro=\"sv\",\n    project_id=local[\"project_id\"])\ntest_gateway = equinix.metal.get_gateway(gateway_id=local[\"gateway_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n    var testVlan = new Equinix.Metal.Vlan(\"testVlan\", new()\n    {\n        Description = \"test VLAN in SV\",\n        Metro = \"sv\",\n        ProjectId = local.Project_id,\n    });\n\n    var testGateway = Equinix.Metal.GetGateway.Invoke(new()\n    {\n        GatewayId = local.Gateway_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n\t\t_, err := metal.NewVlan(ctx, \"testVlan\", \u0026metal.VlanArgs{\n\t\t\tDescription: pulumi.String(\"test VLAN in SV\"),\n\t\t\tMetro:       pulumi.String(\"sv\"),\n\t\t\tProjectId:   pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.LookupGateway(ctx, \u0026metal.LookupGatewayArgs{\n\t\t\tGatewayId: local.Gateway_id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Vlan;\nimport com.pulumi.equinix.metal.VlanArgs;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetGatewayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n        var testVlan = new Vlan(\"testVlan\", VlanArgs.builder()        \n            .description(\"test VLAN in SV\")\n            .metro(\"sv\")\n            .projectId(local.project_id())\n            .build());\n\n        final var testGateway = MetalFunctions.getGateway(GetGatewayArgs.builder()\n            .gatewayId(local.gateway_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses\n  testVlan:\n    type: equinix:metal:Vlan\n    properties:\n      description: test VLAN in SV\n      metro: sv\n      projectId: ${local.project_id}\nvariables:\n  testGateway:\n    fn::invoke:\n      Function: equinix:metal:getGateway\n      Arguments:\n        gatewayId: ${local.gateway_id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGateway.\n",
                 "properties": {
@@ -17655,6 +17662,12 @@
                             "type": "integer"
                         },
                         "description": "Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.\n"
+                    },
+                    "vrfs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "type": "object",
@@ -17678,7 +17691,8 @@
                     "tags",
                     "token",
                     "type",
-                    "vlans"
+                    "vlans",
+                    "vrfs"
                 ]
             }
         },
@@ -17820,7 +17834,7 @@
             }
         },
         "equinix:metal/getOperatingSystem:getOperatingSystem": {
-            "description": "Use this data source to get Equinix Metal Operating System image.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getOperatingSystem({\n    distro: \"ubuntu\",\n    version: \"20.04\",\n    provisionableOn: \"c3.medium.x86\",\n});\nconst server = new equinix.metal.Device(\"server\", {\n    hostname: \"tf.ubuntu\",\n    plan: \"c3.medium.x86\",\n    metro: \"ny\",\n    operatingSystem: example.then(example =\u003e example.id).apply((x) =\u003e equinix.metal.operatingsystem.OperatingSystem[x]),\n    billingCycle: \"hourly\",\n    projectId: local.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_operating_system(distro=\"ubuntu\",\n    version=\"20.04\",\n    provisionable_on=\"c3.medium.x86\")\nserver = equinix.metal.Device(\"server\",\n    hostname=\"tf.ubuntu\",\n    plan=\"c3.medium.x86\",\n    metro=\"ny\",\n    operating_system=example.id.apply(lambda x: equinix.metal/operatingsystem.OperatingSystem(x)),\n    billing_cycle=\"hourly\",\n    project_id=local[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetOperatingSystem.Invoke(new()\n    {\n        Distro = \"ubuntu\",\n        Version = \"20.04\",\n        ProvisionableOn = \"c3.medium.x86\",\n    });\n\n    var server = new Equinix.Metal.Device(\"server\", new()\n    {\n        Hostname = \"tf.ubuntu\",\n        Plan = \"c3.medium.x86\",\n        Metro = \"ny\",\n        OperatingSystem = example.Apply(getOperatingSystemResult =\u003e getOperatingSystemResult.Id).Apply(System.Enum.Parse\u003cEquinix.Metal.OperatingSystem.OperatingSystem\u003e),\n        BillingCycle = \"hourly\",\n        ProjectId = local.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetOperatingSystem(ctx, \u0026metal.GetOperatingSystemArgs{\n\t\t\tDistro:          pulumi.StringRef(\"ubuntu\"),\n\t\t\tVersion:         pulumi.StringRef(\"20.04\"),\n\t\t\tProvisionableOn: pulumi.StringRef(\"c3.medium.x86\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewDevice(ctx, \"server\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.ubuntu\"),\n\t\t\tPlan:            pulumi.String(\"c3.medium.x86\"),\n\t\t\tMetro:           pulumi.String(\"ny\"),\n\t\t\tOperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetOperatingSystemArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()\n            .distro(\"ubuntu\")\n            .version(\"20.04\")\n            .provisionableOn(\"c3.medium.x86\")\n            .build());\n\n        var server = new Device(\"server\", DeviceArgs.builder()        \n            .hostname(\"tf.ubuntu\")\n            .plan(\"c3.medium.x86\")\n            .metro(\"ny\")\n            .operatingSystem(example.applyValue(getOperatingSystemResult -\u003e getOperatingSystemResult.id()))\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  server:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.ubuntu\n      plan: c3.medium.x86\n      metro: ny\n      operatingSystem: ${example.id}\n      billingCycle: hourly\n      projectId: ${local.project_id}\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getOperatingSystem\n      Arguments:\n        distro: ubuntu\n        version: '20.04'\n        provisionableOn: c3.medium.x86\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to get Equinix Metal Operating System image.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getOperatingSystem({\n    distro: \"ubuntu\",\n    version: \"20.04\",\n    provisionableOn: \"c3.medium.x86\",\n});\nconst server = new equinix.metal.Device(\"server\", {\n    hostname: \"tf.ubuntu\",\n    plan: equinix.metal.Plan.C3MediumX86,\n    metro: \"ny\",\n    operatingSystem: example.then(example =\u003e example.id).apply((x) =\u003e equinix.metal.OperatingSystem[x]),\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: local.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_operating_system(distro=\"ubuntu\",\n    version=\"20.04\",\n    provisionable_on=\"c3.medium.x86\")\nserver = equinix.metal.Device(\"server\",\n    hostname=\"tf.ubuntu\",\n    plan=equinix.metal.Plan.C3_MEDIUM_X86,\n    metro=\"ny\",\n    operating_system=example.id.apply(lambda x: equinix.metal.OperatingSystem(x)),\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=local[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetOperatingSystem.Invoke(new()\n    {\n        Distro = \"ubuntu\",\n        Version = \"20.04\",\n        ProvisionableOn = \"c3.medium.x86\",\n    });\n\n    var server = new Equinix.Metal.Device(\"server\", new()\n    {\n        Hostname = \"tf.ubuntu\",\n        Plan = Equinix.Metal.Plan.C3MediumX86,\n        Metro = \"ny\",\n        OperatingSystem = example.Apply(getOperatingSystemResult =\u003e getOperatingSystemResult.Id).Apply(System.Enum.Parse\u003cEquinix.Metal.OperatingSystem\u003e),\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = local.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetOperatingSystem(ctx, \u0026metal.GetOperatingSystemArgs{\n\t\t\tDistro:          pulumi.StringRef(\"ubuntu\"),\n\t\t\tVersion:         pulumi.StringRef(\"20.04\"),\n\t\t\tProvisionableOn: pulumi.StringRef(\"c3.medium.x86\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metal.NewDevice(ctx, \"server\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tf.ubuntu\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3MediumX86),\n\t\t\tMetro:           pulumi.String(\"ny\"),\n\t\t\tOperatingSystem: example.Id.ApplyT(func(x *string) metal.OperatingSystem { return metal.OperatingSystem(*x) }).(metal.OperatingSystemOutput),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(local.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetOperatingSystemArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getOperatingSystem(GetOperatingSystemArgs.builder()\n            .distro(\"ubuntu\")\n            .version(\"20.04\")\n            .provisionableOn(\"c3.medium.x86\")\n            .build());\n\n        var server = new Device(\"server\", DeviceArgs.builder()        \n            .hostname(\"tf.ubuntu\")\n            .plan(\"c3.medium.x86\")\n            .metro(\"ny\")\n            .operatingSystem(example.applyValue(getOperatingSystemResult -\u003e getOperatingSystemResult.id()))\n            .billingCycle(\"hourly\")\n            .projectId(local.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  server:\n    type: equinix:metal:Device\n    properties:\n      hostname: tf.ubuntu\n      plan: c3.medium.x86\n      metro: ny\n      operatingSystem: ${example.id}\n      billingCycle: hourly\n      projectId: ${local.project_id}\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getOperatingSystem\n      Arguments:\n        distro: ubuntu\n        version: '20.04'\n        provisionableOn: c3.medium.x86\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getOperatingSystem.\n",
                 "properties": {
@@ -17879,6 +17893,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getOrganization.\n",
                 "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description string.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The organization name.\n"
@@ -17902,8 +17920,7 @@
                         "description": "Description string.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "logo": {
                         "type": "string",
@@ -17934,19 +17951,18 @@
                 "type": "object",
                 "required": [
                     "address",
-                    "description",
+                    "id",
                     "logo",
                     "name",
                     "organizationId",
                     "projectIds",
                     "twitter",
-                    "website",
-                    "id"
+                    "website"
                 ]
             }
         },
         "equinix:metal/getPlans:getPlans": {
-            "description": "Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"pricing_hour\",\n            values: [\"2.5\"],\n            matchBy: \"less_than\",\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"pricing_hour\",\n            values=[\"2.5\"],\n            match_by=\"less_than\",\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\n                \"da\",\n                \"sv\",\n            ],\n        ),\n    ])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Values = new[]\n                {\n                    \"2.5\",\n                },\n                MatchBy = \"less_than\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"2.5\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"less_than\"),\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"pricing_hour\")\n                    .values(2.5)\n                    .matchBy(\"less_than\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: pricing_hour\n            values:\n              - 2.5\n            matchBy: less_than\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    filters: [\n        {\n            attribute: \"class\",\n            values: [\"large\"],\n            matchBy: \"substring\",\n        },\n        {\n            attribute: \"deployment_types\",\n            values: [\"spot_market\"],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n            all: true,\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(filters=[\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"class\",\n        values=[\"large\"],\n        match_by=\"substring\",\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"deployment_types\",\n        values=[\"spot_market\"],\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"available_in_metros\",\n        values=[\n            \"da\",\n            \"sv\",\n        ],\n        all=True,\n    ),\n])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"class\",\n                Values = new[]\n                {\n                    \"large\",\n                },\n                MatchBy = \"substring\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"deployment_types\",\n                Values = new[]\n                {\n                    \"spot_market\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n                All = true,\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tFilters: pulumi.Array{\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"class\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"large\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"substring\"),\n\t\t\t\t},\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"deployment_types\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"spot_market\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t\tAll: pulumi.BoolRef(true),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"class\")\n                    .values(\"large\")\n                    .matchBy(\"substring\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"deployment_types\")\n                    .values(\"spot_market\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .all(true)\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        filters:\n          - attribute: class\n            values:\n              - large\n            matchBy: substring\n          - attribute: deployment_types\n            values:\n              - spot_market\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\n            all: true\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Ignoring Changes to Plans/Metro\n\nPreserve deployed device plan, facility and metro when creating a new execution plan.\n\nAs described in the `data-resource-behavior` feature as shown in the example below.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst examplePlans = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"name\",\n            values: [\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\"sv\"],\n        },\n    ],\n});\n// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n// It will ignore future changes on plan and metro\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {\n    hostname: \"example\",\n    plan: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.name).apply((x) =\u003e equinix.metal.plan.Plan[x]),\n    metro: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.availableInMetros?.[0]),\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: _var.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"name\",\n            values=[\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\"sv\"],\n        ),\n    ])\n# This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n# It will ignore future changes on plan and metro\nexample_device = equinix.metal.Device(\"exampleDevice\",\n    hostname=\"example\",\n    plan=example_plans.plans[0].name.apply(lambda x: equinix.metal/plan.Plan(x)),\n    metro=example_plans.plans[0].available_in_metros[0],\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=var[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePlans = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"name\",\n                Values = new[]\n                {\n                    \"c3.small.x86\",\n                    \"c3.medium.x86\",\n                    \"m3.large.x86\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n    // It will ignore future changes on plan and metro\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\", new()\n    {\n        Hostname = \"example\",\n        Plan = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse\u003cEquinix.Metal.Plan.Plan\u003e),\n        Metro = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.AvailableInMetros[0]),\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = @var.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePlans, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"c3.small.x86\",\n\t\t\t\t\t\t\"c3.medium.x86\",\n\t\t\t\t\t\t\"m3.large.x86\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n\t\t// It will ignore future changes on plan and metro\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"example\"),\n\t\t\tPlan:            examplePlans.Plans[0].Name.ApplyT(func(x *string) metal.Plan { return metal.Plan(*x) }).(metal.PlanOutput),\n\t\t\tMetro:           *pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.Any(_var.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"name\")\n                    .values(                    \n                        \"c3.small.x86\",\n                        \"c3.medium.x86\",\n                        \"m3.large.x86\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(\"sv\")\n                    .build())\n            .build());\n\n        var exampleDevice = new Device(\"exampleDevice\", DeviceArgs.builder()        \n            .hostname(\"example\")\n            .plan(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].name()))\n            .metro(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].availableInMetros()[0]))\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(var_.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n  # It will ignore future changes on plan and metro\n  exampleDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: example\n      plan: ${examplePlans.plans[0].name}\n      metro: ${examplePlans.plans[0].availableInMetros[0]}\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${var.project_id}\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: name\n            values:\n              - c3.small.x86\n              - c3.medium.x86\n              - m3.large.x86\n          - attribute: available_in_metros\n            values:\n              - sv\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nIf your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst config = new pulumi.Config();\nconst ignorePlansMetrosChanges = config.getBoolean(\"ignorePlansMetrosChanges\") || false;\nconst examplePlans = equinix.metal.getPlans({});\n// required device arguments\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\nignore_plans_metros_changes = config.get_bool(\"ignorePlansMetrosChanges\")\nif ignore_plans_metros_changes is None:\n    ignore_plans_metros_changes = False\nexample_plans = equinix.metal.get_plans()\n# required device arguments\nexample_device = equinix.metal.Device(\"exampleDevice\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var ignorePlansMetrosChanges = config.GetBoolean(\"ignorePlansMetrosChanges\") ?? false;\n    var examplePlans = Equinix.Metal.GetPlans.Invoke();\n\n    // required device arguments\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tignorePlansMetrosChanges := false\n\t\tif param := cfg.GetBool(\"ignorePlansMetrosChanges\"); param {\n\t\t\tignorePlansMetrosChanges = param\n\t\t}\n\t\t_, err := metal.GetPlans(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// required device arguments\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var ignorePlansMetrosChanges = config.get(\"ignorePlansMetrosChanges\").orElse(false);\n        final var examplePlans = MetalFunctions.getPlans();\n\n        var exampleDevice = new Device(\"exampleDevice\");\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Following example uses a boolean variable that may eventually be set to you false when you update your equinix_metal_plans filter criteria because you need a device plan with a new feature.\n  ignorePlansMetrosChanges:\n    type: bool\n    default: false\nresources:\n  exampleDevice:\n    type: equinix:metal:Device\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides an Equinix Metal plans datasource. This can be used to find plans that meet a filter criteria.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"pricing_hour\",\n            values: [\"2.5\"],\n            matchBy: \"less_than\",\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"pricing_hour\",\n            values=[\"2.5\"],\n            match_by=\"less_than\",\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\n                \"da\",\n                \"sv\",\n            ],\n        ),\n    ])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Values = new[]\n                {\n                    \"2.5\",\n                },\n                MatchBy = \"less_than\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"2.5\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"less_than\"),\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"pricing_hour\")\n                    .values(2.5)\n                    .matchBy(\"less_than\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: pricing_hour\n            values:\n              - 2.5\n            matchBy: less_than\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst example = equinix.metal.getPlans({\n    filters: [\n        {\n            attribute: \"class\",\n            values: [\"large\"],\n            matchBy: \"substring\",\n        },\n        {\n            attribute: \"deployment_types\",\n            values: [\"spot_market\"],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\n                \"da\",\n                \"sv\",\n            ],\n            all: true,\n        },\n    ],\n});\nexport const plans = example.then(example =\u003e example.plans);\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample = equinix.metal.get_plans(filters=[\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"class\",\n        values=[\"large\"],\n        match_by=\"substring\",\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"deployment_types\",\n        values=[\"spot_market\"],\n    ),\n    equinix.metal.GetPlansFilterArgs(\n        attribute=\"available_in_metros\",\n        values=[\n            \"da\",\n            \"sv\",\n        ],\n        all=True,\n    ),\n])\npulumi.export(\"plans\", example.plans)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"class\",\n                Values = new[]\n                {\n                    \"large\",\n                },\n                MatchBy = \"substring\",\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"deployment_types\",\n                Values = new[]\n                {\n                    \"spot_market\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"da\",\n                    \"sv\",\n                },\n                All = true,\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"plans\"] = example.Apply(getPlansResult =\u003e getPlansResult.Plans),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tFilters: pulumi.Array{\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"class\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"large\",\n\t\t\t\t\t},\n\t\t\t\t\tMatchBy: pulumi.StringRef(\"substring\"),\n\t\t\t\t},\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"deployment_types\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"spot_market\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tmetal.GetPlansFilter{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"da\",\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t\tAll: pulumi.BoolRef(true),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"plans\", example.Plans)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"class\")\n                    .values(\"large\")\n                    .matchBy(\"substring\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"deployment_types\")\n                    .values(\"spot_market\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(                    \n                        \"da\",\n                        \"sv\")\n                    .all(true)\n                    .build())\n            .build());\n\n        ctx.export(\"plans\", example.applyValue(getPlansResult -\u003e getPlansResult.plans()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        filters:\n          - attribute: class\n            values:\n              - large\n            matchBy: substring\n          - attribute: deployment_types\n            values:\n              - spot_market\n          - attribute: available_in_metros\n            values:\n              - da\n              - sv\n            all: true\noutputs:\n  plans: ${example.plans}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Ignoring Changes to Plans/Metro\n\nPreserve deployed device plan, facility and metro when creating a new execution plan.\n\nAs described in the `data-resource-behavior` feature as shown in the example below.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst examplePlans = equinix.metal.getPlans({\n    sorts: [{\n        attribute: \"pricing_hour\",\n        direction: \"asc\",\n    }],\n    filters: [\n        {\n            attribute: \"name\",\n            values: [\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        },\n        {\n            attribute: \"available_in_metros\",\n            values: [\"sv\"],\n        },\n    ],\n});\n// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n// It will ignore future changes on plan and metro\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {\n    hostname: \"example\",\n    plan: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.name).apply((x) =\u003e equinix.metal.Plan[x]),\n    metro: examplePlans.then(examplePlans =\u003e examplePlans.plans?.[0]?.availableInMetros?.[0]),\n    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: _var.project_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nexample_plans = equinix.metal.get_plans(sorts=[equinix.metal.GetPlansSortArgs(\n        attribute=\"pricing_hour\",\n        direction=\"asc\",\n    )],\n    filters=[\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"name\",\n            values=[\n                \"c3.small.x86\",\n                \"c3.medium.x86\",\n                \"m3.large.x86\",\n            ],\n        ),\n        equinix.metal.GetPlansFilterArgs(\n            attribute=\"available_in_metros\",\n            values=[\"sv\"],\n        ),\n    ])\n# This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n# It will ignore future changes on plan and metro\nexample_device = equinix.metal.Device(\"exampleDevice\",\n    hostname=\"example\",\n    plan=example_plans.plans[0].name.apply(lambda x: equinix.metal.Plan(x)),\n    metro=example_plans.plans[0].available_in_metros[0],\n    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=var[\"project_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePlans = Equinix.Metal.GetPlans.Invoke(new()\n    {\n        Sorts = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansSortInputArgs\n            {\n                Attribute = \"pricing_hour\",\n                Direction = \"asc\",\n            },\n        },\n        Filters = new[]\n        {\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"name\",\n                Values = new[]\n                {\n                    \"c3.small.x86\",\n                    \"c3.medium.x86\",\n                    \"m3.large.x86\",\n                },\n            },\n            new Equinix.Metal.Inputs.GetPlansFilterInputArgs\n            {\n                Attribute = \"available_in_metros\",\n                Values = new[]\n                {\n                    \"sv\",\n                },\n            },\n        },\n    });\n\n    // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n    // It will ignore future changes on plan and metro\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\", new()\n    {\n        Hostname = \"example\",\n        Plan = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse\u003cEquinix.Metal.Plan\u003e),\n        Metro = examplePlans.Apply(getPlansResult =\u003e getPlansResult.Plans[0]?.AvailableInMetros[0]),\n        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = @var.Project_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePlans, err := metal.GetPlans(ctx, \u0026metal.GetPlansArgs{\n\t\t\tSorts: []metal.GetPlansSort{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"pricing_hour\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFilters: []metal.GetPlansFilter{\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"c3.small.x86\",\n\t\t\t\t\t\t\"c3.medium.x86\",\n\t\t\t\t\t\t\"m3.large.x86\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tAttribute: \"available_in_metros\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"sv\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n\t\t// It will ignore future changes on plan and metro\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"example\"),\n\t\t\tPlan:            examplePlans.Plans[0].Name.ApplyT(func(x *string) metal.Plan { return metal.Plan(*x) }).(metal.PlanOutput),\n\t\t\tMetro:           pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.Any(_var.Project_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var examplePlans = MetalFunctions.getPlans(GetPlansArgs.builder()\n            .sorts(GetPlansSortArgs.builder()\n                .attribute(\"pricing_hour\")\n                .direction(\"asc\")\n                .build())\n            .filters(            \n                GetPlansFilterArgs.builder()\n                    .attribute(\"name\")\n                    .values(                    \n                        \"c3.small.x86\",\n                        \"c3.medium.x86\",\n                        \"m3.large.x86\")\n                    .build(),\n                GetPlansFilterArgs.builder()\n                    .attribute(\"available_in_metros\")\n                    .values(\"sv\")\n                    .build())\n            .build());\n\n        // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n        // It will ignore future changes on plan and metro\n        var exampleDevice = new Device(\"exampleDevice\", DeviceArgs.builder()        \n            .hostname(\"example\")\n            .plan(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].name()))\n            .metro(examplePlans.applyValue(getPlansResult -\u003e getPlansResult.plans()[0].availableInMetros()[0]))\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(var_.project_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This equinix_metal_device will use the first returned plan and the first metro in which that plan is available\n  # It will ignore future changes on plan and metro\n  exampleDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: example\n      plan: ${examplePlans.plans[0].name}\n      metro: ${examplePlans.plans[0].availableInMetros[0]}\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${var.project_id}\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments:\n        sorts:\n          - attribute: pricing_hour\n            direction: asc\n        filters:\n          - attribute: name\n            values:\n              - c3.small.x86\n              - c3.medium.x86\n              - m3.large.x86\n          - attribute: available_in_metros\n            values:\n              - sv\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nIf your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst config = new pulumi.Config();\nconst ignorePlansMetrosChanges = config.getBoolean(\"ignorePlansMetrosChanges\") || false;\nconst examplePlans = equinix.metal.getPlans({});\n// required device arguments\nconst exampleDevice = new equinix.metal.Device(\"exampleDevice\", {});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nconfig = pulumi.Config()\nignore_plans_metros_changes = config.get_bool(\"ignorePlansMetrosChanges\")\nif ignore_plans_metros_changes is None:\n    ignore_plans_metros_changes = False\nexample_plans = equinix.metal.get_plans()\n# required device arguments\nexample_device = equinix.metal.Device(\"exampleDevice\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = new Config();\n    var ignorePlansMetrosChanges = config.GetBoolean(\"ignorePlansMetrosChanges\") ?? false;\n    var examplePlans = Equinix.Metal.GetPlans.Invoke();\n\n    // required device arguments\n    var exampleDevice = new Equinix.Metal.Device(\"exampleDevice\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tignorePlansMetrosChanges := false\n\t\tif param := cfg.GetBool(\"ignorePlansMetrosChanges\"); param {\n\t\t\tignorePlansMetrosChanges = param\n\t\t}\n\t\t_, err := metal.GetPlans(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// required device arguments\n\t\t_, err = metal.NewDevice(ctx, \"exampleDevice\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPlansArgs;\nimport com.pulumi.equinix.metal.Device;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        final var ignorePlansMetrosChanges = config.get(\"ignorePlansMetrosChanges\").orElse(false);\n        final var examplePlans = MetalFunctions.getPlans();\n\n        // required device arguments\n        var exampleDevice = new Device(\"exampleDevice\");\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Following example uses a boolean variable that may eventually be set to you false when you update your equinix_metal_plans filter criteria because you need a device plan with a new feature.\n  ignorePlansMetrosChanges:\n    type: bool\n    default: false\nresources:\n  exampleDevice:\n    type: equinix:metal:Device\nvariables:\n  examplePlans:\n    fn::invoke:\n      Function: equinix:metal:getPlans\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPlans.\n",
                 "properties": {
@@ -18001,7 +18017,7 @@
             }
         },
         "equinix:metal/getPort:getPort": {
-            "description": "Use this data source to read ports of existing devices. You can read port by either its UUID,\nor by a device UUID and port name.\n\n## Example Usage\n\nCreate a device and read it's eth0 port to the datasource.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"\u003cUUID_of_your_project\u003e\";\nconst testDevice = new equinix.metal.Device(\"testDevice\", {\n    hostname: \"tfacc-test-device-port\",\n    plan: \"c3.medium.x86\",\n    metro: \"sv\",\n    operatingSystem: \"ubuntu_20_04\",\n    billingCycle: \"hourly\",\n    projectId: projectId,\n});\nconst testPort = equinix.metal.getPortOutput({\n    deviceId: testDevice.id,\n    name: \"eth0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"\u003cUUID_of_your_project\u003e\"\ntest_device = equinix.metal.Device(\"testDevice\",\n    hostname=\"tfacc-test-device-port\",\n    plan=\"c3.medium.x86\",\n    metro=\"sv\",\n    operating_system=\"ubuntu_20_04\",\n    billing_cycle=\"hourly\",\n    project_id=project_id)\ntest_port = equinix.metal.get_port_output(device_id=test_device.id,\n    name=\"eth0\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n    var testDevice = new Equinix.Metal.Device(\"testDevice\", new()\n    {\n        Hostname = \"tfacc-test-device-port\",\n        Plan = \"c3.medium.x86\",\n        Metro = \"sv\",\n        OperatingSystem = \"ubuntu_20_04\",\n        BillingCycle = \"hourly\",\n        ProjectId = projectId,\n    });\n\n    var testPort = Equinix.Metal.GetPort.Invoke(new()\n    {\n        DeviceId = testDevice.Id,\n        Name = \"eth0\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"\u003cUUID_of_your_project\u003e\"\n\t\ttestDevice, err := metal.NewDevice(ctx, \"testDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tfacc-test-device-port\"),\n\t\t\tPlan:            pulumi.String(\"c3.medium.x86\"),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(\"ubuntu_20_04\"),\n\t\t\tBillingCycle:    pulumi.String(\"hourly\"),\n\t\t\tProjectId:       pulumi.String(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = metal.LookupPortOutput(ctx, metal.GetPortOutputArgs{\n\t\t\tDeviceId: testDevice.ID(),\n\t\t\tName:     pulumi.String(\"eth0\"),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPortArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n        var testDevice = new Device(\"testDevice\", DeviceArgs.builder()        \n            .hostname(\"tfacc-test-device-port\")\n            .plan(\"c3.medium.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n        final var testPort = MetalFunctions.getPort(GetPortArgs.builder()\n            .deviceId(testDevice.id())\n            .name(\"eth0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: tfacc-test-device-port\n      plan: c3.medium.x86\n      metro: sv\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${projectId}\nvariables:\n  projectId: \u003cUUID_of_your_project\u003e\n  testPort:\n    fn::invoke:\n      Function: equinix:metal:getPort\n      Arguments:\n        deviceId: ${testDevice.id}\n        name: eth0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to read ports of existing devices. You can read port by either its UUID,\nor by a device UUID and port name.\n\n## Example Usage\n\nCreate a device and read it's eth0 port to the datasource.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as equinix from \"@equinix-labs/pulumi-equinix\";\nimport * as equinix from \"@pulumi/equinix\";\n\nconst projectId = \"\u003cUUID_of_your_project\u003e\";\nconst testDevice = new equinix.metal.Device(\"testDevice\", {\n    hostname: \"tfacc-test-device-port\",\n    plan: equinix.metal.Plan.C3MediumX86,\n    metro: \"sv\",\n    operatingSystem: equinix.metal.OperatingSystem.Ubuntu20_04,\n    billingCycle: equinix.metal.BillingCycle.Hourly,\n    projectId: projectId,\n});\nconst testPort = equinix.metal.getPortOutput({\n    deviceId: testDevice.id,\n    name: \"eth0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_equinix as equinix\n\nproject_id = \"\u003cUUID_of_your_project\u003e\"\ntest_device = equinix.metal.Device(\"testDevice\",\n    hostname=\"tfacc-test-device-port\",\n    plan=equinix.metal.Plan.C3_MEDIUM_X86,\n    metro=\"sv\",\n    operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,\n    billing_cycle=equinix.metal.BillingCycle.HOURLY,\n    project_id=project_id)\ntest_port = equinix.metal.get_port_output(device_id=test_device.id,\n    name=\"eth0\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Equinix = Pulumi.Equinix;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n    var testDevice = new Equinix.Metal.Device(\"testDevice\", new()\n    {\n        Hostname = \"tfacc-test-device-port\",\n        Plan = Equinix.Metal.Plan.C3MediumX86,\n        Metro = \"sv\",\n        OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,\n        BillingCycle = Equinix.Metal.BillingCycle.Hourly,\n        ProjectId = projectId,\n    });\n\n    var testPort = Equinix.Metal.GetPort.Invoke(new()\n    {\n        DeviceId = testDevice.Id,\n        Name = \"eth0\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/equinix/pulumi-equinix/sdk/go/equinix/metal\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprojectId := \"\u003cUUID_of_your_project\u003e\"\n\t\ttestDevice, err := metal.NewDevice(ctx, \"testDevice\", \u0026metal.DeviceArgs{\n\t\t\tHostname:        pulumi.String(\"tfacc-test-device-port\"),\n\t\t\tPlan:            pulumi.String(metal.PlanC3MediumX86),\n\t\t\tMetro:           pulumi.String(\"sv\"),\n\t\t\tOperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),\n\t\t\tBillingCycle:    pulumi.String(metal.BillingCycleHourly),\n\t\t\tProjectId:       pulumi.String(projectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = metal.LookupPortOutput(ctx, metal.GetPortOutputArgs{\n\t\t\tDeviceId: testDevice.ID(),\n\t\t\tName:     pulumi.String(\"eth0\"),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.equinix.metal.Device;\nimport com.pulumi.equinix.metal.DeviceArgs;\nimport com.pulumi.equinix.metal.MetalFunctions;\nimport com.pulumi.equinix.metal.inputs.GetPortArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var projectId = \"\u003cUUID_of_your_project\u003e\";\n\n        var testDevice = new Device(\"testDevice\", DeviceArgs.builder()        \n            .hostname(\"tfacc-test-device-port\")\n            .plan(\"c3.medium.x86\")\n            .metro(\"sv\")\n            .operatingSystem(\"ubuntu_20_04\")\n            .billingCycle(\"hourly\")\n            .projectId(projectId)\n            .build());\n\n        final var testPort = MetalFunctions.getPort(GetPortArgs.builder()\n            .deviceId(testDevice.id())\n            .name(\"eth0\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testDevice:\n    type: equinix:metal:Device\n    properties:\n      hostname: tfacc-test-device-port\n      plan: c3.medium.x86\n      metro: sv\n      operatingSystem: ubuntu_20_04\n      billingCycle: hourly\n      projectId: ${projectId}\nvariables:\n  projectId: \u003cUUID_of_your_project\u003e\n  testPort:\n    fn::invoke:\n      Function: equinix:metal:getPort\n      Arguments:\n        deviceId: ${testDevice.id}\n        name: eth0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPort.\n",
                 "properties": {
@@ -18253,8 +18269,7 @@
                         "description": "The timestamp for when the project was created.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
@@ -18287,13 +18302,13 @@
                     "backendTransfer",
                     "bgpConfig",
                     "created",
+                    "id",
                     "name",
                     "organizationId",
                     "paymentMethodId",
                     "projectId",
                     "updated",
-                    "userIds",
-                    "id"
+                    "userIds"
                 ]
             }
         },
@@ -18788,8 +18803,7 @@
                         "deprecationMessage": "Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "type": "string"
                     },
                     "metro": {
                         "type": "string"
@@ -18809,11 +18823,11 @@
                     "assignedDevicesIds",
                     "description",
                     "facility",
+                    "id",
                     "metro",
                     "projectId",
                     "vlanId",
-                    "vxlan",
-                    "id"
+                    "vxlan"
                 ]
             }
         },

@@ -208,9 +208,11 @@ func Provider() tfbridge.ProviderInfo {
 											},
 											"port": {
 												MaxItemsOne: tfbridge.True(),
-												Fields: map[string]*tfbridge.SchemaInfo{
-													"redundancy": {
-														MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"redundancy": {
+															MaxItemsOne: tfbridge.True(),
+														},
 													},
 												},
 											},
@@ -349,9 +351,11 @@ func Provider() tfbridge.ProviderInfo {
 											},
 											"port": {
 												MaxItemsOne: tfbridge.True(),
-												Fields: map[string]*tfbridge.SchemaInfo{
-													"redundancy": {
-														MaxItemsOne: tfbridge.True(),
+												Elem: &tfbridge.SchemaInfo{
+													Fields: map[string]*tfbridge.SchemaInfo{
+														"redundancy": {
+															MaxItemsOne: tfbridge.True(),
+														},
 													},
 												},
 											},
@@ -576,11 +580,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeEquinixResource(metalMod, "IpAttachment"),
 				Docs: &tfbridge.DocInfo{
 					ReplaceExamplesSection: true,
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"address": {
-						MaxItemsOne: tfbridge.True(),
-					},
 				},
 			},
 			"equinix_metal_organization": {
@@ -1206,9 +1205,11 @@ func Provider() tfbridge.ProviderInfo {
 										},
 										"port": {
 											MaxItemsOne: tfbridge.True(),
-											Fields: map[string]*tfbridge.SchemaInfo{
-												"redundancy": {
-													MaxItemsOne: tfbridge.True(),
+											Elem: &tfbridge.SchemaInfo{
+												Fields: map[string]*tfbridge.SchemaInfo{
+													"redundancy": {
+														MaxItemsOne: tfbridge.True(),
+													},
 												},
 											},
 										},
@@ -1286,9 +1287,11 @@ func Provider() tfbridge.ProviderInfo {
 										},
 										"port": {
 											MaxItemsOne: tfbridge.True(),
-											Fields: map[string]*tfbridge.SchemaInfo{
-												"redundancy": {
-													MaxItemsOne: tfbridge.True(),
+											Elem: &tfbridge.SchemaInfo{
+												Fields: map[string]*tfbridge.SchemaInfo{
+													"redundancy": {
+														MaxItemsOne: tfbridge.True(),
+													},
 												},
 											},
 										},
