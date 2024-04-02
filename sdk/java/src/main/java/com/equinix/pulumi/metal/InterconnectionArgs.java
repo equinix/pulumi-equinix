@@ -235,6 +235,23 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.vlans);
     }
 
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    @Import(name="vrfs")
+    private @Nullable Output<List<String>> vrfs;
+
+    /**
+     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    public Optional<Output<List<String>>> vrfs() {
+        return Optional.ofNullable(this.vrfs);
+    }
+
     private InterconnectionArgs() {}
 
     private InterconnectionArgs(InterconnectionArgs $) {
@@ -252,6 +269,7 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
         this.tags = $.tags;
         this.type = $.type;
         this.vlans = $.vlans;
+        this.vrfs = $.vrfs;
     }
 
     public static Builder builder() {
@@ -592,6 +610,40 @@ public final class InterconnectionArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder vlans(Integer... vlans) {
             return vlans(List.of(vlans));
+        }
+
+        /**
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+         * connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vrfs(@Nullable Output<List<String>> vrfs) {
+            $.vrfs = vrfs;
+            return this;
+        }
+
+        /**
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+         * connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vrfs(List<String> vrfs) {
+            return vrfs(Output.of(vrfs));
+        }
+
+        /**
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+         * connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vrfs(String... vrfs) {
+            return vrfs(List.of(vrfs));
         }
 
         public InterconnectionArgs build() {

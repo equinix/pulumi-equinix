@@ -16,6 +16,21 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetOrganizationArgs Empty = new GetOrganizationArgs();
 
     /**
+     * Description string.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description string.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The organization name.
      * 
      */
@@ -52,6 +67,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
     private GetOrganizationArgs() {}
 
     private GetOrganizationArgs(GetOrganizationArgs $) {
+        this.description = $.description;
         this.name = $.name;
         this.organizationId = $.organizationId;
     }
@@ -72,6 +88,27 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetOrganizationArgs defaults) {
             $ = new GetOrganizationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description Description string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

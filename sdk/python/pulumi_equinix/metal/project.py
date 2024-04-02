@@ -423,7 +423,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendTransfer")
-    def backend_transfer(self) -> pulumi.Output[Optional[bool]]:
+    def backend_transfer(self) -> pulumi.Output[bool]:
         """
         Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
         """

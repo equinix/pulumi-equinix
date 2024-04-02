@@ -61,7 +61,7 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> Optional[str]:
         """
         Description string.
         """
@@ -70,9 +70,6 @@ class GetOrganizationResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -135,7 +132,8 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             website=self.website)
 
 
-def get_organization(name: Optional[str] = None,
+def get_organization(description: Optional[str] = None,
+                     name: Optional[str] = None,
                      organization_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
@@ -154,12 +152,14 @@ def get_organization(name: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
+    :param str description: Description string.
     :param str name: The organization name.
     :param str organization_id: The UUID of the organization resource.
            
            Exactly one of `name` or `organization_id` must be given.
     """
     __args__ = dict()
+    __args__['description'] = description
     __args__['name'] = name
     __args__['organizationId'] = organization_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -178,7 +178,8 @@ def get_organization(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_organization)
-def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
+def get_organization_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                            name: Optional[pulumi.Input[Optional[str]]] = None,
                             organization_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
@@ -197,6 +198,7 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     <!--End PulumiCodeChooser -->
 
 
+    :param str description: Description string.
     :param str name: The organization name.
     :param str organization_id: The UUID of the organization resource.
            

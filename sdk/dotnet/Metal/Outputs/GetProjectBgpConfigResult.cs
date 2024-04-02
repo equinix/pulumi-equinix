@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// <summary>
         /// Password for BGP session in plaintext (not a checksum).
         /// </summary>
-        public readonly string? Md5;
+        public readonly string Md5;
         /// <summary>
         /// Status of BGP configuration in the project.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Equinix.Metal.Outputs
 
             int maxPrefix,
 
-            string? md5,
+            string md5,
 
             string status)
         {

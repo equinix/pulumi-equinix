@@ -65,6 +65,9 @@ import (
 type Interconnection struct {
 	pulumi.CustomResourceState
 
+	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+	// Metal end of the network, when viewing resources from within Fabric.
+	AuthorizationCode pulumi.StringOutput `pulumi:"authorizationCode"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail pulumi.StringOutput `pulumi:"contactEmail"`
 	// Description for the connection resource.
@@ -101,12 +104,15 @@ type Interconnection struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 	//
-	// Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
+	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token pulumi.StringOutput `pulumi:"token"`
 	// Connection type - dedicated or shared.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
 	Vlans pulumi.IntArrayOutput `pulumi:"vlans"`
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+	// connection
+	Vrfs pulumi.StringArrayOutput `pulumi:"vrfs"`
 }
 
 // NewInterconnection registers a new resource with the given unique name, arguments, and options.
@@ -145,6 +151,9 @@ func GetInterconnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interconnection resources.
 type interconnectionState struct {
+	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+	// Metal end of the network, when viewing resources from within Fabric.
+	AuthorizationCode *string `pulumi:"authorizationCode"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail *string `pulumi:"contactEmail"`
 	// Description for the connection resource.
@@ -181,15 +190,21 @@ type interconnectionState struct {
 	Tags []string `pulumi:"tags"`
 	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 	//
-	// Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
+	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token *string `pulumi:"token"`
 	// Connection type - dedicated or shared.
 	Type *string `pulumi:"type"`
 	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
 	Vlans []int `pulumi:"vlans"`
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+	// connection
+	Vrfs []string `pulumi:"vrfs"`
 }
 
 type InterconnectionState struct {
+	// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+	// Metal end of the network, when viewing resources from within Fabric.
+	AuthorizationCode pulumi.StringPtrInput
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 	ContactEmail pulumi.StringPtrInput
 	// Description for the connection resource.
@@ -226,12 +241,15 @@ type InterconnectionState struct {
 	Tags pulumi.StringArrayInput
 	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 	//
-	// Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
+	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token pulumi.StringPtrInput
 	// Connection type - dedicated or shared.
 	Type pulumi.StringPtrInput
 	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
 	Vlans pulumi.IntArrayInput
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+	// connection
+	Vrfs pulumi.StringArrayInput
 }
 
 func (InterconnectionState) ElementType() reflect.Type {
@@ -269,6 +287,9 @@ type interconnectionArgs struct {
 	Type string `pulumi:"type"`
 	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
 	Vlans []int `pulumi:"vlans"`
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+	// connection
+	Vrfs []string `pulumi:"vrfs"`
 }
 
 // The set of arguments for constructing a Interconnection resource.
@@ -303,6 +324,9 @@ type InterconnectionArgs struct {
 	Type pulumi.StringInput
 	// Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
 	Vlans pulumi.IntArrayInput
+	// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+	// connection
+	Vrfs pulumi.StringArrayInput
 }
 
 func (InterconnectionArgs) ElementType() reflect.Type {
@@ -392,6 +416,12 @@ func (o InterconnectionOutput) ToInterconnectionOutputWithContext(ctx context.Co
 	return o
 }
 
+// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+// Metal end of the network, when viewing resources from within Fabric.
+func (o InterconnectionOutput) AuthorizationCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.AuthorizationCode }).(pulumi.StringOutput)
+}
+
 // The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
 func (o InterconnectionOutput) ContactEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.ContactEmail }).(pulumi.StringOutput)
@@ -473,7 +503,7 @@ func (o InterconnectionOutput) Tags() pulumi.StringArrayOutput {
 
 // (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 //
-// Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
+// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 func (o InterconnectionOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
@@ -486,6 +516,12 @@ func (o InterconnectionOutput) Type() pulumi.StringOutput {
 // Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
 func (o InterconnectionOutput) Vlans() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.IntArrayOutput { return v.Vlans }).(pulumi.IntArrayOutput)
+}
+
+// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+// connection
+func (o InterconnectionOutput) Vrfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Interconnection) pulumi.StringArrayOutput { return v.Vrfs }).(pulumi.StringArrayOutput)
 }
 
 type InterconnectionArrayOutput struct{ *pulumi.OutputState }

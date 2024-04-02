@@ -60,7 +60,8 @@ type LookupInterconnectionArgs struct {
 
 // A collection of values returned by getInterconnection.
 type LookupInterconnectionResult struct {
-	ConnectionId string `pulumi:"connectionId"`
+	AuthorizationCode string `pulumi:"authorizationCode"`
+	ConnectionId      string `pulumi:"connectionId"`
 	// The preferred email used for communication and notifications about the Equinix Fabric interconnection.
 	ContactEmail string `pulumi:"contactEmail"`
 	// Description of the connection resource.
@@ -97,12 +98,13 @@ type LookupInterconnectionResult struct {
 	Tags []string `pulumi:"tags"`
 	// (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 	//
-	// Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
+	// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 	Token string `pulumi:"token"`
 	// Token type, `aSide` or `zSide`.
 	Type string `pulumi:"type"`
 	// Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.
-	Vlans []int `pulumi:"vlans"`
+	Vlans []int    `pulumi:"vlans"`
+	Vrfs  []string `pulumi:"vrfs"`
 }
 
 func LookupInterconnectionOutput(ctx *pulumi.Context, args LookupInterconnectionOutputArgs, opts ...pulumi.InvokeOption) LookupInterconnectionResultOutput {
@@ -141,6 +143,10 @@ func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutput()
 
 func (o LookupInterconnectionResultOutput) ToLookupInterconnectionResultOutputWithContext(ctx context.Context) LookupInterconnectionResultOutput {
 	return o
+}
+
+func (o LookupInterconnectionResultOutput) AuthorizationCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.AuthorizationCode }).(pulumi.StringOutput)
 }
 
 func (o LookupInterconnectionResultOutput) ConnectionId() pulumi.StringOutput {
@@ -231,7 +237,7 @@ func (o LookupInterconnectionResultOutput) Tags() pulumi.StringArrayOutput {
 
 // (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
 //
-// Deprecated: If your organization already has connection service tokens enabled, use `service_tokens` instead
+// Deprecated: If your organization already has connection service tokens enabled, use `serviceTokens` instead
 func (o LookupInterconnectionResultOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) string { return v.Token }).(pulumi.StringOutput)
 }
@@ -244,6 +250,10 @@ func (o LookupInterconnectionResultOutput) Type() pulumi.StringOutput {
 // Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.
 func (o LookupInterconnectionResultOutput) Vlans() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v LookupInterconnectionResult) []int { return v.Vlans }).(pulumi.IntArrayOutput)
+}
+
+func (o LookupInterconnectionResultOutput) Vrfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInterconnectionResult) []string { return v.Vrfs }).(pulumi.StringArrayOutput)
 }
 
 func init() {

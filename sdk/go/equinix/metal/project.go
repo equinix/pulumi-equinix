@@ -63,7 +63,7 @@ type Project struct {
 	pulumi.CustomResourceState
 
 	// Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
-	BackendTransfer pulumi.BoolPtrOutput `pulumi:"backendTransfer"`
+	BackendTransfer pulumi.BoolOutput `pulumi:"backendTransfer"`
 	// Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).
 	//
 	// > **NOTE:** Once you set the BGP config in a project, it can't be removed (due to a limitation in
@@ -285,8 +285,8 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 }
 
 // Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
-func (o ProjectOutput) BackendTransfer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.BackendTransfer }).(pulumi.BoolPtrOutput)
+func (o ProjectOutput) BackendTransfer() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.BackendTransfer }).(pulumi.BoolOutput)
 }
 
 // Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).

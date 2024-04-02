@@ -33,10 +33,10 @@ namespace Pulumi.Equinix.Metal
         ///     var testDevice = new Equinix.Metal.Device("testDevice", new()
         ///     {
         ///         Hostname = "tfacc-test-device-port",
-        ///         Plan = "c3.medium.x86",
+        ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "sv",
-        ///         OperatingSystem = "ubuntu_20_04",
-        ///         BillingCycle = "hourly",
+        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = projectId,
         ///     });
         /// 
@@ -75,10 +75,10 @@ namespace Pulumi.Equinix.Metal
         ///     var testDevice = new Equinix.Metal.Device("testDevice", new()
         ///     {
         ///         Hostname = "tfacc-test-device-port",
-        ///         Plan = "c3.medium.x86",
+        ///         Plan = Equinix.Metal.Plan.C3MediumX86,
         ///         Metro = "sv",
-        ///         OperatingSystem = "ubuntu_20_04",
-        ///         BillingCycle = "hourly",
+        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = projectId,
         ///     });
         /// 

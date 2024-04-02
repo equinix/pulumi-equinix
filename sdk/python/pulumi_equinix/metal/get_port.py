@@ -220,10 +220,10 @@ def get_port(device_id: Optional[str] = None,
     project_id = "<UUID_of_your_project>"
     test_device = equinix.metal.Device("testDevice",
         hostname="tfacc-test-device-port",
-        plan="c3.medium.x86",
+        plan=equinix.metal.Plan.C3_MEDIUM_X86,
         metro="sv",
-        operating_system="ubuntu_20_04",
-        billing_cycle="hourly",
+        operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+        billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=project_id)
     test_port = equinix.metal.get_port_output(device_id=test_device.id,
         name="eth0")
@@ -281,10 +281,10 @@ def get_port_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     project_id = "<UUID_of_your_project>"
     test_device = equinix.metal.Device("testDevice",
         hostname="tfacc-test-device-port",
-        plan="c3.medium.x86",
+        plan=equinix.metal.Plan.C3_MEDIUM_X86,
         metro="sv",
-        operating_system="ubuntu_20_04",
-        billing_cycle="hourly",
+        operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+        billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=project_id)
     test_port = equinix.metal.get_port_output(device_id=test_device.id,
         name="eth0")

@@ -22,7 +22,10 @@ class GetInterconnectionResult:
     """
     A collection of values returned by getInterconnection.
     """
-    def __init__(__self__, connection_id=None, contact_email=None, description=None, facility=None, id=None, metro=None, mode=None, name=None, organization_id=None, ports=None, project_id=None, redundancy=None, service_token_type=None, service_tokens=None, speed=None, status=None, tags=None, token=None, type=None, vlans=None):
+    def __init__(__self__, authorization_code=None, connection_id=None, contact_email=None, description=None, facility=None, id=None, metro=None, mode=None, name=None, organization_id=None, ports=None, project_id=None, redundancy=None, service_token_type=None, service_tokens=None, speed=None, status=None, tags=None, token=None, type=None, vlans=None, vrfs=None):
+        if authorization_code and not isinstance(authorization_code, str):
+            raise TypeError("Expected argument 'authorization_code' to be a str")
+        pulumi.set(__self__, "authorization_code", authorization_code)
         if connection_id and not isinstance(connection_id, str):
             raise TypeError("Expected argument 'connection_id' to be a str")
         pulumi.set(__self__, "connection_id", connection_id)
@@ -83,6 +86,14 @@ class GetInterconnectionResult:
         if vlans and not isinstance(vlans, list):
             raise TypeError("Expected argument 'vlans' to be a list")
         pulumi.set(__self__, "vlans", vlans)
+        if vrfs and not isinstance(vrfs, list):
+            raise TypeError("Expected argument 'vrfs' to be a list")
+        pulumi.set(__self__, "vrfs", vrfs)
+
+    @property
+    @pulumi.getter(name="authorizationCode")
+    def authorization_code(self) -> str:
+        return pulumi.get(self, "authorization_code")
 
     @property
     @pulumi.getter(name="connectionId")
@@ -247,6 +258,11 @@ class GetInterconnectionResult:
         """
         return pulumi.get(self, "vlans")
 
+    @property
+    @pulumi.getter
+    def vrfs(self) -> Sequence[str]:
+        return pulumi.get(self, "vrfs")
+
 
 class AwaitableGetInterconnectionResult(GetInterconnectionResult):
     # pylint: disable=using-constant-test
@@ -254,6 +270,7 @@ class AwaitableGetInterconnectionResult(GetInterconnectionResult):
         if False:
             yield self
         return GetInterconnectionResult(
+            authorization_code=self.authorization_code,
             connection_id=self.connection_id,
             contact_email=self.contact_email,
             description=self.description,
@@ -273,7 +290,8 @@ class AwaitableGetInterconnectionResult(GetInterconnectionResult):
             tags=self.tags,
             token=self.token,
             type=self.type,
-            vlans=self.vlans)
+            vlans=self.vlans,
+            vrfs=self.vrfs)
 
 
 def get_interconnection(connection_id: Optional[str] = None,
@@ -303,6 +321,7 @@ def get_interconnection(connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('equinix:metal/getInterconnection:getInterconnection', __args__, opts=opts, typ=GetInterconnectionResult).value
 
     return AwaitableGetInterconnectionResult(
+        authorization_code=pulumi.get(__ret__, 'authorization_code'),
         connection_id=pulumi.get(__ret__, 'connection_id'),
         contact_email=pulumi.get(__ret__, 'contact_email'),
         description=pulumi.get(__ret__, 'description'),
@@ -322,7 +341,8 @@ def get_interconnection(connection_id: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         token=pulumi.get(__ret__, 'token'),
         type=pulumi.get(__ret__, 'type'),
-        vlans=pulumi.get(__ret__, 'vlans'))
+        vlans=pulumi.get(__ret__, 'vlans'),
+        vrfs=pulumi.get(__ret__, 'vrfs'))
 
 
 @_utilities.lift_output_func(get_interconnection)

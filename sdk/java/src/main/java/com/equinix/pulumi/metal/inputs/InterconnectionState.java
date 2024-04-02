@@ -20,6 +20,23 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
     public static final InterconnectionState Empty = new InterconnectionState();
 
     /**
+     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+     * Metal end of the network, when viewing resources from within Fabric.
+     * 
+     */
+    @Import(name="authorizationCode")
+    private @Nullable Output<String> authorizationCode;
+
+    /**
+     * @return Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+     * Metal end of the network, when viewing resources from within Fabric.
+     * 
+     */
+    public Optional<Output<String>> authorizationCode() {
+        return Optional.ofNullable(this.authorizationCode);
+    }
+
+    /**
      * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
      * 
      */
@@ -309,9 +326,27 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.vlans);
     }
 
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    @Import(name="vrfs")
+    private @Nullable Output<List<String>> vrfs;
+
+    /**
+     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    public Optional<Output<List<String>>> vrfs() {
+        return Optional.ofNullable(this.vrfs);
+    }
+
     private InterconnectionState() {}
 
     private InterconnectionState(InterconnectionState $) {
+        this.authorizationCode = $.authorizationCode;
         this.contactEmail = $.contactEmail;
         this.description = $.description;
         this.facility = $.facility;
@@ -330,6 +365,7 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
         this.token = $.token;
         this.type = $.type;
         this.vlans = $.vlans;
+        this.vrfs = $.vrfs;
     }
 
     public static Builder builder() {
@@ -348,6 +384,29 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
 
         public Builder(InterconnectionState defaults) {
             $ = new InterconnectionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authorizationCode Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+         * Metal end of the network, when viewing resources from within Fabric.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationCode(@Nullable Output<String> authorizationCode) {
+            $.authorizationCode = authorizationCode;
+            return this;
+        }
+
+        /**
+         * @param authorizationCode Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+         * Metal end of the network, when viewing resources from within Fabric.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationCode(String authorizationCode) {
+            return authorizationCode(Output.of(authorizationCode));
         }
 
         /**
@@ -788,6 +847,40 @@ public final class InterconnectionState extends com.pulumi.resources.ResourceArg
          */
         public Builder vlans(Integer... vlans) {
             return vlans(List.of(vlans));
+        }
+
+        /**
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+         * connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vrfs(@Nullable Output<List<String>> vrfs) {
+            $.vrfs = vrfs;
+            return this;
+        }
+
+        /**
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+         * connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vrfs(List<String> vrfs) {
+            return vrfs(Output.of(vrfs));
+        }
+
+        /**
+         * @param vrfs Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+         * connection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vrfs(String... vrfs) {
+            return vrfs(List.of(vrfs));
         }
 
         public InterconnectionState build() {

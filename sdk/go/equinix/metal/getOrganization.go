@@ -53,6 +53,8 @@ func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts 
 
 // A collection of arguments for invoking getOrganization.
 type LookupOrganizationArgs struct {
+	// Description string.
+	Description *string `pulumi:"description"`
 	// The organization name.
 	Name *string `pulumi:"name"`
 	// The UUID of the organization resource.
@@ -66,9 +68,8 @@ type LookupOrganizationResult struct {
 	// Postal address.
 	Address GetOrganizationAddress `pulumi:"address"`
 	// Description string.
-	Description string `pulumi:"description"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Description *string `pulumi:"description"`
+	Id          string  `pulumi:"id"`
 	// Logo URL.
 	Logo           string `pulumi:"logo"`
 	Name           string `pulumi:"name"`
@@ -96,6 +97,8 @@ func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutput
 
 // A collection of arguments for invoking getOrganization.
 type LookupOrganizationOutputArgs struct {
+	// Description string.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The organization name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The UUID of the organization resource.
@@ -129,11 +132,10 @@ func (o LookupOrganizationResultOutput) Address() GetOrganizationAddressOutput {
 }
 
 // Description string.
-func (o LookupOrganizationResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupOrganizationResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }

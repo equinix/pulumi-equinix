@@ -69,6 +69,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="equinix:metal/interconnection:Interconnection")
 public class Interconnection extends com.pulumi.resources.CustomResource {
     /**
+     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+     * Metal end of the network, when viewing resources from within Fabric.
+     * 
+     */
+    @Export(name="authorizationCode", refs={String.class}, tree="[0]")
+    private Output<String> authorizationCode;
+
+    /**
+     * @return Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+     * Metal end of the network, when viewing resources from within Fabric.
+     * 
+     */
+    public Output<String> authorizationCode() {
+        return this.authorizationCode;
+    }
+    /**
      * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
      * 
      */
@@ -331,6 +347,22 @@ public class Interconnection extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<Integer>>> vlans() {
         return Codegen.optional(this.vlans);
+    }
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    @Export(name="vrfs", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> vrfs;
+
+    /**
+     * @return Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     * 
+     */
+    public Output<Optional<List<String>>> vrfs() {
+        return Codegen.optional(this.vrfs);
     }
 
     /**

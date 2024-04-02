@@ -169,10 +169,10 @@ def get_plans(filters: Optional[Sequence[pulumi.InputType['GetPlansFilterArgs']]
     # It will ignore future changes on plan and metro
     example_device = equinix.metal.Device("exampleDevice",
         hostname="example",
-        plan=example_plans.plans[0].name.apply(lambda x: equinix.metal/plan.Plan(x)),
+        plan=example_plans.plans[0].name.apply(lambda x: equinix.metal.Plan(x)),
         metro=example_plans.plans[0].available_in_metros[0],
-        operating_system="ubuntu_20_04",
-        billing_cycle="hourly",
+        operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+        billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=var["project_id"])
     ```
     <!--End PulumiCodeChooser -->
@@ -309,10 +309,10 @@ def get_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inp
     # It will ignore future changes on plan and metro
     example_device = equinix.metal.Device("exampleDevice",
         hostname="example",
-        plan=example_plans.plans[0].name.apply(lambda x: equinix.metal/plan.Plan(x)),
+        plan=example_plans.plans[0].name.apply(lambda x: equinix.metal.Plan(x)),
         metro=example_plans.plans[0].available_in_metros[0],
-        operating_system="ubuntu_20_04",
-        billing_cycle="hourly",
+        operating_system=equinix.metal.OperatingSystem.UBUNTU20_04,
+        billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=var["project_id"])
     ```
     <!--End PulumiCodeChooser -->

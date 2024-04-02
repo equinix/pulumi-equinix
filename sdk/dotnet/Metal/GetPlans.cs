@@ -170,10 +170,10 @@ namespace Pulumi.Equinix.Metal
         ///     var exampleDevice = new Equinix.Metal.Device("exampleDevice", new()
         ///     {
         ///         Hostname = "example",
-        ///         Plan = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse&lt;Equinix.Metal.Plan.Plan&gt;),
+        ///         Plan = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse&lt;Equinix.Metal.Plan&gt;),
         ///         Metro = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.AvailableInMetros[0]),
-        ///         OperatingSystem = "ubuntu_20_04",
-        ///         BillingCycle = "hourly",
+        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = @var.Project_id,
         ///     });
         /// 
@@ -365,10 +365,10 @@ namespace Pulumi.Equinix.Metal
         ///     var exampleDevice = new Equinix.Metal.Device("exampleDevice", new()
         ///     {
         ///         Hostname = "example",
-        ///         Plan = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse&lt;Equinix.Metal.Plan.Plan&gt;),
+        ///         Plan = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.Name).Apply(System.Enum.Parse&lt;Equinix.Metal.Plan&gt;),
         ///         Metro = examplePlans.Apply(getPlansResult =&gt; getPlansResult.Plans[0]?.AvailableInMetros[0]),
-        ///         OperatingSystem = "ubuntu_20_04",
-        ///         BillingCycle = "hourly",
+        ///         OperatingSystem = Equinix.Metal.OperatingSystem.Ubuntu20_04,
+        ///         BillingCycle = Equinix.Metal.BillingCycle.Hourly,
         ///         ProjectId = @var.Project_id,
         ///     });
         /// 

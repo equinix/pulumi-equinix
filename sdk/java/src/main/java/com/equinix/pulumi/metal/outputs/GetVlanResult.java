@@ -28,10 +28,6 @@ public final class GetVlanResult {
      */
     @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     private String facility;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private String metro;
     private String projectId;
@@ -62,10 +58,6 @@ public final class GetVlanResult {
     public String facility() {
         return this.facility;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

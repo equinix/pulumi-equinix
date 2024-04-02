@@ -47,6 +47,7 @@ export interface GetInterconnectionArgs {
  * A collection of values returned by getInterconnection.
  */
 export interface GetInterconnectionResult {
+    readonly authorizationCode: string;
     readonly connectionId: string;
     /**
      * The preferred email used for communication and notifications about the Equinix Fabric interconnection.
@@ -117,7 +118,7 @@ export interface GetInterconnectionResult {
     /**
      * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
-     * @deprecated If your organization already has connection service tokens enabled, use `service_tokens` instead
+     * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
     readonly token: string;
     /**
@@ -128,6 +129,7 @@ export interface GetInterconnectionResult {
      * Attached VLANs. Only available in shared connection. One vlan for Primary/Single connection and two vlans for Redundant connection.
      */
     readonly vlans: number[];
+    readonly vrfs: string[];
 }
 /**
  * Use this data source to retrieve a [connection resource](https://metal.equinix.com/developers/docs/networking/fabric/)

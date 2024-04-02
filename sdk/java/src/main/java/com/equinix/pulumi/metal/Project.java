@@ -68,14 +68,14 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="backendTransfer", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> backendTransfer;
+    private Output<Boolean> backendTransfer;
 
     /**
      * @return Enable or disable [Backend Transfer](https://metal.equinix.com/developers/docs/networking/backend-transfer/), default is `false`.
      * 
      */
-    public Output<Optional<Boolean>> backendTransfer() {
-        return Codegen.optional(this.backendTransfer);
+    public Output<Boolean> backendTransfer() {
+        return this.backendTransfer;
     }
     /**
      * Optional BGP settings. Refer to [Equinix Metal guide for BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/).

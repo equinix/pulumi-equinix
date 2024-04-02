@@ -29,6 +29,7 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("equinix:metal/getOrganization:getOrganization", {
+        "description": args.description,
         "name": args.name,
         "organizationId": args.organizationId,
     }, opts);
@@ -38,6 +39,10 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getOrganization.
  */
 export interface GetOrganizationArgs {
+    /**
+     * Description string.
+     */
+    description?: string;
     /**
      * The organization name.
      */
@@ -61,10 +66,7 @@ export interface GetOrganizationResult {
     /**
      * Description string.
      */
-    readonly description: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
+    readonly description?: string;
     readonly id: string;
     /**
      * Logo URL.
@@ -110,6 +112,10 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
  * A collection of arguments for invoking getOrganization.
  */
 export interface GetOrganizationOutputArgs {
+    /**
+     * Description string.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The organization name.
      */

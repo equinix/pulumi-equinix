@@ -88,28 +88,28 @@ public class Vlan extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices */
     @Export(name="facility", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> facility;
+    private Output<String> facility;
 
     /**
      * @return Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
      * 
      */
-    public Output<Optional<String>> facility() {
-        return Codegen.optional(this.facility);
+    public Output<String> facility() {
+        return this.facility;
     }
     /**
      * Metro in which to create the VLAN
      * 
      */
     @Export(name="metro", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> metro;
+    private Output<String> metro;
 
     /**
      * @return Metro in which to create the VLAN
      * 
      */
-    public Output<Optional<String>> metro() {
-        return Codegen.optional(this.metro);
+    public Output<String> metro() {
+        return this.metro;
     }
     /**
      * ID of parent project.

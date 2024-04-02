@@ -72,9 +72,9 @@ type Vlan struct {
 	// Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
 	//
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-	Facility pulumi.StringPtrOutput `pulumi:"facility"`
+	Facility pulumi.StringOutput `pulumi:"facility"`
 	// Metro in which to create the VLAN
-	Metro pulumi.StringPtrOutput `pulumi:"metro"`
+	Metro pulumi.StringOutput `pulumi:"metro"`
 	// ID of parent project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// VLAN ID, must be unique in metro.
@@ -273,13 +273,13 @@ func (o VlanOutput) Description() pulumi.StringPtrOutput {
 // Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
 //
 // Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-func (o VlanOutput) Facility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vlan) pulumi.StringPtrOutput { return v.Facility }).(pulumi.StringPtrOutput)
+func (o VlanOutput) Facility() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vlan) pulumi.StringOutput { return v.Facility }).(pulumi.StringOutput)
 }
 
 // Metro in which to create the VLAN
-func (o VlanOutput) Metro() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vlan) pulumi.StringPtrOutput { return v.Metro }).(pulumi.StringPtrOutput)
+func (o VlanOutput) Metro() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vlan) pulumi.StringOutput { return v.Metro }).(pulumi.StringOutput)
 }
 
 // ID of parent project.
