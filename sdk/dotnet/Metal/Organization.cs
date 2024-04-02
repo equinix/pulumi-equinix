@@ -56,7 +56,7 @@ namespace Pulumi.Equinix.Metal
         /// below for more details.
         /// </summary>
         [Output("address")]
-        public Output<Outputs.OrganizationAddress> Address { get; private set; } = null!;
+        public Output<Outputs.OrganizationAddress?> Address { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp for when the organization was created.
@@ -68,13 +68,13 @@ namespace Pulumi.Equinix.Metal
         /// Description string.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Logo URL.
         /// </summary>
         [Output("logo")]
-        public Output<string?> Logo { get; private set; } = null!;
+        public Output<string> Logo { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Organization.
@@ -86,7 +86,7 @@ namespace Pulumi.Equinix.Metal
         /// Twitter handle.
         /// </summary>
         [Output("twitter")]
-        public Output<string?> Twitter { get; private set; } = null!;
+        public Output<string> Twitter { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp for the last time the organization was updated.
@@ -98,7 +98,7 @@ namespace Pulumi.Equinix.Metal
         /// Website link.
         /// </summary>
         [Output("website")]
-        public Output<string?> Website { get; private set; } = null!;
+        public Output<string> Website { get; private set; } = null!;
 
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Pulumi.Equinix.Metal
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Organization(string name, OrganizationArgs args, CustomResourceOptions? options = null)
+        public Organization(string name, OrganizationArgs? args = null, CustomResourceOptions? options = null)
             : base("equinix:metal/organization:Organization", name, args ?? new OrganizationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -151,8 +151,8 @@ namespace Pulumi.Equinix.Metal
         /// An object that has the address information. See Address
         /// below for more details.
         /// </summary>
-        [Input("address", required: true)]
-        public Input<Inputs.OrganizationAddressArgs> Address { get; set; } = null!;
+        [Input("address")]
+        public Input<Inputs.OrganizationAddressArgs>? Address { get; set; }
 
         /// <summary>
         /// Description string.

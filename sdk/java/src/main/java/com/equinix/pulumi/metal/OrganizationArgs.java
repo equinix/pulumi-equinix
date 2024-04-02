@@ -21,16 +21,16 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
      * below for more details.
      * 
      */
-    @Import(name="address", required=true)
-    private Output<OrganizationAddressArgs> address;
+    @Import(name="address")
+    private @Nullable Output<OrganizationAddressArgs> address;
 
     /**
      * @return An object that has the address information. See Address
      * below for more details.
      * 
      */
-    public Output<OrganizationAddressArgs> address() {
-        return this.address;
+    public Optional<Output<OrganizationAddressArgs>> address() {
+        return Optional.ofNullable(this.address);
     }
 
     /**
@@ -144,7 +144,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder address(Output<OrganizationAddressArgs> address) {
+        public Builder address(@Nullable Output<OrganizationAddressArgs> address) {
             $.address = address;
             return this;
         }
@@ -266,7 +266,6 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OrganizationArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
             return $;
         }
     }

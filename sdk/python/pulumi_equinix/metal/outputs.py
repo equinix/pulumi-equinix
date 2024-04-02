@@ -2155,21 +2155,20 @@ class GetProjectBgpConfigResult(dict):
                  asn: int,
                  deployment_type: str,
                  max_prefix: int,
-                 status: str,
-                 md5: Optional[str] = None):
+                 md5: str,
+                 status: str):
         """
         :param int asn: Autonomous System Number for local BGP deployment.
         :param str deployment_type: One of `private`, `public`.
         :param int max_prefix: The maximum number of route filters allowed per server.
-        :param str status: Status of BGP configuration in the project.
         :param str md5: Password for BGP session in plaintext (not a checksum).
+        :param str status: Status of BGP configuration in the project.
         """
         pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "deployment_type", deployment_type)
         pulumi.set(__self__, "max_prefix", max_prefix)
+        pulumi.set(__self__, "md5", md5)
         pulumi.set(__self__, "status", status)
-        if md5 is not None:
-            pulumi.set(__self__, "md5", md5)
 
     @property
     @pulumi.getter
@@ -2197,18 +2196,18 @@ class GetProjectBgpConfigResult(dict):
 
     @property
     @pulumi.getter
+    def md5(self) -> str:
+        """
+        Password for BGP session in plaintext (not a checksum).
+        """
+        return pulumi.get(self, "md5")
+
+    @property
+    @pulumi.getter
     def status(self) -> str:
         """
         Status of BGP configuration in the project.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter
-    def md5(self) -> Optional[str]:
-        """
-        Password for BGP session in plaintext (not a checksum).
-        """
-        return pulumi.get(self, "md5")
 
 

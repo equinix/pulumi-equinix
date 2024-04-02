@@ -79,11 +79,11 @@ export class Vlan extends pulumi.CustomResource {
      *
      * @deprecated Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
      */
-    public readonly facility!: pulumi.Output<string | undefined>;
+    public readonly facility!: pulumi.Output<string>;
     /**
      * Metro in which to create the VLAN
      */
-    public readonly metro!: pulumi.Output<string | undefined>;
+    public readonly metro!: pulumi.Output<string>;
     /**
      * ID of parent project.
      */

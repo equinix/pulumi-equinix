@@ -4132,7 +4132,7 @@ type GetPlansPlan struct {
 	AvailableInMetros []string `pulumi:"availableInMetros"`
 	// (**Deprecated**) list of facilities where the plan is available
 	//
-	// Deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use availableInMetros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	AvailableIns []string `pulumi:"availableIns"`
 	// plan class
 	Class string `pulumi:"class"`
@@ -4172,7 +4172,7 @@ type GetPlansPlanArgs struct {
 	AvailableInMetros pulumi.StringArrayInput `pulumi:"availableInMetros"`
 	// (**Deprecated**) list of facilities where the plan is available
 	//
-	// Deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+	// Deprecated: Use availableInMetros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 	AvailableIns pulumi.StringArrayInput `pulumi:"availableIns"`
 	// plan class
 	Class pulumi.StringInput `pulumi:"class"`
@@ -4254,7 +4254,7 @@ func (o GetPlansPlanOutput) AvailableInMetros() pulumi.StringArrayOutput {
 
 // (**Deprecated**) list of facilities where the plan is available
 //
-// Deprecated: Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+// Deprecated: Use availableInMetros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
 func (o GetPlansPlanOutput) AvailableIns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPlansPlan) []string { return v.AvailableIns }).(pulumi.StringArrayOutput)
 }
@@ -4443,7 +4443,7 @@ type GetProjectBgpConfig struct {
 	// The maximum number of route filters allowed per server.
 	MaxPrefix int `pulumi:"maxPrefix"`
 	// Password for BGP session in plaintext (not a checksum).
-	Md5 *string `pulumi:"md5"`
+	Md5 string `pulumi:"md5"`
 	// Status of BGP configuration in the project.
 	Status string `pulumi:"status"`
 }
@@ -4467,7 +4467,7 @@ type GetProjectBgpConfigArgs struct {
 	// The maximum number of route filters allowed per server.
 	MaxPrefix pulumi.IntInput `pulumi:"maxPrefix"`
 	// Password for BGP session in plaintext (not a checksum).
-	Md5 pulumi.StringPtrInput `pulumi:"md5"`
+	Md5 pulumi.StringInput `pulumi:"md5"`
 	// Status of BGP configuration in the project.
 	Status pulumi.StringInput `pulumi:"status"`
 }
@@ -4514,8 +4514,8 @@ func (o GetProjectBgpConfigOutput) MaxPrefix() pulumi.IntOutput {
 }
 
 // Password for BGP session in plaintext (not a checksum).
-func (o GetProjectBgpConfigOutput) Md5() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetProjectBgpConfig) *string { return v.Md5 }).(pulumi.StringPtrOutput)
+func (o GetProjectBgpConfigOutput) Md5() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectBgpConfig) string { return v.Md5 }).(pulumi.StringOutput)
 }
 
 // Status of BGP configuration in the project.

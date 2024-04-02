@@ -222,9 +222,6 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         public readonly string Description;
         public readonly string Facility;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly string Metro;
         public readonly string ProjectId;

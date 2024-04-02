@@ -27,10 +27,6 @@ public final class GetProjectResult {
      * 
      */
     private String created;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private String name;
     /**
@@ -77,10 +73,6 @@ public final class GetProjectResult {
     public String created() {
         return this.created;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

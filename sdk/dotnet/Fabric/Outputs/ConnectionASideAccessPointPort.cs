@@ -24,7 +24,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Redundancy Information
         /// </summary>
-        public readonly ImmutableArray<Outputs.ConnectionASideAccessPointPortRedundancy> Redundancies;
+        public readonly Outputs.ConnectionASideAccessPointPortRedundancy? Redundancy;
         /// <summary>
         /// Equinix-assigned virtual gateway identifier
         /// </summary>
@@ -36,13 +36,13 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string? name,
 
-            ImmutableArray<Outputs.ConnectionASideAccessPointPortRedundancy> redundancies,
+            Outputs.ConnectionASideAccessPointPortRedundancy? redundancy,
 
             string? uuid)
         {
             Href = href;
             Name = name;
-            Redundancies = redundancies;
+            Redundancy = redundancy;
             Uuid = uuid;
         }
     }

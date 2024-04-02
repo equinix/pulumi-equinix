@@ -64,6 +64,11 @@ export class Interconnection extends pulumi.CustomResource {
     }
 
     /**
+     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+     * Metal end of the network, when viewing resources from within Fabric.
+     */
+    public /*out*/ readonly authorizationCode!: pulumi.Output<string>;
+    /**
      * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
      */
     public readonly contactEmail!: pulumi.Output<string>;
@@ -130,7 +135,7 @@ export class Interconnection extends pulumi.CustomResource {
     /**
      * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
-     * @deprecated If your organization already has connection service tokens enabled, use `service_tokens` instead
+     * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
     public /*out*/ readonly token!: pulumi.Output<string>;
     /**
@@ -141,6 +146,11 @@ export class Interconnection extends pulumi.CustomResource {
      * Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
      */
     public readonly vlans!: pulumi.Output<number[] | undefined>;
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     */
+    public readonly vrfs!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Interconnection resource with the given unique name, arguments, and options.
@@ -155,6 +165,7 @@ export class Interconnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectionState | undefined;
+            resourceInputs["authorizationCode"] = state ? state.authorizationCode : undefined;
             resourceInputs["contactEmail"] = state ? state.contactEmail : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["facility"] = state ? state.facility : undefined;
@@ -173,6 +184,7 @@ export class Interconnection extends pulumi.CustomResource {
             resourceInputs["token"] = state ? state.token : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vlans"] = state ? state.vlans : undefined;
+            resourceInputs["vrfs"] = state ? state.vrfs : undefined;
         } else {
             const args = argsOrState as InterconnectionArgs | undefined;
             if ((!args || args.redundancy === undefined) && !opts.urn) {
@@ -195,6 +207,8 @@ export class Interconnection extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vlans"] = args ? args.vlans : undefined;
+            resourceInputs["vrfs"] = args ? args.vrfs : undefined;
+            resourceInputs["authorizationCode"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
             resourceInputs["serviceTokens"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -209,6 +223,11 @@ export class Interconnection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Interconnection resources.
  */
 export interface InterconnectionState {
+    /**
+     * Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+     * Metal end of the network, when viewing resources from within Fabric.
+     */
+    authorizationCode?: pulumi.Input<string>;
     /**
      * The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
      */
@@ -276,7 +295,7 @@ export interface InterconnectionState {
     /**
      * (Deprecated) Fabric Token required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). If your organization already has connection service tokens enabled, use `serviceTokens` instead.
      *
-     * @deprecated If your organization already has connection service tokens enabled, use `service_tokens` instead
+     * @deprecated If your organization already has connection service tokens enabled, use `serviceTokens` instead
      */
     token?: pulumi.Input<string>;
     /**
@@ -287,6 +306,11 @@ export interface InterconnectionState {
      * Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
      */
     vlans?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     */
+    vrfs?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -351,4 +375,9 @@ export interface InterconnectionArgs {
      * Only used with shared connection. Vlans to attach. Pass one vlan for Primary/Single connection and two vlans for Redundant connection.
      */
     vlans?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+     * connection
+     */
+    vrfs?: pulumi.Input<pulumi.Input<string>[]>;
 }

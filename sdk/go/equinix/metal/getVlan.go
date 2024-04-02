@@ -113,8 +113,7 @@ type LookupVlanResult struct {
 	// Description text of the VLAN resource.
 	Description string `pulumi:"description"`
 	// Deprecated: Use metro instead of facility.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
-	Facility string `pulumi:"facility"`
-	// The provider-assigned unique ID for this managed resource.
+	Facility  string `pulumi:"facility"`
 	Id        string `pulumi:"id"`
 	Metro     string `pulumi:"metro"`
 	ProjectId string `pulumi:"projectId"`
@@ -187,7 +186,6 @@ func (o LookupVlanResultOutput) Facility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVlanResult) string { return v.Facility }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupVlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVlanResult) string { return v.Id }).(pulumi.StringOutput)
 }

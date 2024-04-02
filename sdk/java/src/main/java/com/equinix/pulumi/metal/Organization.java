@@ -74,15 +74,15 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="address", refs={OrganizationAddress.class}, tree="[0]")
-    private Output<OrganizationAddress> address;
+    private Output</* @Nullable */ OrganizationAddress> address;
 
     /**
      * @return An object that has the address information. See Address
      * below for more details.
      * 
      */
-    public Output<OrganizationAddress> address() {
-        return this.address;
+    public Output<Optional<OrganizationAddress>> address() {
+        return Codegen.optional(this.address);
     }
     /**
      * The timestamp for when the organization was created.
@@ -103,28 +103,28 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return Description string.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Logo URL.
      * 
      */
     @Export(name="logo", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> logo;
+    private Output<String> logo;
 
     /**
      * @return Logo URL.
      * 
      */
-    public Output<Optional<String>> logo() {
-        return Codegen.optional(this.logo);
+    public Output<String> logo() {
+        return this.logo;
     }
     /**
      * The name of the Organization.
@@ -145,14 +145,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="twitter", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> twitter;
+    private Output<String> twitter;
 
     /**
      * @return Twitter handle.
      * 
      */
-    public Output<Optional<String>> twitter() {
-        return Codegen.optional(this.twitter);
+    public Output<String> twitter() {
+        return this.twitter;
     }
     /**
      * The timestamp for the last time the organization was updated.
@@ -173,14 +173,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="website", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> website;
+    private Output<String> website;
 
     /**
      * @return Website link.
      * 
      */
-    public Output<Optional<String>> website() {
-        return Codegen.optional(this.website);
+    public Output<String> website() {
+        return this.website;
     }
 
     /**
@@ -195,7 +195,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Organization(String name, OrganizationArgs args) {
+    public Organization(String name, @Nullable OrganizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,7 +204,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Organization(String name, OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Organization(String name, @Nullable OrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("equinix:metal/organization:Organization", name, args == null ? OrganizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

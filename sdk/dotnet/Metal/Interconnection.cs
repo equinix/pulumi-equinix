@@ -49,6 +49,13 @@ namespace Pulumi.Equinix.Metal
     public partial class Interconnection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+        /// Metal end of the network, when viewing resources from within Fabric.
+        /// </summary>
+        [Output("authorizationCode")]
+        public Output<string> AuthorizationCode { get; private set; } = null!;
+
+        /// <summary>
         /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         /// </summary>
         [Output("contactEmail")]
@@ -157,6 +164,13 @@ namespace Pulumi.Equinix.Metal
         /// </summary>
         [Output("vlans")]
         public Output<ImmutableArray<int>> Vlans { get; private set; } = null!;
+
+        /// <summary>
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        /// connection
+        /// </summary>
+        [Output("vrfs")]
+        public Output<ImmutableArray<string>> Vrfs { get; private set; } = null!;
 
 
         /// <summary>
@@ -301,6 +315,19 @@ namespace Pulumi.Equinix.Metal
             set => _vlans = value;
         }
 
+        [Input("vrfs")]
+        private InputList<string>? _vrfs;
+
+        /// <summary>
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        /// connection
+        /// </summary>
+        public InputList<string> Vrfs
+        {
+            get => _vrfs ?? (_vrfs = new InputList<string>());
+            set => _vrfs = value;
+        }
+
         public InterconnectionArgs()
         {
         }
@@ -309,6 +336,13 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class InterconnectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Only used with Fabric Shared connection. Fabric uses this token to be able to give more detailed information about the
+        /// Metal end of the network, when viewing resources from within Fabric.
+        /// </summary>
+        [Input("authorizationCode")]
+        public Input<string>? AuthorizationCode { get; set; }
+
         /// <summary>
         /// The preferred email used for communication and notifications about the Equinix Fabric interconnection. Required when using a Project API key. Optional and defaults to the primary user email address when using a User API key.
         /// </summary>
@@ -441,6 +475,19 @@ namespace Pulumi.Equinix.Metal
         {
             get => _vlans ?? (_vlans = new InputList<int>());
             set => _vlans = value;
+        }
+
+        [Input("vrfs")]
+        private InputList<string>? _vrfs;
+
+        /// <summary>
+        /// Only used with shared connection. VRFs to attach. Pass one VRF for Primary/Single connection and two VRFs for Redundant
+        /// connection
+        /// </summary>
+        public InputList<string> Vrfs
+        {
+            get => _vrfs ?? (_vrfs = new InputList<string>());
+            set => _vrfs = value;
         }
 
         public InterconnectionState()

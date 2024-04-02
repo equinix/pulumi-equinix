@@ -7,7 +7,6 @@ import com.equinix.pulumi.fabric.inputs.ConnectionZSideAccessPointPortRedundancy
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -51,15 +50,15 @@ public final class ConnectionZSideAccessPointPortArgs extends com.pulumi.resourc
      * Redundancy Information
      * 
      */
-    @Import(name="redundancies")
-    private @Nullable Output<List<ConnectionZSideAccessPointPortRedundancyArgs>> redundancies;
+    @Import(name="redundancy")
+    private @Nullable Output<ConnectionZSideAccessPointPortRedundancyArgs> redundancy;
 
     /**
      * @return Redundancy Information
      * 
      */
-    public Optional<Output<List<ConnectionZSideAccessPointPortRedundancyArgs>>> redundancies() {
-        return Optional.ofNullable(this.redundancies);
+    public Optional<Output<ConnectionZSideAccessPointPortRedundancyArgs>> redundancy() {
+        return Optional.ofNullable(this.redundancy);
     }
 
     /**
@@ -82,7 +81,7 @@ public final class ConnectionZSideAccessPointPortArgs extends com.pulumi.resourc
     private ConnectionZSideAccessPointPortArgs(ConnectionZSideAccessPointPortArgs $) {
         this.href = $.href;
         this.name = $.name;
-        this.redundancies = $.redundancies;
+        this.redundancy = $.redundancy;
         this.uuid = $.uuid;
     }
 
@@ -147,34 +146,24 @@ public final class ConnectionZSideAccessPointPortArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param redundancies Redundancy Information
+         * @param redundancy Redundancy Information
          * 
          * @return builder
          * 
          */
-        public Builder redundancies(@Nullable Output<List<ConnectionZSideAccessPointPortRedundancyArgs>> redundancies) {
-            $.redundancies = redundancies;
+        public Builder redundancy(@Nullable Output<ConnectionZSideAccessPointPortRedundancyArgs> redundancy) {
+            $.redundancy = redundancy;
             return this;
         }
 
         /**
-         * @param redundancies Redundancy Information
+         * @param redundancy Redundancy Information
          * 
          * @return builder
          * 
          */
-        public Builder redundancies(List<ConnectionZSideAccessPointPortRedundancyArgs> redundancies) {
-            return redundancies(Output.of(redundancies));
-        }
-
-        /**
-         * @param redundancies Redundancy Information
-         * 
-         * @return builder
-         * 
-         */
-        public Builder redundancies(ConnectionZSideAccessPointPortRedundancyArgs... redundancies) {
-            return redundancies(List.of(redundancies));
+        public Builder redundancy(ConnectionZSideAccessPointPortRedundancyArgs redundancy) {
+            return redundancy(Output.of(redundancy));
         }
 
         /**

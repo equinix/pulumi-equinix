@@ -379,7 +379,7 @@ class Vlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def facility(self) -> pulumi.Output[Optional[str]]:
+    def facility(self) -> pulumi.Output[str]:
         """
         Facility where to create the VLAN. Use metro instead; read the facility to metro migration guide
         """
@@ -390,7 +390,7 @@ class Vlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metro(self) -> pulumi.Output[Optional[str]]:
+    def metro(self) -> pulumi.Output[str]:
         """
         Metro in which to create the VLAN
         """

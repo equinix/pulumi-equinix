@@ -16,7 +16,7 @@ __all__ = ['OrganizationArgs', 'Organization']
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input['OrganizationAddressArgs'],
+                 address: Optional[pulumi.Input['OrganizationAddressArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logo: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,7 +32,8 @@ class OrganizationArgs:
         :param pulumi.Input[str] twitter: Twitter handle.
         :param pulumi.Input[str] website: Website link.
         """
-        pulumi.set(__self__, "address", address)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if logo is not None:
@@ -46,7 +47,7 @@ class OrganizationArgs:
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input['OrganizationAddressArgs']:
+    def address(self) -> Optional[pulumi.Input['OrganizationAddressArgs']]:
         """
         An object that has the address information. See Address
         below for more details.
@@ -54,7 +55,7 @@ class OrganizationArgs:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: pulumi.Input['OrganizationAddressArgs']):
+    def address(self, value: Optional[pulumi.Input['OrganizationAddressArgs']]):
         pulumi.set(self, "address", value)
 
     @property
@@ -310,7 +311,7 @@ class Organization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationArgs,
+                 args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage organization resource in Equinix Metal.
@@ -370,8 +371,6 @@ class Organization(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
-            if address is None and not opts.urn:
-                raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address
             __props__.__dict__["description"] = description
             __props__.__dict__["logo"] = logo
@@ -431,7 +430,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Output['outputs.OrganizationAddress']:
+    def address(self) -> pulumi.Output[Optional['outputs.OrganizationAddress']]:
         """
         An object that has the address information. See Address
         below for more details.
@@ -448,7 +447,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         Description string.
         """
@@ -456,7 +455,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def logo(self) -> pulumi.Output[Optional[str]]:
+    def logo(self) -> pulumi.Output[str]:
         """
         Logo URL.
         """
@@ -472,7 +471,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def twitter(self) -> pulumi.Output[Optional[str]]:
+    def twitter(self) -> pulumi.Output[str]:
         """
         Twitter handle.
         """
@@ -488,7 +487,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def website(self) -> pulumi.Output[Optional[str]]:
+    def website(self) -> pulumi.Output[str]:
         """
         Website link.
         """

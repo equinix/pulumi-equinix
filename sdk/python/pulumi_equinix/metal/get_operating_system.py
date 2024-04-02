@@ -112,10 +112,10 @@ def get_operating_system(distro: Optional[str] = None,
         provisionable_on="c3.medium.x86")
     server = equinix.metal.Device("server",
         hostname="tf.ubuntu",
-        plan="c3.medium.x86",
+        plan=equinix.metal.Plan.C3_MEDIUM_X86,
         metro="ny",
-        operating_system=example.id.apply(lambda x: equinix.metal/operatingsystem.OperatingSystem(x)),
-        billing_cycle="hourly",
+        operating_system=example.id.apply(lambda x: equinix.metal.OperatingSystem(x)),
+        billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=local["project_id"])
     ```
     <!--End PulumiCodeChooser -->
@@ -164,10 +164,10 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
         provisionable_on="c3.medium.x86")
     server = equinix.metal.Device("server",
         hostname="tf.ubuntu",
-        plan="c3.medium.x86",
+        plan=equinix.metal.Plan.C3_MEDIUM_X86,
         metro="ny",
-        operating_system=example.id.apply(lambda x: equinix.metal/operatingsystem.OperatingSystem(x)),
-        billing_cycle="hourly",
+        operating_system=example.id.apply(lambda x: equinix.metal.OperatingSystem(x)),
+        billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=local["project_id"])
     ```
     <!--End PulumiCodeChooser -->

@@ -163,9 +163,9 @@ import (
 //			_, err = metal.NewDevice(ctx, "exampleDevice", &metal.DeviceArgs{
 //				Hostname:        pulumi.String("example"),
 //				Plan:            examplePlans.Plans[0].Name.ApplyT(func(x *string) metal.Plan { return metal.Plan(*x) }).(metal.PlanOutput),
-//				Metro:           *pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),
-//				OperatingSystem: pulumi.String("ubuntu_20_04"),
-//				BillingCycle:    pulumi.String("hourly"),
+//				Metro:           pulumi.String(examplePlans.Plans[0].AvailableInMetros[0]),
+//				OperatingSystem: pulumi.String(metal.OperatingSystem_Ubuntu20_04),
+//				BillingCycle:    pulumi.String(metal.BillingCycleHourly),
 //				ProjectId:       pulumi.Any(_var.Project_id),
 //			})
 //			if err != nil {

@@ -76,6 +76,12 @@ namespace Pulumi.Equinix.Metal
     public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Description string.
+        /// </summary>
+        [Input("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// The organization name.
         /// </summary>
         [Input("name")]
@@ -97,6 +103,12 @@ namespace Pulumi.Equinix.Metal
 
     public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Description string.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The organization name.
         /// </summary>
@@ -128,10 +140,7 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Description string.
         /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
+        public readonly string? Description;
         public readonly string Id;
         /// <summary>
         /// Logo URL.
@@ -156,7 +165,7 @@ namespace Pulumi.Equinix.Metal
         private GetOrganizationResult(
             Outputs.GetOrganizationAddressResult address,
 
-            string description,
+            string? description,
 
             string id,
 

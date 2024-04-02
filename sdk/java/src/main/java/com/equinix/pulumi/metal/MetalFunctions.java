@@ -1488,6 +1488,7 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
      *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
      *             .description(&#34;test VLAN in SV&#34;)
      *             .metro(&#34;sv&#34;)
@@ -1538,6 +1539,7 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
      *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
      *             .description(&#34;test VLAN in SV&#34;)
      *             .metro(&#34;sv&#34;)
@@ -1588,6 +1590,7 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
      *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
      *             .description(&#34;test VLAN in SV&#34;)
      *             .metro(&#34;sv&#34;)
@@ -1638,6 +1641,7 @@ public final class MetalFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Create Metal Gateway for a VLAN with a private IPv4 block with 8 IP addresses
      *         var testVlan = new Vlan(&#34;testVlan&#34;, VlanArgs.builder()        
      *             .description(&#34;test VLAN in SV&#34;)
      *             .metro(&#34;sv&#34;)
@@ -3166,6 +3170,8 @@ public final class MetalFunctions {
      *                     .build())
      *             .build());
      * 
+     *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+     *         // It will ignore future changes on plan and metro
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;example&#34;)
      *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
@@ -3209,6 +3215,7 @@ public final class MetalFunctions {
      *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
+     *         // required device arguments
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
      * 
      *     }
@@ -3369,6 +3376,8 @@ public final class MetalFunctions {
      *                     .build())
      *             .build());
      * 
+     *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+     *         // It will ignore future changes on plan and metro
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;example&#34;)
      *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
@@ -3412,6 +3421,7 @@ public final class MetalFunctions {
      *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
+     *         // required device arguments
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
      * 
      *     }
@@ -3572,6 +3582,8 @@ public final class MetalFunctions {
      *                     .build())
      *             .build());
      * 
+     *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+     *         // It will ignore future changes on plan and metro
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;example&#34;)
      *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
@@ -3615,6 +3627,7 @@ public final class MetalFunctions {
      *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
+     *         // required device arguments
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
      * 
      *     }
@@ -3775,6 +3788,8 @@ public final class MetalFunctions {
      *                     .build())
      *             .build());
      * 
+     *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+     *         // It will ignore future changes on plan and metro
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;example&#34;)
      *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
@@ -3818,6 +3833,7 @@ public final class MetalFunctions {
      *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
+     *         // required device arguments
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
      * 
      *     }
@@ -3978,6 +3994,8 @@ public final class MetalFunctions {
      *                     .build())
      *             .build());
      * 
+     *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+     *         // It will ignore future changes on plan and metro
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;example&#34;)
      *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
@@ -4021,6 +4039,7 @@ public final class MetalFunctions {
      *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
+     *         // required device arguments
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
      * 
      *     }
@@ -4181,6 +4200,8 @@ public final class MetalFunctions {
      *                     .build())
      *             .build());
      * 
+     *         // This equinix_metal_device will use the first returned plan and the first metro in which that plan is available
+     *         // It will ignore future changes on plan and metro
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;, DeviceArgs.builder()        
      *             .hostname(&#34;example&#34;)
      *             .plan(examplePlans.applyValue(getPlansResult -&gt; getPlansResult.plans()[0].name()))
@@ -4224,6 +4245,7 @@ public final class MetalFunctions {
      *         final var ignorePlansMetrosChanges = config.get(&#34;ignorePlansMetrosChanges&#34;).orElse(false);
      *         final var examplePlans = MetalFunctions.getPlans();
      * 
+     *         // required device arguments
      *         var exampleDevice = new Device(&#34;exampleDevice&#34;);
      * 
      *     }

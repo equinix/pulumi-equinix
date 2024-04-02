@@ -13,6 +13,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInterconnectionResult {
+    private String authorizationCode;
     private String connectionId;
     /**
      * @return The preferred email used for communication and notifications about the Equinix Fabric interconnection.
@@ -117,8 +118,12 @@ public final class GetInterconnectionResult {
      * 
      */
     private List<Integer> vlans;
+    private List<String> vrfs;
 
     private GetInterconnectionResult() {}
+    public String authorizationCode() {
+        return this.authorizationCode;
+    }
     public String connectionId() {
         return this.connectionId;
     }
@@ -263,6 +268,9 @@ public final class GetInterconnectionResult {
     public List<Integer> vlans() {
         return this.vlans;
     }
+    public List<String> vrfs() {
+        return this.vrfs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -273,6 +281,7 @@ public final class GetInterconnectionResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String authorizationCode;
         private String connectionId;
         private String contactEmail;
         private String description;
@@ -293,9 +302,11 @@ public final class GetInterconnectionResult {
         private String token;
         private String type;
         private List<Integer> vlans;
+        private List<String> vrfs;
         public Builder() {}
         public Builder(GetInterconnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authorizationCode = defaults.authorizationCode;
     	      this.connectionId = defaults.connectionId;
     	      this.contactEmail = defaults.contactEmail;
     	      this.description = defaults.description;
@@ -316,8 +327,14 @@ public final class GetInterconnectionResult {
     	      this.token = defaults.token;
     	      this.type = defaults.type;
     	      this.vlans = defaults.vlans;
+    	      this.vrfs = defaults.vrfs;
         }
 
+        @CustomType.Setter
+        public Builder authorizationCode(String authorizationCode) {
+            this.authorizationCode = Objects.requireNonNull(authorizationCode);
+            return this;
+        }
         @CustomType.Setter
         public Builder connectionId(String connectionId) {
             this.connectionId = Objects.requireNonNull(connectionId);
@@ -430,8 +447,17 @@ public final class GetInterconnectionResult {
         public Builder vlans(Integer... vlans) {
             return vlans(List.of(vlans));
         }
+        @CustomType.Setter
+        public Builder vrfs(List<String> vrfs) {
+            this.vrfs = Objects.requireNonNull(vrfs);
+            return this;
+        }
+        public Builder vrfs(String... vrfs) {
+            return vrfs(List.of(vrfs));
+        }
         public GetInterconnectionResult build() {
             final var _resultValue = new GetInterconnectionResult();
+            _resultValue.authorizationCode = authorizationCode;
             _resultValue.connectionId = connectionId;
             _resultValue.contactEmail = contactEmail;
             _resultValue.description = description;
@@ -452,6 +478,7 @@ public final class GetInterconnectionResult {
             _resultValue.token = token;
             _resultValue.type = type;
             _resultValue.vlans = vlans;
+            _resultValue.vrfs = vrfs;
             return _resultValue;
         }
     }

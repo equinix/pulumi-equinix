@@ -338,7 +338,7 @@ export namespace fabric {
         /**
          * Redundancy Information
          */
-        redundancies: outputs.fabric.ConnectionASideAccessPointPortRedundancy[];
+        redundancy: outputs.fabric.ConnectionASideAccessPointPortRedundancy;
         /**
          * Equinix-assigned virtual gateway identifier
          */
@@ -855,7 +855,7 @@ export namespace fabric {
         /**
          * Redundancy Information
          */
-        redundancies: outputs.fabric.ConnectionZSideAccessPointPortRedundancy[];
+        redundancy: outputs.fabric.ConnectionZSideAccessPointPortRedundancy;
         /**
          * Equinix-assigned virtual gateway identifier
          */
@@ -4755,7 +4755,7 @@ export namespace metal {
         /**
          * (**Deprecated**) list of facilities where the plan is available
          *
-         * @deprecated Use available_in_metros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
+         * @deprecated Use availableInMetros instead.  For more information, read the migration guide: https://registry.terraform.io/providers/equinix/equinix/latest/docs/guides/migration_guide_facilities_to_metros_devices
          */
         availableIns: string[];
         /**
@@ -4827,7 +4827,7 @@ export namespace metal {
         /**
          * Password for BGP session in plaintext (not a checksum).
          */
-        md5?: string;
+        md5: string;
         /**
          * Status of BGP configuration in the project.
          */
@@ -4881,7 +4881,7 @@ export namespace metal {
         /**
          * State name.
          */
-        state?: string;
+        state: string;
         /**
          * Zip Code.
          */
