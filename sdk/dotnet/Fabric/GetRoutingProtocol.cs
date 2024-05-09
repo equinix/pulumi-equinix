@@ -18,7 +18,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,9 +32,23 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_routing_protocol&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Id),
+        ///         ["name"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Name),
+        ///         ["type"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Type),
+        ///         ["directIpv4"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.DirectIpv4?.EquinixIfaceIp),
+        ///         ["directIpv6"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.DirectIpv6?.EquinixIfaceIp),
+        ///         ["bgpIpv4CustomerPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.CustomerPeerIp),
+        ///         ["bgpIpv4EquinixPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.EquinixPeerIp),
+        ///         ["bgpIpv4Enabled"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.Enabled),
+        ///         ["bgpIpv6CustomerPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.CustomerPeerIp),
+        ///         ["bgpIpv6EquinixPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.EquinixPeerIp),
+        ///         ["bgpIpv6Enabled"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.Enabled),
+        ///         ["customerAsn"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.CustomerAsn),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRoutingProtocolResult> InvokeAsync(GetRoutingProtocolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolArgs(), options.WithDefaults());
@@ -47,7 +60,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,9 +74,23 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_routing_protocol&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Id),
+        ///         ["name"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Name),
+        ///         ["type"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.Type),
+        ///         ["directIpv4"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.DirectIpv4?.EquinixIfaceIp),
+        ///         ["directIpv6"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.DirectIpv6?.EquinixIfaceIp),
+        ///         ["bgpIpv4CustomerPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.CustomerPeerIp),
+        ///         ["bgpIpv4EquinixPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.EquinixPeerIp),
+        ///         ["bgpIpv4Enabled"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv4?.Enabled),
+        ///         ["bgpIpv6CustomerPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.CustomerPeerIp),
+        ///         ["bgpIpv6EquinixPeerIp"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.EquinixPeerIp),
+        ///         ["bgpIpv6Enabled"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.BgpIpv6?.Enabled),
+        ///         ["customerAsn"] = routingProtocolDataName.Apply(getRoutingProtocolResult =&gt; getRoutingProtocolResult.CustomerAsn),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRoutingProtocolResult> Invoke(GetRoutingProtocolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoutingProtocolResult>("equinix:fabric/getRoutingProtocol:getRoutingProtocol", args ?? new GetRoutingProtocolInvokeArgs(), options.WithDefaults());
@@ -79,6 +105,9 @@ namespace Pulumi.Equinix.Fabric
         [Input("connectionUuid", required: true)]
         public string ConnectionUuid { get; set; } = null!;
 
+        /// <summary>
+        /// Equinix-assigned routing protocol identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public string Uuid { get; set; } = null!;
 
@@ -96,6 +125,9 @@ namespace Pulumi.Equinix.Fabric
         [Input("connectionUuid", required: true)]
         public Input<string> ConnectionUuid { get; set; } = null!;
 
+        /// <summary>
+        /// Equinix-assigned routing protocol identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 

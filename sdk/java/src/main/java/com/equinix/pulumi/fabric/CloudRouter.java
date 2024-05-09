@@ -212,14 +212,14 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return this.equinixAsn;
     }
     /**
-     * Unique Resource URL
+     * Fabric Cloud Router URI information
      * 
      */
     @Export(name="href", refs={String.class}, tree="[0]")
     private Output<String> href;
 
     /**
-     * @return Unique Resource URL
+     * @return Fabric Cloud Router URI information
      * 
      */
     public Output<String> href() {
@@ -296,14 +296,14 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return this.package_;
     }
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     @Export(name="project", refs={CloudRouterProject.class}, tree="[0]")
     private Output<CloudRouterProject> project;
 
     /**
-     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * @return Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     public Output<CloudRouterProject> project() {
@@ -324,14 +324,14 @@ public class CloudRouter extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * Defines the FCR type like; XF_ROUTER
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * @return Defines the FCR type like; XF_ROUTER
      * 
      */
     public Output<String> type() {

@@ -116,7 +116,6 @@ def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArg
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -137,9 +136,7 @@ def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArg
         ])
     pulumi.export("devices", example.devices)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -147,7 +144,6 @@ def get_devices(filters: Optional[Sequence[pulumi.InputType['GetDevicesFilterArg
     example = equinix.metal.get_devices(search="database")
     pulumi.export("devices", example.devices)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## search vs filter
 
@@ -192,7 +188,6 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -213,9 +208,7 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
         ])
     pulumi.export("devices", example.devices)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -223,7 +216,6 @@ def get_devices_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
     example = equinix.metal.get_devices(search="database")
     pulumi.export("devices", example.devices)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## search vs filter
 

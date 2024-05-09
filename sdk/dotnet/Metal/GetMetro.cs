@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMetroResult> InvokeAsync(GetMetroArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMetroResult> Invoke(GetMetroInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetroResult>("equinix:metal/getMetro:getMetro", args ?? new GetMetroInvokeArgs(), options.WithDefaults());

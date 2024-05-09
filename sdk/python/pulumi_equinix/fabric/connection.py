@@ -21,12 +21,12 @@ class ConnectionArgs:
                  a_side: pulumi.Input['ConnectionASideArgs'],
                  bandwidth: pulumi.Input[int],
                  notifications: pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]],
-                 order: pulumi.Input['ConnectionOrderArgs'],
                  type: pulumi.Input[Union[str, 'ConnectionType']],
                  z_side: pulumi.Input['ConnectionZSideArgs'],
                  additional_info: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order: Optional[pulumi.Input['ConnectionOrderArgs']] = None,
                  project: Optional[pulumi.Input['ConnectionProjectArgs']] = None,
                  redundancy: Optional[pulumi.Input['ConnectionRedundancyArgs']] = None):
         """
@@ -34,19 +34,18 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionASideArgs'] a_side: Requester or Customer side connection configuration object of the multi-segment connection
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
-        :param pulumi.Input['ConnectionOrderArgs'] order: Order details
-        :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
-        :param pulumi.Input[str] description: User-provided service description
-        :param pulumi.Input[str] name: Port name
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
+        :param pulumi.Input[str] description: Customer-provided connection description
+        :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        :param pulumi.Input['ConnectionOrderArgs'] order: Order details
         :param pulumi.Input['ConnectionProjectArgs'] project: Project information
-        :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
+        :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Connection Redundancy Configuration
         """
         pulumi.set(__self__, "a_side", a_side)
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "notifications", notifications)
-        pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "z_side", z_side)
         if additional_info is not None:
@@ -55,6 +54,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redundancy is not None:
@@ -98,21 +99,9 @@ class ConnectionArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Input['ConnectionOrderArgs']:
-        """
-        Order details
-        """
-        return pulumi.get(self, "order")
-
-    @order.setter
-    def order(self, value: pulumi.Input['ConnectionOrderArgs']):
-        pulumi.set(self, "order", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> pulumi.Input[Union[str, 'ConnectionType']]:
         """
-        Interface type
+        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         """
         return pulumi.get(self, "type")
 
@@ -136,7 +125,7 @@ class ConnectionArgs:
     @pulumi.getter(name="additionalInfo")
     def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
-        Connection side additional information
+        Connection additional information
         """
         return pulumi.get(self, "additional_info")
 
@@ -148,7 +137,7 @@ class ConnectionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User-provided service description
+        Customer-provided connection description
         """
         return pulumi.get(self, "description")
 
@@ -160,13 +149,25 @@ class ConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Port name
+        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input['ConnectionOrderArgs']]:
+        """
+        Order details
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input['ConnectionOrderArgs']]):
+        pulumi.set(self, "order", value)
 
     @property
     @pulumi.getter
@@ -184,7 +185,7 @@ class ConnectionArgs:
     @pulumi.getter
     def redundancy(self) -> Optional[pulumi.Input['ConnectionRedundancyArgs']]:
         """
-        Redundancy Information
+        Connection Redundancy Configuration
         """
         return pulumi.get(self, "redundancy")
 
@@ -218,23 +219,23 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input['ConnectionASideArgs'] a_side: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input['ConnectionAccountArgs'] account: Account
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
+        :param pulumi.Input['ConnectionAccountArgs'] account: Customer account information that is associated with this connection
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input['ConnectionChangeLogArgs'] change_log: Captures connection lifecycle change information
-        :param pulumi.Input[str] description: User-provided service description
+        :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
-        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
-        :param pulumi.Input[str] name: Port name
+        :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input['ConnectionOperationArgs'] operation: Connection type-specific operational data
         :param pulumi.Input['ConnectionOrderArgs'] order: Order details
         :param pulumi.Input['ConnectionProjectArgs'] project: Project information
-        :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Redundancy Information
+        :param pulumi.Input['ConnectionRedundancyArgs'] redundancy: Connection Redundancy Configuration
         :param pulumi.Input[str] state: Connection overall state
-        :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
-        :param pulumi.Input[str] uuid: Equinix-assigned virtual gateway identifier
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        :param pulumi.Input[str] uuid: Equinix-assigned connection identifier
         :param pulumi.Input['ConnectionZSideArgs'] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         if a_side is not None:
@@ -292,7 +293,7 @@ class _ConnectionState:
     @pulumi.getter
     def account(self) -> Optional[pulumi.Input['ConnectionAccountArgs']]:
         """
-        Account
+        Customer account information that is associated with this connection
         """
         return pulumi.get(self, "account")
 
@@ -304,7 +305,7 @@ class _ConnectionState:
     @pulumi.getter(name="additionalInfo")
     def additional_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
-        Connection side additional information
+        Connection additional information
         """
         return pulumi.get(self, "additional_info")
 
@@ -340,7 +341,7 @@ class _ConnectionState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User-provided service description
+        Customer-provided connection description
         """
         return pulumi.get(self, "description")
 
@@ -364,7 +365,7 @@ class _ConnectionState:
     @pulumi.getter
     def href(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Resource Identifier
+        Connection URI information
         """
         return pulumi.get(self, "href")
 
@@ -388,7 +389,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Port name
+        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         """
         return pulumi.get(self, "name")
 
@@ -448,7 +449,7 @@ class _ConnectionState:
     @pulumi.getter
     def redundancy(self) -> Optional[pulumi.Input['ConnectionRedundancyArgs']]:
         """
-        Redundancy Information
+        Connection Redundancy Configuration
         """
         return pulumi.get(self, "redundancy")
 
@@ -472,7 +473,7 @@ class _ConnectionState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'ConnectionType']]]:
         """
-        Interface type
+        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         """
         return pulumi.get(self, "type")
 
@@ -484,7 +485,7 @@ class _ConnectionState:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned connection identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -523,8 +524,6 @@ class Connection(pulumi.CustomResource):
                  z_side: Optional[pulumi.Input[pulumi.InputType['ConnectionZSideArgs']]] = None,
                  __props__=None):
         """
-        Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
-
         ## Example Usage
         ```python
         import pulumi
@@ -596,15 +595,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
-        :param pulumi.Input[str] description: User-provided service description
-        :param pulumi.Input[str] name: Port name
+        :param pulumi.Input[str] description: Customer-provided connection description
+        :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order details
         :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
-        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Redundancy Information
-        :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
+        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Connection Redundancy Configuration
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         ...
@@ -614,8 +613,6 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
-
         ## Example Usage
         ```python
         import pulumi
@@ -731,8 +728,6 @@ class Connection(pulumi.CustomResource):
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
-            if order is None and not opts.urn:
-                raise TypeError("Missing required property 'order'")
             __props__.__dict__["order"] = order
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy"] = redundancy
@@ -787,23 +782,23 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConnectionASideArgs']] a_side: Requester or Customer side connection configuration object of the multi-segment connection
-        :param pulumi.Input[pulumi.InputType['ConnectionAccountArgs']] account: Account
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection side additional information
+        :param pulumi.Input[pulumi.InputType['ConnectionAccountArgs']] account: Customer account information that is associated with this connection
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] additional_info: Connection additional information
         :param pulumi.Input[int] bandwidth: Connection bandwidth in Mbps
         :param pulumi.Input[pulumi.InputType['ConnectionChangeLogArgs']] change_log: Captures connection lifecycle change information
-        :param pulumi.Input[str] description: User-provided service description
+        :param pulumi.Input[str] description: Customer-provided connection description
         :param pulumi.Input[str] direction: Connection directionality from the requester point of view
-        :param pulumi.Input[str] href: Unique Resource Identifier
+        :param pulumi.Input[str] href: Connection URI information
         :param pulumi.Input[bool] is_remote: Connection property derived from access point locations
-        :param pulumi.Input[str] name: Port name
+        :param pulumi.Input[str] name: Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[pulumi.InputType['ConnectionOperationArgs']] operation: Connection type-specific operational data
         :param pulumi.Input[pulumi.InputType['ConnectionOrderArgs']] order: Order details
         :param pulumi.Input[pulumi.InputType['ConnectionProjectArgs']] project: Project information
-        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Redundancy Information
+        :param pulumi.Input[pulumi.InputType['ConnectionRedundancyArgs']] redundancy: Connection Redundancy Configuration
         :param pulumi.Input[str] state: Connection overall state
-        :param pulumi.Input[Union[str, 'ConnectionType']] type: Interface type
-        :param pulumi.Input[str] uuid: Equinix-assigned virtual gateway identifier
+        :param pulumi.Input[Union[str, 'ConnectionType']] type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        :param pulumi.Input[str] uuid: Equinix-assigned connection identifier
         :param pulumi.Input[pulumi.InputType['ConnectionZSideArgs']] z_side: Destination or Provider side connection configuration object of the multi-segment connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -843,7 +838,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def account(self) -> pulumi.Output['outputs.ConnectionAccount']:
         """
-        Account
+        Customer account information that is associated with this connection
         """
         return pulumi.get(self, "account")
 
@@ -851,7 +846,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="additionalInfo")
     def additional_info(self) -> pulumi.Output[Optional[Sequence[Mapping[str, Any]]]]:
         """
-        Connection side additional information
+        Connection additional information
         """
         return pulumi.get(self, "additional_info")
 
@@ -875,7 +870,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        User-provided service description
+        Customer-provided connection description
         """
         return pulumi.get(self, "description")
 
@@ -891,7 +886,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def href(self) -> pulumi.Output[str]:
         """
-        Unique Resource Identifier
+        Connection URI information
         """
         return pulumi.get(self, "href")
 
@@ -907,7 +902,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Port name
+        Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         """
         return pulumi.get(self, "name")
 
@@ -947,7 +942,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def redundancy(self) -> pulumi.Output[Optional['outputs.ConnectionRedundancy']]:
         """
-        Redundancy Information
+        Connection Redundancy Configuration
         """
         return pulumi.get(self, "redundancy")
 
@@ -963,7 +958,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Interface type
+        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         """
         return pulumi.get(self, "type")
 
@@ -971,7 +966,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def uuid(self) -> pulumi.Output[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned connection identifier
         """
         return pulumi.get(self, "uuid")
 

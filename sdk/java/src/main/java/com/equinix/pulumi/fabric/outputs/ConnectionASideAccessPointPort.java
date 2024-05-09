@@ -28,7 +28,7 @@ public final class ConnectionASideAccessPointPort {
      */
     private @Nullable ConnectionASideAccessPointPortRedundancy redundancy;
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Port identifier
      * 
      */
     private @Nullable String uuid;
@@ -56,7 +56,7 @@ public final class ConnectionASideAccessPointPort {
         return Optional.ofNullable(this.redundancy);
     }
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Port identifier
      * 
      */
     public Optional<String> uuid() {

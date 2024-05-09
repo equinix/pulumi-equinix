@@ -90,7 +90,7 @@ type CloudRouter struct {
 	DistinctIpv6PrefixesCount pulumi.IntOutput `pulumi:"distinctIpv6PrefixesCount"`
 	// Equinix ASN
 	EquinixAsn pulumi.IntOutput `pulumi:"equinixAsn"`
-	// Unique Resource URL
+	// Fabric Cloud Router URI information
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Fabric Cloud Router location
 	Location CloudRouterLocationOutput `pulumi:"location"`
@@ -102,11 +102,11 @@ type CloudRouter struct {
 	Order CloudRouterOrderOutput `pulumi:"order"`
 	// Fabric Cloud Router Package Type
 	Package CloudRouterPackageOutput `pulumi:"package"`
-	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Project CloudRouterProjectOutput `pulumi:"project"`
 	// Fabric Cloud Router overall state
 	State pulumi.StringOutput `pulumi:"state"`
-	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	// Defines the FCR type like; XF_ROUTER
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Equinix-assigned Fabric Cloud Router identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
@@ -127,9 +127,6 @@ func NewCloudRouter(ctx *pulumi.Context,
 	}
 	if args.Notifications == nil {
 		return nil, errors.New("invalid value for required argument 'Notifications'")
-	}
-	if args.Order == nil {
-		return nil, errors.New("invalid value for required argument 'Order'")
 	}
 	if args.Package == nil {
 		return nil, errors.New("invalid value for required argument 'Package'")
@@ -181,7 +178,7 @@ type cloudRouterState struct {
 	DistinctIpv6PrefixesCount *int `pulumi:"distinctIpv6PrefixesCount"`
 	// Equinix ASN
 	EquinixAsn *int `pulumi:"equinixAsn"`
-	// Unique Resource URL
+	// Fabric Cloud Router URI information
 	Href *string `pulumi:"href"`
 	// Fabric Cloud Router location
 	Location *CloudRouterLocation `pulumi:"location"`
@@ -193,11 +190,11 @@ type cloudRouterState struct {
 	Order *CloudRouterOrder `pulumi:"order"`
 	// Fabric Cloud Router Package Type
 	Package *CloudRouterPackage `pulumi:"package"`
-	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Project *CloudRouterProject `pulumi:"project"`
 	// Fabric Cloud Router overall state
 	State *string `pulumi:"state"`
-	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	// Defines the FCR type like; XF_ROUTER
 	Type *string `pulumi:"type"`
 	// Equinix-assigned Fabric Cloud Router identifier
 	Uuid *string `pulumi:"uuid"`
@@ -222,7 +219,7 @@ type CloudRouterState struct {
 	DistinctIpv6PrefixesCount pulumi.IntPtrInput
 	// Equinix ASN
 	EquinixAsn pulumi.IntPtrInput
-	// Unique Resource URL
+	// Fabric Cloud Router URI information
 	Href pulumi.StringPtrInput
 	// Fabric Cloud Router location
 	Location CloudRouterLocationPtrInput
@@ -234,11 +231,11 @@ type CloudRouterState struct {
 	Order CloudRouterOrderPtrInput
 	// Fabric Cloud Router Package Type
 	Package CloudRouterPackagePtrInput
-	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Project CloudRouterProjectPtrInput
 	// Fabric Cloud Router overall state
 	State pulumi.StringPtrInput
-	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	// Defines the FCR type like; XF_ROUTER
 	Type pulumi.StringPtrInput
 	// Equinix-assigned Fabric Cloud Router identifier
 	Uuid pulumi.StringPtrInput
@@ -253,7 +250,7 @@ type cloudRouterArgs struct {
 	Account CloudRouterAccount `pulumi:"account"`
 	// Customer-provided Fabric Cloud Router description
 	Description *string `pulumi:"description"`
-	// Unique Resource URL
+	// Fabric Cloud Router URI information
 	Href *string `pulumi:"href"`
 	// Fabric Cloud Router location
 	Location CloudRouterLocation `pulumi:"location"`
@@ -262,12 +259,12 @@ type cloudRouterArgs struct {
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
 	Notifications []CloudRouterNotification `pulumi:"notifications"`
 	// Order information related to this Fabric Cloud Router
-	Order CloudRouterOrder `pulumi:"order"`
+	Order *CloudRouterOrder `pulumi:"order"`
 	// Fabric Cloud Router Package Type
 	Package CloudRouterPackage `pulumi:"package"`
-	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Project CloudRouterProject `pulumi:"project"`
-	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	// Defines the FCR type like; XF_ROUTER
 	Type string `pulumi:"type"`
 	// Equinix-assigned Fabric Cloud Router identifier
 	Uuid *string `pulumi:"uuid"`
@@ -279,7 +276,7 @@ type CloudRouterArgs struct {
 	Account CloudRouterAccountInput
 	// Customer-provided Fabric Cloud Router description
 	Description pulumi.StringPtrInput
-	// Unique Resource URL
+	// Fabric Cloud Router URI information
 	Href pulumi.StringPtrInput
 	// Fabric Cloud Router location
 	Location CloudRouterLocationInput
@@ -288,12 +285,12 @@ type CloudRouterArgs struct {
 	// Preferences for notifications on Fabric Cloud Router configuration or status changes
 	Notifications CloudRouterNotificationArrayInput
 	// Order information related to this Fabric Cloud Router
-	Order CloudRouterOrderInput
+	Order CloudRouterOrderPtrInput
 	// Fabric Cloud Router Package Type
 	Package CloudRouterPackageInput
-	// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+	// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 	Project CloudRouterProjectInput
-	// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+	// Defines the FCR type like; XF_ROUTER
 	Type pulumi.StringInput
 	// Equinix-assigned Fabric Cloud Router identifier
 	Uuid pulumi.StringPtrInput
@@ -431,7 +428,7 @@ func (o CloudRouterOutput) EquinixAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudRouter) pulumi.IntOutput { return v.EquinixAsn }).(pulumi.IntOutput)
 }
 
-// Unique Resource URL
+// Fabric Cloud Router URI information
 func (o CloudRouterOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudRouter) pulumi.StringOutput { return v.Href }).(pulumi.StringOutput)
 }
@@ -461,7 +458,7 @@ func (o CloudRouterOutput) Package() CloudRouterPackageOutput {
 	return o.ApplyT(func(v *CloudRouter) CloudRouterPackageOutput { return v.Package }).(CloudRouterPackageOutput)
 }
 
-// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
 func (o CloudRouterOutput) Project() CloudRouterProjectOutput {
 	return o.ApplyT(func(v *CloudRouter) CloudRouterProjectOutput { return v.Project }).(CloudRouterProjectOutput)
 }
@@ -471,7 +468,7 @@ func (o CloudRouterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudRouter) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+// Defines the FCR type like; XF_ROUTER
 func (o CloudRouterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudRouter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

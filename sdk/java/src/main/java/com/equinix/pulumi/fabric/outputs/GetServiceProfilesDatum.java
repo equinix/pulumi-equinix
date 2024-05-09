@@ -102,7 +102,7 @@ public final class GetServiceProfilesDatum {
      */
     private List<String> tags;
     /**
-     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
      * 
      */
     private String type;
@@ -111,6 +111,11 @@ public final class GetServiceProfilesDatum {
      * 
      */
     private String uuid;
+    /**
+     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    private String viewPoint;
     /**
      * @return Virtual Devices
      * 
@@ -236,7 +241,7 @@ public final class GetServiceProfilesDatum {
         return this.tags;
     }
     /**
-     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
      * 
      */
     public String type() {
@@ -248,6 +253,13 @@ public final class GetServiceProfilesDatum {
      */
     public String uuid() {
         return this.uuid;
+    }
+    /**
+     * @return flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    public String viewPoint() {
+        return this.viewPoint;
     }
     /**
      * @return Virtual Devices
@@ -291,6 +303,7 @@ public final class GetServiceProfilesDatum {
         private List<String> tags;
         private String type;
         private String uuid;
+        private String viewPoint;
         private List<GetServiceProfilesDatumVirtualDevice> virtualDevices;
         private String visibility;
         public Builder() {}
@@ -314,6 +327,7 @@ public final class GetServiceProfilesDatum {
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
+    	      this.viewPoint = defaults.viewPoint;
     	      this.virtualDevices = defaults.virtualDevices;
     	      this.visibility = defaults.visibility;
         }
@@ -442,6 +456,11 @@ public final class GetServiceProfilesDatum {
             return this;
         }
         @CustomType.Setter
+        public Builder viewPoint(String viewPoint) {
+            this.viewPoint = Objects.requireNonNull(viewPoint);
+            return this;
+        }
+        @CustomType.Setter
         public Builder virtualDevices(List<GetServiceProfilesDatumVirtualDevice> virtualDevices) {
             this.virtualDevices = Objects.requireNonNull(virtualDevices);
             return this;
@@ -474,6 +493,7 @@ public final class GetServiceProfilesDatum {
             _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
+            _resultValue.viewPoint = viewPoint;
             _resultValue.virtualDevices = virtualDevices;
             _resultValue.visibility = visibility;
             return _resultValue;

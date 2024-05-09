@@ -20,7 +20,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIpBlockRangesResult> InvokeAsync(GetIpBlockRangesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpBlockRangesResult>("equinix:metal/getIpBlockRanges:getIpBlockRanges", args ?? new GetIpBlockRangesArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIpBlockRangesResult> Invoke(GetIpBlockRangesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpBlockRangesResult>("equinix:metal/getIpBlockRanges:getIpBlockRanges", args ?? new GetIpBlockRangesInvokeArgs(), options.WithDefaults());

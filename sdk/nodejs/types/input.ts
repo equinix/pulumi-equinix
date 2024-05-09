@@ -207,7 +207,7 @@ export namespace fabric {
          */
         sellerRegion?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
         /**
@@ -272,14 +272,14 @@ export namespace fabric {
          */
         type?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned interface identifier
          */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointLinkProtocol {
         /**
-         * Interface type
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
         /**
@@ -321,7 +321,7 @@ export namespace fabric {
          */
         href?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Network identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -340,7 +340,7 @@ export namespace fabric {
          */
         redundancy?: pulumi.Input<inputs.fabric.ConnectionASideAccessPointPortRedundancy>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Port identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -351,11 +351,11 @@ export namespace fabric {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * Port redundancy group
          */
         group?: pulumi.Input<string>;
         /**
-         * Connection priority in redundancy group - PRIMARY, SECONDARY
+         * Priority type-Primary or Secondary
          */
         priority?: pulumi.Input<string>;
     }
@@ -370,30 +370,30 @@ export namespace fabric {
          */
         description?: pulumi.Input<string>;
         /**
-         * Unique Resource Identifier
+         * Service Profile URI response attribute
          */
         href?: pulumi.Input<string>;
         /**
-         * Port name
+         * Customer-assigned service profile name
          */
         name?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          */
         type: pulumi.Input<string | enums.fabric.ProfileType>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix assigned service profile identifier
          */
         uuid: pulumi.Input<string>;
     }
 
     export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Interface type
+         * Type of access point type config - VD, COLO
          */
         type?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned access point type config identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -415,15 +415,15 @@ export namespace fabric {
          */
         href?: pulumi.Input<string>;
         /**
-         * Port name
+         * Customer-assigned Virtual Device Name
          */
         name?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Virtual Device type
          */
         type?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Virtual Device identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -441,19 +441,19 @@ export namespace fabric {
 
     export interface ConnectionASideServiceToken {
         /**
-         * User-provided service description
+         * Service token description
          */
         description?: pulumi.Input<string>;
         /**
-         * Unique Resource Identifier
+         * An absolute URL that is the subject of the link's context
          */
         href?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Token type - VC_TOKEN
          */
         type?: pulumi.Input<string | enums.fabric.ServiceTokenType>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned service token identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -576,7 +576,7 @@ export namespace fabric {
 
     export interface ConnectionOperationError {
         /**
-         * Connection side additional information
+         * Pricing error additional Info
          */
         additionalInfo?: pulumi.Input<pulumi.Input<inputs.fabric.ConnectionOperationErrorAdditionalInfo>[]>;
         /**
@@ -724,7 +724,7 @@ export namespace fabric {
          */
         sellerRegion?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointType>;
         /**
@@ -789,14 +789,14 @@ export namespace fabric {
          */
         type?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned interface identifier
          */
         uuid?: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointLinkProtocol {
         /**
-         * Interface type
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          */
         type?: pulumi.Input<string | enums.fabric.AccessPointLinkProtocolType>;
         /**
@@ -838,7 +838,7 @@ export namespace fabric {
          */
         href?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Network identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -857,7 +857,7 @@ export namespace fabric {
          */
         redundancy?: pulumi.Input<inputs.fabric.ConnectionZSideAccessPointPortRedundancy>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Port identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -868,11 +868,11 @@ export namespace fabric {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * Port redundancy group
          */
         group?: pulumi.Input<string>;
         /**
-         * Connection priority in redundancy group - PRIMARY, SECONDARY
+         * Priority type-Primary or Secondary
          */
         priority?: pulumi.Input<string>;
     }
@@ -887,30 +887,30 @@ export namespace fabric {
          */
         description?: pulumi.Input<string>;
         /**
-         * Unique Resource Identifier
+         * Service Profile URI response attribute
          */
         href?: pulumi.Input<string>;
         /**
-         * Port name
+         * Customer-assigned service profile name
          */
         name?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          */
         type: pulumi.Input<string | enums.fabric.ProfileType>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix assigned service profile identifier
          */
         uuid: pulumi.Input<string>;
     }
 
     export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Interface type
+         * Type of access point type config - VD, COLO
          */
         type?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned access point type config identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -932,15 +932,15 @@ export namespace fabric {
          */
         href?: pulumi.Input<string>;
         /**
-         * Port name
+         * Customer-assigned Virtual Device Name
          */
         name?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Virtual Device type
          */
         type?: pulumi.Input<string>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Virtual Device identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -958,19 +958,19 @@ export namespace fabric {
 
     export interface ConnectionZSideServiceToken {
         /**
-         * User-provided service description
+         * Service token description
          */
         description?: pulumi.Input<string>;
         /**
-         * Unique Resource Identifier
+         * An absolute URL that is the subject of the link's context
          */
         href?: pulumi.Input<string>;
         /**
-         * Interface type
+         * Token type - VC_TOKEN
          */
         type?: pulumi.Input<string | enums.fabric.ServiceTokenType>;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned service token identifier
          */
         uuid?: pulumi.Input<string>;
     }
@@ -1572,7 +1572,7 @@ export namespace fabric {
 
     export interface ServiceProfileMarketingInfoProcessStep {
         /**
-         * Description of authorization key
+         * Description
          */
         description?: pulumi.Input<string>;
         /**
@@ -1759,7 +1759,7 @@ export namespace metal {
          */
         address?: pulumi.Input<string>;
         /**
-         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * Bit length of the network mask of the address.
          */
         cidr?: pulumi.Input<number>;
         /**
@@ -1794,7 +1794,7 @@ export namespace metal {
          */
         name?: pulumi.Input<string>;
         /**
-         * One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+         * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
          */
         type?: pulumi.Input<string>;
     }
@@ -1868,7 +1868,7 @@ export namespace metal {
 
     export interface GetDevicesSort {
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * The attribute used to sort the results. Sort attributes are case-sensitive
          */
         attribute: string;
         /**
@@ -1879,7 +1879,7 @@ export namespace metal {
 
     export interface GetDevicesSortArgs {
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * The attribute used to sort the results. Sort attributes are case-sensitive
          */
         attribute: pulumi.Input<string>;
         /**
@@ -1980,7 +1980,7 @@ export namespace metal {
 
     export interface GetPlansSort {
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * The attribute used to sort the results. Sort attributes are case-sensitive
          */
         attribute: string;
         /**
@@ -1991,7 +1991,7 @@ export namespace metal {
 
     export interface GetPlansSortArgs {
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * The attribute used to sort the results. Sort attributes are case-sensitive
          */
         attribute: pulumi.Input<string>;
         /**
@@ -2189,12 +2189,11 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode0 {
         /**
-         * Identifier of a license file that will be applied on the device.
+         * License file id. This is necessary for Fortinet and Juniper clusters.
          */
         licenseFileId?: pulumi.Input<string>;
         /**
-         * License Token applicable for some device types in BYOL licensing
-         * mode.
+         * License token. This is necessary for Palo Alto clusters.
          */
         licenseToken?: pulumi.Input<string>;
         /**
@@ -2206,10 +2205,9 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         * on a device (max one key).  See SSH Key below for more details.
+         * An object that has fields relevant to the vendor of the
+         * cluster device. See Cluster Details - Nodes - Vendor Configuration
+         * below for more details.
          */
         vendorConfiguration?: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode0VendorConfiguration>;
     }
@@ -2245,12 +2243,11 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode1 {
         /**
-         * Identifier of a license file that will be applied on the device.
+         * License file id. This is necessary for Fortinet and Juniper clusters.
          */
         licenseFileId?: pulumi.Input<string>;
         /**
-         * License Token applicable for some device types in BYOL licensing
-         * mode.
+         * License token. This is necessary for Palo Alto clusters.
          */
         licenseToken?: pulumi.Input<string>;
         /**
@@ -2262,10 +2259,9 @@ export namespace networkedge {
          */
         uuid?: pulumi.Input<string>;
         /**
-         * Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         * on a device (max one key).  See SSH Key below for more details.
+         * An object that has fields relevant to the vendor of the
+         * cluster device. See Cluster Details - Nodes - Vendor Configuration
+         * below for more details.
          */
         vendorConfiguration?: pulumi.Input<inputs.networkedge.DeviceClusterDetailsNode1VendorConfiguration>;
     }
@@ -2385,6 +2381,26 @@ export namespace networkedge {
          * @deprecated SourceZoneCode is not required
          */
         srcZoneCode?: pulumi.Input<string>;
+        /**
+         * connection throughput.
+         */
+        throughput: pulumi.Input<string>;
+        /**
+         * connection throughput unit (Mbps or Gbps).
+         */
+        throughputUnit: pulumi.Input<string>;
+    }
+
+    export interface DeviceLinkMetroLink {
+        /**
+         * billing account number to be used for
+         * connection charges
+         */
+        accountNumber: pulumi.Input<string>;
+        /**
+         * connection metro code.
+         */
+        metroCode: pulumi.Input<string>;
         /**
          * connection throughput.
          */

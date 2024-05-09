@@ -7,11 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to retrieve a VRF resource.
  *
- * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVrf(args: GetVrfArgs, opts?: pulumi.InvokeOptions): Promise<GetVrfResult> {
 
@@ -77,11 +75,10 @@ export interface GetVrfResult {
 /**
  * Use this data source to retrieve a VRF resource.
  *
- * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -90,7 +87,6 @@ export interface GetVrfResult {
  *     vrfId: "48630899-9ff2-4ce6-a93f-50ff4ebcdf6e",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVrfOutput(args: GetVrfOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVrfResult> {
     return pulumi.output(args).apply((a: any) => getVrf(a, opts))

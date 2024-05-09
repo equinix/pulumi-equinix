@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fabric.GetServiceProfiles(ctx, &fabric.GetServiceProfilesArgs{
 //				Filter: fabric.GetServiceProfilesFilter{
-//					Operator: pulumi.StringRef("="),
 //					Property: pulumi.StringRef("/name"),
+//					Operator: pulumi.StringRef("="),
 //					Values: []string{
 //						"<list_of_profiles_to_return>",
 //					},
@@ -40,12 +39,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Id)
+//			ctx.Export("name", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Name)
+//			ctx.Export("type", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Type)
+//			ctx.Export("visibility", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Visibility)
+//			ctx.Export("orgName", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Account[0].Organization_name)
+//			ctx.Export("accessPointTypeConfigsType", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Type)
+//			ctx.Export("allowRemoteConnections", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Allow_remote_connections)
+//			ctx.Export("supportedBandwidth0", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[0])
+//			ctx.Export("supportedBandwidth1", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[1])
+//			ctx.Export("redundandyRequired", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Connection_redundancy_required)
+//			ctx.Export("allowOverSubscription", data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Api_config[0].Allow_over_subscription)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServiceProfiles(ctx *pulumi.Context, args *GetServiceProfilesArgs, opts ...pulumi.InvokeOption) (*GetServiceProfilesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceProfilesResult

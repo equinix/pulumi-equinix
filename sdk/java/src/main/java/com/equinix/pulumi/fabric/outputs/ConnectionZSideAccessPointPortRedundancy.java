@@ -18,12 +18,12 @@ public final class ConnectionZSideAccessPointPortRedundancy {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+     * @return Port redundancy group
      * 
      */
     private @Nullable String group;
     /**
-     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
+     * @return Priority type-Primary or Secondary
      * 
      */
     private @Nullable String priority;
@@ -37,14 +37,14 @@ public final class ConnectionZSideAccessPointPortRedundancy {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+     * @return Port redundancy group
      * 
      */
     public Optional<String> group() {
         return Optional.ofNullable(this.group);
     }
     /**
-     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
+     * @return Priority type-Primary or Secondary
      * 
      */
     public Optional<String> priority() {

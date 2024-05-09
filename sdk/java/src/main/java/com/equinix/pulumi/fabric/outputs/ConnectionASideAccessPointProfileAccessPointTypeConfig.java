@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionASideAccessPointProfileAccessPointTypeConfig {
     /**
-     * @return Interface type
+     * @return Type of access point type config - VD, COLO
      * 
      */
     private @Nullable String type;
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned access point type config identifier
      * 
      */
     private @Nullable String uuid;
 
     private ConnectionASideAccessPointProfileAccessPointTypeConfig() {}
     /**
-     * @return Interface type
+     * @return Type of access point type config - VD, COLO
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned access point type config identifier
      * 
      */
     public Optional<String> uuid() {

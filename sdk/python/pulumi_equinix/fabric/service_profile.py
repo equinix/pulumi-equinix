@@ -31,24 +31,26 @@ class ServiceProfileArgs:
                  self_profile: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 view_point: Optional[pulumi.Input[str]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]] = None,
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None):
         """
         The set of arguments for constructing a ServiceProfile resource.
-        :param pulumi.Input[str] description: Description of authorization key
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
+        :param pulumi.Input[str] description: User-provided service description
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileAccessPointTypeConfigArgs']]] access_point_type_configs: Access point config information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
         :param pulumi.Input['ServiceProfileMarketingInfoArgs'] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]] metros: Access point config information
-        :param pulumi.Input[str] name: Metro Name
+        :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
+        :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
@@ -78,6 +80,8 @@ class ServiceProfileArgs:
             pulumi.set(__self__, "state", state)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if view_point is not None:
+            pulumi.set(__self__, "view_point", view_point)
         if virtual_devices is not None:
             pulumi.set(__self__, "virtual_devices", virtual_devices)
         if visibility is not None:
@@ -87,7 +91,7 @@ class ServiceProfileArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        Description of authorization key
+        User-provided service description
         """
         return pulumi.get(self, "description")
 
@@ -99,7 +103,7 @@ class ServiceProfileArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Union[str, 'ProfileType']]:
         """
-        Type of access point type config - VD, COLO
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -171,7 +175,7 @@ class ServiceProfileArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro Name
+        Customer-assigned service profile name
         """
         return pulumi.get(self, "name")
 
@@ -252,6 +256,18 @@ class ServiceProfileArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="viewPoint")
+    def view_point(self) -> Optional[pulumi.Input[str]]:
+        """
+        Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        """
+        return pulumi.get(self, "view_point")
+
+    @view_point.setter
+    def view_point(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "view_point", value)
+
+    @property
     @pulumi.getter(name="virtualDevices")
     def virtual_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]]:
         """
@@ -297,6 +313,7 @@ class _ServiceProfileState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
+                 view_point: Optional[pulumi.Input[str]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]]] = None,
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None):
         """
@@ -306,19 +323,20 @@ class _ServiceProfileState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input['ServiceProfileChangeLogArgs'] change_log: Captures connection lifecycle change information
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileCustomFieldArgs']]] custom_fields: Custom Fields
-        :param pulumi.Input[str] description: Description of authorization key
-        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] description: User-provided service description
+        :param pulumi.Input[str] href: Service Profile URI response attribute
         :param pulumi.Input['ServiceProfileMarketingInfoArgs'] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileMetroArgs']]] metros: Access point config information
-        :param pulumi.Input[str] name: Metro Name
+        :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileNotificationArgs']]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfilePortArgs']]] ports: Ports
         :param pulumi.Input['ServiceProfileProjectArgs'] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
-        :param pulumi.Input[str] uuid: Colo/Port Uuid
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
+        :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input['ServiceProfileVirtualDeviceArgs']]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
@@ -358,6 +376,8 @@ class _ServiceProfileState:
             pulumi.set(__self__, "type", type)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
+        if view_point is not None:
+            pulumi.set(__self__, "view_point", view_point)
         if virtual_devices is not None:
             pulumi.set(__self__, "virtual_devices", virtual_devices)
         if visibility is not None:
@@ -427,7 +447,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of authorization key
+        User-provided service description
         """
         return pulumi.get(self, "description")
 
@@ -439,7 +459,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def href(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Resource URL
+        Service Profile URI response attribute
         """
         return pulumi.get(self, "href")
 
@@ -475,7 +495,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Metro Name
+        Customer-assigned service profile name
         """
         return pulumi.get(self, "name")
 
@@ -559,7 +579,7 @@ class _ServiceProfileState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[Union[str, 'ProfileType']]]:
         """
-        Type of access point type config - VD, COLO
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -571,13 +591,25 @@ class _ServiceProfileState:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Colo/Port Uuid
+        Equinix assigned service profile identifier
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
     def uuid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uuid", value)
+
+    @property
+    @pulumi.getter(name="viewPoint")
+    def view_point(self) -> Optional[pulumi.Input[str]]:
+        """
+        Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        """
+        return pulumi.get(self, "view_point")
+
+    @view_point.setter
+    def view_point(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "view_point", value)
 
     @property
     @pulumi.getter(name="virtualDevices")
@@ -623,6 +655,7 @@ class ServiceProfile(pulumi.CustomResource):
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
+                 view_point: Optional[pulumi.Input[str]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
@@ -684,17 +717,18 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileAccessPointTypeConfigArgs']]]] access_point_type_configs: Access point config information
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
-        :param pulumi.Input[str] description: Description of authorization key
+        :param pulumi.Input[str] description: User-provided service description
         :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
-        :param pulumi.Input[str] name: Metro Name
+        :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
@@ -786,6 +820,7 @@ class ServiceProfile(pulumi.CustomResource):
                  state: Optional[pulumi.Input[Union[str, 'ProfileState']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
+                 view_point: Optional[pulumi.Input[str]] = None,
                  virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
                  visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None,
                  __props__=None):
@@ -815,6 +850,7 @@ class ServiceProfile(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["view_point"] = view_point
             __props__.__dict__["virtual_devices"] = virtual_devices
             __props__.__dict__["visibility"] = visibility
             __props__.__dict__["account"] = None
@@ -849,6 +885,7 @@ class ServiceProfile(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[Union[str, 'ProfileType']]] = None,
             uuid: Optional[pulumi.Input[str]] = None,
+            view_point: Optional[pulumi.Input[str]] = None,
             virtual_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]]] = None,
             visibility: Optional[pulumi.Input[Union[str, 'ProfileVisibility']]] = None) -> 'ServiceProfile':
         """
@@ -863,19 +900,20 @@ class ServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_emails: Array of contact emails
         :param pulumi.Input[pulumi.InputType['ServiceProfileChangeLogArgs']] change_log: Captures connection lifecycle change information
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileCustomFieldArgs']]]] custom_fields: Custom Fields
-        :param pulumi.Input[str] description: Description of authorization key
-        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] description: User-provided service description
+        :param pulumi.Input[str] href: Service Profile URI response attribute
         :param pulumi.Input[pulumi.InputType['ServiceProfileMarketingInfoArgs']] marketing_info: Marketing Info
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileMetroArgs']]]] metros: Access point config information
-        :param pulumi.Input[str] name: Metro Name
+        :param pulumi.Input[str] name: Customer-assigned service profile name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileNotificationArgs']]]] notifications: Preferences for notifications on connection configuration or status changes
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfilePortArgs']]]] ports: Ports
         :param pulumi.Input[pulumi.InputType['ServiceProfileProjectArgs']] project: Project information
         :param pulumi.Input[bool] self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param pulumi.Input[Union[str, 'ProfileState']] state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags attached to the connection
-        :param pulumi.Input[Union[str, 'ProfileType']] type: Type of access point type config - VD, COLO
-        :param pulumi.Input[str] uuid: Colo/Port Uuid
+        :param pulumi.Input[Union[str, 'ProfileType']] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param pulumi.Input[str] uuid: Equinix assigned service profile identifier
+        :param pulumi.Input[str] view_point: Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceProfileVirtualDeviceArgs']]]] virtual_devices: Virtual Devices
         :param pulumi.Input[Union[str, 'ProfileVisibility']] visibility: Service profile visibility - PUBLIC, PRIVATE
         """
@@ -901,6 +939,7 @@ class ServiceProfile(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["uuid"] = uuid
+        __props__.__dict__["view_point"] = view_point
         __props__.__dict__["virtual_devices"] = virtual_devices
         __props__.__dict__["visibility"] = visibility
         return ServiceProfile(resource_name, opts=opts, __props__=__props__)
@@ -949,7 +988,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Description of authorization key
+        User-provided service description
         """
         return pulumi.get(self, "description")
 
@@ -957,7 +996,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def href(self) -> pulumi.Output[str]:
         """
-        Unique Resource URL
+        Service Profile URI response attribute
         """
         return pulumi.get(self, "href")
 
@@ -981,7 +1020,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Metro Name
+        Customer-assigned service profile name
         """
         return pulumi.get(self, "name")
 
@@ -1037,7 +1076,7 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Type of access point type config - VD, COLO
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -1045,9 +1084,17 @@ class ServiceProfile(pulumi.CustomResource):
     @pulumi.getter
     def uuid(self) -> pulumi.Output[str]:
         """
-        Colo/Port Uuid
+        Equinix assigned service profile identifier
         """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="viewPoint")
+    def view_point(self) -> pulumi.Output[Optional[str]]:
+        """
+        Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        """
+        return pulumi.get(self, "view_point")
 
     @property
     @pulumi.getter(name="virtualDevices")

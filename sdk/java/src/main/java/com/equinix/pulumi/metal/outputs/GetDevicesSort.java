@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDevicesSort {
     /**
-     * @return The attribute used to filter. Filter attributes are case-sensitive
+     * @return The attribute used to sort the results. Sort attributes are case-sensitive
      * 
      */
     private String attribute;
@@ -24,7 +24,7 @@ public final class GetDevicesSort {
 
     private GetDevicesSort() {}
     /**
-     * @return The attribute used to filter. Filter attributes are case-sensitive
+     * @return The attribute used to sort the results. Sort attributes are case-sensitive
      * 
      */
     public String attribute() {

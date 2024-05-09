@@ -18,14 +18,14 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
     public static final ConnectionZSideServiceTokenArgs Empty = new ConnectionZSideServiceTokenArgs();
 
     /**
-     * User-provided service description
+     * Service token description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Service token description
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +33,14 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Unique Resource Identifier
+     * An absolute URL that is the subject of the link&#39;s context
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Unique Resource Identifier
+     * @return An absolute URL that is the subject of the link&#39;s context
      * 
      */
     public Optional<Output<String>> href() {
@@ -48,14 +48,14 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Interface type
+     * Token type - VC_TOKEN
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ServiceTokenType>> type;
 
     /**
-     * @return Interface type
+     * @return Token type - VC_TOKEN
      * 
      */
     public Optional<Output<Either<String,ServiceTokenType>>> type() {
@@ -63,14 +63,14 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned service token identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned service token identifier
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -105,7 +105,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Service token description
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Service token description
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param href Unique Resource Identifier
+         * @param href An absolute URL that is the subject of the link&#39;s context
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param href Unique Resource Identifier
+         * @param href An absolute URL that is the subject of the link&#39;s context
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Interface type
+         * @param type Token type - VC_TOKEN
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Interface type
+         * @param type Token type - VC_TOKEN
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Interface type
+         * @param type Token type - VC_TOKEN
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type Interface type
+         * @param type Token type - VC_TOKEN
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned service token identifier
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ConnectionZSideServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned service token identifier
          * 
          * @return builder
          * 

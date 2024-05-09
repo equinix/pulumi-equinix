@@ -91,7 +91,7 @@ public final class ConnectionZSideAccessPoint {
      */
     private @Nullable String sellerRegion;
     /**
-     * @return Interface type
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
      * 
      */
     private @Nullable String type;
@@ -198,7 +198,7 @@ public final class ConnectionZSideAccessPoint {
         return Optional.ofNullable(this.sellerRegion);
     }
     /**
-     * @return Interface type
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
      * 
      */
     public Optional<String> type() {

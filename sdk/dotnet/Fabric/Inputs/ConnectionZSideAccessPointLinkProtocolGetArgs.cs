@@ -13,7 +13,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionZSideAccessPointLinkProtocolGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Interface type
+        /// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointLinkProtocolType>? Type { get; set; }

@@ -18,7 +18,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+        /// Bit length of the network mask of the address.
         /// </summary>
         public readonly int? Cidr;
         /// <summary>

@@ -18,7 +18,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDeviceSoftwareResult> InvokeAsync(GetDeviceSoftwareArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDeviceSoftwareResult> Invoke(GetDeviceSoftwareInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceSoftwareResult>("equinix:networkedge/getDeviceSoftware:getDeviceSoftware", args ?? new GetDeviceSoftwareInvokeArgs(), options.WithDefaults());

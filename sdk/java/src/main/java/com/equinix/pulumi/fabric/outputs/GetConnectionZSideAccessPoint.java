@@ -80,7 +80,7 @@ public final class GetConnectionZSideAccessPoint {
      * @return Provider assigned Connection Id
      * 
      */
-    private @Nullable String providerConnectionId;
+    private String providerConnectionId;
     /**
      * @return Cloud Router access point information that replaces `gateway`
      * 
@@ -181,8 +181,8 @@ public final class GetConnectionZSideAccessPoint {
      * @return Provider assigned Connection Id
      * 
      */
-    public Optional<String> providerConnectionId() {
-        return Optional.ofNullable(this.providerConnectionId);
+    public String providerConnectionId() {
+        return this.providerConnectionId;
     }
     /**
      * @return Cloud Router access point information that replaces `gateway`
@@ -232,7 +232,7 @@ public final class GetConnectionZSideAccessPoint {
         private @Nullable String peeringType;
         private @Nullable GetConnectionZSideAccessPointPort port;
         private @Nullable GetConnectionZSideAccessPointProfile profile;
-        private @Nullable String providerConnectionId;
+        private String providerConnectionId;
         private @Nullable GetConnectionZSideAccessPointRouter router;
         private @Nullable String sellerRegion;
         private @Nullable String type;
@@ -311,8 +311,8 @@ public final class GetConnectionZSideAccessPoint {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConnectionId(@Nullable String providerConnectionId) {
-            this.providerConnectionId = providerConnectionId;
+        public Builder providerConnectionId(String providerConnectionId) {
+            this.providerConnectionId = Objects.requireNonNull(providerConnectionId);
             return this;
         }
         @CustomType.Setter

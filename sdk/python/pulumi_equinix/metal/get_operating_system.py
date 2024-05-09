@@ -102,7 +102,6 @@ def get_operating_system(distro: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -118,7 +117,6 @@ def get_operating_system(distro: Optional[str] = None,
         billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=local["project_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str distro: Name of the OS distribution.
@@ -154,7 +152,6 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -170,7 +167,6 @@ def get_operating_system_output(distro: Optional[pulumi.Input[Optional[str]]] = 
         billing_cycle=equinix.metal.BillingCycle.HOURLY,
         project_id=local["project_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str distro: Name of the OS distribution.

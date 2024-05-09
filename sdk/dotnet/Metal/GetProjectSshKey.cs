@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectSshKeyResult> InvokeAsync(GetProjectSshKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectSshKeyResult> Invoke(GetProjectSshKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectSshKeyResult>("equinix:metal/getProjectSshKey:getProjectSshKey", args ?? new GetProjectSshKeyInvokeArgs(), options.WithDefaults());

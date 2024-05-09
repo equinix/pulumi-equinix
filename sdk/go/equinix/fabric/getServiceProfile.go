@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,18 +27,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.LookupServiceProfile(ctx, &fabric.LookupServiceProfileArgs{
+//			serviceProfileDataName, err := fabric.LookupServiceProfile(ctx, &fabric.LookupServiceProfileArgs{
 //				Uuid: "<uuid_of_service_profile>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", serviceProfileDataName.Id)
+//			ctx.Export("name", serviceProfileDataName.Name)
+//			ctx.Export("type", serviceProfileDataName.Type)
+//			ctx.Export("visibility", serviceProfileDataName.Visibility)
+//			ctx.Export("orgName", serviceProfileDataName.Account.OrganizationName)
+//			ctx.Export("accessPointTypeConfigsType", serviceProfileDataName.AccessPointTypeConfigs[0].Type)
+//			ctx.Export("allowRemoteConnections", serviceProfileDataName.AccessPointTypeConfigs[0].AllowRemoteConnections)
+//			ctx.Export("supportedBandwidth0", serviceProfileDataName.AccessPointTypeConfigs[0].SupportedBandwidths[0])
+//			ctx.Export("supportedBandwidth1", serviceProfileDataName.AccessPointTypeConfigs[0].SupportedBandwidths[1])
+//			ctx.Export("redundandyRequired", serviceProfileDataName.AccessPointTypeConfigs[0].ConnectionRedundancyRequired)
+//			ctx.Export("allowOverSubscription", serviceProfileDataName.AccessPointTypeConfigs[0].ApiConfig.AllowOverSubscription)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupServiceProfile(ctx *pulumi.Context, args *LookupServiceProfileArgs, opts ...pulumi.InvokeOption) (*LookupServiceProfileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceProfileResult
@@ -52,6 +61,7 @@ func LookupServiceProfile(ctx *pulumi.Context, args *LookupServiceProfileArgs, o
 
 // A collection of arguments for invoking getServiceProfile.
 type LookupServiceProfileArgs struct {
+	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -94,7 +104,8 @@ type LookupServiceProfileResult struct {
 	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
-	Uuid string `pulumi:"uuid"`
+	Uuid      string `pulumi:"uuid"`
+	ViewPoint string `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices []GetServiceProfileVirtualDevice `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -116,6 +127,7 @@ func LookupServiceProfileOutput(ctx *pulumi.Context, args LookupServiceProfileOu
 
 // A collection of arguments for invoking getServiceProfile.
 type LookupServiceProfileOutputArgs struct {
+	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -233,6 +245,10 @@ func (o LookupServiceProfileResultOutput) Type() pulumi.StringOutput {
 // Equinix assigned service profile identifier
 func (o LookupServiceProfileResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceProfileResultOutput) ViewPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceProfileResult) string { return v.ViewPoint }).(pulumi.StringOutput)
 }
 
 // Virtual Devices

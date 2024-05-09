@@ -171,28 +171,28 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customFields);
     }
     /**
-     * Description of authorization key
+     * User-provided service description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Description of authorization key
+     * @return User-provided service description
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Unique Resource URL
+     * Service Profile URI response attribute
      * 
      */
     @Export(name="href", refs={String.class}, tree="[0]")
     private Output<String> href;
 
     /**
-     * @return Unique Resource URL
+     * @return Service Profile URI response attribute
      * 
      */
     public Output<String> href() {
@@ -227,14 +227,14 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metros);
     }
     /**
-     * Metro Name
+     * Customer-assigned service profile name
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Metro Name
+     * @return Customer-assigned service profile name
      * 
      */
     public Output<String> name() {
@@ -325,32 +325,46 @@ public class ServiceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Type of access point type config - VD, COLO
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of access point type config - VD, COLO
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Colo/Port Uuid
+     * Equinix assigned service profile identifier
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return Colo/Port Uuid
+     * @return Equinix assigned service profile identifier
      * 
      */
     public Output<String> uuid() {
         return this.uuid;
+    }
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    @Export(name="viewPoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> viewPoint;
+
+    /**
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    public Output<Optional<String>> viewPoint() {
+        return Codegen.optional(this.viewPoint);
     }
     /**
      * Virtual Devices

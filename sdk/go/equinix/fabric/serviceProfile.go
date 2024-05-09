@@ -95,15 +95,15 @@ type ServiceProfile struct {
 	ChangeLog ServiceProfileChangeLogOutput `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayOutput `pulumi:"customFields"`
-	// Description of authorization key
+	// User-provided service description
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Unique Resource URL
+	// Service Profile URI response attribute
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrOutput `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros ServiceProfileMetroArrayOutput `pulumi:"metros"`
-	// Metro Name
+	// Customer-assigned service profile name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ServiceProfileNotificationArrayOutput `pulumi:"notifications"`
@@ -117,10 +117,12 @@ type ServiceProfile struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Tags attached to the connection
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Type of access point type config - VD, COLO
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Colo/Port Uuid
+	// Equinix assigned service profile identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint pulumi.StringPtrOutput `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices ServiceProfileVirtualDeviceArrayOutput `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -173,15 +175,15 @@ type serviceProfileState struct {
 	ChangeLog *ServiceProfileChangeLog `pulumi:"changeLog"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
-	// Description of authorization key
+	// User-provided service description
 	Description *string `pulumi:"description"`
-	// Unique Resource URL
+	// Service Profile URI response attribute
 	Href *string `pulumi:"href"`
 	// Marketing Info
 	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []ServiceProfileMetro `pulumi:"metros"`
-	// Metro Name
+	// Customer-assigned service profile name
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ServiceProfileNotification `pulumi:"notifications"`
@@ -195,10 +197,12 @@ type serviceProfileState struct {
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Type of access point type config - VD, COLO
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type *string `pulumi:"type"`
-	// Colo/Port Uuid
+	// Equinix assigned service profile identifier
 	Uuid *string `pulumi:"uuid"`
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint *string `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices []ServiceProfileVirtualDevice `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -216,15 +220,15 @@ type ServiceProfileState struct {
 	ChangeLog ServiceProfileChangeLogPtrInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
-	// Description of authorization key
+	// User-provided service description
 	Description pulumi.StringPtrInput
-	// Unique Resource URL
+	// Service Profile URI response attribute
 	Href pulumi.StringPtrInput
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrInput
 	// Access point config information
 	Metros ServiceProfileMetroArrayInput
-	// Metro Name
+	// Customer-assigned service profile name
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ServiceProfileNotificationArrayInput
@@ -238,10 +242,12 @@ type ServiceProfileState struct {
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Type of access point type config - VD, COLO
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type pulumi.StringPtrInput
-	// Colo/Port Uuid
+	// Equinix assigned service profile identifier
 	Uuid pulumi.StringPtrInput
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint pulumi.StringPtrInput
 	// Virtual Devices
 	VirtualDevices ServiceProfileVirtualDeviceArrayInput
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -259,13 +265,13 @@ type serviceProfileArgs struct {
 	AllowedEmails []string `pulumi:"allowedEmails"`
 	// Custom Fields
 	CustomFields []ServiceProfileCustomField `pulumi:"customFields"`
-	// Description of authorization key
+	// User-provided service description
 	Description string `pulumi:"description"`
 	// Marketing Info
 	MarketingInfo *ServiceProfileMarketingInfo `pulumi:"marketingInfo"`
 	// Access point config information
 	Metros []ServiceProfileMetro `pulumi:"metros"`
-	// Metro Name
+	// Customer-assigned service profile name
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ServiceProfileNotification `pulumi:"notifications"`
@@ -279,8 +285,10 @@ type serviceProfileArgs struct {
 	State *string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Type of access point type config - VD, COLO
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type string `pulumi:"type"`
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint *string `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices []ServiceProfileVirtualDevice `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -295,13 +303,13 @@ type ServiceProfileArgs struct {
 	AllowedEmails pulumi.StringArrayInput
 	// Custom Fields
 	CustomFields ServiceProfileCustomFieldArrayInput
-	// Description of authorization key
+	// User-provided service description
 	Description pulumi.StringInput
 	// Marketing Info
 	MarketingInfo ServiceProfileMarketingInfoPtrInput
 	// Access point config information
 	Metros ServiceProfileMetroArrayInput
-	// Metro Name
+	// Customer-assigned service profile name
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ServiceProfileNotificationArrayInput
@@ -315,8 +323,10 @@ type ServiceProfileArgs struct {
 	State pulumi.StringPtrInput
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput
-	// Type of access point type config - VD, COLO
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type pulumi.StringInput
+	// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint pulumi.StringPtrInput
 	// Virtual Devices
 	VirtualDevices ServiceProfileVirtualDeviceArrayInput
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -437,12 +447,12 @@ func (o ServiceProfileOutput) CustomFields() ServiceProfileCustomFieldArrayOutpu
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileCustomFieldArrayOutput { return v.CustomFields }).(ServiceProfileCustomFieldArrayOutput)
 }
 
-// Description of authorization key
+// User-provided service description
 func (o ServiceProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Unique Resource URL
+// Service Profile URI response attribute
 func (o ServiceProfileOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Href }).(pulumi.StringOutput)
 }
@@ -457,7 +467,7 @@ func (o ServiceProfileOutput) Metros() ServiceProfileMetroArrayOutput {
 	return o.ApplyT(func(v *ServiceProfile) ServiceProfileMetroArrayOutput { return v.Metros }).(ServiceProfileMetroArrayOutput)
 }
 
-// Metro Name
+// Customer-assigned service profile name
 func (o ServiceProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -492,14 +502,19 @@ func (o ServiceProfileOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of access point type config - VD, COLO
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 func (o ServiceProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Colo/Port Uuid
+// Equinix assigned service profile identifier
 func (o ServiceProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProfile) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+func (o ServiceProfileOutput) ViewPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceProfile) pulumi.StringPtrOutput { return v.ViewPoint }).(pulumi.StringPtrOutput)
 }
 
 // Virtual Devices

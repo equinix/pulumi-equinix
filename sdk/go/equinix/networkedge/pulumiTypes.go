@@ -531,19 +531,17 @@ func (o DeviceClusterDetailsPtrOutput) NumOfNodes() pulumi.IntPtrOutput {
 }
 
 type DeviceClusterDetailsNode0 struct {
-	// Identifier of a license file that will be applied on the device.
+	// License file id. This is necessary for Fortinet and Juniper clusters.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License token. This is necessary for Palo Alto clusters.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device name.
 	Name *string `pulumi:"name"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// An object that has fields relevant to the vendor of the
+	// cluster device. See Cluster Details - Nodes - Vendor Configuration
+	// below for more details.
 	VendorConfiguration *DeviceClusterDetailsNode0VendorConfiguration `pulumi:"vendorConfiguration"`
 }
 
@@ -559,19 +557,17 @@ type DeviceClusterDetailsNode0Input interface {
 }
 
 type DeviceClusterDetailsNode0Args struct {
-	// Identifier of a license file that will be applied on the device.
+	// License file id. This is necessary for Fortinet and Juniper clusters.
 	LicenseFileId pulumi.StringPtrInput `pulumi:"licenseFileId"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License token. This is necessary for Palo Alto clusters.
 	LicenseToken pulumi.StringPtrInput `pulumi:"licenseToken"`
 	// Device name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// An object that has fields relevant to the vendor of the
+	// cluster device. See Cluster Details - Nodes - Vendor Configuration
+	// below for more details.
 	VendorConfiguration DeviceClusterDetailsNode0VendorConfigurationPtrInput `pulumi:"vendorConfiguration"`
 }
 
@@ -652,13 +648,12 @@ func (o DeviceClusterDetailsNode0Output) ToDeviceClusterDetailsNode0PtrOutputWit
 	}).(DeviceClusterDetailsNode0PtrOutput)
 }
 
-// Identifier of a license file that will be applied on the device.
+// License file id. This is necessary for Fortinet and Juniper clusters.
 func (o DeviceClusterDetailsNode0Output) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.LicenseFileId }).(pulumi.StringPtrOutput)
 }
 
-// License Token applicable for some device types in BYOL licensing
-// mode.
+// License token. This is necessary for Palo Alto clusters.
 func (o DeviceClusterDetailsNode0Output) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.LicenseToken }).(pulumi.StringPtrOutput)
 }
@@ -673,10 +668,9 @@ func (o DeviceClusterDetailsNode0Output) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// Map of vendor specific configuration parameters for a device
-// (controller1, activationKey, managementType, siteId, systemIpAddress)
-//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-//     on a device (max one key).  See SSH Key below for more details.
+// An object that has fields relevant to the vendor of the
+// cluster device. See Cluster Details - Nodes - Vendor Configuration
+// below for more details.
 func (o DeviceClusterDetailsNode0Output) VendorConfiguration() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0VendorConfiguration {
 		return v.VendorConfiguration
@@ -707,7 +701,7 @@ func (o DeviceClusterDetailsNode0PtrOutput) Elem() DeviceClusterDetailsNode0Outp
 	}).(DeviceClusterDetailsNode0Output)
 }
 
-// Identifier of a license file that will be applied on the device.
+// License file id. This is necessary for Fortinet and Juniper clusters.
 func (o DeviceClusterDetailsNode0PtrOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *string {
 		if v == nil {
@@ -717,8 +711,7 @@ func (o DeviceClusterDetailsNode0PtrOutput) LicenseFileId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// License Token applicable for some device types in BYOL licensing
-// mode.
+// License token. This is necessary for Palo Alto clusters.
 func (o DeviceClusterDetailsNode0PtrOutput) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *string {
 		if v == nil {
@@ -748,10 +741,9 @@ func (o DeviceClusterDetailsNode0PtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Map of vendor specific configuration parameters for a device
-// (controller1, activationKey, managementType, siteId, systemIpAddress)
-//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-//     on a device (max one key).  See SSH Key below for more details.
+// An object that has fields relevant to the vendor of the
+// cluster device. See Cluster Details - Nodes - Vendor Configuration
+// below for more details.
 func (o DeviceClusterDetailsNode0PtrOutput) VendorConfiguration() DeviceClusterDetailsNode0VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode0) *DeviceClusterDetailsNode0VendorConfiguration {
 		if v == nil {
@@ -1002,19 +994,17 @@ func (o DeviceClusterDetailsNode0VendorConfigurationPtrOutput) RootPassword() pu
 }
 
 type DeviceClusterDetailsNode1 struct {
-	// Identifier of a license file that will be applied on the device.
+	// License file id. This is necessary for Fortinet and Juniper clusters.
 	LicenseFileId *string `pulumi:"licenseFileId"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License token. This is necessary for Palo Alto clusters.
 	LicenseToken *string `pulumi:"licenseToken"`
 	// Device name.
 	Name *string `pulumi:"name"`
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// An object that has fields relevant to the vendor of the
+	// cluster device. See Cluster Details - Nodes - Vendor Configuration
+	// below for more details.
 	VendorConfiguration *DeviceClusterDetailsNode1VendorConfiguration `pulumi:"vendorConfiguration"`
 }
 
@@ -1030,19 +1020,17 @@ type DeviceClusterDetailsNode1Input interface {
 }
 
 type DeviceClusterDetailsNode1Args struct {
-	// Identifier of a license file that will be applied on the device.
+	// License file id. This is necessary for Fortinet and Juniper clusters.
 	LicenseFileId pulumi.StringPtrInput `pulumi:"licenseFileId"`
-	// License Token applicable for some device types in BYOL licensing
-	// mode.
+	// License token. This is necessary for Palo Alto clusters.
 	LicenseToken pulumi.StringPtrInput `pulumi:"licenseToken"`
 	// Device name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
-	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-	//   on a device (max one key).  See SSH Key below for more details.
+	// An object that has fields relevant to the vendor of the
+	// cluster device. See Cluster Details - Nodes - Vendor Configuration
+	// below for more details.
 	VendorConfiguration DeviceClusterDetailsNode1VendorConfigurationPtrInput `pulumi:"vendorConfiguration"`
 }
 
@@ -1123,13 +1111,12 @@ func (o DeviceClusterDetailsNode1Output) ToDeviceClusterDetailsNode1PtrOutputWit
 	}).(DeviceClusterDetailsNode1PtrOutput)
 }
 
-// Identifier of a license file that will be applied on the device.
+// License file id. This is necessary for Fortinet and Juniper clusters.
 func (o DeviceClusterDetailsNode1Output) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.LicenseFileId }).(pulumi.StringPtrOutput)
 }
 
-// License Token applicable for some device types in BYOL licensing
-// mode.
+// License token. This is necessary for Palo Alto clusters.
 func (o DeviceClusterDetailsNode1Output) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.LicenseToken }).(pulumi.StringPtrOutput)
 }
@@ -1144,10 +1131,9 @@ func (o DeviceClusterDetailsNode1Output) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// Map of vendor specific configuration parameters for a device
-// (controller1, activationKey, managementType, siteId, systemIpAddress)
-//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-//     on a device (max one key).  See SSH Key below for more details.
+// An object that has fields relevant to the vendor of the
+// cluster device. See Cluster Details - Nodes - Vendor Configuration
+// below for more details.
 func (o DeviceClusterDetailsNode1Output) VendorConfiguration() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1VendorConfiguration {
 		return v.VendorConfiguration
@@ -1178,7 +1164,7 @@ func (o DeviceClusterDetailsNode1PtrOutput) Elem() DeviceClusterDetailsNode1Outp
 	}).(DeviceClusterDetailsNode1Output)
 }
 
-// Identifier of a license file that will be applied on the device.
+// License file id. This is necessary for Fortinet and Juniper clusters.
 func (o DeviceClusterDetailsNode1PtrOutput) LicenseFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *string {
 		if v == nil {
@@ -1188,8 +1174,7 @@ func (o DeviceClusterDetailsNode1PtrOutput) LicenseFileId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// License Token applicable for some device types in BYOL licensing
-// mode.
+// License token. This is necessary for Palo Alto clusters.
 func (o DeviceClusterDetailsNode1PtrOutput) LicenseToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *string {
 		if v == nil {
@@ -1219,10 +1204,9 @@ func (o DeviceClusterDetailsNode1PtrOutput) Uuid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Map of vendor specific configuration parameters for a device
-// (controller1, activationKey, managementType, siteId, systemIpAddress)
-//   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-//     on a device (max one key).  See SSH Key below for more details.
+// An object that has fields relevant to the vendor of the
+// cluster device. See Cluster Details - Nodes - Vendor Configuration
+// below for more details.
 func (o DeviceClusterDetailsNode1PtrOutput) VendorConfiguration() DeviceClusterDetailsNode1VendorConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeviceClusterDetailsNode1) *DeviceClusterDetailsNode1VendorConfiguration {
 		if v == nil {
@@ -1935,6 +1919,133 @@ func (o DeviceLinkLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkLinkOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceLinkLink {
 		return vs[0].([]DeviceLinkLink)[vs[1].(int)]
 	}).(DeviceLinkLinkOutput)
+}
+
+type DeviceLinkMetroLink struct {
+	// billing account number to be used for
+	// connection charges
+	AccountNumber string `pulumi:"accountNumber"`
+	// connection metro code.
+	MetroCode string `pulumi:"metroCode"`
+	// connection throughput.
+	Throughput string `pulumi:"throughput"`
+	// connection throughput unit (Mbps or Gbps).
+	ThroughputUnit string `pulumi:"throughputUnit"`
+}
+
+// DeviceLinkMetroLinkInput is an input type that accepts DeviceLinkMetroLinkArgs and DeviceLinkMetroLinkOutput values.
+// You can construct a concrete instance of `DeviceLinkMetroLinkInput` via:
+//
+//	DeviceLinkMetroLinkArgs{...}
+type DeviceLinkMetroLinkInput interface {
+	pulumi.Input
+
+	ToDeviceLinkMetroLinkOutput() DeviceLinkMetroLinkOutput
+	ToDeviceLinkMetroLinkOutputWithContext(context.Context) DeviceLinkMetroLinkOutput
+}
+
+type DeviceLinkMetroLinkArgs struct {
+	// billing account number to be used for
+	// connection charges
+	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
+	// connection metro code.
+	MetroCode pulumi.StringInput `pulumi:"metroCode"`
+	// connection throughput.
+	Throughput pulumi.StringInput `pulumi:"throughput"`
+	// connection throughput unit (Mbps or Gbps).
+	ThroughputUnit pulumi.StringInput `pulumi:"throughputUnit"`
+}
+
+func (DeviceLinkMetroLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceLinkMetroLink)(nil)).Elem()
+}
+
+func (i DeviceLinkMetroLinkArgs) ToDeviceLinkMetroLinkOutput() DeviceLinkMetroLinkOutput {
+	return i.ToDeviceLinkMetroLinkOutputWithContext(context.Background())
+}
+
+func (i DeviceLinkMetroLinkArgs) ToDeviceLinkMetroLinkOutputWithContext(ctx context.Context) DeviceLinkMetroLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkMetroLinkOutput)
+}
+
+// DeviceLinkMetroLinkArrayInput is an input type that accepts DeviceLinkMetroLinkArray and DeviceLinkMetroLinkArrayOutput values.
+// You can construct a concrete instance of `DeviceLinkMetroLinkArrayInput` via:
+//
+//	DeviceLinkMetroLinkArray{ DeviceLinkMetroLinkArgs{...} }
+type DeviceLinkMetroLinkArrayInput interface {
+	pulumi.Input
+
+	ToDeviceLinkMetroLinkArrayOutput() DeviceLinkMetroLinkArrayOutput
+	ToDeviceLinkMetroLinkArrayOutputWithContext(context.Context) DeviceLinkMetroLinkArrayOutput
+}
+
+type DeviceLinkMetroLinkArray []DeviceLinkMetroLinkInput
+
+func (DeviceLinkMetroLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceLinkMetroLink)(nil)).Elem()
+}
+
+func (i DeviceLinkMetroLinkArray) ToDeviceLinkMetroLinkArrayOutput() DeviceLinkMetroLinkArrayOutput {
+	return i.ToDeviceLinkMetroLinkArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceLinkMetroLinkArray) ToDeviceLinkMetroLinkArrayOutputWithContext(ctx context.Context) DeviceLinkMetroLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceLinkMetroLinkArrayOutput)
+}
+
+type DeviceLinkMetroLinkOutput struct{ *pulumi.OutputState }
+
+func (DeviceLinkMetroLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceLinkMetroLink)(nil)).Elem()
+}
+
+func (o DeviceLinkMetroLinkOutput) ToDeviceLinkMetroLinkOutput() DeviceLinkMetroLinkOutput {
+	return o
+}
+
+func (o DeviceLinkMetroLinkOutput) ToDeviceLinkMetroLinkOutputWithContext(ctx context.Context) DeviceLinkMetroLinkOutput {
+	return o
+}
+
+// billing account number to be used for
+// connection charges
+func (o DeviceLinkMetroLinkOutput) AccountNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceLinkMetroLink) string { return v.AccountNumber }).(pulumi.StringOutput)
+}
+
+// connection metro code.
+func (o DeviceLinkMetroLinkOutput) MetroCode() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceLinkMetroLink) string { return v.MetroCode }).(pulumi.StringOutput)
+}
+
+// connection throughput.
+func (o DeviceLinkMetroLinkOutput) Throughput() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceLinkMetroLink) string { return v.Throughput }).(pulumi.StringOutput)
+}
+
+// connection throughput unit (Mbps or Gbps).
+func (o DeviceLinkMetroLinkOutput) ThroughputUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceLinkMetroLink) string { return v.ThroughputUnit }).(pulumi.StringOutput)
+}
+
+type DeviceLinkMetroLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceLinkMetroLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceLinkMetroLink)(nil)).Elem()
+}
+
+func (o DeviceLinkMetroLinkArrayOutput) ToDeviceLinkMetroLinkArrayOutput() DeviceLinkMetroLinkArrayOutput {
+	return o
+}
+
+func (o DeviceLinkMetroLinkArrayOutput) ToDeviceLinkMetroLinkArrayOutputWithContext(ctx context.Context) DeviceLinkMetroLinkArrayOutput {
+	return o
+}
+
+func (o DeviceLinkMetroLinkArrayOutput) Index(i pulumi.IntInput) DeviceLinkMetroLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceLinkMetroLink {
+		return vs[0].([]DeviceLinkMetroLink)[vs[1].(int)]
+	}).(DeviceLinkMetroLinkOutput)
 }
 
 type DeviceSecondaryDevice struct {
@@ -4844,6 +4955,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkDeviceArrayInput)(nil)).Elem(), DeviceLinkDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkLinkInput)(nil)).Elem(), DeviceLinkLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkLinkArrayInput)(nil)).Elem(), DeviceLinkLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkMetroLinkInput)(nil)).Elem(), DeviceLinkMetroLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceLinkMetroLinkArrayInput)(nil)).Elem(), DeviceLinkMetroLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceSecondaryDeviceInput)(nil)).Elem(), DeviceSecondaryDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceSecondaryDevicePtrInput)(nil)).Elem(), DeviceSecondaryDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceSecondaryDeviceInterfaceInput)(nil)).Elem(), DeviceSecondaryDeviceInterfaceArgs{})
@@ -4892,6 +5005,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceLinkDeviceArrayOutput{})
 	pulumi.RegisterOutputType(DeviceLinkLinkOutput{})
 	pulumi.RegisterOutputType(DeviceLinkLinkArrayOutput{})
+	pulumi.RegisterOutputType(DeviceLinkMetroLinkOutput{})
+	pulumi.RegisterOutputType(DeviceLinkMetroLinkArrayOutput{})
 	pulumi.RegisterOutputType(DeviceSecondaryDeviceOutput{})
 	pulumi.RegisterOutputType(DeviceSecondaryDevicePtrOutput{})
 	pulumi.RegisterOutputType(DeviceSecondaryDeviceInterfaceOutput{})

@@ -443,18 +443,16 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      * 
      */
     @Import(name="plan")
     private @Nullable Output<Either<String,Plan>> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * @return The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      * 
      */
     public Optional<Output<Either<String,Plan>>> plan() {
@@ -1438,9 +1436,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit
-         * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-         * top of the page and see JSON from the API response.
+         * @param plan The device plan slug. To find the plan slug, visit the
+         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
          * 
          * @return builder
          * 
@@ -1451,9 +1448,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit
-         * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-         * top of the page and see JSON from the API response.
+         * @param plan The device plan slug. To find the plan slug, visit the
+         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
          * 
          * @return builder
          * 
@@ -1463,9 +1459,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit
-         * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-         * top of the page and see JSON from the API response.
+         * @param plan The device plan slug. To find the plan slug, visit the
+         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
          * 
          * @return builder
          * 
@@ -1475,9 +1470,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plan The device plan slug. To find the plan slug, visit
-         * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-         * top of the page and see JSON from the API response.
+         * @param plan The device plan slug. To find the plan slug, visit the
+         * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
          * 
          * @return builder
          * 

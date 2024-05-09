@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -20,8 +19,12 @@ import * as utilities from "../utilities";
  * const networkDataName = equinix.fabric.getNetwork({
  *     uuid: "<uuid_of_network>",
  * });
+ * export const id = networkDataName.then(networkDataName => networkDataName.id);
+ * export const name = networkDataName.then(networkDataName => networkDataName.name);
+ * export const scope = networkDataName.then(networkDataName => networkDataName.scope);
+ * export const type = networkDataName.then(networkDataName => networkDataName.type);
+ * export const region = networkDataName.then(networkDataName => networkDataName.locations?.[0]?.region);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
 
@@ -35,6 +38,9 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getNetwork.
  */
 export interface GetNetworkArgs {
+    /**
+     * Equinix-assigned network identifier
+     */
     uuid: string;
 }
 
@@ -104,7 +110,6 @@ export interface GetNetworkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -112,8 +117,12 @@ export interface GetNetworkResult {
  * const networkDataName = equinix.fabric.getNetwork({
  *     uuid: "<uuid_of_network>",
  * });
+ * export const id = networkDataName.then(networkDataName => networkDataName.id);
+ * export const name = networkDataName.then(networkDataName => networkDataName.name);
+ * export const scope = networkDataName.then(networkDataName => networkDataName.scope);
+ * export const type = networkDataName.then(networkDataName => networkDataName.type);
+ * export const region = networkDataName.then(networkDataName => networkDataName.locations?.[0]?.region);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
@@ -123,5 +132,8 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getNetwork.
  */
 export interface GetNetworkOutputArgs {
+    /**
+     * Equinix-assigned network identifier
+     */
     uuid: pulumi.Input<string>;
 }

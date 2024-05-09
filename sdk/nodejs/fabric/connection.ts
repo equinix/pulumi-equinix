@@ -8,8 +8,6 @@ import * as enums from "../types/enums";
 import * as utilities from "../utilities";
 
 /**
- * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
- *
  * ## Example Usage
  *
  * ```typescript
@@ -111,11 +109,11 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly aSide!: pulumi.Output<outputs.fabric.ConnectionASide>;
     /**
-     * Account
+     * Customer account information that is associated with this connection
      */
     public /*out*/ readonly account!: pulumi.Output<outputs.fabric.ConnectionAccount>;
     /**
-     * Connection side additional information
+     * Connection additional information
      */
     public readonly additionalInfo!: pulumi.Output<{[key: string]: any}[] | undefined>;
     /**
@@ -127,7 +125,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly changeLog!: pulumi.Output<outputs.fabric.ConnectionChangeLog>;
     /**
-     * User-provided service description
+     * Customer-provided connection description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -135,7 +133,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly direction!: pulumi.Output<string>;
     /**
-     * Unique Resource Identifier
+     * Connection URI information
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
     /**
@@ -143,7 +141,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly isRemote!: pulumi.Output<boolean>;
     /**
-     * Port name
+     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -163,7 +161,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<outputs.fabric.ConnectionProject>;
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      */
     public readonly redundancy!: pulumi.Output<outputs.fabric.ConnectionRedundancy | undefined>;
     /**
@@ -171,11 +169,11 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Interface type
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned connection identifier
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
     /**
@@ -226,9 +224,6 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.notifications === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notifications'");
             }
-            if ((!args || args.order === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'order'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -269,11 +264,11 @@ export interface ConnectionState {
      */
     aSide?: pulumi.Input<inputs.fabric.ConnectionASide>;
     /**
-     * Account
+     * Customer account information that is associated with this connection
      */
     account?: pulumi.Input<inputs.fabric.ConnectionAccount>;
     /**
-     * Connection side additional information
+     * Connection additional information
      */
     additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
@@ -285,7 +280,7 @@ export interface ConnectionState {
      */
     changeLog?: pulumi.Input<inputs.fabric.ConnectionChangeLog>;
     /**
-     * User-provided service description
+     * Customer-provided connection description
      */
     description?: pulumi.Input<string>;
     /**
@@ -293,7 +288,7 @@ export interface ConnectionState {
      */
     direction?: pulumi.Input<string>;
     /**
-     * Unique Resource Identifier
+     * Connection URI information
      */
     href?: pulumi.Input<string>;
     /**
@@ -301,7 +296,7 @@ export interface ConnectionState {
      */
     isRemote?: pulumi.Input<boolean>;
     /**
-     * Port name
+     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
     name?: pulumi.Input<string>;
     /**
@@ -321,7 +316,7 @@ export interface ConnectionState {
      */
     project?: pulumi.Input<inputs.fabric.ConnectionProject>;
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      */
     redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
@@ -329,11 +324,11 @@ export interface ConnectionState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Interface type
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      */
     type?: pulumi.Input<string | enums.fabric.ConnectionType>;
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned connection identifier
      */
     uuid?: pulumi.Input<string>;
     /**
@@ -351,7 +346,7 @@ export interface ConnectionArgs {
      */
     aSide: pulumi.Input<inputs.fabric.ConnectionASide>;
     /**
-     * Connection side additional information
+     * Connection additional information
      */
     additionalInfo?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
@@ -359,11 +354,11 @@ export interface ConnectionArgs {
      */
     bandwidth: pulumi.Input<number>;
     /**
-     * User-provided service description
+     * Customer-provided connection description
      */
     description?: pulumi.Input<string>;
     /**
-     * Port name
+     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      */
     name?: pulumi.Input<string>;
     /**
@@ -373,17 +368,17 @@ export interface ConnectionArgs {
     /**
      * Order details
      */
-    order: pulumi.Input<inputs.fabric.ConnectionOrder>;
+    order?: pulumi.Input<inputs.fabric.ConnectionOrder>;
     /**
      * Project information
      */
     project?: pulumi.Input<inputs.fabric.ConnectionProject>;
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      */
     redundancy?: pulumi.Input<inputs.fabric.ConnectionRedundancy>;
     /**
-     * Interface type
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      */
     type: pulumi.Input<string | enums.fabric.ConnectionType>;
     /**

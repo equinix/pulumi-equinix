@@ -19,7 +19,7 @@ public final class DeviceNetwork {
      */
     private @Nullable String address;
     /**
-     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * @return Bit length of the network mask of the address.
      * 
      */
     private @Nullable Integer cidr;
@@ -48,7 +48,7 @@ public final class DeviceNetwork {
         return Optional.ofNullable(this.address);
     }
     /**
-     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * @return Bit length of the network mask of the address.
      * 
      */
     public Optional<Integer> cidr() {

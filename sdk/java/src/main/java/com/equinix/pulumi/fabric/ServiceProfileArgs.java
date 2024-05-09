@@ -75,14 +75,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Description of authorization key
+     * User-provided service description
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return Description of authorization key
+     * @return User-provided service description
      * 
      */
     public Output<String> description() {
@@ -120,14 +120,14 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Metro Name
+     * Customer-assigned service profile name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Metro Name
+     * @return Customer-assigned service profile name
      * 
      */
     public Optional<Output<String>> name() {
@@ -225,18 +225,33 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Type of access point type config - VD, COLO
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Type of access point type config - VD, COLO
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     public Output<Either<String,ProfileType>> type() {
         return this.type;
+    }
+
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    @Import(name="viewPoint")
+    private @Nullable Output<String> viewPoint;
+
+    /**
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    public Optional<Output<String>> viewPoint() {
+        return Optional.ofNullable(this.viewPoint);
     }
 
     /**
@@ -286,6 +301,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         this.state = $.state;
         this.tags = $.tags;
         this.type = $.type;
+        this.viewPoint = $.viewPoint;
         this.virtualDevices = $.virtualDevices;
         this.visibility = $.visibility;
     }
@@ -402,7 +418,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of authorization key
+         * @param description User-provided service description
          * 
          * @return builder
          * 
@@ -413,7 +429,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of authorization key
+         * @param description User-provided service description
          * 
          * @return builder
          * 
@@ -475,7 +491,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Metro Name
+         * @param name Customer-assigned service profile name
          * 
          * @return builder
          * 
@@ -486,7 +502,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Metro Name
+         * @param name Customer-assigned service profile name
          * 
          * @return builder
          * 
@@ -672,7 +688,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -683,7 +699,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -693,7 +709,7 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -703,13 +719,34 @@ public final class ServiceProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
          */
         public Builder type(ProfileType type) {
             return type(Either.ofRight(type));
+        }
+
+        /**
+         * @param viewPoint Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(@Nullable Output<String> viewPoint) {
+            $.viewPoint = viewPoint;
+            return this;
+        }
+
+        /**
+         * @param viewPoint Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(String viewPoint) {
+            return viewPoint(Output.of(viewPoint));
         }
 
         /**

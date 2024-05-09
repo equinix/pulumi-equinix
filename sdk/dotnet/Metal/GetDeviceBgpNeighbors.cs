@@ -22,7 +22,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDeviceBgpNeighborsResult> InvokeAsync(GetDeviceBgpNeighborsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceBgpNeighborsResult>("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", args ?? new GetDeviceBgpNeighborsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDeviceBgpNeighborsResult> Invoke(GetDeviceBgpNeighborsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceBgpNeighborsResult>("equinix:metal/getDeviceBgpNeighbors:getDeviceBgpNeighbors", args ?? new GetDeviceBgpNeighborsInvokeArgs(), options.WithDefaults());

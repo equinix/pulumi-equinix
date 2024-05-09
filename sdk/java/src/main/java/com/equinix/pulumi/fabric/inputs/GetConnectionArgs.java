@@ -13,9 +13,17 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetConnectionArgs Empty = new GetConnectionArgs();
 
+    /**
+     * Equinix-assigned connection identifier
+     * 
+     */
     @Import(name="uuid", required=true)
     private Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned connection identifier
+     * 
+     */
     public Output<String> uuid() {
         return this.uuid;
     }
@@ -44,11 +52,23 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetConnectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param uuid Equinix-assigned connection identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned connection identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

@@ -219,7 +219,7 @@ def get_reserved_ip_block(id: Optional[str] = None,
 
     > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
 
-    > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
 
     :param str id: UUID of the IP address block to look up.
@@ -268,7 +268,7 @@ def get_reserved_ip_block_output(id: Optional[pulumi.Input[Optional[str]]] = Non
 
     > For backward compatibility, this data source can be also used for precreated (management) IP blocks.
 
-    > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
 
     :param str id: UUID of the IP address block to look up.

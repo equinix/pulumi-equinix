@@ -31,7 +31,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<Inputs.ConnectionZSideAccessPointPortRedundancyGetArgs>? Redundancy { get; set; }
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned Port identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

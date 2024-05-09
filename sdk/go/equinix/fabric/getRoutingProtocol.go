@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,19 +29,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.LookupRoutingProtocol(ctx, &fabric.LookupRoutingProtocolArgs{
+//			routingProtocolDataName, err := fabric.LookupRoutingProtocol(ctx, &fabric.LookupRoutingProtocolArgs{
 //				ConnectionUuid: "<uuid_of_connection_routing_protocol_is_applied_to>",
 //				Uuid:           "<uuid_of_routing_protocol>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", routingProtocolDataName.Id)
+//			ctx.Export("name", routingProtocolDataName.Name)
+//			ctx.Export("type", routingProtocolDataName.Type)
+//			ctx.Export("directIpv4", routingProtocolDataName.DirectIpv4.EquinixIfaceIp)
+//			ctx.Export("directIpv6", routingProtocolDataName.DirectIpv6.EquinixIfaceIp)
+//			ctx.Export("bgpIpv4CustomerPeerIp", routingProtocolDataName.BgpIpv4.CustomerPeerIp)
+//			ctx.Export("bgpIpv4EquinixPeerIp", routingProtocolDataName.BgpIpv4.EquinixPeerIp)
+//			ctx.Export("bgpIpv4Enabled", routingProtocolDataName.BgpIpv4.Enabled)
+//			ctx.Export("bgpIpv6CustomerPeerIp", routingProtocolDataName.BgpIpv6.CustomerPeerIp)
+//			ctx.Export("bgpIpv6EquinixPeerIp", routingProtocolDataName.BgpIpv6.EquinixPeerIp)
+//			ctx.Export("bgpIpv6Enabled", routingProtocolDataName.BgpIpv6.Enabled)
+//			ctx.Export("customerAsn", routingProtocolDataName.CustomerAsn)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupRoutingProtocol(ctx *pulumi.Context, args *LookupRoutingProtocolArgs, opts ...pulumi.InvokeOption) (*LookupRoutingProtocolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutingProtocolResult
@@ -57,7 +67,8 @@ func LookupRoutingProtocol(ctx *pulumi.Context, args *LookupRoutingProtocolArgs,
 type LookupRoutingProtocolArgs struct {
 	// Connection URI associated with Routing Protocol
 	ConnectionUuid string `pulumi:"connectionUuid"`
-	Uuid           string `pulumi:"uuid"`
+	// Equinix-assigned routing protocol identifier
+	Uuid string `pulumi:"uuid"`
 }
 
 // A collection of values returned by getRoutingProtocol.
@@ -119,7 +130,8 @@ func LookupRoutingProtocolOutput(ctx *pulumi.Context, args LookupRoutingProtocol
 type LookupRoutingProtocolOutputArgs struct {
 	// Connection URI associated with Routing Protocol
 	ConnectionUuid pulumi.StringInput `pulumi:"connectionUuid"`
-	Uuid           pulumi.StringInput `pulumi:"uuid"`
+	// Equinix-assigned routing protocol identifier
+	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (LookupRoutingProtocolOutputArgs) ElementType() reflect.Type {

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceProfileMarketingInfoProcessStep {
     /**
-     * @return Description of authorization key
+     * @return Description
      * 
      */
     private @Nullable String description;
@@ -29,7 +29,7 @@ public final class ServiceProfileMarketingInfoProcessStep {
 
     private ServiceProfileMarketingInfoProcessStep() {}
     /**
-     * @return Description of authorization key
+     * @return Description
      * 
      */
     public Optional<String> description() {

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMetro(ctx *pulumi.Context, args *GetMetroArgs, opts ...pulumi.InvokeOption) (*GetMetroResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetroResult

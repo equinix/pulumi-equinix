@@ -43,14 +43,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection side additional information
+     * Connection additional information
      * 
      */
     @Import(name="additionalInfo")
     private @Nullable Output<List<Map<String,Object>>> additionalInfo;
 
     /**
-     * @return Connection side additional information
+     * @return Connection additional information
      * 
      */
     public Optional<Output<List<Map<String,Object>>>> additionalInfo() {
@@ -73,14 +73,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-provided service description
+     * Customer-provided connection description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Customer-provided connection description
      * 
      */
     public Optional<Output<String>> description() {
@@ -88,14 +88,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port name
+     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Port name
+     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
     public Optional<Output<String>> name() {
@@ -121,15 +121,15 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * Order details
      * 
      */
-    @Import(name="order", required=true)
-    private Output<ConnectionOrderArgs> order;
+    @Import(name="order")
+    private @Nullable Output<ConnectionOrderArgs> order;
 
     /**
      * @return Order details
      * 
      */
-    public Output<ConnectionOrderArgs> order() {
-        return this.order;
+    public Optional<Output<ConnectionOrderArgs>> order() {
+        return Optional.ofNullable(this.order);
     }
 
     /**
@@ -148,14 +148,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      * 
      */
     @Import(name="redundancy")
     private @Nullable Output<ConnectionRedundancyArgs> redundancy;
 
     /**
-     * @return Redundancy Information
+     * @return Connection Redundancy Configuration
      * 
      */
     public Optional<Output<ConnectionRedundancyArgs>> redundancy() {
@@ -163,14 +163,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Interface type
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ConnectionType>> type;
 
     /**
-     * @return Interface type
+     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     public Output<Either<String,ConnectionType>> type() {
@@ -248,7 +248,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection side additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection side additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection side additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Customer-provided connection description
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Customer-provided connection description
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Port name
+         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Port name
+         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder order(Output<ConnectionOrderArgs> order) {
+        public Builder order(@Nullable Output<ConnectionOrderArgs> order) {
             $.order = order;
             return this;
         }
@@ -415,7 +415,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancy Redundancy Information
+         * @param redundancy Connection Redundancy Configuration
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancy Redundancy Information
+         * @param redundancy Connection Redundancy Configuration
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -501,7 +501,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
             $.aSide = Objects.requireNonNull($.aSide, "expected parameter 'aSide' to be non-null");
             $.bandwidth = Objects.requireNonNull($.bandwidth, "expected parameter 'bandwidth' to be non-null");
             $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             $.zSide = Objects.requireNonNull($.zSide, "expected parameter 'zSide' to be non-null");
             return $;

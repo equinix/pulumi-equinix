@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * Fetch a vlan by ID:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -26,11 +25,9 @@ import * as utilities from "../utilities";
  *     vlanId: foovlan.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Fetch a vlan by project ID, vxlan and metro
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -41,7 +38,6 @@ import * as utilities from "../utilities";
  *     metro: "sv",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVlan(args?: GetVlanArgs, opts?: pulumi.InvokeOptions): Promise<GetVlanResult> {
     args = args || {};
@@ -116,7 +112,6 @@ export interface GetVlanResult {
  *
  * Fetch a vlan by ID:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -130,11 +125,9 @@ export interface GetVlanResult {
  *     vlanId: foovlan.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Fetch a vlan by project ID, vxlan and metro
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -145,7 +138,6 @@ export interface GetVlanResult {
  *     metro: "sv",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVlanOutput(args?: GetVlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVlanResult> {
     return pulumi.output(args).apply((a: any) => getVlan(a, opts))

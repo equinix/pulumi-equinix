@@ -37,7 +37,7 @@ namespace Pulumi.Equinix.Metal.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+        /// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

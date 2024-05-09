@@ -837,7 +837,7 @@ class ConnectionASideAccessPoint(dict):
         :param str provider_connection_id: Provider assigned Connection Id
         :param 'ConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param Union[str, 'AccessPointType'] type: Interface type
+        :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
         :param 'ConnectionASideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         if account is not None:
@@ -982,7 +982,7 @@ class ConnectionASideAccessPoint(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -1169,7 +1169,7 @@ class ConnectionASideAccessPointInterface(dict):
         """
         :param int id: id
         :param str type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str uuid: Equinix-assigned interface identifier
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -1198,7 +1198,7 @@ class ConnectionASideAccessPointInterface(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned interface identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1232,7 +1232,7 @@ class ConnectionASideAccessPointLinkProtocol(dict):
                  vlan_s_tag: Optional[int] = None,
                  vlan_tag: Optional[int] = None):
         """
-        :param Union[str, 'AccessPointLinkProtocolType'] type: Interface type
+        :param Union[str, 'AccessPointLinkProtocolType'] type: Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
         :param int vlan_c_tag: Vlan Customer Tag information, vlanCTag value specified for QINQ connections
         :param int vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
         :param int vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
@@ -1250,7 +1250,7 @@ class ConnectionASideAccessPointLinkProtocol(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
         """
         return pulumi.get(self, "type")
 
@@ -1360,7 +1360,7 @@ class ConnectionASideAccessPointNetwork(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str uuid: Equinix-assigned Network identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1379,7 +1379,7 @@ class ConnectionASideAccessPointNetwork(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned Network identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1395,7 +1395,7 @@ class ConnectionASideAccessPointPort(dict):
         :param str href: Unique Resource Identifier
         :param str name: Port name
         :param 'ConnectionASideAccessPointPortRedundancyArgs' redundancy: Redundancy Information
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str uuid: Equinix-assigned Port identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1434,7 +1434,7 @@ class ConnectionASideAccessPointPort(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned Port identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1447,8 +1447,8 @@ class ConnectionASideAccessPointPortRedundancy(dict):
                  priority: Optional[str] = None):
         """
         :param bool enabled: Access point redundancy
-        :param str group: Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
-        :param str priority: Connection priority in redundancy group - PRIMARY, SECONDARY
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -1469,7 +1469,7 @@ class ConnectionASideAccessPointPortRedundancy(dict):
     @pulumi.getter
     def group(self) -> Optional[str]:
         """
-        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        Port redundancy group
         """
         return pulumi.get(self, "group")
 
@@ -1477,7 +1477,7 @@ class ConnectionASideAccessPointPortRedundancy(dict):
     @pulumi.getter
     def priority(self) -> Optional[str]:
         """
-        Connection priority in redundancy group - PRIMARY, SECONDARY
+        Priority type-Primary or Secondary
         """
         return pulumi.get(self, "priority")
 
@@ -1509,12 +1509,12 @@ class ConnectionASideAccessPointProfile(dict):
                  href: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param Union[str, 'ProfileType'] type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param Union[str, 'ProfileType'] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param str uuid: Equinix assigned service profile identifier
         :param Sequence['ConnectionASideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
         :param str description: User-provided service description
-        :param str href: Unique Resource Identifier
-        :param str name: Port name
+        :param str href: Service Profile URI response attribute
+        :param str name: Customer-assigned service profile name
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -1531,7 +1531,7 @@ class ConnectionASideAccessPointProfile(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Interface type
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -1539,7 +1539,7 @@ class ConnectionASideAccessPointProfile(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix assigned service profile identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1563,7 +1563,7 @@ class ConnectionASideAccessPointProfile(dict):
     @pulumi.getter
     def href(self) -> Optional[str]:
         """
-        Unique Resource Identifier
+        Service Profile URI response attribute
         """
         return pulumi.get(self, "href")
 
@@ -1571,7 +1571,7 @@ class ConnectionASideAccessPointProfile(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Port name
+        Customer-assigned service profile name
         """
         return pulumi.get(self, "name")
 
@@ -1582,8 +1582,8 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Equinix-assigned access point type config identifier
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -1594,7 +1594,7 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Type of access point type config - VD, COLO
         """
         return pulumi.get(self, "type")
 
@@ -1602,7 +1602,7 @@ class ConnectionASideAccessPointProfileAccessPointTypeConfig(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned access point type config identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1647,9 +1647,9 @@ class ConnectionASideAccessPointVirtualDevice(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str name: Port name
-        :param str type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str name: Customer-assigned Virtual Device Name
+        :param str type: Virtual Device type
+        :param str uuid: Equinix-assigned Virtual Device identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -1672,7 +1672,7 @@ class ConnectionASideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Port name
+        Customer-assigned Virtual Device Name
         """
         return pulumi.get(self, "name")
 
@@ -1680,7 +1680,7 @@ class ConnectionASideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Virtual Device type
         """
         return pulumi.get(self, "type")
 
@@ -1688,7 +1688,7 @@ class ConnectionASideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned Virtual Device identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -1732,10 +1732,10 @@ class ConnectionASideServiceToken(dict):
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str description: User-provided service description
-        :param str href: Unique Resource Identifier
-        :param Union[str, 'ServiceTokenType'] type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str description: Service token description
+        :param str href: An absolute URL that is the subject of the link's context
+        :param Union[str, 'ServiceTokenType'] type: Token type - VC_TOKEN
+        :param str uuid: Equinix-assigned service token identifier
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1750,7 +1750,7 @@ class ConnectionASideServiceToken(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        User-provided service description
+        Service token description
         """
         return pulumi.get(self, "description")
 
@@ -1758,7 +1758,7 @@ class ConnectionASideServiceToken(dict):
     @pulumi.getter
     def href(self) -> Optional[str]:
         """
-        Unique Resource Identifier
+        An absolute URL that is the subject of the link's context
         """
         return pulumi.get(self, "href")
 
@@ -1766,7 +1766,7 @@ class ConnectionASideServiceToken(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Token type - VC_TOKEN
         """
         return pulumi.get(self, "type")
 
@@ -1774,7 +1774,7 @@ class ConnectionASideServiceToken(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned service token identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -2256,7 +2256,7 @@ class ConnectionOperationError(dict):
                  error_message: Optional[str] = None,
                  help: Optional[str] = None):
         """
-        :param Sequence['ConnectionOperationErrorAdditionalInfoArgs'] additional_info: Connection side additional information
+        :param Sequence['ConnectionOperationErrorAdditionalInfoArgs'] additional_info: Pricing error additional Info
         :param str correlation_id: CorrelationId
         :param str details: Details
         :param str error_code: Error  code
@@ -2280,7 +2280,7 @@ class ConnectionOperationError(dict):
     @pulumi.getter(name="additionalInfo")
     def additional_info(self) -> Optional[Sequence['outputs.ConnectionOperationErrorAdditionalInfo']]:
         """
-        Connection side additional information
+        Pricing error additional Info
         """
         return pulumi.get(self, "additional_info")
 
@@ -2636,7 +2636,7 @@ class ConnectionZSideAccessPoint(dict):
         :param str provider_connection_id: Provider assigned Connection Id
         :param 'ConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
-        :param Union[str, 'AccessPointType'] type: Interface type
+        :param Union[str, 'AccessPointType'] type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
         :param 'ConnectionZSideAccessPointVirtualDeviceArgs' virtual_device: Virtual device
         """
         if account is not None:
@@ -2781,7 +2781,7 @@ class ConnectionZSideAccessPoint(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
         """
         return pulumi.get(self, "type")
 
@@ -2968,7 +2968,7 @@ class ConnectionZSideAccessPointInterface(dict):
         """
         :param int id: id
         :param str type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str uuid: Equinix-assigned interface identifier
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -2997,7 +2997,7 @@ class ConnectionZSideAccessPointInterface(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned interface identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3031,7 +3031,7 @@ class ConnectionZSideAccessPointLinkProtocol(dict):
                  vlan_s_tag: Optional[int] = None,
                  vlan_tag: Optional[int] = None):
         """
-        :param Union[str, 'AccessPointLinkProtocolType'] type: Interface type
+        :param Union[str, 'AccessPointLinkProtocolType'] type: Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
         :param int vlan_c_tag: Vlan Customer Tag information, vlanCTag value specified for QINQ connections
         :param int vlan_s_tag: Vlan Provider Tag information, vlanSTag value specified for QINQ connections
         :param int vlan_tag: Vlan Tag information, vlanTag value specified for DOT1Q connections
@@ -3049,7 +3049,7 @@ class ConnectionZSideAccessPointLinkProtocol(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
         """
         return pulumi.get(self, "type")
 
@@ -3159,7 +3159,7 @@ class ConnectionZSideAccessPointNetwork(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str uuid: Equinix-assigned Network identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -3178,7 +3178,7 @@ class ConnectionZSideAccessPointNetwork(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned Network identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3194,7 +3194,7 @@ class ConnectionZSideAccessPointPort(dict):
         :param str href: Unique Resource Identifier
         :param str name: Port name
         :param 'ConnectionZSideAccessPointPortRedundancyArgs' redundancy: Redundancy Information
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str uuid: Equinix-assigned Port identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -3233,7 +3233,7 @@ class ConnectionZSideAccessPointPort(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned Port identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3246,8 +3246,8 @@ class ConnectionZSideAccessPointPortRedundancy(dict):
                  priority: Optional[str] = None):
         """
         :param bool enabled: Access point redundancy
-        :param str group: Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
-        :param str priority: Connection priority in redundancy group - PRIMARY, SECONDARY
+        :param str group: Port redundancy group
+        :param str priority: Priority type-Primary or Secondary
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -3268,7 +3268,7 @@ class ConnectionZSideAccessPointPortRedundancy(dict):
     @pulumi.getter
     def group(self) -> Optional[str]:
         """
-        Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        Port redundancy group
         """
         return pulumi.get(self, "group")
 
@@ -3276,7 +3276,7 @@ class ConnectionZSideAccessPointPortRedundancy(dict):
     @pulumi.getter
     def priority(self) -> Optional[str]:
         """
-        Connection priority in redundancy group - PRIMARY, SECONDARY
+        Priority type-Primary or Secondary
         """
         return pulumi.get(self, "priority")
 
@@ -3308,12 +3308,12 @@ class ConnectionZSideAccessPointProfile(dict):
                  href: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param Union[str, 'ProfileType'] type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param Union[str, 'ProfileType'] type: Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
+        :param str uuid: Equinix assigned service profile identifier
         :param Sequence['ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs'] access_point_type_configs: Access point config information
         :param str description: User-provided service description
-        :param str href: Unique Resource Identifier
-        :param str name: Port name
+        :param str href: Service Profile URI response attribute
+        :param str name: Customer-assigned service profile name
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -3330,7 +3330,7 @@ class ConnectionZSideAccessPointProfile(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Interface type
+        Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -3338,7 +3338,7 @@ class ConnectionZSideAccessPointProfile(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix assigned service profile identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3362,7 +3362,7 @@ class ConnectionZSideAccessPointProfile(dict):
     @pulumi.getter
     def href(self) -> Optional[str]:
         """
-        Unique Resource Identifier
+        Service Profile URI response attribute
         """
         return pulumi.get(self, "href")
 
@@ -3370,7 +3370,7 @@ class ConnectionZSideAccessPointProfile(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Port name
+        Customer-assigned service profile name
         """
         return pulumi.get(self, "name")
 
@@ -3381,8 +3381,8 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str type: Type of access point type config - VD, COLO
+        :param str uuid: Equinix-assigned access point type config identifier
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -3393,7 +3393,7 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Type of access point type config - VD, COLO
         """
         return pulumi.get(self, "type")
 
@@ -3401,7 +3401,7 @@ class ConnectionZSideAccessPointProfileAccessPointTypeConfig(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned access point type config identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3446,9 +3446,9 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
                  uuid: Optional[str] = None):
         """
         :param str href: Unique Resource Identifier
-        :param str name: Port name
-        :param str type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str name: Customer-assigned Virtual Device Name
+        :param str type: Virtual Device type
+        :param str uuid: Equinix-assigned Virtual Device identifier
         """
         if href is not None:
             pulumi.set(__self__, "href", href)
@@ -3471,7 +3471,7 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Port name
+        Customer-assigned Virtual Device Name
         """
         return pulumi.get(self, "name")
 
@@ -3479,7 +3479,7 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Virtual Device type
         """
         return pulumi.get(self, "type")
 
@@ -3487,7 +3487,7 @@ class ConnectionZSideAccessPointVirtualDevice(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned Virtual Device identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -3531,10 +3531,10 @@ class ConnectionZSideServiceToken(dict):
                  type: Optional[str] = None,
                  uuid: Optional[str] = None):
         """
-        :param str description: User-provided service description
-        :param str href: Unique Resource Identifier
-        :param Union[str, 'ServiceTokenType'] type: Interface type
-        :param str uuid: Equinix-assigned virtual gateway identifier
+        :param str description: Service token description
+        :param str href: An absolute URL that is the subject of the link's context
+        :param Union[str, 'ServiceTokenType'] type: Token type - VC_TOKEN
+        :param str uuid: Equinix-assigned service token identifier
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -3549,7 +3549,7 @@ class ConnectionZSideServiceToken(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        User-provided service description
+        Service token description
         """
         return pulumi.get(self, "description")
 
@@ -3557,7 +3557,7 @@ class ConnectionZSideServiceToken(dict):
     @pulumi.getter
     def href(self) -> Optional[str]:
         """
-        Unique Resource Identifier
+        An absolute URL that is the subject of the link's context
         """
         return pulumi.get(self, "href")
 
@@ -3565,7 +3565,7 @@ class ConnectionZSideServiceToken(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Interface type
+        Token type - VC_TOKEN
         """
         return pulumi.get(self, "type")
 
@@ -3573,7 +3573,7 @@ class ConnectionZSideServiceToken(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        Equinix-assigned virtual gateway identifier
+        Equinix-assigned service token identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -5565,7 +5565,7 @@ class ServiceProfileMarketingInfoProcessStep(dict):
                  sub_title: Optional[str] = None,
                  title: Optional[str] = None):
         """
-        :param str description: Description of authorization key
+        :param str description: Description
         :param str sub_title: Sub Title
         :param str title: Title
         """
@@ -5580,7 +5580,7 @@ class ServiceProfileMarketingInfoProcessStep(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description of authorization key
+        Description
         """
         return pulumi.get(self, "description")
 
@@ -6518,6 +6518,7 @@ class GetConnectionASideAccessPointResult(dict):
     def __init__(__self__, *,
                  accounts: Sequence['outputs.GetConnectionASideAccessPointAccountResult'],
                  location: 'outputs.GetConnectionASideAccessPointLocationResult',
+                 provider_connection_id: str,
                  authentication_key: Optional[str] = None,
                  gateway: Optional['outputs.GetConnectionASideAccessPointGatewayResult'] = None,
                  interface: Optional['outputs.GetConnectionASideAccessPointInterfaceResult'] = None,
@@ -6526,7 +6527,6 @@ class GetConnectionASideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionASideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionASideAccessPointProfileResult'] = None,
-                 provider_connection_id: Optional[str] = None,
                  router: Optional['outputs.GetConnectionASideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -6534,6 +6534,7 @@ class GetConnectionASideAccessPointResult(dict):
         """
         :param Sequence['GetConnectionASideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionASideAccessPointLocationArgs' location: Access point location
+        :param str provider_connection_id: Provider assigned Connection Id
         :param str authentication_key: Authentication key for provider based connections
         :param 'GetConnectionASideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionASideAccessPointInterfaceArgs' interface: Virtual device interface
@@ -6542,7 +6543,6 @@ class GetConnectionASideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionASideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionASideAccessPointProfileArgs' profile: Service Profile
-        :param str provider_connection_id: Provider assigned Connection Id
         :param 'GetConnectionASideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
@@ -6550,6 +6550,7 @@ class GetConnectionASideAccessPointResult(dict):
         """
         pulumi.set(__self__, "accounts", accounts)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if authentication_key is not None:
             pulumi.set(__self__, "authentication_key", authentication_key)
         if gateway is not None:
@@ -6566,8 +6567,6 @@ class GetConnectionASideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
-        if provider_connection_id is not None:
-            pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -6592,6 +6591,14 @@ class GetConnectionASideAccessPointResult(dict):
         Access point location
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="providerConnectionId")
+    def provider_connection_id(self) -> str:
+        """
+        Provider assigned Connection Id
+        """
+        return pulumi.get(self, "provider_connection_id")
 
     @property
     @pulumi.getter(name="authenticationKey")
@@ -6659,14 +6666,6 @@ class GetConnectionASideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
-
-    @property
-    @pulumi.getter(name="providerConnectionId")
-    def provider_connection_id(self) -> Optional[str]:
-        """
-        Provider assigned Connection Id
-        """
-        return pulumi.get(self, "provider_connection_id")
 
     @property
     @pulumi.getter
@@ -7106,7 +7105,7 @@ class GetConnectionASideAccessPointProfileResult(dict):
         :param str description: User-provided service description
         :param str href: Service Profile URI response attribute
         :param str name: Customer-assigned service profile name
-        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         :param str uuid: Equinix assigned service profile identifier
         """
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
@@ -7152,7 +7151,7 @@ class GetConnectionASideAccessPointProfileResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -7171,8 +7170,8 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
                  type: str,
                  uuid: str):
         """
-        :param str type: Type of access point type config - VD, COLO
-        :param str uuid: Equinix-assigned access point type config identifier
+        :param str type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        :param str uuid: Equinix-assigned connection identifier
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -7181,7 +7180,7 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of access point type config - VD, COLO
+        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         """
         return pulumi.get(self, "type")
 
@@ -7189,7 +7188,7 @@ class GetConnectionASideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned access point type config identifier
+        Equinix-assigned connection identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -7936,6 +7935,7 @@ class GetConnectionZSideAccessPointResult(dict):
     def __init__(__self__, *,
                  accounts: Sequence['outputs.GetConnectionZSideAccessPointAccountResult'],
                  location: 'outputs.GetConnectionZSideAccessPointLocationResult',
+                 provider_connection_id: str,
                  authentication_key: Optional[str] = None,
                  gateway: Optional['outputs.GetConnectionZSideAccessPointGatewayResult'] = None,
                  interface: Optional['outputs.GetConnectionZSideAccessPointInterfaceResult'] = None,
@@ -7944,7 +7944,6 @@ class GetConnectionZSideAccessPointResult(dict):
                  peering_type: Optional[str] = None,
                  port: Optional['outputs.GetConnectionZSideAccessPointPortResult'] = None,
                  profile: Optional['outputs.GetConnectionZSideAccessPointProfileResult'] = None,
-                 provider_connection_id: Optional[str] = None,
                  router: Optional['outputs.GetConnectionZSideAccessPointRouterResult'] = None,
                  seller_region: Optional[str] = None,
                  type: Optional[str] = None,
@@ -7952,6 +7951,7 @@ class GetConnectionZSideAccessPointResult(dict):
         """
         :param Sequence['GetConnectionZSideAccessPointAccountArgs'] accounts: Account
         :param 'GetConnectionZSideAccessPointLocationArgs' location: Access point location
+        :param str provider_connection_id: Provider assigned Connection Id
         :param str authentication_key: Authentication key for provider based connections
         :param 'GetConnectionZSideAccessPointGatewayArgs' gateway: **Deprecated** `gateway` Use `router` attribute instead
         :param 'GetConnectionZSideAccessPointInterfaceArgs' interface: Virtual device interface
@@ -7960,7 +7960,6 @@ class GetConnectionZSideAccessPointResult(dict):
         :param str peering_type: Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
         :param 'GetConnectionZSideAccessPointPortArgs' port: Port access point information
         :param 'GetConnectionZSideAccessPointProfileArgs' profile: Service Profile
-        :param str provider_connection_id: Provider assigned Connection Id
         :param 'GetConnectionZSideAccessPointRouterArgs' router: Cloud Router access point information that replaces `gateway`
         :param str seller_region: Access point seller region
         :param str type: Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
@@ -7968,6 +7967,7 @@ class GetConnectionZSideAccessPointResult(dict):
         """
         pulumi.set(__self__, "accounts", accounts)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if authentication_key is not None:
             pulumi.set(__self__, "authentication_key", authentication_key)
         if gateway is not None:
@@ -7984,8 +7984,6 @@ class GetConnectionZSideAccessPointResult(dict):
             pulumi.set(__self__, "port", port)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
-        if provider_connection_id is not None:
-            pulumi.set(__self__, "provider_connection_id", provider_connection_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if seller_region is not None:
@@ -8010,6 +8008,14 @@ class GetConnectionZSideAccessPointResult(dict):
         Access point location
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="providerConnectionId")
+    def provider_connection_id(self) -> str:
+        """
+        Provider assigned Connection Id
+        """
+        return pulumi.get(self, "provider_connection_id")
 
     @property
     @pulumi.getter(name="authenticationKey")
@@ -8077,14 +8083,6 @@ class GetConnectionZSideAccessPointResult(dict):
         Service Profile
         """
         return pulumi.get(self, "profile")
-
-    @property
-    @pulumi.getter(name="providerConnectionId")
-    def provider_connection_id(self) -> Optional[str]:
-        """
-        Provider assigned Connection Id
-        """
-        return pulumi.get(self, "provider_connection_id")
 
     @property
     @pulumi.getter
@@ -8524,7 +8522,7 @@ class GetConnectionZSideAccessPointProfileResult(dict):
         :param str description: User-provided service description
         :param str href: Service Profile URI response attribute
         :param str name: Customer-assigned service profile name
-        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         :param str uuid: Equinix assigned service profile identifier
         """
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
@@ -8570,7 +8568,7 @@ class GetConnectionZSideAccessPointProfileResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -8589,8 +8587,8 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
                  type: str,
                  uuid: str):
         """
-        :param str type: Type of access point type config - VD, COLO
-        :param str uuid: Equinix-assigned access point type config identifier
+        :param str type: Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
+        :param str uuid: Equinix-assigned connection identifier
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
@@ -8599,7 +8597,7 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of access point type config - VD, COLO
+        Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         """
         return pulumi.get(self, "type")
 
@@ -8607,7 +8605,7 @@ class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult(dict):
     @pulumi.getter
     def uuid(self) -> str:
         """
-        Equinix-assigned access point type config identifier
+        Equinix-assigned connection identifier
         """
         return pulumi.get(self, "uuid")
 
@@ -11834,6 +11832,7 @@ class GetServiceProfilesDatumResult(dict):
                  tags: Sequence[str],
                  type: str,
                  uuid: str,
+                 view_point: str,
                  virtual_devices: Sequence['outputs.GetServiceProfilesDatumVirtualDeviceResult'],
                  visibility: str):
         """
@@ -11853,8 +11852,9 @@ class GetServiceProfilesDatumResult(dict):
         :param bool self_profile: Self Profile indicating if the profile is created for customer's  self use
         :param str state: Service profile state - ACTIVE, PENDING_APPROVAL, DELETED, REJECTED
         :param Sequence[str] tags: Tags attached to the connection
-        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        :param str type: Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         :param str uuid: Equinix assigned service profile identifier
+        :param str view_point: flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
         :param Sequence['GetServiceProfilesDatumVirtualDeviceArgs'] virtual_devices: Virtual Devices
         :param str visibility: Service profile visibility - PUBLIC, PRIVATE
         """
@@ -11876,6 +11876,7 @@ class GetServiceProfilesDatumResult(dict):
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "view_point", view_point)
         pulumi.set(__self__, "virtual_devices", virtual_devices)
         pulumi.set(__self__, "visibility", visibility)
 
@@ -12011,7 +12012,7 @@ class GetServiceProfilesDatumResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         """
         return pulumi.get(self, "type")
 
@@ -12022,6 +12023,14 @@ class GetServiceProfilesDatumResult(dict):
         Equinix assigned service profile identifier
         """
         return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter(name="viewPoint")
+    def view_point(self) -> str:
+        """
+        flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        """
+        return pulumi.get(self, "view_point")
 
     @property
     @pulumi.getter(name="virtualDevices")

@@ -17,17 +17,17 @@ public final class ConnectionASideAccessPointVirtualDevice {
      */
     private @Nullable String href;
     /**
-     * @return Port name
+     * @return Customer-assigned Virtual Device Name
      * 
      */
     private @Nullable String name;
     /**
-     * @return Interface type
+     * @return Virtual Device type
      * 
      */
     private @Nullable String type;
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Virtual Device identifier
      * 
      */
     private @Nullable String uuid;
@@ -41,21 +41,21 @@ public final class ConnectionASideAccessPointVirtualDevice {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Port name
+     * @return Customer-assigned Virtual Device Name
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Interface type
+     * @return Virtual Device type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Virtual Device identifier
      * 
      */
     public Optional<String> uuid() {

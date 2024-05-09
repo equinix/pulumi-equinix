@@ -163,7 +163,7 @@ class DeviceNetwork(dict):
                  public: Optional[bool] = None):
         """
         :param str address: IPv4 or IPv6 address string.
-        :param int cidr: CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+        :param int cidr: Bit length of the network mask of the address.
         :param int family: IP version. One of `4`, `6`.
         :param str gateway: Address of router.
         :param bool public: Whether the address is routable from the Internet.
@@ -191,7 +191,7 @@ class DeviceNetwork(dict):
     @pulumi.getter
     def cidr(self) -> Optional[int]:
         """
-        CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+        Bit length of the network mask of the address.
         """
         return pulumi.get(self, "cidr")
 
@@ -233,7 +233,7 @@ class DevicePort(dict):
         :param str id: ID of the port.
         :param str mac: MAC address assigned to the port.
         :param str name: Name of the port (e.g. `eth0`, or `bond0`).
-        :param str type: One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+        :param str type: Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
         """
         if bonded is not None:
             pulumi.set(__self__, "bonded", bonded)
@@ -282,7 +282,7 @@ class DevicePort(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+        Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
         """
         return pulumi.get(self, "type")
 
@@ -1617,7 +1617,7 @@ class GetDevicesSortResult(dict):
                  attribute: str,
                  direction: Optional[str] = None):
         """
-        :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
+        :param str attribute: The attribute used to sort the results. Sort attributes are case-sensitive
         :param str direction: Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -1628,7 +1628,7 @@ class GetDevicesSortResult(dict):
     @pulumi.getter
     def attribute(self) -> str:
         """
-        The attribute used to filter. Filter attributes are case-sensitive
+        The attribute used to sort the results. Sort attributes are case-sensitive
         """
         return pulumi.get(self, "attribute")
 
@@ -2125,7 +2125,7 @@ class GetPlansSortResult(dict):
                  attribute: str,
                  direction: Optional[str] = None):
         """
-        :param str attribute: The attribute used to filter. Filter attributes are case-sensitive
+        :param str attribute: The attribute used to sort the results. Sort attributes are case-sensitive
         :param str direction: Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -2136,7 +2136,7 @@ class GetPlansSortResult(dict):
     @pulumi.getter
     def attribute(self) -> str:
         """
-        The attribute used to filter. Filter attributes are case-sensitive
+        The attribute used to sort the results. Sort attributes are case-sensitive
         """
         return pulumi.get(self, "attribute")
 

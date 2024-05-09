@@ -53,14 +53,14 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Resource URL
+     * Fabric Cloud Router URI information
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Unique Resource URL
+     * @return Fabric Cloud Router URI information
      * 
      */
     public Optional<Output<String>> href() {
@@ -116,15 +116,15 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
      * Order information related to this Fabric Cloud Router
      * 
      */
-    @Import(name="order", required=true)
-    private Output<CloudRouterOrderArgs> order;
+    @Import(name="order")
+    private @Nullable Output<CloudRouterOrderArgs> order;
 
     /**
      * @return Order information related to this Fabric Cloud Router
      * 
      */
-    public Output<CloudRouterOrderArgs> order() {
-        return this.order;
+    public Optional<Output<CloudRouterOrderArgs>> order() {
+        return Optional.ofNullable(this.order);
     }
 
     /**
@@ -143,14 +143,14 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     @Import(name="project", required=true)
     private Output<CloudRouterProjectArgs> project;
 
     /**
-     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * @return Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     public Output<CloudRouterProjectArgs> project() {
@@ -158,14 +158,14 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * Defines the FCR type like; XF_ROUTER
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * @return Defines the FCR type like; XF_ROUTER
      * 
      */
     public Output<String> type() {
@@ -264,7 +264,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Unique Resource URL
+         * @param href Fabric Cloud Router URI information
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Unique Resource URL
+         * @param href Fabric Cloud Router URI information
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder order(Output<CloudRouterOrderArgs> order) {
+        public Builder order(@Nullable Output<CloudRouterOrderArgs> order) {
             $.order = order;
             return this;
         }
@@ -400,7 +400,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+         * @param project Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+         * @param project Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         * @param type Defines the FCR type like; XF_ROUTER
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         * @param type Defines the FCR type like; XF_ROUTER
          * 
          * @return builder
          * 
@@ -466,7 +466,6 @@ public final class CloudRouterArgs extends com.pulumi.resources.ResourceArgs {
             $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             $.notifications = Objects.requireNonNull($.notifications, "expected parameter 'notifications' to be non-null");
-            $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
             $.package_ = Objects.requireNonNull($.package_, "expected parameter 'package' to be non-null");
             $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");

@@ -197,7 +197,7 @@ export namespace fabric {
         /**
          * Provider assigned Connection Id
          */
-        providerConnectionId?: string;
+        providerConnectionId: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -207,7 +207,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Interface type
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          */
         type?: string;
         /**
@@ -272,14 +272,14 @@ export namespace fabric {
          */
         type?: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned interface identifier
          */
         uuid?: string;
     }
 
     export interface ConnectionASideAccessPointLinkProtocol {
         /**
-         * Interface type
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          */
         type?: string;
         /**
@@ -321,7 +321,7 @@ export namespace fabric {
          */
         href: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Network identifier
          */
         uuid?: string;
     }
@@ -340,7 +340,7 @@ export namespace fabric {
          */
         redundancy: outputs.fabric.ConnectionASideAccessPointPortRedundancy;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Port identifier
          */
         uuid: string;
     }
@@ -351,11 +351,11 @@ export namespace fabric {
          */
         enabled: boolean;
         /**
-         * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * Port redundancy group
          */
         group: string;
         /**
-         * Connection priority in redundancy group - PRIMARY, SECONDARY
+         * Priority type-Primary or Secondary
          */
         priority: string;
     }
@@ -370,30 +370,30 @@ export namespace fabric {
          */
         description: string;
         /**
-         * Unique Resource Identifier
+         * Service Profile URI response attribute
          */
         href: string;
         /**
-         * Port name
+         * Customer-assigned service profile name
          */
         name: string;
         /**
-         * Interface type
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          */
         type: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix assigned service profile identifier
          */
         uuid: string;
     }
 
     export interface ConnectionASideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Interface type
+         * Type of access point type config - VD, COLO
          */
         type: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned access point type config identifier
          */
         uuid: string;
     }
@@ -415,15 +415,15 @@ export namespace fabric {
          */
         href: string;
         /**
-         * Port name
+         * Customer-assigned Virtual Device Name
          */
         name?: string;
         /**
-         * Interface type
+         * Virtual Device type
          */
         type?: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Virtual Device identifier
          */
         uuid?: string;
     }
@@ -441,19 +441,19 @@ export namespace fabric {
 
     export interface ConnectionASideServiceToken {
         /**
-         * User-provided service description
+         * Service token description
          */
         description: string;
         /**
-         * Unique Resource Identifier
+         * An absolute URL that is the subject of the link's context
          */
         href: string;
         /**
-         * Interface type
+         * Token type - VC_TOKEN
          */
         type?: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned service token identifier
          */
         uuid?: string;
     }
@@ -576,7 +576,7 @@ export namespace fabric {
 
     export interface ConnectionOperationError {
         /**
-         * Connection side additional information
+         * Pricing error additional Info
          */
         additionalInfo: outputs.fabric.ConnectionOperationErrorAdditionalInfo[];
         /**
@@ -714,7 +714,7 @@ export namespace fabric {
         /**
          * Provider assigned Connection Id
          */
-        providerConnectionId?: string;
+        providerConnectionId: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -724,7 +724,7 @@ export namespace fabric {
          */
         sellerRegion?: string;
         /**
-         * Interface type
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          */
         type?: string;
         /**
@@ -789,14 +789,14 @@ export namespace fabric {
          */
         type?: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned interface identifier
          */
         uuid?: string;
     }
 
     export interface ConnectionZSideAccessPointLinkProtocol {
         /**
-         * Interface type
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          */
         type?: string;
         /**
@@ -838,7 +838,7 @@ export namespace fabric {
          */
         href: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Network identifier
          */
         uuid?: string;
     }
@@ -857,7 +857,7 @@ export namespace fabric {
          */
         redundancy: outputs.fabric.ConnectionZSideAccessPointPortRedundancy;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Port identifier
          */
         uuid: string;
     }
@@ -868,11 +868,11 @@ export namespace fabric {
          */
         enabled: boolean;
         /**
-         * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * Port redundancy group
          */
         group: string;
         /**
-         * Connection priority in redundancy group - PRIMARY, SECONDARY
+         * Priority type-Primary or Secondary
          */
         priority: string;
     }
@@ -887,30 +887,30 @@ export namespace fabric {
          */
         description: string;
         /**
-         * Unique Resource Identifier
+         * Service Profile URI response attribute
          */
         href: string;
         /**
-         * Port name
+         * Customer-assigned service profile name
          */
         name: string;
         /**
-         * Interface type
+         * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          */
         type: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix assigned service profile identifier
          */
         uuid: string;
     }
 
     export interface ConnectionZSideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Interface type
+         * Type of access point type config - VD, COLO
          */
         type: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned access point type config identifier
          */
         uuid: string;
     }
@@ -932,15 +932,15 @@ export namespace fabric {
          */
         href: string;
         /**
-         * Port name
+         * Customer-assigned Virtual Device Name
          */
         name?: string;
         /**
-         * Interface type
+         * Virtual Device type
          */
         type?: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned Virtual Device identifier
          */
         uuid?: string;
     }
@@ -958,19 +958,19 @@ export namespace fabric {
 
     export interface ConnectionZSideServiceToken {
         /**
-         * User-provided service description
+         * Service token description
          */
         description: string;
         /**
-         * Unique Resource Identifier
+         * An absolute URL that is the subject of the link's context
          */
         href: string;
         /**
-         * Interface type
+         * Token type - VC_TOKEN
          */
         type?: string;
         /**
-         * Equinix-assigned virtual gateway identifier
+         * Equinix-assigned service token identifier
          */
         uuid?: string;
     }
@@ -1165,7 +1165,7 @@ export namespace fabric {
         /**
          * Provider assigned Connection Id
          */
-        providerConnectionId?: string;
+        providerConnectionId: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -1346,7 +1346,7 @@ export namespace fabric {
          */
         name: string;
         /**
-         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
          */
         type: string;
         /**
@@ -1357,11 +1357,11 @@ export namespace fabric {
 
     export interface GetConnectionASideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Type of access point type config - VD, COLO
+         * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          */
         type: string;
         /**
-         * Equinix-assigned access point type config identifier
+         * Equinix-assigned connection identifier
          */
         uuid: string;
     }
@@ -1682,7 +1682,7 @@ export namespace fabric {
         /**
          * Provider assigned Connection Id
          */
-        providerConnectionId?: string;
+        providerConnectionId: string;
         /**
          * Cloud Router access point information that replaces `gateway`
          */
@@ -1863,7 +1863,7 @@ export namespace fabric {
          */
         name: string;
         /**
-         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
          */
         type: string;
         /**
@@ -1874,11 +1874,11 @@ export namespace fabric {
 
     export interface GetConnectionZSideAccessPointProfileAccessPointTypeConfig {
         /**
-         * Type of access point type config - VD, COLO
+         * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          */
         type: string;
         /**
-         * Equinix-assigned access point type config identifier
+         * Equinix-assigned connection identifier
          */
         uuid: string;
     }
@@ -3116,13 +3116,17 @@ export namespace fabric {
          */
         tags: string[];
         /**
-         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
          */
         type: string;
         /**
          * Equinix assigned service profile identifier
          */
         uuid: string;
+        /**
+         * flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+         */
+        viewPoint: string;
         /**
          * Virtual Devices
          */
@@ -4090,7 +4094,7 @@ export namespace fabric {
 
     export interface ServiceProfileMarketingInfoProcessStep {
         /**
-         * Description of authorization key
+         * Description
          */
         description?: string;
         /**
@@ -4278,7 +4282,7 @@ export namespace metal {
          */
         address: string;
         /**
-         * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * Bit length of the network mask of the address.
          */
         cidr: number;
         /**
@@ -4313,7 +4317,7 @@ export namespace metal {
          */
         name: string;
         /**
-         * One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+         * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
          */
         type: string;
     }
@@ -4615,7 +4619,7 @@ export namespace metal {
 
     export interface GetDevicesSort {
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * The attribute used to sort the results. Sort attributes are case-sensitive
          */
         attribute: string;
         /**
@@ -4802,7 +4806,7 @@ export namespace metal {
 
     export interface GetPlansSort {
         /**
-         * The attribute used to filter. Filter attributes are case-sensitive
+         * The attribute used to sort the results. Sort attributes are case-sensitive
          */
         attribute: string;
         /**
@@ -5024,12 +5028,11 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode0 {
         /**
-         * Identifier of a license file that will be applied on the device.
+         * License file id. This is necessary for Fortinet and Juniper clusters.
          */
         licenseFileId?: string;
         /**
-         * License Token applicable for some device types in BYOL licensing
-         * mode.
+         * License token. This is necessary for Palo Alto clusters.
          */
         licenseToken?: string;
         /**
@@ -5041,10 +5044,9 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         * on a device (max one key).  See SSH Key below for more details.
+         * An object that has fields relevant to the vendor of the
+         * cluster device. See Cluster Details - Nodes - Vendor Configuration
+         * below for more details.
          */
         vendorConfiguration?: outputs.networkedge.DeviceClusterDetailsNode0VendorConfiguration;
     }
@@ -5080,12 +5082,11 @@ export namespace networkedge {
 
     export interface DeviceClusterDetailsNode1 {
         /**
-         * Identifier of a license file that will be applied on the device.
+         * License file id. This is necessary for Fortinet and Juniper clusters.
          */
         licenseFileId?: string;
         /**
-         * License Token applicable for some device types in BYOL licensing
-         * mode.
+         * License token. This is necessary for Palo Alto clusters.
          */
         licenseToken?: string;
         /**
@@ -5097,10 +5098,9 @@ export namespace networkedge {
          */
         uuid: string;
         /**
-         * Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         * on a device (max one key).  See SSH Key below for more details.
+         * An object that has fields relevant to the vendor of the
+         * cluster device. See Cluster Details - Nodes - Vendor Configuration
+         * below for more details.
          */
         vendorConfiguration?: outputs.networkedge.DeviceClusterDetailsNode1VendorConfiguration;
     }
@@ -5220,6 +5220,26 @@ export namespace networkedge {
          * @deprecated SourceZoneCode is not required
          */
         srcZoneCode?: string;
+        /**
+         * connection throughput.
+         */
+        throughput: string;
+        /**
+         * connection throughput unit (Mbps or Gbps).
+         */
+        throughputUnit: string;
+    }
+
+    export interface DeviceLinkMetroLink {
+        /**
+         * billing account number to be used for
+         * connection charges
+         */
+        accountNumber: string;
+        /**
+         * connection metro code.
+         */
+        metroCode: string;
         /**
          * connection throughput.
          */

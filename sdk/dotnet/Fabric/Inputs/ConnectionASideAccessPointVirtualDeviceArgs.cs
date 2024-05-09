@@ -19,19 +19,19 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Port name
+        /// Customer-assigned Virtual Device Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Interface type
+        /// Virtual Device type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned Virtual Device identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

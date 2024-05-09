@@ -17,7 +17,6 @@ import (
 //
 // Lookup by metro:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSpotMarketPrice(ctx *pulumi.Context, args *GetSpotMarketPriceArgs, opts ...pulumi.InvokeOption) (*GetSpotMarketPriceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpotMarketPriceResult

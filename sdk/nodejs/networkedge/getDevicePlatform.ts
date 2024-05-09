@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     packages: ["IPBASE"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDevicePlatform(args: GetDevicePlatformArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicePlatformResult> {
 
@@ -100,7 +98,6 @@ export interface GetDevicePlatformResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -111,7 +108,6 @@ export interface GetDevicePlatformResult {
  *     packages: ["IPBASE"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDevicePlatformOutput(args: GetDevicePlatformOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePlatformResult> {
     return pulumi.output(args).apply((a: any) => getDevicePlatform(a, opts))

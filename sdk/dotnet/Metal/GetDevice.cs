@@ -22,7 +22,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,9 +42,7 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,7 +62,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDeviceResult> InvokeAsync(GetDeviceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceResult>("equinix:metal/getDevice:getDevice", args ?? new GetDeviceArgs(), options.WithDefaults());
@@ -81,7 +77,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,9 +97,7 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -124,7 +117,6 @@ namespace Pulumi.Equinix.Metal
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDeviceResult> Invoke(GetDeviceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceResult>("equinix:metal/getDevice:getDevice", args ?? new GetDeviceInvokeArgs(), options.WithDefaults());

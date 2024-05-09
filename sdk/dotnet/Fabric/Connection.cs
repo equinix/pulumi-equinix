@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Equinix.Fabric
 {
     /// <summary>
-    /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
-    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;
@@ -123,13 +121,13 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ConnectionASide> ASide { get; private set; } = null!;
 
         /// <summary>
-        /// Account
+        /// Customer account information that is associated with this connection
         /// </summary>
         [Output("account")]
         public Output<Outputs.ConnectionAccount> Account { get; private set; } = null!;
 
         /// <summary>
-        /// Connection side additional information
+        /// Connection additional information
         /// </summary>
         [Output("additionalInfo")]
         public Output<ImmutableArray<ImmutableDictionary<string, object>>> AdditionalInfo { get; private set; } = null!;
@@ -147,7 +145,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ConnectionChangeLog> ChangeLog { get; private set; } = null!;
 
         /// <summary>
-        /// User-provided service description
+        /// Customer-provided connection description
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -159,7 +157,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Resource Identifier
+        /// Connection URI information
         /// </summary>
         [Output("href")]
         public Output<string> Href { get; private set; } = null!;
@@ -171,7 +169,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<bool> IsRemote { get; private set; } = null!;
 
         /// <summary>
-        /// Port name
+        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -201,7 +199,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.ConnectionProject> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Redundancy Information
+        /// Connection Redundancy Configuration
         /// </summary>
         [Output("redundancy")]
         public Output<Outputs.ConnectionRedundancy?> Redundancy { get; private set; } = null!;
@@ -213,13 +211,13 @@ namespace Pulumi.Equinix.Fabric
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Interface type
+        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned connection identifier
         /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
@@ -287,7 +285,7 @@ namespace Pulumi.Equinix.Fabric
         private InputList<ImmutableDictionary<string, object>>? _additionalInfo;
 
         /// <summary>
-        /// Connection side additional information
+        /// Connection additional information
         /// </summary>
         public InputList<ImmutableDictionary<string, object>> AdditionalInfo
         {
@@ -302,13 +300,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<int> Bandwidth { get; set; } = null!;
 
         /// <summary>
-        /// User-provided service description
+        /// Customer-provided connection description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Port name
+        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -328,8 +326,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Order details
         /// </summary>
-        [Input("order", required: true)]
-        public Input<Inputs.ConnectionOrderArgs> Order { get; set; } = null!;
+        [Input("order")]
+        public Input<Inputs.ConnectionOrderArgs>? Order { get; set; }
 
         /// <summary>
         /// Project information
@@ -338,13 +336,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionProjectArgs>? Project { get; set; }
 
         /// <summary>
-        /// Redundancy Information
+        /// Connection Redundancy Configuration
         /// </summary>
         [Input("redundancy")]
         public Input<Inputs.ConnectionRedundancyArgs>? Redundancy { get; set; }
 
         /// <summary>
-        /// Interface type
+        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType> Type { get; set; } = null!;
@@ -370,7 +368,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionASideGetArgs>? ASide { get; set; }
 
         /// <summary>
-        /// Account
+        /// Customer account information that is associated with this connection
         /// </summary>
         [Input("account")]
         public Input<Inputs.ConnectionAccountGetArgs>? Account { get; set; }
@@ -379,7 +377,7 @@ namespace Pulumi.Equinix.Fabric
         private InputList<ImmutableDictionary<string, object>>? _additionalInfo;
 
         /// <summary>
-        /// Connection side additional information
+        /// Connection additional information
         /// </summary>
         public InputList<ImmutableDictionary<string, object>> AdditionalInfo
         {
@@ -400,7 +398,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionChangeLogGetArgs>? ChangeLog { get; set; }
 
         /// <summary>
-        /// User-provided service description
+        /// Customer-provided connection description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -412,7 +410,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Unique Resource Identifier
+        /// Connection URI information
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
@@ -424,7 +422,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<bool>? IsRemote { get; set; }
 
         /// <summary>
-        /// Port name
+        /// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -460,7 +458,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.ConnectionProjectGetArgs>? Project { get; set; }
 
         /// <summary>
-        /// Redundancy Information
+        /// Connection Redundancy Configuration
         /// </summary>
         [Input("redundancy")]
         public Input<Inputs.ConnectionRedundancyGetArgs>? Redundancy { get; set; }
@@ -472,13 +470,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Interface type
+        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ConnectionType>? Type { get; set; }
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned connection identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

@@ -127,7 +127,6 @@ def get_vlan(facility: Optional[str] = None,
 
     Fetch a vlan by ID:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -138,11 +137,9 @@ def get_vlan(facility: Optional[str] = None,
         vxlan=5)
     dsvlan = equinix.metal.get_vlan_output(vlan_id=foovlan.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Fetch a vlan by project ID, vxlan and metro
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -151,7 +148,6 @@ def get_vlan(facility: Optional[str] = None,
         vxlan=5,
         metro="sv")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros
@@ -197,7 +193,6 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
 
     Fetch a vlan by ID:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -208,11 +203,9 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
         vxlan=5)
     dsvlan = equinix.metal.get_vlan_output(vlan_id=foovlan.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Fetch a vlan by project ID, vxlan and metro
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -221,7 +214,6 @@ def get_vlan_output(facility: Optional[pulumi.Input[Optional[str]]] = None,
         vxlan=5,
         metro="sv")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str facility: Facility where the VLAN is deployed. Deprecated, see https://feedback.equinixmetal.com/changelog/bye-facilities-hello-again-metros

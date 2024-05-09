@@ -96,12 +96,20 @@ type DeviceLink struct {
 	Devices DeviceLinkDeviceArrayOutput `pulumi:"devices"`
 	// definition of one or more, inter metro, connections belonging
 	// to the device link. See Link section below for more details.
+	//
+	// Deprecated: Links is deprecated. Please use metro links instead.
 	Links DeviceLinkLinkArrayOutput `pulumi:"links"`
+	// definition of one or more, inter metro, connections belonging
+	// to the device link. See Metro Link section below for more details.
+	MetroLinks DeviceLinkMetroLinkArrayOutput `pulumi:"metroLinks"`
 	// device link name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique Identifier for the project resource where the device link is scoped to.If you
 	// leave it out, the device link will be created under the default project id of your organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Whether the connection should be created through
+	// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
 	// device link provisioning status on a given device. One of `PROVISIONING`,
 	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -150,12 +158,20 @@ type deviceLinkState struct {
 	Devices []DeviceLinkDevice `pulumi:"devices"`
 	// definition of one or more, inter metro, connections belonging
 	// to the device link. See Link section below for more details.
+	//
+	// Deprecated: Links is deprecated. Please use metro links instead.
 	Links []DeviceLinkLink `pulumi:"links"`
+	// definition of one or more, inter metro, connections belonging
+	// to the device link. See Metro Link section below for more details.
+	MetroLinks []DeviceLinkMetroLink `pulumi:"metroLinks"`
 	// device link name.
 	Name *string `pulumi:"name"`
 	// Unique Identifier for the project resource where the device link is scoped to.If you
 	// leave it out, the device link will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
+	// Whether the connection should be created through
+	// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+	RedundancyType *string `pulumi:"redundancyType"`
 	// device link provisioning status on a given device. One of `PROVISIONING`,
 	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status *string `pulumi:"status"`
@@ -172,12 +188,20 @@ type DeviceLinkState struct {
 	Devices DeviceLinkDeviceArrayInput
 	// definition of one or more, inter metro, connections belonging
 	// to the device link. See Link section below for more details.
+	//
+	// Deprecated: Links is deprecated. Please use metro links instead.
 	Links DeviceLinkLinkArrayInput
+	// definition of one or more, inter metro, connections belonging
+	// to the device link. See Metro Link section below for more details.
+	MetroLinks DeviceLinkMetroLinkArrayInput
 	// device link name.
 	Name pulumi.StringPtrInput
 	// Unique Identifier for the project resource where the device link is scoped to.If you
 	// leave it out, the device link will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
+	// Whether the connection should be created through
+	// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+	RedundancyType pulumi.StringPtrInput
 	// device link provisioning status on a given device. One of `PROVISIONING`,
 	// `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
 	Status pulumi.StringPtrInput
@@ -198,12 +222,20 @@ type deviceLinkArgs struct {
 	Devices []DeviceLinkDevice `pulumi:"devices"`
 	// definition of one or more, inter metro, connections belonging
 	// to the device link. See Link section below for more details.
+	//
+	// Deprecated: Links is deprecated. Please use metro links instead.
 	Links []DeviceLinkLink `pulumi:"links"`
+	// definition of one or more, inter metro, connections belonging
+	// to the device link. See Metro Link section below for more details.
+	MetroLinks []DeviceLinkMetroLink `pulumi:"metroLinks"`
 	// device link name.
 	Name *string `pulumi:"name"`
 	// Unique Identifier for the project resource where the device link is scoped to.If you
 	// leave it out, the device link will be created under the default project id of your organization.
 	ProjectId *string `pulumi:"projectId"`
+	// Whether the connection should be created through
+	// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+	RedundancyType *string `pulumi:"redundancyType"`
 	// device link subnet in CIDR format. Not required for link
 	// between self configured devices.
 	Subnet *string `pulumi:"subnet"`
@@ -216,12 +248,20 @@ type DeviceLinkArgs struct {
 	Devices DeviceLinkDeviceArrayInput
 	// definition of one or more, inter metro, connections belonging
 	// to the device link. See Link section below for more details.
+	//
+	// Deprecated: Links is deprecated. Please use metro links instead.
 	Links DeviceLinkLinkArrayInput
+	// definition of one or more, inter metro, connections belonging
+	// to the device link. See Metro Link section below for more details.
+	MetroLinks DeviceLinkMetroLinkArrayInput
 	// device link name.
 	Name pulumi.StringPtrInput
 	// Unique Identifier for the project resource where the device link is scoped to.If you
 	// leave it out, the device link will be created under the default project id of your organization.
 	ProjectId pulumi.StringPtrInput
+	// Whether the connection should be created through
+	// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+	RedundancyType pulumi.StringPtrInput
 	// device link subnet in CIDR format. Not required for link
 	// between self configured devices.
 	Subnet pulumi.StringPtrInput
@@ -322,8 +362,16 @@ func (o DeviceLinkOutput) Devices() DeviceLinkDeviceArrayOutput {
 
 // definition of one or more, inter metro, connections belonging
 // to the device link. See Link section below for more details.
+//
+// Deprecated: Links is deprecated. Please use metro links instead.
 func (o DeviceLinkOutput) Links() DeviceLinkLinkArrayOutput {
 	return o.ApplyT(func(v *DeviceLink) DeviceLinkLinkArrayOutput { return v.Links }).(DeviceLinkLinkArrayOutput)
+}
+
+// definition of one or more, inter metro, connections belonging
+// to the device link. See Metro Link section below for more details.
+func (o DeviceLinkOutput) MetroLinks() DeviceLinkMetroLinkArrayOutput {
+	return o.ApplyT(func(v *DeviceLink) DeviceLinkMetroLinkArrayOutput { return v.MetroLinks }).(DeviceLinkMetroLinkArrayOutput)
 }
 
 // device link name.
@@ -335,6 +383,12 @@ func (o DeviceLinkOutput) Name() pulumi.StringOutput {
 // leave it out, the device link will be created under the default project id of your organization.
 func (o DeviceLinkOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceLink) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Whether the connection should be created through
+// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+func (o DeviceLinkOutput) RedundancyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceLink) pulumi.StringPtrOutput { return v.RedundancyType }).(pulumi.StringPtrOutput)
 }
 
 // device link provisioning status on a given device. One of `PROVISIONING`,

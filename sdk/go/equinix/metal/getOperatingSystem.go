@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetOperatingSystem(ctx *pulumi.Context, args *GetOperatingSystemArgs, opts ...pulumi.InvokeOption) (*GetOperatingSystemResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOperatingSystemResult

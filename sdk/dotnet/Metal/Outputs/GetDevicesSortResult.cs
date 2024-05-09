@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Metal.Outputs
     public sealed class GetDevicesSortResult
     {
         /// <summary>
-        /// The attribute used to filter. Filter attributes are case-sensitive
+        /// The attribute used to sort the results. Sort attributes are case-sensitive
         /// </summary>
         public readonly string Attribute;
         /// <summary>

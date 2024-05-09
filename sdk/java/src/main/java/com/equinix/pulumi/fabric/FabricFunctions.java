@@ -68,6 +68,16 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.id()));
+     *         ctx.export(&#34;name&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.name()));
+     *         ctx.export(&#34;accountNumber&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export(&#34;equinixAsn&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.equinixAsn()));
+     *         ctx.export(&#34;metroCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroCode()));
+     *         ctx.export(&#34;metroName&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroName()));
+     *         ctx.export(&#34;region&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].region()));
+     *         ctx.export(&#34;packageCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.packages()[0].code()));
+     *         ctx.export(&#34;projectId&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export(&#34;type&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.type()));
      *     }
      * }
      * ```
@@ -110,6 +120,16 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.id()));
+     *         ctx.export(&#34;name&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.name()));
+     *         ctx.export(&#34;accountNumber&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export(&#34;equinixAsn&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.equinixAsn()));
+     *         ctx.export(&#34;metroCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroCode()));
+     *         ctx.export(&#34;metroName&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroName()));
+     *         ctx.export(&#34;region&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].region()));
+     *         ctx.export(&#34;packageCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.packages()[0].code()));
+     *         ctx.export(&#34;projectId&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export(&#34;type&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.type()));
      *     }
      * }
      * ```
@@ -152,6 +172,16 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.id()));
+     *         ctx.export(&#34;name&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.name()));
+     *         ctx.export(&#34;accountNumber&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export(&#34;equinixAsn&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.equinixAsn()));
+     *         ctx.export(&#34;metroCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroCode()));
+     *         ctx.export(&#34;metroName&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroName()));
+     *         ctx.export(&#34;region&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].region()));
+     *         ctx.export(&#34;packageCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.packages()[0].code()));
+     *         ctx.export(&#34;projectId&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export(&#34;type&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.type()));
      *     }
      * }
      * ```
@@ -194,6 +224,16 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_cloud_router&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.id()));
+     *         ctx.export(&#34;name&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.name()));
+     *         ctx.export(&#34;accountNumber&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.accounts()[0].accountNumber()));
+     *         ctx.export(&#34;equinixAsn&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.equinixAsn()));
+     *         ctx.export(&#34;metroCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroCode()));
+     *         ctx.export(&#34;metroName&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].metroName()));
+     *         ctx.export(&#34;region&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.locations()[0].region()));
+     *         ctx.export(&#34;packageCode&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.packages()[0].code()));
+     *         ctx.export(&#34;projectId&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.projects()[0].projectId()));
+     *         ctx.export(&#34;type&#34;, cloudRouterDataName.applyValue(getCloudRouterResult -&gt; getCloudRouterResult.type()));
      *     }
      * }
      * ```
@@ -234,6 +274,21 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.id()));
+     *         ctx.export(&#34;name&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;accountNumber&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.account().accountNumber()));
+     *         ctx.export(&#34;bandwidth&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;projectId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.project().projectId()));
+     *         ctx.export(&#34;redundancyGroup&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().group()));
+     *         ctx.export(&#34;redundancyPriority&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().priority()));
+     *         ctx.export(&#34;state&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.state()));
+     *         ctx.export(&#34;type&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.type()));
+     *         ctx.export(&#34;accessPointType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanCTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanSTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
+     *         ctx.export(&#34;accessPointProviderConnectionId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().providerConnectionId()));
      *     }
      * }
      * ```
@@ -274,6 +329,21 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.id()));
+     *         ctx.export(&#34;name&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;accountNumber&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.account().accountNumber()));
+     *         ctx.export(&#34;bandwidth&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;projectId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.project().projectId()));
+     *         ctx.export(&#34;redundancyGroup&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().group()));
+     *         ctx.export(&#34;redundancyPriority&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().priority()));
+     *         ctx.export(&#34;state&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.state()));
+     *         ctx.export(&#34;type&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.type()));
+     *         ctx.export(&#34;accessPointType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanCTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanSTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
+     *         ctx.export(&#34;accessPointProviderConnectionId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().providerConnectionId()));
      *     }
      * }
      * ```
@@ -314,6 +384,21 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.id()));
+     *         ctx.export(&#34;name&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;accountNumber&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.account().accountNumber()));
+     *         ctx.export(&#34;bandwidth&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;projectId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.project().projectId()));
+     *         ctx.export(&#34;redundancyGroup&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().group()));
+     *         ctx.export(&#34;redundancyPriority&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().priority()));
+     *         ctx.export(&#34;state&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.state()));
+     *         ctx.export(&#34;type&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.type()));
+     *         ctx.export(&#34;accessPointType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanCTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanSTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
+     *         ctx.export(&#34;accessPointProviderConnectionId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().providerConnectionId()));
      *     }
      * }
      * ```
@@ -354,6 +439,21 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_connection&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.id()));
+     *         ctx.export(&#34;name&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;accountNumber&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.account().accountNumber()));
+     *         ctx.export(&#34;bandwidth&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.bandwidth()));
+     *         ctx.export(&#34;projectId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.project().projectId()));
+     *         ctx.export(&#34;redundancyGroup&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().group()));
+     *         ctx.export(&#34;redundancyPriority&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.redundancy().priority()));
+     *         ctx.export(&#34;state&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.state()));
+     *         ctx.export(&#34;type&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.type()));
+     *         ctx.export(&#34;accessPointType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolType&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().type()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanCTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanCTag()));
+     *         ctx.export(&#34;accessPointLinkProtocolVlanSTag&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().linkProtocol().vlanSTag()));
+     *         ctx.export(&#34;accessPointProviderConnectionId&#34;, connectionDataName.applyValue(getConnectionResult -&gt; getConnectionResult.aSide().accessPoint().providerConnectionId()));
      *     }
      * }
      * ```
@@ -394,6 +494,11 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.id()));
+     *         ctx.export(&#34;name&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.name()));
+     *         ctx.export(&#34;scope&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.scope()));
+     *         ctx.export(&#34;type&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.type()));
+     *         ctx.export(&#34;region&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.locations()[0].region()));
      *     }
      * }
      * ```
@@ -434,6 +539,11 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.id()));
+     *         ctx.export(&#34;name&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.name()));
+     *         ctx.export(&#34;scope&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.scope()));
+     *         ctx.export(&#34;type&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.type()));
+     *         ctx.export(&#34;region&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.locations()[0].region()));
      *     }
      * }
      * ```
@@ -474,6 +584,11 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.id()));
+     *         ctx.export(&#34;name&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.name()));
+     *         ctx.export(&#34;scope&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.scope()));
+     *         ctx.export(&#34;type&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.type()));
+     *         ctx.export(&#34;region&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.locations()[0].region()));
      *     }
      * }
      * ```
@@ -514,6 +629,11 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_network&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.id()));
+     *         ctx.export(&#34;name&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.name()));
+     *         ctx.export(&#34;scope&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.scope()));
+     *         ctx.export(&#34;type&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.type()));
+     *         ctx.export(&#34;region&#34;, networkDataName.applyValue(getNetworkResult -&gt; getNetworkResult.locations()[0].region()));
      *     }
      * }
      * ```
@@ -554,6 +674,20 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.id()));
+     *         ctx.export(&#34;name&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.name()));
+     *         ctx.export(&#34;state&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.state()));
+     *         ctx.export(&#34;accountName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.account().accountName()));
+     *         ctx.export(&#34;type&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.type()));
+     *         ctx.export(&#34;bandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.bandwidth()));
+     *         ctx.export(&#34;usedBandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.usedBandwidth()));
+     *         ctx.export(&#34;encapsulationType&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.encapsulation().type()));
+     *         ctx.export(&#34;ibx&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().ibx()));
+     *         ctx.export(&#34;metroCode&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroCode()));
+     *         ctx.export(&#34;metroName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroName()));
+     *         ctx.export(&#34;region&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().region()));
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].enabled()));
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].priority()));
      *     }
      * }
      * ```
@@ -594,6 +728,20 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.id()));
+     *         ctx.export(&#34;name&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.name()));
+     *         ctx.export(&#34;state&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.state()));
+     *         ctx.export(&#34;accountName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.account().accountName()));
+     *         ctx.export(&#34;type&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.type()));
+     *         ctx.export(&#34;bandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.bandwidth()));
+     *         ctx.export(&#34;usedBandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.usedBandwidth()));
+     *         ctx.export(&#34;encapsulationType&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.encapsulation().type()));
+     *         ctx.export(&#34;ibx&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().ibx()));
+     *         ctx.export(&#34;metroCode&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroCode()));
+     *         ctx.export(&#34;metroName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroName()));
+     *         ctx.export(&#34;region&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().region()));
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].enabled()));
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].priority()));
      *     }
      * }
      * ```
@@ -634,6 +782,20 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.id()));
+     *         ctx.export(&#34;name&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.name()));
+     *         ctx.export(&#34;state&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.state()));
+     *         ctx.export(&#34;accountName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.account().accountName()));
+     *         ctx.export(&#34;type&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.type()));
+     *         ctx.export(&#34;bandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.bandwidth()));
+     *         ctx.export(&#34;usedBandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.usedBandwidth()));
+     *         ctx.export(&#34;encapsulationType&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.encapsulation().type()));
+     *         ctx.export(&#34;ibx&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().ibx()));
+     *         ctx.export(&#34;metroCode&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroCode()));
+     *         ctx.export(&#34;metroName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroName()));
+     *         ctx.export(&#34;region&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().region()));
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].enabled()));
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].priority()));
      *     }
      * }
      * ```
@@ -674,6 +836,20 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_port&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.id()));
+     *         ctx.export(&#34;name&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.name()));
+     *         ctx.export(&#34;state&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.state()));
+     *         ctx.export(&#34;accountName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.account().accountName()));
+     *         ctx.export(&#34;type&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.type()));
+     *         ctx.export(&#34;bandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.bandwidth()));
+     *         ctx.export(&#34;usedBandwidth&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.usedBandwidth()));
+     *         ctx.export(&#34;encapsulationType&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.encapsulation().type()));
+     *         ctx.export(&#34;ibx&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().ibx()));
+     *         ctx.export(&#34;metroCode&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroCode()));
+     *         ctx.export(&#34;metroName&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().metroName()));
+     *         ctx.export(&#34;region&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.location().region()));
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].enabled()));
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, portDataName.applyValue(getPortResult -&gt; getPortResult.device().redundancies()[0].priority()));
      *     }
      * }
      * ```
@@ -717,6 +893,20 @@ public final class FabricFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_port().ports_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_port().ports_data_name().data()[0].name());
+     *         ctx.export(&#34;state&#34;, data.equinix_fabric_port().ports_data_name().data()[0].state());
+     *         ctx.export(&#34;accountName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_port().ports_data_name().data()[0].type());
+     *         ctx.export(&#34;bandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
+     *         ctx.export(&#34;usedBandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
+     *         ctx.export(&#34;encapsulationType&#34;, data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
+     *         ctx.export(&#34;ibx&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
+     *         ctx.export(&#34;metroCode&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
+     *         ctx.export(&#34;metroName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
+     *         ctx.export(&#34;region&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
      *     }
      * }
      * ```
@@ -760,6 +950,20 @@ public final class FabricFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_port().ports_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_port().ports_data_name().data()[0].name());
+     *         ctx.export(&#34;state&#34;, data.equinix_fabric_port().ports_data_name().data()[0].state());
+     *         ctx.export(&#34;accountName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_port().ports_data_name().data()[0].type());
+     *         ctx.export(&#34;bandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
+     *         ctx.export(&#34;usedBandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
+     *         ctx.export(&#34;encapsulationType&#34;, data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
+     *         ctx.export(&#34;ibx&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
+     *         ctx.export(&#34;metroCode&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
+     *         ctx.export(&#34;metroName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
+     *         ctx.export(&#34;region&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
      *     }
      * }
      * ```
@@ -803,6 +1007,20 @@ public final class FabricFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_port().ports_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_port().ports_data_name().data()[0].name());
+     *         ctx.export(&#34;state&#34;, data.equinix_fabric_port().ports_data_name().data()[0].state());
+     *         ctx.export(&#34;accountName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_port().ports_data_name().data()[0].type());
+     *         ctx.export(&#34;bandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
+     *         ctx.export(&#34;usedBandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
+     *         ctx.export(&#34;encapsulationType&#34;, data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
+     *         ctx.export(&#34;ibx&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
+     *         ctx.export(&#34;metroCode&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
+     *         ctx.export(&#34;metroName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
+     *         ctx.export(&#34;region&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
      *     }
      * }
      * ```
@@ -846,6 +1064,20 @@ public final class FabricFunctions {
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_port().ports_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_port().ports_data_name().data()[0].name());
+     *         ctx.export(&#34;state&#34;, data.equinix_fabric_port().ports_data_name().data()[0].state());
+     *         ctx.export(&#34;accountName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].account()[0].account_name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_port().ports_data_name().data()[0].type());
+     *         ctx.export(&#34;bandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].bandwidth());
+     *         ctx.export(&#34;usedBandwidth&#34;, data.equinix_fabric_port().ports_data_name().data()[0].used_bandwidth());
+     *         ctx.export(&#34;encapsulationType&#34;, data.equinix_fabric_port().ports_data_name().data()[0].encapsulation()[0].type());
+     *         ctx.export(&#34;ibx&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].ibx());
+     *         ctx.export(&#34;metroCode&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_code());
+     *         ctx.export(&#34;metroName&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].metro_name());
+     *         ctx.export(&#34;region&#34;, data.equinix_fabric_port().ports_data_name().data()[0].location()[0].region());
+     *         ctx.export(&#34;deviceRedundancyEnabled&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].enabled());
+     *         ctx.export(&#34;deviceRedundancyPriority&#34;, data.equinix_fabric_port().ports_data_name().data()[0].device()[0].redundancy()[0].priority());
      *     }
      * }
      * ```
@@ -889,6 +1121,18 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.id()));
+     *         ctx.export(&#34;name&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.name()));
+     *         ctx.export(&#34;type&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.type()));
+     *         ctx.export(&#34;directIpv4&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv4().equinixIfaceIp()));
+     *         ctx.export(&#34;directIpv6&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv6().equinixIfaceIp()));
+     *         ctx.export(&#34;bgpIpv4CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv4EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv4Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().enabled()));
+     *         ctx.export(&#34;bgpIpv6CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv6EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv6Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().enabled()));
+     *         ctx.export(&#34;customerAsn&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.customerAsn()));
      *     }
      * }
      * ```
@@ -932,6 +1176,18 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.id()));
+     *         ctx.export(&#34;name&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.name()));
+     *         ctx.export(&#34;type&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.type()));
+     *         ctx.export(&#34;directIpv4&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv4().equinixIfaceIp()));
+     *         ctx.export(&#34;directIpv6&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv6().equinixIfaceIp()));
+     *         ctx.export(&#34;bgpIpv4CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv4EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv4Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().enabled()));
+     *         ctx.export(&#34;bgpIpv6CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv6EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv6Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().enabled()));
+     *         ctx.export(&#34;customerAsn&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.customerAsn()));
      *     }
      * }
      * ```
@@ -975,6 +1231,18 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.id()));
+     *         ctx.export(&#34;name&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.name()));
+     *         ctx.export(&#34;type&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.type()));
+     *         ctx.export(&#34;directIpv4&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv4().equinixIfaceIp()));
+     *         ctx.export(&#34;directIpv6&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv6().equinixIfaceIp()));
+     *         ctx.export(&#34;bgpIpv4CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv4EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv4Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().enabled()));
+     *         ctx.export(&#34;bgpIpv6CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv6EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv6Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().enabled()));
+     *         ctx.export(&#34;customerAsn&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.customerAsn()));
      *     }
      * }
      * ```
@@ -1018,6 +1286,18 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_routing_protocol&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.id()));
+     *         ctx.export(&#34;name&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.name()));
+     *         ctx.export(&#34;type&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.type()));
+     *         ctx.export(&#34;directIpv4&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv4().equinixIfaceIp()));
+     *         ctx.export(&#34;directIpv6&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.directIpv6().equinixIfaceIp()));
+     *         ctx.export(&#34;bgpIpv4CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv4EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv4Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv4().enabled()));
+     *         ctx.export(&#34;bgpIpv6CustomerPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().customerPeerIp()));
+     *         ctx.export(&#34;bgpIpv6EquinixPeerIp&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().equinixPeerIp()));
+     *         ctx.export(&#34;bgpIpv6Enabled&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.bgpIpv6().enabled()));
+     *         ctx.export(&#34;customerAsn&#34;, routingProtocolDataName.applyValue(getRoutingProtocolResult -&gt; getRoutingProtocolResult.customerAsn()));
      *     }
      * }
      * ```
@@ -1058,6 +1338,17 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.id()));
+     *         ctx.export(&#34;name&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.name()));
+     *         ctx.export(&#34;type&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.type()));
+     *         ctx.export(&#34;visibility&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.visibility()));
+     *         ctx.export(&#34;orgName&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.account().organizationName()));
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].type()));
+     *         ctx.export(&#34;allowRemoteConnections&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].allowRemoteConnections()));
+     *         ctx.export(&#34;supportedBandwidth0&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[0]));
+     *         ctx.export(&#34;supportedBandwidth1&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[1]));
+     *         ctx.export(&#34;redundandyRequired&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].connectionRedundancyRequired()));
+     *         ctx.export(&#34;allowOverSubscription&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].apiConfig().allowOverSubscription()));
      *     }
      * }
      * ```
@@ -1098,6 +1389,17 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.id()));
+     *         ctx.export(&#34;name&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.name()));
+     *         ctx.export(&#34;type&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.type()));
+     *         ctx.export(&#34;visibility&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.visibility()));
+     *         ctx.export(&#34;orgName&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.account().organizationName()));
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].type()));
+     *         ctx.export(&#34;allowRemoteConnections&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].allowRemoteConnections()));
+     *         ctx.export(&#34;supportedBandwidth0&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[0]));
+     *         ctx.export(&#34;supportedBandwidth1&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[1]));
+     *         ctx.export(&#34;redundandyRequired&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].connectionRedundancyRequired()));
+     *         ctx.export(&#34;allowOverSubscription&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].apiConfig().allowOverSubscription()));
      *     }
      * }
      * ```
@@ -1138,6 +1440,17 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.id()));
+     *         ctx.export(&#34;name&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.name()));
+     *         ctx.export(&#34;type&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.type()));
+     *         ctx.export(&#34;visibility&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.visibility()));
+     *         ctx.export(&#34;orgName&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.account().organizationName()));
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].type()));
+     *         ctx.export(&#34;allowRemoteConnections&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].allowRemoteConnections()));
+     *         ctx.export(&#34;supportedBandwidth0&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[0]));
+     *         ctx.export(&#34;supportedBandwidth1&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[1]));
+     *         ctx.export(&#34;redundandyRequired&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].connectionRedundancyRequired()));
+     *         ctx.export(&#34;allowOverSubscription&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].apiConfig().allowOverSubscription()));
      *     }
      * }
      * ```
@@ -1178,6 +1491,17 @@ public final class FabricFunctions {
      *             .uuid(&#34;&lt;uuid_of_service_profile&gt;&#34;)
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.id()));
+     *         ctx.export(&#34;name&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.name()));
+     *         ctx.export(&#34;type&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.type()));
+     *         ctx.export(&#34;visibility&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.visibility()));
+     *         ctx.export(&#34;orgName&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.account().organizationName()));
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].type()));
+     *         ctx.export(&#34;allowRemoteConnections&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].allowRemoteConnections()));
+     *         ctx.export(&#34;supportedBandwidth0&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[0]));
+     *         ctx.export(&#34;supportedBandwidth1&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].supportedBandwidths()[1]));
+     *         ctx.export(&#34;redundandyRequired&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].connectionRedundancyRequired()));
+     *         ctx.export(&#34;allowOverSubscription&#34;, serviceProfileDataName.applyValue(getServiceProfileResult -&gt; getServiceProfileResult.accessPointTypeConfigs()[0].apiConfig().allowOverSubscription()));
      *     }
      * }
      * ```
@@ -1217,12 +1541,23 @@ public final class FabricFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
      *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .operator(&#34;=&#34;)
      *                 .property(&#34;/name&#34;)
+     *                 .operator(&#34;=&#34;)
      *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
+     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
+     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
+     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
+     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
+     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
+     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
+     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
      *     }
      * }
      * ```
@@ -1262,12 +1597,23 @@ public final class FabricFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
      *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .operator(&#34;=&#34;)
      *                 .property(&#34;/name&#34;)
+     *                 .operator(&#34;=&#34;)
      *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
+     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
+     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
+     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
+     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
+     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
+     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
+     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
      *     }
      * }
      * ```
@@ -1307,12 +1653,23 @@ public final class FabricFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
      *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .operator(&#34;=&#34;)
      *                 .property(&#34;/name&#34;)
+     *                 .operator(&#34;=&#34;)
      *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
+     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
+     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
+     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
+     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
+     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
+     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
+     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
      *     }
      * }
      * ```
@@ -1352,12 +1709,23 @@ public final class FabricFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
      *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .operator(&#34;=&#34;)
      *                 .property(&#34;/name&#34;)
+     *                 .operator(&#34;=&#34;)
      *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
+     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
+     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
+     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
+     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
+     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
+     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
+     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
      *     }
      * }
      * ```
@@ -1397,12 +1765,23 @@ public final class FabricFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
      *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .operator(&#34;=&#34;)
      *                 .property(&#34;/name&#34;)
+     *                 .operator(&#34;=&#34;)
      *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
+     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
+     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
+     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
+     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
+     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
+     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
+     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
      *     }
      * }
      * ```
@@ -1442,12 +1821,23 @@ public final class FabricFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceProfilesDataName = FabricFunctions.getServiceProfiles(GetServiceProfilesArgs.builder()
      *             .filter(GetServiceProfilesFilterArgs.builder()
-     *                 .operator(&#34;=&#34;)
      *                 .property(&#34;/name&#34;)
+     *                 .operator(&#34;=&#34;)
      *                 .values(&#34;&lt;list_of_profiles_to_return&gt;&#34;)
      *                 .build())
      *             .build());
      * 
+     *         ctx.export(&#34;id&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].id());
+     *         ctx.export(&#34;name&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].name());
+     *         ctx.export(&#34;type&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].type());
+     *         ctx.export(&#34;visibility&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].visibility());
+     *         ctx.export(&#34;orgName&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].account()[0].organization_name());
+     *         ctx.export(&#34;accessPointTypeConfigsType&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].type());
+     *         ctx.export(&#34;allowRemoteConnections&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].allow_remote_connections());
+     *         ctx.export(&#34;supportedBandwidth0&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[0]);
+     *         ctx.export(&#34;supportedBandwidth1&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].supported_bandwidths()[1]);
+     *         ctx.export(&#34;redundandyRequired&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].connection_redundancy_required());
+     *         ctx.export(&#34;allowOverSubscription&#34;, data.equinix_fabric_service_profile().service_profiles_data_name().data()[0].access_point_type_configs()[0].api_config()[0].allow_over_subscription());
      *     }
      * }
      * ```

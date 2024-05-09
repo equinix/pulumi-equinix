@@ -32,7 +32,7 @@ public final class GetConnectionASideAccessPointProfile {
      */
     private String name;
     /**
-     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
      * 
      */
     private String type;
@@ -72,7 +72,7 @@ public final class GetConnectionASideAccessPointProfile {
         return this.name;
     }
     /**
-     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+     * @return Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
      * 
      */
     public String type() {

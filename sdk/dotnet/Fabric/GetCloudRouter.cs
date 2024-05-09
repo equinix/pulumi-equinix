@@ -18,7 +18,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,9 +31,21 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_cloud_router&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Id),
+        ///         ["name"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Name),
+        ///         ["accountNumber"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Accounts[0]?.AccountNumber),
+        ///         ["equinixAsn"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.EquinixAsn),
+        ///         ["metroCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroCode),
+        ///         ["metroName"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroName),
+        ///         ["region"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.Region),
+        ///         ["packageCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Packages[0]?.Code),
+        ///         ["projectId"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Projects[0]?.ProjectId),
+        ///         ["type"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Type),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCloudRouterResult> InvokeAsync(GetCloudRouterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudRouterResult>("equinix:fabric/getCloudRouter:getCloudRouter", args ?? new GetCloudRouterArgs(), options.WithDefaults());
@@ -46,7 +57,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,9 +70,21 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_cloud_router&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Id),
+        ///         ["name"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Name),
+        ///         ["accountNumber"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Accounts[0]?.AccountNumber),
+        ///         ["equinixAsn"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.EquinixAsn),
+        ///         ["metroCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroCode),
+        ///         ["metroName"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.MetroName),
+        ///         ["region"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Locations[0]?.Region),
+        ///         ["packageCode"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Packages[0]?.Code),
+        ///         ["projectId"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Projects[0]?.ProjectId),
+        ///         ["type"] = cloudRouterDataName.Apply(getCloudRouterResult =&gt; getCloudRouterResult.Type),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCloudRouterResult> Invoke(GetCloudRouterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudRouterResult>("equinix:fabric/getCloudRouter:getCloudRouter", args ?? new GetCloudRouterInvokeArgs(), options.WithDefaults());

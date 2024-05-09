@@ -18,7 +18,6 @@ import (
 //
 // Fetch a vlan by ID:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,11 +46,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Fetch a vlan by project ID, vxlan and metro
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,7 +74,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupVlan(ctx *pulumi.Context, args *LookupVlanArgs, opts ...pulumi.InvokeOption) (*LookupVlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVlanResult

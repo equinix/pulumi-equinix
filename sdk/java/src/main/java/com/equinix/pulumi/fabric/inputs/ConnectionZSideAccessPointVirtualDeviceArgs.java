@@ -31,14 +31,14 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
     }
 
     /**
-     * Port name
+     * Customer-assigned Virtual Device Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Port name
+     * @return Customer-assigned Virtual Device Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
     }
 
     /**
-     * Interface type
+     * Virtual Device type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Interface type
+     * @return Virtual Device type
      * 
      */
     public Optional<Output<String>> type() {
@@ -61,14 +61,14 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
     }
 
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned Virtual Device identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Virtual Device identifier
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -124,7 +124,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         /**
-         * @param name Port name
+         * @param name Customer-assigned Virtual Device Name
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         /**
-         * @param name Port name
+         * @param name Customer-assigned Virtual Device Name
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         /**
-         * @param type Interface type
+         * @param type Virtual Device type
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         /**
-         * @param type Interface type
+         * @param type Virtual Device type
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned Virtual Device identifier
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ConnectionZSideAccessPointVirtualDeviceArgs extends com.pulum
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned Virtual Device identifier
          * 
          * @return builder
          * 

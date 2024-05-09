@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -23,8 +22,19 @@ import * as utilities from "../utilities";
  *     connectionUuid: "<uuid_of_connection_routing_protocol_is_applied_to>",
  *     uuid: "<uuid_of_routing_protocol>",
  * });
+ * export const id = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.id);
+ * export const name = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.name);
+ * export const type = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.type);
+ * export const directIpv4 = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.directIpv4?.equinixIfaceIp);
+ * export const directIpv6 = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.directIpv6?.equinixIfaceIp);
+ * export const bgpIpv4CustomerPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv4?.customerPeerIp);
+ * export const bgpIpv4EquinixPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv4?.equinixPeerIp);
+ * export const bgpIpv4Enabled = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv4?.enabled);
+ * export const bgpIpv6CustomerPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv6?.customerPeerIp);
+ * export const bgpIpv6EquinixPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv6?.equinixPeerIp);
+ * export const bgpIpv6Enabled = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv6?.enabled);
+ * export const customerAsn = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.customerAsn);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoutingProtocol(args: GetRoutingProtocolArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutingProtocolResult> {
 
@@ -43,6 +53,9 @@ export interface GetRoutingProtocolArgs {
      * Connection URI associated with Routing Protocol
      */
     connectionUuid: string;
+    /**
+     * Equinix-assigned routing protocol identifier
+     */
     uuid: string;
 }
 
@@ -134,7 +147,6 @@ export interface GetRoutingProtocolResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -143,8 +155,19 @@ export interface GetRoutingProtocolResult {
  *     connectionUuid: "<uuid_of_connection_routing_protocol_is_applied_to>",
  *     uuid: "<uuid_of_routing_protocol>",
  * });
+ * export const id = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.id);
+ * export const name = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.name);
+ * export const type = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.type);
+ * export const directIpv4 = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.directIpv4?.equinixIfaceIp);
+ * export const directIpv6 = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.directIpv6?.equinixIfaceIp);
+ * export const bgpIpv4CustomerPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv4?.customerPeerIp);
+ * export const bgpIpv4EquinixPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv4?.equinixPeerIp);
+ * export const bgpIpv4Enabled = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv4?.enabled);
+ * export const bgpIpv6CustomerPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv6?.customerPeerIp);
+ * export const bgpIpv6EquinixPeerIp = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv6?.equinixPeerIp);
+ * export const bgpIpv6Enabled = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.bgpIpv6?.enabled);
+ * export const customerAsn = routingProtocolDataName.then(routingProtocolDataName => routingProtocolDataName.customerAsn);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoutingProtocolOutput(args: GetRoutingProtocolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoutingProtocolResult> {
     return pulumi.output(args).apply((a: any) => getRoutingProtocol(a, opts))
@@ -158,5 +181,8 @@ export interface GetRoutingProtocolOutputArgs {
      * Connection URI associated with Routing Protocol
      */
     connectionUuid: pulumi.Input<string>;
+    /**
+     * Equinix-assigned routing protocol identifier
+     */
     uuid: pulumi.Input<string>;
 }

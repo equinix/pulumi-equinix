@@ -13,7 +13,7 @@ namespace Pulumi.Equinix.Metal.Inputs
     public sealed class GetPlansSortArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The attribute used to filter. Filter attributes are case-sensitive
+        /// The attribute used to sort the results. Sort attributes are case-sensitive
         /// </summary>
         [Input("attribute", required: true)]
         public string Attribute { get; set; } = null!;

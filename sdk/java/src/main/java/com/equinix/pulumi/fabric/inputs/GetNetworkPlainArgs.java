@@ -12,9 +12,17 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNetworkPlainArgs Empty = new GetNetworkPlainArgs();
 
+    /**
+     * Equinix-assigned network identifier
+     * 
+     */
     @Import(name="uuid", required=true)
     private String uuid;
 
+    /**
+     * @return Equinix-assigned network identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -43,6 +51,12 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetNetworkPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param uuid Equinix-assigned network identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             $.uuid = uuid;
             return this;

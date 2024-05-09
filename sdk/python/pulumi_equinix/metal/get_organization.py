@@ -141,7 +141,6 @@ def get_organization(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -149,7 +148,6 @@ def get_organization(description: Optional[str] = None,
     test = equinix.metal.get_organization(organization_id=local["org_id"])
     pulumi.export("projectsInTheOrg", test.project_ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: Description string.
@@ -187,7 +185,6 @@ def get_organization_output(description: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -195,7 +192,6 @@ def get_organization_output(description: Optional[pulumi.Input[Optional[str]]] =
     test = equinix.metal.get_organization(organization_id=local["org_id"])
     pulumi.export("projectsInTheOrg", test.project_ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: Description string.

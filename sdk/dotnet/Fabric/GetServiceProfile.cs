@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,9 +29,22 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_service_profile&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Id),
+        ///         ["name"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Name),
+        ///         ["type"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Type),
+        ///         ["visibility"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Visibility),
+        ///         ["orgName"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Account?.OrganizationName),
+        ///         ["accessPointTypeConfigsType"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.Type),
+        ///         ["allowRemoteConnections"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.AllowRemoteConnections),
+        ///         ["supportedBandwidth0"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.SupportedBandwidths[0]),
+        ///         ["supportedBandwidth1"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.SupportedBandwidths[1]),
+        ///         ["redundandyRequired"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.ConnectionRedundancyRequired),
+        ///         ["allowOverSubscription"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.ApiConfig?.AllowOverSubscription),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceProfileResult> InvokeAsync(GetServiceProfileArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileArgs(), options.WithDefaults());
@@ -42,7 +54,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,9 +67,22 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_service_profile&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Id),
+        ///         ["name"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Name),
+        ///         ["type"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Type),
+        ///         ["visibility"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Visibility),
+        ///         ["orgName"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.Account?.OrganizationName),
+        ///         ["accessPointTypeConfigsType"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.Type),
+        ///         ["allowRemoteConnections"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.AllowRemoteConnections),
+        ///         ["supportedBandwidth0"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.SupportedBandwidths[0]),
+        ///         ["supportedBandwidth1"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.SupportedBandwidths[1]),
+        ///         ["redundandyRequired"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.ConnectionRedundancyRequired),
+        ///         ["allowOverSubscription"] = serviceProfileDataName.Apply(getServiceProfileResult =&gt; getServiceProfileResult.AccessPointTypeConfigs[0]?.ApiConfig?.AllowOverSubscription),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceProfileResult> Invoke(GetServiceProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfileResult>("equinix:fabric/getServiceProfile:getServiceProfile", args ?? new GetServiceProfileInvokeArgs(), options.WithDefaults());
@@ -67,6 +91,9 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetServiceProfileArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Equinix assigned service profile identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public string Uuid { get; set; } = null!;
 
@@ -78,6 +105,9 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetServiceProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Equinix assigned service profile identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 
@@ -167,6 +197,7 @@ namespace Pulumi.Equinix.Fabric
         /// Equinix assigned service profile identifier
         /// </summary>
         public readonly string Uuid;
+        public readonly string ViewPoint;
         /// <summary>
         /// Virtual Devices
         /// </summary>
@@ -216,6 +247,8 @@ namespace Pulumi.Equinix.Fabric
 
             string uuid,
 
+            string viewPoint,
+
             ImmutableArray<Outputs.GetServiceProfileVirtualDeviceResult> virtualDevices,
 
             string visibility)
@@ -239,6 +272,7 @@ namespace Pulumi.Equinix.Fabric
             Tags = tags;
             Type = type;
             Uuid = uuid;
+            ViewPoint = viewPoint;
             VirtualDevices = virtualDevices;
             Visibility = visibility;
         }

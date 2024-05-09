@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     vendor: "Cisco",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDeviceType(args?: GetDeviceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceTypeResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetDeviceTypeResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -101,7 +98,6 @@ export interface GetDeviceTypeResult {
  *     vendor: "Cisco",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDeviceTypeOutput(args?: GetDeviceTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceTypeResult> {
     return pulumi.output(args).apply((a: any) => getDeviceType(a, opts))

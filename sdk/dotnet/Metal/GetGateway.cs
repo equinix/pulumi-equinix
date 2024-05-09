@@ -14,11 +14,10 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
         /// 
-        /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewayResult> InvokeAsync(GetGatewayArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayResult>("equinix:metal/getGateway:getGateway", args ?? new GetGatewayArgs(), options.WithDefaults());
@@ -50,11 +48,10 @@ namespace Pulumi.Equinix.Metal
         /// <summary>
         /// Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
         /// 
-        /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewayResult> Invoke(GetGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayResult>("equinix:metal/getGateway:getGateway", args ?? new GetGatewayInvokeArgs(), options.WithDefaults());

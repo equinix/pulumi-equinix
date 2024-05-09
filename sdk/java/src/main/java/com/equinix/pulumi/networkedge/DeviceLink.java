@@ -8,6 +8,7 @@ import com.equinix.pulumi.networkedge.DeviceLinkArgs;
 import com.equinix.pulumi.networkedge.inputs.DeviceLinkState;
 import com.equinix.pulumi.networkedge.outputs.DeviceLinkDevice;
 import com.equinix.pulumi.networkedge.outputs.DeviceLinkLink;
+import com.equinix.pulumi.networkedge.outputs.DeviceLinkMetroLink;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -126,7 +127,11 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
      * definition of one or more, inter metro, connections belonging
      * to the device link. See Link section below for more details.
      * 
+     * @deprecated
+     * Links is deprecated. Please use metro links instead.
+     * 
      */
+    @Deprecated /* Links is deprecated. Please use metro links instead. */
     @Export(name="links", refs={List.class,DeviceLinkLink.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeviceLinkLink>> links;
 
@@ -137,6 +142,22 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<DeviceLinkLink>>> links() {
         return Codegen.optional(this.links);
+    }
+    /**
+     * definition of one or more, inter metro, connections belonging
+     * to the device link. See Metro Link section below for more details.
+     * 
+     */
+    @Export(name="metroLinks", refs={List.class,DeviceLinkMetroLink.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<DeviceLinkMetroLink>> metroLinks;
+
+    /**
+     * @return definition of one or more, inter metro, connections belonging
+     * to the device link. See Metro Link section below for more details.
+     * 
+     */
+    public Output<Optional<List<DeviceLinkMetroLink>>> metroLinks() {
+        return Codegen.optional(this.metroLinks);
     }
     /**
      * device link name.
@@ -167,6 +188,22 @@ public class DeviceLink extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectId() {
         return this.projectId;
+    }
+    /**
+     * Whether the connection should be created through
+     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * 
+     */
+    @Export(name="redundancyType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> redundancyType;
+
+    /**
+     * @return Whether the connection should be created through
+     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * 
+     */
+    public Output<Optional<String>> redundancyType() {
+        return Codegen.optional(this.redundancyType);
     }
     /**
      * device link provisioning status on a given device. One of `PROVISIONING`,

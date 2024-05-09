@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,9 +29,16 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_network&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+        ///         ["name"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Name),
+        ///         ["scope"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Scope),
+        ///         ["type"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Type),
+        ///         ["region"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Locations[0]?.Region),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("equinix:fabric/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
@@ -42,7 +48,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,9 +61,16 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_network&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+        ///         ["name"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Name),
+        ///         ["scope"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Scope),
+        ///         ["type"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Type),
+        ///         ["region"] = networkDataName.Apply(getNetworkResult =&gt; getNetworkResult.Locations[0]?.Region),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("equinix:fabric/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
@@ -67,6 +79,9 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetNetworkArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Equinix-assigned network identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public string Uuid { get; set; } = null!;
 
@@ -78,6 +93,9 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Equinix-assigned network identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 

@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInterconnection(args: GetInterconnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectionResult> {
 
@@ -138,7 +136,6 @@ export interface GetInterconnectionResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -147,7 +144,6 @@ export interface GetInterconnectionResult {
  *     connectionId: "4347e805-eb46-4699-9eb9-5c116e6a017d",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInterconnectionOutput(args: GetInterconnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectionResult> {
     return pulumi.output(args).apply((a: any) => getInterconnection(a, opts))

@@ -14,7 +14,6 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,7 +46,6 @@ namespace Pulumi.Equinix.Fabric
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [EquinixResourceType("equinix:fabric/network:Network")]
     public partial class Network : global::Pulumi.CustomResource

@@ -24,22 +24,22 @@ public final class ConnectionZSideAccessPointProfile {
      */
     private @Nullable String description;
     /**
-     * @return Unique Resource Identifier
+     * @return Service Profile URI response attribute
      * 
      */
     private @Nullable String href;
     /**
-     * @return Port name
+     * @return Customer-assigned service profile name
      * 
      */
     private @Nullable String name;
     /**
-     * @return Interface type
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     private String type;
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix assigned service profile identifier
      * 
      */
     private String uuid;
@@ -60,28 +60,28 @@ public final class ConnectionZSideAccessPointProfile {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Unique Resource Identifier
+     * @return Service Profile URI response attribute
      * 
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Port name
+     * @return Customer-assigned service profile name
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Interface type
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix assigned service profile identifier
      * 
      */
     public String uuid() {

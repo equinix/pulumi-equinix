@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -29,9 +28,7 @@ import * as utilities from "../utilities";
  * });
  * export const id = test.then(test => test.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -41,7 +38,6 @@ import * as utilities from "../utilities";
  * });
  * export const ipv4 = test.then(test => test.accessPublicIpv4);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDevice(args?: GetDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceResult> {
     args = args || {};
@@ -177,7 +173,6 @@ export interface GetDeviceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -188,9 +183,7 @@ export interface GetDeviceResult {
  * });
  * export const id = test.then(test => test.id);
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -200,7 +193,6 @@ export interface GetDeviceResult {
  * });
  * export const ipv4 = test.then(test => test.accessPublicIpv4);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDeviceOutput(args?: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
     return pulumi.output(args).apply((a: any) => getDevice(a, opts))

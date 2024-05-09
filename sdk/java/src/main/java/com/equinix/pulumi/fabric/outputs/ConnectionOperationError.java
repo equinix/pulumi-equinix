@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionOperationError {
     /**
-     * @return Connection side additional information
+     * @return Pricing error additional Info
      * 
      */
     private @Nullable List<ConnectionOperationErrorAdditionalInfo> additionalInfo;
@@ -46,7 +46,7 @@ public final class ConnectionOperationError {
 
     private ConnectionOperationError() {}
     /**
-     * @return Connection side additional information
+     * @return Pricing error additional Info
      * 
      */
     public List<ConnectionOperationErrorAdditionalInfo> additionalInfo() {

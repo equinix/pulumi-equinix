@@ -30,7 +30,7 @@ namespace Pulumi.Equinix.Metal.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+        /// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
         /// </summary>
         public readonly string? Type;
 

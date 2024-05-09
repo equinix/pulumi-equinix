@@ -12,9 +12,17 @@ public final class GetServiceProfilePlainArgs extends com.pulumi.resources.Invok
 
     public static final GetServiceProfilePlainArgs Empty = new GetServiceProfilePlainArgs();
 
+    /**
+     * Equinix assigned service profile identifier
+     * 
+     */
     @Import(name="uuid", required=true)
     private String uuid;
 
+    /**
+     * @return Equinix assigned service profile identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -43,6 +51,12 @@ public final class GetServiceProfilePlainArgs extends com.pulumi.resources.Invok
             $ = new GetServiceProfilePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param uuid Equinix assigned service profile identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             $.uuid = uuid;
             return this;

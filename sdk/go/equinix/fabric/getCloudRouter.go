@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,18 +29,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.LookupCloudRouter(ctx, &fabric.LookupCloudRouterArgs{
+//			cloudRouterDataName, err := fabric.LookupCloudRouter(ctx, &fabric.LookupCloudRouterArgs{
 //				Uuid: "<uuid_of_cloud_router>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", cloudRouterDataName.Id)
+//			ctx.Export("name", cloudRouterDataName.Name)
+//			ctx.Export("accountNumber", cloudRouterDataName.Accounts[0].AccountNumber)
+//			ctx.Export("equinixAsn", cloudRouterDataName.EquinixAsn)
+//			ctx.Export("metroCode", cloudRouterDataName.Locations[0].MetroCode)
+//			ctx.Export("metroName", cloudRouterDataName.Locations[0].MetroName)
+//			ctx.Export("region", cloudRouterDataName.Locations[0].Region)
+//			ctx.Export("packageCode", cloudRouterDataName.Packages[0].Code)
+//			ctx.Export("projectId", cloudRouterDataName.Projects[0].ProjectId)
+//			ctx.Export("type", cloudRouterDataName.Type)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupCloudRouter(ctx *pulumi.Context, args *LookupCloudRouterArgs, opts ...pulumi.InvokeOption) (*LookupCloudRouterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudRouterResult

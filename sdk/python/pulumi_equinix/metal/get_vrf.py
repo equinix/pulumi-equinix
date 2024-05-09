@@ -130,18 +130,16 @@ def get_vrf(vrf_id: Optional[str] = None,
     """
     Use this data source to retrieve a VRF resource.
 
-    > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     example_vrf = equinix.metal.get_vrf(vrf_id="48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str vrf_id: ID of the VRF resource
@@ -168,18 +166,16 @@ def get_vrf_output(vrf_id: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to retrieve a VRF resource.
 
-    > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     example_vrf = equinix.metal.get_vrf(vrf_id="48630899-9ff2-4ce6-a93f-50ff4ebcdf6e")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str vrf_id: ID of the VRF resource

@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -20,8 +19,21 @@ import * as utilities from "../utilities";
  * const portDataName = equinix.fabric.getPort({
  *     uuid: "<uuid_of_port>",
  * });
+ * export const id = portDataName.then(portDataName => portDataName.id);
+ * export const name = portDataName.then(portDataName => portDataName.name);
+ * export const state = portDataName.then(portDataName => portDataName.state);
+ * export const accountName = portDataName.then(portDataName => portDataName.account?.accountName);
+ * export const type = portDataName.then(portDataName => portDataName.type);
+ * export const bandwidth = portDataName.then(portDataName => portDataName.bandwidth);
+ * export const usedBandwidth = portDataName.then(portDataName => portDataName.usedBandwidth);
+ * export const encapsulationType = portDataName.then(portDataName => portDataName.encapsulation?.type);
+ * export const ibx = portDataName.then(portDataName => portDataName.location?.ibx);
+ * export const metroCode = portDataName.then(portDataName => portDataName.location?.metroCode);
+ * export const metroName = portDataName.then(portDataName => portDataName.location?.metroName);
+ * export const region = portDataName.then(portDataName => portDataName.location?.region);
+ * export const deviceRedundancyEnabled = portDataName.then(portDataName => portDataName.device?.redundancies?.[0]?.enabled);
+ * export const deviceRedundancyPriority = portDataName.then(portDataName => portDataName.device?.redundancies?.[0]?.priority);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPort(args: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
 
@@ -127,7 +139,6 @@ export interface GetPortResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -135,8 +146,21 @@ export interface GetPortResult {
  * const portDataName = equinix.fabric.getPort({
  *     uuid: "<uuid_of_port>",
  * });
+ * export const id = portDataName.then(portDataName => portDataName.id);
+ * export const name = portDataName.then(portDataName => portDataName.name);
+ * export const state = portDataName.then(portDataName => portDataName.state);
+ * export const accountName = portDataName.then(portDataName => portDataName.account?.accountName);
+ * export const type = portDataName.then(portDataName => portDataName.type);
+ * export const bandwidth = portDataName.then(portDataName => portDataName.bandwidth);
+ * export const usedBandwidth = portDataName.then(portDataName => portDataName.usedBandwidth);
+ * export const encapsulationType = portDataName.then(portDataName => portDataName.encapsulation?.type);
+ * export const ibx = portDataName.then(portDataName => portDataName.location?.ibx);
+ * export const metroCode = portDataName.then(portDataName => portDataName.location?.metroCode);
+ * export const metroName = portDataName.then(portDataName => portDataName.location?.metroName);
+ * export const region = portDataName.then(portDataName => portDataName.location?.region);
+ * export const deviceRedundancyEnabled = portDataName.then(portDataName => portDataName.device?.redundancies?.[0]?.enabled);
+ * export const deviceRedundancyPriority = portDataName.then(portDataName => portDataName.device?.redundancies?.[0]?.priority);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPortOutput(args: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
     return pulumi.output(args).apply((a: any) => getPort(a, opts))

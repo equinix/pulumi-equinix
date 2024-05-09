@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -20,8 +19,18 @@ import * as utilities from "../utilities";
  * const serviceProfileDataName = equinix.fabric.getServiceProfile({
  *     uuid: "<uuid_of_service_profile>",
  * });
+ * export const id = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.id);
+ * export const name = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.name);
+ * export const type = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.type);
+ * export const visibility = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.visibility);
+ * export const orgName = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.account?.organizationName);
+ * export const accessPointTypeConfigsType = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.type);
+ * export const allowRemoteConnections = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.allowRemoteConnections);
+ * export const supportedBandwidth0 = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.supportedBandwidths?.[0]);
+ * export const supportedBandwidth1 = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.supportedBandwidths?.[1]);
+ * export const redundandyRequired = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.connectionRedundancyRequired);
+ * export const allowOverSubscription = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.apiConfig?.allowOverSubscription);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceProfile(args: GetServiceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceProfileResult> {
 
@@ -35,6 +44,9 @@ export function getServiceProfile(args: GetServiceProfileArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getServiceProfile.
  */
 export interface GetServiceProfileArgs {
+    /**
+     * Equinix assigned service profile identifier
+     */
     uuid: string;
 }
 
@@ -118,6 +130,7 @@ export interface GetServiceProfileResult {
      * Equinix assigned service profile identifier
      */
     readonly uuid: string;
+    readonly viewPoint: string;
     /**
      * Virtual Devices
      */
@@ -132,7 +145,6 @@ export interface GetServiceProfileResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -140,8 +152,18 @@ export interface GetServiceProfileResult {
  * const serviceProfileDataName = equinix.fabric.getServiceProfile({
  *     uuid: "<uuid_of_service_profile>",
  * });
+ * export const id = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.id);
+ * export const name = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.name);
+ * export const type = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.type);
+ * export const visibility = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.visibility);
+ * export const orgName = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.account?.organizationName);
+ * export const accessPointTypeConfigsType = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.type);
+ * export const allowRemoteConnections = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.allowRemoteConnections);
+ * export const supportedBandwidth0 = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.supportedBandwidths?.[0]);
+ * export const supportedBandwidth1 = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.supportedBandwidths?.[1]);
+ * export const redundandyRequired = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.connectionRedundancyRequired);
+ * export const allowOverSubscription = serviceProfileDataName.then(serviceProfileDataName => serviceProfileDataName.accessPointTypeConfigs?.[0]?.apiConfig?.allowOverSubscription);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceProfileResult> {
     return pulumi.output(args).apply((a: any) => getServiceProfile(a, opts))
@@ -151,5 +173,8 @@ export function getServiceProfileOutput(args: GetServiceProfileOutputArgs, opts?
  * A collection of arguments for invoking getServiceProfile.
  */
 export interface GetServiceProfileOutputArgs {
+    /**
+     * Equinix assigned service profile identifier
+     */
     uuid: pulumi.Input<string>;
 }

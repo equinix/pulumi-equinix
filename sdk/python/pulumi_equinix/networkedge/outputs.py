@@ -22,6 +22,7 @@ __all__ = [
     'DeviceInterface',
     'DeviceLinkDevice',
     'DeviceLinkLink',
+    'DeviceLinkMetroLink',
     'DeviceSecondaryDevice',
     'DeviceSecondaryDeviceInterface',
     'DeviceSecondaryDeviceSshKey',
@@ -352,15 +353,13 @@ class DeviceClusterDetailsNode0(dict):
                  uuid: Optional[str] = None,
                  vendor_configuration: Optional['outputs.DeviceClusterDetailsNode0VendorConfiguration'] = None):
         """
-        :param str license_file_id: Identifier of a license file that will be applied on the device.
-        :param str license_token: License Token applicable for some device types in BYOL licensing
-               mode.
+        :param str license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
+        :param str license_token: License token. This is necessary for Palo Alto clusters.
         :param str name: Device name.
         :param str uuid: Device unique identifier.
-        :param 'DeviceClusterDetailsNode0VendorConfigurationArgs' vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress)
-               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-               on a device (max one key).  See SSH Key below for more details.
+        :param 'DeviceClusterDetailsNode0VendorConfigurationArgs' vendor_configuration: An object that has fields relevant to the vendor of the
+               cluster device. See Cluster Details - Nodes - Vendor Configuration
+               below for more details.
         """
         if license_file_id is not None:
             pulumi.set(__self__, "license_file_id", license_file_id)
@@ -377,7 +376,7 @@ class DeviceClusterDetailsNode0(dict):
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> Optional[str]:
         """
-        Identifier of a license file that will be applied on the device.
+        License file id. This is necessary for Fortinet and Juniper clusters.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -385,8 +384,7 @@ class DeviceClusterDetailsNode0(dict):
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[str]:
         """
-        License Token applicable for some device types in BYOL licensing
-        mode.
+        License token. This is necessary for Palo Alto clusters.
         """
         return pulumi.get(self, "license_token")
 
@@ -410,10 +408,9 @@ class DeviceClusterDetailsNode0(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional['outputs.DeviceClusterDetailsNode0VendorConfiguration']:
         """
-        Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress)
-        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        on a device (max one key).  See SSH Key below for more details.
+        An object that has fields relevant to the vendor of the
+        cluster device. See Cluster Details - Nodes - Vendor Configuration
+        below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -554,15 +551,13 @@ class DeviceClusterDetailsNode1(dict):
                  uuid: Optional[str] = None,
                  vendor_configuration: Optional['outputs.DeviceClusterDetailsNode1VendorConfiguration'] = None):
         """
-        :param str license_file_id: Identifier of a license file that will be applied on the device.
-        :param str license_token: License Token applicable for some device types in BYOL licensing
-               mode.
+        :param str license_file_id: License file id. This is necessary for Fortinet and Juniper clusters.
+        :param str license_token: License token. This is necessary for Palo Alto clusters.
         :param str name: Device name.
         :param str uuid: Device unique identifier.
-        :param 'DeviceClusterDetailsNode1VendorConfigurationArgs' vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress)
-               * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-               on a device (max one key).  See SSH Key below for more details.
+        :param 'DeviceClusterDetailsNode1VendorConfigurationArgs' vendor_configuration: An object that has fields relevant to the vendor of the
+               cluster device. See Cluster Details - Nodes - Vendor Configuration
+               below for more details.
         """
         if license_file_id is not None:
             pulumi.set(__self__, "license_file_id", license_file_id)
@@ -579,7 +574,7 @@ class DeviceClusterDetailsNode1(dict):
     @pulumi.getter(name="licenseFileId")
     def license_file_id(self) -> Optional[str]:
         """
-        Identifier of a license file that will be applied on the device.
+        License file id. This is necessary for Fortinet and Juniper clusters.
         """
         return pulumi.get(self, "license_file_id")
 
@@ -587,8 +582,7 @@ class DeviceClusterDetailsNode1(dict):
     @pulumi.getter(name="licenseToken")
     def license_token(self) -> Optional[str]:
         """
-        License Token applicable for some device types in BYOL licensing
-        mode.
+        License token. This is necessary for Palo Alto clusters.
         """
         return pulumi.get(self, "license_token")
 
@@ -612,10 +606,9 @@ class DeviceClusterDetailsNode1(dict):
     @pulumi.getter(name="vendorConfiguration")
     def vendor_configuration(self) -> Optional['outputs.DeviceClusterDetailsNode1VendorConfiguration']:
         """
-        Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress)
-        * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        on a device (max one key).  See SSH Key below for more details.
+        An object that has fields relevant to the vendor of the
+        cluster device. See Cluster Details - Nodes - Vendor Configuration
+        below for more details.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -1060,6 +1053,80 @@ class DeviceLinkLink(dict):
         pulumi.log.warn("""src_zone_code is deprecated: SourceZoneCode is not required""")
 
         return pulumi.get(self, "src_zone_code")
+
+
+@pulumi.output_type
+class DeviceLinkMetroLink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountNumber":
+            suggest = "account_number"
+        elif key == "metroCode":
+            suggest = "metro_code"
+        elif key == "throughputUnit":
+            suggest = "throughput_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceLinkMetroLink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceLinkMetroLink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceLinkMetroLink.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_number: str,
+                 metro_code: str,
+                 throughput: str,
+                 throughput_unit: str):
+        """
+        :param str account_number: billing account number to be used for
+               connection charges
+        :param str metro_code: connection metro code.
+        :param str throughput: connection throughput.
+        :param str throughput_unit: connection throughput unit (Mbps or Gbps).
+        """
+        pulumi.set(__self__, "account_number", account_number)
+        pulumi.set(__self__, "metro_code", metro_code)
+        pulumi.set(__self__, "throughput", throughput)
+        pulumi.set(__self__, "throughput_unit", throughput_unit)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> str:
+        """
+        billing account number to be used for
+        connection charges
+        """
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="metroCode")
+    def metro_code(self) -> str:
+        """
+        connection metro code.
+        """
+        return pulumi.get(self, "metro_code")
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> str:
+        """
+        connection throughput.
+        """
+        return pulumi.get(self, "throughput")
+
+    @property
+    @pulumi.getter(name="throughputUnit")
+    def throughput_unit(self) -> str:
+        """
+        connection throughput unit (Mbps or Gbps).
+        """
+        return pulumi.get(self, "throughput_unit")
 
 
 @pulumi.output_type

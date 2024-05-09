@@ -56,7 +56,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// <summary>
         /// Provider assigned Connection Id
         /// </summary>
-        public readonly string? ProviderConnectionId;
+        public readonly string ProviderConnectionId;
         /// <summary>
         /// Cloud Router access point information that replaces `gateway`
         /// </summary>
@@ -96,7 +96,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             Outputs.GetConnectionZSideAccessPointProfileResult? profile,
 
-            string? providerConnectionId,
+            string providerConnectionId,
 
             Outputs.GetConnectionZSideAccessPointRouterResult? router,
 

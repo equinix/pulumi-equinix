@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionZSideAccessPointLinkProtocol
     {
         /// <summary>
-        /// Interface type
+        /// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
         /// </summary>
         public readonly string? Type;
         /// <summary>

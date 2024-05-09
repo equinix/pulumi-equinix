@@ -150,9 +150,8 @@ type Device struct {
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
 	OperatingSystem pulumi.StringOutput `pulumi:"operatingSystem"`
-	// The device plan slug. To find the plan slug, visit
-	// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-	// top of the page and see JSON from the API response.
+	// The device plan slug. To find the plan slug, visit the
+	// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// List of ports assigned to the device. See Ports Attribute below for
 	// more details.
@@ -327,9 +326,8 @@ type deviceState struct {
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
 	OperatingSystem *string `pulumi:"operatingSystem"`
-	// The device plan slug. To find the plan slug, visit
-	// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-	// top of the page and see JSON from the API response.
+	// The device plan slug. To find the plan slug, visit the
+	// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
 	Plan *string `pulumi:"plan"`
 	// List of ports assigned to the device. See Ports Attribute below for
 	// more details.
@@ -454,9 +452,8 @@ type DeviceState struct {
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
 	OperatingSystem pulumi.StringPtrInput
-	// The device plan slug. To find the plan slug, visit
-	// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-	// top of the page and see JSON from the API response.
+	// The device plan slug. To find the plan slug, visit the
+	// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
 	Plan pulumi.StringPtrInput
 	// List of ports assigned to the device. See Ports Attribute below for
 	// more details.
@@ -557,9 +554,8 @@ type deviceArgs struct {
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
 	OperatingSystem string `pulumi:"operatingSystem"`
-	// The device plan slug. To find the plan slug, visit
-	// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-	// top of the page and see JSON from the API response.
+	// The device plan slug. To find the plan slug, visit the
+	// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
 	Plan string `pulumi:"plan"`
 	// The ID of the project in which to create the device
 	ProjectId string `pulumi:"projectId"`
@@ -644,9 +640,8 @@ type DeviceArgs struct {
 	// [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
 	// API auth token in the top of the page and see JSON from the API response.
 	OperatingSystem pulumi.StringInput
-	// The device plan slug. To find the plan slug, visit
-	// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-	// top of the page and see JSON from the API response.
+	// The device plan slug. To find the plan slug, visit the
+	// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
 	Plan pulumi.StringInput
 	// The ID of the project in which to create the device
 	ProjectId pulumi.StringInput
@@ -910,9 +905,8 @@ func (o DeviceOutput) OperatingSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.OperatingSystem }).(pulumi.StringOutput)
 }
 
-// The device plan slug. To find the plan slug, visit
-// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-// top of the page and see JSON from the API response.
+// The device plan slug. To find the plan slug, visit the
+// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
 func (o DeviceOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

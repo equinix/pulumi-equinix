@@ -14,19 +14,19 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionASideServiceToken
     {
         /// <summary>
-        /// User-provided service description
+        /// Service token description
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Unique Resource Identifier
+        /// An absolute URL that is the subject of the link's context
         /// </summary>
         public readonly string? Href;
         /// <summary>
-        /// Interface type
+        /// Token type - VC_TOKEN
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned service token identifier
         /// </summary>
         public readonly string? Uuid;
 

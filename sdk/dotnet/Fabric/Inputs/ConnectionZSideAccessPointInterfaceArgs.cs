@@ -25,7 +25,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned interface identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

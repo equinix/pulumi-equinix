@@ -282,14 +282,22 @@ def get_cloud_router(uuid: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     cloud_router_data_name = equinix.fabric.get_cloud_router(uuid="<uuid_of_cloud_router>")
+    pulumi.export("id", cloud_router_data_name.id)
+    pulumi.export("name", cloud_router_data_name.name)
+    pulumi.export("accountNumber", cloud_router_data_name.accounts[0].account_number)
+    pulumi.export("equinixAsn", cloud_router_data_name.equinix_asn)
+    pulumi.export("metroCode", cloud_router_data_name.locations[0].metro_code)
+    pulumi.export("metroName", cloud_router_data_name.locations[0].metro_name)
+    pulumi.export("region", cloud_router_data_name.locations[0].region)
+    pulumi.export("packageCode", cloud_router_data_name.packages[0].code)
+    pulumi.export("projectId", cloud_router_data_name.projects[0].project_id)
+    pulumi.export("type", cloud_router_data_name.type)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier
@@ -332,14 +340,22 @@ def get_cloud_router_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     cloud_router_data_name = equinix.fabric.get_cloud_router(uuid="<uuid_of_cloud_router>")
+    pulumi.export("id", cloud_router_data_name.id)
+    pulumi.export("name", cloud_router_data_name.name)
+    pulumi.export("accountNumber", cloud_router_data_name.accounts[0].account_number)
+    pulumi.export("equinixAsn", cloud_router_data_name.equinix_asn)
+    pulumi.export("metroCode", cloud_router_data_name.locations[0].metro_code)
+    pulumi.export("metroName", cloud_router_data_name.locations[0].metro_name)
+    pulumi.export("region", cloud_router_data_name.locations[0].region)
+    pulumi.export("packageCode", cloud_router_data_name.packages[0].code)
+    pulumi.export("projectId", cloud_router_data_name.projects[0].project_id)
+    pulumi.export("type", cloud_router_data_name.type)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned Fabric Cloud Router identifier

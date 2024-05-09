@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,9 +29,25 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_port&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = portDataName.Apply(getPortResult =&gt; getPortResult.Id),
+        ///         ["name"] = portDataName.Apply(getPortResult =&gt; getPortResult.Name),
+        ///         ["state"] = portDataName.Apply(getPortResult =&gt; getPortResult.State),
+        ///         ["accountName"] = portDataName.Apply(getPortResult =&gt; getPortResult.Account?.AccountName),
+        ///         ["type"] = portDataName.Apply(getPortResult =&gt; getPortResult.Type),
+        ///         ["bandwidth"] = portDataName.Apply(getPortResult =&gt; getPortResult.Bandwidth),
+        ///         ["usedBandwidth"] = portDataName.Apply(getPortResult =&gt; getPortResult.UsedBandwidth),
+        ///         ["encapsulationType"] = portDataName.Apply(getPortResult =&gt; getPortResult.Encapsulation?.Type),
+        ///         ["ibx"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.Ibx),
+        ///         ["metroCode"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.MetroCode),
+        ///         ["metroName"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.MetroName),
+        ///         ["region"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.Region),
+        ///         ["deviceRedundancyEnabled"] = portDataName.Apply(getPortResult =&gt; getPortResult.Device?.Redundancies[0]?.Enabled),
+        ///         ["deviceRedundancyPriority"] = portDataName.Apply(getPortResult =&gt; getPortResult.Device?.Redundancies[0]?.Priority),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPortResult> InvokeAsync(GetPortArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("equinix:fabric/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
@@ -42,7 +57,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,9 +70,25 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_port&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = portDataName.Apply(getPortResult =&gt; getPortResult.Id),
+        ///         ["name"] = portDataName.Apply(getPortResult =&gt; getPortResult.Name),
+        ///         ["state"] = portDataName.Apply(getPortResult =&gt; getPortResult.State),
+        ///         ["accountName"] = portDataName.Apply(getPortResult =&gt; getPortResult.Account?.AccountName),
+        ///         ["type"] = portDataName.Apply(getPortResult =&gt; getPortResult.Type),
+        ///         ["bandwidth"] = portDataName.Apply(getPortResult =&gt; getPortResult.Bandwidth),
+        ///         ["usedBandwidth"] = portDataName.Apply(getPortResult =&gt; getPortResult.UsedBandwidth),
+        ///         ["encapsulationType"] = portDataName.Apply(getPortResult =&gt; getPortResult.Encapsulation?.Type),
+        ///         ["ibx"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.Ibx),
+        ///         ["metroCode"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.MetroCode),
+        ///         ["metroName"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.MetroName),
+        ///         ["region"] = portDataName.Apply(getPortResult =&gt; getPortResult.Location?.Region),
+        ///         ["deviceRedundancyEnabled"] = portDataName.Apply(getPortResult =&gt; getPortResult.Device?.Redundancies[0]?.Enabled),
+        ///         ["deviceRedundancyPriority"] = portDataName.Apply(getPortResult =&gt; getPortResult.Device?.Redundancies[0]?.Priority),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:fabric/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
