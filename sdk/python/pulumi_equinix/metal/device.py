@@ -46,9 +46,8 @@ class DeviceArgs:
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
                API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit
-               [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-               top of the page and see JSON from the API response.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
+               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[bool] always_pxe: If true, a device with OS `custom_ipxe` will continue to boot via iPXE
                on reboots.
@@ -168,9 +167,8 @@ class DeviceArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[Union[str, 'Plan']]:
         """
-        The device plan slug. To find the plan slug, visit
-        [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-        top of the page and see JSON from the API response.
+        The device plan slug. To find the plan slug, visit the
+        [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         """
         return pulumi.get(self, "plan")
 
@@ -570,9 +568,8 @@ class _DeviceState:
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
                API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit
-               [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-               top of the page and see JSON from the API response.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
+               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         :param pulumi.Input[Sequence[pulumi.Input['DevicePortArgs']]] ports: List of ports assigned to the device. See Ports Attribute below for
                more details.
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
@@ -992,9 +989,8 @@ class _DeviceState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[Union[str, 'Plan']]]:
         """
-        The device plan slug. To find the plan slug, visit
-        [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-        top of the page and see JSON from the API response.
+        The device plan slug. To find the plan slug, visit the
+        [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         """
         return pulumi.get(self, "plan")
 
@@ -1294,9 +1290,8 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
                API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit
-               [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-               top of the page and see JSON from the API response.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
+               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
         :param pulumi.Input[Sequence[pulumi.Input[str]]] project_ssh_key_ids: Array of IDs of the project SSH keys which should be added to the device. If you specify this array, only the listed project SSH keys (and any SSH keys for the users specified in user_ssh_key_ids) will be added. If no SSH keys are specified (both user_ssh_keys_ids and project_ssh_key_ids are empty lists or omitted), all parent project keys, parent project members keys and organization members keys will be included.  Project SSH keys can be created with the metal.ProjectSshKey resource.
         :param pulumi.Input[pulumi.InputType['DeviceReinstallArgs']] reinstall: Whether the device should be reinstalled instead of destroyed when
@@ -1556,9 +1551,8 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'OperatingSystem']] operating_system: The operating system slug. To find the slug, or visit
                [Operating Systems API docs](https://metal.equinix.com/developers/api/operatingsystems), set your
                API auth token in the top of the page and see JSON from the API response.
-        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit
-               [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-               top of the page and see JSON from the API response.
+        :param pulumi.Input[Union[str, 'Plan']] plan: The device plan slug. To find the plan slug, visit the
+               [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePortArgs']]]] ports: List of ports assigned to the device. See Ports Attribute below for
                more details.
         :param pulumi.Input[str] project_id: The ID of the project in which to create the device
@@ -1848,9 +1842,8 @@ class Device(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        The device plan slug. To find the plan slug, visit
-        [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-        top of the page and see JSON from the API response.
+        The device plan slug. To find the plan slug, visit the
+        [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         """
         return pulumi.get(self, "plan")
 

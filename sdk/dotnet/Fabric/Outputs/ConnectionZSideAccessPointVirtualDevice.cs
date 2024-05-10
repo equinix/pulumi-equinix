@@ -18,15 +18,15 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? Href;
         /// <summary>
-        /// Port name
+        /// Customer-assigned Virtual Device Name
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Interface type
+        /// Virtual Device type
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned Virtual Device identifier
         /// </summary>
         public readonly string? Uuid;
 

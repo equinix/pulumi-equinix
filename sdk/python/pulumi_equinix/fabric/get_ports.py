@@ -77,7 +77,6 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -85,8 +84,21 @@ def get_ports(filter: Optional[pulumi.InputType['GetPortsFilterArgs']] = None,
     ports_data_name = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
         name="<name_of_port||port_prefix>",
     ))
+    pulumi.export("id", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["id"])
+    pulumi.export("name", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["name"])
+    pulumi.export("state", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["state"])
+    pulumi.export("accountName", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["account"][0]["account_name"])
+    pulumi.export("type", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["type"])
+    pulumi.export("bandwidth", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["bandwidth"])
+    pulumi.export("usedBandwidth", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["used_bandwidth"])
+    pulumi.export("encapsulationType", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["encapsulation"][0]["type"])
+    pulumi.export("ibx", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["ibx"])
+    pulumi.export("metroCode", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["metro_code"])
+    pulumi.export("metroName", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["metro_name"])
+    pulumi.export("region", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["region"])
+    pulumi.export("deviceRedundancyEnabled", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["device"][0]["redundancy"][0]["enabled"])
+    pulumi.export("deviceRedundancyPriority", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["device"][0]["redundancy"][0]["priority"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetPortsFilterArgs'] filter: name
@@ -110,7 +122,6 @@ def get_ports_output(filter: Optional[pulumi.Input[pulumi.InputType['GetPortsFil
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -118,8 +129,21 @@ def get_ports_output(filter: Optional[pulumi.Input[pulumi.InputType['GetPortsFil
     ports_data_name = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
         name="<name_of_port||port_prefix>",
     ))
+    pulumi.export("id", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["id"])
+    pulumi.export("name", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["name"])
+    pulumi.export("state", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["state"])
+    pulumi.export("accountName", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["account"][0]["account_name"])
+    pulumi.export("type", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["type"])
+    pulumi.export("bandwidth", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["bandwidth"])
+    pulumi.export("usedBandwidth", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["used_bandwidth"])
+    pulumi.export("encapsulationType", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["encapsulation"][0]["type"])
+    pulumi.export("ibx", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["ibx"])
+    pulumi.export("metroCode", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["metro_code"])
+    pulumi.export("metroName", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["metro_name"])
+    pulumi.export("region", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["location"][0]["region"])
+    pulumi.export("deviceRedundancyEnabled", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["device"][0]["redundancy"][0]["enabled"])
+    pulumi.export("deviceRedundancyPriority", data["equinix_fabric_port"]["ports_data_name"]["data"][0]["device"][0]["redundancy"][0]["priority"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetPortsFilterArgs'] filter: name

@@ -120,7 +120,6 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -128,7 +127,6 @@ def get_facility(capacities: Optional[Sequence[pulumi.InputType['GetFacilityCapa
     ny5 = equinix.metal.get_facility(code="ny5")
     pulumi.export("id", ny5.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.
@@ -165,7 +163,6 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -173,7 +170,6 @@ def get_facility_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulu
     ny5 = equinix.metal.get_facility(code="ny5")
     pulumi.export("id", ny5.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetFacilityCapacityArgs']] capacities: One or more device plans for which the facility must have capacity.

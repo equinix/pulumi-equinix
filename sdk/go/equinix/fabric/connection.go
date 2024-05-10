@@ -13,8 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
-//
 // ## Example Usage
 // ```go
 // package main
@@ -123,23 +121,23 @@ type Connection struct {
 
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide ConnectionASideOutput `pulumi:"aSide"`
-	// Account
+	// Customer account information that is associated with this connection
 	Account ConnectionAccountOutput `pulumi:"account"`
-	// Connection side additional information
+	// Connection additional information
 	AdditionalInfo pulumi.MapArrayOutput `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
 	ChangeLog ConnectionChangeLogOutput `pulumi:"changeLog"`
-	// User-provided service description
+	// Customer-provided connection description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// Unique Resource Identifier
+	// Connection URI information
 	Href pulumi.StringOutput `pulumi:"href"`
 	// Connection property derived from access point locations
 	IsRemote pulumi.BoolOutput `pulumi:"isRemote"`
-	// Port name
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayOutput `pulumi:"notifications"`
@@ -149,13 +147,13 @@ type Connection struct {
 	Order ConnectionOrderOutput `pulumi:"order"`
 	// Project information
 	Project ConnectionProjectOutput `pulumi:"project"`
-	// Redundancy Information
+	// Connection Redundancy Configuration
 	Redundancy ConnectionRedundancyPtrOutput `pulumi:"redundancy"`
 	// Connection overall state
 	State pulumi.StringOutput `pulumi:"state"`
-	// Interface type
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned connection identifier
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSideOutput `pulumi:"zSide"`
@@ -176,9 +174,6 @@ func NewConnection(ctx *pulumi.Context,
 	}
 	if args.Notifications == nil {
 		return nil, errors.New("invalid value for required argument 'Notifications'")
-	}
-	if args.Order == nil {
-		return nil, errors.New("invalid value for required argument 'Order'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -211,23 +206,23 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide *ConnectionASide `pulumi:"aSide"`
-	// Account
+	// Customer account information that is associated with this connection
 	Account *ConnectionAccount `pulumi:"account"`
-	// Connection side additional information
+	// Connection additional information
 	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Captures connection lifecycle change information
 	ChangeLog *ConnectionChangeLog `pulumi:"changeLog"`
-	// User-provided service description
+	// Customer-provided connection description
 	Description *string `pulumi:"description"`
 	// Connection directionality from the requester point of view
 	Direction *string `pulumi:"direction"`
-	// Unique Resource Identifier
+	// Connection URI information
 	Href *string `pulumi:"href"`
 	// Connection property derived from access point locations
 	IsRemote *bool `pulumi:"isRemote"`
-	// Port name
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ConnectionNotification `pulumi:"notifications"`
@@ -237,13 +232,13 @@ type connectionState struct {
 	Order *ConnectionOrder `pulumi:"order"`
 	// Project information
 	Project *ConnectionProject `pulumi:"project"`
-	// Redundancy Information
+	// Connection Redundancy Configuration
 	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
 	// Connection overall state
 	State *string `pulumi:"state"`
-	// Interface type
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned connection identifier
 	Uuid *string `pulumi:"uuid"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide *ConnectionZSide `pulumi:"zSide"`
@@ -252,23 +247,23 @@ type connectionState struct {
 type ConnectionState struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide ConnectionASidePtrInput
-	// Account
+	// Customer account information that is associated with this connection
 	Account ConnectionAccountPtrInput
-	// Connection side additional information
+	// Connection additional information
 	AdditionalInfo pulumi.MapArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntPtrInput
 	// Captures connection lifecycle change information
 	ChangeLog ConnectionChangeLogPtrInput
-	// User-provided service description
+	// Customer-provided connection description
 	Description pulumi.StringPtrInput
 	// Connection directionality from the requester point of view
 	Direction pulumi.StringPtrInput
-	// Unique Resource Identifier
+	// Connection URI information
 	Href pulumi.StringPtrInput
 	// Connection property derived from access point locations
 	IsRemote pulumi.BoolPtrInput
-	// Port name
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayInput
@@ -278,13 +273,13 @@ type ConnectionState struct {
 	Order ConnectionOrderPtrInput
 	// Project information
 	Project ConnectionProjectPtrInput
-	// Redundancy Information
+	// Connection Redundancy Configuration
 	Redundancy ConnectionRedundancyPtrInput
 	// Connection overall state
 	State pulumi.StringPtrInput
-	// Interface type
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type pulumi.StringPtrInput
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned connection identifier
 	Uuid pulumi.StringPtrInput
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSidePtrInput
@@ -297,23 +292,23 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide ConnectionASide `pulumi:"aSide"`
-	// Connection side additional information
+	// Connection additional information
 	AdditionalInfo []map[string]interface{} `pulumi:"additionalInfo"`
 	// Connection bandwidth in Mbps
 	Bandwidth int `pulumi:"bandwidth"`
-	// User-provided service description
+	// Customer-provided connection description
 	Description *string `pulumi:"description"`
-	// Port name
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name *string `pulumi:"name"`
 	// Preferences for notifications on connection configuration or status changes
 	Notifications []ConnectionNotification `pulumi:"notifications"`
 	// Order details
-	Order ConnectionOrder `pulumi:"order"`
+	Order *ConnectionOrder `pulumi:"order"`
 	// Project information
 	Project *ConnectionProject `pulumi:"project"`
-	// Redundancy Information
+	// Connection Redundancy Configuration
 	Redundancy *ConnectionRedundancy `pulumi:"redundancy"`
-	// Interface type
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type string `pulumi:"type"`
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSide `pulumi:"zSide"`
@@ -323,23 +318,23 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Requester or Customer side connection configuration object of the multi-segment connection
 	ASide ConnectionASideInput
-	// Connection side additional information
+	// Connection additional information
 	AdditionalInfo pulumi.MapArrayInput
 	// Connection bandwidth in Mbps
 	Bandwidth pulumi.IntInput
-	// User-provided service description
+	// Customer-provided connection description
 	Description pulumi.StringPtrInput
-	// Port name
+	// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 	Name pulumi.StringPtrInput
 	// Preferences for notifications on connection configuration or status changes
 	Notifications ConnectionNotificationArrayInput
 	// Order details
-	Order ConnectionOrderInput
+	Order ConnectionOrderPtrInput
 	// Project information
 	Project ConnectionProjectPtrInput
-	// Redundancy Information
+	// Connection Redundancy Configuration
 	Redundancy ConnectionRedundancyPtrInput
-	// Interface type
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type pulumi.StringInput
 	// Destination or Provider side connection configuration object of the multi-segment connection
 	ZSide ConnectionZSideInput
@@ -437,12 +432,12 @@ func (o ConnectionOutput) ASide() ConnectionASideOutput {
 	return o.ApplyT(func(v *Connection) ConnectionASideOutput { return v.ASide }).(ConnectionASideOutput)
 }
 
-// Account
+// Customer account information that is associated with this connection
 func (o ConnectionOutput) Account() ConnectionAccountOutput {
 	return o.ApplyT(func(v *Connection) ConnectionAccountOutput { return v.Account }).(ConnectionAccountOutput)
 }
 
-// Connection side additional information
+// Connection additional information
 func (o ConnectionOutput) AdditionalInfo() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v *Connection) pulumi.MapArrayOutput { return v.AdditionalInfo }).(pulumi.MapArrayOutput)
 }
@@ -457,7 +452,7 @@ func (o ConnectionOutput) ChangeLog() ConnectionChangeLogOutput {
 	return o.ApplyT(func(v *Connection) ConnectionChangeLogOutput { return v.ChangeLog }).(ConnectionChangeLogOutput)
 }
 
-// User-provided service description
+// Customer-provided connection description
 func (o ConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -467,7 +462,7 @@ func (o ConnectionOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
-// Unique Resource Identifier
+// Connection URI information
 func (o ConnectionOutput) Href() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Href }).(pulumi.StringOutput)
 }
@@ -477,7 +472,7 @@ func (o ConnectionOutput) IsRemote() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.IsRemote }).(pulumi.BoolOutput)
 }
 
-// Port name
+// Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -502,7 +497,7 @@ func (o ConnectionOutput) Project() ConnectionProjectOutput {
 	return o.ApplyT(func(v *Connection) ConnectionProjectOutput { return v.Project }).(ConnectionProjectOutput)
 }
 
-// Redundancy Information
+// Connection Redundancy Configuration
 func (o ConnectionOutput) Redundancy() ConnectionRedundancyPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionRedundancyPtrOutput { return v.Redundancy }).(ConnectionRedundancyPtrOutput)
 }
@@ -512,12 +507,12 @@ func (o ConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Interface type
+// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 func (o ConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned connection identifier
 func (o ConnectionOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }

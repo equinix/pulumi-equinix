@@ -452,18 +452,16 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.operatingSystem;
     }
     /**
-     * The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * @return The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      * 
      */
     public Output<String> plan() {

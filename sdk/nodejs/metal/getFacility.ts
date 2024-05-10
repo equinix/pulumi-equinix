@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const id = ny5.then(ny5 => ny5.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFacility(args: GetFacilityArgs, opts?: pulumi.InvokeOptions): Promise<GetFacilityResult> {
 
@@ -86,7 +84,6 @@ export interface GetFacilityResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -96,7 +93,6 @@ export interface GetFacilityResult {
  * });
  * export const id = ny5.then(ny5 => ny5.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFacilityOutput(args: GetFacilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFacilityResult> {
     return pulumi.output(args).apply((a: any) => getFacility(a, opts))

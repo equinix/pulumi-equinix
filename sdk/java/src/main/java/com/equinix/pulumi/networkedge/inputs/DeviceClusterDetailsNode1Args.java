@@ -17,14 +17,14 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
     public static final DeviceClusterDetailsNode1Args Empty = new DeviceClusterDetailsNode1Args();
 
     /**
-     * Identifier of a license file that will be applied on the device.
+     * License file id. This is necessary for Fortinet and Juniper clusters.
      * 
      */
     @Import(name="licenseFileId")
     private @Nullable Output<String> licenseFileId;
 
     /**
-     * @return Identifier of a license file that will be applied on the device.
+     * @return License file id. This is necessary for Fortinet and Juniper clusters.
      * 
      */
     public Optional<Output<String>> licenseFileId() {
@@ -32,16 +32,14 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
     }
 
     /**
-     * License Token applicable for some device types in BYOL licensing
-     * mode.
+     * License token. This is necessary for Palo Alto clusters.
      * 
      */
     @Import(name="licenseToken")
     private @Nullable Output<String> licenseToken;
 
     /**
-     * @return License Token applicable for some device types in BYOL licensing
-     * mode.
+     * @return License token. This is necessary for Palo Alto clusters.
      * 
      */
     public Optional<Output<String>> licenseToken() {
@@ -79,20 +77,18 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
     }
 
     /**
-     * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * An object that has fields relevant to the vendor of the
+     * cluster device. See Cluster Details - Nodes - Vendor Configuration
+     * below for more details.
      * 
      */
     @Import(name="vendorConfiguration")
     private @Nullable Output<DeviceClusterDetailsNode1VendorConfigurationArgs> vendorConfiguration;
 
     /**
-     * @return Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * @return An object that has fields relevant to the vendor of the
+     * cluster device. See Cluster Details - Nodes - Vendor Configuration
+     * below for more details.
      * 
      */
     public Optional<Output<DeviceClusterDetailsNode1VendorConfigurationArgs>> vendorConfiguration() {
@@ -128,7 +124,7 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param licenseFileId Identifier of a license file that will be applied on the device.
+         * @param licenseFileId License file id. This is necessary for Fortinet and Juniper clusters.
          * 
          * @return builder
          * 
@@ -139,7 +135,7 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param licenseFileId Identifier of a license file that will be applied on the device.
+         * @param licenseFileId License file id. This is necessary for Fortinet and Juniper clusters.
          * 
          * @return builder
          * 
@@ -149,8 +145,7 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param licenseToken License Token applicable for some device types in BYOL licensing
-         * mode.
+         * @param licenseToken License token. This is necessary for Palo Alto clusters.
          * 
          * @return builder
          * 
@@ -161,8 +156,7 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param licenseToken License Token applicable for some device types in BYOL licensing
-         * mode.
+         * @param licenseToken License token. This is necessary for Palo Alto clusters.
          * 
          * @return builder
          * 
@@ -214,10 +208,9 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vendorConfiguration Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         *   on a device (max one key).  See SSH Key below for more details.
+         * @param vendorConfiguration An object that has fields relevant to the vendor of the
+         * cluster device. See Cluster Details - Nodes - Vendor Configuration
+         * below for more details.
          * 
          * @return builder
          * 
@@ -228,10 +221,9 @@ public final class DeviceClusterDetailsNode1Args extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vendorConfiguration Map of vendor specific configuration parameters for a device
-         * (controller1, activationKey, managementType, siteId, systemIpAddress)
-         * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-         *   on a device (max one key).  See SSH Key below for more details.
+         * @param vendorConfiguration An object that has fields relevant to the vendor of the
+         * cluster device. See Cluster Details - Nodes - Vendor Configuration
+         * below for more details.
          * 
          * @return builder
          * 

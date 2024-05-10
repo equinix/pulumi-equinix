@@ -18,8 +18,10 @@ class DeviceLinkArgs:
     def __init__(__self__, *,
                  devices: pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]],
                  links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
+                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DeviceLink resource.
@@ -27,19 +29,30 @@ class DeviceLinkArgs:
                device link. See Device section below for more details.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]] metro_links: definition of one or more, inter metro, connections belonging
+               to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
                leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
+               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
                between self configured devices.
         """
         pulumi.set(__self__, "devices", devices)
         if links is not None:
+            warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
+            pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
+        if links is not None:
             pulumi.set(__self__, "links", links)
+        if metro_links is not None:
+            pulumi.set(__self__, "metro_links", metro_links)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if redundancy_type is not None:
+            pulumi.set(__self__, "redundancy_type", redundancy_type)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
 
@@ -63,11 +76,27 @@ class DeviceLinkArgs:
         definition of one or more, inter metro, connections belonging
         to the device link. See Link section below for more details.
         """
+        warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
+        pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
+
         return pulumi.get(self, "links")
 
     @links.setter
     def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]]):
         pulumi.set(self, "links", value)
+
+    @property
+    @pulumi.getter(name="metroLinks")
+    def metro_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]]:
+        """
+        definition of one or more, inter metro, connections belonging
+        to the device link. See Metro Link section below for more details.
+        """
+        return pulumi.get(self, "metro_links")
+
+    @metro_links.setter
+    def metro_links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]]):
+        pulumi.set(self, "metro_links", value)
 
     @property
     @pulumi.getter
@@ -95,6 +124,19 @@ class DeviceLinkArgs:
         pulumi.set(self, "project_id", value)
 
     @property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the connection should be created through 
+        Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @redundancy_type.setter
+    def redundancy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundancy_type", value)
+
+    @property
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
@@ -113,8 +155,10 @@ class _DeviceLinkState:
     def __init__(__self__, *,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkDeviceArgs']]]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]] = None,
+                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
@@ -124,9 +168,13 @@ class _DeviceLinkState:
                device link. See Device section below for more details.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]] metro_links: definition of one or more, inter metro, connections belonging
+               to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
                leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
+               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
                `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
@@ -136,11 +184,18 @@ class _DeviceLinkState:
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
         if links is not None:
+            warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
+            pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
+        if links is not None:
             pulumi.set(__self__, "links", links)
+        if metro_links is not None:
+            pulumi.set(__self__, "metro_links", metro_links)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if redundancy_type is not None:
+            pulumi.set(__self__, "redundancy_type", redundancy_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if subnet is not None:
@@ -168,11 +223,27 @@ class _DeviceLinkState:
         definition of one or more, inter metro, connections belonging
         to the device link. See Link section below for more details.
         """
+        warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
+        pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
+
         return pulumi.get(self, "links")
 
     @links.setter
     def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkLinkArgs']]]]):
         pulumi.set(self, "links", value)
+
+    @property
+    @pulumi.getter(name="metroLinks")
+    def metro_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]]:
+        """
+        definition of one or more, inter metro, connections belonging
+        to the device link. See Metro Link section below for more details.
+        """
+        return pulumi.get(self, "metro_links")
+
+    @metro_links.setter
+    def metro_links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLinkMetroLinkArgs']]]]):
+        pulumi.set(self, "metro_links", value)
 
     @property
     @pulumi.getter
@@ -198,6 +269,19 @@ class _DeviceLinkState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the connection should be created through 
+        Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        """
+        return pulumi.get(self, "redundancy_type")
+
+    @redundancy_type.setter
+    def redundancy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundancy_type", value)
 
     @property
     @pulumi.getter
@@ -245,8 +329,10 @@ class DeviceLink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
+                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -307,9 +393,13 @@ class DeviceLink(pulumi.CustomResource):
                device link. See Device section below for more details.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging
+               to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
                leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
+               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
                between self configured devices.
         """
@@ -388,8 +478,10 @@ class DeviceLink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
                  links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
+                 metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 redundancy_type: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -404,8 +496,10 @@ class DeviceLink(pulumi.CustomResource):
                 raise TypeError("Missing required property 'devices'")
             __props__.__dict__["devices"] = devices
             __props__.__dict__["links"] = links
+            __props__.__dict__["metro_links"] = metro_links
             __props__.__dict__["name"] = name
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["redundancy_type"] = redundancy_type
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["status"] = None
             __props__.__dict__["uuid"] = None
@@ -421,8 +515,10 @@ class DeviceLink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkDeviceArgs']]]]] = None,
             links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]]] = None,
+            metro_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
+            redundancy_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
             uuid: Optional[pulumi.Input[str]] = None) -> 'DeviceLink':
@@ -437,9 +533,13 @@ class DeviceLink(pulumi.CustomResource):
                device link. See Device section below for more details.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkLinkArgs']]]] links: definition of one or more, inter metro, connections belonging
                to the device link. See Link section below for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLinkMetroLinkArgs']]]] metro_links: definition of one or more, inter metro, connections belonging
+               to the device link. See Metro Link section below for more details.
         :param pulumi.Input[str] name: device link name.
         :param pulumi.Input[str] project_id: Unique Identifier for the project resource where the device link is scoped to.If you
                leave it out, the device link will be created under the default project id of your organization.
+        :param pulumi.Input[str] redundancy_type: Whether the connection should be created through 
+               Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
         :param pulumi.Input[str] status: device link provisioning status on a given device. One of `PROVISIONING`,
                `PROVISIONED`, `DEPROVISIONING`, `DEPROVISIONED`, `FAILED`.
         :param pulumi.Input[str] subnet: device link subnet in CIDR format. Not required for link
@@ -452,8 +552,10 @@ class DeviceLink(pulumi.CustomResource):
 
         __props__.__dict__["devices"] = devices
         __props__.__dict__["links"] = links
+        __props__.__dict__["metro_links"] = metro_links
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["redundancy_type"] = redundancy_type
         __props__.__dict__["status"] = status
         __props__.__dict__["subnet"] = subnet
         __props__.__dict__["uuid"] = uuid
@@ -475,7 +577,19 @@ class DeviceLink(pulumi.CustomResource):
         definition of one or more, inter metro, connections belonging
         to the device link. See Link section below for more details.
         """
+        warnings.warn("""Links is deprecated. Please use metro links instead.""", DeprecationWarning)
+        pulumi.log.warn("""links is deprecated: Links is deprecated. Please use metro links instead.""")
+
         return pulumi.get(self, "links")
+
+    @property
+    @pulumi.getter(name="metroLinks")
+    def metro_links(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceLinkMetroLink']]]:
+        """
+        definition of one or more, inter metro, connections belonging
+        to the device link. See Metro Link section below for more details.
+        """
+        return pulumi.get(self, "metro_links")
 
     @property
     @pulumi.getter
@@ -493,6 +607,15 @@ class DeviceLink(pulumi.CustomResource):
         leave it out, the device link will be created under the default project id of your organization.
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="redundancyType")
+    def redundancy_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether the connection should be created through 
+        Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        """
+        return pulumi.get(self, "redundancy_type")
 
     @property
     @pulumi.getter

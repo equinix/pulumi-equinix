@@ -14,11 +14,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionZSideAccessPointProfileAccessPointTypeConfig
     {
         /// <summary>
-        /// Interface type
+        /// Type of access point type config - VD, COLO
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned access point type config identifier
         /// </summary>
         public readonly string? Uuid;
 

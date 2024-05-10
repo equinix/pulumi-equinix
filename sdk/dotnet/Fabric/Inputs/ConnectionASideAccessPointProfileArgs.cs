@@ -31,25 +31,25 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique Resource Identifier
+        /// Service Profile URI response attribute
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Port name
+        /// Customer-assigned service profile name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Interface type
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix assigned service profile identifier
         /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;

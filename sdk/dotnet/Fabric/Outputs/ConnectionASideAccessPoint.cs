@@ -66,7 +66,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? SellerRegion;
         /// <summary>
-        /// Interface type
+        /// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
         /// </summary>
         public readonly string? Type;
         /// <summary>

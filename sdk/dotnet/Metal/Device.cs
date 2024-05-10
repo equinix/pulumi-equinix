@@ -218,9 +218,8 @@ namespace Pulumi.Equinix.Metal
         public Output<string> OperatingSystem { get; private set; } = null!;
 
         /// <summary>
-        /// The device plan slug. To find the plan slug, visit
-        /// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-        /// top of the page and see JSON from the API response.
+        /// The device plan slug. To find the plan slug, visit the
+        /// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -508,9 +507,8 @@ namespace Pulumi.Equinix.Metal
         public InputUnion<string, Pulumi.Equinix.Metal.OperatingSystem> OperatingSystem { get; set; } = null!;
 
         /// <summary>
-        /// The device plan slug. To find the plan slug, visit
-        /// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-        /// top of the page and see JSON from the API response.
+        /// The device plan slug. To find the plan slug, visit the
+        /// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         /// </summary>
         [Input("plan", required: true)]
         public InputUnion<string, Pulumi.Equinix.Metal.Plan> Plan { get; set; } = null!;
@@ -806,9 +804,8 @@ namespace Pulumi.Equinix.Metal
         public InputUnion<string, Pulumi.Equinix.Metal.OperatingSystem>? OperatingSystem { get; set; }
 
         /// <summary>
-        /// The device plan slug. To find the plan slug, visit
-        /// [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-        /// top of the page and see JSON from the API response.
+        /// The device plan slug. To find the plan slug, visit the
+        /// [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
         /// </summary>
         [Input("plan")]
         public InputUnion<string, Pulumi.Equinix.Metal.Plan>? Plan { get; set; }

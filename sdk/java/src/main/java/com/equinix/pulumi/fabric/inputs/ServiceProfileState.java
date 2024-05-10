@@ -107,14 +107,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Description of authorization key
+     * User-provided service description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of authorization key
+     * @return User-provided service description
      * 
      */
     public Optional<Output<String>> description() {
@@ -122,14 +122,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Unique Resource URL
+     * Service Profile URI response attribute
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Unique Resource URL
+     * @return Service Profile URI response attribute
      * 
      */
     public Optional<Output<String>> href() {
@@ -167,14 +167,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Metro Name
+     * Customer-assigned service profile name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Metro Name
+     * @return Customer-assigned service profile name
      * 
      */
     public Optional<Output<String>> name() {
@@ -272,14 +272,14 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Type of access point type config - VD, COLO
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Type of access point type config - VD, COLO
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     public Optional<Output<Either<String,ProfileType>>> type() {
@@ -287,18 +287,33 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Colo/Port Uuid
+     * Equinix assigned service profile identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Colo/Port Uuid
+     * @return Equinix assigned service profile identifier
      * 
      */
     public Optional<Output<String>> uuid() {
         return Optional.ofNullable(this.uuid);
+    }
+
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    @Import(name="viewPoint")
+    private @Nullable Output<String> viewPoint;
+
+    /**
+     * @return Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     * 
+     */
+    public Optional<Output<String>> viewPoint() {
+        return Optional.ofNullable(this.viewPoint);
     }
 
     /**
@@ -352,6 +367,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         this.tags = $.tags;
         this.type = $.type;
         this.uuid = $.uuid;
+        this.viewPoint = $.viewPoint;
         this.virtualDevices = $.virtualDevices;
         this.visibility = $.visibility;
     }
@@ -510,7 +526,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description Description of authorization key
+         * @param description User-provided service description
          * 
          * @return builder
          * 
@@ -521,7 +537,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description Description of authorization key
+         * @param description User-provided service description
          * 
          * @return builder
          * 
@@ -531,7 +547,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param href Unique Resource URL
+         * @param href Service Profile URI response attribute
          * 
          * @return builder
          * 
@@ -542,7 +558,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param href Unique Resource URL
+         * @param href Service Profile URI response attribute
          * 
          * @return builder
          * 
@@ -604,7 +620,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Metro Name
+         * @param name Customer-assigned service profile name
          * 
          * @return builder
          * 
@@ -615,7 +631,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Metro Name
+         * @param name Customer-assigned service profile name
          * 
          * @return builder
          * 
@@ -801,7 +817,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -812,7 +828,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -822,7 +838,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -832,7 +848,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of access point type config - VD, COLO
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -842,7 +858,7 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid Colo/Port Uuid
+         * @param uuid Equinix assigned service profile identifier
          * 
          * @return builder
          * 
@@ -853,13 +869,34 @@ public final class ServiceProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid Colo/Port Uuid
+         * @param uuid Equinix assigned service profile identifier
          * 
          * @return builder
          * 
          */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
+        }
+
+        /**
+         * @param viewPoint Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(@Nullable Output<String> viewPoint) {
+            $.viewPoint = viewPoint;
+            return this;
+        }
+
+        /**
+         * @param viewPoint Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+         * 
+         * @return builder
+         * 
+         */
+        public Builder viewPoint(String viewPoint) {
+            return viewPoint(Output.of(viewPoint));
         }
 
         /**

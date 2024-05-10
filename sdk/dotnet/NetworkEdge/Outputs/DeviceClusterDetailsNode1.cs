@@ -14,12 +14,11 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
     public sealed class DeviceClusterDetailsNode1
     {
         /// <summary>
-        /// Identifier of a license file that will be applied on the device.
+        /// License file id. This is necessary for Fortinet and Juniper clusters.
         /// </summary>
         public readonly string? LicenseFileId;
         /// <summary>
-        /// License Token applicable for some device types in BYOL licensing
-        /// mode.
+        /// License token. This is necessary for Palo Alto clusters.
         /// </summary>
         public readonly string? LicenseToken;
         /// <summary>
@@ -31,10 +30,9 @@ namespace Pulumi.Equinix.NetworkEdge.Outputs
         /// </summary>
         public readonly string? Uuid;
         /// <summary>
-        /// Map of vendor specific configuration parameters for a device
-        /// (controller1, activationKey, managementType, siteId, systemIpAddress)
-        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        /// on a device (max one key).  See SSH Key below for more details.
+        /// An object that has fields relevant to the vendor of the
+        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
+        /// below for more details.
         /// </summary>
         public readonly Outputs.DeviceClusterDetailsNode1VendorConfiguration? VendorConfiguration;
 

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,18 +27,31 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.GetPort(ctx, &fabric.GetPortArgs{
+//			portDataName, err := fabric.GetPort(ctx, &fabric.GetPortArgs{
 //				Uuid: "<uuid_of_port>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", portDataName.Id)
+//			ctx.Export("name", portDataName.Name)
+//			ctx.Export("state", portDataName.State)
+//			ctx.Export("accountName", portDataName.Account.AccountName)
+//			ctx.Export("type", portDataName.Type)
+//			ctx.Export("bandwidth", portDataName.Bandwidth)
+//			ctx.Export("usedBandwidth", portDataName.UsedBandwidth)
+//			ctx.Export("encapsulationType", portDataName.Encapsulation.Type)
+//			ctx.Export("ibx", portDataName.Location.Ibx)
+//			ctx.Export("metroCode", portDataName.Location.MetroCode)
+//			ctx.Export("metroName", portDataName.Location.MetroName)
+//			ctx.Export("region", portDataName.Location.Region)
+//			ctx.Export("deviceRedundancyEnabled", portDataName.Device.Redundancies[0].Enabled)
+//			ctx.Export("deviceRedundancyPriority", portDataName.Device.Redundancies[0].Priority)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPort(ctx *pulumi.Context, args *GetPortArgs, opts ...pulumi.InvokeOption) (*GetPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortResult

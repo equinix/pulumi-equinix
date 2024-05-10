@@ -91,7 +91,7 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<string>? SellerRegion { get; set; }
 
         /// <summary>
-        /// Interface type
+        /// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.AccessPointType>? Type { get; set; }

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     deviceId: "ff85aa58-c106-4624-8f1c-7c64554047ea",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHardwareReservation(args?: GetHardwareReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetHardwareReservationResult> {
     args = args || {};
@@ -102,7 +100,6 @@ export interface GetHardwareReservationResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -114,7 +111,6 @@ export interface GetHardwareReservationResult {
  *     deviceId: "ff85aa58-c106-4624-8f1c-7c64554047ea",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHardwareReservationOutput(args?: GetHardwareReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHardwareReservationResult> {
     return pulumi.output(args).apply((a: any) => getHardwareReservation(a, opts))

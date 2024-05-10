@@ -7,11 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
  *
- * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     gatewayId: local.gateway_id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
 
@@ -81,11 +79,10 @@ export interface GetGatewayResult {
 /**
  * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
  *
- * > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -100,7 +97,6 @@ export interface GetGatewayResult {
  *     gatewayId: local.gateway_id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
     return pulumi.output(args).apply((a: any) => getGateway(a, opts))

@@ -33,14 +33,14 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * Bit length of the network mask of the address.
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<Integer> cidr;
 
     /**
-     * @return CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+     * @return Bit length of the network mask of the address.
      * 
      */
     public Optional<Output<Integer>> cidr() {
@@ -142,7 +142,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * @param cidr Bit length of the network mask of the address.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class DeviceNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+         * @param cidr Bit length of the network mask of the address.
          * 
          * @return builder
          * 

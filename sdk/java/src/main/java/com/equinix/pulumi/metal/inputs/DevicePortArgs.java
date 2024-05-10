@@ -77,14 +77,14 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
      * 
      */
     public Optional<Output<String>> type() {
@@ -204,7 +204,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+         * @param type Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DevicePortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+         * @param type Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
          * 
          * @return builder
          * 

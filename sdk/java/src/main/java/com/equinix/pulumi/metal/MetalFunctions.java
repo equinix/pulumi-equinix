@@ -1460,7 +1460,7 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -1511,7 +1511,7 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -1562,7 +1562,7 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -1613,7 +1613,7 @@ public final class MetalFunctions {
     /**
      * Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -5071,7 +5071,7 @@ public final class MetalFunctions {
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static Output<GetReservedIpBlockResult> getReservedIpBlock() {
@@ -5083,7 +5083,7 @@ public final class MetalFunctions {
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static CompletableFuture<GetReservedIpBlockResult> getReservedIpBlockPlain() {
@@ -5095,7 +5095,7 @@ public final class MetalFunctions {
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static Output<GetReservedIpBlockResult> getReservedIpBlock(GetReservedIpBlockArgs args) {
@@ -5107,7 +5107,7 @@ public final class MetalFunctions {
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static CompletableFuture<GetReservedIpBlockResult> getReservedIpBlockPlain(GetReservedIpBlockPlainArgs args) {
@@ -5119,7 +5119,7 @@ public final class MetalFunctions {
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static Output<GetReservedIpBlockResult> getReservedIpBlock(GetReservedIpBlockArgs args, InvokeOptions options) {
@@ -5131,7 +5131,7 @@ public final class MetalFunctions {
      * 
      * &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static CompletableFuture<GetReservedIpBlockResult> getReservedIpBlockPlain(GetReservedIpBlockPlainArgs args, InvokeOptions options) {
@@ -5325,7 +5325,7 @@ public final class MetalFunctions {
      * Use this data source to retrieve a virtual circuit resource from
      * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static Output<GetVirtualCircuitResult> getVirtualCircuit(GetVirtualCircuitArgs args) {
@@ -5335,7 +5335,7 @@ public final class MetalFunctions {
      * Use this data source to retrieve a virtual circuit resource from
      * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static CompletableFuture<GetVirtualCircuitResult> getVirtualCircuitPlain(GetVirtualCircuitPlainArgs args) {
@@ -5345,7 +5345,7 @@ public final class MetalFunctions {
      * Use this data source to retrieve a virtual circuit resource from
      * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static Output<GetVirtualCircuitResult> getVirtualCircuit(GetVirtualCircuitArgs args, InvokeOptions options) {
@@ -5355,7 +5355,7 @@ public final class MetalFunctions {
      * Use this data source to retrieve a virtual circuit resource from
      * [Equinix Fabric - software-defined interconnections](https://metal.equinix.com/developers/docs/networking/fabric/)
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      */
     public static CompletableFuture<GetVirtualCircuitResult> getVirtualCircuitPlain(GetVirtualCircuitPlainArgs args, InvokeOptions options) {
@@ -5880,7 +5880,7 @@ public final class MetalFunctions {
     /**
      * Use this data source to retrieve a VRF resource.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -5922,7 +5922,7 @@ public final class MetalFunctions {
     /**
      * Use this data source to retrieve a VRF resource.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -5964,7 +5964,7 @@ public final class MetalFunctions {
     /**
      * Use this data source to retrieve a VRF resource.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 
@@ -6006,7 +6006,7 @@ public final class MetalFunctions {
     /**
      * Use this data source to retrieve a VRF resource.
      * 
-     * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+     * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
      * 
      * ## Example Usage
      * 

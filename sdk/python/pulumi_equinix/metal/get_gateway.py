@@ -128,11 +128,10 @@ def get_gateway(gateway_id: Optional[str] = None,
     """
     Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
 
-    > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -144,7 +143,6 @@ def get_gateway(gateway_id: Optional[str] = None,
         project_id=local["project_id"])
     test_gateway = equinix.metal.get_gateway(gateway_id=local["gateway_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: UUID of the metal gateway resource to retrieve.
@@ -171,11 +169,10 @@ def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
     """
     Use this datasource to retrieve Metal Gateway resources in Equinix Metal.
 
-    > VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -187,7 +184,6 @@ def get_gateway_output(gateway_id: Optional[pulumi.Input[str]] = None,
         project_id=local["project_id"])
     test_gateway = equinix.metal.get_gateway(gateway_id=local["gateway_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: UUID of the metal gateway resource to retrieve.

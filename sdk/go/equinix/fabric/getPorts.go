@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,12 +35,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", data.Equinix_fabric_port.Ports_data_name.Data[0].Id)
+//			ctx.Export("name", data.Equinix_fabric_port.Ports_data_name.Data[0].Name)
+//			ctx.Export("state", data.Equinix_fabric_port.Ports_data_name.Data[0].State)
+//			ctx.Export("accountName", data.Equinix_fabric_port.Ports_data_name.Data[0].Account[0].Account_name)
+//			ctx.Export("type", data.Equinix_fabric_port.Ports_data_name.Data[0].Type)
+//			ctx.Export("bandwidth", data.Equinix_fabric_port.Ports_data_name.Data[0].Bandwidth)
+//			ctx.Export("usedBandwidth", data.Equinix_fabric_port.Ports_data_name.Data[0].Used_bandwidth)
+//			ctx.Export("encapsulationType", data.Equinix_fabric_port.Ports_data_name.Data[0].Encapsulation[0].Type)
+//			ctx.Export("ibx", data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Ibx)
+//			ctx.Export("metroCode", data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Metro_code)
+//			ctx.Export("metroName", data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Metro_name)
+//			ctx.Export("region", data.Equinix_fabric_port.Ports_data_name.Data[0].Location[0].Region)
+//			ctx.Export("deviceRedundancyEnabled", data.Equinix_fabric_port.Ports_data_name.Data[0].Device[0].Redundancy[0].Enabled)
+//			ctx.Export("deviceRedundancyPriority", data.Equinix_fabric_port.Ports_data_name.Data[0].Device[0].Redundancy[0].Priority)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPorts(ctx *pulumi.Context, args *GetPortsArgs, opts ...pulumi.InvokeOption) (*GetPortsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortsResult

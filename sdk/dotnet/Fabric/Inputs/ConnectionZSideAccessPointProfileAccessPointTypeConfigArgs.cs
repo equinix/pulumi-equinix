@@ -13,13 +13,13 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Interface type
+        /// Type of access point type config - VD, COLO
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned access point type config identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

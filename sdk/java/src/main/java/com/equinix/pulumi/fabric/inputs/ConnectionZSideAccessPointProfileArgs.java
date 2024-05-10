@@ -50,14 +50,14 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Unique Resource Identifier
+     * Service Profile URI response attribute
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Unique Resource Identifier
+     * @return Service Profile URI response attribute
      * 
      */
     public Optional<Output<String>> href() {
@@ -65,14 +65,14 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Port name
+     * Customer-assigned service profile name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Port name
+     * @return Customer-assigned service profile name
      * 
      */
     public Optional<Output<String>> name() {
@@ -80,14 +80,14 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Interface type
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     @Import(name="type", required=true)
     private Output<Either<String,ProfileType>> type;
 
     /**
-     * @return Interface type
+     * @return Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      * 
      */
     public Output<Either<String,ProfileType>> type() {
@@ -95,14 +95,14 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
     }
 
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix assigned service profile identifier
      * 
      */
     @Import(name="uuid", required=true)
     private Output<String> uuid;
 
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix assigned service profile identifier
      * 
      */
     public Output<String> uuid() {
@@ -191,7 +191,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param href Unique Resource Identifier
+         * @param href Service Profile URI response attribute
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param href Unique Resource Identifier
+         * @param href Service Profile URI response attribute
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Port name
+         * @param name Customer-assigned service profile name
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Port name
+         * @param name Customer-assigned service profile name
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Interface type
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Interface type
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Interface type
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Interface type
+         * @param type Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix assigned service profile identifier
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ConnectionZSideAccessPointProfileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix assigned service profile identifier
          * 
          * @return builder
          * 

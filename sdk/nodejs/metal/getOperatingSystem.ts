@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     projectId: local.project_id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOperatingSystem(args?: GetOperatingSystemArgs, opts?: pulumi.InvokeOptions): Promise<GetOperatingSystemResult> {
     args = args || {};
@@ -86,7 +84,6 @@ export interface GetOperatingSystemResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -105,7 +102,6 @@ export interface GetOperatingSystemResult {
  *     projectId: local.project_id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOperatingSystemOutput(args?: GetOperatingSystemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOperatingSystemResult> {
     return pulumi.output(args).apply((a: any) => getOperatingSystem(a, opts))

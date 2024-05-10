@@ -17,7 +17,7 @@ public final class ConnectionZSideAccessPointNetwork {
      */
     private @Nullable String href;
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Network identifier
      * 
      */
     private @Nullable String uuid;
@@ -31,7 +31,7 @@ public final class ConnectionZSideAccessPointNetwork {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned Network identifier
      * 
      */
     public Optional<String> uuid() {

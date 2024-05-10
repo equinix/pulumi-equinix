@@ -22,7 +22,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned interface identifier
         /// </summary>
         public readonly string? Uuid;
 

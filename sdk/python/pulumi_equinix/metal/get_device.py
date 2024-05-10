@@ -336,7 +336,6 @@ def get_device(device_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -345,9 +344,7 @@ def get_device(device_id: Optional[str] = None,
         hostname="mydevice")
     pulumi.export("id", test.id)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -355,7 +352,6 @@ def get_device(device_id: Optional[str] = None,
     test = equinix.metal.get_device(device_id="4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
     pulumi.export("ipv4", test.access_public_ipv4)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: Device ID.
@@ -415,7 +411,6 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -424,9 +419,7 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
         hostname="mydevice")
     pulumi.export("id", test.id)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -434,7 +427,6 @@ def get_device_output(device_id: Optional[pulumi.Input[Optional[str]]] = None,
     test = equinix.metal.get_device(device_id="4c641195-25e5-4c3c-b2b7-4cd7a42c7b40")
     pulumi.export("ipv4", test.access_public_ipv4)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str device_id: Device ID.

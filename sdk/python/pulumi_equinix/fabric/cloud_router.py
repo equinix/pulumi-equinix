@@ -19,32 +19,31 @@ class CloudRouterArgs:
                  account: pulumi.Input['CloudRouterAccountArgs'],
                  location: pulumi.Input['CloudRouterLocationArgs'],
                  notifications: pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]],
-                 order: pulumi.Input['CloudRouterOrderArgs'],
                  package: pulumi.Input['CloudRouterPackageArgs'],
                  project: pulumi.Input['CloudRouterProjectArgs'],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  href: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 order: Optional[pulumi.Input['CloudRouterOrderArgs']] = None,
                  uuid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CloudRouter resource.
         :param pulumi.Input['CloudRouterAccountArgs'] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
-        :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router Package Type
-        :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
-        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
-        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+        :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "notifications", notifications)
-        pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "package", package)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
@@ -54,6 +53,8 @@ class CloudRouterArgs:
             pulumi.set(__self__, "href", href)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
 
@@ -95,18 +96,6 @@ class CloudRouterArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Input['CloudRouterOrderArgs']:
-        """
-        Order information related to this Fabric Cloud Router
-        """
-        return pulumi.get(self, "order")
-
-    @order.setter
-    def order(self, value: pulumi.Input['CloudRouterOrderArgs']):
-        pulumi.set(self, "order", value)
-
-    @property
-    @pulumi.getter
     def package(self) -> pulumi.Input['CloudRouterPackageArgs']:
         """
         Fabric Cloud Router Package Type
@@ -121,7 +110,7 @@ class CloudRouterArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input['CloudRouterProjectArgs']:
         """
-        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "project")
 
@@ -133,7 +122,7 @@ class CloudRouterArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        Defines the FCR type like; XF_ROUTER
         """
         return pulumi.get(self, "type")
 
@@ -157,7 +146,7 @@ class CloudRouterArgs:
     @pulumi.getter
     def href(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Resource URL
+        Fabric Cloud Router URI information
         """
         return pulumi.get(self, "href")
 
@@ -176,6 +165,18 @@ class CloudRouterArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input['CloudRouterOrderArgs']]:
+        """
+        Order information related to this Fabric Cloud Router
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input['CloudRouterOrderArgs']]):
+        pulumi.set(self, "order", value)
 
     @property
     @pulumi.getter
@@ -223,15 +224,15 @@ class _CloudRouterState:
         :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
         :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
-        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input['CloudRouterLocationArgs'] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input['CloudRouterNotificationArgs']]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input['CloudRouterOrderArgs'] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input['CloudRouterPackageArgs'] package: Fabric Cloud Router Package Type
-        :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input['CloudRouterProjectArgs'] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
-        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         if account is not None:
@@ -385,7 +386,7 @@ class _CloudRouterState:
     @pulumi.getter
     def href(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique Resource URL
+        Fabric Cloud Router URI information
         """
         return pulumi.get(self, "href")
 
@@ -457,7 +458,7 @@ class _CloudRouterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input['CloudRouterProjectArgs']]:
         """
-        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "project")
 
@@ -481,7 +482,7 @@ class _CloudRouterState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        Defines the FCR type like; XF_ROUTER
         """
         return pulumi.get(self, "type")
 
@@ -559,14 +560,14 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudRouterAccountArgs']] account: Customer account information that is associated with this Fabric Cloud Router
         :param pulumi.Input[str] description: Customer-provided Fabric Cloud Router description
-        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router Package Type
-        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
-        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         ...
@@ -658,8 +659,6 @@ class CloudRouter(pulumi.CustomResource):
             if notifications is None and not opts.urn:
                 raise TypeError("Missing required property 'notifications'")
             __props__.__dict__["notifications"] = notifications
-            if order is None and not opts.urn:
-                raise TypeError("Missing required property 'order'")
             __props__.__dict__["order"] = order
             if package is None and not opts.urn:
                 raise TypeError("Missing required property 'package'")
@@ -724,15 +723,15 @@ class CloudRouter(pulumi.CustomResource):
         :param pulumi.Input[int] distinct_ipv4_prefixes_count: Number of distinct IPv4 routes
         :param pulumi.Input[int] distinct_ipv6_prefixes_count: Number of distinct IPv6 routes
         :param pulumi.Input[int] equinix_asn: Equinix ASN
-        :param pulumi.Input[str] href: Unique Resource URL
+        :param pulumi.Input[str] href: Fabric Cloud Router URI information
         :param pulumi.Input[pulumi.InputType['CloudRouterLocationArgs']] location: Fabric Cloud Router location
         :param pulumi.Input[str] name: Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CloudRouterNotificationArgs']]]] notifications: Preferences for notifications on Fabric Cloud Router configuration or status changes
         :param pulumi.Input[pulumi.InputType['CloudRouterOrderArgs']] order: Order information related to this Fabric Cloud Router
         :param pulumi.Input[pulumi.InputType['CloudRouterPackageArgs']] package: Fabric Cloud Router Package Type
-        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        :param pulumi.Input[pulumi.InputType['CloudRouterProjectArgs']] project: Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         :param pulumi.Input[str] state: Fabric Cloud Router overall state
-        :param pulumi.Input[str] type: Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        :param pulumi.Input[str] type: Defines the FCR type like; XF_ROUTER
         :param pulumi.Input[str] uuid: Equinix-assigned Fabric Cloud Router identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -836,7 +835,7 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter
     def href(self) -> pulumi.Output[str]:
         """
-        Unique Resource URL
+        Fabric Cloud Router URI information
         """
         return pulumi.get(self, "href")
 
@@ -884,7 +883,7 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output['outputs.CloudRouterProject']:
         """
-        Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         """
         return pulumi.get(self, "project")
 
@@ -900,7 +899,7 @@ class CloudRouter(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        Defines the FCR type like; XF_ROUTER
         """
         return pulumi.get(self, "type")
 

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * Lookup by metro:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     plan: "c3.small.x86",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSpotMarketPrice(args: GetSpotMarketPriceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotMarketPriceResult> {
 
@@ -79,7 +77,6 @@ export interface GetSpotMarketPriceResult {
  *
  * Lookup by metro:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -89,7 +86,6 @@ export interface GetSpotMarketPriceResult {
  *     plan: "c3.small.x86",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSpotMarketPriceOutput(args: GetSpotMarketPriceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotMarketPriceResult> {
     return pulumi.output(args).apply((a: any) => getSpotMarketPrice(a, opts))

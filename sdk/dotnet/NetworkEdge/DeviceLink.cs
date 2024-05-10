@@ -108,6 +108,13 @@ namespace Pulumi.Equinix.NetworkEdge
         public Output<ImmutableArray<Outputs.DeviceLinkLink>> Links { get; private set; } = null!;
 
         /// <summary>
+        /// definition of one or more, inter metro, connections belonging
+        /// to the device link. See Metro Link section below for more details.
+        /// </summary>
+        [Output("metroLinks")]
+        public Output<ImmutableArray<Outputs.DeviceLinkMetroLink>> MetroLinks { get; private set; } = null!;
+
+        /// <summary>
         /// device link name.
         /// </summary>
         [Output("name")]
@@ -119,6 +126,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the connection should be created through 
+        /// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        /// </summary>
+        [Output("redundancyType")]
+        public Output<string?> RedundancyType { get; private set; } = null!;
 
         /// <summary>
         /// device link provisioning status on a given device. One of `PROVISIONING`,
@@ -207,10 +221,24 @@ namespace Pulumi.Equinix.NetworkEdge
         /// definition of one or more, inter metro, connections belonging
         /// to the device link. See Link section below for more details.
         /// </summary>
+        [Obsolete(@"Links is deprecated. Please use metro links instead.")]
         public InputList<Inputs.DeviceLinkLinkArgs> Links
         {
             get => _links ?? (_links = new InputList<Inputs.DeviceLinkLinkArgs>());
             set => _links = value;
+        }
+
+        [Input("metroLinks")]
+        private InputList<Inputs.DeviceLinkMetroLinkArgs>? _metroLinks;
+
+        /// <summary>
+        /// definition of one or more, inter metro, connections belonging
+        /// to the device link. See Metro Link section below for more details.
+        /// </summary>
+        public InputList<Inputs.DeviceLinkMetroLinkArgs> MetroLinks
+        {
+            get => _metroLinks ?? (_metroLinks = new InputList<Inputs.DeviceLinkMetroLinkArgs>());
+            set => _metroLinks = value;
         }
 
         /// <summary>
@@ -225,6 +253,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Whether the connection should be created through 
+        /// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
         /// device link subnet in CIDR format. Not required for link
@@ -261,10 +296,24 @@ namespace Pulumi.Equinix.NetworkEdge
         /// definition of one or more, inter metro, connections belonging
         /// to the device link. See Link section below for more details.
         /// </summary>
+        [Obsolete(@"Links is deprecated. Please use metro links instead.")]
         public InputList<Inputs.DeviceLinkLinkGetArgs> Links
         {
             get => _links ?? (_links = new InputList<Inputs.DeviceLinkLinkGetArgs>());
             set => _links = value;
+        }
+
+        [Input("metroLinks")]
+        private InputList<Inputs.DeviceLinkMetroLinkGetArgs>? _metroLinks;
+
+        /// <summary>
+        /// definition of one or more, inter metro, connections belonging
+        /// to the device link. See Metro Link section below for more details.
+        /// </summary>
+        public InputList<Inputs.DeviceLinkMetroLinkGetArgs> MetroLinks
+        {
+            get => _metroLinks ?? (_metroLinks = new InputList<Inputs.DeviceLinkMetroLinkGetArgs>());
+            set => _metroLinks = value;
         }
 
         /// <summary>
@@ -279,6 +328,13 @@ namespace Pulumi.Equinix.NetworkEdge
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Whether the connection should be created through 
+        /// Fabric's primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+        /// </summary>
+        [Input("redundancyType")]
+        public Input<string>? RedundancyType { get; set; }
 
         /// <summary>
         /// device link provisioning status on a given device. One of `PROVISIONING`,

@@ -29,8 +29,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Fabric V4 API compatible resource allows creation and management of Equinix Fabric connection
- * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -147,28 +145,28 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.aSide;
     }
     /**
-     * Account
+     * Customer account information that is associated with this connection
      * 
      */
     @Export(name="account", refs={ConnectionAccount.class}, tree="[0]")
     private Output<ConnectionAccount> account;
 
     /**
-     * @return Account
+     * @return Customer account information that is associated with this connection
      * 
      */
     public Output<ConnectionAccount> account() {
         return this.account;
     }
     /**
-     * Connection side additional information
+     * Connection additional information
      * 
      */
     @Export(name="additionalInfo", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
     private Output</* @Nullable */ List<Map<String,Object>>> additionalInfo;
 
     /**
-     * @return Connection side additional information
+     * @return Connection additional information
      * 
      */
     public Output<Optional<List<Map<String,Object>>>> additionalInfo() {
@@ -203,14 +201,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.changeLog;
     }
     /**
-     * User-provided service description
+     * Customer-provided connection description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return User-provided service description
+     * @return Customer-provided connection description
      * 
      */
     public Output<Optional<String>> description() {
@@ -231,14 +229,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.direction;
     }
     /**
-     * Unique Resource Identifier
+     * Connection URI information
      * 
      */
     @Export(name="href", refs={String.class}, tree="[0]")
     private Output<String> href;
 
     /**
-     * @return Unique Resource Identifier
+     * @return Connection URI information
      * 
      */
     public Output<String> href() {
@@ -259,14 +257,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.isRemote;
     }
     /**
-     * Port name
+     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Port name
+     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
     public Output<String> name() {
@@ -329,14 +327,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      * 
      */
     @Export(name="redundancy", refs={ConnectionRedundancy.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionRedundancy> redundancy;
 
     /**
-     * @return Redundancy Information
+     * @return Connection Redundancy Configuration
      * 
      */
     public Output<Optional<ConnectionRedundancy>> redundancy() {
@@ -357,28 +355,28 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Interface type
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Interface type
+     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned connection identifier
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned connection identifier
      * 
      */
     public Output<String> uuid() {

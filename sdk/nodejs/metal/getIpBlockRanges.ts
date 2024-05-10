@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const out = test;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpBlockRanges(args: GetIpBlockRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpBlockRangesResult> {
 
@@ -98,7 +96,6 @@ export interface GetIpBlockRangesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -109,7 +106,6 @@ export interface GetIpBlockRangesResult {
  * });
  * export const out = test;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpBlockRangesOutput(args: GetIpBlockRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpBlockRangesResult> {
     return pulumi.output(args).apply((a: any) => getIpBlockRanges(a, opts))

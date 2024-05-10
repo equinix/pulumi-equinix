@@ -19,13 +19,13 @@ namespace Pulumi.Equinix.Fabric.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+        /// Port redundancy group
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// Connection priority in redundancy group - PRIMARY, SECONDARY
+        /// Priority type-Primary or Secondary
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }

@@ -195,9 +195,8 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly operatingSystem!: pulumi.Output<string>;
     /**
-     * The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -508,9 +507,8 @@ export interface DeviceState {
      */
     operatingSystem?: pulumi.Input<string | enums.metal.OperatingSystem>;
     /**
-     * The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      */
     plan?: pulumi.Input<string | enums.metal.Plan>;
     /**
@@ -670,9 +668,8 @@ export interface DeviceArgs {
      */
     operatingSystem: pulumi.Input<string | enums.metal.OperatingSystem>;
     /**
-     * The device plan slug. To find the plan slug, visit
-     * [Device plans API docs](https://metal.equinix.com/developers/api/plans), set your auth token in the
-     * top of the page and see JSON from the API response.
+     * The device plan slug. To find the plan slug, visit the
+     * [bare-metal server](https://deploy.equinix.com/product/bare-metal/servers/) and [plan documentation](https://deploy.equinix.com/developers/docs/metal/hardware/standard-servers/).
      */
     plan: pulumi.Input<string | enums.metal.Plan>;
     /**

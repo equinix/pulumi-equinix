@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionASideServiceToken {
     /**
-     * @return User-provided service description
+     * @return Service token description
      * 
      */
     private @Nullable String description;
     /**
-     * @return Unique Resource Identifier
+     * @return An absolute URL that is the subject of the link&#39;s context
      * 
      */
     private @Nullable String href;
     /**
-     * @return Interface type
+     * @return Token type - VC_TOKEN
      * 
      */
     private @Nullable String type;
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned service token identifier
      * 
      */
     private @Nullable String uuid;
 
     private ConnectionASideServiceToken() {}
     /**
-     * @return User-provided service description
+     * @return Service token description
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Unique Resource Identifier
+     * @return An absolute URL that is the subject of the link&#39;s context
      * 
      */
     public Optional<String> href() {
         return Optional.ofNullable(this.href);
     }
     /**
-     * @return Interface type
+     * @return Token type - VC_TOKEN
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned service token identifier
      * 
      */
     public Optional<String> uuid() {

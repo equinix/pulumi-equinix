@@ -18,7 +18,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDevicePlatformResult> InvokeAsync(GetDevicePlatformArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDevicePlatformResult> Invoke(GetDevicePlatformInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicePlatformResult>("equinix:networkedge/getDevicePlatform:getDevicePlatform", args ?? new GetDevicePlatformInvokeArgs(), options.WithDefaults());

@@ -96,7 +96,6 @@ def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityAr
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -104,7 +103,6 @@ def get_metro(capacities: Optional[Sequence[pulumi.InputType['GetMetroCapacityAr
     sv = equinix.metal.get_metro(code="sv")
     pulumi.export("id", sv.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the metro must have capacity.
@@ -133,7 +131,6 @@ def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulumi.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -141,7 +138,6 @@ def get_metro_output(capacities: Optional[pulumi.Input[Optional[Sequence[pulumi.
     sv = equinix.metal.get_metro(code="sv")
     pulumi.export("id", sv.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetMetroCapacityArgs']] capacities: One or more device plans for which the metro must have capacity.

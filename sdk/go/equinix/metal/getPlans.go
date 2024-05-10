@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,9 +60,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -110,7 +107,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Ignoring Changes to Plans/Metro
 //
@@ -118,7 +114,6 @@ import (
 //
 // As described in the `data-resource-behavior` feature as shown in the example below.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,11 +171,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // If your use case requires dynamic changes of a device plan or metro you can define the lifecycle with a condition.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -213,7 +206,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPlans(ctx *pulumi.Context, args *GetPlansArgs, opts ...pulumi.InvokeOption) (*GetPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPlansResult

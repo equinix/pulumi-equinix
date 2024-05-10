@@ -33,7 +33,7 @@ public final class DevicePort {
      */
     private @Nullable String name;
     /**
-     * @return One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
      * 
      */
     private @Nullable String type;
@@ -68,7 +68,7 @@ public final class DevicePort {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return One of `private_ipv4`, `public_ipv4`, `public_ipv6`.
+     * @return Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
      * 
      */
     public Optional<String> type() {

@@ -19,14 +19,14 @@ public final class ConnectionASideAccessPointLinkProtocolArgs extends com.pulumi
     public static final ConnectionASideAccessPointLinkProtocolArgs Empty = new ConnectionASideAccessPointLinkProtocolArgs();
 
     /**
-     * Interface type
+     * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,AccessPointLinkProtocolType>> type;
 
     /**
-     * @return Interface type
+     * @return Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
      * 
      */
     public Optional<Output<Either<String,AccessPointLinkProtocolType>>> type() {
@@ -106,7 +106,7 @@ public final class ConnectionASideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Interface type
+         * @param type Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ConnectionASideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Interface type
+         * @param type Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ConnectionASideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Interface type
+         * @param type Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ConnectionASideAccessPointLinkProtocolArgs extends com.pulumi
         }
 
         /**
-         * @param type Interface type
+         * @param type Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
          * 
          * @return builder
          * 

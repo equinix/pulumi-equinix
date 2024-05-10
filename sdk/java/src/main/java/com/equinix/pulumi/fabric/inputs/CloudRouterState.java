@@ -160,14 +160,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Resource URL
+     * Fabric Cloud Router URI information
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Unique Resource URL
+     * @return Fabric Cloud Router URI information
      * 
      */
     public Optional<Output<String>> href() {
@@ -250,14 +250,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     @Import(name="project")
     private @Nullable Output<CloudRouterProjectArgs> project;
 
     /**
-     * @return Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * @return Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      * 
      */
     public Optional<Output<CloudRouterProjectArgs>> project() {
@@ -280,14 +280,14 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * Defines the FCR type like; XF_ROUTER
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * @return Defines the FCR type like; XF_ROUTER
      * 
      */
     public Optional<Output<String>> type() {
@@ -551,7 +551,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Unique Resource URL
+         * @param href Fabric Cloud Router URI information
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Unique Resource URL
+         * @param href Fabric Cloud Router URI information
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+         * @param project Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+         * @param project Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         * @param type Defines the FCR type like; XF_ROUTER
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class CloudRouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+         * @param type Defines the FCR type like; XF_ROUTER
          * 
          * @return builder
          * 

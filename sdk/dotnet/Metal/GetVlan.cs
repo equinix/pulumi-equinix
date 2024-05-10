@@ -19,7 +19,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// Fetch a vlan by ID:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,11 +41,9 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Fetch a vlan by project ID, vxlan and metro
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVlanResult> InvokeAsync(GetVlanArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanArgs(), options.WithDefaults());
@@ -77,7 +73,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// Fetch a vlan by ID:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,11 +95,9 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Fetch a vlan by project ID, vxlan and metro
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -122,7 +115,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVlanResult> Invoke(GetVlanInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("equinix:metal/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());

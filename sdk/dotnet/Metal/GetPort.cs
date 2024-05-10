@@ -19,7 +19,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// Create a device and read it's eth0 port to the datasource.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +47,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPortResult> InvokeAsync(GetPortArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
@@ -61,7 +59,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// Create a device and read it's eth0 port to the datasource.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,7 +87,6 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortResult>("equinix:metal/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());

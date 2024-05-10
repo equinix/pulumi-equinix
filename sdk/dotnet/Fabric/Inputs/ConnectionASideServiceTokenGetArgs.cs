@@ -13,25 +13,25 @@ namespace Pulumi.Equinix.Fabric.Inputs
     public sealed class ConnectionASideServiceTokenGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// User-provided service description
+        /// Service token description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique Resource Identifier
+        /// An absolute URL that is the subject of the link's context
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
 
         /// <summary>
-        /// Interface type
+        /// Token type - VC_TOKEN
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ServiceTokenType>? Type { get; set; }
 
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned service token identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

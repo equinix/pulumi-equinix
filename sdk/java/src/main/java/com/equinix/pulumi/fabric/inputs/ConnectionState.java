@@ -47,14 +47,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account
+     * Customer account information that is associated with this connection
      * 
      */
     @Import(name="account")
     private @Nullable Output<ConnectionAccountArgs> account;
 
     /**
-     * @return Account
+     * @return Customer account information that is associated with this connection
      * 
      */
     public Optional<Output<ConnectionAccountArgs>> account() {
@@ -62,14 +62,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection side additional information
+     * Connection additional information
      * 
      */
     @Import(name="additionalInfo")
     private @Nullable Output<List<Map<String,Object>>> additionalInfo;
 
     /**
-     * @return Connection side additional information
+     * @return Connection additional information
      * 
      */
     public Optional<Output<List<Map<String,Object>>>> additionalInfo() {
@@ -107,14 +107,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-provided service description
+     * Customer-provided connection description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided service description
+     * @return Customer-provided connection description
      * 
      */
     public Optional<Output<String>> description() {
@@ -137,14 +137,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique Resource Identifier
+     * Connection URI information
      * 
      */
     @Import(name="href")
     private @Nullable Output<String> href;
 
     /**
-     * @return Unique Resource Identifier
+     * @return Connection URI information
      * 
      */
     public Optional<Output<String>> href() {
@@ -167,14 +167,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port name
+     * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Port name
+     * @return Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
      * 
      */
     public Optional<Output<String>> name() {
@@ -242,14 +242,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redundancy Information
+     * Connection Redundancy Configuration
      * 
      */
     @Import(name="redundancy")
     private @Nullable Output<ConnectionRedundancyArgs> redundancy;
 
     /**
-     * @return Redundancy Information
+     * @return Connection Redundancy Configuration
      * 
      */
     public Optional<Output<ConnectionRedundancyArgs>> redundancy() {
@@ -272,14 +272,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Interface type
+     * Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,ConnectionType>> type;
 
     /**
-     * @return Interface type
+     * @return Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
      * 
      */
     public Optional<Output<Either<String,ConnectionType>>> type() {
@@ -287,14 +287,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned connection identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned connection identifier
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -380,7 +380,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param account Account
+         * @param account Customer account information that is associated with this connection
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param account Account
+         * @param account Customer account information that is associated with this connection
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection side additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection side additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalInfo Connection side additional information
+         * @param additionalInfo Connection additional information
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Customer-provided connection description
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description User-provided service description
+         * @param description Customer-provided connection description
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Unique Resource Identifier
+         * @param href Connection URI information
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param href Unique Resource Identifier
+         * @param href Connection URI information
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Port name
+         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Port name
+         * @param name Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancy Redundancy Information
+         * @param redundancy Connection Redundancy Configuration
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancy Redundancy Information
+         * @param redundancy Connection Redundancy Configuration
          * 
          * @return builder
          * 
@@ -715,7 +715,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -746,7 +746,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Interface type
+         * @param type Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
          * 
          * @return builder
          * 
@@ -756,7 +756,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned connection identifier
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned connection identifier
          * 
          * @return builder
          * 

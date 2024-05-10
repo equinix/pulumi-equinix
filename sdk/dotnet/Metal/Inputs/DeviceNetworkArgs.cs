@@ -19,7 +19,7 @@ namespace Pulumi.Equinix.Metal.Inputs
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+        /// Bit length of the network mask of the address.
         /// </summary>
         [Input("cidr")]
         public Input<int>? Cidr { get; set; }

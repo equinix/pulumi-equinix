@@ -14,11 +14,11 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class GetConnectionZSideAccessPointProfileAccessPointTypeConfigResult
     {
         /// <summary>
-        /// Type of access point type config - VD, COLO
+        /// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Equinix-assigned access point type config identifier
+        /// Equinix-assigned connection identifier
         /// </summary>
         public readonly string Uuid;
 

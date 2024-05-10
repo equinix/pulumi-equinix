@@ -111,11 +111,11 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly customFields!: pulumi.Output<outputs.fabric.ServiceProfileCustomField[] | undefined>;
     /**
-     * Description of authorization key
+     * User-provided service description
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Unique Resource URL
+     * Service Profile URI response attribute
      */
     public /*out*/ readonly href!: pulumi.Output<string>;
     /**
@@ -127,7 +127,7 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly metros!: pulumi.Output<outputs.fabric.ServiceProfileMetro[] | undefined>;
     /**
-     * Metro Name
+     * Customer-assigned service profile name
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -155,13 +155,17 @@ export class ServiceProfile extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Type of access point type config - VD, COLO
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * Colo/Port Uuid
+     * Equinix assigned service profile identifier
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     */
+    public readonly viewPoint!: pulumi.Output<string | undefined>;
     /**
      * Virtual Devices
      */
@@ -202,6 +206,7 @@ export class ServiceProfile extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["viewPoint"] = state ? state.viewPoint : undefined;
             resourceInputs["virtualDevices"] = state ? state.virtualDevices : undefined;
             resourceInputs["visibility"] = state ? state.visibility : undefined;
         } else {
@@ -226,6 +231,7 @@ export class ServiceProfile extends pulumi.CustomResource {
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["viewPoint"] = args ? args.viewPoint : undefined;
             resourceInputs["virtualDevices"] = args ? args.virtualDevices : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
             resourceInputs["account"] = undefined /*out*/;
@@ -263,11 +269,11 @@ export interface ServiceProfileState {
      */
     customFields?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileCustomField>[]>;
     /**
-     * Description of authorization key
+     * User-provided service description
      */
     description?: pulumi.Input<string>;
     /**
-     * Unique Resource URL
+     * Service Profile URI response attribute
      */
     href?: pulumi.Input<string>;
     /**
@@ -279,7 +285,7 @@ export interface ServiceProfileState {
      */
     metros?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileMetro>[]>;
     /**
-     * Metro Name
+     * Customer-assigned service profile name
      */
     name?: pulumi.Input<string>;
     /**
@@ -307,13 +313,17 @@ export interface ServiceProfileState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of access point type config - VD, COLO
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      */
     type?: pulumi.Input<string | enums.fabric.ProfileType>;
     /**
-     * Colo/Port Uuid
+     * Equinix assigned service profile identifier
      */
     uuid?: pulumi.Input<string>;
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     */
+    viewPoint?: pulumi.Input<string>;
     /**
      * Virtual Devices
      */
@@ -341,7 +351,7 @@ export interface ServiceProfileArgs {
      */
     customFields?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileCustomField>[]>;
     /**
-     * Description of authorization key
+     * User-provided service description
      */
     description: pulumi.Input<string>;
     /**
@@ -353,7 +363,7 @@ export interface ServiceProfileArgs {
      */
     metros?: pulumi.Input<pulumi.Input<inputs.fabric.ServiceProfileMetro>[]>;
     /**
-     * Metro Name
+     * Customer-assigned service profile name
      */
     name?: pulumi.Input<string>;
     /**
@@ -381,9 +391,13 @@ export interface ServiceProfileArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of access point type config - VD, COLO
+     * Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
      */
     type: pulumi.Input<string | enums.fabric.ProfileType>;
+    /**
+     * Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+     */
+    viewPoint?: pulumi.Input<string>;
     /**
      * Virtual Devices
      */

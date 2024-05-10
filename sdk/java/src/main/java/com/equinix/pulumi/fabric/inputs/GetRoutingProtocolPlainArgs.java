@@ -27,9 +27,17 @@ public final class GetRoutingProtocolPlainArgs extends com.pulumi.resources.Invo
         return this.connectionUuid;
     }
 
+    /**
+     * Equinix-assigned routing protocol identifier
+     * 
+     */
     @Import(name="uuid", required=true)
     private String uuid;
 
+    /**
+     * @return Equinix-assigned routing protocol identifier
+     * 
+     */
     public String uuid() {
         return this.uuid;
     }
@@ -70,6 +78,12 @@ public final class GetRoutingProtocolPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned routing protocol identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             $.uuid = uuid;
             return this;

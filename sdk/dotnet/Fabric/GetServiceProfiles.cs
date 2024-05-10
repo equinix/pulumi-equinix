@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -29,8 +28,8 @@ namespace Pulumi.Equinix.Fabric
         ///     {
         ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
         ///         {
-        ///             Operator = "=",
         ///             Property = "/name",
+        ///             Operator = "=",
         ///             Values = new[]
         ///             {
         ///                 "&lt;list_of_profiles_to_return&gt;",
@@ -38,9 +37,22 @@ namespace Pulumi.Equinix.Fabric
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Id,
+        ///         ["name"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Name,
+        ///         ["type"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Type,
+        ///         ["visibility"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Visibility,
+        ///         ["orgName"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Account[0].Organization_name,
+        ///         ["accessPointTypeConfigsType"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Type,
+        ///         ["allowRemoteConnections"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Allow_remote_connections,
+        ///         ["supportedBandwidth0"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[0],
+        ///         ["supportedBandwidth1"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[1],
+        ///         ["redundandyRequired"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Connection_redundancy_required,
+        ///         ["allowOverSubscription"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Api_config[0].Allow_over_subscription,
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceProfilesResult> InvokeAsync(GetServiceProfilesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesArgs(), options.WithDefaults());
@@ -50,7 +62,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +74,8 @@ namespace Pulumi.Equinix.Fabric
         ///     {
         ///         Filter = new Equinix.Fabric.Inputs.GetServiceProfilesFilterInputArgs
         ///         {
-        ///             Operator = "=",
         ///             Property = "/name",
+        ///             Operator = "=",
         ///             Values = new[]
         ///             {
         ///                 "&lt;list_of_profiles_to_return&gt;",
@@ -72,9 +83,22 @@ namespace Pulumi.Equinix.Fabric
         ///         },
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Id,
+        ///         ["name"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Name,
+        ///         ["type"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Type,
+        ///         ["visibility"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Visibility,
+        ///         ["orgName"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Account[0].Organization_name,
+        ///         ["accessPointTypeConfigsType"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Type,
+        ///         ["allowRemoteConnections"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Allow_remote_connections,
+        ///         ["supportedBandwidth0"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[0],
+        ///         ["supportedBandwidth1"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Supported_bandwidths[1],
+        ///         ["redundandyRequired"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Connection_redundancy_required,
+        ///         ["allowOverSubscription"] = data.Equinix_fabric_service_profile.Service_profiles_data_name.Data[0].Access_point_type_configs[0].Api_config[0].Allow_over_subscription,
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceProfilesResult> Invoke(GetServiceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceProfilesResult>("equinix:fabric/getServiceProfiles:getServiceProfiles", args ?? new GetServiceProfilesInvokeArgs(), options.WithDefaults());

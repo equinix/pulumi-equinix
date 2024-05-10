@@ -5,6 +5,7 @@ package com.equinix.pulumi.networkedge.inputs;
 
 import com.equinix.pulumi.networkedge.inputs.DeviceLinkDeviceArgs;
 import com.equinix.pulumi.networkedge.inputs.DeviceLinkLinkArgs;
+import com.equinix.pulumi.networkedge.inputs.DeviceLinkMetroLinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -39,7 +40,11 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
      * definition of one or more, inter metro, connections belonging
      * to the device link. See Link section below for more details.
      * 
+     * @deprecated
+     * Links is deprecated. Please use metro links instead.
+     * 
      */
+    @Deprecated /* Links is deprecated. Please use metro links instead. */
     @Import(name="links")
     private @Nullable Output<List<DeviceLinkLinkArgs>> links;
 
@@ -47,9 +52,30 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
      * @return definition of one or more, inter metro, connections belonging
      * to the device link. See Link section below for more details.
      * 
+     * @deprecated
+     * Links is deprecated. Please use metro links instead.
+     * 
      */
+    @Deprecated /* Links is deprecated. Please use metro links instead. */
     public Optional<Output<List<DeviceLinkLinkArgs>>> links() {
         return Optional.ofNullable(this.links);
+    }
+
+    /**
+     * definition of one or more, inter metro, connections belonging
+     * to the device link. See Metro Link section below for more details.
+     * 
+     */
+    @Import(name="metroLinks")
+    private @Nullable Output<List<DeviceLinkMetroLinkArgs>> metroLinks;
+
+    /**
+     * @return definition of one or more, inter metro, connections belonging
+     * to the device link. See Metro Link section below for more details.
+     * 
+     */
+    public Optional<Output<List<DeviceLinkMetroLinkArgs>>> metroLinks() {
+        return Optional.ofNullable(this.metroLinks);
     }
 
     /**
@@ -82,6 +108,23 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
+    }
+
+    /**
+     * Whether the connection should be created through
+     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * 
+     */
+    @Import(name="redundancyType")
+    private @Nullable Output<String> redundancyType;
+
+    /**
+     * @return Whether the connection should be created through
+     * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+     * 
+     */
+    public Optional<Output<String>> redundancyType() {
+        return Optional.ofNullable(this.redundancyType);
     }
 
     /**
@@ -138,8 +181,10 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
     private DeviceLinkState(DeviceLinkState $) {
         this.devices = $.devices;
         this.links = $.links;
+        this.metroLinks = $.metroLinks;
         this.name = $.name;
         this.projectId = $.projectId;
+        this.redundancyType = $.redundancyType;
         this.status = $.status;
         this.subnet = $.subnet;
         this.uuid = $.uuid;
@@ -203,7 +248,11 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Links is deprecated. Please use metro links instead.
+         * 
          */
+        @Deprecated /* Links is deprecated. Please use metro links instead. */
         public Builder links(@Nullable Output<List<DeviceLinkLinkArgs>> links) {
             $.links = links;
             return this;
@@ -215,7 +264,11 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Links is deprecated. Please use metro links instead.
+         * 
          */
+        @Deprecated /* Links is deprecated. Please use metro links instead. */
         public Builder links(List<DeviceLinkLinkArgs> links) {
             return links(Output.of(links));
         }
@@ -226,9 +279,47 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Links is deprecated. Please use metro links instead.
+         * 
          */
+        @Deprecated /* Links is deprecated. Please use metro links instead. */
         public Builder links(DeviceLinkLinkArgs... links) {
             return links(List.of(links));
+        }
+
+        /**
+         * @param metroLinks definition of one or more, inter metro, connections belonging
+         * to the device link. See Metro Link section below for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metroLinks(@Nullable Output<List<DeviceLinkMetroLinkArgs>> metroLinks) {
+            $.metroLinks = metroLinks;
+            return this;
+        }
+
+        /**
+         * @param metroLinks definition of one or more, inter metro, connections belonging
+         * to the device link. See Metro Link section below for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metroLinks(List<DeviceLinkMetroLinkArgs> metroLinks) {
+            return metroLinks(Output.of(metroLinks));
+        }
+
+        /**
+         * @param metroLinks definition of one or more, inter metro, connections belonging
+         * to the device link. See Metro Link section below for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metroLinks(DeviceLinkMetroLinkArgs... metroLinks) {
+            return metroLinks(List.of(metroLinks));
         }
 
         /**
@@ -273,6 +364,29 @@ public final class DeviceLinkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param redundancyType Whether the connection should be created through
+         * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyType(@Nullable Output<String> redundancyType) {
+            $.redundancyType = redundancyType;
+            return this;
+        }
+
+        /**
+         * @param redundancyType Whether the connection should be created through
+         * Fabric&#39;s primary or secondary port. Supported values: `PRIMARY` (Default), `SECONDARY`, `HYBRID`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyType(String redundancyType) {
+            return redundancyType(Output.of(redundancyType));
         }
 
         /**

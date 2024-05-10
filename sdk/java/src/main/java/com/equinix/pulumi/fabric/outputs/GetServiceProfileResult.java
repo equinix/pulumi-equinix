@@ -116,6 +116,7 @@ public final class GetServiceProfileResult {
      * 
      */
     private String uuid;
+    private String viewPoint;
     /**
      * @return Virtual Devices
      * 
@@ -261,6 +262,9 @@ public final class GetServiceProfileResult {
     public String uuid() {
         return this.uuid;
     }
+    public String viewPoint() {
+        return this.viewPoint;
+    }
     /**
      * @return Virtual Devices
      * 
@@ -304,6 +308,7 @@ public final class GetServiceProfileResult {
         private List<String> tags;
         private String type;
         private String uuid;
+        private String viewPoint;
         private List<GetServiceProfileVirtualDevice> virtualDevices;
         private String visibility;
         public Builder() {}
@@ -328,6 +333,7 @@ public final class GetServiceProfileResult {
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.uuid = defaults.uuid;
+    	      this.viewPoint = defaults.viewPoint;
     	      this.virtualDevices = defaults.virtualDevices;
     	      this.visibility = defaults.visibility;
         }
@@ -449,6 +455,11 @@ public final class GetServiceProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder viewPoint(String viewPoint) {
+            this.viewPoint = Objects.requireNonNull(viewPoint);
+            return this;
+        }
+        @CustomType.Setter
         public Builder virtualDevices(List<GetServiceProfileVirtualDevice> virtualDevices) {
             this.virtualDevices = Objects.requireNonNull(virtualDevices);
             return this;
@@ -482,6 +493,7 @@ public final class GetServiceProfileResult {
             _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.uuid = uuid;
+            _resultValue.viewPoint = viewPoint;
             _resultValue.virtualDevices = virtualDevices;
             _resultValue.visibility = visibility;
             return _resultValue;

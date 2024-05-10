@@ -16,14 +16,14 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs ex
     public static final ConnectionASideAccessPointProfileAccessPointTypeConfigArgs Empty = new ConnectionASideAccessPointProfileAccessPointTypeConfigArgs();
 
     /**
-     * Interface type
+     * Type of access point type config - VD, COLO
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Interface type
+     * @return Type of access point type config - VD, COLO
      * 
      */
     public Optional<Output<String>> type() {
@@ -31,14 +31,14 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs ex
     }
 
     /**
-     * Equinix-assigned virtual gateway identifier
+     * Equinix-assigned access point type config identifier
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Equinix-assigned virtual gateway identifier
+     * @return Equinix-assigned access point type config identifier
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -71,7 +71,7 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs ex
         }
 
         /**
-         * @param type Interface type
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs ex
         }
 
         /**
-         * @param type Interface type
+         * @param type Type of access point type config - VD, COLO
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs ex
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned access point type config identifier
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ConnectionASideAccessPointProfileAccessPointTypeConfigArgs ex
         }
 
         /**
-         * @param uuid Equinix-assigned virtual gateway identifier
+         * @param uuid Equinix-assigned access point type config identifier
          * 
          * @return builder
          * 

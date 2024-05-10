@@ -78,13 +78,17 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+        /// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// Equinix assigned service profile identifier
         /// </summary>
         public readonly string Uuid;
+        /// <summary>
+        /// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        /// </summary>
+        public readonly string ViewPoint;
         /// <summary>
         /// Virtual Devices
         /// </summary>
@@ -132,6 +136,8 @@ namespace Pulumi.Equinix.Fabric.Outputs
 
             string uuid,
 
+            string viewPoint,
+
             ImmutableArray<Outputs.GetServiceProfilesDatumVirtualDeviceResult> virtualDevices,
 
             string visibility)
@@ -154,6 +160,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
             Tags = tags;
             Type = type;
             Uuid = uuid;
+            ViewPoint = viewPoint;
             VirtualDevices = virtualDevices;
             Visibility = visibility;
         }

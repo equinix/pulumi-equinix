@@ -271,18 +271,29 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     routing_protocol_data_name = equinix.fabric.get_routing_protocol(connection_uuid="<uuid_of_connection_routing_protocol_is_applied_to>",
         uuid="<uuid_of_routing_protocol>")
+    pulumi.export("id", routing_protocol_data_name.id)
+    pulumi.export("name", routing_protocol_data_name.name)
+    pulumi.export("type", routing_protocol_data_name.type)
+    pulumi.export("directIpv4", routing_protocol_data_name.direct_ipv4.equinix_iface_ip)
+    pulumi.export("directIpv6", routing_protocol_data_name.direct_ipv6.equinix_iface_ip)
+    pulumi.export("bgpIpv4CustomerPeerIp", routing_protocol_data_name.bgp_ipv4.customer_peer_ip)
+    pulumi.export("bgpIpv4EquinixPeerIp", routing_protocol_data_name.bgp_ipv4.equinix_peer_ip)
+    pulumi.export("bgpIpv4Enabled", routing_protocol_data_name.bgp_ipv4.enabled)
+    pulumi.export("bgpIpv6CustomerPeerIp", routing_protocol_data_name.bgp_ipv6.customer_peer_ip)
+    pulumi.export("bgpIpv6EquinixPeerIp", routing_protocol_data_name.bgp_ipv6.equinix_peer_ip)
+    pulumi.export("bgpIpv6Enabled", routing_protocol_data_name.bgp_ipv6.enabled)
+    pulumi.export("customerAsn", routing_protocol_data_name.customer_asn)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str connection_uuid: Connection URI associated with Routing Protocol
+    :param str uuid: Equinix-assigned routing protocol identifier
     """
     __args__ = dict()
     __args__['connectionUuid'] = connection_uuid
@@ -323,17 +334,28 @@ def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     routing_protocol_data_name = equinix.fabric.get_routing_protocol(connection_uuid="<uuid_of_connection_routing_protocol_is_applied_to>",
         uuid="<uuid_of_routing_protocol>")
+    pulumi.export("id", routing_protocol_data_name.id)
+    pulumi.export("name", routing_protocol_data_name.name)
+    pulumi.export("type", routing_protocol_data_name.type)
+    pulumi.export("directIpv4", routing_protocol_data_name.direct_ipv4.equinix_iface_ip)
+    pulumi.export("directIpv6", routing_protocol_data_name.direct_ipv6.equinix_iface_ip)
+    pulumi.export("bgpIpv4CustomerPeerIp", routing_protocol_data_name.bgp_ipv4.customer_peer_ip)
+    pulumi.export("bgpIpv4EquinixPeerIp", routing_protocol_data_name.bgp_ipv4.equinix_peer_ip)
+    pulumi.export("bgpIpv4Enabled", routing_protocol_data_name.bgp_ipv4.enabled)
+    pulumi.export("bgpIpv6CustomerPeerIp", routing_protocol_data_name.bgp_ipv6.customer_peer_ip)
+    pulumi.export("bgpIpv6EquinixPeerIp", routing_protocol_data_name.bgp_ipv6.equinix_peer_ip)
+    pulumi.export("bgpIpv6Enabled", routing_protocol_data_name.bgp_ipv6.enabled)
+    pulumi.export("customerAsn", routing_protocol_data_name.customer_asn)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str connection_uuid: Connection URI associated with Routing Protocol
+    :param str uuid: Equinix-assigned routing protocol identifier
     """
     ...

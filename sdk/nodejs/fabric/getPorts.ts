@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,8 +21,21 @@ import * as utilities from "../utilities";
  *         name: "<name_of_port||port_prefix>",
  *     },
  * });
+ * export const id = data.equinix_fabric_port.ports_data_name.data[0].id;
+ * export const name = data.equinix_fabric_port.ports_data_name.data[0].name;
+ * export const state = data.equinix_fabric_port.ports_data_name.data[0].state;
+ * export const accountName = data.equinix_fabric_port.ports_data_name.data[0].account[0].account_name;
+ * export const type = data.equinix_fabric_port.ports_data_name.data[0].type;
+ * export const bandwidth = data.equinix_fabric_port.ports_data_name.data[0].bandwidth;
+ * export const usedBandwidth = data.equinix_fabric_port.ports_data_name.data[0].used_bandwidth;
+ * export const encapsulationType = data.equinix_fabric_port.ports_data_name.data[0].encapsulation[0].type;
+ * export const ibx = data.equinix_fabric_port.ports_data_name.data[0].location[0].ibx;
+ * export const metroCode = data.equinix_fabric_port.ports_data_name.data[0].location[0].metro_code;
+ * export const metroName = data.equinix_fabric_port.ports_data_name.data[0].location[0].metro_name;
+ * export const region = data.equinix_fabric_port.ports_data_name.data[0].location[0].region;
+ * export const deviceRedundancyEnabled = data.equinix_fabric_port.ports_data_name.data[0].device[0].redundancy[0].enabled;
+ * export const deviceRedundancyPriority = data.equinix_fabric_port.ports_data_name.data[0].device[0].redundancy[0].priority;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPorts(args: GetPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortsResult> {
 
@@ -65,7 +77,6 @@ export interface GetPortsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -75,8 +86,21 @@ export interface GetPortsResult {
  *         name: "<name_of_port||port_prefix>",
  *     },
  * });
+ * export const id = data.equinix_fabric_port.ports_data_name.data[0].id;
+ * export const name = data.equinix_fabric_port.ports_data_name.data[0].name;
+ * export const state = data.equinix_fabric_port.ports_data_name.data[0].state;
+ * export const accountName = data.equinix_fabric_port.ports_data_name.data[0].account[0].account_name;
+ * export const type = data.equinix_fabric_port.ports_data_name.data[0].type;
+ * export const bandwidth = data.equinix_fabric_port.ports_data_name.data[0].bandwidth;
+ * export const usedBandwidth = data.equinix_fabric_port.ports_data_name.data[0].used_bandwidth;
+ * export const encapsulationType = data.equinix_fabric_port.ports_data_name.data[0].encapsulation[0].type;
+ * export const ibx = data.equinix_fabric_port.ports_data_name.data[0].location[0].ibx;
+ * export const metroCode = data.equinix_fabric_port.ports_data_name.data[0].location[0].metro_code;
+ * export const metroName = data.equinix_fabric_port.ports_data_name.data[0].location[0].metro_name;
+ * export const region = data.equinix_fabric_port.ports_data_name.data[0].location[0].region;
+ * export const deviceRedundancyEnabled = data.equinix_fabric_port.ports_data_name.data[0].device[0].redundancy[0].enabled;
+ * export const deviceRedundancyPriority = data.equinix_fabric_port.ports_data_name.data[0].device[0].redundancy[0].priority;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPortsOutput(args: GetPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortsResult> {
     return pulumi.output(args).apply((a: any) => getPorts(a, opts))

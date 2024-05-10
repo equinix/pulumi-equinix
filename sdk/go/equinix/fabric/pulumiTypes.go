@@ -1346,7 +1346,7 @@ type ConnectionASideAccessPoint struct {
 	Router *ConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Interface type
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *ConnectionASideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -1392,7 +1392,7 @@ type ConnectionASideAccessPointArgs struct {
 	Router ConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Interface type
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice ConnectionASideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -1542,7 +1542,7 @@ func (o ConnectionASideAccessPointOutput) SellerRegion() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 func (o ConnectionASideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1708,7 +1708,7 @@ func (o ConnectionASideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 func (o ConnectionASideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPoint) *string {
 		if v == nil {
@@ -2159,7 +2159,7 @@ type ConnectionASideAccessPointInterface struct {
 	Id *int `pulumi:"id"`
 	// Interface type
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned interface identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -2179,7 +2179,7 @@ type ConnectionASideAccessPointInterfaceArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned interface identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -2270,7 +2270,7 @@ func (o ConnectionASideAccessPointInterfaceOutput) Type() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionASideAccessPointInterface) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned interface identifier
 func (o ConnectionASideAccessPointInterfaceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -2319,7 +2319,7 @@ func (o ConnectionASideAccessPointInterfacePtrOutput) Type() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned interface identifier
 func (o ConnectionASideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointInterface) *string {
 		if v == nil {
@@ -2330,7 +2330,7 @@ func (o ConnectionASideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOut
 }
 
 type ConnectionASideAccessPointLinkProtocol struct {
-	// Interface type
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 	Type *string `pulumi:"type"`
 	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
 	VlanCTag *int `pulumi:"vlanCTag"`
@@ -2352,7 +2352,7 @@ type ConnectionASideAccessPointLinkProtocolInput interface {
 }
 
 type ConnectionASideAccessPointLinkProtocolArgs struct {
-	// Interface type
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
 	VlanCTag pulumi.IntPtrInput `pulumi:"vlanCTag"`
@@ -2439,7 +2439,7 @@ func (o ConnectionASideAccessPointLinkProtocolOutput) ToConnectionASideAccessPoi
 	}).(ConnectionASideAccessPointLinkProtocolPtrOutput)
 }
 
-// Interface type
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 func (o ConnectionASideAccessPointLinkProtocolOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointLinkProtocol) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2483,7 +2483,7 @@ func (o ConnectionASideAccessPointLinkProtocolPtrOutput) Elem() ConnectionASideA
 	}).(ConnectionASideAccessPointLinkProtocolOutput)
 }
 
-// Interface type
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 func (o ConnectionASideAccessPointLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointLinkProtocol) *string {
 		if v == nil {
@@ -2720,7 +2720,7 @@ func (o ConnectionASideAccessPointLocationPtrOutput) Region() pulumi.StringPtrOu
 type ConnectionASideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Network identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -2738,7 +2738,7 @@ type ConnectionASideAccessPointNetworkInput interface {
 type ConnectionASideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Network identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -2824,7 +2824,7 @@ func (o ConnectionASideAccessPointNetworkOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointNetwork) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Network identifier
 func (o ConnectionASideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -2863,7 +2863,7 @@ func (o ConnectionASideAccessPointNetworkPtrOutput) Href() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Network identifier
 func (o ConnectionASideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointNetwork) *string {
 		if v == nil {
@@ -2880,7 +2880,7 @@ type ConnectionASideAccessPointPort struct {
 	Name *string `pulumi:"name"`
 	// Redundancy Information
 	Redundancy *ConnectionASideAccessPointPortRedundancy `pulumi:"redundancy"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Port identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -2902,7 +2902,7 @@ type ConnectionASideAccessPointPortArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Redundancy Information
 	Redundancy ConnectionASideAccessPointPortRedundancyPtrInput `pulumi:"redundancy"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Port identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -2998,7 +2998,7 @@ func (o ConnectionASideAccessPointPortOutput) Redundancy() ConnectionASideAccess
 	return o.ApplyT(func(v ConnectionASideAccessPointPort) *ConnectionASideAccessPointPortRedundancy { return v.Redundancy }).(ConnectionASideAccessPointPortRedundancyPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Port identifier
 func (o ConnectionASideAccessPointPortOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointPort) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -3057,7 +3057,7 @@ func (o ConnectionASideAccessPointPortPtrOutput) Redundancy() ConnectionASideAcc
 	}).(ConnectionASideAccessPointPortRedundancyPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Port identifier
 func (o ConnectionASideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointPort) *string {
 		if v == nil {
@@ -3070,9 +3070,9 @@ func (o ConnectionASideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
 type ConnectionASideAccessPointPortRedundancy struct {
 	// Access point redundancy
 	Enabled *bool `pulumi:"enabled"`
-	// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+	// Port redundancy group
 	Group *string `pulumi:"group"`
-	// Connection priority in redundancy group - PRIMARY, SECONDARY
+	// Priority type-Primary or Secondary
 	Priority *string `pulumi:"priority"`
 }
 
@@ -3090,9 +3090,9 @@ type ConnectionASideAccessPointPortRedundancyInput interface {
 type ConnectionASideAccessPointPortRedundancyArgs struct {
 	// Access point redundancy
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+	// Port redundancy group
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Connection priority in redundancy group - PRIMARY, SECONDARY
+	// Priority type-Primary or Secondary
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 }
 
@@ -3178,12 +3178,12 @@ func (o ConnectionASideAccessPointPortRedundancyOutput) Enabled() pulumi.BoolPtr
 	return o.ApplyT(func(v ConnectionASideAccessPointPortRedundancy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+// Port redundancy group
 func (o ConnectionASideAccessPointPortRedundancyOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointPortRedundancy) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Connection priority in redundancy group - PRIMARY, SECONDARY
+// Priority type-Primary or Secondary
 func (o ConnectionASideAccessPointPortRedundancyOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointPortRedundancy) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -3222,7 +3222,7 @@ func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Enabled() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+// Port redundancy group
 func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointPortRedundancy) *string {
 		if v == nil {
@@ -3232,7 +3232,7 @@ func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Group() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Connection priority in redundancy group - PRIMARY, SECONDARY
+// Priority type-Primary or Secondary
 func (o ConnectionASideAccessPointPortRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointPortRedundancy) *string {
 		if v == nil {
@@ -3247,13 +3247,13 @@ type ConnectionASideAccessPointProfile struct {
 	AccessPointTypeConfigs []ConnectionASideAccessPointProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
 	// User-provided service description
 	Description *string `pulumi:"description"`
-	// Unique Resource Identifier
+	// Service Profile URI response attribute
 	Href *string `pulumi:"href"`
-	// Port name
+	// Customer-assigned service profile name
 	Name *string `pulumi:"name"`
-	// Interface type
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -3273,13 +3273,13 @@ type ConnectionASideAccessPointProfileArgs struct {
 	AccessPointTypeConfigs ConnectionASideAccessPointProfileAccessPointTypeConfigArrayInput `pulumi:"accessPointTypeConfigs"`
 	// User-provided service description
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Unique Resource Identifier
+	// Service Profile URI response attribute
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Port name
+	// Customer-assigned service profile name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Interface type
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -3372,22 +3372,22 @@ func (o ConnectionASideAccessPointProfileOutput) Description() pulumi.StringPtrO
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// Service Profile URI response attribute
 func (o ConnectionASideAccessPointProfileOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned service profile name
 func (o ConnectionASideAccessPointProfileOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 func (o ConnectionASideAccessPointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix assigned service profile identifier
 func (o ConnectionASideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -3436,7 +3436,7 @@ func (o ConnectionASideAccessPointProfilePtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// Service Profile URI response attribute
 func (o ConnectionASideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
 		if v == nil {
@@ -3446,7 +3446,7 @@ func (o ConnectionASideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned service profile name
 func (o ConnectionASideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
 		if v == nil {
@@ -3456,7 +3456,7 @@ func (o ConnectionASideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 func (o ConnectionASideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
 		if v == nil {
@@ -3466,7 +3466,7 @@ func (o ConnectionASideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix assigned service profile identifier
 func (o ConnectionASideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointProfile) *string {
 		if v == nil {
@@ -3477,9 +3477,9 @@ func (o ConnectionASideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutpu
 }
 
 type ConnectionASideAccessPointProfileAccessPointTypeConfig struct {
-	// Interface type
+	// Type of access point type config - VD, COLO
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned access point type config identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -3495,9 +3495,9 @@ type ConnectionASideAccessPointProfileAccessPointTypeConfigInput interface {
 }
 
 type ConnectionASideAccessPointProfileAccessPointTypeConfigArgs struct {
-	// Interface type
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned access point type config identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -3552,12 +3552,12 @@ func (o ConnectionASideAccessPointProfileAccessPointTypeConfigOutput) ToConnecti
 	return o
 }
 
-// Interface type
+// Type of access point type config - VD, COLO
 func (o ConnectionASideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfileAccessPointTypeConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned access point type config identifier
 func (o ConnectionASideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointProfileAccessPointTypeConfig) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -3741,11 +3741,11 @@ func (o ConnectionASideAccessPointRouterPtrOutput) Uuid() pulumi.StringPtrOutput
 type ConnectionASideAccessPointVirtualDevice struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
-	// Port name
+	// Customer-assigned Virtual Device Name
 	Name *string `pulumi:"name"`
-	// Interface type
+	// Virtual Device type
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Virtual Device identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -3763,11 +3763,11 @@ type ConnectionASideAccessPointVirtualDeviceInput interface {
 type ConnectionASideAccessPointVirtualDeviceArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Port name
+	// Customer-assigned Virtual Device Name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Interface type
+	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Virtual Device identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -3853,17 +3853,17 @@ func (o ConnectionASideAccessPointVirtualDeviceOutput) Href() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned Virtual Device Name
 func (o ConnectionASideAccessPointVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Virtual Device type
 func (o ConnectionASideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Virtual Device identifier
 func (o ConnectionASideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -3902,7 +3902,7 @@ func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned Virtual Device Name
 func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
 		if v == nil {
@@ -3912,7 +3912,7 @@ func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Virtual Device type
 func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
 		if v == nil {
@@ -3922,7 +3922,7 @@ func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Virtual Device identifier
 func (o ConnectionASideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideAccessPointVirtualDevice) *string {
 		if v == nil {
@@ -4039,13 +4039,13 @@ func (o ConnectionASideAdditionalInfoArrayOutput) Index(i pulumi.IntInput) Conne
 }
 
 type ConnectionASideServiceToken struct {
-	// User-provided service description
+	// Service token description
 	Description *string `pulumi:"description"`
-	// Unique Resource Identifier
+	// An absolute URL that is the subject of the link's context
 	Href *string `pulumi:"href"`
-	// Interface type
+	// Token type - VC_TOKEN
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned service token identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -4061,13 +4061,13 @@ type ConnectionASideServiceTokenInput interface {
 }
 
 type ConnectionASideServiceTokenArgs struct {
-	// User-provided service description
+	// Service token description
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Unique Resource Identifier
+	// An absolute URL that is the subject of the link's context
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Interface type
+	// Token type - VC_TOKEN
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned service token identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -4148,22 +4148,22 @@ func (o ConnectionASideServiceTokenOutput) ToConnectionASideServiceTokenPtrOutpu
 	}).(ConnectionASideServiceTokenPtrOutput)
 }
 
-// User-provided service description
+// Service token description
 func (o ConnectionASideServiceTokenOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideServiceToken) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// An absolute URL that is the subject of the link's context
 func (o ConnectionASideServiceTokenOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideServiceToken) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Token type - VC_TOKEN
 func (o ConnectionASideServiceTokenOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned service token identifier
 func (o ConnectionASideServiceTokenOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionASideServiceToken) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -4192,7 +4192,7 @@ func (o ConnectionASideServiceTokenPtrOutput) Elem() ConnectionASideServiceToken
 	}).(ConnectionASideServiceTokenOutput)
 }
 
-// User-provided service description
+// Service token description
 func (o ConnectionASideServiceTokenPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
 		if v == nil {
@@ -4202,7 +4202,7 @@ func (o ConnectionASideServiceTokenPtrOutput) Description() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// An absolute URL that is the subject of the link's context
 func (o ConnectionASideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
 		if v == nil {
@@ -4212,7 +4212,7 @@ func (o ConnectionASideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Token type - VC_TOKEN
 func (o ConnectionASideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
 		if v == nil {
@@ -4222,7 +4222,7 @@ func (o ConnectionASideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned service token identifier
 func (o ConnectionASideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionASideServiceToken) *string {
 		if v == nil {
@@ -5139,7 +5139,7 @@ func (o ConnectionOperationPtrOutput) ProviderStatus() pulumi.StringPtrOutput {
 }
 
 type ConnectionOperationError struct {
-	// Connection side additional information
+	// Pricing error additional Info
 	AdditionalInfo []ConnectionOperationErrorAdditionalInfo `pulumi:"additionalInfo"`
 	// CorrelationId
 	CorrelationId *string `pulumi:"correlationId"`
@@ -5165,7 +5165,7 @@ type ConnectionOperationErrorInput interface {
 }
 
 type ConnectionOperationErrorArgs struct {
-	// Connection side additional information
+	// Pricing error additional Info
 	AdditionalInfo ConnectionOperationErrorAdditionalInfoArrayInput `pulumi:"additionalInfo"`
 	// CorrelationId
 	CorrelationId pulumi.StringPtrInput `pulumi:"correlationId"`
@@ -5230,7 +5230,7 @@ func (o ConnectionOperationErrorOutput) ToConnectionOperationErrorOutputWithCont
 	return o
 }
 
-// Connection side additional information
+// Pricing error additional Info
 func (o ConnectionOperationErrorOutput) AdditionalInfo() ConnectionOperationErrorAdditionalInfoArrayOutput {
 	return o.ApplyT(func(v ConnectionOperationError) []ConnectionOperationErrorAdditionalInfo { return v.AdditionalInfo }).(ConnectionOperationErrorAdditionalInfoArrayOutput)
 }
@@ -6096,7 +6096,7 @@ type ConnectionZSideAccessPoint struct {
 	Router *ConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
 	SellerRegion *string `pulumi:"sellerRegion"`
-	// Interface type
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 	Type *string `pulumi:"type"`
 	// Virtual device
 	VirtualDevice *ConnectionZSideAccessPointVirtualDevice `pulumi:"virtualDevice"`
@@ -6142,7 +6142,7 @@ type ConnectionZSideAccessPointArgs struct {
 	Router ConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
 	SellerRegion pulumi.StringPtrInput `pulumi:"sellerRegion"`
-	// Interface type
+	// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Virtual device
 	VirtualDevice ConnectionZSideAccessPointVirtualDevicePtrInput `pulumi:"virtualDevice"`
@@ -6292,7 +6292,7 @@ func (o ConnectionZSideAccessPointOutput) SellerRegion() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.SellerRegion }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 func (o ConnectionZSideAccessPointOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPoint) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -6458,7 +6458,7 @@ func (o ConnectionZSideAccessPointPtrOutput) SellerRegion() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
 func (o ConnectionZSideAccessPointPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPoint) *string {
 		if v == nil {
@@ -6909,7 +6909,7 @@ type ConnectionZSideAccessPointInterface struct {
 	Id *int `pulumi:"id"`
 	// Interface type
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned interface identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -6929,7 +6929,7 @@ type ConnectionZSideAccessPointInterfaceArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// Interface type
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned interface identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -7020,7 +7020,7 @@ func (o ConnectionZSideAccessPointInterfaceOutput) Type() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionZSideAccessPointInterface) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned interface identifier
 func (o ConnectionZSideAccessPointInterfaceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointInterface) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -7069,7 +7069,7 @@ func (o ConnectionZSideAccessPointInterfacePtrOutput) Type() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned interface identifier
 func (o ConnectionZSideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointInterface) *string {
 		if v == nil {
@@ -7080,7 +7080,7 @@ func (o ConnectionZSideAccessPointInterfacePtrOutput) Uuid() pulumi.StringPtrOut
 }
 
 type ConnectionZSideAccessPointLinkProtocol struct {
-	// Interface type
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 	Type *string `pulumi:"type"`
 	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
 	VlanCTag *int `pulumi:"vlanCTag"`
@@ -7102,7 +7102,7 @@ type ConnectionZSideAccessPointLinkProtocolInput interface {
 }
 
 type ConnectionZSideAccessPointLinkProtocolArgs struct {
-	// Interface type
+	// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Vlan Customer Tag information, vlanCTag value specified for QINQ connections
 	VlanCTag pulumi.IntPtrInput `pulumi:"vlanCTag"`
@@ -7189,7 +7189,7 @@ func (o ConnectionZSideAccessPointLinkProtocolOutput) ToConnectionZSideAccessPoi
 	}).(ConnectionZSideAccessPointLinkProtocolPtrOutput)
 }
 
-// Interface type
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 func (o ConnectionZSideAccessPointLinkProtocolOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointLinkProtocol) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -7233,7 +7233,7 @@ func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) Elem() ConnectionZSideA
 	}).(ConnectionZSideAccessPointLinkProtocolOutput)
 }
 
-// Interface type
+// Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
 func (o ConnectionZSideAccessPointLinkProtocolPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointLinkProtocol) *string {
 		if v == nil {
@@ -7470,7 +7470,7 @@ func (o ConnectionZSideAccessPointLocationPtrOutput) Region() pulumi.StringPtrOu
 type ConnectionZSideAccessPointNetwork struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Network identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -7488,7 +7488,7 @@ type ConnectionZSideAccessPointNetworkInput interface {
 type ConnectionZSideAccessPointNetworkArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Network identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -7574,7 +7574,7 @@ func (o ConnectionZSideAccessPointNetworkOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointNetwork) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Network identifier
 func (o ConnectionZSideAccessPointNetworkOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -7613,7 +7613,7 @@ func (o ConnectionZSideAccessPointNetworkPtrOutput) Href() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Network identifier
 func (o ConnectionZSideAccessPointNetworkPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointNetwork) *string {
 		if v == nil {
@@ -7630,7 +7630,7 @@ type ConnectionZSideAccessPointPort struct {
 	Name *string `pulumi:"name"`
 	// Redundancy Information
 	Redundancy *ConnectionZSideAccessPointPortRedundancy `pulumi:"redundancy"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Port identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -7652,7 +7652,7 @@ type ConnectionZSideAccessPointPortArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Redundancy Information
 	Redundancy ConnectionZSideAccessPointPortRedundancyPtrInput `pulumi:"redundancy"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Port identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -7748,7 +7748,7 @@ func (o ConnectionZSideAccessPointPortOutput) Redundancy() ConnectionZSideAccess
 	return o.ApplyT(func(v ConnectionZSideAccessPointPort) *ConnectionZSideAccessPointPortRedundancy { return v.Redundancy }).(ConnectionZSideAccessPointPortRedundancyPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Port identifier
 func (o ConnectionZSideAccessPointPortOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointPort) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -7807,7 +7807,7 @@ func (o ConnectionZSideAccessPointPortPtrOutput) Redundancy() ConnectionZSideAcc
 	}).(ConnectionZSideAccessPointPortRedundancyPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Port identifier
 func (o ConnectionZSideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointPort) *string {
 		if v == nil {
@@ -7820,9 +7820,9 @@ func (o ConnectionZSideAccessPointPortPtrOutput) Uuid() pulumi.StringPtrOutput {
 type ConnectionZSideAccessPointPortRedundancy struct {
 	// Access point redundancy
 	Enabled *bool `pulumi:"enabled"`
-	// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+	// Port redundancy group
 	Group *string `pulumi:"group"`
-	// Connection priority in redundancy group - PRIMARY, SECONDARY
+	// Priority type-Primary or Secondary
 	Priority *string `pulumi:"priority"`
 }
 
@@ -7840,9 +7840,9 @@ type ConnectionZSideAccessPointPortRedundancyInput interface {
 type ConnectionZSideAccessPointPortRedundancyArgs struct {
 	// Access point redundancy
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+	// Port redundancy group
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Connection priority in redundancy group - PRIMARY, SECONDARY
+	// Priority type-Primary or Secondary
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 }
 
@@ -7928,12 +7928,12 @@ func (o ConnectionZSideAccessPointPortRedundancyOutput) Enabled() pulumi.BoolPtr
 	return o.ApplyT(func(v ConnectionZSideAccessPointPortRedundancy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+// Port redundancy group
 func (o ConnectionZSideAccessPointPortRedundancyOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointPortRedundancy) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Connection priority in redundancy group - PRIMARY, SECONDARY
+// Priority type-Primary or Secondary
 func (o ConnectionZSideAccessPointPortRedundancyOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointPortRedundancy) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -7972,7 +7972,7 @@ func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Enabled() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+// Port redundancy group
 func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointPortRedundancy) *string {
 		if v == nil {
@@ -7982,7 +7982,7 @@ func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Group() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Connection priority in redundancy group - PRIMARY, SECONDARY
+// Priority type-Primary or Secondary
 func (o ConnectionZSideAccessPointPortRedundancyPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointPortRedundancy) *string {
 		if v == nil {
@@ -7997,13 +7997,13 @@ type ConnectionZSideAccessPointProfile struct {
 	AccessPointTypeConfigs []ConnectionZSideAccessPointProfileAccessPointTypeConfig `pulumi:"accessPointTypeConfigs"`
 	// User-provided service description
 	Description *string `pulumi:"description"`
-	// Unique Resource Identifier
+	// Service Profile URI response attribute
 	Href *string `pulumi:"href"`
-	// Port name
+	// Customer-assigned service profile name
 	Name *string `pulumi:"name"`
-	// Interface type
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -8023,13 +8023,13 @@ type ConnectionZSideAccessPointProfileArgs struct {
 	AccessPointTypeConfigs ConnectionZSideAccessPointProfileAccessPointTypeConfigArrayInput `pulumi:"accessPointTypeConfigs"`
 	// User-provided service description
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Unique Resource Identifier
+	// Service Profile URI response attribute
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Port name
+	// Customer-assigned service profile name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Interface type
+	// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -8122,22 +8122,22 @@ func (o ConnectionZSideAccessPointProfileOutput) Description() pulumi.StringPtrO
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// Service Profile URI response attribute
 func (o ConnectionZSideAccessPointProfileOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned service profile name
 func (o ConnectionZSideAccessPointProfileOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 func (o ConnectionZSideAccessPointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix assigned service profile identifier
 func (o ConnectionZSideAccessPointProfileOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfile) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -8186,7 +8186,7 @@ func (o ConnectionZSideAccessPointProfilePtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// Service Profile URI response attribute
 func (o ConnectionZSideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
 		if v == nil {
@@ -8196,7 +8196,7 @@ func (o ConnectionZSideAccessPointProfilePtrOutput) Href() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned service profile name
 func (o ConnectionZSideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
 		if v == nil {
@@ -8206,7 +8206,7 @@ func (o ConnectionZSideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
 func (o ConnectionZSideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
 		if v == nil {
@@ -8216,7 +8216,7 @@ func (o ConnectionZSideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix assigned service profile identifier
 func (o ConnectionZSideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointProfile) *string {
 		if v == nil {
@@ -8227,9 +8227,9 @@ func (o ConnectionZSideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOutpu
 }
 
 type ConnectionZSideAccessPointProfileAccessPointTypeConfig struct {
-	// Interface type
+	// Type of access point type config - VD, COLO
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned access point type config identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -8245,9 +8245,9 @@ type ConnectionZSideAccessPointProfileAccessPointTypeConfigInput interface {
 }
 
 type ConnectionZSideAccessPointProfileAccessPointTypeConfigArgs struct {
-	// Interface type
+	// Type of access point type config - VD, COLO
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned access point type config identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -8302,12 +8302,12 @@ func (o ConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) ToConnecti
 	return o
 }
 
-// Interface type
+// Type of access point type config - VD, COLO
 func (o ConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfileAccessPointTypeConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned access point type config identifier
 func (o ConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointProfileAccessPointTypeConfig) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -8491,11 +8491,11 @@ func (o ConnectionZSideAccessPointRouterPtrOutput) Uuid() pulumi.StringPtrOutput
 type ConnectionZSideAccessPointVirtualDevice struct {
 	// Unique Resource Identifier
 	Href *string `pulumi:"href"`
-	// Port name
+	// Customer-assigned Virtual Device Name
 	Name *string `pulumi:"name"`
-	// Interface type
+	// Virtual Device type
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Virtual Device identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -8513,11 +8513,11 @@ type ConnectionZSideAccessPointVirtualDeviceInput interface {
 type ConnectionZSideAccessPointVirtualDeviceArgs struct {
 	// Unique Resource Identifier
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Port name
+	// Customer-assigned Virtual Device Name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Interface type
+	// Virtual Device type
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned Virtual Device identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -8603,17 +8603,17 @@ func (o ConnectionZSideAccessPointVirtualDeviceOutput) Href() pulumi.StringPtrOu
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned Virtual Device Name
 func (o ConnectionZSideAccessPointVirtualDeviceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Virtual Device type
 func (o ConnectionZSideAccessPointVirtualDeviceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Virtual Device identifier
 func (o ConnectionZSideAccessPointVirtualDeviceOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideAccessPointVirtualDevice) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -8652,7 +8652,7 @@ func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Href() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port name
+// Customer-assigned Virtual Device Name
 func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
 		if v == nil {
@@ -8662,7 +8662,7 @@ func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Name() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Virtual Device type
 func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
 		if v == nil {
@@ -8672,7 +8672,7 @@ func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Type() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned Virtual Device identifier
 func (o ConnectionZSideAccessPointVirtualDevicePtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideAccessPointVirtualDevice) *string {
 		if v == nil {
@@ -8789,13 +8789,13 @@ func (o ConnectionZSideAdditionalInfoArrayOutput) Index(i pulumi.IntInput) Conne
 }
 
 type ConnectionZSideServiceToken struct {
-	// User-provided service description
+	// Service token description
 	Description *string `pulumi:"description"`
-	// Unique Resource Identifier
+	// An absolute URL that is the subject of the link's context
 	Href *string `pulumi:"href"`
-	// Interface type
+	// Token type - VC_TOKEN
 	Type *string `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned service token identifier
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -8811,13 +8811,13 @@ type ConnectionZSideServiceTokenInput interface {
 }
 
 type ConnectionZSideServiceTokenArgs struct {
-	// User-provided service description
+	// Service token description
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Unique Resource Identifier
+	// An absolute URL that is the subject of the link's context
 	Href pulumi.StringPtrInput `pulumi:"href"`
-	// Interface type
+	// Token type - VC_TOKEN
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Equinix-assigned virtual gateway identifier
+	// Equinix-assigned service token identifier
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -8898,22 +8898,22 @@ func (o ConnectionZSideServiceTokenOutput) ToConnectionZSideServiceTokenPtrOutpu
 	}).(ConnectionZSideServiceTokenPtrOutput)
 }
 
-// User-provided service description
+// Service token description
 func (o ConnectionZSideServiceTokenOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideServiceToken) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// An absolute URL that is the subject of the link's context
 func (o ConnectionZSideServiceTokenOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideServiceToken) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Token type - VC_TOKEN
 func (o ConnectionZSideServiceTokenOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideServiceToken) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned service token identifier
 func (o ConnectionZSideServiceTokenOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionZSideServiceToken) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -8942,7 +8942,7 @@ func (o ConnectionZSideServiceTokenPtrOutput) Elem() ConnectionZSideServiceToken
 	}).(ConnectionZSideServiceTokenOutput)
 }
 
-// User-provided service description
+// Service token description
 func (o ConnectionZSideServiceTokenPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
 		if v == nil {
@@ -8952,7 +8952,7 @@ func (o ConnectionZSideServiceTokenPtrOutput) Description() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique Resource Identifier
+// An absolute URL that is the subject of the link's context
 func (o ConnectionZSideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
 		if v == nil {
@@ -8962,7 +8962,7 @@ func (o ConnectionZSideServiceTokenPtrOutput) Href() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interface type
+// Token type - VC_TOKEN
 func (o ConnectionZSideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
 		if v == nil {
@@ -8972,7 +8972,7 @@ func (o ConnectionZSideServiceTokenPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Equinix-assigned virtual gateway identifier
+// Equinix-assigned service token identifier
 func (o ConnectionZSideServiceTokenPtrOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionZSideServiceToken) *string {
 		if v == nil {
@@ -13283,7 +13283,7 @@ func (o ServiceProfileMarketingInfoPtrOutput) Promotion() pulumi.BoolPtrOutput {
 }
 
 type ServiceProfileMarketingInfoProcessStep struct {
-	// Description of authorization key
+	// Description
 	Description *string `pulumi:"description"`
 	// Sub Title
 	SubTitle *string `pulumi:"subTitle"`
@@ -13303,7 +13303,7 @@ type ServiceProfileMarketingInfoProcessStepInput interface {
 }
 
 type ServiceProfileMarketingInfoProcessStepArgs struct {
-	// Description of authorization key
+	// Description
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Sub Title
 	SubTitle pulumi.StringPtrInput `pulumi:"subTitle"`
@@ -13362,7 +13362,7 @@ func (o ServiceProfileMarketingInfoProcessStepOutput) ToServiceProfileMarketingI
 	return o
 }
 
-// Description of authorization key
+// Description
 func (o ServiceProfileMarketingInfoProcessStepOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceProfileMarketingInfoProcessStep) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -15417,7 +15417,7 @@ type GetConnectionASideAccessPoint struct {
 	// Service Profile
 	Profile *GetConnectionASideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
-	ProviderConnectionId *string `pulumi:"providerConnectionId"`
+	ProviderConnectionId string `pulumi:"providerConnectionId"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionASideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -15463,7 +15463,7 @@ type GetConnectionASideAccessPointArgs struct {
 	// Service Profile
 	Profile GetConnectionASideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
-	ProviderConnectionId pulumi.StringPtrInput `pulumi:"providerConnectionId"`
+	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionASideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -15606,8 +15606,8 @@ func (o GetConnectionASideAccessPointOutput) Profile() GetConnectionASideAccessP
 }
 
 // Provider assigned Connection Id
-func (o GetConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionASideAccessPoint) *string { return v.ProviderConnectionId }).(pulumi.StringPtrOutput)
+func (o GetConnectionASideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionASideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -15764,7 +15764,7 @@ func (o GetConnectionASideAccessPointPtrOutput) ProviderConnectionId() pulumi.St
 		if v == nil {
 			return nil
 		}
-		return v.ProviderConnectionId
+		return &v.ProviderConnectionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17163,7 +17163,7 @@ type GetConnectionASideAccessPointProfile struct {
 	Href string `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name string `pulumi:"name"`
-	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
@@ -17189,7 +17189,7 @@ type GetConnectionASideAccessPointProfileArgs struct {
 	Href pulumi.StringInput `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -17294,7 +17294,7 @@ func (o GetConnectionASideAccessPointProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPointProfile) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 func (o GetConnectionASideAccessPointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -17368,7 +17368,7 @@ func (o GetConnectionASideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 func (o GetConnectionASideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionASideAccessPointProfile) *string {
 		if v == nil {
@@ -17389,9 +17389,9 @@ func (o GetConnectionASideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOu
 }
 
 type GetConnectionASideAccessPointProfileAccessPointTypeConfig struct {
-	// Type of access point type config - VD, COLO
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type string `pulumi:"type"`
-	// Equinix-assigned access point type config identifier
+	// Equinix-assigned connection identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -17407,9 +17407,9 @@ type GetConnectionASideAccessPointProfileAccessPointTypeConfigInput interface {
 }
 
 type GetConnectionASideAccessPointProfileAccessPointTypeConfigArgs struct {
-	// Type of access point type config - VD, COLO
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned access point type config identifier
+	// Equinix-assigned connection identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -17464,12 +17464,12 @@ func (o GetConnectionASideAccessPointProfileAccessPointTypeConfigOutput) ToGetCo
 	return o
 }
 
-// Type of access point type config - VD, COLO
+// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 func (o GetConnectionASideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPointProfileAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned access point type config identifier
+// Equinix-assigned connection identifier
 func (o GetConnectionASideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionASideAccessPointProfileAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -19140,7 +19140,7 @@ type GetConnectionZSideAccessPoint struct {
 	// Service Profile
 	Profile *GetConnectionZSideAccessPointProfile `pulumi:"profile"`
 	// Provider assigned Connection Id
-	ProviderConnectionId *string `pulumi:"providerConnectionId"`
+	ProviderConnectionId string `pulumi:"providerConnectionId"`
 	// Cloud Router access point information that replaces `gateway`
 	Router *GetConnectionZSideAccessPointRouter `pulumi:"router"`
 	// Access point seller region
@@ -19186,7 +19186,7 @@ type GetConnectionZSideAccessPointArgs struct {
 	// Service Profile
 	Profile GetConnectionZSideAccessPointProfilePtrInput `pulumi:"profile"`
 	// Provider assigned Connection Id
-	ProviderConnectionId pulumi.StringPtrInput `pulumi:"providerConnectionId"`
+	ProviderConnectionId pulumi.StringInput `pulumi:"providerConnectionId"`
 	// Cloud Router access point information that replaces `gateway`
 	Router GetConnectionZSideAccessPointRouterPtrInput `pulumi:"router"`
 	// Access point seller region
@@ -19329,8 +19329,8 @@ func (o GetConnectionZSideAccessPointOutput) Profile() GetConnectionZSideAccessP
 }
 
 // Provider assigned Connection Id
-func (o GetConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetConnectionZSideAccessPoint) *string { return v.ProviderConnectionId }).(pulumi.StringPtrOutput)
+func (o GetConnectionZSideAccessPointOutput) ProviderConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionZSideAccessPoint) string { return v.ProviderConnectionId }).(pulumi.StringOutput)
 }
 
 // Cloud Router access point information that replaces `gateway`
@@ -19487,7 +19487,7 @@ func (o GetConnectionZSideAccessPointPtrOutput) ProviderConnectionId() pulumi.St
 		if v == nil {
 			return nil
 		}
-		return v.ProviderConnectionId
+		return &v.ProviderConnectionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20886,7 +20886,7 @@ type GetConnectionZSideAccessPointProfile struct {
 	Href string `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name string `pulumi:"name"`
-	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
@@ -20912,7 +20912,7 @@ type GetConnectionZSideAccessPointProfileArgs struct {
 	Href pulumi.StringInput `pulumi:"href"`
 	// Customer-assigned service profile name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -21017,7 +21017,7 @@ func (o GetConnectionZSideAccessPointProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPointProfile) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 func (o GetConnectionZSideAccessPointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPointProfile) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -21091,7 +21091,7 @@ func (o GetConnectionZSideAccessPointProfilePtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 func (o GetConnectionZSideAccessPointProfilePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetConnectionZSideAccessPointProfile) *string {
 		if v == nil {
@@ -21112,9 +21112,9 @@ func (o GetConnectionZSideAccessPointProfilePtrOutput) Uuid() pulumi.StringPtrOu
 }
 
 type GetConnectionZSideAccessPointProfileAccessPointTypeConfig struct {
-	// Type of access point type config - VD, COLO
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type string `pulumi:"type"`
-	// Equinix-assigned access point type config identifier
+	// Equinix-assigned connection identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -21130,9 +21130,9 @@ type GetConnectionZSideAccessPointProfileAccessPointTypeConfigInput interface {
 }
 
 type GetConnectionZSideAccessPointProfileAccessPointTypeConfigArgs struct {
-	// Type of access point type config - VD, COLO
+	// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 	Type pulumi.StringInput `pulumi:"type"`
-	// Equinix-assigned access point type config identifier
+	// Equinix-assigned connection identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 
@@ -21187,12 +21187,12 @@ func (o GetConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) ToGetCo
 	return o
 }
 
-// Type of access point type config - VD, COLO
+// Defines the connection type like EVPL*VC, EPL*VC, IPWAN*VC, IP*VC, ACCESS*EPL*VC, EVPLAN*VC, EPLAN*VC, EIA*VC, EC*VC
 func (o GetConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPointProfileAccessPointTypeConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Equinix-assigned access point type config identifier
+// Equinix-assigned connection identifier
 func (o GetConnectionZSideAccessPointProfileAccessPointTypeConfigOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionZSideAccessPointProfileAccessPointTypeConfig) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -27881,10 +27881,12 @@ type GetServiceProfilesDatum struct {
 	State string `pulumi:"state"`
 	// Tags attached to the connection
 	Tags []string `pulumi:"tags"`
-	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 	Type string `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid string `pulumi:"uuid"`
+	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint string `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices []GetServiceProfilesDatumVirtualDevice `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -27935,10 +27937,12 @@ type GetServiceProfilesDatumArgs struct {
 	State pulumi.StringInput `pulumi:"state"`
 	// Tags attached to the connection
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+	// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 	Type pulumi.StringInput `pulumi:"type"`
 	// Equinix assigned service profile identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+	ViewPoint pulumi.StringInput `pulumi:"viewPoint"`
 	// Virtual Devices
 	VirtualDevices GetServiceProfilesDatumVirtualDeviceArrayInput `pulumi:"virtualDevices"`
 	// Service profile visibility - PUBLIC, PRIVATE
@@ -28078,7 +28082,7 @@ func (o GetServiceProfilesDatumOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceProfilesDatum) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE
+// Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
 func (o GetServiceProfilesDatumOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -28086,6 +28090,11 @@ func (o GetServiceProfilesDatumOutput) Type() pulumi.StringOutput {
 // Equinix assigned service profile identifier
 func (o GetServiceProfilesDatumOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+func (o GetServiceProfilesDatumOutput) ViewPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceProfilesDatum) string { return v.ViewPoint }).(pulumi.StringOutput)
 }
 
 // Virtual Devices

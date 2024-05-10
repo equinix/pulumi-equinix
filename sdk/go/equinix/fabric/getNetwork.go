@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,18 +27,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.LookupNetwork(ctx, &fabric.LookupNetworkArgs{
+//			networkDataName, err := fabric.LookupNetwork(ctx, &fabric.LookupNetworkArgs{
 //				Uuid: "<uuid_of_network>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", networkDataName.Id)
+//			ctx.Export("name", networkDataName.Name)
+//			ctx.Export("scope", networkDataName.Scope)
+//			ctx.Export("type", networkDataName.Type)
+//			ctx.Export("region", networkDataName.Locations[0].Region)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkResult
@@ -52,6 +55,7 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkArgs struct {
+	// Equinix-assigned network identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -102,6 +106,7 @@ func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts
 
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkOutputArgs struct {
+	// Equinix-assigned network identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 

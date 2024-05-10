@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionZSideAccessPointLinkProtocol {
     /**
-     * @return Interface type
+     * @return Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
      * 
      */
     private @Nullable String type;
@@ -35,7 +35,7 @@ public final class ConnectionZSideAccessPointLinkProtocol {
 
     private ConnectionZSideAccessPointLinkProtocol() {}
     /**
-     * @return Interface type
+     * @return Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
      * 
      */
     public Optional<String> type() {

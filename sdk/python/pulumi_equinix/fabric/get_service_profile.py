@@ -22,7 +22,7 @@ class GetServiceProfileResult:
     """
     A collection of values returned by getServiceProfile.
     """
-    def __init__(__self__, access_point_type_configs=None, account=None, allowed_emails=None, change_log=None, custom_fields=None, description=None, href=None, id=None, marketing_info=None, metros=None, name=None, notifications=None, ports=None, project=None, self_profile=None, state=None, tags=None, type=None, uuid=None, virtual_devices=None, visibility=None):
+    def __init__(__self__, access_point_type_configs=None, account=None, allowed_emails=None, change_log=None, custom_fields=None, description=None, href=None, id=None, marketing_info=None, metros=None, name=None, notifications=None, ports=None, project=None, self_profile=None, state=None, tags=None, type=None, uuid=None, view_point=None, virtual_devices=None, visibility=None):
         if access_point_type_configs and not isinstance(access_point_type_configs, list):
             raise TypeError("Expected argument 'access_point_type_configs' to be a list")
         pulumi.set(__self__, "access_point_type_configs", access_point_type_configs)
@@ -80,6 +80,9 @@ class GetServiceProfileResult:
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
+        if view_point and not isinstance(view_point, str):
+            raise TypeError("Expected argument 'view_point' to be a str")
+        pulumi.set(__self__, "view_point", view_point)
         if virtual_devices and not isinstance(virtual_devices, list):
             raise TypeError("Expected argument 'virtual_devices' to be a list")
         pulumi.set(__self__, "virtual_devices", virtual_devices)
@@ -240,6 +243,11 @@ class GetServiceProfileResult:
         return pulumi.get(self, "uuid")
 
     @property
+    @pulumi.getter(name="viewPoint")
+    def view_point(self) -> str:
+        return pulumi.get(self, "view_point")
+
+    @property
     @pulumi.getter(name="virtualDevices")
     def virtual_devices(self) -> Sequence['outputs.GetServiceProfileVirtualDeviceResult']:
         """
@@ -281,6 +289,7 @@ class AwaitableGetServiceProfileResult(GetServiceProfileResult):
             tags=self.tags,
             type=self.type,
             uuid=self.uuid,
+            view_point=self.view_point,
             virtual_devices=self.virtual_devices,
             visibility=self.visibility)
 
@@ -292,14 +301,26 @@ def get_service_profile(uuid: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     service_profile_data_name = equinix.fabric.get_service_profile(uuid="<uuid_of_service_profile>")
+    pulumi.export("id", service_profile_data_name.id)
+    pulumi.export("name", service_profile_data_name.name)
+    pulumi.export("type", service_profile_data_name.type)
+    pulumi.export("visibility", service_profile_data_name.visibility)
+    pulumi.export("orgName", service_profile_data_name.account.organization_name)
+    pulumi.export("accessPointTypeConfigsType", service_profile_data_name.access_point_type_configs[0].type)
+    pulumi.export("allowRemoteConnections", service_profile_data_name.access_point_type_configs[0].allow_remote_connections)
+    pulumi.export("supportedBandwidth0", service_profile_data_name.access_point_type_configs[0].supported_bandwidths[0])
+    pulumi.export("supportedBandwidth1", service_profile_data_name.access_point_type_configs[0].supported_bandwidths[1])
+    pulumi.export("redundandyRequired", service_profile_data_name.access_point_type_configs[0].connection_redundancy_required)
+    pulumi.export("allowOverSubscription", service_profile_data_name.access_point_type_configs[0].api_config.allow_over_subscription)
     ```
-    <!--End PulumiCodeChooser -->
+
+
+    :param str uuid: Equinix assigned service profile identifier
     """
     __args__ = dict()
     __args__['uuid'] = uuid
@@ -326,6 +347,7 @@ def get_service_profile(uuid: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'),
+        view_point=pulumi.get(__ret__, 'view_point'),
         virtual_devices=pulumi.get(__ret__, 'virtual_devices'),
         visibility=pulumi.get(__ret__, 'visibility'))
 
@@ -338,13 +360,25 @@ def get_service_profile_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     service_profile_data_name = equinix.fabric.get_service_profile(uuid="<uuid_of_service_profile>")
+    pulumi.export("id", service_profile_data_name.id)
+    pulumi.export("name", service_profile_data_name.name)
+    pulumi.export("type", service_profile_data_name.type)
+    pulumi.export("visibility", service_profile_data_name.visibility)
+    pulumi.export("orgName", service_profile_data_name.account.organization_name)
+    pulumi.export("accessPointTypeConfigsType", service_profile_data_name.access_point_type_configs[0].type)
+    pulumi.export("allowRemoteConnections", service_profile_data_name.access_point_type_configs[0].allow_remote_connections)
+    pulumi.export("supportedBandwidth0", service_profile_data_name.access_point_type_configs[0].supported_bandwidths[0])
+    pulumi.export("supportedBandwidth1", service_profile_data_name.access_point_type_configs[0].supported_bandwidths[1])
+    pulumi.export("redundandyRequired", service_profile_data_name.access_point_type_configs[0].connection_redundancy_required)
+    pulumi.export("allowOverSubscription", service_profile_data_name.access_point_type_configs[0].api_config.allow_over_subscription)
     ```
-    <!--End PulumiCodeChooser -->
+
+
+    :param str uuid: Equinix assigned service profile identifier
     """
     ...

@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -22,8 +21,17 @@ import * as utilities from "../utilities";
  * const cloudRouterDataName = equinix.fabric.getCloudRouter({
  *     uuid: "<uuid_of_cloud_router>",
  * });
+ * export const id = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.id);
+ * export const name = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.name);
+ * export const accountNumber = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.accounts?.[0]?.accountNumber);
+ * export const equinixAsn = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.equinixAsn);
+ * export const metroCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroCode);
+ * export const metroName = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroName);
+ * export const region = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.region);
+ * export const packageCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.packages?.[0]?.code);
+ * export const projectId = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.projects?.[0]?.projectId);
+ * export const type = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.type);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudRouter(args: GetCloudRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRouterResult> {
 
@@ -135,7 +143,6 @@ export interface GetCloudRouterResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -143,8 +150,17 @@ export interface GetCloudRouterResult {
  * const cloudRouterDataName = equinix.fabric.getCloudRouter({
  *     uuid: "<uuid_of_cloud_router>",
  * });
+ * export const id = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.id);
+ * export const name = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.name);
+ * export const accountNumber = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.accounts?.[0]?.accountNumber);
+ * export const equinixAsn = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.equinixAsn);
+ * export const metroCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroCode);
+ * export const metroName = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.metroName);
+ * export const region = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.locations?.[0]?.region);
+ * export const packageCode = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.packages?.[0]?.code);
+ * export const projectId = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.projects?.[0]?.projectId);
+ * export const type = cloudRouterDataName.then(cloudRouterDataName => cloudRouterDataName.type);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCloudRouterOutput(args: GetCloudRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRouterResult> {
     return pulumi.output(args).apply((a: any) => getCloudRouter(a, opts))

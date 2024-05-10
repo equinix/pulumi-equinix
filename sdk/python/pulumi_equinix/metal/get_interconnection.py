@@ -303,14 +303,12 @@ def get_interconnection(connection_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     example = equinix.metal.get_interconnection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str connection_id: ID of the connection resource.
@@ -355,14 +353,12 @@ def get_interconnection_output(connection_id: Optional[pulumi.Input[str]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     example = equinix.metal.get_interconnection(connection_id="4347e805-eb46-4699-9eb9-5c116e6a017d")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str connection_id: ID of the connection resource.

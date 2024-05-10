@@ -14,7 +14,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
     public sealed class ConnectionOperationError
     {
         /// <summary>
-        /// Connection side additional information
+        /// Pricing error additional Info
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionOperationErrorAdditionalInfo> AdditionalInfo;
         /// <summary>

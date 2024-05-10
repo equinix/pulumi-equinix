@@ -32,14 +32,14 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
     }
 
     /**
-     * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+     * Port redundancy group
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+     * @return Port redundancy group
      * 
      */
     public Optional<Output<String>> group() {
@@ -47,14 +47,14 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
     }
 
     /**
-     * Connection priority in redundancy group - PRIMARY, SECONDARY
+     * Priority type-Primary or Secondary
      * 
      */
     @Import(name="priority")
     private @Nullable Output<String> priority;
 
     /**
-     * @return Connection priority in redundancy group - PRIMARY, SECONDARY
+     * @return Priority type-Primary or Secondary
      * 
      */
     public Optional<Output<String>> priority() {
@@ -109,7 +109,7 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
         }
 
         /**
-         * @param group Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * @param group Port redundancy group
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
         }
 
         /**
-         * @param group Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix*fabric*connection.primary*port*connection.redundancy).group or equinix*fabric*connection.primary*port*connection.redundancy.0.group)
+         * @param group Port redundancy group
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
         }
 
         /**
-         * @param priority Connection priority in redundancy group - PRIMARY, SECONDARY
+         * @param priority Priority type-Primary or Secondary
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ConnectionASideAccessPointPortRedundancyArgs extends com.pulu
         }
 
         /**
-         * @param priority Connection priority in redundancy group - PRIMARY, SECONDARY
+         * @param priority Priority type-Primary or Secondary
          * 
          * @return builder
          * 

@@ -146,7 +146,6 @@ def get_project_ssh_key(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -154,7 +153,6 @@ def get_project_ssh_key(id: Optional[str] = None,
     my_key = equinix.metal.get_project_ssh_key(search="username@hostname",
         project_id=local["project_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The id of the SSH Key to search for in the Equinix Metal project.
@@ -193,7 +191,6 @@ def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -201,7 +198,6 @@ def get_project_ssh_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     my_key = equinix.metal.get_project_ssh_key(search="username@hostname",
         project_id=local["project_id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The id of the SSH Key to search for in the Equinix Metal project.

@@ -116,13 +116,13 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.ServiceProfileCustomField>> CustomFields { get; private set; } = null!;
 
         /// <summary>
-        /// Description of authorization key
+        /// User-provided service description
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Resource URL
+        /// Service Profile URI response attribute
         /// </summary>
         [Output("href")]
         public Output<string> Href { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<Outputs.ServiceProfileMetro>> Metros { get; private set; } = null!;
 
         /// <summary>
-        /// Metro Name
+        /// Customer-assigned service profile name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -182,16 +182,22 @@ namespace Pulumi.Equinix.Fabric
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Type of access point type config - VD, COLO
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Colo/Port Uuid
+        /// Equinix assigned service profile identifier
         /// </summary>
         [Output("uuid")]
         public Output<string> Uuid { get; private set; } = null!;
+
+        /// <summary>
+        /// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        /// </summary>
+        [Output("viewPoint")]
+        public Output<string?> ViewPoint { get; private set; } = null!;
 
         /// <summary>
         /// Virtual Devices
@@ -289,7 +295,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Description of authorization key
+        /// User-provided service description
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -313,7 +319,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Metro Name
+        /// Customer-assigned service profile name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -373,10 +379,16 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Type of access point type config - VD, COLO
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         /// </summary>
         [Input("type", required: true)]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType> Type { get; set; } = null!;
+
+        /// <summary>
+        /// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        /// </summary>
+        [Input("viewPoint")]
+        public Input<string>? ViewPoint { get; set; }
 
         [Input("virtualDevices")]
         private InputList<Inputs.ServiceProfileVirtualDeviceArgs>? _virtualDevices;
@@ -453,13 +465,13 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Description of authorization key
+        /// User-provided service description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique Resource URL
+        /// Service Profile URI response attribute
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
@@ -483,7 +495,7 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Metro Name
+        /// Customer-assigned service profile name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -543,16 +555,22 @@ namespace Pulumi.Equinix.Fabric
         }
 
         /// <summary>
-        /// Type of access point type config - VD, COLO
+        /// Service profile type - L2*PROFILE, L3*PROFILE, ECIA*PROFILE, ECMC*PROFILE
         /// </summary>
         [Input("type")]
         public InputUnion<string, Pulumi.Equinix.Fabric.ProfileType>? Type { get; set; }
 
         /// <summary>
-        /// Colo/Port Uuid
+        /// Equinix assigned service profile identifier
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
+
+        /// <summary>
+        /// Flips view between buyer and seller representation. Available values : aSide, zSide. Default value : aSide
+        /// </summary>
+        [Input("viewPoint")]
+        public Input<string>? ViewPoint { get; set; }
 
         [Input("virtualDevices")]
         private InputList<Inputs.ServiceProfileVirtualDeviceGetArgs>? _virtualDevices;

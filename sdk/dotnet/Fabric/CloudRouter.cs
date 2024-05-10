@@ -122,7 +122,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<int> EquinixAsn { get; private set; } = null!;
 
         /// <summary>
-        /// Unique Resource URL
+        /// Fabric Cloud Router URI information
         /// </summary>
         [Output("href")]
         public Output<string> Href { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<Outputs.CloudRouterPackage> Package { get; private set; } = null!;
 
         /// <summary>
-        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        /// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         [Output("project")]
         public Output<Outputs.CloudRouterProject> Project { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Equinix.Fabric
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        /// Defines the FCR type like; XF_ROUTER
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique Resource URL
+        /// Fabric Cloud Router URI information
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
@@ -273,8 +273,8 @@ namespace Pulumi.Equinix.Fabric
         /// <summary>
         /// Order information related to this Fabric Cloud Router
         /// </summary>
-        [Input("order", required: true)]
-        public Input<Inputs.CloudRouterOrderArgs> Order { get; set; } = null!;
+        [Input("order")]
+        public Input<Inputs.CloudRouterOrderArgs>? Order { get; set; }
 
         /// <summary>
         /// Fabric Cloud Router Package Type
@@ -283,13 +283,13 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.CloudRouterPackageArgs> Package { get; set; } = null!;
 
         /// <summary>
-        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        /// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         [Input("project", required: true)]
         public Input<Inputs.CloudRouterProjectArgs> Project { get; set; } = null!;
 
         /// <summary>
-        /// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        /// Defines the FCR type like; XF_ROUTER
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -369,7 +369,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<int>? EquinixAsn { get; set; }
 
         /// <summary>
-        /// Unique Resource URL
+        /// Fabric Cloud Router URI information
         /// </summary>
         [Input("href")]
         public Input<string>? Href { get; set; }
@@ -411,7 +411,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<Inputs.CloudRouterPackageGetArgs>? Package { get; set; }
 
         /// <summary>
-        /// Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+        /// Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
         /// </summary>
         [Input("project")]
         public Input<Inputs.CloudRouterProjectGetArgs>? Project { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.Equinix.Fabric
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+        /// Defines the FCR type like; XF_ROUTER
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

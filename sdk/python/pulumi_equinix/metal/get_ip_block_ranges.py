@@ -135,7 +135,6 @@ def get_ip_block_ranges(facility: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -144,7 +143,6 @@ def get_ip_block_ranges(facility: Optional[str] = None,
     test = equinix.metal.get_ip_block_ranges(project_id=project_id)
     pulumi.export("out", test)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed
@@ -185,7 +183,6 @@ def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -194,7 +191,6 @@ def get_ip_block_ranges_output(facility: Optional[pulumi.Input[Optional[str]]] =
     test = equinix.metal.get_ip_block_ranges(project_id=project_id)
     pulumi.export("out", test)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str facility: Facility code filtering the IP blocks. Global IPv4 blocks will be listed

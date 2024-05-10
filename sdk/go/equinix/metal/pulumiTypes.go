@@ -289,7 +289,7 @@ func (o DeviceIpAddressArrayOutput) Index(i pulumi.IntInput) DeviceIpAddressOutp
 type DeviceNetwork struct {
 	// IPv4 or IPv6 address string.
 	Address *string `pulumi:"address"`
-	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+	// Bit length of the network mask of the address.
 	Cidr *int `pulumi:"cidr"`
 	// IP version. One of `4`, `6`.
 	Family *int `pulumi:"family"`
@@ -313,7 +313,7 @@ type DeviceNetworkInput interface {
 type DeviceNetworkArgs struct {
 	// IPv4 or IPv6 address string.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+	// Bit length of the network mask of the address.
 	Cidr pulumi.IntPtrInput `pulumi:"cidr"`
 	// IP version. One of `4`, `6`.
 	Family pulumi.IntPtrInput `pulumi:"family"`
@@ -379,7 +379,7 @@ func (o DeviceNetworkOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// CIDR suffix for IP address block to be assigned, i.e. amount of addresses.
+// Bit length of the network mask of the address.
 func (o DeviceNetworkOutput) Cidr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceNetwork) *int { return v.Cidr }).(pulumi.IntPtrOutput)
 }
@@ -428,7 +428,7 @@ type DevicePort struct {
 	Mac *string `pulumi:"mac"`
 	// Name of the port (e.g. `eth0`, or `bond0`).
 	Name *string `pulumi:"name"`
-	// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+	// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
 	Type *string `pulumi:"type"`
 }
 
@@ -452,7 +452,7 @@ type DevicePortArgs struct {
 	Mac pulumi.StringPtrInput `pulumi:"mac"`
 	// Name of the port (e.g. `eth0`, or `bond0`).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+	// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -527,7 +527,7 @@ func (o DevicePortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// One of `privateIpv4`, `publicIpv4`, `publicIpv6`.
+// Type of the port (e.g. `NetworkPort` or `NetworkBondPort`).
 func (o DevicePortOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePort) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3296,7 +3296,7 @@ func (o GetDevicesFilterArrayOutput) Index(i pulumi.IntInput) GetDevicesFilterOu
 }
 
 type GetDevicesSort struct {
-	// The attribute used to filter. Filter attributes are case-sensitive
+	// The attribute used to sort the results. Sort attributes are case-sensitive
 	Attribute string `pulumi:"attribute"`
 	// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 	Direction *string `pulumi:"direction"`
@@ -3314,7 +3314,7 @@ type GetDevicesSortInput interface {
 }
 
 type GetDevicesSortArgs struct {
-	// The attribute used to filter. Filter attributes are case-sensitive
+	// The attribute used to sort the results. Sort attributes are case-sensitive
 	Attribute pulumi.StringInput `pulumi:"attribute"`
 	// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -3371,7 +3371,7 @@ func (o GetDevicesSortOutput) ToGetDevicesSortOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The attribute used to filter. Filter attributes are case-sensitive
+// The attribute used to sort the results. Sort attributes are case-sensitive
 func (o GetDevicesSortOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDevicesSort) string { return v.Attribute }).(pulumi.StringOutput)
 }
@@ -4330,7 +4330,7 @@ func (o GetPlansPlanArrayOutput) Index(i pulumi.IntInput) GetPlansPlanOutput {
 }
 
 type GetPlansSort struct {
-	// The attribute used to filter. Filter attributes are case-sensitive
+	// The attribute used to sort the results. Sort attributes are case-sensitive
 	Attribute string `pulumi:"attribute"`
 	// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 	Direction *string `pulumi:"direction"`
@@ -4348,7 +4348,7 @@ type GetPlansSortInput interface {
 }
 
 type GetPlansSortArgs struct {
-	// The attribute used to filter. Filter attributes are case-sensitive
+	// The attribute used to sort the results. Sort attributes are case-sensitive
 	Attribute pulumi.StringInput `pulumi:"attribute"`
 	// Sort results in ascending or descending order. Strings are sorted in alphabetical order. One of: asc, desc
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -4405,7 +4405,7 @@ func (o GetPlansSortOutput) ToGetPlansSortOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The attribute used to filter. Filter attributes are case-sensitive
+// The attribute used to sort the results. Sort attributes are case-sensitive
 func (o GetPlansSortOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPlansSort) string { return v.Attribute }).(pulumi.StringOutput)
 }

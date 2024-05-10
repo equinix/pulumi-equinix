@@ -108,7 +108,7 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public /*out*/ readonly equinixAsn!: pulumi.Output<number>;
     /**
-     * Unique Resource URL
+     * Fabric Cloud Router URI information
      */
     public readonly href!: pulumi.Output<string>;
     /**
@@ -132,7 +132,7 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public readonly package!: pulumi.Output<outputs.fabric.CloudRouterPackage>;
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
     public readonly project!: pulumi.Output<outputs.fabric.CloudRouterProject>;
     /**
@@ -140,7 +140,7 @@ export class CloudRouter extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * Defines the FCR type like; XF_ROUTER
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -190,9 +190,6 @@ export class CloudRouter extends pulumi.CustomResource {
             }
             if ((!args || args.notifications === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notifications'");
-            }
-            if ((!args || args.order === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'order'");
             }
             if ((!args || args.package === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'package'");
@@ -269,7 +266,7 @@ export interface CloudRouterState {
      */
     equinixAsn?: pulumi.Input<number>;
     /**
-     * Unique Resource URL
+     * Fabric Cloud Router URI information
      */
     href?: pulumi.Input<string>;
     /**
@@ -293,7 +290,7 @@ export interface CloudRouterState {
      */
     package?: pulumi.Input<inputs.fabric.CloudRouterPackage>;
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
     project?: pulumi.Input<inputs.fabric.CloudRouterProject>;
     /**
@@ -301,7 +298,7 @@ export interface CloudRouterState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * Defines the FCR type like; XF_ROUTER
      */
     type?: pulumi.Input<string>;
     /**
@@ -323,7 +320,7 @@ export interface CloudRouterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Unique Resource URL
+     * Fabric Cloud Router URI information
      */
     href?: pulumi.Input<string>;
     /**
@@ -341,17 +338,17 @@ export interface CloudRouterArgs {
     /**
      * Order information related to this Fabric Cloud Router
      */
-    order: pulumi.Input<inputs.fabric.CloudRouterOrder>;
+    order?: pulumi.Input<inputs.fabric.CloudRouterOrder>;
     /**
      * Fabric Cloud Router Package Type
      */
     package: pulumi.Input<inputs.fabric.CloudRouterPackage>;
     /**
-     * Customer resource hierarchy project information.Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+     * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
      */
     project: pulumi.Input<inputs.fabric.CloudRouterProject>;
     /**
-     * Notification Type - ALL,CONNECTION*APPROVAL,SALES*REP_NOTIFICATIONS, NOTIFICATIONS
+     * Defines the FCR type like; XF_ROUTER
      */
     type: pulumi.Input<string>;
     /**

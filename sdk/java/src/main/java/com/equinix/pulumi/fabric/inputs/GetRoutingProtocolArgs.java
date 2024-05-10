@@ -28,9 +28,17 @@ public final class GetRoutingProtocolArgs extends com.pulumi.resources.InvokeArg
         return this.connectionUuid;
     }
 
+    /**
+     * Equinix-assigned routing protocol identifier
+     * 
+     */
     @Import(name="uuid", required=true)
     private Output<String> uuid;
 
+    /**
+     * @return Equinix-assigned routing protocol identifier
+     * 
+     */
     public Output<String> uuid() {
         return this.uuid;
     }
@@ -81,11 +89,23 @@ public final class GetRoutingProtocolArgs extends com.pulumi.resources.InvokeArg
             return connectionUuid(Output.of(connectionUuid));
         }
 
+        /**
+         * @param uuid Equinix-assigned routing protocol identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(Output<String> uuid) {
             $.uuid = uuid;
             return this;
         }
 
+        /**
+         * @param uuid Equinix-assigned routing protocol identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder uuid(String uuid) {
             return uuid(Output.of(uuid));
         }

@@ -18,7 +18,7 @@ namespace Pulumi.Equinix.Fabric.Outputs
         /// </summary>
         public readonly string? Href;
         /// <summary>
-        /// Equinix-assigned virtual gateway identifier
+        /// Equinix-assigned Network identifier
         /// </summary>
         public readonly string? Uuid;
 

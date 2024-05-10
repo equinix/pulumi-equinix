@@ -12,7 +12,7 @@ namespace Pulumi.Equinix.Metal
     /// <summary>
     /// Use this resource to create Metal Gateway resources in Equinix Metal.
     /// 
-    /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+    /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
     /// 
     /// ## Example Usage
     /// ```csharp

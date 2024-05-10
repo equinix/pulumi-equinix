@@ -13,7 +13,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
     public sealed class DeviceClusterDetailsNode1GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of a license file that will be applied on the device.
+        /// License file id. This is necessary for Fortinet and Juniper clusters.
         /// </summary>
         [Input("licenseFileId")]
         public Input<string>? LicenseFileId { get; set; }
@@ -22,8 +22,7 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         private Input<string>? _licenseToken;
 
         /// <summary>
-        /// License Token applicable for some device types in BYOL licensing
-        /// mode.
+        /// License token. This is necessary for Palo Alto clusters.
         /// </summary>
         public Input<string>? LicenseToken
         {
@@ -48,10 +47,9 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// Map of vendor specific configuration parameters for a device
-        /// (controller1, activationKey, managementType, siteId, systemIpAddress)
-        /// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-        /// on a device (max one key).  See SSH Key below for more details.
+        /// An object that has fields relevant to the vendor of the
+        /// cluster device. See Cluster Details - Nodes - Vendor Configuration
+        /// below for more details.
         /// </summary>
         [Input("vendorConfiguration")]
         public Input<Inputs.DeviceClusterDetailsNode1VendorConfigurationGetArgs>? VendorConfiguration { get; set; }

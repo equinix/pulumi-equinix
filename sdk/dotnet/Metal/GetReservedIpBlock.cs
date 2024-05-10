@@ -17,7 +17,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
         /// 
-        /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
         /// </summary>
         public static Task<GetReservedIpBlockResult> InvokeAsync(GetReservedIpBlockArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockArgs(), options.WithDefaults());
@@ -28,7 +28,7 @@ namespace Pulumi.Equinix.Metal
         /// 
         /// &gt; For backward compatibility, this data source can be also used for precreated (management) IP blocks.
         /// 
-        /// &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+        /// See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
         /// </summary>
         public static Output<GetReservedIpBlockResult> Invoke(GetReservedIpBlockInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpBlockResult>("equinix:metal/getReservedIpBlock:getReservedIpBlock", args ?? new GetReservedIpBlockInvokeArgs(), options.WithDefaults());

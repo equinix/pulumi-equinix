@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -28,18 +27,32 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fabric.LookupConnection(ctx, &fabric.LookupConnectionArgs{
+//			connectionDataName, err := fabric.LookupConnection(ctx, &fabric.LookupConnectionArgs{
 //				Uuid: "<uuid_of_connection>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("id", connectionDataName.Id)
+//			ctx.Export("name", connectionDataName.Bandwidth)
+//			ctx.Export("accountNumber", connectionDataName.Account.AccountNumber)
+//			ctx.Export("bandwidth", connectionDataName.Bandwidth)
+//			ctx.Export("projectId", connectionDataName.Project.ProjectId)
+//			ctx.Export("redundancyGroup", connectionDataName.Redundancy.Group)
+//			ctx.Export("redundancyPriority", connectionDataName.Redundancy.Priority)
+//			ctx.Export("state", connectionDataName.State)
+//			ctx.Export("type", connectionDataName.Type)
+//			ctx.Export("accessPointType", connectionDataName.ASide.AccessPoint.Type)
+//			ctx.Export("accessPointLinkProtocolType", connectionDataName.ASide.AccessPoint.LinkProtocol.Type)
+//			ctx.Export("accessPointLinkProtocolVlanTag", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanTag)
+//			ctx.Export("accessPointLinkProtocolVlanCTag", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanCTag)
+//			ctx.Export("accessPointLinkProtocolVlanSTag", connectionDataName.ASide.AccessPoint.LinkProtocol.VlanSTag)
+//			ctx.Export("accessPointProviderConnectionId", connectionDataName.ASide.AccessPoint.ProviderConnectionId)
 //			return nil
 //		})
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
@@ -52,6 +65,7 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 
 // A collection of arguments for invoking getConnection.
 type LookupConnectionArgs struct {
+	// Equinix-assigned connection identifier
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -114,6 +128,7 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 
 // A collection of arguments for invoking getConnection.
 type LookupConnectionOutputArgs struct {
+	// Equinix-assigned connection identifier
 	Uuid pulumi.StringInput `pulumi:"uuid"`
 }
 

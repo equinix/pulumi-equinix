@@ -16,7 +16,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,9 +29,26 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_connection&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Id),
+        ///         ["name"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
+        ///         ["accountNumber"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Account?.AccountNumber),
+        ///         ["bandwidth"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
+        ///         ["projectId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Project?.ProjectId),
+        ///         ["redundancyGroup"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Group),
+        ///         ["redundancyPriority"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Priority),
+        ///         ["state"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.State),
+        ///         ["type"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Type),
+        ///         ["accessPointType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.Type),
+        ///         ["accessPointLinkProtocolType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),
+        ///         ["accessPointLinkProtocolVlanTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),
+        ///         ["accessPointLinkProtocolVlanCTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),
+        ///         ["accessPointLinkProtocolVlanSTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),
+        ///         ["accessPointProviderConnectionId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
@@ -42,7 +58,6 @@ namespace Pulumi.Equinix.Fabric
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,9 +71,26 @@ namespace Pulumi.Equinix.Fabric
         ///         Uuid = "&lt;uuid_of_connection&gt;",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["id"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Id),
+        ///         ["name"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
+        ///         ["accountNumber"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Account?.AccountNumber),
+        ///         ["bandwidth"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Bandwidth),
+        ///         ["projectId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Project?.ProjectId),
+        ///         ["redundancyGroup"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Group),
+        ///         ["redundancyPriority"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Redundancy?.Priority),
+        ///         ["state"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.State),
+        ///         ["type"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.Type),
+        ///         ["accessPointType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.Type),
+        ///         ["accessPointLinkProtocolType"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.Type),
+        ///         ["accessPointLinkProtocolVlanTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanTag),
+        ///         ["accessPointLinkProtocolVlanCTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanCTag),
+        ///         ["accessPointLinkProtocolVlanSTag"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.LinkProtocol?.VlanSTag),
+        ///         ["accessPointProviderConnectionId"] = connectionDataName.Apply(getConnectionResult =&gt; getConnectionResult.ASide?.AccessPoint?.ProviderConnectionId),
+        ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("equinix:fabric/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
@@ -67,6 +99,9 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetConnectionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Equinix-assigned connection identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public string Uuid { get; set; } = null!;
 
@@ -78,6 +113,9 @@ namespace Pulumi.Equinix.Fabric
 
     public sealed class GetConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Equinix-assigned connection identifier
+        /// </summary>
         [Input("uuid", required: true)]
         public Input<string> Uuid { get; set; } = null!;
 

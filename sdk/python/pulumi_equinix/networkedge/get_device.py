@@ -540,7 +540,6 @@ def get_device(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -548,7 +547,6 @@ def get_device(name: Optional[str] = None,
     by_uuid = equinix.networkedge.get_device(uuid="f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
     by_name = equinix.networkedge.get_device(name="Arcus-Gateway-A1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of an existing Equinix Network Edge device
@@ -623,7 +621,6 @@ def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
@@ -631,7 +628,6 @@ def get_device_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     by_uuid = equinix.networkedge.get_device(uuid="f0b5c553-cdeb-4bc3-95b8-23db9ccfd5ee")
     by_name = equinix.networkedge.get_device(name="Arcus-Gateway-A1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of an existing Equinix Network Edge device

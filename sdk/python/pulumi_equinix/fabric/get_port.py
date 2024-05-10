@@ -268,14 +268,26 @@ def get_port(uuid: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     port_data_name = equinix.fabric.get_port(uuid="<uuid_of_port>")
+    pulumi.export("id", port_data_name.id)
+    pulumi.export("name", port_data_name.name)
+    pulumi.export("state", port_data_name.state)
+    pulumi.export("accountName", port_data_name.account.account_name)
+    pulumi.export("type", port_data_name.type)
+    pulumi.export("bandwidth", port_data_name.bandwidth)
+    pulumi.export("usedBandwidth", port_data_name.used_bandwidth)
+    pulumi.export("encapsulationType", port_data_name.encapsulation.type)
+    pulumi.export("ibx", port_data_name.location.ibx)
+    pulumi.export("metroCode", port_data_name.location.metro_code)
+    pulumi.export("metroName", port_data_name.location.metro_name)
+    pulumi.export("region", port_data_name.location.region)
+    pulumi.export("deviceRedundancyEnabled", port_data_name.device.redundancies[0].enabled)
+    pulumi.export("deviceRedundancyPriority", port_data_name.device.redundancies[0].priority)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned port identifier
@@ -315,14 +327,26 @@ def get_port_output(uuid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_equinix as equinix
 
     port_data_name = equinix.fabric.get_port(uuid="<uuid_of_port>")
+    pulumi.export("id", port_data_name.id)
+    pulumi.export("name", port_data_name.name)
+    pulumi.export("state", port_data_name.state)
+    pulumi.export("accountName", port_data_name.account.account_name)
+    pulumi.export("type", port_data_name.type)
+    pulumi.export("bandwidth", port_data_name.bandwidth)
+    pulumi.export("usedBandwidth", port_data_name.used_bandwidth)
+    pulumi.export("encapsulationType", port_data_name.encapsulation.type)
+    pulumi.export("ibx", port_data_name.location.ibx)
+    pulumi.export("metroCode", port_data_name.location.metro_code)
+    pulumi.export("metroName", port_data_name.location.metro_name)
+    pulumi.export("region", port_data_name.location.region)
+    pulumi.export("deviceRedundancyEnabled", port_data_name.device.redundancies[0].enabled)
+    pulumi.export("deviceRedundancyPriority", port_data_name.device.redundancies[0].priority)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str uuid: Equinix-assigned port identifier

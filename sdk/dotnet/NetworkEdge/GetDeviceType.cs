@@ -17,7 +17,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDeviceTypeResult> InvokeAsync(GetDeviceTypeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.Equinix.NetworkEdge
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDeviceTypeResult> Invoke(GetDeviceTypeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeviceTypeResult>("equinix:networkedge/getDeviceType:getDeviceType", args ?? new GetDeviceTypeInvokeArgs(), options.WithDefaults());

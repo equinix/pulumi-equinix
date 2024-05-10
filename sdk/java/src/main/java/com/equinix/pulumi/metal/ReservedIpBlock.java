@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * Once IP block is allocated or imported, an address from it can be assigned to device with the `equinix.metal.IpAttachment` resource.
  * 
- * &gt; VRF features are not generally available. The interfaces related to VRF resources may change ahead of general availability.
+ * See the [Virtual Routing and Forwarding documentation](https://deploy.equinix.com/developers/docs/metal/layer2-networking/vrf/) for product details and API reference material.
  * 
  * ## Example Usage
  * ```java

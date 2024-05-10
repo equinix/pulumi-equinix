@@ -13,13 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceClusterDetailsNode1 {
     /**
-     * @return Identifier of a license file that will be applied on the device.
+     * @return License file id. This is necessary for Fortinet and Juniper clusters.
      * 
      */
     private @Nullable String licenseFileId;
     /**
-     * @return License Token applicable for some device types in BYOL licensing
-     * mode.
+     * @return License token. This is necessary for Palo Alto clusters.
      * 
      */
     private @Nullable String licenseToken;
@@ -34,25 +33,23 @@ public final class DeviceClusterDetailsNode1 {
      */
     private @Nullable String uuid;
     /**
-     * @return Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * @return An object that has fields relevant to the vendor of the
+     * cluster device. See Cluster Details - Nodes - Vendor Configuration
+     * below for more details.
      * 
      */
     private @Nullable DeviceClusterDetailsNode1VendorConfiguration vendorConfiguration;
 
     private DeviceClusterDetailsNode1() {}
     /**
-     * @return Identifier of a license file that will be applied on the device.
+     * @return License file id. This is necessary for Fortinet and Juniper clusters.
      * 
      */
     public Optional<String> licenseFileId() {
         return Optional.ofNullable(this.licenseFileId);
     }
     /**
-     * @return License Token applicable for some device types in BYOL licensing
-     * mode.
+     * @return License token. This is necessary for Palo Alto clusters.
      * 
      */
     public Optional<String> licenseToken() {
@@ -73,10 +70,9 @@ public final class DeviceClusterDetailsNode1 {
         return Optional.ofNullable(this.uuid);
     }
     /**
-     * @return Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
-     * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
-     *   on a device (max one key).  See SSH Key below for more details.
+     * @return An object that has fields relevant to the vendor of the
+     * cluster device. See Cluster Details - Nodes - Vendor Configuration
+     * below for more details.
      * 
      */
     public Optional<DeviceClusterDetailsNode1VendorConfiguration> vendorConfiguration() {

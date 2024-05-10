@@ -232,14 +232,14 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Interface type
+     * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
      * 
      */
     @Import(name="type")
     private @Nullable Output<Either<String,AccessPointType>> type;
 
     /**
-     * @return Interface type
+     * @return Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
      * 
      */
     public Optional<Output<Either<String,AccessPointType>>> type() {
@@ -601,7 +601,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Interface type
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Interface type
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Interface type
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class ConnectionZSideAccessPointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Interface type
+         * @param type Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
          * 
          * @return builder
          * 

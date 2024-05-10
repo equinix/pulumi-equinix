@@ -16,14 +16,14 @@ public final class GetDevicesSortArgs extends com.pulumi.resources.ResourceArgs 
     public static final GetDevicesSortArgs Empty = new GetDevicesSortArgs();
 
     /**
-     * The attribute used to filter. Filter attributes are case-sensitive
+     * The attribute used to sort the results. Sort attributes are case-sensitive
      * 
      */
     @Import(name="attribute", required=true)
     private Output<String> attribute;
 
     /**
-     * @return The attribute used to filter. Filter attributes are case-sensitive
+     * @return The attribute used to sort the results. Sort attributes are case-sensitive
      * 
      */
     public Output<String> attribute() {
@@ -71,7 +71,7 @@ public final class GetDevicesSortArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param attribute The attribute used to filter. Filter attributes are case-sensitive
+         * @param attribute The attribute used to sort the results. Sort attributes are case-sensitive
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetDevicesSortArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param attribute The attribute used to filter. Filter attributes are case-sensitive
+         * @param attribute The attribute used to sort the results. Sort attributes are case-sensitive
          * 
          * @return builder
          * 
