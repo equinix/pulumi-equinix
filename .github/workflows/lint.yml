@@ -7,7 +7,7 @@ on:
     inputs: {}
 env:
   DOTNETVERSION: 7.0.x
-  GOVERSION: 1.21.x
+  GOVERSION: 1.22.x
   JAVAVERSION: "11"
   NODEVERSION: 20.x
   PYTHONVERSION: "3.9"
