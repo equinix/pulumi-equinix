@@ -6,9 +6,10 @@ on:
 env:
   PROVIDER: equinix
   DOTNETVERSION: 7.0.x
-  GOVERSION: 1.21.x
+  GOVERSION: 1.22.x
+  GRADLEVERSION: "7.6"
   JAVAVERSION: "11"
-  NODEVERSION: 16.x
+  NODEVERSION: 20.x
   PYTHONVERSION: "3.9"
   # THIS GITHUB_TOKEN IS A REQUIREMENT TO BE ABLE TO WRITE TO GH RELEASES
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -119,10 +120,10 @@ jobs:
           distribution: temurin
           java-version: ${{ env.JAVAVERSION }}
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           # Pin to known good version until #2262 is resolved
-          gradle-version: "7.6"
+          gradle-version: ${{ env.GRADLEVERSION }}
       - name: Download provider + tfgen binaries
         uses: actions/download-artifact@v3
         with:
