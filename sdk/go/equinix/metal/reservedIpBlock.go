@@ -89,10 +89,8 @@ type ReservedIpBlock struct {
 	// Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrfId`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
 	Cidr pulumi.IntOutput `pulumi:"cidr"`
 	// Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
-	CidrNotation pulumi.StringOutput `pulumi:"cidrNotation"`
-	// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-	// be helpful for self-managed IPAM. The object must be valid JSON.
-	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
+	CidrNotation pulumi.StringOutput    `pulumi:"cidrNotation"`
+	CustomData   pulumi.StringPtrOutput `pulumi:"customData"`
 	// Arbitrary description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Facility where to allocate the public IP address block, makes sense only
@@ -168,9 +166,7 @@ type reservedIpBlockState struct {
 	Cidr *int `pulumi:"cidr"`
 	// Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
 	CidrNotation *string `pulumi:"cidrNotation"`
-	// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-	// be helpful for self-managed IPAM. The object must be valid JSON.
-	CustomData *string `pulumi:"customData"`
+	CustomData   *string `pulumi:"customData"`
 	// Arbitrary description.
 	Description *string `pulumi:"description"`
 	// Facility where to allocate the public IP address block, makes sense only
@@ -214,9 +210,7 @@ type ReservedIpBlockState struct {
 	Cidr pulumi.IntPtrInput
 	// Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
 	CidrNotation pulumi.StringPtrInput
-	// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-	// be helpful for self-managed IPAM. The object must be valid JSON.
-	CustomData pulumi.StringPtrInput
+	CustomData   pulumi.StringPtrInput
 	// Arbitrary description.
 	Description pulumi.StringPtrInput
 	// Facility where to allocate the public IP address block, makes sense only
@@ -258,9 +252,7 @@ func (ReservedIpBlockState) ElementType() reflect.Type {
 
 type reservedIpBlockArgs struct {
 	// Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrfId`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
-	Cidr *int `pulumi:"cidr"`
-	// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-	// be helpful for self-managed IPAM. The object must be valid JSON.
+	Cidr       *int    `pulumi:"cidr"`
 	CustomData *string `pulumi:"customData"`
 	// Arbitrary description.
 	Description *string `pulumi:"description"`
@@ -290,9 +282,7 @@ type reservedIpBlockArgs struct {
 // The set of arguments for constructing a ReservedIpBlock resource.
 type ReservedIpBlockArgs struct {
 	// Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrfId`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
-	Cidr pulumi.IntPtrInput
-	// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-	// be helpful for self-managed IPAM. The object must be valid JSON.
+	Cidr       pulumi.IntPtrInput
 	CustomData pulumi.StringPtrInput
 	// Arbitrary description.
 	Description pulumi.StringPtrInput
@@ -425,8 +415,6 @@ func (o ReservedIpBlockOutput) CidrNotation() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringOutput { return v.CidrNotation }).(pulumi.StringOutput)
 }
 
-// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-// be helpful for self-managed IPAM. The object must be valid JSON.
 func (o ReservedIpBlockOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReservedIpBlock) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
 }

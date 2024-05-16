@@ -35,19 +35,9 @@ public final class ReservedIpBlockArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.cidr);
     }
 
-    /**
-     * Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     * 
-     */
     @Import(name="customData")
     private @Nullable Output<String> customData;
 
-    /**
-     * @return Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     * 
-     */
     public Optional<Output<String>> customData() {
         return Optional.ofNullable(this.customData);
     }
@@ -264,25 +254,11 @@ public final class ReservedIpBlockArgs extends com.pulumi.resources.ResourceArgs
             return cidr(Output.of(cidr));
         }
 
-        /**
-         * @param customData Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-         * be helpful for self-managed IPAM. The object must be valid JSON.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customData(@Nullable Output<String> customData) {
             $.customData = customData;
             return this;
         }
 
-        /**
-         * @param customData Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-         * be helpful for self-managed IPAM. The object must be valid JSON.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customData(String customData) {
             return customData(Output.of(customData));
         }

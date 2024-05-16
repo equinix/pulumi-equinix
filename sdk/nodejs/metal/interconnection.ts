@@ -113,7 +113,7 @@ export class Interconnection extends pulumi.CustomResource {
      */
     public readonly redundancy!: pulumi.Output<string>;
     /**
-     * Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * Only used with shared connection. Type of service token to use for the connection, aSide or z_side
      */
     public readonly serviceTokenType!: pulumi.Output<string | undefined>;
     /**
@@ -273,7 +273,7 @@ export interface InterconnectionState {
      */
     redundancy?: pulumi.Input<string>;
     /**
-     * Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * Only used with shared connection. Type of service token to use for the connection, aSide or z_side
      */
     serviceTokenType?: pulumi.Input<string>;
     /**
@@ -356,7 +356,7 @@ export interface InterconnectionArgs {
      */
     redundancy: pulumi.Input<string>;
     /**
-     * Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+     * Only used with shared connection. Type of service token to use for the connection, aSide or z_side
      */
     serviceTokenType?: pulumi.Input<string>;
     /**

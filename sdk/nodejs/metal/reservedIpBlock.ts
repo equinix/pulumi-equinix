@@ -93,10 +93,6 @@ export class ReservedIpBlock extends pulumi.CustomResource {
      * Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
      */
     public /*out*/ readonly cidrNotation!: pulumi.Output<string>;
-    /**
-     * Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     */
     public readonly customData!: pulumi.Output<string | undefined>;
     /**
      * Arbitrary description.
@@ -241,10 +237,6 @@ export interface ReservedIpBlockState {
      * Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
      */
     cidrNotation?: pulumi.Input<string>;
-    /**
-     * Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     */
     customData?: pulumi.Input<string>;
     /**
      * Arbitrary description.
@@ -315,10 +307,6 @@ export interface ReservedIpBlockArgs {
      * Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrfId`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
      */
     cidr?: pulumi.Input<number>;
-    /**
-     * Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     */
     customData?: pulumi.Input<string>;
     /**
      * Arbitrary description.
