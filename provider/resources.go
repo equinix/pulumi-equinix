@@ -166,6 +166,9 @@ func Provider() tfbridge.ProviderInfo {
 											"account": {
 												MaxItemsOne: tfbridge.True(),
 											},
+											"authentication_key": {
+												Type: "string",
+											},
 											"peering_type": {
 												Type: "string",
 												AltTypes: []tokens.Type{makeEquinixType(fabricMod,
@@ -309,6 +312,9 @@ func Provider() tfbridge.ProviderInfo {
 										Fields: map[string]*tfbridge.SchemaInfo{
 											"account": {
 												MaxItemsOne: tfbridge.True(),
+											},
+											"authentication_key": {
+												Type: "string",
 											},
 											"peering_type": {
 												Type: "string",
