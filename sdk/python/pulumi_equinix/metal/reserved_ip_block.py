@@ -31,8 +31,6 @@ class ReservedIpBlockArgs:
         The set of arguments for constructing a ReservedIpBlock resource.
         :param pulumi.Input[str] project_id: The metal project ID where to allocate the address block.
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
-        :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-               be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
         :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
@@ -97,10 +95,6 @@ class ReservedIpBlockArgs:
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-        be helpful for self-managed IPAM. The object must be valid JSON.
-        """
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
@@ -248,8 +242,6 @@ class _ReservedIpBlockState:
         :param pulumi.Input[int] address_family: Address family as integer. One of `4` or `6`.
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
         :param pulumi.Input[str] cidr_notation: Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
-        :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-               be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
         :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
@@ -359,10 +351,6 @@ class _ReservedIpBlockState:
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-        be helpful for self-managed IPAM. The object must be valid JSON.
-        """
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
@@ -627,8 +615,6 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
-        :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-               be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
         :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
@@ -798,8 +784,6 @@ class ReservedIpBlock(pulumi.CustomResource):
         :param pulumi.Input[int] address_family: Address family as integer. One of `4` or `6`.
         :param pulumi.Input[int] cidr: Only valid as an argument and required when `type` is `vrf`. The size of the network to reserve from an existing VRF ip_range. `cidr` can only be specified with `vrf_id`. Range is 22-31. Virtual Circuits require 30-31. Other VRF resources must use a CIDR in the 22-29 range.
         :param pulumi.Input[str] cidr_notation: Address and mask in CIDR notation, e.g. `147.229.15.30/31`.
-        :param pulumi.Input[str] custom_data: Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-               be helpful for self-managed IPAM. The object must be valid JSON.
         :param pulumi.Input[str] description: Arbitrary description.
         :param pulumi.Input[Union[str, 'Facility']] facility: Facility where to allocate the public IP address block, makes sense only
                if type is `public_ipv4` and must be empty if type is `global_ipv4`. Conflicts with `metro`. Use metro instead; read the facility to metro migration guide
@@ -877,10 +861,6 @@ class ReservedIpBlock(pulumi.CustomResource):
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> pulumi.Output[Optional[str]]:
-        """
-        Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-        be helpful for self-managed IPAM. The object must be valid JSON.
-        """
         return pulumi.get(self, "custom_data")
 
     @property

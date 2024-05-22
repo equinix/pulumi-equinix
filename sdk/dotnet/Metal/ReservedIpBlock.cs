@@ -86,10 +86,6 @@ namespace Pulumi.Equinix.Metal
         [Output("cidrNotation")]
         public Output<string> CidrNotation { get; private set; } = null!;
 
-        /// <summary>
-        /// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-        /// be helpful for self-managed IPAM. The object must be valid JSON.
-        /// </summary>
         [Output("customData")]
         public Output<string?> CustomData { get; private set; } = null!;
 
@@ -237,10 +233,6 @@ namespace Pulumi.Equinix.Metal
         [Input("cidr")]
         public Input<int>? Cidr { get; set; }
 
-        /// <summary>
-        /// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-        /// be helpful for self-managed IPAM. The object must be valid JSON.
-        /// </summary>
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
 
@@ -342,10 +334,6 @@ namespace Pulumi.Equinix.Metal
         [Input("cidrNotation")]
         public Input<string>? CidrNotation { get; set; }
 
-        /// <summary>
-        /// Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-        /// be helpful for self-managed IPAM. The object must be valid JSON.
-        /// </summary>
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
 

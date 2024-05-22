@@ -11,16 +11,15 @@ replace (
 
 require (
 	github.com/equinix/terraform-provider-equinix v1.36.3
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.34.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.81.0
-	github.com/pulumi/pulumi/pkg/v3 v3.113.0
-	github.com/pulumi/pulumi/sdk/v3 v3.113.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.35.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
+	github.com/pulumi/pulumi/pkg/v3 v3.114.0
+	github.com/pulumi/pulumi/sdk/v3 v3.114.0
 )
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
-	cloud.google.com/go/compute v1.25.0 // indirect
-	cloud.google.com/go/compute/metadata v0.2.3 // indirect
+	cloud.google.com/go/compute/metadata v0.3.0 // indirect
 	cloud.google.com/go/iam v1.1.6 // indirect
 	cloud.google.com/go/kms v1.15.7 // indirect
 	cloud.google.com/go/logging v1.9.0 // indirect
@@ -80,7 +79,7 @@ require (
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/equinix/ecx-go/v2 v2.3.1 // indirect
-	github.com/equinix/equinix-sdk-go v0.39.0 // indirect
+	github.com/equinix/equinix-sdk-go v0.39.1 // indirect
 	github.com/equinix/ne-go v1.17.0 // indirect
 	github.com/equinix/oauth2-go v1.0.0 // indirect
 	github.com/equinix/rest-go v1.3.0 // indirect
@@ -143,7 +142,6 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-mux v0.16.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.7.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
@@ -240,14 +238,14 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	gocloud.dev v0.37.0 // indirect
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
-	golang.org/x/crypto v0.21.0 // indirect
+	golang.org/x/crypto v0.22.0 // indirect
 	golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc // indirect
 	golang.org/x/mod v0.16.0 // indirect
 	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/oauth2 v0.19.0 // indirect
+	golang.org/x/oauth2 v0.20.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
-	golang.org/x/term v0.18.0 // indirect
+	golang.org/x/sys v0.19.0 // indirect
+	golang.org/x/term v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.17.0 // indirect

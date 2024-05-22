@@ -92,7 +92,7 @@ type Interconnection struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Connection redundancy - redundant or primary.
 	Redundancy pulumi.StringOutput `pulumi:"redundancy"`
-	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
 	ServiceTokenType pulumi.StringPtrOutput `pulumi:"serviceTokenType"`
 	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
 	ServiceTokens InterconnectionServiceTokenArrayOutput `pulumi:"serviceTokens"`
@@ -178,7 +178,7 @@ type interconnectionState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Connection redundancy - redundant or primary.
 	Redundancy *string `pulumi:"redundancy"`
-	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
 	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
 	ServiceTokens []InterconnectionServiceToken `pulumi:"serviceTokens"`
@@ -229,7 +229,7 @@ type InterconnectionState struct {
 	ProjectId pulumi.StringPtrInput
 	// Connection redundancy - redundant or primary.
 	Redundancy pulumi.StringPtrInput
-	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
 	ServiceTokenType pulumi.StringPtrInput
 	// List of connection service tokens with attributes required to configure the connection in Equinix Fabric with the equinixEcxL2Connection resource or from the [Equinix Fabric Portal](https://ecxfabric.equinix.com/dashboard). Scehma of serviceToken is described in documentation of the metal.Interconnection datasource.
 	ServiceTokens InterconnectionServiceTokenArrayInput
@@ -277,7 +277,7 @@ type interconnectionArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Connection redundancy - redundant or primary.
 	Redundancy string `pulumi:"redundancy"`
-	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
 	ServiceTokenType *string `pulumi:"serviceTokenType"`
 	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed *string `pulumi:"speed"`
@@ -314,7 +314,7 @@ type InterconnectionArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Connection redundancy - redundant or primary.
 	Redundancy pulumi.StringInput
-	// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+	// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
 	ServiceTokenType pulumi.StringPtrInput
 	// Connection speed -  Values must be in the format '<number>Mbps' or '<number>Gpbs', for example '100Mbps' or '50Gbps'.  Actual supported values will depend on the connection type and whether the connection uses VLANs or VRF.
 	Speed pulumi.StringPtrInput
@@ -476,7 +476,7 @@ func (o InterconnectionOutput) Redundancy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringOutput { return v.Redundancy }).(pulumi.StringOutput)
 }
 
-// Only used with shared connection. Type of service token to use for the connection, a_side or z_side
+// Only used with shared connection. Type of service token to use for the connection, aSide or z_side
 func (o InterconnectionOutput) ServiceTokenType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnection) pulumi.StringPtrOutput { return v.ServiceTokenType }).(pulumi.StringPtrOutput)
 }

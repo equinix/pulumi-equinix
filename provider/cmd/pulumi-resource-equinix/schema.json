@@ -13806,8 +13806,7 @@
                     "description": "Address and mask in CIDR notation, e.g. `147.229.15.30/31`.\n"
                 },
                 "customData": {
-                    "type": "string",
-                    "description": "Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may\nbe helpful for self-managed IPAM. The object must be valid JSON.\n"
+                    "type": "string"
                 },
                 "description": {
                     "type": "string",
@@ -13896,8 +13895,7 @@
                     "willReplaceOnChanges": true
                 },
                 "customData": {
-                    "type": "string",
-                    "description": "Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may\nbe helpful for self-managed IPAM. The object must be valid JSON.\n"
+                    "type": "string"
                 },
                 "description": {
                     "type": "string",
@@ -13991,8 +13989,7 @@
                         "description": "Address and mask in CIDR notation, e.g. `147.229.15.30/31`.\n"
                     },
                     "customData": {
-                        "type": "string",
-                        "description": "Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may\nbe helpful for self-managed IPAM. The object must be valid JSON.\n"
+                        "type": "string"
                     },
                     "description": {
                         "type": "string",

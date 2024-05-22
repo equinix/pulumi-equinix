@@ -125,19 +125,9 @@ public class ReservedIpBlock extends com.pulumi.resources.CustomResource {
     public Output<String> cidrNotation() {
         return this.cidrNotation;
     }
-    /**
-     * Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     * 
-     */
     @Export(name="customData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customData;
 
-    /**
-     * @return Custom Data is an arbitrary object (submitted in Terraform as serialized JSON) to assign to the IP Reservation. This may
-     * be helpful for self-managed IPAM. The object must be valid JSON.
-     * 
-     */
     public Output<Optional<String>> customData() {
         return Codegen.optional(this.customData);
     }
