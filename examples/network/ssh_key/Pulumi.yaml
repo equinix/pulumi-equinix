@@ -1,0 +1,12 @@
+name: equinix-network-ssh-key
+runtime: yaml
+description: An Equinix Network Edge SSH Key resource
+resources:
+  sshKey:
+    type: equinix:networkedge:SshKey
+    properties:
+      name: johnKent
+      publicKey:
+        fn::readFile: /Users/John/.ssh/ne_rsa.pub
+outputs:
+  sshKeyId: ${sshKey.id}

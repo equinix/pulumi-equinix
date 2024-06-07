@@ -1,0 +1,68 @@
+name: equinix-network-device
+runtime: yaml
+description: An Equinix Network Edge virtual network device resource
+config:
+  accountName:
+    type: string
+  licenseToken:
+    type: string
+  sshUserName:
+    type: string
+  sshKeyName:
+    type: string
+  aclTemplateId:
+    type: string
+  metro:
+    type: string
+    default: SV
+  devicePackageCode:
+    type: string
+    default: network-essentials
+  deviceVersion:
+    type: string
+    default: 17.06.01a
+  sizeInCores:
+    type: integer
+    default: 2
+  termLength:
+    type: integer
+    default: 6
+  additionalBandwidth:
+    type: integer
+    default: 5
+variables:
+  accountNum:
+    fn::invoke:
+      function: equinix:networkedge:getAccount
+      arguments:
+        name: ${accountName}
+        metroCode: ${metro}
+      return: number
+resources:
+  c8kRouter:
+    type: equinix:networkedge:Device
+    properties:
+      name: catalystRouter
+      metroCode: ${metro}
+      typeCode: C8000V
+      selfManaged: true
+      byol: true
+      packageCode: ${devicePackageCode}
+      notifications:
+      - "example@equinix.com"
+      hostname: C8KV
+      accountNumber: ${accountNum}
+      version: ${deviceVersion}
+      coreCount: ${sizeInCores}
+      termLength: ${termLength}
+      licenseToken: ${licenseToken}
+      additionalBandwidth: ${additionalBandwidth}
+      sshKey:
+        username: ${sshUserName}
+        keyName: ${sshKeyName}
+      aclTemplateId: ${aclTemplateId}
+outputs:
+  routerId: ${c8kRouter.id}
+  provisionStatus: ${c8kRouter.status}
+  licenseStatus: ${c8kRouter.licenseStatus}
+  sshIpAddress: ${c8kRouter.sshIpAddress}

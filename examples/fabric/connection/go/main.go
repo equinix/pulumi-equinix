@@ -34,7 +34,7 @@ func main() {
 		}, nil).Data[0].Uuid
 		portId := fabric.GetPorts(ctx, &fabric.GetPortsArgs{
 			Filter: fabric.GetPortsFilter{
-				Name: pulumi.StringRef(fabricPortName),
+				Name: fabricPortName,
 			},
 		}, nil).Data[0].Uuid
 		colo2Aws, err := fabric.NewConnection(ctx, "colo2Aws", &fabric.ConnectionArgs{

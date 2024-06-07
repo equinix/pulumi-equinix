@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -13,9 +14,9 @@ return await Deployment.RunAsync(() =>
     var metro = config.Get("metro") ?? "SV";
     var devicePackageCode = config.Get("devicePackageCode") ?? "network-essentials";
     var deviceVersion = config.Get("deviceVersion") ?? "17.06.01a";
-    var sizeInCores = config.GetNumber("sizeInCores") ?? 2;
-    var termLength = config.GetNumber("termLength") ?? 6;
-    var additionalBandwidth = config.GetNumber("additionalBandwidth") ?? 5;
+    var sizeInCores = config.GetInt32("sizeInCores") ?? 2;
+    var termLength = config.GetInt32("termLength") ?? 6;
+    var additionalBandwidth = config.GetInt32("additionalBandwidth") ?? 5;
     var accountNum = Equinix.NetworkEdge.GetAccount.Invoke(new()
     {
         Name = accountName,
@@ -57,3 +58,4 @@ return await Deployment.RunAsync(() =>
         ["sshIpAddress"] = c8KRouter.SshIpAddress,
     };
 });
+

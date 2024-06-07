@@ -1,9 +1,9 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const accountName = config.require("accountName");
@@ -17,10 +17,10 @@ const deviceVersion = config.get("deviceVersion") || "17.06.01a";
 const sizeInCores = config.getNumber("sizeInCores") || 2;
 const termLength = config.getNumber("termLength") || 6;
 const additionalBandwidth = config.getNumber("additionalBandwidth") || 5;
-const accountNum = equinix.networkedge.getAccount({
+const accountNum = equinix.networkedge.getAccountOutput({
     name: accountName,
     metroCode: metro,
-}).then(invoke => invoke.number);
+}).apply(invoke => invoke.number);
 const c8KRouter = new equinix.networkedge.Device("c8kRouter", {
     name: "catalystRouter",
     metroCode: metro,
@@ -75,8 +75,8 @@ if term_length is None:
 additional_bandwidth = config.get_int("additionalBandwidth")
 if additional_bandwidth is None:
     additional_bandwidth = 5
-account_num = equinix.networkedge.get_account(name=account_name,
-    metro_code=metro).number
+account_num = equinix.networkedge.get_account_output(name=account_name,
+    metro_code=metro).apply(lambda invoke: invoke.number)
 c8_k_router = equinix.networkedge.Device("c8kRouter",
     name="catalystRouter",
     metro_code=metro,
@@ -159,7 +159,7 @@ func main() {
 			},
 			Hostname:            pulumi.String("C8KV"),
 			AccountNumber:       *pulumi.String(accountNum),
-			Version:             pulumi.Any(deviceVersion),
+			Version:             pulumi.String(deviceVersion),
 			CoreCount:           pulumi.Int(sizeInCores),
 			TermLength:          pulumi.Int(termLength),
 			LicenseToken:        pulumi.String(licenseToken),
@@ -183,6 +183,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -197,9 +198,9 @@ return await Deployment.RunAsync(() =>
     var metro = config.Get("metro") ?? "SV";
     var devicePackageCode = config.Get("devicePackageCode") ?? "network-essentials";
     var deviceVersion = config.Get("deviceVersion") ?? "17.06.01a";
-    var sizeInCores = config.GetNumber("sizeInCores") ?? 2;
-    var termLength = config.GetNumber("termLength") ?? 6;
-    var additionalBandwidth = config.GetNumber("additionalBandwidth") ?? 5;
+    var sizeInCores = config.GetInt32("sizeInCores") ?? 2;
+    var termLength = config.GetInt32("termLength") ?? 6;
+    var additionalBandwidth = config.GetInt32("additionalBandwidth") ?? 5;
     var accountNum = Equinix.NetworkEdge.GetAccount.Invoke(new()
     {
         Name = accountName,
@@ -248,11 +249,9 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.Device;
-import com.equinix.pulumi.networkedge.DeviceArgs;
-import com.equinix.pulumi.networkedge.inputs.DeviceSshKeyArgs;
-import com.equinix.pulumi.networkedge.inputs.GetAccountArgs;
-import com.equinix.pulumi.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.Device;
+import com.pulumi.equinix.networkedge.DeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceSshKeyArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -267,21 +266,21 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var accountName = config.get("accountName").get();
-        final var licenseToken = config.get("licenseToken").get();
-        final var sshUserName = config.get("sshUserName").get();
-        final var sshKeyName = config.get("sshKeyName").get();
-        final var aclTemplateId = config.get("aclTemplateId").get();
+        final var accountName = config.get("accountName");
+        final var licenseToken = config.get("licenseToken");
+        final var sshUserName = config.get("sshUserName");
+        final var sshKeyName = config.get("sshKeyName");
+        final var aclTemplateId = config.get("aclTemplateId");
         final var metro = config.get("metro").orElse("SV");
         final var devicePackageCode = config.get("devicePackageCode").orElse("network-essentials");
         final var deviceVersion = config.get("deviceVersion").orElse("17.06.01a");
-        final var sizeInCores = Integer.parseInt(config.get("sizeInCores").orElse("2"));
-        final var termLength = Integer.parseInt(config.get("termLength").orElse("6"));
-        final var additionalBandwidth = Integer.parseInt(config.get("additionalBandwidth").orElse("5"));
+        final var sizeInCores = config.get("sizeInCores").orElse(2);
+        final var termLength = config.get("termLength").orElse(6);
+        final var additionalBandwidth = config.get("additionalBandwidth").orElse(5);
         final var accountNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
             .name(accountName)
             .metroCode(metro)
-            .build()).applyValue(account -> account.number());
+            .build()).number();
 
         var c8KRouter = new Device("c8KRouter", DeviceArgs.builder()        
             .name("catalystRouter")

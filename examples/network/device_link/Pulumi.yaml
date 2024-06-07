@@ -1,0 +1,54 @@
+name: equinix-network-device-link
+runtime: yaml
+description: An Equinix Network Edge virtual network device link resource
+config:
+  accountName:
+    type: string
+  accountMetro:
+    type: string
+  device1Id:
+    type: string
+  device2Id:
+    type: string
+variables:
+  accountfNum:
+    fn::invoke:
+      function: equinix:networkedge:getAccount
+      arguments:
+        name: ${accountName}
+        metroCode: ${accountMetro}
+      return: number
+  device1Metro:
+    fn::invoke:
+      function: equinix:networkedge:getDevice
+      arguments:
+        uuid: ${device1Id}
+      return: metroCode
+  device2Metro:
+    fn::invoke:
+      function: equinix:networkedge:getDevice
+      arguments:
+        uuid: ${device2Id}
+      return: metroCode
+resources:
+  deviceLink:
+    type: equinix:networkedge:DeviceLink
+    properties:
+      name: test-link
+      subnet: 192.168.40.64/27
+      devices:
+      - id: device1Id
+        asn: 22111
+        interfaceId: 6
+      - id: device2Id
+        asn: 22333
+        interfaceId: 7
+      links:
+      - accountNumber: ${accountfNum}
+        srcMetroCode: ${device1Metro}
+        dstMetroCode: ${device2Metro}
+        throughput: "50"
+        throughputUnit: Mbps
+outputs:
+  status: ${deviceLink.status}
+  devices: ${deviceLink.devices}

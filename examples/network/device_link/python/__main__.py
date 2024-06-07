@@ -6,10 +6,10 @@ account_name = config.require("accountName")
 account_metro = config.require("accountMetro")
 device1_id = config.require("device1Id")
 device2_id = config.require("device2Id")
-accountf_num = equinix.networkedge.get_account(name=account_name,
-    metro_code=account_metro).number
-device1_metro = equinix.networkedge.get_device(uuid=device1_id).metro_code
-device2_metro = equinix.networkedge.get_device(uuid=device2_id).metro_code
+accountf_num = equinix.networkedge.get_account_output(name=account_name,
+    metro_code=account_metro).apply(lambda invoke: invoke.number)
+device1_metro = equinix.networkedge.get_device_output(uuid=device1_id).apply(lambda invoke: invoke.metro_code)
+device2_metro = equinix.networkedge.get_device_output(uuid=device2_id).apply(lambda invoke: invoke.metro_code)
 device_link = equinix.networkedge.DeviceLink("deviceLink",
     name="test-link",
     subnet="192.168.40.64/27",

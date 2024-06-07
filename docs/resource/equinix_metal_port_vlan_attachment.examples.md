@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -73,6 +72,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -81,7 +81,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var deviceId = config.Require("deviceId");
     var portName = config.Get("portName") ?? "eth1";
-    var vxlanId = config.GetNumber("vxlanId") ?? 1004;
+    var vxlanId = config.GetInt32("vxlanId") ?? 1004;
     var attach = new Equinix.Metal.PortVlanAttachment("attach", new()
     {
         DeviceId = deviceId,
@@ -101,8 +101,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.PortVlanAttachment;
-import com.equinix.pulumi.metal.PortVlanAttachmentArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.PortVlanAttachment;
+import com.pulumi.equinix.metal.PortVlanAttachmentArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -111,10 +118,9 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var deviceId = config.get("deviceId").get();
+        final var deviceId = config.get("deviceId");
         final var portName = config.get("portName").orElse("eth1");
-        final var vxlanId = Integer.parseInt(config.get("vxlanId").orElse("1004"));
-
+        final var vxlanId = config.get("vxlanId").orElse(1004);
         var attach = new PortVlanAttachment("attach", PortVlanAttachmentArgs.builder()        
             .deviceId(deviceId)
             .portName(portName)

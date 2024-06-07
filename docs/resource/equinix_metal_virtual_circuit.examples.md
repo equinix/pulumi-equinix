@@ -1,17 +1,17 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const projectId = config.require("projectId");
 const connectionId = config.require("connectionId");
 const vlanId = config.require("vlanId");
-const portId = equinix.metal.getInterconnection({
+const portId = equinix.metal.getInterconnectionOutput({
     connectionId: connectionId,
-}).then(invoke => invoke.ports?.[0]?.id);
+}).apply(invoke => invoke.ports?.[0]?.id);
 const vc = new equinix.metal.VirtualCircuit("vc", {
     connectionId: connectionId,
     projectId: projectId,
@@ -30,7 +30,7 @@ config = pulumi.Config()
 project_id = config.require("projectId")
 connection_id = config.require("connectionId")
 vlan_id = config.require("vlanId")
-port_id = equinix.metal.get_interconnection(connection_id=connection_id).ports[0].id
+port_id = equinix.metal.get_interconnection_output(connection_id=connection_id).apply(lambda invoke: invoke.ports[0].id)
 vc = equinix.metal.VirtualCircuit("vc",
     connection_id=connection_id,
     project_id=project_id,
@@ -76,6 +76,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -111,10 +112,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.inputs.GetInterconnectionArgs;
-import com.equinix.pulumi.metal.MetalFunctions;
-import com.equinix.pulumi.metal.VirtualCircuit;
-import com.equinix.pulumi.metal.VirtualCircuitArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.VirtualCircuit;
+import com.pulumi.equinix.metal.VirtualCircuitArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -123,12 +129,12 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var projectId = config.get("projectId").get();
-        final var connectionId = config.get("connectionId").get();
-        final var vlanId = config.get("vlanId").get();
+        final var projectId = config.get("projectId");
+        final var connectionId = config.get("connectionId");
+        final var vlanId = config.get("vlanId");
         final var portId = MetalFunctions.getInterconnection(GetInterconnectionArgs.builder()
             .connectionId(connectionId)
-            .build()).applyValue(data -> data.ports().get(0).id());
+            .build()).ports()[0].id();
 
         var vc = new VirtualCircuit("vc", VirtualCircuitArgs.builder()        
             .connectionId(connectionId)

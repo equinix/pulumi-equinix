@@ -1,0 +1,16 @@
+name: equinix-metal-port-layer2-bonded
+runtime: yaml
+description: An Equinix Metal Port resource
+config:
+  portId:
+    type: string
+resources:
+  port:
+    type: equinix:metal:Port
+    properties:
+      portId: ${portId}
+      bonded: true
+      layer2: true
+outputs:
+  portType: ${port.type}
+  portBondedNetworkType: ${port.networkType}

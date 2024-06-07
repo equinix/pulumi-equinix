@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -38,10 +37,6 @@ const profile = new equinix.fabric.ServiceProfile("profile", {
             label: "Example ACCOUNT ID",
         },
     }],
-    account: {
-        organizationName: "Example Cloud",
-        globalOrganizationName: "Example Global",
-    },
     metros: undefined,
     visibility: "PUBLIC",
     marketingInfo: {
@@ -87,10 +82,6 @@ profile = equinix.fabric.ServiceProfile("profile",
             label="Example ACCOUNT ID",
         ),
     )],
-    account=equinix.fabric.ServiceProfileAccountArgs(
-        organization_name="Example Cloud",
-        global_organization_name="Example Global",
-    ),
     metros=None,
     visibility="PUBLIC",
     marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(
@@ -143,10 +134,6 @@ func main() {
 					},
 				},
 			},
-			Account: &fabric.ServiceProfileAccountArgs{
-				OrganizationName:       pulumi.String("Example Cloud"),
-				GlobalOrganizationName: pulumi.String("Example Global"),
-			},
 			Metros:     nil,
 			Visibility: pulumi.String("PUBLIC"),
 			MarketingInfo: &fabric.ServiceProfileMarketingInfoArgs{
@@ -163,6 +150,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -210,11 +198,6 @@ return await Deployment.RunAsync(() =>
                 },
             },
         },
-        Account = new Equinix.Fabric.Inputs.ServiceProfileAccountArgs
-        {
-            OrganizationName = "Example Cloud",
-            GlobalOrganizationName = "Example Global",
-        },
         Metros = null,
         Visibility = "PUBLIC",
         MarketingInfo = new Equinix.Fabric.Inputs.ServiceProfileMarketingInfoArgs
@@ -234,14 +217,20 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.fabric.ServiceProfile;
-import com.equinix.pulumi.fabric.ServiceProfileArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccountArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileMarketingInfoArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.fabric.ServiceProfile;
+import com.pulumi.equinix.fabric.ServiceProfileArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileMarketingInfoArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -268,8 +257,8 @@ public class App {
                     .reuseVlanSTag(false)
                     .encapsulation("DOT1Q")
                     .build())
-                .enableAutoGenerateServiceKey(false)
-                .connectionRedundancyRequired(false)
+                .enableAutoGenerateServiceKey("false,")
+                .connectionRedundancyRequired("false,")
                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
                     .apiAvailable(true)
                     .integrationId("Example-Connect-01")
@@ -281,10 +270,7 @@ public class App {
                     .label("Example ACCOUNT ID")
                     .build())
                 .build())
-            .account(ServiceProfileAccountArgs.builder()
-                .organizationName("Example Cloud")
-                .globalOrganizationName("Example Global")
-                .build())
+            .metros(null)
             .visibility("PUBLIC")
             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
                 .promotion(true)
@@ -323,9 +309,6 @@ resources:
         authenticationKey:
           required: true
           label: Example ACCOUNT ID
-      account:
-        organizationName: Example Cloud
-        globalOrganizationName: Example Global
       metros:
       visibility: PUBLIC
       marketingInfo:
@@ -334,4 +317,3 @@ outputs:
   profileId: ${profile.id}
 ```
 {{% /example %}}
-

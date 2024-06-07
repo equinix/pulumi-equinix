@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -59,6 +58,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -87,8 +87,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.Bgp;
-import com.equinix.pulumi.networkedge.BgpArgs;
+import com.pulumi.equinix.networkedge.Bgp;
+import com.pulumi.equinix.networkedge.BgpArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;

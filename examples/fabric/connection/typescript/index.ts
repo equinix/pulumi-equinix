@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const metro = config.get("metro") || "FR";
@@ -7,18 +8,18 @@ const speedInMbps = config.getNumber("speedInMbps") || 50;
 const fabricPortName = config.require("fabricPortName");
 const awsRegion = config.get("awsRegion") || "eu-central-1";
 const awsAccountId = config.require("awsAccountId");
-const serviceProfileId = equinix.fabric.getServiceProfiles({
+const serviceProfileId = equinix.fabric.getServiceProfilesOutput({
     filter: {
         property: "/name",
         operator: "=",
         values: ["AWS Direct Connect"],
     },
-}).then(invoke => invoke.data?.[0]?.uuid!);
-const portId = equinix.fabric.getPorts({
+}).apply(invoke => invoke.data?.[0]?.uuid);
+const portId = equinix.fabric.getPortsOutput({
     filter: {
         name: fabricPortName,
     },
-}).then(invoke => invoke.data?.[0]?.uuid!);
+}).apply(invoke => invoke.data?.[0]?.uuid);
 const colo2Aws = new equinix.fabric.Connection("colo2Aws", {
     name: "Pulumi-colo2Aws",
     type: "EVPL_VC",

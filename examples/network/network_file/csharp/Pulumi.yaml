@@ -1,4 +1,4 @@
-name: equinix-networkedge-file
+name: equinix-network-file
 runtime: dotnet
 description: An Equinix Network Edge File (LICENSE or CLOUD_INIT) resource
 config:

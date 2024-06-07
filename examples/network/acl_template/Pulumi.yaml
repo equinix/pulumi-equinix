@@ -1,0 +1,22 @@
+name: equinix-network-acl-template
+runtime: yaml
+description: An Equinix Network Edge Access Control List template resource
+resources:
+  aclTemplate:
+    type: equinix:networkedge:AclTemplate
+    properties:
+      name: test
+      description: Test ACL template
+      inboundRules:
+      - subnet: 1.1.1.1/32
+        protocol: IP
+        srcPort: any
+        dstPort: any
+        description: inbound rule description
+      - subnet: 2.2.2.2/28
+        protocol: TCP
+        srcPort: any
+        dstPort: any
+        description: inbound rule description
+outputs:
+  templateId: ${aclTemplate.id}

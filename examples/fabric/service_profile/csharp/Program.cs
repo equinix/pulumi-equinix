@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -45,11 +46,6 @@ return await Deployment.RunAsync(() =>
                     Label = "Example ACCOUNT ID",
                 },
             },
-        },
-        Account = new Equinix.Fabric.Inputs.ServiceProfileAccountArgs
-        {
-            OrganizationName = "Example Cloud",
-            GlobalOrganizationName = "Example Global",
         },
         Metros = null,
         Visibility = "PUBLIC",

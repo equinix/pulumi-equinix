@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -11,7 +10,7 @@ const projectId = config.require("projectId");
 const sshKey = new equinix.metal.ProjectSshKey("sshKey", {
     projectId: projectId,
     name: "johnKent",
-    publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub"),
+    publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub", "utf8"),
 });
 export const sshKeyId = sshKey.id;
 ```
@@ -66,6 +65,7 @@ func main() {
 ```csharp
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -91,10 +91,13 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.ProjectSshKey;
-import com.equinix.pulumi.metal.ProjectSshKeyArgs;
-
-import java.io.IOException;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.ProjectSshKey;
+import com.pulumi.equinix.metal.ProjectSshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -105,19 +108,11 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var projectId = config.get("projectId").get();
-
-        String content = null;
-        try {
-            content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        final var projectId = config.get("projectId");
         var sshKey = new ProjectSshKey("sshKey", ProjectSshKeyArgs.builder()        
             .projectId(projectId)
             .name("johnKent")
-            .publicKey(content)
+            .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
             .build());
 
         ctx.export("sshKeyId", sshKey.id());
