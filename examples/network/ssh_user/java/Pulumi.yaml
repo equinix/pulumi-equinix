@@ -1,4 +1,4 @@
-name: equinix-networkedge-ssh-user
+name: equinix-network-ssh-user
 runtime: java
 description: An Equinix Network Edge SSH User resource
 config:

@@ -1,4 +1,4 @@
-name: equinix-networkedge-device-link
+name: equinix-network-device-link
 runtime: dotnet
 description: An Equinix Network Edge virtual network device link resource
 config:

@@ -54,7 +54,7 @@ func main() {
 			},
 			Hostname:            pulumi.String("C8KV"),
 			AccountNumber:       *pulumi.String(accountNum),
-			Version:             pulumi.Any(deviceVersion),
+			Version:             pulumi.String(deviceVersion),
 			CoreCount:           pulumi.Int(sizeInCores),
 			TermLength:          pulumi.Int(termLength),
 			LicenseToken:        pulumi.String(licenseToken),

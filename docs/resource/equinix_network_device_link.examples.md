@@ -1,25 +1,25 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
+import * as equinix from "@pulumi/equinix";
 
 const config = new pulumi.Config();
 const accountName = config.require("accountName");
 const accountMetro = config.require("accountMetro");
 const device1Id = config.require("device1Id");
 const device2Id = config.require("device2Id");
-const accountfNum = equinix.networkedge.getAccount({
+const accountfNum = equinix.networkedge.getAccountOutput({
     name: accountName,
     metroCode: accountMetro,
-}).then(invoke => invoke.number);
-const device1Metro = equinix.networkedge.getDevice({
+}).apply(invoke => invoke.number);
+const device1Metro = equinix.networkedge.getDeviceOutput({
     uuid: device1Id,
-}).then(invoke => invoke.metroCode);
-const device2Metro = equinix.networkedge.getDevice({
+}).apply(invoke => invoke.metroCode);
+const device2Metro = equinix.networkedge.getDeviceOutput({
     uuid: device2Id,
-}).then(invoke => invoke.metroCode);
+}).apply(invoke => invoke.metroCode);
 const deviceLink = new equinix.networkedge.DeviceLink("deviceLink", {
     name: "test-link",
     subnet: "192.168.40.64/27",
@@ -55,10 +55,10 @@ account_name = config.require("accountName")
 account_metro = config.require("accountMetro")
 device1_id = config.require("device1Id")
 device2_id = config.require("device2Id")
-accountf_num = equinix.networkedge.get_account(name=account_name,
-    metro_code=account_metro).number
-device1_metro = equinix.networkedge.get_device(uuid=device1_id).metro_code
-device2_metro = equinix.networkedge.get_device(uuid=device2_id).metro_code
+accountf_num = equinix.networkedge.get_account_output(name=account_name,
+    metro_code=account_metro).apply(lambda invoke: invoke.number)
+device1_metro = equinix.networkedge.get_device_output(uuid=device1_id).apply(lambda invoke: invoke.metro_code)
+device2_metro = equinix.networkedge.get_device_output(uuid=device2_id).apply(lambda invoke: invoke.metro_code)
 device_link = equinix.networkedge.DeviceLink("deviceLink",
     name="test-link",
     subnet="192.168.40.64/27",
@@ -146,6 +146,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -217,13 +218,10 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.DeviceLink;
-import com.equinix.pulumi.networkedge.DeviceLinkArgs;
-import com.equinix.pulumi.networkedge.inputs.DeviceLinkDeviceArgs;
-import com.equinix.pulumi.networkedge.inputs.DeviceLinkLinkArgs;
-import com.equinix.pulumi.networkedge.inputs.GetAccountArgs;
-import com.equinix.pulumi.networkedge.inputs.GetDeviceArgs;
-import com.equinix.pulumi.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.DeviceLink;
+import com.pulumi.equinix.networkedge.DeviceLinkArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceLinkDeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceLinkLinkArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -238,22 +236,22 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var accountName = config.get("accountName").get();
-        final var accountMetro = config.get("accountMetro").get();
-        final var device1Id = config.get("device1Id").get();
-        final var device2Id = config.get("device2Id").get();
+        final var accountName = config.get("accountName");
+        final var accountMetro = config.get("accountMetro");
+        final var device1Id = config.get("device1Id");
+        final var device2Id = config.get("device2Id");
         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
             .name(accountName)
             .metroCode(accountMetro)
-            .build()).applyValue(account -> account.number());
+            .build()).number();
 
         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
             .uuid(device1Id)
-            .build()).applyValue(device -> device.metroCode());
+            .build()).metroCode();
 
         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
             .uuid(device2Id)
-            .build()).applyValue(device -> device.metroCode());
+            .build()).metroCode();
 
         var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()        
             .name("test-link")
@@ -330,7 +328,7 @@ resources:
       - accountNumber: ${accountfNum}
         srcMetroCode: ${device1Metro}
         dstMetroCode: ${device2Metro}
-        throughput: 50
+        throughput: "50"
         throughputUnit: Mbps
 outputs:
   status: ${deviceLink.status}

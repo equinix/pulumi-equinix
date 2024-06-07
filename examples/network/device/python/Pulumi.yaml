@@ -1,6 +1,6 @@
-name: equinix-networkedge-device-cisco-C8KV
+name: equinix-network-device
 runtime: python
-description: An Equinix Network Edge virtual network device - Cisco Catalyst 8000V Router
+description: An Equinix Network Edge virtual network device resource
 config:
   accountName:
     type: string

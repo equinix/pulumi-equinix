@@ -4,7 +4,7 @@ import * as equinix from "@equinix-labs/pulumi-equinix";
 const config = new pulumi.Config();
 const portId = config.require("portId");
 const vlanId = config.require("vlanId");
-const port = new equinix.metal.Port("portBond0", {
+const port = new equinix.metal.Port("port", {
     portId: portId,
     bonded: true,
     layer2: false,

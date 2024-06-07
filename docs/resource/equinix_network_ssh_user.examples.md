@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -63,6 +62,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -93,8 +93,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.SshUser;
-import com.equinix.pulumi.networkedge.SshUserArgs;
+import com.pulumi.equinix.networkedge.SshUser;
+import com.pulumi.equinix.networkedge.SshUserArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -109,8 +109,8 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var device1Id = config.get("device1Id").get();
-        final var device2Id = config.get("device2Id").get();
+        final var device1Id = config.get("device1Id");
+        final var device2Id = config.get("device2Id");
         var sshUser = new SshUser("sshUser", SshUserArgs.builder()        
             .username("johnKent")
             .deviceIds(            

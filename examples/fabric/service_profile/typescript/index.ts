@@ -34,10 +34,6 @@ const profile = new equinix.fabric.ServiceProfile("profile", {
             label: "Example ACCOUNT ID",
         },
     }],
-    account: {
-        organizationName: "Example Cloud",
-        globalOrganizationName: "Example Global",
-    },
     metros: undefined,
     visibility: "PUBLIC",
     marketingInfo: {

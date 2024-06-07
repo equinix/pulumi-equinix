@@ -42,10 +42,6 @@ func main() {
 					},
 				},
 			},
-			Account: &fabric.ServiceProfileAccountArgs{
-				OrganizationName:       pulumi.String("Example Cloud"),
-				GlobalOrganizationName: pulumi.String("Example Global"),
-			},
 			Metros:     nil,
 			Visibility: pulumi.String("PUBLIC"),
 			MarketingInfo: &fabric.ServiceProfileMarketingInfoArgs{

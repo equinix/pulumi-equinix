@@ -9,5 +9,5 @@ port = equinix.metal.Port("port",
     bonded=True,
     layer2=False,
     vlan_ids=[vlan_id])
-pulumi.export("portType", port["type"])
-pulumi.export("portBondedNetworkType", port["networkType"])
+pulumi.export("portType", port.type)
+pulumi.export("portBondedNetworkType", port.network_type)

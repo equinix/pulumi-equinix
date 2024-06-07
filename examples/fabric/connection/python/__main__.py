@@ -13,14 +13,14 @@ aws_region = config.get("awsRegion")
 if aws_region is None:
     aws_region = "eu-central-1"
 aws_account_id = config.require("awsAccountId")
-service_profile_id = equinix.fabric.get_service_profiles(filter=equinix.fabric.GetServiceProfilesFilterArgs(
+service_profile_id = equinix.fabric.get_service_profiles_output(filter=equinix.fabric.GetServiceProfilesFilterArgs(
     property="/name",
     operator="=",
     values=["AWS Direct Connect"],
-)).data[0].uuid
-port_id = equinix.fabric.get_ports(filter=equinix.fabric.GetPortsFilterArgs(
+)).apply(lambda invoke: invoke.data[0].uuid)
+port_id = equinix.fabric.get_ports_output(filter=equinix.fabric.GetPortsFilterArgs(
     name=fabric_port_name,
-)).data[0].uuid
+)).apply(lambda invoke: invoke.data[0].uuid)
 colo2_aws = equinix.fabric.Connection("colo2Aws",
     name="Pulumi-colo2Aws",
     type="EVPL_VC",

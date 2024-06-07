@@ -1,0 +1,36 @@
+name: equinix-fabric-service-profile
+runtime: yaml
+description: An Equinix Fabric service profile resource
+resources:
+  profile:
+    type: equinix:fabric:ServiceProfile
+    properties:
+      name: Example Cloud Provider
+      description: 50 to 500 Mbps Hosted Connection to Example Cloud
+      type: L2_PROFILE
+      accessPointTypeConfigs:
+      - type: COLO
+        supportedBandwidths: [ 50, 100, 200, 500]
+        allowRemoteConnections: true
+        allowCustomBandwidth: false
+        allowBandwidthAutoApproval: false
+        linkProtocolConfig:
+          encapsulationStrategy: CTAGED
+          reuseVlanSTag: false
+          encapsulation: DOT1Q
+        enableAutoGenerateServiceKey: false,
+        connectionRedundancyRequired: false,
+        apiConfig:
+          apiAvailable: true
+          integrationId: Example-Connect-01
+          bandwidthFromApi: false
+        connectionLabel: Virtual Circuit Name
+        authenticationKey:
+          required: true
+          label: Example ACCOUNT ID
+      metros:
+      visibility: PUBLIC
+      marketingInfo:
+        promotion: true
+outputs:
+  profileId: ${profile.id}

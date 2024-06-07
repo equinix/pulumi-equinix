@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -10,7 +9,7 @@ const config = new pulumi.Config();
 const metro = config.get("metro") || "SV";
 const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     fileName: "Aviatrix-ZTP-file",
-    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt"),
+    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
     processType: "CLOUD_INIT",
@@ -86,6 +85,7 @@ func main() {
 ```csharp
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -117,12 +117,11 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.NetworkFile;
-import com.equinix.pulumi.networkedge.NetworkFileArgs;
+import com.pulumi.equinix.networkedge.NetworkFile;
+import com.pulumi.equinix.networkedge.NetworkFileArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.io.IOException;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -135,17 +134,9 @@ public class App {
     public static void stack(Context ctx) {
         final var config = ctx.config();
         final var metro = config.get("metro").orElse("SV");
-
-        String content = null;
-        try {
-            content = Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         var networkFile = new NetworkFile("networkFile", NetworkFileArgs.builder()        
             .fileName("Aviatrix-ZTP-file")
-            .content(content)
+            .content(Files.readString(Paths.get("./../assets/aviatrix-cloud-init.txt")))
             .metroCode(metro)
             .deviceTypeCode("AVIATRIX_EDGE")
             .processType("CLOUD_INIT")

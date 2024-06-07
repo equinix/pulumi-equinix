@@ -6,7 +6,7 @@ const config = new pulumi.Config();
 const metro = config.get("metro") || "SV";
 const networkFile = new equinix.networkedge.NetworkFile("networkFile", {
     fileName: "Aviatrix-ZTP-file",
-    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt"),
+    content: fs.readFileSync("./../assets/aviatrix-cloud-init.txt", "utf8"),
     metroCode: metro,
     deviceTypeCode: "AVIATRIX_EDGE",
     processType: "CLOUD_INIT",

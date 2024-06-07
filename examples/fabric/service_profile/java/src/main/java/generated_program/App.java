@@ -2,14 +2,20 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.fabric.ServiceProfile;
-import com.equinix.pulumi.fabric.ServiceProfileArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileAccountArgs;
-import com.equinix.pulumi.fabric.inputs.ServiceProfileMarketingInfoArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.fabric.ServiceProfile;
+import com.pulumi.equinix.fabric.ServiceProfileArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigLinkProtocolConfigArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigApiConfigArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileAccessPointTypeConfigAuthenticationKeyArgs;
+import com.pulumi.equinix.fabric.inputs.ServiceProfileMarketingInfoArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -36,8 +42,8 @@ public class App {
                     .reuseVlanSTag(false)
                     .encapsulation("DOT1Q")
                     .build())
-                .enableAutoGenerateServiceKey(false)
-                .connectionRedundancyRequired(false)
+                .enableAutoGenerateServiceKey("false,")
+                .connectionRedundancyRequired("false,")
                 .apiConfig(ServiceProfileAccessPointTypeConfigApiConfigArgs.builder()
                     .apiAvailable(true)
                     .integrationId("Example-Connect-01")
@@ -49,10 +55,7 @@ public class App {
                     .label("Example ACCOUNT ID")
                     .build())
                 .build())
-            .account(ServiceProfileAccountArgs.builder()
-                .organizationName("Example Cloud")
-                .globalOrganizationName("Example Global")
-                .build())
+            .metros(null)
             .visibility("PUBLIC")
             .marketingInfo(ServiceProfileMarketingInfoArgs.builder()
                 .promotion(true)

@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -68,6 +67,7 @@ func main() {
 ```
 ```csharp
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -76,7 +76,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var projectId = config.Require("projectId");
     var metro = config.Get("metro") ?? "DA";
-    var vxlan = config.RequireNumber("vxlan");
+    var vxlan = config.RequireInt32("vxlan");
     var vlan = new Equinix.Metal.Vlan("vlan", new()
     {
         Description = "VLAN in Dallas",
@@ -96,8 +96,15 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.Vlan;
-import com.equinix.pulumi.metal.VlanArgs;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.Vlan;
+import com.pulumi.equinix.metal.VlanArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class App {
     public static void main(String[] args) {
@@ -106,9 +113,9 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var projectId = config.get("projectId").get();
+        final var projectId = config.get("projectId");
         final var metro = config.get("metro").orElse("DA");
-        final var vxlan = Integer.parseInt(config.get("vxlan").get());
+        final var vxlan = config.get("vxlan");
         var vlan = new Vlan("vlan", VlanArgs.builder()        
             .description("VLAN in Dallas")
             .projectId(projectId)

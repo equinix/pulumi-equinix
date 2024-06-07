@@ -34,10 +34,6 @@ profile = equinix.fabric.ServiceProfile("profile",
             label="Example ACCOUNT ID",
         ),
     )],
-    account=equinix.fabric.ServiceProfileAccountArgs(
-        organization_name="Example Cloud",
-        global_organization_name="Example Global",
-    ),
     metros=None,
     visibility="PUBLIC",
     marketing_info=equinix.fabric.ServiceProfileMarketingInfoArgs(

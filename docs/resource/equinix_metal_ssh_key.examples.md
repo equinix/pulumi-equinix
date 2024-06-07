@@ -1,6 +1,5 @@
 ## Example Usage
 {{% example %}}
-
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as equinix from "@equinix-labs/pulumi-equinix";
@@ -8,7 +7,7 @@ import * as fs from "fs";
 
 const sshKey = new equinix.metal.SshKey("sshKey", {
     name: "johnKent",
-    publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub"),
+    publicKey: fs.readFileSync("/Users/John/.ssh/metal_rsa.pub", "utf8"),
 });
 export const sshKeyId = sshKey.id;
 ```
@@ -56,6 +55,7 @@ func main() {
 ```csharp
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -78,10 +78,13 @@ package generated_program;
 
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
-import com.equinix.pulumi.metal.SshKey;
-import com.equinix.pulumi.metal.SshKeyArgs;
-
-import java.io.IOException;
+import com.pulumi.core.Output;
+import com.pulumi.equinix.metal.SshKey;
+import com.pulumi.equinix.metal.SshKeyArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -91,16 +94,9 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        String content = null;
-        try {
-            content = Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         var sshKey = new SshKey("sshKey", SshKeyArgs.builder()        
             .name("johnKent")
-            .publicKey(content)
+            .publicKey(Files.readString(Paths.get("/Users/John/.ssh/metal_rsa.pub")))
             .build());
 
         ctx.export("sshKeyId", sshKey.id());

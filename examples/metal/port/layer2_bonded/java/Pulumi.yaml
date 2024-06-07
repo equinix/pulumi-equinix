@@ -1,4 +1,4 @@
-name: equinix-metal-port
+name: equinix-metal-port-layer2-bonded
 runtime: java
 description: An Equinix Metal Port resource
 config:

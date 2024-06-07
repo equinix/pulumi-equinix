@@ -3,13 +3,10 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.equinix.pulumi.networkedge.DeviceLink;
-import com.equinix.pulumi.networkedge.DeviceLinkArgs;
-import com.equinix.pulumi.networkedge.inputs.DeviceLinkDeviceArgs;
-import com.equinix.pulumi.networkedge.inputs.DeviceLinkLinkArgs;
-import com.equinix.pulumi.networkedge.inputs.GetAccountArgs;
-import com.equinix.pulumi.networkedge.inputs.GetDeviceArgs;
-import com.equinix.pulumi.networkedge.NetworkedgeFunctions;
+import com.pulumi.equinix.networkedge.DeviceLink;
+import com.pulumi.equinix.networkedge.DeviceLinkArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceLinkDeviceArgs;
+import com.pulumi.equinix.networkedge.inputs.DeviceLinkLinkArgs;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -24,22 +21,22 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var accountName = config.get("accountName").get();
-        final var accountMetro = config.get("accountMetro").get();
-        final var device1Id = config.get("device1Id").get();
-        final var device2Id = config.get("device2Id").get();
+        final var accountName = config.get("accountName");
+        final var accountMetro = config.get("accountMetro");
+        final var device1Id = config.get("device1Id");
+        final var device2Id = config.get("device2Id");
         final var accountfNum = NetworkedgeFunctions.getAccount(GetAccountArgs.builder()
             .name(accountName)
             .metroCode(accountMetro)
-            .build()).applyValue(account -> account.number());
+            .build()).number();
 
         final var device1Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
             .uuid(device1Id)
-            .build()).applyValue(device -> device.metroCode());
+            .build()).metroCode();
 
         final var device2Metro = NetworkedgeFunctions.getDevice(GetDeviceArgs.builder()
             .uuid(device2Id)
-            .build()).applyValue(device -> device.metroCode());
+            .build()).metroCode();
 
         var deviceLink = new DeviceLink("deviceLink", DeviceLinkArgs.builder()        
             .name("test-link")

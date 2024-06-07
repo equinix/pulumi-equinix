@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Pulumi;
 using Equinix = Pulumi.Equinix;
 
@@ -6,7 +7,7 @@ return await Deployment.RunAsync(() =>
 {
     var config = new Config();
     var metro = config.Get("metro") ?? "FR";
-    var speedInMbps = config.GetNumber("speedInMbps") ?? 50;
+    var speedInMbps = config.GetInt32("speedInMbps") ?? 50;
     var fabricPortName = config.Require("fabricPortName");
     var awsRegion = config.Get("awsRegion") ?? "eu-central-1";
     var awsAccountId = config.Require("awsAccountId");
