@@ -96,7 +96,7 @@ class DeviceArgs:
         :param pulumi.Input[int] throughput: Device license throughput.
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] wan_interface_id: device interface id picked for WAN
@@ -537,7 +537,7 @@ class DeviceArgs:
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
         on a device (max one key).  See SSH Key below for more details.
         """
@@ -670,7 +670,7 @@ class _DeviceState:
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
@@ -1283,7 +1283,7 @@ class _DeviceState:
     def vendor_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
         on a device (max one key).  See SSH Key below for more details.
         """
@@ -1500,7 +1500,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Union[str, 'ThroughputUnit']] throughput_unit: License throughput unit. One of `Mbps` or `Gbps`.
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
@@ -1837,7 +1837,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] type_code: Device type code.
         :param pulumi.Input[str] uuid: Device unique identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vendor_configuration: Map of vendor specific configuration parameters for a device
-               (controller1, activationKey, managementType, siteId, systemIpAddress)
+               (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
                * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
                on a device (max one key).  See SSH Key below for more details.
         :param pulumi.Input[str] version: Device software software version.
@@ -2246,7 +2246,7 @@ class Device(pulumi.CustomResource):
     def vendor_configuration(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Map of vendor specific configuration parameters for a device
-        (controller1, activationKey, managementType, siteId, systemIpAddress)
+        (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
         * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
         on a device (max one key).  See SSH Key below for more details.
         """

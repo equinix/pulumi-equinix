@@ -228,7 +228,7 @@ type Device struct {
 	// Device unique identifier.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
 	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapOutput `pulumi:"vendorConfiguration"`
@@ -395,7 +395,7 @@ type deviceState struct {
 	// Device unique identifier.
 	Uuid *string `pulumi:"uuid"`
 	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
 	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
@@ -509,7 +509,7 @@ type DeviceState struct {
 	// Device unique identifier.
 	Uuid pulumi.StringPtrInput
 	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
 	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
@@ -599,7 +599,7 @@ type deviceArgs struct {
 	// Device type code.
 	TypeCode string `pulumi:"typeCode"`
 	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
 	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration map[string]string `pulumi:"vendorConfiguration"`
@@ -684,7 +684,7 @@ type DeviceArgs struct {
 	// Device type code.
 	TypeCode pulumi.StringInput
 	// Map of vendor specific configuration parameters for a device
-	// (controller1, activationKey, managementType, siteId, systemIpAddress)
+	// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
 	// * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
 	//   on a device (max one key).  See SSH Key below for more details.
 	VendorConfiguration pulumi.StringMapInput
@@ -1005,7 +1005,7 @@ func (o DeviceOutput) Uuid() pulumi.StringOutput {
 }
 
 // Map of vendor specific configuration parameters for a device
-// (controller1, activationKey, managementType, siteId, systemIpAddress)
+// (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
 //   - `ssh-key` - (Optional) Definition of SSH key that will be provisioned
 //     on a device (max one key).  See SSH Key below for more details.
 func (o DeviceOutput) VendorConfiguration() pulumi.StringMapOutput {

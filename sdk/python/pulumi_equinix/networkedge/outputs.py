@@ -426,6 +426,16 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             suggest = "admin_password"
         elif key == "controllerFqdn":
             suggest = "controller_fqdn"
+        elif key == "licenseId":
+            suggest = "license_id"
+        elif key == "licenseKey":
+            suggest = "license_key"
+        elif key == "privateAddress":
+            suggest = "private_address"
+        elif key == "privateCidrMask":
+            suggest = "private_cidr_mask"
+        elif key == "privateGateway":
+            suggest = "private_gateway"
         elif key == "rootPassword":
             suggest = "root_password"
 
@@ -446,6 +456,11 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
                  controller1: Optional[str] = None,
                  controller_fqdn: Optional[str] = None,
                  hostname: Optional[str] = None,
+                 license_id: Optional[str] = None,
+                 license_key: Optional[str] = None,
+                 private_address: Optional[str] = None,
+                 private_cidr_mask: Optional[str] = None,
+                 private_gateway: Optional[str] = None,
                  root_password: Optional[str] = None):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters.
@@ -454,6 +469,11 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device.
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters.
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
+        :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str root_password: The CLI password of the device. This field is relevant only for the
                Velocloud SDWAN cluster.
         """
@@ -467,6 +487,16 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
             pulumi.set(__self__, "controller_fqdn", controller_fqdn)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if license_id is not None:
+            pulumi.set(__self__, "license_id", license_id)
+        if license_key is not None:
+            pulumi.set(__self__, "license_key", license_key)
+        if private_address is not None:
+            pulumi.set(__self__, "private_address", private_address)
+        if private_cidr_mask is not None:
+            pulumi.set(__self__, "private_cidr_mask", private_cidr_mask)
+        if private_gateway is not None:
+            pulumi.set(__self__, "private_gateway", private_gateway)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
 
@@ -510,6 +540,46 @@ class DeviceClusterDetailsNode0VendorConfiguration(dict):
         Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="licenseId")
+    def license_id(self) -> Optional[str]:
+        """
+        License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_id")
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> Optional[str]:
+        """
+        License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="privateAddress")
+    def private_address(self) -> Optional[str]:
+        """
+        Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_address")
+
+    @property
+    @pulumi.getter(name="privateCidrMask")
+    def private_cidr_mask(self) -> Optional[str]:
+        """
+        Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_cidr_mask")
+
+    @property
+    @pulumi.getter(name="privateGateway")
+    def private_gateway(self) -> Optional[str]:
+        """
+        Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_gateway")
 
     @property
     @pulumi.getter(name="rootPassword")
@@ -624,6 +694,16 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             suggest = "admin_password"
         elif key == "controllerFqdn":
             suggest = "controller_fqdn"
+        elif key == "licenseId":
+            suggest = "license_id"
+        elif key == "licenseKey":
+            suggest = "license_key"
+        elif key == "privateAddress":
+            suggest = "private_address"
+        elif key == "privateCidrMask":
+            suggest = "private_cidr_mask"
+        elif key == "privateGateway":
+            suggest = "private_gateway"
         elif key == "rootPassword":
             suggest = "root_password"
 
@@ -644,6 +724,11 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
                  controller1: Optional[str] = None,
                  controller_fqdn: Optional[str] = None,
                  hostname: Optional[str] = None,
+                 license_id: Optional[str] = None,
+                 license_key: Optional[str] = None,
+                 private_address: Optional[str] = None,
+                 private_cidr_mask: Optional[str] = None,
+                 private_gateway: Optional[str] = None,
                  root_password: Optional[str] = None):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters.
@@ -652,6 +737,11 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device.
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters.
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
+        :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str root_password: The CLI password of the device. This field is relevant only for the
                Velocloud SDWAN cluster.
         """
@@ -665,6 +755,16 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
             pulumi.set(__self__, "controller_fqdn", controller_fqdn)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if license_id is not None:
+            pulumi.set(__self__, "license_id", license_id)
+        if license_key is not None:
+            pulumi.set(__self__, "license_key", license_key)
+        if private_address is not None:
+            pulumi.set(__self__, "private_address", private_address)
+        if private_cidr_mask is not None:
+            pulumi.set(__self__, "private_cidr_mask", private_cidr_mask)
+        if private_gateway is not None:
+            pulumi.set(__self__, "private_gateway", private_gateway)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
 
@@ -708,6 +808,46 @@ class DeviceClusterDetailsNode1VendorConfiguration(dict):
         Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="licenseId")
+    def license_id(self) -> Optional[str]:
+        """
+        License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_id")
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> Optional[str]:
+        """
+        License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="privateAddress")
+    def private_address(self) -> Optional[str]:
+        """
+        Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_address")
+
+    @property
+    @pulumi.getter(name="privateCidrMask")
+    def private_cidr_mask(self) -> Optional[str]:
+        """
+        Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_cidr_mask")
+
+    @property
+    @pulumi.getter(name="privateGateway")
+    def private_gateway(self) -> Optional[str]:
+        """
+        Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_gateway")
 
     @property
     @pulumi.getter(name="rootPassword")
@@ -1252,7 +1392,7 @@ class DeviceSecondaryDevice(dict):
         :param str uuid: Device unique identifier.
         :param Mapping[str, str] vendor_configuration: Key/Value pairs of vendor specific configuration parameters
                for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-               `systemIpAddress`.
+               `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
         :param str wan_interface_id: device interface id picked for WAN
         :param str zone_code: Device location zone code.
         """
@@ -1526,7 +1666,7 @@ class DeviceSecondaryDevice(dict):
         """
         Key/Value pairs of vendor specific configuration parameters
         for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-        `systemIpAddress`.
+        `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
         """
         return pulumi.get(self, "vendor_configuration")
 
@@ -1897,6 +2037,11 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
                  controller1: str,
                  controller_fqdn: str,
                  hostname: str,
+                 license_id: str,
+                 license_key: str,
+                 private_address: str,
+                 private_cidr_mask: str,
+                 private_gateway: str,
                  root_password: str):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters
@@ -1904,6 +2049,11 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
         """
         pulumi.set(__self__, "activation_key", activation_key)
@@ -1911,6 +2061,11 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
         pulumi.set(__self__, "controller1", controller1)
         pulumi.set(__self__, "controller_fqdn", controller_fqdn)
         pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "license_id", license_id)
+        pulumi.set(__self__, "license_key", license_key)
+        pulumi.set(__self__, "private_address", private_address)
+        pulumi.set(__self__, "private_cidr_mask", private_cidr_mask)
+        pulumi.set(__self__, "private_gateway", private_gateway)
         pulumi.set(__self__, "root_password", root_password)
 
     @property
@@ -1952,6 +2107,46 @@ class GetDeviceClusterDetailNode0VendorConfigurationResult(dict):
         Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="licenseId")
+    def license_id(self) -> str:
+        """
+        License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_id")
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> str:
+        """
+        License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="privateAddress")
+    def private_address(self) -> str:
+        """
+        Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_address")
+
+    @property
+    @pulumi.getter(name="privateCidrMask")
+    def private_cidr_mask(self) -> str:
+        """
+        Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_cidr_mask")
+
+    @property
+    @pulumi.getter(name="privateGateway")
+    def private_gateway(self) -> str:
+        """
+        Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_gateway")
 
     @property
     @pulumi.getter(name="rootPassword")
@@ -2032,6 +2227,11 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
                  controller1: str,
                  controller_fqdn: str,
                  hostname: str,
+                 license_id: str,
+                 license_key: str,
+                 private_address: str,
+                 private_cidr_mask: str,
+                 private_gateway: str,
                  root_password: str):
         """
         :param str activation_key: Activation key. This is required for Velocloud clusters
@@ -2039,6 +2239,11 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
         :param str controller1: System IP Address. Mandatory for the Fortinet SDWAN cluster device
         :param str controller_fqdn: Controller fqdn. This is required for Velocloud clusters
         :param str hostname: Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
+        :param str license_id: License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str license_key: License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_address: Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_cidr_mask: Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        :param str private_gateway: Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
         :param str root_password: The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
         """
         pulumi.set(__self__, "activation_key", activation_key)
@@ -2046,6 +2251,11 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
         pulumi.set(__self__, "controller1", controller1)
         pulumi.set(__self__, "controller_fqdn", controller_fqdn)
         pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "license_id", license_id)
+        pulumi.set(__self__, "license_key", license_key)
+        pulumi.set(__self__, "private_address", private_address)
+        pulumi.set(__self__, "private_cidr_mask", private_cidr_mask)
+        pulumi.set(__self__, "private_gateway", private_gateway)
         pulumi.set(__self__, "root_password", root_password)
 
     @property
@@ -2087,6 +2297,46 @@ class GetDeviceClusterDetailNode1VendorConfigurationResult(dict):
         Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="licenseId")
+    def license_id(self) -> str:
+        """
+        License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_id")
+
+    @property
+    @pulumi.getter(name="licenseKey")
+    def license_key(self) -> str:
+        """
+        License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "license_key")
+
+    @property
+    @pulumi.getter(name="privateAddress")
+    def private_address(self) -> str:
+        """
+        Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_address")
+
+    @property
+    @pulumi.getter(name="privateCidrMask")
+    def private_cidr_mask(self) -> str:
+        """
+        Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_cidr_mask")
+
+    @property
+    @pulumi.getter(name="privateGateway")
+    def private_gateway(self) -> str:
+        """
+        Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        """
+        return pulumi.get(self, "private_gateway")
 
     @property
     @pulumi.getter(name="rootPassword")

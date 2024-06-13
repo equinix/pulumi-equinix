@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
  *
+ * Additional documentation:
+ * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
+ * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -92,6 +96,10 @@ export interface GetServiceProfilesResult {
 }
 /**
  * Fabric V4 API compatible data resource that allow user to fetch Service Profile by name filter criteria
+ *
+ * Additional documentation:
+ * * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm>
+ * * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles>
  *
  * ## Example Usage
  *

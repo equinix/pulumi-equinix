@@ -93,6 +93,81 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
     }
 
     /**
+     * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    @Import(name="licenseId")
+    private @Nullable Output<String> licenseId;
+
+    /**
+     * @return License id. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public Optional<Output<String>> licenseId() {
+        return Optional.ofNullable(this.licenseId);
+    }
+
+    /**
+     * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    @Import(name="licenseKey")
+    private @Nullable Output<String> licenseKey;
+
+    /**
+     * @return License key. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public Optional<Output<String>> licenseKey() {
+        return Optional.ofNullable(this.licenseKey);
+    }
+
+    /**
+     * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    @Import(name="privateAddress")
+    private @Nullable Output<String> privateAddress;
+
+    /**
+     * @return Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public Optional<Output<String>> privateAddress() {
+        return Optional.ofNullable(this.privateAddress);
+    }
+
+    /**
+     * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    @Import(name="privateCidrMask")
+    private @Nullable Output<String> privateCidrMask;
+
+    /**
+     * @return Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public Optional<Output<String>> privateCidrMask() {
+        return Optional.ofNullable(this.privateCidrMask);
+    }
+
+    /**
+     * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    @Import(name="privateGateway")
+    private @Nullable Output<String> privateGateway;
+
+    /**
+     * @return Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public Optional<Output<String>> privateGateway() {
+        return Optional.ofNullable(this.privateGateway);
+    }
+
+    /**
      * The CLI password of the device. This field is relevant only for the
      * Velocloud SDWAN cluster.
      * 
@@ -117,6 +192,11 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
         this.controller1 = $.controller1;
         this.controllerFqdn = $.controllerFqdn;
         this.hostname = $.hostname;
+        this.licenseId = $.licenseId;
+        this.licenseKey = $.licenseKey;
+        this.privateAddress = $.privateAddress;
+        this.privateCidrMask = $.privateCidrMask;
+        this.privateGateway = $.privateGateway;
         this.rootPassword = $.rootPassword;
     }
 
@@ -243,6 +323,111 @@ public final class DeviceClusterDetailsNode0VendorConfigurationArgs extends com.
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param licenseId License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseId(@Nullable Output<String> licenseId) {
+            $.licenseId = licenseId;
+            return this;
+        }
+
+        /**
+         * @param licenseId License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseId(String licenseId) {
+            return licenseId(Output.of(licenseId));
+        }
+
+        /**
+         * @param licenseKey License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseKey(@Nullable Output<String> licenseKey) {
+            $.licenseKey = licenseKey;
+            return this;
+        }
+
+        /**
+         * @param licenseKey License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseKey(String licenseKey) {
+            return licenseKey(Output.of(licenseKey));
+        }
+
+        /**
+         * @param privateAddress Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAddress(@Nullable Output<String> privateAddress) {
+            $.privateAddress = privateAddress;
+            return this;
+        }
+
+        /**
+         * @param privateAddress Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAddress(String privateAddress) {
+            return privateAddress(Output.of(privateAddress));
+        }
+
+        /**
+         * @param privateCidrMask Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateCidrMask(@Nullable Output<String> privateCidrMask) {
+            $.privateCidrMask = privateCidrMask;
+            return this;
+        }
+
+        /**
+         * @param privateCidrMask Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateCidrMask(String privateCidrMask) {
+            return privateCidrMask(Output.of(privateCidrMask));
+        }
+
+        /**
+         * @param privateGateway Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateGateway(@Nullable Output<String> privateGateway) {
+            $.privateGateway = privateGateway;
+            return this;
+        }
+
+        /**
+         * @param privateGateway Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateGateway(String privateGateway) {
+            return privateGateway(Output.of(privateGateway));
         }
 
         /**

@@ -738,7 +738,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     }
     /**
      * Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
      *   on a device (max one key).  See SSH Key below for more details.
      * 
@@ -748,7 +748,7 @@ public class Device extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Map of vendor specific configuration parameters for a device
-     * (controller1, activationKey, managementType, siteId, systemIpAddress)
+     * (controller1, activationKey, managementType, siteId, systemIpAddress, private_address, private_cidr_mask, private_gateway, license_key, license_id)
      * * `ssh-key` - (Optional) Definition of SSH key that will be provisioned
      *   on a device (max one key).  See SSH Key below for more details.
      * 

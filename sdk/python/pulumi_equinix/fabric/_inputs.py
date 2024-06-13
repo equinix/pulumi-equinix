@@ -92,6 +92,15 @@ __all__ = [
     'ServiceProfileProjectArgs',
     'ServiceProfileVirtualDeviceArgs',
     'ServiceProfileVirtualDeviceLocationArgs',
+    'GetCloudRoutersFilterArgs',
+    'GetCloudRoutersPaginationArgs',
+    'GetCloudRoutersSortArgs',
+    'GetConnectionsFilterArgs',
+    'GetConnectionsPaginationArgs',
+    'GetConnectionsSortArgs',
+    'GetNetworksFilterArgs',
+    'GetNetworksPaginationArgs',
+    'GetNetworksSortArgs',
     'GetPortsFilterArgs',
     'GetServiceProfilesFilterArgs',
     'GetServiceProfilesSortArgs',
@@ -6259,6 +6268,444 @@ class ServiceProfileVirtualDeviceLocationArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetCloudRoutersFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 or_: Optional[bool] = None):
+        """
+        :param str operator: Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+        :param str property: The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        :param bool or_: Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if or_ is not None:
+            pulumi.set(__self__, "or_", or_)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="or")
+    def or_(self) -> Optional[bool]:
+        """
+        Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+        """
+        return pulumi.get(self, "or_")
+
+    @or_.setter
+    def or_(self, value: Optional[bool]):
+        pulumi.set(self, "or_", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetCloudRoutersPaginationArgs:
+    def __init__(__self__, *,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[int]):
+        pulumi.set(self, "offset", value)
+
+
+@pulumi.input_type
+class GetCloudRoutersSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetConnectionsFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 group: Optional[str] = None):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        :param str property: Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[str]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetConnectionsPaginationArgs:
+    def __init__(__self__, *,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[int]):
+        pulumi.set(self, "offset", value)
+
+
+@pulumi.input_type
+class GetConnectionsSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetNetworksFilterArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 values: Sequence[str],
+                 group: Optional[str] = None):
+        """
+        :param str operator: Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+        :param str property: Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        :param Sequence[str] values: The values that you want to apply the property+operator combination to in order to filter your data search
+        :param str group: Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "values", values)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that you want to apply the property+operator combination to in order to filter your data search
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[str]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: str):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GetNetworksPaginationArgs:
+    def __init__(__self__, *,
+                 limit: Optional[int] = None,
+                 offset: Optional[int] = None):
+        """
+        :param int limit: Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        :param int offset: The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        """
+        Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        The page offset for the pagination request. Index of the first element. Default is 0.
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[int]):
+        pulumi.set(self, "offset", value)
+
+
+@pulumi.input_type
+class GetNetworksSortArgs:
+    def __init__(__self__, *,
+                 direction: Optional[str] = None,
+                 property: Optional[str] = None):
+        """
+        :param str direction: The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        :param str property: The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[str]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[str]:
+        """
+        The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type

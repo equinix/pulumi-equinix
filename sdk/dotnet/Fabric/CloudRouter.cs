@@ -12,7 +12,7 @@ namespace Pulumi.Equinix.Fabric
     /// <summary>
     /// Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
     /// 
-    /// Additional Fabric Cloud Router documentation:
+    /// Additional documentation:
     /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks&gt;
     /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers&gt;
     /// 
@@ -54,6 +54,10 @@ namespace Pulumi.Equinix.Fabric
     ///         Account = new Equinix.Fabric.Inputs.CloudRouterAccountArgs
     ///         {
     ///             AccountNumber = 272010,
+    ///         },
+    ///         Project = new Equinix.Fabric.Inputs.CloudRouterProjectArgs
+    ///         {
+    ///             ProjectId = "995072000433550",
     ///         },
     ///     });
     /// 

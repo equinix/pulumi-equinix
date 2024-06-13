@@ -20,15 +20,30 @@ export const getCloudRouter: typeof import("./getCloudRouter").getCloudRouter = 
 export const getCloudRouterOutput: typeof import("./getCloudRouter").getCloudRouterOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudRouter","getCloudRouterOutput"], () => require("./getCloudRouter"));
 
+export { GetCloudRoutersArgs, GetCloudRoutersResult, GetCloudRoutersOutputArgs } from "./getCloudRouters";
+export const getCloudRouters: typeof import("./getCloudRouters").getCloudRouters = null as any;
+export const getCloudRoutersOutput: typeof import("./getCloudRouters").getCloudRoutersOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudRouters","getCloudRoutersOutput"], () => require("./getCloudRouters"));
+
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
+export { GetConnectionsArgs, GetConnectionsResult, GetConnectionsOutputArgs } from "./getConnections";
+export const getConnections: typeof import("./getConnections").getConnections = null as any;
+export const getConnectionsOutput: typeof import("./getConnections").getConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnections","getConnectionsOutput"], () => require("./getConnections"));
+
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+
+export { GetNetworksArgs, GetNetworksResult, GetNetworksOutputArgs } from "./getNetworks";
+export const getNetworks: typeof import("./getNetworks").getNetworks = null as any;
+export const getNetworksOutput: typeof import("./getNetworks").getNetworksOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworks","getNetworksOutput"], () => require("./getNetworks"));
 
 export { GetPortArgs, GetPortResult, GetPortOutputArgs } from "./getPort";
 export const getPort: typeof import("./getPort").getPort = null as any;

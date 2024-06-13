@@ -1104,6 +1104,255 @@ export namespace fabric {
         projectId: string;
     }
 
+    export interface GetCloudRoutersData {
+        /**
+         * Customer account information that is associated with this Fabric Cloud Router
+         */
+        accounts: outputs.fabric.GetCloudRoutersDataAccount[];
+        /**
+         * Number of IPv4 BGP routes in use (including non-distinct prefixes)
+         */
+        bgpIpv4RoutesCount: number;
+        /**
+         * Number of IPv6 BGP routes in use (including non-distinct prefixes)
+         */
+        bgpIpv6RoutesCount: number;
+        /**
+         * Captures Fabric Cloud Router lifecycle change information
+         */
+        changeLogs: outputs.fabric.GetCloudRoutersDataChangeLog[];
+        /**
+         * Number of connections associated with this Fabric Cloud Router instance
+         */
+        connectionsCount: number;
+        /**
+         * Customer-provided Fabric Cloud Router description
+         */
+        description: string;
+        /**
+         * Number of distinct IPv4 routes
+         */
+        distinctIpv4PrefixesCount: number;
+        /**
+         * Number of distinct IPv6 routes
+         */
+        distinctIpv6PrefixesCount: number;
+        /**
+         * Equinix ASN
+         */
+        equinixAsn: number;
+        /**
+         * Fabric Cloud Router URI information
+         */
+        href: string;
+        /**
+         * Fabric Cloud Router location
+         */
+        locations: outputs.fabric.GetCloudRoutersDataLocation[];
+        /**
+         * Fabric Cloud Router name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name: string;
+        /**
+         * Preferences for notifications on Fabric Cloud Router configuration or status changes
+         */
+        notifications: outputs.fabric.GetCloudRoutersDataNotification[];
+        /**
+         * Order information related to this Fabric Cloud Router
+         */
+        orders: outputs.fabric.GetCloudRoutersDataOrder[];
+        /**
+         * Fabric Cloud Router Package Type
+         */
+        packages: outputs.fabric.GetCloudRoutersDataPackage[];
+        /**
+         * Customer resource hierarchy project information. Applicable to customers onboarded to Equinix Identity and Access Management. For more information see Identity and Access Management: Projects
+         */
+        projects: outputs.fabric.GetCloudRoutersDataProject[];
+        /**
+         * Fabric Cloud Router overall state
+         */
+        state: string;
+        /**
+         * Defines the FCR type like; XF_ROUTER
+         */
+        type: string;
+        /**
+         * Equinix-assigned Fabric Cloud Router identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetCloudRoutersDataAccount {
+        /**
+         * Account Number
+         */
+        accountNumber: number;
+    }
+
+    export interface GetCloudRoutersDataChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetCloudRoutersDataLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetCloudRoutersDataNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface GetCloudRoutersDataOrder {
+        /**
+         * Billing tier for connection bandwidth
+         */
+        billingTier: string;
+        /**
+         * Order Identification
+         */
+        orderId: string;
+        /**
+         * Order Reference Number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+    }
+
+    export interface GetCloudRoutersDataPackage {
+        /**
+         * Fabric Cloud Router package code
+         */
+        code: string;
+    }
+
+    export interface GetCloudRoutersDataProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
+    }
+
+    export interface GetCloudRoutersFilter {
+        /**
+         * Possible operators to use on the filter property. Can be one of the following: [= - equal, != - not equal, > - greater than, >= - greater than or equal to, < - less than, <= - less than or equal to, [NOT] BETWEEN - (not) between, [NOT] LIKE - (not) like, [NOT] IN - (not) in
+         */
+        operator: string;
+        /**
+         * Boolean flag indicating whether this filter is included in the OR group. There can only be one OR group and it can have a maximum of 3 filters. The OR group only counts as 1 of the 8 possible filters
+         */
+        or?: boolean;
+        /**
+         * The API response property which you want to filter your request on. Can be one of the following: "/project/projectId", "/name", "/uuid", "/state", "/location/metroCode", "/location/metroName", "/package/code", "/*"
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetCloudRoutersPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetCloudRoutersSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. Can be one of the following: [/name, /uuid, /state, /location/metroCode, /location/metroName, /package/code, /changeLog/createdDateTime, /changeLog/updatedDateTime], Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
     export interface GetConnectionASide {
         /**
          * Point of access details
@@ -1943,6 +2192,965 @@ export namespace fabric {
         uuid?: string;
     }
 
+    export interface GetConnectionsData {
+        /**
+         * Requester or Customer side connection configuration object of the multi-segment connection
+         */
+        aSides: outputs.fabric.GetConnectionsDataASide[];
+        /**
+         * Customer account information that is associated with this connection
+         */
+        accounts: outputs.fabric.GetConnectionsDataAccount[];
+        /**
+         * Connection additional information
+         */
+        additionalInfos: {[key: string]: any}[];
+        /**
+         * Connection bandwidth in Mbps
+         */
+        bandwidth: number;
+        /**
+         * Captures connection lifecycle change information
+         */
+        changeLogs: outputs.fabric.GetConnectionsDataChangeLog[];
+        /**
+         * Customer-provided connection description
+         */
+        description: string;
+        /**
+         * Connection directionality from the requester point of view
+         */
+        direction: string;
+        /**
+         * Connection URI information
+         */
+        href: string;
+        /**
+         * Connection property derived from access point locations
+         */
+        isRemote: boolean;
+        /**
+         * Connection name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name: string;
+        /**
+         * Preferences for notifications on connection configuration or status changes
+         */
+        notifications: outputs.fabric.GetConnectionsDataNotification[];
+        /**
+         * Connection type-specific operational data
+         */
+        operations: outputs.fabric.GetConnectionsDataOperation[];
+        /**
+         * Order details
+         */
+        orders: outputs.fabric.GetConnectionsDataOrder[];
+        /**
+         * Project information
+         */
+        projects: outputs.fabric.GetConnectionsDataProject[];
+        /**
+         * Connection Redundancy Configuration
+         */
+        redundancies: outputs.fabric.GetConnectionsDataRedundancy[];
+        /**
+         * Connection overall state
+         */
+        state: string;
+        /**
+         * Defines the connection type like EVPL_VC, EPL_VC, IPWAN_VC, IP_VC, ACCESS_EPL_VC, EVPLAN_VC, EPLAN_VC, EIA_VC, IA_VC, EC_VC
+         */
+        type: string;
+        /**
+         * Equinix-assigned connection identifier
+         */
+        uuid: string;
+        /**
+         * Destination or Provider side connection configuration object of the multi-segment connection
+         */
+        zSides: outputs.fabric.GetConnectionsDataZSide[];
+    }
+
+    export interface GetConnectionsDataASide {
+        /**
+         * Point of access details
+         */
+        accessPoint?: outputs.fabric.GetConnectionsDataASideAccessPoint;
+        /**
+         * Connection side additional information
+         */
+        additionalInfos?: outputs.fabric.GetConnectionsDataASideAdditionalInfo[];
+        /**
+         * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+         */
+        serviceToken?: outputs.fabric.GetConnectionsDataASideServiceToken;
+    }
+
+    export interface GetConnectionsDataASideAccessPoint {
+        /**
+         * Account
+         */
+        accounts: outputs.fabric.GetConnectionsDataASideAccessPointAccount[];
+        /**
+         * Authentication key for provider based connections
+         */
+        authenticationKey?: string;
+        /**
+         * **Deprecated** `gateway` Use `router` attribute instead
+         *
+         * @deprecated use router attribute instead; gateway is no longer a part of the supported backend
+         */
+        gateway?: outputs.fabric.GetConnectionsDataASideAccessPointGateway;
+        /**
+         * Virtual device interface
+         */
+        interface?: outputs.fabric.GetConnectionsDataASideAccessPointInterface;
+        /**
+         * Connection link protocol
+         */
+        linkProtocol?: outputs.fabric.GetConnectionsDataASideAccessPointLinkProtocol;
+        /**
+         * Access point location
+         */
+        location: outputs.fabric.GetConnectionsDataASideAccessPointLocation;
+        /**
+         * network access point information
+         */
+        network?: outputs.fabric.GetConnectionsDataASideAccessPointNetwork;
+        /**
+         * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         */
+        peeringType?: string;
+        /**
+         * Port access point information
+         */
+        port?: outputs.fabric.GetConnectionsDataASideAccessPointPort;
+        /**
+         * Service Profile
+         */
+        profile?: outputs.fabric.GetConnectionsDataASideAccessPointProfile;
+        /**
+         * Provider assigned Connection Id
+         */
+        providerConnectionId: string;
+        /**
+         * Cloud Router access point information that replaces `gateway`
+         */
+        router?: outputs.fabric.GetConnectionsDataASideAccessPointRouter;
+        /**
+         * Access point seller region
+         */
+        sellerRegion?: string;
+        /**
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         */
+        type?: string;
+        /**
+         * Virtual device
+         */
+        virtualDevice?: outputs.fabric.GetConnectionsDataASideAccessPointVirtualDevice;
+    }
+
+    export interface GetConnectionsDataASideAccessPointAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber: number;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId: string;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId: string;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName: string;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId: number;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName: string;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointGateway {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned virtual gateway identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointInterface {
+        /**
+         * The ID of this resource.
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type?: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface GetConnectionsDataASideAccessPointLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointPort {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port name
+         */
+        name: string;
+        /**
+         * Redundancy Information
+         */
+        redundancies: outputs.fabric.GetConnectionsDataASideAccessPointPortRedundancy[];
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointPortRedundancy {
+        /**
+         * Access point redundancy
+         */
+        enabled: boolean;
+        /**
+         * Port redundancy group
+         */
+        group: string;
+        /**
+         * Priority type-Primary or Secondary
+         */
+        priority: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointProfile {
+        /**
+         * Access point config information
+         */
+        accessPointTypeConfigs: outputs.fabric.GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig[];
+        /**
+         * User-provided service description
+         */
+        description: string;
+        /**
+         * Service Profile URI response attribute
+         */
+        href: string;
+        /**
+         * Customer-assigned service profile name
+         */
+        name: string;
+        /**
+         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+         */
+        type: string;
+        /**
+         * Equinix assigned service profile identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointProfileAccessPointTypeConfig {
+        /**
+         * Type of access point type config - VD, COLO
+         */
+        type: string;
+        /**
+         * Equinix-assigned access point type config identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointRouter {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned virtual gateway identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataASideAccessPointVirtualDevice {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name?: string;
+        /**
+         * Virtual Device type
+         */
+        type?: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataASideAdditionalInfo {
+        /**
+         * Additional information key
+         */
+        key?: string;
+        /**
+         * Additional information value
+         */
+        value?: string;
+    }
+
+    export interface GetConnectionsDataASideServiceToken {
+        /**
+         * Service token description
+         */
+        description: string;
+        /**
+         * An absolute URL that is the subject of the link's context
+         */
+        href: string;
+        /**
+         * Token type - VC_TOKEN
+         */
+        type?: string;
+        /**
+         * Equinix-assigned service token identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber: number;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId: string;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId: string;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName: string;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId: number;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName: string;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface GetConnectionsDataChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetConnectionsDataNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface GetConnectionsDataOperation {
+        /**
+         * Connection status
+         */
+        equinixStatus: string;
+        /**
+         * Errors occurred
+         */
+        errors: outputs.fabric.GetConnectionsDataOperationError[];
+        /**
+         * Connection provider readiness status
+         */
+        providerStatus: string;
+    }
+
+    export interface GetConnectionsDataOperationError {
+        /**
+         * Pricing error additional Info
+         */
+        additionalInfos: outputs.fabric.GetConnectionsDataOperationErrorAdditionalInfo[];
+        /**
+         * CorrelationId
+         */
+        correlationId: string;
+        /**
+         * Details
+         */
+        details: string;
+        /**
+         * Error  code
+         */
+        errorCode: string;
+        /**
+         * Error Message
+         */
+        errorMessage: string;
+        /**
+         * Help
+         */
+        help: string;
+    }
+
+    export interface GetConnectionsDataOperationErrorAdditionalInfo {
+        /**
+         * Property at which the error potentially occurred
+         */
+        property: string;
+        /**
+         * Reason for the error
+         */
+        reason: string;
+    }
+
+    export interface GetConnectionsDataOrder {
+        /**
+         * Billing tier for connection bandwidth
+         */
+        billingTier: string;
+        /**
+         * Order Identification
+         */
+        orderId: string;
+        /**
+         * Order Reference Number
+         */
+        orderNumber: string;
+        /**
+         * Purchase order number
+         */
+        purchaseOrderNumber: string;
+    }
+
+    export interface GetConnectionsDataProject {
+        /**
+         * Unique Resource URL
+         */
+        href: string;
+        /**
+         * Project Id
+         */
+        projectId: string;
+    }
+
+    export interface GetConnectionsDataRedundancy {
+        /**
+         * Redundancy group identifier (Use the redundancy.0.group UUID of primary connection; e.g. one(equinix_fabric_connection.primary_port_connection.redundancy).group or equinix_fabric_connection.primary_port_connection.redundancy.0.group)
+         */
+        group: string;
+        /**
+         * Connection priority in redundancy group - PRIMARY, SECONDARY
+         */
+        priority: string;
+    }
+
+    export interface GetConnectionsDataZSide {
+        /**
+         * Point of access details
+         */
+        accessPoint?: outputs.fabric.GetConnectionsDataZSideAccessPoint;
+        /**
+         * Connection side additional information
+         */
+        additionalInfos?: outputs.fabric.GetConnectionsDataZSideAdditionalInfo[];
+        /**
+         * For service token based connections, Service tokens authorize users to access protected resources and services. Resource owners can distribute the tokens to trusted partners and vendors, allowing selected third parties to work directly with Equinix network assets
+         */
+        serviceToken?: outputs.fabric.GetConnectionsDataZSideServiceToken;
+    }
+
+    export interface GetConnectionsDataZSideAccessPoint {
+        /**
+         * Account
+         */
+        accounts: outputs.fabric.GetConnectionsDataZSideAccessPointAccount[];
+        /**
+         * Authentication key for provider based connections
+         */
+        authenticationKey?: string;
+        /**
+         * **Deprecated** `gateway` Use `router` attribute instead
+         *
+         * @deprecated use router attribute instead; gateway is no longer a part of the supported backend
+         */
+        gateway?: outputs.fabric.GetConnectionsDataZSideAccessPointGateway;
+        /**
+         * Virtual device interface
+         */
+        interface?: outputs.fabric.GetConnectionsDataZSideAccessPointInterface;
+        /**
+         * Connection link protocol
+         */
+        linkProtocol?: outputs.fabric.GetConnectionsDataZSideAccessPointLinkProtocol;
+        /**
+         * Access point location
+         */
+        location: outputs.fabric.GetConnectionsDataZSideAccessPointLocation;
+        /**
+         * network access point information
+         */
+        network?: outputs.fabric.GetConnectionsDataZSideAccessPointNetwork;
+        /**
+         * Peering Type- PRIVATE,MICROSOFT,PUBLIC, MANUAL
+         */
+        peeringType?: string;
+        /**
+         * Port access point information
+         */
+        port?: outputs.fabric.GetConnectionsDataZSideAccessPointPort;
+        /**
+         * Service Profile
+         */
+        profile?: outputs.fabric.GetConnectionsDataZSideAccessPointProfile;
+        /**
+         * Provider assigned Connection Id
+         */
+        providerConnectionId: string;
+        /**
+         * Cloud Router access point information that replaces `gateway`
+         */
+        router?: outputs.fabric.GetConnectionsDataZSideAccessPointRouter;
+        /**
+         * Access point seller region
+         */
+        sellerRegion?: string;
+        /**
+         * Access point type - COLO, VD, VG, SP, IGW, SUBNET, CLOUD_ROUTER, NETWORK
+         */
+        type?: string;
+        /**
+         * Virtual device
+         */
+        virtualDevice?: outputs.fabric.GetConnectionsDataZSideAccessPointVirtualDevice;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointAccount {
+        /**
+         * Legal name of the accountholder.
+         */
+        accountName: string;
+        /**
+         * Equinix-assigned account number.
+         */
+        accountNumber: number;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalCustId: string;
+        /**
+         * Equinix-assigned ID of the subscriber's parent organization.
+         */
+        globalOrgId: string;
+        /**
+         * Equinix-assigned name of the subscriber's parent organization.
+         */
+        globalOrganizationName: string;
+        /**
+         * Equinix-assigned ID of the subscriber's organization.
+         */
+        orgId: number;
+        /**
+         * Equinix-assigned name of the subscriber's organization.
+         */
+        organizationName: string;
+        /**
+         * Enterprise datastore id
+         */
+        ucmId: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointGateway {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned virtual gateway identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointInterface {
+        /**
+         * The ID of this resource.
+         */
+        id: number;
+        /**
+         * Interface type
+         */
+        type?: string;
+        /**
+         * Equinix-assigned interface identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointLinkProtocol {
+        /**
+         * Type of the link protocol - UNTAGGED, DOT1Q, QINQ, EVPN_VXLAN
+         */
+        type?: string;
+        /**
+         * Vlan Customer Tag information, vlanCTag value specified for QINQ connections
+         */
+        vlanCTag: number;
+        /**
+         * Vlan Provider Tag information, vlanSTag value specified for QINQ connections
+         */
+        vlanSTag: number;
+        /**
+         * Vlan Tag information, vlanTag value specified for DOT1Q connections
+         */
+        vlanTag: number;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointNetwork {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned Network identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointPort {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Port name
+         */
+        name: string;
+        /**
+         * Redundancy Information
+         */
+        redundancies: outputs.fabric.GetConnectionsDataZSideAccessPointPortRedundancy[];
+        /**
+         * Equinix-assigned Port identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointPortRedundancy {
+        /**
+         * Access point redundancy
+         */
+        enabled: boolean;
+        /**
+         * Port redundancy group
+         */
+        group: string;
+        /**
+         * Priority type-Primary or Secondary
+         */
+        priority: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointProfile {
+        /**
+         * Access point config information
+         */
+        accessPointTypeConfigs: outputs.fabric.GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig[];
+        /**
+         * User-provided service description
+         */
+        description: string;
+        /**
+         * Service Profile URI response attribute
+         */
+        href: string;
+        /**
+         * Customer-assigned service profile name
+         */
+        name: string;
+        /**
+         * Service profile type - L2_PROFILE, L3_PROFILE, ECIA_PROFILE, ECMC_PROFILE, IA_PROFILE
+         */
+        type: string;
+        /**
+         * Equinix assigned service profile identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointProfileAccessPointTypeConfig {
+        /**
+         * Type of access point type config - VD, COLO
+         */
+        type: string;
+        /**
+         * Equinix-assigned access point type config identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointRouter {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Equinix-assigned virtual gateway identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataZSideAccessPointVirtualDevice {
+        /**
+         * Unique Resource Identifier
+         */
+        href: string;
+        /**
+         * Customer-assigned Virtual Device Name
+         */
+        name?: string;
+        /**
+         * Virtual Device type
+         */
+        type?: string;
+        /**
+         * Equinix-assigned Virtual Device identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsDataZSideAdditionalInfo {
+        /**
+         * Additional information key
+         */
+        key?: string;
+        /**
+         * Additional information value
+         */
+        value?: string;
+    }
+
+    export interface GetConnectionsDataZSideServiceToken {
+        /**
+         * Service token description
+         */
+        description: string;
+        /**
+         * An absolute URL that is the subject of the link's context
+         */
+        href: string;
+        /**
+         * Token type - VC_TOKEN
+         */
+        type?: string;
+        /**
+         * Equinix-assigned service token identifier
+         */
+        uuid?: string;
+    }
+
+    export interface GetConnectionsFilter {
+        /**
+         * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+         */
+        group?: string;
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, IN, NOT IN, IS NOT NULL, IS NULL]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [/isRemote /name /uuid /type /geoScope /account/orgId /aSide/accessPoint/account/accountName /aSide/accessPoint/account/accountNumber /aSide/accessPoint/router/uuid /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /aSide/accessPoint/linkProtocol/vlanTagMin /aSide/accessPoint/linkProtocol/vlanTagMax /aSide/accessPoint/location/metroCode /aSide/accessPoint/location/metroName /aSide/accessPoint/name /aSide/accessPoint/port/uuid /aSide/accessPoint/port/name /aSide/accessPoint/type /aSide/accessPoint/virtualDevice/name /aSide/accessPoint/virtualDevice/uuid /aSide/serviceToken/uuid /change/status /operation/equinixStatus /operation/providerStatus /project/projectId /redundancy/group /redundancy/priority /zSide/accessPoint/account/accountName /zSide/accessPoint/authenticationKey /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/linkProtocol/vlanTagMin /zSide/accessPoint/linkProtocol/vlanTagMax /zSide/accessPoint/location/metroCode /zSide/accessPoint/location/metroName /zSide/accessPoint/name /zSide/accessPoint/port/uuid /zSide/accessPoint/network/uuid /zSide/accessPoint/port/name /zSide/accessPoint/profile/uuid /zSide/accessPoint/type /zSide/accessPoint/virtualDevice/name /zSide/accessPoint/virtualDevice/uuid /zSide/serviceToken/uuid *]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetConnectionsPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetConnectionsSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/name /direction /aSide/accessPoint/name /aSide/accessPoint/type /aSide/accessPoint/account/accountName /aSide/accessPoint/location/metroName /aSide/accessPoint/location/metroCode /aSide/accessPoint/linkProtocol/vlanCTag /aSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/name /zSide/accessPoint/type /zSide/accessPoint/account/accountName /zSide/accessPoint/location/metroName /zSide/accessPoint/location/metroCode /zSide/accessPoint/linkProtocol/vlanCTag /zSide/accessPoint/linkProtocol/vlanSTag /zSide/accessPoint/authenticationKey /bandwidth /geoScope /uuid /changeLog/createdDateTime /changeLog/updatedDateTime /operation/equinixStatus /operation/providerStatus /redundancy/priority]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
+    }
+
     export interface GetNetworkChange {
         /**
          * Absolute URL that returns the details of the given change.
@@ -2056,6 +3264,217 @@ export namespace fabric {
          * Customer project identifier
          */
         projectId: string;
+    }
+
+    export interface GetNetworksData {
+        /**
+         * A permanent record of asset creation, modification, or deletion
+         */
+        changeLogs: outputs.fabric.GetNetworksDataChangeLog[];
+        /**
+         * Information on asset change operation
+         */
+        changes: outputs.fabric.GetNetworksDataChange[];
+        /**
+         * Number of connections associated with this network
+         */
+        connectionsCount: number;
+        /**
+         * Fabric Network URI information
+         */
+        href: string;
+        /**
+         * Fabric Network location
+         */
+        locations: outputs.fabric.GetNetworksDataLocation[];
+        /**
+         * Fabric Network name. An alpha-numeric 24 characters string which can include only hyphens and underscores
+         */
+        name: string;
+        /**
+         * Preferences for notifications on Fabric Network configuration or status changes
+         */
+        notifications: outputs.fabric.GetNetworksDataNotification[];
+        /**
+         * Network operation information that is associated with this Fabric Network
+         */
+        operations: outputs.fabric.GetNetworksDataOperation[];
+        /**
+         * Fabric Network project
+         */
+        projects: outputs.fabric.GetNetworksDataProject[];
+        /**
+         * Fabric Network scope
+         */
+        scope: string;
+        /**
+         * Fabric Network overall state
+         */
+        state: string;
+        /**
+         * Supported Network types - EVPLAN, EPLAN, IPWAN
+         */
+        type: string;
+        /**
+         * Equinix-assigned network identifier
+         */
+        uuid: string;
+    }
+
+    export interface GetNetworksDataChange {
+        /**
+         * Absolute URL that returns the details of the given change.
+         * Example: https://api.equinix.com/fabric/v4/networks/92dc376a-a932-43aa-a6a2-c806dedbd784
+         */
+        href: string;
+        /**
+         * Asset instance change request type.: NETWORK_CREATION, NETWORK_UPDATE, NETWORK_DELETION
+         */
+        type: string;
+        /**
+         * Asset change request identifier.
+         */
+        uuid: string;
+    }
+
+    export interface GetNetworksDataChangeLog {
+        /**
+         * Created by User Key
+         */
+        createdBy: string;
+        /**
+         * Created by User Email Address
+         */
+        createdByEmail: string;
+        /**
+         * Created by User Full Name
+         */
+        createdByFullName: string;
+        /**
+         * Created by Date and Time
+         */
+        createdDateTime: string;
+        /**
+         * Deleted by User Key
+         */
+        deletedBy: string;
+        /**
+         * Deleted by User Email Address
+         */
+        deletedByEmail: string;
+        /**
+         * Deleted by User Full Name
+         */
+        deletedByFullName: string;
+        /**
+         * Deleted by Date and Time
+         */
+        deletedDateTime: string;
+        /**
+         * Updated by User Key
+         */
+        updatedBy: string;
+        /**
+         * Updated by User Email Address
+         */
+        updatedByEmail: string;
+        /**
+         * Updated by User Full Name
+         */
+        updatedByFullName: string;
+        /**
+         * Updated by Date and Time
+         */
+        updatedDateTime: string;
+    }
+
+    export interface GetNetworksDataLocation {
+        /**
+         * IBX Code
+         */
+        ibx: string;
+        /**
+         * Access point metro code
+         */
+        metroCode: string;
+        /**
+         * Access point metro name
+         */
+        metroName: string;
+        /**
+         * Access point region
+         */
+        region: string;
+    }
+
+    export interface GetNetworksDataNotification {
+        /**
+         * Array of contact emails
+         */
+        emails: string[];
+        /**
+         * Send interval
+         */
+        sendInterval?: string;
+        /**
+         * Notification Type - ALL,CONNECTION_APPROVAL,SALES_REP_NOTIFICATIONS, NOTIFICATIONS
+         */
+        type: string;
+    }
+
+    export interface GetNetworksDataOperation {
+        /**
+         * Progress towards provisioning a given asset.
+         */
+        equinixStatus: string;
+    }
+
+    export interface GetNetworksDataProject {
+        /**
+         * Customer project identifier
+         */
+        projectId: string;
+    }
+
+    export interface GetNetworksFilter {
+        /**
+         * Optional custom id parameter to assign this filter to an inner AND or OR group. Group id must be prefixed with AND_ or OR_. Ensure intended grouped elements have the same given id. Ungrouped filters will be placed in the filter list group by themselves.
+         */
+        group?: string;
+        /**
+         * Operators to use on your filtered field with the values given. One of [ =, !=, >, >=, <, <=, BETWEEN, NOT BETWEEN, LIKE, NOT LIKE, ILIKE, NOT ILIKE, IN, NOT IN]
+         */
+        operator: string;
+        /**
+         * Possible field names to use on filters. One of [/name /uuid /scope /type /operation/equinixStatus /location/region /project/projectId /account/globalCustId /account/orgId /deletedDate /_*]
+         */
+        property: string;
+        /**
+         * The values that you want to apply the property+operator combination to in order to filter your data search
+         */
+        values: string[];
+    }
+
+    export interface GetNetworksPagination {
+        /**
+         * Number of elements to be requested per page. Number must be between 1 and 100. Default is 20
+         */
+        limit?: number;
+        /**
+         * The page offset for the pagination request. Index of the first element. Default is 0.
+         */
+        offset?: number;
+    }
+
+    export interface GetNetworksSort {
+        /**
+         * The sorting direction. Can be one of: [DESC, ASC], Defaults to DESC
+         */
+        direction?: string;
+        /**
+         * The property name to use in sorting. One of [/name /uuid /scope /operation/equinixStatus /location/region /changeLog/createdDateTime /changeLog/updatedDateTime]. Defaults to /changeLog/updatedDateTime
+         */
+        property?: string;
     }
 
     export interface GetPortAccount {
@@ -5074,6 +6493,26 @@ export namespace networkedge {
          */
         hostname?: string;
         /**
+         * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseId?: string;
+        /**
+         * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseKey?: string;
+        /**
+         * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateAddress?: string;
+        /**
+         * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateCidrMask?: string;
+        /**
+         * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateGateway?: string;
+        /**
          * The CLI password of the device. This field is relevant only for the
          * Velocloud SDWAN cluster.
          */
@@ -5127,6 +6566,26 @@ export namespace networkedge {
          * Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters.
          */
         hostname?: string;
+        /**
+         * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseId?: string;
+        /**
+         * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseKey?: string;
+        /**
+         * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateAddress?: string;
+        /**
+         * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateCidrMask?: string;
+        /**
+         * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateGateway?: string;
         /**
          * The CLI password of the device. This field is relevant only for the
          * Velocloud SDWAN cluster.
@@ -5365,7 +6824,7 @@ export namespace networkedge {
         /**
          * Key/Value pairs of vendor specific configuration parameters
          * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`.
+         * `systemIpAddress`, `privateAddress`, `privateCidrMask`, `privateGateway`, `licenseKey`, `licenseId`.
          */
         vendorConfiguration: {[key: string]: string};
         /**
@@ -5503,6 +6962,26 @@ export namespace networkedge {
          */
         hostname: string;
         /**
+         * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseId: string;
+        /**
+         * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseKey: string;
+        /**
+         * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateAddress: string;
+        /**
+         * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateCidrMask: string;
+        /**
+         * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateGateway: string;
+        /**
          * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
          */
         rootPassword: string;
@@ -5552,6 +7031,26 @@ export namespace networkedge {
          * Hostname. This is necessary for Palo Alto, Juniper, and Fortinet clusters
          */
         hostname: string;
+        /**
+         * License id. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseId: string;
+        /**
+         * License key. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        licenseKey: string;
+        /**
+         * Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateAddress: string;
+        /**
+         * Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateCidrMask: string;
+        /**
+         * Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+         */
+        privateGateway: string;
         /**
          * The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
          */

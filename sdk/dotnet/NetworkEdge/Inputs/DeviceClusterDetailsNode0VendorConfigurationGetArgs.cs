@@ -63,6 +63,56 @@ namespace Pulumi.Equinix.NetworkEdge.Inputs
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        [Input("licenseId")]
+        private Input<string>? _licenseId;
+
+        /// <summary>
+        /// License id. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public Input<string>? LicenseId
+        {
+            get => _licenseId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _licenseId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("licenseKey")]
+        private Input<string>? _licenseKey;
+
+        /// <summary>
+        /// License key. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        public Input<string>? LicenseKey
+        {
+            get => _licenseKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _licenseKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        [Input("privateAddress")]
+        public Input<string>? PrivateAddress { get; set; }
+
+        /// <summary>
+        /// Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        [Input("privateCidrMask")]
+        public Input<string>? PrivateCidrMask { get; set; }
+
+        /// <summary>
+        /// Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+        /// </summary>
+        [Input("privateGateway")]
+        public Input<string>? PrivateGateway { get; set; }
+
         [Input("rootPassword")]
         private Input<string>? _rootPassword;
 

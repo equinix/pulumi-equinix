@@ -523,7 +523,7 @@ class CloudRouter(pulumi.CustomResource):
         """
         Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
 
-        Additional Fabric Cloud Router documentation:
+        Additional documentation:
         * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
         * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
 
@@ -553,6 +553,9 @@ class CloudRouter(pulumi.CustomResource):
             account=equinix.fabric.CloudRouterAccountArgs(
                 account_number=272010,
             ))
+            project=equinix.fabric.CloudRouterProjectArgs(
+                project_id=995072000433550,
+            ))
         pulumi.export("routerId", router.id)
         ```
 
@@ -579,7 +582,7 @@ class CloudRouter(pulumi.CustomResource):
         """
         Fabric V4 API compatible resource allows creation and management of [Equinix Fabric Cloud Router](https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks).
 
-        Additional Fabric Cloud Router documentation:
+        Additional documentation:
         * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/FCR-intro.htm#HowItWorks>
         * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#fabric-cloud-routers>
 
@@ -608,6 +611,9 @@ class CloudRouter(pulumi.CustomResource):
             )],
             account=equinix.fabric.CloudRouterAccountArgs(
                 account_number=272010,
+            ))
+            project=equinix.fabric.CloudRouterProjectArgs(
+                project_id=995072000433550,
             ))
         pulumi.export("routerId", router.id)
         ```

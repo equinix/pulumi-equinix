@@ -35,6 +35,31 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
      */
     private String hostname;
     /**
+     * @return License id. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    private String licenseId;
+    /**
+     * @return License key. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    private String licenseKey;
+    /**
+     * @return Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    private String privateAddress;
+    /**
+     * @return Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    private String privateCidrMask;
+    /**
+     * @return Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    private String privateGateway;
+    /**
      * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
      * 
      */
@@ -77,6 +102,41 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
         return this.hostname;
     }
     /**
+     * @return License id. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public String licenseId() {
+        return this.licenseId;
+    }
+    /**
+     * @return License key. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public String licenseKey() {
+        return this.licenseKey;
+    }
+    /**
+     * @return Private address. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public String privateAddress() {
+        return this.privateAddress;
+    }
+    /**
+     * @return Private CIDR Mask. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public String privateCidrMask() {
+        return this.privateCidrMask;
+    }
+    /**
+     * @return Private gateway. This field is relevant only for the BlueCat DNS and DHCP Server
+     * 
+     */
+    public String privateGateway() {
+        return this.privateGateway;
+    }
+    /**
      * @return The CLI password of the device. This field is relevant only for the Velocloud SDWAN cluster
      * 
      */
@@ -98,6 +158,11 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
         private String controller1;
         private String controllerFqdn;
         private String hostname;
+        private String licenseId;
+        private String licenseKey;
+        private String privateAddress;
+        private String privateCidrMask;
+        private String privateGateway;
         private String rootPassword;
         public Builder() {}
         public Builder(GetDeviceClusterDetailNode0VendorConfiguration defaults) {
@@ -107,6 +172,11 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
     	      this.controller1 = defaults.controller1;
     	      this.controllerFqdn = defaults.controllerFqdn;
     	      this.hostname = defaults.hostname;
+    	      this.licenseId = defaults.licenseId;
+    	      this.licenseKey = defaults.licenseKey;
+    	      this.privateAddress = defaults.privateAddress;
+    	      this.privateCidrMask = defaults.privateCidrMask;
+    	      this.privateGateway = defaults.privateGateway;
     	      this.rootPassword = defaults.rootPassword;
         }
 
@@ -136,6 +206,31 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder licenseId(String licenseId) {
+            this.licenseId = Objects.requireNonNull(licenseId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder licenseKey(String licenseKey) {
+            this.licenseKey = Objects.requireNonNull(licenseKey);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateAddress(String privateAddress) {
+            this.privateAddress = Objects.requireNonNull(privateAddress);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateCidrMask(String privateCidrMask) {
+            this.privateCidrMask = Objects.requireNonNull(privateCidrMask);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateGateway(String privateGateway) {
+            this.privateGateway = Objects.requireNonNull(privateGateway);
+            return this;
+        }
+        @CustomType.Setter
         public Builder rootPassword(String rootPassword) {
             this.rootPassword = Objects.requireNonNull(rootPassword);
             return this;
@@ -147,6 +242,11 @@ public final class GetDeviceClusterDetailNode0VendorConfiguration {
             _resultValue.controller1 = controller1;
             _resultValue.controllerFqdn = controllerFqdn;
             _resultValue.hostname = hostname;
+            _resultValue.licenseId = licenseId;
+            _resultValue.licenseKey = licenseKey;
+            _resultValue.privateAddress = privateAddress;
+            _resultValue.privateCidrMask = privateCidrMask;
+            _resultValue.privateGateway = privateGateway;
             _resultValue.rootPassword = rootPassword;
             return _resultValue;
         }

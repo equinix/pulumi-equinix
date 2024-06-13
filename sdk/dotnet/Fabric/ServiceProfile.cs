@@ -12,6 +12,10 @@ namespace Pulumi.Equinix.Fabric
     /// <summary>
     /// Fabric V4 API compatible resource allows creation and management of Equinix Fabric Service Profile
     /// 
+    /// Additional documentation:
+    /// * Getting Started: &lt;https://docs.equinix.com/en-us/Content/Interconnection/Fabric/IMPLEMENTATION/fabric-Sprofiles-implement.htm&gt;
+    /// * API: &lt;https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#service-profiles&gt;
+    /// 
     /// ## Example Usage
     /// ```csharp
     /// using System.Collections.Generic;

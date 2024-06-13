@@ -420,7 +420,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     /**
      * Key/Value pairs of vendor specific configuration parameters
      * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`.
+     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
      * 
      */
     @Import(name="vendorConfiguration")
@@ -429,7 +429,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
     /**
      * @return Key/Value pairs of vendor specific configuration parameters
      * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-     * `systemIpAddress`.
+     * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
      * 
      */
     public Optional<Output<Map<String,String>>> vendorConfiguration() {
@@ -1089,7 +1089,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         /**
          * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters
          * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`.
+         * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
          * 
          * @return builder
          * 
@@ -1102,7 +1102,7 @@ public final class DeviceSecondaryDeviceArgs extends com.pulumi.resources.Resour
         /**
          * @param vendorConfiguration Key/Value pairs of vendor specific configuration parameters
          * for a secondary device. Key values are `controller1`, `activationKey`, `managementType`, `siteId`,
-         * `systemIpAddress`.
+         * `systemIpAddress`, `private_address`, `private_cidr_mask`, `private_gateway`, `license_key`, `license_id`.
          * 
          * @return builder
          * 

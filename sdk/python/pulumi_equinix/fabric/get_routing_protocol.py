@@ -269,6 +269,10 @@ def get_routing_protocol(connection_uuid: Optional[str] = None,
 
     API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
 
+    Additional documentation:
+    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
+    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
+
     ## Example Usage
 
     ```python
@@ -331,6 +335,10 @@ def get_routing_protocol_output(connection_uuid: Optional[pulumi.Input[str]] = N
     Fabric V4 API compatible data resource that allow user to fetch routing protocol for a given UUID
 
     API documentation can be found here - https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols
+
+    Additional documentation:
+    * Getting Started: <https://docs.equinix.com/en-us/Content/Interconnection/FCR/connections/FCR-connect-azureQC.htm#ConfigureRoutingDetailsintheFabricPortal>
+    * API: <https://developer.equinix.com/dev-docs/fabric/api-reference/fabric-v4-apis#routing-protocols>
 
     ## Example Usage
 
